@@ -380,6 +380,21 @@ function applyPropertyPatch(
     return;
   }
 
+  // If we're sitting on a union (e.g. an array-of-union element), apply
+  // the patch to every object variant that has the matching property.
+  // This makes `steps[].config.timeout` work for `steps: Array<A | B | ...>`.
+  if (typeInfo.kind === "union" && typeInfo.values) {
+    for (const variant of typeInfo.values) {
+      if (
+        variant.kind === "object" &&
+        variant.properties?.some((p) => p.name === current)
+      ) {
+        applyPropertyPatch(variant, pathSegments, patch);
+      }
+    }
+    return;
+  }
+
   // Regular field access
   if (typeInfo.kind !== "object" || !typeInfo.properties) return;
 

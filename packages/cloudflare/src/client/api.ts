@@ -107,18 +107,6 @@ const GLOBAL_ERROR_CODE_MAP: Record<
   // accountId or zoneId) doesn't resolve to a real resource. Surfacing it
   // globally keeps tests for unknown-resource cases off UnknownCloudflareError.
   7003: (message) => new InvalidRoute({ code: 7003, message }),
-  // 1000: "An unknown error has occurred. If this error persists, please
-  // file a report in workers-sdk." This is Cloudflare's generic transient
-  // failure code — observed flakily on Queues `bulkPushMessages` and similar
-  // mutation operations. Tag retryable so the SDK's default retry policy
-  // rides it out instead of bubbling a flake to callers.
-  1000: (message) =>
-    tagRetryable(
-      new InternalServerError({
-        message,
-        retryAfter: undefined,
-      }),
-    ),
 };
 
 /**

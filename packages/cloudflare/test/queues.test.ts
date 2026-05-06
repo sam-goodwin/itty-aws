@@ -671,6 +671,10 @@ describe("Queues", () => {
             expect(pushed.success).toBe(true);
           }
 
+          // Allow Cloudflare a moment to register the http_pull consumer
+          // before trying to pull — observed flake: pullMessage rejects with
+          // "messages cannot be pulled unless http_pull mode is enabled"
+          // for a few seconds after createConsumer returns.
           const pulled = yield* Queues.pullMessage({
             accountId: accountId(),
             queueId,
@@ -682,8 +686,16 @@ describe("Queues", () => {
                 : Effect.fail("message not visible yet" as const),
             ),
             Effect.retry({
-              while: (e) => e === "message not visible yet",
-              schedule: Schedule.recurs(10).pipe(
+              while: (e) =>
+                e === "message not visible yet" ||
+                (typeof e === "object" &&
+                  e !== null &&
+                  "message" in e &&
+                  typeof (e as { message: unknown }).message === "string" &&
+                  /http_pull mode is enabled/i.test(
+                    (e as { message: string }).message,
+                  )),
+              schedule: Schedule.recurs(15).pipe(
                 Schedule.addDelay(() => Effect.succeed("1 second")),
               ),
             }),

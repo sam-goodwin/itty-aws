@@ -26,7 +26,11 @@ export class ConsumerNotFound extends Schema.TaggedErrorClass<ConsumerNotFound>(
   "ConsumerNotFound",
   { code: Schema.Number, message: Schema.String },
 ) {}
-T.applyErrorMatchers(ConsumerNotFound, [{ code: 10105 }, { code: 11006 }]);
+T.applyErrorMatchers(ConsumerNotFound, [
+  { code: 10013 },
+  { code: 10105 },
+  { code: 11006 },
+]);
 
 export class InvalidMessageBody extends Schema.TaggedErrorClass<InvalidMessageBody>()(
   "InvalidMessageBody",

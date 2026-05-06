@@ -6,7 +6,8 @@
   },
   "response": {
     "properties": {
-      "output": { "nullable": true }
+      "output": { "nullable": true },
+      "steps[].config.timeout": { "type": "unknown" }
     }
   }
 }

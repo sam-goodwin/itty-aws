@@ -268,9 +268,10 @@ describe("AISearch", () => {
   describe("readToken", () => {
     test("happy path - reads an existing token", () =>
       withToken(resourceName("token-read"), (tokenId) =>
-        // Cloudflare's AI Search readToken is eventually consistent: a token
-        // that was just created can return an empty `{ result: {} }` for a
-        // few hundred ms. Retry until the response has the id we expect.
+        // Cloudflare's AI Search readToken is eventually consistent: for a
+        // few seconds after createToken the API may return either an empty
+        // `{ result: {} }` envelope or a `token_not_found` error. Retry
+        // until we get the populated token back.
         AISearch.readToken({
           accountId: accountId(),
           id: tokenId,
@@ -280,10 +281,20 @@ describe("AISearch", () => {
               ? Effect.succeed(token)
               : Effect.fail("token not visible yet" as const),
           ),
+          Effect.catch((e) => {
+            const msg =
+              typeof e === "object" && e !== null && "message" in e
+                ? String((e as { message: unknown }).message)
+                : "";
+            if (e === "token not visible yet" || /token_not_found/i.test(msg)) {
+              return Effect.fail("token not visible yet" as const);
+            }
+            return Effect.fail(e);
+          }),
           Effect.retry({
             while: (e) => e === "token not visible yet",
             schedule: Schedule.spaced("500 millis").pipe(
-              Schedule.both(Schedule.recurs(20)),
+              Schedule.both(Schedule.recurs(30)),
             ),
           }),
           Effect.map((token) => {

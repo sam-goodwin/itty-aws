@@ -130,8 +130,7 @@ paths:
                                   required:
                                     - delay
                                     - limit
-                                timeout:
-                                  type: number
+                                timeout: {}
                               required:
                                 - retries
                                 - timeout

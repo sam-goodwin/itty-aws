@@ -115,7 +115,7 @@ export interface GetInstanceResponse {
             limit: number;
             backoff?: "constant" | "linear" | "exponential" | null;
           };
-          timeout: number;
+          timeout: unknown;
         };
         end: string | null;
         name: string;
@@ -199,7 +199,7 @@ export const GetInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               ]),
             ),
           }),
-          timeout: Schema.Number,
+          timeout: Schema.Unknown,
         }),
         end: Schema.Union([Schema.String, Schema.Null]),
         name: Schema.String,
