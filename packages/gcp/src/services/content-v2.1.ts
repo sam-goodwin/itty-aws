@@ -67,7 +67,7 @@ export const Value = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Row {
   /** The list of cells that constitute the row. Must have the same length as `columnHeaders` for two-dimensional tables, a length of 1 for one-dimensional tables. Required. */
-  cells?: Array<Value>;
+  cells?: ReadonlyArray<Value>;
 }
 
 export const Row = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -158,7 +158,7 @@ export interface GmbAccounts {
   /** The ID of the Merchant Center account. */
   accountId?: string;
   /** A list of Business Profiles which are available to the merchant. */
-  gmbAccounts?: Array<GmbAccountsGmbAccount>;
+  gmbAccounts?: ReadonlyArray<GmbAccountsGmbAccount>;
 }
 
 export const GmbAccounts = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -182,7 +182,7 @@ export interface LinkedAccount {
   /** The ID of the linked account. */
   linkedAccountId?: string;
   /** List of provided services. */
-  services?: Array<LinkService>;
+  services?: ReadonlyArray<LinkService>;
 }
 
 export const LinkedAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -192,7 +192,7 @@ export const LinkedAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AccountsListLinksResponse {
   /** The list of available links. */
-  links?: Array<LinkedAccount>;
+  links?: ReadonlyArray<LinkedAccount>;
   /** The token for the retrieval of the next page of links. */
   nextPageToken?: string;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsListLinksResponse`". */
@@ -232,7 +232,7 @@ export interface CollectionStatusItemLevelIssue {
   /** A detailed issue description in English. */
   detail?: string;
   /** Country codes (ISO 3166-1 alpha-2) where issue applies to the offer. */
-  applicableCountries?: Array<string>;
+  applicableCountries?: ReadonlyArray<string>;
   /** The error code of the issue. */
   code?: string;
   /** The destination the issue applies to. */
@@ -264,13 +264,13 @@ export interface CollectionStatusDestinationStatus {
   /** The name of the destination */
   destination?: string;
   /** Country codes (ISO 3166-1 alpha-2) where the collection is disapproved. */
-  disapprovedCountries?: Array<string>;
+  disapprovedCountries?: ReadonlyArray<string>;
   /** Country codes (ISO 3166-1 alpha-2) where the collection is approved. */
-  approvedCountries?: Array<string>;
+  approvedCountries?: ReadonlyArray<string>;
   /** The status for the specified destination in the collections target country. */
   status?: string;
   /** Country codes (ISO 3166-1 alpha-2) where the collection is pending approval. */
-  pendingCountries?: Array<string>;
+  pendingCountries?: ReadonlyArray<string>;
 }
 
 export const CollectionStatusDestinationStatus =
@@ -284,13 +284,13 @@ export const CollectionStatusDestinationStatus =
 
 export interface CollectionStatus {
   /** A list of all issues associated with the collection. */
-  collectionLevelIssuses?: Array<CollectionStatusItemLevelIssue>;
+  collectionLevelIssuses?: ReadonlyArray<CollectionStatusItemLevelIssue>;
   /** Date on which the collection has been last updated in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, for example "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z" */
   lastUpdateDate?: string;
   /** Required. The ID of the collection for which status is reported. */
   id?: string;
   /** The intended destinations for the collection. */
-  destinationStatuses?: Array<CollectionStatusDestinationStatus>;
+  destinationStatuses?: ReadonlyArray<CollectionStatusDestinationStatus>;
   /** Date on which the collection has been created in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, for example "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z" */
   creationDate?: string;
 }
@@ -358,7 +358,7 @@ export interface Recommendation {
   /** Optional. Indicates whether a user needs to pay when they complete the user journey suggested by the recommendation. */
   paid?: boolean;
   /** Output only. Any creatives attached to the recommendation. Repeated. */
-  creative?: Array<RecommendationCreative>;
+  creative?: ReadonlyArray<RecommendationCreative>;
   /** Optional. Localized Recommendation Title. Localization uses the {@link `GenerateRecommendationsRequest.language_code`} field in {@link `GenerateRecommendationsRequest`} requests. */
   title?: string;
   /** Optional. Localized recommendation description. The localization the {@link `GenerateRecommendationsRequest.language_code`} field in {@link `GenerateRecommendationsRequest`} requests. */
@@ -370,9 +370,9 @@ export interface Recommendation {
   /** Optional. Localized recommendation name. The localization uses the {@link `GenerateRecommendationsRequest.language_code`} field in {@link `GenerateRecommendationsRequest`} requests. */
   recommendationName?: string;
   /** Output only. List of additional localized descriptions for a recommendation. Localication uses the `languageCode` field in `GenerateRecommendations` requests. Not all description types are guaranteed to be present and we recommend to rely on default description. */
-  additionalDescriptions?: Array<RecommendationDescription>;
+  additionalDescriptions?: ReadonlyArray<RecommendationDescription>;
   /** Output only. CTAs of this recommendation. Repeated. */
-  additionalCallToAction?: Array<RecommendationCallToAction>;
+  additionalCallToAction?: ReadonlyArray<RecommendationCallToAction>;
 }
 
 export const Recommendation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -395,7 +395,7 @@ export const Recommendation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GenerateRecommendationsResponse {
   /** Recommendations generated for a request. */
-  recommendations?: Array<Recommendation>;
+  recommendations?: ReadonlyArray<Recommendation>;
   /** Output only. Response token is a string created for each `GenerateRecommendationsResponse`. This token doesn't expire, and is globally unique. This token must be used when reporting interactions for recommendations. */
   responseToken?: string;
 }
@@ -444,7 +444,7 @@ export const PosInventoryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MinimumOrderValueTableStoreCodeSetWithMov {
   /** A list of unique store codes or empty for the catch all. */
-  storeCodes?: Array<string>;
+  storeCodes?: ReadonlyArray<string>;
   /** The minimum order value for the given stores. */
   value?: Price;
 }
@@ -456,7 +456,7 @@ export const MinimumOrderValueTableStoreCodeSetWithMov =
   }).annotate({ identifier: "MinimumOrderValueTableStoreCodeSetWithMov" });
 
 export interface MinimumOrderValueTable {
-  storeCodeSetWithMovs?: Array<MinimumOrderValueTableStoreCodeSetWithMov>;
+  storeCodeSetWithMovs?: ReadonlyArray<MinimumOrderValueTableStoreCodeSetWithMov>;
 }
 
 export const MinimumOrderValueTable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -481,7 +481,7 @@ export interface CustomAttribute {
   /** The value of the attribute. */
   value?: string;
   /** Subattributes within this attribute group. Exactly one of value or groupValues must be provided. */
-  groupValues?: Array<CustomAttribute>;
+  groupValues?: ReadonlyArray<CustomAttribute>;
   /** The name of the attribute. Underscores will be replaced by spaces upon insertion. */
   name?: string;
 }
@@ -715,11 +715,11 @@ export const ProductSubscriptionCost =
 
 export interface CloudExportAdditionalProperties {
   /** Text value of the given property. For example, "8K(UHD)" could be a text value for a TV product. Maximum number of specified values for this field is 400. Values are stored in an arbitrary but consistent order. Maximum string size is 256 characters. */
-  textValue?: Array<string>;
+  textValue?: ReadonlyArray<string>;
   /** Integer values of the given property. For example, 1080 for a screen resolution of a TV product. Maximum number of specified values for this field is 400. Values are stored in an arbitrary but consistent order. */
-  intValue?: Array<string>;
+  intValue?: ReadonlyArray<string>;
   /** Float values of the given property. For example for a TV product 1.2345. Maximum number of specified values for this field is 400. Values are stored in an arbitrary but consistent order. */
-  floatValue?: Array<number>;
+  floatValue?: ReadonlyArray<number>;
   /** Unit of the given property. For example, "Pixels" for a TV product. Maximum string size is 256 bytes. */
   unitCode?: string;
   /** Minimum float value of the given property. For example for a TV product 1.00. */
@@ -825,7 +825,7 @@ export interface Product {
   /** The tax category of the product, used to configure detailed tax nexus in account-level tax settings. */
   taxCategory?: string;
   /** A list of custom (merchant-provided) attributes. It can also be used for submitting any attribute of the feed specification in its generic form (for example, `{ "name": "size type", "value": "regular" }`). This is useful for submitting attributes not explicitly exposed by the API, such as additional attributes used for Buy on Google (formerly known as Shopping Actions). */
-  customAttributes?: Array<CustomAttribute>;
+  customAttributes?: ReadonlyArray<CustomAttribute>;
   /** Maximal product handling time (in business days). */
   maxHandlingTime?: string;
   /** Additional cut of the item. Used together with size_type to represent combined size types for apparel items. */
@@ -843,15 +843,15 @@ export interface Product {
   /** Length of the item for shipping. */
   shippingLength?: ProductShippingDimension;
   /** Additional URLs of lifestyle images of the item. Used to explicitly identify images that showcase your item in a real-world context. See the Help Center article for more information. */
-  lifestyleImageLinks?: Array<string>;
+  lifestyleImageLinks?: ReadonlyArray<string>;
   /** Similar to ads_grouping, but only works on CPC. */
-  adsLabels?: Array<string>;
+  adsLabels?: ReadonlyArray<string>;
   /** The REST ID of the product. Content API methods that operate on products take this as their `productId` parameter. The REST ID for a product has one of the 2 forms channel:contentLanguage: targetCountry: offerId or channel:contentLanguage:feedLabel: offerId. */
   id?: string;
   /** Shared identifier for all variants of the same product. */
   itemGroupId?: string;
   /** Optional. A list of loyalty program information that is used to surface loyalty benefits (for example, better pricing, points, etc) to the user of this item. */
-  loyaltyPrograms?: Array<LoyaltyProgram>;
+  loyaltyPrograms?: ReadonlyArray<LoyaltyProgram>;
   /** Custom label 4 for custom grouping of items in a Shopping campaign. */
   customLabel4?: string;
   /** The day a pre-ordered product becomes available for delivery, in ISO 8601 format. */
@@ -861,11 +861,11 @@ export interface Product {
   /** The preference of the denominator of the unit price. */
   unitPricingBaseMeasure?: ProductUnitPricingBaseMeasure;
   /** Technical specification or additional product details. */
-  productDetails?: Array<ProductProductDetail>;
+  productDetails?: ReadonlyArray<ProductProductDetail>;
   /** Required. A unique identifier for the item. Leading and trailing whitespaces are stripped and multiple whitespaces are replaced by a single whitespace upon submission. Only valid unicode characters are accepted. See the products feed specification for details. *Note:* Content API methods that operate on products take the REST ID of the product, *not* this identifier. */
   offerId?: string;
   /** Optional. The list of sustainability incentive programs. */
-  sustainabilityIncentives?: Array<ProductSustainabilityIncentive>;
+  sustainabilityIncentives?: ReadonlyArray<ProductSustainabilityIncentive>;
   /** Required. The item's channel (online or local). Acceptable values are: - "`local`" - "`online`" */
   channel?: string;
   /** Advertised sale price of the item. */
@@ -881,7 +881,7 @@ export interface Product {
   /** The transit time label of the product, used to group product in account-level transit time tables. */
   transitTimeLabel?: string;
   /** Bullet points describing the most relevant highlights of a product. */
-  productHighlights?: Array<string>;
+  productHighlights?: ReadonlyArray<string>;
   /** Color of the item. */
   color?: string;
   /** Date on which the item should expire, as specified upon insertion, in ISO 8601 format. The actual expiration date in Google Shopping is exposed in `productstatuses` as `googleExpirationDate` and might be earlier if `expirationDate` is too far in the future. */
@@ -891,7 +891,7 @@ export interface Product {
   /** URL template for merchant hosted local storefront optimized for mobile devices. */
   mobileLinkTemplate?: string;
   /** List of country codes (ISO 3166-1 alpha-2) to exclude the offer from Shopping Ads destination. Countries from this list are removed from countries configured in MC feed settings. */
-  shoppingAdsExcludedCountries?: Array<string>;
+  shoppingAdsExcludedCountries?: ReadonlyArray<string>;
   /** Structured description, for algorithmically (AI)-generated descriptions. */
   structuredDescription?: ProductStructuredDescription;
   /** Loyalty program information that is used to surface loyalty benefits ( for example, better pricing, points, etc) to the user of this item. This signular field points to the latest uploaded loyalty program info. This field will be deprecated in the coming weeks and should not be used in favor of the plural 'LoyaltyProgram' field below. */
@@ -917,13 +917,13 @@ export interface Product {
   /** Condition or state of the item. */
   condition?: string;
   /** The unique ID of a promotion. */
-  promotionIds?: Array<string>;
+  promotionIds?: ReadonlyArray<string>;
   /** Offer margin for dynamic remarketing campaigns. */
   displayAdsValue?: number;
   /** Structured title, for algorithmically (AI)-generated titles. */
   structuredTitle?: ProductStructuredTitle;
   /** Advertiser-specified recommendations. */
-  displayAdsSimilarIds?: Array<string>;
+  displayAdsSimilarIds?: ReadonlyArray<string>;
   /** The width of the product in the units provided. The value must be between 0 (exclusive) and 3000 (inclusive). */
   productWidth?: ProductDimension;
   /** URL for the mobile-optimized version of your item's landing page. */
@@ -935,7 +935,7 @@ export interface Product {
   /** Target gender of the item. */
   gender?: string;
   /** Product [certification](https://support.google.com/merchants/answer/13528839), introduced for EU energy efficiency labeling compliance using the [EU EPREL](https://eprel.ec.europa.eu/screen/home) database. */
-  certifications?: Array<ProductCertification>;
+  certifications?: ReadonlyArray<ProductCertification>;
   /** The quantity of the product that is available for selling on Google. Supported only for online products. */
   sellOnGoogleQuantity?: string;
   /** Date range during which the item is on sale (see product data specification ). */
@@ -945,7 +945,7 @@ export interface Product {
   /** Publication of this item should be temporarily paused. Acceptable values are: - "`ads`" */
   pause?: string;
   /** Size of the item. Only one value is allowed. For variants with different sizes, insert a separate product for each size with the same `itemGroupId` value (see size definition). */
-  sizes?: Array<string>;
+  sizes?: ReadonlyArray<string>;
   /** The shipping label of the product, used to group product in account-level shipping rules. */
   shippingLabel?: string;
   /** Width of the item for shipping. */
@@ -953,7 +953,7 @@ export interface Product {
   /** The weight of the product in the units provided. The value must be between 0 (exclusive) and 2000 (inclusive). */
   productWeight?: ProductWeight;
   /** Categories of the item (formatted as in product data specification). */
-  productTypes?: Array<string>;
+  productTypes?: ReadonlyArray<string>;
   /** The height of the product in the units provided. The value must be between 0 (exclusive) and 3000 (inclusive). */
   productHeight?: ProductDimension;
   /** Cost of goods sold. Used for gross profit reporting. */
@@ -965,13 +965,13 @@ export interface Product {
   /** Minimal product handling time (in business days). */
   minHandlingTime?: string;
   /** Additional URLs of images of the item. */
-  additionalImageLinks?: Array<string>;
+  additionalImageLinks?: ReadonlyArray<string>;
   /** System in which the size is specified. Recommended for apparel items. */
   sizeSystem?: string;
   /** Weight of the item for shipping. */
   shippingWeight?: ProductShippingWeight;
   /** The list of [destinations to exclude](//support.google.com/merchants/answer/6324486) for this target (corresponds to cleared check boxes in Merchant Center). Products that are excluded from all destinations for more than 7 days are automatically deleted. */
-  excludedDestinations?: Array<string>;
+  excludedDestinations?: ReadonlyArray<string>;
   /** Required for multi-seller accounts. Use this attribute if you're a marketplace uploading products for various sellers to your multi-seller account. */
   externalSellerId?: string;
   /** The pick up option for the item. Acceptable values are: - "`buy`" - "`reserve`" - "`ship to store`" - "`not supported`" */
@@ -985,7 +985,7 @@ export interface Product {
   /** Required. The CLDR territory code for the item's country of sale. */
   targetCountry?: string;
   /** Extra fields to export to the Cloud Retail program. */
-  cloudExportAdditionalProperties?: Array<CloudExportAdditionalProperties>;
+  cloudExportAdditionalProperties?: ReadonlyArray<CloudExportAdditionalProperties>;
   /** Availability status of the item. */
   availability?: string;
   /** Custom label 3 for custom grouping of items in a Shopping campaign. */
@@ -993,19 +993,19 @@ export interface Product {
   /** URL directly to your item's landing page for dynamic remarketing campaigns. */
   displayAdsLink?: string;
   /** Shipping rules. */
-  shipping?: Array<ProductShipping>;
+  shipping?: ReadonlyArray<ProductShipping>;
   /** URL template for merchant hosted local storefront. */
   linkTemplate?: string;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#product`" */
   kind?: string;
   /** Tax information. */
-  taxes?: Array<ProductTax>;
+  taxes?: ReadonlyArray<ProductTax>;
   /** URL for the canonical version of your item's landing page. */
   canonicalLink?: string;
   /** Custom label 1 for custom grouping of items in a Shopping campaign. */
   customLabel1?: string;
   /** The list of [destinations to include](//support.google.com/merchants/answer/7501026) for this target (corresponds to checked check boxes in Merchant Center). Default destinations are always included unless provided in `excludedDestinations`. */
-  includedDestinations?: Array<string>;
+  includedDestinations?: ReadonlyArray<string>;
   /** URL directly linking to your item's page on your website. */
   link?: string;
   /** Height of the item for shipping. */
@@ -1025,7 +1025,7 @@ export interface Product {
   /** The item's pattern (for example, polka dots). */
   pattern?: string;
   /** Optional. Conditions to be met for a product to have free shipping. */
-  freeShippingThreshold?: Array<FreeShippingThreshold>;
+  freeShippingThreshold?: ReadonlyArray<FreeShippingThreshold>;
   /** Required. The two-letter ISO 639-1 language code for the item. */
   contentLanguage?: string;
 }
@@ -1325,7 +1325,7 @@ export interface AccountTax {
   /** Required. The ID of the account to which these account tax settings belong. */
   accountId?: string;
   /** Tax rules. Updating the tax rules will enable "US" taxes (not reversible). Defining no rules is equivalent to not charging tax at all. */
-  rules?: Array<AccountTaxTaxRule>;
+  rules?: ReadonlyArray<AccountTaxTaxRule>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountTax`". */
   kind?: string;
 }
@@ -1339,7 +1339,7 @@ export const AccountTax = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface AccounttaxListResponse {
   /** The token for the retrieval of the next page of account tax settings. */
   nextPageToken?: string;
-  resources?: Array<AccountTax>;
+  resources?: ReadonlyArray<AccountTax>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accounttaxListResponse`". */
   kind?: string;
 }
@@ -1374,9 +1374,9 @@ export interface FreeListingsProgramStatusRegionStatus {
     | "INELIGIBLE"
     | (string & {});
   /** Issues evaluated in the review process. Fix all issues before requesting a review. */
-  reviewIssues?: Array<string>;
+  reviewIssues?: ReadonlyArray<string>;
   /** The two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes for all the regions with the same `eligibilityStatus` and `reviewEligibility`. */
-  regionCodes?: Array<string>;
+  regionCodes?: ReadonlyArray<string>;
   /** Eligibility status of the standard free listing program. */
   eligibilityStatus?:
     | "STATE_UNSPECIFIED"
@@ -1388,7 +1388,7 @@ export interface FreeListingsProgramStatusRegionStatus {
     | "ONBOARDING"
     | (string & {});
   /** Issues that must be fixed to be eligible for review. */
-  onboardingIssues?: Array<string>;
+  onboardingIssues?: ReadonlyArray<string>;
   /** Reason a program in a specific region isn’t eligible for review. Only visible if `reviewEligibilityStatus` is `INELIGIBLE`. */
   reviewIneligibilityReasonDescription?: string;
   /** Review ineligibility reason if account is not eligible for review. */
@@ -1424,7 +1424,7 @@ export const FreeListingsProgramStatusRegionStatus =
 
 export interface FreeListingsProgramStatus {
   /** Status of the program in each region. Regions with the same status and review eligibility are grouped together in `regionCodes`. */
-  regionStatuses?: Array<FreeListingsProgramStatusRegionStatus>;
+  regionStatuses?: ReadonlyArray<FreeListingsProgramStatusRegionStatus>;
   /** State of the program. `ENABLED` if there are offers for at least one region. */
   globalState?:
     | "PROGRAM_STATE_UNSPECIFIED"
@@ -1459,7 +1459,7 @@ export const Content_Error = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Errors {
   /** A list of errors. */
-  errors?: Array<Content_Error>;
+  errors?: ReadonlyArray<Content_Error>;
   /** The HTTP status of the first error in `errors`. */
   code?: number;
   /** The message of the first error in `errors`. */
@@ -1743,15 +1743,15 @@ export interface Account {
   /** Required. Display name for the account. */
   name?: string;
   /** Linked YouTube channels that are active or pending approval. To create a new link request, add a new link with status `active` to the list. It will remain in a `pending` state until approved or rejected in the YT Creator Studio interface. To delete an active link, or to cancel a link request, remove it from the list. */
-  youtubeChannelLinks?: Array<AccountYouTubeChannelLink>;
+  youtubeChannelLinks?: ReadonlyArray<AccountYouTubeChannelLink>;
   /** Automatically created label IDs that are assigned to the account by CSS Center. */
-  automaticLabelIds?: Array<string>;
+  automaticLabelIds?: ReadonlyArray<string>;
   /** Users with access to the account. Every account (except for subaccounts) must have at least one admin user. */
-  users?: Array<AccountUser>;
+  users?: ReadonlyArray<AccountUser>;
   /** Required. 64-bit Merchant Center account ID. */
   id?: string;
   /** Linked Ads accounts that are active or pending approval. To create a new link request, add a new link with status `active` to the list. It will remain in a `pending` state until approved or rejected either in the Ads interface or through the Google Ads API. To delete an active link, or to cancel a link request, remove it from the list. */
-  adsLinks?: Array<AccountAdsLink>;
+  adsLinks?: ReadonlyArray<AccountAdsLink>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#account`". */
   kind?: string;
   /** The merchant's website. */
@@ -1761,7 +1761,7 @@ export interface Account {
   /** ID of CSS the account belongs to. */
   cssId?: string;
   /** Manually created label IDs that are assigned to the account by CSS. */
-  labelIds?: Array<string>;
+  labelIds?: ReadonlyArray<string>;
   /** Output only. How the account is managed. Acceptable values are: - "`manual`" - "`automatic`" */
   accountManagement?: string;
   /** The business information of the account. */
@@ -1818,7 +1818,7 @@ export interface PubsubNotificationSettings {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#pubsubNotificationSettings`" */
   kind?: string;
   /** List of event types. Acceptable values are: - "`orderPendingShipment`" */
-  registeredEvents?: Array<string>;
+  registeredEvents?: ReadonlyArray<string>;
   /** Cloud pub/sub topic to which notifications are sent (read-only). */
   cloudTopicName?: string;
 }
@@ -1834,15 +1834,15 @@ export interface DatafeedTarget {
   /** Deprecated. Use `feedLabel` instead. The country where the items in the feed will be included in the search index, represented as a CLDR territory code. */
   country?: string;
   /** The countries where the items may be displayed. Represented as a CLDR territory code. Will be ignored for "product inventory" feeds. */
-  targetCountries?: Array<string>;
+  targetCountries?: ReadonlyArray<string>;
   /** The list of [destinations to exclude](//support.google.com/merchants/answer/6324486) for this target (corresponds to cleared check boxes in Merchant Center). Products that are excluded from all destinations for more than 7 days are automatically deleted. */
-  excludedDestinations?: Array<string>;
+  excludedDestinations?: ReadonlyArray<string>;
   /** The two-letter ISO 639-1 language of the items in the feed. Must be a valid language for `targets[].country`. */
   language?: string;
   /** Feed label for the DatafeedTarget. Either `country` or `feedLabel` is required. If both `feedLabel` and `country` is specified, the values must match. Must be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-). */
   feedLabel?: string;
   /** The list of [destinations to include](//support.google.com/merchants/answer/7501026) for this target (corresponds to checked check boxes in Merchant Center). Default destinations are always included unless provided in `excludedDestinations`. */
-  includedDestinations?: Array<string>;
+  includedDestinations?: ReadonlyArray<string>;
 }
 
 export const DatafeedTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1899,7 +1899,7 @@ export const Distance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ServiceStoreConfig {
   /** A list of store codes that provide local delivery. If empty, then `store_service_type` must be `all_stores`, or an error is thrown. If not empty, then `store_service_type` must be `selected_stores`, or an error is thrown. */
-  storeCodes?: Array<string>;
+  storeCodes?: ReadonlyArray<string>;
   /** Time local delivery ends for the day. This can be either `local_cutoff_time` or `store_close_offset_hours`, if both are provided an error is thrown. */
   cutoffConfig?: ServiceStoreConfigCutoffConfig;
   /** Maximum delivery radius. Only needed for local delivery fulfillment type. */
@@ -1953,7 +1953,7 @@ export const Weight = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LocationIdSet {
   /** A non-empty list of location IDs. They must all be of the same location type (for example, state). */
-  locationIds?: Array<string>;
+  locationIds?: ReadonlyArray<string>;
 }
 
 export const LocationIdSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1962,15 +1962,15 @@ export const LocationIdSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Headers {
   /** A list of inclusive number of items upper bounds. The last value can be `"infinity"`. For example `["10", "50", "infinity"]` represents the headers "<= 10 items", "<= 50 items", and "> 50 items". Must be non-empty. Can only be set if all other fields are not set. */
-  numberOfItems?: Array<string>;
+  numberOfItems?: ReadonlyArray<string>;
   /** A list of postal group names. The last value can be `"all other locations"`. Example: `["zone 1", "zone 2", "all other locations"]`. The referred postal code groups must match the delivery country of the service. Must be non-empty. Can only be set if all other fields are not set. */
-  postalCodeGroupNames?: Array<string>;
+  postalCodeGroupNames?: ReadonlyArray<string>;
   /** A list of inclusive order price upper bounds. The last price's value can be `"infinity"`. For example `[{"value": "10", "currency": "USD"}, {"value": "500", "currency": "USD"}, {"value": "infinity", "currency": "USD"}]` represents the headers "<= $10", "<= $500", and "> $500". All prices within a service must have the same currency. Must be non-empty. Can only be set if all other fields are not set. */
-  prices?: Array<Price>;
+  prices?: ReadonlyArray<Price>;
   /** A list of inclusive order weight upper bounds. The last weight's value can be `"infinity"`. For example `[{"value": "10", "unit": "kg"}, {"value": "50", "unit": "kg"}, {"value": "infinity", "unit": "kg"}]` represents the headers "<= 10kg", "<= 50kg", and "> 50kg". All weights within a service must have the same unit. Must be non-empty. Can only be set if all other fields are not set. */
-  weights?: Array<Weight>;
+  weights?: ReadonlyArray<Weight>;
   /** A list of location ID sets. Must be non-empty. Can only be set if all other fields are not set. */
-  locations?: Array<LocationIdSet>;
+  locations?: ReadonlyArray<LocationIdSet>;
 }
 
 export const Headers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1983,7 +1983,7 @@ export const Headers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Table {
   /** The list of rows that constitute the table. Must have the same length as `rowHeaders`. Required. */
-  rows?: Array<Row>;
+  rows?: ReadonlyArray<Row>;
   /** Name of the table. Required for subtables, ignored for the main table. */
   name?: string;
   /** Headers of the table's rows. Required. */
@@ -2001,13 +2001,13 @@ export const Table = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RateGroup {
   /** A list of carrier rates that can be referred to by `mainTable` or `singleValue`. */
-  carrierRates?: Array<CarrierRate>;
+  carrierRates?: ReadonlyArray<CarrierRate>;
   /** Name of the rate group. Optional. If set has to be unique within shipping service. */
   name?: string;
   /** A list of shipping labels defining the products to which this rate group applies to. This is a disjunction: only one of the labels has to match for the rate group to apply. May only be empty for the last rate group of a service. Required. */
-  applicableShippingLabels?: Array<string>;
+  applicableShippingLabels?: ReadonlyArray<string>;
   /** A list of subtables referred to by `mainTable`. Can only be set if `mainTable` is set. */
-  subtables?: Array<Table>;
+  subtables?: ReadonlyArray<Table>;
   /** The value of the rate group (for example, flat rate $10). Can only be set if `mainTable` and `subtables` are not set. */
   singleValue?: Value;
   /** A table defining the rate group, when `singleValue` is not expressive enough. Can only be set if `singleValue` is not set. */
@@ -2049,7 +2049,7 @@ export const TransitTableTransitTimeRowTransitTimeValue =
   }).annotate({ identifier: "TransitTableTransitTimeRowTransitTimeValue" });
 
 export interface TransitTableTransitTimeRow {
-  values?: Array<TransitTableTransitTimeRowTransitTimeValue>;
+  values?: ReadonlyArray<TransitTableTransitTimeRowTransitTimeValue>;
 }
 
 export const TransitTableTransitTimeRow =
@@ -2060,11 +2060,11 @@ export const TransitTableTransitTimeRow =
   }).annotate({ identifier: "TransitTableTransitTimeRow" });
 
 export interface TransitTable {
-  rows?: Array<TransitTableTransitTimeRow>;
+  rows?: ReadonlyArray<TransitTableTransitTimeRow>;
   /** A list of postal group names. The last value can be `"all other locations"`. Example: `["zone 1", "zone 2", "all other locations"]`. The referred postal code groups must match the delivery country of the service. */
-  postalCodeGroupNames?: Array<string>;
+  postalCodeGroupNames?: ReadonlyArray<string>;
   /** A list of transit time labels. The last value can be `"all other labels"`. Example: `["food", "electronics", "all other labels"]`. */
-  transitTimeLabels?: Array<string>;
+  transitTimeLabels?: ReadonlyArray<string>;
 }
 
 export const TransitTable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2106,7 +2106,7 @@ export const WarehouseBasedDeliveryTime =
 
 export interface BusinessDayConfig {
   /** Regular business days, such as '"monday"'. May not be empty. */
-  businessDays?: Array<string>;
+  businessDays?: ReadonlyArray<string>;
 }
 
 export const BusinessDayConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2153,7 +2153,7 @@ export interface DeliveryTime {
   /** Transit time table, number of business days spent in transit based on row and column dimensions. Either `{min,max}TransitTimeInDays` or `transitTimeTable` can be set, but not both. */
   transitTimeTable?: TransitTable;
   /** Indicates that the delivery time should be calculated per warehouse (shipping origin location) based on the settings of the selected carrier. When set, no other transit time related field in DeliveryTime should be set. */
-  warehouseBasedDeliveryTimes?: Array<WarehouseBasedDeliveryTime>;
+  warehouseBasedDeliveryTimes?: ReadonlyArray<WarehouseBasedDeliveryTime>;
   /** Minimum number of business days that are spent in transit. 0 means same day delivery, 1 means next day delivery. Either `{min,max}TransitTimeInDays` or `transitTimeTable` must be set, but not both. */
   minTransitTimeInDays?: number;
   /** The business days during which orders can be handled. If not provided, Monday to Friday business days will be assumed. */
@@ -2167,7 +2167,7 @@ export interface DeliveryTime {
   /** Maximum number of business days that are spent in transit. 0 means same day delivery, 1 means next day delivery. Must be greater than or equal to `minTransitTimeInDays`. */
   maxTransitTimeInDays?: number;
   /** Holiday cutoff definitions. If configured, they specify order cutoff times for holiday-specific shipping. */
-  holidayCutoffs?: Array<HolidayCutoff>;
+  holidayCutoffs?: ReadonlyArray<HolidayCutoff>;
   /** Minimum number of business days spent before an order is shipped. 0 means same day shipped, 1 means next day shipped. */
   minHandlingTimeInDays?: number;
 }
@@ -2191,7 +2191,7 @@ export interface Service {
   /** A list of stores your products are delivered from. This is only available for the local delivery shipment type. */
   storeConfig?: ServiceStoreConfig;
   /** Shipping rate group definitions. Only the last one is allowed to have an empty `applicableShippingLabels`, which means "everything else". The other `applicableShippingLabels` must not overlap. */
-  rateGroups?: Array<RateGroup>;
+  rateGroups?: ReadonlyArray<RateGroup>;
   /** Free-form name of the service. Must be unique within target account. Required. */
   name?: string;
   /** The carrier-service pair delivering items to collection points. The list of supported pickup services can be retrieved through the `getSupportedPickupServices` method. Required if and only if the service delivery type is `pickup`. */
@@ -2279,7 +2279,7 @@ export const InputValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AccountsUpdateLabelsRequest {
   /** The IDs of labels that should be assigned to the account. */
-  labelIds?: Array<string>;
+  labelIds?: ReadonlyArray<string>;
 }
 
 export const AccountsUpdateLabelsRequest =
@@ -2364,7 +2364,7 @@ export const AccountStatusStatistics =
 
 export interface AccountStatusProducts {
   /** List of item-level issues. */
-  itemLevelIssues?: Array<AccountStatusItemLevelIssue>;
+  itemLevelIssues?: ReadonlyArray<AccountStatusItemLevelIssue>;
   /** The channel the data applies to. Acceptable values are: - "`local`" - "`online`" */
   channel?: string;
   /** Aggregated product statistics. */
@@ -2471,7 +2471,7 @@ export interface Datafeed {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#datafeed`" */
   kind?: string;
   /** The targets this feed should apply to (country, language, destinations). */
-  targets?: Array<DatafeedTarget>;
+  targets?: ReadonlyArray<DatafeedTarget>;
   /** Required. The type of data feed. For product inventory feeds, only feeds for local stores, not online stores, are supported. Acceptable values are: - "`local products`" - "`product inventory`" - "`products`" */
   contentType?: string;
   /** Fetch schedule for the feed file. */
@@ -2514,7 +2514,7 @@ export const DatafeedsCustomBatchResponseEntry =
 
 export interface DatafeedsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
-  entries?: Array<DatafeedsCustomBatchResponseEntry>;
+  entries?: ReadonlyArray<DatafeedsCustomBatchResponseEntry>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#datafeedsCustomBatchResponse`". */
   kind?: string;
 }
@@ -2563,9 +2563,9 @@ export const HolidaysHoliday = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ProductViewItemIssueIssueSeverityPerDestination {
   /** List of demoted countries in the destination. */
-  demotedCountries?: Array<string>;
+  demotedCountries?: ReadonlyArray<string>;
   /** List of disapproved countries in the destination. */
-  disapprovedCountries?: Array<string>;
+  disapprovedCountries?: ReadonlyArray<string>;
   /** Issue destination. */
   destination?: string;
 }
@@ -2581,7 +2581,7 @@ export const ProductViewItemIssueIssueSeverityPerDestination =
 
 export interface ProductViewItemIssueItemIssueSeverity {
   /** Item issue severity for every destination. */
-  severityPerDestination?: Array<ProductViewItemIssueIssueSeverityPerDestination>;
+  severityPerDestination?: ReadonlyArray<ProductViewItemIssueIssueSeverityPerDestination>;
   /** Severity of an issue aggregated for destination. */
   aggregatedSeverity?:
     | "AGGREGATED_ISSUE_SEVERITY_UNSPECIFIED"
@@ -2617,7 +2617,7 @@ export interface PostalCodeGroup {
   /** The CLDR territory code of the country the postal code group applies to. Required. */
   country?: string;
   /** A range of postal codes. Required. */
-  postalCodeRanges?: Array<PostalCodeRange>;
+  postalCodeRanges?: ReadonlyArray<PostalCodeRange>;
 }
 
 export const PostalCodeGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2651,11 +2651,11 @@ export interface ShippingSettings {
   /** The ID of the account to which these account shipping settings belong. Ignored upon update, always present in get request responses. */
   accountId?: string;
   /** A list of postal code groups that can be referred to in `services`. Optional. */
-  postalCodeGroups?: Array<PostalCodeGroup>;
+  postalCodeGroups?: ReadonlyArray<PostalCodeGroup>;
   /** Optional. A list of warehouses which can be referred to in `services`. */
-  warehouses?: Array<Warehouse>;
+  warehouses?: ReadonlyArray<Warehouse>;
   /** The target account's list of services. Optional. */
-  services?: Array<Service>;
+  services?: ReadonlyArray<Service>;
 }
 
 export const ShippingSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2728,7 +2728,7 @@ export interface LocalInventory {
   /** A date range represented by a pair of ISO 8601 dates separated by a space, comma, or slash. Both dates may be specified as 'null' if undecided. */
   salePriceEffectiveDate?: string;
   /** A list of custom (merchant-provided) attributes. Can also be used to submit any attribute of the feed specification in its generic form, for example, `{ "name": "size type", "value": "regular" }`. */
-  customAttributes?: Array<CustomAttribute>;
+  customAttributes?: ReadonlyArray<CustomAttribute>;
   /** Required. The store code of this local inventory resource. */
   storeCode?: string;
   /** The expected date that an order will be ready for pickup relative to the order date. Must be submitted together with `pickupMethod`. For accepted attribute values, see the local product inventory feed specification. */
@@ -2851,7 +2851,7 @@ export interface AttributionSettings {
   /** Required. Lookback windows (in days) used for attribution in this source. Supported values are 7, 30, 40. */
   attributionLookbackWindowInDays?: number;
   /** Immutable. Unordered list. List of different conversion types a conversion event can be classified as. A standard "purchase" type will be automatically created if this list is empty at creation time. */
-  conversionType?: Array<AttributionSettingsConversionType>;
+  conversionType?: ReadonlyArray<AttributionSettingsConversionType>;
 }
 
 export const AttributionSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2936,9 +2936,9 @@ export const BreakdownRegion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Breakdown {
   /** Human readable, localized description of issue's effect on different targets. Should be rendered as a list. For example: * "Products not showing in ads" * "Products not showing organically" */
-  details?: Array<string>;
+  details?: ReadonlyArray<string>;
   /** Lists of regions. Should be rendered as a title for this group of details. The full list should be shown to merchant. If the list is too long, it is recommended to make it expandable. */
-  regions?: Array<BreakdownRegion>;
+  regions?: ReadonlyArray<BreakdownRegion>;
 }
 
 export const Breakdown = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2957,7 +2957,7 @@ export interface ProductIssueImpact {
   /** Optional. Message summarizing the overall impact of the issue. If present, it should be rendered to the merchant. For example: "Limits visibility in France" */
   message?: string;
   /** Detailed impact breakdown. Explains the types of restriction the issue has in different shopping destinations and territory. If present, it should be rendered to the merchant. Can be shown as a mouse over dropdown or a dialog. Each breakdown item represents a group of regions with the same impact details. */
-  breakdowns?: Array<Breakdown>;
+  breakdowns?: ReadonlyArray<Breakdown>;
 }
 
 export const ProductIssueImpact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3054,7 +3054,7 @@ export interface ProductstatusesCustomBatchRequestEntry {
   /** An entry ID, unique within the batch request. */
   batchId?: number;
   /** If set, only issues for the specified destinations are returned, otherwise only issues for the Shopping destination. */
-  destinations?: Array<string>;
+  destinations?: ReadonlyArray<string>;
   /** The method of the batch entry. Acceptable values are: - "`get`" */
   method?: string;
   /** Deprecated: Setting this field has no effect and attributes are never included. */
@@ -3099,7 +3099,7 @@ export const DatafeedsCustomBatchRequestEntry =
 
 export interface DatafeedsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
-  entries?: Array<DatafeedsCustomBatchRequestEntry>;
+  entries?: ReadonlyArray<DatafeedsCustomBatchRequestEntry>;
 }
 
 export const DatafeedsCustomBatchRequest =
@@ -3109,7 +3109,7 @@ export const DatafeedsCustomBatchRequest =
 
 export interface ProductstatusesCustomBatchRequest {
   /** The request entries to be processed in the batch. */
-  entries?: Array<ProductstatusesCustomBatchRequestEntry>;
+  entries?: ReadonlyArray<ProductstatusesCustomBatchRequestEntry>;
 }
 
 export const ProductstatusesCustomBatchRequest =
@@ -3133,7 +3133,7 @@ export interface RegionalInventory {
   /** The availability of the product. */
   availability?: string;
   /** A list of custom (merchant-provided) attributes. It can also be used for submitting any attribute of the feed specification in its generic form. */
-  customAttributes?: Array<CustomAttribute>;
+  customAttributes?: ReadonlyArray<CustomAttribute>;
 }
 
 export const RegionalInventory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3150,7 +3150,7 @@ export interface BuiltInSimpleActionAdditionalContent {
   /** Title of the additional content; */
   title?: string;
   /** Long text organized into paragraphs. */
-  paragraphs?: Array<string>;
+  paragraphs?: ReadonlyArray<string>;
 }
 
 export const BuiltInSimpleActionAdditionalContent =
@@ -3202,7 +3202,7 @@ export interface RegionPostalCodeArea {
   /** Required. CLDR territory code or the country the postal code group applies to. */
   regionCode?: string;
   /** Required. A range of postal codes. */
-  postalCodes?: Array<RegionPostalCodeAreaPostalCodeRange>;
+  postalCodes?: ReadonlyArray<RegionPostalCodeAreaPostalCodeRange>;
 }
 
 export const RegionPostalCodeArea = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3248,11 +3248,11 @@ export interface AccountStatus {
   /** The ID of the account for which the status is reported. */
   accountId?: string;
   /** List of product-related data by channel, destination, and country. Data in this field may be delayed by up to 30 minutes. */
-  products?: Array<AccountStatusProducts>;
+  products?: ReadonlyArray<AccountStatusProducts>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountStatus`" */
   kind?: string;
   /** A list of account level issues. */
-  accountLevelIssues?: Array<AccountStatusAccountLevelIssue>;
+  accountLevelIssues?: ReadonlyArray<AccountStatusAccountLevelIssue>;
 }
 
 export const AccountStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3398,7 +3398,7 @@ export const OrderTrackingSignalShipmentLineItemMapping =
 
 export interface OrderTrackingSignal {
   /** Information about line items in the order. */
-  lineItems?: Array<OrderTrackingSignalLineItemDetails>;
+  lineItems?: ReadonlyArray<OrderTrackingSignalLineItemDetails>;
   /** The Google merchant ID of this order tracking signal. This value is optional. If left unset, the caller's merchant ID is used. You must request access in order to provide data on behalf of another merchant. For more information, see [Submitting Order Tracking Signals](/shopping-content/guides/order-tracking-signals). */
   merchantId?: string;
   /** Required. The ID of the order on the merchant side. This field will be hashed in returned OrderTrackingSignal creation response. */
@@ -3408,11 +3408,11 @@ export interface OrderTrackingSignal {
   /** Required. The delivery postal code, as a continuous string without spaces or dashes, e.g. "95016". This field will be anonymized in returned OrderTrackingSignal creation response. */
   deliveryPostalCode?: string;
   /** The shipping information for the order. */
-  shippingInfo?: Array<OrderTrackingSignalShippingInfo>;
+  shippingInfo?: ReadonlyArray<OrderTrackingSignalShippingInfo>;
   /** Required. The [CLDR territory code] (http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) for the shipping destination. */
   deliveryRegionCode?: string;
   /** The mapping of the line items to the shipment information. */
-  shipmentLineItemMapping?: Array<OrderTrackingSignalShipmentLineItemMapping>;
+  shipmentLineItemMapping?: ReadonlyArray<OrderTrackingSignalShipmentLineItemMapping>;
   /** Output only. The ID that uniquely identifies this order tracking signal. */
   orderTrackingSignalId?: string;
   /** The shipping fee of the order; this value should be set to zero in the case of free shipping. */
@@ -3490,7 +3490,7 @@ export const TriggerActionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RegionGeoTargetArea {
   /** Required. A non-empty list of [location IDs](https://developers.google.com/adwords/api/docs/appendix/geotargeting). They must all be of the same location type (e.g., state). */
-  geotargetCriteriaIds?: Array<string>;
+  geotargetCriteriaIds?: ReadonlyArray<string>;
 }
 
 export const RegionGeoTargetArea = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3537,7 +3537,7 @@ export const PriceInsights = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAccountLabelsResponse {
   /** The labels from the specified account. */
-  accountLabels?: Array<AccountLabel>;
+  accountLabels?: ReadonlyArray<AccountLabel>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -3586,7 +3586,7 @@ export const InputFieldChoiceInputChoiceInputOption: Schema.Schema<InputFieldCho
 
 export interface InputFieldChoiceInput {
   /** A list of choices. Only one option can be selected. */
-  options?: Array<InputFieldChoiceInputChoiceInputOption>;
+  options?: ReadonlyArray<InputFieldChoiceInputChoiceInputOption>;
 }
 
 export const InputFieldChoiceInput: Schema.Schema<InputFieldChoiceInput> =
@@ -3639,7 +3639,7 @@ export interface ActionFlow {
   /** Message displayed in the request dialog. For example: "Make sure you've fixed all your country-specific issues. If not, you may have to wait 7 days to request another review". There may be an more information to be shown in a tooltip. */
   dialogMessage?: TextWithTooltip;
   /** A list of input fields. */
-  inputs?: Array<InputField>;
+  inputs?: ReadonlyArray<InputField>;
   /** Title of the request dialog. For example: "Before you request a review" */
   dialogTitle?: string;
 }
@@ -3658,7 +3658,7 @@ export interface BuiltInUserInputAction {
   /** Internal details. Not for display but need to be sent back when triggering the action. */
   actionContext?: string;
   /** Actions may provide multiple different flows. Merchant selects one that fits best to their intent. Selecting the flow is the first step in user's interaction with the action. It affects what input fields will be available and required and also how the request will be processed. */
-  flows?: Array<ActionFlow>;
+  flows?: ReadonlyArray<ActionFlow>;
 }
 
 export const BuiltInUserInputAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -3712,7 +3712,7 @@ export interface Action {
   /** Action implemented and performed in (your) third-party application. The application needs to show an additional content and input form to the merchant as specified for given action. They can trigger the action only when they provided all required inputs. */
   builtinUserInputAction?: BuiltInUserInputAction;
   /** List of reasons why the action is not available. The list of reasons is empty if the action is available. If there is only one reason, it can be displayed next to the disabled button. If there are more reasons, all of them should be displayed, for example in a pop-up dialog. */
-  reasons?: Array<ActionReason>;
+  reasons?: ReadonlyArray<ActionReason>;
   /** Controlling whether the button is active or disabled. The value is 'false' when the action was already requested or is not available. If the action is not available then a reason will be present. If (your) third-party application shows a disabled button for action that is not available, then it should also show reasons. */
   isAvailable?: boolean;
   /** Action implemented and performed in (your) third-party application. The application should point the merchant to the place, where they can access the corresponding functionality or provide instructions, if the specific functionality is not available. */
@@ -3744,7 +3744,7 @@ export interface AccountIssueImpact {
   /** Optional. Message summarizing the overall impact of the issue. If present, it should be rendered to the merchant. For example: "Disapproves 90k offers in 25 countries" */
   message?: string;
   /** Detailed impact breakdown. Explains the types of restriction the issue has in different shopping destinations and territory. If present, it should be rendered to the merchant. Can be shown as a mouse over dropdown or a dialog. Each breakdown item represents a group of regions with the same impact details. */
-  breakdowns?: Array<Breakdown>;
+  breakdowns?: ReadonlyArray<Breakdown>;
 }
 
 export const AccountIssueImpact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3755,7 +3755,7 @@ export const AccountIssueImpact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AccountIssue {
   /** A list of actionable steps that can be executed to solve the issue. An example is requesting a re-review or providing arguments when merchant disagrees with the issue. Actions that are supported in (your) third-party application can be rendered as buttons and should be available to merchant when they expand the issue. */
-  actions?: Array<Action>;
+  actions?: ReadonlyArray<Action>;
   /** Clarifies the severity of the issue. The summarizing message, if present, should be shown right under the title for each issue. It helps merchants to quickly understand the impact of the issue. The detailed breakdown helps the merchant to fully understand the impact of the issue. It can be rendered as dialog that opens when the merchant mouse over the summarized impact statement. Issues with different severity can be styled differently. They may use a different color or icon to signal the difference between `ERROR`, `WARNING` and `INFO`. */
   impact?: AccountIssueImpact;
   /** Title of the issue. */
@@ -3789,7 +3789,7 @@ export const AlternateDisputeResolution =
 
 export interface RenderAccountIssuesResponse {
   /** List of account issues for a given account. This list can be shown with compressed, expandable items. In the compressed form, the title and impact should be shown for each issue. Once the issue is expanded, the detailed content and available actions should be rendered. */
-  issues?: Array<AccountIssue>;
+  issues?: ReadonlyArray<AccountIssue>;
   /** Alternate Dispute Resolution (ADR) is deprecated. Use `prerendered_out_of_court_dispute_settlement` instead. */
   alternateDisputeResolution?: AlternateDisputeResolution;
 }
@@ -3841,7 +3841,7 @@ export const AccounttaxCustomBatchRequestEntry =
 
 export interface AccounttaxCustomBatchRequest {
   /** The request entries to be processed in the batch. */
-  entries?: Array<AccounttaxCustomBatchRequestEntry>;
+  entries?: ReadonlyArray<AccounttaxCustomBatchRequestEntry>;
 }
 
 export const AccounttaxCustomBatchRequest =
@@ -3891,7 +3891,7 @@ export interface ShoppingAdsProgramStatusRegionStatus {
     | "INELIGIBLE"
     | (string & {});
   /** Issues evaluated in the review process. Fix all issues before requesting a review. */
-  reviewIssues?: Array<string>;
+  reviewIssues?: ReadonlyArray<string>;
   /** Date by which eligibilityStatus will go from `WARNING` to `DISAPPROVED`. Only visible when your eligibilityStatus is WARNING. In [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DD`. */
   disapprovalDate?: string;
   /** Additional information for ineligibility. If `reviewIneligibilityReason` is `IN_COOLDOWN_PERIOD`, a timestamp for the end of the cooldown period is provided. */
@@ -3921,9 +3921,9 @@ export interface ShoppingAdsProgramStatusRegionStatus {
     | "ONBOARDING"
     | (string & {});
   /** Issues that must be fixed to be eligible for review. */
-  onboardingIssues?: Array<string>;
+  onboardingIssues?: ReadonlyArray<string>;
   /** The two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes for all the regions with the same `eligibilityStatus` and `reviewEligibility`. */
-  regionCodes?: Array<string>;
+  regionCodes?: ReadonlyArray<string>;
 }
 
 export const ShoppingAdsProgramStatusRegionStatus =
@@ -3950,7 +3950,7 @@ export interface ShoppingAdsProgramStatus {
     | "ENABLED"
     | (string & {});
   /** Status of the program in each region. Regions with the same status and review eligibility are grouped together in `regionCodes`. */
-  regionStatuses?: Array<ShoppingAdsProgramStatusRegionStatus>;
+  regionStatuses?: ReadonlyArray<ShoppingAdsProgramStatusRegionStatus>;
 }
 
 export const ShoppingAdsProgramStatus =
@@ -3967,7 +3967,7 @@ export interface ProductStatusItemLevelIssue {
   /** A detailed issue description in English. */
   detail?: string;
   /** List of country codes (ISO 3166-1 alpha-2) where issue applies to the offer. */
-  applicableCountries?: Array<string>;
+  applicableCountries?: ReadonlyArray<string>;
   /** The error code of the issue. */
   code?: string;
   /** The destination the issue applies to. */
@@ -4017,7 +4017,7 @@ export interface ProductIssue {
   /** Clarifies the severity of the issue. The summarizing message, if present, should be shown right under the title for each issue. It helps merchants to quickly understand the impact of the issue. The detailed breakdown helps the merchant to fully understand the impact of the issue. It can be rendered as dialog that opens when the merchant mouse over the summarized impact statement. Issues with different severity can be styled differently. They may use a different color or icon to signal the difference between `ERROR`, `WARNING` and `INFO`. */
   impact?: ProductIssueImpact;
   /** A list of actionable steps that can be executed to solve the issue. An example is requesting a re-review or providing arguments when merchant disagrees with the issue. Actions that are supported in (your) third-party application can be rendered as buttons and should be available to merchant when they expand the issue. */
-  actions?: Array<Action>;
+  actions?: ReadonlyArray<Action>;
 }
 
 export const ProductIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4030,7 +4030,7 @@ export const ProductIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RenderProductIssuesResponse {
   /** List of issues for a given product. This list can be shown with compressed, expandable items. In the compressed form, the title and impact should be shown for each issue. Once the issue is expanded, the detailed content and available actions should be rendered. */
-  issues?: Array<ProductIssue>;
+  issues?: ReadonlyArray<ProductIssue>;
   /** Alternate Dispute Resolution (ADR) is deprecated. Use `prerendered_out_of_court_dispute_settlement` instead. */
   alternateDisputeResolution?: AlternateDisputeResolution;
 }
@@ -4088,7 +4088,7 @@ export interface LiaOmnichannelExperience {
   /** The Local Store Front (LSF) type for this country. Acceptable values are: - "`ghlsf`" (Google-Hosted Local Store Front) - "`mhlsfBasic`" (Merchant-Hosted Local Store Front Basic) - "`mhlsfFull`" (Merchant-Hosted Local Store Front Full) More details about these types can be found here. */
   lsfType?: string;
   /** The Pickup types for this country. Acceptable values are: - "`pickupToday`" - "`pickupLater`" */
-  pickupTypes?: Array<string>;
+  pickupTypes?: ReadonlyArray<string>;
   /** The CLDR country code (for example, "US"). */
   country?: string;
 }
@@ -4134,7 +4134,7 @@ export interface LiaSettings {
   /** The ID of the account to which these LIA settings belong. Ignored upon update, always present in get request responses. */
   accountId?: string;
   /** The LIA settings for each country. */
-  countrySettings?: Array<LiaCountrySettings>;
+  countrySettings?: ReadonlyArray<LiaCountrySettings>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liaSettings`" */
   kind?: string;
 }
@@ -4234,7 +4234,7 @@ export interface AccountsLinkRequest {
   /** The ID of the linked account. */
   linkedAccountId?: string;
   /** Acceptable values are: - "`shoppingAdsProductManagement`" - "`shoppingActionsProductManagement`" - "`shoppingActionsOrderManagement`" - "`paymentProcessing`" */
-  services?: Array<string>;
+  services?: ReadonlyArray<string>;
   /** Additional information required for `paymentServiceProvider` link type. */
   paymentServiceProviderLinkInfo?: PaymentServiceProviderLinkInfo;
   /** Additional information required for `eCommercePlatform` link type. */
@@ -4259,7 +4259,7 @@ export const AccountsLinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface AccountstatusesListResponse {
   /** The token for the retrieval of the next page of account statuses. */
   nextPageToken?: string;
-  resources?: Array<AccountStatus>;
+  resources?: ReadonlyArray<AccountStatus>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountstatusesListResponse`". */
   kind?: string;
 }
@@ -4295,7 +4295,7 @@ export const ShippingsettingsCustomBatchRequestEntry =
 
 export interface ShippingsettingsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
-  entries?: Array<ShippingsettingsCustomBatchRequestEntry>;
+  entries?: ReadonlyArray<ShippingsettingsCustomBatchRequestEntry>;
 }
 
 export const ShippingsettingsCustomBatchRequest =
@@ -4335,7 +4335,7 @@ export const DeliveryArea = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AccountsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
-  entries?: Array<AccountsCustomBatchResponseEntry>;
+  entries?: ReadonlyArray<AccountsCustomBatchResponseEntry>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsCustomBatchResponse`". */
   kind?: string;
 }
@@ -4411,7 +4411,7 @@ export interface ProductDeliveryTime {
   /** Required. The `id` of the product. */
   productId?: ProductId;
   /** Required. A set of associations between `DeliveryArea` and `DeliveryTime` entries. The total number of `areaDeliveryTimes` can be at most 100. */
-  areaDeliveryTimes?: Array<ProductDeliveryTimeAreaDeliveryTime>;
+  areaDeliveryTimes?: ReadonlyArray<ProductDeliveryTimeAreaDeliveryTime>;
 }
 
 export const ProductDeliveryTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4444,7 +4444,7 @@ export interface LiasettingsGetAccessibleGmbAccountsResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsGetAccessibleGmbAccountsResponse`". */
   kind?: string;
   /** A list of Business Profiles which are available to the merchant. */
-  gmbAccounts?: Array<GmbAccountsGmbAccount>;
+  gmbAccounts?: ReadonlyArray<GmbAccountsGmbAccount>;
   /** The ID of the Merchant Center account. */
   accountId?: string;
 }
@@ -4461,7 +4461,7 @@ export interface LiasettingsListResponse {
   kind?: string;
   /** The token for the retrieval of the next page of LIA settings. */
   nextPageToken?: string;
-  resources?: Array<LiaSettings>;
+  resources?: ReadonlyArray<LiaSettings>;
 }
 
 export const LiasettingsListResponse =
@@ -4545,7 +4545,7 @@ export interface AccountsCustomBatchRequestEntryLinkRequest {
   /** Type of the link between the two accounts. Acceptable values are: - "`channelPartner`" - "`eCommercePlatform`" - "`paymentServiceProvider`" - "`localProductManager`" */
   linkType?: string;
   /** Provided services. Acceptable values are: - "`shoppingAdsProductManagement`" - "`shoppingActionsProductManagement`" - "`shoppingActionsOrderManagement`" - "`paymentProcessing`" - "`localProductManagement`" */
-  services?: Array<string>;
+  services?: ReadonlyArray<string>;
   /** The ID of the linked account. */
   linkedAccountId?: string;
 }
@@ -4568,7 +4568,7 @@ export interface AccountsCustomBatchRequestEntry {
   /** Whether the account should be deleted if the account has offers. Only applicable if the method is `delete`. */
   force?: boolean;
   /** Label IDs for the 'updatelabels' request. */
-  labelIds?: Array<string>;
+  labelIds?: ReadonlyArray<string>;
   /** The ID of the targeted account. Only defined if the method is not `insert`. */
   accountId?: string;
   /** Only applicable if the method is `claimwebsite`. Indicates whether or not to take the claim from another account in case there is a conflict. */
@@ -4597,7 +4597,7 @@ export const AccountsCustomBatchRequestEntry =
 
 export interface AccountsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
-  entries?: Array<AccountsCustomBatchRequestEntry>;
+  entries?: ReadonlyArray<AccountsCustomBatchRequestEntry>;
 }
 
 export const AccountsCustomBatchRequest =
@@ -4609,15 +4609,15 @@ export interface ProductStatusDestinationStatus {
   /** The name of the destination */
   destination?: string;
   /** List of country codes (ISO 3166-1 alpha-2) where the offer is disapproved. */
-  disapprovedCountries?: Array<string>;
+  disapprovedCountries?: ReadonlyArray<string>;
   /** List of country codes (ISO 3166-1 alpha-2) where the offer is approved. */
-  approvedCountries?: Array<string>;
+  approvedCountries?: ReadonlyArray<string>;
   /** The channel of the destination. */
   channel?: string;
   /** Deprecated. Destination approval status in `targetCountry` of the offer. */
   status?: string;
   /** List of country codes (ISO 3166-1 alpha-2) where the offer is pending approval. */
-  pendingCountries?: Array<string>;
+  pendingCountries?: ReadonlyArray<string>;
 }
 
 export const ProductStatusDestinationStatus =
@@ -4634,7 +4634,7 @@ export interface ProductStatus {
   /** The ID of the product for which status is reported. */
   productId?: string;
   /** The intended destinations for the product. */
-  destinationStatuses?: Array<ProductStatusDestinationStatus>;
+  destinationStatuses?: ReadonlyArray<ProductStatusDestinationStatus>;
   /** The title of the product. */
   title?: string;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#productStatus`" */
@@ -4646,7 +4646,7 @@ export interface ProductStatus {
   /** Date on which the item has been last updated, in ISO 8601 format. */
   lastUpdateDate?: string;
   /** A list of all issues associated with the product. */
-  itemLevelIssues?: Array<ProductStatusItemLevelIssue>;
+  itemLevelIssues?: ReadonlyArray<ProductStatusItemLevelIssue>;
   /** Date on which the item expires in Google Shopping, in ISO 8601 format. */
   googleExpirationDate?: string;
 }
@@ -4706,7 +4706,7 @@ export const PosInventory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PosStore {
   /** The business type of the store. */
-  gcidCategory?: Array<string>;
+  gcidCategory?: ReadonlyArray<string>;
   /** Output only. The hint of why the matching has failed. This is only set when matching_status=failed. Possible values are: - "`linked-store-not-found`": There aren't any Google Business Profile stores available for matching. Connect your Merchant Center account with the Google Business Profile account. Or add a new Google Business Profile store corresponding to the POS store. - "`store-match-not-found`": The provided POS store couldn't be matched to any of the connected Google Business Profile stores. Merchant Center account is connected correctly and stores are available on Google Business Profile, but POS store location address does not match with Google Business Profile stores' addresses. Update POS store address or Google Business Profile store address to match correctly. - "`store-match-unverified`": The provided POS store couldn't be matched to any of the connected Google Business Profile stores, as the matched Google Business Profile store is unverified. Go through the Google Business Profile verification process to match correctly. */
   matchingStatusHint?: string;
   /** The Google Place Id of the store location. */
@@ -4807,7 +4807,7 @@ export const AccountReturnCarrier = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAccountReturnCarrierResponse {
   /** List of all available account return carriers for the merchant. */
-  accountReturnCarriers?: Array<AccountReturnCarrier>;
+  accountReturnCarriers?: ReadonlyArray<AccountReturnCarrier>;
 }
 
 export const ListAccountReturnCarrierResponse =
@@ -5032,7 +5032,7 @@ export const RegionalinventoryCustomBatchResponseEntry =
 
 export interface RegionalinventoryCustomBatchResponse {
   /** The result of the execution of the batch requests. */
-  entries?: Array<RegionalinventoryCustomBatchResponseEntry>;
+  entries?: ReadonlyArray<RegionalinventoryCustomBatchResponseEntry>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#regionalinventoryCustomBatchResponse`". */
   kind?: string;
 }
@@ -5048,7 +5048,7 @@ export const RegionalinventoryCustomBatchResponse =
 export interface AccountsListResponse {
   /** The token for the retrieval of the next page of accounts. */
   nextPageToken?: string;
-  resources?: Array<Account>;
+  resources?: ReadonlyArray<Account>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsListResponse`". */
   kind?: string;
 }
@@ -5080,7 +5080,7 @@ export const ProductstatusesCustomBatchResponseEntry =
 
 export interface ProductstatusesCustomBatchResponse {
   /** The result of the execution of the batch requests. */
-  entries?: Array<ProductstatusesCustomBatchResponseEntry>;
+  entries?: ReadonlyArray<ProductstatusesCustomBatchResponseEntry>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#productstatusesCustomBatchResponse`". */
   kind?: string;
 }
@@ -5107,7 +5107,7 @@ export interface ActionInput {
   /** Required. Id of the selected action flow. */
   actionFlowId?: string;
   /** Required. Values for input fields. */
-  inputValues?: Array<InputValue>;
+  inputValues?: ReadonlyArray<InputValue>;
 }
 
 export const ActionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5134,7 +5134,7 @@ export interface DatafeedStatusError {
   /** The number of occurrences of the error in the feed. */
   count?: string;
   /** A list of example occurrences of the error, grouped by product. */
-  examples?: Array<DatafeedStatusExample>;
+  examples?: ReadonlyArray<DatafeedStatusExample>;
   /** The code of the error, for example, "validation/invalid_value". */
   code?: string;
   /** The error message, for example, "Invalid price". */
@@ -5224,11 +5224,11 @@ export interface ProductView {
   /** Second level of the product type in merchant's own [product taxonomy](https://support.google.com/merchants/answer/6324436). */
   productTypeL2?: string;
   /** GTIN of the product. */
-  gtin?: Array<string>;
+  gtin?: ReadonlyArray<string>;
   /** The time the merchant created the product in timestamp seconds. */
   creationTime?: string;
   /** List of item issues for the product. */
-  itemIssues?: Array<ProductViewItemIssue>;
+  itemIssues?: ReadonlyArray<ProductViewItemIssue>;
   /** Title of the product. */
   title?: string;
   /** Expiration date for the product. Specified on insertion. */
@@ -5315,7 +5315,7 @@ export interface ProductCluster {
   /** Product category (3rd level) of the product cluster, represented in Google's product taxonomy. */
   categoryL3?: string;
   /** GTINs of example variants of the product cluster. */
-  variantGtins?: Array<string>;
+  variantGtins?: ReadonlyArray<string>;
 }
 
 export const ProductCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5369,7 +5369,7 @@ export const ReportRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SearchResponse {
   /** Rows that matched the search query. */
-  results?: Array<ReportRow>;
+  results?: ReadonlyArray<ReportRow>;
   /** Token which can be sent as `page_token` to retrieve the next page. If omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -5385,9 +5385,9 @@ export interface CarriersCarrier {
   /** The CLDR country code of the carrier (for example, "US"). Always present. */
   country?: string;
   /** A list of services supported for EDD (Estimated Delivery Date) calculation. This is the list of valid values for WarehouseBasedDeliveryTime.carrierService. */
-  eddServices?: Array<string>;
+  eddServices?: ReadonlyArray<string>;
   /** A list of supported services (for example, `"ground"`) for that carrier. Contains at least one service. This is the list of valid values for CarrierRate.carrierService. */
-  services?: Array<string>;
+  services?: ReadonlyArray<string>;
 }
 
 export const CarriersCarrier = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5424,13 +5424,13 @@ export const PromotionPromotionStatusPromotionIssue =
 
 export interface PromotionPromotionStatus {
   /** The intended destinations for the promotion. */
-  destinationStatuses?: Array<PromotionPromotionStatusDestinationStatus>;
+  destinationStatuses?: ReadonlyArray<PromotionPromotionStatusDestinationStatus>;
   /** Date on which the promotion has been created in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, for example "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z" */
   creationDate?: string;
   /** Date on which the promotion status has been last updated in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, for example "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z" */
   lastUpdateDate?: string;
   /** A list of issues associated with the promotion. */
-  promotionIssue?: Array<PromotionPromotionStatusPromotionIssue>;
+  promotionIssue?: ReadonlyArray<PromotionPromotionStatusPromotionIssue>;
 }
 
 export const PromotionPromotionStatus =
@@ -5447,7 +5447,7 @@ export const PromotionPromotionStatus =
 
 export interface Promotion {
   /** Shipping service names for the promotion. */
-  shippingServiceNames?: Array<string>;
+  shippingServiceNames?: ReadonlyArray<string>;
   /** Required. Long title for the promotion. */
   longTitle?: string;
   /** The percentage discount offered in the promotion. */
@@ -5455,7 +5455,7 @@ export interface Promotion {
   /** The number of items discounted in the promotion. */
   getThisQuantityDiscounted?: number;
   /** Product filter by product type exclusion for the promotion. */
-  productTypeExclusion?: Array<string>;
+  productTypeExclusion?: ReadonlyArray<string>;
   /** Free gift value for the promotion. */
   freeGiftValue?: PriceAmount;
   /** Maximum purchase quantity for the promotion. */
@@ -5463,7 +5463,7 @@ export interface Promotion {
   /** Maximum purchase value for the promotion. */
   limitValue?: PriceAmount;
   /** Product filter by item ID for the promotion. */
-  itemId?: Array<string>;
+  itemId?: ReadonlyArray<string>;
   /** Required. The target country used as part of the unique identifier. Can be `AU`, `CA`, `DE`, `FR`, `GB`, `IN`, `US`, `BR`, `ES`, `NL`, `JP`, `IT` or `KR`. */
   targetCountry?: string;
   /** `TimePeriod` representation of the promotion's display dates. */
@@ -5471,7 +5471,7 @@ export interface Promotion {
   /** Order limit for the promotion. */
   orderLimit?: number;
   /** Store codes to exclude for the promotion. */
-  storeCodeExclusion?: Array<string>;
+  storeCodeExclusion?: ReadonlyArray<string>;
   /** String representation of the promotion effective dates. Deprecated. Use `promotion_effective_time_period` instead. */
   promotionEffectiveDates?: string;
   /** Free gift description for the promotion. */
@@ -5483,7 +5483,7 @@ export interface Promotion {
   /** Required. The user provided promotion ID to uniquely identify the promotion. */
   promotionId?: string;
   /** Product filter by item group ID exclusion for the promotion. */
-  itemGroupIdExclusion?: Array<string>;
+  itemGroupIdExclusion?: ReadonlyArray<string>;
   /** Required. Type of the promotion. */
   offerType?:
     | "OFFER_TYPE_UNSPECIFIED"
@@ -5491,11 +5491,11 @@ export interface Promotion {
     | "GENERIC_CODE"
     | (string & {});
   /** Destination ID for the promotion. */
-  promotionDestinationIds?: Array<string>;
+  promotionDestinationIds?: ReadonlyArray<string>;
   /** Output only. The REST promotion ID to uniquely identify the promotion. Content API methods that operate on promotions take this as their `promotionId` parameter. The REST ID for a promotion is of the form channel:contentLanguage:targetCountry:promotionId The `channel` field has a value of `"online"`, `"in_store"`, or `"online_in_store"`. */
   id?: string;
   /** Product filter by item group ID for the promotion. */
-  itemGroupId?: Array<string>;
+  itemGroupId?: ReadonlyArray<string>;
   /** String representation of the promotion display dates. Deprecated. Use `promotion_display_time_period` instead. */
   promotionDisplayDates?: string;
   /** Whether the promotion applies to all stores, or only specified stores. Local Inventory ads promotions throw an error if no store applicability is included. An INVALID_ARGUMENT error is thrown if store_applicability is set to ALL_STORES and store_code or score_code_exclusion is set to a value. */
@@ -5523,9 +5523,9 @@ export interface Promotion {
     | "FREE_SHIPPING_TWO_DAY"
     | (string & {});
   /** Product filter by item ID exclusion for the promotion. */
-  itemIdExclusion?: Array<string>;
+  itemIdExclusion?: ReadonlyArray<string>;
   /** Product filter by brand exclusion for the promotion. */
-  brandExclusion?: Array<string>;
+  brandExclusion?: ReadonlyArray<string>;
   /** The redemption restriction for the promotion. */
   redemptionRestriction?:
     | "REDEMPTION_RESTRICTION_UNSPECIFIED"
@@ -5547,19 +5547,19 @@ export interface Promotion {
   /** Minimum purchase amount for the promotion. */
   minimumPurchaseAmount?: PriceAmount;
   /** Store codes to include for the promotion. */
-  storeCode?: Array<string>;
+  storeCode?: ReadonlyArray<string>;
   /** Cost cap for the promotion. */
   moneyBudget?: PriceAmount;
   /** Required. Redemption channel for the promotion. At least one channel is required. */
-  redemptionChannel?: Array<
+  redemptionChannel?: ReadonlyArray<
     "REDEMPTION_CHANNEL_UNSPECIFIED" | "IN_STORE" | "ONLINE" | (string & {})
   >;
   /** Output only. The current status of the promotion. */
   promotionStatus?: PromotionPromotionStatus;
   /** Product filter by brand for the promotion. */
-  brand?: Array<string>;
+  brand?: ReadonlyArray<string>;
   /** Product filter by product type for the promotion. */
-  productType?: Array<string>;
+  productType?: ReadonlyArray<string>;
   /** The maximum monetary discount a customer can receive for the promotion. This field is only supported with the `Percent off` coupon value type. */
   maxDiscountAmount?: PriceAmount;
   /** Required. Applicability of the promotion to either all products or only specific products. */
@@ -5623,7 +5623,7 @@ export interface ListPromotionResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** List of all available promotions for the merchant. */
-  promotions?: Array<Promotion>;
+  promotions?: ReadonlyArray<Promotion>;
 }
 
 export const ListPromotionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5634,7 +5634,7 @@ export const ListPromotionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface DatafeedsListResponse {
   /** The token for the retrieval of the next page of datafeeds. */
   nextPageToken?: string;
-  resources?: Array<Datafeed>;
+  resources?: ReadonlyArray<Datafeed>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#datafeedsListResponse`". */
   kind?: string;
 }
@@ -5659,7 +5659,7 @@ export const LiasettingsSetInventoryVerificationContactResponse =
 
 export interface LocalinventoryCustomBatchRequest {
   /** The request entries to be processed in the batch. */
-  entries?: Array<LocalinventoryCustomBatchRequestEntry>;
+  entries?: ReadonlyArray<LocalinventoryCustomBatchRequestEntry>;
 }
 
 export const LocalinventoryCustomBatchRequest =
@@ -5689,7 +5689,7 @@ export interface Css {
   /** Output only. Immutable. The CSS domain's homepage. */
   homepageUri?: string;
   /** A list of label IDs that are assigned to this CSS domain by its CSS group. Only populated for CSS group users. */
-  labelIds?: Array<string>;
+  labelIds?: ReadonlyArray<string>;
   /** Output only. Immutable. The CSS domain's display name, used when space is constrained. */
   displayName?: string;
   /** Output only. Immutable. The CSS domain ID. */
@@ -5709,7 +5709,7 @@ export interface ListCssesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The CSS domains affiliated with the specified CSS group. */
-  csses?: Array<Css>;
+  csses?: ReadonlyArray<Css>;
 }
 
 export const ListCssesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5737,7 +5737,7 @@ export interface PosDataProviders {
   /** Country code. */
   country?: string;
   /** A list of POS data providers. */
-  posDataProviders?: Array<PosDataProvidersPosDataProvider>;
+  posDataProviders?: ReadonlyArray<PosDataProvidersPosDataProvider>;
 }
 
 export const PosDataProviders = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5749,7 +5749,7 @@ export const PosDataProviders = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LiasettingsListPosDataProvidersResponse {
   /** The list of POS data providers for each eligible country */
-  posDataProviders?: Array<PosDataProviders>;
+  posDataProviders?: ReadonlyArray<PosDataProviders>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsListPosDataProvidersResponse`". */
   kind?: string;
 }
@@ -5815,7 +5815,7 @@ export interface ProductstatusesListResponse {
   kind?: string;
   /** The token for the retrieval of the next page of products statuses. */
   nextPageToken?: string;
-  resources?: Array<ProductStatus>;
+  resources?: ReadonlyArray<ProductStatus>;
 }
 
 export const ProductstatusesListResponse =
@@ -5839,7 +5839,7 @@ export interface LiasettingsCustomBatchResponseEntry {
   /** The list of accessible Business Profiles. */
   gmbAccounts?: GmbAccounts;
   /** The list of POS data providers. */
-  posDataProviders?: Array<PosDataProviders>;
+  posDataProviders?: ReadonlyArray<PosDataProviders>;
 }
 
 export const LiasettingsCustomBatchResponseEntry =
@@ -5867,7 +5867,7 @@ export const AccountIdentifier = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AccountsAuthInfoResponse {
   /** The account identifiers corresponding to the authenticated user. - For an individual account: only the merchant ID is defined - For an aggregator: only the aggregator ID is defined - For a subaccount of an MCA: both the merchant ID and the aggregator ID are defined. */
-  accountIdentifiers?: Array<AccountIdentifier>;
+  accountIdentifiers?: ReadonlyArray<AccountIdentifier>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsAuthInfoResponse`". */
   kind?: string;
 }
@@ -5884,7 +5884,7 @@ export interface DatafeedStatus {
   /** The ID of the feed for which the status is reported. */
   datafeedId?: string;
   /** The list of errors occurring in the feed. */
-  warnings?: Array<DatafeedStatusError>;
+  warnings?: ReadonlyArray<DatafeedStatusError>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#datafeedStatus`" */
   kind?: string;
   /** The processing status of the feed. Acceptable values are: - "`"`failure`": The feed could not be processed or all items had errors.`" - "`in progress`": The feed is being processed. - "`none`": The feed has not yet been processed. For example, a feed that has never been uploaded will have this processing status. - "`success`": The feed was processed successfully, though some items might have had errors. */
@@ -5894,7 +5894,7 @@ export interface DatafeedStatus {
   /** The country for which the status is reported, represented as a CLDR territory code. */
   country?: string;
   /** The list of errors occurring in the feed. */
-  errors?: Array<DatafeedStatusError>;
+  errors?: ReadonlyArray<DatafeedStatusError>;
   /** The last date at which the feed was uploaded. */
   lastUploadDate?: string;
   /** The number of items in the feed that were processed. */
@@ -5920,7 +5920,7 @@ export const DatafeedStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface DatafeedstatusesListResponse {
   /** The token for the retrieval of the next page of datafeed statuses. */
   nextPageToken?: string;
-  resources?: Array<DatafeedStatus>;
+  resources?: ReadonlyArray<DatafeedStatus>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#datafeedstatusesListResponse`". */
   kind?: string;
 }
@@ -5934,7 +5934,7 @@ export const DatafeedstatusesListResponse =
 
 export interface LocalinventoryCustomBatchResponse {
   /** The result of the execution of the batch requests. */
-  entries?: Array<LocalinventoryCustomBatchResponseEntry>;
+  entries?: ReadonlyArray<LocalinventoryCustomBatchResponseEntry>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#localinventoryCustomBatchResponse`". */
   kind?: string;
 }
@@ -5959,7 +5959,7 @@ export const LiasettingsRequestGmbAccessResponse =
 
 export interface ProductsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
-  entries?: Array<ProductsCustomBatchRequestEntry>;
+  entries?: ReadonlyArray<ProductsCustomBatchRequestEntry>;
 }
 
 export const ProductsCustomBatchRequest =
@@ -5969,7 +5969,7 @@ export const ProductsCustomBatchRequest =
 
 export interface ShippingsettingsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
-  entries?: Array<ShippingsettingsCustomBatchResponseEntry>;
+  entries?: ReadonlyArray<ShippingsettingsCustomBatchResponseEntry>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#shippingsettingsCustomBatchResponse`". */
   kind?: string;
 }
@@ -6011,7 +6011,7 @@ export const Region = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AccountstatusesCustomBatchResponse {
   /** The result of the execution of the batch requests. */
-  entries?: Array<AccountstatusesCustomBatchResponseEntry>;
+  entries?: ReadonlyArray<AccountstatusesCustomBatchResponseEntry>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountstatusesCustomBatchResponse`". */
   kind?: string;
 }
@@ -6062,7 +6062,7 @@ export const PosSaleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DatafeedstatusesCustomBatchRequest {
   /** The request entries to be processed in the batch. */
-  entries?: Array<DatafeedstatusesCustomBatchRequestEntry>;
+  entries?: ReadonlyArray<DatafeedstatusesCustomBatchRequestEntry>;
 }
 
 export const DatafeedstatusesCustomBatchRequest =
@@ -6090,7 +6090,7 @@ export const DatafeedstatusesCustomBatchResponseEntry =
 
 export interface DatafeedstatusesCustomBatchResponse {
   /** The result of the execution of the batch requests. */
-  entries?: Array<DatafeedstatusesCustomBatchResponseEntry>;
+  entries?: ReadonlyArray<DatafeedstatusesCustomBatchResponseEntry>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#datafeedstatusesCustomBatchResponse`". */
   kind?: string;
 }
@@ -6105,7 +6105,7 @@ export const DatafeedstatusesCustomBatchResponse =
 
 export interface ListConversionSourcesResponse {
   /** List of conversion sources. */
-  conversionSources?: Array<ConversionSource>;
+  conversionSources?: ReadonlyArray<ConversionSource>;
   /** Token to be used to fetch the next results page. */
   nextPageToken?: string;
 }
@@ -6118,7 +6118,7 @@ export const ListConversionSourcesResponse =
 
 export interface LiasettingsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
-  entries?: Array<LiasettingsCustomBatchResponseEntry>;
+  entries?: ReadonlyArray<LiasettingsCustomBatchResponseEntry>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsCustomBatchResponse`". */
   kind?: string;
 }
@@ -6133,11 +6133,11 @@ export interface ReturnPolicyOnline {
   /** The unique user-defined label of the return policy. The same label cannot be used in different return policies for the same country. Policies with the label 'default' will apply to all products, unless a product specifies a return_policy_label attribute. */
   label?: string;
   /** The item conditions that are accepted for returns. This is required to not be empty unless the type of return policy is noReturns. */
-  itemConditions?: Array<
+  itemConditions?: ReadonlyArray<
     "ITEM_CONDITION_UNSPECIFIED" | "NEW" | "USED" | (string & {})
   >;
   /** The return methods of how customers can return an item. This value is required to not be empty unless the type of return policy is noReturns. */
-  returnMethods?: Array<
+  returnMethods?: ReadonlyArray<
     | "RETURN_METHOD_UNSPECIFIED"
     | "BY_MAIL"
     | "IN_STORE"
@@ -6149,13 +6149,13 @@ export interface ReturnPolicyOnline {
   /** The return policy. */
   policy?: ReturnPolicyOnlinePolicy;
   /** The countries of sale where the return policy is applicable. The values must be a valid 2 letter ISO 3166 code, e.g. "US". */
-  countries?: Array<string>;
+  countries?: ReadonlyArray<string>;
   /** The restocking fee that applies to all return reason categories. This would be treated as a free restocking fee if the value is not set. */
   restockingFee?: ReturnPolicyOnlineRestockingFee;
   /** Output only. Return policy ID generated by Google. */
   returnPolicyId?: string;
   /** The return reason category information. This required to not be empty unless the type of return policy is noReturns. */
-  returnReasonCategoryInfo?: Array<ReturnPolicyOnlineReturnReasonCategoryInfo>;
+  returnReasonCategoryInfo?: ReadonlyArray<ReturnPolicyOnlineReturnReasonCategoryInfo>;
   /** The name of the policy as shown in Merchant Center. */
   name?: string;
 }
@@ -6177,7 +6177,7 @@ export const ReturnPolicyOnline = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListReturnPolicyOnlineResponse {
   /** The retrieved return policies. */
-  returnPolicies?: Array<ReturnPolicyOnline>;
+  returnPolicies?: ReadonlyArray<ReturnPolicyOnline>;
 }
 
 export const ListReturnPolicyOnlineResponse =
@@ -6214,13 +6214,13 @@ export interface Collection {
   /** The language of a collection and the language of any featured products linked to the collection. [language attribute](https://support.google.com/merchants/answer/9673781) */
   language?: string;
   /** The URL of a collection’s image. [image_link attribute](https://support.google.com/merchants/answer/9703236) */
-  imageLink?: Array<string>;
+  imageLink?: ReadonlyArray<string>;
   /** A collection’s landing page. URL directly linking to your collection's page on your website. [link attribute](https://support.google.com/merchants/answer/9673983) */
   link?: string;
   /** Your collection's name. [headline attribute](https://support.google.com/merchants/answer/9673580) */
-  headline?: Array<string>;
+  headline?: ReadonlyArray<string>;
   /** This identifies one or more products associated with the collection. Used as a lookup to the corresponding product ID in your product feeds. Provide a maximum of 100 featuredProduct (for collections). Provide up to 10 featuredProduct (for Shoppable Images only) with ID and X and Y coordinates. [featured_product attribute](https://support.google.com/merchants/answer/9703736) */
-  featuredProduct?: Array<CollectionFeaturedProduct>;
+  featuredProduct?: ReadonlyArray<CollectionFeaturedProduct>;
   /** Label that you assign to a collection to help organize bidding and reporting in Shopping campaigns. */
   customLabel1?: string;
   /** Label that you assign to a collection to help organize bidding and reporting in Shopping campaigns. */
@@ -6255,7 +6255,7 @@ export const Collection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCollectionsResponse {
   /** The collections listed. */
-  resources?: Array<Collection>;
+  resources?: ReadonlyArray<Collection>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -6298,7 +6298,7 @@ export const DatafeedsFetchNowResponse =
 
 export interface PosCustomBatchRequest {
   /** The request entries to be processed in the batch. */
-  entries?: Array<PosCustomBatchRequestEntry>;
+  entries?: ReadonlyArray<PosCustomBatchRequestEntry>;
 }
 
 export const PosCustomBatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -6307,7 +6307,7 @@ export const PosCustomBatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AccounttaxCustomBatchResponse {
   /** The result of the execution of the batch requests. */
-  entries?: Array<AccounttaxCustomBatchResponseEntry>;
+  entries?: ReadonlyArray<AccounttaxCustomBatchResponseEntry>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accounttaxCustomBatchResponse`". */
   kind?: string;
 }
@@ -6319,7 +6319,7 @@ export const AccounttaxCustomBatchResponse =
   }).annotate({ identifier: "AccounttaxCustomBatchResponse" });
 
 export interface PosListResponse {
-  resources?: Array<PosStore>;
+  resources?: ReadonlyArray<PosStore>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#posListResponse`". */
   kind?: string;
 }
@@ -6341,7 +6341,7 @@ export const VerifyPhoneNumberResponse =
 
 export interface ListMethodQuotasResponse {
   /** The current quota usage and limits per each method. */
-  methodQuotas?: Array<MethodQuota>;
+  methodQuotas?: ReadonlyArray<MethodQuota>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -6357,7 +6357,7 @@ export interface ShippingsettingsListResponse {
   kind?: string;
   /** The token for the retrieval of the next page of shipping settings. */
   nextPageToken?: string;
-  resources?: Array<ShippingSettings>;
+  resources?: ReadonlyArray<ShippingSettings>;
 }
 
 export const ShippingsettingsListResponse =
@@ -6402,7 +6402,7 @@ export const RequestPhoneVerificationResponse =
 
 export interface ListCollectionStatusesResponse {
   /** The collectionstatuses listed. */
-  resources?: Array<CollectionStatus>;
+  resources?: ReadonlyArray<CollectionStatus>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -6416,7 +6416,7 @@ export const ListCollectionStatusesResponse =
 export interface ProductsListResponse {
   /** The token for the retrieval of the next page of products. */
   nextPageToken?: string;
-  resources?: Array<Product>;
+  resources?: ReadonlyArray<Product>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#productsListResponse`". */
   kind?: string;
 }
@@ -6452,7 +6452,7 @@ export const ReportInteractionRequest =
 
 export interface PosCustomBatchResponse {
   /** The result of the execution of the batch requests. */
-  entries?: Array<PosCustomBatchResponseEntry>;
+  entries?: ReadonlyArray<PosCustomBatchResponseEntry>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#posCustomBatchResponse`". */
   kind?: string;
 }
@@ -6468,7 +6468,7 @@ export interface ShippingsettingsGetSupportedPickupServicesResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#shippingsettingsGetSupportedPickupServicesResponse`". */
   kind?: string;
   /** A list of supported pickup services. May be empty. */
-  pickupServices?: Array<PickupServicesPickupService>;
+  pickupServices?: ReadonlyArray<PickupServicesPickupService>;
 }
 
 export const ShippingsettingsGetSupportedPickupServicesResponse =
@@ -6481,7 +6481,7 @@ export const ShippingsettingsGetSupportedPickupServicesResponse =
 
 export interface RegionalinventoryCustomBatchRequest {
   /** The request entries to be processed in the batch. */
-  entries?: Array<RegionalinventoryCustomBatchRequestEntry>;
+  entries?: ReadonlyArray<RegionalinventoryCustomBatchRequestEntry>;
 }
 
 export const RegionalinventoryCustomBatchRequest =
@@ -6495,7 +6495,7 @@ export interface ListRegionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The regions from the specified merchant. */
-  regions?: Array<Region>;
+  regions?: ReadonlyArray<Region>;
 }
 
 export const ListRegionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -6505,7 +6505,7 @@ export const ListRegionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LabelIds {
   /** The list of label IDs. */
-  labelIds?: Array<string>;
+  labelIds?: ReadonlyArray<string>;
 }
 
 export const LabelIds = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -6522,7 +6522,7 @@ export interface AccountstatusesCustomBatchRequestEntry {
   /** An entry ID, unique within the batch request. */
   batchId?: number;
   /** If set, only issues for the specified destinations are returned, otherwise only issues for the Shopping destination. */
-  destinations?: Array<string>;
+  destinations?: ReadonlyArray<string>;
 }
 
 export const AccountstatusesCustomBatchRequestEntry =
@@ -6538,7 +6538,7 @@ export interface ShippingsettingsGetSupportedCarriersResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#shippingsettingsGetSupportedCarriersResponse`". */
   kind?: string;
   /** A list of supported carriers. May be empty. */
-  carriers?: Array<CarriersCarrier>;
+  carriers?: ReadonlyArray<CarriersCarrier>;
 }
 
 export const ShippingsettingsGetSupportedCarriersResponse =
@@ -6644,7 +6644,7 @@ export const CheckoutSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ProductsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
-  entries?: Array<ProductsCustomBatchResponseEntry>;
+  entries?: ReadonlyArray<ProductsCustomBatchResponseEntry>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#productsCustomBatchResponse`". */
   kind?: string;
 }
@@ -6657,7 +6657,7 @@ export const ProductsCustomBatchResponse =
 
 export interface ShippingsettingsGetSupportedHolidaysResponse {
   /** A list of holidays applicable for delivery guarantees. May be empty. */
-  holidays?: Array<HolidaysHoliday>;
+  holidays?: ReadonlyArray<HolidaysHoliday>;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#shippingsettingsGetSupportedHolidaysResponse`". */
   kind?: string;
 }
@@ -6670,7 +6670,7 @@ export const ShippingsettingsGetSupportedHolidaysResponse =
 
 export interface AccountstatusesCustomBatchRequest {
   /** The request entries to be processed in the batch. */
-  entries?: Array<AccountstatusesCustomBatchRequestEntry>;
+  entries?: ReadonlyArray<AccountstatusesCustomBatchRequestEntry>;
 }
 
 export const AccountstatusesCustomBatchRequest =
@@ -6694,7 +6694,7 @@ export const TriggerActionPayload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LiasettingsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
-  entries?: Array<LiasettingsCustomBatchRequestEntry>;
+  entries?: ReadonlyArray<LiasettingsCustomBatchRequestEntry>;
 }
 
 export const LiasettingsCustomBatchRequest =

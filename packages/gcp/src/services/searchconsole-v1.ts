@@ -127,7 +127,7 @@ export const WmxSite = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SitesListResponse {
   /** Contains permission level information about a Search Console site. For more information, see [Permissions in Search Console](https://support.google.com/webmasters/answer/2451999). */
-  siteEntry?: Array<WmxSite>;
+  siteEntry?: ReadonlyArray<WmxSite>;
 }
 
 export const SitesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -136,7 +136,7 @@ export const SitesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ApiDimensionFilterGroup {
   groupType?: "AND" | (string & {});
-  filters?: Array<ApiDimensionFilter>;
+  filters?: ReadonlyArray<ApiDimensionFilter>;
 }
 
 export const ApiDimensionFilterGroup =
@@ -155,7 +155,7 @@ export interface MobileUsabilityInspectionResult {
     | "NEUTRAL"
     | (string & {});
   /** A list of zero or more mobile-usability issues detected for this URL. */
-  issues?: Array<MobileUsabilityIssue>;
+  issues?: ReadonlyArray<MobileUsabilityIssue>;
 }
 
 export const MobileUsabilityInspectionResult =
@@ -188,7 +188,7 @@ export interface IndexStatusInspectionResult {
     | "MOBILE"
     | (string & {});
   /** URLs that link to the inspected URL, directly and indirectly. */
-  referringUrls?: Array<string>;
+  referringUrls?: ReadonlyArray<string>;
   /** Whether or not the page blocks indexing through a noindex rule. */
   indexingState?:
     | "INDEXING_STATE_UNSPECIFIED"
@@ -198,7 +198,7 @@ export interface IndexStatusInspectionResult {
     | "BLOCKED_BY_ROBOTS_TXT"
     | (string & {});
   /** Any sitemaps that this URL was listed in, as known by Google. Not guaranteed to be an exhaustive list, especially if Google did not discover this URL through a sitemap. Absent if no sitemaps were found. */
-  sitemap?: Array<string>;
+  sitemap?: ReadonlyArray<string>;
   /** The URL of the page that Google selected as canonical. If the page was not indexed, this field is absent. */
   googleCanonical?: string;
   /** Whether or not Google could retrieve the page from your server. Equivalent to ["page fetch"](https://support.google.com/webmasters/answer/9012289#index_coverage) in the URL inspection report. */
@@ -253,7 +253,7 @@ export interface Item {
   /** The user-provided name of this item. */
   name?: string;
   /** A list of zero or more rich result issues found for this instance. */
-  issues?: Array<RichResultsIssue>;
+  issues?: ReadonlyArray<RichResultsIssue>;
 }
 
 export const Item = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -265,7 +265,7 @@ export interface DetectedItems {
   /** Rich Results type */
   richResultType?: string;
   /** List of Rich Results items. */
-  items?: Array<Item>;
+  items?: ReadonlyArray<Item>;
 }
 
 export const DetectedItems = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -275,7 +275,7 @@ export const DetectedItems = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RichResultsInspectionResult {
   /** A list of zero or more rich results detected on this page. Rich results that cannot even be parsed due to syntactic issues will not be listed here. */
-  detectedItems?: Array<DetectedItems>;
+  detectedItems?: ReadonlyArray<DetectedItems>;
   /** High-level rich results inspection result for this URL. */
   verdict?:
     | "VERDICT_UNSPECIFIED"
@@ -358,9 +358,9 @@ export const TestStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RunMobileFriendlyTestResponse {
   /** Information about embedded resources issues. */
-  resourceIssues?: Array<ResourceIssue>;
+  resourceIssues?: ReadonlyArray<ResourceIssue>;
   /** List of mobile-usability issues. */
-  mobileFriendlyIssues?: Array<MobileFriendlyIssue>;
+  mobileFriendlyIssues?: ReadonlyArray<MobileFriendlyIssue>;
   /** Screenshot of the requested URL. */
   screenshot?: Image;
   /** Final state of the test, can be either complete or an error. */
@@ -401,7 +401,7 @@ export const InspectUrlIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface WmxSitemap {
   /** The various content types in the sitemap. */
-  contents?: Array<WmxSitemapContent>;
+  contents?: ReadonlyArray<WmxSitemapContent>;
   /** The url of the sitemap. */
   path?: string;
   /** If true, the sitemap has not been processed. */
@@ -442,7 +442,7 @@ export const WmxSitemap = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SitemapsListResponse {
   /** Contains detailed information about a specific URL submitted as a [sitemap](https://support.google.com/webmasters/answer/156184). */
-  sitemap?: Array<WmxSitemap>;
+  sitemap?: ReadonlyArray<WmxSitemap>;
 }
 
 export const SitemapsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -499,7 +499,7 @@ export interface AmpInspectionResult {
     | "DISALLOWED"
     | (string & {});
   /** A list of zero or more AMP issues found for the inspected URL. */
-  issues?: Array<AmpIssue>;
+  issues?: ReadonlyArray<AmpIssue>;
 }
 
 export const AmpInspectionResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -545,7 +545,7 @@ export interface SearchAnalyticsQueryRequest {
   /** [Required] Start date of the requested date range, in YYYY-MM-DD format, in PST time (UTC - 8:00). Must be less than or equal to the end date. This value is included in the range. */
   startDate?: string;
   /** [Optional] Zero or more dimensions to group results by. Dimensions are the group-by values in the Search Analytics page. Dimensions are combined to create a unique row key for each row. Results are grouped in the order that you supply these dimensions. */
-  dimensions?: Array<
+  dimensions?: ReadonlyArray<
     | "DATE"
     | "QUERY"
     | "PAGE"
@@ -576,7 +576,7 @@ export interface SearchAnalyticsQueryRequest {
   /** [Optional; Default is 1000] The maximum number of rows to return. Must be a number from 1 to 25,000 (inclusive). */
   rowLimit?: number;
   /** [Optional] Zero or more filters to apply to the dimension grouping values; for example, 'query contains \"buy\"' to see only data where the query string contains the substring \"buy\" (not case-sensitive). You can filter by a dimension without grouping by it. */
-  dimensionFilterGroups?: Array<ApiDimensionFilterGroup>;
+  dimensionFilterGroups?: ReadonlyArray<ApiDimensionFilterGroup>;
   /** [Required] End date of the requested date range, in YYYY-MM-DD format, in PST (UTC - 8:00). Must be greater than or equal to the start date. This value is included in the range. */
   endDate?: string;
   /** [Optional; Default is \"web\"] The search type to filter for. */
@@ -607,7 +607,7 @@ export const SearchAnalyticsQueryRequest =
   }).annotate({ identifier: "SearchAnalyticsQueryRequest" });
 
 export interface ApiDataRow {
-  keys?: Array<string>;
+  keys?: ReadonlyArray<string>;
   ctr?: number;
   clicks?: number;
   impressions?: number;
@@ -668,7 +668,7 @@ export interface SearchAnalyticsQueryResponse {
   /** An object that may be returned with your query results, providing context about the state of the data. See details in Metadata object documentation. */
   metadata?: Metadata;
   /** A list of rows grouped by the key values in the order given in the query. */
-  rows?: Array<ApiDataRow>;
+  rows?: ReadonlyArray<ApiDataRow>;
 }
 
 export const SearchAnalyticsQueryResponse =

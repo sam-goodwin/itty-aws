@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface GoogleFirebaseAppdistroV1BatchRemoveTestersRequest {
   /** Required. The email addresses of the tester resources to removed. A maximum of 999 and a minimum of 1 testers can be deleted in a batch. */
-  emails?: Array<string>;
+  emails?: ReadonlyArray<string>;
 }
 
 export const GoogleFirebaseAppdistroV1BatchRemoveTestersRequest =
@@ -105,7 +105,7 @@ export const GoogleFirebaseAppdistroV1Group =
 
 export interface GoogleFirebaseAppdistroV1BatchAddTestersRequest {
   /** Required. The email addresses of the tester resources to create. A maximum of 999 and a minimum of 1 tester can be created in a batch. */
-  emails?: Array<string>;
+  emails?: ReadonlyArray<string>;
 }
 
 export const GoogleFirebaseAppdistroV1BatchAddTestersRequest =
@@ -117,7 +117,7 @@ export const GoogleFirebaseAppdistroV1BatchAddTestersRequest =
 
 export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -177,9 +177,9 @@ export const GoogleLongrunningOperation =
 
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -450,7 +450,7 @@ export interface GdataMedia {
   /** Scotty-provided SHA1 hash for an upload. */
   sha1Hash?: string;
   /** A composite media composed of one or more media objects, set if reference_type is COMPOSITE_MEDIA. The media length field must be set to the sum of the lengths of all composite media objects. Note: All composite media must have length specified. */
-  compositeMedia?: Array<GdataCompositeMedia>;
+  compositeMedia?: ReadonlyArray<GdataCompositeMedia>;
   /** Use object_id instead. */
   bigstoreObjectRef?: string;
 }
@@ -500,7 +500,7 @@ export const GoogleFirebaseAppdistroV1UploadReleaseRequest =
 
 export interface GoogleFirebaseAppdistroV1Tester {
   /** The resource names of the groups this tester belongs to. */
-  groups?: Array<string>;
+  groups?: ReadonlyArray<string>;
   /** The name of the tester resource. Format: `projects/{project_number}/testers/{email_address}` */
   name?: string;
   /** The name of the tester associated with the Google account used to accept the tester invitation. */
@@ -519,7 +519,7 @@ export const GoogleFirebaseAppdistroV1Tester =
 
 export interface GoogleFirebaseAppdistroV1BatchAddTestersResponse {
   /** The testers which are created and/or already exist */
-  testers?: Array<GoogleFirebaseAppdistroV1Tester>;
+  testers?: ReadonlyArray<GoogleFirebaseAppdistroV1Tester>;
 }
 
 export const GoogleFirebaseAppdistroV1BatchAddTestersResponse =
@@ -547,7 +547,7 @@ export const GoogleFirebaseAppdistroV1TestCertificate =
 
 export interface GoogleFirebaseAppdistroV1BatchRemoveTestersResponse {
   /** List of deleted tester emails */
-  emails?: Array<string>;
+  emails?: ReadonlyArray<string>;
 }
 
 export const GoogleFirebaseAppdistroV1BatchRemoveTestersResponse =
@@ -584,9 +584,9 @@ export const GoogleFirebaseAppdistroV1UploadReleaseMetadata =
 
 export interface GoogleFirebaseAppdistroV1DistributeReleaseRequest {
   /** Optional. A list of group aliases (IDs) to be given access to this release. A combined maximum of 999 `testerEmails` and `groupAliases` can be specified in a single request. */
-  groupAliases?: Array<string>;
+  groupAliases?: ReadonlyArray<string>;
   /** Optional. A list of tester email addresses to be given access to this release. A combined maximum of 999 `testerEmails` and `groupAliases` can be specified in a single request. */
-  testerEmails?: Array<string>;
+  testerEmails?: ReadonlyArray<string>;
 }
 
 export const GoogleFirebaseAppdistroV1DistributeReleaseRequest =
@@ -613,7 +613,7 @@ export const GoogleFirebaseAppdistroV1DistributeReleaseResponse =
 
 export interface GoogleFirebaseAppdistroV1ListReleasesResponse {
   /** The releases */
-  releases?: Array<GoogleFirebaseAppdistroV1Release>;
+  releases?: ReadonlyArray<GoogleFirebaseAppdistroV1Release>;
   /** A short-lived token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -626,7 +626,7 @@ export const GoogleFirebaseAppdistroV1ListReleasesResponse =
 
 export interface GoogleFirebaseAppdistroV1BatchLeaveGroupRequest {
   /** Required. The email addresses of the testers to be removed from the group. A maximum of 999 and a minimum of 1 testers can be removed in a batch. */
-  emails?: Array<string>;
+  emails?: ReadonlyArray<string>;
 }
 
 export const GoogleFirebaseAppdistroV1BatchLeaveGroupRequest =
@@ -665,7 +665,7 @@ export interface GoogleFirebaseAppdistroV1ListFeedbackReportsResponse {
   /** A short-lived token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The feedback reports */
-  feedbackReports?: Array<GoogleFirebaseAppdistroV1FeedbackReport>;
+  feedbackReports?: ReadonlyArray<GoogleFirebaseAppdistroV1FeedbackReport>;
 }
 
 export const GoogleFirebaseAppdistroV1ListFeedbackReportsResponse =
@@ -680,7 +680,7 @@ export const GoogleFirebaseAppdistroV1ListFeedbackReportsResponse =
 
 export interface GoogleFirebaseAppdistroV1ListTestersResponse {
   /** The testers listed. */
-  testers?: Array<GoogleFirebaseAppdistroV1Tester>;
+  testers?: ReadonlyArray<GoogleFirebaseAppdistroV1Tester>;
   /** A short-lived token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -693,7 +693,7 @@ export const GoogleFirebaseAppdistroV1ListTestersResponse =
 
 export interface GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest {
   /** Required. The names of the release resources to delete. Format: `projects/{project_number}/apps/{app}/releases/{release}` A maximum of 100 releases can be deleted per request. */
-  names?: Array<string>;
+  names?: ReadonlyArray<string>;
 }
 
 export const GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest =
@@ -705,7 +705,7 @@ export const GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest =
 
 export interface GoogleFirebaseAppdistroV1ListGroupsResponse {
   /** The groups listed. */
-  groups?: Array<GoogleFirebaseAppdistroV1Group>;
+  groups?: ReadonlyArray<GoogleFirebaseAppdistroV1Group>;
   /** A short-lived token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -752,7 +752,7 @@ export const GoogleFirebaseAppdistroV1AabInfo =
 
 export interface GoogleFirebaseAppdistroV1BatchJoinGroupRequest {
   /** Required. The emails of the testers to be added to the group. A maximum of 999 and a minimum of 1 tester can be created in a batch. */
-  emails?: Array<string>;
+  emails?: ReadonlyArray<string>;
   /** Indicates whether to create tester resources based on `emails` if they don't exist yet. */
   createMissingTesters?: boolean;
 }
@@ -782,7 +782,7 @@ export const ListProjectsGroupsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/groups" }),
+    T.Http({ method: "GET", path: "v1/{parent}/groups" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsGroupsRequest>;
 
@@ -823,11 +823,7 @@ export const BatchLeaveProjectsGroupsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/groups/{groupsId}:batchLeave",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{group}:batchLeave", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<BatchLeaveProjectsGroupsRequest>;
 
@@ -858,10 +854,7 @@ export const DeleteProjectsGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/groups/{groupsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsGroupsRequest>;
 
@@ -892,10 +885,7 @@ export const GetProjectsGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/groups/{groupsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsGroupsRequest>;
 
@@ -932,11 +922,7 @@ export const CreateProjectsGroupsRequest =
     groupId: Schema.optional(Schema.String).pipe(T.HttpQuery("groupId")),
     body: Schema.optional(GoogleFirebaseAppdistroV1Group).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/groups",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/groups", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsGroupsRequest>;
 
@@ -973,11 +959,7 @@ export const PatchProjectsGroupsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleFirebaseAppdistroV1Group).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/groups/{groupsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsGroupsRequest>;
 
@@ -1013,11 +995,7 @@ export const BatchJoinProjectsGroupsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/groups/{groupsId}:batchJoin",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{group}:batchJoin", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<BatchJoinProjectsGroupsRequest>;
 
@@ -1057,7 +1035,7 @@ export const ListProjectsTestersRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/testers" }),
+    T.Http({ method: "GET", path: "v1/{parent}/testers" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsTestersRequest>;
 
@@ -1100,7 +1078,7 @@ export const BatchRemoveProjectsTestersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/testers:batchRemove",
+      path: "v1/{project}/testers:batchRemove",
       hasBody: true,
     }),
     svc,
@@ -1140,11 +1118,7 @@ export const PatchProjectsTestersRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleFirebaseAppdistroV1Tester).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/testers/{testersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsTestersRequest>;
 
@@ -1182,7 +1156,7 @@ export const BatchAddProjectsTestersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/testers:batchAdd",
+      path: "v1/{project}/testers:batchAdd",
       hasBody: true,
     }),
     svc,
@@ -1216,10 +1190,7 @@ export const GetAabInfoProjectsAppsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/apps/{appsId}/aabInfo",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAabInfoProjectsAppsRequest>;
 
@@ -1250,10 +1221,7 @@ export const GetProjectsAppsReleasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/apps/{appsId}/releases/{releasesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAppsReleasesRequest>;
 
@@ -1291,7 +1259,7 @@ export const BatchDeleteProjectsAppsReleasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/apps/{appsId}/releases:batchDelete",
+      path: "v1/{parent}/releases:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -1336,10 +1304,7 @@ export const ListProjectsAppsReleasesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/apps/{appsId}/releases",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/releases" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAppsReleasesRequest>;
 
@@ -1381,11 +1346,7 @@ export const PatchProjectsAppsReleasesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleFirebaseAppdistroV1Release).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/apps/{appsId}/releases/{releasesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAppsReleasesRequest>;
 
@@ -1422,11 +1383,7 @@ export const DistributeProjectsAppsReleasesRequest =
       GoogleFirebaseAppdistroV1DistributeReleaseRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/apps/{appsId}/releases/{releasesId}:distribute",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:distribute", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DistributeProjectsAppsReleasesRequest>;
 
@@ -1463,11 +1420,7 @@ export const WaitProjectsAppsReleasesOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/apps/{appsId}/releases/{releasesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsAppsReleasesOperationsRequest>;
 
@@ -1504,11 +1457,7 @@ export const CancelProjectsAppsReleasesOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/apps/{appsId}/releases/{releasesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsAppsReleasesOperationsRequest>;
 
@@ -1539,10 +1488,7 @@ export const DeleteProjectsAppsReleasesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/apps/{appsId}/releases/{releasesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsAppsReleasesOperationsRequest>;
 
@@ -1573,10 +1519,7 @@ export const GetProjectsAppsReleasesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/apps/{appsId}/releases/{releasesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAppsReleasesOperationsRequest>;
 
@@ -1622,10 +1565,7 @@ export const ListProjectsAppsReleasesOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/apps/{appsId}/releases/{releasesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAppsReleasesOperationsRequest>;
 
@@ -1667,10 +1607,7 @@ export const ListProjectsAppsReleasesFeedbackReportsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/apps/{appsId}/releases/{releasesId}/feedbackReports",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/feedbackReports" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAppsReleasesFeedbackReportsRequest>;
 
@@ -1706,10 +1643,7 @@ export const GetProjectsAppsReleasesFeedbackReportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/apps/{appsId}/releases/{releasesId}/feedbackReports/{feedbackReportsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAppsReleasesFeedbackReportsRequest>;
 
@@ -1741,10 +1675,7 @@ export const DeleteProjectsAppsReleasesFeedbackReportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/apps/{appsId}/releases/{releasesId}/feedbackReports/{feedbackReportsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsAppsReleasesFeedbackReportsRequest>;
 
@@ -1780,11 +1711,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpBody(),
   ),
 }).pipe(
-  T.Http({
-    method: "POST",
-    path: "v1/projects/{projectsId}/apps/{appsId}/releases:upload",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v1/{app}/releases:upload", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<UploadMediaRequest>;
 

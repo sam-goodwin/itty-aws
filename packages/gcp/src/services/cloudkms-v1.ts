@@ -75,9 +75,9 @@ export const ChallengeReply = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RequiredActionQuorumReply {
   /** Required. All required challenges must be signed for the proposal to be approved. These can be sent across multiple requests. */
-  requiredChallengeReplies?: Array<ChallengeReply>;
+  requiredChallengeReplies?: ReadonlyArray<ChallengeReply>;
   /** Required. Quorum members' signed challenge replies. These can be provided across multiple requests. The proposal will be approved when required_approver_count quorum_challenge_replies are provided and when all required_challenge_replies are provided. */
-  quorumChallengeReplies?: Array<ChallengeReply>;
+  quorumChallengeReplies?: ReadonlyArray<ChallengeReply>;
 }
 
 export const RequiredActionQuorumReply =
@@ -88,7 +88,7 @@ export const RequiredActionQuorumReply =
 
 export interface QuorumReply {
   /** Required. The challenge replies to approve the proposal. Challenge replies can be sent across multiple requests. The proposal will be approved when required_approver_count challenge replies are provided. */
-  challengeReplies?: Array<ChallengeReply>;
+  challengeReplies?: ReadonlyArray<ChallengeReply>;
 }
 
 export const QuorumReply = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -181,11 +181,11 @@ export const ExternalProtectionLevelOptions =
 
 export interface CertificateChains {
   /** Google card certificate chain corresponding to the attestation. */
-  googleCardCerts?: Array<string>;
+  googleCardCerts?: ReadonlyArray<string>;
   /** Google partition certificate chain corresponding to the attestation. */
-  googlePartitionCerts?: Array<string>;
+  googlePartitionCerts?: ReadonlyArray<string>;
   /** Cavium certificate chain corresponding to the attestation. */
-  caviumCerts?: Array<string>;
+  caviumCerts?: ReadonlyArray<string>;
 }
 
 export const CertificateChains = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -343,7 +343,7 @@ export interface ListCryptoKeyVersionsResponse {
   /** A token to retrieve next page of results. Pass this value in ListCryptoKeyVersionsRequest.page_token to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of CryptoKeyVersions. */
-  cryptoKeyVersions?: Array<CryptoKeyVersion>;
+  cryptoKeyVersions?: ReadonlyArray<CryptoKeyVersion>;
 }
 
 export const ListCryptoKeyVersionsResponse =
@@ -373,7 +373,7 @@ export const RetiredResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListRetiredResourcesResponse {
   /** The list of RetiredResources. */
-  retiredResources?: Array<RetiredResource>;
+  retiredResources?: ReadonlyArray<RetiredResource>;
   /** The total number of RetiredResources that matched the query. */
   totalSize?: string;
   /** A token to retrieve the next page of results. Pass this value in ListRetiredResourcesRequest.page_token to retrieve the next page of results. */
@@ -489,7 +489,7 @@ export const PublicKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface KeyAccessJustificationsPolicy {
   /** The list of allowed reasons for access to a CryptoKey. Note that empty allowed_access_reasons has a different meaning depending on where this message appears. If this is under KeyAccessJustificationsPolicyConfig, it means allow-all. If this is under CryptoKey, it means deny-all. */
-  allowedAccessReasons?: Array<
+  allowedAccessReasons?: ReadonlyArray<
     | "REASON_UNSPECIFIED"
     | "CUSTOMER_INITIATED_SUPPORT"
     | "GOOGLE_INITIATED_SERVICE"
@@ -546,7 +546,7 @@ export interface QuorumAuth {
   /** Output only. The required numbers of approvers. The M value used for M of N quorum auth. Must be greater than or equal to 2 and less than or equal to total_approver_count - 1. */
   requiredApproverCount?: number;
   /** Output only. The public keys associated with the 2FA keys for M of N quorum auth. */
-  twoFactorPublicKeyPems?: Array<string>;
+  twoFactorPublicKeyPems?: ReadonlyArray<string>;
   /** Required. The total number of approvers. This is the N value used for M of N quorum auth. Must be greater than or equal to 3 and less than or equal to 16. */
   totalApproverCount?: number;
 }
@@ -583,13 +583,13 @@ export const Challenge = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RequiredActionQuorumParameters {
   /** Output only. A list of specific challenges that must be signed. For some operations, this will contain a single challenge. */
-  requiredChallenges?: Array<Challenge>;
+  requiredChallenges?: ReadonlyArray<Challenge>;
   /** Output only. The required number of quorum approvers. This is the M value used for M of N quorum auth. It is less than the number of public keys. */
   requiredApproverCount?: number;
   /** Output only. The challenges to be signed by 2FA keys for quorum auth. M of N of these challenges are required to be signed to approve the operation. */
-  quorumChallenges?: Array<Challenge>;
+  quorumChallenges?: ReadonlyArray<Challenge>;
   /** Output only. The public keys associated with the 2FA keys that have already approved the SingleTenantHsmInstanceProposal by signing the challenge. */
-  approvedTwoFactorPublicKeyPems?: Array<string>;
+  approvedTwoFactorPublicKeyPems?: ReadonlyArray<string>;
 }
 
 export const RequiredActionQuorumParameters =
@@ -783,11 +783,11 @@ export const DecapsulateResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface QuorumParameters {
   /** Output only. The public keys associated with the 2FA keys that have already approved the SingleTenantHsmInstanceProposal by signing the challenge. */
-  approvedTwoFactorPublicKeyPems?: Array<string>;
+  approvedTwoFactorPublicKeyPems?: ReadonlyArray<string>;
   /** Output only. The required numbers of approvers. This is the M value used for M of N quorum auth. It is less than the number of public keys. */
   requiredApproverCount?: number;
   /** Output only. The challenges to be signed by 2FA keys for quorum auth. M of N of these challenges are required to be signed to approve the operation. */
-  challenges?: Array<Challenge>;
+  challenges?: ReadonlyArray<Challenge>;
 }
 
 export const QuorumParameters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -820,7 +820,7 @@ export const ExecuteSingleTenantHsmInstanceProposalRequest =
 
 export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
   /** The log type that this config enables. */
   logType?:
     | "LOG_TYPE_UNSPECIFIED"
@@ -872,7 +872,7 @@ export interface Certificate {
   /** Required. The raw certificate bytes in DER format. */
   rawDer?: string;
   /** Output only. The subject Alternative DNS names. Only present if parsed is true. */
-  subjectAlternativeDnsNames?: Array<string>;
+  subjectAlternativeDnsNames?: ReadonlyArray<string>;
   /** Output only. The issuer distinguished name in RFC 2253 format. Only present if parsed is true. */
   issuer?: string;
   /** Output only. The subject distinguished name in RFC 2253 format. Only present if parsed is true. */
@@ -903,7 +903,7 @@ export interface ServiceResolver {
   /** Required. The resource name of the Service Directory service pointing to an EKM replica, in the format `projects/* /locations/* /namespaces/* /services/*`. */
   serviceDirectoryService?: string;
   /** Required. A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica. Currently, a maximum of 10 Certificate is supported. */
-  serverCertificates?: Array<Certificate>;
+  serverCertificates?: ReadonlyArray<Certificate>;
   /** Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest. */
   endpointFilter?: string;
   /** Required. The hostname of the EKM replica used at TLS and HTTP layers. */
@@ -939,7 +939,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
@@ -954,7 +954,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
 export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -966,9 +966,9 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
@@ -1100,7 +1100,7 @@ export const RawEncryptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -1288,7 +1288,7 @@ export interface ListCryptoKeysResponse {
   /** A token to retrieve next page of results. Pass this value in ListCryptoKeysRequest.page_token to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of CryptoKeys. */
-  cryptoKeys?: Array<CryptoKey>;
+  cryptoKeys?: ReadonlyArray<CryptoKey>;
   /** The total number of CryptoKeys that matched the query. This field is not populated if ListCryptoKeysRequest.filter is applied. */
   totalSize?: number;
 }
@@ -1305,7 +1305,7 @@ export interface EkmConnection {
   /** Output only. The resource name for the EkmConnection in the format `projects/* /locations/* /ekmConnections/*`. */
   name?: string;
   /** Optional. A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported. */
-  serviceResolvers?: Array<ServiceResolver>;
+  serviceResolvers?: ReadonlyArray<ServiceResolver>;
   /** Output only. The time at which the EkmConnection was created. */
   createTime?: string;
   /** Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL. */
@@ -1346,7 +1346,7 @@ export const KeyHandle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListKeyHandlesResponse {
   /** Resulting KeyHandles. */
-  keyHandles?: Array<KeyHandle>;
+  keyHandles?: ReadonlyArray<KeyHandle>;
   /** A token to retrieve next page of results. Pass this value in ListKeyHandlesRequest.page_token to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -1367,7 +1367,7 @@ export const ApproveSingleTenantHsmInstanceProposalResponse =
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -1436,7 +1436,7 @@ export interface ListSingleTenantHsmInstancesResponse {
   /** A token to retrieve next page of results. Pass this value in ListSingleTenantHsmInstancesRequest.page_token to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of SingleTenantHsmInstances. */
-  singleTenantHsmInstances?: Array<SingleTenantHsmInstance>;
+  singleTenantHsmInstances?: ReadonlyArray<SingleTenantHsmInstance>;
   /** The total number of SingleTenantHsmInstances that matched the query. This field is not populated if ListSingleTenantHsmInstancesRequest.filter is applied. */
   totalSize?: number;
 }
@@ -1494,7 +1494,7 @@ export const DisableSingleTenantHsmInstance =
 
 export interface RegisterTwoFactorAuthKeys {
   /** Required. The public keys associated with the 2FA keys for M of N quorum auth. Public keys must be associated with RSA 2048 keys. */
-  twoFactorPublicKeyPems?: Array<string>;
+  twoFactorPublicKeyPems?: ReadonlyArray<string>;
   /** Required. The required numbers of approvers to set for the SingleTenantHsmInstance. This is the M value used for M of N quorum auth. Must be greater than or equal to 2 and less than or equal to total_approver_count - 1. */
   requiredApproverCount?: number;
 }
@@ -1584,7 +1584,7 @@ export const SingleTenantHsmInstanceProposal =
 
 export interface ListSingleTenantHsmInstanceProposalsResponse {
   /** The list of SingleTenantHsmInstanceProposals. */
-  singleTenantHsmInstanceProposals?: Array<SingleTenantHsmInstanceProposal>;
+  singleTenantHsmInstanceProposals?: ReadonlyArray<SingleTenantHsmInstanceProposal>;
   /** A token to retrieve next page of results. Pass this value in ListSingleTenantHsmInstanceProposalsRequest.page_token to retrieve the next page of results. */
   nextPageToken?: string;
   /** The total number of SingleTenantHsmInstanceProposals that matched the query. This field is not populated if ListSingleTenantHsmInstanceProposalsRequest.filter is applied. */
@@ -1604,7 +1604,7 @@ export interface ListEkmConnectionsResponse {
   /** A token to retrieve next page of results. Pass this value in ListEkmConnectionsRequest.page_token to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of EkmConnections. */
-  ekmConnections?: Array<EkmConnection>;
+  ekmConnections?: ReadonlyArray<EkmConnection>;
   /** The total number of EkmConnections that matched the query. This field is not populated if ListEkmConnectionsRequest.filter is applied. */
   totalSize?: number;
 }
@@ -1662,7 +1662,7 @@ export interface ListKeyRingsResponse {
   /** The total number of KeyRings that matched the query. This field is not populated if ListKeyRingsRequest.filter is applied. */
   totalSize?: number;
   /** The list of KeyRings. */
-  keyRings?: Array<KeyRing>;
+  keyRings?: ReadonlyArray<KeyRing>;
   /** A token to retrieve next page of results. Pass this value in ListKeyRingsRequest.page_token to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -1715,7 +1715,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1751,7 +1751,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
 }
 
 export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1865,7 +1865,7 @@ export const ImportJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListImportJobsResponse {
   /** The list of ImportJobs. */
-  importJobs?: Array<ImportJob>;
+  importJobs?: ReadonlyArray<ImportJob>;
   /** The total number of ImportJobs that matched the query. This field is not populated if ListImportJobsRequest.filter is applied. */
   totalSize?: number;
   /** A token to retrieve next page of results. Pass this value in ListImportJobsRequest.page_token to retrieve the next page of results. */
@@ -1999,11 +1999,7 @@ export const UpdateKajPolicyConfigProjectsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/kajPolicyConfig",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateKajPolicyConfigProjectsRequest>;
 
@@ -2035,10 +2031,7 @@ export const ShowEffectiveAutokeyConfigProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}:showEffectiveAutokeyConfig",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}:showEffectiveAutokeyConfig" }),
     svc,
   ) as unknown as Schema.Schema<ShowEffectiveAutokeyConfigProjectsRequest>;
 
@@ -2070,7 +2063,7 @@ export const GetKajPolicyConfigProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/kajPolicyConfig" }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetKajPolicyConfigProjectsRequest>;
 
@@ -2108,11 +2101,7 @@ export const UpdateAutokeyConfigProjectsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AutokeyConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/autokeyConfig",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAutokeyConfigProjectsRequest>;
 
@@ -2143,7 +2132,7 @@ export const GetAutokeyConfigProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/autokeyConfig" }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAutokeyConfigProjectsRequest>;
 
@@ -2176,7 +2165,7 @@ export const ShowEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}:showEffectiveKeyAccessJustificationsPolicyConfig",
+      path: "v1/{project}:showEffectiveKeyAccessJustificationsPolicyConfig",
     }),
     svc,
   ) as unknown as Schema.Schema<ShowEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest>;
@@ -2212,7 +2201,7 @@ export const ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}:showEffectiveKeyAccessJustificationsEnrollmentConfig",
+      path: "v1/{project}:showEffectiveKeyAccessJustificationsEnrollmentConfig",
     }),
     svc,
   ) as unknown as Schema.Schema<ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest>;
@@ -2252,11 +2241,7 @@ export const UpdateEkmConfigProjectsLocationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(EkmConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ekmConfig",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateEkmConfigProjectsLocationsRequest>;
 
@@ -2292,7 +2277,7 @@ export const GenerateRandomBytesProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:generateRandomBytes",
+      path: "v1/{location}:generateRandomBytes",
       hasBody: true,
     }),
     svc,
@@ -2326,10 +2311,7 @@ export const GetEkmConfigProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ekmConfig",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEkmConfigProjectsLocationsRequest>;
 
@@ -2360,10 +2342,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -2408,7 +2387,7 @@ export const ListProjectsLocationsRequest =
     ),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -2451,11 +2430,7 @@ export const CreateProjectsLocationsKeyHandlesRequest =
     ),
     body: Schema.optional(KeyHandle).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyHandles",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/keyHandles", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsKeyHandlesRequest>;
 
@@ -2486,10 +2461,7 @@ export const GetProjectsLocationsKeyHandlesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyHandles/{keyHandlesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsKeyHandlesRequest>;
 
@@ -2529,10 +2501,7 @@ export const ListProjectsLocationsKeyHandlesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyHandles",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/keyHandles" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsKeyHandlesRequest>;
 
@@ -2573,11 +2542,7 @@ export const CreateProjectsLocationsKeyRingsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(KeyRing).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/keyRings", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsKeyRingsRequest>;
 
@@ -2620,10 +2585,7 @@ export const ListProjectsLocationsKeyRingsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/keyRings" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsKeyRingsRequest>;
 
@@ -2663,10 +2625,7 @@ export const GetIamPolicyProjectsLocationsKeyRingsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsKeyRingsRequest>;
 
@@ -2702,7 +2661,7 @@ export const TestIamPermissionsProjectsLocationsKeyRingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2736,10 +2695,7 @@ export const GetProjectsLocationsKeyRingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsKeyRingsRequest>;
 
@@ -2775,7 +2731,7 @@ export const SetIamPolicyProjectsLocationsKeyRingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2808,10 +2764,7 @@ export const GetProjectsLocationsKeyRingsImportJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/importJobs/{importJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsKeyRingsImportJobsRequest>;
 
@@ -2847,7 +2800,7 @@ export const SetIamPolicyProjectsLocationsKeyRingsImportJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/importJobs/{importJobsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2889,11 +2842,7 @@ export const CreateProjectsLocationsKeyRingsImportJobsRequest =
     ),
     body: Schema.optional(ImportJob).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/importJobs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/importJobs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsKeyRingsImportJobsRequest>;
 
@@ -2936,10 +2885,7 @@ export const ListProjectsLocationsKeyRingsImportJobsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/importJobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/importJobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsKeyRingsImportJobsRequest>;
 
@@ -2980,10 +2926,7 @@ export const GetIamPolicyProjectsLocationsKeyRingsImportJobsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/importJobs/{importJobsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsKeyRingsImportJobsRequest>;
 
@@ -3020,7 +2963,7 @@ export const TestIamPermissionsProjectsLocationsKeyRingsImportJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/importJobs/{importJobsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -3061,11 +3004,7 @@ export const PatchProjectsLocationsKeyRingsCryptoKeysRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(CryptoKey).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsKeyRingsCryptoKeysRequest>;
 
@@ -3101,7 +3040,7 @@ export const SetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -3138,11 +3077,7 @@ export const EncryptProjectsLocationsKeyRingsCryptoKeysRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(EncryptRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}:encrypt",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:encrypt", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<EncryptProjectsLocationsKeyRingsCryptoKeysRequest>;
 
@@ -3191,10 +3126,7 @@ export const ListProjectsLocationsKeyRingsCryptoKeysRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/cryptoKeys" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsKeyRingsCryptoKeysRequest>;
 
@@ -3235,7 +3167,7 @@ export const TestIamPermissionsProjectsLocationsKeyRingsCryptoKeysRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -3283,11 +3215,7 @@ export const CreateProjectsLocationsKeyRingsCryptoKeysRequest =
     ),
     body: Schema.optional(CryptoKey).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/cryptoKeys", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsKeyRingsCryptoKeysRequest>;
 
@@ -3321,11 +3249,7 @@ export const DecryptProjectsLocationsKeyRingsCryptoKeysRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DecryptRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}:decrypt",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:decrypt", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DecryptProjectsLocationsKeyRingsCryptoKeysRequest>;
 
@@ -3364,7 +3288,7 @@ export const UpdatePrimaryVersionProjectsLocationsKeyRingsCryptoKeysRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}:updatePrimaryVersion",
+      path: "v1/{name}:updatePrimaryVersion",
       hasBody: true,
     }),
     svc,
@@ -3399,10 +3323,7 @@ export const GetProjectsLocationsKeyRingsCryptoKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsKeyRingsCryptoKeysRequest>;
 
@@ -3433,10 +3354,7 @@ export const DeleteProjectsLocationsKeyRingsCryptoKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsKeyRingsCryptoKeysRequest>;
 
@@ -3472,10 +3390,7 @@ export const GetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest>;
 
@@ -3510,11 +3425,7 @@ export const DestroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest 
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DestroyCryptoKeyVersionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}/cryptoKeyVersions/{cryptoKeyVersionsId}:destroy",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:destroy", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DestroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
@@ -3550,11 +3461,7 @@ export const RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsReque
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RawEncryptRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}/cryptoKeyVersions/{cryptoKeyVersionsId}:rawEncrypt",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:rawEncrypt", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
@@ -3591,11 +3498,7 @@ export const MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsReques
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MacVerifyRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}/cryptoKeyVersions/{cryptoKeyVersionsId}:macVerify",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:macVerify", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
@@ -3633,7 +3536,7 @@ export const AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersio
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}/cryptoKeyVersions/{cryptoKeyVersionsId}:asymmetricDecrypt",
+      path: "v1/{name}:asymmetricDecrypt",
       hasBody: true,
     }),
     svc,
@@ -3673,11 +3576,7 @@ export const RestoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest 
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RestoreCryptoKeyVersionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}/cryptoKeyVersions/{cryptoKeyVersionsId}:restore",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:restore", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RestoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
@@ -3710,10 +3609,7 @@ export const DeleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}/cryptoKeyVersions/{cryptoKeyVersionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
@@ -3749,11 +3645,7 @@ export const DecapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequ
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DecapsulateRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}/cryptoKeyVersions/{cryptoKeyVersionsId}:decapsulate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:decapsulate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DecapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
@@ -3792,7 +3684,7 @@ export const CreateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}/cryptoKeyVersions",
+      path: "v1/{parent}/cryptoKeyVersions",
       hasBody: true,
     }),
     svc,
@@ -3842,10 +3734,7 @@ export const ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}/cryptoKeyVersions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/cryptoKeyVersions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
@@ -3885,11 +3774,7 @@ export const RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsReque
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RawDecryptRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}/cryptoKeyVersions/{cryptoKeyVersionsId}:rawDecrypt",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:rawDecrypt", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
@@ -3929,11 +3814,7 @@ export const PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CryptoKeyVersion).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}/cryptoKeyVersions/{cryptoKeyVersionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
@@ -3969,11 +3850,7 @@ export const AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsR
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AsymmetricSignRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}/cryptoKeyVersions/{cryptoKeyVersionsId}:asymmetricSign",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:asymmetricSign", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
@@ -4011,11 +3888,7 @@ export const MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest 
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MacSignRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}/cryptoKeyVersions/{cryptoKeyVersionsId}:macSign",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:macSign", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
@@ -4053,7 +3926,7 @@ export const ImportProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}/cryptoKeyVersions:import",
+      path: "v1/{parent}/cryptoKeyVersions:import",
       hasBody: true,
     }),
     svc,
@@ -4088,10 +3961,7 @@ export const GetProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}/cryptoKeyVersions/{cryptoKeyVersionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
@@ -4135,10 +4005,7 @@ export const GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsReq
       T.HttpQuery("publicKeyFormat"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/keyRings/{keyRingsId}/cryptoKeys/{cryptoKeysId}/cryptoKeyVersions/{cryptoKeyVersionsId}/publicKey",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/publicKey" }),
     svc,
   ) as unknown as Schema.Schema<GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
 
@@ -4178,7 +4045,7 @@ export const SetIamPolicyProjectsLocationsEkmConfigRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ekmConfig:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4216,10 +4083,7 @@ export const GetIamPolicyProjectsLocationsEkmConfigRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ekmConfig:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsEkmConfigRequest>;
 
@@ -4255,7 +4119,7 @@ export const TestIamPermissionsProjectsLocationsEkmConfigRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ekmConfig:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -4289,10 +4153,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -4323,10 +4184,7 @@ export const GetProjectsLocationsRetiredResourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/retiredResources/{retiredResourcesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRetiredResourcesRequest>;
 
@@ -4363,10 +4221,7 @@ export const ListProjectsLocationsRetiredResourcesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/retiredResources",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/retiredResources" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRetiredResourcesRequest>;
 
@@ -4412,7 +4267,7 @@ export const CreateProjectsLocationsEkmConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ekmConnections",
+      path: "v1/{parent}/ekmConnections",
       hasBody: true,
     }),
     svc,
@@ -4457,10 +4312,7 @@ export const ListProjectsLocationsEkmConnectionsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ekmConnections",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/ekmConnections" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEkmConnectionsRequest>;
 
@@ -4501,10 +4353,7 @@ export const GetIamPolicyProjectsLocationsEkmConnectionsRequest =
     ),
     resource: Schema.String.pipe(T.HttpPath("resource")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ekmConnections/{ekmConnectionsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsEkmConnectionsRequest>;
 
@@ -4540,7 +4389,7 @@ export const TestIamPermissionsProjectsLocationsEkmConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ekmConnections/{ekmConnectionsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -4575,10 +4424,7 @@ export const GetProjectsLocationsEkmConnectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ekmConnections/{ekmConnectionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsEkmConnectionsRequest>;
 
@@ -4615,11 +4461,7 @@ export const PatchProjectsLocationsEkmConnectionsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(EkmConnection).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ekmConnections/{ekmConnectionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsEkmConnectionsRequest>;
 
@@ -4650,10 +4492,7 @@ export const VerifyConnectivityProjectsLocationsEkmConnectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ekmConnections/{ekmConnectionsId}:verifyConnectivity",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:verifyConnectivity" }),
     svc,
   ) as unknown as Schema.Schema<VerifyConnectivityProjectsLocationsEkmConnectionsRequest>;
 
@@ -4691,7 +4530,7 @@ export const SetIamPolicyProjectsLocationsEkmConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ekmConnections/{ekmConnectionsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4741,10 +4580,7 @@ export const ListProjectsLocationsSingleTenantHsmInstancesRequest =
       T.HttpQuery("showDeleted"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/singleTenantHsmInstances",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/singleTenantHsmInstances" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSingleTenantHsmInstancesRequest>;
 
@@ -4790,7 +4626,7 @@ export const CreateProjectsLocationsSingleTenantHsmInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/singleTenantHsmInstances",
+      path: "v1/{parent}/singleTenantHsmInstances",
       hasBody: true,
     }),
     svc,
@@ -4824,10 +4660,7 @@ export const GetProjectsLocationsSingleTenantHsmInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/singleTenantHsmInstances/{singleTenantHsmInstancesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSingleTenantHsmInstancesRequest>;
 
@@ -4876,10 +4709,7 @@ export const ListProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
       T.HttpQuery("showDeleted"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/singleTenantHsmInstances/{singleTenantHsmInstancesId}/proposals",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/proposals" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
 
@@ -4924,11 +4754,7 @@ export const CreateProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
     ),
     body: Schema.optional(SingleTenantHsmInstanceProposal).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/singleTenantHsmInstances/{singleTenantHsmInstancesId}/proposals",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/proposals", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
 
@@ -4966,11 +4792,7 @@ export const ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/singleTenantHsmInstances/{singleTenantHsmInstancesId}/proposals/{proposalsId}:execute",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:execute", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
 
@@ -5003,10 +4825,7 @@ export const GetProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/singleTenantHsmInstances/{singleTenantHsmInstancesId}/proposals/{proposalsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
 
@@ -5039,10 +4858,7 @@ export const DeleteProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/singleTenantHsmInstances/{singleTenantHsmInstancesId}/proposals/{proposalsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
 
@@ -5080,11 +4896,7 @@ export const ApproveProjectsLocationsSingleTenantHsmInstancesProposalsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/singleTenantHsmInstances/{singleTenantHsmInstancesId}/proposals/{proposalsId}:approve",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:approve", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ApproveProjectsLocationsSingleTenantHsmInstancesProposalsRequest>;
 
@@ -5123,11 +4935,7 @@ export const UpdateAutokeyConfigFoldersRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AutokeyConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/folders/{foldersId}/autokeyConfig",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAutokeyConfigFoldersRequest>;
 
@@ -5166,11 +4974,7 @@ export const UpdateKajPolicyConfigFoldersRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/folders/{foldersId}/kajPolicyConfig",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateKajPolicyConfigFoldersRequest>;
 
@@ -5202,7 +5006,7 @@ export const GetAutokeyConfigFoldersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/folders/{foldersId}/autokeyConfig" }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAutokeyConfigFoldersRequest>;
 
@@ -5233,7 +5037,7 @@ export const GetKajPolicyConfigFoldersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/folders/{foldersId}/kajPolicyConfig" }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetKajPolicyConfigFoldersRequest>;
 
@@ -5265,10 +5069,7 @@ export const GetKajPolicyConfigOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/kajPolicyConfig",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetKajPolicyConfigOrganizationsRequest>;
 
@@ -5308,11 +5109,7 @@ export const UpdateKajPolicyConfigOrganizationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/kajPolicyConfig",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateKajPolicyConfigOrganizationsRequest>;
 

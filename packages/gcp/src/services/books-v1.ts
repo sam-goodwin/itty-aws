@@ -62,7 +62,7 @@ export interface Bookshelves {
   /** Resource type. */
   kind?: string;
   /** A list of bookshelves. */
-  items?: Array<Bookshelf>;
+  items?: ReadonlyArray<Bookshelf>;
 }
 
 export const Bookshelves = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -73,11 +73,14 @@ export const Bookshelves = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface Volumeseriesinfo {
   /** Short book title in the context of the series. */
   shortSeriesBookTitle?: string;
-  volumeSeries?: Array<{
+  volumeSeries?: ReadonlyArray<{
     seriesId?: string;
     seriesBookType?: string;
     orderNumber?: number;
-    issue?: Array<{ issueOrderNumber?: number; issueDisplayNumber?: string }>;
+    issue?: ReadonlyArray<{
+      issueOrderNumber?: number;
+      issueDisplayNumber?: string;
+    }>;
   }>;
   /** The display number string. This should be used only for display purposes and the actual sequence should be inferred from the below orderNumber. */
   bookDisplayNumber?: string;
@@ -231,7 +234,10 @@ export interface Volume {
   selfLink?: string;
   /** What layers exist in this volume and high level information about them. */
   layerInfo?: {
-    layers?: Array<{ layerId?: string; volumeAnnotationsVersion?: string }>;
+    layers?: ReadonlyArray<{
+      layerId?: string;
+      volumeAnnotationsVersion?: string;
+    }>;
   };
   /** Opaque identifier for a specific version of a volume resource. (In LITE projection) */
   etag?: string;
@@ -239,7 +245,7 @@ export interface Volume {
   volumeInfo?: {
     title?: string;
     subtitle?: string;
-    authors?: Array<string>;
+    authors?: ReadonlyArray<string>;
     publisher?: string;
     publishedDate?: string;
     description?: string;
@@ -258,10 +264,10 @@ export interface Volume {
     };
     language?: string;
     previewLink?: string;
-    industryIdentifiers?: Array<{ type?: string; identifier?: string }>;
+    industryIdentifiers?: ReadonlyArray<{ type?: string; identifier?: string }>;
     infoLink?: string;
     canonicalVolumeLink?: string;
-    categories?: Array<string>;
+    categories?: ReadonlyArray<string>;
     printedPageCount?: number;
     readingModes?: { text?: boolean; image?: boolean };
     samplePageCount?: number;
@@ -315,7 +321,7 @@ export interface Volume {
     saleability?: string;
     isEbook?: boolean;
     buyLink?: string;
-    offers?: Array<{
+    offers?: ReadonlyArray<{
       finskyOfferType?: number;
       giftable?: boolean;
       retailPrice?: { currencyCode?: string; amountInMicros?: number };
@@ -572,7 +578,7 @@ export interface Volumes {
   /** Resource type. */
   kind?: string;
   /** A list of volumes. */
-  items?: Array<Volume>;
+  items?: ReadonlyArray<Volume>;
   /** Total number of volumes found. This might be greater than the number of volumes returned in this response if results have been paginated. */
   totalItems?: number;
 }
@@ -608,7 +614,7 @@ export interface Metadata {
   /** Resource type. */
   kind?: string;
   /** A list of offline dictionary metadata. */
-  items?: Array<{
+  items?: ReadonlyArray<{
     language?: string;
     size?: string;
     version?: string;
@@ -668,7 +674,7 @@ export interface Layersummary {
   /** The content version this resource is for. */
   contentVersion?: string;
   /** The list of annotation types contained for this layer. */
-  annotationTypes?: Array<string>;
+  annotationTypes?: ReadonlyArray<string>;
   /** The number of annotations for this layer. */
   annotationCount?: number;
   /** The number of data items for this layer. */
@@ -707,7 +713,7 @@ export interface Layersummaries {
   /** Resource type. */
   kind?: string;
   /** A list of layer summary items. */
-  items?: Array<Layersummary>;
+  items?: ReadonlyArray<Layersummary>;
   /** The total number of layer summaries found. */
   totalItems?: number;
 }
@@ -721,31 +727,31 @@ export const Layersummaries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface Dictlayerdata {
   kind?: string;
   dict?: {
-    words?: Array<{
-      senses?: Array<{
+    words?: ReadonlyArray<{
+      senses?: ReadonlyArray<{
         syllabification?: string;
         pronunciation?: string;
         partOfSpeech?: string;
         pronunciationUrl?: string;
-        definitions?: Array<{
+        definitions?: ReadonlyArray<{
           definition?: string;
-          examples?: Array<{
+          examples?: ReadonlyArray<{
             text?: string;
             source?: { url?: string; attribution?: string };
           }>;
         }>;
-        synonyms?: Array<{
+        synonyms?: ReadonlyArray<{
           text?: string;
           source?: { url?: string; attribution?: string };
         }>;
-        conjugations?: Array<{ value?: string; type?: string }>;
+        conjugations?: ReadonlyArray<{ value?: string; type?: string }>;
         source?: { url?: string; attribution?: string };
       }>;
-      examples?: Array<{
+      examples?: ReadonlyArray<{
         text?: string;
         source?: { url?: string; attribution?: string };
       }>;
-      derivatives?: Array<{
+      derivatives?: ReadonlyArray<{
         text?: string;
         source?: { url?: string; attribution?: string };
       }>;
@@ -915,7 +921,7 @@ export interface Geolayerdata {
     cachePolicy?: string;
     longitude?: number;
     latitude?: number;
-    boundary?: Array<string>;
+    boundary?: ReadonlyArray<string>;
   };
   common?: {
     lang?: string;
@@ -1003,7 +1009,7 @@ export interface Annotationsdata {
   /** Resource type */
   kind?: string;
   /** A list of Annotation Data. */
-  items?: Array<GeoAnnotationdata>;
+  items?: ReadonlyArray<GeoAnnotationdata>;
   /** The total number of volume annotations found. */
   totalItems?: number;
   /** Token to pass in for pagination for the next page. This will not be present if this request does not have more results. */
@@ -1045,7 +1051,7 @@ export interface Volumeannotation {
   /** The type of annotation this is. */
   annotationType?: string;
   /** Pages the annotation spans. */
-  pageIds?: Array<string>;
+  pageIds?: ReadonlyArray<string>;
   /** Excerpt from the volume. */
   selectedText?: string;
   /** Data for this annotation. */
@@ -1101,7 +1107,7 @@ export interface Volumeannotations {
   /** Resource type */
   kind?: string;
   /** A list of volume annotations. */
-  items?: Array<Volumeannotation>;
+  items?: ReadonlyArray<Volumeannotation>;
   /** The total number of volume annotations found. */
   totalItems?: number;
   /** Token to pass in for pagination for the next page. This will not be present if this request does not have more results. */
@@ -1161,7 +1167,7 @@ export const Usersettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DownloadAccesses {
   /** A list of download access responses. */
-  downloadAccessList?: Array<DownloadAccessRestriction>;
+  downloadAccessList?: ReadonlyArray<DownloadAccessRestriction>;
   /** Resource type. */
   kind?: string;
 }
@@ -1240,7 +1246,7 @@ export interface Annotation {
     imageCfiRange?: BooksAnnotationsRange;
   };
   /** Pages that this annotation spans. */
-  pageIds?: Array<string>;
+  pageIds?: ReadonlyArray<string>;
   /** Excerpt from the volume. */
   selectedText?: string;
   /** Anchor text before excerpt. For requests, if the user bookmarked a screen that has no flowing text on it, then this field should be empty. */
@@ -1324,7 +1330,7 @@ export interface Annotations {
   /** Resource type. */
   kind?: string;
   /** A list of annotations. */
-  items?: Array<Annotation>;
+  items?: ReadonlyArray<Annotation>;
   /** Total number of annotations found. This may be greater than the number of notes returned in this response if results have been paginated. */
   totalItems?: number;
   /** Token to pass in for pagination for the next page. This will not be present if this request does not have more results. */
@@ -1339,7 +1345,7 @@ export const Annotations = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "Annotations" });
 
 export interface AnnotationsSummary {
-  layers?: Array<{
+  layers?: ReadonlyArray<{
     layerId?: string;
     remainingCharacterCount?: number;
     allowedCharacterCount?: number;
@@ -1379,7 +1385,7 @@ export interface Notification {
   doc_type?: string;
   doc_id?: string;
   /** The list of crm experiment ids. */
-  crmExperimentIds?: Array<string>;
+  crmExperimentIds?: ReadonlyArray<string>;
   notificationGroup?: string;
   is_document_mature?: boolean;
   timeToExpireMs?: string;
@@ -1408,7 +1414,11 @@ export interface Category {
   /** Resource type. */
   kind?: string;
   /** A list of onboarding categories. */
-  items?: Array<{ name?: string; categoryId?: string; badgeUrl?: string }>;
+  items?: ReadonlyArray<{
+    name?: string;
+    categoryId?: string;
+    badgeUrl?: string;
+  }>;
 }
 
 export const Category = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1428,7 +1438,7 @@ export interface Volume2 {
   /** Resource type. */
   kind?: string;
   /** A list of volumes. */
-  items?: Array<Volume>;
+  items?: ReadonlyArray<Volume>;
   nextPageToken?: string;
 }
 
@@ -1442,12 +1452,12 @@ export interface Discoveryclusters {
   totalClusters?: number;
   /** Resorce type. */
   kind?: string;
-  clusters?: Array<{
+  clusters?: ReadonlyArray<{
     totalVolumes?: number;
     uid?: string;
     title?: string;
     subTitle?: string;
-    volumes?: Array<Volume>;
+    volumes?: ReadonlyArray<Volume>;
     banner_with_content_container?: {
       imageUrl?: string;
       moreButtonUrl?: string;
@@ -1489,10 +1499,10 @@ export interface Offers {
   /** Resource type. */
   kind?: string;
   /** A list of offers. */
-  items?: Array<{
+  items?: ReadonlyArray<{
     id?: string;
     artUrl?: string;
-    items?: Array<{
+    items?: ReadonlyArray<{
       volumeId?: string;
       canonicalVolumeLink?: string;
       coverUrl?: string;
@@ -1530,7 +1540,7 @@ export const Offers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "Offers" });
 
 export interface Series {
-  series?: Array<{
+  series?: ReadonlyArray<{
     seriesId?: string;
     title?: string;
     imageUrl?: string;
@@ -1603,7 +1613,7 @@ export const Series = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "Series" });
 
 export interface Seriesmembership {
-  member?: Array<Volume>;
+  member?: ReadonlyArray<Volume>;
   nextPageToken?: string;
   /** Resorce type. */
   kind?: string;

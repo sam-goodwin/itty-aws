@@ -28,7 +28,7 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -63,11 +63,11 @@ export const GoogleLongrunningOperation =
 
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleLongrunningListOperationsResponse =
@@ -145,7 +145,7 @@ export interface GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse {
     | "STATUS_COMPLETE"
     | (string & {});
   /** Indicates SAA enrollment setup error if any. */
-  setupErrors?: Array<
+  setupErrors?: ReadonlyArray<
     | "SETUP_ERROR_UNSPECIFIED"
     | "ERROR_INVALID_BASE_SETUP"
     | "ERROR_MISSING_EXTERNAL_SIGNING_KEY"
@@ -261,7 +261,7 @@ export interface GoogleCloudAssuredworkloadsV1Workload {
   /** Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload */
   displayName?: string;
   /** Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only. */
-  resources?: Array<GoogleCloudAssuredworkloadsV1WorkloadResourceInfo>;
+  resources?: ReadonlyArray<GoogleCloudAssuredworkloadsV1WorkloadResourceInfo>;
   /** Required. Immutable. Compliance Regime associated with this workload. */
   complianceRegime?:
     | "COMPLIANCE_REGIME_UNSPECIFIED"
@@ -323,7 +323,7 @@ export interface GoogleCloudAssuredworkloadsV1Workload {
   /** Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field. */
   kmsSettings?: GoogleCloudAssuredworkloadsV1WorkloadKMSSettings;
   /** Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional. */
-  resourceSettings?: Array<GoogleCloudAssuredworkloadsV1WorkloadResourceSettings>;
+  resourceSettings?: ReadonlyArray<GoogleCloudAssuredworkloadsV1WorkloadResourceSettings>;
   /** Output only. Represents the KAJ enrollment state of the given workload. */
   kajEnrollmentState?:
     | "KAJ_ENROLLMENT_STATE_UNSPECIFIED"
@@ -337,7 +337,7 @@ export interface GoogleCloudAssuredworkloadsV1Workload {
   /** Output only. Count of active Violations in the Workload. */
   complianceStatus?: GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus;
   /** Output only. Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke RestrictAllowedResources endpoint to allow your project developers to use these services in their environment. */
-  compliantButDisallowedServices?: Array<string>;
+  compliantButDisallowedServices?: ReadonlyArray<string>;
   /** Optional. Partner regime associated with this workload. */
   partner?:
     | "PARTNER_UNSPECIFIED"
@@ -450,9 +450,9 @@ export const GoogleCloudAssuredworkloadsV1MoveImpact =
 
 export interface GoogleCloudAssuredworkloadsV1MoveAnalysisResult {
   /** List of warnings. These are risks that may or may not result in compliance violations. */
-  warnings?: Array<GoogleCloudAssuredworkloadsV1MoveImpact>;
+  warnings?: ReadonlyArray<GoogleCloudAssuredworkloadsV1MoveImpact>;
   /** List of blockers. If not resolved, these will result in compliance violations in the target. */
-  blockers?: Array<GoogleCloudAssuredworkloadsV1MoveImpact>;
+  blockers?: ReadonlyArray<GoogleCloudAssuredworkloadsV1MoveImpact>;
 }
 
 export const GoogleCloudAssuredworkloadsV1MoveAnalysisResult =
@@ -491,7 +491,7 @@ export interface GoogleCloudAssuredworkloadsV1AssetMoveAnalysis {
   /** Type of the asset being analyzed. Possible values will be among the ones listed [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types). */
   assetType?: string;
   /** List of eligible analyses performed for the asset. */
-  analysisGroups?: Array<GoogleCloudAssuredworkloadsV1MoveAnalysisGroup>;
+  analysisGroups?: ReadonlyArray<GoogleCloudAssuredworkloadsV1MoveAnalysisGroup>;
 }
 
 export const GoogleCloudAssuredworkloadsV1AssetMoveAnalysis =
@@ -505,7 +505,7 @@ export const GoogleCloudAssuredworkloadsV1AssetMoveAnalysis =
 
 export interface GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse {
   /** List of analysis results for each asset in scope. */
-  assetMoveAnalyses?: Array<GoogleCloudAssuredworkloadsV1AssetMoveAnalysis>;
+  assetMoveAnalyses?: ReadonlyArray<GoogleCloudAssuredworkloadsV1AssetMoveAnalysis>;
   /** The next page token. Is empty if the last page is reached. */
   nextPageToken?: string;
 }
@@ -522,7 +522,7 @@ export const GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse =
 
 export interface GoogleCloudAssuredworkloadsV1ListWorkloadsResponse {
   /** List of Workloads under a given parent. */
-  workloads?: Array<GoogleCloudAssuredworkloadsV1Workload>;
+  workloads?: ReadonlyArray<GoogleCloudAssuredworkloadsV1Workload>;
   /** The next page token. Return empty if reached the last page. */
   nextPageToken?: string;
 }
@@ -539,11 +539,11 @@ export const GoogleCloudAssuredworkloadsV1ListWorkloadsResponse =
 
 export interface GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud {
   /** Gcloud command to resolve violation */
-  gcloudCommands?: Array<string>;
+  gcloudCommands?: ReadonlyArray<string>;
   /** Steps to resolve violation via gcloud cli */
-  steps?: Array<string>;
+  steps?: ReadonlyArray<string>;
   /** Additional urls for more information about steps */
-  additionalLinks?: Array<string>;
+  additionalLinks?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud =
@@ -558,11 +558,11 @@ export const GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsGcloud
 
 export interface GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole {
   /** Link to console page where violations can be resolved */
-  consoleUris?: Array<string>;
+  consoleUris?: ReadonlyArray<string>;
   /** Steps to resolve violation via cloud console */
-  steps?: Array<string>;
+  steps?: ReadonlyArray<string>;
   /** Additional urls for more information about steps */
-  additionalLinks?: Array<string>;
+  additionalLinks?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAssuredworkloadsV1ViolationRemediationInstructionsConsole =
@@ -598,7 +598,7 @@ export interface GoogleCloudAssuredworkloadsV1ViolationRemediation {
   /** Required. Remediation instructions to resolve violations */
   instructions?: GoogleCloudAssuredworkloadsV1ViolationRemediationInstructions;
   /** Values that can resolve the violation For example: for list org policy violations, this will either be the list of allowed or denied values */
-  compliantValues?: Array<string>;
+  compliantValues?: ReadonlyArray<string>;
   /** Output only. Reemediation type based on the type of org policy values violated */
   remediationType?:
     | "REMEDIATION_TYPE_UNSPECIFIED"
@@ -675,7 +675,7 @@ export interface GoogleCloudAssuredworkloadsV1Violation {
   /** Output only. Immutable. Audit Log link to find business justification provided for violation exception. Format: https://console.cloud.google.com/logs/query;query={logName}{protoPayload.resourceName}{protoPayload.methodName}{timeRange}{organization} */
   exceptionAuditLogLink?: string;
   /** Output only. List of all the exception detail added for the violation. */
-  exceptionContexts?: Array<GoogleCloudAssuredworkloadsV1ViolationExceptionContext>;
+  exceptionContexts?: ReadonlyArray<GoogleCloudAssuredworkloadsV1ViolationExceptionContext>;
   /** Output only. Type of the violation */
   violationType?:
     | "VIOLATION_TYPE_UNSPECIFIED"
@@ -722,7 +722,7 @@ export const GoogleCloudAssuredworkloadsV1Violation =
 
 export interface GoogleCloudAssuredworkloadsV1ListViolationsResponse {
   /** List of Violations under a Workload. */
-  violations?: Array<GoogleCloudAssuredworkloadsV1Violation>;
+  violations?: ReadonlyArray<GoogleCloudAssuredworkloadsV1Violation>;
   /** The next page token. Returns empty if reached the last page. */
   nextPageToken?: string;
 }
@@ -802,9 +802,9 @@ export const GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse =
 
 export interface GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues {
   /** List of values allowed at this resource. */
-  allowedValues?: Array<string>;
+  allowedValues?: ReadonlyArray<string>;
   /** List of values denied at this resource. */
-  deniedValues?: Array<string>;
+  deniedValues?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues =
@@ -914,7 +914,7 @@ export const GoogleCloudAssuredworkloadsV1WorkloadUpdate =
 
 export interface GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse {
   /** The list of workload updates for a given workload. */
-  workloadUpdates?: Array<GoogleCloudAssuredworkloadsV1WorkloadUpdate>;
+  workloadUpdates?: ReadonlyArray<GoogleCloudAssuredworkloadsV1WorkloadUpdate>;
   /** The next page token. Return empty if reached the last page. */
   nextPageToken?: string;
 }
@@ -1066,10 +1066,7 @@ export const ListOrganizationsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsOperationsRequest>;
 
@@ -1105,10 +1102,7 @@ export const GetOrganizationsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsOperationsRequest>;
 
@@ -1148,11 +1142,7 @@ export const CreateOrganizationsLocationsWorkloadsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/workloads",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/workloads", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsLocationsWorkloadsRequest>;
 
@@ -1192,11 +1182,7 @@ export const PatchOrganizationsLocationsWorkloadsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/workloads/{workloadsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsLocationsWorkloadsRequest>;
 
@@ -1235,7 +1221,7 @@ export const RestrictAllowedResourcesOrganizationsLocationsWorkloadsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/workloads/{workloadsId}:restrictAllowedResources",
+      path: "v1/{name}:restrictAllowedResources",
       hasBody: true,
     }),
     svc,
@@ -1273,10 +1259,7 @@ export const DeleteOrganizationsLocationsWorkloadsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/workloads/{workloadsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsLocationsWorkloadsRequest>;
 
@@ -1307,10 +1290,7 @@ export const GetOrganizationsLocationsWorkloadsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/workloads/{workloadsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsWorkloadsRequest>;
 
@@ -1356,10 +1336,7 @@ export const AnalyzeWorkloadMoveOrganizationsLocationsWorkloadsRequest =
       T.HttpQuery("assetTypes"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/workloads/{workloadsId}:analyzeWorkloadMove",
-    }),
+    T.Http({ method: "GET", path: "v1/{target}:analyzeWorkloadMove" }),
     svc,
   ) as unknown as Schema.Schema<AnalyzeWorkloadMoveOrganizationsLocationsWorkloadsRequest>;
 
@@ -1405,10 +1382,7 @@ export const ListOrganizationsLocationsWorkloadsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/workloads",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/workloads" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsWorkloadsRequest>;
 
@@ -1451,7 +1425,7 @@ export const MutatePartnerPermissionsOrganizationsLocationsWorkloadsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/workloads/{workloadsId}:mutatePartnerPermissions",
+      path: "v1/{name}:mutatePartnerPermissions",
       hasBody: true,
     }),
     svc,
@@ -1488,7 +1462,7 @@ export const EnableResourceMonitoringOrganizationsLocationsWorkloadsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/workloads/{workloadsId}:enableResourceMonitoring",
+      path: "v1/{name}:enableResourceMonitoring",
       hasBody: true,
     }),
     svc,
@@ -1525,7 +1499,7 @@ export const EnableComplianceUpdatesOrganizationsLocationsWorkloadsRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/workloads/{workloadsId}:enableComplianceUpdates",
+      path: "v1/{name}:enableComplianceUpdates",
       hasBody: true,
     }),
     svc,
@@ -1579,10 +1553,7 @@ export const ListOrganizationsLocationsWorkloadsViolationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/workloads/{workloadsId}/violations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/violations" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsWorkloadsViolationsRequest>;
 
@@ -1618,10 +1589,7 @@ export const GetOrganizationsLocationsWorkloadsViolationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/workloads/{workloadsId}/violations/{violationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsWorkloadsViolationsRequest>;
 
@@ -1658,11 +1626,7 @@ export const AcknowledgeOrganizationsLocationsWorkloadsViolationsRequest =
       GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/workloads/{workloadsId}/violations/{violationsId}:acknowledge",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:acknowledge", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AcknowledgeOrganizationsLocationsWorkloadsViolationsRequest>;
 
@@ -1701,10 +1665,7 @@ export const ListOrganizationsLocationsWorkloadsUpdatesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/workloads/{workloadsId}/updates",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/updates" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsWorkloadsUpdatesRequest>;
 
@@ -1745,11 +1706,7 @@ export const ApplyOrganizationsLocationsWorkloadsUpdatesRequest =
       GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/workloads/{workloadsId}/updates/{updatesId}:apply",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:apply", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ApplyOrganizationsLocationsWorkloadsUpdatesRequest>;
 

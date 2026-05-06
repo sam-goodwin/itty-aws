@@ -28,7 +28,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -62,11 +62,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -91,9 +91,9 @@ export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface GoogleCloudOsconfigV2_OrchestrationScope_ResourceHierarchySelector {
   /** Optional. Names of the projects in scope. Format: `projects/{project_number}` */
-  includedProjects?: Array<string>;
+  includedProjects?: ReadonlyArray<string>;
   /** Optional. Names of the folders in scope. Format: `folders/{folder_id}` */
-  includedFolders?: Array<string>;
+  includedFolders?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudOsconfigV2_OrchestrationScope_ResourceHierarchySelector =
@@ -107,7 +107,7 @@ export const GoogleCloudOsconfigV2_OrchestrationScope_ResourceHierarchySelector 
 
 export interface GoogleCloudOsconfigV2_OrchestrationScope_LocationSelector {
   /** Optional. Names of the locations in scope. Format: `us-central1-a` */
-  includedLocations?: Array<string>;
+  includedLocations?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudOsconfigV2_OrchestrationScope_LocationSelector =
@@ -138,7 +138,7 @@ export const GoogleCloudOsconfigV2_OrchestrationScope_Selector =
 
 export interface GoogleCloudOsconfigV2__OrchestrationScope {
   /** Optional. Selectors of the orchestration scope. There is a logical AND between each selector defined. When there is no explicit `ResourceHierarchySelector` selector specified, the scope is by default bounded to the parent of the policy orchestrator resource. */
-  selectors?: Array<GoogleCloudOsconfigV2_OrchestrationScope_Selector>;
+  selectors?: ReadonlyArray<GoogleCloudOsconfigV2_OrchestrationScope_Selector>;
 }
 
 export const GoogleCloudOsconfigV2__OrchestrationScope =
@@ -278,7 +278,7 @@ export interface OSPolicyResourcePackageResourceMSI {
   /** Required. The MSI package. */
   source?: OSPolicyResourceFile;
   /** Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`. */
-  properties?: Array<string>;
+  properties?: ReadonlyArray<string>;
 }
 
 export const OSPolicyResourcePackageResourceMSI =
@@ -330,7 +330,7 @@ export interface OSPolicyResourceRepositoryResourceAptRepository {
   /** Required. Distribution of this repository. */
   distribution?: string;
   /** Required. List of components for this repository. Must contain at least one item. */
-  components?: Array<string>;
+  components?: ReadonlyArray<string>;
   /** URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`. */
   gpgKey?: string;
 }
@@ -354,7 +354,7 @@ export interface OSPolicyResourceRepositoryResourceYumRepository {
   /** Required. The location of the repository directory. */
   baseUrl?: string;
   /** URIs of GPG keys. */
-  gpgKeys?: Array<string>;
+  gpgKeys?: ReadonlyArray<string>;
 }
 
 export const OSPolicyResourceRepositoryResourceYumRepository =
@@ -375,7 +375,7 @@ export interface OSPolicyResourceRepositoryResourceZypperRepository {
   /** Required. The location of the repository directory. */
   baseUrl?: string;
   /** URIs of GPG keys. */
-  gpgKeys?: Array<string>;
+  gpgKeys?: ReadonlyArray<string>;
 }
 
 export const OSPolicyResourceRepositoryResourceZypperRepository =
@@ -428,7 +428,7 @@ export interface OSPolicyResourceExecResourceExec {
   /** An inline script. The size of the script is limited to 32KiB. */
   script?: string;
   /** Optional arguments to pass to the source during execution. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Required. The script interpreter to use. */
   interpreter?:
     | "INTERPRETER_UNSPECIFIED"
@@ -512,9 +512,9 @@ export const OSPolicyResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface OSPolicyResourceGroup {
   /** List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally. */
-  inventoryFilters?: Array<OSPolicyInventoryFilter>;
+  inventoryFilters?: ReadonlyArray<OSPolicyInventoryFilter>;
   /** Required. List of resources configured for this resource group. The resources are executed in the exact order specified here. */
-  resources?: Array<OSPolicyResource>;
+  resources?: ReadonlyArray<OSPolicyResource>;
 }
 
 export const OSPolicyResourceGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -530,7 +530,7 @@ export interface OSPolicy {
   /** Required. Policy mode */
   mode?: "MODE_UNSPECIFIED" | "VALIDATION" | "ENFORCEMENT" | (string & {});
   /** Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match` */
-  resourceGroups?: Array<OSPolicyResourceGroup>;
+  resourceGroups?: ReadonlyArray<OSPolicyResourceGroup>;
   /** This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce. */
   allowNoResourceGroupMatch?: boolean;
 }
@@ -570,11 +570,11 @@ export interface OSPolicyAssignmentInstanceFilter {
   /** Target all VMs in the project. If true, no other criteria is permitted. */
   all?: boolean;
   /** List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM. */
-  inclusionLabels?: Array<OSPolicyAssignmentLabelSet>;
+  inclusionLabels?: ReadonlyArray<OSPolicyAssignmentLabelSet>;
   /** List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM. */
-  exclusionLabels?: Array<OSPolicyAssignmentLabelSet>;
+  exclusionLabels?: ReadonlyArray<OSPolicyAssignmentLabelSet>;
   /** List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories. */
-  inventories?: Array<OSPolicyAssignmentInstanceFilterInventory>;
+  inventories?: ReadonlyArray<OSPolicyAssignmentInstanceFilterInventory>;
 }
 
 export const OSPolicyAssignmentInstanceFilter =
@@ -618,7 +618,7 @@ export interface OSPolicyAssignment {
   /** OS policy assignment description. Length of the description is limited to 1024 characters. */
   description?: string;
   /** Required. List of OS policies to be applied to the VMs. */
-  osPolicies?: Array<OSPolicy>;
+  osPolicies?: ReadonlyArray<OSPolicy>;
   /** Required. Filter to select VMs. */
   instanceFilter?: OSPolicyAssignmentInstanceFilter;
   /** Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted. */
@@ -786,11 +786,11 @@ export const GoogleCloudOsconfigV2__PolicyOrchestrator =
 
 export interface GoogleCloudOsconfigV2__ListPolicyOrchestratorsResponse {
   /** The policy orchestrators for the specified parent resource. */
-  policyOrchestrators?: Array<GoogleCloudOsconfigV2__PolicyOrchestrator>;
+  policyOrchestrators?: ReadonlyArray<GoogleCloudOsconfigV2__PolicyOrchestrator>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudOsconfigV2__ListPolicyOrchestratorsResponse =
@@ -1070,10 +1070,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -1108,10 +1105,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -1142,10 +1136,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -1179,11 +1170,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -1229,7 +1216,7 @@ export const CreateProjectsLocationsGlobalPolicyOrchestratorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/global/policyOrchestrators",
+      path: "v2/{parent}/policyOrchestrators",
       hasBody: true,
     }),
     svc,
@@ -1276,10 +1263,7 @@ export const ListProjectsLocationsGlobalPolicyOrchestratorsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/global/policyOrchestrators",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/policyOrchestrators" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGlobalPolicyOrchestratorsRequest>;
 
@@ -1315,10 +1299,7 @@ export const GetProjectsLocationsGlobalPolicyOrchestratorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/global/policyOrchestrators/{policyOrchestratorsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGlobalPolicyOrchestratorsRequest>;
 
@@ -1358,11 +1339,7 @@ export const PatchProjectsLocationsGlobalPolicyOrchestratorsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/projects/{projectsId}/locations/global/policyOrchestrators/{policyOrchestratorsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsGlobalPolicyOrchestratorsRequest>;
 
@@ -1400,10 +1377,7 @@ export const DeleteProjectsLocationsGlobalPolicyOrchestratorsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/global/policyOrchestrators/{policyOrchestratorsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsGlobalPolicyOrchestratorsRequest>;
 
@@ -1450,10 +1424,7 @@ export const ListFoldersLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/folders/{foldersId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersLocationsOperationsRequest>;
 
@@ -1488,10 +1459,7 @@ export const GetFoldersLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/folders/{foldersId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersLocationsOperationsRequest>;
 
@@ -1522,10 +1490,7 @@ export const DeleteFoldersLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/folders/{foldersId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteFoldersLocationsOperationsRequest>;
 
@@ -1559,11 +1524,7 @@ export const CancelFoldersLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/folders/{foldersId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelFoldersLocationsOperationsRequest>;
 
@@ -1609,7 +1570,7 @@ export const CreateFoldersLocationsGlobalPolicyOrchestratorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/folders/{foldersId}/locations/global/policyOrchestrators",
+      path: "v2/{parent}/policyOrchestrators",
       hasBody: true,
     }),
     svc,
@@ -1655,10 +1616,7 @@ export const ListFoldersLocationsGlobalPolicyOrchestratorsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/folders/{foldersId}/locations/global/policyOrchestrators",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/policyOrchestrators" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersLocationsGlobalPolicyOrchestratorsRequest>;
 
@@ -1694,10 +1652,7 @@ export const GetFoldersLocationsGlobalPolicyOrchestratorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/folders/{foldersId}/locations/global/policyOrchestrators/{policyOrchestratorsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersLocationsGlobalPolicyOrchestratorsRequest>;
 
@@ -1737,11 +1692,7 @@ export const PatchFoldersLocationsGlobalPolicyOrchestratorsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/folders/{foldersId}/locations/global/policyOrchestrators/{policyOrchestratorsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchFoldersLocationsGlobalPolicyOrchestratorsRequest>;
 
@@ -1778,10 +1729,7 @@ export const DeleteFoldersLocationsGlobalPolicyOrchestratorsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/folders/{foldersId}/locations/global/policyOrchestrators/{policyOrchestratorsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteFoldersLocationsGlobalPolicyOrchestratorsRequest>;
 
@@ -1827,10 +1775,7 @@ export const ListOrganizationsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsOperationsRequest>;
 
@@ -1866,10 +1811,7 @@ export const GetOrganizationsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsOperationsRequest>;
 
@@ -1900,10 +1842,7 @@ export const DeleteOrganizationsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsLocationsOperationsRequest>;
 
@@ -1937,11 +1876,7 @@ export const CancelOrganizationsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelOrganizationsLocationsOperationsRequest>;
 
@@ -1987,7 +1922,7 @@ export const CreateOrganizationsLocationsGlobalPolicyOrchestratorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/organizations/{organizationsId}/locations/global/policyOrchestrators",
+      path: "v2/{parent}/policyOrchestrators",
       hasBody: true,
     }),
     svc,
@@ -2034,10 +1969,7 @@ export const ListOrganizationsLocationsGlobalPolicyOrchestratorsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/global/policyOrchestrators",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/policyOrchestrators" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsGlobalPolicyOrchestratorsRequest>;
 
@@ -2074,10 +2006,7 @@ export const GetOrganizationsLocationsGlobalPolicyOrchestratorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/global/policyOrchestrators/{policyOrchestratorsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsGlobalPolicyOrchestratorsRequest>;
 
@@ -2118,11 +2047,7 @@ export const PatchOrganizationsLocationsGlobalPolicyOrchestratorsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/organizations/{organizationsId}/locations/global/policyOrchestrators/{policyOrchestratorsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsLocationsGlobalPolicyOrchestratorsRequest>;
 
@@ -2161,10 +2086,7 @@ export const DeleteOrganizationsLocationsGlobalPolicyOrchestratorsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/organizations/{organizationsId}/locations/global/policyOrchestrators/{policyOrchestratorsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsLocationsGlobalPolicyOrchestratorsRequest>;
 

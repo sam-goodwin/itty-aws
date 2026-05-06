@@ -591,10 +591,18 @@ function propertyToTsType(
       return "boolean";
 
     case "array":
+      // Emit `ReadonlyArray<T>` (not `Array<T>`) so the interface matches
+      // what `Schema.Type<typeof Schema.Array(...)>` produces. Without
+      // this, the schema-derived value type is `readonly T[]` while the
+      // hand-emitted interface declares mutable `T[]`, and TS rejects
+      // `readonly T[]` → `T[]` in operation method signatures (see e.g.
+      // cloudresourcemanager-v3 `getOperations` / `listTagBindings`).
+      // `ReadonlyArray<T>` is a supertype of `T[]`, so callers building
+      // requests with array literals stay compatible.
       if (prop.items) {
-        return `Array<${propertyToTsType(prop.items, allSchemas, renames)}>`;
+        return `ReadonlyArray<${propertyToTsType(prop.items, allSchemas, renames)}>`;
       }
-      return "Array<unknown>";
+      return "ReadonlyArray<unknown>";
 
     case "object":
       if (prop.additionalProperties) {
@@ -1052,7 +1060,15 @@ function methodToOperation(
     functionName,
     resourcePath,
     httpMethod: method.httpMethod,
-    path: method.flatPath ?? method.path,
+    // Prefer `path` (the templated form, e.g. `v3/{+name}`) over
+    // `flatPath` (a documentation-only form, e.g.
+    // `v3/projects/{projectsId}`). `flatPath` uses synthesized variable
+    // names that don't match the `parameters.*` keys, so substitution
+    // via `T.HttpPath(<paramName>)` would silently fail at runtime.
+    // Strip RFC 6570 reserved-expansion markers (`{+name}` -> `{name}`)
+    // so the emitted template variables align with the schema field
+    // wire names.
+    path: stripReservedExpansion(method.path ?? method.flatPath),
     parameters,
     requestRef: method.request?.$ref,
     responseRef: method.response?.$ref,
@@ -1174,6 +1190,22 @@ function collectPropertyDeps(prop: PropertySchema, deps: string[]): void {
 function capitalize(s: string): string {
   if (!s) return s;
   return s[0]!.toUpperCase() + s.slice(1);
+}
+
+/**
+ * Strip RFC 6570 reserved-expansion markers from a Discovery Document
+ * URL template. GCP publishes path templates like `v3/{+name}` to
+ * indicate that the `name` parameter should be expanded without
+ * percent-encoding the `/` characters within its value. Distilled's
+ * `buildRequestParts` always `encodeURIComponent`s path values; GCP's
+ * REST endpoints accept `%2F` as equivalent to `/` in resource-name
+ * path segments, so we drop the `+` marker and let the standard
+ * substitution path handle the rest. The variable name itself
+ * (`name`) is preserved so it lines up with the
+ * `T.HttpPath(<paramName>)` annotation on the request schema.
+ */
+function stripReservedExpansion(path: string): string {
+  return path.replace(/\{\+([^}]+)\}/g, "{$1}");
 }
 
 function safeIdentifier(name: string): string {

@@ -40,7 +40,7 @@ export const GoogleHomeEnterpriseSdmV1Structure =
 
 export interface GoogleHomeEnterpriseSdmV1ListStructuresResponse {
   /** The list of structures. */
-  structures?: Array<GoogleHomeEnterpriseSdmV1Structure>;
+  structures?: ReadonlyArray<GoogleHomeEnterpriseSdmV1Structure>;
 }
 
 export const GoogleHomeEnterpriseSdmV1ListStructuresResponse =
@@ -67,7 +67,7 @@ export const GoogleHomeEnterpriseSdmV1Room =
 
 export interface GoogleHomeEnterpriseSdmV1ListRoomsResponse {
   /** The list of rooms. */
-  rooms?: Array<GoogleHomeEnterpriseSdmV1Room>;
+  rooms?: ReadonlyArray<GoogleHomeEnterpriseSdmV1Room>;
 }
 
 export const GoogleHomeEnterpriseSdmV1ListRoomsResponse =
@@ -113,7 +113,7 @@ export interface GoogleHomeEnterpriseSdmV1Device {
   /** Required. The resource name of the device. For example: "enterprises/XYZ/devices/123". */
   name?: string;
   /** Assignee details of the device. */
-  parentRelations?: Array<GoogleHomeEnterpriseSdmV1ParentRelation>;
+  parentRelations?: ReadonlyArray<GoogleHomeEnterpriseSdmV1ParentRelation>;
 }
 
 export const GoogleHomeEnterpriseSdmV1Device =
@@ -129,7 +129,7 @@ export const GoogleHomeEnterpriseSdmV1Device =
 
 export interface GoogleHomeEnterpriseSdmV1ListDevicesResponse {
   /** The list of devices. */
-  devices?: Array<GoogleHomeEnterpriseSdmV1Device>;
+  devices?: ReadonlyArray<GoogleHomeEnterpriseSdmV1Device>;
 }
 
 export const GoogleHomeEnterpriseSdmV1ListDevicesResponse =
@@ -165,10 +165,7 @@ export const GetEnterprisesStructuresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/enterprises/{enterprisesId}/structures/{structuresId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEnterprisesStructuresRequest>;
 
@@ -203,10 +200,7 @@ export const ListEnterprisesStructuresRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/enterprises/{enterprisesId}/structures",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/structures" }),
     svc,
   ) as unknown as Schema.Schema<ListEnterprisesStructuresRequest>;
 
@@ -238,10 +232,7 @@ export const GetEnterprisesStructuresRoomsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/enterprises/{enterprisesId}/structures/{structuresId}/rooms/{roomsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEnterprisesStructuresRoomsRequest>;
 
@@ -273,10 +264,7 @@ export const ListEnterprisesStructuresRoomsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/enterprises/{enterprisesId}/structures/{structuresId}/rooms",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/rooms" }),
     svc,
   ) as unknown as Schema.Schema<ListEnterprisesStructuresRoomsRequest>;
 
@@ -311,7 +299,7 @@ export const ListEnterprisesDevicesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/enterprises/{enterprisesId}/devices" }),
+    T.Http({ method: "GET", path: "v1/{parent}/devices" }),
     svc,
   ) as unknown as Schema.Schema<ListEnterprisesDevicesRequest>;
 
@@ -343,10 +331,7 @@ export const GetEnterprisesDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/enterprises/{enterprisesId}/devices/{devicesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEnterprisesDevicesRequest>;
 
@@ -382,11 +367,7 @@ export const ExecuteCommandEnterprisesDevicesRequest =
       GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/enterprises/{enterprisesId}/devices/{devicesId}:executeCommand",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:executeCommand", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExecuteCommandEnterprisesDevicesRequest>;
 

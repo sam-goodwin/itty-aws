@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare Workers API
+  title: Cloudflare WORKERS API
   version: 0.0.0
 servers:
   - url: https://api.cloudflare.com/client/v4
@@ -6715,6 +6715,31 @@ paths:
                               - name
                               - type
                               - namespace
+                          - type: object
+                            properties:
+                              name:
+                                type: string
+                              type:
+                                type: string
+                                enum:
+                                  - ratelimit
+                              namespace_id:
+                                type: string
+                              simple:
+                                type: object
+                                properties:
+                                  limit:
+                                    type: number
+                                  period:
+                                    type: number
+                                required:
+                                  - limit
+                                  - period
+                            required:
+                              - name
+                              - type
+                              - namespace_id
+                              - simple
                       description: "List of bindings attached to a Worker. You can find more about
                         bindings on our docs:
                         https://developers.cloudflare.com/workers/configuration\
@@ -6914,6 +6939,21 @@ paths:
                                 - invocation_logs
                           nullable: true
                           description: Log settings for the Worker.
+                        traces:
+                          type: object
+                          properties:
+                            enabled:
+                              type: boolean
+                            head_sampling_rate:
+                              type: number
+                            destinations:
+                              type: array
+                              items:
+                                type: string
+                            persist:
+                              type: boolean
+                          required:
+                            - enabled
                       required:
                         - enabled
                       description: Observability settings for the Worker.
@@ -7130,6 +7170,21 @@ paths:
                               - invocation_logs
                         nullable: true
                         description: Log settings for the Worker.
+                      traces:
+                        type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                          head_sampling_rate:
+                            type: number
+                          destinations:
+                            type: array
+                            items:
+                              type: string
+                          persist:
+                            type: boolean
+                        required:
+                          - enabled
                     required:
                       - enabled
                     description: Observability settings for the Worker.
@@ -10087,6 +10142,21 @@ paths:
                               - invocation_logs
                         nullable: true
                         description: Log settings for the Worker.
+                      traces:
+                        type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                          head_sampling_rate:
+                            type: number
+                          destinations:
+                            type: array
+                            items:
+                              type: string
+                          persist:
+                            type: boolean
+                        required:
+                          - enabled
                     required:
                       - enabled
                     description: Observability settings for the Worker.
@@ -12123,6 +12193,21 @@ paths:
                                   - invocation_logs
                             nullable: true
                             description: Log settings for the Worker.
+                          traces:
+                            type: object
+                            properties:
+                              enabled:
+                                type: boolean
+                              head_sampling_rate:
+                                type: number
+                              destinations:
+                                type: array
+                                items:
+                                  type: string
+                              persist:
+                                type: boolean
+                            required:
+                              - enabled
                         required:
                           - enabled
                     nullable: true
@@ -12231,6 +12316,21 @@ paths:
                                 - invocation_logs
                           nullable: true
                           description: Log settings for the Worker.
+                        traces:
+                          type: object
+                          properties:
+                            enabled:
+                              type: boolean
+                            head_sampling_rate:
+                              type: number
+                            destinations:
+                              type: array
+                              items:
+                                type: string
+                            persist:
+                              type: boolean
+                          required:
+                            - enabled
                       required:
                         - enabled
                   nullable: true
@@ -12317,6 +12417,21 @@ paths:
                                   - invocation_logs
                             nullable: true
                             description: Log settings for the Worker.
+                          traces:
+                            type: object
+                            properties:
+                              enabled:
+                                type: boolean
+                              head_sampling_rate:
+                                type: number
+                              destinations:
+                                type: array
+                                items:
+                                  type: string
+                              persist:
+                                type: boolean
+                            required:
+                              - enabled
                         required:
                           - enabled
                     nullable: true

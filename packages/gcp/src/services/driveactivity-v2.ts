@@ -175,9 +175,9 @@ export const TargetReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Move {
   /** The added parent object(s). */
-  addedParents?: Array<TargetReference>;
+  addedParents?: ReadonlyArray<TargetReference>;
   /** The removed parent object(s). */
-  removedParents?: Array<TargetReference>;
+  removedParents?: ReadonlyArray<TargetReference>;
 }
 
 export const Move = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -221,7 +221,7 @@ export const RestrictionChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SettingsChange {
   /** The set of changes made to restrictions. */
-  restrictionChanges?: Array<RestrictionChange>;
+  restrictionChanges?: ReadonlyArray<RestrictionChange>;
 }
 
 export const SettingsChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -368,9 +368,9 @@ export const Permission = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PermissionChange {
   /** The set of permissions added by this change. */
-  addedPermissions?: Array<Permission>;
+  addedPermissions?: ReadonlyArray<Permission>;
   /** The set of permissions removed by this change. */
-  removedPermissions?: Array<Permission>;
+  removedPermissions?: ReadonlyArray<Permission>;
 }
 
 export const PermissionChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -455,7 +455,7 @@ export interface Comment {
   /** A change on a regular posted comment. */
   post?: Post;
   /** Users who are mentioned in this comment. */
-  mentionedUsers?: Array<User>;
+  mentionedUsers?: ReadonlyArray<User>;
   /** A change on an assignment. */
   assignment?: Assignment;
   /** A change on a suggestion. */
@@ -480,7 +480,7 @@ export const Text = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SelectionList {
   /** Selection values. */
-  values?: Array<Selection>;
+  values?: ReadonlyArray<Selection>;
 }
 
 export const SelectionList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -507,7 +507,7 @@ export const SingleUser = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface UserList {
   /** User values. */
-  values?: Array<SingleUser>;
+  values?: ReadonlyArray<SingleUser>;
 }
 
 export const UserList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -525,7 +525,7 @@ export const Driveactivity_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TextList {
   /** Text values. */
-  values?: Array<Text>;
+  values?: ReadonlyArray<Text>;
 }
 
 export const TextList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -582,11 +582,11 @@ export const FieldValueChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AppliedLabelChangeDetail {
   /** Field Changes. Only present if `types` contains `LABEL_FIELD_VALUE_CHANGED`. */
-  fieldChanges?: Array<FieldValueChange>;
+  fieldChanges?: ReadonlyArray<FieldValueChange>;
   /** The Label name representing the Label that changed. This name always contains the revision of the Label that was used when this Action occurred. The format is `labels/id@revision`. */
   label?: string;
   /** The types of changes made to the Label on the Target. */
-  types?: Array<
+  types?: ReadonlyArray<
     | "TYPE_UNSPECIFIED"
     | "LABEL_ADDED"
     | "LABEL_REMOVED"
@@ -608,7 +608,7 @@ export const AppliedLabelChangeDetail =
 
 export interface AppliedLabelChange {
   /** Changes that were made to the Label on the Target. */
-  changes?: Array<AppliedLabelChangeDetail>;
+  changes?: ReadonlyArray<AppliedLabelChangeDetail>;
 }
 
 export const AppliedLabelChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -863,13 +863,13 @@ export interface DriveActivity {
   /** Key information about the primary action for this activity. This is either representative, or the most important, of all actions in the activity, according to the ConsolidationStrategy in the request. */
   primaryActionDetail?: ActionDetail;
   /** All actor(s) responsible for the activity. */
-  actors?: Array<Actor>;
+  actors?: ReadonlyArray<Actor>;
   /** All Google Drive objects this activity is about (e.g. file, folder, drive). This represents the state of the target immediately after the actions occurred. */
-  targets?: Array<Target>;
+  targets?: ReadonlyArray<Target>;
   /** The activity occurred over this time range. */
   timeRange?: TimeRange;
   /** Details on all actions in this activity. */
-  actions?: Array<Action>;
+  actions?: ReadonlyArray<Action>;
   /** The activity occurred at this specific time. */
   timestamp?: string;
 }
@@ -903,7 +903,7 @@ export const ConsolidationStrategy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface QueryDriveActivityResponse {
   /** List of activity requested. */
-  activities?: Array<DriveActivity>;
+  activities?: ReadonlyArray<DriveActivity>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }

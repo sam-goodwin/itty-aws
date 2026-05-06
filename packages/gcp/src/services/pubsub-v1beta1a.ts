@@ -50,7 +50,7 @@ export interface PubsubMessage {
   /** The message payload. */
   data?: string;
   /** Optional list of labels for this message. Keys in this collection must be unique. */
-  label?: Array<Label>;
+  label?: ReadonlyArray<Label>;
   /** ID of this message assigned by the server at publication time. Guaranteed to be unique within the topic. This value may be read by a subscriber that receives a PubsubMessage via a Pull call or a push delivery. It must not be populated by a publisher in a Publish call. */
   messageId?: string;
   /** The time at which the message was published. The time is milliseconds since the UNIX epoch. */
@@ -86,7 +86,7 @@ export interface PublishBatchRequest {
   /** The messages in the request will be published on this topic. */
   topic?: string;
   /** The messages to publish. */
-  messages?: Array<PubsubMessage>;
+  messages?: ReadonlyArray<PubsubMessage>;
 }
 
 export const PublishBatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -96,7 +96,7 @@ export const PublishBatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PublishBatchResponse {
   /** The server-assigned ID of each published message, in the same order as the messages in the request. IDs are guaranteed to be unique within the topic. */
-  messageIds?: Array<string>;
+  messageIds?: ReadonlyArray<string>;
 }
 
 export const PublishBatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -105,7 +105,7 @@ export const PublishBatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTopicsResponse {
   /** The resulting topics. */
-  topic?: Array<Topic>;
+  topic?: ReadonlyArray<Topic>;
   /** If not empty, indicates that there are more topics that match the request, and this value should be passed to the next ListTopicsRequest to continue. */
   nextPageToken?: string;
 }
@@ -144,7 +144,7 @@ export const Subscription = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSubscriptionsResponse {
   /** The subscriptions that match the request. */
-  subscription?: Array<Subscription>;
+  subscription?: ReadonlyArray<Subscription>;
   /** If not empty, indicates that there are more subscriptions that match the request and this value should be passed to the next ListSubscriptionsRequest to continue. */
   nextPageToken?: string;
 }
@@ -227,7 +227,7 @@ export const PullBatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PullBatchResponse {
   /** Received Pub/Sub messages or status events. The Pub/Sub system will return zero messages if there are no more messages available in the backlog. The Pub/Sub system may return fewer than the max_events requested even if there are more messages available in the backlog. */
-  pullResponses?: Array<PullResponse>;
+  pullResponses?: ReadonlyArray<PullResponse>;
 }
 
 export const PullBatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -240,7 +240,7 @@ export interface ModifyAckDeadlineRequest {
   /** The acknowledgment ID. Either this or ack_ids must be populated, not both. */
   ackId?: string;
   /** List of acknowledgment IDs. Either this field or ack_id should be populated, not both. */
-  ackIds?: Array<string>;
+  ackIds?: ReadonlyArray<string>;
   /** The new ack deadline with respect to the time this request was sent to the Pub/Sub system. Must be >= 0. For example, if the value is 10, the new ack deadline will expire 10 seconds after the ModifyAckDeadline call was made. Specifying zero may immediately make the message available for another pull request. */
   ackDeadlineSeconds?: number;
 }
@@ -257,7 +257,7 @@ export interface AcknowledgeRequest {
   /** The subscription whose message is being acknowledged. */
   subscription?: string;
   /** The acknowledgment ID for the message being acknowledged. This was returned by the Pub/Sub system in the Pull response. */
-  ackId?: Array<string>;
+  ackId?: ReadonlyArray<string>;
 }
 
 export const AcknowledgeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -370,7 +370,7 @@ export interface GetTopicsRequest {
 export const GetTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   topic: Schema.String.pipe(T.HttpPath("topic")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta1a/topics/{topicsId}" }),
+  T.Http({ method: "GET", path: "v1beta1a/topics/{topic}" }),
   svc,
 ) as unknown as Schema.Schema<GetTopicsRequest>;
 
@@ -439,7 +439,7 @@ export interface DeleteTopicsRequest {
 export const DeleteTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   topic: Schema.String.pipe(T.HttpPath("topic")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v1beta1a/topics/{topicsId}" }),
+  T.Http({ method: "DELETE", path: "v1beta1a/topics/{topic}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteTopicsRequest>;
 
@@ -500,7 +500,7 @@ export const GetSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscription: Schema.String.pipe(T.HttpPath("subscription")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1a/subscriptions/{subscriptionsId}" }),
+    T.Http({ method: "GET", path: "v1beta1a/subscriptions/{subscription}" }),
     svc,
   ) as unknown as Schema.Schema<GetSubscriptionsRequest>;
 
@@ -572,10 +572,7 @@ export const DeleteSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscription: Schema.String.pipe(T.HttpPath("subscription")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1a/subscriptions/{subscriptionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1a/subscriptions/{subscription}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteSubscriptionsRequest>;
 

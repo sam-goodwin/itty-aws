@@ -82,11 +82,11 @@ export interface GoogleCloudRecaptchaenterpriseV1Metrics {
   /** Inclusive start time aligned to a day in the America/Los_Angeles (Pacific) timezone. */
   startTime?: string;
   /** Metrics are continuous and in order by dates, and in the granularity of day. All Key types should have score-based data. */
-  scoreMetrics?: Array<GoogleCloudRecaptchaenterpriseV1ScoreMetrics>;
+  scoreMetrics?: ReadonlyArray<GoogleCloudRecaptchaenterpriseV1ScoreMetrics>;
   /** Output only. Identifier. The name of the metrics, in the format `projects/{project}/keys/{key}/metrics`. */
   name?: string;
   /** Metrics are continuous and in order by dates, and in the granularity of day. Only challenge-based keys (CHECKBOX, INVISIBLE) have challenge-based data. */
-  challengeMetrics?: Array<GoogleCloudRecaptchaenterpriseV1ChallengeMetrics>;
+  challengeMetrics?: ReadonlyArray<GoogleCloudRecaptchaenterpriseV1ChallengeMetrics>;
 }
 
 export const GoogleCloudRecaptchaenterpriseV1Metrics =
@@ -201,7 +201,7 @@ export interface GoogleCloudRecaptchaenterpriseV1FirewallPolicy {
   /** Optional. A description of what this policy aims to achieve, for convenience purposes. The description can at most include 256 UTF-8 characters. */
   description?: string;
   /** Optional. The actions that the caller should take regarding user access. There should be at most one terminal action. A terminal action is any action that forces a response, such as `AllowAction`, `BlockAction` or `SubstituteAction`. Zero or more non-terminal actions such as `SetHeader` might be specified. A single policy can contain up to 16 actions. */
-  actions?: Array<GoogleCloudRecaptchaenterpriseV1FirewallAction>;
+  actions?: ReadonlyArray<GoogleCloudRecaptchaenterpriseV1FirewallAction>;
   /** Identifier. The resource name for the FirewallPolicy in the format `projects/{project}/firewallpolicies/{firewallpolicy}`. */
   name?: string;
   /** Optional. The path for which this policy applies, specified as a glob pattern. For more information on glob, see the [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path has a max length of 200 characters. */
@@ -254,7 +254,7 @@ export interface GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict {
   /** Output only. Probability of an SMS event being fraudulent. Values are from 0.0 (lowest) to 1.0 (highest). */
   risk?: number;
   /** Output only. Reasons contributing to the SMS toll fraud verdict. */
-  reasons?: Array<
+  reasons?: ReadonlyArray<
     "SMS_TOLL_FRAUD_REASON_UNSPECIFIED" | "INVALID_PHONE_NUMBER" | (string & {})
   >;
 }
@@ -447,7 +447,7 @@ export interface GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment {
   /** Output only. Assessment of this transaction for risk of a stolen instrument. */
   stolenInstrumentVerdict?: GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict;
   /** Output only. Reasons why the transaction is probably fraudulent and received a high transaction risk score. */
-  riskReasons?: Array<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason>;
+  riskReasons?: ReadonlyArray<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason>;
   /** Output only. Assessment of this transaction for risk of being part of a card testing attack. */
   cardTestingVerdict?: GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict;
   /** Output only. Assessment of this transaction for behavioral trust. */
@@ -497,7 +497,7 @@ export const GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership =
 
 export interface GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse {
   /** The memberships listed by the query. */
-  relatedAccountGroupMemberships?: Array<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership>;
+  relatedAccountGroupMemberships?: ReadonlyArray<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -532,7 +532,7 @@ export const GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals =
 
 export interface GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals {
   /** Output only. The labels for the payment card in this transaction. */
-  cardLabels?: Array<
+  cardLabels?: ReadonlyArray<
     | "CARD_LABEL_UNSPECIFIED"
     | "PREPAID"
     | "VIRTUAL"
@@ -605,7 +605,7 @@ export const GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSettings =
 
 export interface GoogleCloudRecaptchaenterpriseV1WebKeySettings {
   /** Optional. Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com' Each key supports a maximum of 250 domains. To use a key on more domains, set `allow_all_domains` to true. When this is set, you are responsible for validating the hostname by checking the `token_properties.hostname` field in each assessment response against your list of allowed domains. */
-  allowedDomains?: Array<string>;
+  allowedDomains?: ReadonlyArray<string>;
   /** Required. Describes how this key is integrated with the website. */
   integrationType?:
     | "INTEGRATION_TYPE_UNSPECIFIED"
@@ -696,7 +696,7 @@ export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRis
 
 export interface GoogleCloudRecaptchaenterpriseV1TransactionDataAddress {
   /** Optional. The first lines of the address. The first line generally contains the street name and number, and further lines may include information such as an apartment number. */
-  address?: Array<string>;
+  address?: ReadonlyArray<string>;
   /** Optional. The postal or ZIP code of the address. */
   postalCode?: string;
   /** Optional. The recipient name, potentially including information such as "care of". */
@@ -727,7 +727,7 @@ export interface GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
   /** Optional. Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store. */
   supportNonGoogleAppStoreDistribution?: boolean;
   /** Optional. Android package names of apps allowed to use the key. Example: 'com.companyname.appname' Each key supports a maximum of 250 package names. To use a key on more apps, set `allow_all_package_names` to true. When this is set, you are responsible for validating the package name by checking the `token_properties.android_package_name` field in each assessment response against your list of allowed package names. */
-  allowedPackageNames?: Array<string>;
+  allowedPackageNames?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudRecaptchaenterpriseV1AndroidKeySettings =
@@ -794,7 +794,7 @@ export interface GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
   /** Optional. If set to true, allowed_bundle_ids are not enforced. */
   allowAllBundleIds?: boolean;
   /** Optional. iOS bundle IDs of apps allowed to use the key. Example: 'com.companyname.productname.appname' Each key supports a maximum of 250 bundle IDs. To use a key on more apps, set `allow_all_bundle_ids` to true. When this is set, you are responsible for validating the bundle id by checking the `token_properties.ios_bundle_id` field in each assessment response against your list of allowed bundle IDs. */
-  allowedBundleIds?: Array<string>;
+  allowedBundleIds?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudRecaptchaenterpriseV1IOSKeySettings =
@@ -867,7 +867,7 @@ export const GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup =
 
 export interface GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse {
   /** The groups of related accounts listed by the query. */
-  relatedAccountGroups?: Array<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup>;
+  relatedAccountGroups?: ReadonlyArray<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -923,7 +923,7 @@ export interface GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
   /** Optional. If using an external multi-factor authentication provider, provide phone authentication details for fraud detection purposes. */
   phoneAuthenticationEvent?: GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent;
   /** Optional. Reasons for the annotation that are assigned to the event. */
-  reasons?: Array<
+  reasons?: ReadonlyArray<
     | "REASON_UNSPECIFIED"
     | "CHARGEBACK"
     | "CHARGEBACK_FRAUD"
@@ -995,7 +995,7 @@ export interface GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
   /** Output only. Legitimate event score from 0.0 to 1.0. (1.0 means very likely legitimate traffic while 0.0 means very likely non-legitimate traffic). */
   score?: number;
   /** Output only. Reasons contributing to the risk analysis verdict. */
-  reasons?: Array<
+  reasons?: ReadonlyArray<
     | "CLASSIFICATION_REASON_UNSPECIFIED"
     | "AUTOMATION"
     | "UNEXPECTED_ENVIRONMENT"
@@ -1007,7 +1007,7 @@ export interface GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
     | (string & {})
   >;
   /** Output only. Additional reasons contributing to the risk analysis verdict. These reasons are available to Enterprise tier projects only. Contact sales for more information. The set of reasons is subject to change. */
-  extendedVerdictReasons?: Array<string>;
+  extendedVerdictReasons?: ReadonlyArray<string>;
   /** Output only. Challenge information for POLICY_BASED_CHALLENGE and INVISIBLE keys. */
   challenge?:
     | "CHALLENGE_UNSPECIFIED"
@@ -1016,7 +1016,7 @@ export interface GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
     | "FAILED"
     | (string & {});
   /** Output only. Bots with identities that have been verified by reCAPTCHA and detected in the event. */
-  verifiedBots?: Array<GoogleCloudRecaptchaenterpriseV1Bot>;
+  verifiedBots?: ReadonlyArray<GoogleCloudRecaptchaenterpriseV1Bot>;
 }
 
 export const GoogleCloudRecaptchaenterpriseV1RiskAnalysis =
@@ -1032,7 +1032,7 @@ export const GoogleCloudRecaptchaenterpriseV1RiskAnalysis =
 
 export interface GoogleCloudRecaptchaenterpriseV1ListKeysResponse {
   /** Key details. */
-  keys?: Array<GoogleCloudRecaptchaenterpriseV1Key>;
+  keys?: ReadonlyArray<GoogleCloudRecaptchaenterpriseV1Key>;
   /** Token to retrieve the next page of results. It is set to empty if no keys remain in results. */
   nextPageToken?: string;
 }
@@ -1065,7 +1065,7 @@ export interface GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification
   /** Optional. Encrypted Scrypt hash of the canonicalized username+password. It is re-encrypted by the server and returned through `reencrypted_user_credentials_hash`. */
   encryptedUserCredentialsHash?: string;
   /** Output only. List of prefixes of the encrypted potential password leaks that matched the given parameters. They must be compared with the client-side decryption prefix of `reencrypted_user_credentials_hash` */
-  encryptedLeakMatchPrefixes?: Array<string>;
+  encryptedLeakMatchPrefixes?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification =
@@ -1113,11 +1113,11 @@ export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTru
 
 export interface GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict {
   /** Output only. Unordered list. Reasons why the request appears risky. Risk reasons can be returned even if the risk is low, as trustworthy requests can still have some risk signals. */
-  riskReasons?: Array<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason>;
+  riskReasons?: ReadonlyArray<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason>;
   /** Output only. Account takeover attempt probability. Values are from 0.0 (lowest risk) to 1.0 (highest risk). */
   risk?: number;
   /** Output only. Unordered list. Reasons why the request appears trustworthy. Trust reasons can be returned even if the risk is high, as risky requests can still have some trust signals. */
-  trustReasons?: Array<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason>;
+  trustReasons?: ReadonlyArray<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason>;
 }
 
 export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTakeoverVerdict =
@@ -1140,7 +1140,7 @@ export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTak
 
 export interface GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment {
   /** Output only. Labels for this request. */
-  labels?: Array<
+  labels?: ReadonlyArray<
     | "ACCOUNT_DEFENDER_LABEL_UNSPECIFIED"
     | "PROFILE_MATCH"
     | "SUSPICIOUS_LOGIN_ACTIVITY"
@@ -1205,7 +1205,7 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1307,9 +1307,9 @@ export interface GoogleCloudRecaptchaenterpriseV1TransactionData {
   /** Optional. The value of shipping in the specified currency. 0 for free or no shipping. */
   shippingValue?: number;
   /** Optional. Information about the user or users fulfilling the transaction. */
-  merchants?: Array<GoogleCloudRecaptchaenterpriseV1TransactionDataUser>;
+  merchants?: ReadonlyArray<GoogleCloudRecaptchaenterpriseV1TransactionDataUser>;
   /** Optional. Items purchased in this transaction. */
-  items?: Array<GoogleCloudRecaptchaenterpriseV1TransactionDataItem>;
+  items?: ReadonlyArray<GoogleCloudRecaptchaenterpriseV1TransactionDataItem>;
   /** Optional. The payment method for the transaction. The allowed values are: * credit-card * debit-card * gift-card * processor-{name} (If a third-party is used, for example, processor-paypal) * custom-{name} (If an alternative method is used, for example, custom-crypto) */
   paymentMethod?: string;
   /** Optional. The currency code in ISO-4217 format. */
@@ -1363,7 +1363,7 @@ export interface GoogleCloudRecaptchaenterpriseV1UserInfo {
   /** Optional. For logged-in requests or login/registration requests, the unique account identifier associated with this user. You can use the username if it is stable (meaning it is the same for every request associated with the same user), or any stable user ID of your choice. Leave blank for non logged-in actions or guest checkout. */
   accountId?: string;
   /** Optional. Identifiers associated with this user or request. */
-  userIds?: Array<GoogleCloudRecaptchaenterpriseV1UserId>;
+  userIds?: ReadonlyArray<GoogleCloudRecaptchaenterpriseV1UserId>;
   /** Optional. Creation time for this account associated with this user. Leave blank for non logged-in actions, guest checkout, or when there is no account associated with the current user. */
   createAccountTime?: string;
 }
@@ -1413,7 +1413,7 @@ export interface GoogleCloudRecaptchaenterpriseV1Event {
   /** Optional. Information about the user that generates this event, when they can be identified. They are often identified through the use of an account for logged-in requests or login/registration requests, or by providing user identifiers for guest actions like checkout. */
   userInfo?: GoogleCloudRecaptchaenterpriseV1UserInfo;
   /** Optional. HTTP header information about the request. */
-  headers?: Array<string>;
+  headers?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudRecaptchaenterpriseV1Event =
@@ -1470,7 +1470,7 @@ export interface GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo {
     | "ERROR_VERDICT_MISMATCH"
     | (string & {});
   /** Optional. Endpoints that can be used for identity verification. */
-  endpoints?: Array<GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo>;
+  endpoints?: ReadonlyArray<GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo>;
   /** Username of the account that is being verified. Deprecated. Customers should now provide the `account_id` field in `event.user_info`. */
   username?: string;
 }
@@ -1548,7 +1548,7 @@ export const GoogleCloudRecaptchaenterpriseV1Assessment =
 
 export interface GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse {
   /** Policy details. */
-  firewallPolicies?: Array<GoogleCloudRecaptchaenterpriseV1FirewallPolicy>;
+  firewallPolicies?: ReadonlyArray<GoogleCloudRecaptchaenterpriseV1FirewallPolicy>;
   /** Token to retrieve the next page of results. It is set to empty if no policies remain in results. */
   nextPageToken?: string;
 }
@@ -1565,7 +1565,7 @@ export const GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse =
 
 export interface GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest {
   /** Required. A list containing all policy names, in the new order. Each name is in the format `projects/{project}/firewallpolicies/{firewallpolicy}`. */
-  names?: Array<string>;
+  names?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest =
@@ -1585,7 +1585,7 @@ export const GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse =
 
 export interface GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse {
   /** IP Overrides details. */
-  ipOverrides?: Array<GoogleCloudRecaptchaenterpriseV1IpOverrideData>;
+  ipOverrides?: ReadonlyArray<GoogleCloudRecaptchaenterpriseV1IpOverrideData>;
   /** Token to retrieve the next page of results. If this field is empty, no keys remain in the results. */
   nextPageToken?: string;
 }
@@ -1604,7 +1604,7 @@ export interface GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMember
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The queried memberships. */
-  relatedAccountGroupMemberships?: Array<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership>;
+  relatedAccountGroupMemberships?: ReadonlyArray<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership>;
 }
 
 export const GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse =
@@ -1638,11 +1638,7 @@ export const CreateProjectsAssessmentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/assessments",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/assessments", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsAssessmentsRequest>;
 
@@ -1679,11 +1675,7 @@ export const AnnotateProjectsAssessmentsRequest =
       GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/assessments/{assessmentsId}:annotate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:annotate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AnnotateProjectsAssessmentsRequest>;
 
@@ -1722,7 +1714,7 @@ export const SearchProjectsRelatedaccountgroupmembershipsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/relatedaccountgroupmemberships:search",
+      path: "v1/{project}/relatedaccountgroupmemberships:search",
       hasBody: true,
     }),
     svc,
@@ -1762,10 +1754,7 @@ export const ListProjectsFirewallpoliciesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/firewallpolicies",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/firewallpolicies" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsFirewallpoliciesRequest>;
 
@@ -1801,10 +1790,7 @@ export const GetProjectsFirewallpoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/firewallpolicies/{firewallpoliciesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsFirewallpoliciesRequest>;
 
@@ -1836,10 +1822,7 @@ export const DeleteProjectsFirewallpoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/firewallpolicies/{firewallpoliciesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsFirewallpoliciesRequest>;
 
@@ -1877,7 +1860,7 @@ export const ReorderProjectsFirewallpoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/firewallpolicies:reorder",
+      path: "v1/{parent}/firewallpolicies:reorder",
       hasBody: true,
     }),
     svc,
@@ -1918,7 +1901,7 @@ export const CreateProjectsFirewallpoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/firewallpolicies",
+      path: "v1/{parent}/firewallpolicies",
       hasBody: true,
     }),
     svc,
@@ -1960,11 +1943,7 @@ export const PatchProjectsFirewallpoliciesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/firewallpolicies/{firewallpoliciesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsFirewallpoliciesRequest>;
 
@@ -2002,10 +1981,7 @@ export const ListProjectsRelatedaccountgroupsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/relatedaccountgroups",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/relatedaccountgroups" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsRelatedaccountgroupsRequest>;
 
@@ -2047,10 +2023,7 @@ export const ListProjectsRelatedaccountgroupsMembershipsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/relatedaccountgroups/{relatedaccountgroupsId}/memberships",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/memberships" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsRelatedaccountgroupsMembershipsRequest>;
 
@@ -2094,11 +2067,7 @@ export const PatchProjectsKeysRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/keys/{keysId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsKeysRequest>;
 
@@ -2135,10 +2104,7 @@ export const ListIpOverridesProjectsKeysRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/keys/{keysId}:listIpOverrides",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}:listIpOverrides" }),
     svc,
   ) as unknown as Schema.Schema<ListIpOverridesProjectsKeysRequest>;
 
@@ -2180,7 +2146,7 @@ export const ListProjectsKeysRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/keys" }),
+    T.Http({ method: "GET", path: "v1/{parent}/keys" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsKeysRequest>;
 
@@ -2211,10 +2177,7 @@ export interface RetrieveLegacySecretKeyProjectsKeysRequest {}
 
 export const RetrieveLegacySecretKeyProjectsKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/keys/{keysId}:retrieveLegacySecretKey",
-    }),
+    T.Http({ method: "GET", path: "v1/{key}:retrieveLegacySecretKey" }),
     svc,
   ) as unknown as Schema.Schema<RetrieveLegacySecretKeyProjectsKeysRequest>;
 
@@ -2251,11 +2214,7 @@ export const MigrateProjectsKeysRequest =
       GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/keys/{keysId}:migrate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:migrate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MigrateProjectsKeysRequest>;
 
@@ -2293,7 +2252,7 @@ export const RemoveIpOverrideProjectsKeysRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/keys/{keysId}:removeIpOverride",
+      path: "v1/{name}:removeIpOverride",
       hasBody: true,
     }),
     svc,
@@ -2327,10 +2286,7 @@ export const GetMetricsProjectsKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/keys/{keysId}/metrics",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetMetricsProjectsKeysRequest>;
 
@@ -2367,11 +2323,7 @@ export const CreateProjectsKeysRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/keys",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/keys", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsKeysRequest>;
 
@@ -2402,10 +2354,7 @@ export const DeleteProjectsKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/keys/{keysId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsKeysRequest>;
 
@@ -2437,7 +2386,7 @@ export const GetProjectsKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     name: Schema.String.pipe(T.HttpPath("name")),
   },
 ).pipe(
-  T.Http({ method: "GET", path: "v1/projects/{projectsId}/keys/{keysId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetProjectsKeysRequest>;
 
@@ -2473,11 +2422,7 @@ export const AddIpOverrideProjectsKeysRequest =
       GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/keys/{keysId}:addIpOverride",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:addIpOverride", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AddIpOverrideProjectsKeysRequest>;
 

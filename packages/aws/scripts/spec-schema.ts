@@ -21,6 +21,7 @@ export const ConflictError = "ConflictError" as const;
 export const QuotaError = "QuotaError" as const;
 export const NetworkError = "NetworkError" as const;
 export const AbortedError = "AbortedError" as const;
+export const NotFoundError = "NotFoundError" as const;
 
 /**
  * Schema for error category strings.
@@ -36,6 +37,7 @@ export const CategorySchema = S.Literals([
   QuotaError,
   NetworkError,
   AbortedError,
+  NotFoundError,
 ]);
 export type CategorySchema = typeof CategorySchema.Type;
 
@@ -146,7 +148,7 @@ export const ServiceSpec = S.Struct({
   /**
    * Map of operation names to their patches
    */
-  operations: S.Record(S.String, OperationPatch),
+  operations: S.optional(S.Record(S.String, OperationPatch)),
   /**
    * Map of structure names to their member overrides.
    * Use this to fix discrepancies between AWS Smithy models and actual API behavior.
@@ -193,11 +195,16 @@ export const loadServiceSpecPatch = (
     `${serviceSdkId.toLowerCase().replaceAll(" ", "-")}.json`,
   );
 
-  try {
-    const content = fs.readFileSync(specPath, "utf-8");
-    const parsed = JSON.parse(content);
-    return S.decodeUnknownSync(ServiceSpec)(parsed);
-  } catch {
+  if (!fs.existsSync(specPath)) {
     return { operations: {} } as ServiceSpec;
+  }
+  const content = fs.readFileSync(specPath, "utf-8");
+  const parsed = JSON.parse(content);
+  try {
+    return S.decodeUnknownSync(ServiceSpec)(parsed);
+  } catch (error) {
+    throw new Error(
+      `Failed to decode patch file at ${specPath}: ${error instanceof Error ? error.message : String(error)}`,
+    );
   }
 };
