@@ -199,6 +199,8 @@ jobs:
         working-directory: packages/core
       - run: bun run check
         working-directory: packages/gcp
+      - run: bun run test
+        working-directory: packages/gcp
 
   ci-neon:
     needs: detect-changes
