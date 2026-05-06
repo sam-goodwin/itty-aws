@@ -6,7 +6,7 @@ import { UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const MetricslistDashboardsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization_id: Schema.optional(Schema.String),
+    organization_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
   }).pipe(T.Http({ method: "GET", path: "/v1/metrics/dashboards" }));
 export type MetricslistDashboardsInput = typeof MetricslistDashboardsInput.Type;
 

@@ -5,22 +5,22 @@ import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const EventslistInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  filter: Schema.optional(Schema.String),
-  start_timestamp: Schema.optional(Schema.String),
-  end_timestamp: Schema.optional(Schema.String),
-  organization_id: Schema.optional(Schema.String),
-  customer_id: Schema.optional(Schema.String),
-  external_customer_id: Schema.optional(Schema.String),
-  meter_id: Schema.optional(Schema.String),
-  name: Schema.optional(Schema.String),
-  source: Schema.optional(Schema.String),
-  query: Schema.optional(Schema.String),
-  parent_id: Schema.optional(Schema.String),
-  depth: Schema.optional(Schema.String),
-  page: Schema.optional(Schema.Number),
-  limit: Schema.optional(Schema.Number),
-  sorting: Schema.optional(Schema.String),
-  metadata: Schema.optional(Schema.String),
+  filter: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  start_timestamp: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  end_timestamp: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  organization_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  customer_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  external_customer_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  meter_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  name: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  source: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  query: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  parent_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  depth: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  page: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+  limit: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+  sorting: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  metadata: Schema.optional(Schema.String).pipe(T.QueryParam()),
 }).pipe(T.Http({ method: "GET", path: "/v1/events/" }));
 export type EventslistInput = typeof EventslistInput.Type;
 

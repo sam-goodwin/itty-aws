@@ -6,15 +6,15 @@ import { UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const WebhookslistWebhookDeliveriesInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    endpoint_id: Schema.optional(Schema.String),
-    start_timestamp: Schema.optional(Schema.String),
-    end_timestamp: Schema.optional(Schema.String),
-    succeeded: Schema.optional(Schema.String),
-    query: Schema.optional(Schema.String),
-    http_code_class: Schema.optional(Schema.String),
-    event_type: Schema.optional(Schema.String),
-    page: Schema.optional(Schema.Number),
-    limit: Schema.optional(Schema.Number),
+    endpoint_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    start_timestamp: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    end_timestamp: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    succeeded: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    query: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    http_code_class: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    event_type: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    page: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+    limit: Schema.optional(Schema.Number).pipe(T.QueryParam()),
   }).pipe(T.Http({ method: "GET", path: "/v1/webhooks/deliveries" }));
 export type WebhookslistWebhookDeliveriesInput =
   typeof WebhookslistWebhookDeliveriesInput.Type;

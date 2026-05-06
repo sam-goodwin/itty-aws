@@ -7,8 +7,8 @@ import { NotFound, UnprocessableEntity } from "../errors.ts";
 export const MembersgetMemberByExternalIdInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     external_id: Schema.String.pipe(T.PathParam()),
-    customer_id: Schema.optional(Schema.String),
-    external_customer_id: Schema.optional(Schema.String),
+    customer_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    external_customer_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/members/external/{external_id}" }),
   );

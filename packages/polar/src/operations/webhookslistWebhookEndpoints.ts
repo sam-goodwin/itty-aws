@@ -7,9 +7,9 @@ import { SensitiveString } from "../sensitive.ts";
 // Input Schema
 export const WebhookslistWebhookEndpointsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization_id: Schema.optional(Schema.String),
-    page: Schema.optional(Schema.Number),
-    limit: Schema.optional(Schema.Number),
+    organization_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    page: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+    limit: Schema.optional(Schema.Number).pipe(T.QueryParam()),
   }).pipe(T.Http({ method: "GET", path: "/v1/webhooks/endpoints" }));
 export type WebhookslistWebhookEndpointsInput =
   typeof WebhookslistWebhookEndpointsInput.Type;

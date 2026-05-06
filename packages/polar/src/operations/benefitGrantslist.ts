@@ -6,13 +6,13 @@ import { UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const BenefitGrantslistInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    organization_id: Schema.optional(Schema.String),
-    customer_id: Schema.optional(Schema.String),
-    external_customer_id: Schema.optional(Schema.String),
-    is_granted: Schema.optional(Schema.String),
-    page: Schema.optional(Schema.Number),
-    limit: Schema.optional(Schema.Number),
-    sorting: Schema.optional(Schema.String),
+    organization_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    customer_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    external_customer_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    is_granted: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    page: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+    limit: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+    sorting: Schema.optional(Schema.String).pipe(T.QueryParam()),
   },
 ).pipe(T.Http({ method: "GET", path: "/v1/benefit-grants/" }));
 export type BenefitGrantslistInput = typeof BenefitGrantslistInput.Type;

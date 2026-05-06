@@ -6,12 +6,12 @@ import { UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const MemberslistMembersInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    customer_id: Schema.optional(Schema.String),
-    external_customer_id: Schema.optional(Schema.String),
-    role: Schema.optional(Schema.String),
-    page: Schema.optional(Schema.Number),
-    limit: Schema.optional(Schema.Number),
-    sorting: Schema.optional(Schema.String),
+    customer_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    external_customer_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    role: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    page: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+    limit: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+    sorting: Schema.optional(Schema.String).pipe(T.QueryParam()),
   }).pipe(T.Http({ method: "GET", path: "/v1/members/" }));
 export type MemberslistMembersInput = typeof MemberslistMembersInput.Type;
 

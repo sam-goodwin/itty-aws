@@ -5,16 +5,16 @@ import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const EventTypeslistInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  organization_id: Schema.optional(Schema.String),
-  customer_id: Schema.optional(Schema.String),
-  external_customer_id: Schema.optional(Schema.String),
-  query: Schema.optional(Schema.String),
-  root_events: Schema.optional(Schema.Boolean),
-  parent_id: Schema.optional(Schema.String),
-  source: Schema.optional(Schema.String),
-  page: Schema.optional(Schema.Number),
-  limit: Schema.optional(Schema.Number),
-  sorting: Schema.optional(Schema.String),
+  organization_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  customer_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  external_customer_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  query: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  root_events: Schema.optional(Schema.Boolean).pipe(T.QueryParam()),
+  parent_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  source: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  page: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+  limit: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+  sorting: Schema.optional(Schema.String).pipe(T.QueryParam()),
 }).pipe(T.Http({ method: "GET", path: "/v1/event-types/" }));
 export type EventTypeslistInput = typeof EventTypeslistInput.Type;
 

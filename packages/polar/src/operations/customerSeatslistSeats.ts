@@ -6,8 +6,8 @@ import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const CustomerSeatslistSeatsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    subscription_id: Schema.optional(Schema.String),
-    order_id: Schema.optional(Schema.String),
+    subscription_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    order_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
   }).pipe(T.Http({ method: "GET", path: "/v1/customer-seats" }));
 export type CustomerSeatslistSeatsInput =
   typeof CustomerSeatslistSeatsInput.Type;

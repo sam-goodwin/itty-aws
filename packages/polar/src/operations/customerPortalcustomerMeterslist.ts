@@ -6,11 +6,11 @@ import { UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const CustomerPortalcustomerMeterslistInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    meter_id: Schema.optional(Schema.String),
-    query: Schema.optional(Schema.String),
-    page: Schema.optional(Schema.Number),
-    limit: Schema.optional(Schema.Number),
-    sorting: Schema.optional(Schema.String),
+    meter_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    query: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    page: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+    limit: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+    sorting: Schema.optional(Schema.String).pipe(T.QueryParam()),
   }).pipe(T.Http({ method: "GET", path: "/v1/customer-portal/meters/" }));
 export type CustomerPortalcustomerMeterslistInput =
   typeof CustomerPortalcustomerMeterslistInput.Type;

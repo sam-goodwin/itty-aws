@@ -6,15 +6,15 @@ import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const CheckoutslistInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  organization_id: Schema.optional(Schema.String),
-  product_id: Schema.optional(Schema.String),
-  customer_id: Schema.optional(Schema.String),
-  external_customer_id: Schema.optional(Schema.String),
-  status: Schema.optional(Schema.String),
-  query: Schema.optional(Schema.String),
-  page: Schema.optional(Schema.Number),
-  limit: Schema.optional(Schema.Number),
-  sorting: Schema.optional(Schema.String),
+  organization_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  product_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  customer_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  external_customer_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  status: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  query: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  page: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+  limit: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+  sorting: Schema.optional(Schema.String).pipe(T.QueryParam()),
 }).pipe(T.Http({ method: "GET", path: "/v1/checkouts/" }));
 export type CheckoutslistInput = typeof CheckoutslistInput.Type;
 

@@ -7,7 +7,7 @@ import { NotFound, UnprocessableEntity } from "../errors.ts";
 export const CustomersdeleteExternalInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     external_id: Schema.String.pipe(T.PathParam()),
-    anonymize: Schema.optional(Schema.Boolean),
+    anonymize: Schema.optional(Schema.Boolean).pipe(T.QueryParam()),
   }).pipe(
     T.Http({ method: "DELETE", path: "/v1/customers/external/{external_id}" }),
   );

@@ -5,8 +5,8 @@ import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const OrdersexportInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  organization_id: Schema.optional(Schema.String),
-  product_id: Schema.optional(Schema.String),
+  organization_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  product_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
 }).pipe(T.Http({ method: "GET", path: "/v1/orders/export" }));
 export type OrdersexportInput = typeof OrdersexportInput.Type;
 

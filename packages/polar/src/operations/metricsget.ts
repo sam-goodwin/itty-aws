@@ -5,8 +5,8 @@ import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const MetricsgetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  start_date: Schema.String,
-  end_date: Schema.String,
+  start_date: Schema.String.pipe(T.QueryParam()),
+  end_date: Schema.String.pipe(T.QueryParam()),
   timezone: Schema.optional(
     Schema.Literals([
       "Africa/Abidjan",
@@ -609,13 +609,13 @@ export const MetricsgetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "Zulu",
       "localtime",
     ]),
-  ),
-  interval: Schema.String,
-  organization_id: Schema.optional(Schema.String),
-  product_id: Schema.optional(Schema.String),
-  billing_type: Schema.optional(Schema.String),
-  customer_id: Schema.optional(Schema.String),
-  metrics: Schema.optional(Schema.String),
+  ).pipe(T.QueryParam()),
+  interval: Schema.String.pipe(T.QueryParam()),
+  organization_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  product_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  billing_type: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  customer_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  metrics: Schema.optional(Schema.String).pipe(T.QueryParam()),
 }).pipe(T.Http({ method: "GET", path: "/v1/metrics/" }));
 export type MetricsgetInput = typeof MetricsgetInput.Type;
 

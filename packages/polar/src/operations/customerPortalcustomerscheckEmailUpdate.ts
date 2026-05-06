@@ -6,7 +6,7 @@ import { UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const CustomerPortalcustomerscheckEmailUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    token: Schema.String,
+    token: Schema.String.pipe(T.QueryParam()),
   }).pipe(
     T.Http({
       method: "GET",

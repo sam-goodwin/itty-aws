@@ -6,9 +6,9 @@ import { NotFound, UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const MetersquantitiesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
-  start_timestamp: Schema.String,
-  end_timestamp: Schema.String,
-  interval: Schema.String,
+  start_timestamp: Schema.String.pipe(T.QueryParam()),
+  end_timestamp: Schema.String.pipe(T.QueryParam()),
+  interval: Schema.String.pipe(T.QueryParam()),
   timezone: Schema.optional(
     Schema.Literals([
       "Africa/Abidjan",
@@ -611,11 +611,13 @@ export const MetersquantitiesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       "Zulu",
       "localtime",
     ]),
+  ).pipe(T.QueryParam()),
+  customer_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  external_customer_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  customer_aggregation_function: Schema.optional(Schema.String).pipe(
+    T.QueryParam(),
   ),
-  customer_id: Schema.optional(Schema.String),
-  external_customer_id: Schema.optional(Schema.String),
-  customer_aggregation_function: Schema.optional(Schema.String),
-  metadata: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.String).pipe(T.QueryParam()),
 }).pipe(T.Http({ method: "GET", path: "/v1/meters/{id}/quantities" }));
 export type MetersquantitiesInput = typeof MetersquantitiesInput.Type;
 

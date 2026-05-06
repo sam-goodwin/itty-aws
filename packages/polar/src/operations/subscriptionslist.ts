@@ -6,20 +6,22 @@ import { UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const SubscriptionslistInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    organization_id: Schema.optional(Schema.String),
-    product_id: Schema.optional(Schema.String),
-    customer_id: Schema.optional(Schema.String),
-    external_customer_id: Schema.optional(Schema.String),
-    discount_id: Schema.optional(Schema.String),
-    active: Schema.optional(Schema.String),
-    cancel_at_period_end: Schema.optional(Schema.String),
-    customer_cancellation_reason: Schema.optional(Schema.String),
-    canceled_at_after: Schema.optional(Schema.String),
-    canceled_at_before: Schema.optional(Schema.String),
-    page: Schema.optional(Schema.Number),
-    limit: Schema.optional(Schema.Number),
-    sorting: Schema.optional(Schema.String),
-    metadata: Schema.optional(Schema.String),
+    organization_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    product_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    customer_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    external_customer_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    discount_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    active: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    cancel_at_period_end: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    customer_cancellation_reason: Schema.optional(Schema.String).pipe(
+      T.QueryParam(),
+    ),
+    canceled_at_after: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    canceled_at_before: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    page: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+    limit: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+    sorting: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    metadata: Schema.optional(Schema.String).pipe(T.QueryParam()),
   },
 ).pipe(T.Http({ method: "GET", path: "/v1/subscriptions/" }));
 export type SubscriptionslistInput = typeof SubscriptionslistInput.Type;

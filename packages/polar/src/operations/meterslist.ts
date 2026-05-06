@@ -5,13 +5,13 @@ import { UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const MeterslistInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  organization_id: Schema.optional(Schema.String),
-  query: Schema.optional(Schema.String),
-  is_archived: Schema.optional(Schema.Boolean),
-  page: Schema.optional(Schema.Number),
-  limit: Schema.optional(Schema.Number),
-  sorting: Schema.optional(Schema.String),
-  metadata: Schema.optional(Schema.String),
+  organization_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  query: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  is_archived: Schema.optional(Schema.Boolean).pipe(T.QueryParam()),
+  page: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+  limit: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+  sorting: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  metadata: Schema.optional(Schema.String).pipe(T.QueryParam()),
 }).pipe(T.Http({ method: "GET", path: "/v1/meters/" }));
 export type MeterslistInput = typeof MeterslistInput.Type;
 

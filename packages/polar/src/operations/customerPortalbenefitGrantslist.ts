@@ -6,16 +6,16 @@ import { UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const CustomerPortalbenefitGrantslistInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    query: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.String),
-    benefit_id: Schema.optional(Schema.String),
-    checkout_id: Schema.optional(Schema.String),
-    order_id: Schema.optional(Schema.String),
-    subscription_id: Schema.optional(Schema.String),
-    member_id: Schema.optional(Schema.String),
-    page: Schema.optional(Schema.Number),
-    limit: Schema.optional(Schema.Number),
-    sorting: Schema.optional(Schema.String),
+    query: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    type: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    benefit_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    checkout_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    order_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    subscription_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    member_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    page: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+    limit: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+    sorting: Schema.optional(Schema.String).pipe(T.QueryParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/customer-portal/benefit-grants/" }),
   );

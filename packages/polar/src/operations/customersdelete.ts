@@ -6,7 +6,7 @@ import { NotFound, UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const CustomersdeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
-  anonymize: Schema.optional(Schema.Boolean),
+  anonymize: Schema.optional(Schema.Boolean).pipe(T.QueryParam()),
 }).pipe(T.Http({ method: "DELETE", path: "/v1/customers/{id}" }));
 export type CustomersdeleteInput = typeof CustomersdeleteInput.Type;
 

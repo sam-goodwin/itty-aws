@@ -12,6 +12,8 @@ import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
 import { Retry } from "./retry.ts";
 import {
   HTTP_STATUS_MAP,
+  POLAR_ERROR_NAME_MAP,
+  POLAR_RETRYABLE_ERROR_NAMES,
   UnknownPolarError,
   PolarParseError,
 } from "./errors.ts";
@@ -20,9 +22,12 @@ import {
 export { UnknownPolarError } from "./errors.ts";
 import { Credentials } from "./credentials.ts";
 
-// Polar commonly returns FastAPI-style validation errors:
-// { detail: [{ loc, msg, type, input }] }
-// Other API errors use { detail: "..." } or { message: "..." }.
+// Polar uses a discriminator pattern for typed errors:
+//   { error: "ResourceNotFound", detail: "Not found" }
+//   { error: "RequestValidationError", detail: [{ loc, msg, type, input, ctx }] }
+// And an OAuth2-style envelope for some 401s:
+//   { error: "invalid_token", error_description: "..." }
+// Routing-level 4xx may also return only `{ detail: "..." }` with no `error`.
 const ApiErrorResponse = Schema.Struct({
   code: Schema.optional(Schema.String),
   detail: Schema.optional(Schema.Unknown),
@@ -31,14 +36,19 @@ const ApiErrorResponse = Schema.Struct({
   message: Schema.optional(Schema.String),
 });
 
+// Statuses whose core HTTP_STATUS_MAP class declares `retryAfter`.
+const STATUSES_WITH_RETRY_AFTER = new Set([423, 429, 500, 502, 503, 504]);
+
 /**
- * Match a Polar API error response to the appropriate error class based on HTTP status.
+ * Match a Polar API error response to the appropriate error class.
  *
- * For status codes whose error class declares `retryAfter`, pass
- * `retryAfter: parseRetryAfterForStatus(status, headers)`. That is `undefined`
- * when no standard `Retry-After` / `RateLimit` hint is present — omitting the
- * field is fine; the default retry policy still uses exponential backoff.
- * For bespoke rate-limit hints, parse them here and pass `retryAfter` when known.
+ * Dispatch order:
+ *  1. Polar discriminator: `body.error` matches `POLAR_ERROR_NAME_MAP`.
+ *  2. HTTP status: matches `HTTP_STATUS_MAP` (core fallback).
+ *  3. `UnknownPolarError`.
+ *
+ * Retryable classes accept `retryAfter` parsed from `Retry-After`/RateLimit
+ * headers. For non-retryable classes the field is omitted.
  */
 const matchError = (
   status: number,
@@ -46,36 +56,59 @@ const matchError = (
   _errors?: readonly unknown[],
   headers?: Record<string, string | undefined>,
 ): Effect.Effect<never, unknown> => {
-  const ErrorClass = (HTTP_STATUS_MAP as any)[status];
-
+  let parsed: typeof ApiErrorResponse.Type | undefined;
   try {
-    const parsed = Schema.decodeUnknownSync(ApiErrorResponse)(errorBody);
-    if (ErrorClass) {
-      return Effect.fail(
-        new ErrorClass({
-          message: formatPolarErrorMessage(parsed),
-          retryAfter: parseRetryAfterForStatus(status, headers),
-        }),
-      );
-    }
-    return Effect.fail(
-      new UnknownPolarError({
-        code: parsed.code,
-        message: formatPolarErrorMessage(parsed),
-        body: errorBody,
-      }),
-    );
+    parsed = Schema.decodeUnknownSync(ApiErrorResponse)(errorBody);
   } catch {
-    if (ErrorClass) {
-      return Effect.fail(
-        new ErrorClass({
-          message: "",
-          retryAfter: parseRetryAfterForStatus(status, headers),
-        }),
-      );
-    }
-    return Effect.fail(new UnknownPolarError({ body: errorBody }));
+    parsed = undefined;
   }
+
+  const message = parsed ? formatPolarErrorMessage(parsed) : "";
+  const errorName = parsed?.error;
+
+  // 1. Discriminator-based dispatch.
+  if (errorName) {
+    const NamedClass = POLAR_ERROR_NAME_MAP[errorName];
+    if (NamedClass) {
+      // OAuth2 invalid_token: surface the error_description verbatim.
+      if (errorName === "invalid_token") {
+        return Effect.fail(
+          new (NamedClass as any)({
+            message,
+            errorDescription: parsed?.error_description,
+          }),
+        );
+      }
+
+      const props: Record<string, unknown> = {
+        message,
+        detail: parsed?.detail,
+      };
+      if (POLAR_RETRYABLE_ERROR_NAMES.has(errorName)) {
+        props.retryAfter = parseRetryAfterForStatus(status, headers);
+      }
+      return Effect.fail(new (NamedClass as any)(props));
+    }
+  }
+
+  // 2. HTTP-status fallback.
+  const ErrorClass = (HTTP_STATUS_MAP as any)[status];
+  if (ErrorClass) {
+    const props: Record<string, unknown> = { message };
+    if (STATUSES_WITH_RETRY_AFTER.has(status)) {
+      props.retryAfter = parseRetryAfterForStatus(status, headers);
+    }
+    return Effect.fail(new ErrorClass(props));
+  }
+
+  // 3. Unknown.
+  return Effect.fail(
+    new UnknownPolarError({
+      code: parsed?.code ?? errorName,
+      message,
+      body: errorBody,
+    }),
+  );
 };
 
 /**

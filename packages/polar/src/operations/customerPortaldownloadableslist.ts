@@ -6,9 +6,9 @@ import { UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const CustomerPortaldownloadableslistInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    benefit_id: Schema.optional(Schema.String),
-    page: Schema.optional(Schema.Number),
-    limit: Schema.optional(Schema.Number),
+    benefit_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+    page: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+    limit: Schema.optional(Schema.Number).pipe(T.QueryParam()),
   }).pipe(
     T.Http({ method: "GET", path: "/v1/customer-portal/downloadables/" }),
   );

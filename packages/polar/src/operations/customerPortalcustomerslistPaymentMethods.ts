@@ -6,8 +6,8 @@ import { UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const CustomerPortalcustomerslistPaymentMethodsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    page: Schema.optional(Schema.Number),
-    limit: Schema.optional(Schema.Number),
+    page: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+    limit: Schema.optional(Schema.Number).pipe(T.QueryParam()),
   }).pipe(
     T.Http({
       method: "GET",

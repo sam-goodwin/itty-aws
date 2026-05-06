@@ -6,11 +6,11 @@ import { NotFound, UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const BenefitsgrantsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
-  is_granted: Schema.optional(Schema.String),
-  customer_id: Schema.optional(Schema.String),
-  member_id: Schema.optional(Schema.String),
-  page: Schema.optional(Schema.Number),
-  limit: Schema.optional(Schema.Number),
+  is_granted: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  customer_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  member_id: Schema.optional(Schema.String).pipe(T.QueryParam()),
+  page: Schema.optional(Schema.Number).pipe(T.QueryParam()),
+  limit: Schema.optional(Schema.Number).pipe(T.QueryParam()),
 }).pipe(T.Http({ method: "GET", path: "/v1/benefits/{id}/grants" }));
 export type BenefitsgrantsInput = typeof BenefitsgrantsInput.Type;
 
