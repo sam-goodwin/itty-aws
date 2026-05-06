@@ -194,21 +194,28 @@ describe("Containers", () => {
       { timeout: 30_000 },
       () =>
         getFirstContainerApplication().pipe(
-          Effect.flatMap((base) =>
-            getCreateContainerInput(
+          Effect.flatMap((base) => {
+            // The test only makes sense when the existing app has a DO
+            // binding to collide with — otherwise the second create has no
+            // conflicting namespace and just succeeds.
+            if (!base.durableObjects?.namespaceId) {
+              return Effect.void;
+            }
+            return getCreateContainerInput(
               containerName("create-existing-durable-object"),
-              base.durableObjects?.namespaceId,
-            ),
-          ),
-          Effect.flatMap((input) =>
-            Containers.createContainerApplication(input),
-          ),
-          Effect.flip,
-          Effect.map((e) =>
-            expect((e as { _tag?: string })._tag).toBe(
-              "DurableObjectAlreadyHasApplication",
-            ),
-          ),
+              base.durableObjects.namespaceId,
+            ).pipe(
+              Effect.flatMap((input) =>
+                Containers.createContainerApplication(input),
+              ),
+              Effect.flip,
+              Effect.map((e) =>
+                expect((e as { _tag?: string })._tag).toBe(
+                  "DurableObjectAlreadyHasApplication",
+                ),
+              ),
+            );
+          }),
         ),
     );
 

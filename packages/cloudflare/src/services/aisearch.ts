@@ -73,13 +73,13 @@ export interface ListInstancesResponse {
     id: string;
     accountId?: string | null;
     accountTag?: string | null;
-    createdAt: string;
+    createdAt?: string | null;
     internalId?: string | null;
-    modifiedAt: string;
-    source: string;
-    tokenId: string;
-    type: "r2" | "web-crawler";
-    vectorizeName: string;
+    modifiedAt?: string | null;
+    source?: string | null;
+    tokenId?: string | null;
+    type?: "r2" | "web-crawler" | null;
+    vectorizeName?: string | null;
     aiGatewayId?: string | null;
     aiSearchModel?:
       | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
@@ -254,13 +254,17 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       id: Schema.String,
       accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      createdAt: Schema.String,
+      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       internalId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedAt: Schema.String,
-      source: Schema.String,
-      tokenId: Schema.String,
-      type: Schema.Literals(["r2", "web-crawler"]),
-      vectorizeName: Schema.String,
+      modifiedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([Schema.Literals(["r2", "web-crawler"]), Schema.Null]),
+      ),
+      vectorizeName: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
       aiGatewayId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       aiSearchModel: Schema.optional(
         Schema.Union([
@@ -1075,13 +1079,13 @@ export interface CreateInstanceResponse {
   id: string;
   accountId?: string | null;
   accountTag?: string | null;
-  createdAt: string;
+  createdAt?: string | null;
   internalId?: string | null;
-  modifiedAt: string;
-  source: string;
-  tokenId: string;
-  type: "r2" | "web-crawler";
-  vectorizeName: string;
+  modifiedAt?: string | null;
+  source?: string | null;
+  tokenId?: string | null;
+  type?: "r2" | "web-crawler" | null;
+  vectorizeName?: string | null;
   aiGatewayId?: string | null;
   aiSearchModel?:
     | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
@@ -1248,13 +1252,15 @@ export const CreateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     id: Schema.String,
     accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    createdAt: Schema.String,
+    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     internalId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    modifiedAt: Schema.String,
-    source: Schema.String,
-    tokenId: Schema.String,
-    type: Schema.Literals(["r2", "web-crawler"]),
-    vectorizeName: Schema.String,
+    modifiedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([Schema.Literals(["r2", "web-crawler"]), Schema.Null]),
+    ),
+    vectorizeName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     aiGatewayId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     aiSearchModel: Schema.optional(
       Schema.Union([
@@ -2125,13 +2131,13 @@ export interface UpdateInstanceResponse {
   id: string;
   accountId?: string | null;
   accountTag?: string | null;
-  createdAt: string;
+  createdAt?: string | null;
   internalId?: string | null;
-  modifiedAt: string;
-  source: string;
-  tokenId: string;
-  type: "r2" | "web-crawler";
-  vectorizeName: string;
+  modifiedAt?: string | null;
+  source?: string | null;
+  tokenId?: string | null;
+  type?: "r2" | "web-crawler" | null;
+  vectorizeName?: string | null;
   aiGatewayId?: string | null;
   aiSearchModel?:
     | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
@@ -2298,13 +2304,15 @@ export const UpdateInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     id: Schema.String,
     accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    createdAt: Schema.String,
+    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     internalId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    modifiedAt: Schema.String,
-    source: Schema.String,
-    tokenId: Schema.String,
-    type: Schema.Literals(["r2", "web-crawler"]),
-    vectorizeName: Schema.String,
+    modifiedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([Schema.Literals(["r2", "web-crawler"]), Schema.Null]),
+    ),
+    vectorizeName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     aiGatewayId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     aiSearchModel: Schema.optional(
       Schema.Union([
@@ -2740,13 +2748,13 @@ export interface DeleteInstanceResponse {
   id: string;
   accountId?: string | null;
   accountTag?: string | null;
-  createdAt: string;
+  createdAt?: string | null;
   internalId?: string | null;
-  modifiedAt: string;
-  source: string;
-  tokenId: string;
-  type: "r2" | "web-crawler";
-  vectorizeName: string;
+  modifiedAt?: string | null;
+  source?: string | null;
+  tokenId?: string | null;
+  type?: "r2" | "web-crawler" | null;
+  vectorizeName?: string | null;
   aiGatewayId?: string | null;
   aiSearchModel?:
     | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
@@ -2913,13 +2921,15 @@ export const DeleteInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     id: Schema.String,
     accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    createdAt: Schema.String,
+    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     internalId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    modifiedAt: Schema.String,
-    source: Schema.String,
-    tokenId: Schema.String,
-    type: Schema.Literals(["r2", "web-crawler"]),
-    vectorizeName: Schema.String,
+    modifiedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    type: Schema.optional(
+      Schema.Union([Schema.Literals(["r2", "web-crawler"]), Schema.Null]),
+    ),
+    vectorizeName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     aiGatewayId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     aiSearchModel: Schema.optional(
       Schema.Union([
@@ -3355,13 +3365,13 @@ export interface ReadInstanceResponse {
   id: string;
   accountId?: string | null;
   accountTag?: string | null;
-  createdAt: string;
+  createdAt?: string | null;
   internalId?: string | null;
-  modifiedAt: string;
-  source: string;
-  tokenId: string;
-  type: "r2" | "web-crawler";
-  vectorizeName: string;
+  modifiedAt?: string | null;
+  source?: string | null;
+  tokenId?: string | null;
+  type?: "r2" | "web-crawler" | null;
+  vectorizeName?: string | null;
   aiGatewayId?: string | null;
   aiSearchModel?:
     | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
@@ -3527,13 +3537,15 @@ export const ReadInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  createdAt: Schema.String,
+  createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   internalId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  modifiedAt: Schema.String,
-  source: Schema.String,
-  tokenId: Schema.String,
-  type: Schema.Literals(["r2", "web-crawler"]),
-  vectorizeName: Schema.String,
+  modifiedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  type: Schema.optional(
+    Schema.Union([Schema.Literals(["r2", "web-crawler"]), Schema.Null]),
+  ),
+  vectorizeName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   aiGatewayId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   aiSearchModel: Schema.optional(
     Schema.Union([
@@ -4406,7 +4418,7 @@ export const CreateInstanceJobRequest =
 
 export interface CreateInstanceJobResponse {
   id: string;
-  source: "user" | "schedule";
+  source?: "user" | "schedule" | null;
   endReason?: string | null;
   endedAt?: string | null;
   lastSeenAt?: string | null;
@@ -4416,7 +4428,9 @@ export interface CreateInstanceJobResponse {
 export const CreateInstanceJobResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String,
-    source: Schema.Literals(["user", "schedule"]),
+    source: Schema.optional(
+      Schema.Union([Schema.Literals(["user", "schedule"]), Schema.Null]),
+    ),
     endReason: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     endedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     lastSeenAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -4846,14 +4860,14 @@ export const DeleteTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<DeleteTokenRequest>;
 
 export interface DeleteTokenResponse {
-  id: string;
+  id?: string | null;
   accountId?: string | null;
   accountTag?: string | null;
-  cfApiId: string;
+  cfApiId?: string | null;
   cfApiKey?: string | null;
-  createdAt: string;
-  modifiedAt: string;
-  name: string;
+  createdAt?: string | null;
+  modifiedAt?: string | null;
+  name?: string | null;
   createdBy?: string | null;
   enabled?: boolean | null;
   legacy?: boolean | null;
@@ -4862,14 +4876,14 @@ export interface DeleteTokenResponse {
 }
 
 export const DeleteTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  cfApiId: Schema.String,
+  cfApiId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   cfApiKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  createdAt: Schema.String,
-  modifiedAt: Schema.String,
-  name: Schema.String,
+  createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  modifiedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   legacy: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
@@ -4930,14 +4944,14 @@ export const ReadTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Schema<ReadTokenRequest>;
 
 export interface ReadTokenResponse {
-  id: string;
+  id?: string | null;
   accountId?: string | null;
   accountTag?: string | null;
-  cfApiId: string;
+  cfApiId?: string | null;
   cfApiKey?: string | null;
-  createdAt: string;
-  modifiedAt: string;
-  name: string;
+  createdAt?: string | null;
+  modifiedAt?: string | null;
+  name?: string | null;
   createdBy?: string | null;
   enabled?: boolean | null;
   legacy?: boolean | null;
@@ -4946,14 +4960,14 @@ export interface ReadTokenResponse {
 }
 
 export const ReadTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
+  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   accountTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  cfApiId: Schema.String,
+  cfApiId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   cfApiKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  createdAt: Schema.String,
-  modifiedAt: Schema.String,
-  name: Schema.String,
+  createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  modifiedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   createdBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   legacy: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),

@@ -589,7 +589,7 @@ describe("Queues", () => {
           settings: { batchSize: 5 },
         }).pipe(
           Effect.flip,
-          Effect.map((e) => expect(e._tag).toBe("NotFound")),
+          Effect.map((e) => expect(e._tag).toBe("ConsumerNotFound")),
         ),
       ));
 

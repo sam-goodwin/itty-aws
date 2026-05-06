@@ -885,12 +885,6 @@ paths:
                     nullable: true
                 required:
                   - id
-                  - created_at
-                  - modified_at
-                  - source
-                  - token_id
-                  - type
-                  - vectorize_name
       x-distilled-response-path: result
       x-distilled-errors:
         ValidationError:
@@ -1492,12 +1486,6 @@ paths:
                     nullable: true
                 required:
                   - id
-                  - created_at
-                  - modified_at
-                  - source
-                  - token_id
-                  - type
-                  - vectorize_name
       x-distilled-response-path: result
       x-distilled-errors:
         ValidationError:
@@ -1827,12 +1815,6 @@ paths:
                     nullable: true
                 required:
                   - id
-                  - created_at
-                  - modified_at
-                  - source
-                  - token_id
-                  - type
-                  - vectorize_name
       x-distilled-response-path: result
       x-distilled-errors:
         ValidationError:
@@ -2162,12 +2144,6 @@ paths:
                     nullable: true
                 required:
                   - id
-                  - created_at
-                  - modified_at
-                  - source
-                  - token_id
-                  - type
-                  - vectorize_name
       x-distilled-response-path: result
       x-distilled-errors:
         ValidationError:
@@ -2524,7 +2500,6 @@ paths:
                     type: string
                 required:
                   - id
-                  - source
       x-distilled-response-path: result
       x-distilled-errors:
         ValidationError:
@@ -2809,12 +2784,6 @@ paths:
                     type: string
                   synced_at:
                     type: string
-                required:
-                  - id
-                  - cf_api_id
-                  - created_at
-                  - modified_at
-                  - name
       x-distilled-response-path: result
       x-distilled-errors:
         ValidationError:

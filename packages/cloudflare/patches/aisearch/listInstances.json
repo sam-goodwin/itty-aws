@@ -1,23 +1,137 @@
 {
   "errors": {
-    "InvalidRoute": [{ "code": 7003 }]
+    "InvalidRoute": [
+      {
+        "code": 7003
+      }
+    ]
   },
   "response": {
     "properties": {
-      "result_info": { "optional": true },
-      "result[].account_id": { "optional": true },
-      "result[].account_tag": { "optional": true },
-      "result[].internal_id": { "optional": true },
-      "result[].vectorize_active_namespace": { "nullable": true },
-      "result[].source_params": { "nullable": true },
-      "result[].cache_threshold": { "nullable": true },
-      "result[].system_prompt_ai_search": { "nullable": true },
-      "result[].system_prompt_index_summarization": { "nullable": true },
-      "result[].system_prompt_rewrite_query": { "nullable": true },
-      "result[].public_endpoint_id": { "nullable": true },
-      "result[].public_endpoint_params": { "nullable": true },
-      "result[].metadata": { "nullable": true },
-      "result[].last_activity": { "nullable": true }
+      "result_info": {
+        "optional": true
+      },
+      "result[].account_id": {
+        "optional": true
+      },
+      "result[].account_tag": {
+        "optional": true
+      },
+      "result[].internal_id": {
+        "optional": true
+      },
+      "result[].vectorize_active_namespace": {
+        "nullable": true
+      },
+      "result[].source_params": {
+        "nullable": true
+      },
+      "result[].cache_threshold": {
+        "nullable": true,
+        "optional": true
+      },
+      "result[].system_prompt_ai_search": {
+        "nullable": true
+      },
+      "result[].system_prompt_index_summarization": {
+        "nullable": true
+      },
+      "result[].system_prompt_rewrite_query": {
+        "nullable": true
+      },
+      "result[].public_endpoint_id": {
+        "nullable": true
+      },
+      "result[].public_endpoint_params": {
+        "nullable": true
+      },
+      "result[].metadata": {
+        "nullable": true
+      },
+      "result[].last_activity": {
+        "nullable": true
+      },
+      "result[].vectorize_name": {
+        "optional": true
+      },
+      "result[].ai_gateway_id": {
+        "optional": true
+      },
+      "result[].cache": {
+        "optional": true
+      },
+      "result[].cache_ttl": {
+        "optional": true
+      },
+      "result[].summarization": {
+        "optional": true
+      },
+      "result[].rewrite_query": {
+        "optional": true
+      },
+      "result[].reranking": {
+        "optional": true
+      },
+      "result[].summarization_model": {
+        "optional": true
+      },
+      "result[].embedding_model": {
+        "optional": true
+      },
+      "result[].rewrite_model": {
+        "optional": true
+      },
+      "result[].ai_search_model": {
+        "optional": true
+      },
+      "result[].reranking_model": {
+        "optional": true
+      },
+      "result[].chunk": {
+        "optional": true
+      },
+      "result[].chunk_size": {
+        "optional": true
+      },
+      "result[].chunk_overlap": {
+        "optional": true
+      },
+      "result[].score_threshold": {
+        "optional": true
+      },
+      "result[].max_num_results": {
+        "optional": true
+      },
+      "result[].paused": {
+        "optional": true
+      },
+      "result[].status": {
+        "optional": true
+      },
+      "result[].sync_interval": {
+        "optional": true
+      },
+      "result[].engine_version": {
+        "optional": true
+      },
+      "result[].enable": {
+        "optional": true
+      },
+      "result[].type": {
+        "optional": true
+      },
+      "result[].source": {
+        "optional": true
+      },
+      "result[].token_id": {
+        "optional": true
+      },
+      "result[].created_at": {
+        "optional": true
+      },
+      "result[].modified_at": {
+        "optional": true
+      }
     }
   }
 }

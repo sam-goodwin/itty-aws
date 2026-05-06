@@ -29,15 +29,24 @@ const scriptName = (name: string) =>
 
 /**
  * Minimal Worker module source that exports a Workflow class.
+ *
+ * MyWorkflow must extend `WorkflowEntrypoint` from `cloudflare:workers`
+ * — without that, the Cloudflare runtime sees the class as a plain
+ * Durable Object (which is what `cloudflare:workflows` is built on
+ * underneath) and rejects createInstance with
+ * "refers to a Durable Object class, but the incoming request is
+ * trying to invoke it as a stateless worker."
  */
 const workflowWorkerSource = `
+import { WorkflowEntrypoint } from "cloudflare:workers";
+
 export default {
   async fetch(request) {
     return new Response("Workflow worker");
   }
 };
 
-export class MyWorkflow {
+export class MyWorkflow extends WorkflowEntrypoint {
   async run(event, step) {
     const result = await step.do("step1", async () => {
       return "done";

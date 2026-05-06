@@ -1,15 +1,123 @@
 {
   "errors": {
-    "ValidationError": [{ "code": 7001 }],
-    "NotFound": [{ "code": 7002 }],
-    "InvalidRoute": [{ "code": 7003 }],
-    "UnableToConnect": [{ "code": 7017 }],
-    "SyncInCooldown": [{ "code": 7020 }]
+    "ValidationError": [
+      {
+        "code": 7001
+      }
+    ],
+    "NotFound": [
+      {
+        "code": 7002
+      }
+    ],
+    "InvalidRoute": [
+      {
+        "code": 7003
+      }
+    ],
+    "UnableToConnect": [
+      {
+        "code": 7017
+      }
+    ],
+    "SyncInCooldown": [
+      {
+        "code": 7020
+      }
+    ]
   },
   "response": {
     "properties": {
-      "ended_at": { "nullable": true },
-      "end_reason": { "nullable": true }
+      "ended_at": {
+        "nullable": true
+      },
+      "end_reason": {
+        "nullable": true
+      },
+      "vectorize_name": {
+        "optional": true
+      },
+      "ai_gateway_id": {
+        "optional": true
+      },
+      "cache": {
+        "optional": true
+      },
+      "cache_threshold": {
+        "optional": true
+      },
+      "cache_ttl": {
+        "optional": true
+      },
+      "summarization": {
+        "optional": true
+      },
+      "rewrite_query": {
+        "optional": true
+      },
+      "reranking": {
+        "optional": true
+      },
+      "summarization_model": {
+        "optional": true
+      },
+      "embedding_model": {
+        "optional": true
+      },
+      "rewrite_model": {
+        "optional": true
+      },
+      "ai_search_model": {
+        "optional": true
+      },
+      "reranking_model": {
+        "optional": true
+      },
+      "chunk": {
+        "optional": true
+      },
+      "chunk_size": {
+        "optional": true
+      },
+      "chunk_overlap": {
+        "optional": true
+      },
+      "score_threshold": {
+        "optional": true
+      },
+      "max_num_results": {
+        "optional": true
+      },
+      "paused": {
+        "optional": true
+      },
+      "status": {
+        "optional": true
+      },
+      "sync_interval": {
+        "optional": true
+      },
+      "engine_version": {
+        "optional": true
+      },
+      "enable": {
+        "optional": true
+      },
+      "type": {
+        "optional": true
+      },
+      "source": {
+        "optional": true
+      },
+      "token_id": {
+        "optional": true
+      },
+      "created_at": {
+        "optional": true
+      },
+      "modified_at": {
+        "optional": true
+      }
     }
   }
 }
