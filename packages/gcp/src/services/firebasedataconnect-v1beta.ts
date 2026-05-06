@@ -104,7 +104,7 @@ export const File = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Source {
   /** Required. The files that comprise the source set. */
-  files?: Array<File>;
+  files?: ReadonlyArray<File>;
 }
 
 export const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -115,7 +115,7 @@ export interface Firebasedataconnect_Schema {
   /** Output only. [Output only] Update time stamp. */
   updateTime?: string;
   /** Required. The data sources linked in the schema. */
-  datasources?: Array<Datasource>;
+  datasources?: ReadonlyArray<Datasource>;
   /** Identifier. The relative resource name of the schema, in the format: ``` projects/{project}/locations/{location}/services/{service}/schemas/{schema} ``` Right now, the only supported schema is "main". */
   name?: string;
   /** Output only. A field that if true, indicates that the system is working to compile and deploy the schema. */
@@ -170,7 +170,7 @@ export interface GraphqlErrorExtensions {
   /** More detailed error message to assist debugging. It contains application business logic that are inappropriate to leak publicly. In the emulator, Data Connect API always includes it to assist local development and debugging. In the backend, ConnectorService always hides it. GraphqlService without impersonation always include it. GraphqlService with impersonation includes it only if explicitly opted-in with `include_debug_details` in `GraphqlRequestExtensions`. */
   debugDetails?: string;
   /** Workarounds provide suggestions to address the compile errors or warnings. */
-  workarounds?: Array<Workaround>;
+  workarounds?: ReadonlyArray<Workaround>;
   /** Warning level describes the severity and required action to suppress this warning when Firebase CLI run into it. */
   warningLevel?:
     | "WARNING_LEVEL_UNKNOWN"
@@ -231,9 +231,9 @@ export interface GraphqlError {
   /** The detailed error message. The message should help developer understand the underlying problem without leaking internal data. */
   message?: string;
   /** The source locations where the error occurred. Locations should help developers and toolings identify the source of error quickly. Included in admin endpoints (`ExecuteGraphql`, `ExecuteGraphqlRead`, `IntrospectGraphql`, `ImpersonateQuery`, `ImpersonateMutation`, `UpdateSchema` and `UpdateConnector`) to reference the provided GraphQL GQL document. Omitted in `ExecuteMutation` and `ExecuteQuery` since the caller shouldn't have access access the underlying GQL source. */
-  locations?: Array<SourceLocation>;
+  locations?: ReadonlyArray<SourceLocation>;
   /** The result field which could not be populated due to error. Clients can use path to identify whether a null result is intentional or caused by a runtime error. It should be a list of string or index from the root of GraphQL query document. */
-  path?: Array<unknown>;
+  path?: ReadonlyArray<unknown>;
 }
 
 export const GraphqlError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -245,11 +245,11 @@ export const GraphqlError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DataConnectProperties {
   /** The path under response.data where the rest of the fields apply. Each element may be a string (field name) or number (array index). The root of response.data is denoted by the empty list `[]`. */
-  path?: Array<unknown>;
+  path?: ReadonlyArray<unknown>;
   /** A single Entity ID. Set if the path points to a single entity. */
   entityId?: string;
   /** A list of Entity IDs. Set if the path points to an array of entities. An ID is present for each element of the array at the corresponding index. */
-  entityIds?: Array<string>;
+  entityIds?: ReadonlyArray<string>;
   /** The server-suggested duration before data under path is considered stale. */
   maxAge?: string;
 }
@@ -263,7 +263,7 @@ export const DataConnectProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GraphqlResponseExtensions {
   /** Data Connect specific GraphQL extension, a list of paths and properties. */
-  dataConnect?: Array<DataConnectProperties>;
+  dataConnect?: ReadonlyArray<DataConnectProperties>;
 }
 
 export const GraphqlResponseExtensions =
@@ -273,7 +273,7 @@ export const GraphqlResponseExtensions =
 
 export interface GraphqlResponse {
   /** Errors of this response. If the data entry in the response is not present, the errors entry must be present. It conforms to https://spec.graphql.org/draft/#sec-Errors . */
-  errors?: Array<GraphqlError>;
+  errors?: ReadonlyArray<GraphqlError>;
   /** Additional response information. It conforms to https://spec.graphql.org/draft/#sec-Extensions . */
   extensions?: GraphqlResponseExtensions;
   /** The result of the execution of the requested operation. If an error was raised before execution begins, the data entry should not be present in the result. (a request error: https://spec.graphql.org/draft/#sec-Errors.Request-Errors) If an error was raised during the execution that prevented a valid response, the data entry in the response should be null. (a field error: https://spec.graphql.org/draft/#sec-Errors.Error-Result-Format) */
@@ -397,7 +397,7 @@ export const GraphqlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ExecuteMutationResponse {
   /** Errors of this response. */
-  errors?: Array<GraphqlError>;
+  errors?: ReadonlyArray<GraphqlError>;
   /** The result of executing the requested operation. */
   data?: Record<string, unknown>;
   /** Additional response information. */
@@ -417,7 +417,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -451,9 +451,9 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -472,7 +472,7 @@ export interface ExecuteQueryResponse {
   /** Additional response information. */
   extensions?: GraphqlResponseExtensions;
   /** Errors of this response. */
-  errors?: Array<GraphqlError>;
+  errors?: ReadonlyArray<GraphqlError>;
 }
 
 export const ExecuteQueryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -520,9 +520,9 @@ export interface ListSchemasResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The list of Schemas. */
-  schemas?: Array<Firebasedataconnect_Schema>;
+  schemas?: ReadonlyArray<Firebasedataconnect_Schema>;
 }
 
 export const ListSchemasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -533,9 +533,9 @@ export const ListSchemasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListConnectorsResponse {
   /** The list of Connectors. */
-  connectors?: Array<Connector>;
+  connectors?: ReadonlyArray<Connector>;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -583,7 +583,7 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -646,11 +646,11 @@ export const ExecuteQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListServicesResponse {
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The list of Services. */
-  services?: Array<Service>;
+  services?: ReadonlyArray<Service>;
 }
 
 export const ListServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -686,7 +686,7 @@ export const ListProjectsLocationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1beta/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -721,10 +721,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -769,10 +766,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -807,10 +801,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -841,10 +832,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -878,11 +866,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -918,7 +902,7 @@ export const ExecuteGraphqlReadProjectsLocationsServicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:executeGraphqlRead",
+      path: "v1beta/{name}:executeGraphqlRead",
       hasBody: true,
     }),
     svc,
@@ -964,10 +948,7 @@ export const ListProjectsLocationsServicesRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/services" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsServicesRequest>;
 
@@ -1002,10 +983,7 @@ export const GetProjectsLocationsServicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsServicesRequest>;
 
@@ -1050,11 +1028,7 @@ export const CreateProjectsLocationsServicesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Service).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{parent}/services", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsServicesRequest>;
 
@@ -1090,7 +1064,7 @@ export const ExecuteGraphqlProjectsLocationsServicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:executeGraphql",
+      path: "v1beta/{name}:executeGraphql",
       hasBody: true,
     }),
     svc,
@@ -1142,10 +1116,7 @@ export const DeleteProjectsLocationsServicesRequest =
       T.HttpQuery("allowMissing"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsServicesRequest>;
 
@@ -1195,11 +1166,7 @@ export const PatchProjectsLocationsServicesRequest =
     ),
     body: Schema.optional(Service).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsServicesRequest>;
 
@@ -1235,7 +1202,7 @@ export const IntrospectGraphqlProjectsLocationsServicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:introspectGraphql",
+      path: "v1beta/{name}:introspectGraphql",
       hasBody: true,
     }),
     svc,
@@ -1269,10 +1236,7 @@ export const GetProjectsLocationsServicesConnectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/connectors/{connectorsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsServicesConnectorsRequest>;
 
@@ -1321,7 +1285,7 @@ export const CreateProjectsLocationsServicesConnectorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/connectors",
+      path: "v1beta/{parent}/connectors",
       hasBody: true,
     }),
     svc,
@@ -1359,7 +1323,7 @@ export const ImpersonateQueryProjectsLocationsServicesConnectorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/connectors/{connectorsId}:impersonateQuery",
+      path: "v1beta/{name}:impersonateQuery",
       hasBody: true,
     }),
     svc,
@@ -1399,7 +1363,7 @@ export const ImpersonateMutationProjectsLocationsServicesConnectorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/connectors/{connectorsId}:impersonateMutation",
+      path: "v1beta/{name}:impersonateMutation",
       hasBody: true,
     }),
     svc,
@@ -1446,10 +1410,7 @@ export const ListProjectsLocationsServicesConnectorsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/connectors",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/connectors" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsServicesConnectorsRequest>;
 
@@ -1490,7 +1451,7 @@ export const ExecuteMutationProjectsLocationsServicesConnectorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/connectors/{connectorsId}:executeMutation",
+      path: "v1beta/{name}:executeMutation",
       hasBody: true,
     }),
     svc,
@@ -1544,11 +1505,7 @@ export const PatchProjectsLocationsServicesConnectorsRequest =
     ),
     body: Schema.optional(Connector).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/connectors/{connectorsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsServicesConnectorsRequest>;
 
@@ -1598,10 +1555,7 @@ export const DeleteProjectsLocationsServicesConnectorsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/connectors/{connectorsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsServicesConnectorsRequest>;
 
@@ -1637,7 +1591,7 @@ export const ExecuteQueryProjectsLocationsServicesConnectorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/connectors/{connectorsId}:executeQuery",
+      path: "v1beta/{name}:executeQuery",
       hasBody: true,
     }),
     svc,
@@ -1691,11 +1645,7 @@ export const PatchProjectsLocationsServicesSchemasRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Firebasedataconnect_Schema).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/schemas/{schemasId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsServicesSchemasRequest>;
 
@@ -1745,10 +1695,7 @@ export const DeleteProjectsLocationsServicesSchemasRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/schemas/{schemasId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsServicesSchemasRequest>;
 
@@ -1779,10 +1726,7 @@ export const GetProjectsLocationsServicesSchemasRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/schemas/{schemasId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsServicesSchemasRequest>;
 
@@ -1826,10 +1770,7 @@ export const ListProjectsLocationsServicesSchemasRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/schemas",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/schemas" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsServicesSchemasRequest>;
 
@@ -1878,11 +1819,7 @@ export const CreateProjectsLocationsServicesSchemasRequest =
     ),
     body: Schema.optional(Firebasedataconnect_Schema).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/schemas",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{parent}/schemas", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsServicesSchemasRequest>;
 

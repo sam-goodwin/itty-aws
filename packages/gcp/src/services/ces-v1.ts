@@ -193,7 +193,7 @@ export interface Message {
   /** Optional. The role within the conversation, e.g., user, agent. */
   role?: string;
   /** Optional. Content of the message as a series of chunks. */
-  chunks?: Array<Chunk>;
+  chunks?: ReadonlyArray<Chunk>;
   /** Optional. Timestamp when the message was sent or received. Should not be used if the message is part of an example. */
   eventTime?: string;
 }
@@ -230,7 +230,7 @@ export interface SessionConfig {
   /** Optional. Configuration for generating the output audio. */
   outputAudioConfig?: OutputAudioConfig;
   /** Optional. The historical context of the session, including user inputs, agent responses, and other messages. Typically, CES agent would manage session automatically so client doesn't need to explicitly populate this field. However, client can optionally override the historical contexts to force the session start from certain state. */
-  historicalContexts?: Array<Message>;
+  historicalContexts?: ReadonlyArray<Message>;
   /** Optional. The entry agent to handle the session. If not specified, the session will be handled by the root agent of the app. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}` */
   entryAgent?: string;
   /** Optional. The deployment of the app to use for the session. Format: `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}` */
@@ -261,7 +261,7 @@ export const SessionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ToolResponses {
   /** Optional. The list of tool execution results. */
-  toolResponses?: Array<ToolResponse>;
+  toolResponses?: ReadonlyArray<ToolResponse>;
 }
 
 export const ToolResponses = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -314,7 +314,7 @@ export interface RunSessionRequest {
   /** Required. The configuration for the session. */
   config?: SessionConfig;
   /** Required. Inputs for the session. */
-  inputs?: Array<SessionInput>;
+  inputs?: ReadonlyArray<SessionInput>;
 }
 
 export const RunSessionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -324,7 +324,7 @@ export const RunSessionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ToolCalls {
   /** Optional. The list of tool calls to execute. */
-  toolCalls?: Array<ToolCall>;
+  toolCalls?: ReadonlyArray<ToolCall>;
 }
 
 export const ToolCalls = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -348,7 +348,7 @@ export const CitationsCitedChunk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Citations {
   /** List of cited pieces of information. */
-  citedChunks?: Array<CitationsCitedChunk>;
+  citedChunks?: ReadonlyArray<CitationsCitedChunk>;
 }
 
 export const Citations = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -369,9 +369,9 @@ export const WebSearchQuery = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleSearchSuggestions {
   /** Compliant HTML and CSS styling for search suggestions. The provided HTML and CSS automatically adapts to your device settings, displaying in either light or dark mode indicated by `@media(prefers-color-scheme)`. */
-  htmls?: Array<string>;
+  htmls?: ReadonlyArray<string>;
   /** List of queries used to perform the google search along with the search result URIs forming the search suggestions. */
-  webSearchQueries?: Array<WebSearchQuery>;
+  webSearchQueries?: ReadonlyArray<WebSearchQuery>;
 }
 
 export const GoogleSearchSuggestions =
@@ -401,7 +401,7 @@ export interface Span {
   /** Output only. Key-value attributes associated with the span. */
   attributes?: Record<string, unknown>;
   /** Output only. The child spans that are nested under this span. */
-  childSpans?: Array<Span>;
+  childSpans?: ReadonlyArray<Span>;
 }
 
 export const Span: Schema.Schema<Span> =
@@ -418,7 +418,7 @@ export const Span: Schema.Schema<Span> =
 
 export interface SessionOutputDiagnosticInfo {
   /** List of the messages that happened during the processing. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
   /** A trace of the entire request processing, represented as a root span. This span can contain nested child spans for specific operations. */
   rootSpan?: Span;
 }
@@ -467,7 +467,7 @@ export const SessionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RunSessionResponse {
   /** Outputs for the session. */
-  outputs?: Array<SessionOutput>;
+  outputs?: ReadonlyArray<SessionOutput>;
 }
 
 export const RunSessionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -480,7 +480,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -514,11 +514,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -545,7 +545,7 @@ export interface LanguageSettings {
   /** Optional. The default language code of the app. */
   defaultLanguageCode?: string;
   /** Optional. List of languages codes supported by the app, in addition to the `default_language_code`. */
-  supportedLanguageCodes?: Array<string>;
+  supportedLanguageCodes?: ReadonlyArray<string>;
   /** Optional. Enables multilingual support. If true, agents in the app will use pre-built instructions to improve handling of multilingual input. */
   enableMultilingualSupport?: boolean;
   /** Optional. Deprecated: This feature is no longer supported. Use `enable_multilingual_support` instead to improve handling of multilingual input. The action to perform when an agent receives input in an unsupported language. This can be a predefined action or a custom tool call. Valid values are: - A tool's full resource name, which triggers a specific tool execution. - A predefined system action, such as "escalate" or "exit", which triggers an EndSession signal with corresponding metadata to terminate the conversation. */
@@ -923,7 +923,7 @@ export interface Ces_Schema {
   /** Optional. Properties of Type.OBJECT. */
   properties?: Record<string, Ces_Schema>;
   /** Optional. Required properties of Type.OBJECT. */
-  required?: Array<string>;
+  required?: ReadonlyArray<string>;
   /** Optional. The description of the data. */
   description?: string;
   /** Optional. Schema of the elements of Type.ARRAY. */
@@ -933,13 +933,13 @@ export interface Ces_Schema {
   /** Optional. Indicate the items in the array must be unique. Only applies to TYPE.ARRAY. */
   uniqueItems?: boolean;
   /** Optional. Schemas of initial elements of Type.ARRAY. */
-  prefixItems?: Array<Ces_Schema>;
+  prefixItems?: ReadonlyArray<Ces_Schema>;
   /** Optional. Can either be a boolean or an object, controls the presence of additional properties. */
   additionalProperties?: Ces_Schema;
   /** Optional. The value should be validated against any (one or more) of the subschemas in the list. */
-  anyOf?: Array<Ces_Schema>;
+  anyOf?: ReadonlyArray<Ces_Schema>;
   /** Optional. Possible values of the element of primitive type with enum format. Examples: 1. We can define direction as : {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]} 2. We can define apartment number as : {type:INTEGER, format:enum, enum:["101", "201", "301"]} */
-  enum?: Array<string>;
+  enum?: ReadonlyArray<string>;
   /** Optional. Default value of the data. */
   default?: unknown;
   /** Optional. Allows indirect references between schema nodes. The value should be a valid reference to a child of the root `defs`. For example, the following schema defines a reference to a schema node named "Pet": ``` type: object properties: pet: ref: #/defs/Pet defs: Pet: type: object properties: name: type: string ``` The value of the "pet" property is a reference to the schema node named "Pet". See details in https://json-schema.org/understanding-json-schema/structuring. */
@@ -1019,7 +1019,7 @@ export const DataStoreSettingsEngine =
 
 export interface DataStoreSettings {
   /** Output only. The engines for the app. */
-  engines?: Array<DataStoreSettingsEngine>;
+  engines?: ReadonlyArray<DataStoreSettingsEngine>;
 }
 
 export const DataStoreSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1042,7 +1042,7 @@ export interface ChannelProfileWebWidgetConfigSecuritySettings {
   /** Optional. Indicates whether origin check for the web widget is enabled. If `true`, the web widget will check the origin of the website that loads the web widget and only allow it to be loaded in the same origin or any of the allowed origins. */
   enableOriginCheck?: boolean;
   /** Optional. The origins that are allowed to host the web widget. An origin is defined by RFC 6454. If empty, all origins are allowed. A maximum of 100 origins is allowed. Example: "https://example.com" */
-  allowedOrigins?: Array<string>;
+  allowedOrigins?: ReadonlyArray<string>;
   /** Optional. Indicates whether reCAPTCHA verification for the web widget is enabled. */
   enableRecaptcha?: boolean;
 }
@@ -1166,13 +1166,13 @@ export interface App {
   /** Optional. The evaluation thresholds for the app. */
   evaluationMetricsThresholds?: EvaluationMetricsThresholds;
   /** Optional. The declarations of the variables. */
-  variableDeclarations?: Array<AppVariableDeclaration>;
+  variableDeclarations?: ReadonlyArray<AppVariableDeclaration>;
   /** Output only. The declarations of predefined variables for the app. */
-  predefinedVariableDeclarations?: Array<AppVariableDeclaration>;
+  predefinedVariableDeclarations?: ReadonlyArray<AppVariableDeclaration>;
   /** Optional. Instructions for all the agents in the app. You can use this instruction to set up a stable identity or personality across all the agents. */
   globalInstruction?: string;
   /** Optional. List of guardrails for the app. Format: `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}` */
-  guardrails?: Array<string>;
+  guardrails?: ReadonlyArray<string>;
   /** Optional. The data store settings for the app. */
   dataStoreSettings?: DataStoreSettings;
   /** Optional. The default channel profile used by the app. */
@@ -1226,11 +1226,11 @@ export const App = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAppsResponse {
   /** The list of apps. */
-  apps?: Array<App>;
+  apps?: ReadonlyArray<App>;
   /** A token that can be sent as ListAppsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
   /** Unordered list. Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1349,7 +1349,7 @@ export interface AgentAgentToolset {
   /** Required. The resource name of the toolset. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}` */
   toolset?: string;
   /** Optional. The tools IDs to filter the toolset. */
-  toolIds?: Array<string>;
+  toolIds?: ReadonlyArray<string>;
 }
 
 export const AgentAgentToolset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1436,35 +1436,35 @@ export interface Agent {
   /** Optional. Instructions for the LLM model to guide the agent's behavior. */
   instruction?: string;
   /** Optional. List of available tools for the agent. Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` */
-  tools?: Array<string>;
+  tools?: ReadonlyArray<string>;
   /** Optional. List of child agents in the agent tree. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}` */
-  childAgents?: Array<string>;
+  childAgents?: ReadonlyArray<string>;
   /** Optional. The callbacks to execute before the agent is called. The provided callbacks are executed sequentially in the exact order they are given in the list. If a callback returns an overridden response, execution stops and any remaining callbacks are skipped. */
-  beforeAgentCallbacks?: Array<Callback>;
+  beforeAgentCallbacks?: ReadonlyArray<Callback>;
   /** Optional. The callbacks to execute after the agent is called. The provided callbacks are executed sequentially in the exact order they are given in the list. If a callback returns an overridden response, execution stops and any remaining callbacks are skipped. */
-  afterAgentCallbacks?: Array<Callback>;
+  afterAgentCallbacks?: ReadonlyArray<Callback>;
   /** Optional. The callbacks to execute before the model is called. If there are multiple calls to the model, the callback will be executed multiple times. The provided callbacks are executed sequentially in the exact order they are given in the list. If a callback returns an overridden response, execution stops and any remaining callbacks are skipped. */
-  beforeModelCallbacks?: Array<Callback>;
+  beforeModelCallbacks?: ReadonlyArray<Callback>;
   /** Optional. The callbacks to execute after the model is called. If there are multiple calls to the model, the callback will be executed multiple times. The provided callbacks are executed sequentially in the exact order they are given in the list. If a callback returns an overridden response, execution stops and any remaining callbacks are skipped. */
-  afterModelCallbacks?: Array<Callback>;
+  afterModelCallbacks?: ReadonlyArray<Callback>;
   /** Optional. The callbacks to execute before the tool is invoked. If there are multiple tool invocations, the callback will be executed multiple times. The provided callbacks are executed sequentially in the exact order they are given in the list. If a callback returns an overridden response, execution stops and any remaining callbacks are skipped. */
-  beforeToolCallbacks?: Array<Callback>;
+  beforeToolCallbacks?: ReadonlyArray<Callback>;
   /** Optional. The callbacks to execute after the tool is invoked. If there are multiple tool invocations, the callback will be executed multiple times. The provided callbacks are executed sequentially in the exact order they are given in the list. If a callback returns an overridden response, execution stops and any remaining callbacks are skipped. */
-  afterToolCallbacks?: Array<Callback>;
+  afterToolCallbacks?: ReadonlyArray<Callback>;
   /** Output only. Timestamp when the agent was created. */
   createTime?: string;
   /** Output only. Timestamp when the agent was last updated. */
   updateTime?: string;
   /** Optional. List of guardrails for the agent. Format: `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}` */
-  guardrails?: Array<string>;
+  guardrails?: ReadonlyArray<string>;
   /** Etag used to ensure the object hasn't changed during a read-modify-write operation. If the etag is empty, the update will overwrite any concurrent changes. */
   etag?: string;
   /** Optional. List of toolsets for the agent. */
-  toolsets?: Array<AgentAgentToolset>;
+  toolsets?: ReadonlyArray<AgentAgentToolset>;
   /** Output only. If the agent is generated by the LLM assistant, this field contains a descriptive summary of the generation. */
   generatedSummary?: string;
   /** Optional. Agent transfer rules. If multiple rules match, the first one in the list will be used. */
-  transferRules?: Array<TransferRule>;
+  transferRules?: ReadonlyArray<TransferRule>;
 }
 
 export const Agent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1494,7 +1494,7 @@ export const Agent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAgentsResponse {
   /** The list of agents. */
-  agents?: Array<Agent>;
+  agents?: ReadonlyArray<Agent>;
   /** A token that can be sent as ListAgentsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1514,7 +1514,7 @@ export interface Example {
   /** Optional. The agent that initially handles the conversation. If not specified, the example represents a conversation that is handled by the root agent. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}` */
   entryAgent?: string;
   /** Optional. The collection of messages that make up the conversation. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
   /** Output only. Timestamp when the example was created. */
   createTime?: string;
   /** Output only. Timestamp when the example was last updated. */
@@ -1539,7 +1539,7 @@ export const Example = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListExamplesResponse {
   /** The list of examples. */
-  examples?: Array<Example>;
+  examples?: ReadonlyArray<Example>;
   /** A token that can be sent as ListExamplesRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1599,7 +1599,7 @@ export interface OAuthConfig {
   /** Required. The token endpoint in the OAuth provider to exchange for an access token. */
   tokenEndpoint?: string;
   /** Optional. The OAuth scopes to grant. */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
 }
 
 export const OAuthConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1621,7 +1621,7 @@ export interface ServiceAccountAuthConfig {
   /** Required. The email address of the service account used for authentication. CES uses this service account to exchange an access token and the access token is then sent in the `Authorization` header of the request. The service account must have the `roles/iam.serviceAccountTokenCreator` role granted to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`. */
   serviceAccount?: string;
   /** Optional. The OAuth scopes to grant. If not specified, the default scope `https://www.googleapis.com/auth/cloud-platform` is used. */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
 }
 
 export const ServiceAccountAuthConfig =
@@ -1674,7 +1674,7 @@ export const TlsConfigCaCert = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TlsConfig {
   /** Required. Specifies a list of allowed custom CA certificates for HTTPS verification. */
-  caCerts?: Array<TlsConfigCaCert>;
+  caCerts?: ReadonlyArray<TlsConfigCaCert>;
 }
 
 export const TlsConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1741,11 +1741,11 @@ export interface GoogleSearchTool {
   /** Optional. Description of the tool's purpose. */
   description?: string;
   /** Optional. Content will be fetched directly from these URLs for context and grounding. Example: "https://example.com/path.html". A maximum of 20 URLs are allowed. */
-  contextUrls?: Array<string>;
+  contextUrls?: ReadonlyArray<string>;
   /** Optional. Specifies domains to restrict search results to. Example: "example.com", "another.site". A maximum of 20 domains can be specified. */
-  preferredDomains?: Array<string>;
+  preferredDomains?: ReadonlyArray<string>;
   /** Optional. List of domains to be excluded from the search results. Example: "example.com". A maximum of 2000 domains can be excluded. */
-  excludeDomains?: Array<string>;
+  excludeDomains?: ReadonlyArray<string>;
   /** Optional. Prompt instructions passed to planner on how the search results should be processed for text and voice. */
   promptConfig?: GoogleSearchToolPromptConfig;
 }
@@ -1784,9 +1784,9 @@ export interface Action {
   /** Entity operation configuration for the tool to use. */
   entityOperation?: ActionEntityOperation;
   /** Optional. Entity fields to use as inputs for the operation. If no fields are specified, all fields of the Entity will be used. */
-  inputFields?: Array<string>;
+  inputFields?: ReadonlyArray<string>;
   /** Optional. Entity fields to return from the operation. If no fields are specified, all fields of the Entity will be returned. */
-  outputFields?: Array<string>;
+  outputFields?: ReadonlyArray<string>;
 }
 
 export const Action = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1924,7 +1924,7 @@ export interface DataStoreToolEngineSource {
   /** Required. Full resource name of the Engine. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` */
   engine?: string;
   /** Optional. Use to target specific DataStores within the Engine. If empty, the search applies to all DataStores associated with the Engine. */
-  dataStoreSources?: Array<DataStoreToolDataStoreSource>;
+  dataStoreSources?: ReadonlyArray<DataStoreToolDataStoreSource>;
   /** Optional. A filter applied to the search across the Engine. Not relevant and not used if 'data_store_sources' is provided. See: https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata */
   filter?: string;
 }
@@ -1969,7 +1969,7 @@ export interface DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec {
     | "LINEAR"
     | (string & {});
   /** Optional. The control points used to define the curve. The monotonic function (defined through the interpolation_type above) passes through the control points listed here. */
-  controlPoints?: Array<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
+  controlPoints?: ReadonlyArray<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
 }
 
 export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec =
@@ -2006,7 +2006,7 @@ export const DataStoreToolBoostSpecConditionBoostSpec =
 
 export interface DataStoreToolBoostSpec {
   /** Required. A list of boosting specifications. */
-  conditionBoostSpecs?: Array<DataStoreToolBoostSpecConditionBoostSpec>;
+  conditionBoostSpecs?: ReadonlyArray<DataStoreToolBoostSpecConditionBoostSpec>;
 }
 
 export const DataStoreToolBoostSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -2019,9 +2019,9 @@ export const DataStoreToolBoostSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface DataStoreToolBoostSpecs {
   /** Required. The Data Store where the boosting configuration is applied. Full resource name of DataStore, such as projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}. */
-  dataStores?: Array<string>;
+  dataStores?: ReadonlyArray<string>;
   /** Required. A list of boosting specifications. */
-  spec?: Array<DataStoreToolBoostSpec>;
+  spec?: ReadonlyArray<DataStoreToolBoostSpec>;
 }
 
 export const DataStoreToolBoostSpecs =
@@ -2104,9 +2104,9 @@ export interface DataStoreTool {
   /** Optional. The tool description. */
   description?: string;
   /** Optional. Boost specification to boost certain documents. */
-  boostSpecs?: Array<DataStoreToolBoostSpecs>;
+  boostSpecs?: ReadonlyArray<DataStoreToolBoostSpecs>;
   /** Optional. The modality configs for the data store. */
-  modalityConfigs?: Array<DataStoreToolModalityConfig>;
+  modalityConfigs?: ReadonlyArray<DataStoreToolModalityConfig>;
   /** Optional. The filter parameter behavior. */
   filterParameterBehavior?:
     | "FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED"
@@ -2374,7 +2374,7 @@ export const Tool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListToolsResponse {
   /** The list of tools. */
-  tools?: Array<Tool>;
+  tools?: ReadonlyArray<Tool>;
   /** A token that can be sent as ListToolsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2386,7 +2386,7 @@ export const ListToolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ConversationTurn {
   /** Optional. List of messages in the conversation turn, including user input, agent responses and intermediate events during the processing. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
   /** Optional. The root span of the action processing. */
   rootSpan?: Span;
 }
@@ -2404,7 +2404,7 @@ export interface Conversation {
   /** Output only. Timestamp when the conversation was completed. */
   endTime?: string;
   /** Required. The turns in the conversation. */
-  turns?: Array<ConversationTurn>;
+  turns?: ReadonlyArray<ConversationTurn>;
   /** Output only. The number of turns in the conversation. */
   turnCount?: number;
   /** DEPRECATED. Please use input_types instead. */
@@ -2423,7 +2423,7 @@ export interface Conversation {
     | "AGENT_TOOL"
     | (string & {});
   /** Output only. The input types of the conversation. */
-  inputTypes?: Array<
+  inputTypes?: ReadonlyArray<
     | "INPUT_TYPE_UNSPECIFIED"
     | "INPUT_TYPE_TEXT"
     | "INPUT_TYPE_AUDIO"
@@ -2442,7 +2442,7 @@ export interface Conversation {
   /** Output only. The language code of the conversation. */
   languageCode?: string;
   /** Deprecated. Use turns instead. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
 }
 
 export const Conversation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2463,7 +2463,7 @@ export const Conversation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListConversationsResponse {
   /** The list of conversations. */
-  conversations?: Array<Conversation>;
+  conversations?: ReadonlyArray<Conversation>;
   /** A token that can be sent as ListConversationsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2476,7 +2476,7 @@ export const ListConversationsResponse =
 
 export interface BatchDeleteConversationsRequest {
   /** Required. The resource names of the conversations to delete. */
-  conversations?: Array<string>;
+  conversations?: ReadonlyArray<string>;
 }
 
 export const BatchDeleteConversationsRequest =
@@ -2486,11 +2486,11 @@ export const BatchDeleteConversationsRequest =
 
 export interface GuardrailContentFilter {
   /** Optional. List of banned phrases. Applies to both user inputs and agent responses. */
-  bannedContents?: Array<string>;
+  bannedContents?: ReadonlyArray<string>;
   /** Optional. List of banned phrases. Applies only to user inputs. */
-  bannedContentsInUserInput?: Array<string>;
+  bannedContentsInUserInput?: ReadonlyArray<string>;
   /** Optional. List of banned phrases. Applies only to agent responses. */
-  bannedContentsInAgentResponse?: Array<string>;
+  bannedContentsInAgentResponse?: ReadonlyArray<string>;
   /** Required. Match type for the content filter. */
   matchType?:
     | "MATCH_TYPE_UNSPECIFIED"
@@ -2599,7 +2599,7 @@ export const GuardrailModelSafetySafetySetting =
 
 export interface GuardrailModelSafety {
   /** Required. List of safety settings. */
-  safetySettings?: Array<GuardrailModelSafetySafetySetting>;
+  safetySettings?: ReadonlyArray<GuardrailModelSafetySafetySetting>;
 }
 
 export const GuardrailModelSafety = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2640,7 +2640,7 @@ export const TriggerActionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TriggerActionRespondImmediately {
   /** Required. The canned responses for the agent to choose from. The response is chosen randomly. */
-  responses?: Array<TriggerActionResponse>;
+  responses?: ReadonlyArray<TriggerActionResponse>;
 }
 
 export const TriggerActionRespondImmediately =
@@ -2730,7 +2730,7 @@ export const Guardrail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListGuardrailsResponse {
   /** The list of guardrails. */
-  guardrails?: Array<Guardrail>;
+  guardrails?: ReadonlyArray<Guardrail>;
   /** A token that can be sent as ListGuardrailsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2771,7 +2771,7 @@ export const Deployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDeploymentsResponse {
   /** The list of deployments. */
-  deployments?: Array<Deployment>;
+  deployments?: ReadonlyArray<Deployment>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2833,7 +2833,7 @@ export interface ConnectorToolset {
   /** Optional. Configures how authentication is handled in Integration Connectors. By default, an admin authentication is passed in the Integration Connectors API requests. You can override it with a different end-user authentication config. **Note**: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise, the Toolset creation will fail. See: https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override */
   authConfig?: EndUserAuthConfig;
   /** Required. The list of connector actions/entity operations to generate tools for. */
-  connectorActions?: Array<Action>;
+  connectorActions?: ReadonlyArray<Action>;
 }
 
 export const ConnectorToolset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2887,7 +2887,7 @@ export const Toolset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListToolsetsResponse {
   /** The list of toolsets. */
-  toolsets?: Array<Toolset>;
+  toolsets?: ReadonlyArray<Toolset>;
   /** A token that can be sent as ListToolsetsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2901,15 +2901,15 @@ export interface AppSnapshot {
   /** Optional. The basic settings for the app. */
   app?: App;
   /** Optional. List of agents in the app. */
-  agents?: Array<Agent>;
+  agents?: ReadonlyArray<Agent>;
   /** Optional. List of tools in the app. */
-  tools?: Array<Tool>;
+  tools?: ReadonlyArray<Tool>;
   /** Optional. List of examples in the app. */
-  examples?: Array<Example>;
+  examples?: ReadonlyArray<Example>;
   /** Optional. List of guardrails in the app. */
-  guardrails?: Array<Guardrail>;
+  guardrails?: ReadonlyArray<Guardrail>;
   /** Optional. List of toolsets in the app. */
-  toolsets?: Array<Toolset>;
+  toolsets?: ReadonlyArray<Toolset>;
 }
 
 export const AppSnapshot = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2950,7 +2950,7 @@ export const AppVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAppVersionsResponse {
   /** The list of app versions. */
-  appVersions?: Array<AppVersion>;
+  appVersions?: ReadonlyArray<AppVersion>;
   /** A token that can be sent as ListAppVersionsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2988,7 +2988,7 @@ export interface Changelog {
   /** Output only. The new resource after the change. */
   newResource?: Record<string, unknown>;
   /** Output only. The dependent resources that were changed. */
-  dependentResources?: Array<Record<string, unknown>>;
+  dependentResources?: ReadonlyArray<Record<string, unknown>>;
   /** Output only. The time when the change was made. */
   createTime?: string;
   /** Output only. The monotonically increasing sequence number of the changelog. */
@@ -3016,7 +3016,7 @@ export const Changelog = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListChangelogsResponse {
   /** The list of changelogs. */
-  changelogs?: Array<Changelog>;
+  changelogs?: ReadonlyArray<Changelog>;
   /** A token that can be sent as ListChangelogsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -3053,7 +3053,7 @@ export const MockedToolCall = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MockConfig {
   /** Optional. All tool calls to mock for the duration of the session. */
-  mockedToolCalls?: Array<MockedToolCall>;
+  mockedToolCalls?: ReadonlyArray<MockedToolCall>;
   /** Required. Beavhior for tool calls that don't match any args patterns in mocked_tool_calls. */
   unmatchedToolCallBehavior?:
     | "UNMATCHED_TOOL_CALL_BEHAVIOR_UNSPECIFIED"
@@ -3143,7 +3143,7 @@ export const RetrieveToolSchemaResponse =
 
 export interface RetrieveToolsRequest {
   /** Optional. The identifiers of the tools to retrieve from the toolset. If empty, all tools in the toolset will be returned. */
-  toolIds?: Array<string>;
+  toolIds?: ReadonlyArray<string>;
 }
 
 export const RetrieveToolsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3152,7 +3152,7 @@ export const RetrieveToolsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RetrieveToolsResponse {
   /** The list of tools that are included in the specified toolset. */
-  tools?: Array<Tool>;
+  tools?: ReadonlyArray<Tool>;
 }
 
 export const RetrieveToolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3211,7 +3211,7 @@ export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -3229,7 +3229,7 @@ export interface EndpointControlPolicy {
     | "ALWAYS"
     | (string & {});
   /** Optional. The allowed HTTP(s) origins that tools in the App are able to directly call. The enforcement depends on the value of enforcement_scope and the VPC-SC status of the project. If a port number is not provided, all ports will be allowed. Otherwise, the port number must match exactly. For example, "https://example.com" will match "https://example.com:443" and any other port. "https://example.com:443" will only match "https://example.com:443". */
-  allowedOrigins?: Array<string>;
+  allowedOrigins?: ReadonlyArray<string>;
 }
 
 export const EndpointControlPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3419,7 +3419,7 @@ export interface ImportAppResponse {
   /** The resource name of the app that was imported. */
   name?: string;
   /** Warning messages generated during the import process. If errors occur for specific resources, they will not be included in the imported app and the error will be mentioned here. */
-  warnings?: Array<string>;
+  warnings?: ReadonlyArray<string>;
 }
 
 export const ImportAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3466,7 +3466,7 @@ export const ListProjectsLocationsRequest =
       T.HttpQuery("extraLocationTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -3501,10 +3501,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -3549,10 +3546,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -3587,10 +3581,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -3621,10 +3612,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -3658,11 +3646,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -3705,10 +3689,7 @@ export const ListProjectsLocationsAppsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/apps" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAppsRequest>;
 
@@ -3743,10 +3724,7 @@ export const GetProjectsLocationsAppsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAppsRequest>;
 
@@ -3782,11 +3760,7 @@ export const CreateProjectsLocationsAppsRequest =
     appId: Schema.optional(Schema.String).pipe(T.HttpQuery("appId")),
     body: Schema.optional(App).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/apps", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsAppsRequest>;
 
@@ -3823,11 +3797,7 @@ export const PatchProjectsLocationsAppsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(App).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAppsRequest>;
 
@@ -3861,10 +3831,7 @@ export const DeleteProjectsLocationsAppsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsRequest>;
 
@@ -3898,11 +3865,7 @@ export const ExportAppProjectsLocationsAppsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ExportAppRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}:exportApp",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:exportApp", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExportAppProjectsLocationsAppsRequest>;
 
@@ -3938,7 +3901,7 @@ export const ImportAppProjectsLocationsAppsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps:importApp",
+      path: "v1/{parent}/apps:importApp",
       hasBody: true,
     }),
     svc,
@@ -3974,11 +3937,7 @@ export const ExecuteToolProjectsLocationsAppsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ExecuteToolRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}:executeTool",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}:executeTool", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExecuteToolProjectsLocationsAppsRequest>;
 
@@ -4014,7 +3973,7 @@ export const RetrieveToolSchemaProjectsLocationsAppsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}:retrieveToolSchema",
+      path: "v1/{parent}:retrieveToolSchema",
       hasBody: true,
     }),
     svc,
@@ -4051,11 +4010,7 @@ export const RunSessionProjectsLocationsAppsSessionsRequest =
     session: Schema.String.pipe(T.HttpPath("session")),
     body: Schema.optional(RunSessionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/sessions/{sessionsId}:runSession",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{session}:runSession", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RunSessionProjectsLocationsAppsSessionsRequest>;
 
@@ -4092,7 +4047,7 @@ export const StreamRunSessionProjectsLocationsAppsSessionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/sessions/{sessionsId}:streamRunSession",
+      path: "v1/{session}:streamRunSession",
       hasBody: true,
     }),
     svc,
@@ -4131,7 +4086,7 @@ export const GenerateChatTokenProjectsLocationsAppsSessionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/sessions/{sessionsId}:generateChatToken",
+      path: "v1/{name}:generateChatToken",
       hasBody: true,
     }),
     svc,
@@ -4177,10 +4132,7 @@ export const ListProjectsLocationsAppsAgentsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/agents",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/agents" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAppsAgentsRequest>;
 
@@ -4215,10 +4167,7 @@ export const GetProjectsLocationsAppsAgentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/agents/{agentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAppsAgentsRequest>;
 
@@ -4255,11 +4204,7 @@ export const CreateProjectsLocationsAppsAgentsRequest =
     agentId: Schema.optional(Schema.String).pipe(T.HttpQuery("agentId")),
     body: Schema.optional(Agent).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/agents",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/agents", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsAppsAgentsRequest>;
 
@@ -4296,11 +4241,7 @@ export const PatchProjectsLocationsAppsAgentsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Agent).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/agents/{agentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAppsAgentsRequest>;
 
@@ -4337,10 +4278,7 @@ export const DeleteProjectsLocationsAppsAgentsRequest =
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/agents/{agentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsAgentsRequest>;
 
@@ -4383,10 +4321,7 @@ export const ListProjectsLocationsAppsExamplesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/examples",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/examples" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAppsExamplesRequest>;
 
@@ -4421,10 +4356,7 @@ export const GetProjectsLocationsAppsExamplesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/examples/{examplesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAppsExamplesRequest>;
 
@@ -4461,11 +4393,7 @@ export const CreateProjectsLocationsAppsExamplesRequest =
     exampleId: Schema.optional(Schema.String).pipe(T.HttpQuery("exampleId")),
     body: Schema.optional(Example).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/examples",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/examples", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsAppsExamplesRequest>;
 
@@ -4502,11 +4430,7 @@ export const PatchProjectsLocationsAppsExamplesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Example).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/examples/{examplesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAppsExamplesRequest>;
 
@@ -4540,10 +4464,7 @@ export const DeleteProjectsLocationsAppsExamplesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/examples/{examplesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsExamplesRequest>;
 
@@ -4586,10 +4507,7 @@ export const ListProjectsLocationsAppsToolsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/tools",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/tools" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAppsToolsRequest>;
 
@@ -4624,10 +4542,7 @@ export const GetProjectsLocationsAppsToolsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/tools/{toolsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAppsToolsRequest>;
 
@@ -4664,11 +4579,7 @@ export const CreateProjectsLocationsAppsToolsRequest =
     toolId: Schema.optional(Schema.String).pipe(T.HttpQuery("toolId")),
     body: Schema.optional(Tool).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/tools",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/tools", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsAppsToolsRequest>;
 
@@ -4705,11 +4616,7 @@ export const PatchProjectsLocationsAppsToolsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Tool).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/tools/{toolsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAppsToolsRequest>;
 
@@ -4746,10 +4653,7 @@ export const DeleteProjectsLocationsAppsToolsRequest =
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/tools/{toolsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsToolsRequest>;
 
@@ -4809,10 +4713,7 @@ export const ListProjectsLocationsAppsConversationsRequest =
       T.HttpQuery("sources"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/conversations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/conversations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAppsConversationsRequest>;
 
@@ -4857,10 +4758,7 @@ export const GetProjectsLocationsAppsConversationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/conversations/{conversationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAppsConversationsRequest>;
 
@@ -4900,10 +4798,7 @@ export const DeleteProjectsLocationsAppsConversationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     source: Schema.optional(Schema.String).pipe(T.HttpQuery("source")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/conversations/{conversationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsConversationsRequest>;
 
@@ -4939,7 +4834,7 @@ export const BatchDeleteProjectsLocationsAppsConversationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/conversations:batchDelete",
+      path: "v1/{parent}/conversations:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -4984,10 +4879,7 @@ export const ListProjectsLocationsAppsGuardrailsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/guardrails",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/guardrails" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAppsGuardrailsRequest>;
 
@@ -5023,10 +4915,7 @@ export const GetProjectsLocationsAppsGuardrailsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/guardrails/{guardrailsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAppsGuardrailsRequest>;
 
@@ -5065,11 +4954,7 @@ export const CreateProjectsLocationsAppsGuardrailsRequest =
     ),
     body: Schema.optional(Guardrail).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/guardrails",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/guardrails", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsAppsGuardrailsRequest>;
 
@@ -5106,11 +4991,7 @@ export const PatchProjectsLocationsAppsGuardrailsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Guardrail).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/guardrails/{guardrailsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAppsGuardrailsRequest>;
 
@@ -5147,10 +5028,7 @@ export const DeleteProjectsLocationsAppsGuardrailsRequest =
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/guardrails/{guardrailsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsGuardrailsRequest>;
 
@@ -5190,10 +5068,7 @@ export const ListProjectsLocationsAppsDeploymentsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/deployments",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/deployments" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAppsDeploymentsRequest>;
 
@@ -5229,10 +5104,7 @@ export const GetProjectsLocationsAppsDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/deployments/{deploymentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAppsDeploymentsRequest>;
 
@@ -5271,11 +5143,7 @@ export const CreateProjectsLocationsAppsDeploymentsRequest =
     ),
     body: Schema.optional(Deployment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/deployments",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/deployments", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsAppsDeploymentsRequest>;
 
@@ -5312,11 +5180,7 @@ export const PatchProjectsLocationsAppsDeploymentsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Deployment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/deployments/{deploymentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAppsDeploymentsRequest>;
 
@@ -5350,10 +5214,7 @@ export const DeleteProjectsLocationsAppsDeploymentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/deployments/{deploymentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsDeploymentsRequest>;
 
@@ -5396,10 +5257,7 @@ export const ListProjectsLocationsAppsToolsetsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/toolsets",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/toolsets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAppsToolsetsRequest>;
 
@@ -5434,10 +5292,7 @@ export const GetProjectsLocationsAppsToolsetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/toolsets/{toolsetsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAppsToolsetsRequest>;
 
@@ -5474,11 +5329,7 @@ export const CreateProjectsLocationsAppsToolsetsRequest =
     toolsetId: Schema.optional(Schema.String).pipe(T.HttpQuery("toolsetId")),
     body: Schema.optional(Toolset).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/toolsets",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/toolsets", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsAppsToolsetsRequest>;
 
@@ -5515,11 +5366,7 @@ export const PatchProjectsLocationsAppsToolsetsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Toolset).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/toolsets/{toolsetsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAppsToolsetsRequest>;
 
@@ -5556,10 +5403,7 @@ export const DeleteProjectsLocationsAppsToolsetsRequest =
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/toolsets/{toolsetsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsToolsetsRequest>;
 
@@ -5595,7 +5439,7 @@ export const RetrieveToolsProjectsLocationsAppsToolsetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/toolsets/{toolsetsId}:retrieveTools",
+      path: "v1/{toolset}:retrieveTools",
       hasBody: true,
     }),
     svc,
@@ -5641,10 +5485,7 @@ export const ListProjectsLocationsAppsVersionsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/versions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/versions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAppsVersionsRequest>;
 
@@ -5679,10 +5520,7 @@ export const GetProjectsLocationsAppsVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/versions/{versionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAppsVersionsRequest>;
 
@@ -5721,11 +5559,7 @@ export const CreateProjectsLocationsAppsVersionsRequest =
     ),
     body: Schema.optional(AppVersion).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/versions",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/versions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsAppsVersionsRequest>;
 
@@ -5759,10 +5593,7 @@ export const DeleteProjectsLocationsAppsVersionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/versions/{versionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAppsVersionsRequest>;
 
@@ -5796,11 +5627,7 @@ export const RestoreProjectsLocationsAppsVersionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RestoreAppVersionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/versions/{versionsId}:restore",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:restore", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RestoreProjectsLocationsAppsVersionsRequest>;
 
@@ -5843,10 +5670,7 @@ export const ListProjectsLocationsAppsChangelogsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/changelogs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/changelogs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAppsChangelogsRequest>;
 
@@ -5882,10 +5706,7 @@ export const GetProjectsLocationsAppsChangelogsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apps/{appsId}/changelogs/{changelogsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAppsChangelogsRequest>;
 

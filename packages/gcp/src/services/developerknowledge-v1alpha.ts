@@ -59,7 +59,7 @@ export interface SearchDocumentChunksResponse {
   /** Optional. A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The search results for the given query. Each DocumentChunk in this list contains a snippet of content relevant to the search query. Use the DocumentChunk.parent field of each result with DeveloperKnowledge.GetDocument or DeveloperKnowledge.BatchGetDocuments to retrieve the full document content. */
-  results?: Array<DocumentChunk>;
+  results?: ReadonlyArray<DocumentChunk>;
 }
 
 export const SearchDocumentChunksResponse =
@@ -70,7 +70,7 @@ export const SearchDocumentChunksResponse =
 
 export interface BatchGetDocumentsResponse {
   /** Documents requested. */
-  documents?: Array<Document>;
+  documents?: ReadonlyArray<Document>;
 }
 
 export const BatchGetDocumentsResponse =
@@ -123,7 +123,7 @@ export interface GetDocumentsRequest {
 export const GetDocumentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1alpha/documents/{documentsId}" }),
+  T.Http({ method: "GET", path: "v1alpha/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetDocumentsRequest>;
 

@@ -48,7 +48,7 @@ export const EcKeyType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ObjectId {
   /** Required. The parts of an OID path. The most significant parts of the path come first. */
-  objectIdPath?: Array<number>;
+  objectIdPath?: ReadonlyArray<number>;
 }
 
 export const ObjectId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -115,7 +115,7 @@ export const KeyUsageOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface KeyUsage {
   /** Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message. */
-  unknownExtendedKeyUsages?: Array<ObjectId>;
+  unknownExtendedKeyUsages?: ReadonlyArray<ObjectId>;
   /** Detailed scenarios in which a key may be used. */
   extendedKeyUsage?: ExtendedKeyUsageOptions;
   /** Describes high-level ways in which a key may be used. */
@@ -145,23 +145,23 @@ export const X509Extension = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NameConstraints {
   /** Contains the permitted email addresses. The value can be a particular email address, a hostname to indicate all email addresses on that host or a domain with a leading period (e.g. `.example.com`) to indicate all email addresses in that domain. */
-  permittedEmailAddresses?: Array<string>;
+  permittedEmailAddresses?: ReadonlyArray<string>;
   /** Contains the permitted URIs that apply to the host part of the name. The value can be a hostname or a domain with a leading period (like `.example.com`) */
-  permittedUris?: Array<string>;
+  permittedUris?: ReadonlyArray<string>;
   /** Indicates whether or not the name constraints are marked critical. */
   critical?: boolean;
   /** Contains excluded DNS names. Any DNS name that can be constructed by simply adding zero or more labels to the left-hand side of the name satisfies the name constraint. For example, `example.com`, `www.example.com`, `www.sub.example.com` would satisfy `example.com` while `example1.com` does not. */
-  excludedDnsNames?: Array<string>;
+  excludedDnsNames?: ReadonlyArray<string>;
   /** Contains the excluded URIs that apply to the host part of the name. The value can be a hostname or a domain with a leading period (like `.example.com`) */
-  excludedUris?: Array<string>;
+  excludedUris?: ReadonlyArray<string>;
   /** Contains permitted DNS names. Any DNS name that can be constructed by simply adding zero or more labels to the left-hand side of the name satisfies the name constraint. For example, `example.com`, `www.example.com`, `www.sub.example.com` would satisfy `example.com` while `example1.com` does not. */
-  permittedDnsNames?: Array<string>;
+  permittedDnsNames?: ReadonlyArray<string>;
   /** Contains the excluded email addresses. The value can be a particular email address, a hostname to indicate all email addresses on that host or a domain with a leading period (e.g. `.example.com`) to indicate all email addresses in that domain. */
-  excludedEmailAddresses?: Array<string>;
+  excludedEmailAddresses?: ReadonlyArray<string>;
   /** Contains the permitted IP ranges. For IPv4 addresses, the ranges are expressed using CIDR notation as specified in RFC 4632. For IPv6 addresses, the ranges are expressed in similar encoding as IPv4 addresses. */
-  permittedIpRanges?: Array<string>;
+  permittedIpRanges?: ReadonlyArray<string>;
   /** Contains the excluded IP ranges. For IPv4 addresses, the ranges are expressed using CIDR notation as specified in RFC 4632. For IPv6 addresses, the ranges are expressed in similar encoding as IPv4 addresses. */
-  excludedIpRanges?: Array<string>;
+  excludedIpRanges?: ReadonlyArray<string>;
 }
 
 export const NameConstraints = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -192,15 +192,15 @@ export interface X509Parameters {
   /** Optional. Indicates the intended use for keys that correspond to a certificate. */
   keyUsage?: KeyUsage;
   /** Optional. Describes custom X.509 extensions. */
-  additionalExtensions?: Array<X509Extension>;
+  additionalExtensions?: ReadonlyArray<X509Extension>;
   /** Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate. */
-  aiaOcspServers?: Array<string>;
+  aiaOcspServers?: ReadonlyArray<string>;
   /** Optional. Describes the X.509 name constraints extension. */
   nameConstraints?: NameConstraints;
   /** Optional. Describes options in this X509Parameters that are relevant in a CA certificate. If not specified, a default basic constraints extension with `is_ca=false` will be added for leaf certificates. */
   caOptions?: CaOptions;
   /** Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4. */
-  policyIds?: Array<ObjectId>;
+  policyIds?: ReadonlyArray<ObjectId>;
 }
 
 export const X509Parameters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -246,15 +246,15 @@ export const CertificateFingerprint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface SubjectAltNames {
   /** Contains only valid, fully-qualified host names. */
-  dnsNames?: Array<string>;
+  dnsNames?: ReadonlyArray<string>;
   /** Contains only valid RFC 3986 URIs. */
-  uris?: Array<string>;
+  uris?: ReadonlyArray<string>;
   /** Contains only valid RFC 2822 E-mail addresses. */
-  emailAddresses?: Array<string>;
+  emailAddresses?: ReadonlyArray<string>;
   /** Contains additional subject alternative name values. For each custom_san, the `value` field must contain an ASN.1 encoded UTF8String. */
-  customSans?: Array<X509Extension>;
+  customSans?: ReadonlyArray<X509Extension>;
   /** Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses. */
-  ipAddresses?: Array<string>;
+  ipAddresses?: ReadonlyArray<string>;
 }
 
 export const SubjectAltNames = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -292,7 +292,7 @@ export const AttributeTypeAndValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RelativeDistinguishedName {
   /** Attributes describes the attribute value assertions in the RDN. */
-  attributes?: Array<AttributeTypeAndValue>;
+  attributes?: ReadonlyArray<AttributeTypeAndValue>;
 }
 
 export const RelativeDistinguishedName =
@@ -302,7 +302,7 @@ export const RelativeDistinguishedName =
 
 export interface Subject {
   /** This field can be used in place of the named subject fields. */
-  rdnSequence?: Array<RelativeDistinguishedName>;
+  rdnSequence?: ReadonlyArray<RelativeDistinguishedName>;
   /** The organizational_unit of the subject. */
   organizationalUnit?: string;
   /** The organization of the subject. */
@@ -365,7 +365,7 @@ export interface CertificateDescription {
   /** Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2. */
   subjectKeyId?: KeyId;
   /** Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate. */
-  aiaIssuingCertificateUrls?: Array<string>;
+  aiaIssuingCertificateUrls?: ReadonlyArray<string>;
   /** The public key that corresponds to an issued certificate. */
   publicKey?: PublicKey;
   /** The hash of the x.509 certificate. */
@@ -373,7 +373,7 @@ export interface CertificateDescription {
   /** Describes some of the values in a certificate that are related to the subject and lifetime. */
   subjectDescription?: SubjectDescription;
   /** Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13 */
-  crlDistributionPoints?: Array<string>;
+  crlDistributionPoints?: ReadonlyArray<string>;
   /** The hash of the pre-signed certificate, which will be signed by the CA. Corresponds to the TBS Certificate in https://tools.ietf.org/html/rfc5280#section-4.1.2. The field will always be populated. */
   tbsCertificateDigest?: string;
 }
@@ -486,7 +486,7 @@ export interface Certificate {
   /** Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present. */
   revocationDetails?: RevocationDetails;
   /** Output only. The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246. */
-  pemCertificateChain?: Array<string>;
+  pemCertificateChain?: ReadonlyArray<string>;
   /** Immutable. A description of the certificate and key that does not require X.509 or ASN.1. */
   config?: CertificateConfig;
 }
@@ -510,7 +510,7 @@ export const Certificate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SubordinateConfigChain {
   /** Required. Expected to be in leaf-to-root order according to RFC 5246. */
-  pemCertificates?: Array<string>;
+  pemCertificates?: ReadonlyArray<string>;
 }
 
 export const SubordinateConfigChain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -533,9 +533,9 @@ export const SubordinateConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface UserDefinedAccessUrls {
   /** Optional. A list of URLs where the issuer CA certificate may be downloaded, which appears in the "Authority Information Access" extension in the certificate. If specified, the default Cloud Storage URLs will be omitted. */
-  aiaIssuingCertificateUrls?: Array<string>;
+  aiaIssuingCertificateUrls?: ReadonlyArray<string>;
   /** Optional. A list of URLs where to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13. If specified, the default Cloud Storage URLs will be omitted. */
-  crlAccessUrls?: Array<string>;
+  crlAccessUrls?: ReadonlyArray<string>;
 }
 
 export const UserDefinedAccessUrls = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -569,7 +569,7 @@ export interface AccessUrls {
   /** The URL where this CertificateAuthority's CA certificate is published. This will only be set for CAs that have been activated. */
   caCertificateAccessUrl?: string;
   /** The URLs where this CertificateAuthority's CRLs are published. This will only be set for CAs that have been activated. */
-  crlAccessUrls?: Array<string>;
+  crlAccessUrls?: ReadonlyArray<string>;
 }
 
 export const AccessUrls = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -591,7 +591,7 @@ export interface CertificateAuthority {
   /** Output only. The CaPool.Tier of the CaPool that includes this CertificateAuthority. */
   tier?: "TIER_UNSPECIFIED" | "ENTERPRISE" | "DEVOPS" | (string & {});
   /** Output only. This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the current CertificateAuthority's certificate. */
-  pemCaCertificates?: Array<string>;
+  pemCaCertificates?: ReadonlyArray<string>;
   /** Output only. Reserved for future use. */
   satisfiesPzs?: boolean;
   /** Output only. Reserved for future use. */
@@ -599,7 +599,7 @@ export interface CertificateAuthority {
   /** Required. Immutable. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. */
   lifetime?: string;
   /** Output only. A structured description of this CertificateAuthority's CA certificate and its issuers. Ordered as self-to-root. */
-  caCertificateDescriptions?: Array<CertificateDescription>;
+  caCertificateDescriptions?: ReadonlyArray<CertificateDescription>;
   /** Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR. */
   keySpec?: KeyVersionSpec;
   /** Output only. URLs for accessing content published by this CA, such as the CA certificate and CRLs. */
@@ -661,7 +661,7 @@ export interface AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -809,7 +809,7 @@ export interface CertificateRevocationList {
   /** Output only. The PEM-encoded X.509 CRL. */
   pemCrl?: string;
   /** Output only. The revoked serial numbers that appear in pem_crl. */
-  revokedCertificates?: Array<RevokedCertificate>;
+  revokedCertificates?: ReadonlyArray<RevokedCertificate>;
 }
 
 export const CertificateRevocationList =
@@ -828,11 +828,11 @@ export const CertificateRevocationList =
 
 export interface ListCertificateRevocationListsResponse {
   /** The list of CertificateRevocationLists. */
-  certificateRevocationLists?: Array<CertificateRevocationList>;
+  certificateRevocationLists?: ReadonlyArray<CertificateRevocationList>;
   /** A token to retrieve next page of results. Pass this value in ListCertificateRevocationListsRequest.page_token to retrieve the next page of results. */
   nextPageToken?: string;
   /** A list of locations (e.g. "us-west1") that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListCertificateRevocationListsResponse =
@@ -846,7 +846,7 @@ export const ListCertificateRevocationListsResponse =
 
 export interface CertificateExtensionConstraints {
   /** Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions. */
-  knownExtensions?: Array<
+  knownExtensions?: ReadonlyArray<
     | "KNOWN_CERTIFICATE_EXTENSION_UNSPECIFIED"
     | "BASE_KEY_USAGE"
     | "EXTENDED_KEY_USAGE"
@@ -857,7 +857,7 @@ export interface CertificateExtensionConstraints {
     | (string & {})
   >;
   /** Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions. */
-  additionalExtensions?: Array<ObjectId>;
+  additionalExtensions?: ReadonlyArray<ObjectId>;
 }
 
 export const CertificateExtensionConstraints =
@@ -870,7 +870,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
@@ -961,11 +961,11 @@ export const CertificateTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCertificateTemplatesResponse {
   /** A list of locations (e.g. "us-west1") that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A token to retrieve next page of results. Pass this value in ListCertificateTemplatesRequest.page_token to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of CertificateTemplates. */
-  certificateTemplates?: Array<CertificateTemplate>;
+  certificateTemplates?: ReadonlyArray<CertificateTemplate>;
 }
 
 export const ListCertificateTemplatesResponse =
@@ -1023,7 +1023,7 @@ export interface IssuancePolicy {
   /** Optional. A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate request uses a CertificateTemplate that defines conflicting predefined_values for the same properties, the certificate issuance request will fail. */
   baselineValues?: X509Parameters;
   /** Optional. If any AllowedKeyType is specified, then the certificate request's public key must match one of the key types listed here. Otherwise, any key may be used. */
-  allowedKeyTypes?: Array<AllowedKeyType>;
+  allowedKeyTypes?: ReadonlyArray<AllowedKeyType>;
 }
 
 export const IssuancePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1087,9 +1087,9 @@ export const CaPool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCaPoolsResponse {
   /** The list of CaPools. */
-  caPools?: Array<CaPool>;
+  caPools?: ReadonlyArray<CaPool>;
   /** A list of locations (e.g. "us-west1") that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A token to retrieve next page of results. Pass this value in ListCertificateAuthoritiesRequest.page_token to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -1112,7 +1112,7 @@ export const FetchCertificateAuthorityCsrResponse =
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -1122,7 +1122,7 @@ export const TestIamPermissionsRequest =
 
 export interface CertChain {
   /** The certificates that form the CA chain, from leaf to root order. */
-  certificates?: Array<string>;
+  certificates?: ReadonlyArray<string>;
 }
 
 export const CertChain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1131,7 +1131,7 @@ export const CertChain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FetchCaCertsResponse {
   /** The PEM encoded CA certificate chains of all certificate authorities in this CaPool in the ENABLED, DISABLED, or STAGED states. */
-  caCerts?: Array<CertChain>;
+  caCerts?: ReadonlyArray<CertChain>;
 }
 
 export const FetchCaCertsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1142,7 +1142,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
@@ -1157,7 +1157,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
 export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1171,9 +1171,9 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
 }
 
 export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1193,9 +1193,9 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1231,7 +1231,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
 }
 
 export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1241,7 +1241,7 @@ export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -1261,11 +1261,11 @@ export const UndeleteCertificateAuthorityRequest =
 
 export interface ListCertificatesResponse {
   /** A list of locations (e.g. "us-west1") that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A token to retrieve next page of results. Pass this value in ListCertificatesRequest.page_token to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of Certificates. */
-  certificates?: Array<Certificate>;
+  certificates?: ReadonlyArray<Certificate>;
 }
 
 export const ListCertificatesResponse =
@@ -1289,11 +1289,11 @@ export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCertificateAuthoritiesResponse {
   /** The list of CertificateAuthorities. */
-  certificateAuthorities?: Array<CertificateAuthority>;
+  certificateAuthorities?: ReadonlyArray<CertificateAuthority>;
   /** A token to retrieve next page of results. Pass this value in ListCertificateAuthoritiesRequest.page_token to retrieve the next page of results. */
   nextPageToken?: string;
   /** A list of locations (e.g. "us-west1") that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListCertificateAuthoritiesResponse =
@@ -1346,7 +1346,7 @@ export const ListProjectsLocationsRequest =
     ),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -1381,10 +1381,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -1415,10 +1412,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -1449,10 +1443,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -1486,11 +1477,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -1535,10 +1522,7 @@ export const ListProjectsLocationsOperationsRequest =
     ),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -1585,10 +1569,7 @@ export const ListProjectsLocationsCertificateTemplatesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateTemplates",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/certificateTemplates" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCertificateTemplatesRequest>;
 
@@ -1629,10 +1610,7 @@ export const GetIamPolicyProjectsLocationsCertificateTemplatesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateTemplates/{certificateTemplatesId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsCertificateTemplatesRequest>;
 
@@ -1667,10 +1645,7 @@ export const DeleteProjectsLocationsCertificateTemplatesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateTemplates/{certificateTemplatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCertificateTemplatesRequest>;
 
@@ -1701,10 +1676,7 @@ export const GetProjectsLocationsCertificateTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateTemplates/{certificateTemplatesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCertificateTemplatesRequest>;
 
@@ -1749,7 +1721,7 @@ export const CreateProjectsLocationsCertificateTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateTemplates",
+      path: "v1/{parent}/certificateTemplates",
       hasBody: true,
     }),
     svc,
@@ -1791,11 +1763,7 @@ export const PatchProjectsLocationsCertificateTemplatesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(CertificateTemplate).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateTemplates/{certificateTemplatesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCertificateTemplatesRequest>;
 
@@ -1831,7 +1799,7 @@ export const SetIamPolicyProjectsLocationsCertificateTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateTemplates/{certificateTemplatesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -1870,7 +1838,7 @@ export const TestIamPermissionsProjectsLocationsCertificateTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateTemplates/{certificateTemplatesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -1905,10 +1873,7 @@ export const GetProjectsLocationsCaPoolsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCaPoolsRequest>;
 
@@ -1944,10 +1909,7 @@ export const GetIamPolicyProjectsLocationsCaPoolsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsCaPoolsRequest>;
 
@@ -1981,11 +1943,7 @@ export const FetchCaCertsProjectsLocationsCaPoolsRequest =
     caPool: Schema.String.pipe(T.HttpPath("caPool")),
     body: Schema.optional(FetchCaCertsRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}:fetchCaCerts",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{caPool}:fetchCaCerts", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<FetchCaCertsProjectsLocationsCaPoolsRequest>;
 
@@ -2025,11 +1983,7 @@ export const CreateProjectsLocationsCaPoolsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(CaPool).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/caPools", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsCaPoolsRequest>;
 
@@ -2069,11 +2023,7 @@ export const PatchProjectsLocationsCaPoolsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CaPool).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCaPoolsRequest>;
 
@@ -2109,7 +2059,7 @@ export const SetIamPolicyProjectsLocationsCaPoolsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2147,7 +2097,7 @@ export const TestIamPermissionsProjectsLocationsCaPoolsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2193,10 +2143,7 @@ export const ListProjectsLocationsCaPoolsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/caPools" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCaPoolsRequest>;
 
@@ -2239,10 +2186,7 @@ export const DeleteProjectsLocationsCaPoolsRequest =
       T.HttpQuery("ignoreDependentResources"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCaPoolsRequest>;
 
@@ -2273,10 +2217,7 @@ export const GetProjectsLocationsCaPoolsCertificatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}/certificates/{certificatesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCaPoolsCertificatesRequest>;
 
@@ -2328,11 +2269,7 @@ export const CreateProjectsLocationsCaPoolsCertificatesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Certificate).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}/certificates",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/certificates", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsCaPoolsCertificatesRequest>;
 
@@ -2372,11 +2309,7 @@ export const PatchProjectsLocationsCaPoolsCertificatesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Certificate).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}/certificates/{certificatesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCaPoolsCertificatesRequest>;
 
@@ -2410,11 +2343,7 @@ export const RevokeProjectsLocationsCaPoolsCertificatesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RevokeCertificateRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}/certificates/{certificatesId}:revoke",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:revoke", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RevokeProjectsLocationsCaPoolsCertificatesRequest>;
 
@@ -2457,10 +2386,7 @@ export const ListProjectsLocationsCaPoolsCertificatesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}/certificates",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/certificates" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCaPoolsCertificatesRequest>;
 
@@ -2496,10 +2422,7 @@ export const GetProjectsLocationsCaPoolsCertificateAuthoritiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}/certificateAuthorities/{certificateAuthoritiesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
 
@@ -2532,10 +2455,7 @@ export const FetchProjectsLocationsCaPoolsCertificateAuthoritiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}/certificateAuthorities/{certificateAuthoritiesId}:fetch",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:fetch" }),
     svc,
   ) as unknown as Schema.Schema<FetchProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
 
@@ -2573,11 +2493,7 @@ export const DisableProjectsLocationsCaPoolsCertificateAuthoritiesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}/certificateAuthorities/{certificateAuthoritiesId}:disable",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:disable", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DisableProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
 
@@ -2623,7 +2539,7 @@ export const CreateProjectsLocationsCaPoolsCertificateAuthoritiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}/certificateAuthorities",
+      path: "v1/{parent}/certificateAuthorities",
       hasBody: true,
     }),
     svc,
@@ -2661,11 +2577,7 @@ export const EnableProjectsLocationsCaPoolsCertificateAuthoritiesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(EnableCertificateAuthorityRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}/certificateAuthorities/{certificateAuthoritiesId}:enable",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:enable", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<EnableProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
 
@@ -2707,11 +2619,7 @@ export const PatchProjectsLocationsCaPoolsCertificateAuthoritiesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CertificateAuthority).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}/certificateAuthorities/{certificateAuthoritiesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
 
@@ -2749,11 +2657,7 @@ export const ActivateProjectsLocationsCaPoolsCertificateAuthoritiesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}/certificateAuthorities/{certificateAuthoritiesId}:activate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:activate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ActivateProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
 
@@ -2798,10 +2702,7 @@ export const ListProjectsLocationsCaPoolsCertificateAuthoritiesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}/certificateAuthorities",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/certificateAuthorities" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
 
@@ -2843,11 +2744,7 @@ export const UndeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}/certificateAuthorities/{certificateAuthoritiesId}:undelete",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:undelete", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UndeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
 
@@ -2898,10 +2795,7 @@ export const DeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest =
       T.HttpQuery("skipGracePeriod"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}/certificateAuthorities/{certificateAuthoritiesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest>;
 
@@ -2943,11 +2837,7 @@ export const PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevoc
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CertificateRevocationList).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}/certificateAuthorities/{certificateAuthoritiesId}/certificateRevocationLists/{certificateRevocationListsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>;
 
@@ -2987,7 +2877,7 @@ export const SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertifica
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}/certificateAuthorities/{certificateAuthoritiesId}/certificateRevocationLists/{certificateRevocationListsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -3029,7 +2919,7 @@ export const TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCer
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}/certificateAuthorities/{certificateAuthoritiesId}/certificateRevocationLists/{certificateRevocationListsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -3066,10 +2956,7 @@ export const GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocat
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}/certificateAuthorities/{certificateAuthoritiesId}/certificateRevocationLists/{certificateRevocationListsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>;
 
@@ -3109,10 +2996,7 @@ export const GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertifica
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}/certificateAuthorities/{certificateAuthoritiesId}/certificateRevocationLists/{certificateRevocationListsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>;
 
@@ -3159,10 +3043,7 @@ export const ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevoca
     parent: Schema.String.pipe(T.HttpPath("parent")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/caPools/{caPoolsId}/certificateAuthorities/{certificateAuthoritiesId}/certificateRevocationLists",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/certificateRevocationLists" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest>;
 

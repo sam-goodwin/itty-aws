@@ -65,7 +65,7 @@ export const GoogleCloudAdvisorynotificationsV1MessageBody =
 
 export interface GoogleCloudAdvisorynotificationsV1CsvCsvRow {
   /** The data entries in a CSV file row, as a string array rather than a single comma-separated string. */
-  entries?: Array<string>;
+  entries?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAdvisorynotificationsV1CsvCsvRow =
@@ -75,9 +75,9 @@ export const GoogleCloudAdvisorynotificationsV1CsvCsvRow =
 
 export interface GoogleCloudAdvisorynotificationsV1Csv {
   /** The list of headers for data columns in a CSV file. */
-  headers?: Array<string>;
+  headers?: ReadonlyArray<string>;
   /** The list of data rows in a CSV file, as string arrays rather than as a single comma-separated string. */
-  dataRows?: Array<GoogleCloudAdvisorynotificationsV1CsvCsvRow>;
+  dataRows?: ReadonlyArray<GoogleCloudAdvisorynotificationsV1CsvCsvRow>;
 }
 
 export const GoogleCloudAdvisorynotificationsV1Csv =
@@ -105,7 +105,7 @@ export interface GoogleCloudAdvisorynotificationsV1Message {
   /** The message content. */
   body?: GoogleCloudAdvisorynotificationsV1MessageBody;
   /** The attachments to download. */
-  attachments?: Array<GoogleCloudAdvisorynotificationsV1Attachment>;
+  attachments?: ReadonlyArray<GoogleCloudAdvisorynotificationsV1Attachment>;
   /** Time when Message was localized */
   localizationTime?: string;
   /** The Message creation timestamp. */
@@ -138,7 +138,7 @@ export interface GoogleCloudAdvisorynotificationsV1Notification {
   /** The subject line of the notification. */
   subject?: GoogleCloudAdvisorynotificationsV1Subject;
   /** A list of messages in the notification. */
-  messages?: Array<GoogleCloudAdvisorynotificationsV1Message>;
+  messages?: ReadonlyArray<GoogleCloudAdvisorynotificationsV1Message>;
 }
 
 export const GoogleCloudAdvisorynotificationsV1Notification =
@@ -154,7 +154,7 @@ export const GoogleCloudAdvisorynotificationsV1Notification =
 
 export interface GoogleCloudAdvisorynotificationsV1ListNotificationsResponse {
   /** List of notifications under a given parent. */
-  notifications?: Array<GoogleCloudAdvisorynotificationsV1Notification>;
+  notifications?: ReadonlyArray<GoogleCloudAdvisorynotificationsV1Notification>;
   /** Estimation of a total number of notifications. */
   totalSize?: number;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -221,10 +221,7 @@ export const GetSettingsProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/settings",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSettingsProjectsLocationsRequest>;
 
@@ -261,11 +258,7 @@ export const UpdateSettingsProjectsLocationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/settings",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSettingsProjectsLocationsRequest>;
 
@@ -311,10 +304,7 @@ export const ListProjectsLocationsNotificationsRequest =
     ),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notifications",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/notifications" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsNotificationsRequest>;
 
@@ -355,10 +345,7 @@ export const GetProjectsLocationsNotificationsRequest =
       T.HttpQuery("languageCode"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notifications/{notificationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsNotificationsRequest>;
 
@@ -390,10 +377,7 @@ export const GetSettingsOrganizationsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/settings",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSettingsOrganizationsLocationsRequest>;
 
@@ -430,11 +414,7 @@ export const UpdateSettingsOrganizationsLocationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/settings",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSettingsOrganizationsLocationsRequest>;
 
@@ -480,10 +460,7 @@ export const ListOrganizationsLocationsNotificationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/notifications",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/notifications" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsNotificationsRequest>;
 
@@ -524,10 +501,7 @@ export const GetOrganizationsLocationsNotificationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/notifications/{notificationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsNotificationsRequest>;
 

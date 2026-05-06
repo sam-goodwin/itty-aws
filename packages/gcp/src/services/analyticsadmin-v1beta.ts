@@ -44,7 +44,7 @@ export interface GoogleAnalyticsAdminV1betaCustomMetric {
   /** Required. Immutable. The scope of this custom metric. */
   scope?: "METRIC_SCOPE_UNSPECIFIED" | "EVENT" | (string & {});
   /** Optional. Types of restricted data that this metric may contain. Required for metrics with CURRENCY measurement unit. Must be empty for metrics with a non-CURRENCY measurement unit. */
-  restrictedMetricType?: Array<
+  restrictedMetricType?: ReadonlyArray<
     | "RESTRICTED_METRIC_TYPE_UNSPECIFIED"
     | "COST_DATA"
     | "REVENUE_DATA"
@@ -71,7 +71,7 @@ export interface GoogleAnalyticsAdminV1betaListCustomMetricsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** List of CustomMetrics. */
-  customMetrics?: Array<GoogleAnalyticsAdminV1betaCustomMetric>;
+  customMetrics?: ReadonlyArray<GoogleAnalyticsAdminV1betaCustomMetric>;
 }
 
 export const GoogleAnalyticsAdminV1betaListCustomMetricsResponse =
@@ -124,7 +124,7 @@ export const GoogleAnalyticsAdminV1betaAccessMetric =
 
 export interface GoogleAnalyticsAdminV1betaAccessInListFilter {
   /** The list of string values. Must be non-empty. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
   /** If true, the string value is case sensitive. */
   caseSensitive?: boolean;
 }
@@ -465,7 +465,7 @@ export interface GoogleAnalyticsAdminV1betaListFirebaseLinksResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. Currently, Google Analytics supports only one FirebaseLink per property, so this will never be populated. */
   nextPageToken?: string;
   /** List of FirebaseLinks. This will have at most one value. */
-  firebaseLinks?: Array<GoogleAnalyticsAdminV1betaFirebaseLink>;
+  firebaseLinks?: ReadonlyArray<GoogleAnalyticsAdminV1betaFirebaseLink>;
 }
 
 export const GoogleAnalyticsAdminV1betaListFirebaseLinksResponse =
@@ -705,7 +705,7 @@ export interface GoogleAnalyticsAdminV1betaAccountSummary {
   /** Identifier. Resource name for this account summary. Format: accountSummaries/{account_id} Example: "accountSummaries/1000" */
   name?: string;
   /** List of summaries for child accounts of this account. */
-  propertySummaries?: Array<GoogleAnalyticsAdminV1betaPropertySummary>;
+  propertySummaries?: ReadonlyArray<GoogleAnalyticsAdminV1betaPropertySummary>;
   /** Resource name of account referred to by this account summary Format: accounts/{account_id} Example: "accounts/1000" */
   account?: string;
   /** Display name for the account referred to in this account summary. */
@@ -724,7 +724,7 @@ export const GoogleAnalyticsAdminV1betaAccountSummary =
 
 export interface GoogleAnalyticsAdminV1betaListAccountSummariesResponse {
   /** Account summaries of all accounts the caller has access to. */
-  accountSummaries?: Array<GoogleAnalyticsAdminV1betaAccountSummary>;
+  accountSummaries?: ReadonlyArray<GoogleAnalyticsAdminV1betaAccountSummary>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -827,7 +827,7 @@ export interface GoogleAnalyticsAdminV1betaListAccountsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Results that were accessible to the caller. */
-  accounts?: Array<GoogleAnalyticsAdminV1betaAccount>;
+  accounts?: ReadonlyArray<GoogleAnalyticsAdminV1betaAccount>;
 }
 
 export const GoogleAnalyticsAdminV1betaListAccountsResponse =
@@ -922,7 +922,7 @@ export interface GoogleAnalyticsAdminV1betaListDataStreamsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** List of DataStreams. */
-  dataStreams?: Array<GoogleAnalyticsAdminV1betaDataStream>;
+  dataStreams?: ReadonlyArray<GoogleAnalyticsAdminV1betaDataStream>;
 }
 
 export const GoogleAnalyticsAdminV1betaListDataStreamsResponse =
@@ -937,7 +937,7 @@ export const GoogleAnalyticsAdminV1betaListDataStreamsResponse =
 
 export interface GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest {
   /** Optional. If set, only return changes if they are for a resource that matches at least one of these types. */
-  resourceType?: Array<
+  resourceType?: ReadonlyArray<
     | "CHANGE_HISTORY_RESOURCE_TYPE_UNSPECIFIED"
     | "ACCOUNT"
     | "PROPERTY"
@@ -956,7 +956,7 @@ export interface GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest {
     | (string & {})
   >;
   /** Optional. If set, only return changes if they are made by a user in this list. */
-  actorEmail?: Array<string>;
+  actorEmail?: ReadonlyArray<string>;
   /** Optional. If set, only return changes made after this time (inclusive). */
   earliestChangeTime?: string;
   /** Optional. If set, only return changes made before this time (inclusive). */
@@ -964,7 +964,7 @@ export interface GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest {
   /** Optional. Resource name for a child property. If set, only return changes made to this property or its child resources. Format: properties/{propertyId} Example: `properties/100` */
   property?: string;
   /** Optional. If set, only return changes that match one or more of these types of actions. */
-  action?: Array<
+  action?: ReadonlyArray<
     | "ACTION_TYPE_UNSPECIFIED"
     | "CREATED"
     | "UPDATED"
@@ -1003,9 +1003,9 @@ export const GoogleAnalyticsAdminV1betaAccessDimensionValue =
 
 export interface GoogleAnalyticsAdminV1betaAccessRow {
   /** List of dimension values. These values are in the same order as specified in the request. */
-  dimensionValues?: Array<GoogleAnalyticsAdminV1betaAccessDimensionValue>;
+  dimensionValues?: ReadonlyArray<GoogleAnalyticsAdminV1betaAccessDimensionValue>;
   /** List of metric values. These values are in the same order as specified in the request. */
-  metricValues?: Array<GoogleAnalyticsAdminV1betaAccessMetricValue>;
+  metricValues?: ReadonlyArray<GoogleAnalyticsAdminV1betaAccessMetricValue>;
 }
 
 export const GoogleAnalyticsAdminV1betaAccessRow =
@@ -1022,7 +1022,7 @@ export interface GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsRespons
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** A list of secrets for the parent stream specified in the request. */
-  measurementProtocolSecrets?: Array<GoogleAnalyticsAdminV1betaMeasurementProtocolSecret>;
+  measurementProtocolSecrets?: ReadonlyArray<GoogleAnalyticsAdminV1betaMeasurementProtocolSecret>;
 }
 
 export const GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse =
@@ -1060,13 +1060,13 @@ export const GoogleAnalyticsAdminV1betaAccessDimensionHeader =
 
 export interface GoogleAnalyticsAdminV1betaRunAccessReportResponse {
   /** Rows of dimension value combinations and metric values in the report. */
-  rows?: Array<GoogleAnalyticsAdminV1betaAccessRow>;
+  rows?: ReadonlyArray<GoogleAnalyticsAdminV1betaAccessRow>;
   /** The total number of rows in the query result. `rowCount` is independent of the number of rows returned in the response, the `limit` request parameter, and the `offset` request parameter. For example if a query returns 175 rows and includes `limit` of 50 in the API request, the response will contain `rowCount` of 175 but only 50 rows. To learn more about this pagination parameter, see [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination). */
   rowCount?: number;
   /** The header for a column in the report that corresponds to a specific metric. The number of MetricHeaders and ordering of MetricHeaders matches the metrics present in rows. */
-  metricHeaders?: Array<GoogleAnalyticsAdminV1betaAccessMetricHeader>;
+  metricHeaders?: ReadonlyArray<GoogleAnalyticsAdminV1betaAccessMetricHeader>;
   /** The header for a column in the report that corresponds to a specific dimension. The number of DimensionHeaders and ordering of DimensionHeaders matches the dimensions present in rows. */
-  dimensionHeaders?: Array<GoogleAnalyticsAdminV1betaAccessDimensionHeader>;
+  dimensionHeaders?: ReadonlyArray<GoogleAnalyticsAdminV1betaAccessDimensionHeader>;
   /** The quota state for this Analytics property including this request. This field doesn't work with account-level requests. */
   quota?: GoogleAnalyticsAdminV1betaAccessQuota;
 }
@@ -1088,7 +1088,7 @@ export const GoogleAnalyticsAdminV1betaRunAccessReportResponse =
 
 export interface GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse {
   /** List of GoogleAdsLinks. */
-  googleAdsLinks?: Array<GoogleAnalyticsAdminV1betaGoogleAdsLink>;
+  googleAdsLinks?: ReadonlyArray<GoogleAnalyticsAdminV1betaGoogleAdsLink>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1120,7 +1120,7 @@ export interface GoogleAnalyticsAdminV1betaChangeHistoryEvent {
   /** If true, then the list of changes returned was filtered, and does not represent all changes that occurred in this event. */
   changesFiltered?: boolean;
   /** A list of changes made in this change history event that fit the filters specified in SearchChangeHistoryEventsRequest. */
-  changes?: Array<GoogleAnalyticsAdminV1betaChangeHistoryChange>;
+  changes?: ReadonlyArray<GoogleAnalyticsAdminV1betaChangeHistoryChange>;
 }
 
 export const GoogleAnalyticsAdminV1betaChangeHistoryEvent =
@@ -1139,7 +1139,7 @@ export interface GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Results that were accessible to the caller. */
-  changeHistoryEvents?: Array<GoogleAnalyticsAdminV1betaChangeHistoryEvent>;
+  changeHistoryEvents?: ReadonlyArray<GoogleAnalyticsAdminV1betaChangeHistoryEvent>;
 }
 
 export const GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse =
@@ -1216,7 +1216,7 @@ export const GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse =
 
 export interface GoogleAnalyticsAdminV1betaListConversionEventsResponse {
   /** The requested conversion events */
-  conversionEvents?: Array<GoogleAnalyticsAdminV1betaConversionEvent>;
+  conversionEvents?: ReadonlyArray<GoogleAnalyticsAdminV1betaConversionEvent>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1233,7 +1233,7 @@ export const GoogleAnalyticsAdminV1betaListConversionEventsResponse =
 
 export interface GoogleAnalyticsAdminV1betaListKeyEventsResponse {
   /** The requested Key Events */
-  keyEvents?: Array<GoogleAnalyticsAdminV1betaKeyEvent>;
+  keyEvents?: ReadonlyArray<GoogleAnalyticsAdminV1betaKeyEvent>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1265,7 +1265,7 @@ export const GoogleAnalyticsAdminV1betaProvisionAccountTicketRequest =
 
 export interface GoogleAnalyticsAdminV1betaListPropertiesResponse {
   /** Results that matched the filter criteria and were accessible to the caller. */
-  properties?: Array<GoogleAnalyticsAdminV1betaProperty>;
+  properties?: ReadonlyArray<GoogleAnalyticsAdminV1betaProperty>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1282,7 +1282,7 @@ export const GoogleAnalyticsAdminV1betaListPropertiesResponse =
 
 export interface GoogleAnalyticsAdminV1betaAccessFilterExpressionList {
   /** A list of filter expressions. */
-  expressions?: Array<GoogleAnalyticsAdminV1betaAccessFilterExpression>;
+  expressions?: ReadonlyArray<GoogleAnalyticsAdminV1betaAccessFilterExpression>;
 }
 
 export const GoogleAnalyticsAdminV1betaAccessFilterExpressionList: Schema.Schema<GoogleAnalyticsAdminV1betaAccessFilterExpressionList> =
@@ -1341,7 +1341,7 @@ export interface GoogleAnalyticsAdminV1betaRunAccessReportRequest {
   /** The row count of the start row. The first row is counted as row 0. If offset is unspecified, it is treated as 0. If offset is zero, then this method will return the first page of results with `limit` entries. To learn more about this pagination parameter, see [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination). */
   offset?: string;
   /** Date ranges of access records to read. If multiple date ranges are requested, each response row will contain a zero based date range index. If two date ranges overlap, the access records for the overlapping days is included in the response rows for both date ranges. Requests are allowed up to 2 date ranges. */
-  dateRanges?: Array<GoogleAnalyticsAdminV1betaAccessDateRange>;
+  dateRanges?: ReadonlyArray<GoogleAnalyticsAdminV1betaAccessDateRange>;
   /** Toggles whether to return the current state of this Analytics Property's quota. Quota is returned in [AccessQuota](#AccessQuota). For account-level requests, this field must be false. */
   returnEntityQuota?: boolean;
   /** Metric filters allow you to restrict report response to specific metric values which match the filter. Metric filters are applied after aggregating the report's rows, similar to SQL having-clause. Dimensions cannot be used in this filter. */
@@ -1355,11 +1355,11 @@ export interface GoogleAnalyticsAdminV1betaRunAccessReportRequest {
   /** Optional. Decides whether to return the users within user groups. This field works only when include_all_users is set to true. If true, it will return all users with access to the specified property or account. If false, only the users with direct access will be returned. */
   expandGroups?: boolean;
   /** The metrics requested and displayed in the response. Requests are allowed up to 10 metrics. */
-  metrics?: Array<GoogleAnalyticsAdminV1betaAccessMetric>;
+  metrics?: ReadonlyArray<GoogleAnalyticsAdminV1betaAccessMetric>;
   /** The dimensions requested and displayed in the response. Requests are allowed up to 9 dimensions. */
-  dimensions?: Array<GoogleAnalyticsAdminV1betaAccessDimension>;
+  dimensions?: ReadonlyArray<GoogleAnalyticsAdminV1betaAccessDimension>;
   /** Specifies how rows are ordered in the response. */
-  orderBys?: Array<GoogleAnalyticsAdminV1betaAccessOrderBy>;
+  orderBys?: ReadonlyArray<GoogleAnalyticsAdminV1betaAccessOrderBy>;
 }
 
 export const GoogleAnalyticsAdminV1betaRunAccessReportRequest =
@@ -1396,7 +1396,7 @@ export interface GoogleAnalyticsAdminV1betaListCustomDimensionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** List of CustomDimensions. */
-  customDimensions?: Array<GoogleAnalyticsAdminV1betaCustomDimension>;
+  customDimensions?: ReadonlyArray<GoogleAnalyticsAdminV1betaCustomDimension>;
 }
 
 export const GoogleAnalyticsAdminV1betaListCustomDimensionsResponse =
@@ -1463,10 +1463,7 @@ export const GetDataSharingSettingsAccountsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/accounts/{accountsId}/dataSharingSettings",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDataSharingSettingsAccountsRequest>;
 
@@ -1497,7 +1494,7 @@ export interface GetAccountsRequest {
 export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta/accounts/{accountsId}" }),
+  T.Http({ method: "GET", path: "v1beta/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetAccountsRequest>;
 
@@ -1533,11 +1530,7 @@ export const PatchAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(GoogleAnalyticsAdminV1betaAccount).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "PATCH",
-    path: "v1beta/accounts/{accountsId}",
-    hasBody: true,
-  }),
+  T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchAccountsRequest>;
 
@@ -1567,7 +1560,7 @@ export interface DeleteAccountsRequest {
 export const DeleteAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v1beta/accounts/{accountsId}" }),
+  T.Http({ method: "DELETE", path: "v1beta/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteAccountsRequest>;
 
@@ -1643,7 +1636,7 @@ export const SearchChangeHistoryEventsAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/accounts/{accountsId}:searchChangeHistoryEvents",
+      path: "v1beta/{account}:searchChangeHistoryEvents",
       hasBody: true,
     }),
     svc,
@@ -1684,7 +1677,7 @@ export const RunAccessReportAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/accounts/{accountsId}:runAccessReport",
+      path: "v1beta/{entity}:runAccessReport",
       hasBody: true,
     }),
     svc,
@@ -1765,11 +1758,7 @@ export const UpdateDataRetentionSettingsPropertiesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/properties/{propertiesId}/dataRetentionSettings",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateDataRetentionSettingsPropertiesRequest>;
 
@@ -1834,10 +1823,7 @@ export const GetDataRetentionSettingsPropertiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/properties/{propertiesId}/dataRetentionSettings",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDataRetentionSettingsPropertiesRequest>;
 
@@ -1868,7 +1854,7 @@ export interface GetPropertiesRequest {
 export const GetPropertiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta/properties/{propertiesId}" }),
+  T.Http({ method: "GET", path: "v1beta/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetPropertiesRequest>;
 
@@ -1906,7 +1892,7 @@ export const AcknowledgeUserDataCollectionPropertiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/properties/{propertiesId}:acknowledgeUserDataCollection",
+      path: "v1beta/{property}:acknowledgeUserDataCollection",
       hasBody: true,
     }),
     svc,
@@ -1947,7 +1933,7 @@ export const RunAccessReportPropertiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/properties/{propertiesId}:runAccessReport",
+      path: "v1beta/{entity}:runAccessReport",
       hasBody: true,
     }),
     svc,
@@ -2034,11 +2020,7 @@ export const PatchPropertiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
   },
 ).pipe(
-  T.Http({
-    method: "PATCH",
-    path: "v1beta/properties/{propertiesId}",
-    hasBody: true,
-  }),
+  T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchPropertiesRequest>;
 
@@ -2069,7 +2051,7 @@ export const DeletePropertiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta/properties/{propertiesId}" }),
+    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesRequest>;
 
@@ -2106,10 +2088,7 @@ export const ListPropertiesCustomDimensionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/properties/{propertiesId}/customDimensions",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/customDimensions" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesCustomDimensionsRequest>;
 
@@ -2150,11 +2129,7 @@ export const ArchivePropertiesCustomDimensionsRequest =
       GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/properties/{propertiesId}/customDimensions/{customDimensionsId}:archive",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:archive", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ArchivePropertiesCustomDimensionsRequest>;
 
@@ -2193,11 +2168,7 @@ export const PatchPropertiesCustomDimensionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/properties/{propertiesId}/customDimensions/{customDimensionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesCustomDimensionsRequest>;
 
@@ -2229,10 +2200,7 @@ export const GetPropertiesCustomDimensionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/properties/{propertiesId}/customDimensions/{customDimensionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesCustomDimensionsRequest>;
 
@@ -2271,7 +2239,7 @@ export const CreatePropertiesCustomDimensionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/properties/{propertiesId}/customDimensions",
+      path: "v1beta/{parent}/customDimensions",
       hasBody: true,
     }),
     svc,
@@ -2311,10 +2279,7 @@ export const ListPropertiesGoogleAdsLinksRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/properties/{propertiesId}/googleAdsLinks",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/googleAdsLinks" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesGoogleAdsLinksRequest>;
 
@@ -2357,7 +2322,7 @@ export const CreatePropertiesGoogleAdsLinksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/properties/{propertiesId}/googleAdsLinks",
+      path: "v1beta/{parent}/googleAdsLinks",
       hasBody: true,
     }),
     svc,
@@ -2399,11 +2364,7 @@ export const PatchPropertiesGoogleAdsLinksRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/properties/{propertiesId}/googleAdsLinks/{googleAdsLinksId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesGoogleAdsLinksRequest>;
 
@@ -2435,10 +2396,7 @@ export const DeletePropertiesGoogleAdsLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/properties/{propertiesId}/googleAdsLinks/{googleAdsLinksId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesGoogleAdsLinksRequest>;
 
@@ -2477,11 +2435,7 @@ export const PatchPropertiesConversionEventsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/properties/{propertiesId}/conversionEvents/{conversionEventsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesConversionEventsRequest>;
 
@@ -2513,10 +2467,7 @@ export const GetPropertiesConversionEventsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/properties/{propertiesId}/conversionEvents/{conversionEventsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesConversionEventsRequest>;
 
@@ -2548,10 +2499,7 @@ export const DeletePropertiesConversionEventsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/properties/{propertiesId}/conversionEvents/{conversionEventsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesConversionEventsRequest>;
 
@@ -2588,10 +2536,7 @@ export const ListPropertiesConversionEventsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/properties/{propertiesId}/conversionEvents",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/conversionEvents" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesConversionEventsRequest>;
 
@@ -2634,7 +2579,7 @@ export const CreatePropertiesConversionEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/properties/{propertiesId}/conversionEvents",
+      path: "v1beta/{parent}/conversionEvents",
       hasBody: true,
     }),
     svc,
@@ -2674,10 +2619,7 @@ export const ListPropertiesFirebaseLinksRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/properties/{propertiesId}/firebaseLinks",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/firebaseLinks" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesFirebaseLinksRequest>;
 
@@ -2720,7 +2662,7 @@ export const CreatePropertiesFirebaseLinksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/properties/{propertiesId}/firebaseLinks",
+      path: "v1beta/{parent}/firebaseLinks",
       hasBody: true,
     }),
     svc,
@@ -2754,10 +2696,7 @@ export const DeletePropertiesFirebaseLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/properties/{propertiesId}/firebaseLinks/{firebaseLinksId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesFirebaseLinksRequest>;
 
@@ -2795,7 +2734,7 @@ export const CreatePropertiesCustomMetricsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/properties/{propertiesId}/customMetrics",
+      path: "v1beta/{parent}/customMetrics",
       hasBody: true,
     }),
     svc,
@@ -2837,11 +2776,7 @@ export const PatchPropertiesCustomMetricsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/properties/{propertiesId}/customMetrics/{customMetricsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesCustomMetricsRequest>;
 
@@ -2873,10 +2808,7 @@ export const GetPropertiesCustomMetricsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/properties/{propertiesId}/customMetrics/{customMetricsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesCustomMetricsRequest>;
 
@@ -2914,10 +2846,7 @@ export const ListPropertiesCustomMetricsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/properties/{propertiesId}/customMetrics",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/customMetrics" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesCustomMetricsRequest>;
 
@@ -2958,11 +2887,7 @@ export const ArchivePropertiesCustomMetricsRequest =
       GoogleAnalyticsAdminV1betaArchiveCustomMetricRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/properties/{propertiesId}/customMetrics/{customMetricsId}:archive",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:archive", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ArchivePropertiesCustomMetricsRequest>;
 
@@ -3001,11 +2926,7 @@ export const PatchPropertiesDataStreamsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/properties/{propertiesId}/dataStreams/{dataStreamsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesDataStreamsRequest>;
 
@@ -3037,10 +2958,7 @@ export const GetPropertiesDataStreamsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/properties/{propertiesId}/dataStreams/{dataStreamsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesDataStreamsRequest>;
 
@@ -3072,10 +2990,7 @@ export const DeletePropertiesDataStreamsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/properties/{propertiesId}/dataStreams/{dataStreamsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesDataStreamsRequest>;
 
@@ -3112,10 +3027,7 @@ export const ListPropertiesDataStreamsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/properties/{propertiesId}/dataStreams",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/dataStreams" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesDataStreamsRequest>;
 
@@ -3158,7 +3070,7 @@ export const CreatePropertiesDataStreamsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/properties/{propertiesId}/dataStreams",
+      path: "v1beta/{parent}/dataStreams",
       hasBody: true,
     }),
     svc,
@@ -3199,7 +3111,7 @@ export const CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/properties/{propertiesId}/dataStreams/{dataStreamsId}/measurementProtocolSecrets",
+      path: "v1beta/{parent}/measurementProtocolSecrets",
       hasBody: true,
     }),
     svc,
@@ -3242,7 +3154,7 @@ export const ListPropertiesDataStreamsMeasurementProtocolSecretsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta/properties/{propertiesId}/dataStreams/{dataStreamsId}/measurementProtocolSecrets",
+      path: "v1beta/{parent}/measurementProtocolSecrets",
     }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesDataStreamsMeasurementProtocolSecretsRequest>;
@@ -3280,10 +3192,7 @@ export const GetPropertiesDataStreamsMeasurementProtocolSecretsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/properties/{propertiesId}/dataStreams/{dataStreamsId}/measurementProtocolSecrets/{measurementProtocolSecretsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesDataStreamsMeasurementProtocolSecretsRequest>;
 
@@ -3324,11 +3233,7 @@ export const PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest =
       GoogleAnalyticsAdminV1betaMeasurementProtocolSecret,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/properties/{propertiesId}/dataStreams/{dataStreamsId}/measurementProtocolSecrets/{measurementProtocolSecretsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest>;
 
@@ -3361,10 +3266,7 @@ export const DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/properties/{propertiesId}/dataStreams/{dataStreamsId}/measurementProtocolSecrets/{measurementProtocolSecretsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest>;
 
@@ -3405,11 +3307,7 @@ export const PatchPropertiesKeyEventsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/properties/{propertiesId}/keyEvents/{keyEventsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPropertiesKeyEventsRequest>;
 
@@ -3441,10 +3339,7 @@ export const GetPropertiesKeyEventsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/properties/{propertiesId}/keyEvents/{keyEventsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPropertiesKeyEventsRequest>;
 
@@ -3475,10 +3370,7 @@ export const DeletePropertiesKeyEventsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/properties/{propertiesId}/keyEvents/{keyEventsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePropertiesKeyEventsRequest>;
 
@@ -3515,10 +3407,7 @@ export const ListPropertiesKeyEventsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/properties/{propertiesId}/keyEvents",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/keyEvents" }),
     svc,
   ) as unknown as Schema.Schema<ListPropertiesKeyEventsRequest>;
 
@@ -3561,7 +3450,7 @@ export const CreatePropertiesKeyEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/properties/{propertiesId}/keyEvents",
+      path: "v1beta/{parent}/keyEvents",
       hasBody: true,
     }),
     svc,

@@ -88,7 +88,7 @@ export const ProductChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ProductStatusChangeMessage {
   /** A message to describe the change that happened to the product */
-  changes?: Array<ProductChange>;
+  changes?: ReadonlyArray<ProductChange>;
   /** The attribute in the resource that changed, in this case it will be always `Status`. */
   attribute?: "ATTRIBUTE_UNSPECIFIED" | "STATUS" | (string & {});
   /** The account that manages the merchant's account. can be the same as merchant id if it is standalone account. Format : `accounts/{service_provider_id}` */
@@ -128,7 +128,7 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 
 export interface ListNotificationSubscriptionsResponse {
   /** The list of notification subscriptions requested by the merchant. */
-  notificationSubscriptions?: Array<NotificationSubscription>;
+  notificationSubscriptions?: ReadonlyArray<NotificationSubscription>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -154,10 +154,7 @@ export const GetAccountsNotificationsubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "notifications/v1beta/accounts/{accountsId}/notificationsubscriptions/{notificationsubscriptionsId}",
-    }),
+    T.Http({ method: "GET", path: "notifications/v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsNotificationsubscriptionsRequest>;
 
@@ -197,7 +194,7 @@ export const PatchAccountsNotificationsubscriptionsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "notifications/v1beta/accounts/{accountsId}/notificationsubscriptions/{notificationsubscriptionsId}",
+      path: "notifications/v1beta/{name}",
       hasBody: true,
     }),
     svc,
@@ -231,10 +228,7 @@ export const DeleteAccountsNotificationsubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "notifications/v1beta/accounts/{accountsId}/notificationsubscriptions/{notificationsubscriptionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "notifications/v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsNotificationsubscriptionsRequest>;
 
@@ -273,7 +267,7 @@ export const ListAccountsNotificationsubscriptionsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "notifications/v1beta/accounts/{accountsId}/notificationsubscriptions",
+      path: "notifications/v1beta/{parent}/notificationsubscriptions",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsNotificationsubscriptionsRequest>;
@@ -315,7 +309,7 @@ export const CreateAccountsNotificationsubscriptionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "notifications/v1beta/accounts/{accountsId}/notificationsubscriptions",
+      path: "notifications/v1beta/{parent}/notificationsubscriptions",
       hasBody: true,
     }),
     svc,

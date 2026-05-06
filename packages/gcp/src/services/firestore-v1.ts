@@ -31,7 +31,7 @@ export const GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions =
 
 export interface DocumentsTarget {
   /** The names of the documents to retrieve. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. The request will fail if any of the document is not a child resource of the given `database`. Duplicate names will be elided. */
-  documents?: Array<string>;
+  documents?: ReadonlyArray<string>;
 }
 
 export const DocumentsTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -103,7 +103,7 @@ export const GoogleFirestoreAdminV1BackupSchedule =
 
 export interface GoogleFirestoreAdminV1ListBackupSchedulesResponse {
   /** List of all backup schedules. */
-  backupSchedules?: Array<GoogleFirestoreAdminV1BackupSchedule>;
+  backupSchedules?: ReadonlyArray<GoogleFirestoreAdminV1BackupSchedule>;
 }
 
 export const GoogleFirestoreAdminV1ListBackupSchedulesResponse =
@@ -119,7 +119,7 @@ export interface Firestore_Function {
   /** Required. The name of the function to evaluate. **Requires:** * must be in snake case (lower case with underscore separator). */
   name?: string;
   /** Optional. Ordered list of arguments the given function expects. */
-  args?: Array<Value>;
+  args?: ReadonlyArray<Value>;
   /** Optional. Optional named arguments that certain functions may support. */
   options?: Record<string, Value>;
 }
@@ -141,7 +141,7 @@ export interface Stage {
   /** Required. The name of the stage to evaluate. **Requires:** * must be in snake case (lower case with underscore separator). */
   name?: string;
   /** Optional. Ordered list of arguments the given stage expects. */
-  args?: Array<Value>;
+  args?: ReadonlyArray<Value>;
 }
 
 export const Stage: Schema.Schema<Stage> =
@@ -155,7 +155,7 @@ export const Stage: Schema.Schema<Stage> =
 
 export interface Pipeline {
   /** Required. Ordered list of stages to evaluate. */
-  stages?: Array<Stage>;
+  stages?: ReadonlyArray<Stage>;
 }
 
 export const Pipeline: Schema.Schema<Pipeline> =
@@ -167,7 +167,7 @@ export const Pipeline: Schema.Schema<Pipeline> =
 
 export interface ArrayValue {
   /** Values in the array. */
-  values?: Array<Value>;
+  values?: ReadonlyArray<Value>;
 }
 
 export const ArrayValue: Schema.Schema<ArrayValue> =
@@ -261,7 +261,7 @@ export interface DocumentDelete {
   /** The read timestamp at which the delete was observed. Greater or equal to the `commit_time` of the delete. */
   readTime?: string;
   /** A set of target IDs for targets that previously matched this entity. */
-  removedTargetIds?: Array<number>;
+  removedTargetIds?: ReadonlyArray<number>;
 }
 
 export const DocumentDelete = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -346,7 +346,7 @@ export interface CompositeFilter {
   /** The operator for combining multiple filters. */
   op?: "OPERATOR_UNSPECIFIED" | "AND" | "OR" | (string & {});
   /** The list of filters to combine. Requires: * At least one filter is present. */
-  filters?: Array<Filter>;
+  filters?: ReadonlyArray<Filter>;
 }
 
 export const CompositeFilter: Schema.Schema<CompositeFilter> =
@@ -396,7 +396,7 @@ export const GoogleFirestoreAdminV1SearchTextIndexSpec =
 
 export interface GoogleFirestoreAdminV1SearchTextSpec {
   /** Required. Specifications for how the field should be indexed. Repeated so that the field can be indexed in multiple ways. */
-  indexSpecs?: Array<GoogleFirestoreAdminV1SearchTextIndexSpec>;
+  indexSpecs?: ReadonlyArray<GoogleFirestoreAdminV1SearchTextIndexSpec>;
 }
 
 export const GoogleFirestoreAdminV1SearchTextSpec =
@@ -475,7 +475,7 @@ export interface GoogleFirestoreAdminV1Index {
   /** Optional. Options for search indexes that are at the index definition level. This field is only currently supported for indexes with MONGODB_COMPATIBLE_API ApiScope. */
   searchIndexOptions?: GoogleFirestoreAdminV1SearchIndexOptions;
   /** The fields supported by this index. For composite indexes, this requires a minimum of 2 and a maximum of 100 fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field. */
-  fields?: Array<GoogleFirestoreAdminV1IndexField>;
+  fields?: ReadonlyArray<GoogleFirestoreAdminV1IndexField>;
   /** The API scope supported by this index. */
   apiScope?:
     | "ANY_API"
@@ -572,7 +572,7 @@ export interface GoogleFirestoreAdminV1FieldOperationMetadata {
   /** The time this operation completed. Will be unset if operation still in progress. */
   endTime?: string;
   /** A list of IndexConfigDelta, which describe the intent of this operation. */
-  indexConfigDeltas?: Array<GoogleFirestoreAdminV1IndexConfigDelta>;
+  indexConfigDeltas?: ReadonlyArray<GoogleFirestoreAdminV1IndexConfigDelta>;
   /** The progress, in bytes, of this operation. */
   progressBytes?: GoogleFirestoreAdminV1Progress;
   /** The time this operation started. */
@@ -614,7 +614,7 @@ export interface Cursor {
   /** If the position is just before or just after the given values, relative to the sort order defined by the query. */
   before?: boolean;
   /** The values that represent a position, in the order they appear in the order by clause of a query. Can contain fewer values than specified in the order by clause. */
-  values?: Array<Value>;
+  values?: ReadonlyArray<Value>;
 }
 
 export const Cursor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -624,11 +624,11 @@ export const Cursor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleFirestoreAdminV1ExportDocumentsRequest {
   /** IDs of the collection groups to export. Unspecified means all collection groups. Each collection group in this list must be unique. */
-  collectionIds?: Array<string>;
+  collectionIds?: ReadonlyArray<string>;
   /** The output URI. Currently only supports Google Cloud Storage URIs of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name of the Google Cloud Storage bucket and `NAMESPACE_PATH` is an optional Google Cloud Storage namespace path. When choosing a name, be sure to consider Google Cloud Storage naming guidelines: https://cloud.google.com/storage/docs/naming. If the URI is a bucket (without a namespace path), a prefix will be generated based on the start time. */
   outputUriPrefix?: string;
   /** An empty list represents all namespaces. This is the preferred usage for databases that don't use namespaces. An empty string element represents the default namespace. This should be used if the database has data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be unique. */
-  namespaceIds?: Array<string>;
+  namespaceIds?: ReadonlyArray<string>;
   /** The timestamp that corresponds to the version of the database to be exported. The timestamp must be in the past, rounded to the minute and not older than earliestVersionTime. If specified, then the exported documents will represent a consistent view of the database at the provided time. Otherwise, there are no guarantees about the consistency of the exported documents. */
   snapshotTime?: string;
 }
@@ -643,7 +643,7 @@ export const GoogleFirestoreAdminV1ExportDocumentsRequest =
 
 export interface GoogleFirestoreAdminV1CmekConfig {
   /** Output only. Currently in-use [KMS key versions](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions). During [key rotation](https://cloud.google.com/kms/docs/key-rotation), there can be multiple in-use key versions. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`. */
-  activeKeyVersion?: Array<string>;
+  activeKeyVersion?: ReadonlyArray<string>;
   /** Required. Only keys in the same location as this database are allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. */
   kmsKeyName?: string;
 }
@@ -795,9 +795,9 @@ export const GoogleFirestoreAdminV1Database =
 
 export interface GoogleFirestoreAdminV1ListDatabasesResponse {
   /** The databases in the project. */
-  databases?: Array<GoogleFirestoreAdminV1Database>;
+  databases?: ReadonlyArray<GoogleFirestoreAdminV1Database>;
   /** In the event that data about individual databases cannot be listed they will be recorded here. An example entry might be: projects/some_project/locations/some_location This can happen if the Cloud Region that the Database resides in is currently unavailable. In this case we can't fetch all the details about the database. You may be able to get a more detailed error message (or possibly fetch the resource) by sending a 'Get' request for the resource or a 'List' request for the specific location. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleFirestoreAdminV1ListDatabasesResponse =
@@ -808,7 +808,7 @@ export const GoogleFirestoreAdminV1ListDatabasesResponse =
 
 export interface Projection {
   /** The fields to return. If empty, all fields are returned. To only return the name of the document, use `['__name__']`. */
-  fields?: Array<FieldReference>;
+  fields?: ReadonlyArray<FieldReference>;
 }
 
 export const Projection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -844,9 +844,9 @@ export const ReadWrite = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleFirestoreAdminV1BulkDeleteDocumentsRequest {
   /** Optional. IDs of the collection groups to delete. Unspecified means all collection groups. Each collection group in this list must be unique. */
-  collectionIds?: Array<string>;
+  collectionIds?: ReadonlyArray<string>;
   /** Optional. Namespaces to delete. An empty list means all namespaces. This is the recommended usage for databases that don't use namespaces. An empty string element represents the default namespace. This should be used if the database has data in non-default namespaces, but doesn't want to delete from them. Each namespace in this list must be unique. */
-  namespaceIds?: Array<string>;
+  namespaceIds?: ReadonlyArray<string>;
 }
 
 export const GoogleFirestoreAdminV1BulkDeleteDocumentsRequest =
@@ -861,7 +861,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
@@ -885,7 +885,7 @@ export interface GoogleFirestoreAdminV1IndexConfig {
   /** Output only. Specifies the resource name of the `Field` from which this field's index configuration is set (when `uses_ancestor_config` is true), or from which it *would* be set if this field had no index configuration (when `uses_ancestor_config` is false). */
   ancestorField?: string;
   /** The indexes supported for this field. */
-  indexes?: Array<GoogleFirestoreAdminV1Index>;
+  indexes?: ReadonlyArray<GoogleFirestoreAdminV1Index>;
   /** Output only. When true, the `Field`'s index configuration is set from the configuration specified by the `ancestor_field`. When false, the `Field`'s index configuration is defined explicitly. */
   usesAncestorConfig?: boolean;
   /** Output only When true, the `Field`'s index configuration is in the process of being reverted. Once complete, the index config will transition to the same state as the field specified by `ancestor_field`, at which point `uses_ancestor_config` will be `true` and `reverting` will be `false`. */
@@ -936,7 +936,7 @@ export const GoogleFirestoreAdminV1Field =
 
 export interface GoogleFirestoreAdminV1ListFieldsResponse {
   /** The requested fields. */
-  fields?: Array<GoogleFirestoreAdminV1Field>;
+  fields?: ReadonlyArray<GoogleFirestoreAdminV1Field>;
   /** A page token that may be used to request another page of results. If blank, this is the last page. */
   nextPageToken?: string;
 }
@@ -951,7 +951,7 @@ export interface WriteResult {
   /** The last update time of the document after applying the write. Not set after a `delete`. If the write did not actually change the document, this will be the previous update_time. */
   updateTime?: string;
   /** The results of applying each DocumentTransform.FieldTransform, in the same order. */
-  transformResults?: Array<Value>;
+  transformResults?: ReadonlyArray<Value>;
 }
 
 export const WriteResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -965,7 +965,7 @@ export interface WriteResponse {
   /** The ID of the stream. Only set on the first message, when a new stream was created. */
   streamId?: string;
   /** The result of applying the writes. This i-th write result corresponds to the i-th write in the request. */
-  writeResults?: Array<WriteResult>;
+  writeResults?: ReadonlyArray<WriteResult>;
   /** A token that represents the position of this response in the stream. This can be used by a client to resume the stream at this point. This field is always set. */
   streamToken?: string;
 }
@@ -1009,7 +1009,7 @@ export const ExecutionStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PlanSummary {
   /** The indexes selected for the query. For example: [ {"query_scope": "Collection", "properties": "(foo ASC, __name__ ASC)"}, {"query_scope": "Collection", "properties": "(bar ASC, __name__ ASC)"} ] */
-  indexesUsed?: Array<Record<string, unknown>>;
+  indexesUsed?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const PlanSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1087,11 +1087,11 @@ export interface StructuredQuery {
   /** A potential prefix of a position in the result set to start the query at. The ordering of the result set is based on the `ORDER BY` clause of the original query. ``` SELECT * FROM k WHERE a = 1 AND b > 2 ORDER BY b ASC, __name__ ASC; ``` This query's results are ordered by `(b ASC, __name__ ASC)`. Cursors can reference either the full ordering or a prefix of the location, though it cannot reference more fields than what are in the provided `ORDER BY`. Continuing off the example above, attaching the following start cursors will have varying impact: - `START BEFORE (2, /k/123)`: start the query right before `a = 1 AND b > 2 AND __name__ > /k/123`. - `START AFTER (10)`: start the query right after `a = 1 AND b > 10`. Unlike `OFFSET` which requires scanning over the first N results to skip, a start cursor allows the query to begin at a logical position. This position is not required to match an actual result, it will scan forward from this position to find the next document. Requires: * The number of values cannot be greater than the number of fields specified in the `ORDER BY` clause. */
   startAt?: Cursor;
   /** The order to apply to the query results. Callers can provide a full ordering, a partial ordering, or no ordering at all. While Firestore will always respect the provided order, the behavior for queries without a full ordering is different per database edition: In Standard edition, Firestore guarantees a stable ordering through the following rules: * The `order_by` is required to reference all fields used with an inequality filter. * All fields that are required to be in the `order_by` but are not already present are appended in lexicographical ordering of the field name. * If an order on `__name__` is not specified, it is appended by default. Fields are appended with the same sort direction as the last order specified, or 'ASCENDING' if no order was specified. For example: * `ORDER BY a` becomes `ORDER BY a ASC, __name__ ASC` * `ORDER BY a DESC` becomes `ORDER BY a DESC, __name__ DESC` * `WHERE a > 1` becomes `WHERE a > 1 ORDER BY a ASC, __name__ ASC` * `WHERE __name__ > ... AND a > 1` becomes `WHERE __name__ > ... AND a > 1 ORDER BY a ASC, __name__ ASC` In Enterprise edition, Firestore does not guarantee a stable ordering. Instead it will pick the most efficient ordering based on the indexes available at the time of query execution. This will result in a different ordering for queries that are otherwise identical. To ensure a stable ordering, always include a unique field in the `order_by` clause, such as `__name__`. */
-  orderBy?: Array<Order>;
+  orderBy?: ReadonlyArray<Order>;
   /** The maximum number of results to return. Applies after all other constraints. Requires: * The value must be greater than or equal to zero if specified. */
   limit?: number;
   /** The collections to query. */
-  from?: Array<CollectionSelector>;
+  from?: ReadonlyArray<CollectionSelector>;
   /** The number of documents to skip before returning the first result. This applies after the constraints specified by the `WHERE`, `START AT`, & `END AT` but before the `LIMIT` clause. Requires: * The value must be greater than or equal to zero if specified. */
   offset?: number;
 }
@@ -1198,7 +1198,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
 }
 
 export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1226,7 +1226,7 @@ export interface GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata {
   /** The time this operation started. */
   startTime?: string;
   /** The IDs of the collection groups that are being deleted. */
-  collectionIds?: Array<string>;
+  collectionIds?: ReadonlyArray<string>;
   /** The progress, in bytes, of this operation. */
   progressBytes?: GoogleFirestoreAdminV1Progress;
   /** The state of the operation. */
@@ -1241,7 +1241,7 @@ export interface GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata {
     | "CANCELLED"
     | (string & {});
   /** Which namespace IDs are being deleted. */
-  namespaceIds?: Array<string>;
+  namespaceIds?: ReadonlyArray<string>;
   /** The progress, in documents, of this operation. */
   progressDocuments?: GoogleFirestoreAdminV1Progress;
 }
@@ -1412,7 +1412,7 @@ export interface DocumentTransform {
   /** The name of the document to transform. */
   document?: string;
   /** The list of transformations to apply to the fields of the document, in order. This must not be empty. */
-  fieldTransforms?: Array<FieldTransform>;
+  fieldTransforms?: ReadonlyArray<FieldTransform>;
 }
 
 export const DocumentTransform = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1422,7 +1422,7 @@ export const DocumentTransform = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DocumentMask {
   /** The list of field paths in the mask. See Document.fields for a field path syntax reference. */
-  fieldPaths?: Array<string>;
+  fieldPaths?: ReadonlyArray<string>;
 }
 
 export const DocumentMask = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1441,7 +1441,7 @@ export interface Write {
   /** The fields to update in this write. This field can be set only when the operation is `update`. If the mask is not set for an `update` and the document exists, any existing data will be overwritten. If the mask is set and the document on the server has fields not covered by the mask, they are left unchanged. Fields referenced in the mask, but not present in the input document, are deleted from the document on the server. The field paths in this mask must not contain a reserved field name. */
   updateMask?: DocumentMask;
   /** The transforms to perform after update. This field can be set only when the operation is `update`. If present, this write is equivalent to performing `update` and `transform` to the same document atomically and in order. */
-  updateTransforms?: Array<FieldTransform>;
+  updateTransforms?: ReadonlyArray<FieldTransform>;
 }
 
 export const Write = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1457,7 +1457,7 @@ export interface CommitRequest {
   /** If set, applies all writes in this transaction, and commits it. */
   transaction?: string;
   /** The writes to apply. Always executed atomically and in order. */
-  writes?: Array<Write>;
+  writes?: ReadonlyArray<Write>;
 }
 
 export const CommitRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1489,7 +1489,7 @@ export interface ExecutePipelineResponse {
   /** Query explain stats. This is present on the **last** response if the request configured explain to run in 'analyze' or 'explain' mode in the pipeline options. If the query does not return any results, a response with `explain_stats` and no `results` will still be sent. */
   explainStats?: ExplainStats;
   /** An ordered batch of results returned executing a pipeline. The batch size is variable, and can even be zero for when only a partial progress message is returned. The fields present in the returned documents are only those that were explicitly requested in the pipeline, this includes those like `__name__` and `__update_time__`. This is explicitly a divergence from `Firestore.RunQuery` / `Firestore.GetDocument` RPCs which always return such fields even when they are not specified in the `mask`. */
-  results?: Array<Document>;
+  results?: ReadonlyArray<Document>;
 }
 
 export const ExecutePipelineResponse =
@@ -1518,7 +1518,7 @@ export interface GoogleFirestoreAdminV1ImportDocumentsMetadata {
   /** The time this operation started. */
   startTime?: string;
   /** Which collection IDs are being imported. */
-  collectionIds?: Array<string>;
+  collectionIds?: ReadonlyArray<string>;
   /** The state of the import operation. */
   operationState?:
     | "OPERATION_STATE_UNSPECIFIED"
@@ -1535,7 +1535,7 @@ export interface GoogleFirestoreAdminV1ImportDocumentsMetadata {
   /** The progress, in documents, of this operation. */
   progressDocuments?: GoogleFirestoreAdminV1Progress;
   /** Which namespace IDs are being imported. */
-  namespaceIds?: Array<string>;
+  namespaceIds?: ReadonlyArray<string>;
 }
 
 export const GoogleFirestoreAdminV1ImportDocumentsMetadata =
@@ -1552,7 +1552,7 @@ export const GoogleFirestoreAdminV1ImportDocumentsMetadata =
 
 export interface BatchWriteRequest {
   /** The writes to apply. Method does not apply writes atomically and does not guarantee ordering. Each write succeeds or fails independently. You cannot write to the same document more than once per request. */
-  writes?: Array<Write>;
+  writes?: ReadonlyArray<Write>;
   /** Labels associated with this batch write. */
   labels?: Record<string, string>;
 }
@@ -1580,7 +1580,7 @@ export const GoogleFirestoreAdminV1LocationMetadata =
 
 export interface GoogleFirestoreAdminV1ListIndexesResponse {
   /** The requested indexes. */
-  indexes?: Array<GoogleFirestoreAdminV1Index>;
+  indexes?: ReadonlyArray<GoogleFirestoreAdminV1Index>;
   /** A page token that may be used to request another page of results. If blank, this is the last page. */
   nextPageToken?: string;
 }
@@ -1615,9 +1615,9 @@ export const GoogleLongrunningOperation =
 
 export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -1674,7 +1674,7 @@ export const GoogleFirestoreAdminV1CloneDatabaseMetadata =
 
 export interface GoogleFirestoreAdminV1ListUserCredsResponse {
   /** The user creds for the database. */
-  userCreds?: Array<GoogleFirestoreAdminV1UserCreds>;
+  userCreds?: ReadonlyArray<GoogleFirestoreAdminV1UserCreds>;
 }
 
 export const GoogleFirestoreAdminV1ListUserCredsResponse =
@@ -1714,9 +1714,9 @@ export interface DocumentChange {
   /** The new state of the Document. If `mask` is set, contains only fields that were updated or added. */
   document?: Document;
   /** A set of target IDs for targets that no longer match this document. */
-  removedTargetIds?: Array<number>;
+  removedTargetIds?: ReadonlyArray<number>;
   /** A set of target IDs of targets that match this document. */
-  targetIds?: Array<number>;
+  targetIds?: ReadonlyArray<number>;
 }
 
 export const DocumentChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1763,7 +1763,7 @@ export interface DocumentRemove {
   /** The read timestamp at which the remove was observed. Greater or equal to the `commit_time` of the change/delete/remove. */
   readTime?: string;
   /** A set of target IDs for targets that previously matched this document. */
-  removedTargetIds?: Array<number>;
+  removedTargetIds?: ReadonlyArray<number>;
 }
 
 export const DocumentRemove = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1807,7 +1807,7 @@ export const GoogleFirestoreAdminV1Backup =
 
 export interface TargetChange {
   /** The target IDs of targets that have changed. If empty, the change applies to all targets. The order of the target IDs is not defined. */
-  targetIds?: Array<number>;
+  targetIds?: ReadonlyArray<number>;
   /** A token that can be used to resume the stream for the given `target_ids`, or all targets if `target_ids` is empty. Not set on every target change. */
   resumeToken?: string;
   /** The type of change that occurred. */
@@ -1834,7 +1834,7 @@ export const TargetChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CommitResponse {
   /** The result of applying the writes. This i-th write result corresponds to the i-th write in the request. */
-  writeResults?: Array<WriteResult>;
+  writeResults?: ReadonlyArray<WriteResult>;
   /** The time at which the commit occurred. Any read with an equal or greater `read_time` is guaranteed to see the effects of the commit. */
   commitTime?: string;
 }
@@ -1906,7 +1906,7 @@ export interface GoogleFirestoreAdminV1ExportDocumentsMetadata {
   /** The progress, in documents, of this operation. */
   progressDocuments?: GoogleFirestoreAdminV1Progress;
   /** Which namespace IDs are being exported. */
-  namespaceIds?: Array<string>;
+  namespaceIds?: ReadonlyArray<string>;
   /** The time this operation completed. Will be unset if operation still in progress. */
   endTime?: string;
   /** The timestamp that corresponds to the version of the database that is being exported. If unspecified, there are no guarantees about the consistency of the documents being exported. */
@@ -1914,7 +1914,7 @@ export interface GoogleFirestoreAdminV1ExportDocumentsMetadata {
   /** The progress, in bytes, of this operation. */
   progressBytes?: GoogleFirestoreAdminV1Progress;
   /** Which collection IDs are being exported. */
-  collectionIds?: Array<string>;
+  collectionIds?: ReadonlyArray<string>;
 }
 
 export const GoogleFirestoreAdminV1ExportDocumentsMetadata =
@@ -1944,7 +1944,7 @@ export interface ListCollectionIdsResponse {
   /** A page token that may be used to continue the list. */
   nextPageToken?: string;
   /** The collection ids. */
-  collectionIds?: Array<string>;
+  collectionIds?: ReadonlyArray<string>;
 }
 
 export const ListCollectionIdsResponse =
@@ -2008,7 +2008,7 @@ export interface StructuredAggregationQuery {
   /** Nested structured query. */
   structuredQuery?: StructuredQuery;
   /** Optional. Series of aggregations to apply over the results of the `structured_query`. Requires: * A minimum of one and maximum of five aggregations per query. */
-  aggregations?: Array<Aggregation>;
+  aggregations?: ReadonlyArray<Aggregation>;
 }
 
 export const StructuredAggregationQuery =
@@ -2061,7 +2061,7 @@ export const RunAggregationQueryRequest =
 
 export interface ListDocumentsResponse {
   /** The Documents found. */
-  documents?: Array<Document>;
+  documents?: ReadonlyArray<Document>;
   /** A token to retrieve the next page of documents. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2079,7 +2079,7 @@ export interface BatchGetDocumentsRequest {
   /** Reads documents in a transaction. */
   transaction?: string;
   /** The names of the documents to retrieve. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. The request will fail if any of the document is not a child resource of the given `database`. Duplicate names will be elided. */
-  documents?: Array<string>;
+  documents?: ReadonlyArray<string>;
   /** Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new transaction ID will be returned as the first response in the stream. */
   newTransaction?: TransactionOptions;
 }
@@ -2180,9 +2180,9 @@ export const ListenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleFirestoreAdminV1ImportDocumentsRequest {
   /** IDs of the collection groups to import. Unspecified means all collection groups that were included in the export. Each collection group in this list must be unique. */
-  collectionIds?: Array<string>;
+  collectionIds?: ReadonlyArray<string>;
   /** An empty list represents all namespaces. This is the preferred usage for databases that don't use namespaces. An empty string element represents the default namespace. This should be used if the database has data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be unique. */
-  namespaceIds?: Array<string>;
+  namespaceIds?: ReadonlyArray<string>;
   /** Location of the exported files. This must match the output_uri_prefix of an ExportDocumentsResponse from an export that has completed successfully. See: google.firestore.admin.v1.ExportDocumentsResponse.output_uri_prefix. */
   inputUriPrefix?: string;
 }
@@ -2203,7 +2203,7 @@ export const GoogleFirestoreAdminV1ResetUserPasswordRequest =
 
 export interface PartitionQueryResponse {
   /** Partition results. Each partition is a split point that can be used by RunQuery as a starting or end point for the query results. The RunQuery requests must be made with the same query supplied to this PartitionQuery request. The partition cursors will be ordered according to same ordering as the results of the query supplied to PartitionQuery. For example, if a PartitionQuery request returns partition cursors A and B, running the following three queries will return the entire result set of the original query: * query, end_at A * query, start_at A, end_at B * query, start_at B An empty result may indicate that the query has too few results to be partitioned, or that the query is not yet supported for partitioning. */
-  partitions?: Array<Cursor>;
+  partitions?: ReadonlyArray<Cursor>;
   /** A page token that may be used to request an additional set of results, up to the number specified by `partition_count` in the PartitionQuery request. If blank, there are no more results. */
   nextPageToken?: string;
 }
@@ -2248,9 +2248,9 @@ export const RunQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchWriteResponse {
   /** The result of applying the writes. This i-th write result corresponds to the i-th write in the request. */
-  writeResults?: Array<WriteResult>;
+  writeResults?: ReadonlyArray<WriteResult>;
   /** The status of applying the writes. This i-th write status corresponds to the i-th write in the request. */
-  status?: Array<Status>;
+  status?: ReadonlyArray<Status>;
 }
 
 export const BatchWriteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2331,9 +2331,9 @@ export const GoogleFirestoreAdminV1RestoreDatabaseRequest =
 
 export interface GoogleFirestoreAdminV1ListBackupsResponse {
   /** List of all backups for the project. */
-  backups?: Array<GoogleFirestoreAdminV1Backup>;
+  backups?: ReadonlyArray<GoogleFirestoreAdminV1Backup>;
   /** List of locations that existing backups were not able to be fetched from. Instead of failing the entire requests when a single location is unreachable, this response returns a partial result set and list of locations unable to be reached here. The request can be retried against a single location to get a concrete error. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleFirestoreAdminV1ListBackupsResponse =
@@ -2350,7 +2350,7 @@ export interface WriteRequest {
   /** A stream token that was previously sent by the server. The client should set this field to the token from the most recent WriteResponse it has received. This acknowledges that the client has received responses up to this token. After sending this token, earlier tokens may not be used anymore. The server may close the stream if there are too many unacknowledged responses. Leave this field unset when creating a new stream. To resume a stream at a specific point, set this field and the `stream_id` field. Leave this field unset when creating a new stream. */
   streamToken?: string;
   /** The writes to apply. Always executed atomically and in order. This must be empty on the first request. This may be empty on the last request. This must not be empty on all other requests. */
-  writes?: Array<Write>;
+  writes?: ReadonlyArray<Write>;
 }
 
 export const WriteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2414,7 +2414,7 @@ export const RestoreProjectsDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/databases:restore",
+      path: "v1/{parent}/databases:restore",
       hasBody: true,
     }),
     svc,
@@ -2454,7 +2454,7 @@ export const ImportDocumentsProjectsDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}:importDocuments",
+      path: "v1/{name}:importDocuments",
       hasBody: true,
     }),
     svc,
@@ -2495,7 +2495,7 @@ export const BulkDeleteDocumentsProjectsDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}:bulkDeleteDocuments",
+      path: "v1/{name}:bulkDeleteDocuments",
       hasBody: true,
     }),
     svc,
@@ -2536,7 +2536,7 @@ export const ExportDocumentsProjectsDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}:exportDocuments",
+      path: "v1/{name}:exportDocuments",
       hasBody: true,
     }),
     svc,
@@ -2570,10 +2570,7 @@ export const GetProjectsDatabasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/databases/{databasesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatabasesRequest>;
 
@@ -2607,10 +2604,7 @@ export const DeleteProjectsDatabasesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/databases/{databasesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDatabasesRequest>;
 
@@ -2647,11 +2641,7 @@ export const PatchProjectsDatabasesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleFirestoreAdminV1Database).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/databases/{databasesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsDatabasesRequest>;
 
@@ -2688,11 +2678,7 @@ export const CreateProjectsDatabasesRequest =
     databaseId: Schema.optional(Schema.String).pipe(T.HttpQuery("databaseId")),
     body: Schema.optional(GoogleFirestoreAdminV1Database).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/databases",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/databases", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsDatabasesRequest>;
 
@@ -2730,7 +2716,7 @@ export const CloneProjectsDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/databases:clone",
+      path: "v1/{parent}/databases:clone",
       hasBody: true,
     }),
     svc,
@@ -2768,7 +2754,7 @@ export const ListProjectsDatabasesRequest =
       T.HttpQuery("showDeleted"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/databases" }),
+    T.Http({ method: "GET", path: "v1/{parent}/databases" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatabasesRequest>;
 
@@ -2814,10 +2800,7 @@ export const ListProjectsDatabasesOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatabasesOperationsRequest>;
 
@@ -2853,10 +2836,7 @@ export const GetProjectsDatabasesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatabasesOperationsRequest>;
 
@@ -2892,11 +2872,7 @@ export const CancelProjectsDatabasesOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsDatabasesOperationsRequest>;
 
@@ -2927,10 +2903,7 @@ export const DeleteProjectsDatabasesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDatabasesOperationsRequest>;
 
@@ -2969,11 +2942,7 @@ export const PatchProjectsDatabasesBackupSchedulesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/backupSchedules/{backupSchedulesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsDatabasesBackupSchedulesRequest>;
 
@@ -3012,7 +2981,7 @@ export const CreateProjectsDatabasesBackupSchedulesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/backupSchedules",
+      path: "v1/{parent}/backupSchedules",
       hasBody: true,
     }),
     svc,
@@ -3046,10 +3015,7 @@ export const GetProjectsDatabasesBackupSchedulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/backupSchedules/{backupSchedulesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatabasesBackupSchedulesRequest>;
 
@@ -3081,10 +3047,7 @@ export const ListProjectsDatabasesBackupSchedulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/backupSchedules",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/backupSchedules" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatabasesBackupSchedulesRequest>;
 
@@ -3116,10 +3079,7 @@ export const DeleteProjectsDatabasesBackupSchedulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/backupSchedules/{backupSchedulesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDatabasesBackupSchedulesRequest>;
 
@@ -3155,11 +3115,7 @@ export const EnableProjectsDatabasesUserCredsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/userCreds/{userCredsId}:enable",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:enable", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<EnableProjectsDatabasesUserCredsRequest>;
 
@@ -3196,11 +3152,7 @@ export const ResetPasswordProjectsDatabasesUserCredsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/userCreds/{userCredsId}:resetPassword",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:resetPassword", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResetPasswordProjectsDatabasesUserCredsRequest>;
 
@@ -3232,10 +3184,7 @@ export const DeleteProjectsDatabasesUserCredsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/userCreds/{userCredsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDatabasesUserCredsRequest>;
 
@@ -3266,10 +3215,7 @@ export const GetProjectsDatabasesUserCredsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/userCreds/{userCredsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatabasesUserCredsRequest>;
 
@@ -3301,10 +3247,7 @@ export const ListProjectsDatabasesUserCredsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/userCreds",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/userCreds" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatabasesUserCredsRequest>;
 
@@ -3341,11 +3284,7 @@ export const DisableProjectsDatabasesUserCredsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/userCreds/{userCredsId}:disable",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:disable", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DisableProjectsDatabasesUserCredsRequest>;
 
@@ -3385,11 +3324,7 @@ export const CreateProjectsDatabasesUserCredsRequest =
     ),
     body: Schema.optional(GoogleFirestoreAdminV1UserCreds).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/userCreds",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/userCreds", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsDatabasesUserCredsRequest>;
 
@@ -3426,7 +3361,7 @@ export const BatchGetProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/documents:batchGet",
+      path: "v1/{database}/documents:batchGet",
       hasBody: true,
     }),
     svc,
@@ -3465,7 +3400,7 @@ export const BeginTransactionProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/documents:beginTransaction",
+      path: "v1/{database}/documents:beginTransaction",
       hasBody: true,
     }),
     svc,
@@ -3504,7 +3439,7 @@ export const CommitProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/documents:commit",
+      path: "v1/{database}/documents:commit",
       hasBody: true,
     }),
     svc,
@@ -3567,10 +3502,7 @@ export const ListProjectsDatabasesDocumentsRequest =
     readTime: Schema.optional(Schema.String).pipe(T.HttpQuery("readTime")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}/{collectionId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/{collectionId}" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatabasesDocumentsRequest>;
 
@@ -3610,7 +3542,7 @@ export const ListCollectionIdsProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}:listCollectionIds",
+      path: "v1/{parent}:listCollectionIds",
       hasBody: true,
     }),
     svc,
@@ -3649,7 +3581,7 @@ export const RollbackProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/documents:rollback",
+      path: "v1/{database}/documents:rollback",
       hasBody: true,
     }),
     svc,
@@ -3685,11 +3617,7 @@ export const RunQueryProjectsDatabasesDocumentsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(RunQueryRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}:runQuery",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}:runQuery", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RunQueryProjectsDatabasesDocumentsRequest>;
 
@@ -3733,10 +3661,7 @@ export const GetProjectsDatabasesDocumentsRequest =
       T.HttpQuery("transaction"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatabasesDocumentsRequest>;
 
@@ -3797,10 +3722,7 @@ export const ListDocumentsProjectsDatabasesDocumentsRequest =
       T.HttpQuery("showMissing"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/documents/{collectionId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/{collectionId}" }),
     svc,
   ) as unknown as Schema.Schema<ListDocumentsProjectsDatabasesDocumentsRequest>;
 
@@ -3852,7 +3774,7 @@ export const CreateDocumentProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{collectionId}",
+      path: "v1/{parent}/{collectionId}",
       hasBody: true,
     }),
     svc,
@@ -3890,7 +3812,7 @@ export const ExecutePipelineProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/documents:executePipeline",
+      path: "v1/{database}/documents:executePipeline",
       hasBody: true,
     }),
     svc,
@@ -3929,7 +3851,7 @@ export const PartitionQueryProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}:partitionQuery",
+      path: "v1/{parent}:partitionQuery",
       hasBody: true,
     }),
     svc,
@@ -3968,7 +3890,7 @@ export const WriteProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/documents:write",
+      path: "v1/{database}/documents:write",
       hasBody: true,
     }),
     svc,
@@ -4011,10 +3933,7 @@ export const DeleteProjectsDatabasesDocumentsRequest =
       T.HttpQuery("currentDocument.exists"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDatabasesDocumentsRequest>;
 
@@ -4050,7 +3969,7 @@ export const ListenProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/documents:listen",
+      path: "v1/{database}/documents:listen",
       hasBody: true,
     }),
     svc,
@@ -4088,7 +4007,7 @@ export const BatchWriteProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/documents:batchWrite",
+      path: "v1/{database}/documents:batchWrite",
       hasBody: true,
     }),
     svc,
@@ -4144,11 +4063,7 @@ export const PatchProjectsDatabasesDocumentsRequest =
     ),
     body: Schema.optional(Document).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsDatabasesDocumentsRequest>;
 
@@ -4184,7 +4099,7 @@ export const RunAggregationQueryProjectsDatabasesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/documents/{documentsId}/{documentsId1}:runAggregationQuery",
+      path: "v1/{parent}:runAggregationQuery",
       hasBody: true,
     }),
     svc,
@@ -4221,11 +4136,7 @@ export const CreateProjectsDatabasesCollectionGroupsIndexesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleFirestoreAdminV1Index).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/indexes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsDatabasesCollectionGroupsIndexesRequest>;
 
@@ -4266,10 +4177,7 @@ export const ListProjectsDatabasesCollectionGroupsIndexesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/indexes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatabasesCollectionGroupsIndexesRequest>;
 
@@ -4305,10 +4213,7 @@ export const GetProjectsDatabasesCollectionGroupsIndexesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes/{indexesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatabasesCollectionGroupsIndexesRequest>;
 
@@ -4340,10 +4245,7 @@ export const DeleteProjectsDatabasesCollectionGroupsIndexesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/indexes/{indexesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDatabasesCollectionGroupsIndexesRequest>;
 
@@ -4374,10 +4276,7 @@ export const GetProjectsDatabasesCollectionGroupsFieldsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/fields/{fieldsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatabasesCollectionGroupsFieldsRequest>;
 
@@ -4418,10 +4317,7 @@ export const ListProjectsDatabasesCollectionGroupsFieldsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/fields",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/fields" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatabasesCollectionGroupsFieldsRequest>;
 
@@ -4463,11 +4359,7 @@ export const PatchProjectsDatabasesCollectionGroupsFieldsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleFirestoreAdminV1Field).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/fields/{fieldsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsDatabasesCollectionGroupsFieldsRequest>;
 
@@ -4513,7 +4405,7 @@ export const ListProjectsLocationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -4548,10 +4440,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -4582,10 +4471,7 @@ export const GetProjectsLocationsBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backups/{backupsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBackupsRequest>;
 
@@ -4619,10 +4505,7 @@ export const ListProjectsLocationsBackupsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backups",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/backups" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBackupsRequest>;
 
@@ -4654,10 +4537,7 @@ export const DeleteProjectsLocationsBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backups/{backupsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsBackupsRequest>;
 

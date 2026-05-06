@@ -126,7 +126,7 @@ export const NativeContent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LocationContext {
   /** IDs representing the geo location for this context. Refer to the [geo-table.csv](https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv) file for different geo criteria IDs. */
-  geoCriteriaIds?: Array<number>;
+  geoCriteriaIds?: ReadonlyArray<number>;
 }
 
 export const LocationContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -135,7 +135,7 @@ export const LocationContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PlatformContext {
   /** The platforms this restriction applies to. */
-  platforms?: Array<"DESKTOP" | "ANDROID" | "IOS" | (string & {})>;
+  platforms?: ReadonlyArray<"DESKTOP" | "ANDROID" | "IOS" | (string & {})>;
 }
 
 export const PlatformContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -144,7 +144,7 @@ export const PlatformContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SecurityContext {
   /** The security types in this context. */
-  securities?: Array<"INSECURE" | "SSL" | (string & {})>;
+  securities?: ReadonlyArray<"INSECURE" | "SSL" | (string & {})>;
 }
 
 export const SecurityContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -153,7 +153,7 @@ export const SecurityContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AuctionContext {
   /** The auction types this restriction applies to. */
-  auctionTypes?: Array<"OPEN_AUCTION" | "DIRECT_DEALS" | (string & {})>;
+  auctionTypes?: ReadonlyArray<"OPEN_AUCTION" | "DIRECT_DEALS" | (string & {})>;
 }
 
 export const AuctionContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -162,7 +162,7 @@ export const AuctionContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AppContext {
   /** The app types this restriction applies to. */
-  appTypes?: Array<"NATIVE" | "WEB" | (string & {})>;
+  appTypes?: ReadonlyArray<"NATIVE" | "WEB" | (string & {})>;
 }
 
 export const AppContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -300,7 +300,7 @@ export interface Disapproval {
     | "EXPERIMENTAL_MEDICAL_TREATMENT"
     | (string & {});
   /** Additional details about the reason for disapproval. */
-  details?: Array<string>;
+  details?: ReadonlyArray<string>;
 }
 
 export const Disapproval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -316,9 +316,9 @@ export interface ServingRestriction {
     | "PENDING_REVIEW"
     | (string & {});
   /** The contexts for the restriction. */
-  contexts?: Array<ServingContext>;
+  contexts?: ReadonlyArray<ServingContext>;
   /** Any disapprovals bound to this restriction. Only present if status=DISAPPROVED. Can be used to filter the response of the creatives.list method. Deprecated; use disapproval field instead. */
-  disapprovalReasons?: Array<Disapproval>;
+  disapprovalReasons?: ReadonlyArray<Disapproval>;
   /** Disapproval bound to this restriction. Only present if status=DISAPPROVED. Can be used to filter the response of the creatives.list method. */
   disapproval?: Disapproval;
 }
@@ -334,7 +334,7 @@ export interface AdTechnologyProviders {
   /** Whether the creative contains an unidentified ad technology provider. If true for a given creative, any bid submitted with that creative for an impression that will serve to an EEA user will be filtered before the auction. */
   hasUnidentifiedProvider?: boolean;
   /** The detected ad technology provider IDs for this creative. See https://storage.googleapis.com/adx-rtb-dictionaries/providers.csv for mapping of provider ID to provided name, a privacy policy URL, and a list of domains which can be attributed to the provider. If the creative contains provider IDs that are outside of those listed in the `BidRequest.adslot.consented_providers_settings.consented_providers` field on the (Google bid protocol)[https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto] and the `BidRequest.user.ext.consented_providers_settings.consented_providers` field on the (OpenRTB protocol)[https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto], and a bid is submitted with that creative for an impression that will serve to an EEA user, the bid will be filtered before the auction. */
-  detectedProviderIds?: Array<string>;
+  detectedProviderIds?: ReadonlyArray<string>;
 }
 
 export const AdTechnologyProviders = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -371,7 +371,7 @@ export const HtmlContent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Correction {
   /** The contexts for the correction. */
-  contexts?: Array<ServingContext>;
+  contexts?: ReadonlyArray<ServingContext>;
   /** The type of correction that was applied to the creative. */
   type?:
     | "CORRECTION_TYPE_UNSPECIFIED"
@@ -388,7 +388,7 @@ export interface Correction {
     | "VIDEO_IN_SNIPPET_ATTRIBUTE_ADDED"
     | (string & {});
   /** Additional details about what was corrected. */
-  details?: Array<string>;
+  details?: ReadonlyArray<string>;
 }
 
 export const Correction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -399,11 +399,11 @@ export const Correction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Creative {
   /** Output only. Detected advertiser IDs, if any. */
-  detectedAdvertiserIds?: Array<string>;
+  detectedAdvertiserIds?: ReadonlyArray<string>;
   /** The account that this creative belongs to. Can be used to filter the response of the creatives.list method. */
   accountId?: string;
   /** Output only. The detected languages for this creative. The order is arbitrary. The codes are 2 or 5 characters and are documented at https://developers.google.com/adwords/api/docs/appendix/languagecodes. */
-  detectedLanguages?: Array<string>;
+  detectedLanguages?: ReadonlyArray<string>;
   /** Output only. The top-level open auction status of this creative. If disapproved, an entry for 'auctionType = OPEN_AUCTION' (or 'ALL') in serving_restrictions will also exist. Note that this may be nuanced with other contextual restrictions, in which case, it may be preferable to read from serving_restrictions directly. Can be used to filter the response of the creatives.list method. */
   openAuctionStatus?:
     | "STATUS_UNSPECIFIED"
@@ -415,7 +415,7 @@ export interface Creative {
     | "STATUS_TYPE_UNSPECIFIED"
     | (string & {});
   /** The set of URLs to be called to record an impression. */
-  impressionTrackingUrls?: Array<string>;
+  impressionTrackingUrls?: ReadonlyArray<string>;
   /** Output only. The top-level deals status of this creative. If disapproved, an entry for 'auctionType=DIRECT_DEALS' (or 'ALL') in serving_restrictions will also exist. Note that this may be nuanced with other contextual restrictions, in which case, it may be preferable to read from serving_restrictions directly. Can be used to filter the response of the creatives.list method. */
   dealsStatus?:
     | "STATUS_UNSPECIFIED"
@@ -429,25 +429,25 @@ export interface Creative {
   /** A native creative. */
   native?: NativeContent;
   /** Output only. The granular status of this ad in specific contexts. A context here relates to where something ultimately serves (for example, a physical location, a platform, an HTTPS versus HTTP request, or the type of auction). */
-  servingRestrictions?: Array<ServingRestriction>;
+  servingRestrictions?: ReadonlyArray<ServingRestriction>;
   /** Output only. The detected domains for this creative. */
-  detectedDomains?: Array<string>;
+  detectedDomains?: ReadonlyArray<string>;
   /** The buyer-defined creative ID of this creative. Can be used to filter the response of the creatives.list method. */
   creativeId?: string;
   /** The set of declared destination URLs for the creative. */
-  declaredClickThroughUrls?: Array<string>;
+  declaredClickThroughUrls?: ReadonlyArray<string>;
   /** The name of the company being advertised in the creative. */
   advertiserName?: string;
   /** The set of destination URLs for the creative. */
-  clickThroughUrls?: Array<string>;
+  clickThroughUrls?: ReadonlyArray<string>;
   /** Output only. The detected ad technology providers. */
   adTechnologyProviders?: AdTechnologyProviders;
   /** The agency ID for this creative. */
   agencyId?: string;
   /** All vendor IDs for the ads that may be shown from this creative. See https://storage.googleapis.com/adx-rtb-dictionaries/vendors.txt for possible values. */
-  vendorIds?: Array<number>;
+  vendorIds?: ReadonlyArray<number>;
   /** Output only. Detected sensitive categories, if any. See the ad-sensitive-categories.txt file in the technical documentation for a list of IDs. You should use these IDs along with the excluded-sensitive-category field in the bid request to filter your bids. */
-  detectedSensitiveCategories?: Array<number>;
+  detectedSensitiveCategories?: ReadonlyArray<number>;
   /** A video creative. */
   video?: VideoContent;
   /** The link to AdChoices destination page. */
@@ -457,17 +457,17 @@ export interface Creative {
   /** Output only. The last update timestamp of the creative through the API. */
   apiUpdateTime?: string;
   /** Output only. Detected product categories, if any. See the ad-product-categories.txt file in the technical documentation for a list of IDs. */
-  detectedProductCategories?: Array<number>;
+  detectedProductCategories?: ReadonlyArray<number>;
   /** An HTML creative. */
   html?: HtmlContent;
   /** Output only. Shows any corrections that were applied to this creative. */
-  corrections?: Array<Correction>;
+  corrections?: ReadonlyArray<Correction>;
   /** All restricted categories for the ads that may be shown from this creative. */
-  restrictedCategories?: Array<
+  restrictedCategories?: ReadonlyArray<
     "NO_RESTRICTED_CATEGORIES" | "ALCOHOL" | (string & {})
   >;
   /** All attributes for the ads that may be shown from this creative. Can be used to filter the response of the creatives.list method. */
-  attributes?: Array<
+  attributes?: ReadonlyArray<
     | "ATTRIBUTE_UNSPECIFIED"
     | "IMAGE_RICH_MEDIA"
     | "ADOBE_FLASH_FLV"
@@ -542,7 +542,7 @@ export const Creative = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCreativesResponse {
   /** The list of creatives. */
-  creatives?: Array<Creative>;
+  creatives?: ReadonlyArray<Creative>;
   /** A token to retrieve the next page of results. Pass this value in the ListCreativesRequest.page_token field in the subsequent call to `ListCreatives` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -611,7 +611,7 @@ export const BidResponseWithoutBidsStatusRow =
 
 export interface ListBidResponsesWithoutBidsResponse {
   /** List of rows, with counts of bid responses without bids aggregated by status. */
-  bidResponseWithoutBidsStatusRows?: Array<BidResponseWithoutBidsStatusRow>;
+  bidResponseWithoutBidsStatusRows?: ReadonlyArray<BidResponseWithoutBidsStatusRow>;
   /** A token to retrieve the next page of results. Pass this value in the ListBidResponsesWithoutBidsRequest.pageToken field in the subsequent call to the bidResponsesWithoutBids.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -649,9 +649,9 @@ export const ClientUser = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface UrlTargeting {
   /** A list of URLs to be included. */
-  targetedUrls?: Array<string>;
+  targetedUrls?: ReadonlyArray<string>;
   /** A list of URLs to be excluded. */
-  excludedUrls?: Array<string>;
+  excludedUrls?: ReadonlyArray<string>;
 }
 
 export const UrlTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -661,9 +661,9 @@ export const UrlTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FirstPartyMobileApplicationTargeting {
   /** A list of application IDs to be included. */
-  targetedAppIds?: Array<string>;
+  targetedAppIds?: ReadonlyArray<string>;
   /** A list of application IDs to be excluded. */
-  excludedAppIds?: Array<string>;
+  excludedAppIds?: ReadonlyArray<string>;
 }
 
 export const FirstPartyMobileApplicationTargeting =
@@ -816,7 +816,7 @@ export const BidMetricsRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListBidMetricsResponse {
   /** List of rows, each containing a set of bid metrics. */
-  bidMetricsRows?: Array<BidMetricsRow>;
+  bidMetricsRows?: ReadonlyArray<BidMetricsRow>;
   /** A token to retrieve the next page of results. Pass this value in the ListBidMetricsRequest.pageToken field in the subsequent call to the bidMetrics.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -853,7 +853,7 @@ export interface CreativeSpecification {
   /** The size of the creative. */
   creativeSize?: AdSize;
   /** Companion sizes may be filled in only when this is a video creative. */
-  creativeCompanionSizes?: Array<AdSize>;
+  creativeCompanionSizes?: ReadonlyArray<AdSize>;
 }
 
 export const CreativeSpecification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -914,7 +914,7 @@ export interface ListFilteredBidsResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListFilteredBidsRequest.pageToken field in the subsequent call to the filteredBids.list method to retrieve the next page of results. */
   nextPageToken?: string;
   /** List of rows, with counts of filtered bids aggregated by filtering reason (for example, creative status). */
-  creativeStatusRows?: Array<CreativeStatusRow>;
+  creativeStatusRows?: ReadonlyArray<CreativeStatusRow>;
 }
 
 export const ListFilteredBidsResponse =
@@ -925,7 +925,7 @@ export const ListFilteredBidsResponse =
 
 export interface ListClientUserInvitationsResponse {
   /** The returned list of client users. */
-  invitations?: Array<ClientUserInvitation>;
+  invitations?: ReadonlyArray<ClientUserInvitation>;
   /** A token to retrieve the next page of results. Pass this value in the ListClientUserInvitationsRequest.pageToken field in the subsequent call to the clients.invitations.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -953,9 +953,9 @@ export const ResumeProposalRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface CriteriaTargeting {
   /** A list of numeric IDs to be included. */
-  targetedCriteriaIds?: Array<string>;
+  targetedCriteriaIds?: ReadonlyArray<string>;
   /** A list of numeric IDs to be excluded. */
-  excludedCriteriaIds?: Array<string>;
+  excludedCriteriaIds?: ReadonlyArray<string>;
 }
 
 export const CriteriaTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -978,9 +978,9 @@ export const OperatingSystemTargeting =
 
 export interface InventorySizeTargeting {
   /** A list of inventory sizes to be included. */
-  targetedInventorySizes?: Array<AdSize>;
+  targetedInventorySizes?: ReadonlyArray<AdSize>;
   /** A list of inventory sizes to be excluded. */
-  excludedInventorySizes?: Array<AdSize>;
+  excludedInventorySizes?: ReadonlyArray<AdSize>;
 }
 
 export const InventorySizeTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1007,7 +1007,7 @@ export const TechnologyTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface VideoTargeting {
   /** A list of video positions to be included. When the included list is present, the excluded list must be empty. When the excluded list is present, the included list must be empty. */
-  targetedPositionTypes?: Array<
+  targetedPositionTypes?: ReadonlyArray<
     | "POSITION_TYPE_UNSPECIFIED"
     | "PREROLL"
     | "MIDROLL"
@@ -1015,7 +1015,7 @@ export interface VideoTargeting {
     | (string & {})
   >;
   /** A list of video positions to be excluded. Position types can either be included or excluded (XOR). */
-  excludedPositionTypes?: Array<
+  excludedPositionTypes?: ReadonlyArray<
     | "POSITION_TYPE_UNSPECIFIED"
     | "PREROLL"
     | "MIDROLL"
@@ -1075,7 +1075,7 @@ export const NonBillableWinningBidStatusRow =
 
 export interface ListNonBillableWinningBidsResponse {
   /** List of rows, with counts of bids not billed aggregated by reason. */
-  nonBillableWinningBidStatusRows?: Array<NonBillableWinningBidStatusRow>;
+  nonBillableWinningBidStatusRows?: ReadonlyArray<NonBillableWinningBidStatusRow>;
   /** A token to retrieve the next page of results. Pass this value in the ListNonBillableWinningBidsRequest.pageToken field in the subsequent call to the nonBillableWinningBids.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -1162,7 +1162,7 @@ export const ImpressionMetricsRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListImpressionMetricsResponse {
   /** List of rows, each containing a set of impression metrics. */
-  impressionMetricsRows?: Array<ImpressionMetricsRow>;
+  impressionMetricsRows?: ReadonlyArray<ImpressionMetricsRow>;
   /** A token to retrieve the next page of results. Pass this value in the ListImpressionMetricsRequest.pageToken field in the subsequent call to the impressionMetrics.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -1209,7 +1209,7 @@ export interface CreativeSize {
     | "NATIVE_VIDEO_APP_INSTALL_AD"
     | (string & {});
   /** What formats are allowed by the publisher. If this repeated field is empty then all formats are allowed. For example, if this field contains AllowedFormatType.AUDIO then the publisher only allows an audio ad (without any video). */
-  allowedFormats?: Array<"UNKNOWN" | "AUDIO" | (string & {})>;
+  allowedFormats?: ReadonlyArray<"UNKNOWN" | "AUDIO" | (string & {})>;
   /** For regular or video creative size type, specifies the size of the creative */
   size?: Size;
   /** The type of skippable ad for this creative. It will have a value only if creative_size_type = CreativeSizeType.VIDEO. */
@@ -1220,7 +1220,7 @@ export interface CreativeSize {
     | "NOT_SKIPPABLE"
     | (string & {});
   /** For video creatives specifies the sizes of companion ads (if present). Companion sizes may be filled in only when creative_size_type = VIDEO */
-  companionSizes?: Array<Size>;
+  companionSizes?: ReadonlyArray<Size>;
 }
 
 export const CreativeSize = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1234,7 +1234,7 @@ export const CreativeSize = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DayPartTargeting {
   /** A list of day part targeting criterion. */
-  dayParts?: Array<DayPart>;
+  dayParts?: ReadonlyArray<DayPart>;
   /** The timezone to use for interpreting the day part targeting. */
   timeZoneType?:
     | "TIME_ZONE_SOURCE_UNSPECIFIED"
@@ -1270,9 +1270,9 @@ export interface TargetingCriteria {
   /** The key representing the shared targeting criterion. Targeting criteria defined by Google ad servers will begin with GOOG_. Third parties may define their own keys. A list of permissible keys along with the acceptable values will be provided as part of the external documentation. */
   key?: string;
   /** The list of values to exclude from targeting. Each value is AND'd together. */
-  exclusions?: Array<TargetingValue>;
+  exclusions?: ReadonlyArray<TargetingValue>;
   /** The list of value to include as part of the targeting. Each value is OR'd together. */
-  inclusions?: Array<TargetingValue>;
+  inclusions?: ReadonlyArray<TargetingValue>;
 }
 
 export const TargetingCriteria = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1312,7 +1312,7 @@ export interface PricePerBuyer {
   /** The specified price. */
   price?: Price;
   /** The list of advertisers for this price when associated with this buyer. If empty, all advertisers with this buyer pay this price. */
-  advertiserIds?: Array<string>;
+  advertiserIds?: ReadonlyArray<string>;
 }
 
 export const PricePerBuyer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1323,7 +1323,7 @@ export const PricePerBuyer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NonGuaranteedAuctionTerms {
   /** Reserve price for the specified buyer. */
-  reservePricesPerBuyer?: Array<PricePerBuyer>;
+  reservePricesPerBuyer?: ReadonlyArray<PricePerBuyer>;
   /** True if open auction buyers are allowed to compete with invited buyers in this private auction. */
   autoOptimizePrivateAuction?: boolean;
 }
@@ -1336,7 +1336,7 @@ export const NonGuaranteedAuctionTerms =
 
 export interface NonGuaranteedFixedPriceTerms {
   /** Fixed price for the specified buyer. */
-  fixedPrices?: Array<PricePerBuyer>;
+  fixedPrices?: ReadonlyArray<PricePerBuyer>;
 }
 
 export const NonGuaranteedFixedPriceTerms =
@@ -1348,7 +1348,7 @@ export interface GuaranteedFixedPriceTerms {
   /** Count of guaranteed looks. Required for deal, optional for product. For CPD deals, buyer changes to guaranteed_looks will be ignored. */
   guaranteedLooks?: string;
   /** Fixed price for the specified buyer. */
-  fixedPrices?: Array<PricePerBuyer>;
+  fixedPrices?: ReadonlyArray<PricePerBuyer>;
   /** The reservation type for a Programmatic Guaranteed deal. This indicates whether the number of impressions is fixed, or a percent of available impressions. If not specified, the default reservation type is STANDARD. */
   reservationType?:
     | "RESERVATION_TYPE_UNSPECIFIED"
@@ -1417,7 +1417,7 @@ export interface CreativeRestrictions {
     | "DISPLAY"
     | "VIDEO"
     | (string & {});
-  creativeSpecifications?: Array<CreativeSpecification>;
+  creativeSpecifications?: ReadonlyArray<CreativeSpecification>;
   /** Skippable video ads allow viewers to skip ads after 5 seconds. */
   skippableAdType?:
     | "SKIPPABLE_AD_TYPE_UNSPECIFIED"
@@ -1460,7 +1460,7 @@ export const FrequencyCap = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeliveryControl {
   /** Output only. Specifies any frequency caps. */
-  frequencyCaps?: Array<FrequencyCap>;
+  frequencyCaps?: ReadonlyArray<FrequencyCap>;
   /** Output only. Specified the creative blocking levels to be applied. */
   creativeBlockingLevel?:
     | "CREATIVE_BLOCKING_LEVEL_UNSPECIFIED"
@@ -1486,9 +1486,9 @@ export interface Deal {
   /** Optional. Revision number of the product that the deal was created from. If present on create, and the server `product_revision` has advanced since the passed-in `create_product_revision`, an `ABORTED` error will be returned. Note: This field may be set only when creating the resource. Modifying this field while updating the resource will result in an error. */
   createProductRevision?: string;
   /** Output only. Seller contact information for the deal. */
-  sellerContacts?: Array<ContactInformation>;
+  sellerContacts?: ReadonlyArray<ContactInformation>;
   /** The shared targeting visible to buyers and sellers. Each shared targeting entity is AND'd together. */
-  targetingCriterion?: Array<TargetingCriteria>;
+  targetingCriterion?: ReadonlyArray<TargetingCriteria>;
   /** Output only. Specifies whether the creative is safeFrame compatible. */
   creativeSafeFrameCompatibility?:
     | "CREATIVE_SAFE_FRAME_COMPATIBILITY_UNSPECIFIED"
@@ -1599,7 +1599,7 @@ export interface Proposal {
   /** Output only. True if the proposal is being renegotiated. */
   isRenegotiating?: boolean;
   /** The deals associated with this proposal. For Private Auction proposals (whose deals have NonGuaranteedAuctionTerms), there will only be one deal. */
-  deals?: Array<Deal>;
+  deals?: ReadonlyArray<Deal>;
   /** Output only. The terms and conditions set by the publisher for this proposal. */
   termsAndConditions?: string;
   /** Output only. The revision number for the proposal. Each update to the proposal or the deal causes the proposal revision number to auto-increment. The buyer keeps track of the last revision number they know of and pass it in when making an update. If the head revision number on the server has since incremented, then an ABORTED error is returned during the update operation to let the buyer know that a subsequent update was made. */
@@ -1628,13 +1628,13 @@ export interface Proposal {
   /** Output only. True, if the buyside inventory setup is complete for this proposal. */
   isSetupComplete?: boolean;
   /** Contact information for the buyer. */
-  buyerContacts?: Array<ContactInformation>;
+  buyerContacts?: ReadonlyArray<ContactInformation>;
   /** Output only. The unique ID of the proposal. */
   proposalId?: string;
   /** Output only. Contact information for the seller. */
-  sellerContacts?: Array<ContactInformation>;
+  sellerContacts?: ReadonlyArray<ContactInformation>;
   /** Output only. The notes associated with this proposal. */
-  notes?: Array<Note>;
+  notes?: ReadonlyArray<Note>;
   /** Output only. The role of the last user that either updated the proposal or left a comment. */
   lastUpdaterOrCommentorRole?:
     | "BUYER_SELLER_ROLE_UNSPECIFIED"
@@ -1718,9 +1718,9 @@ export interface PublisherProfile {
   /** Overview of the publisher. */
   overview?: string;
   /** The list of apps represented in this publisher profile. Empty if this is a parent profile. */
-  mobileApps?: Array<PublisherProfileMobileApplication>;
+  mobileApps?: ReadonlyArray<PublisherProfileMobileApplication>;
   /** Up to three key metrics and rankings. Max 100 characters each. For example "#1 Mobile News Site for 20 Straight Months". */
-  topHeadlines?: Array<string>;
+  topHeadlines?: ReadonlyArray<string>;
   /** A Google public URL to the logo for this publisher profile. The logo is stored as a PNG, JPG, or GIF image. */
   logoUrl?: string;
   /** Contact information for programmatic deals. This is free text entered by the publisher and may include information like names, phone numbers and email addresses. */
@@ -1728,7 +1728,7 @@ export interface PublisherProfile {
   /** Name of the publisher profile. */
   displayName?: string;
   /** The list of domains represented in this publisher profile. Empty if this is a parent profile. These are top private domains, meaning that these will not contain a string like "photos.google.co.uk/123", but will instead contain "google.co.uk". */
-  domains?: Array<string>;
+  domains?: ReadonlyArray<string>;
   /** URL to publisher's Google+ page. */
   googlePlusUrl?: string;
   /** Description on the publisher's audience. */
@@ -1807,7 +1807,7 @@ export interface ListClientsResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListClientsRequest.pageToken field in the subsequent call to the accounts.clients.list method to retrieve the next page of results. */
   nextPageToken?: string;
   /** The returned list of clients. */
-  clients?: Array<Client>;
+  clients?: ReadonlyArray<Client>;
 }
 
 export const ListClientsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1832,7 +1832,7 @@ export const CalloutStatusRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListBidResponseErrorsResponse {
   /** List of rows, with counts of bid responses aggregated by callout status. */
-  calloutStatusRows?: Array<CalloutStatusRow>;
+  calloutStatusRows?: ReadonlyArray<CalloutStatusRow>;
   /** A token to retrieve the next page of results. Pass this value in the ListBidResponseErrorsRequest.pageToken field in the subsequent call to the bidResponseErrors.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -1858,7 +1858,7 @@ export interface ListCreativeStatusBreakdownByDetailResponse {
     | "GVL_ID"
     | (string & {});
   /** List of rows, with counts of bids with a given creative status aggregated by detail. */
-  filteredBidDetailRows?: Array<FilteredBidDetailRow>;
+  filteredBidDetailRows?: ReadonlyArray<FilteredBidDetailRow>;
   /** A token to retrieve the next page of results. Pass this value in the ListCreativeStatusBreakdownByDetailRequest.pageToken field in the subsequent call to the filteredBids.details.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -1916,7 +1916,7 @@ export const FilteredBidCreativeRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListCreativeStatusBreakdownByCreativeResponse {
   /** List of rows, with counts of bids with a given creative status aggregated by creative. */
-  filteredBidCreativeRows?: Array<FilteredBidCreativeRow>;
+  filteredBidCreativeRows?: ReadonlyArray<FilteredBidCreativeRow>;
   /** A token to retrieve the next page of results. Pass this value in the ListCreativeStatusBreakdownByCreativeRequest.pageToken field in the subsequent call to the filteredBids.creatives.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -1931,7 +1931,7 @@ export const ListCreativeStatusBreakdownByCreativeResponse =
 
 export interface ListPublisherProfilesResponse {
   /** The list of matching publisher profiles. */
-  publisherProfiles?: Array<PublisherProfile>;
+  publisherProfiles?: ReadonlyArray<PublisherProfile>;
   /** List pagination support */
   nextPageToken?: string;
 }
@@ -1946,7 +1946,7 @@ export interface PauseProposalDealsRequest {
   /** The reason why the deals are being paused. This human readable message will be displayed in the seller's UI. (Max length: 1000 unicode code units.) */
   reason?: string;
   /** The external_deal_id's of the deals to be paused. If empty, all the deals in the proposal will be paused. */
-  externalDealIds?: Array<string>;
+  externalDealIds?: ReadonlyArray<string>;
 }
 
 export const PauseProposalDealsRequest =
@@ -1976,7 +1976,7 @@ export const RelativeDateRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListClientUsersResponse {
   /** The returned list of client users. */
-  users?: Array<ClientUser>;
+  users?: ReadonlyArray<ClientUser>;
   /** A token to retrieve the next page of results. Pass this value in the ListClientUsersRequest.pageToken field in the subsequent call to the clients.invitations.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -2001,7 +2001,7 @@ export interface Product {
   /** If the creator has already signed off on the product, then the buyer can finalize the deal by accepting the product as is. When copying to a proposal, if any of the terms are changed, then auto_finalize is automatically set to false. */
   hasCreatorSignedOff?: boolean;
   /** Targeting that is shared between the buyer and the seller. Each targeting criterion has a specified key and for each key there is a list of inclusion value or exclusion values. */
-  targetingCriterion?: Array<TargetingCriteria>;
+  targetingCriterion?: ReadonlyArray<TargetingCriteria>;
   /** The web-property code for the seller. This needs to be copied as is when adding a new deal to a proposal. */
   webPropertyCode?: string;
   /** The syndication product associated with the deal. */
@@ -2033,7 +2033,7 @@ export interface Product {
   /** Information about the seller that created this product. */
   seller?: Seller;
   /** Optional contact information for the creator of this product. */
-  creatorContacts?: Array<ContactInformation>;
+  creatorContacts?: ReadonlyArray<ContactInformation>;
 }
 
 export const Product = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2056,7 +2056,7 @@ export const Product = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListProductsResponse {
   /** The list of matching products at their head revision number. */
-  products?: Array<Product>;
+  products?: ReadonlyArray<Product>;
   /** List pagination support. */
   nextPageToken?: string;
 }
@@ -2083,7 +2083,7 @@ export const WatchCreativeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDealAssociationsResponse {
   /** The list of associations. */
-  associations?: Array<CreativeDealAssociation>;
+  associations?: ReadonlyArray<CreativeDealAssociation>;
   /** A token to retrieve the next page of results. Pass this value in the ListDealAssociationsRequest.page_token field in the subsequent call to 'ListDealAssociation' method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -2113,11 +2113,11 @@ export interface FilterSet {
     | "NON_NATIVE_VIDEO"
     | (string & {});
   /** The list of platforms on which to filter; may be empty. The filters represented by multiple platforms are ORed together (for example, if non-empty, results must match any one of the platforms). */
-  platforms?: Array<
+  platforms?: ReadonlyArray<
     "PLATFORM_UNSPECIFIED" | "DESKTOP" | "TABLET" | "MOBILE" | (string & {})
   >;
   /** The set of dimensions along which to break down the response; may be empty. If multiple dimensions are requested, the breakdown is along the Cartesian product of the requested dimensions. */
-  breakdownDimensions?: Array<
+  breakdownDimensions?: ReadonlyArray<
     "BREAKDOWN_DIMENSION_UNSPECIFIED" | "PUBLISHER_IDENTIFIER" | (string & {})
   >;
   /** A user-defined name of the filter set. Filter set names must be unique globally and match one of the patterns: - `bidders/* /filterSets/*` (for accessing bidder-level troubleshooting data) - `bidders/* /accounts/* /filterSets/*` (for accessing account-level troubleshooting data) This field is required in create operations. */
@@ -2125,11 +2125,11 @@ export interface FilterSet {
   /** The ID of the deal on which to filter; optional. This field may be set only for a filter set that accesses account-level troubleshooting data, for example, one whose name matches the `bidders/* /accounts/* /filterSets/*` pattern. */
   dealId?: string;
   /** For Open Bidding partners only. The list of publisher identifiers on which to filter; may be empty. The filters represented by multiple publisher identifiers are ORed together. */
-  publisherIdentifiers?: Array<string>;
+  publisherIdentifiers?: ReadonlyArray<string>;
   /** The ID of the creative on which to filter; optional. This field may be set only for a filter set that accesses account-level troubleshooting data, for example, one whose name matches the `bidders/* /accounts/* /filterSets/*` pattern. */
   creativeId?: string;
   /** Creative formats bidded on or allowed to bid on, can be empty. Although this field is a list, it can only be populated with a single item. A HTTP 400 bad request error will be returned in the response if you specify multiple items. */
-  formats?: Array<
+  formats?: ReadonlyArray<
     | "FORMAT_UNSPECIFIED"
     | "NATIVE_DISPLAY"
     | "NATIVE_VIDEO"
@@ -2152,7 +2152,7 @@ export interface FilterSet {
   /** The environment on which to filter; optional. */
   environment?: "ENVIRONMENT_UNSPECIFIED" | "WEB" | "APP" | (string & {});
   /** For Authorized Buyers only. The list of IDs of the seller (publisher) networks on which to filter; may be empty. The filters represented by multiple seller network IDs are ORed together (for example, if non-empty, results must match any one of the publisher networks). See [seller-network-ids](https://developers.google.com/authorized-buyers/rtb/downloads/seller-network-ids) file for the set of existing seller network IDs. */
-  sellerNetworkIds?: Array<number>;
+  sellerNetworkIds?: ReadonlyArray<number>;
 }
 
 export const FilterSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2176,7 +2176,7 @@ export interface ListLosingBidsResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListLosingBidsRequest.pageToken field in the subsequent call to the losingBids.list method to retrieve the next page of results. */
   nextPageToken?: string;
   /** List of rows, with counts of losing bids aggregated by loss reason (for example, creative status). */
-  creativeStatusRows?: Array<CreativeStatusRow>;
+  creativeStatusRows?: ReadonlyArray<CreativeStatusRow>;
 }
 
 export const ListLosingBidsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -2188,7 +2188,7 @@ export const ListLosingBidsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListProposalsResponse {
   /** The list of proposals. */
-  proposals?: Array<Proposal>;
+  proposals?: ReadonlyArray<Proposal>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -2202,7 +2202,7 @@ export interface ListFilteredBidRequestsResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListFilteredBidRequestsRequest.pageToken field in the subsequent call to the filteredBidRequests.list method to retrieve the next page of results. */
   nextPageToken?: string;
   /** List of rows, with counts of filtered bid requests aggregated by callout status. */
-  calloutStatusRows?: Array<CalloutStatusRow>;
+  calloutStatusRows?: ReadonlyArray<CalloutStatusRow>;
 }
 
 export const ListFilteredBidRequestsResponse =
@@ -2220,7 +2220,7 @@ export const CancelNegotiationRequest =
 
 export interface ResumeProposalDealsRequest {
   /** The external_deal_id's of the deals to resume. If empty, all the deals in the proposal will be resumed. */
-  externalDealIds?: Array<string>;
+  externalDealIds?: ReadonlyArray<string>;
 }
 
 export const ResumeProposalDealsRequest =
@@ -2230,7 +2230,7 @@ export const ResumeProposalDealsRequest =
 
 export interface ListFilterSetsResponse {
   /** The filter sets belonging to the buyer. */
-  filterSets?: Array<FilterSet>;
+  filterSets?: ReadonlyArray<FilterSet>;
   /** A token to retrieve the next page of results. Pass this value in the ListFilterSetsRequest.pageToken field in the subsequent call to the accounts.filterSets.list method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -2265,7 +2265,7 @@ export const CreateBuyersFilterSetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/buyers/{buyersId}/filterSets",
+      path: "v2beta1/{ownerName}/filterSets",
       hasBody: true,
     }),
     svc,
@@ -2304,7 +2304,7 @@ export const ListBuyersFilterSetsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/buyers/{buyersId}/filterSets" }),
+    T.Http({ method: "GET", path: "v2beta1/{ownerName}/filterSets" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsRequest>;
 
@@ -2339,10 +2339,7 @@ export const GetBuyersFilterSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/buyers/{buyersId}/filterSets/{filterSetsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBuyersFilterSetsRequest>;
 
@@ -2373,10 +2370,7 @@ export const DeleteBuyersFilterSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/buyers/{buyersId}/filterSets/{filterSetsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteBuyersFilterSetsRequest>;
 
@@ -2414,7 +2408,7 @@ export const ListBuyersFilterSetsBidResponsesWithoutBidsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/buyers/{buyersId}/filterSets/{filterSetsId}/bidResponsesWithoutBids",
+      path: "v2beta1/{filterSetName}/bidResponsesWithoutBids",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsBidResponsesWithoutBidsRequest>;
@@ -2459,7 +2453,7 @@ export const ListBuyersFilterSetsBidResponseErrorsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/buyers/{buyersId}/filterSets/{filterSetsId}/bidResponseErrors",
+      path: "v2beta1/{filterSetName}/bidResponseErrors",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsBidResponseErrorsRequest>;
@@ -2504,7 +2498,7 @@ export const ListBuyersFilterSetsFilteredBidRequestsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/buyers/{buyersId}/filterSets/{filterSetsId}/filteredBidRequests",
+      path: "v2beta1/{filterSetName}/filteredBidRequests",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsFilteredBidRequestsRequest>;
@@ -2547,10 +2541,7 @@ export const ListBuyersFilterSetsLosingBidsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filterSetName: Schema.String.pipe(T.HttpPath("filterSetName")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/buyers/{buyersId}/filterSets/{filterSetsId}/losingBids",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{filterSetName}/losingBids" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsLosingBidsRequest>;
 
@@ -2593,7 +2584,7 @@ export const ListBuyersFilterSetsImpressionMetricsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/buyers/{buyersId}/filterSets/{filterSetsId}/impressionMetrics",
+      path: "v2beta1/{filterSetName}/impressionMetrics",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsImpressionMetricsRequest>;
@@ -2638,7 +2629,7 @@ export const ListBuyersFilterSetsNonBillableWinningBidsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/buyers/{buyersId}/filterSets/{filterSetsId}/nonBillableWinningBids",
+      path: "v2beta1/{filterSetName}/nonBillableWinningBids",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsNonBillableWinningBidsRequest>;
@@ -2681,10 +2672,7 @@ export const ListBuyersFilterSetsFilteredBidsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filterSetName: Schema.String.pipe(T.HttpPath("filterSetName")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/buyers/{buyersId}/filterSets/{filterSetsId}/filteredBids",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{filterSetName}/filteredBids" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsFilteredBidsRequest>;
 
@@ -2730,7 +2718,7 @@ export const ListBuyersFilterSetsFilteredBidsDetailsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/buyers/{buyersId}/filterSets/{filterSetsId}/filteredBids/{creativeStatusId}/details",
+      path: "v2beta1/{filterSetName}/filteredBids/{creativeStatusId}/details",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsFilteredBidsDetailsRequest>;
@@ -2778,7 +2766,7 @@ export const ListBuyersFilterSetsFilteredBidsCreativesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/buyers/{buyersId}/filterSets/{filterSetsId}/filteredBids/{creativeStatusId}/creatives",
+      path: "v2beta1/{filterSetName}/filteredBids/{creativeStatusId}/creatives",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsFilteredBidsCreativesRequest>;
@@ -2821,10 +2809,7 @@ export const ListBuyersFilterSetsBidMetricsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filterSetName: Schema.String.pipe(T.HttpPath("filterSetName")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/buyers/{buyersId}/filterSets/{filterSetsId}/bidMetrics",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{filterSetName}/bidMetrics" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersFilterSetsBidMetricsRequest>;
 
@@ -2859,10 +2844,7 @@ export const GetBiddersAccountsFilterSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBiddersAccountsFilterSetsRequest>;
 
@@ -2893,10 +2875,7 @@ export const DeleteBiddersAccountsFilterSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteBiddersAccountsFilterSetsRequest>;
 
@@ -2937,7 +2916,7 @@ export const CreateBiddersAccountsFilterSetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets",
+      path: "v2beta1/{ownerName}/filterSets",
       hasBody: true,
     }),
     svc,
@@ -2976,10 +2955,7 @@ export const ListBiddersAccountsFilterSetsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{ownerName}/filterSets" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsRequest>;
 
@@ -3022,7 +2998,7 @@ export const ListBiddersAccountsFilterSetsFilteredBidRequestsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}/filteredBidRequests",
+      path: "v2beta1/{filterSetName}/filteredBidRequests",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsFilteredBidRequestsRequest>;
@@ -3066,10 +3042,7 @@ export const ListBiddersAccountsFilterSetsLosingBidsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filterSetName: Schema.String.pipe(T.HttpPath("filterSetName")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}/losingBids",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{filterSetName}/losingBids" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsLosingBidsRequest>;
 
@@ -3113,7 +3086,7 @@ export const ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}/bidResponsesWithoutBids",
+      path: "v2beta1/{filterSetName}/bidResponsesWithoutBids",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest>;
@@ -3159,7 +3132,7 @@ export const ListBiddersAccountsFilterSetsBidResponseErrorsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}/bidResponseErrors",
+      path: "v2beta1/{filterSetName}/bidResponseErrors",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsBidResponseErrorsRequest>;
@@ -3202,10 +3175,7 @@ export const ListBiddersAccountsFilterSetsFilteredBidsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}/filteredBids",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{filterSetName}/filteredBids" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsFilteredBidsRequest>;
 
@@ -3252,7 +3222,7 @@ export const ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}/filteredBids/{creativeStatusId}/creatives",
+      path: "v2beta1/{filterSetName}/filteredBids/{creativeStatusId}/creatives",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest>;
@@ -3301,7 +3271,7 @@ export const ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}/filteredBids/{creativeStatusId}/details",
+      path: "v2beta1/{filterSetName}/filteredBids/{creativeStatusId}/details",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest>;
@@ -3345,10 +3315,7 @@ export const ListBiddersAccountsFilterSetsBidMetricsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filterSetName: Schema.String.pipe(T.HttpPath("filterSetName")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}/bidMetrics",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{filterSetName}/bidMetrics" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsBidMetricsRequest>;
 
@@ -3392,7 +3359,7 @@ export const ListBiddersAccountsFilterSetsImpressionMetricsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}/impressionMetrics",
+      path: "v2beta1/{filterSetName}/impressionMetrics",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsImpressionMetricsRequest>;
@@ -3437,7 +3404,7 @@ export const ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/bidders/{biddersId}/accounts/{accountsId}/filterSets/{filterSetsId}/nonBillableWinningBids",
+      path: "v2beta1/{filterSetName}/nonBillableWinningBids",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest>;
@@ -3475,10 +3442,7 @@ export const GetBiddersFilterSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBiddersFilterSetsRequest>;
 
@@ -3509,10 +3473,7 @@ export const DeleteBiddersFilterSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteBiddersFilterSetsRequest>;
 
@@ -3549,7 +3510,7 @@ export const ListBiddersFilterSetsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/bidders/{biddersId}/filterSets" }),
+    T.Http({ method: "GET", path: "v2beta1/{ownerName}/filterSets" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsRequest>;
 
@@ -3594,7 +3555,7 @@ export const CreateBiddersFilterSetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/bidders/{biddersId}/filterSets",
+      path: "v2beta1/{ownerName}/filterSets",
       hasBody: true,
     }),
     svc,
@@ -3635,7 +3596,7 @@ export const ListBiddersFilterSetsBidResponsesWithoutBidsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}/bidResponsesWithoutBids",
+      path: "v2beta1/{filterSetName}/bidResponsesWithoutBids",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsBidResponsesWithoutBidsRequest>;
@@ -3680,7 +3641,7 @@ export const ListBiddersFilterSetsBidResponseErrorsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}/bidResponseErrors",
+      path: "v2beta1/{filterSetName}/bidResponseErrors",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsBidResponseErrorsRequest>;
@@ -3725,7 +3686,7 @@ export const ListBiddersFilterSetsFilteredBidRequestsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}/filteredBidRequests",
+      path: "v2beta1/{filterSetName}/filteredBidRequests",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsFilteredBidRequestsRequest>;
@@ -3768,10 +3729,7 @@ export const ListBiddersFilterSetsLosingBidsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}/losingBids",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{filterSetName}/losingBids" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsLosingBidsRequest>;
 
@@ -3814,7 +3772,7 @@ export const ListBiddersFilterSetsImpressionMetricsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}/impressionMetrics",
+      path: "v2beta1/{filterSetName}/impressionMetrics",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsImpressionMetricsRequest>;
@@ -3859,7 +3817,7 @@ export const ListBiddersFilterSetsNonBillableWinningBidsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}/nonBillableWinningBids",
+      path: "v2beta1/{filterSetName}/nonBillableWinningBids",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsNonBillableWinningBidsRequest>;
@@ -3902,10 +3860,7 @@ export const ListBiddersFilterSetsFilteredBidsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}/filteredBids",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{filterSetName}/filteredBids" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsFilteredBidsRequest>;
 
@@ -3952,7 +3907,7 @@ export const ListBiddersFilterSetsFilteredBidsCreativesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}/filteredBids/{creativeStatusId}/creatives",
+      path: "v2beta1/{filterSetName}/filteredBids/{creativeStatusId}/creatives",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsFilteredBidsCreativesRequest>;
@@ -4000,7 +3955,7 @@ export const ListBiddersFilterSetsFilteredBidsDetailsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}/filteredBids/{creativeStatusId}/details",
+      path: "v2beta1/{filterSetName}/filteredBids/{creativeStatusId}/details",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsFilteredBidsDetailsRequest>;
@@ -4043,10 +3998,7 @@ export const ListBiddersFilterSetsBidMetricsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/bidders/{biddersId}/filterSets/{filterSetsId}/bidMetrics",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{filterSetName}/bidMetrics" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersFilterSetsBidMetricsRequest>;
 

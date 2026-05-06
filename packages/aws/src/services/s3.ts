@@ -12057,27 +12057,27 @@ export class BucketAlreadyExists extends S.TaggedErrorClass<BucketAlreadyExists>
 export class BucketAlreadyOwnedByYou extends S.TaggedErrorClass<BucketAlreadyOwnedByYou>()(
   "BucketAlreadyOwnedByYou",
   {},
-).pipe(C.withConflictError) {}
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class IllegalLocationConstraintException extends S.TaggedErrorClass<IllegalLocationConstraintException>()(
   "IllegalLocationConstraintException",
   {},
-) {}
+).pipe(C.withBadRequestError) {}
 export class InvalidArgument extends S.TaggedErrorClass<InvalidArgument>()(
   "InvalidArgument",
   {},
-) {}
+).pipe(C.withBadRequestError) {}
 export class InvalidBucketName extends S.TaggedErrorClass<InvalidBucketName>()(
   "InvalidBucketName",
   {},
-) {}
+).pipe(C.withBadRequestError) {}
 export class InvalidLocationConstraint extends S.TaggedErrorClass<InvalidLocationConstraint>()(
   "InvalidLocationConstraint",
   {},
-) {}
+).pipe(C.withBadRequestError) {}
 export class BucketNotEmpty extends S.TaggedErrorClass<BucketNotEmpty>()(
   "BucketNotEmpty",
   {},
-) {}
+).pipe(C.withConflictError, C.withRetryableError) {}
 export class SignatureDoesNotMatch extends S.TaggedErrorClass<SignatureDoesNotMatch>()(
   "SignatureDoesNotMatch",
   {},
@@ -12132,7 +12132,7 @@ export class InvalidObjectState extends S.TaggedErrorClass<InvalidObjectState>()
 export class InvalidRequest extends S.TaggedErrorClass<InvalidRequest>()(
   "InvalidRequest",
   {},
-) {}
+).pipe(C.withBadRequestError) {}
 export class ObjectLockConfigurationNotFoundError extends S.TaggedErrorClass<ObjectLockConfigurationNotFoundError>()(
   "ObjectLockConfigurationNotFoundError",
   {},
@@ -12148,7 +12148,7 @@ export class RequestError extends S.TaggedErrorClass<RequestError>()(
 export class MalformedXML extends S.TaggedErrorClass<MalformedXML>()(
   "MalformedXML",
   {},
-) {}
+).pipe(C.withBadRequestError) {}
 export class AccessDenied extends S.TaggedErrorClass<AccessDenied>()(
   "AccessDenied",
   {},
@@ -12156,11 +12156,11 @@ export class AccessDenied extends S.TaggedErrorClass<AccessDenied>()(
 export class InvalidDigest extends S.TaggedErrorClass<InvalidDigest>()(
   "InvalidDigest",
   {},
-) {}
+).pipe(C.withBadRequestError) {}
 export class MalformedPolicy extends S.TaggedErrorClass<MalformedPolicy>()(
   "MalformedPolicy",
   {},
-) {}
+).pipe(C.withBadRequestError) {}
 export class EncryptionTypeMismatch extends S.TaggedErrorClass<EncryptionTypeMismatch>()(
   "EncryptionTypeMismatch",
   {},
@@ -12176,7 +12176,7 @@ export class TooManyParts extends S.TaggedErrorClass<TooManyParts>()(
 export class InvalidBucketState extends S.TaggedErrorClass<InvalidBucketState>()(
   "InvalidBucketState",
   {},
-) {}
+).pipe(C.withConflictError) {}
 export class IdempotencyParameterMismatch extends S.TaggedErrorClass<IdempotencyParameterMismatch>()(
   "IdempotencyParameterMismatch",
   {},

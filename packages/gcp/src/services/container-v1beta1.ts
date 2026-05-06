@@ -87,7 +87,7 @@ export const DefaultSnatStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PrivilegedAdmissionConfig {
   /** The customer allowlist Cloud Storage paths for the cluster. These paths are used with the `--autopilot-privileged-admission` flag to authorize privileged workloads in Autopilot clusters. Paths can be GKE-owned, in the format `gke:////`, or customer-owned, in the format `gs:///`. Wildcards (`*`) are supported to authorize all allowlists under specific paths or directories. Example: `gs://my-bucket/*` will authorize all allowlists under the `my-bucket` bucket. */
-  allowlistPaths?: Array<string>;
+  allowlistPaths?: ReadonlyArray<string>;
 }
 
 export const PrivilegedAdmissionConfig =
@@ -239,7 +239,7 @@ export interface AutoprovisioningNodePoolDefaults {
   /** The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption */
   bootDiskKmsKey?: string;
   /** The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Artifact Registry](https://cloud.google.com/artifact-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added. */
-  oauthScopes?: Array<string>;
+  oauthScopes?: ReadonlyArray<string>;
   /** Upgrade settings control disruption and speed of the upgrade. */
   upgradeSettings?: UpgradeSettings;
   /** The image type to use for NAP created node. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types. */
@@ -283,7 +283,7 @@ export interface ClusterAutoscaling {
     | "NONE"
     | (string & {});
   /** The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes can be created by NAP. */
-  autoprovisioningLocations?: Array<string>;
+  autoprovisioningLocations?: ReadonlyArray<string>;
   /** Defines autoscaling behaviour. */
   autoscalingProfile?:
     | "PROFILE_UNSPECIFIED"
@@ -293,7 +293,7 @@ export interface ClusterAutoscaling {
   /** Enables automatic node pool creation and deletion. */
   enableNodeAutoprovisioning?: boolean;
   /** Contains global constraints regarding minimum and maximum amount of resources in the cluster. */
-  resourceLimits?: Array<ResourceLimit>;
+  resourceLimits?: ReadonlyArray<ResourceLimit>;
   /** AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP. */
   autoprovisioningNodePoolDefaults?: AutoprovisioningNodePoolDefaults;
 }
@@ -312,7 +312,7 @@ export const ClusterAutoscaling = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NetworkTags {
   /** List of network tags. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
 }
 
 export const NetworkTags = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -344,7 +344,7 @@ export const GatewayAPIConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface K8sBetaAPIConfig {
   /** api name, e.g. storage.k8s.io/v1beta1/csistoragecapacities. */
-  enabledApis?: Array<string>;
+  enabledApis?: ReadonlyArray<string>;
 }
 
 export const K8sBetaAPIConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -532,7 +532,7 @@ export interface CertificateAuthorityDomainConfig {
   /** Secret Manager certificate configuration. */
   gcpSecretManagerCertificateConfig?: GCPSecretManagerCertificateConfig;
   /** List of fully qualified domain names (FQDN). Specifying port is supported. Wildcards are NOT supported. Examples: - `my.customdomain.com` - `10.0.1.2:5000` */
-  fqdns?: Array<string>;
+  fqdns?: ReadonlyArray<string>;
 }
 
 export const CertificateAuthorityDomainConfig =
@@ -547,7 +547,7 @@ export interface PrivateRegistryAccessConfig {
   /** Private registry access is enabled. */
   enabled?: boolean;
   /** Private registry access configuration. */
-  certificateAuthorityDomainConfig?: Array<CertificateAuthorityDomainConfig>;
+  certificateAuthorityDomainConfig?: ReadonlyArray<CertificateAuthorityDomainConfig>;
 }
 
 export const PrivateRegistryAccessConfig =
@@ -592,7 +592,7 @@ export interface RegistryHeader {
   /** Key configures the header key. */
   key?: string;
   /** Value configures the header value. */
-  value?: Array<string>;
+  value?: ReadonlyArray<string>;
 }
 
 export const RegistryHeader = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -602,9 +602,9 @@ export const RegistryHeader = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface HostConfig {
   /** Client configures the registry host client certificate and key. */
-  client?: Array<CertificateConfigPair>;
+  client?: ReadonlyArray<CertificateConfigPair>;
   /** Header configures the registry host headers. */
-  header?: Array<RegistryHeader>;
+  header?: ReadonlyArray<RegistryHeader>;
   /** OverridePath is used to indicate the host's API root endpoint is defined in the URL path rather than by the API specification. This may be used with non-compliant OCI registries which are missing the /v2 prefix. If not set, containerd sets default false. */
   overridePath?: boolean;
   /** Specifies the maximum duration allowed for a connection attempt to complete. A shorter timeout helps reduce delays when falling back to the original registry if the mirror is unreachable. Maximum allowed value is 180s. If not set, containerd sets default 30s. The value should be a decimal number of seconds with an `s` suffix. */
@@ -612,9 +612,9 @@ export interface HostConfig {
   /** Host configures the registry host/mirror. It supports fully qualified domain names (FQDNs) and IP addresses. Specifying scheme, port or path is supported. Scheme can only be http or https. Wildcards are NOT supported. Examples: - `my.customdomain.com` - `https://my.customdomain.com/path` - `10.0.1.2:5000` */
   host?: string;
   /** CA configures the registry host certificate. */
-  ca?: Array<CertificateConfig>;
+  ca?: ReadonlyArray<CertificateConfig>;
   /** Capabilities represent the capabilities of the registry host, specifying what operations a host is capable of performing. If not set, containerd enables all capabilities by default. */
-  capabilities?: Array<
+  capabilities?: ReadonlyArray<
     | "HOST_CAPABILITY_UNSPECIFIED"
     | "HOST_CAPABILITY_PULL"
     | "HOST_CAPABILITY_RESOLVE"
@@ -637,7 +637,7 @@ export interface RegistryHostConfig {
   /** Defines the host name of the registry server, which will be used to create configuration file as /etc/containerd/hosts.d//hosts.toml. It supports fully qualified domain names (FQDN) and IP addresses: Specifying port is supported, while scheme and path are NOT supported. Wildcards are NOT supported. Examples: - `my.customdomain.com` - `10.0.1.2:5000` */
   server?: string;
   /** HostConfig configures a list of host-specific configurations for the server. Each server can have at most 10 host configurations. */
-  hosts?: Array<HostConfig>;
+  hosts?: ReadonlyArray<HostConfig>;
 }
 
 export const RegistryHostConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -651,7 +651,7 @@ export interface ContainerdConfig {
   /** Optional. WritableCgroups defines writable cgroups configuration for the node pool. */
   writableCgroups?: WritableCgroups;
   /** RegistryHostConfig configures containerd registry host configuration. Each registry_hosts represents a hosts.toml file. At most 25 registry_hosts are allowed. */
-  registryHosts?: Array<RegistryHostConfig>;
+  registryHosts?: ReadonlyArray<RegistryHostConfig>;
 }
 
 export const ContainerdConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -703,7 +703,7 @@ export const ComplianceStandard = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CompliancePostureConfig {
   /** List of enabled compliance standards. */
-  complianceStandards?: Array<ComplianceStandard>;
+  complianceStandards?: ReadonlyArray<ComplianceStandard>;
   /** Defines the enablement mode for Compliance Posture. */
   mode?: "MODE_UNSPECIFIED" | "DISABLED" | "ENABLED" | (string & {});
 }
@@ -759,7 +759,7 @@ export const CidrBlock = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MasterAuthorizedNetworksConfig {
   /** cidr_blocks define up to 10 external networks that could access Kubernetes master through HTTPS. */
-  cidrBlocks?: Array<CidrBlock>;
+  cidrBlocks?: ReadonlyArray<CidrBlock>;
   /** Whether master is accessible via Google Compute Engine Public IP addresses. */
   gcpPublicCidrsAccessEnabled?: boolean;
   /** Whether or not master authorized networks is enabled. */
@@ -890,7 +890,7 @@ export interface NodeKubeletConfig {
   /** Enable CPU CFS quota enforcement for containers that specify CPU limits. This option is enabled by default which makes kubelet use CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to enforce container CPU limits. Otherwise, CPU limits will not be enforced at all. Disable this option to mitigate CPU throttling problems while still having your pods to be in Guaranteed QoS class by specifying the CPU limits. The default value is 'true' if unspecified. */
   cpuCfsQuota?: boolean;
   /** Optional. Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns (ending in `*`). The unsafe namespaced sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`. Leaving this allowlist empty means they cannot be set on Pods. To allow certain sysctls or sysctl patterns to be set on Pods, list them separated by commas. For example: `kernel.msg*,net.ipv4.route.min_pmtu`. See https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/ for more details. */
-  allowedUnsafeSysctls?: Array<string>;
+  allowedUnsafeSysctls?: ReadonlyArray<string>;
   /** Optional. Defines the percent of disk usage after which image garbage collection is always run. The percent is calculated as this field value out of 100. The value must be between 10 and 85, inclusive and greater than image_gc_low_threshold_percent. The default value is 85 if unspecified. */
   imageGcHighThresholdPercent?: number;
   /** Optional. Defines the maximum number of image pulls in parallel. The range is 2 to 5, inclusive. The default value is 2 or 3 depending on the disk type. See https://kubernetes.io/docs/concepts/containers/images/#maximum-parallel-image-pulls for more details. */
@@ -974,7 +974,7 @@ export const OperationError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DatabaseEncryption {
   /** Output only. Records errors seen during DatabaseEncryption update operations. */
-  lastOperationErrors?: Array<OperationError>;
+  lastOperationErrors?: ReadonlyArray<OperationError>;
   /** The desired state of etcd encryption. */
   state?:
     | "UNKNOWN"
@@ -996,7 +996,7 @@ export interface DatabaseEncryption {
     | "CURRENT_STATE_ALL_OBJECTS_ENCRYPTION_ERROR"
     | (string & {});
   /** Output only. Keys in use by the cluster for decrypting existing objects, in addition to the key in `key_name`. Each item is a CloudKMS key resource. */
-  decryptionKeys?: Array<string>;
+  decryptionKeys?: ReadonlyArray<string>;
   /** Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key */
   keyName?: string;
 }
@@ -1098,7 +1098,7 @@ export const ManagedPrometheusConfig =
 
 export interface MonitoringComponentConfig {
   /** Select components to collect metrics. An empty set would disable all monitoring. */
-  enableComponents?: Array<
+  enableComponents?: ReadonlyArray<
     | "COMPONENT_UNSPECIFIED"
     | "SYSTEM_COMPONENTS"
     | "WORKLOADS"
@@ -1164,7 +1164,7 @@ export const RBACBindingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LoggingComponentConfig {
   /** Select components to collect logs. An empty set would disable all logging. */
-  enableComponents?: Array<
+  enableComponents?: ReadonlyArray<
     | "COMPONENT_UNSPECIFIED"
     | "SYSTEM_COMPONENTS"
     | "WORKLOADS"
@@ -1279,7 +1279,7 @@ export const WorkloadPolicyConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AdditionalIPRangesConfig {
   /** List of secondary ranges names within this subnetwork that can be used for pod IPs. Example1: gke-pod-range1 Example2: gke-pod-range1,gke-pod-range2 */
-  podIpv4RangeNames?: Array<string>;
+  podIpv4RangeNames?: ReadonlyArray<string>;
   /** Draining status of the additional subnet. */
   status?: "STATUS_UNSPECIFIED" | "ACTIVE" | "DRAINING" | (string & {});
   /** Name of the subnetwork. This can be the full path of the subnetwork or just the name. Example1: my-subnet Example2: projects/gke-project/regions/us-central1/subnetworks/my-subnet */
@@ -1295,7 +1295,7 @@ export const AdditionalIPRangesConfig =
 
 export interface DesiredAdditionalIPRangesConfig {
   /** List of additional IP ranges configs where each AdditionalIPRangesConfig corresponds to one subnetwork's IP ranges */
-  additionalIpRangesConfigs?: Array<AdditionalIPRangesConfig>;
+  additionalIpRangesConfigs?: ReadonlyArray<AdditionalIPRangesConfig>;
 }
 
 export const DesiredAdditionalIPRangesConfig =
@@ -1465,9 +1465,9 @@ export const RangeInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AdditionalPodRangesConfig {
   /** Output only. Information for additional pod range. */
-  podRangeInfo?: Array<RangeInfo>;
+  podRangeInfo?: ReadonlyArray<RangeInfo>;
   /** Name for pod secondary ipv4 range which has the actual range defined ahead. */
-  podRangeNames?: Array<string>;
+  podRangeNames?: ReadonlyArray<string>;
 }
 
 export const AdditionalPodRangesConfig =
@@ -1478,7 +1478,7 @@ export const AdditionalPodRangesConfig =
 
 export interface Filter {
   /** Event types to allowlist. */
-  eventType?: Array<
+  eventType?: ReadonlyArray<
     | "EVENT_TYPE_UNSPECIFIED"
     | "UPGRADE_AVAILABLE_EVENT"
     | "UPGRADE_EVENT"
@@ -1558,7 +1558,7 @@ export interface BinaryAuthorization {
     | "POLICY_BINDINGS_AND_PROJECT_SINGLETON_POLICY_ENFORCE"
     | (string & {});
   /** Optional. Binauthz policies that apply to this cluster. */
-  policyBindings?: Array<PolicyBinding>;
+  policyBindings?: ReadonlyArray<PolicyBinding>;
 }
 
 export const BinaryAuthorization = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1642,9 +1642,9 @@ export interface UserManagedKeysConfig {
   /** The Certificate Authority Service caPool to use for the aggregation CA in this cluster. */
   aggregationCa?: string;
   /** Output only. All of the versions of the Cloud KMS cryptoKey that are used by Confidential Hyperdisks on the control plane nodes. */
-  controlPlaneDiskEncryptionKeyVersions?: Array<string>;
+  controlPlaneDiskEncryptionKeyVersions?: ReadonlyArray<string>;
   /** The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued by this cluster. Format: `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{cryptoKey}/cryptoKeyVersions/{cryptoKeyVersion}` */
-  serviceAccountSigningKeys?: Array<string>;
+  serviceAccountSigningKeys?: ReadonlyArray<string>;
   /** Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups. */
   gkeopsEtcdBackupEncryptionKey?: string;
   /** The Certificate Authority Service caPool to use for the cluster CA in this cluster. */
@@ -1654,7 +1654,7 @@ export interface UserManagedKeysConfig {
   /** The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes. */
   controlPlaneDiskEncryptionKey?: string;
   /** The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs issued by this cluster. Format: `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{cryptoKey}/cryptoKeyVersions/{cryptoKeyVersion}` */
-  serviceAccountVerificationKeys?: Array<string>;
+  serviceAccountVerificationKeys?: ReadonlyArray<string>;
 }
 
 export const UserManagedKeysConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2320,7 +2320,7 @@ export interface ClusterUpdate {
   /** RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. */
   desiredRbacBindingConfig?: RBACBindingConfig;
   /** The desired list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This list must always include the cluster's primary zone. Warning: changing cluster locations will update the locations of all node pools and will result in nodes being added and/or removed. */
-  desiredLocations?: Array<string>;
+  desiredLocations?: ReadonlyArray<string>;
   /** The desired logging configuration. */
   desiredLoggingConfig?: LoggingConfig;
   /** Configuration for issuance of mTLS keys and certificates to Kubernetes pods. */
@@ -2595,9 +2595,9 @@ export interface ReleaseChannelConfig {
   /** The auto upgrade target version for clusters on the channel. */
   upgradeTargetVersion?: string;
   /** Deprecated. This field has been deprecated and replaced with the valid_versions field. */
-  availableVersions?: Array<AvailableVersion>;
+  availableVersions?: ReadonlyArray<AvailableVersion>;
   /** List of valid versions for the channel. */
-  validVersions?: Array<string>;
+  validVersions?: ReadonlyArray<string>;
   /** The default version for newly created clusters on the channel. */
   defaultVersion?: string;
 }
@@ -2886,9 +2886,9 @@ export interface BlueGreenInfo {
   /** Version of green pool. */
   greenPoolVersion?: string;
   /** The resource URLs of the [managed instance groups] (/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with green pool. */
-  greenInstanceGroupUrls?: Array<string>;
+  greenInstanceGroupUrls?: ReadonlyArray<string>;
   /** The resource URLs of the [managed instance groups] (/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with blue pool. */
-  blueInstanceGroupUrls?: Array<string>;
+  blueInstanceGroupUrls?: ReadonlyArray<string>;
 }
 
 export const BlueGreenInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2992,9 +2992,9 @@ export interface NodeNetworkConfig {
   /** Immutable. The accelerator network profile for the node pool. For now the only valid value is "auto". If specified, the network configuration of the nodes in this node pool will be managed by this profile for the supported machine types, zone, etc. */
   acceleratorNetworkProfile?: string;
   /** We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface */
-  additionalNodeNetworkConfigs?: Array<AdditionalNodeNetworkConfig>;
+  additionalNodeNetworkConfigs?: ReadonlyArray<AdditionalNodeNetworkConfig>;
   /** We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node */
-  additionalPodNetworkConfigs?: Array<AdditionalPodNetworkConfig>;
+  additionalPodNetworkConfigs?: ReadonlyArray<AdditionalPodNetworkConfig>;
   /** Network bandwidth tier configuration. */
   networkPerformanceConfig?: NetworkPerformanceConfig;
   /** Output only. The network tier configuration for the node pool inherits from the cluster-level configuration and remains immutable throughout the node pool's lifecycle, including during upgrades. */
@@ -3057,7 +3057,7 @@ export const WindowsNodeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NodeAffinity {
   /** Values for NodeAffinity. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
   /** Key for NodeAffinity. */
   key?: string;
   /** Operator for NodeAffinity. */
@@ -3074,7 +3074,7 @@ export interface SoleTenantConfig {
   /** Optional. The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node. This field can only be set if the node pool is created in a shared sole-tenant node group. */
   minNodeCpus?: number;
   /** NodeAffinities used to match to a shared sole tenant node group. */
-  nodeAffinities?: Array<NodeAffinity>;
+  nodeAffinities?: ReadonlyArray<NodeAffinity>;
 }
 
 export const SoleTenantConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3221,7 +3221,7 @@ export const FastSocket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ReservationAffinity {
   /** Corresponds to the label value(s) of reservation resource(s). */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
   /** Corresponds to the type of reservation consumption. */
   consumeReservationType?:
     | "UNSPECIFIED"
@@ -3318,7 +3318,7 @@ export interface NodeConfig {
   /** The Kubernetes labels (key/value pairs) to apply to each node. The values in this field are added to the set of default labels Kubernetes applies to nodes. This field has the following restrictions: * Labels must use a valid Kubernetes syntax and character set, as defined in https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set. * This field supports up to 1,024 total characters in a single request. Depending on the Kubernetes version, keys in this field might conflict with the keys of the default labels, which might change which of your labels are applied to the nodes. Assume that the behavior is unpredictable and avoid label key conflicts. For more information about the default labels, see: https://kubernetes.io/docs/reference/labels-annotations-taints/ */
   labels?: Record<string, string>;
   /** List of secondary boot disks attached to the nodes. */
-  secondaryBootDisks?: Array<SecondaryBootDisk>;
+  secondaryBootDisks?: ReadonlyArray<SecondaryBootDisk>;
   /** Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB. */
   diskSizeGb?: number;
   /** Parameters for containerd customization. */
@@ -3326,7 +3326,7 @@ export interface NodeConfig {
   /** Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes). */
   nodeGroup?: string;
   /** List of Storage Pools where boot disks are provisioned. */
-  storagePools?: Array<string>;
+  storagePools?: ReadonlyArray<string>;
   /** Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled. */
   confidentialNodes?: ConfidentialNodes;
   /** Whether the nodes are created as preemptible VM instances. See: https://cloud.google.com/compute/docs/instances/preemptible for more information about preemptible VM instances. */
@@ -3334,7 +3334,7 @@ export interface NodeConfig {
   /** Consolidation delay defines duration after which the Cluster Autoscaler can scale down underutilized nodes. If not set, nodes are scaled down by default behavior, i.e. according to the chosen autoscaling profile. */
   consolidationDelay?: string;
   /** The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Artifact Registry](https://cloud.google.com/artifact-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added. */
-  oauthScopes?: Array<string>;
+  oauthScopes?: ReadonlyArray<string>;
   /** Specifies which method should be used for encrypting the Local SSDs attached to the node. */
   localSsdEncryptionMode?:
     | "LOCAL_SSD_ENCRYPTION_MODE_UNSPECIFIED"
@@ -3342,9 +3342,9 @@ export interface NodeConfig {
     | "EPHEMERAL_KEY_ENCRYPTION"
     | (string & {});
   /** The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/ */
-  taints?: Array<NodeTaint>;
+  taints?: ReadonlyArray<NodeTaint>;
   /** The configuration for GPU Direct */
   gpuDirectConfig?: GPUDirectConfig;
   /** The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used. */
@@ -3398,7 +3398,7 @@ export interface NodeConfig {
   /** The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this node pool. */
   reservationAffinity?: ReservationAffinity;
   /** A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs. */
-  accelerators?: Array<AcceleratorConfig>;
+  accelerators?: ReadonlyArray<AcceleratorConfig>;
   /** HostMaintenancePolicy contains the desired maintenance policy for the Google Compute Engine hosts. */
   hostMaintenancePolicy?: HostMaintenancePolicy;
   /** Shielded Instance options. */
@@ -3480,7 +3480,7 @@ export interface NodePool {
   /** The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. */
   initialNodeCount?: number;
   /** Which conditions caused the current node pool state. */
-  conditions?: Array<StatusCondition>;
+  conditions?: ReadonlyArray<StatusCondition>;
   /** Output only. Update info contains relevant information during a node pool update. */
   updateInfo?: UpdateInfo;
   /** Output only. Server-defined URL for the resource. */
@@ -3508,7 +3508,7 @@ export interface NodePool {
   /** Specifies the node drain configuration for this node pool. */
   nodeDrainConfig?: NodeDrainConfig;
   /** The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed. */
-  locations?: Array<string>;
+  locations?: ReadonlyArray<string>;
   /** Output only. The pod CIDR block size per node in this node pool. */
   podIpv4CidrSize?: number;
   /** Upgrade settings control disruption and speed of the upgrade. */
@@ -3530,7 +3530,7 @@ export interface NodePool {
   /** Enable best effort provisioning for nodes */
   bestEffortProvisioning?: BestEffortProvisioning;
   /** Output only. The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both blue and green resources. */
-  instanceGroupUrls?: Array<string>;
+  instanceGroupUrls?: ReadonlyArray<string>;
 }
 
 export const NodePool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3597,21 +3597,21 @@ export const HttpCacheControlResponseHeader =
 
 export interface GetOpenIDConfigResponse {
   /** Supported claims. */
-  claims_supported?: Array<string>;
+  claims_supported?: ReadonlyArray<string>;
   /** For HTTP requests, this field is automatically extracted into the Cache-Control HTTP header. */
   cacheHeader?: HttpCacheControlResponseHeader;
   /** JSON Web Key uri. */
   jwks_uri?: string;
   /** supported ID Token signing Algorithms. */
-  id_token_signing_alg_values_supported?: Array<string>;
+  id_token_signing_alg_values_supported?: ReadonlyArray<string>;
   /** OIDC Issuer. */
   issuer?: string;
   /** Supported grant types. */
-  grant_types?: Array<string>;
+  grant_types?: ReadonlyArray<string>;
   /** Supported response types. */
-  response_types_supported?: Array<string>;
+  response_types_supported?: ReadonlyArray<string>;
   /** Supported subject types. */
-  subject_types_supported?: Array<string>;
+  subject_types_supported?: ReadonlyArray<string>;
 }
 
 export const GetOpenIDConfigResponse =
@@ -3648,7 +3648,7 @@ export const ResourceLabels = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NodeTaints {
   /** List of node taints. */
-  taints?: Array<NodeTaint>;
+  taints?: ReadonlyArray<NodeTaint>;
 }
 
 export const NodeTaints = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3689,7 +3689,7 @@ export interface UpdateNodePoolRequest {
   /** Parameters that can be configured on Windows nodes. */
   windowsNodeConfig?: WindowsNodeConfig;
   /** A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs. */
-  accelerators?: Array<AcceleratorConfig>;
+  accelerators?: ReadonlyArray<AcceleratorConfig>;
   /** Node network config. */
   nodeNetworkConfig?: NodeNetworkConfig;
   /** The desired node labels to be applied to all nodes in the node pool. If this field is not present, the labels will not be changed. Otherwise, the existing node labels will be *replaced* with the provided labels. */
@@ -3705,7 +3705,7 @@ export interface UpdateNodePoolRequest {
   /** The desired network tags to be applied to all nodes in the node pool. If this field is not present, the tags will not be changed. Otherwise, the existing network tags will be *replaced* with the provided tags. */
   tags?: NetworkTags;
   /** The desired list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the node pool's nodes should be located. Changing the locations for a node pool will result in nodes being either created or removed from the node pool, depending on whether locations are being added or removed. Warning: It is recommended to update node pool locations in a standalone API call. Do not combine a location update with changes to other fields (such as `tags`, `labels`, `taints`, etc.) in the same request. Otherwise, the API performs a structural modification where changes to other fields will only apply to newly created nodes and will not be applied to existing nodes in the node pool. To ensure all nodes are updated consistently, use a separate API call for location changes. */
-  locations?: Array<string>;
+  locations?: ReadonlyArray<string>;
   /** Enable or disable gvnic on the node pool. */
   gvnic?: VirtualNIC;
   /** The current etag of the node pool. If an etag is provided and does not match the current etag of the node pool, update will be blocked and an ABORTED error will be returned. */
@@ -3723,7 +3723,7 @@ export interface UpdateNodePoolRequest {
   /** The desired node taints to be applied to all nodes in the node pool. If this field is not present, the taints will not be changed. Otherwise, the existing node taints will be *replaced* with the provided taints. */
   taints?: NodeTaints;
   /** List of Storage Pools where boot disks are provisioned. Existing Storage Pools will be replaced with storage-pools. */
-  storagePools?: Array<string>;
+  storagePools?: ReadonlyArray<string>;
   /** The name (project, location, cluster, node pool) of the node pool to update. Specified in the format `projects/* /locations/* /clusters/* /nodePools/*`. */
   name?: string;
   /** The maximum duration for the nodes to exist. If unspecified, the nodes can exist indefinitely. */
@@ -3776,7 +3776,7 @@ export interface OperationProgress {
   /** A non-parameterized string describing an operation stage. Unset for single-stage operations. */
   name?: string;
   /** Progress metric bundle, for example: metrics: [{name: "nodes done", int_value: 15}, {name: "nodes total", int_value: 32}] or metrics: [{name: "progress", double_value: 0.56}, {name: "progress scale", double_value: 1.0}] */
-  metrics?: Array<Metric>;
+  metrics?: ReadonlyArray<Metric>;
   /** Status of an operation stage. Unset for single-stage operations. */
   status?:
     | "STATUS_UNSPECIFIED"
@@ -3786,7 +3786,7 @@ export interface OperationProgress {
     | "ABORTING"
     | (string & {});
   /** Substages of an operation or a stage. */
-  stages?: Array<OperationProgress>;
+  stages?: ReadonlyArray<OperationProgress>;
 }
 
 export const OperationProgress: Schema.Schema<OperationProgress> =
@@ -3839,7 +3839,7 @@ export const UpgradeDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NodePoolUpgradeInfo {
   /** The list of past auto upgrades. */
-  upgradeDetails?: Array<UpgradeDetails>;
+  upgradeDetails?: ReadonlyArray<UpgradeDetails>;
   /** The node pool's current minor version's end of extended support timestamp. */
   endOfExtendedSupportTimestamp?: string;
   /** The node pool's current minor version's end of standard support timestamp. */
@@ -3847,7 +3847,7 @@ export interface NodePoolUpgradeInfo {
   /** patch_target_version indicates the target version for patch upgrade. */
   patchTargetVersion?: string;
   /** The auto upgrade status. */
-  autoUpgradeStatus?: Array<
+  autoUpgradeStatus?: ReadonlyArray<
     | "UNKNOWN"
     | "ACTIVE"
     | "MINOR_UPGRADE_PAUSED"
@@ -3855,7 +3855,7 @@ export interface NodePoolUpgradeInfo {
     | (string & {})
   >;
   /** The auto upgrade paused reason. */
-  pausedReason?: Array<
+  pausedReason?: ReadonlyArray<
     | "AUTO_UPGRADE_PAUSED_REASON_UNSPECIFIED"
     | "MAINTENANCE_WINDOW"
     | "MAINTENANCE_EXCLUSION_NO_UPGRADES"
@@ -3959,7 +3959,7 @@ export interface IPAllocationPolicy {
   /** The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false. */
   servicesSecondaryRangeName?: string;
   /** Output only. The additional IP ranges that are added to the cluster. These IP ranges can be used by new node pools to allocate node and pod IPs automatically. Each AdditionalIPRangesConfig corresponds to a single subnetwork. Once a range is removed it will not show up in IPAllocationPolicy. */
-  additionalIpRangesConfigs?: Array<AdditionalIPRangesConfig>;
+  additionalIpRangesConfigs?: ReadonlyArray<AdditionalIPRangesConfig>;
   /** Optional. AutoIpamConfig contains all information related to Auto IPAM */
   autoIpamConfig?: AutoIpamConfig;
   /** The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. */
@@ -4283,7 +4283,7 @@ export interface Cluster {
   /** RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. */
   rbacBindingConfig?: RBACBindingConfig;
   /** The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified. */
-  nodePools?: Array<NodePool>;
+  nodePools?: ReadonlyArray<NodePool>;
   /** Shielded Nodes configuration. */
   shieldedNodes?: ShieldedNodes;
   /** Configuration for master components. */
@@ -4297,7 +4297,7 @@ export interface Cluster {
   /** Release channel configuration. If left unspecified on cluster creation and a version is specified, the cluster is enrolled in the most mature release channel where the version is available (first checking STABLE, then REGULAR, and finally RAPID). Otherwise, if no release channel configuration and no version is specified, the cluster is enrolled in the REGULAR channel with its default version. */
   releaseChannel?: ReleaseChannel;
   /** The list of user specified Kubernetes feature gates. Each string represents the activation status of a feature gate (e.g. "featureX=true" or "featureX=false") */
-  alphaClusterFeatureGates?: Array<string>;
+  alphaClusterFeatureGates?: ReadonlyArray<string>;
   /** Output only. Reserved for future use. */
   satisfiesPzi?: boolean;
   /** Cluster-level Vertical Pod Autoscaling configuration. */
@@ -4317,7 +4317,7 @@ export interface Cluster {
     | "DEGRADED"
     | (string & {});
   /** Which conditions caused the current cluster state. */
-  conditions?: Array<StatusCondition>;
+  conditions?: ReadonlyArray<StatusCondition>;
   /** The monitoring service the cluster should use to write metrics. Currently available options: * `monitoring.googleapis.com/kubernetes` - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions. */
   monitoringService?: string;
   /** Configuration for the use of Kubernetes Service Accounts in IAM policies. */
@@ -4345,7 +4345,7 @@ export interface Cluster {
   /** Configuration for limiting anonymous access to all endpoints except the health checks. */
   anonymousAuthenticationConfig?: AnonymousAuthenticationConfig;
   /** The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed. */
-  locations?: Array<string>;
+  locations?: ReadonlyArray<string>;
   /** Configuration for all cluster's control plane endpoints. */
   controlPlaneEndpointsConfig?: ControlPlaneEndpointsConfig;
   /** Output only. Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available. */
@@ -4411,7 +4411,7 @@ export interface Cluster {
   /** Notification configuration of the cluster. */
   notificationConfig?: NotificationConfig;
   /** Output only. Deprecated. Use node_pools.instance_group_urls. */
-  instanceGroupUrls?: Array<string>;
+  instanceGroupUrls?: ReadonlyArray<string>;
 }
 
 export const Cluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4520,7 +4520,7 @@ export interface SetLocationsRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
   projectId?: string;
   /** Required. The desired list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. Changing the locations a cluster is in will result in nodes being either created or removed from the cluster, depending on whether locations are being added or removed. This list must always include the cluster's primary zone. */
-  locations?: Array<string>;
+  locations?: ReadonlyArray<string>;
   /** The name (project, location, cluster) of the cluster to set locations. Specified in the format `projects/* /locations/* /clusters/*`. */
   name?: string;
   /** Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the name field. */
@@ -4620,7 +4620,7 @@ export const WindowsVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WindowsVersions {
   /** List of Windows server versions. */
-  windowsVersions?: Array<WindowsVersion>;
+  windowsVersions?: ReadonlyArray<WindowsVersion>;
 }
 
 export const WindowsVersions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4680,7 +4680,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4697,7 +4697,7 @@ export interface Operation {
   /** Output only. The time the operation completed, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format. */
   endTime?: string;
   /** Which conditions caused the current cluster state. Deprecated. Use field error instead. */
-  clusterConditions?: Array<StatusCondition>;
+  clusterConditions?: ReadonlyArray<StatusCondition>;
   /** The error result of the operation in case of failure. */
   error?: Status;
   /** Output only. The server-assigned ID for the operation. */
@@ -4707,7 +4707,7 @@ export interface Operation {
   /** Output only. Server-defined URI for the target of the operation. The format of this is a URI to the resource being modified (such as a cluster, node pool, or node). For node pool repairs, there may be multiple nodes being repaired, but only one will be the target. Examples: - ## `https://container.googleapis.com/v1/projects/123/locations/us-central1/clusters/my-cluster` ## `https://container.googleapis.com/v1/projects/123/zones/us-central1-c/clusters/my-cluster/nodePools/my-np` `https://container.googleapis.com/v1/projects/123/zones/us-central1-c/clusters/my-cluster/nodePools/my-np/node/my-node` */
   targetLink?: string;
   /** Which conditions caused the current node pool state. Deprecated. Use field error instead. */
-  nodepoolConditions?: Array<StatusCondition>;
+  nodepoolConditions?: ReadonlyArray<StatusCondition>;
   /** Output only. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides. */
   location?: string;
   /** Output only. The operation type. */
@@ -4827,7 +4827,7 @@ export interface ClusterUpgradeInfo {
   /** The cluster's current minor version's end of standard support timestamp. */
   endOfStandardSupportTimestamp?: string;
   /** The list of past auto upgrades. */
-  upgradeDetails?: Array<UpgradeDetails>;
+  upgradeDetails?: ReadonlyArray<UpgradeDetails>;
   /** patch_target_version indicates the target version for patch upgrade. */
   patchTargetVersion?: string;
   /** minor_target_version indicates the target version for minor upgrade. */
@@ -4835,7 +4835,7 @@ export interface ClusterUpgradeInfo {
   /** The cluster's current minor version's end of extended support timestamp. */
   endOfExtendedSupportTimestamp?: string;
   /** The auto upgrade status. */
-  autoUpgradeStatus?: Array<
+  autoUpgradeStatus?: ReadonlyArray<
     | "UNKNOWN"
     | "ACTIVE"
     | "MINOR_UPGRADE_PAUSED"
@@ -4845,7 +4845,7 @@ export interface ClusterUpgradeInfo {
   /** The cluster's rollback-safe upgrade status. */
   rollbackSafeUpgradeStatus?: RollbackSafeUpgradeStatus;
   /** The auto upgrade paused reason. */
-  pausedReason?: Array<
+  pausedReason?: ReadonlyArray<
     | "AUTO_UPGRADE_PAUSED_REASON_UNSPECIFIED"
     | "MAINTENANCE_WINDOW"
     | "MAINTENANCE_EXCLUSION_NO_UPGRADES"
@@ -4954,7 +4954,7 @@ export interface GetJSONWebKeysResponse {
   /** For HTTP requests, this field is automatically extracted into the Cache-Control HTTP header. */
   cacheHeader?: HttpCacheControlResponseHeader;
   /** The public component of the keys used by the cluster to sign token requests. */
-  keys?: Array<Jwk>;
+  keys?: ReadonlyArray<Jwk>;
 }
 
 export const GetJSONWebKeysResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -4970,15 +4970,15 @@ export interface ServerConfig {
   /** Version of Kubernetes the service deploys by default. */
   defaultClusterVersion?: string;
   /** List of release channel configurations. */
-  channels?: Array<ReleaseChannelConfig>;
+  channels?: ReadonlyArray<ReleaseChannelConfig>;
   /** List of valid node upgrade target versions, in descending order. */
-  validNodeVersions?: Array<string>;
+  validNodeVersions?: ReadonlyArray<string>;
   /** List of valid master versions, in descending order. */
-  validMasterVersions?: Array<string>;
+  validMasterVersions?: ReadonlyArray<string>;
   /** Default image type. */
   defaultImageType?: string;
   /** List of valid image types. */
-  validImageTypes?: Array<string>;
+  validImageTypes?: ReadonlyArray<string>;
 }
 
 export const ServerConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4995,9 +4995,9 @@ export const ServerConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** If any zones are listed here, the list of operations returned may be missing the operations from those zones. */
-  missingZones?: Array<string>;
+  missingZones?: ReadonlyArray<string>;
   /** A list of operations in the project in the specified zone. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -5051,7 +5051,7 @@ export interface DisruptionEvent {
     | "POD_PDB_VIOLATION"
     | (string & {});
   /** The pods whose evictions are blocked by PDB. This field is set for both POD_PDB_VIOLATION and POD_NOT_ENOUGH_PDB event. */
-  pdbBlockedPod?: Array<PdbBlockedPod>;
+  pdbBlockedPod?: ReadonlyArray<PdbBlockedPod>;
   /** The timeout in seconds for which the node drain is blocked by PDB. After this timeout, pods are forcefully evicted. This field is only populated when event_type is POD_PDB_VIOLATION. */
   pdbViolationTimeout?: string;
 }
@@ -5154,7 +5154,7 @@ export const CreateNodePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListNodePoolsResponse {
   /** A list of node pools for a cluster. */
-  nodePools?: Array<NodePool>;
+  nodePools?: ReadonlyArray<NodePool>;
 }
 
 export const ListNodePoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5193,7 +5193,7 @@ export interface UsableSubnetwork {
   /** The range of internal addresses that are owned by this subnetwork. */
   ipCidrRange?: string;
   /** Secondary IP ranges. */
-  secondaryIpRanges?: Array<UsableSubnetworkSecondaryRange>;
+  secondaryIpRanges?: ReadonlyArray<UsableSubnetworkSecondaryRange>;
 }
 
 export const UsableSubnetwork = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5233,7 +5233,7 @@ export const SetNodePoolManagementRequest =
 
 export interface ListLocationsResponse {
   /** A full list of GKE locations. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** Only return ListLocationsResponse that occur after the page_token. This value should be populated from the ListLocationsResponse.next_page_token if that response token was set (which happens when listing more Locations than fit in a single ListLocationsResponse). */
   nextPageToken?: string;
 }
@@ -5266,7 +5266,7 @@ export interface ListUsableSubnetworksResponse {
   /** This token allows you to get the next page of results for list requests. If the number of results is larger than `page_size`, use the `next_page_token` as a value for the query parameter `page_token` in the next request. The value will become empty when there are no more pages. */
   nextPageToken?: string;
   /** A list of usable subnetworks in the specified network project. */
-  subnetworks?: Array<UsableSubnetwork>;
+  subnetworks?: ReadonlyArray<UsableSubnetwork>;
 }
 
 export const ListUsableSubnetworksResponse =
@@ -5279,19 +5279,19 @@ export interface SecurityBulletinEvent {
   /** The URI link to the bulletin on the website for more information. */
   bulletinUri?: string;
   /** The GKE minor versions affected by this vulnerability. */
-  affectedSupportedMinors?: Array<string>;
+  affectedSupportedMinors?: ReadonlyArray<string>;
   /** The GKE versions where this vulnerability is patched. */
-  patchedVersions?: Array<string>;
+  patchedVersions?: ReadonlyArray<string>;
   /** The resource type (node/control plane) that has the vulnerability. Multiple notifications (1 notification per resource type) will be sent for a vulnerability that affects > 1 resource type. */
   resourceTypeAffected?: string;
   /** The ID of the bulletin corresponding to the vulnerability. */
   bulletinId?: string;
   /** The CVEs associated with this bulletin. */
-  cveIds?: Array<string>;
+  cveIds?: ReadonlyArray<string>;
   /** This represents a version selected from the patched_versions field that the cluster receiving this notification should most likely want to upgrade to based on its current version. Note that if this notification is being received by a given cluster, it means that this version is currently available as an upgrade target in that cluster's location. */
   suggestedUpgradeTarget?: string;
   /** The GKE versions where this vulnerability is mitigated. */
-  mitigatedVersions?: Array<string>;
+  mitigatedVersions?: ReadonlyArray<string>;
   /** The severity of this bulletin as it relates to GKE. */
   severity?: string;
   /** A brief description of the bulletin. See the bulletin pointed to by the bulletin_uri field for an expanded description. */
@@ -5362,7 +5362,7 @@ export const UpdateMasterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AutopilotCompatibilityIssue {
   /** The name of the resources which are subject to this issue. */
-  subjects?: Array<string>;
+  subjects?: ReadonlyArray<string>;
   /** The last time when this issue was observed. */
   lastObservation?: string;
   /** The description of the issue. */
@@ -5392,7 +5392,7 @@ export const AutopilotCompatibilityIssue =
 
 export interface CheckAutopilotCompatibilityResponse {
   /** The list of issues for the given operation. */
-  issues?: Array<AutopilotCompatibilityIssue>;
+  issues?: ReadonlyArray<AutopilotCompatibilityIssue>;
   /** The summary of the autopilot compatibility response. */
   summary?: string;
 }
@@ -5463,9 +5463,9 @@ export const UpgradeEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListClustersResponse {
   /** A list of clusters in the project in the specified zone, or across all ones. */
-  clusters?: Array<Cluster>;
+  clusters?: ReadonlyArray<Cluster>;
   /** If any zones are listed here, the list of clusters returned may be missing those zones. */
-  missingZones?: Array<string>;
+  missingZones?: ReadonlyArray<string>;
 }
 
 export const ListClustersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5542,7 +5542,7 @@ export const ListProjectsAggregatedUsableSubnetworksRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta1/projects/{projectsId}/aggregated/usableSubnetworks",
+      path: "v1beta1/{parent}/aggregated/usableSubnetworks",
     }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAggregatedUsableSubnetworksRequest>;
@@ -5749,10 +5749,7 @@ export const FetchClusterUpgradeInfoProjectsZonesClustersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     version: Schema.optional(Schema.String).pipe(T.HttpQuery("version")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/zones/{zonesId}/clusters/{clustersId}:fetchClusterUpgradeInfo",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}:fetchClusterUpgradeInfo" }),
     svc,
   ) as unknown as Schema.Schema<FetchClusterUpgradeInfoProjectsZonesClustersRequest>;
 
@@ -6530,7 +6527,7 @@ export const CompleteControlPlaneUpgradeProjectsZonesClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/zones/{zonesId}/clusters/{clustersId}:completeControlPlaneUpgrade",
+      path: "v1beta1/{name}:completeControlPlaneUpgrade",
       hasBody: true,
     }),
     svc,
@@ -6752,10 +6749,7 @@ export const FetchNodePoolUpgradeInfoProjectsZonesClustersNodePoolsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     version: Schema.optional(Schema.String).pipe(T.HttpQuery("version")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/zones/{zonesId}/clusters/{clustersId}/nodePools/{nodePoolsId}:fetchNodePoolUpgradeInfo",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}:fetchNodePoolUpgradeInfo" }),
     svc,
   ) as unknown as Schema.Schema<FetchNodePoolUpgradeInfoProjectsZonesClustersNodePoolsRequest>;
 
@@ -7024,10 +7018,7 @@ export const GetServerConfigProjectsLocationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     zone: Schema.optional(Schema.String).pipe(T.HttpQuery("zone")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/serverConfig",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}/serverConfig" }),
     svc,
   ) as unknown as Schema.Schema<GetServerConfigProjectsLocationsRequest>;
 
@@ -7058,7 +7049,7 @@ export const ListProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -7092,11 +7083,7 @@ export const SetAddonsProjectsLocationsClustersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SetAddonsConfigRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}:setAddons",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:setAddons", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SetAddonsProjectsLocationsClustersRequest>;
 
@@ -7132,7 +7119,7 @@ export const UpdateMasterProjectsLocationsClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}:updateMaster",
+      path: "v1beta1/{name}:updateMaster",
       hasBody: true,
     }),
     svc,
@@ -7170,7 +7157,7 @@ export const SetResourceLabelsProjectsLocationsClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}:setResourceLabels",
+      path: "v1beta1/{name}:setResourceLabels",
       hasBody: true,
     }),
     svc,
@@ -7206,11 +7193,7 @@ export const UpdateProjectsLocationsClustersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpdateClusterRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateProjectsLocationsClustersRequest>;
 
@@ -7246,7 +7229,7 @@ export const SetMasterAuthProjectsLocationsClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}:setMasterAuth",
+      path: "v1beta1/{name}:setMasterAuth",
       hasBody: true,
     }),
     svc,
@@ -7286,7 +7269,7 @@ export const CompleteControlPlaneUpgradeProjectsLocationsClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}:completeControlPlaneUpgrade",
+      path: "v1beta1/{name}:completeControlPlaneUpgrade",
       hasBody: true,
     }),
     svc,
@@ -7326,7 +7309,7 @@ export const SetLocationsProjectsLocationsClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}:setLocations",
+      path: "v1beta1/{name}:setLocations",
       hasBody: true,
     }),
     svc,
@@ -7364,7 +7347,7 @@ export const CompleteIpRotationProjectsLocationsClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}:completeIpRotation",
+      path: "v1beta1/{name}:completeIpRotation",
       hasBody: true,
     }),
     svc,
@@ -7402,7 +7385,7 @@ export const CreateProjectsLocationsClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters",
+      path: "v1beta1/{parent}/clusters",
       hasBody: true,
     }),
     svc,
@@ -7437,7 +7420,7 @@ export const CheckAutopilotCompatibilityProjectsLocationsClustersRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}:checkAutopilotCompatibility",
+      path: "v1beta1/{name}:checkAutopilotCompatibility",
     }),
     svc,
   ) as unknown as Schema.Schema<CheckAutopilotCompatibilityProjectsLocationsClustersRequest>;
@@ -7476,7 +7459,7 @@ export const SetLoggingProjectsLocationsClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}:setLogging",
+      path: "v1beta1/{name}:setLogging",
       hasBody: true,
     }),
     svc,
@@ -7515,10 +7498,7 @@ export const ListProjectsLocationsClustersRequest =
     projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
     zone: Schema.optional(Schema.String).pipe(T.HttpQuery("zone")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/clusters" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsClustersRequest>;
 
@@ -7554,7 +7534,7 @@ export const SetLegacyAbacProjectsLocationsClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}:setLegacyAbac",
+      path: "v1beta1/{name}:setLegacyAbac",
       hasBody: true,
     }),
     svc,
@@ -7590,10 +7570,7 @@ export const FetchClusterUpgradeInfoProjectsLocationsClustersRequest =
     version: Schema.optional(Schema.String).pipe(T.HttpQuery("version")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}:fetchClusterUpgradeInfo",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}:fetchClusterUpgradeInfo" }),
     svc,
   ) as unknown as Schema.Schema<FetchClusterUpgradeInfoProjectsLocationsClustersRequest>;
 
@@ -7635,10 +7612,7 @@ export const GetProjectsLocationsClustersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsClustersRequest>;
 
@@ -7669,10 +7643,7 @@ export const GetJwksProjectsLocationsClustersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/jwks",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/jwks" }),
     svc,
   ) as unknown as Schema.Schema<GetJwksProjectsLocationsClustersRequest>;
 
@@ -7708,7 +7679,7 @@ export const StartIpRotationProjectsLocationsClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}:startIpRotation",
+      path: "v1beta1/{name}:startIpRotation",
       hasBody: true,
     }),
     svc,
@@ -7746,7 +7717,7 @@ export const SetMonitoringProjectsLocationsClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}:setMonitoring",
+      path: "v1beta1/{name}:setMonitoring",
       hasBody: true,
     }),
     svc,
@@ -7784,7 +7755,7 @@ export const SetMaintenancePolicyProjectsLocationsClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}:setMaintenancePolicy",
+      path: "v1beta1/{name}:setMaintenancePolicy",
       hasBody: true,
     }),
     svc,
@@ -7826,10 +7797,7 @@ export const DeleteProjectsLocationsClustersRequest =
     projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
     clusterId: Schema.optional(Schema.String).pipe(T.HttpQuery("clusterId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsClustersRequest>;
 
@@ -7865,7 +7833,7 @@ export const SetNetworkPolicyProjectsLocationsClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}:setNetworkPolicy",
+      path: "v1beta1/{name}:setNetworkPolicy",
       hasBody: true,
     }),
     svc,
@@ -7900,7 +7868,7 @@ export const GetOpenid_configurationProjectsLocationsClustersWell_knownRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/.well-known/openid-configuration",
+      path: "v1beta1/{parent}/.well-known/openid-configuration",
     }),
     svc,
   ) as unknown as Schema.Schema<GetOpenid_configurationProjectsLocationsClustersWell_knownRequest>;
@@ -7937,11 +7905,7 @@ export const RollbackProjectsLocationsClustersNodePoolsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RollbackNodePoolUpgradeRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/nodePools/{nodePoolsId}:rollback",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:rollback", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RollbackProjectsLocationsClustersNodePoolsRequest>;
 
@@ -7981,10 +7945,7 @@ export const ListProjectsLocationsClustersNodePoolsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/nodePools",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/nodePools" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsClustersNodePoolsRequest>;
 
@@ -8019,11 +7980,7 @@ export const SetSizeProjectsLocationsClustersNodePoolsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SetNodePoolSizeRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/nodePools/{nodePoolsId}:setSize",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:setSize", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SetSizeProjectsLocationsClustersNodePoolsRequest>;
 
@@ -8059,7 +8016,7 @@ export const SetAutoscalingProjectsLocationsClustersNodePoolsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/nodePools/{nodePoolsId}:setAutoscaling",
+      path: "v1beta1/{name}:setAutoscaling",
       hasBody: true,
     }),
     svc,
@@ -8106,10 +8063,7 @@ export const GetProjectsLocationsClustersNodePoolsRequest =
     projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
     nodePoolId: Schema.optional(Schema.String).pipe(T.HttpQuery("nodePoolId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/nodePools/{nodePoolsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsClustersNodePoolsRequest>;
 
@@ -8145,7 +8099,7 @@ export const CompleteUpgradeProjectsLocationsClustersNodePoolsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/nodePools/{nodePoolsId}:completeUpgrade",
+      path: "v1beta1/{name}:completeUpgrade",
       hasBody: true,
     }),
     svc,
@@ -8184,7 +8138,7 @@ export const CreateProjectsLocationsClustersNodePoolsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/nodePools",
+      path: "v1beta1/{parent}/nodePools",
       hasBody: true,
     }),
     svc,
@@ -8220,10 +8174,7 @@ export const FetchNodePoolUpgradeInfoProjectsLocationsClustersNodePoolsRequest =
     version: Schema.optional(Schema.String).pipe(T.HttpQuery("version")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/nodePools/{nodePoolsId}:fetchNodePoolUpgradeInfo",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}:fetchNodePoolUpgradeInfo" }),
     svc,
   ) as unknown as Schema.Schema<FetchNodePoolUpgradeInfoProjectsLocationsClustersNodePoolsRequest>;
 
@@ -8259,11 +8210,7 @@ export const UpdateProjectsLocationsClustersNodePoolsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpdateNodePoolRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/nodePools/{nodePoolsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateProjectsLocationsClustersNodePoolsRequest>;
 
@@ -8299,7 +8246,7 @@ export const SetManagementProjectsLocationsClustersNodePoolsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/nodePools/{nodePoolsId}:setManagement",
+      path: "v1beta1/{name}:setManagement",
       hasBody: true,
     }),
     svc,
@@ -8345,10 +8292,7 @@ export const DeleteProjectsLocationsClustersNodePoolsRequest =
     projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
     nodePoolId: Schema.optional(Schema.String).pipe(T.HttpQuery("nodePoolId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/nodePools/{nodePoolsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsClustersNodePoolsRequest>;
 
@@ -8390,10 +8334,7 @@ export const GetProjectsLocationsOperationsRequest =
     ),
     zone: Schema.optional(Schema.String).pipe(T.HttpQuery("zone")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -8427,11 +8368,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -8468,10 +8405,7 @@ export const ListProjectsLocationsOperationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     projectId: Schema.optional(Schema.String).pipe(T.HttpQuery("projectId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 

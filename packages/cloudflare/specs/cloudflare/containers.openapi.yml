@@ -1,8 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare Containers API
+  title: Cloudflare CONTAINERS API
   version: 0.0.0
-  description: Reverse-engineered low-level Cloudflare Containers API.
 servers:
   - url: https://api.cloudflare.com/client/v4
 x-distilled-service: containers

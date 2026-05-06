@@ -94,7 +94,7 @@ export interface AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -188,7 +188,7 @@ export interface Runtime {
     | "DECOMMISSIONED"
     | (string & {});
   /** Warning messages, e.g., a deprecation warning. */
-  warnings?: Array<string>;
+  warnings?: ReadonlyArray<string>;
   /** Deprecation date for the runtime. */
   deprecationDate?: Cloudfunctions_Date;
   /** Decommission date for the runtime. */
@@ -229,7 +229,7 @@ export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -244,7 +244,7 @@ export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
@@ -258,9 +258,9 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
@@ -300,7 +300,7 @@ export interface SecretVolume {
   /** Name of the secret in secret manager (not the full resource name). */
   secret?: string;
   /** List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point. */
-  versions?: Array<SecretVersion>;
+  versions?: ReadonlyArray<SecretVersion>;
   /** The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets */
   mountPath?: string;
   /** Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function. */
@@ -338,7 +338,7 @@ export interface DirectVpcNetworkInterface {
   /** Optional. The name of the VPC subnetwork that the Cloud Function resource will get IPs from. Specify either a VPC network or a subnet, or both. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used. */
   subnetwork?: string;
   /** Optional. Network tags applied to this Cloud Function resource. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
 }
 
 export const DirectVpcNetworkInterface =
@@ -365,15 +365,15 @@ export interface ServiceConfig {
   /** The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`. */
   serviceAccountEmail?: string;
   /** Secret volumes configuration. */
-  secretVolumes?: Array<SecretVolume>;
+  secretVolumes?: ReadonlyArray<SecretVolume>;
   /** Optional. The binary authorization policy to be checked when deploying the Cloud Run service. */
   binaryAuthorizationPolicy?: string;
   /** The Serverless VPC Access connector that this cloud function can connect to. The format of this field is `projects/* /locations/* /connectors/*`. */
   vpcConnector?: string;
   /** Secret environment variables configuration. */
-  secretEnvironmentVariables?: Array<SecretEnvVar>;
+  secretEnvironmentVariables?: ReadonlyArray<SecretEnvVar>;
   /** Optional. The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported. */
-  directVpcNetworkInterface?: Array<DirectVpcNetworkInterface>;
+  directVpcNetworkInterface?: ReadonlyArray<DirectVpcNetworkInterface>;
   /** The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU */
   availableCpu?: string;
   /** The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details. */
@@ -471,7 +471,7 @@ export interface EventTrigger {
     | "RETRY_POLICY_RETRY"
     | (string & {});
   /** Criteria used to filter events. */
-  eventFilters?: Array<EventFilter>;
+  eventFilters?: ReadonlyArray<EventFilter>;
   /** Optional. The hostname of the service that 1st Gen function should be observed. If no string is provided, the default service implementing the API will be used. For example, `storage.googleapis.com` is the default for all event types in the `google.storage` namespace. The field is only applicable to 1st Gen functions. */
   service?: string;
   /** Optional. The email of the trigger's service account. The service account must have permission to invoke Cloud Run services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default service account: `{project_number}-compute@developer.gserviceaccount.com`. */
@@ -522,7 +522,7 @@ export interface GoogleCloudFunctionsV2Stage {
   /** Link to the current Stage resource */
   resourceUri?: string;
   /** State messages from the current Stage. */
-  stateMessages?: Array<GoogleCloudFunctionsV2StateMessage>;
+  stateMessages?: ReadonlyArray<GoogleCloudFunctionsV2StateMessage>;
 }
 
 export const GoogleCloudFunctionsV2Stage =
@@ -561,7 +561,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
@@ -691,7 +691,7 @@ export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -703,7 +703,7 @@ export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleCloudFunctionsV2LocationMetadata {
   /** The Cloud Function environments this location supports. */
-  environments?: Array<
+  environments?: ReadonlyArray<
     "ENVIRONMENT_UNSPECIFIED" | "GEN_1" | "GEN_2" | (string & {})
   >;
 }
@@ -722,7 +722,7 @@ export const GenerateDownloadUrlRequest =
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -783,7 +783,7 @@ export interface Cloudfunctions_Function {
   /** An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service. */
   eventTrigger?: EventTrigger;
   /** Output only. State Messages for this Cloud Function. */
-  stateMessages?: Array<GoogleCloudFunctionsV2StateMessage>;
+  stateMessages?: ReadonlyArray<GoogleCloudFunctionsV2StateMessage>;
   /** Describes the Build step of the function that builds a container from the given source. */
   buildConfig?: BuildConfig;
   /** Output only. State of the function. */
@@ -831,11 +831,11 @@ export const Cloudfunctions_Function =
 
 export interface ListFunctionsResponse {
   /** The functions that match the request. */
-  functions?: Array<Cloudfunctions_Function>;
+  functions?: ReadonlyArray<Cloudfunctions_Function>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Locations that could not be reached. The response does not include any functions from these locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListFunctionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -870,7 +870,7 @@ export interface GoogleCloudFunctionsV2OperationMetadata {
   /** The build name of the function for create and update operations. */
   buildName?: string;
   /** Mechanism for reporting in-progress stages */
-  stages?: Array<GoogleCloudFunctionsV2Stage>;
+  stages?: ReadonlyArray<GoogleCloudFunctionsV2Stage>;
   /** Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
   cancelRequested?: boolean;
   /** Server-defined resource path for the target of the operation. */
@@ -937,11 +937,11 @@ export const GenerateUploadUrlRequest =
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -960,7 +960,7 @@ export const DetachFunctionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -1002,7 +1002,7 @@ export const GenerateUploadUrlResponse =
 
 export interface ListRuntimesResponse {
   /** The runtimes that match the request. */
-  runtimes?: Array<Runtime>;
+  runtimes?: ReadonlyArray<Runtime>;
 }
 
 export const ListRuntimesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1052,7 +1052,7 @@ export const ListProjectsLocationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v2/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -1093,11 +1093,7 @@ export const PatchProjectsLocationsFunctionsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Cloudfunctions_Function).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsFunctionsRequest>;
 
@@ -1131,10 +1127,7 @@ export const GetProjectsLocationsFunctionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     revision: Schema.optional(Schema.String).pipe(T.HttpQuery("revision")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsFunctionsRequest>;
 
@@ -1172,7 +1165,7 @@ export const CommitFunctionUpgradeAsGen2ProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}:commitFunctionUpgradeAsGen2",
+      path: "v2/{name}:commitFunctionUpgradeAsGen2",
       hasBody: true,
     }),
     svc,
@@ -1210,11 +1203,7 @@ export const DetachFunctionProjectsLocationsFunctionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DetachFunctionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}:detachFunction",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:detachFunction", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DetachFunctionProjectsLocationsFunctionsRequest>;
 
@@ -1250,7 +1239,7 @@ export const AbortFunctionUpgradeProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}:abortFunctionUpgrade",
+      path: "v2/{name}:abortFunctionUpgrade",
       hasBody: true,
     }),
     svc,
@@ -1283,10 +1272,7 @@ export const DeleteProjectsLocationsFunctionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsFunctionsRequest>;
 
@@ -1322,7 +1308,7 @@ export const GenerateUploadUrlProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/functions:generateUploadUrl",
+      path: "v2/{parent}/functions:generateUploadUrl",
       hasBody: true,
     }),
     svc,
@@ -1361,7 +1347,7 @@ export const GenerateDownloadUrlProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}:generateDownloadUrl",
+      path: "v2/{name}:generateDownloadUrl",
       hasBody: true,
     }),
     svc,
@@ -1401,11 +1387,7 @@ export const CreateProjectsLocationsFunctionsRequest =
     functionId: Schema.optional(Schema.String).pipe(T.HttpQuery("functionId")),
     body: Schema.optional(Cloudfunctions_Function).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/functions",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/functions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsFunctionsRequest>;
 
@@ -1443,7 +1425,7 @@ export const RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}:redirectFunctionUpgradeTraffic",
+      path: "v2/{name}:redirectFunctionUpgradeTraffic",
       hasBody: true,
     }),
     svc,
@@ -1483,7 +1465,7 @@ export const CommitFunctionUpgradeProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}:commitFunctionUpgrade",
+      path: "v2/{name}:commitFunctionUpgrade",
       hasBody: true,
     }),
     svc,
@@ -1522,7 +1504,7 @@ export const SetIamPolicyProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}:setIamPolicy",
+      path: "v2/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -1560,10 +1542,7 @@ export const GetIamPolicyProjectsLocationsFunctionsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v2/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsFunctionsRequest>;
 
@@ -1599,7 +1578,7 @@ export const TestIamPermissionsProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}:testIamPermissions",
+      path: "v2/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -1645,10 +1624,7 @@ export const ListProjectsLocationsFunctionsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/functions",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/functions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsFunctionsRequest>;
 
@@ -1690,7 +1666,7 @@ export const RollbackFunctionUpgradeTrafficProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}:rollbackFunctionUpgradeTraffic",
+      path: "v2/{name}:rollbackFunctionUpgradeTraffic",
       hasBody: true,
     }),
     svc,
@@ -1730,7 +1706,7 @@ export const SetupFunctionUpgradeConfigProjectsLocationsFunctionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}:setupFunctionUpgradeConfig",
+      path: "v2/{name}:setupFunctionUpgradeConfig",
       hasBody: true,
     }),
     svc,
@@ -1768,10 +1744,7 @@ export const ListProjectsLocationsRuntimesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/runtimes",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/runtimes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRuntimesRequest>;
 
@@ -1816,10 +1789,7 @@ export const ListProjectsLocationsOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -1854,10 +1824,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
