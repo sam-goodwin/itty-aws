@@ -81,7 +81,7 @@ export interface UserOwnedGrafeasNote {
   /** Output only. This field will contain the service account email address that this attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern. */
   delegationServiceAccountEmail?: string;
   /** Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist. */
-  publicKeys?: Array<AttestorPublicKey>;
+  publicKeys?: ReadonlyArray<AttestorPublicKey>;
 }
 
 export const UserOwnedGrafeasNote = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -151,7 +151,7 @@ export const CheckResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CheckResults {
   /** Per-check details. */
-  results?: Array<CheckResult>;
+  results?: ReadonlyArray<CheckResult>;
 }
 
 export const CheckResults = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -233,9 +233,9 @@ export interface AttestationOccurrence {
   /** Required. The serialized payload that is verified by one or more `signatures`. */
   serializedPayload?: string;
   /** One or more JWTs encoding a self-contained attestation. Each JWT encodes the payload that it verifies within the JWT itself. Verifier implementation SHOULD ignore the `serialized_payload` field when verifying these JWTs. If only JWTs are present on this AttestationOccurrence, then the `serialized_payload` SHOULD be left empty. Each JWT SHOULD encode a claim specific to the `resource_uri` of this Occurrence, but this is not validated by Grafeas metadata API implementations. The JWT itself is opaque to Grafeas. */
-  jwts?: Array<Jwt>;
+  jwts?: ReadonlyArray<Jwt>;
   /** One or more signatures over `serialized_payload`. Verifier implementations should consider this attestation message verified if at least one `signature` verifies `serialized_payload`. See `Signature` in common.proto for more details on signature structure and verification. */
-  signatures?: Array<Signature>;
+  signatures?: ReadonlyArray<Signature>;
 }
 
 export const AttestationOccurrence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -246,7 +246,7 @@ export const AttestationOccurrence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ImageAllowlist {
   /** Required. A disjunction of image patterns to allow. If any of these patterns match, then the image is considered exempted by this allowlist. */
-  allowPattern?: Array<string>;
+  allowPattern?: ReadonlyArray<string>;
 }
 
 export const ImageAllowlist = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -255,7 +255,7 @@ export const ImageAllowlist = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PkixPublicKeySet {
   /** Required. `pkix_public_keys` must have at least one entry. */
-  pkixPublicKeys?: Array<PkixPublicKey>;
+  pkixPublicKeys?: ReadonlyArray<PkixPublicKey>;
 }
 
 export const PkixPublicKeySet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -277,9 +277,9 @@ export const AttestationAuthenticator =
 
 export interface SimpleSigningAttestationCheck {
   /** Required. The authenticators required by this check to verify an attestation. Typically this is one or more PKIX public keys for signature verification. Only one authenticator needs to consider an attestation verified in order for an attestation to be considered fully authenticated. In otherwords, this list of authenticators is an "OR" of the authenticator results. At least one authenticator is required. */
-  attestationAuthenticators?: Array<AttestationAuthenticator>;
+  attestationAuthenticators?: ReadonlyArray<AttestationAuthenticator>;
   /** Optional. The projects where attestations are stored as Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Only one attestation needs to successfully verify an image for this check to pass, so a single verified attestation found in any of `container_analysis_attestation_projects` is sufficient for the check to pass. A project ID must be used, not a project number. When fetching Occurrences from Container Analysis, only `AttestationOccurrence` kinds are considered. In the future, additional Occurrence kinds may be added to the query. Maximum number of `container_analysis_attestation_projects` allowed in each `SimpleSigningAttestationCheck` is 10. */
-  containerAnalysisAttestationProjects?: Array<string>;
+  containerAnalysisAttestationProjects?: ReadonlyArray<string>;
 }
 
 export const SimpleSigningAttestationCheck =
@@ -303,7 +303,7 @@ export const ImageFreshnessCheck = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AttestationSource {
   /** The IDs of the Google Cloud projects that store the SLSA attestations as Container Analysis Occurrences, in the format `projects/[PROJECT_ID]`. Maximum number of `container_analysis_attestation_projects` allowed in each `AttestationSource` is 10. */
-  containerAnalysisAttestationProjects?: Array<string>;
+  containerAnalysisAttestationProjects?: ReadonlyArray<string>;
 }
 
 export const AttestationSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -320,7 +320,7 @@ export interface VerificationRule {
   /** Optional. A CEL expression for specifying custom constraints on the provenance payload. This can be used when users want to specify expectations on provenance fields that are not covered by the general check. For example, users can use this field to require that certain parameters should never be used during the build process. */
   customConstraints?: string;
   /** List of trusted source code repository URL patterns. These patterns match the full repository URL without its scheme (e.g. `https://`). The patterns must not include schemes. For example, the pattern `source.cloud.google.com/my-project/my-repo-name` matches the following URLs: - `source.cloud.google.com/my-project/my-repo-name` - `git+ssh://source.cloud.google.com/my-project/my-repo-name` - `https://source.cloud.google.com/my-project/my-repo-name` A pattern matches a URL either exactly or with `*` wildcards. `*` can be used in only two ways: 1. trailing `*` after hosturi/ to match varying endings; 2. trailing `**` after hosturi/ to match `/` as well. `*` and `**` can only be used as wildcards and can only occur at the end of the pattern after a `/`. (So it's not possible to match a URL that contains literal `*`.) For example: - `github.com/my-project/my-repo` is valid to match a single repo - `github.com/my-project/*` will match all direct repos in `my-project` - `github.com/**` matches all repos in GitHub */
-  trustedSourceRepoPatterns?: Array<string>;
+  trustedSourceRepoPatterns?: ReadonlyArray<string>;
   /** Each verification rule is used for evaluation against provenances generated by a specific builder (group). For some of the builders, such as the Google Cloud Build, users don't need to explicitly specify their roots of trust in the policy since the evaluation service can automatically fetch them based on the builder (group). */
   trustedBuilder?: "BUILDER_UNSPECIFIED" | "GOOGLE_CLOUD_BUILD" | (string & {});
 }
@@ -335,7 +335,7 @@ export const VerificationRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SlsaCheck {
   /** Specifies a list of verification rules for the SLSA attestations. An image is considered compliant with the SlsaCheck if any of the rules are satisfied. */
-  rules?: Array<VerificationRule>;
+  rules?: ReadonlyArray<VerificationRule>;
 }
 
 export const SlsaCheck = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -355,7 +355,7 @@ export interface VulnerabilityCheck {
     | "ALLOW_ALL"
     | (string & {});
   /** Optional. A list of specific CVEs to always raise warnings about even if the vulnerability level meets `maximumUnfixableSeverity` or `maximumFixableSeverity`. CVEs are listed in the format of Container Analysis note id. For example: - CVE-2021-20305 - CVE-2020-10543 The CVEs are applicable regardless of note provider project, e.g., an entry of `CVE-2021-20305` will block vulnerabilities with a note name of either `projects/goog-vulnz/notes/CVE-2021-20305` or `projects/CUSTOM-PROJECT/notes/CVE-2021-20305`. */
-  blockedCves?: Array<string>;
+  blockedCves?: ReadonlyArray<string>;
   /** Required. The threshold for severity for which a fix isn't currently available. This field is required and must be set. */
   maximumUnfixableSeverity?:
     | "MAXIMUM_ALLOWED_SEVERITY_UNSPECIFIED"
@@ -368,9 +368,9 @@ export interface VulnerabilityCheck {
     | "ALLOW_ALL"
     | (string & {});
   /** Optional. A list of specific CVEs to ignore even if the vulnerability level violates `maximumUnfixableSeverity` or `maximumFixableSeverity`. CVEs are listed in the format of Container Analysis note id. For example: - CVE-2021-20305 - CVE-2020-10543 The CVEs are applicable regardless of note provider project, e.g., an entry of `CVE-2021-20305` will allow vulnerabilities with a note name of either `projects/goog-vulnz/notes/CVE-2021-20305` or `projects/CUSTOM-PROJECT/notes/CVE-2021-20305`. */
-  allowedCves?: Array<string>;
+  allowedCves?: ReadonlyArray<string>;
   /** Optional. The projects where vulnerabilities are stored as Container Analysis Occurrences. Each project is expressed in the resource format of `projects/[PROJECT_ID]`, e.g., `projects/my-gcp-project`. An attempt will be made for each project to fetch vulnerabilities, and all valid vulnerabilities will be used to check against the vulnerability policy. If no valid scan is found in all projects configured here, an error will be returned for the check. Maximum number of `container_analysis_vulnerability_projects` allowed in each `VulnerabilityCheck` is 10. */
-  containerAnalysisVulnerabilityProjects?: Array<string>;
+  containerAnalysisVulnerabilityProjects?: ReadonlyArray<string>;
 }
 
 export const VulnerabilityCheck = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -394,7 +394,7 @@ export const SigstorePublicKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SigstorePublicKeySet {
   /** Required. `public_keys` must have at least one entry. */
-  publicKeys?: Array<SigstorePublicKey>;
+  publicKeys?: ReadonlyArray<SigstorePublicKey>;
 }
 
 export const SigstorePublicKeySet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -415,7 +415,7 @@ export const SigstoreAuthority = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SigstoreSignatureCheck {
   /** Required. The authorities required by this check to verify the signature. A signature only needs to be verified by one authority to pass the check. */
-  sigstoreAuthorities?: Array<SigstoreAuthority>;
+  sigstoreAuthorities?: ReadonlyArray<SigstoreAuthority>;
 }
 
 export const SigstoreSignatureCheck = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -426,7 +426,7 @@ export const SigstoreSignatureCheck = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface TrustedDirectoryCheck {
   /** Required. List of trusted directory patterns. A pattern is in the form "registry/path/to/directory". The registry domain part is defined as two or more dot-separated words, e.g., `us.pkg.dev`, or `gcr.io`. Additionally, `*` can be used in three ways as wildcards: 1. leading `*` to match varying prefixes in registry subdomain (useful for location prefixes); 2. trailing `*` after registry/ to match varying endings; 3. trailing `**` after registry/ to match "/" as well. For example: -- `gcr.io/my-project/my-repo` is valid to match a single directory -- `*-docker.pkg.dev/my-project/my-repo` or `*.gcr.io/my-project` are valid to match varying prefixes -- `gcr.io/my-project/*` will match all direct directories in `my-project` -- `gcr.io/my-project/**` would match all directories in `my-project` -- `gcr.i*` is not allowed since the registry is not completely specified -- `sub*domain.gcr.io/nginx` is not valid because only leading `*` or trailing `*` are allowed. -- `*pkg.dev/my-project/my-repo` is not valid because leading `*` can only match subdomain -- `**-docker.pkg.dev` is not valid because one leading `*` is allowed, and that it cannot match `/` */
-  trustedDirPatterns?: Array<string>;
+  trustedDirPatterns?: ReadonlyArray<string>;
 }
 
 export const TrustedDirectoryCheck = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -472,7 +472,7 @@ export interface CheckSet {
   /** Optional. Images exempted from this `CheckSet`. If any of the patterns match the image being evaluated, no checks in the `CheckSet` will be evaluated. */
   imageAllowlist?: ImageAllowlist;
   /** Optional. The checks to apply. The ultimate result of evaluating the check set will be "allow" if and only if every check in `checks` evaluates to "allow". If `checks` is empty, the default behavior is "always allow". */
-  checks?: Array<Check>;
+  checks?: ReadonlyArray<Check>;
   /** Optional. The scope to which this `CheckSet` applies. If unset or an empty string (the default), applies to all namespaces and service accounts. See the `Scope` message documentation for details on scoping rules. */
   scope?: Scope;
 }
@@ -488,7 +488,7 @@ export interface GkePolicy {
   /** Optional. Images exempted from this policy. If any of the patterns match the image being evaluated, the rest of the policy will not be evaluated. */
   imageAllowlist?: ImageAllowlist;
   /** Optional. The `CheckSet` objects to apply, scoped by namespace or namespace and service account. Exactly one `CheckSet` will be evaluated for a given Pod (unless the list is empty, in which case the behavior is "always allow"). If multiple `CheckSet` objects have scopes that match the namespace and service account of the Pod being evaluated, only the `CheckSet` with the MOST SPECIFIC scope will match. `CheckSet` objects must be listed in order of decreasing specificity, i.e. if a scope matches a given service account (which must include the namespace), it must come before a `CheckSet` with a scope matching just that namespace. This property is enforced by server-side validation. The purpose of this restriction is to ensure that if more than one `CheckSet` matches a given Pod, the `CheckSet` that will be evaluated will always be the first in the list to match (because if any other matches, it must be less specific). If `check_sets` is empty, the default behavior is to allow all images. If `check_sets` is non-empty, the last `check_sets` entry must always be a `CheckSet` with no scope set, i.e. a catchall to handle any situation not caught by the preceding `CheckSet` objects. */
-  checkSets?: Array<CheckSet>;
+  checkSets?: ReadonlyArray<CheckSet>;
 }
 
 export const GkePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -519,7 +519,7 @@ export const PlatformPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -529,7 +529,7 @@ export const TestIamPermissionsRequest =
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -559,7 +559,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
@@ -576,7 +576,7 @@ export interface IamPolicy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
 }
 
 export const IamPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -594,7 +594,7 @@ export interface AdmissionRule {
     | "ALWAYS_DENY"
     | (string & {});
   /** Optional. The resource names of the attestors that must attest to a container image, in the format `projects/* /attestors/*`. Each attestor must exist before a policy can reference it. To add an attestor to a policy the principal issuing the policy change request must be able to read the attestor resource. Note: this field must be non-empty when the `evaluation_mode` field specifies `REQUIRE_ATTESTATION`, otherwise it must be empty. */
-  requireAttestationsBy?: Array<string>;
+  requireAttestationsBy?: ReadonlyArray<string>;
   /** Required. The action when a pod creation is denied by the admission rule. */
   enforcementMode?:
     | "ENFORCEMENT_MODE_UNSPECIFIED"
@@ -635,7 +635,7 @@ export interface Policy {
   /** Optional. Per-istio-service-identity admission rules. Istio service identity spec format: `spiffe:///ns//sa/` or `/ns//sa/` e.g. `spiffe://example.com/ns/test-ns/sa/default` */
   istioServiceIdentityAdmissionRules?: Record<string, AdmissionRule>;
   /** Optional. Admission policy allowlisting. A matching admission request will always be permitted. This feature is typically used to exclude Google or third-party infrastructure images from Binary Authorization policies. */
-  admissionWhitelistPatterns?: Array<AdmissionWhitelistPattern>;
+  admissionWhitelistPatterns?: ReadonlyArray<AdmissionWhitelistPattern>;
   /** Optional. A checksum, returned by the server, that can be sent on update requests to ensure the policy has an up-to-date value before attempting to update it. See https://google.aip.dev/154. */
   etag?: string;
   /** Optional. Controls the evaluation of a Google-maintained global admission policy for common system-level images. Images not covered by the global policy will be subject to the project admission policy. This setting has no effect when specified inside a global admission policy. */
@@ -687,7 +687,7 @@ export interface PodResult {
     | "ERROR"
     | (string & {});
   /** Per-image details. */
-  imageResults?: Array<ImageResult>;
+  imageResults?: ReadonlyArray<ImageResult>;
 }
 
 export const PodResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -700,7 +700,7 @@ export const PodResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface EvaluateGkePolicyResponse {
   /** Evaluation result for each Pod contained in the request. */
-  results?: Array<PodResult>;
+  results?: ReadonlyArray<PodResult>;
   /** The result of evaluating all Pods in the request. */
   verdict?:
     | "VERDICT_UNSPECIFIED"
@@ -799,7 +799,7 @@ export interface ListPlatformPoliciesResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListPlatformPoliciesRequest.page_token field in the subsequent call to the `ListPlatformPolicies` method to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of platform policies. */
-  platformPolicies?: Array<PlatformPolicy>;
+  platformPolicies?: ReadonlyArray<PlatformPolicy>;
 }
 
 export const ListPlatformPoliciesResponse =
@@ -812,7 +812,7 @@ export interface ListAttestorsResponse {
   /** A token to retrieve the next page of results. Pass this value in the ListAttestorsRequest.page_token field in the subsequent call to the `ListAttestors` method to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of attestors. */
-  attestors?: Array<Attestor>;
+  attestors?: ReadonlyArray<Attestor>;
 }
 
 export const ListAttestorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -833,7 +833,7 @@ export const GetPolicyProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/policy" }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPolicyProjectsRequest>;
 
@@ -866,11 +866,7 @@ export const UpdatePolicyProjectsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Policy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1/projects/{projectsId}/policy",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdatePolicyProjectsRequest>;
 
@@ -903,11 +899,7 @@ export const UpdateProjectsAttestorsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Attestor).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1/projects/{projectsId}/attestors/{attestorsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateProjectsAttestorsRequest>;
 
@@ -944,7 +936,7 @@ export const ListProjectsAttestorsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/attestors" }),
+    T.Http({ method: "GET", path: "v1/{parent}/attestors" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAttestorsRequest>;
 
@@ -984,10 +976,7 @@ export const GetIamPolicyProjectsAttestorsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/attestors/{attestorsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsAttestorsRequest>;
 
@@ -1023,7 +1012,7 @@ export const SetIamPolicyProjectsAttestorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/attestors/{attestorsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -1056,10 +1045,7 @@ export const GetProjectsAttestorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/attestors/{attestorsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAttestorsRequest>;
 
@@ -1097,7 +1083,7 @@ export const ValidateAttestationOccurrenceProjectsAttestorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/attestors/{attestorsId}:validateAttestationOccurrence",
+      path: "v1/{attestor}:validateAttestationOccurrence",
       hasBody: true,
     }),
     svc,
@@ -1136,7 +1122,7 @@ export const TestIamPermissionsProjectsAttestorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/attestors/{attestorsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -1176,11 +1162,7 @@ export const CreateProjectsAttestorsRequest =
     attestorId: Schema.optional(Schema.String).pipe(T.HttpQuery("attestorId")),
     body: Schema.optional(Attestor).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/attestors",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/attestors", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsAttestorsRequest>;
 
@@ -1211,10 +1193,7 @@ export const DeleteProjectsAttestorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/attestors/{attestorsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsAttestorsRequest>;
 
@@ -1250,7 +1229,7 @@ export const SetIamPolicyProjectsPolicyRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/policy:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -1288,7 +1267,7 @@ export const TestIamPermissionsProjectsPolicyRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/policy:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -1327,10 +1306,7 @@ export const GetIamPolicyProjectsPolicyRequest =
     ),
     resource: Schema.String.pipe(T.HttpPath("resource")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/policy:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsPolicyRequest>;
 
@@ -1364,11 +1340,7 @@ export const EvaluateProjectsPlatformsGkePoliciesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(EvaluateGkePolicyRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/platforms/gke/policies/{policiesId}:evaluate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:evaluate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<EvaluateProjectsPlatformsGkePoliciesRequest>;
 
@@ -1406,11 +1378,7 @@ export const CreateProjectsPlatformsPoliciesRequest =
     policyId: Schema.optional(Schema.String).pipe(T.HttpQuery("policyId")),
     body: Schema.optional(PlatformPolicy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/platforms/{platformsId}/policies",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/policies", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsPlatformsPoliciesRequest>;
 
@@ -1444,10 +1412,7 @@ export const DeleteProjectsPlatformsPoliciesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/platforms/{platformsId}/policies/{policiesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsPlatformsPoliciesRequest>;
 
@@ -1484,10 +1449,7 @@ export const ListProjectsPlatformsPoliciesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/platforms/{platformsId}/policies",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/policies" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsPlatformsPoliciesRequest>;
 
@@ -1526,11 +1488,7 @@ export const ReplacePlatformPolicyProjectsPlatformsPoliciesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(PlatformPolicy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1/projects/{projectsId}/platforms/{platformsId}/policies/{policiesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ReplacePlatformPolicyProjectsPlatformsPoliciesRequest>;
 
@@ -1562,10 +1520,7 @@ export const GetProjectsPlatformsPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/platforms/{platformsId}/policies/{policiesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsPlatformsPoliciesRequest>;
 
@@ -1596,7 +1551,7 @@ export const GetPolicySystempolicyRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/locations/{locationsId}/policy" }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPolicySystempolicyRequest>;
 

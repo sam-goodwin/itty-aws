@@ -6382,15 +6382,15 @@ export const UpdateScheduledQueryResponse =
 export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
   "InvalidParameterException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class OperationAbortedException extends S.TaggedErrorClass<OperationAbortedException>()(
   "OperationAbortedException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withConflictError, C.withRetryableError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withNotFoundError) {}
 export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
   "ServiceUnavailableException",
   { message: S.optional(S.String) },
@@ -6406,27 +6406,27 @@ export class InternalServerException extends S.TaggedErrorClass<InternalServerEx
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class InvalidOperationException extends S.TaggedErrorClass<InvalidOperationException>()(
   "InvalidOperationException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withConflictError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withQuotaError) {}
 export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
   "LimitExceededException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withQuotaError) {}
 export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
   "ResourceAlreadyExistsException",
   { message: S.optional(S.String) },
@@ -6437,25 +6437,25 @@ export class DataAlreadyAcceptedException extends S.TaggedErrorClass<DataAlready
     expectedSequenceToken: S.optional(S.String),
     message: S.optional(S.String),
   },
-) {}
+).pipe(C.withConflictError) {}
 export class InvalidSequenceTokenException extends S.TaggedErrorClass<InvalidSequenceTokenException>()(
   "InvalidSequenceTokenException",
   {
     expectedSequenceToken: S.optional(S.String),
     message: S.optional(S.String),
   },
-) {}
+).pipe(C.withBadRequestError) {}
 export class UnrecognizedClientException extends S.TaggedErrorClass<UnrecognizedClientException>()(
   "UnrecognizedClientException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withAuthError) {}
 export class MalformedQueryException extends S.TaggedErrorClass<MalformedQueryException>()(
   "MalformedQueryException",
   {
     queryCompileError: S.optional(QueryCompileError),
     message: S.optional(S.String),
   },
-) {}
+).pipe(C.withBadRequestError) {}
 export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
   "TooManyTagsException",
   { message: S.optional(S.String), resourceName: S.optional(S.String) },

@@ -28,7 +28,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -62,11 +62,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets ListOperationsRequest.return_partial_success and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -87,15 +87,15 @@ export interface PySparkBatch {
   /** Required. The HCFS URI of the main Python file to use as the Spark driver. Must be a .py file. */
   mainPythonFileUri?: string;
   /** Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip. */
-  pythonFileUris?: Array<string>;
+  pythonFileUris?: ReadonlyArray<string>;
   /** Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks. */
-  jarFileUris?: Array<string>;
+  jarFileUris?: ReadonlyArray<string>;
   /** Optional. HCFS URIs of files to be placed in the working directory of each executor. */
-  fileUris?: Array<string>;
+  fileUris?: ReadonlyArray<string>;
   /** Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip. */
-  archiveUris?: Array<string>;
+  archiveUris?: ReadonlyArray<string>;
 }
 
 export const PySparkBatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -113,13 +113,13 @@ export interface SparkBatch {
   /** Optional. The name of the driver main class. The jar file that contains the class must be in the classpath or specified in jar_file_uris. */
   mainClass?: string;
   /** Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks. */
-  jarFileUris?: Array<string>;
+  jarFileUris?: ReadonlyArray<string>;
   /** Optional. HCFS URIs of files to be placed in the working directory of each executor. */
-  fileUris?: Array<string>;
+  fileUris?: ReadonlyArray<string>;
   /** Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip. */
-  archiveUris?: Array<string>;
+  archiveUris?: ReadonlyArray<string>;
 }
 
 export const SparkBatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -135,11 +135,11 @@ export interface SparkRBatch {
   /** Required. The HCFS URI of the main R file to use as the driver. Must be a .R or .r file. */
   mainRFileUri?: string;
   /** Optional. The arguments to pass to the Spark driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Optional. HCFS URIs of files to be placed in the working directory of each executor. */
-  fileUris?: Array<string>;
+  fileUris?: ReadonlyArray<string>;
   /** Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip. */
-  archiveUris?: Array<string>;
+  archiveUris?: ReadonlyArray<string>;
 }
 
 export const SparkRBatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -155,7 +155,7 @@ export interface SparkSqlBatch {
   /** Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";). */
   queryVariables?: Record<string, string>;
   /** Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH. */
-  jarFileUris?: Array<string>;
+  jarFileUris?: ReadonlyArray<string>;
 }
 
 export const SparkSqlBatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -170,13 +170,13 @@ export interface PySparkNotebookBatch {
   /** Optional. The parameters to pass to the notebook. */
   params?: Record<string, string>;
   /** Optional. HCFS URIs of Python files to pass to the PySpark framework. */
-  pythonFileUris?: Array<string>;
+  pythonFileUris?: ReadonlyArray<string>;
   /** Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH. */
-  jarFileUris?: Array<string>;
+  jarFileUris?: ReadonlyArray<string>;
   /** Optional. HCFS URIs of files to be placed in the working directory of each executor */
-  fileUris?: Array<string>;
+  fileUris?: ReadonlyArray<string>;
   /** Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip. */
-  archiveUris?: Array<string>;
+  archiveUris?: ReadonlyArray<string>;
 }
 
 export const PySparkNotebookBatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -325,7 +325,7 @@ export const RepositoryConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AutotuningConfig {
   /** Optional. Scenarios for which tunings are applied. */
-  scenarios?: Array<
+  scenarios?: ReadonlyArray<
     | "SCENARIO_UNSPECIFIED"
     | "SCALING"
     | "BROADCAST_HASH_JOIN"
@@ -385,7 +385,7 @@ export interface ExecutionConfig {
   /** Optional. Subnetwork URI to connect workload to. */
   subnetworkUri?: string;
   /** Optional. Tags used for network traffic control. */
-  networkTags?: Array<string>;
+  networkTags?: ReadonlyArray<string>;
   /** Optional. The Cloud KMS key to use for encryption. */
   kmsKey?: string;
   /** Optional. Applies to sessions only. The duration to keep the session alive while it's idling. Exceeding this threshold causes the session to terminate. This field cannot be set on a batch workload. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 1 hour if not set. If both ttl and idle_ttl are specified for an interactive session, the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first. */
@@ -511,7 +511,7 @@ export interface Batch {
   /** Output only. The resource name of the operation associated with this batch. */
   operation?: string;
   /** Output only. Historical state information for the batch. */
-  stateHistory?: Array<StateHistory>;
+  stateHistory?: ReadonlyArray<StateHistory>;
 }
 
 export const Batch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -537,11 +537,11 @@ export const Batch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListBatchesResponse {
   /** Output only. The batches from the specified collection. */
-  batches?: Array<Batch>;
+  batches?: ReadonlyArray<Batch>;
   /** A token, which can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Output only. List of Batches that could not be included in the response. Attempting to get one of these resources may indicate why it was not included in the list response. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListBatchesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -581,7 +581,7 @@ export interface ApplicationInfo {
   maxCores?: number;
   coresPerExecutor?: number;
   memoryPerExecutorMb?: number;
-  attempts?: Array<ApplicationAttemptInfo>;
+  attempts?: ReadonlyArray<ApplicationAttemptInfo>;
   applicationContextIngestionStatus?:
     | "APPLICATION_CONTEXT_INGESTION_STATUS_UNSPECIFIED"
     | "APPLICATION_CONTEXT_INGESTION_STATUS_COMPLETED"
@@ -665,7 +665,7 @@ export interface ApplicationEnvironmentInfo {
   systemProperties?: Record<string, string>;
   metricsProperties?: Record<string, string>;
   classpathEntries?: Record<string, string>;
-  resourceProfiles?: Array<ResourceProfileInfo>;
+  resourceProfiles?: ReadonlyArray<ResourceProfileInfo>;
 }
 
 export const ApplicationEnvironmentInfo =
@@ -705,7 +705,7 @@ export interface JobData {
   description?: string;
   submissionTime?: string;
   completionTime?: string;
-  stageIds?: Array<string>;
+  stageIds?: ReadonlyArray<string>;
   jobGroup?: string;
   status?:
     | "JOB_EXECUTION_STATUS_UNSPECIFIED"
@@ -726,7 +726,7 @@ export interface JobData {
   numSkippedStages?: number;
   numFailedStages?: number;
   killTasksSummary?: Record<string, number>;
-  skippedStages?: Array<number>;
+  skippedStages?: ReadonlyArray<number>;
   sqlExecutionId?: string;
 }
 
@@ -1021,7 +1021,7 @@ export interface TaskData {
   status?: string;
   taskLocality?: string;
   speculative?: boolean;
-  accumulatorUpdates?: Array<AccumulableInfo>;
+  accumulatorUpdates?: ReadonlyArray<AccumulableInfo>;
   errorMessage?: string;
   hasMetrics?: boolean;
   taskMetrics?: TaskMetrics;
@@ -1128,8 +1128,8 @@ export const SpeculationStageSummary =
   }).annotate({ identifier: "SpeculationStageSummary" });
 
 export interface ExecutorPeakMetricsDistributions {
-  quantiles?: Array<number>;
-  executorMetrics?: Array<ExecutorMetrics>;
+  quantiles?: ReadonlyArray<number>;
+  executorMetrics?: ReadonlyArray<ExecutorMetrics>;
 }
 
 export const ExecutorPeakMetricsDistributions =
@@ -1139,21 +1139,21 @@ export const ExecutorPeakMetricsDistributions =
   }).annotate({ identifier: "ExecutorPeakMetricsDistributions" });
 
 export interface ExecutorMetricsDistributions {
-  quantiles?: Array<number>;
-  taskTimeMillis?: Array<number>;
-  failedTasks?: Array<number>;
-  succeededTasks?: Array<number>;
-  killedTasks?: Array<number>;
-  inputBytes?: Array<number>;
-  inputRecords?: Array<number>;
-  outputBytes?: Array<number>;
-  outputRecords?: Array<number>;
-  shuffleRead?: Array<number>;
-  shuffleReadRecords?: Array<number>;
-  shuffleWrite?: Array<number>;
-  shuffleWriteRecords?: Array<number>;
-  memoryBytesSpilled?: Array<number>;
-  diskBytesSpilled?: Array<number>;
+  quantiles?: ReadonlyArray<number>;
+  taskTimeMillis?: ReadonlyArray<number>;
+  failedTasks?: ReadonlyArray<number>;
+  succeededTasks?: ReadonlyArray<number>;
+  killedTasks?: ReadonlyArray<number>;
+  inputBytes?: ReadonlyArray<number>;
+  inputRecords?: ReadonlyArray<number>;
+  outputBytes?: ReadonlyArray<number>;
+  outputRecords?: ReadonlyArray<number>;
+  shuffleRead?: ReadonlyArray<number>;
+  shuffleReadRecords?: ReadonlyArray<number>;
+  shuffleWrite?: ReadonlyArray<number>;
+  shuffleWriteRecords?: ReadonlyArray<number>;
+  memoryBytesSpilled?: ReadonlyArray<number>;
+  diskBytesSpilled?: ReadonlyArray<number>;
   peakMemoryMetrics?: ExecutorPeakMetricsDistributions;
 }
 
@@ -1348,8 +1348,8 @@ export interface StageData {
   description?: string;
   details?: string;
   schedulingPool?: string;
-  rddIds?: Array<string>;
-  accumulatorUpdates?: Array<AccumulableInfo>;
+  rddIds?: ReadonlyArray<string>;
+  accumulatorUpdates?: ReadonlyArray<AccumulableInfo>;
   tasks?: Record<string, TaskData>;
   executorSummary?: Record<string, ExecutorStageSummary>;
   speculationSummary?: SpeculationStageSummary;
@@ -1359,9 +1359,9 @@ export interface StageData {
   executorMetricsDistributions?: ExecutorMetricsDistributions;
   isShufflePushEnabled?: boolean;
   shuffleMergersCount?: number;
-  jobIds?: Array<string>;
+  jobIds?: ReadonlyArray<string>;
   locality?: Record<string, string>;
-  parentStageIds?: Array<string>;
+  parentStageIds?: ReadonlyArray<string>;
   /** Summary metrics fields. These are included in response only if present in summary_metrics_mask field in request */
   taskQuantileMetrics?: TaskQuantileMetrics;
 }
@@ -1422,7 +1422,7 @@ export const MemoryMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ResourceInformation {
   name?: string;
-  addresses?: Array<string>;
+  addresses?: ReadonlyArray<string>;
 }
 
 export const ResourceInformation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1455,7 +1455,7 @@ export interface ExecutorSummary {
   removeReason?: string;
   executorLogs?: Record<string, string>;
   memoryMetrics?: MemoryMetrics;
-  excludedInStages?: Array<string>;
+  excludedInStages?: ReadonlyArray<string>;
   peakMemoryMetrics?: ExecutorMetrics;
   attributes?: Record<string, string>;
   resources?: Record<string, ResourceInformation>;
@@ -1521,7 +1521,7 @@ export interface RddPartitionInfo {
   storageLevel?: string;
   memoryUsed?: string;
   diskUsed?: string;
-  executors?: Array<string>;
+  executors?: ReadonlyArray<string>;
 }
 
 export const RddPartitionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1540,8 +1540,8 @@ export interface RddStorageInfo {
   storageLevel?: string;
   memoryUsed?: string;
   diskUsed?: string;
-  dataDistribution?: Array<RddDataDistribution>;
-  partitions?: Array<RddPartitionInfo>;
+  dataDistribution?: ReadonlyArray<RddDataDistribution>;
+  partitions?: ReadonlyArray<RddPartitionInfo>;
 }
 
 export const RddStorageInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1616,8 +1616,8 @@ export const RddOperationNode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface RddOperationCluster {
   rddClusterId?: string;
   name?: string;
-  childNodes?: Array<RddOperationNode>;
-  childClusters?: Array<RddOperationCluster>;
+  childNodes?: ReadonlyArray<RddOperationNode>;
+  childClusters?: ReadonlyArray<RddOperationCluster>;
 }
 
 export const RddOperationCluster: Schema.Schema<RddOperationCluster> =
@@ -1634,9 +1634,9 @@ export const RddOperationCluster: Schema.Schema<RddOperationCluster> =
 
 export interface RddOperationGraph {
   stageId?: string;
-  edges?: Array<RddOperationEdge>;
-  outgoingEdges?: Array<RddOperationEdge>;
-  incomingEdges?: Array<RddOperationEdge>;
+  edges?: ReadonlyArray<RddOperationEdge>;
+  outgoingEdges?: ReadonlyArray<RddOperationEdge>;
+  incomingEdges?: ReadonlyArray<RddOperationEdge>;
   rootCluster?: RddOperationCluster;
 }
 
@@ -1650,7 +1650,7 @@ export const RddOperationGraph = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PoolData {
   name?: string;
-  stageIds?: Array<string>;
+  stageIds?: ReadonlyArray<string>;
 }
 
 export const PoolData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1697,7 +1697,7 @@ export interface SqlExecutionUiData {
   details?: string;
   physicalPlanDescription?: string;
   modifiedConfigs?: Record<string, string>;
-  metrics?: Array<SqlPlanMetric>;
+  metrics?: ReadonlyArray<SqlPlanMetric>;
   submissionTime?: string;
   completionTime?: string;
   errorMessage?: string;
@@ -1710,7 +1710,7 @@ export interface SqlExecutionUiData {
     | "JOB_EXECUTION_STATUS_UNKNOWN"
     | (string & {})
   >;
-  stages?: Array<string>;
+  stages?: ReadonlyArray<string>;
   metricValuesIsNull?: boolean;
   metricValues?: Record<string, string>;
 }
@@ -1736,7 +1736,7 @@ export interface SparkPlanGraphNode {
   sparkPlanGraphNodeId?: string;
   name?: string;
   desc?: string;
-  metrics?: Array<SqlPlanMetric>;
+  metrics?: ReadonlyArray<SqlPlanMetric>;
   /** Optional. Additional metadata for the spark plan graph cluster. */
   metadata?: Record<string, string>;
 }
@@ -1753,8 +1753,8 @@ export interface SparkPlanGraphCluster {
   sparkPlanGraphClusterId?: string;
   name?: string;
   desc?: string;
-  nodes?: Array<SparkPlanGraphNodeWrapper>;
-  metrics?: Array<SqlPlanMetric>;
+  nodes?: ReadonlyArray<SparkPlanGraphNodeWrapper>;
+  metrics?: ReadonlyArray<SqlPlanMetric>;
   /** Optional. Additional metadata for the spark plan graph cluster. */
   metadata?: Record<string, string>;
 }
@@ -1800,8 +1800,8 @@ export const SparkPlanGraphEdge = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SparkPlanGraph {
   executionId?: string;
-  nodes?: Array<SparkPlanGraphNodeWrapper>;
-  edges?: Array<SparkPlanGraphEdge>;
+  nodes?: ReadonlyArray<SparkPlanGraphNodeWrapper>;
+  edges?: ReadonlyArray<SparkPlanGraphEdge>;
 }
 
 export const SparkPlanGraph = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1903,8 +1903,8 @@ export interface StreamingQueryProgress {
   batchDuration?: string;
   durationMillis?: Record<string, string>;
   eventTime?: Record<string, string>;
-  stateOperators?: Array<StateOperatorProgress>;
-  sources?: Array<SourceProgress>;
+  stateOperators?: ReadonlyArray<StateOperatorProgress>;
+  sources?: ReadonlyArray<SourceProgress>;
   sink?: SinkProgress;
   observedMetrics?: Record<string, string>;
 }
@@ -1944,7 +1944,7 @@ export const BuildInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NativeBuildInfoUiData {
   /** Optional. Build related details. */
-  buildInfo?: Array<BuildInfo>;
+  buildInfo?: ReadonlyArray<BuildInfo>;
   /** Optional. Build class of Native. */
   buildClass?: string;
 }
@@ -1978,7 +1978,7 @@ export interface NativeSqlExecutionUiData {
   /** Optional. Description of the fallback. */
   fallbackDescription?: string;
   /** Optional. Fallback node to reason. */
-  fallbackNodeToReason?: Array<FallbackReason>;
+  fallbackNodeToReason?: ReadonlyArray<FallbackReason>;
 }
 
 export const NativeSqlExecutionUiData =
@@ -2027,7 +2027,7 @@ export interface SparkConnectExecutionInfo {
   /** Unique identifier for the operation. */
   operationId?: string;
   /** Optional. Tags associated with the Spark session. */
-  sparkSessionTags?: Array<string>;
+  sparkSessionTags?: ReadonlyArray<string>;
   /** Timestamp when the execution finished. */
   finishTimestamp?: string;
   /** Timestamp when the execution was closed. */
@@ -2046,9 +2046,9 @@ export interface SparkConnectExecutionInfo {
     | "EXECUTION_STATE_CLOSED"
     | (string & {});
   /** Optional. List of job ids associated with the execution. */
-  jobIds?: Array<string>;
+  jobIds?: ReadonlyArray<string>;
   /** Optional. List of sql execution ids associated with the execution. */
-  sqlExecIds?: Array<string>;
+  sqlExecIds?: ReadonlyArray<string>;
 }
 
 export const SparkConnectExecutionInfo =
@@ -2133,7 +2133,7 @@ export const SparkWrapperObject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface WriteSparkApplicationContextRequest {
   /** Required. Parent (Batch) resource reference. */
   parent?: string;
-  sparkWrapperObjects?: Array<SparkWrapperObject>;
+  sparkWrapperObjects?: ReadonlyArray<SparkWrapperObject>;
 }
 
 export const WriteSparkApplicationContextRequest =
@@ -2163,7 +2163,7 @@ export const SparkApplication = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SearchSparkApplicationsResponse {
   /** Output only. High level information corresponding to an application. */
-  sparkApplications?: Array<SparkApplication>;
+  sparkApplications?: ReadonlyArray<SparkApplication>;
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSparkApplicationsRequest. */
   nextPageToken?: string;
 }
@@ -2186,7 +2186,7 @@ export const AccessSparkApplicationResponse =
 
 export interface SearchSparkApplicationJobsResponse {
   /** Output only. Data corresponding to a spark job. */
-  sparkApplicationJobs?: Array<JobData>;
+  sparkApplicationJobs?: ReadonlyArray<JobData>;
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSparkApplicationJobsRequest. */
   nextPageToken?: string;
 }
@@ -2209,7 +2209,7 @@ export const AccessSparkApplicationJobResponse =
 
 export interface SearchSparkApplicationStagesResponse {
   /** Output only. Data corresponding to a stage. */
-  sparkApplicationStages?: Array<StageData>;
+  sparkApplicationStages?: ReadonlyArray<StageData>;
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSparkApplicationStages. */
   nextPageToken?: string;
 }
@@ -2222,7 +2222,7 @@ export const SearchSparkApplicationStagesResponse =
 
 export interface SearchSparkApplicationStageAttemptsResponse {
   /** Output only. Data corresponding to a stage attempts */
-  sparkApplicationStageAttempts?: Array<StageData>;
+  sparkApplicationStageAttempts?: ReadonlyArray<StageData>;
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent ListSparkApplicationStageAttemptsRequest. */
   nextPageToken?: string;
 }
@@ -2245,7 +2245,7 @@ export const AccessSparkApplicationStageAttemptResponse =
 
 export interface SearchSparkApplicationStageAttemptTasksResponse {
   /** Output only. Data corresponding to tasks created by spark. */
-  sparkApplicationStageAttemptTasks?: Array<TaskData>;
+  sparkApplicationStageAttemptTasks?: ReadonlyArray<TaskData>;
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent ListSparkApplicationStageAttemptTasksRequest. */
   nextPageToken?: string;
 }
@@ -2260,7 +2260,7 @@ export const SearchSparkApplicationStageAttemptTasksResponse =
 
 export interface SearchSparkApplicationExecutorsResponse {
   /** Details about executors used by the application. */
-  sparkApplicationExecutors?: Array<ExecutorSummary>;
+  sparkApplicationExecutors?: ReadonlyArray<ExecutorSummary>;
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSparkApplicationExecutorsListRequest. */
   nextPageToken?: string;
 }
@@ -2273,7 +2273,7 @@ export const SearchSparkApplicationExecutorsResponse =
 
 export interface SearchSparkApplicationExecutorStageSummaryResponse {
   /** Details about executors used by the application stage. */
-  sparkApplicationStageExecutors?: Array<ExecutorStageSummary>;
+  sparkApplicationStageExecutors?: ReadonlyArray<ExecutorStageSummary>;
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSparkApplicationExecutorsListRequest. */
   nextPageToken?: string;
 }
@@ -2290,7 +2290,7 @@ export const SearchSparkApplicationExecutorStageSummaryResponse =
 
 export interface SearchSparkApplicationSqlQueriesResponse {
   /** Output only. SQL Execution Data */
-  sparkApplicationSqlQueries?: Array<SqlExecutionUiData>;
+  sparkApplicationSqlQueries?: ReadonlyArray<SqlExecutionUiData>;
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSparkApplicationSqlQueriesRequest. */
   nextPageToken?: string;
 }
@@ -2359,7 +2359,7 @@ export interface JobsSummary {
   /** Number of failed jobs */
   failedJobs?: number;
   /** Attempts info */
-  attempts?: Array<ApplicationAttemptInfo>;
+  attempts?: ReadonlyArray<ApplicationAttemptInfo>;
 }
 
 export const JobsSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2517,7 +2517,7 @@ export interface ReservationAffinity {
   /** Optional. Corresponds to the label key of reservation resource. */
   key?: string;
   /** Optional. Corresponds to the label values of reservation resource. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const ReservationAffinity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2566,7 +2566,7 @@ export interface GceClusterConfig {
   /** Optional. The Compute Engine zone where the Dataproc cluster will be located. If omitted, the service will pick a zone in the cluster's Compute Engine region. On a get request, zone will always be present.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone] projects/[project_id]/zones/[zone] [zone] */
   zoneUri?: string;
   /** Optional. An optional list of Compute Engine zones where the Dataproc cluster will not be located when Auto Zone is enabled. Only one of zone_uri or auto_zone_exclude_zone_uris can be set. If both are omitted, the service will pick a zone in the cluster Compute Engine region. If auto_zone_exclude_zone_uris is set and there is more than one non-excluded zone, the service will pick one of the non-excluded zones. Otherwise, cluster creation will fail with INVALID_ARGUMENT error.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone] projects/[project_id]/zones/[zone] [zone] */
-  autoZoneExcludeZoneUris?: Array<string>;
+  autoZoneExcludeZoneUris?: ReadonlyArray<string>;
   /** Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/global/networks/default projects/[project_id]/global/networks/default default */
   networkUri?: string;
   /** Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/[region]/subnetworks/sub0 projects/[project_id]/regions/[region]/subnetworks/sub0 sub0 */
@@ -2583,9 +2583,9 @@ export interface GceClusterConfig {
   /** Optional. The Dataproc service account (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_dataproc) (also see VM Data Plane identity (https://cloud.google.com/dataproc/docs/concepts/iam/dataproc-principals#vm_service_account_data_plane_identity)) used by Dataproc cluster VM instances to access Google Cloud Platform services.If not specified, the Compute Engine default service account (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used. */
   serviceAccount?: string;
   /** Optional. The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: https://www.googleapis.com/auth/cloud.useraccounts.readonly https://www.googleapis.com/auth/devstorage.read_write https://www.googleapis.com/auth/logging.writeIf no scopes are specified, the following defaults are also provided: https://www.googleapis.com/auth/bigquery https://www.googleapis.com/auth/bigtable.admin.table https://www.googleapis.com/auth/bigtable.data https://www.googleapis.com/auth/devstorage.full_control */
-  serviceAccountScopes?: Array<string>;
+  serviceAccountScopes?: ReadonlyArray<string>;
   /** The Compute Engine network tags to add to all instances (see Tagging instances (https://cloud.google.com/vpc/docs/add-remove-network-tags)). */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** Optional. The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)). */
   metadata?: Record<string, string>;
   /** Optional. Reservation Affinity for consuming Zonal reservation. */
@@ -2676,7 +2676,7 @@ export interface DiskConfig {
   /** Optional. Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be greater than or equal to 1. This field is supported only if boot_disk_type is hyperdisk-balanced. */
   bootDiskProvisionedThroughput?: string;
   /** Optional. A list of attached disk configs for a group of VM instances. */
-  attachedDiskConfigs?: Array<AttachedDiskConfig>;
+  attachedDiskConfigs?: ReadonlyArray<AttachedDiskConfig>;
 }
 
 export const DiskConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2730,7 +2730,7 @@ export const ProvisioningModelMix = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InstanceSelection {
   /** Optional. Full machine-type names, e.g. "n1-standard-16". */
-  machineTypes?: Array<string>;
+  machineTypes?: ReadonlyArray<string>;
   /** Optional. Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference. */
   rank?: number;
 }
@@ -2757,9 +2757,9 @@ export interface InstanceFlexibilityPolicy {
   /** Optional. Defines how the Group selects the provisioning model to ensure required reliability. */
   provisioningModelMix?: ProvisioningModelMix;
   /** Optional. List of instance selection options that the group will use when creating new VMs. */
-  instanceSelectionList?: Array<InstanceSelection>;
+  instanceSelectionList?: ReadonlyArray<InstanceSelection>;
   /** Output only. A list of instance selection results in the group. */
-  instanceSelectionResults?: Array<InstanceSelectionResult>;
+  instanceSelectionResults?: ReadonlyArray<InstanceSelectionResult>;
   /** Output only. A map of instance short name to machine type. The key is the short name of the Compute Engine instance, and the value is the full machine-type name (e.g., 'n1-standard-16'). See Machine types for more information on valid machine type strings. */
   instanceMachineTypes?: Record<string, string>;
 }
@@ -2789,9 +2789,9 @@ export interface InstanceGroupConfig {
   /** Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1. */
   numInstances?: number;
   /** Output only. The list of instance names. Dataproc derives the names from cluster_name, num_instances, and the instance group. */
-  instanceNames?: Array<string>;
+  instanceNames?: ReadonlyArray<string>;
   /** Output only. List of references to Compute Engine instances. */
-  instanceReferences?: Array<InstanceReference>;
+  instanceReferences?: ReadonlyArray<InstanceReference>;
   /** Optional. The Compute Engine image resource used for cluster instances.The URI can represent an image or image family.Image examples: https://www.googleapis.com/compute/v1/projects/[project_id]/global/images/[image-id] projects/[project_id]/global/images/[image-id] image-idImage family examples. Dataproc will use the most recent image from the family: https://www.googleapis.com/compute/v1/projects/[project_id]/global/images/family/[custom-image-family-name] projects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it will be inferred from SoftwareConfig.image_version or the system default. */
   imageUri?: string;
   /** Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 projects/[project_id]/zones/[zone]/machineTypes/n1-standard-2 n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2. */
@@ -2810,7 +2810,7 @@ export interface InstanceGroupConfig {
   /** Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups. */
   managedGroupConfig?: ManagedGroupConfig;
   /** Optional. The Compute Engine accelerator configuration for these instances. */
-  accelerators?: Array<AcceleratorConfig>;
+  accelerators?: ReadonlyArray<AcceleratorConfig>;
   /** Optional. Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu). */
   minCpuPlatform?: string;
   /** Optional. The minimum number of primary worker instances to create. If min_num_instances is set, cluster creation will succeed if the number of primary workers created is at least equal to the min_num_instances number.Example: Cluster creation request with num_instances = 5 and min_num_instances = 3: If 4 VMs are created and 1 instance fails, the failed VM is deleted. The cluster is resized to 4 instances and placed in a RUNNING state. If 2 instances are created and 3 instances fail, the cluster in placed in an ERROR state. The failed VMs are not deleted. */
@@ -2844,7 +2844,7 @@ export interface SoftwareConfig {
   /** Optional. The properties to set on daemon config files.Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. The following are supported prefixes and their mappings: capacity-scheduler: capacity-scheduler.xml core: core-site.xml distcp: distcp-default.xml hdfs: hdfs-site.xml hive: hive-site.xml mapred: mapred-site.xml pig: pig.properties spark: spark-defaults.conf yarn: yarn-site.xmlFor more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties). */
   properties?: Record<string, string>;
   /** Optional. The set of components to activate on the cluster. */
-  optionalComponents?: Array<
+  optionalComponents?: ReadonlyArray<
     | "COMPONENT_UNSPECIFIED"
     | "ANACONDA"
     | "DELTA"
@@ -3067,7 +3067,7 @@ export interface GkeNodeConfig {
   /** Optional. Whether the nodes are created as legacy preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Also see Spot VMs, preemptible VM instances without a maximum lifetime. Legacy and Spot preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role). */
   preemptible?: boolean;
   /** Optional. A list of hardware accelerators (https://cloud.google.com/compute/docs/gpus) to attach to each node. */
-  accelerators?: Array<GkeNodePoolAcceleratorConfig>;
+  accelerators?: ReadonlyArray<GkeNodePoolAcceleratorConfig>;
   /** Optional. Minimum CPU platform (https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell"` or Intel Sandy Bridge". */
   minCpuPlatform?: string;
   /** Optional. The Customer Managed Encryption Key (CMEK) (https://cloud.google.com/kubernetes-engine/docs/how-to/using-cmek) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key} */
@@ -3103,7 +3103,7 @@ export interface GkeNodePoolConfig {
   /** Optional. The node pool configuration. */
   config?: GkeNodeConfig;
   /** Optional. The list of Compute Engine zones (https://cloud.google.com/compute/docs/zones#available) where node pool nodes associated with a Dataproc on GKE virtual cluster will be located.Note: All node pools associated with a virtual cluster must be located in the same region as the virtual cluster, and they must be located in the same zone within that region.If a location is not specified during node pool creation, Dataproc on GKE will choose the zone. */
-  locations?: Array<string>;
+  locations?: ReadonlyArray<string>;
   /** Optional. The autoscaler configuration for this node pool. The autoscaler is enabled only when a valid configuration is present. */
   autoscaling?: GkeNodePoolAutoscalingConfig;
 }
@@ -3118,7 +3118,7 @@ export interface GkeNodePoolTarget {
   /** Required. The target GKE node pool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{node_pool}' */
   nodePool?: string;
   /** Required. The roles associated with the GKE node pool. */
-  roles?: Array<
+  roles?: ReadonlyArray<
     | "ROLE_UNSPECIFIED"
     | "DEFAULT"
     | "CONTROLLER"
@@ -3142,7 +3142,7 @@ export interface GkeClusterConfig {
   /** Optional. A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster (the GKE cluster can be zonal or regional). Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}' */
   gkeClusterTarget?: string;
   /** Optional. GKE node pools where workloads will be scheduled. At least one node pool must be assigned the DEFAULT GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a DEFAULT GkeNodePoolTarget. Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings. */
-  nodePoolTarget?: Array<GkeNodePoolTarget>;
+  nodePoolTarget?: ReadonlyArray<GkeNodePoolTarget>;
 }
 
 export const GkeClusterConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3165,7 +3165,7 @@ export interface Metric {
     | "FLINK"
     | (string & {});
   /** Optional. Specify one or more Custom metrics (https://cloud.google.com/dataproc/docs/guides/dataproc-metrics#custom_metrics) to collect for the metric course (for the SPARK metric source (any Spark metric (https://spark.apache.org/docs/latest/monitoring.html#metrics) can be specified).Provide metrics in the following format: METRIC_SOURCE: INSTANCE:GROUP:METRIC Use camelcase as appropriate.Examples: yarn:ResourceManager:QueueMetrics:AppsCompleted spark:driver:DAGScheduler:job.allJobs sparkHistoryServer:JVM:Memory:NonHeapMemoryUsage.committed hiveserver2:JVM:Memory:NonHeapMemoryUsage.used Notes: Only the specified overridden metrics are collected for the metric source. For example, if one or more spark:executive metrics are listed as metric overrides, other SPARK metrics are not collected. The collection of the metrics for other enabled custom metric sources is unaffected. For example, if both SPARK and YARN metric sources are enabled, and overrides are provided for Spark metrics only, all YARN metrics are collected. */
-  metricOverrides?: Array<string>;
+  metricOverrides?: ReadonlyArray<string>;
 }
 
 export const Metric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3175,7 +3175,7 @@ export const Metric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DataprocMetricConfig {
   /** Required. Metrics sources to enable. */
-  metrics?: Array<Metric>;
+  metrics?: ReadonlyArray<Metric>;
 }
 
 export const DataprocMetricConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3186,7 +3186,7 @@ export interface NodeGroup {
   /** The Node group resource name (https://aip.dev/122). */
   name?: string;
   /** Required. Node group roles. */
-  roles?: Array<"ROLE_UNSPECIFIED" | "DRIVER" | (string & {})>;
+  roles?: ReadonlyArray<"ROLE_UNSPECIFIED" | "DRIVER" | (string & {})>;
   /** Optional. The node group instance group configuration. */
   nodeGroupConfig?: InstanceGroupConfig;
   /** Optional. Node group labels. Label keys must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty. If specified, they must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). The node group must have no more than 32 labels. */
@@ -3243,7 +3243,7 @@ export interface ClusterConfig {
   /** Optional. The config settings for cluster software. */
   softwareConfig?: SoftwareConfig;
   /** Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi */
-  initializationActions?: Array<NodeInitializationAction>;
+  initializationActions?: ReadonlyArray<NodeInitializationAction>;
   /** Optional. Encryption settings for the cluster. */
   encryptionConfig?: EncryptionConfig;
   /** Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset. */
@@ -3261,7 +3261,7 @@ export interface ClusterConfig {
   /** Optional. The config for Dataproc metrics. */
   dataprocMetricConfig?: DataprocMetricConfig;
   /** Optional. The node group settings. */
-  auxiliaryNodeGroups?: Array<AuxiliaryNodeGroup>;
+  auxiliaryNodeGroups?: ReadonlyArray<AuxiliaryNodeGroup>;
   /** Optional. A Cloud Storage bucket used to collect checkpoint diagnostic data (https://cloud.google.com/dataproc/docs/support/diagnose-clusters#checkpoint_diagnostic_data). If you do not specify a diagnostic bucket, Cloud Dataproc will use the Dataproc temp bucket to collect the checkpoint diagnostic data. This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket. */
   diagnosticBucket?: string;
 }
@@ -3408,7 +3408,7 @@ export interface Cluster {
   /** Output only. Cluster status. */
   status?: ClusterStatus;
   /** Output only. The previous cluster status. */
-  statusHistory?: Array<ClusterStatus>;
+  statusHistory?: ReadonlyArray<ClusterStatus>;
   /** Output only. A cluster UUID (Unique Universal Identifier). Dataproc generates this value when it creates the cluster. */
   clusterUuid?: string;
   /** Output only. Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release. */
@@ -3455,7 +3455,7 @@ export interface NodePool {
   /** Required. A unique id of the node pool. Primary and Secondary workers can be specified using special reserved ids PRIMARY_WORKER_POOL and SECONDARY_WORKER_POOL respectively. Aux node pools can be referenced using corresponding pool id. */
   id?: string;
   /** Name of instances to be repaired. These instances must belong to specified node pool. */
-  instanceNames?: Array<string>;
+  instanceNames?: ReadonlyArray<string>;
   /** Required. Repair action to take on specified resources of the node pool. */
   repairAction?: "REPAIR_ACTION_UNSPECIFIED" | "DELETE" | (string & {});
 }
@@ -3484,7 +3484,7 @@ export interface RepairClusterRequest {
   /** Optional. A unique ID used to identify the request. If the server receives two RepairClusterRequests with the same ID, the second request is ignored, and the first google.longrunning.Operation created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
   requestId?: string;
   /** Optional. Node pools and corresponding repair action to be taken. All node pools should be unique in this request. i.e. Multiple entries for the same node pool id are not allowed. */
-  nodePools?: Array<NodePool>;
+  nodePools?: ReadonlyArray<NodePool>;
   /** Optional. Timeout for graceful YARN decommissioning. Graceful decommissioning facilitates the removal of cluster nodes without interrupting jobs in progress. The timeout specifies the amount of time to wait for jobs finish before forcefully removing nodes. The default timeout is 0 for forceful decommissioning, and the maximum timeout period is 1 day. (see JSON Mapping—Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).graceful_decommission_timeout is supported in Dataproc image versions 1.2+. */
   gracefulDecommissionTimeout?: string;
   /** Optional. operation id of the parent operation sending the repair request */
@@ -3507,7 +3507,7 @@ export const RepairClusterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListClustersResponse {
   /** Output only. The clusters in the project. */
-  clusters?: Array<Cluster>;
+  clusters?: ReadonlyArray<Cluster>;
   /** Output only. This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent ListClustersRequest. */
   nextPageToken?: string;
 }
@@ -3545,9 +3545,9 @@ export interface DiagnoseClusterRequest {
   /** Optional. DEPRECATED Specifies the yarn application on which diagnosis is to be performed. */
   yarnApplicationId?: string;
   /** Optional. Specifies a list of jobs on which diagnosis is to be performed. Format: projects/{project}/regions/{region}/jobs/{job} */
-  jobs?: Array<string>;
+  jobs?: ReadonlyArray<string>;
   /** Optional. Specifies a list of yarn applications on which diagnosis is to be performed. */
-  yarnApplicationIds?: Array<string>;
+  yarnApplicationIds?: ReadonlyArray<string>;
 }
 
 export const DiagnoseClusterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -3652,7 +3652,7 @@ export interface Session {
   /** Optional. The email address of the user who owns the session. */
   user?: string;
   /** Output only. Historical state information for the session. */
-  stateHistory?: Array<SessionStateHistory>;
+  stateHistory?: ReadonlyArray<SessionStateHistory>;
   /** Optional. The session template used by the session.Only resource names, including project ID and location, are valid.Example: * https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/sessionTemplates/[template_id] * projects/[project_id]/locations/[dataproc_region]/sessionTemplates/[template_id]The template must be in the same project and Dataproc region as the session. */
   sessionTemplate?: string;
 }
@@ -3678,7 +3678,7 @@ export const Session = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSessionsResponse {
   /** Output only. The sessions from the specified collection. */
-  sessions?: Array<Session>;
+  sessions?: ReadonlyArray<Session>;
   /** A token, which can be sent as page_token, to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -3702,7 +3702,7 @@ export interface WriteSessionSparkApplicationContextRequest {
   /** Required. Parent (Batch) resource reference. */
   parent?: string;
   /** Required. The batch of spark application context objects sent for ingestion. */
-  sparkWrapperObjects?: Array<SparkWrapperObject>;
+  sparkWrapperObjects?: ReadonlyArray<SparkWrapperObject>;
 }
 
 export const WriteSessionSparkApplicationContextRequest =
@@ -3720,7 +3720,7 @@ export const WriteSessionSparkApplicationContextResponse =
 
 export interface SearchSessionSparkApplicationsResponse {
   /** Output only. High level information corresponding to an application. */
-  sparkApplications?: Array<SparkApplication>;
+  sparkApplications?: ReadonlyArray<SparkApplication>;
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSessionSparkApplicationsRequest. */
   nextPageToken?: string;
 }
@@ -3743,7 +3743,7 @@ export const AccessSessionSparkApplicationResponse =
 
 export interface SearchSessionSparkApplicationJobsResponse {
   /** Output only. Data corresponding to a spark job. */
-  sparkApplicationJobs?: Array<JobData>;
+  sparkApplicationJobs?: ReadonlyArray<JobData>;
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSessionSparkApplicationJobsRequest. */
   nextPageToken?: string;
 }
@@ -3766,7 +3766,7 @@ export const AccessSessionSparkApplicationJobResponse =
 
 export interface SearchSessionSparkApplicationStagesResponse {
   /** Output only. Data corresponding to a stage. */
-  sparkApplicationStages?: Array<StageData>;
+  sparkApplicationStages?: ReadonlyArray<StageData>;
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSessionSparkApplicationStages. */
   nextPageToken?: string;
 }
@@ -3779,7 +3779,7 @@ export const SearchSessionSparkApplicationStagesResponse =
 
 export interface SearchSessionSparkApplicationStageAttemptsResponse {
   /** Output only. Data corresponding to a stage attempts */
-  sparkApplicationStageAttempts?: Array<StageData>;
+  sparkApplicationStageAttempts?: ReadonlyArray<StageData>;
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSessionSparkApplicationStageAttemptsRequest. */
   nextPageToken?: string;
 }
@@ -3806,7 +3806,7 @@ export const AccessSessionSparkApplicationStageAttemptResponse =
 
 export interface SearchSessionSparkApplicationStageAttemptTasksResponse {
   /** Output only. Data corresponding to tasks created by spark. */
-  sparkApplicationStageAttemptTasks?: Array<TaskData>;
+  sparkApplicationStageAttemptTasks?: ReadonlyArray<TaskData>;
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSessionSparkApplicationStageAttemptTasksRequest. */
   nextPageToken?: string;
 }
@@ -3821,7 +3821,7 @@ export const SearchSessionSparkApplicationStageAttemptTasksResponse =
 
 export interface SearchSessionSparkApplicationExecutorsResponse {
   /** Details about executors used by the application. */
-  sparkApplicationExecutors?: Array<ExecutorSummary>;
+  sparkApplicationExecutors?: ReadonlyArray<ExecutorSummary>;
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSessionSparkApplicationExecutorsRequest. */
   nextPageToken?: string;
 }
@@ -3834,7 +3834,7 @@ export const SearchSessionSparkApplicationExecutorsResponse =
 
 export interface SearchSessionSparkApplicationExecutorStageSummaryResponse {
   /** Details about executors used by the application stage. */
-  sparkApplicationStageExecutors?: Array<ExecutorStageSummary>;
+  sparkApplicationStageExecutors?: ReadonlyArray<ExecutorStageSummary>;
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSessionSparkApplicationExecutorStageSummaryRequest. */
   nextPageToken?: string;
 }
@@ -3851,7 +3851,7 @@ export const SearchSessionSparkApplicationExecutorStageSummaryResponse =
 
 export interface SearchSessionSparkApplicationSqlQueriesResponse {
   /** Output only. SQL Execution Data */
-  sparkApplicationSqlQueries?: Array<SqlExecutionUiData>;
+  sparkApplicationSqlQueries?: ReadonlyArray<SqlExecutionUiData>;
   /** This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent SearchSessionSparkApplicationSqlQueriesRequest. */
   nextPageToken?: string;
 }
@@ -4088,7 +4088,7 @@ export const AutoscalingPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAutoscalingPoliciesResponse {
   /** Output only. Autoscaling policies list. */
-  policies?: Array<AutoscalingPolicy>;
+  policies?: ReadonlyArray<AutoscalingPolicy>;
   /** Output only. This token is included in the response if there are more results to fetch. */
   nextPageToken?: string;
 }
@@ -4153,13 +4153,13 @@ export interface HadoopJob {
   /** The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in jar_file_uris. */
   mainClass?: string;
   /** Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision might occur that causes an incorrect job submission. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks. */
-  jarFileUris?: Array<string>;
+  jarFileUris?: ReadonlyArray<string>;
   /** Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks. */
-  fileUris?: Array<string>;
+  fileUris?: ReadonlyArray<string>;
   /** Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip. */
-  archiveUris?: Array<string>;
+  archiveUris?: ReadonlyArray<string>;
   /** Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code. */
   properties?: Record<string, string>;
   /** Optional. The runtime log config for job execution. */
@@ -4183,13 +4183,13 @@ export interface SparkJob {
   /** The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in SparkJob.jar_file_uris. */
   mainClass?: string;
   /** Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks. */
-  jarFileUris?: Array<string>;
+  jarFileUris?: ReadonlyArray<string>;
   /** Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks. */
-  fileUris?: Array<string>;
+  fileUris?: ReadonlyArray<string>;
   /** Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip. */
-  archiveUris?: Array<string>;
+  archiveUris?: ReadonlyArray<string>;
   /** Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code. */
   properties?: Record<string, string>;
   /** Optional. The runtime log config for job execution. */
@@ -4211,15 +4211,15 @@ export interface PySparkJob {
   /** Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file. */
   mainPythonFileUri?: string;
   /** Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip. */
-  pythonFileUris?: Array<string>;
+  pythonFileUris?: ReadonlyArray<string>;
   /** Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks. */
-  jarFileUris?: Array<string>;
+  jarFileUris?: ReadonlyArray<string>;
   /** Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks. */
-  fileUris?: Array<string>;
+  fileUris?: ReadonlyArray<string>;
   /** Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.Note: Spark applications must be deployed in cluster mode (https://spark.apache.org/docs/latest/cluster-overview.html) for correct environment propagation. */
-  archiveUris?: Array<string>;
+  archiveUris?: ReadonlyArray<string>;
   /** Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code. */
   properties?: Record<string, string>;
   /** Optional. The runtime log config for job execution. */
@@ -4239,7 +4239,7 @@ export const PySparkJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface QueryList {
   /** Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } } */
-  queries?: Array<string>;
+  queries?: ReadonlyArray<string>;
 }
 
 export const QueryList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4258,7 +4258,7 @@ export interface HiveJob {
   /** Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code. */
   properties?: Record<string, string>;
   /** Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs. */
-  jarFileUris?: Array<string>;
+  jarFileUris?: ReadonlyArray<string>;
 }
 
 export const HiveJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4282,7 +4282,7 @@ export interface PigJob {
   /** Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code. */
   properties?: Record<string, string>;
   /** Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs. */
-  jarFileUris?: Array<string>;
+  jarFileUris?: ReadonlyArray<string>;
   /** Optional. The runtime log config for job execution. */
   loggingConfig?: LoggingConfig;
 }
@@ -4301,11 +4301,11 @@ export interface SparkRJob {
   /** Required. The HCFS URI of the main R file to use as the driver. Must be a .R file. */
   mainRFileUri?: string;
   /** Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks. */
-  fileUris?: Array<string>;
+  fileUris?: ReadonlyArray<string>;
   /** Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip. */
-  archiveUris?: Array<string>;
+  archiveUris?: ReadonlyArray<string>;
   /** Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code. */
   properties?: Record<string, string>;
   /** Optional. The runtime log config for job execution. */
@@ -4331,7 +4331,7 @@ export interface SparkSqlJob {
   /** Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API might be overwritten. */
   properties?: Record<string, string>;
   /** Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH. */
-  jarFileUris?: Array<string>;
+  jarFileUris?: ReadonlyArray<string>;
   /** Optional. The runtime log config for job execution. */
   loggingConfig?: LoggingConfig;
 }
@@ -4355,7 +4355,7 @@ export interface PrestoJob {
   /** Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats */
   outputFormat?: string;
   /** Optional. Presto client tags to attach to this query */
-  clientTags?: Array<string>;
+  clientTags?: ReadonlyArray<string>;
   /** Optional. A mapping of property names to values. Used to set Presto session properties (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI */
   properties?: Record<string, string>;
   /** Optional. The runtime log config for job execution. */
@@ -4382,7 +4382,7 @@ export interface TrinoJob {
   /** Optional. The format in which query output will be displayed. See the Trino documentation for supported output formats */
   outputFormat?: string;
   /** Optional. Trino client tags to attach to this query */
-  clientTags?: Array<string>;
+  clientTags?: ReadonlyArray<string>;
   /** Optional. A mapping of property names to values. Used to set Trino session properties (https://trino.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Trino CLI */
   properties?: Record<string, string>;
   /** Optional. The runtime log config for job execution. */
@@ -4405,9 +4405,9 @@ export interface FlinkJob {
   /** The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jarFileUris. */
   mainClass?: string;
   /** Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision might occur that causes an incorrect job submission. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Flink driver and tasks. */
-  jarFileUris?: Array<string>;
+  jarFileUris?: ReadonlyArray<string>;
   /** Optional. HCFS URI of the savepoint, which contains the last saved progress for starting the current job. */
   savepointUri?: string;
   /** Optional. A mapping of property names to values, used to configure Flink. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/flink/conf/flink-defaults.conf and classes in user code. */
@@ -4548,9 +4548,9 @@ export interface Job {
   /** Output only. The job status. Additional application-specific status information might be contained in the type_job and yarn_applications fields. */
   status?: JobStatus;
   /** Output only. The previous job status. */
-  statusHistory?: Array<JobStatus>;
+  statusHistory?: ReadonlyArray<JobStatus>;
   /** Output only. The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It might be changed before final release. */
-  yarnApplications?: Array<YarnApplication>;
+  yarnApplications?: ReadonlyArray<YarnApplication>;
   /** Output only. A URI pointing to the location of the stdout of the job's driver program. */
   driverOutputResourceUri?: string;
   /** Output only. If present, the location of miscellaneous control files which can be used as part of job setup and handling. If not present, control files might be placed in the same location as driver_output_uri. */
@@ -4606,11 +4606,11 @@ export const SubmitJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListJobsResponse {
   /** Output only. Jobs list. */
-  jobs?: Array<Job>;
+  jobs?: ReadonlyArray<Job>;
   /** Optional. This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent ListJobsRequest. */
   nextPageToken?: string;
   /** Output only. List of jobs with kms_key-encrypted parameters that could not be decrypted. A response to a jobs.get request may indicate the reason for the decryption failure for a specific job. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4666,7 +4666,7 @@ export const SessionTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSessionTemplatesResponse {
   /** Output only. Session template list */
-  sessionTemplates?: Array<SessionTemplate>;
+  sessionTemplates?: ReadonlyArray<SessionTemplate>;
   /** A token, which can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -4745,7 +4745,7 @@ export interface OrderedJob {
   /** Optional. Job scheduling configuration. */
   scheduling?: JobScheduling;
   /** Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow. */
-  prerequisiteStepIds?: Array<string>;
+  prerequisiteStepIds?: ReadonlyArray<string>;
 }
 
 export const OrderedJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4767,7 +4767,7 @@ export const OrderedJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RegexValidation {
   /** Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient). */
-  regexes?: Array<string>;
+  regexes?: ReadonlyArray<string>;
 }
 
 export const RegexValidation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4776,7 +4776,7 @@ export const RegexValidation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ValueValidation {
   /** Required. List of allowed values for the parameter. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const ValueValidation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4799,7 +4799,7 @@ export interface TemplateParameter {
   /** Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters. */
   name?: string;
   /** Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args */
-  fields?: Array<string>;
+  fields?: ReadonlyArray<string>;
   /** Optional. Brief description of the parameter. Must not exceed 1024 characters. */
   description?: string;
   /** Optional. Validation rules to be applied to this parameter's value. */
@@ -4840,9 +4840,9 @@ export interface WorkflowTemplate {
   /** Required. WorkflowTemplate scheduling information. */
   placement?: WorkflowTemplatePlacement;
   /** Required. The Directed Acyclic Graph of Jobs to submit. */
-  jobs?: Array<OrderedJob>;
+  jobs?: ReadonlyArray<OrderedJob>;
   /** Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated. */
-  parameters?: Array<TemplateParameter>;
+  parameters?: ReadonlyArray<TemplateParameter>;
   /** Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted. */
   dagTimeout?: string;
   /** Optional. Encryption settings for encrypting workflow template job arguments. */
@@ -4883,11 +4883,11 @@ export const InstantiateWorkflowTemplateRequest =
 
 export interface ListWorkflowTemplatesResponse {
   /** Output only. WorkflowTemplates list. */
-  templates?: Array<WorkflowTemplate>;
+  templates?: ReadonlyArray<WorkflowTemplate>;
   /** Output only. This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent ListWorkflowTemplatesRequest. */
   nextPageToken?: string;
   /** Output only. List of workflow templates that could not be included in the response. Attempting to get one of these resources may indicate why it was not included in the list response. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListWorkflowTemplatesResponse =
@@ -4919,7 +4919,7 @@ export const ResizeNodeGroupRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface RepairNodeGroupRequest {
   /** Required. Name of instances to be repaired. These instances must belong to specified node pool. */
-  instanceNames?: Array<string>;
+  instanceNames?: ReadonlyArray<string>;
   /** Required. Repair action to take on specified resources of the node pool. */
   repairAction?: "REPAIR_ACTION_UNSPECIFIED" | "REPLACE" | (string & {});
   /** Optional. A unique ID used to identify the request. If the server receives two RepairNodeGroupRequest with the same ID, the second request is ignored and the first google.longrunning.Operation created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
@@ -4956,7 +4956,7 @@ export interface Binding {
   /** Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.For an overview of the IAM roles and permissions, see the IAM documentation (https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see here (https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workforce identity pool. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}: All workforce identities in a group. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All workforce identities with a specific attribute value. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*: All identities in a workforce identity pool. principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workload identity pool. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}: A workload identity pool group. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All identities in a workload identity pool with a certain attribute. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*: All identities in a workload identity pool. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: Deleted single identity in a workforce identity pool. For example, deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
@@ -4971,7 +4971,7 @@ export interface Policy {
   /** Specifies the format of the policy.Valid values are 0, 1, and 3. Requests that specify an invalid value are rejected.Any operation that affects conditional role bindings must specify version 3. This requirement applies to the following operations: Getting a policy that includes a conditional role binding Adding a conditional role binding to a policy Changing a conditional role binding in a policy Removing any role binding, with or without a condition, from a policy that includes conditionsImportant: If you use IAM Conditions, you must include the etag field whenever you call setIamPolicy. If you omit this field, then IAM allows you to overwrite a version 3 policy with a version 1 policy, and all of the conditions in the version 3 policy are lost.If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of members, or principals, with a role. Optionally, may specify a condition that determines how and when the bindings are applied. Each of the bindings must contain at least one principal.The bindings in a Policy can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the bindings grant 50 different roles to user:alice@example.com, and not to any other principal, then you can add another 1,450 principals to the bindings in the Policy. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the etag in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An etag is returned in the response to getIamPolicy, and systems are expected to put that etag in the request to setIamPolicy to ensure that their change will be applied to the same version of the policy.Important: If you use IAM Conditions, you must include the etag field whenever you call setIamPolicy. If you omit this field, then IAM allows you to overwrite a version 3 policy with a version 1 policy, and all of the conditions in the version 3 policy are lost. */
   etag?: string;
 }
@@ -5011,7 +5011,7 @@ export const GetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the resource. Permissions with wildcards (such as * or storage.*) are not allowed. For more information see IAM Overview (https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -5021,7 +5021,7 @@ export const TestIamPermissionsRequest =
 
 export interface TestIamPermissionsResponse {
   /** A subset of TestPermissionsRequest.permissions that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -5045,7 +5045,7 @@ export interface AnalyzeOperationMetadata {
   /** Output only. Labels associated with the operation. */
   labels?: Record<string, string>;
   /** Output only. Warnings encountered during operation execution. */
-  warnings?: Array<string>;
+  warnings?: ReadonlyArray<string>;
 }
 
 export const AnalyzeOperationMetadata =
@@ -5076,7 +5076,7 @@ export interface BatchOperationMetadata {
   /** Labels associated with the operation. */
   labels?: Record<string, string>;
   /** Warnings encountered during operation execution. */
-  warnings?: Array<string>;
+  warnings?: ReadonlyArray<string>;
 }
 
 export const BatchOperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -5120,7 +5120,7 @@ export interface ClusterOperationMetadata {
   /** Output only. Current operation status. */
   status?: ClusterOperationStatus;
   /** Output only. The previous operation status. */
-  statusHistory?: Array<ClusterOperationStatus>;
+  statusHistory?: ReadonlyArray<ClusterOperationStatus>;
   /** Output only. The operation type. */
   operationType?: string;
   /** Output only. Short description of operation. */
@@ -5128,9 +5128,9 @@ export interface ClusterOperationMetadata {
   /** Output only. Labels associated with the operation */
   labels?: Record<string, string>;
   /** Output only. Errors encountered during operation execution. */
-  warnings?: Array<string>;
+  warnings?: ReadonlyArray<string>;
   /** Output only. Child operation ids */
-  childOperationIds?: Array<string>;
+  childOperationIds?: ReadonlyArray<string>;
 }
 
 export const ClusterOperationMetadata =
@@ -5196,7 +5196,7 @@ export interface SessionOperationMetadata {
   /** Labels associated with the operation. */
   labels?: Record<string, string>;
   /** Warnings encountered during operation execution. */
-  warnings?: Array<string>;
+  warnings?: ReadonlyArray<string>;
 }
 
 export const SessionOperationMetadata =
@@ -5219,7 +5219,7 @@ export interface NodeGroupOperationMetadata {
   /** Output only. Current operation status. */
   status?: ClusterOperationStatus;
   /** Output only. The previous operation status. */
-  statusHistory?: Array<ClusterOperationStatus>;
+  statusHistory?: ReadonlyArray<ClusterOperationStatus>;
   /** The operation type. */
   operationType?:
     | "NODE_GROUP_OPERATION_TYPE_UNSPECIFIED"
@@ -5238,7 +5238,7 @@ export interface NodeGroupOperationMetadata {
   /** Output only. Labels associated with the operation. */
   labels?: Record<string, string>;
   /** Output only. Errors encountered during operation execution. */
-  warnings?: Array<string>;
+  warnings?: ReadonlyArray<string>;
 }
 
 export const NodeGroupOperationMetadata =
@@ -5272,7 +5272,7 @@ export interface WorkflowNode {
   /** Output only. The name of the node. */
   stepId?: string;
   /** Output only. Node's prerequisite nodes. */
-  prerequisiteStepIds?: Array<string>;
+  prerequisiteStepIds?: ReadonlyArray<string>;
   /** Output only. The job id; populated after the node enters RUNNING state. */
   jobId?: string;
   /** Output only. The node state. */
@@ -5298,7 +5298,7 @@ export const WorkflowNode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WorkflowGraph {
   /** Output only. The workflow nodes. */
-  nodes?: Array<WorkflowNode>;
+  nodes?: ReadonlyArray<WorkflowNode>;
 }
 
 export const WorkflowGraph = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5380,10 +5380,7 @@ export const ListProjectsRegionsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsRegionsOperationsRequest>;
 
@@ -5418,10 +5415,7 @@ export const GetProjectsRegionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsRegionsOperationsRequest>;
 
@@ -5452,10 +5446,7 @@ export const DeleteProjectsRegionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsRegionsOperationsRequest>;
 
@@ -5486,11 +5477,7 @@ export const CancelProjectsRegionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsRegionsOperationsRequest>;
 
@@ -5526,7 +5513,7 @@ export const SetIamPolicyProjectsRegionsOperationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/operations/{operationsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -5564,7 +5551,7 @@ export const GetIamPolicyProjectsRegionsOperationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/operations/{operationsId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -5602,7 +5589,7 @@ export const TestIamPermissionsProjectsRegionsOperationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/operations/{operationsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -6074,7 +6061,7 @@ export const InjectCredentialsProjectsRegionsClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/clusters/{clustersId}:injectCredentials",
+      path: "v1/{project}/{region}/{cluster}:injectCredentials",
       hasBody: true,
     }),
     svc,
@@ -6112,7 +6099,7 @@ export const SetIamPolicyProjectsRegionsClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/clusters/{clustersId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -6150,7 +6137,7 @@ export const GetIamPolicyProjectsRegionsClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/clusters/{clustersId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -6188,7 +6175,7 @@ export const TestIamPermissionsProjectsRegionsClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/clusters/{clustersId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -6238,11 +6225,7 @@ export const CreateProjectsRegionsClustersNodeGroupsRequest =
     ),
     body: Schema.optional(NodeGroup).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/clusters/{clustersId}/nodeGroups",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/nodeGroups", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsRegionsClustersNodeGroupsRequest>;
 
@@ -6276,11 +6259,7 @@ export const ResizeProjectsRegionsClustersNodeGroupsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ResizeNodeGroupRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/clusters/{clustersId}/nodeGroups/{nodeGroupsId}:resize",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:resize", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResizeProjectsRegionsClustersNodeGroupsRequest>;
 
@@ -6314,11 +6293,7 @@ export const RepairProjectsRegionsClustersNodeGroupsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RepairNodeGroupRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/clusters/{clustersId}/nodeGroups/{nodeGroupsId}:repair",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:repair", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RepairProjectsRegionsClustersNodeGroupsRequest>;
 
@@ -6349,10 +6324,7 @@ export const GetProjectsRegionsClustersNodeGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/clusters/{clustersId}/nodeGroups/{nodeGroupsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsRegionsClustersNodeGroupsRequest>;
 
@@ -6388,7 +6360,7 @@ export const CreateProjectsRegionsAutoscalingPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/autoscalingPolicies",
+      path: "v1/{parent}/autoscalingPolicies",
       hasBody: true,
     }),
     svc,
@@ -6425,11 +6397,7 @@ export const UpdateProjectsRegionsAutoscalingPoliciesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AutoscalingPolicy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/autoscalingPolicies/{autoscalingPoliciesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateProjectsRegionsAutoscalingPoliciesRequest>;
 
@@ -6461,10 +6429,7 @@ export const GetProjectsRegionsAutoscalingPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/autoscalingPolicies/{autoscalingPoliciesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsRegionsAutoscalingPoliciesRequest>;
 
@@ -6501,10 +6466,7 @@ export const ListProjectsRegionsAutoscalingPoliciesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/autoscalingPolicies",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/autoscalingPolicies" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsRegionsAutoscalingPoliciesRequest>;
 
@@ -6540,10 +6502,7 @@ export const DeleteProjectsRegionsAutoscalingPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/autoscalingPolicies/{autoscalingPoliciesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsRegionsAutoscalingPoliciesRequest>;
 
@@ -6579,7 +6538,7 @@ export const SetIamPolicyProjectsRegionsAutoscalingPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/autoscalingPolicies/{autoscalingPoliciesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -6617,7 +6576,7 @@ export const GetIamPolicyProjectsRegionsAutoscalingPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/autoscalingPolicies/{autoscalingPoliciesId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -6655,7 +6614,7 @@ export const TestIamPermissionsProjectsRegionsAutoscalingPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/autoscalingPolicies/{autoscalingPoliciesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -7006,7 +6965,7 @@ export const SetIamPolicyProjectsRegionsJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/jobs/{jobsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -7044,7 +7003,7 @@ export const GetIamPolicyProjectsRegionsJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/jobs/{jobsId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -7082,7 +7041,7 @@ export const TestIamPermissionsProjectsRegionsJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/jobs/{jobsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -7121,7 +7080,7 @@ export const CreateProjectsRegionsWorkflowTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/workflowTemplates",
+      path: "v1/{parent}/workflowTemplates",
       hasBody: true,
     }),
     svc,
@@ -7157,10 +7116,7 @@ export const GetProjectsRegionsWorkflowTemplatesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     version: Schema.optional(Schema.Number).pipe(T.HttpQuery("version")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/workflowTemplates/{workflowTemplatesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsRegionsWorkflowTemplatesRequest>;
 
@@ -7196,11 +7152,7 @@ export const InstantiateProjectsRegionsWorkflowTemplatesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/workflowTemplates/{workflowTemplatesId}:instantiate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:instantiate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<InstantiateProjectsRegionsWorkflowTemplatesRequest>;
 
@@ -7239,7 +7191,7 @@ export const InstantiateInlineProjectsRegionsWorkflowTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/workflowTemplates:instantiateInline",
+      path: "v1/{parent}/workflowTemplates:instantiateInline",
       hasBody: true,
     }),
     svc,
@@ -7277,11 +7229,7 @@ export const UpdateProjectsRegionsWorkflowTemplatesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(WorkflowTemplate).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/workflowTemplates/{workflowTemplatesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateProjectsRegionsWorkflowTemplatesRequest>;
 
@@ -7318,10 +7266,7 @@ export const ListProjectsRegionsWorkflowTemplatesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/workflowTemplates",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/workflowTemplates" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsRegionsWorkflowTemplatesRequest>;
 
@@ -7360,10 +7305,7 @@ export const DeleteProjectsRegionsWorkflowTemplatesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     version: Schema.optional(Schema.Number).pipe(T.HttpQuery("version")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/workflowTemplates/{workflowTemplatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsRegionsWorkflowTemplatesRequest>;
 
@@ -7399,7 +7341,7 @@ export const SetIamPolicyProjectsRegionsWorkflowTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/workflowTemplates/{workflowTemplatesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -7437,7 +7379,7 @@ export const GetIamPolicyProjectsRegionsWorkflowTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/workflowTemplates/{workflowTemplatesId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -7475,7 +7417,7 @@ export const TestIamPermissionsProjectsRegionsWorkflowTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/regions/{regionsId}/workflowTemplates/{workflowTemplatesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -7524,10 +7466,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -7562,10 +7501,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -7596,10 +7532,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -7630,11 +7563,7 @@ export const CancelProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -7674,11 +7603,7 @@ export const CreateProjectsLocationsBatchesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Batch).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/batches", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsBatchesRequest>;
 
@@ -7709,10 +7634,7 @@ export const GetProjectsLocationsBatchesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBatchesRequest>;
 
@@ -7755,10 +7677,7 @@ export const ListProjectsLocationsBatchesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/batches" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBatchesRequest>;
 
@@ -7793,10 +7712,7 @@ export const DeleteProjectsLocationsBatchesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsBatchesRequest>;
 
@@ -7830,11 +7746,7 @@ export const AnalyzeProjectsLocationsBatchesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AnalyzeBatchRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}:analyze",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:analyze", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AnalyzeProjectsLocationsBatchesRequest>;
 
@@ -7870,11 +7782,7 @@ export const WriteProjectsLocationsBatchesSparkApplicationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}/sparkApplications/{sparkApplicationsId}:write",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:write", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WriteProjectsLocationsBatchesSparkApplicationsRequest>;
 
@@ -7933,10 +7841,7 @@ export const SearchProjectsLocationsBatchesSparkApplicationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}/sparkApplications:search",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sparkApplications:search" }),
     svc,
   ) as unknown as Schema.Schema<SearchProjectsLocationsBatchesSparkApplicationsRequest>;
 
@@ -7976,10 +7881,7 @@ export const AccessProjectsLocationsBatchesSparkApplicationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}/sparkApplications/{sparkApplicationsId}:access",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:access" }),
     svc,
   ) as unknown as Schema.Schema<AccessProjectsLocationsBatchesSparkApplicationsRequest>;
 
@@ -8030,10 +7932,7 @@ export const SearchJobsProjectsLocationsBatchesSparkApplicationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}/sparkApplications/{sparkApplicationsId}:searchJobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:searchJobs" }),
     svc,
   ) as unknown as Schema.Schema<SearchJobsProjectsLocationsBatchesSparkApplicationsRequest>;
 
@@ -8076,10 +7975,7 @@ export const AccessJobProjectsLocationsBatchesSparkApplicationsRequest =
     parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
     jobId: Schema.optional(Schema.String).pipe(T.HttpQuery("jobId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}/sparkApplications/{sparkApplicationsId}:accessJob",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:accessJob" }),
     svc,
   ) as unknown as Schema.Schema<AccessJobProjectsLocationsBatchesSparkApplicationsRequest>;
 
@@ -8138,10 +8034,7 @@ export const SearchStagesProjectsLocationsBatchesSparkApplicationsRequest =
       T.HttpQuery("summaryMetricsMask"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}/sparkApplications/{sparkApplicationsId}:searchStages",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:searchStages" }),
     svc,
   ) as unknown as Schema.Schema<SearchStagesProjectsLocationsBatchesSparkApplicationsRequest>;
 
@@ -8195,10 +8088,7 @@ export const SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsRequest
       T.HttpQuery("summaryMetricsMask"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}/sparkApplications/{sparkApplicationsId}:searchStageAttempts",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:searchStageAttempts" }),
     svc,
   ) as unknown as Schema.Schema<SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsRequest>;
 
@@ -8251,10 +8141,7 @@ export const AccessStageAttemptProjectsLocationsBatchesSparkApplicationsRequest 
       T.HttpQuery("summaryMetricsMask"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}/sparkApplications/{sparkApplicationsId}:accessStageAttempt",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:accessStageAttempt" }),
     svc,
   ) as unknown as Schema.Schema<AccessStageAttemptProjectsLocationsBatchesSparkApplicationsRequest>;
 
@@ -8319,10 +8206,7 @@ export const SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsReq
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}/sparkApplications/{sparkApplicationsId}:searchStageAttemptTasks",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:searchStageAttemptTasks" }),
     svc,
   ) as unknown as Schema.Schema<SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest>;
 
@@ -8379,10 +8263,7 @@ export const SearchExecutorsProjectsLocationsBatchesSparkApplicationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}/sparkApplications/{sparkApplicationsId}:searchExecutors",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:searchExecutors" }),
     svc,
   ) as unknown as Schema.Schema<SearchExecutorsProjectsLocationsBatchesSparkApplicationsRequest>;
 
@@ -8436,10 +8317,7 @@ export const SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplications
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}/sparkApplications/{sparkApplicationsId}:searchExecutorStageSummary",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:searchExecutorStageSummary" }),
     svc,
   ) as unknown as Schema.Schema<SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsRequest>;
 
@@ -8495,10 +8373,7 @@ export const SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}/sparkApplications/{sparkApplicationsId}:searchSqlQueries",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:searchSqlQueries" }),
     svc,
   ) as unknown as Schema.Schema<SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsRequest>;
 
@@ -8551,10 +8426,7 @@ export const AccessSqlQueryProjectsLocationsBatchesSparkApplicationsRequest =
       T.HttpQuery("planDescription"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}/sparkApplications/{sparkApplicationsId}:accessSqlQuery",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:accessSqlQuery" }),
     svc,
   ) as unknown as Schema.Schema<AccessSqlQueryProjectsLocationsBatchesSparkApplicationsRequest>;
 
@@ -8595,10 +8467,7 @@ export const AccessSqlPlanProjectsLocationsBatchesSparkApplicationsRequest =
       T.HttpQuery("executionId"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}/sparkApplications/{sparkApplicationsId}:accessSqlPlan",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:accessSqlPlan" }),
     svc,
   ) as unknown as Schema.Schema<AccessSqlPlanProjectsLocationsBatchesSparkApplicationsRequest>;
 
@@ -8637,10 +8506,7 @@ export const AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsRequest
     parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
     stageId: Schema.optional(Schema.String).pipe(T.HttpQuery("stageId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}/sparkApplications/{sparkApplicationsId}:accessStageRddGraph",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:accessStageRddGraph" }),
     svc,
   ) as unknown as Schema.Schema<AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsRequest>;
 
@@ -8676,10 +8542,7 @@ export const AccessEnvironmentInfoProjectsLocationsBatchesSparkApplicationsReque
     name: Schema.String.pipe(T.HttpPath("name")),
     parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}/sparkApplications/{sparkApplicationsId}:accessEnvironmentInfo",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:accessEnvironmentInfo" }),
     svc,
   ) as unknown as Schema.Schema<AccessEnvironmentInfoProjectsLocationsBatchesSparkApplicationsRequest>;
 
@@ -8716,10 +8579,7 @@ export const SummarizeJobsProjectsLocationsBatchesSparkApplicationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}/sparkApplications/{sparkApplicationsId}:summarizeJobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:summarizeJobs" }),
     svc,
   ) as unknown as Schema.Schema<SummarizeJobsProjectsLocationsBatchesSparkApplicationsRequest>;
 
@@ -8755,10 +8615,7 @@ export const SummarizeStagesProjectsLocationsBatchesSparkApplicationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}/sparkApplications/{sparkApplicationsId}:summarizeStages",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:summarizeStages" }),
     svc,
   ) as unknown as Schema.Schema<SummarizeStagesProjectsLocationsBatchesSparkApplicationsRequest>;
 
@@ -8802,10 +8659,7 @@ export const SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplications
       T.HttpQuery("stageAttemptId"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}/sparkApplications/{sparkApplicationsId}:summarizeStageAttemptTasks",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:summarizeStageAttemptTasks" }),
     svc,
   ) as unknown as Schema.Schema<SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest>;
 
@@ -8843,10 +8697,7 @@ export const SummarizeExecutorsProjectsLocationsBatchesSparkApplicationsRequest 
     name: Schema.String.pipe(T.HttpPath("name")),
     parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batches/{batchesId}/sparkApplications/{sparkApplicationsId}:summarizeExecutors",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:summarizeExecutors" }),
     svc,
   ) as unknown as Schema.Schema<SummarizeExecutorsProjectsLocationsBatchesSparkApplicationsRequest>;
 
@@ -8888,11 +8739,7 @@ export const CreateProjectsLocationsSessionsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Session).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/sessions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsSessionsRequest>;
 
@@ -8923,10 +8770,7 @@ export const GetProjectsLocationsSessionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSessionsRequest>;
 
@@ -8966,10 +8810,7 @@ export const ListProjectsLocationsSessionsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sessions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSessionsRequest>;
 
@@ -9007,11 +8848,7 @@ export const TerminateProjectsLocationsSessionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(TerminateSessionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}:terminate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:terminate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<TerminateProjectsLocationsSessionsRequest>;
 
@@ -9045,10 +8882,7 @@ export const DeleteProjectsLocationsSessionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSessionsRequest>;
 
@@ -9084,11 +8918,7 @@ export const WriteProjectsLocationsSessionsSparkApplicationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}/sparkApplications/{sparkApplicationsId}:write",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:write", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WriteProjectsLocationsSessionsSparkApplicationsRequest>;
 
@@ -9148,10 +8978,7 @@ export const SearchProjectsLocationsSessionsSparkApplicationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}/sparkApplications:search",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sparkApplications:search" }),
     svc,
   ) as unknown as Schema.Schema<SearchProjectsLocationsSessionsSparkApplicationsRequest>;
 
@@ -9191,10 +9018,7 @@ export const AccessProjectsLocationsSessionsSparkApplicationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}/sparkApplications/{sparkApplicationsId}:access",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:access" }),
     svc,
   ) as unknown as Schema.Schema<AccessProjectsLocationsSessionsSparkApplicationsRequest>;
 
@@ -9250,10 +9074,7 @@ export const SearchJobsProjectsLocationsSessionsSparkApplicationsRequest =
       T.HttpQuery("jobIds"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}/sparkApplications/{sparkApplicationsId}:searchJobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:searchJobs" }),
     svc,
   ) as unknown as Schema.Schema<SearchJobsProjectsLocationsSessionsSparkApplicationsRequest>;
 
@@ -9296,10 +9117,7 @@ export const AccessJobProjectsLocationsSessionsSparkApplicationsRequest =
     parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
     jobId: Schema.optional(Schema.String).pipe(T.HttpQuery("jobId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}/sparkApplications/{sparkApplicationsId}:accessJob",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:accessJob" }),
     svc,
   ) as unknown as Schema.Schema<AccessJobProjectsLocationsSessionsSparkApplicationsRequest>;
 
@@ -9363,10 +9181,7 @@ export const SearchStagesProjectsLocationsSessionsSparkApplicationsRequest =
       T.HttpQuery("stageIds"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}/sparkApplications/{sparkApplicationsId}:searchStages",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:searchStages" }),
     svc,
   ) as unknown as Schema.Schema<SearchStagesProjectsLocationsSessionsSparkApplicationsRequest>;
 
@@ -9420,10 +9235,7 @@ export const SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsReques
       T.HttpQuery("summaryMetricsMask"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}/sparkApplications/{sparkApplicationsId}:searchStageAttempts",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:searchStageAttempts" }),
     svc,
   ) as unknown as Schema.Schema<SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsRequest>;
 
@@ -9476,10 +9288,7 @@ export const AccessStageAttemptProjectsLocationsSessionsSparkApplicationsRequest
       T.HttpQuery("summaryMetricsMask"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}/sparkApplications/{sparkApplicationsId}:accessStageAttempt",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:accessStageAttempt" }),
     svc,
   ) as unknown as Schema.Schema<AccessStageAttemptProjectsLocationsSessionsSparkApplicationsRequest>;
 
@@ -9544,10 +9353,7 @@ export const SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRe
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}/sparkApplications/{sparkApplicationsId}:searchStageAttemptTasks",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:searchStageAttemptTasks" }),
     svc,
   ) as unknown as Schema.Schema<SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest>;
 
@@ -9604,10 +9410,7 @@ export const SearchExecutorsProjectsLocationsSessionsSparkApplicationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}/sparkApplications/{sparkApplicationsId}:searchExecutors",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:searchExecutors" }),
     svc,
   ) as unknown as Schema.Schema<SearchExecutorsProjectsLocationsSessionsSparkApplicationsRequest>;
 
@@ -9661,10 +9464,7 @@ export const SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplication
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}/sparkApplications/{sparkApplicationsId}:searchExecutorStageSummary",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:searchExecutorStageSummary" }),
     svc,
   ) as unknown as Schema.Schema<SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsRequest>;
 
@@ -9725,10 +9525,7 @@ export const SearchSqlQueriesProjectsLocationsSessionsSparkApplicationsRequest =
       T.HttpQuery("operationIds"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}/sparkApplications/{sparkApplicationsId}:searchSqlQueries",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:searchSqlQueries" }),
     svc,
   ) as unknown as Schema.Schema<SearchSqlQueriesProjectsLocationsSessionsSparkApplicationsRequest>;
 
@@ -9781,10 +9578,7 @@ export const AccessSqlQueryProjectsLocationsSessionsSparkApplicationsRequest =
       T.HttpQuery("planDescription"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}/sparkApplications/{sparkApplicationsId}:accessSqlQuery",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:accessSqlQuery" }),
     svc,
   ) as unknown as Schema.Schema<AccessSqlQueryProjectsLocationsSessionsSparkApplicationsRequest>;
 
@@ -9825,10 +9619,7 @@ export const AccessSqlPlanProjectsLocationsSessionsSparkApplicationsRequest =
       T.HttpQuery("executionId"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}/sparkApplications/{sparkApplicationsId}:accessSqlPlan",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:accessSqlPlan" }),
     svc,
   ) as unknown as Schema.Schema<AccessSqlPlanProjectsLocationsSessionsSparkApplicationsRequest>;
 
@@ -9867,10 +9658,7 @@ export const AccessStageRddGraphProjectsLocationsSessionsSparkApplicationsReques
     parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
     stageId: Schema.optional(Schema.String).pipe(T.HttpQuery("stageId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}/sparkApplications/{sparkApplicationsId}:accessStageRddGraph",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:accessStageRddGraph" }),
     svc,
   ) as unknown as Schema.Schema<AccessStageRddGraphProjectsLocationsSessionsSparkApplicationsRequest>;
 
@@ -9906,10 +9694,7 @@ export const AccessEnvironmentInfoProjectsLocationsSessionsSparkApplicationsRequ
     name: Schema.String.pipe(T.HttpPath("name")),
     parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}/sparkApplications/{sparkApplicationsId}:accessEnvironmentInfo",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:accessEnvironmentInfo" }),
     svc,
   ) as unknown as Schema.Schema<AccessEnvironmentInfoProjectsLocationsSessionsSparkApplicationsRequest>;
 
@@ -9951,10 +9736,7 @@ export const SummarizeJobsProjectsLocationsSessionsSparkApplicationsRequest =
       T.HttpQuery("jobIds"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}/sparkApplications/{sparkApplicationsId}:summarizeJobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:summarizeJobs" }),
     svc,
   ) as unknown as Schema.Schema<SummarizeJobsProjectsLocationsSessionsSparkApplicationsRequest>;
 
@@ -9995,10 +9777,7 @@ export const SummarizeStagesProjectsLocationsSessionsSparkApplicationsRequest =
       T.HttpQuery("stageIds"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}/sparkApplications/{sparkApplicationsId}:summarizeStages",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:summarizeStages" }),
     svc,
   ) as unknown as Schema.Schema<SummarizeStagesProjectsLocationsSessionsSparkApplicationsRequest>;
 
@@ -10042,10 +9821,7 @@ export const SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplication
       T.HttpQuery("stageAttemptId"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}/sparkApplications/{sparkApplicationsId}:summarizeStageAttemptTasks",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:summarizeStageAttemptTasks" }),
     svc,
   ) as unknown as Schema.Schema<SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest>;
 
@@ -10083,10 +9859,7 @@ export const SummarizeExecutorsProjectsLocationsSessionsSparkApplicationsRequest
     name: Schema.String.pipe(T.HttpPath("name")),
     parent: Schema.optional(Schema.String).pipe(T.HttpQuery("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessions/{sessionsId}/sparkApplications/{sparkApplicationsId}:summarizeExecutors",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:summarizeExecutors" }),
     svc,
   ) as unknown as Schema.Schema<SummarizeExecutorsProjectsLocationsSessionsSparkApplicationsRequest>;
 
@@ -10124,7 +9897,7 @@ export const CreateProjectsLocationsAutoscalingPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autoscalingPolicies",
+      path: "v1/{parent}/autoscalingPolicies",
       hasBody: true,
     }),
     svc,
@@ -10161,11 +9934,7 @@ export const UpdateProjectsLocationsAutoscalingPoliciesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AutoscalingPolicy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autoscalingPolicies/{autoscalingPoliciesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateProjectsLocationsAutoscalingPoliciesRequest>;
 
@@ -10197,10 +9966,7 @@ export const GetProjectsLocationsAutoscalingPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autoscalingPolicies/{autoscalingPoliciesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAutoscalingPoliciesRequest>;
 
@@ -10237,10 +10003,7 @@ export const ListProjectsLocationsAutoscalingPoliciesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autoscalingPolicies",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/autoscalingPolicies" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAutoscalingPoliciesRequest>;
 
@@ -10276,10 +10039,7 @@ export const DeleteProjectsLocationsAutoscalingPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autoscalingPolicies/{autoscalingPoliciesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAutoscalingPoliciesRequest>;
 
@@ -10315,7 +10075,7 @@ export const SetIamPolicyProjectsLocationsAutoscalingPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autoscalingPolicies/{autoscalingPoliciesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -10354,7 +10114,7 @@ export const GetIamPolicyProjectsLocationsAutoscalingPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autoscalingPolicies/{autoscalingPoliciesId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -10393,7 +10153,7 @@ export const TestIamPermissionsProjectsLocationsAutoscalingPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autoscalingPolicies/{autoscalingPoliciesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -10433,7 +10193,7 @@ export const CreateProjectsLocationsSessionTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessionTemplates",
+      path: "v1/{parent}/sessionTemplates",
       hasBody: true,
     }),
     svc,
@@ -10469,11 +10229,7 @@ export const PatchProjectsLocationsSessionTemplatesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SessionTemplate).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessionTemplates/{sessionTemplatesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsSessionTemplatesRequest>;
 
@@ -10504,10 +10260,7 @@ export const GetProjectsLocationsSessionTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessionTemplates/{sessionTemplatesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSessionTemplatesRequest>;
 
@@ -10547,10 +10300,7 @@ export const ListProjectsLocationsSessionTemplatesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessionTemplates",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sessionTemplates" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSessionTemplatesRequest>;
 
@@ -10586,10 +10336,7 @@ export const DeleteProjectsLocationsSessionTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sessionTemplates/{sessionTemplatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSessionTemplatesRequest>;
 
@@ -10625,7 +10372,7 @@ export const CreateProjectsLocationsWorkflowTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workflowTemplates",
+      path: "v1/{parent}/workflowTemplates",
       hasBody: true,
     }),
     svc,
@@ -10661,10 +10408,7 @@ export const GetProjectsLocationsWorkflowTemplatesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     version: Schema.optional(Schema.Number).pipe(T.HttpQuery("version")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workflowTemplates/{workflowTemplatesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsWorkflowTemplatesRequest>;
 
@@ -10700,11 +10444,7 @@ export const InstantiateProjectsLocationsWorkflowTemplatesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workflowTemplates/{workflowTemplatesId}:instantiate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:instantiate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<InstantiateProjectsLocationsWorkflowTemplatesRequest>;
 
@@ -10743,7 +10483,7 @@ export const InstantiateInlineProjectsLocationsWorkflowTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workflowTemplates:instantiateInline",
+      path: "v1/{parent}/workflowTemplates:instantiateInline",
       hasBody: true,
     }),
     svc,
@@ -10781,11 +10521,7 @@ export const UpdateProjectsLocationsWorkflowTemplatesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(WorkflowTemplate).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workflowTemplates/{workflowTemplatesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateProjectsLocationsWorkflowTemplatesRequest>;
 
@@ -10822,10 +10558,7 @@ export const ListProjectsLocationsWorkflowTemplatesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workflowTemplates",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/workflowTemplates" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsWorkflowTemplatesRequest>;
 
@@ -10864,10 +10597,7 @@ export const DeleteProjectsLocationsWorkflowTemplatesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     version: Schema.optional(Schema.Number).pipe(T.HttpQuery("version")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workflowTemplates/{workflowTemplatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsWorkflowTemplatesRequest>;
 
@@ -10903,7 +10633,7 @@ export const SetIamPolicyProjectsLocationsWorkflowTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workflowTemplates/{workflowTemplatesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -10941,7 +10671,7 @@ export const GetIamPolicyProjectsLocationsWorkflowTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workflowTemplates/{workflowTemplatesId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -10979,7 +10709,7 @@ export const TestIamPermissionsProjectsLocationsWorkflowTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workflowTemplates/{workflowTemplatesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,

@@ -97,9 +97,9 @@ export interface GoogleAppsCardV1Action {
   /** Optional. Required when opening a [dialog](https://developers.google.com/workspace/chat/dialogs). What to do in response to an interaction with a user, such as a user clicking a button in a card message. If unspecified, the app responds by executing an `action`—like opening a link or running a function—as normal. By specifying an `interaction`, the app can respond in special interactive ways. For example, by setting `interaction` to `OPEN_DIALOG`, the app can open a [dialog](https://developers.google.com/workspace/chat/dialogs). When specified, a loading indicator isn't shown. If specified for an add-on, the entire card is stripped and nothing is shown in the client. [Google Chat apps](https://developers.google.com/workspace/chat): */
   interaction?: "INTERACTION_UNSPECIFIED" | "OPEN_DIALOG" | (string & {});
   /** Optional. Fill this list with the names of widgets that this Action needs for a valid submission. If the widgets listed here don't have a value when this Action is invoked, the form submission is aborted. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
-  requiredWidgets?: Array<string>;
+  requiredWidgets?: ReadonlyArray<string>;
   /** List of action parameters. */
-  parameters?: Array<GoogleAppsCardV1ActionParameter>;
+  parameters?: ReadonlyArray<GoogleAppsCardV1ActionParameter>;
 }
 
 export const GoogleAppsCardV1Action = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -203,7 +203,7 @@ export interface GoogleAppsCardV1EventAction {
   /** Common widget action. */
   commonWidgetAction?: GoogleAppsCardV1CommonWidgetAction;
   /** The list of triggers that will be triggered after the EventAction is executed. */
-  postEventTriggers?: Array<GoogleAppsCardV1Trigger>;
+  postEventTriggers?: ReadonlyArray<GoogleAppsCardV1Trigger>;
 }
 
 export const GoogleAppsCardV1EventAction =
@@ -217,9 +217,9 @@ export interface GoogleAppsCardV1ExpressionData {
   /** The uncompiled expression. */
   expression?: string;
   /** The list of conditions that are determined by the expression evaluation result. */
-  conditions?: Array<GoogleAppsCardV1Condition>;
+  conditions?: ReadonlyArray<GoogleAppsCardV1Condition>;
   /** The list of actions that the ExpressionData can be used. */
-  eventActions?: Array<GoogleAppsCardV1EventAction>;
+  eventActions?: ReadonlyArray<GoogleAppsCardV1EventAction>;
   /** The unique identifier of the ExpressionData. */
   id?: string;
 }
@@ -326,7 +326,7 @@ export const GoogleAppsCardV1SuggestionItem =
 
 export interface GoogleAppsCardV1Suggestions {
   /** A list of suggestions used for autocomplete recommendations in text input fields. */
-  items?: Array<GoogleAppsCardV1SuggestionItem>;
+  items?: ReadonlyArray<GoogleAppsCardV1SuggestionItem>;
 }
 
 export const GoogleAppsCardV1Suggestions =
@@ -432,9 +432,9 @@ export const GoogleAppsCardV1NestedWidget: Schema.Schema<GoogleAppsCardV1NestedW
 
 export interface GoogleAppsCardV1CarouselCard {
   /** A list of widgets displayed in the carousel card. The widgets are displayed in the order that they are specified. */
-  widgets?: Array<GoogleAppsCardV1NestedWidget>;
+  widgets?: ReadonlyArray<GoogleAppsCardV1NestedWidget>;
   /** A list of widgets displayed at the bottom of the carousel card. The widgets are displayed in the order that they are specified. */
-  footerWidgets?: Array<GoogleAppsCardV1NestedWidget>;
+  footerWidgets?: ReadonlyArray<GoogleAppsCardV1NestedWidget>;
 }
 
 export const GoogleAppsCardV1CarouselCard: Schema.Schema<GoogleAppsCardV1CarouselCard> =
@@ -451,7 +451,7 @@ export const GoogleAppsCardV1CarouselCard: Schema.Schema<GoogleAppsCardV1Carouse
 
 export interface GoogleAppsCardV1Carousel {
   /** A list of cards included in the carousel. */
-  carouselCards?: Array<GoogleAppsCardV1CarouselCard>;
+  carouselCards?: ReadonlyArray<GoogleAppsCardV1CarouselCard>;
 }
 
 export const GoogleAppsCardV1Carousel: Schema.Schema<GoogleAppsCardV1Carousel> =
@@ -536,7 +536,7 @@ export const GoogleAppsCardV1Chip: Schema.Schema<GoogleAppsCardV1Chip> =
 
 export interface GoogleAppsCardV1ChipList {
   /** An array of chips. */
-  chips?: Array<GoogleAppsCardV1Chip>;
+  chips?: ReadonlyArray<GoogleAppsCardV1Chip>;
   /** Specified chip list layout. */
   layout?:
     | "LAYOUT_UNSPECIFIED"
@@ -617,7 +617,7 @@ export interface GoogleAppsCardV1SelectionInput {
   /** A data source from Google Workspace. */
   platformDataSource?: GoogleAppsCardV1PlatformDataSource;
   /** Optional. The data source configs for the selection control. This field provides more fine-grained control over the data source. If specified, the `multi_select_max_selected_items` field, `multi_select_min_query_length` field, `external_data_source` field and `platform_data_source` field are ignored. Available for Google Workspace add-ons that extend Google Workspace Studio. Available for the `Dropdown widget` in Google Chat apps. For the `Dropdown` widget in Google Chat apps, only one `DataSourceConfig` is supported. If multiple `DataSourceConfig`s are set, only the first one is used. */
-  dataSourceConfigs?: Array<GoogleAppsCardV1DataSourceConfig>;
+  dataSourceConfigs?: ReadonlyArray<GoogleAppsCardV1DataSourceConfig>;
   /** The type of items that are displayed to users in a `SelectionInput` widget. Selection types support different types of interactions. For example, users can select one or more checkboxes, but they can only select one value from a dropdown menu. */
   type?:
     | "CHECK_BOX"
@@ -629,7 +629,7 @@ export interface GoogleAppsCardV1SelectionInput {
   /** If specified, the form is submitted when the selection changes. If not specified, you must specify a separate button that submits the form. For details about working with form inputs, see [Receive form data](https://developers.google.com/workspace/chat/read-form-data). */
   onChangeAction?: GoogleAppsCardV1Action;
   /** An array of selectable items. For example, an array of radio buttons or checkboxes. Supports up to 100 items. */
-  items?: Array<GoogleAppsCardV1SelectionItem>;
+  items?: ReadonlyArray<GoogleAppsCardV1SelectionItem>;
   /** The text that appears above the selection input field in the user interface. Specify text that helps the user enter the information your app needs. For example, if users are selecting the urgency of a work ticket from a drop-down menu, the label might be "Urgency" or "Select urgency". */
   label?: string;
   /** An external data source, such as a relational database. */
@@ -725,7 +725,7 @@ export interface GoogleAppsCardV1Grid {
   /** This callback is reused by each individual grid item, but with the item's identifier and index in the items list added to the callback's parameters. */
   onClick?: GoogleAppsCardV1OnClick;
   /** The items to display in the grid. */
-  items?: Array<GoogleAppsCardV1GridItem>;
+  items?: ReadonlyArray<GoogleAppsCardV1GridItem>;
   /** The border style to apply to each grid item. */
   borderStyle?: GoogleAppsCardV1BorderStyle;
 }
@@ -895,7 +895,7 @@ export const GoogleAppsCardV1Widgets: Schema.Schema<GoogleAppsCardV1Widgets> =
 
 export interface GoogleAppsCardV1Column {
   /** An array of widgets included in a column. Widgets appear in the order that they are specified. */
-  widgets?: Array<GoogleAppsCardV1Widgets>;
+  widgets?: ReadonlyArray<GoogleAppsCardV1Widgets>;
   /** Specifies how a column fills the width of the card. */
   horizontalSizeStyle?:
     | "HORIZONTAL_SIZE_STYLE_UNSPECIFIED"
@@ -932,7 +932,7 @@ export const GoogleAppsCardV1Column: Schema.Schema<GoogleAppsCardV1Column> =
 
 export interface GoogleAppsCardV1Columns {
   /** An array of columns. You can include up to 2 columns in a card or dialog. */
-  columnItems?: Array<GoogleAppsCardV1Column>;
+  columnItems?: ReadonlyArray<GoogleAppsCardV1Column>;
 }
 
 export const GoogleAppsCardV1Columns: Schema.Schema<GoogleAppsCardV1Columns> =
@@ -962,7 +962,7 @@ export interface GoogleAppsCardV1Widget {
   /** Displays a grid with a collection of items. A grid supports any number of columns and items. The number of rows is determined by the upper bounds of the number items divided by the number of columns. A grid with 10 items and 2 columns has 5 rows. A grid with 11 items and 2 columns has 6 rows. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): For example, the following JSON creates a 2 column grid with a single item: ``` "grid": { "title": "A fine collection of items", "columnCount": 2, "borderStyle": { "type": "STROKE", "cornerRadius": 4 }, "items": [ { "image": { "imageUri": "https://www.example.com/image.png", "cropStyle": { "type": "SQUARE" }, "borderStyle": { "type": "STROKE" } }, "title": "An item", "textAlignment": "CENTER" } ], "onClick": { "openLink": { "url": "https://www.example.com" } } } ``` */
   grid?: GoogleAppsCardV1Grid;
   /** Specifies the event actions that can be performed on the widget. Available for Google Workspace add-ons that extend Google Workspace Studio. Unavailable for Google Chat apps. */
-  eventActions?: Array<GoogleAppsCardV1EventAction>;
+  eventActions?: ReadonlyArray<GoogleAppsCardV1EventAction>;
   /** Specifies whether widgets align to the left, right, or center of a column. */
   horizontalAlignment?:
     | "HORIZONTAL_ALIGNMENT_UNSPECIFIED"
@@ -1037,7 +1037,7 @@ export interface GoogleAppsCardV1Section {
   /** The number of uncollapsible widgets which remain visible even when a section is collapsed. For example, when a section contains five widgets and the `uncollapsibleWidgetsCount` is set to `2`, the first two widgets are always shown and the last three are collapsed by default. The `uncollapsibleWidgetsCount` is taken into account only when `collapsible` is `true`. */
   uncollapsibleWidgetsCount?: number;
   /** All the widgets in the section. Must contain at least one widget. */
-  widgets?: Array<GoogleAppsCardV1Widget>;
+  widgets?: ReadonlyArray<GoogleAppsCardV1Widget>;
   /** Optional. Define the expand and collapse button of the section. This button will be shown only if the section is collapsible. If this field isn't set, the default button is used. */
   collapseControl?: GoogleAppsCardV1CollapseControl;
   /** Indicates whether this section is collapsible. Collapsible sections hide some or all widgets, but users can expand the section to reveal the hidden widgets by clicking **Show more**. Users can hide the widgets again by clicking **Show less**. To determine which widgets are hidden, specify `uncollapsibleWidgetsCount`. */
@@ -1083,15 +1083,15 @@ export interface GoogleAppsCardV1Card {
   /** The header of the card. A header usually contains a leading image and a title. Headers always appear at the top of a card. */
   header?: GoogleAppsCardV1CardHeader;
   /** The expression data for the card. Available for Google Workspace add-ons that extend Google Workspace Studio. Unavailable for Google Chat apps. */
-  expressionData?: Array<GoogleAppsCardV1ExpressionData>;
+  expressionData?: ReadonlyArray<GoogleAppsCardV1ExpressionData>;
   /** Name of the card. Used as a card identifier in card navigation. [Google Workspace add-ons](https://developers.google.com/workspace/add-ons): */
   name?: string;
   /** The card's actions. Actions are added to the card's toolbar menu. [Google Workspace add-ons](https://developers.google.com/workspace/add-ons): For example, the following JSON constructs a card action menu with `Settings` and `Send Feedback` options: ``` "card_actions": [ { "actionLabel": "Settings", "onClick": { "action": { "functionName": "goToView", "parameters": [ { "key": "viewType", "value": "SETTING" } ], "loadIndicator": "LoadIndicator.SPINNER" } } }, { "actionLabel": "Send Feedback", "onClick": { "openLink": { "url": "https://example.com/feedback" } } } ] ``` */
-  cardActions?: Array<GoogleAppsCardV1CardAction>;
+  cardActions?: ReadonlyArray<GoogleAppsCardV1CardAction>;
   /** When displaying contextual content, the peek card header acts as a placeholder so that the user can navigate forward between the homepage cards and the contextual cards. [Google Workspace add-ons](https://developers.google.com/workspace/add-ons): */
   peekCardHeader?: GoogleAppsCardV1CardHeader;
   /** Contains a collection of widgets. Each section has its own, optional header. Sections are visually separated by a line divider. For an example in Google Chat apps, see [Define a section of a card](https://developers.google.com/workspace/chat/design-components-card-dialog#define_a_section_of_a_card). */
-  sections?: Array<GoogleAppsCardV1Section>;
+  sections?: ReadonlyArray<GoogleAppsCardV1Section>;
   /** The divider style between the header, sections and footer. */
   sectionDividerStyle?:
     | "DIVIDER_STYLE_UNSPECIFIED"
@@ -1152,7 +1152,7 @@ export const GoogleAppsCardV1OverflowMenuItem: Schema.Schema<GoogleAppsCardV1Ove
 
 export interface GoogleAppsCardV1OverflowMenu {
   /** Required. The list of menu options. */
-  items?: Array<GoogleAppsCardV1OverflowMenuItem>;
+  items?: ReadonlyArray<GoogleAppsCardV1OverflowMenuItem>;
 }
 
 export const GoogleAppsCardV1OverflowMenu: Schema.Schema<GoogleAppsCardV1OverflowMenu> =
@@ -1230,7 +1230,7 @@ export const GoogleAppsCardV1Button: Schema.Schema<GoogleAppsCardV1Button> =
 
 export interface GoogleAppsCardV1ButtonList {
   /** An array of buttons. */
-  buttons?: Array<GoogleAppsCardV1Button>;
+  buttons?: ReadonlyArray<GoogleAppsCardV1Button>;
 }
 
 export const GoogleAppsCardV1ButtonList: Schema.Schema<GoogleAppsCardV1ButtonList> =
@@ -1547,11 +1547,11 @@ export interface QuotedMessageSnapshot {
   /** Output only. Contains the quoted message `text` with markups added to support rich formatting like hyperlinks,custom emojis, markup, etc. Populated only for FORWARD quote type. */
   formattedText?: string;
   /** Output only. Attachments that were part of the quoted message. These are copies of the quoted message's attachment metadata. Populated only for FORWARD quote type. */
-  attachments?: Array<Attachment>;
+  attachments?: ReadonlyArray<Attachment>;
   /** Output only. Snapshot of the quoted message's text content. */
   text?: string;
   /** Output only. Annotations parsed from the text body of the quoted message. Populated only for FORWARD quote type. */
-  annotations?: Array<Annotation>;
+  annotations?: ReadonlyArray<Annotation>;
   /** Output only. The quoted message's author name. Populated for both REPLY & FORWARD quote types. */
   sender?: string;
 }
@@ -1658,7 +1658,7 @@ export interface FormAction {
   /** The method name is used to identify which part of the form triggered the form submission. This information is echoed back to the Chat app as part of the card click event. You can use the same method name for several elements that trigger a common behavior. */
   actionMethodName?: string;
   /** List of action parameters. */
-  parameters?: Array<ActionParameter>;
+  parameters?: ReadonlyArray<ActionParameter>;
 }
 
 export const FormAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1843,7 +1843,7 @@ export interface WidgetMarkup {
   /** Display a key value item in this widget. */
   keyValue?: KeyValue;
   /** A list of buttons. Buttons is also `oneof data` and only one of these fields should be set. */
-  buttons?: Array<Button>;
+  buttons?: ReadonlyArray<Button>;
   /** Display a text paragraph in this widget. */
   textParagraph?: TextParagraph;
 }
@@ -1859,7 +1859,7 @@ export interface Section {
   /** The header of the section. Formatted text is supported. For more information about formatting text, see [Formatting text in Google Chat apps](https://developers.google.com/workspace/chat/format-messages#card-formatting) and [Formatting text in Google Workspace Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). */
   header?: string;
   /** A section must contain at least one widget. */
-  widgets?: Array<WidgetMarkup>;
+  widgets?: ReadonlyArray<WidgetMarkup>;
 }
 
 export const Section = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1899,13 +1899,13 @@ export const CardAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Card {
   /** Sections are separated by a line divider. */
-  sections?: Array<Section>;
+  sections?: ReadonlyArray<Section>;
   /** The header of the card. A header usually contains a title and an image. */
   header?: CardHeader;
   /** Name of the card. */
   name?: string;
   /** The actions of this card. */
-  cardActions?: Array<CardAction>;
+  cardActions?: ReadonlyArray<CardAction>;
 }
 
 export const Card = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1926,7 +1926,7 @@ export const MatchedUrl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SelectionItems {
   /** An array of the SelectionItem objects. */
-  items?: Array<GoogleAppsCardV1SelectionItem>;
+  items?: ReadonlyArray<GoogleAppsCardV1SelectionItem>;
 }
 
 export const SelectionItems = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2230,29 +2230,29 @@ export interface Message {
   /** Output only. Information about a deleted message. A message is deleted when `delete_time` is set. */
   deletionMetadata?: DeletionMetadata;
   /** Optional. One or more interactive widgets that appear at the bottom of a message. You can add accessory widgets to messages that contain text, cards, or both text and cards. Not supported for messages that contain dialogs. For details, see [Add interactive widgets at the bottom of a message](https://developers.google.com/workspace/chat/create-messages#add-accessory-widgets). Creating a message with accessory widgets requires [app authentication] (https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). */
-  accessoryWidgets?: Array<AccessoryWidget>;
+  accessoryWidgets?: ReadonlyArray<AccessoryWidget>;
   /** Optional. Plain-text body of the message. The first link to an image, video, or web page generates a [preview chip](https://developers.google.com/workspace/chat/preview-links). You can also [@mention a Google Chat user](https://developers.google.com/workspace/chat/format-messages#messages-@mention), or everyone in the space. To learn about creating text messages, see [Send a message](https://developers.google.com/workspace/chat/create-messages). */
   text?: string;
   /** Optional. User-uploaded attachment. */
-  attachment?: Array<Attachment>;
+  attachment?: ReadonlyArray<Attachment>;
   /** Optional. Information about a message that another message quotes. When you create a message, you can quote messages within the same thread, or quote a root message to create a new root message. However, you can't quote a message reply from a different thread. When you update a message, you can't add or replace the `quotedMessageMetadata` field, but you can remove it. For example usage, see [Quote another message](https://developers.google.com/workspace/chat/create-messages#quote-a-message). */
   quotedMessageMetadata?: QuotedMessageMetadata;
   /** Output only. The list of emoji reaction summaries on the message. */
-  emojiReactionSummaries?: Array<EmojiReactionSummary>;
+  emojiReactionSummaries?: ReadonlyArray<EmojiReactionSummary>;
   /** Optional. An array of [cards](https://developers.google.com/workspace/chat/api/reference/rest/v1/cards). Chat apps can create cards with [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). As part of the [Developer Preview Program](https://developers.google.com/workspace/preview), if your Chat app [authenticates as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), it can create card messages. If your Chat app is not part of Developer Preview Program, it can't create cards with user authentication. To learn how to create a message that contains cards, see [Send a message](https://developers.google.com/workspace/chat/create-messages). [Card builder](https://addons.gsuite.google.com/uikit/builder) */
-  cardsV2?: Array<CardWithId>;
+  cardsV2?: ReadonlyArray<CardWithId>;
   /** Identifier. Resource name of the message. Format: `spaces/{space}/messages/{message}` Where `{space}` is the ID of the space where the message is posted and `{message}` is a system-assigned ID for the message. For example, `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`. If you set a custom ID when you create a message, you can use this ID to specify the message in a request by replacing `{message}` with the value from the `clientAssignedMessageId` field. For example, `spaces/AAAAAAAAAAA/messages/client-custom-name`. For details, see [Name a message](https://developers.google.com/workspace/chat/create-messages#name_a_created_message). */
   name?: string;
   /** Deprecated: Use `cards_v2` instead. Rich, formatted, and interactive cards that you can use to display UI elements such as: formatted texts, buttons, and clickable images. Cards are normally displayed below the plain-text body of the message. `cards` and `cards_v2` can have a maximum size of 32 KB. */
-  cards?: Array<Card>;
+  cards?: ReadonlyArray<Card>;
   /** Output only. Annotations can be associated with the plain-text body of the message or with chips that link to Google Workspace resources like Google Docs or Sheets with `start_index` and `length` of 0. */
-  annotations?: Array<Annotation>;
+  annotations?: ReadonlyArray<Annotation>;
   /** Output only. A URL in the Chat message `text` field that matches a link preview pattern. For more information, see [Preview links](https://developers.google.com/workspace/chat/preview-links). */
   matchedUrl?: MatchedUrl;
   /** Input only. Parameters that a Chat app can use to configure how its response is posted. */
   actionResponse?: ActionResponse;
   /** Output only. GIF images that are attached to the message. */
-  attachedGifs?: Array<AttachedGif>;
+  attachedGifs?: ReadonlyArray<AttachedGif>;
   /** Output only. Contains the message `text` with markups added to communicate formatting. This field might not capture all formatting visible in the UI, but includes the following: * [Markup syntax](https://developers.google.com/workspace/chat/format-messages) for bold, italic, strikethrough, monospace, monospace block, bulleted list, and block quote. * [User mentions](https://developers.google.com/workspace/chat/format-messages#messages-@mention) using the format ``. * Custom hyperlinks using the format `<{url}|{rendered_text}>` where the first string is the URL and the second is the rendered text—for example, ``. * Custom emoji using the format `:{emoji_name}:`—for example, `:smile:`. This doesn't apply to Unicode emoji, such as `U+1F600` for a grinning face emoji. * Bullet list items using asterisks (`*`)—for example, `* item`. For more information, see [View text formatting sent in a message](https://developers.google.com/workspace/chat/format-messages#view_text_formatting_sent_in_a_message) */
   formattedText?: string;
   /** Output only. If your Chat app [authenticates as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), the output only populates the [space](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces) `name`. */
@@ -2320,7 +2320,7 @@ export const MessageDeletedEventData =
 
 export interface MessageBatchDeletedEventData {
   /** A list of deleted messages. */
-  messages?: Array<MessageDeletedEventData>;
+  messages?: ReadonlyArray<MessageDeletedEventData>;
 }
 
 export const MessageBatchDeletedEventData =
@@ -2365,7 +2365,7 @@ export const ReactionCreatedEventData =
 
 export interface ReactionBatchCreatedEventData {
   /** A list of new reactions. */
-  reactions?: Array<ReactionCreatedEventData>;
+  reactions?: ReadonlyArray<ReactionCreatedEventData>;
 }
 
 export const ReactionBatchCreatedEventData =
@@ -2384,7 +2384,7 @@ export const SpaceUpdatedEventData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SpaceBatchUpdatedEventData {
   /** A list of updated spaces. */
-  spaces?: Array<SpaceUpdatedEventData>;
+  spaces?: ReadonlyArray<SpaceUpdatedEventData>;
 }
 
 export const SpaceBatchUpdatedEventData =
@@ -2460,7 +2460,7 @@ export const MembershipCreatedEventData =
 
 export interface ReactionBatchDeletedEventData {
   /** A list of deleted reactions. */
-  reactions?: Array<ReactionDeletedEventData>;
+  reactions?: ReadonlyArray<ReactionDeletedEventData>;
 }
 
 export const ReactionBatchDeletedEventData =
@@ -2480,7 +2480,7 @@ export const MessageUpdatedEventData =
 
 export interface MessageBatchUpdatedEventData {
   /** A list of updated messages. */
-  messages?: Array<MessageUpdatedEventData>;
+  messages?: ReadonlyArray<MessageUpdatedEventData>;
 }
 
 export const MessageBatchUpdatedEventData =
@@ -2500,7 +2500,7 @@ export const MembershipDeletedEventData =
 
 export interface MembershipBatchDeletedEventData {
   /** A list of deleted memberships. */
-  memberships?: Array<MembershipDeletedEventData>;
+  memberships?: ReadonlyArray<MembershipDeletedEventData>;
 }
 
 export const MembershipBatchDeletedEventData =
@@ -2520,7 +2520,7 @@ export const MessageCreatedEventData =
 
 export interface MessageBatchCreatedEventData {
   /** A list of new messages. */
-  messages?: Array<MessageCreatedEventData>;
+  messages?: ReadonlyArray<MessageCreatedEventData>;
 }
 
 export const MessageBatchCreatedEventData =
@@ -2530,7 +2530,7 @@ export const MessageBatchCreatedEventData =
 
 export interface MembershipBatchUpdatedEventData {
   /** A list of updated memberships. */
-  memberships?: Array<MembershipUpdatedEventData>;
+  memberships?: ReadonlyArray<MembershipUpdatedEventData>;
 }
 
 export const MembershipBatchUpdatedEventData =
@@ -2540,7 +2540,7 @@ export const MembershipBatchUpdatedEventData =
 
 export interface MembershipBatchCreatedEventData {
   /** A list of new memberships. */
-  memberships?: Array<MembershipCreatedEventData>;
+  memberships?: ReadonlyArray<MembershipCreatedEventData>;
 }
 
 export const MembershipBatchCreatedEventData =
@@ -2625,7 +2625,7 @@ export const SpaceEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSpaceEventsResponse {
   /** Results are returned in chronological order (oldest event first). Note: The `permissionSettings` field is not returned in the Space object for list requests. */
-  spaceEvents?: Array<SpaceEvent>;
+  spaceEvents?: ReadonlyArray<SpaceEvent>;
   /** Continuation token used to fetch more events. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2650,7 +2650,7 @@ export const TimeZone = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StringInputs {
   /** An list of strings entered by the user. */
-  value?: Array<string>;
+  value?: ReadonlyArray<string>;
 }
 
 export const StringInputs = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2768,7 +2768,7 @@ export interface ListMembershipsResponse {
   /** A token that you can send as `pageToken` to retrieve the next page of results. If empty, there are no subsequent pages. */
   nextPageToken?: string;
   /** Unordered list. List of memberships in the requested (or first) page. */
-  memberships?: Array<Membership>;
+  memberships?: ReadonlyArray<Membership>;
 }
 
 export const ListMembershipsResponse =
@@ -2805,7 +2805,7 @@ export interface SearchSpacesResponse {
   /** The total number of spaces that match the query, across all pages. If the result is over 10,000 spaces, this value is an estimate. */
   totalSize?: number;
   /** A page of the requested spaces. */
-  spaces?: Array<Space>;
+  spaces?: ReadonlyArray<Space>;
 }
 
 export const SearchSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2948,7 +2948,7 @@ export const SpaceNotificationSetting =
 
 export interface ListCustomEmojisResponse {
   /** Unordered list. List of custom emojis. */
-  customEmojis?: Array<CustomEmoji>;
+  customEmojis?: ReadonlyArray<CustomEmoji>;
   /** A token that you can send as `pageToken` to retrieve the next page of results. If empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2961,7 +2961,7 @@ export const ListCustomEmojisResponse =
 
 export interface ListReactionsResponse {
   /** List of reactions in the requested (or first) page. */
-  reactions?: Array<Reaction>;
+  reactions?: ReadonlyArray<Reaction>;
   /** Continuation token to retrieve the next page of results. It's empty for the last page of results. */
   nextPageToken?: string;
 }
@@ -3015,7 +3015,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
@@ -3068,7 +3068,7 @@ export interface ListSectionItemsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The section items from the specified section. */
-  sectionItems?: Array<SectionItem>;
+  sectionItems?: ReadonlyArray<SectionItem>;
 }
 
 export const ListSectionItemsResponse =
@@ -3081,7 +3081,7 @@ export interface ListSpacesResponse {
   /** You can send a token as `pageToken` to retrieve the next page of results. If empty, there are no subsequent pages. */
   nextPageToken?: string;
   /** List of spaces in the requested (or first) page. Note: The `permissionSettings` field is not returned in the Space object for list requests. */
-  spaces?: Array<Space>;
+  spaces?: ReadonlyArray<Space>;
 }
 
 export const ListSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3110,7 +3110,7 @@ export const PositionSectionResponse =
 
 export interface ListMessagesResponse {
   /** List of messages. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
   /** You can send a token as `pageToken` to retrieve the next page of results. If empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -3122,7 +3122,7 @@ export const ListMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FindGroupChatsResponse {
   /** List of spaces in the requested (or first) page. */
-  spaces?: Array<Space>;
+  spaces?: ReadonlyArray<Space>;
   /** A token that you can send as `pageToken` to retrieve the next page of results. If empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -3148,7 +3148,7 @@ export const SpaceReadState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSectionsResponse {
   /** The sections from the specified user. */
-  sections?: Array<GoogleChatV1Section>;
+  sections?: ReadonlyArray<GoogleChatV1Section>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -3162,7 +3162,7 @@ export interface SetUpSpaceRequest {
   /** Required. The `Space.spaceType` field is required. To create a space, set `Space.spaceType` to `SPACE` and set `Space.displayName`. If you receive the error message `ALREADY_EXISTS` when setting up a space, try a different `displayName`. An existing space within the Google Workspace organization might already use this display name. To create a group chat, set `Space.spaceType` to `GROUP_CHAT`. Don't set `Space.displayName`. To create a 1:1 conversation between humans, set `Space.spaceType` to `DIRECT_MESSAGE` and set `Space.singleUserBotDm` to `false`. Don't set `Space.displayName` or `Space.spaceDetails`. To create an 1:1 conversation between a human and the calling Chat app, set `Space.spaceType` to `DIRECT_MESSAGE` and `Space.singleUserBotDm` to `true`. Don't set `Space.displayName` or `Space.spaceDetails`. If a `DIRECT_MESSAGE` space already exists, that space is returned instead of creating a new space. */
   space?: Space;
   /** Optional. The Google Chat users or groups to invite to join the space. Omit the calling user, as they are added automatically. The set currently allows up to 49 memberships (in addition to the caller). For human membership, the `Membership.member` field must contain a `user` with `name` populated (format: `users/{user}`) and `type` set to `User.Type.HUMAN`. You can only add human users when setting up a space (adding Chat apps is only supported for direct message setup with the calling app). You can also add members using the user's email as an alias for {user}. For example, the `user.name` can be `users/example@gmail.com`. To invite Gmail users or users from external Google Workspace domains, user's email must be used for `{user}`. For Google group membership, the `Membership.group_member` field must contain a `group` with `name` populated (format `groups/{group}`). You can only add Google groups when setting `Space.spaceType` to `SPACE`. Optional when setting `Space.spaceType` to `SPACE`. Required when setting `Space.spaceType` to `GROUP_CHAT`, along with at least two memberships. Required when setting `Space.spaceType` to `DIRECT_MESSAGE` with a human user, along with exactly one membership. Must be empty when creating a 1:1 conversation between a human and the calling Chat app (when setting `Space.spaceType` to `DIRECT_MESSAGE` and `Space.singleUserBotDm` to `true`). */
-  memberships?: Array<Membership>;
+  memberships?: ReadonlyArray<Membership>;
   /** Optional. A unique identifier for this request. A random UUID is recommended. Specifying an existing request ID returns the space created with that ID instead of creating a new space. Specifying an existing request ID from the same Chat app with a different authenticated user returns an error. */
   requestId?: string;
 }
@@ -3267,7 +3267,7 @@ export const GetSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("useAdminAccess"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/spaces/{spacesId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetSpacesRequest>;
 
@@ -3333,7 +3333,7 @@ export const DeleteSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("useAdminAccess"),
   ),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v1/spaces/{spacesId}" }),
+  T.Http({ method: "DELETE", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteSpacesRequest>;
 
@@ -3406,11 +3406,7 @@ export const CompleteImportSpacesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CompleteImportSpaceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/spaces/{spacesId}:completeImport",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:completeImport", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CompleteImportSpacesRequest>;
 
@@ -3501,7 +3497,7 @@ export const PatchSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(Space).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PATCH", path: "v1/spaces/{spacesId}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchSpacesRequest>;
 
@@ -3579,7 +3575,7 @@ export const ListSpacesMessagesRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/spaces/{spacesId}/messages" }),
+    T.Http({ method: "GET", path: "v1/{parent}/messages" }),
     svc,
   ) as unknown as Schema.Schema<ListSpacesMessagesRequest>;
 
@@ -3625,11 +3621,7 @@ export const PatchSpacesMessagesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Message).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/spaces/{spacesId}/messages/{messagesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchSpacesMessagesRequest>;
 
@@ -3670,11 +3662,7 @@ export const UpdateSpacesMessagesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Message).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1/spaces/{spacesId}/messages/{messagesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSpacesMessagesRequest>;
 
@@ -3725,11 +3713,7 @@ export const CreateSpacesMessagesRequest =
     messageId: Schema.optional(Schema.String).pipe(T.HttpQuery("messageId")),
     body: Schema.optional(Message).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/spaces/{spacesId}/messages",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/messages", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateSpacesMessagesRequest>;
 
@@ -3759,10 +3743,7 @@ export const GetSpacesMessagesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/spaces/{spacesId}/messages/{messagesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSpacesMessagesRequest>;
 
@@ -3795,10 +3776,7 @@ export const DeleteSpacesMessagesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/spaces/{spacesId}/messages/{messagesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteSpacesMessagesRequest>;
 
@@ -3828,10 +3806,7 @@ export const GetSpacesMessagesAttachmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/spaces/{spacesId}/messages/{messagesId}/attachments/{attachmentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSpacesMessagesAttachmentsRequest>;
 
@@ -3871,10 +3846,7 @@ export const ListSpacesMessagesReactionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/spaces/{spacesId}/messages/{messagesId}/reactions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/reactions" }),
     svc,
   ) as unknown as Schema.Schema<ListSpacesMessagesReactionsRequest>;
 
@@ -3912,11 +3884,7 @@ export const CreateSpacesMessagesReactionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Reaction).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/spaces/{spacesId}/messages/{messagesId}/reactions",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/reactions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateSpacesMessagesReactionsRequest>;
 
@@ -3947,10 +3915,7 @@ export const DeleteSpacesMessagesReactionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/spaces/{spacesId}/messages/{messagesId}/reactions/{reactionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteSpacesMessagesReactionsRequest>;
 
@@ -4003,7 +3968,7 @@ export const ListSpacesMembersRequest =
     ),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/spaces/{spacesId}/members" }),
+    T.Http({ method: "GET", path: "v1/{parent}/members" }),
     svc,
   ) as unknown as Schema.Schema<ListSpacesMembersRequest>;
 
@@ -4049,11 +4014,7 @@ export const PatchSpacesMembersRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Membership).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/spaces/{spacesId}/members/{membersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchSpacesMembersRequest>;
 
@@ -4089,7 +4050,7 @@ export const GetSpacesMembersRequest =
       T.HttpQuery("useAdminAccess"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/spaces/{spacesId}/members/{membersId}" }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSpacesMembersRequest>;
 
@@ -4127,11 +4088,7 @@ export const CreateSpacesMembersRequest =
     ),
     body: Schema.optional(Membership).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/spaces/{spacesId}/members",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/members", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateSpacesMembersRequest>;
 
@@ -4167,10 +4124,7 @@ export const DeleteSpacesMembersRequest =
       T.HttpQuery("useAdminAccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/spaces/{spacesId}/members/{membersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteSpacesMembersRequest>;
 
@@ -4210,7 +4164,7 @@ export const ListSpacesSpaceEventsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/spaces/{spacesId}/spaceEvents" }),
+    T.Http({ method: "GET", path: "v1/{parent}/spaceEvents" }),
     svc,
   ) as unknown as Schema.Schema<ListSpacesSpaceEventsRequest>;
 
@@ -4245,10 +4199,7 @@ export const GetSpacesSpaceEventsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/spaces/{spacesId}/spaceEvents/{spaceEventsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSpacesSpaceEventsRequest>;
 
@@ -4352,7 +4303,7 @@ export const GetCustomEmojisRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     name: Schema.String.pipe(T.HttpPath("name")),
   },
 ).pipe(
-  T.Http({ method: "GET", path: "v1/customEmojis/{customEmojisId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetCustomEmojisRequest>;
 
@@ -4382,7 +4333,7 @@ export const DeleteCustomEmojisRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/customEmojis/{customEmojisId}" }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteCustomEmojisRequest>;
 
@@ -4411,7 +4362,7 @@ export interface DownloadMediaRequest {
 export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/media/{mediaId}" }),
+  T.Http({ method: "GET", path: "v1/media/{resourceName}" }),
   svc,
 ) as unknown as Schema.Schema<DownloadMediaRequest>;
 
@@ -4445,7 +4396,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "POST",
-    path: "v1/spaces/{spacesId}/attachments:upload",
+    path: "v1/{parent}/attachments:upload",
     hasBody: true,
   }),
   svc,
@@ -4481,11 +4432,7 @@ export const PositionUsersSectionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(PositionSectionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/users/{usersId}/sections/{sectionsId}:position",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:position", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PositionUsersSectionsRequest>;
 
@@ -4522,7 +4469,7 @@ export const ListUsersSectionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/users/{usersId}/sections" }),
+    T.Http({ method: "GET", path: "v1/{parent}/sections" }),
     svc,
   ) as unknown as Schema.Schema<ListUsersSectionsRequest>;
 
@@ -4563,11 +4510,7 @@ export const PatchUsersSectionsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleChatV1Section).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/users/{usersId}/sections/{sectionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchUsersSectionsRequest>;
 
@@ -4601,11 +4544,7 @@ export const CreateUsersSectionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleChatV1Section).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/users/{usersId}/sections",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/sections", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateUsersSectionsRequest>;
 
@@ -4636,10 +4575,7 @@ export const DeleteUsersSectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/users/{usersId}/sections/{sectionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteUsersSectionsRequest>;
 
@@ -4678,10 +4614,7 @@ export const ListUsersSectionsItemsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/users/{usersId}/sections/{sectionsId}/items",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/items" }),
     svc,
   ) as unknown as Schema.Schema<ListUsersSectionsItemsRequest>;
 
@@ -4719,11 +4652,7 @@ export const MoveUsersSectionsItemsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MoveSectionItemRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/users/{usersId}/sections/{sectionsId}/items/{itemsId}:move",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:move", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MoveUsersSectionsItemsRequest>;
 
@@ -4760,11 +4689,7 @@ export const UpdateSpaceReadStateUsersSpacesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SpaceReadState).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/users/{usersId}/spaces/{spacesId}/spaceReadState",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSpaceReadStateUsersSpacesRequest>;
 
@@ -4795,10 +4720,7 @@ export const GetSpaceReadStateUsersSpacesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/users/{usersId}/spaces/{spacesId}/spaceReadState",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSpaceReadStateUsersSpacesRequest>;
 
@@ -4829,10 +4751,7 @@ export const GetThreadReadStateUsersSpacesThreadsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/users/{usersId}/spaces/{spacesId}/threads/{threadsId}/threadReadState",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetThreadReadStateUsersSpacesThreadsRequest>;
 
@@ -4863,10 +4782,7 @@ export const GetUsersSpacesSpaceNotificationSettingRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/users/{usersId}/spaces/{spacesId}/spaceNotificationSetting",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetUsersSpacesSpaceNotificationSettingRequest>;
 
@@ -4904,11 +4820,7 @@ export const PatchUsersSpacesSpaceNotificationSettingRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SpaceNotificationSetting).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/users/{usersId}/spaces/{spacesId}/spaceNotificationSetting",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchUsersSpacesSpaceNotificationSettingRequest>;
 

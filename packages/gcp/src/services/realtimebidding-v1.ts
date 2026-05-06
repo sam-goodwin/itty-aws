@@ -30,7 +30,7 @@ export interface StringTargetingDimension {
     | "EXCLUSIVE"
     | (string & {});
   /** The values specified. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const StringTargetingDimension =
@@ -41,9 +41,9 @@ export const StringTargetingDimension =
 
 export interface NumericTargetingDimension {
   /** The IDs included in a config. */
-  includedIds?: Array<string>;
+  includedIds?: ReadonlyArray<string>;
   /** The IDs excluded in a config. */
-  excludedIds?: Array<string>;
+  excludedIds?: ReadonlyArray<string>;
 }
 
 export const NumericTargetingDimension =
@@ -109,7 +109,7 @@ export const UrlRestriction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchApprovePublisherConnectionsRequest {
   /** Required. The names of the publishers with which connections will be approved. In the pattern `bidders/{bidder}/publisherConnections/{publisher}` where `{bidder}` is the account ID of the bidder, and `{publisher}` is the ads.txt/app-ads.txt publisher ID. */
-  names?: Array<string>;
+  names?: ReadonlyArray<string>;
 }
 
 export const BatchApprovePublisherConnectionsRequest =
@@ -173,7 +173,7 @@ export const DestinationNotWorkingEvidence =
 
 export interface RemoveTargetedPublishersRequest {
   /** A list of publisher IDs to stop targeting in the pretargeting configuration. These values will be removed from the list of targeted publisher IDs in PretargetingConfig.publisherTargeting.values. Publishers are identified by their publisher ID from ads.txt / app-ads.txt. See https://iabtechlab.com/ads-txt/ and https://iabtechlab.com/app-ads-txt/ for more details. */
-  publisherIds?: Array<string>;
+  publisherIds?: ReadonlyArray<string>;
 }
 
 export const RemoveTargetedPublishersRequest =
@@ -204,7 +204,7 @@ export const Bidder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListBiddersResponse {
   /** List of bidders. */
-  bidders?: Array<Bidder>;
+  bidders?: ReadonlyArray<Bidder>;
   /** A token which can be passed to a subsequent call to the `ListBidders` method to retrieve the next page of results in ListBiddersRequest.pageToken. */
   nextPageToken?: string;
 }
@@ -298,11 +298,11 @@ export const HtmlContent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AdTechnologyProviders {
   /** Domains of detected unidentified ad technology providers (if any). You must ensure that the creatives used in bids placed for inventory that will serve to EEA or UK users does not contain unidentified ad technology providers. Google reserves the right to filter non-compliant bids. */
-  unidentifiedProviderDomains?: Array<string>;
+  unidentifiedProviderDomains?: ReadonlyArray<string>;
   /** The detected [Google Ad Tech Providers (ATP)](https://support.google.com/admanager/answer/9012903) for this creative. See https://storage.googleapis.com/adx-rtb-dictionaries/providers.csv for mapping of provider ID to provided name, a privacy policy URL, and a list of domains which can be attributed to the provider. */
-  detectedProviderIds?: Array<string>;
+  detectedProviderIds?: ReadonlyArray<string>;
   /** The detected IAB Global Vendor List (GVL) IDs for this creative. See the IAB Global Vendor List at https://vendor-list.consensu.org/v2/vendor-list.json for details about the vendors. */
-  detectedGvlIds?: Array<string>;
+  detectedGvlIds?: ReadonlyArray<string>;
 }
 
 export const AdTechnologyProviders = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -336,7 +336,7 @@ export const UrlDownloadSize = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DownloadSizeEvidence {
   /** Download size broken down by URLs with the top download size. */
-  topUrlDownloadSizeBreakdowns?: Array<UrlDownloadSize>;
+  topUrlDownloadSizeBreakdowns?: ReadonlyArray<UrlDownloadSize>;
   /** Total download size (in kilobytes) for all the resources in the creative. */
   totalDownloadSizeKb?: number;
 }
@@ -348,7 +348,7 @@ export const DownloadSizeEvidence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface HttpCallEvidence {
   /** URLs of HTTP calls made by the creative. */
-  urls?: Array<string>;
+  urls?: ReadonlyArray<string>;
 }
 
 export const HttpCallEvidence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -391,7 +391,7 @@ export const DomainCalls = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DomainCallEvidence {
   /** Breakdown of the most frequent domains called through HTTP by the creative. */
-  topHttpCallDomains?: Array<DomainCalls>;
+  topHttpCallDomains?: ReadonlyArray<DomainCalls>;
   /** The total number of HTTP calls made by the creative, including but not limited to the number of calls in the top_http_call_domains. */
   totalHttpCallCount?: number;
 }
@@ -403,7 +403,7 @@ export const DomainCallEvidence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface HttpCookieEvidence {
   /** Names of cookies that violate Google policies. For TOO_MANY_COOKIES policy, this will be the cookie names of top domains with the largest number of cookies. For other policies, this will be all the cookie names that violate the policy. */
-  cookieNames?: Array<string>;
+  cookieNames?: ReadonlyArray<string>;
   /** The largest number of cookies set by a creative. If this field is set, cookie_names above will be set to the cookie names of top domains with the largest number of cookies. This field will only be set for TOO_MANY_COOKIES policy. */
   maxCookieCount?: number;
 }
@@ -442,7 +442,7 @@ export const PolicyTopicEvidence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PolicyTopicEntry {
   /** Pieces of evidence associated with this policy topic entry. */
-  evidences?: Array<PolicyTopicEvidence>;
+  evidences?: ReadonlyArray<PolicyTopicEvidence>;
   /** URL of the help center article describing this policy topic. */
   helpCenterUrl?: string;
   /** Policy topic this entry refers to. For example, "ALCOHOL", "TRADEMARKS_IN_AD_TEXT", or "DESTINATION_NOT_WORKING". The set of possible policy topics is not fixed for a particular API version and may change at any time. Can be used to filter the response of the creatives.list method */
@@ -468,7 +468,7 @@ export interface PolicyCompliance {
     | "CERTIFICATE_REQUIRED"
     | (string & {});
   /** Topics related to the policy compliance for this transaction type (for example, open auction, deals) or region (for example, China, Russia). Topics may be present only if status is DISAPPROVED. */
-  topics?: Array<PolicyTopicEntry>;
+  topics?: ReadonlyArray<PolicyTopicEntry>;
 }
 
 export const PolicyCompliance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -498,25 +498,25 @@ export interface CreativeServingDecision {
   /** The detected ad technology providers. */
   adTechnologyProviders?: AdTechnologyProviders;
   /** IDs of the ad technology vendors that were detected to be used by this creative. See https://storage.googleapis.com/adx-rtb-dictionaries/vendors.txt for possible values. Can be used to filter the response of the creatives.list method. If the `allowed_vendor_type` field of a [bid request](https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto) does not contain one of the vendor type IDs that were declared or detected for a given creative, and a bid is submitted with that creative, the bid will be filtered before the auction. */
-  detectedVendorIds?: Array<number>;
+  detectedVendorIds?: ReadonlyArray<number>;
   /** Policy compliance of this creative when bidding on Programmatic Guaranteed and Preferred Deals (outside of Russia and China). */
   dealsPolicyCompliance?: PolicyCompliance;
   /** Output only. IDs of the detected categories. The taxonomy in which the categories are expressed is specified by the detected_categories_taxonomy field. Use this in conjunction with BidRequest.bcat to avoid bidding on impressions where a given ad category is blocked, or to troubleshoot filtered bids. Can be used to filter the response of the creatives.list method. */
-  detectedCategories?: Array<string>;
+  detectedCategories?: ReadonlyArray<string>;
   /** The detected languages for this creative. The order is arbitrary. The codes are 2 or 5 characters and are documented at https://developers.google.com/adwords/api/docs/appendix/languagecodes. Can be used to filter the response of the creatives.list method. */
-  detectedLanguages?: Array<string>;
+  detectedLanguages?: ReadonlyArray<string>;
   /** Detected advertisers and brands. */
-  detectedAdvertisers?: Array<AdvertiserAndBrand>;
+  detectedAdvertisers?: ReadonlyArray<AdvertiserAndBrand>;
   /** Policy compliance of this creative when bidding in Open Bidding (outside of Russia and China). For the list of platform policies, see: https://support.google.com/platformspolicy/answer/3013851. */
   platformPolicyCompliance?: PolicyCompliance;
   /** The detected domains for this creative. */
-  detectedDomains?: Array<string>;
+  detectedDomains?: ReadonlyArray<string>;
   /** The policy compliance of this creative in Russia. When approved or disapproved, this applies to both deals and open auction in Russia. When pending review, this creative is allowed to serve for deals but not for open auction. */
   russiaPolicyCompliance?: PolicyCompliance;
   /** Detected sensitive categories, if any. Can be used to filter the response of the creatives.list method. See the ad-sensitive-categories.txt file in the technical documentation for a list of IDs. You should use these IDs along with the excluded-sensitive-category field in the bid request to filter your bids. */
-  detectedSensitiveCategories?: Array<number>;
+  detectedSensitiveCategories?: ReadonlyArray<number>;
   /** The set of detected destination URLs for the creative. Can be used to filter the response of the creatives.list method. */
-  detectedClickThroughUrls?: Array<string>;
+  detectedClickThroughUrls?: ReadonlyArray<string>;
   /** Policy compliance of this creative when bidding in open auction, private auction, or auction packages (outside of Russia and China). */
   networkPolicyCompliance?: PolicyCompliance;
   /** Output only. The taxonomy in which the detected_categories field is expressed. */
@@ -528,9 +528,9 @@ export interface CreativeServingDecision {
   /** The policy compliance of this creative in China. When approved or disapproved, this applies to both deals and open auction in China. When pending review, this creative is allowed to serve for deals but not for open auction. */
   chinaPolicyCompliance?: PolicyCompliance;
   /** Detected product categories, if any. See the ad-product-categories.txt file in the technical documentation for a list of IDs. Can be used to filter the response of the creatives.list method. */
-  detectedProductCategories?: Array<number>;
+  detectedProductCategories?: ReadonlyArray<number>;
   /** Publisher-excludable attributes that were detected for this creative. Can be used to filter the response of the creatives.list method. If the `excluded_attribute` field of a [bid request](https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto) contains one of the attributes that were declared or detected for a given creative, and a bid is submitted with that creative, the bid will be filtered before the auction. */
-  detectedAttributes?: Array<
+  detectedAttributes?: ReadonlyArray<
     | "ATTRIBUTE_UNSPECIFIED"
     | "IMAGE_RICH_MEDIA"
     | "ADOBE_FLASH_FLV"
@@ -632,7 +632,7 @@ export interface VideoMetadata {
   /** Is this a VPAID ad? Can be used to filter the response of the creatives.list method. */
   isVpaid?: boolean;
   /** The list of all media files declared in the VAST. If there are multiple VASTs in a wrapper chain, this includes the media files from the deepest one in the chain. */
-  mediaFiles?: Array<MediaFile>;
+  mediaFiles?: ReadonlyArray<MediaFile>;
   /** The minimum duration that the user has to watch before being able to skip this ad. If the field is not set, the ad is not skippable. If the field is set, the ad is skippable. Can be used to filter the response of the creatives.list method. */
   skipOffset?: string;
   /** The duration of the ad. Can be used to filter the response of the creatives.list method. */
@@ -675,7 +675,7 @@ export const VideoContent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Creative {
   /** All declared restricted categories for the ads that may be shown from this creative. Can be used to filter the response of the creatives.list method. */
-  declaredRestrictedCategories?: Array<
+  declaredRestrictedCategories?: ReadonlyArray<
     "RESTRICTED_CATEGORY_UNSPECIFIED" | "ALCOHOL" | (string & {})
   >;
   /** A native creative. */
@@ -685,7 +685,7 @@ export interface Creative {
   /** Output only. The last update timestamp of the creative through the API. */
   apiUpdateTime?: string;
   /** Output only. IDs of all of the deals with which this creative has been used in bidding. Can be used to filter the response of the creatives.list method. */
-  dealIds?: Array<string>;
+  dealIds?: ReadonlyArray<string>;
   /** The name of the company being advertised in the creative. Can be used to filter the response of the creatives.list method. */
   advertiserName?: string;
   /** Output only. ID of the buyer account that this creative is owned by. Can be used to filter the response of the creatives.list method with equality and inequality check. */
@@ -693,7 +693,7 @@ export interface Creative {
   /** Buyer-specific creative ID that references this creative in bid responses. This field is Ignored in update operations. Can be used to filter the response of the creatives.list method. The maximum length of the creative ID is 128 bytes. */
   creativeId?: string;
   /** All restricted categories for the ads that may be shown from this creative. */
-  restrictedCategories?: Array<
+  restrictedCategories?: ReadonlyArray<
     "RESTRICTED_CATEGORY_UNSPECIFIED" | "ALCOHOL" | (string & {})
   >;
   /** The agency ID for this creative. */
@@ -708,9 +708,9 @@ export interface Creative {
   /** Output only. Name of the creative. Follows the pattern `buyers/{buyer}/creatives/{creative}`, where `{buyer}` represents the account ID of the buyer who owns the creative, and `{creative}` is the buyer-specific creative ID that references this creative in the bid response. */
   name?: string;
   /** The set of URLs to be called to record an impression. */
-  impressionTrackingUrls?: Array<string>;
+  impressionTrackingUrls?: ReadonlyArray<string>;
   /** All declared attributes for the ads that may be shown from this creative. Can be used to filter the response of the creatives.list method. If the `excluded_attribute` field of a [bid request](https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto") contains one of the attributes that were declared or detected for a given creative, and a bid is submitted with that creative, the bid will be filtered before the auction. */
-  declaredAttributes?: Array<
+  declaredAttributes?: ReadonlyArray<
     | "ATTRIBUTE_UNSPECIFIED"
     | "IMAGE_RICH_MEDIA"
     | "ADOBE_FLASH_FLV"
@@ -755,7 +755,7 @@ export interface Creative {
   /** An HTML creative. */
   html?: HtmlContent;
   /** The set of declared destination URLs for the creative. Can be used to filter the response of the creatives.list method. */
-  declaredClickThroughUrls?: Array<string>;
+  declaredClickThroughUrls?: ReadonlyArray<string>;
   /** Experimental field that can be used during the [FLEDGE Origin Trial](/authorized-buyers/rtb/fledge-origin-trial). The URL to fetch an interest group ad used in [TURTLEDOVE on-device auction](https://github.com/WICG/turtledove/blob/main/FLEDGE.md#1-browsers-record-interest-groups"). This should be unique among all creatives for a given `accountId`. This URL should be the same as the URL returned by [generateBid()](https://github.com/WICG/turtledove/blob/main/FLEDGE.md#32-on-device-bidding). */
   renderUrl?: string;
   /** Output only. The version of the creative. Version for a new creative is 1 and it increments during subsequent creative updates. */
@@ -765,7 +765,7 @@ export interface Creative {
   /** A video creative. */
   video?: VideoContent;
   /** IDs for the declared ad technology vendors that may be used by this creative. See https://storage.googleapis.com/adx-rtb-dictionaries/vendors.txt for possible values. Can be used to filter the response of the creatives.list method. */
-  declaredVendorIds?: Array<number>;
+  declaredVendorIds?: ReadonlyArray<number>;
 }
 
 export const Creative = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -794,7 +794,7 @@ export const Creative = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCreativesResponse {
   /** The list of creatives. */
-  creatives?: Array<Creative>;
+  creatives?: ReadonlyArray<Creative>;
   /** A token to retrieve the next page of results. Pass this value in the ListCreativesRequest.pageToken field in the subsequent call to the `ListCreatives` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -852,7 +852,7 @@ export const PublisherConnection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchApprovePublisherConnectionsResponse {
   /** The publisher connections that have been approved. */
-  publisherConnections?: Array<PublisherConnection>;
+  publisherConnections?: ReadonlyArray<PublisherConnection>;
 }
 
 export const BatchApprovePublisherConnectionsResponse =
@@ -864,7 +864,7 @@ export interface Buyer {
   /** Output only. The number of creatives that this buyer submitted through the API or bid with in the last 30 days. This is counted against the maximum number of active creatives. */
   activeCreativeCount?: string;
   /** Output only. A list of billing IDs associated with this account. These IDs appear on: 1. A bid request, to signal which buyers are eligible to bid on a given opportunity, and which pretargeting configurations were matched for each eligible buyer. 2. The bid response, to attribute a winning impression to a specific account for billing, reporting, policy and publisher block enforcement. */
-  billingIds?: Array<string>;
+  billingIds?: ReadonlyArray<string>;
   /** Output only. The maximum number of active creatives that this buyer can have. */
   maximumActiveCreativeCount?: string;
   /** Output only. Name of the buyer resource that must follow the pattern `buyers/{buyerAccountId}`, where `{buyerAccountId}` is the account ID of the buyer account whose information is to be received. One can get their account ID on the Authorized Buyers or Open Bidding UI, or by contacting their Google account manager. */
@@ -886,7 +886,7 @@ export const Buyer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListBuyersResponse {
   /** List of buyers. */
-  buyers?: Array<Buyer>;
+  buyers?: ReadonlyArray<Buyer>;
   /** A token which can be passed to a subsequent call to the `ListBuyers` method to retrieve the next page of results in ListBuyersRequest.pageToken. */
   nextPageToken?: string;
 }
@@ -898,7 +898,7 @@ export const ListBuyersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RemoveTargetedAppsRequest {
   /** A list of app IDs to stop targeting in the pretargeting configuration. These values will be removed from the list of targeted app IDs in PretargetingConfig.appTargeting.mobileAppTargeting.values. */
-  appIds?: Array<string>;
+  appIds?: ReadonlyArray<string>;
 }
 
 export const RemoveTargetedAppsRequest =
@@ -915,7 +915,7 @@ export const SuspendPretargetingConfigRequest =
 
 export interface AddTargetedPublishersRequest {
   /** A list of publisher IDs to target in the pretargeting configuration. These values will be added to the list of targeted publisher IDs in PretargetingConfig.publisherTargeting.values. Publishers are identified by their publisher ID from ads.txt / app-ads.txt. See https://iabtechlab.com/ads-txt/ and https://iabtechlab.com/app-ads-txt/ for more details. */
-  publisherIds?: Array<string>;
+  publisherIds?: ReadonlyArray<string>;
   /** Required. The targeting mode that should be applied to the list of publisher IDs. If are existing publisher IDs, must be equal to the existing PretargetingConfig.publisherTargeting.targetingMode or a 400 bad request error will be returned. */
   targetingMode?:
     | "TARGETING_MODE_UNSPECIFIED"
@@ -944,7 +944,7 @@ export interface AddTargetedSitesRequest {
     | "EXCLUSIVE"
     | (string & {});
   /** A list of site URLs to target in the pretargeting configuration. These values will be added to the list of targeted URLs in PretargetingConfig.webTargeting.values. */
-  sites?: Array<string>;
+  sites?: ReadonlyArray<string>;
 }
 
 export const AddTargetedSitesRequest =
@@ -955,7 +955,7 @@ export const AddTargetedSitesRequest =
 
 export interface ListPublisherConnectionsResponse {
   /** The list of publisher connections. */
-  publisherConnections?: Array<PublisherConnection>;
+  publisherConnections?: ReadonlyArray<PublisherConnection>;
   /** A token to retrieve the next page of results. Pass this value in the ListPublisherConnectionsRequest.pageToken field in the subsequent call to the `ListPublisherConnections` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -1024,7 +1024,7 @@ export const CreativeDimensions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchRejectPublisherConnectionsRequest {
   /** Required. The names of the publishers with whom connection will be rejected. In the pattern `bidders/{bidder}/publisherConnections/{publisher}` where `{bidder}` is the account ID of the bidder, and `{publisher}` is the ads.txt/app-ads.txt publisher ID. */
-  names?: Array<string>;
+  names?: ReadonlyArray<string>;
 }
 
 export const BatchRejectPublisherConnectionsRequest =
@@ -1034,7 +1034,7 @@ export const BatchRejectPublisherConnectionsRequest =
 
 export interface RemoveTargetedSitesRequest {
   /** A list of site URLs to stop targeting in the pretargeting configuration. These values will be removed from the list of targeted URLs in PretargetingConfig.webTargeting.values. */
-  sites?: Array<string>;
+  sites?: ReadonlyArray<string>;
 }
 
 export const RemoveTargetedSitesRequest =
@@ -1052,7 +1052,7 @@ export interface PretargetingConfig {
   /** The verticals included or excluded in this config as defined in https://developers.google.com/authorized-buyers/rtb/downloads/publisher-verticals */
   verticalTargeting?: NumericTargetingDimension;
   /** The platforms included by this config. Bid requests for devices with the specified platform types will be sent. An unset value allows all bid requests to be sent, regardless of platform. */
-  includedPlatforms?: Array<
+  includedPlatforms?: ReadonlyArray<
     | "PLATFORM_UNSPECIFIED"
     | "PERSONAL_COMPUTER"
     | "PHONE"
@@ -1065,16 +1065,16 @@ export interface PretargetingConfig {
   /** Output only. The state of this pretargeting config. */
   state?: "STATE_UNSPECIFIED" | "ACTIVE" | "SUSPENDED" | (string & {});
   /** Output only. Existing included or excluded geos that are invalid. Previously targeted geos may become invalid due to privacy restrictions. */
-  invalidGeoIds?: Array<string>;
+  invalidGeoIds?: ReadonlyArray<string>;
   /** Targeting modes included by this config. A bid request must allow all the specified targeting modes. An unset value allows all bid requests to be sent, regardless of which targeting modes they allow. */
-  allowedUserTargetingModes?: Array<
+  allowedUserTargetingModes?: ReadonlyArray<
     | "USER_TARGETING_MODE_UNSPECIFIED"
     | "REMARKETING_ADS"
     | "INTEREST_BASED_TARGETING"
     | (string & {})
   >;
   /** The languages included in this config, represented by their language code. See https://developers.google.com/adwords/api/docs/appendix/languagecodes. */
-  includedLanguages?: Array<string>;
+  includedLanguages?: ReadonlyArray<string>;
   /** Targeting on a subset of site inventory. If WEB is listed in included_environments, the specified targeting is applied. A maximum of 50,000 site URLs can be targeted. An unset value for targeting allows all web-based bid requests to be sent. Sites can either be targeting positively (bid requests will be sent only if the destination site is listed in the targeting dimension) or negatively (bid requests will be sent only if the destination site is not listed in the pretargeting config). */
   webTargeting?: StringTargetingDimension;
   /** The interstitial targeting specified for this config. The unset value will allow bid requests to be sent regardless of whether they are for interstitials or not. */
@@ -1084,7 +1084,7 @@ export interface PretargetingConfig {
     | "ONLY_NON_INTERSTITIAL_REQUESTS"
     | (string & {});
   /** Creative dimensions included by this config. Only bid requests eligible for at least one of the specified creative dimensions will be sent. An unset value allows all bid requests to be sent, regardless of creative dimension. */
-  includedCreativeDimensions?: Array<CreativeDimensions>;
+  includedCreativeDimensions?: ReadonlyArray<CreativeDimensions>;
   /** Output only. Name of the pretargeting config that must follow the pattern `bidders/{bidder_account_id}/pretargetingConfigs/{config_id}` */
   name?: string;
   /** The remarketing lists included or excluded in this config as defined in UserList. */
@@ -1092,15 +1092,15 @@ export interface PretargetingConfig {
   /** Targeting on a subset of publisher inventory. Publishers can either be targeted positively (bid requests will be sent only if the publisher is listed in the targeting dimension) or negatively (bid requests will be sent only if the publisher is not listed in the targeting dimension). A maximum of 10,000 publisher IDs can be targeted. Publisher IDs are found in [ads.txt](https://iabtechlab.com/ads-txt/) / [app-ads.txt](https://iabtechlab.com/app-ads-txt/) and in bid requests in the `BidRequest.publisher_id` field on the [Google RTB protocol](https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto) or the `BidRequest.site.publisher.id` / `BidRequest.app.publisher.id` field on the [OpenRTB protocol](https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto). Publisher IDs will be returned in the order that they were entered. */
   publisherTargeting?: StringTargetingDimension;
   /** The sensitive content category label IDs excluded in this config. Bid requests for inventory with any of the specified content label IDs will not be sent. Refer to this file https://storage.googleapis.com/adx-rtb-dictionaries/content-labels.txt for category IDs. */
-  excludedContentLabelIds?: Array<string>;
+  excludedContentLabelIds?: ReadonlyArray<string>;
   /** The mobile operating systems included in this config as defined in https://storage.googleapis.com/adx-rtb-dictionaries/mobile-os.csv */
-  includedMobileOperatingSystemIds?: Array<string>;
+  includedMobileOperatingSystemIds?: ReadonlyArray<string>;
   /** The targeted minimum viewability decile, ranging in values [0, 10]. A value of 5 means that the config will only match adslots for which we predict at least 50% viewability. Values > 10 will be rounded down to 10. An unset value or a value of 0 indicates that bid requests will be sent regardless of viewability. */
   minimumViewabilityDecile?: number;
   /** The maximum QPS threshold for this config. The bidder should receive no more than this number of bid requests matching this config per second across all their bidding endpoints among all trading locations. Further information available at https://developers.google.com/authorized-buyers/rtb/peer-guide */
   maximumQps?: string;
   /** User identifier types included in this config. At least one of the user identifier types specified in this list must be available for the bid request to be sent. */
-  includedUserIdTypes?: Array<
+  includedUserIdTypes?: ReadonlyArray<
     | "USER_ID_TYPE_UNSPECIFIED"
     | "HOSTED_MATCH_DATA"
     | "GOOGLE_COOKIE"
@@ -1112,11 +1112,11 @@ export interface PretargetingConfig {
   /** The geos included or excluded in this config defined in https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv */
   geoTargeting?: NumericTargetingDimension;
   /** Environments that are being included. Bid requests will not be sent for a given environment if it is not included. Further restrictions can be applied to included environments to target only a subset of its inventory. An unset value includes all environments. */
-  includedEnvironments?: Array<
+  includedEnvironments?: ReadonlyArray<
     "ENVIRONMENT_UNSPECIFIED" | "APP" | "WEB" | (string & {})
   >;
   /** Creative formats included by this config. Only bid requests eligible for at least one of the specified creative formats will be sent. An unset value will allow all bid requests to be sent, regardless of format. */
-  includedFormats?: Array<
+  includedFormats?: ReadonlyArray<
     "CREATIVE_FORMAT_UNSPECIFIED" | "HTML" | "VAST" | "NATIVE" | (string & {})
   >;
   /** Output only. The identifier that corresponds to this pretargeting config that helps buyers track and attribute their spend across their own arbitrary divisions. If a bid request matches more than one config, the buyer chooses which billing_id to attribute each of their bids. */
@@ -1155,7 +1155,7 @@ export const PretargetingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListPretargetingConfigsResponse {
   /** List of pretargeting configurations. */
-  pretargetingConfigs?: Array<PretargetingConfig>;
+  pretargetingConfigs?: ReadonlyArray<PretargetingConfig>;
   /** A token which can be passed to a subsequent call to the `ListPretargetingConfigs` method to retrieve the next page of results in ListPretargetingConfigsRequest.pageToken. */
   nextPageToken?: string;
 }
@@ -1168,7 +1168,7 @@ export const ListPretargetingConfigsResponse =
 
 export interface BatchRejectPublisherConnectionsResponse {
   /** The publisher connections that have been rejected. */
-  publisherConnections?: Array<PublisherConnection>;
+  publisherConnections?: ReadonlyArray<PublisherConnection>;
 }
 
 export const BatchRejectPublisherConnectionsResponse =
@@ -1178,7 +1178,7 @@ export const BatchRejectPublisherConnectionsResponse =
 
 export interface ListUserListsResponse {
   /** List of user lists from the search. */
-  userLists?: Array<UserList>;
+  userLists?: ReadonlyArray<UserList>;
   /** The continuation page token to send back to the server in a subsequent request. Due to a currently known issue, it is recommended that the caller keep invoking the list method until the time a next page token is not returned, even if the result set is empty. */
   nextPageToken?: string;
 }
@@ -1222,7 +1222,7 @@ export const Endpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListEndpointsResponse {
   /** List of bidder endpoints. */
-  endpoints?: Array<Endpoint>;
+  endpoints?: ReadonlyArray<Endpoint>;
   /** A token which can be passed to a subsequent call to the `ListEndpoints` method to retrieve the next page of results in ListEndpointsRequest.pageToken. */
   nextPageToken?: string;
 }
@@ -1234,7 +1234,7 @@ export const ListEndpointsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AddTargetedAppsRequest {
   /** A list of app IDs to target in the pretargeting configuration. These values will be added to the list of targeted app IDs in PretargetingConfig.appTargeting.mobileAppTargeting.values. */
-  appIds?: Array<string>;
+  appIds?: ReadonlyArray<string>;
   /** Required. The targeting mode that should be applied to the list of app IDs. If there are existing targeted app IDs, must be equal to the existing PretargetingConfig.appTargeting.mobileAppTargeting.targetingMode or a 400 bad request error will be returned. */
   targetingMode?:
     | "TARGETING_MODE_UNSPECIFIED"
@@ -1262,7 +1262,7 @@ export interface GetBiddersRequest {
 export const GetBiddersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/bidders/{biddersId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetBiddersRequest>;
 
@@ -1335,11 +1335,7 @@ export const PatchBiddersEndpointsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Endpoint).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/bidders/{biddersId}/endpoints/{endpointsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchBiddersEndpointsRequest>;
 
@@ -1370,10 +1366,7 @@ export const GetBiddersEndpointsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/bidders/{biddersId}/endpoints/{endpointsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBiddersEndpointsRequest>;
 
@@ -1409,7 +1402,7 @@ export const ListBiddersEndpointsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/bidders/{biddersId}/endpoints" }),
+    T.Http({ method: "GET", path: "v1/{parent}/endpoints" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersEndpointsRequest>;
 
@@ -1449,7 +1442,7 @@ export const WatchBiddersCreativesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/bidders/{biddersId}/creatives:watch",
+      path: "v1/{parent}/creatives:watch",
       hasBody: true,
     }),
     svc,
@@ -1498,7 +1491,7 @@ export const ListBiddersCreativesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/bidders/{biddersId}/creatives" }),
+    T.Http({ method: "GET", path: "v1/{parent}/creatives" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersCreativesRequest>;
 
@@ -1536,11 +1529,7 @@ export const ActivateBiddersPretargetingConfigsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ActivatePretargetingConfigRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}:activate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:activate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ActivateBiddersPretargetingConfigsRequest>;
 
@@ -1576,7 +1565,7 @@ export const CreateBiddersPretargetingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/bidders/{biddersId}/pretargetingConfigs",
+      path: "v1/{parent}/pretargetingConfigs",
       hasBody: true,
     }),
     svc,
@@ -1614,7 +1603,7 @@ export const RemoveTargetedPublishersBiddersPretargetingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}:removeTargetedPublishers",
+      path: "v1/{pretargetingConfig}:removeTargetedPublishers",
       hasBody: true,
     }),
     svc,
@@ -1654,7 +1643,7 @@ export const AddTargetedPublishersBiddersPretargetingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}:addTargetedPublishers",
+      path: "v1/{pretargetingConfig}:addTargetedPublishers",
       hasBody: true,
     }),
     svc,
@@ -1689,10 +1678,7 @@ export const DeleteBiddersPretargetingConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteBiddersPretargetingConfigsRequest>;
 
@@ -1729,10 +1715,7 @@ export const ListBiddersPretargetingConfigsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/bidders/{biddersId}/pretargetingConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/pretargetingConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersPretargetingConfigsRequest>;
 
@@ -1773,7 +1756,7 @@ export const RemoveTargetedSitesBiddersPretargetingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}:removeTargetedSites",
+      path: "v1/{pretargetingConfig}:removeTargetedSites",
       hasBody: true,
     }),
     svc,
@@ -1813,11 +1796,7 @@ export const PatchBiddersPretargetingConfigsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(PretargetingConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchBiddersPretargetingConfigsRequest>;
 
@@ -1853,7 +1832,7 @@ export const RemoveTargetedAppsBiddersPretargetingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}:removeTargetedApps",
+      path: "v1/{pretargetingConfig}:removeTargetedApps",
       hasBody: true,
     }),
     svc,
@@ -1887,10 +1866,7 @@ export const GetBiddersPretargetingConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBiddersPretargetingConfigsRequest>;
 
@@ -1924,11 +1900,7 @@ export const SuspendBiddersPretargetingConfigsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SuspendPretargetingConfigRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}:suspend",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:suspend", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SuspendBiddersPretargetingConfigsRequest>;
 
@@ -1964,7 +1936,7 @@ export const AddTargetedSitesBiddersPretargetingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}:addTargetedSites",
+      path: "v1/{pretargetingConfig}:addTargetedSites",
       hasBody: true,
     }),
     svc,
@@ -2003,7 +1975,7 @@ export const AddTargetedAppsBiddersPretargetingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/bidders/{biddersId}/pretargetingConfigs/{pretargetingConfigsId}:addTargetedApps",
+      path: "v1/{pretargetingConfig}:addTargetedApps",
       hasBody: true,
     }),
     svc,
@@ -2044,7 +2016,7 @@ export const BatchApproveBiddersPublisherConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/bidders/{biddersId}/publisherConnections:batchApprove",
+      path: "v1/{parent}/publisherConnections:batchApprove",
       hasBody: true,
     }),
     svc,
@@ -2078,10 +2050,7 @@ export const GetBiddersPublisherConnectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/bidders/{biddersId}/publisherConnections/{publisherConnectionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBiddersPublisherConnectionsRequest>;
 
@@ -2124,10 +2093,7 @@ export const ListBiddersPublisherConnectionsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/bidders/{biddersId}/publisherConnections",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/publisherConnections" }),
     svc,
   ) as unknown as Schema.Schema<ListBiddersPublisherConnectionsRequest>;
 
@@ -2170,7 +2136,7 @@ export const BatchRejectBiddersPublisherConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/bidders/{biddersId}/publisherConnections:batchReject",
+      path: "v1/{parent}/publisherConnections:batchReject",
       hasBody: true,
     }),
     svc,
@@ -2203,7 +2169,7 @@ export interface GetBuyersRequest {
 export const GetBuyersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/buyers/{buyersId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetBuyersRequest>;
 
@@ -2270,7 +2236,7 @@ export const GetRemarketingTagBuyersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/buyers/{buyersId}:getRemarketingTag" }),
+    T.Http({ method: "GET", path: "v1/{name}:getRemarketingTag" }),
     svc,
   ) as unknown as Schema.Schema<GetRemarketingTagBuyersRequest>;
 
@@ -2307,11 +2273,7 @@ export const PatchBuyersCreativesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Creative).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/buyers/{buyersId}/creatives/{creativesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchBuyersCreativesRequest>;
 
@@ -2349,10 +2311,7 @@ export const GetBuyersCreativesRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/buyers/{buyersId}/creatives/{creativesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBuyersCreativesRequest>;
 
@@ -2398,7 +2357,7 @@ export const ListBuyersCreativesRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/buyers/{buyersId}/creatives" }),
+    T.Http({ method: "GET", path: "v1/{parent}/creatives" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersCreativesRequest>;
 
@@ -2436,11 +2395,7 @@ export const CreateBuyersCreativesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Creative).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/buyers/{buyersId}/creatives",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/creatives", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateBuyersCreativesRequest>;
 
@@ -2471,10 +2426,7 @@ export const GetBuyersUserListsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/buyers/{buyersId}/userLists/{userListsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBuyersUserListsRequest>;
 
@@ -2507,11 +2459,7 @@ export const UpdateBuyersUserListsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UserList).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1/buyers/{buyersId}/userLists/{userListsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateBuyersUserListsRequest>;
 
@@ -2545,11 +2493,7 @@ export const CreateBuyersUserListsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(UserList).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/buyers/{buyersId}/userLists",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/userLists", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateBuyersUserListsRequest>;
 
@@ -2583,11 +2527,7 @@ export const CloseBuyersUserListsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CloseUserListRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/buyers/{buyersId}/userLists/{userListsId}:close",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:close", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CloseBuyersUserListsRequest>;
 
@@ -2621,11 +2561,7 @@ export const OpenBuyersUserListsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(OpenUserListRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/buyers/{buyersId}/userLists/{userListsId}:open",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:open", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<OpenBuyersUserListsRequest>;
 
@@ -2655,10 +2591,7 @@ export const GetRemarketingTagBuyersUserListsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/buyers/{buyersId}/userLists/{userListsId}:getRemarketingTag",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:getRemarketingTag" }),
     svc,
   ) as unknown as Schema.Schema<GetRemarketingTagBuyersUserListsRequest>;
 
@@ -2696,7 +2629,7 @@ export const ListBuyersUserListsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/buyers/{buyersId}/userLists" }),
+    T.Http({ method: "GET", path: "v1/{parent}/userLists" }),
     svc,
   ) as unknown as Schema.Schema<ListBuyersUserListsRequest>;
 

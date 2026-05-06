@@ -36,13 +36,13 @@ export interface PatchInstanceFilter {
   /** Target all VM instances in the project. If true, no other criteria is permitted. */
   all?: boolean;
   /** Targets VM instances matching at least one of these label sets. This allows targeting of disparate groups, for example "env=prod or env=staging". */
-  groupLabels?: Array<PatchInstanceFilterGroupLabel>;
+  groupLabels?: ReadonlyArray<PatchInstanceFilterGroupLabel>;
   /** Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone. */
-  zones?: Array<string>;
+  zones?: ReadonlyArray<string>;
   /** Targets any of the VM instances specified. Instances are specified by their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`, `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]` */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
   /** Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group VMs when targeting configs, for example prefix="prod-". */
-  instanceNamePrefixes?: Array<string>;
+  instanceNamePrefixes?: ReadonlyArray<string>;
 }
 
 export const PatchInstanceFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -57,9 +57,9 @@ export interface AptSettings {
   /** By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead. */
   type?: "TYPE_UNSPECIFIED" | "DIST" | "UPGRADE" | (string & {});
   /** List of packages to exclude from update. These packages will be excluded */
-  excludes?: Array<string>;
+  excludes?: ReadonlyArray<string>;
   /** An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field cannot be specified with any other patch configuration fields. */
-  exclusivePackages?: Array<string>;
+  exclusivePackages?: ReadonlyArray<string>;
 }
 
 export const AptSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -74,9 +74,9 @@ export interface YumSettings {
   /** Will cause patch to run `yum update-minimal` instead. */
   minimal?: boolean;
   /** List of packages to exclude from update. These packages are excluded by using the yum `--exclude` flag. */
-  excludes?: Array<string>;
+  excludes?: ReadonlyArray<string>;
   /** An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field must not be specified with any other patch configuration fields. */
-  exclusivePackages?: Array<string>;
+  exclusivePackages?: ReadonlyArray<string>;
 }
 
 export const YumSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -98,13 +98,13 @@ export interface ZypperSettings {
   /** Adds the `--with-update` flag, to `zypper patch`. */
   withUpdate?: boolean;
   /** Install only patches with these categories. Common categories include security, recommended, and feature. */
-  categories?: Array<string>;
+  categories?: ReadonlyArray<string>;
   /** Install only patches with these severities. Common severities include critical, important, moderate, and low. */
-  severities?: Array<string>;
+  severities?: ReadonlyArray<string>;
   /** List of patches to exclude from update. */
-  excludes?: Array<string>;
+  excludes?: ReadonlyArray<string>;
   /** An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper patch patch:' command. This field must not be used with any other patch configuration fields. */
-  exclusivePatches?: Array<string>;
+  exclusivePatches?: ReadonlyArray<string>;
 }
 
 export const ZypperSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -118,7 +118,7 @@ export const ZypperSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WindowsUpdateSettings {
   /** Only apply updates of these windows update classifications. If empty, all updates are applied. */
-  classifications?: Array<
+  classifications?: ReadonlyArray<
     | "CLASSIFICATION_UNSPECIFIED"
     | "CRITICAL"
     | "SECURITY"
@@ -132,9 +132,9 @@ export interface WindowsUpdateSettings {
     | (string & {})
   >;
   /** List of KBs to exclude from update. */
-  excludes?: Array<string>;
+  excludes?: ReadonlyArray<string>;
   /** An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations. */
-  exclusivePatches?: Array<string>;
+  exclusivePatches?: ReadonlyArray<string>;
 }
 
 export const WindowsUpdateSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -164,7 +164,7 @@ export interface ExecStepConfig {
   /** A Google Cloud Storage object containing the executable. */
   gcsObject?: GcsObject;
   /** Defaults to [0]. A list of possible return values that the execution can return to indicate a success. */
-  allowedSuccessCodes?: Array<number>;
+  allowedSuccessCodes?: ReadonlyArray<number>;
   /** The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)). */
   interpreter?:
     | "INTERPRETER_UNSPECIFIED"
@@ -415,7 +415,7 @@ export const CancelPatchJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListPatchJobsResponse {
   /** The list of patch jobs. */
-  patchJobs?: Array<PatchJob>;
+  patchJobs?: ReadonlyArray<PatchJob>;
   /** A pagination token that can be used to get the next page of results. */
   nextPageToken?: string;
 }
@@ -467,7 +467,7 @@ export const PatchJobInstanceDetails =
 
 export interface ListPatchJobInstanceDetailsResponse {
   /** A list of instance status. */
-  patchJobInstanceDetails?: Array<PatchJobInstanceDetails>;
+  patchJobInstanceDetails?: ReadonlyArray<PatchJobInstanceDetails>;
   /** A pagination token that can be used to get the next page of results. */
   nextPageToken?: string;
 }
@@ -655,7 +655,7 @@ export const PatchDeployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListPatchDeploymentsResponse {
   /** The list of patch deployments. */
-  patchDeployments?: Array<PatchDeployment>;
+  patchDeployments?: ReadonlyArray<PatchDeployment>;
   /** A pagination token that can be used to get the next page of patch deployments. */
   nextPageToken?: string;
 }
@@ -712,15 +712,15 @@ export const AssignmentOsType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Assignment {
   /** Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups, for example "env=prod or env=staging". */
-  groupLabels?: Array<AssignmentGroupLabel>;
+  groupLabels?: ReadonlyArray<AssignmentGroupLabel>;
   /** Targets instances in any of these zones. Leave empty to target instances in any zone. Zonal targeting is uncommon and is supported to facilitate the management of changes by zone. */
-  zones?: Array<string>;
+  zones?: ReadonlyArray<string>;
   /** Targets any of the instances specified. Instances are specified by their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`. Instance targeting is uncommon and is supported to facilitate the management of changes by the instance or to target specific VM instances for development and testing. Only supported for project-level policies and must reference instances within this project. */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
   /** Targets VM instances whose name starts with one of these prefixes. Like labels, this is another way to group VM instances when targeting configs, for example prefix="prod-". Only supported for project-level policies. */
-  instanceNamePrefixes?: Array<string>;
+  instanceNamePrefixes?: ReadonlyArray<string>;
   /** Targets VM instances matching at least one of the following OS types. VM instances must match all supplied criteria for a given OsType to be included. */
-  osTypes?: Array<AssignmentOsType>;
+  osTypes?: ReadonlyArray<AssignmentOsType>;
 }
 
 export const Assignment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -766,7 +766,7 @@ export interface AptRepository {
   /** Required. Distribution of this repository. */
   distribution?: string;
   /** Required. List of components for this repository. Must contain at least one item. */
-  components?: Array<string>;
+  components?: ReadonlyArray<string>;
   /** URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg` containing all the keys in any applied guest policy. */
   gpgKey?: string;
 }
@@ -787,7 +787,7 @@ export interface YumRepository {
   /** Required. The location of the repository directory. */
   baseUrl?: string;
   /** URIs of GPG keys. */
-  gpgKeys?: Array<string>;
+  gpgKeys?: ReadonlyArray<string>;
 }
 
 export const YumRepository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -805,7 +805,7 @@ export interface ZypperRepository {
   /** Required. The location of the repository directory. */
   baseUrl?: string;
   /** URIs of GPG keys. */
-  gpgKeys?: Array<string>;
+  gpgKeys?: ReadonlyArray<string>;
 }
 
 export const ZypperRepository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -941,9 +941,9 @@ export interface SoftwareRecipeStepInstallMsi {
   /** Required. The id of the relevant artifact in the recipe. */
   artifactId?: string;
   /** The flags to use when installing the MSI defaults to ["/i"] (i.e. the install flag). */
-  flags?: Array<string>;
+  flags?: ReadonlyArray<string>;
   /** Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0] */
-  allowedExitCodes?: Array<number>;
+  allowedExitCodes?: ReadonlyArray<number>;
 }
 
 export const SoftwareRecipeStepInstallMsi =
@@ -979,9 +979,9 @@ export interface SoftwareRecipeStepExecFile {
   /** The absolute path of the file on the local filesystem. */
   localPath?: string;
   /** Arguments to be passed to the provided executable. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Defaults to [0]. A list of possible return values that the program can return to indicate a success. */
-  allowedExitCodes?: Array<number>;
+  allowedExitCodes?: ReadonlyArray<number>;
 }
 
 export const SoftwareRecipeStepExecFile =
@@ -996,7 +996,7 @@ export interface SoftwareRecipeStepRunScript {
   /** Required. The shell script to be executed. */
   script?: string;
   /** Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0] */
-  allowedExitCodes?: Array<number>;
+  allowedExitCodes?: ReadonlyArray<number>;
   /** The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](https://en.wikipedia.org/wiki/Shebang_\(Unix\)). */
   interpreter?:
     | "INTERPRETER_UNSPECIFIED"
@@ -1045,11 +1045,11 @@ export interface SoftwareRecipe {
   /** The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78). */
   version?: string;
   /** Resources available to be used in the steps in the recipe. */
-  artifacts?: Array<SoftwareRecipeArtifact>;
+  artifacts?: ReadonlyArray<SoftwareRecipeArtifact>;
   /** Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back. */
-  installSteps?: Array<SoftwareRecipeStep>;
+  installSteps?: ReadonlyArray<SoftwareRecipeStep>;
   /** Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe. Any steps taken (including partially completed steps) are not rolled back. */
-  updateSteps?: Array<SoftwareRecipeStep>;
+  updateSteps?: ReadonlyArray<SoftwareRecipeStep>;
   /** Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected. */
   desiredState?:
     | "DESIRED_STATE_UNSPECIFIED"
@@ -1080,11 +1080,11 @@ export interface GuestPolicy {
   /** Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts). */
   assignment?: Assignment;
   /** The software packages to be managed by this policy. */
-  packages?: Array<Package>;
+  packages?: ReadonlyArray<Package>;
   /** A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available. */
-  packageRepositories?: Array<PackageRepository>;
+  packageRepositories?: ReadonlyArray<PackageRepository>;
   /** A list of Recipes to install on the VM instance. */
-  recipes?: Array<SoftwareRecipe>;
+  recipes?: ReadonlyArray<SoftwareRecipe>;
   /** The etag for this guest policy. If this is provided on update, it must match the server's etag. */
   etag?: string;
 }
@@ -1103,7 +1103,7 @@ export const GuestPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListGuestPoliciesResponse {
   /** The list of GuestPolicies. */
-  guestPolicies?: Array<GuestPolicy>;
+  guestPolicies?: ReadonlyArray<GuestPolicy>;
   /** A pagination token that can be used to get the next page of guest policies. */
   nextPageToken?: string;
 }
@@ -1171,11 +1171,11 @@ export const EffectiveGuestPolicySourcedSoftwareRecipe =
 
 export interface EffectiveGuestPolicy {
   /** List of package configurations assigned to the VM instance. */
-  packages?: Array<EffectiveGuestPolicySourcedPackage>;
+  packages?: ReadonlyArray<EffectiveGuestPolicySourcedPackage>;
   /** List of package repository configurations assigned to the VM instance. */
-  packageRepositories?: Array<EffectiveGuestPolicySourcedPackageRepository>;
+  packageRepositories?: ReadonlyArray<EffectiveGuestPolicySourcedPackageRepository>;
   /** List of recipes assigned to the VM instance. */
-  softwareRecipes?: Array<EffectiveGuestPolicySourcedSoftwareRecipe>;
+  softwareRecipes?: ReadonlyArray<EffectiveGuestPolicySourcedSoftwareRecipe>;
 }
 
 export const EffectiveGuestPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1445,7 +1445,7 @@ export const ExecuteProjectsPatchJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/patchJobs:execute",
+      path: "v1beta/{parent}/patchJobs:execute",
       hasBody: true,
     }),
     svc,
@@ -1478,10 +1478,7 @@ export const GetProjectsPatchJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/patchJobs/{patchJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsPatchJobsRequest>;
 
@@ -1515,11 +1512,7 @@ export const CancelProjectsPatchJobsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelPatchJobRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/projects/{projectsId}/patchJobs/{patchJobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsPatchJobsRequest>;
 
@@ -1559,7 +1552,7 @@ export const ListProjectsPatchJobsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/projects/{projectsId}/patchJobs" }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/patchJobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsPatchJobsRequest>;
 
@@ -1603,10 +1596,7 @@ export const ListProjectsPatchJobsInstanceDetailsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/patchJobs/{patchJobsId}/instanceDetails",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/instanceDetails" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsPatchJobsInstanceDetailsRequest>;
 
@@ -1652,7 +1642,7 @@ export const CreateProjectsPatchDeploymentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/patchDeployments",
+      path: "v1beta/{parent}/patchDeployments",
       hasBody: true,
     }),
     svc,
@@ -1685,10 +1675,7 @@ export const GetProjectsPatchDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/patchDeployments/{patchDeploymentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsPatchDeploymentsRequest>;
 
@@ -1725,10 +1712,7 @@ export const ListProjectsPatchDeploymentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/patchDeployments",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/patchDeployments" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsPatchDeploymentsRequest>;
 
@@ -1763,10 +1747,7 @@ export const DeleteProjectsPatchDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/projects/{projectsId}/patchDeployments/{patchDeploymentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsPatchDeploymentsRequest>;
 
@@ -1803,11 +1784,7 @@ export const PatchProjectsPatchDeploymentsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(PatchDeployment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/projects/{projectsId}/patchDeployments/{patchDeploymentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsPatchDeploymentsRequest>;
 
@@ -1841,11 +1818,7 @@ export const PauseProjectsPatchDeploymentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(PausePatchDeploymentRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/projects/{projectsId}/patchDeployments/{patchDeploymentsId}:pause",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:pause", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PauseProjectsPatchDeploymentsRequest>;
 
@@ -1879,11 +1852,7 @@ export const ResumeProjectsPatchDeploymentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ResumePatchDeploymentRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/projects/{projectsId}/patchDeployments/{patchDeploymentsId}:resume",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:resume", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResumeProjectsPatchDeploymentsRequest>;
 
@@ -1924,7 +1893,7 @@ export const CreateProjectsGuestPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/guestPolicies",
+      path: "v1beta/{parent}/guestPolicies",
       hasBody: true,
     }),
     svc,
@@ -1957,10 +1926,7 @@ export const GetProjectsGuestPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/guestPolicies/{guestPoliciesId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsGuestPoliciesRequest>;
 
@@ -1997,10 +1963,7 @@ export const ListProjectsGuestPoliciesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/guestPolicies",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/guestPolicies" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsGuestPoliciesRequest>;
 
@@ -2041,11 +2004,7 @@ export const PatchProjectsGuestPoliciesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GuestPolicy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/projects/{projectsId}/guestPolicies/{guestPoliciesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsGuestPoliciesRequest>;
 
@@ -2076,10 +2035,7 @@ export const DeleteProjectsGuestPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/projects/{projectsId}/guestPolicies/{guestPoliciesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsGuestPoliciesRequest>;
 
@@ -2115,7 +2071,7 @@ export const LookupEffectiveGuestPolicyProjectsZonesInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/zones/{zonesId}/instances/{instancesId}:lookupEffectiveGuestPolicy",
+      path: "v1beta/{instance}:lookupEffectiveGuestPolicy",
       hasBody: true,
     }),
     svc,

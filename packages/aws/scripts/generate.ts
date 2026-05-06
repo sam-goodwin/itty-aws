@@ -2677,7 +2677,7 @@ const generateClient = Effect.fn(function* (
         // Get patched errors from spec file for this operation
         // Use lowercase operation name to match spec file format
         const patchedErrors =
-          sdkFile.serviceSpec.operations[formatName(operationShapeName, true)]
+          sdkFile.serviceSpec.operations?.[formatName(operationShapeName, true)]
             ?.errors ?? [];
 
         // Collect error names for both the runtime array and the type annotation

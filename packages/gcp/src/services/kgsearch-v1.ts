@@ -26,7 +26,7 @@ export interface SearchResponse {
   /** The schema type of top-level JSON-LD object, e.g. ItemList. */
   "@type"?: unknown;
   /** The item list of search results. */
-  itemListElement?: Array<unknown>;
+  itemListElement?: ReadonlyArray<unknown>;
   /** The local context applicable for the response. See more details at http://www.w3.org/TR/json-ld/#context-definitions. */
   "@context"?: unknown;
 }

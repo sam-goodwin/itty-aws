@@ -28,7 +28,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -62,11 +62,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -295,9 +295,9 @@ export interface ObjectConditions {
   /** Ensures that objects are not transferred if a specific maximum time has elapsed since the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation`and the "last modification time" of the object is less than the value of max_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred. */
   maxTimeElapsedSinceLastModification?: string;
   /** If you specify `include_prefixes`, Storage Transfer Service uses the items in the `include_prefixes` array to determine which objects to include in a transfer. Objects must start with one of the matching `include_prefixes` for inclusion in the transfer. If exclude_prefixes is specified, objects must not start with any of the `exclude_prefixes` specified for inclusion in the transfer. The following are requirements of `include_prefixes`: * Each include-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each include-prefix must omit the leading slash. For example, to include the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include-prefix as `logs/y=2015/requests.gz`. * None of the include-prefix values can be empty, if specified. * Each include-prefix must include a distinct portion of the object namespace. No include-prefix may be a prefix of another include-prefix. The max size of `include_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers). */
-  includePrefixes?: Array<string>;
+  includePrefixes?: ReadonlyArray<string>;
   /** If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers). */
-  excludePrefixes?: Array<string>;
+  excludePrefixes?: ReadonlyArray<string>;
   /** If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. The `last_modified_since` and `last_modified_before` fields can be used together for chunked data processing. For example, consider a script that processes each day's worth of data at a time. For that you'd set each of the fields as follows: * `last_modified_since` to the start of the day * `last_modified_before` to the end of the day */
   lastModifiedSince?: string;
   /** If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. */
@@ -485,7 +485,7 @@ export interface NotificationConfig {
   /** Required. The `Topic.name` of the Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format results in an INVALID_ARGUMENT error. */
   pubsubTopic?: string;
   /** Event types for which a notification is desired. If empty, send notifications for all event types. */
-  eventTypes?: Array<
+  eventTypes?: ReadonlyArray<
     | "EVENT_TYPE_UNSPECIFIED"
     | "TRANSFER_OPERATION_SUCCESS"
     | "TRANSFER_OPERATION_FAILED"
@@ -508,11 +508,11 @@ export const NotificationConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LoggingConfig {
   /** Specifies the actions to be logged. If empty, no logs are generated. */
-  logActions?: Array<
+  logActions?: ReadonlyArray<
     "LOGGABLE_ACTION_UNSPECIFIED" | "FIND" | "DELETE" | "COPY" | (string & {})
   >;
   /** States in which `log_actions` are logged. If empty, no logs are generated. */
-  logActionStates?: Array<
+  logActionStates?: ReadonlyArray<
     | "LOGGABLE_ACTION_STATE_UNSPECIFIED"
     | "SUCCEEDED"
     | "FAILED"
@@ -672,7 +672,7 @@ export const UpdateTransferJobRequest =
 
 export interface ListTransferJobsResponse {
   /** A list of transfer jobs. */
-  transferJobs?: Array<TransferJob>;
+  transferJobs?: ReadonlyArray<TransferJob>;
   /** The list next page token. */
   nextPageToken?: string;
 }
@@ -740,7 +740,7 @@ export const AgentPool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAgentPoolsResponse {
   /** A list of agent pools. */
-  agentPools?: Array<AgentPool>;
+  agentPools?: ReadonlyArray<AgentPool>;
   /** The list next page token. */
   nextPageToken?: string;
 }
@@ -831,7 +831,7 @@ export interface ErrorLogEntry {
   /** Output only. A URL that refers to the target (a data source, a data sink, or an object) with which the error is associated. */
   url?: string;
   /** Optional. A list of messages that carry the error details. */
-  errorDetails?: Array<string>;
+  errorDetails?: ReadonlyArray<string>;
 }
 
 export const ErrorLogEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -863,7 +863,7 @@ export interface ErrorSummary {
   /** Required. Count of this type of error. */
   errorCount?: string;
   /** Error samples. At most 5 error log entries are recorded for a given error code for a single transfer operation. */
-  errorLogEntries?: Array<ErrorLogEntry>;
+  errorLogEntries?: ReadonlyArray<ErrorLogEntry>;
 }
 
 export const ErrorSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -901,7 +901,7 @@ export interface TransferOperation {
   /** Information about the progress of the transfer operation. */
   counters?: TransferCounters;
   /** Summarizes errors encountered with sample error log entries. */
-  errorBreakdowns?: Array<ErrorSummary>;
+  errorBreakdowns?: ReadonlyArray<ErrorSummary>;
   /** The name of the transfer job that triggers this transfer operation. */
   transferJobName?: string;
 }
@@ -947,7 +947,7 @@ export const ListTransferOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/transferOperations" }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<ListTransferOperationsRequest>;
 
@@ -982,10 +982,7 @@ export const GetTransferOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/transferOperations/{transferOperationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetTransferOperationsRequest>;
 
@@ -1019,11 +1016,7 @@ export const CancelTransferOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/transferOperations/{transferOperationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelTransferOperationsRequest>;
 
@@ -1057,11 +1050,7 @@ export const PauseTransferOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(PauseTransferOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/transferOperations/{transferOperationsId}:pause",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:pause", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PauseTransferOperationsRequest>;
 
@@ -1095,11 +1084,7 @@ export const ResumeTransferOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ResumeTransferOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/transferOperations/{transferOperationsId}:resume",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:resume", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResumeTransferOperationsRequest>;
 
@@ -1195,11 +1180,7 @@ export const PatchTransferJobsRequest =
     jobName: Schema.String.pipe(T.HttpPath("jobName")),
     body: Schema.optional(UpdateTransferJobRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/transferJobs/{transferJobsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{jobName}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchTransferJobsRequest>;
 
@@ -1234,7 +1215,7 @@ export const GetTransferJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     projectId: Schema.String.pipe(T.HttpQuery("projectId")),
   },
 ).pipe(
-  T.Http({ method: "GET", path: "v1/transferJobs/{transferJobsId}" }),
+  T.Http({ method: "GET", path: "v1/{jobName}" }),
   svc,
 ) as unknown as Schema.Schema<GetTransferJobsRequest>;
 
@@ -1309,11 +1290,7 @@ export const RunTransferJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     body: Schema.optional(RunTransferJobRequest).pipe(T.HttpBody()),
   },
 ).pipe(
-  T.Http({
-    method: "POST",
-    path: "v1/transferJobs/{transferJobsId}:run",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v1/{jobName}:run", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<RunTransferJobsRequest>;
 
@@ -1346,7 +1323,7 @@ export const DeleteTransferJobsRequest =
     jobName: Schema.String.pipe(T.HttpPath("jobName")),
     projectId: Schema.String.pipe(T.HttpQuery("projectId")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/transferJobs/{transferJobsId}" }),
+    T.Http({ method: "DELETE", path: "v1/{jobName}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteTransferJobsRequest>;
 
@@ -1386,7 +1363,7 @@ export const CreateProjectsAgentPoolsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/agentPools",
+      path: "v1/projects/{projectId}/agentPools",
       hasBody: true,
     }),
     svc,
@@ -1425,11 +1402,7 @@ export const PatchProjectsAgentPoolsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AgentPool).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/agentPools/{agentPoolsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAgentPoolsRequest>;
 
@@ -1460,10 +1433,7 @@ export const GetProjectsAgentPoolsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/agentPools/{agentPoolsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAgentPoolsRequest>;
 
@@ -1503,7 +1473,7 @@ export const ListProjectsAgentPoolsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/agentPools" }),
+    T.Http({ method: "GET", path: "v1/projects/{projectId}/agentPools" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAgentPoolsRequest>;
 
@@ -1538,10 +1508,7 @@ export const DeleteProjectsAgentPoolsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/agentPools/{agentPoolsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsAgentPoolsRequest>;
 

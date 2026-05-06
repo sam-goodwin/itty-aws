@@ -57,7 +57,7 @@ export const Segment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Segments {
   /** A list of segments. */
-  items?: Array<Segment>;
+  items?: ReadonlyArray<Segment>;
   /** The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter. */
   itemsPerPage?: number;
   /** The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter. */
@@ -108,7 +108,7 @@ export const ProfileSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WebPropertySummary {
   /** List of profiles under this web property. */
-  profiles?: Array<ProfileSummary>;
+  profiles?: ReadonlyArray<ProfileSummary>;
   /** Web property name. */
   name?: string;
   /** Web property ID of the form UA-XXXXX-YY. */
@@ -144,7 +144,7 @@ export interface AccountSummary {
   /** Indicates whether this account is starred or not. */
   starred?: boolean;
   /** List of web properties under this account. */
-  webProperties?: Array<WebPropertySummary>;
+  webProperties?: ReadonlyArray<WebPropertySummary>;
   /** Account ID. */
   id?: string;
 }
@@ -167,7 +167,7 @@ export interface AccountSummaries {
   /** Email ID of the authenticated user */
   username?: string;
   /** A list of AccountSummaries. */
-  items?: Array<AccountSummary>;
+  items?: ReadonlyArray<AccountSummary>;
   /** The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter. */
   itemsPerPage?: number;
   /** The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter. */
@@ -362,7 +362,7 @@ export const WebPropertyRef = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface EntityAdWordsLink {
   /** A list of Google Ads client accounts. These cannot be MCC accounts. This field is required when creating a Google Ads link. It cannot be empty. */
-  adWordsAccounts?: Array<AdWordsAccount>;
+  adWordsAccounts?: ReadonlyArray<AdWordsAccount>;
   /** Name of the link. This field is required when creating a Google Ads link. */
   name?: string;
   /** URL link for this Google Analytics - Google Ads link. */
@@ -372,7 +372,7 @@ export interface EntityAdWordsLink {
   /** Resource type for entity Google Ads link. */
   kind?: string;
   /** IDs of linked Views (Profiles) represented as strings. */
-  profileIds?: Array<string>;
+  profileIds?: ReadonlyArray<string>;
   /** Entity Google Ads link ID */
   id?: string;
 }
@@ -393,7 +393,7 @@ export interface EntityAdWordsLinks {
   /** Previous link for this Google Ads link collection. */
   previousLink?: string;
   /** A list of entity Google Ads links. */
-  items?: Array<EntityAdWordsLink>;
+  items?: ReadonlyArray<EntityAdWordsLink>;
   /** The maximum number of entries the response can contain, regardless of the actual number of entries returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter. */
   itemsPerPage?: number;
   /** The starting index of the entries, which is 1 by default or otherwise specified by the start-index query parameter. */
@@ -420,7 +420,7 @@ export interface Upload {
   /** Custom data source Id to which this data import belongs. */
   customDataSourceId?: string;
   /** Data import errors collection. */
-  errors?: Array<string>;
+  errors?: ReadonlyArray<string>;
   /** Account Id to which this upload belongs. */
   accountId?: string;
   /** Resource type for Analytics upload. */
@@ -447,7 +447,7 @@ export interface RealtimeData {
   /** Unique ID for this data response. */
   id?: string;
   /** Column headers that list dimension names followed by the metric names. The order of dimensions and metrics is same as specified in the request. */
-  columnHeaders?: Array<{
+  columnHeaders?: ReadonlyArray<{
     dataType?: string;
     columnType?: string;
     name?: string;
@@ -462,7 +462,7 @@ export interface RealtimeData {
     internalWebPropertyId?: string;
   };
   /** Real time data rows, where each row contains a list of dimension values followed by the metric values. The order of dimensions and metrics is same as specified in the request. */
-  rows?: Array<Array<string>>;
+  rows?: ReadonlyArray<ReadonlyArray<string>>;
   /** Link to this page. */
   selfLink?: string;
   /** The total number of rows for the query, regardless of the number of rows in the response. */
@@ -471,8 +471,8 @@ export interface RealtimeData {
   kind?: string;
   /** Real time data request query parameters. */
   query?: {
-    sort?: Array<string>;
-    metrics?: Array<string>;
+    sort?: ReadonlyArray<string>;
+    metrics?: ReadonlyArray<string>;
     ids?: string;
     "max-results"?: number;
     dimensions?: string;
@@ -579,7 +579,7 @@ export interface CustomDimensions {
   /** Email ID of the authenticated user */
   username?: string;
   /** Collection of custom dimensions. */
-  items?: Array<CustomDimension>;
+  items?: ReadonlyArray<CustomDimension>;
   /** The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter. */
   itemsPerPage?: number;
   /** The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter. */
@@ -681,7 +681,7 @@ export interface ProfileFilterLinks {
   /** Collection type. */
   kind?: string;
   /** A list of profile filter links. */
-  items?: Array<ProfileFilterLink>;
+  items?: ReadonlyArray<ProfileFilterLink>;
   /** The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1,000 with a value of 1000 by default, or otherwise specified by the max-results query parameter. */
   itemsPerPage?: number;
   /** The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter. */
@@ -727,7 +727,7 @@ export interface Experiment {
   /** A floating-point number in (0, 1]. Specifies the fraction of the traffic that participates in the experiment. Can be changed for a running experiment. This field may not be changed for an experiments whose status is ENDED. */
   trafficCoverage?: number;
   /** Array of variations. The first variation in the array is the original. The number of variations may not change once an experiment is in the RUNNING state. At least two variations are required before status can be set to RUNNING. */
-  variations?: Array<{
+  variations?: ReadonlyArray<{
     name?: string;
     url?: string;
     weight?: number;
@@ -885,7 +885,7 @@ export interface RemarketingAudience {
   /** The type of audience, either SIMPLE or STATE_BASED. */
   audienceType?: string;
   /** The views (profiles) that this remarketing audience is linked to. */
-  linkedViews?: Array<string>;
+  linkedViews?: ReadonlyArray<string>;
   /** A state based audience definition that will cause a user to be added or removed from an audience. */
   stateBasedAudienceDefinition?: {
     excludeConditions?: { exclusionDuration?: string; segment?: string };
@@ -896,7 +896,7 @@ export interface RemarketingAudience {
   /** Web property ID of the form UA-XXXXX-YY to which this remarketing audience belongs. */
   webPropertyId?: string;
   /** The linked ad accounts associated with this remarketing audience. A remarketing audience can have only one linkedAdAccount currently. */
-  linkedAdAccounts?: Array<LinkedForeignAccount>;
+  linkedAdAccounts?: ReadonlyArray<LinkedForeignAccount>;
   /** The name of this remarketing audience. */
   name?: string;
   /** Remarketing Audience ID. */
@@ -934,11 +934,11 @@ export const RemarketingAudience = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GaData {
   dataTable?: {
-    cols?: Array<{ label?: string; type?: string; id?: string }>;
-    rows?: Array<{ c?: Array<{ v?: string }> }>;
+    cols?: ReadonlyArray<{ label?: string; type?: string; id?: string }>;
+    rows?: ReadonlyArray<{ c?: ReadonlyArray<{ v?: string }> }>;
   };
   /** Analytics data rows, where each row contains a list of dimension values followed by the metric values. The order of dimensions and metrics is same as specified in the request. */
-  rows?: Array<Array<string>>;
+  rows?: ReadonlyArray<ReadonlyArray<string>>;
   /** Information for the view (profile), for which the Analytics data was requested. */
   profileInfo?: {
     profileId?: string;
@@ -957,8 +957,8 @@ export interface GaData {
     "max-results"?: number;
     segment?: string;
     "start-date"?: string;
-    sort?: Array<string>;
-    metrics?: Array<string>;
+    sort?: ReadonlyArray<string>;
+    metrics?: ReadonlyArray<string>;
     samplingLevel?: string;
     ids?: string;
     "end-date"?: string;
@@ -975,7 +975,7 @@ export interface GaData {
   /** Link to this page. */
   selfLink?: string;
   /** Column headers that list dimension names followed by the metric names. The order of dimensions and metrics is same as specified in the request. */
-  columnHeaders?: Array<{
+  columnHeaders?: ReadonlyArray<{
     name?: string;
     columnType?: string;
     dataType?: string;
@@ -1080,7 +1080,7 @@ export interface Account {
   /** Time the account was created. */
   created?: string;
   /** Permissions the user has for this account. */
-  permissions?: { effective?: Array<string> };
+  permissions?: { effective?: ReadonlyArray<string> };
   /** Time the account was last modified. */
   updated?: string;
   /** Child link for an account entry. Points to the list of web properties for this account. */
@@ -1118,7 +1118,7 @@ export interface Accounts {
   /** Email ID of the authenticated user */
   username?: string;
   /** A list of accounts. */
-  items?: Array<Account>;
+  items?: ReadonlyArray<Account>;
   /** The maximum number of entries the response can contain, regardless of the actual number of entries returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter. */
   itemsPerPage?: number;
   /** The starting index of the entries, which is 1 by default or otherwise specified by the start-index query parameter. */
@@ -1142,7 +1142,7 @@ export const Accounts = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AnalyticsDataimportDeleteUploadDataRequest {
   /** A list of upload UIDs. */
-  customDataImportUids?: Array<string>;
+  customDataImportUids?: ReadonlyArray<string>;
 }
 
 export const AnalyticsDataimportDeleteUploadDataRequest =
@@ -1154,7 +1154,7 @@ export interface Goal {
   /** Details for the goal of the type URL_DESTINATION. */
   urlDestinationDetails?: {
     matchType?: string;
-    steps?: Array<{ number?: number; name?: string; url?: string }>;
+    steps?: ReadonlyArray<{ number?: number; name?: string; url?: string }>;
     url?: string;
     firstStepRequired?: boolean;
     caseSensitive?: boolean;
@@ -1169,7 +1169,7 @@ export interface Goal {
   internalWebPropertyId?: string;
   /** Details for the goal of the type EVENT. */
   eventDetails?: {
-    eventConditions?: Array<{
+    eventConditions?: ReadonlyArray<{
       comparisonType?: string;
       matchType?: string;
       expression?: string;
@@ -1373,7 +1373,7 @@ export interface Filters {
   /** Collection type. */
   kind?: string;
   /** A list of filters. */
-  items?: Array<Filter>;
+  items?: ReadonlyArray<Filter>;
   /** The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1,000 with a value of 1000 by default, or otherwise specified by the max-results query parameter. */
   itemsPerPage?: number;
   /** The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter. */
@@ -1405,7 +1405,7 @@ export interface McfData {
   /** Link to previous page for this Analytics data query. */
   previousLink?: string;
   /** Column headers that list dimension names followed by the metric names. The order of dimensions and metrics is same as specified in the request. */
-  columnHeaders?: Array<{
+  columnHeaders?: ReadonlyArray<{
     name?: string;
     dataType?: string;
     columnType?: string;
@@ -1419,11 +1419,11 @@ export interface McfData {
     "max-results"?: number;
     dimensions?: string;
     filters?: string;
-    sort?: Array<string>;
+    sort?: ReadonlyArray<string>;
     segment?: string;
     "start-date"?: string;
     ids?: string;
-    metrics?: Array<string>;
+    metrics?: ReadonlyArray<string>;
     samplingLevel?: string;
     "start-index"?: number;
     "end-date"?: string;
@@ -1444,10 +1444,10 @@ export interface McfData {
     profileName?: string;
   };
   /** Analytics data rows, where each row contains a list of dimension values followed by the metric values. The order of dimensions and metrics is same as specified in the request. */
-  rows?: Array<
-    Array<{
+  rows?: ReadonlyArray<
+    ReadonlyArray<{
       primitiveValue?: string;
-      conversionPathValue?: Array<{
+      conversionPathValue?: ReadonlyArray<{
         interactionType?: string;
         nodeValue?: string;
       }>;
@@ -1541,7 +1541,7 @@ export const Column = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Columns {
   /** List of attributes names returned by columns. */
-  attributeNames?: Array<string>;
+  attributeNames?: ReadonlyArray<string>;
   /** Etag of collection. This etag can be compared with the last response etag to check if response has changed. */
   etag?: string;
   /** Total number of columns returned in the response. */
@@ -1549,7 +1549,7 @@ export interface Columns {
   /** Collection type. */
   kind?: string;
   /** List of columns for a report type. */
-  items?: Array<Column>;
+  items?: ReadonlyArray<Column>;
 }
 
 export const Columns = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1572,7 +1572,7 @@ export interface Experiments {
   /** Collection type. */
   kind?: string;
   /** A list of experiments. */
-  items?: Array<Experiment>;
+  items?: ReadonlyArray<Experiment>;
   /** The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter. */
   itemsPerPage?: number;
   /** The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter. */
@@ -1600,7 +1600,7 @@ export interface UnsampledReports {
   /** Collection type. */
   kind?: string;
   /** A list of unsampled reports. */
-  items?: Array<UnsampledReport>;
+  items?: ReadonlyArray<UnsampledReport>;
   /** The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter. */
   itemsPerPage?: number;
   /** The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter. */
@@ -1636,7 +1636,7 @@ export interface CustomDataSource {
   /** Resource type for Analytics custom data source. */
   kind?: string;
   /** Collection of schema headers of the custom data source. */
-  schema?: Array<string>;
+  schema?: ReadonlyArray<string>;
   childLink?: { href?: string; type?: string };
   /** Time this custom data source was last modified. */
   updated?: string;
@@ -1647,7 +1647,7 @@ export interface CustomDataSource {
   /** Parent link for this custom data source. Points to the web property to which this custom data source belongs. */
   parentLink?: { type?: string; href?: string };
   /** IDs of views (profiles) linked to the custom data source. */
-  profilesLinked?: Array<string>;
+  profilesLinked?: ReadonlyArray<string>;
   /** Type of the custom data source. */
   type?: string;
   /** Web property ID of the form UA-XXXXX-YY to which this custom data source belongs. */
@@ -1696,7 +1696,7 @@ export const CustomDataSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CustomDataSources {
   /** Collection of custom data sources. */
-  items?: Array<CustomDataSource>;
+  items?: ReadonlyArray<CustomDataSource>;
   /** The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter. */
   itemsPerPage?: number;
   /** The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter. */
@@ -1770,7 +1770,10 @@ export interface EntityUserLink {
   /** User reference. */
   userRef?: UserRef;
   /** Permissions the user has for this entity. */
-  permissions?: { effective?: Array<string>; local?: Array<string> };
+  permissions?: {
+    effective?: ReadonlyArray<string>;
+    local?: ReadonlyArray<string>;
+  };
   /** Self link for this resource. */
   selfLink?: string;
 }
@@ -1803,7 +1806,7 @@ export interface EntityUserLinks {
   /** Collection type. */
   kind?: string;
   /** A list of entity user links. */
-  items?: Array<EntityUserLink>;
+  items?: ReadonlyArray<EntityUserLink>;
   /** The maximum number of entries the response can contain, regardless of the actual number of entries returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter. */
   itemsPerPage?: number;
   /** The starting index of the entries, which is 1 by default or otherwise specified by the start-index query parameter. */
@@ -1832,7 +1835,7 @@ export interface Profile {
   /** Account ID to which this view (profile) belongs. */
   accountId?: string;
   /** Permissions the user has for this view (profile). */
-  permissions?: { effective?: Array<string> };
+  permissions?: { effective?: ReadonlyArray<string> };
   /** Time zone for which this view (profile) has been configured. Time zones are identified by strings from the TZ database. */
   timezone?: string;
   /** Parent link for this view (profile). Points to the web property to which this view (profile) belongs. */
@@ -1926,7 +1929,7 @@ export interface Profiles {
   /** Email ID of the authenticated user */
   username?: string;
   /** A list of views (profiles). */
-  items?: Array<Profile>;
+  items?: ReadonlyArray<Profile>;
   /** The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter. */
   itemsPerPage?: number;
   /** The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter. */
@@ -1958,7 +1961,7 @@ export interface Goals {
   /** Email ID of the authenticated user */
   username?: string;
   /** A list of goals. */
-  items?: Array<Goal>;
+  items?: ReadonlyArray<Goal>;
   /** The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter. */
   itemsPerPage?: number;
   /** The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter. */
@@ -1986,7 +1989,7 @@ export interface Uploads {
   /** Collection type. */
   kind?: string;
   /** A list of uploads. */
-  items?: Array<Upload>;
+  items?: ReadonlyArray<Upload>;
   /** The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter. */
   itemsPerPage?: number;
   /** The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter. */
@@ -2065,7 +2068,7 @@ export interface CustomMetrics {
   /** Collection type. */
   kind?: string;
   /** Collection of custom metrics. */
-  items?: Array<CustomMetric>;
+  items?: ReadonlyArray<CustomMetric>;
   /** The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter. */
   itemsPerPage?: number;
   /** The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter. */
@@ -2129,7 +2132,7 @@ export interface Webproperty {
   /** Default view (profile) ID. */
   defaultProfileId?: string;
   /** Permissions the user has for this web property. */
-  permissions?: { effective?: Array<string> };
+  permissions?: { effective?: ReadonlyArray<string> };
 }
 
 export const Webproperty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2190,7 +2193,7 @@ export interface RemarketingAudiences {
   /** Collection type. */
   kind?: string;
   /** A list of remarketing audiences. */
-  items?: Array<RemarketingAudience>;
+  items?: ReadonlyArray<RemarketingAudience>;
   /** The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter. */
   itemsPerPage?: number;
   /** The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter. */
@@ -2218,7 +2221,7 @@ export interface Webproperties {
   /** Collection type. */
   kind?: string;
   /** A list of web properties. */
-  items?: Array<Webproperty>;
+  items?: ReadonlyArray<Webproperty>;
   /** The maximum number of resources the response can contain, regardless of the actual number of resources returned. Its value ranges from 1 to 1000 with a value of 1000 by default, or otherwise specified by the max-results query parameter. */
   itemsPerPage?: number;
   /** The starting index of the resources, which is 1 by default or otherwise specified by the start-index query parameter. */

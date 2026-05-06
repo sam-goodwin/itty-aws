@@ -83,9 +83,9 @@ export const LoadBalancerTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface HealthCheckTargets {
   /** Configuration for internal load balancers to be health checked. */
-  internalLoadBalancer?: Array<LoadBalancerTarget>;
+  internalLoadBalancer?: ReadonlyArray<LoadBalancerTarget>;
   /** The Internet IP addresses to be health checked. The format matches the format of ResourceRecordSet.rrdata as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) */
-  externalEndpoints?: Array<string>;
+  externalEndpoints?: ReadonlyArray<string>;
 }
 
 export const HealthCheckTargets = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -99,8 +99,8 @@ export interface GeoPolicyItem {
   /** For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be specified along with `rrdata` within this item. */
   healthCheckedTargets?: HealthCheckTargets;
   /** DNSSEC generated signatures for all the `rrdata` within this item. When using health-checked targets for DNSSEC-enabled zones, you can only use at most one health-checked IP address per item. */
-  signatureRrdata?: Array<string>;
-  rrdata?: Array<string>;
+  signatureRrdata?: ReadonlyArray<string>;
+  rrdata?: ReadonlyArray<string>;
 }
 
 export const GeoPolicyItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -112,7 +112,7 @@ export const GeoPolicyItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GeoPolicy {
   /** The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead. */
-  item?: Array<GeoPolicyItem>;
+  item?: ReadonlyArray<GeoPolicyItem>;
   /** Without fencing, if health check fails for all configured items in the current geo bucket, we failover to the next nearest geo bucket. With fencing, if health checking is enabled, as long as some targets in the current geo bucket are healthy, we return only the healthy targets. However, if all targets are unhealthy, we don't failover to the next nearest bucket; instead, we return all the items in the current bucket even when all targets are unhealthy. */
   enableFencing?: boolean;
 }
@@ -173,9 +173,9 @@ export interface GoogleDomainsDns {
     | "DS_RECORDS_PUBLISHED"
     | (string & {});
   /** Output only. The list of DS records published for this domain. The list is automatically populated when `ds_state` is `DS_RECORDS_PUBLISHED`, otherwise it remains empty. */
-  dsRecords?: Array<DsRecord>;
+  dsRecords?: ReadonlyArray<DsRecord>;
   /** Output only. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format. This field is automatically populated with the name servers assigned to the Google Domains DNS zone. */
-  nameServers?: Array<string>;
+  nameServers?: ReadonlyArray<string>;
 }
 
 export const GoogleDomainsDns = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -186,11 +186,11 @@ export const GoogleDomainsDns = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GlueRecord {
   /** List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set. */
-  ipv4Addresses?: Array<string>;
+  ipv4Addresses?: ReadonlyArray<string>;
   /** Required. Domain name of the host in Punycode format. */
   hostName?: string;
   /** List of IPv6 addresses corresponding to this host in the standard hexadecimal format (e.g. `2001:db8::`). At least one of `ipv4_address` and `ipv6_address` must be set. */
-  ipv6Addresses?: Array<string>;
+  ipv6Addresses?: ReadonlyArray<string>;
 }
 
 export const GlueRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -201,9 +201,9 @@ export const GlueRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CustomDns {
   /** Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format. */
-  nameServers?: Array<string>;
+  nameServers?: ReadonlyArray<string>;
   /** The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled. */
-  dsRecords?: Array<DsRecord>;
+  dsRecords?: ReadonlyArray<DsRecord>;
 }
 
 export const CustomDns = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -217,7 +217,7 @@ export interface DnsSettings {
   /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The free DNS zone provided by [Google Domains](https://domains.google/). */
   googleDomainsDns?: GoogleDomainsDns;
   /** The list of glue records for this `Registration`. Commonly empty. */
-  glueRecords?: Array<GlueRecord>;
+  glueRecords?: ReadonlyArray<GlueRecord>;
   /** An arbitrary DNS provider identified by its name servers. */
   customDns?: CustomDns;
 }
@@ -267,7 +267,7 @@ export const ManagementSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PostalAddress {
   /** Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information. */
-  recipients?: Array<string>;
+  recipients?: ReadonlyArray<string>;
   /** Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (for example, state or zip code validation in the United States). */
   postalCode?: string;
   /** Optional. Generally refers to the city or town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave `locality` empty and use `address_lines`. */
@@ -279,7 +279,7 @@ export interface PostalAddress {
   /** Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en". */
   languageCode?: string;
   /** Unstructured address lines describing the lower levels of an address. Because values in `address_lines` do not have type information and may sometimes contain multiple values in a single field (for example, "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country or region of the address. In places where this can vary (for example, Japan), `address_language` is used to make it explicit (for example, "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). In this way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a `region_code` with all remaining information placed in the `address_lines`. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a `region_code` and `address_lines` and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas). */
-  addressLines?: Array<string>;
+  addressLines?: ReadonlyArray<string>;
   /** Optional. Sublocality of the address. For example, this can be a neighborhood, borough, or district. */
   sublocality?: string;
   /** Optional. The name of the organization at the address. */
@@ -370,7 +370,7 @@ export interface Registration {
   /** Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format. */
   domainName?: string;
   /** Output only. Set of options for the `contact_settings.privacy` field that this `Registration` supports. */
-  supportedPrivacy?: Array<
+  supportedPrivacy?: ReadonlyArray<
     | "CONTACT_PRIVACY_UNSPECIFIED"
     | "PUBLIC_CONTACT_DATA"
     | "PRIVATE_CONTACT_DATA"
@@ -397,7 +397,7 @@ export interface Registration {
     | "EXPIRED"
     | (string & {});
   /** Output only. The set of issues with the `Registration` that require attention. */
-  issues?: Array<
+  issues?: ReadonlyArray<
     | "ISSUE_UNSPECIFIED"
     | "CONTACT_SUPPORT"
     | "UNVERIFIED_EMAIL"
@@ -407,7 +407,7 @@ export interface Registration {
     | (string & {})
   >;
   /** Output only. Special properties of the domain. */
-  domainProperties?: Array<
+  domainProperties?: ReadonlyArray<
     | "DOMAIN_PROPERTY_UNSPECIFIED"
     | "TRANSFER_LOCK_UNSUPPORTED_BY_REGISTRY"
     | "REQUIRE_PUSH_TRANSFER"
@@ -458,13 +458,13 @@ export interface RegisterDomainRequest {
   /** Required. The complete `Registration` resource to be created. */
   registration?: Registration;
   /** The list of contact notices that the caller acknowledges. The notices needed here depend on the values specified in `registration.contact_settings`. */
-  contactNotices?: Array<
+  contactNotices?: ReadonlyArray<
     | "CONTACT_NOTICE_UNSPECIFIED"
     | "PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT"
     | (string & {})
   >;
   /** The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement. */
-  domainNotices?: Array<
+  domainNotices?: ReadonlyArray<
     "DOMAIN_NOTICE_UNSPECIFIED" | "HSTS_PRELOADED" | (string & {})
   >;
 }
@@ -481,7 +481,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
@@ -496,7 +496,7 @@ export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RegisterParameters {
   /** Contact privacy options that the domain supports. */
-  supportedPrivacy?: Array<
+  supportedPrivacy?: ReadonlyArray<
     | "CONTACT_PRIVACY_UNSPECIFIED"
     | "PUBLIC_CONTACT_DATA"
     | "PRIVATE_CONTACT_DATA"
@@ -506,7 +506,7 @@ export interface RegisterParameters {
   /** The domain name. Unicode domain names are expressed in Punycode format. */
   domainName?: string;
   /** Notices about special properties of the domain. */
-  domainNotices?: Array<
+  domainNotices?: ReadonlyArray<
     "DOMAIN_NOTICE_UNSPECIFIED" | "HSTS_PRELOADED" | (string & {})
   >;
   /** Indicates whether the domain is available for registration. This value is accurate when obtained by calling `RetrieveRegisterParameters`, but is approximate when obtained by calling `SearchDomains`. */
@@ -531,7 +531,7 @@ export const RegisterParameters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SearchDomainsResponse {
   /** Results of the domain name search. */
-  registerParameters?: Array<RegisterParameters>;
+  registerParameters?: ReadonlyArray<RegisterParameters>;
 }
 
 export const SearchDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -568,7 +568,7 @@ export const DomainForwarding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListRegistrationsResponse {
   /** A list of `Registration`s. */
-  registrations?: Array<Registration>;
+  registrations?: ReadonlyArray<Registration>;
   /** When present, there are more results to retrieve. Set `page_token` to this value on a subsequent call to get the next page of results. */
   nextPageToken?: string;
 }
@@ -604,7 +604,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
 }
 
 export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -636,7 +636,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
 }
 
 export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -647,9 +647,9 @@ export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TransferParameters {
   /** The name servers that currently store the configuration of the domain. */
-  nameServers?: Array<string>;
+  nameServers?: ReadonlyArray<string>;
   /** Contact privacy options that the domain supports. */
-  supportedPrivacy?: Array<
+  supportedPrivacy?: ReadonlyArray<
     | "CONTACT_PRIVACY_UNSPECIFIED"
     | "PUBLIC_CONTACT_DATA"
     | "PRIVATE_CONTACT_DATA"
@@ -717,7 +717,7 @@ export interface RetrieveImportableDomainsResponse {
   /** When present, there are more results to retrieve. Set `page_token` to this value on a subsequent call to get the next page of results. */
   nextPageToken?: string;
   /** A list of domains that the calling user manages in Google Domains. */
-  domains?: Array<Domain>;
+  domains?: ReadonlyArray<Domain>;
 }
 
 export const RetrieveImportableDomainsResponse =
@@ -745,7 +745,7 @@ export interface AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -757,7 +757,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
 export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -769,11 +769,11 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
 }
 
 export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -848,11 +848,11 @@ export const PrimaryBackupPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface WrrPolicyItem {
   /** Endpoints that are health checked before making the routing decision. The unhealthy endpoints are omitted from the result. If all endpoints within a bucket are unhealthy, we choose a different bucket (sampled with respect to its weight) for responding. If DNSSEC is enabled for this zone, only one of `rrdata` or `health_checked_targets` can be set. */
   healthCheckedTargets?: HealthCheckTargets;
-  rrdata?: Array<string>;
+  rrdata?: ReadonlyArray<string>;
   /** The weight corresponding to this `WrrPolicyItem` object. When multiple `WrrPolicyItem` objects are configured, the probability of returning an `WrrPolicyItem` object's data is proportional to its weight relative to the sum of weights configured for all items. This weight must be non-negative. */
   weight?: number;
   /** DNSSEC generated signatures for all the `rrdata` within this item. When using health-checked targets for DNSSEC-enabled zones, you can only use at most one health-checked IP address per item. */
-  signatureRrdata?: Array<string>;
+  signatureRrdata?: ReadonlyArray<string>;
 }
 
 export const WrrPolicyItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -863,7 +863,7 @@ export const WrrPolicyItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "WrrPolicyItem" });
 
 export interface WrrPolicy {
-  item?: Array<WrrPolicyItem>;
+  item?: ReadonlyArray<WrrPolicyItem>;
 }
 
 export const WrrPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -895,13 +895,13 @@ export interface ResourceRecordSet {
   /** Number of seconds that this `ResourceRecordSet` can be cached by resolvers. */
   ttl?: number;
   /** As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples. */
-  rrdata?: Array<string>;
+  rrdata?: ReadonlyArray<string>;
   /** Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid `ResourceRecordSet` contains only `rrdata` (for static resolution) or a `routing_policy` (for dynamic resolution). */
   routingPolicy?: RRSetRoutingPolicy;
   /** For example, www.example.com. */
   name?: string;
   /** As defined in RFC 4034 (section 3.2). */
-  signatureRrdata?: Array<string>;
+  signatureRrdata?: ReadonlyArray<string>;
 }
 
 export const ResourceRecordSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -949,11 +949,11 @@ export const ConfigureManagementSettingsRequest =
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -980,7 +980,7 @@ export interface ConfigureContactSettingsRequest {
   /** Required. The field mask describing which fields to update as a comma-separated list. For example, if only the registrant contact is being updated, the `update_mask` is `"registrant_contact"`. */
   updateMask?: string;
   /** The list of contact notices that the caller acknowledges. The notices needed here depend on the values specified in `contact_settings`. */
-  contactNotices?: Array<
+  contactNotices?: ReadonlyArray<
     | "CONTACT_NOTICE_UNSPECIFIED"
     | "PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT"
     | (string & {})
@@ -999,7 +999,7 @@ export const ConfigureContactSettingsRequest =
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -1009,7 +1009,7 @@ export const TestIamPermissionsResponse =
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -1025,7 +1025,7 @@ export interface TransferDomainRequest {
   /** Validate the request without actually transferring the domain. */
   validateOnly?: boolean;
   /** The list of contact notices that you acknowledge. The notices needed here depend on the values specified in `registration.contact_settings`. */
-  contactNotices?: Array<
+  contactNotices?: ReadonlyArray<
     | "CONTACT_NOTICE_UNSPECIFIED"
     | "PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT"
     | (string & {})
@@ -1080,7 +1080,7 @@ export interface RetrieveGoogleDomainsDnsRecordsResponse {
   /** When present, there are more results to retrieve. Set `page_token` to this value on a subsequent call to get the next page of results. */
   nextPageToken?: string;
   /** The resource record set resources (DNS Zone records). */
-  rrset?: Array<ResourceRecordSet>;
+  rrset?: ReadonlyArray<ResourceRecordSet>;
 }
 
 export const RetrieveGoogleDomainsDnsRecordsResponse =
@@ -1110,9 +1110,9 @@ export const EmailForwarding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RetrieveGoogleDomainsForwardingConfigResponse {
   /** The list of domain forwarding configurations. A forwarding configuration might not work correctly if the required DNS records are not present in the domain's authoritative DNS zone. */
-  domainForwardings?: Array<DomainForwarding>;
+  domainForwardings?: ReadonlyArray<DomainForwarding>;
   /** The list of email forwarding configurations. A forwarding configuration might not work correctly if the required DNS records are not present in the domain's authoritative DNS zone. */
-  emailForwardings?: Array<EmailForwarding>;
+  emailForwardings?: ReadonlyArray<EmailForwarding>;
 }
 
 export const RetrieveGoogleDomainsForwardingConfigResponse =
@@ -1148,7 +1148,7 @@ export const ListProjectsLocationsRequest =
     ),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha2/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1alpha2/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -1183,10 +1183,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -1225,7 +1222,7 @@ export const RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsReques
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:retrieveGoogleDomainsDnsRecords",
+      path: "v1alpha2/{registration}:retrieveGoogleDomainsDnsRecords",
     }),
     svc,
   ) as unknown as Schema.Schema<RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest>;
@@ -1265,7 +1262,7 @@ export const RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrations
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:retrieveGoogleDomainsForwardingConfig",
+      path: "v1alpha2/{registration}:retrieveGoogleDomainsForwardingConfig",
     }),
     svc,
   ) as unknown as Schema.Schema<RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest>;
@@ -1306,7 +1303,7 @@ export const SearchDomainsProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations:searchDomains",
+      path: "v1alpha2/{location}/registrations:searchDomains",
     }),
     svc,
   ) as unknown as Schema.Schema<SearchDomainsProjectsLocationsRegistrationsRequest>;
@@ -1344,7 +1341,7 @@ export const RetrieveTransferParametersProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations:retrieveTransferParameters",
+      path: "v1alpha2/{location}/registrations:retrieveTransferParameters",
     }),
     svc,
   ) as unknown as Schema.Schema<RetrieveTransferParametersProjectsLocationsRegistrationsRequest>;
@@ -1386,7 +1383,7 @@ export const RetrieveImportableDomainsProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations:retrieveImportableDomains",
+      path: "v1alpha2/{location}/registrations:retrieveImportableDomains",
     }),
     svc,
   ) as unknown as Schema.Schema<RetrieveImportableDomainsProjectsLocationsRegistrationsRequest>;
@@ -1430,11 +1427,7 @@ export const PatchProjectsLocationsRegistrationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Registration).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsRegistrationsRequest>;
 
@@ -1470,7 +1463,7 @@ export const SetIamPolicyProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:setIamPolicy",
+      path: "v1alpha2/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -1508,7 +1501,7 @@ export const RegisterProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations:register",
+      path: "v1alpha2/{parent}/registrations:register",
       hasBody: true,
     }),
     svc,
@@ -1546,7 +1539,7 @@ export const RenewDomainProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:renewDomain",
+      path: "v1alpha2/{registration}:renewDomain",
       hasBody: true,
     }),
     svc,
@@ -1588,10 +1581,7 @@ export const ListProjectsLocationsRegistrationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations",
-    }),
+    T.Http({ method: "GET", path: "v1alpha2/{parent}/registrations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRegistrationsRequest>;
 
@@ -1632,7 +1622,7 @@ export const ImportProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations:import",
+      path: "v1alpha2/{parent}/registrations:import",
       hasBody: true,
     }),
     svc,
@@ -1670,7 +1660,7 @@ export const TestIamPermissionsProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:testIamPermissions",
+      path: "v1alpha2/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -1710,7 +1700,7 @@ export const TransferProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations:transfer",
+      path: "v1alpha2/{parent}/registrations:transfer",
       hasBody: true,
     }),
     svc,
@@ -1748,7 +1738,7 @@ export const ConfigureDnsSettingsProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:configureDnsSettings",
+      path: "v1alpha2/{registration}:configureDnsSettings",
       hasBody: true,
     }),
     svc,
@@ -1790,7 +1780,7 @@ export const ConfigureManagementSettingsProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:configureManagementSettings",
+      path: "v1alpha2/{registration}:configureManagementSettings",
       hasBody: true,
     }),
     svc,
@@ -1828,11 +1818,7 @@ export const ExportProjectsLocationsRegistrationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ExportRegistrationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:export",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha2/{name}:export", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExportProjectsLocationsRegistrationsRequest>;
 
@@ -1868,7 +1854,7 @@ export const RetrieveRegisterParametersProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations:retrieveRegisterParameters",
+      path: "v1alpha2/{location}/registrations:retrieveRegisterParameters",
     }),
     svc,
   ) as unknown as Schema.Schema<RetrieveRegisterParametersProjectsLocationsRegistrationsRequest>;
@@ -1907,7 +1893,7 @@ export const InitiatePushTransferProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:initiatePushTransfer",
+      path: "v1alpha2/{registration}:initiatePushTransfer",
       hasBody: true,
     }),
     svc,
@@ -1947,10 +1933,7 @@ export const GetIamPolicyProjectsLocationsRegistrationsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1alpha2/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsRegistrationsRequest>;
 
@@ -1981,10 +1964,7 @@ export const GetProjectsLocationsRegistrationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRegistrationsRequest>;
 
@@ -2020,7 +2000,7 @@ export const ConfigureContactSettingsProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:configureContactSettings",
+      path: "v1alpha2/{registration}:configureContactSettings",
       hasBody: true,
     }),
     svc,
@@ -2060,7 +2040,7 @@ export const ResetAuthorizationCodeProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:resetAuthorizationCode",
+      path: "v1alpha2/{registration}:resetAuthorizationCode",
       hasBody: true,
     }),
     svc,
@@ -2097,7 +2077,7 @@ export const RetrieveAuthorizationCodeProjectsLocationsRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:retrieveAuthorizationCode",
+      path: "v1alpha2/{registration}:retrieveAuthorizationCode",
     }),
     svc,
   ) as unknown as Schema.Schema<RetrieveAuthorizationCodeProjectsLocationsRegistrationsRequest>;
@@ -2131,10 +2111,7 @@ export const DeleteProjectsLocationsRegistrationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsRegistrationsRequest>;
 
@@ -2179,10 +2156,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1alpha2/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -2217,10 +2191,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 

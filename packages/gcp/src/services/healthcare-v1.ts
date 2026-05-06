@@ -45,7 +45,7 @@ export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -77,7 +77,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
@@ -97,7 +97,7 @@ export interface AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -109,7 +109,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
 export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -121,9 +121,9 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
@@ -149,7 +149,7 @@ export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -159,7 +159,7 @@ export const TestIamPermissionsRequest =
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -173,7 +173,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -207,11 +207,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -254,7 +254,7 @@ export const ConsentStore = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListConsentStoresResponse {
   /** The returned consent stores. The maximum number of stores returned is determined by the value of page_size in the ListConsentStoresRequest. */
-  consentStores?: Array<ConsentStore>;
+  consentStores?: ReadonlyArray<ConsentStore>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -273,9 +273,9 @@ export interface AttributeDefinition {
   /** Required. The category of the attribute. The value of this field cannot be changed after creation. */
   category?: "CATEGORY_UNSPECIFIED" | "RESOURCE" | "REQUEST" | (string & {});
   /** Required. Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation. */
-  allowedValues?: Array<string>;
+  allowedValues?: ReadonlyArray<string>;
   /** Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value. */
-  consentDefaultValues?: Array<string>;
+  consentDefaultValues?: ReadonlyArray<string>;
   /** Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`. */
   dataMappingDefaultValue?: string;
 }
@@ -291,7 +291,7 @@ export const AttributeDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAttributeDefinitionsResponse {
   /** The returned Attribute definitions. The maximum number of attributes returned is determined by the value of page_size in the ListAttributeDefinitionsRequest. */
-  attributeDefinitions?: Array<AttributeDefinition>;
+  attributeDefinitions?: ReadonlyArray<AttributeDefinition>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -344,7 +344,7 @@ export interface ConsentArtifact {
   /** Optional. A signature from a witness. */
   witnessSignature?: Signature;
   /** Optional. Screenshots, PDFs, or other binary information documenting the user's consent. */
-  consentContentScreenshots?: Array<Image>;
+  consentContentScreenshots?: ReadonlyArray<Image>;
   /** Optional. An string indicating the version of the consent information shown to the user. */
   consentContentVersion?: string;
   /** Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version. */
@@ -364,7 +364,7 @@ export const ConsentArtifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListConsentArtifactsResponse {
   /** The returned Consent artifacts. The maximum number of artifacts returned is determined by the value of page_size in the ListConsentArtifactsRequest. */
-  consentArtifacts?: Array<ConsentArtifact>;
+  consentArtifacts?: ReadonlyArray<ConsentArtifact>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -379,7 +379,7 @@ export interface Attribute {
   /** Indicates the name of an attribute defined in the consent store. */
   attributeDefinitionId?: string;
   /** Required. The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const Attribute = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -389,7 +389,7 @@ export const Attribute = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleCloudHealthcareV1ConsentPolicy {
   /** The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user. */
-  resourceAttributes?: Array<Attribute>;
+  resourceAttributes?: ReadonlyArray<Attribute>;
   /** Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`). */
   authorizationRule?: Expr;
 }
@@ -410,7 +410,7 @@ export interface Consent {
   /** Required. User's UUID provided by the client. */
   userId?: string;
   /** Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions. */
-  policies?: Array<GoogleCloudHealthcareV1ConsentPolicy>;
+  policies?: ReadonlyArray<GoogleCloudHealthcareV1ConsentPolicy>;
   /** Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. */
   consentArtifact?: string;
   /** Required. Indicates the current state of this Consent. */
@@ -471,7 +471,7 @@ export const RejectConsentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListConsentsResponse {
   /** The returned Consents. The maximum number of Consents returned is determined by the value of page_size in the ListConsentsRequest. */
-  consents?: Array<Consent>;
+  consents?: ReadonlyArray<Consent>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -483,7 +483,7 @@ export const ListConsentsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListConsentRevisionsResponse {
   /** The returned Consent revisions. The maximum number of revisions returned is determined by the value of `page_size` in the ListConsentRevisionsRequest. */
-  consents?: Array<Consent>;
+  consents?: ReadonlyArray<Consent>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -511,7 +511,7 @@ export interface UserDataMapping {
   /** Required. User's UUID provided by the client. */
   userId?: string;
   /** Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute. */
-  resourceAttributes?: Array<Attribute>;
+  resourceAttributes?: ReadonlyArray<Attribute>;
   /** Output only. Indicates whether this mapping is archived. */
   archived?: boolean;
   /** Output only. Indicates the time when this mapping was archived. */
@@ -529,7 +529,7 @@ export const UserDataMapping = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListUserDataMappingsResponse {
   /** The returned User data mappings. The maximum number of User data mappings returned is determined by the value of page_size in the ListUserDataMappingsRequest. */
-  userDataMappings?: Array<UserDataMapping>;
+  userDataMappings?: ReadonlyArray<UserDataMapping>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -556,7 +556,7 @@ export const ArchiveUserDataMappingResponse =
 
 export interface ConsentList {
   /** The resource names of the Consents to evaluate against, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. */
-  consents?: Array<string>;
+  consents?: ReadonlyArray<string>;
 }
 
 export const ConsentList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -698,7 +698,7 @@ export const Result = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface EvaluateUserConsentsResponse {
   /** The consent evaluation result for each `data_id`. */
-  results?: Array<Result>;
+  results?: ReadonlyArray<Result>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. This token is valid for 72 hours after it is created. */
   nextPageToken?: string;
 }
@@ -711,7 +711,7 @@ export const EvaluateUserConsentsResponse =
 
 export interface TagFilterList {
   /** Optional. Tags to be filtered. Tags must be DICOM Data Elements, File Meta Elements, or Directory Structuring Elements, as defined at: https://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,. They may be provided by "Keyword" or "Tag". For example "PatientID", "00100010". */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
 }
 
 export const TagFilterList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -744,7 +744,7 @@ export const DicomConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FieldMetadata {
   /** Optional. List of paths to FHIR fields to be redacted. Each path is a period-separated list where each component is either a field name or FHIR type name, for example: Patient, HumanName. For "choice" types (those defined in the FHIR spec with the form: field[x]) we use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported types are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. */
-  paths?: Array<string>;
+  paths?: ReadonlyArray<string>;
   /** Optional. Deidentify action for one field. */
   action?:
     | "ACTION_UNSPECIFIED"
@@ -761,7 +761,7 @@ export const FieldMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FhirConfig {
   /** Optional. Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata is passed through to the output dataset unmodified. All extensions will be processed according to `default_keep_extensions`. */
-  fieldMetadataList?: Array<FieldMetadata>;
+  fieldMetadataList?: ReadonlyArray<FieldMetadata>;
   /** Optional. The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If true, all extensions are preserved during de-identification by default. If false or unspecified, all extensions are removed during de-identification by default. */
   defaultKeepExtensions?: boolean;
 }
@@ -845,7 +845,7 @@ export const ReplaceWithInfoTypeConfig =
 
 export interface InfoTypeTransformation {
   /** Optional. InfoTypes to apply this transformation to. If this is not specified, the transformation applies to any info_type. */
-  infoTypes?: Array<string>;
+  infoTypes?: ReadonlyArray<string>;
   /** Config for text redaction. */
   redactConfig?: RedactConfig;
   /** Config for character mask. */
@@ -871,11 +871,11 @@ export const InfoTypeTransformation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface TextConfig {
   /** Optional. The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead. */
-  transformations?: Array<InfoTypeTransformation>;
+  transformations?: ReadonlyArray<InfoTypeTransformation>;
   /** Optional. Transformations to apply to the detected data, overridden by `exclude_info_types`. */
-  additionalTransformations?: Array<InfoTypeTransformation>;
+  additionalTransformations?: ReadonlyArray<InfoTypeTransformation>;
   /** Optional. InfoTypes to skip transforming, overriding `additional_transformations`. */
-  excludeInfoTypes?: Array<string>;
+  excludeInfoTypes?: ReadonlyArray<string>;
 }
 
 export const TextConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -909,7 +909,7 @@ export const DeidentifyConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Resources {
   /** List of resources IDs. For example, "Patient/1234". */
-  resources?: Array<string>;
+  resources?: ReadonlyArray<string>;
 }
 
 export const Resources = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1007,7 +1007,7 @@ export const Dataset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDatasetsResponse {
   /** The first page of datasets. */
-  datasets?: Array<Dataset>;
+  datasets?: ReadonlyArray<Dataset>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -1192,9 +1192,9 @@ export interface DicomStore {
   /** User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. */
   labels?: Record<string, string>;
   /** Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination. */
-  streamConfigs?: Array<GoogleCloudHealthcareV1DicomStreamConfig>;
+  streamConfigs?: ReadonlyArray<GoogleCloudHealthcareV1DicomStreamConfig>;
   /** Optional. Specifies where and whether to send notifications upon changes to a DICOM store. */
-  notificationConfigs?: Array<DicomNotificationConfig>;
+  notificationConfigs?: ReadonlyArray<DicomNotificationConfig>;
 }
 
 export const DicomStore = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1209,7 +1209,7 @@ export const DicomStore = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDicomStoresResponse {
   /** The returned DICOM stores. Won't be more DICOM stores than the value of page_size in the request. */
-  dicomStores?: Array<DicomStore>;
+  dicomStores?: ReadonlyArray<DicomStore>;
   /** Token to retrieve the next page of results or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -1303,7 +1303,7 @@ export interface HttpBody {
   /** The HTTP request/response body as raw binary. */
   data?: string;
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
-  extensions?: Array<Record<string, unknown>>;
+  extensions?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1405,7 +1405,7 @@ export interface SchemaGroup {
   /** The maximum number of times this group can be repeated. 0 or -1 means unbounded. */
   maxOccurs?: number;
   /** Nested groups and/or segments. */
-  members?: Array<GroupOrSegment>;
+  members?: ReadonlyArray<GroupOrSegment>;
 }
 
 export const SchemaGroup: Schema.Schema<SchemaGroup> =
@@ -1423,7 +1423,7 @@ export const SchemaGroup: Schema.Schema<SchemaGroup> =
 
 export interface Hl7SchemaConfig {
   /** Each VersionSource is tested and only if they all match is the schema used for the message. */
-  version?: Array<VersionSource>;
+  version?: ReadonlyArray<VersionSource>;
   /** Map from each HL7v2 message type and trigger event pair, such as ADT_A04, to its schema configuration root group. */
   messageSchemaConfigs?: Record<string, SchemaGroup>;
 }
@@ -1467,7 +1467,7 @@ export interface Type {
     | "UNESCAPED_STRING"
     | (string & {});
   /** The (sub) fields this type has (if not primitive). */
-  fields?: Array<Field>;
+  fields?: ReadonlyArray<Field>;
 }
 
 export const Type = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1478,9 +1478,9 @@ export const Type = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Hl7TypesConfig {
   /** The version selectors that this config applies to. A message must match ALL version sources to apply. */
-  version?: Array<VersionSource>;
+  version?: ReadonlyArray<VersionSource>;
   /** The HL7v2 type definitions. */
-  type?: Array<Type>;
+  type?: ReadonlyArray<Type>;
 }
 
 export const Hl7TypesConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1496,9 +1496,9 @@ export interface SchemaPackage {
     | "HARD_FAIL"
     | (string & {});
   /** Optional. Schema configs that are layered based on their VersionSources that match the incoming message. Schema configs present in higher indices override those in lower indices with the same message type and trigger event if their VersionSources all match an incoming message. */
-  schemas?: Array<Hl7SchemaConfig>;
+  schemas?: ReadonlyArray<Hl7SchemaConfig>;
   /** Optional. Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message. */
-  types?: Array<Hl7TypesConfig>;
+  types?: ReadonlyArray<Hl7TypesConfig>;
   /** Optional. Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can omit any group, segment, field, component, or subcomponent. */
   ignoreMinOccurs?: boolean;
   /** Optional. Determines how unexpected segments (segments not matched to the schema) are handled. */
@@ -1557,7 +1557,7 @@ export interface Hl7V2Store {
   /** User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. */
   labels?: Record<string, string>;
   /** Optional. A list of notification configs. Each configuration uses a filter to determine whether to publish a message (both Ingest & Create) on the corresponding notification destination. Only the message name is sent as part of the notification. Supplied by the client. */
-  notificationConfigs?: Array<Hl7V2NotificationConfig>;
+  notificationConfigs?: ReadonlyArray<Hl7V2NotificationConfig>;
   /** Optional. Determines whether to reject duplicate messages. A duplicate message is a message with the same raw bytes as a message that has already been ingested/created in this HL7v2 store. The default value is false, meaning that the store accepts the duplicate messages and it also returns the same ACK message in the IngestMessageResponse as has been returned previously. Note that only one resource is created in the store. When this field is set to true, CreateMessage/IngestMessage requests with a duplicate message will be rejected by the store, and IngestMessageErrorDetail returns a NACK message upon rejection. */
   rejectDuplicateMessage?: boolean;
 }
@@ -1572,7 +1572,7 @@ export const Hl7V2Store = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListHl7V2StoresResponse {
   /** The returned HL7v2 stores. Won't be more HL7v2 stores than the value of page_size in the request. */
-  hl7V2Stores?: Array<Hl7V2Store>;
+  hl7V2Stores?: ReadonlyArray<Hl7V2Store>;
   /** Token to retrieve the next page of results or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -1611,7 +1611,7 @@ export const Segment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "Segment" });
 
 export interface ParsedData {
-  segments?: Array<Segment>;
+  segments?: ReadonlyArray<Segment>;
 }
 
 export const ParsedData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1644,7 +1644,7 @@ export interface Message {
   /** Output only. The message type for this message. MSH-9.1. */
   messageType?: string;
   /** Output only. All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message. */
-  patientIds?: Array<PatientId>;
+  patientIds?: ReadonlyArray<PatientId>;
   /** User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. */
   labels?: Record<string, string>;
   /** Output only. The parsed version of the raw message data. */
@@ -1698,7 +1698,7 @@ export const CreateMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListMessagesResponse {
   /** The returned Messages. Won't be more Messages than the value of page_size in the request. See view for populated fields. */
-  hl7V2Messages?: Array<Message>;
+  hl7V2Messages?: ReadonlyArray<Message>;
   /** Token to retrieve the next page of results or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -1800,7 +1800,7 @@ export interface Hl7V2StoreMetrics {
   /** The resource name of the HL7v2 store to get metrics for, in the format `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`. */
   name?: string;
   /** List of HL7v2 store metrics by message type. */
-  metrics?: Array<Hl7V2StoreMetric>;
+  metrics?: ReadonlyArray<Hl7V2StoreMetric>;
 }
 
 export const Hl7V2StoreMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1810,7 +1810,7 @@ export const Hl7V2StoreMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RollbackHL7MessagesFilteringFields {
   /** Optional. A list of operation IDs to roll back. */
-  operationIds?: Array<string>;
+  operationIds?: ReadonlyArray<string>;
 }
 
 export const RollbackHL7MessagesFilteringFields =
@@ -1928,7 +1928,7 @@ export const DeidentifiedStoreDestination =
 
 export interface StreamConfig {
   /** Optional. Supply a FHIR resource type (such as "Patient" or "Observation"). See https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats an empty list as an intent to stream all the supported resource types in this FHIR store. */
-  resourceTypes?: Array<string>;
+  resourceTypes?: ReadonlyArray<string>;
   /** Optional. The destination BigQuery structure that contains both the dataset location and corresponding schema config. The output is organized in one table per resource type. The server reuses the existing tables (if any) that are named after the resource types. For example, "Patient", "Observation". When there is no existing table for a given resource type, the server attempts to create one. When a table schema doesn't align with the schema config, either because of existing incompatible schema or out of band incompatible modification, the server does not stream in new data. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any resource mutation that generates more than 1 MB of BigQuery data is not streamed. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. Results are written to BigQuery tables according to the parameters in BigQueryDestination.WriteDisposition. Different versions of the same resource are distinguishable by the meta.versionId and meta.lastUpdated columns. The operation (CREATE/UPDATE/DELETE) that results in the new version is recorded in the meta.tag. The tables contain all historical resource versions since streaming was enabled. For query convenience, the server also creates one view per table of the same name containing only the current resource version. The streamed data in the BigQuery dataset is not guaranteed to be completely unique. The combination of the id and meta.versionId columns should ideally identify a single unique row. But in rare cases, duplicates may exist. At query time, users may use the SQL select statement to keep only one of the duplicate rows given an id and meta.versionId pair. Alternatively, the server created view mentioned above also filters out duplicates. If a resource mutation cannot be streamed to BigQuery, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). */
   bigqueryDestination?: GoogleCloudHealthcareV1FhirBigQueryDestination;
   /** The destination FHIR store for de-identified resources. After this field is added, all subsequent creates/updates/patches to the source store will be de-identified using the provided configuration and applied to the destination store. Resources deleted from the source store will be deleted from the destination store. Importing resources to the source store will not trigger the streaming. If the source store already contains resources when this option is enabled, those resources will not be copied to the destination store unless they are subsequently updated. This may result in invalid references in the destination store. Before adding this config, you must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set enable_update_create to true. The destination store must have disable_referential_integrity set to true. If a resource cannot be de-identified, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Not supported for R5 stores. */
@@ -1947,7 +1947,7 @@ export interface ValidationConfig {
   /** Optional. Whether to disable profile validation for this FHIR store. The default value is false. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store. */
   disableProfileValidation?: boolean;
   /** Optional. A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation. For example, to use the US Core profiles for validation, set `enabled_implementation_guides` to `["http://hl7.org/fhir/us/core/ImplementationGuide/ig"]`. If `enabled_implementation_guides` is empty or omitted, then incoming resources are only required to conform to the base FHIR profiles. Otherwise, a resource must conform to at least one profile listed in the `global` property of one of the enabled ImplementationGuides. The Cloud Healthcare API does not currently enforce all of the rules in a StructureDefinition. The following rules are supported: - min/max - minValue/maxValue - maxLength - type - fixed[x] - pattern[x] on simple types - slicing, when using "value" as the discriminator type - FHIRPath constraints (only when `enable_fhirpath_profile_validation` is true) When a URL cannot be resolved (for example, in a type assertion), the server does not return an error. */
-  enabledImplementationGuides?: Array<string>;
+  enabledImplementationGuides?: ReadonlyArray<string>;
   /** Optional. Whether to disable required fields validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced. */
   disableRequiredFieldValidation?: boolean;
   /** Optional. Whether to disable reference type validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced. */
@@ -2032,7 +2032,7 @@ export interface ConsentConfig {
   /** Optional. Specifies how the server logs the consent-aware requests. If not specified, the `AccessDeterminationLogConfig.LogLevel.MINIMUM` option is used. */
   accessDeterminationLogConfig?: AccessDeterminationLogConfig;
   /** Output only. The versioned names of the enforced admin Consent resource(s), in the format `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`. For FHIR stores with `disable_resource_versioning=true`, the format is `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`. This field can only be updated using ApplyAdminConsents. */
-  enforcedAdminConsents?: Array<string>;
+  enforcedAdminConsents?: ReadonlyArray<string>;
 }
 
 export const ConsentConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2065,7 +2065,7 @@ export interface FhirStore {
     | "R5"
     | (string & {});
   /** Optional. A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination. */
-  streamConfigs?: Array<StreamConfig>;
+  streamConfigs?: ReadonlyArray<StreamConfig>;
   /** Optional. Configuration for how to validate incoming FHIR resources against configured profiles. */
   validationConfig?: ValidationConfig;
   /** Optional. If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`. Defaults to false. */
@@ -2077,7 +2077,7 @@ export interface FhirStore {
     | "ENABLED"
     | (string & {});
   /** Optional. Specifies where and whether to send notifications upon changes to a FHIR store. */
-  notificationConfigs?: Array<FhirNotificationConfig>;
+  notificationConfigs?: ReadonlyArray<FhirNotificationConfig>;
   /** Optional. FHIR bulk export exports resources to the specified Cloud Storage destination. A Cloud Storage destination is a URI for a Cloud Storage directory where result files will be written. Only used in the spec-defined bulk $export methods. The Cloud Healthcare Service Agent requires the `roles/storage.objectAdmin` Cloud IAM role on the destination. */
   bulkExportGcsDestination?: BulkExportGcsDestination;
   /** Optional. Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version. */
@@ -2103,7 +2103,7 @@ export const FhirStore = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListFhirStoresResponse {
   /** The returned FHIR stores. Won't be more FHIR stores than the value of page_size in the request. */
-  fhirStores?: Array<FhirStore>;
+  fhirStores?: ReadonlyArray<FhirStore>;
   /** Token to retrieve the next page of results or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -2147,7 +2147,7 @@ export const ImportResourcesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface PatientScope {
   /** Optional. The list of patient IDs whose Consent resources will be enforced. At most 10,000 patients can be specified. An empty list is equivalent to all patients (meaning the entire FHIR store). */
-  patientIds?: Array<string>;
+  patientIds?: ReadonlyArray<string>;
 }
 
 export const PatientScope = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2183,7 +2183,7 @@ export const ApplyConsentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AdminConsents {
   /** Optional. The versioned names of the admin Consent resource(s), in the format `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`. For FHIR stores with `disable_resource_versioning=true`, the format is `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`. */
-  names?: Array<string>;
+  names?: ReadonlyArray<string>;
 }
 
 export const AdminConsents = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2228,7 +2228,7 @@ export interface ExplainDataAccessConsentInfo {
     | "CONSENT_POLICY_TYPE_ADMIN"
     | (string & {});
   /** The consent's variant combinations. A single consent may have multiple variants. */
-  variants?: Array<
+  variants?: ReadonlyArray<
     | "CONSENT_VARIANT_UNSPECIFIED"
     | "CONSENT_VARIANT_STANDARD"
     | "CONSENT_VARIANT_CASCADE"
@@ -2239,9 +2239,9 @@ export interface ExplainDataAccessConsentInfo {
   /** The patient owning the consent (only applicable for patient consents), in the format: `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Patient/{patient_id}` */
   patientConsentOwner?: string;
   /** The compartment base resources that matched a cascading policy. Each resource has the following format: `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/{resource_type}/{resource_id}` */
-  cascadeOrigins?: Array<string>;
+  cascadeOrigins?: ReadonlyArray<string>;
   /** A list of all the matching accessor scopes of this consent policy that enforced ExplainDataAccessConsentScope.accessor_scope. */
-  matchingAccessorScopes?: Array<ConsentAccessorScope>;
+  matchingAccessorScopes?: ReadonlyArray<ConsentAccessorScope>;
 }
 
 export const ExplainDataAccessConsentInfo =
@@ -2263,9 +2263,9 @@ export interface ExplainDataAccessConsentScope {
     | "CONSENT_DECISION_TYPE_DENY"
     | (string & {});
   /** Metadata of the consent resources that enforce the consent scope's access. */
-  enforcingConsents?: Array<ExplainDataAccessConsentInfo>;
+  enforcingConsents?: ReadonlyArray<ExplainDataAccessConsentInfo>;
   /** Other consent scopes that created exceptions within this scope. */
-  exceptions?: Array<ExplainDataAccessConsentScope>;
+  exceptions?: ReadonlyArray<ExplainDataAccessConsentScope>;
   /** The accessor scope that describes who can access, for what purpose, and in which environment. */
   accessorScope?: ConsentAccessorScope;
 }
@@ -2286,7 +2286,7 @@ export const ExplainDataAccessConsentScope: Schema.Schema<ExplainDataAccessConse
 
 export interface ExplainDataAccessResponse {
   /** List of applicable consent scopes. Sorted in order of actor such that scopes belonging to the same actor will be adjacent to each other in the list. */
-  consentScopes?: Array<ExplainDataAccessConsentScope>;
+  consentScopes?: ReadonlyArray<ExplainDataAccessConsentScope>;
   /** Warnings associated with this response. It inform user with exceeded scope limit errors. */
   warning?: string;
 }
@@ -2375,7 +2375,7 @@ export interface FhirStoreMetrics {
   /** The resource name of the FHIR store to get metrics for, in the format `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`. */
   name?: string;
   /** List of FhirStoreMetric by resource type. */
-  metrics?: Array<FhirStoreMetric>;
+  metrics?: ReadonlyArray<FhirStoreMetric>;
 }
 
 export const FhirStoreMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2385,7 +2385,7 @@ export const FhirStoreMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RollbackFhirResourceFilteringFields {
   /** Optional. A list of operation IDs to roll back. */
-  operationIds?: Array<string>;
+  operationIds?: ReadonlyArray<string>;
   /** Optional. A filter expression that matches data in the `Resource.meta` element. Supports all filters in [AIP-160](https://google.aip.dev/160) except the "has" (`:`) operator. Supports the following custom functions: * `tag("") = ""` for tag filtering. * `extension_value_ts("") = ` for filtering extensions with a timestamp, where `` is a Unix timestamp. Supports the `>`, `<`, `<=`, `>=`, and `!=` comparison operators. */
   metadataFilter?: string;
 }
@@ -2398,7 +2398,7 @@ export const RollbackFhirResourceFilteringFields =
 
 export interface RollbackFhirResourcesRequest {
   /** Optional. If specified, revert only resources of these types */
-  type?: Array<string>;
+  type?: ReadonlyArray<string>;
   /** Required. Time point to rollback to. */
   rollbackTime?: string;
   /** Optional. Parameters for filtering resources */
@@ -2437,7 +2437,7 @@ export interface AnalyzeEntitiesRequest {
   /** document_content is a document to be annotated. */
   documentContent?: string;
   /** A list of licensed vocabularies to use in the request, in addition to the default unlicensed vocabularies. */
-  licensedVocabularies?: Array<
+  licensedVocabularies?: ReadonlyArray<
     | "LICENSED_VOCABULARY_UNSPECIFIED"
     | "ICD10CM"
     | "SNOMEDCT_US"
@@ -2499,7 +2499,7 @@ export interface EntityMention {
   /** text is the location of the entity mention in the document. */
   text?: TextSpan;
   /** linked_entities are candidate ontological concepts that this entity mention may refer to. They are sorted by decreasing confidence. */
-  linkedEntities?: Array<LinkedEntity>;
+  linkedEntities?: ReadonlyArray<LinkedEntity>;
   /** How this entity mention relates to the subject temporally. Its value is one of: CURRENT, CLINICAL_HISTORY, FAMILY_HISTORY, UPCOMING, ALLERGY */
   temporalAssessment?: Feature;
   /** The certainty assessment of the entity mention. Its value is one of: LIKELY, SOMEWHAT_LIKELY, UNCERTAIN, SOMEWHAT_UNLIKELY, UNLIKELY, CONDITIONAL */
@@ -2527,7 +2527,7 @@ export interface Entity {
   /** preferred_term is the preferred term for this concept. For example, "Acetaminophen". For ad hoc entities formed by normalization, this is the most popular unnormalized string. */
   preferredTerm?: string;
   /** Vocabulary codes are first-class fields and differentiated from the concept unique identifier (entity_id). vocabulary_codes contains the representation of this concept in particular vocabularies, such as ICD-10, SNOMED-CT and RxNORM. These are prefixed by the name of the vocabulary, followed by the unique code within that vocabulary. For example, "RXNORM/A10334543". */
-  vocabularyCodes?: Array<string>;
+  vocabularyCodes?: ReadonlyArray<string>;
 }
 
 export const Entity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2554,11 +2554,11 @@ export const EntityMentionRelationship =
 
 export interface AnalyzeEntitiesResponse {
   /** The `entity_mentions` field contains all the annotated medical entities that were mentioned in the provided document. */
-  entityMentions?: Array<EntityMention>;
+  entityMentions?: ReadonlyArray<EntityMention>;
   /** The union of all the candidate entities that the entity_mentions in this response could link to. These are UMLS concepts or normalized mention content. */
-  entities?: Array<Entity>;
+  entities?: ReadonlyArray<Entity>;
   /** relationships contains all the binary relationships that were identified between entity mentions within the provided document. */
-  relationships?: Array<EntityMentionRelationship>;
+  relationships?: ReadonlyArray<EntityMentionRelationship>;
   /** The FHIR bundle ([`R4`](http://hl7.org/fhir/R4/bundle.html)) that includes all the entities, the entity mentions, and the relationships in JSON format. */
   fhirBundle?: string;
 }
@@ -2617,7 +2617,7 @@ export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface QueryAccessibleDataResponse {
   /** List of files, each of which contains a list of data_id(s) that are consented for a specified use in the request. */
-  gcsUris?: Array<string>;
+  gcsUris?: ReadonlyArray<string>;
 }
 
 export const QueryAccessibleDataResponse =
@@ -2731,7 +2731,7 @@ export const ConsentErrors = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ApplyAdminConsentsErrorDetail {
   /** The list of Consent resources that are unsupported or cannot be applied and the error associated with each of them. */
-  consentErrors?: Array<ConsentErrors>;
+  consentErrors?: ReadonlyArray<ConsentErrors>;
   /** The currently in progress non-validate-only ApplyAdminConsents operation ID if exist. */
   existingOperationId?: string;
 }
@@ -2798,7 +2798,7 @@ export const ListProjectsLocationsRequest =
       T.HttpQuery("extraLocationTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -2833,10 +2833,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -2872,7 +2869,7 @@ export const SetIamPolicyProjectsLocationsDatasetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2910,10 +2907,7 @@ export const GetIamPolicyProjectsLocationsDatasetsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDatasetsRequest>;
 
@@ -2949,7 +2943,7 @@ export const TestIamPermissionsProjectsLocationsDatasetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2989,11 +2983,7 @@ export const CreateProjectsLocationsDatasetsRequest =
     datasetId: Schema.optional(Schema.String).pipe(T.HttpQuery("datasetId")),
     body: Schema.optional(Dataset).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/datasets", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsRequest>;
 
@@ -3030,10 +3020,7 @@ export const ListProjectsLocationsDatasetsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/datasets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsRequest>;
 
@@ -3068,10 +3055,7 @@ export const DeleteProjectsLocationsDatasetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsRequest>;
 
@@ -3102,10 +3086,7 @@ export const GetProjectsLocationsDatasetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsRequest>;
 
@@ -3142,11 +3123,7 @@ export const PatchProjectsLocationsDatasetsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Dataset).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsRequest>;
 
@@ -3182,7 +3159,7 @@ export const DeidentifyProjectsLocationsDatasetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}:deidentify",
+      path: "v1/{sourceDataset}:deidentify",
       hasBody: true,
     }),
     svc,
@@ -3220,7 +3197,7 @@ export const SetIamPolicyProjectsLocationsDatasetsConsentStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -3259,10 +3236,7 @@ export const GetIamPolicyProjectsLocationsDatasetsConsentStoresRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDatasetsConsentStoresRequest>;
 
@@ -3299,7 +3273,7 @@ export const TestIamPermissionsProjectsLocationsDatasetsConsentStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -3344,7 +3318,7 @@ export const CreateProjectsLocationsDatasetsConsentStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores",
+      path: "v1/{parent}/consentStores",
       hasBody: true,
     }),
     svc,
@@ -3377,10 +3351,7 @@ export const GetProjectsLocationsDatasetsConsentStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsConsentStoresRequest>;
 
@@ -3411,10 +3382,7 @@ export const DeleteProjectsLocationsDatasetsConsentStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsConsentStoresRequest>;
 
@@ -3451,11 +3419,7 @@ export const PatchProjectsLocationsDatasetsConsentStoresRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ConsentStore).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsConsentStoresRequest>;
 
@@ -3495,10 +3459,7 @@ export const ListProjectsLocationsDatasetsConsentStoresRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/consentStores" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsConsentStoresRequest>;
 
@@ -3539,7 +3500,7 @@ export const CheckDataAccessProjectsLocationsDatasetsConsentStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}:checkDataAccess",
+      path: "v1/{consentStore}:checkDataAccess",
       hasBody: true,
     }),
     svc,
@@ -3579,7 +3540,7 @@ export const QueryAccessibleDataProjectsLocationsDatasetsConsentStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}:queryAccessibleData",
+      path: "v1/{consentStore}:queryAccessibleData",
       hasBody: true,
     }),
     svc,
@@ -3619,7 +3580,7 @@ export const EvaluateUserConsentsProjectsLocationsDatasetsConsentStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}:evaluateUserConsents",
+      path: "v1/{consentStore}:evaluateUserConsents",
       hasBody: true,
     }),
     svc,
@@ -3664,7 +3625,7 @@ export const CreateProjectsLocationsDatasetsConsentStoresAttributeDefinitionsReq
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/attributeDefinitions",
+      path: "v1/{parent}/attributeDefinitions",
       hasBody: true,
     }),
     svc,
@@ -3701,10 +3662,7 @@ export const GetProjectsLocationsDatasetsConsentStoresAttributeDefinitionsReques
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/attributeDefinitions/{attributeDefinitionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest>;
 
@@ -3737,10 +3695,7 @@ export const DeleteProjectsLocationsDatasetsConsentStoresAttributeDefinitionsReq
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/attributeDefinitions/{attributeDefinitionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest>;
 
@@ -3781,11 +3736,7 @@ export const PatchProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequ
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AttributeDefinition).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/attributeDefinitions/{attributeDefinitionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest>;
 
@@ -3828,10 +3779,7 @@ export const ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsReque
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/attributeDefinitions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/attributeDefinitions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest>;
 
@@ -3874,7 +3822,7 @@ export const CreateProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/consentArtifacts",
+      path: "v1/{parent}/consentArtifacts",
       hasBody: true,
     }),
     svc,
@@ -3909,10 +3857,7 @@ export const GetProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/consentArtifacts/{consentArtifactsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>;
 
@@ -3945,10 +3890,7 @@ export const DeleteProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/consentArtifacts/{consentArtifactsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>;
 
@@ -3990,10 +3932,7 @@ export const ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/consentArtifacts",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/consentArtifacts" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>;
 
@@ -4033,11 +3972,7 @@ export const CreateProjectsLocationsDatasetsConsentStoresConsentsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Consent).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/consents",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/consents", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
@@ -4070,10 +4005,7 @@ export const GetProjectsLocationsDatasetsConsentStoresConsentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/consents/{consentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
@@ -4105,10 +4037,7 @@ export const DeleteProjectsLocationsDatasetsConsentStoresConsentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/consents/{consentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
@@ -4141,10 +4070,7 @@ export const DeleteRevisionProjectsLocationsDatasetsConsentStoresConsentsRequest
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/consents/{consentsId}:deleteRevision",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}:deleteRevision" }),
     svc,
   ) as unknown as Schema.Schema<DeleteRevisionProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
@@ -4183,11 +4109,7 @@ export const PatchProjectsLocationsDatasetsConsentStoresConsentsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Consent).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/consents/{consentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
@@ -4223,11 +4145,7 @@ export const ActivateProjectsLocationsDatasetsConsentStoresConsentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ActivateConsentRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/consents/{consentsId}:activate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:activate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ActivateProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
@@ -4263,11 +4181,7 @@ export const RejectProjectsLocationsDatasetsConsentStoresConsentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RejectConsentRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/consents/{consentsId}:reject",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:reject", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RejectProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
@@ -4309,10 +4223,7 @@ export const ListProjectsLocationsDatasetsConsentStoresConsentsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/consents",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/consents" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
@@ -4358,10 +4269,7 @@ export const ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsRequest 
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/consents/{consentsId}:listRevisions",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:listRevisions" }),
     svc,
   ) as unknown as Schema.Schema<ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
@@ -4401,11 +4309,7 @@ export const RevokeProjectsLocationsDatasetsConsentStoresConsentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RevokeConsentRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/consents/{consentsId}:revoke",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:revoke", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RevokeProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
@@ -4443,7 +4347,7 @@ export const CreateProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/userDataMappings",
+      path: "v1/{parent}/userDataMappings",
       hasBody: true,
     }),
     svc,
@@ -4478,10 +4382,7 @@ export const GetProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/userDataMappings/{userDataMappingsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
 
@@ -4514,10 +4415,7 @@ export const DeleteProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/userDataMappings/{userDataMappingsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
 
@@ -4556,11 +4454,7 @@ export const PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest 
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(UserDataMapping).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/userDataMappings/{userDataMappingsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
 
@@ -4602,10 +4496,7 @@ export const ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/userDataMappings",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/userDataMappings" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
 
@@ -4645,11 +4536,7 @@ export const ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsReques
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ArchiveUserDataMappingRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/consentStores/{consentStoresId}/userDataMappings/{userDataMappingsId}:archive",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:archive", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
 
@@ -4687,7 +4574,7 @@ export const SetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dataMapperWorkspaces/{dataMapperWorkspacesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4727,10 +4614,7 @@ export const GetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dataMapperWorkspaces/{dataMapperWorkspacesId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest>;
 
@@ -4768,7 +4652,7 @@ export const TestIamPermissionsProjectsLocationsDatasetsDataMapperWorkspacesRequ
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dataMapperWorkspaces/{dataMapperWorkspacesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -4809,7 +4693,7 @@ export const SetIamPolicyProjectsLocationsDatasetsDicomStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4848,10 +4732,7 @@ export const GetIamPolicyProjectsLocationsDatasetsDicomStoresRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDatasetsDicomStoresRequest>;
 
@@ -4888,7 +4769,7 @@ export const TestIamPermissionsProjectsLocationsDatasetsDicomStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -4928,7 +4809,7 @@ export const DeidentifyProjectsLocationsDatasetsDicomStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}:deidentify",
+      path: "v1/{sourceStore}:deidentify",
       hasBody: true,
     }),
     svc,
@@ -4966,7 +4847,7 @@ export const SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}:setBlobStorageSettings",
+      path: "v1/{resource}:setBlobStorageSettings",
       hasBody: true,
     }),
     svc,
@@ -5009,11 +4890,7 @@ export const CreateProjectsLocationsDatasetsDicomStoresRequest =
     ),
     body: Schema.optional(DicomStore).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/dicomStores", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsDicomStoresRequest>;
 
@@ -5044,10 +4921,7 @@ export const GetProjectsLocationsDatasetsDicomStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsDicomStoresRequest>;
 
@@ -5078,10 +4952,7 @@ export const DeleteProjectsLocationsDatasetsDicomStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsDicomStoresRequest>;
 
@@ -5118,11 +4989,7 @@ export const PatchProjectsLocationsDatasetsDicomStoresRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(DicomStore).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsDicomStoresRequest>;
 
@@ -5162,10 +5029,7 @@ export const ListProjectsLocationsDatasetsDicomStoresRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dicomStores" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsDicomStoresRequest>;
 
@@ -5204,11 +5068,7 @@ export const ImportProjectsLocationsDatasetsDicomStoresRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ImportDicomDataRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}:import",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:import", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ImportProjectsLocationsDatasetsDicomStoresRequest>;
 
@@ -5242,11 +5102,7 @@ export const ExportProjectsLocationsDatasetsDicomStoresRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ExportDicomDataRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}:export",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:export", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExportProjectsLocationsDatasetsDicomStoresRequest>;
 
@@ -5277,10 +5133,7 @@ export const GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}:getDICOMStoreMetrics",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:getDICOMStoreMetrics" }),
     svc,
   ) as unknown as Schema.Schema<GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest>;
 
@@ -5316,10 +5169,7 @@ export const SearchForStudiesProjectsLocationsDatasetsDicomStoresRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     dicomWebPath: Schema.String.pipe(T.HttpPath("dicomWebPath")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dicomWeb/{dicomWebPath}" }),
     svc,
   ) as unknown as Schema.Schema<SearchForStudiesProjectsLocationsDatasetsDicomStoresRequest>;
 
@@ -5355,10 +5205,7 @@ export const SearchForSeriesProjectsLocationsDatasetsDicomStoresRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     dicomWebPath: Schema.String.pipe(T.HttpPath("dicomWebPath")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/series",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dicomWeb/{dicomWebPath}" }),
     svc,
   ) as unknown as Schema.Schema<SearchForSeriesProjectsLocationsDatasetsDicomStoresRequest>;
 
@@ -5394,10 +5241,7 @@ export const SearchForInstancesProjectsLocationsDatasetsDicomStoresRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     dicomWebPath: Schema.String.pipe(T.HttpPath("dicomWebPath")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/instances",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dicomWeb/{dicomWebPath}" }),
     svc,
   ) as unknown as Schema.Schema<SearchForInstancesProjectsLocationsDatasetsDicomStoresRequest>;
 
@@ -5438,7 +5282,7 @@ export const StoreInstancesProjectsLocationsDatasetsDicomStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies",
+      path: "v1/{parent}/dicomWeb/{dicomWebPath}",
       hasBody: true,
     }),
     svc,
@@ -5478,7 +5322,7 @@ export const SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebS
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}:setBlobStorageSettings",
+      path: "v1/{resource}:setBlobStorageSettings",
       hasBody: true,
     }),
     svc,
@@ -5515,10 +5359,7 @@ export const GetStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesR
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     study: Schema.String.pipe(T.HttpPath("study")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}:getStudyMetrics",
-    }),
+    T.Http({ method: "GET", path: "v1/{study}:getStudyMetrics" }),
     svc,
   ) as unknown as Schema.Schema<GetStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesRequest>;
 
@@ -5553,10 +5394,7 @@ export const GetSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudies
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     series: Schema.String.pipe(T.HttpPath("series")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}/series/{seriesId}:getSeriesMetrics",
-    }),
+    T.Http({ method: "GET", path: "v1/{series}:getSeriesMetrics" }),
     svc,
   ) as unknown as Schema.Schema<GetSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesRequest>;
 
@@ -5591,10 +5429,7 @@ export const GetStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSe
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource: Schema.String.pipe(T.HttpPath("resource")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}/series/{seriesId}/instances/{instancesId}:getStorageInfo",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getStorageInfo" }),
     svc,
   ) as unknown as Schema.Schema<GetStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstancesRequest>;
 
@@ -5632,10 +5467,7 @@ export const RetrieveStudyProjectsLocationsDatasetsDicomStoresStudiesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     dicomWebPath: Schema.String.pipe(T.HttpPath("dicomWebPath")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dicomWeb/{dicomWebPath}" }),
     svc,
   ) as unknown as Schema.Schema<RetrieveStudyProjectsLocationsDatasetsDicomStoresStudiesRequest>;
 
@@ -5671,10 +5503,7 @@ export const RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesRequest 
     parent: Schema.String.pipe(T.HttpPath("parent")),
     dicomWebPath: Schema.String.pipe(T.HttpPath("dicomWebPath")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}/metadata",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dicomWeb/{dicomWebPath}" }),
     svc,
   ) as unknown as Schema.Schema<RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesRequest>;
 
@@ -5710,10 +5539,7 @@ export const SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     dicomWebPath: Schema.String.pipe(T.HttpPath("dicomWebPath")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}/series",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dicomWeb/{dicomWebPath}" }),
     svc,
   ) as unknown as Schema.Schema<SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesRequest>;
 
@@ -5749,10 +5575,7 @@ export const SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesReques
     parent: Schema.String.pipe(T.HttpPath("parent")),
     dicomWebPath: Schema.String.pipe(T.HttpPath("dicomWebPath")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}/instances",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dicomWeb/{dicomWebPath}" }),
     svc,
   ) as unknown as Schema.Schema<SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest>;
 
@@ -5787,10 +5610,7 @@ export const DeleteProjectsLocationsDatasetsDicomStoresStudiesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     dicomWebPath: Schema.String.pipe(T.HttpPath("dicomWebPath")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{parent}/dicomWeb/{dicomWebPath}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsDicomStoresStudiesRequest>;
 
@@ -5831,7 +5651,7 @@ export const StoreInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}",
+      path: "v1/{parent}/dicomWeb/{dicomWebPath}",
       hasBody: true,
     }),
     svc,
@@ -5869,10 +5689,7 @@ export const RetrieveSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequ
     parent: Schema.String.pipe(T.HttpPath("parent")),
     dicomWebPath: Schema.String.pipe(T.HttpPath("dicomWebPath")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}/series/{seriesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dicomWeb/{dicomWebPath}" }),
     svc,
   ) as unknown as Schema.Schema<RetrieveSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>;
 
@@ -5909,10 +5726,7 @@ export const RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesRe
     parent: Schema.String.pipe(T.HttpPath("parent")),
     dicomWebPath: Schema.String.pipe(T.HttpPath("dicomWebPath")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}/series/{seriesId}/metadata",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dicomWeb/{dicomWebPath}" }),
     svc,
   ) as unknown as Schema.Schema<RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>;
 
@@ -5950,10 +5764,7 @@ export const SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeries
     parent: Schema.String.pipe(T.HttpPath("parent")),
     dicomWebPath: Schema.String.pipe(T.HttpPath("dicomWebPath")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}/series/{seriesId}/instances",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dicomWeb/{dicomWebPath}" }),
     svc,
   ) as unknown as Schema.Schema<SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>;
 
@@ -5991,10 +5802,7 @@ export const DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     dicomWebPath: Schema.String.pipe(T.HttpPath("dicomWebPath")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}/series/{seriesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{parent}/dicomWeb/{dicomWebPath}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>;
 
@@ -6030,10 +5838,7 @@ export const RetrieveInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
     parent: Schema.String.pipe(T.HttpPath("parent")),
     dicomWebPath: Schema.String.pipe(T.HttpPath("dicomWebPath")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}/series/{seriesId}/instances/{instancesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dicomWeb/{dicomWebPath}" }),
     svc,
   ) as unknown as Schema.Schema<RetrieveInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest>;
 
@@ -6074,10 +5879,7 @@ export const RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
     dicomWebPath: Schema.String.pipe(T.HttpPath("dicomWebPath")),
     viewport: Schema.optional(Schema.String).pipe(T.HttpQuery("viewport")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}/series/{seriesId}/instances/{instancesId}/rendered",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dicomWeb/{dicomWebPath}" }),
     svc,
   ) as unknown as Schema.Schema<RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest>;
 
@@ -6115,10 +5917,7 @@ export const RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
     parent: Schema.String.pipe(T.HttpPath("parent")),
     dicomWebPath: Schema.String.pipe(T.HttpPath("dicomWebPath")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}/series/{seriesId}/instances/{instancesId}/metadata",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dicomWeb/{dicomWebPath}" }),
     svc,
   ) as unknown as Schema.Schema<RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest>;
 
@@ -6156,10 +5955,7 @@ export const DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesReq
     parent: Schema.String.pipe(T.HttpPath("parent")),
     dicomWebPath: Schema.String.pipe(T.HttpPath("dicomWebPath")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}/series/{seriesId}/instances/{instancesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{parent}/dicomWeb/{dicomWebPath}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest>;
 
@@ -6197,10 +5993,7 @@ export const RetrieveFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInst
     parent: Schema.String.pipe(T.HttpPath("parent")),
     dicomWebPath: Schema.String.pipe(T.HttpPath("dicomWebPath")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}/series/{seriesId}/instances/{instancesId}/frames/{framesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dicomWeb/{dicomWebPath}" }),
     svc,
   ) as unknown as Schema.Schema<RetrieveFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesRequest>;
 
@@ -6241,10 +6034,7 @@ export const RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
     dicomWebPath: Schema.String.pipe(T.HttpPath("dicomWebPath")),
     viewport: Schema.optional(Schema.String).pipe(T.HttpQuery("viewport")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}/series/{seriesId}/instances/{instancesId}/frames/{framesId}/rendered",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dicomWeb/{dicomWebPath}" }),
     svc,
   ) as unknown as Schema.Schema<RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesRequest>;
 
@@ -6282,10 +6072,7 @@ export const RetrieveBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
     parent: Schema.String.pipe(T.HttpPath("parent")),
     dicomWebPath: Schema.String.pipe(T.HttpPath("dicomWebPath")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dicomStores/{dicomStoresId}/dicomWeb/studies/{studiesId}/series/{seriesId}/instances/{instancesId}/bulkdata/{bulkdataId}/{bulkdataId1}",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dicomWeb/{dicomWebPath}" }),
     svc,
   ) as unknown as Schema.Schema<RetrieveBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesBulkdataRequest>;
 
@@ -6325,7 +6112,7 @@ export const SetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/hl7V2Stores/{hl7V2StoresId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -6364,10 +6151,7 @@ export const GetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/hl7V2Stores/{hl7V2StoresId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest>;
 
@@ -6404,7 +6188,7 @@ export const TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/hl7V2Stores/{hl7V2StoresId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -6447,11 +6231,7 @@ export const CreateProjectsLocationsDatasetsHl7V2StoresRequest =
     ),
     body: Schema.optional(Hl7V2Store).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/hl7V2Stores",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/hl7V2Stores", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsHl7V2StoresRequest>;
 
@@ -6482,10 +6262,7 @@ export const GetProjectsLocationsDatasetsHl7V2StoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/hl7V2Stores/{hl7V2StoresId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsHl7V2StoresRequest>;
 
@@ -6516,10 +6293,7 @@ export const DeleteProjectsLocationsDatasetsHl7V2StoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/hl7V2Stores/{hl7V2StoresId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsHl7V2StoresRequest>;
 
@@ -6559,10 +6333,7 @@ export const ListProjectsLocationsDatasetsHl7V2StoresRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/hl7V2Stores",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/hl7V2Stores" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsHl7V2StoresRequest>;
 
@@ -6604,11 +6375,7 @@ export const PatchProjectsLocationsDatasetsHl7V2StoresRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Hl7V2Store).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/hl7V2Stores/{hl7V2StoresId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsHl7V2StoresRequest>;
 
@@ -6642,11 +6409,7 @@ export const ExportProjectsLocationsDatasetsHl7V2StoresRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ExportMessagesRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/hl7V2Stores/{hl7V2StoresId}:export",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:export", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExportProjectsLocationsDatasetsHl7V2StoresRequest>;
 
@@ -6680,11 +6443,7 @@ export const ImportProjectsLocationsDatasetsHl7V2StoresRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ImportMessagesRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/hl7V2Stores/{hl7V2StoresId}:import",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:import", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ImportProjectsLocationsDatasetsHl7V2StoresRequest>;
 
@@ -6715,10 +6474,7 @@ export const GetHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2StoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/hl7V2Stores/{hl7V2StoresId}:getHL7v2StoreMetrics",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:getHL7v2StoreMetrics" }),
     svc,
   ) as unknown as Schema.Schema<GetHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2StoresRequest>;
 
@@ -6754,11 +6510,7 @@ export const RollbackProjectsLocationsDatasetsHl7V2StoresRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RollbackHl7V2MessagesRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/hl7V2Stores/{hl7V2StoresId}:rollback",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:rollback", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RollbackProjectsLocationsDatasetsHl7V2StoresRequest>;
 
@@ -6794,7 +6546,7 @@ export const IngestProjectsLocationsDatasetsHl7V2StoresMessagesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/hl7V2Stores/{hl7V2StoresId}/messages:ingest",
+      path: "v1/{parent}/messages:ingest",
       hasBody: true,
     }),
     svc,
@@ -6832,11 +6584,7 @@ export const CreateProjectsLocationsDatasetsHl7V2StoresMessagesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CreateMessageRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/hl7V2Stores/{hl7V2StoresId}/messages",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/messages", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
 
@@ -6879,10 +6627,7 @@ export const GetProjectsLocationsDatasetsHl7V2StoresMessagesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/hl7V2Stores/{hl7V2StoresId}/messages/{messagesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
 
@@ -6914,10 +6659,7 @@ export const DeleteProjectsLocationsDatasetsHl7V2StoresMessagesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/hl7V2Stores/{hl7V2StoresId}/messages/{messagesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
 
@@ -6971,10 +6713,7 @@ export const ListProjectsLocationsDatasetsHl7V2StoresMessagesRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/hl7V2Stores/{hl7V2StoresId}/messages",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/messages" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
 
@@ -7017,11 +6756,7 @@ export const PatchProjectsLocationsDatasetsHl7V2StoresMessagesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Message).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/hl7V2Stores/{hl7V2StoresId}/messages/{messagesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
 
@@ -7058,7 +6793,7 @@ export const SetIamPolicyProjectsLocationsDatasetsFhirStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -7097,10 +6832,7 @@ export const GetIamPolicyProjectsLocationsDatasetsFhirStoresRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDatasetsFhirStoresRequest>;
 
@@ -7137,7 +6869,7 @@ export const TestIamPermissionsProjectsLocationsDatasetsFhirStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -7177,7 +6909,7 @@ export const DeidentifyProjectsLocationsDatasetsFhirStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}:deidentify",
+      path: "v1/{sourceStore}:deidentify",
       hasBody: true,
     }),
     svc,
@@ -7226,10 +6958,7 @@ export const Bulk_export_groupProjectsLocationsDatasetsFhirStoresRequest =
       T.HttpQuery("organizeOutputBy"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/Group/{GroupId}/$export",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/$export" }),
     svc,
   ) as unknown as Schema.Schema<Bulk_export_groupProjectsLocationsDatasetsFhirStoresRequest>;
 
@@ -7270,11 +6999,7 @@ export const CreateProjectsLocationsDatasetsFhirStoresRequest =
     ),
     body: Schema.optional(FhirStore).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/fhirStores", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsFhirStoresRequest>;
 
@@ -7305,10 +7030,7 @@ export const GetProjectsLocationsDatasetsFhirStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsFhirStoresRequest>;
 
@@ -7345,11 +7067,7 @@ export const PatchProjectsLocationsDatasetsFhirStoresRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(FhirStore).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsFhirStoresRequest>;
 
@@ -7380,10 +7098,7 @@ export const DeleteProjectsLocationsDatasetsFhirStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsFhirStoresRequest>;
 
@@ -7423,10 +7138,7 @@ export const ListProjectsLocationsDatasetsFhirStoresRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/fhirStores" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsFhirStoresRequest>;
 
@@ -7465,11 +7177,7 @@ export const ImportProjectsLocationsDatasetsFhirStoresRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ImportResourcesRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}:import",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:import", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ImportProjectsLocationsDatasetsFhirStoresRequest>;
 
@@ -7503,11 +7211,7 @@ export const ApplyConsentsProjectsLocationsDatasetsFhirStoresRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ApplyConsentsRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}:applyConsents",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:applyConsents", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ApplyConsentsProjectsLocationsDatasetsFhirStoresRequest>;
 
@@ -7545,7 +7249,7 @@ export const ApplyAdminConsentsProjectsLocationsDatasetsFhirStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}:applyAdminConsents",
+      path: "v1/{name}:applyAdminConsents",
       hasBody: true,
     }),
     svc,
@@ -7583,10 +7287,7 @@ export const ExplainDataAccessProjectsLocationsDatasetsFhirStoresRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     resourceId: Schema.optional(Schema.String).pipe(T.HttpQuery("resourceId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}:explainDataAccess",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:explainDataAccess" }),
     svc,
   ) as unknown as Schema.Schema<ExplainDataAccessProjectsLocationsDatasetsFhirStoresRequest>;
 
@@ -7622,11 +7323,7 @@ export const ExportProjectsLocationsDatasetsFhirStoresRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ExportResourcesRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}:export",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:export", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExportProjectsLocationsDatasetsFhirStoresRequest>;
 
@@ -7660,11 +7357,7 @@ export const BulkDeleteProjectsLocationsDatasetsFhirStoresRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(BulkDeleteResourcesRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}:bulkDelete",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:bulkDelete", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<BulkDeleteProjectsLocationsDatasetsFhirStoresRequest>;
 
@@ -7695,10 +7388,7 @@ export const GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}:getFHIRStoreMetrics",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:getFHIRStoreMetrics" }),
     svc,
   ) as unknown as Schema.Schema<GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest>;
 
@@ -7734,11 +7424,7 @@ export const RollbackProjectsLocationsDatasetsFhirStoresRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RollbackFhirResourcesRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}:rollback",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:rollback", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RollbackProjectsLocationsDatasetsFhirStoresRequest>;
 
@@ -7775,11 +7461,7 @@ export const CreateProjectsLocationsDatasetsFhirStoresFhirRequest =
     type: Schema.String.pipe(T.HttpPath("type")),
     body: Schema.optional(HttpBody).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/{fhirId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/fhir/{type}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -7813,11 +7495,7 @@ export const Binary_createProjectsLocationsDatasetsFhirStoresFhirRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(HttpBody).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/Binary",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/fhir/Binary", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<Binary_createProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -7850,10 +7528,7 @@ export const ReadProjectsLocationsDatasetsFhirStoresFhirRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/{fhirId}/{fhirId1}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<ReadProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -7884,10 +7559,7 @@ export const Binary_readProjectsLocationsDatasetsFhirStoresFhirRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/Binary/{BinaryId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<Binary_readProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -7920,10 +7592,7 @@ export const VreadProjectsLocationsDatasetsFhirStoresFhirRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/{fhirId}/{fhirId1}/_history/{_historyId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<VreadProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -7954,10 +7623,7 @@ export const Binary_vreadProjectsLocationsDatasetsFhirStoresFhirRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/Binary/{BinaryId}/_history/{_historyId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<Binary_vreadProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -7990,10 +7656,7 @@ export const DeleteProjectsLocationsDatasetsFhirStoresFhirRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/{fhirId}/{fhirId1}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -8027,10 +7690,7 @@ export const ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     type: Schema.String.pipe(T.HttpPath("type")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/{fhirId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{parent}/fhir/{type}" }),
     svc,
   ) as unknown as Schema.Schema<ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -8066,11 +7726,7 @@ export const Binary_updateProjectsLocationsDatasetsFhirStoresFhirRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(HttpBody).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/Binary/{BinaryId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<Binary_updateProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -8106,11 +7762,7 @@ export const UpdateProjectsLocationsDatasetsFhirStoresFhirRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(HttpBody).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/{fhirId}/{fhirId1}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -8147,11 +7799,7 @@ export const ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest =
     type: Schema.String.pipe(T.HttpPath("type")),
     body: Schema.optional(HttpBody).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/{fhirId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1/{parent}/fhir/{type}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -8187,11 +7835,7 @@ export const PatchProjectsLocationsDatasetsFhirStoresFhirRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(HttpBody).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/{fhirId}/{fhirId1}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -8228,11 +7872,7 @@ export const ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest =
     type: Schema.String.pipe(T.HttpPath("type")),
     body: Schema.optional(HttpBody).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/{fhirId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{parent}/fhir/{type}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -8273,11 +7913,7 @@ export const SearchProjectsLocationsDatasetsFhirStoresFhirRequest =
     ),
     body: Schema.optional(HttpBody).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/_search",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/fhir/_search", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SearchProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -8316,7 +7952,7 @@ export const Search_typeProjectsLocationsDatasetsFhirStoresFhirRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/{resourceType}/_search",
+      path: "v1/{parent}/fhir/{resourceType}/_search",
       hasBody: true,
     }),
     svc,
@@ -8371,10 +8007,7 @@ export const Patient_everythingProjectsLocationsDatasetsFhirStoresFhirRequest =
     _since: Schema.optional(Schema.String).pipe(T.HttpQuery("_since")),
     _type: Schema.optional(Schema.String).pipe(T.HttpQuery("_type")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/Patient/{PatientId}/$everything",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/$everything" }),
     svc,
   ) as unknown as Schema.Schema<Patient_everythingProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -8407,10 +8040,7 @@ export const CapabilitiesProjectsLocationsDatasetsFhirStoresFhirRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/metadata",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/fhir/metadata" }),
     svc,
   ) as unknown as Schema.Schema<CapabilitiesProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -8446,11 +8076,7 @@ export const ExecuteBundleProjectsLocationsDatasetsFhirStoresFhirRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(HttpBody).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/fhir", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExecuteBundleProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -8497,10 +8123,7 @@ export const HistoryProjectsLocationsDatasetsFhirStoresFhirRequest =
       T.HttpQuery("_page_token"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/{fhirId}/{fhirId1}/_history",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/_history" }),
     svc,
   ) as unknown as Schema.Schema<HistoryProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -8531,10 +8154,7 @@ export const Resource_purgeProjectsLocationsDatasetsFhirStoresFhirRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/{fhirId}/{fhirId1}/$purge",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}/$purge" }),
     svc,
   ) as unknown as Schema.Schema<Resource_purgeProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -8578,10 +8198,7 @@ export const Bulk_exportProjectsLocationsDatasetsFhirStoresFhirRequest =
       T.HttpQuery("outputFormat"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/$export",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/fhir/$export" }),
     svc,
   ) as unknown as Schema.Schema<Bulk_exportProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -8625,7 +8242,7 @@ export const Resource_validateProjectsLocationsDatasetsFhirStoresFhirRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/{fhirId}/$validate",
+      path: "v1/{parent}/fhir/{type}/$validate",
       hasBody: true,
     }),
     svc,
@@ -8660,10 +8277,7 @@ export const Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRe
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/Consent/{ConsentId}/$consent-enforcement-status",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/$consent-enforcement-status" }),
     svc,
   ) as unknown as Schema.Schema<Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -8706,10 +8320,7 @@ export const Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStor
       T.HttpQuery("_page_token"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/fhir/Patient/{PatientId}/$consent-enforcement-status",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/$consent-enforcement-status" }),
     svc,
   ) as unknown as Schema.Schema<Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
@@ -8744,10 +8355,7 @@ export const Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperati
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperationsRequest>;
 
@@ -8782,10 +8390,7 @@ export const Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsR
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/fhirStores/{fhirStoresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsRequest>;
 
@@ -8834,10 +8439,7 @@ export const ListProjectsLocationsDatasetsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsOperationsRequest>;
 
@@ -8873,10 +8475,7 @@ export const GetProjectsLocationsDatasetsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsOperationsRequest>;
 
@@ -8910,11 +8509,7 @@ export const CancelProjectsLocationsDatasetsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsDatasetsOperationsRequest>;
 
@@ -8950,7 +8545,7 @@ export const AnalyzeEntitiesProjectsLocationsServicesNlpRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/services/nlp:analyzeEntities",
+      path: "v1/{nlpService}:analyzeEntities",
       hasBody: true,
     }),
     svc,
