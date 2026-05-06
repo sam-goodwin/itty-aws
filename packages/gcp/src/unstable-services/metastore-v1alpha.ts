@@ -1368,6 +1368,7 @@ export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
   status: Schema.optional(Schema.String),
   reason: Schema.optional(Schema.String),
   domain: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
 }) {}
 T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
 
@@ -1379,6 +1380,7 @@ export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
     status: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
     domain: Schema.optional(Schema.String),
+    details: Schema.optional(Schema.Array(Schema.Unknown)),
   },
 ) {}
 T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
@@ -1391,6 +1393,7 @@ export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
     status: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
     domain: Schema.optional(Schema.String),
+    details: Schema.optional(Schema.Array(Schema.Unknown)),
   },
 ) {}
 T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
@@ -1401,6 +1404,7 @@ export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
   status: Schema.optional(Schema.String),
   reason: Schema.optional(Schema.String),
   domain: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Array(Schema.Unknown)),
 }) {}
 T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 

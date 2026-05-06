@@ -20,7 +20,84 @@ import { Retry } from "../retry.ts";
 export type { OperationMethod, PaginatedOperationMethod };
 
 /**
+ * Shape of GCP's standard error envelope as documented at
+ * <https://cloud.google.com/apis/design/errors>:
+ *
+ * ```json
+ * {
+ *   "error": {
+ *     "code": 400,
+ *     "message": "Precondition check failed.",
+ *     "status": "FAILED_PRECONDITION",
+ *     "details": [
+ *       {
+ *         "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+ *         "violations": [{ "subject": "...", "description": "..." }]
+ *       }
+ *     ]
+ *   }
+ * }
+ * ```
+ *
+ * `code` mirrors the HTTP status (already encoded in the error class).
+ * `status` is the gRPC-style enum string — useful to disambiguate sub-cases
+ * sharing an HTTP status (e.g. `FAILED_PRECONDITION` vs `INVALID_ARGUMENT`,
+ * both HTTP 400). `details[]` is a list of typed protobuf messages
+ * discriminated by their `@type` URL — `QuotaFailure`, `ErrorInfo`,
+ * `BadRequest.FieldViolation`, etc. We surface all three on the typed
+ * error so user code can do, e.g.:
+ *
+ * ```typescript
+ * Effect.catchTag("BadRequest", (e) => {
+ *   const isQuota = e.status === "FAILED_PRECONDITION" &&
+ *     e.details?.some((d: any) => d["@type"]?.endsWith("QuotaFailure"));
+ *   …
+ * });
+ * ```
+ */
+const extractGCPErrorEnvelope = (
+  errorBody: unknown,
+): {
+  message: string | undefined;
+  status: string | undefined;
+  details: ReadonlyArray<unknown> | undefined;
+} => {
+  if (
+    typeof errorBody !== "object" ||
+    errorBody === null ||
+    !("error" in errorBody)
+  ) {
+    return { message: undefined, status: undefined, details: undefined };
+  }
+  const err = (errorBody as { error?: unknown }).error;
+  if (typeof err !== "object" || err === null) {
+    return { message: undefined, status: undefined, details: undefined };
+  }
+  const e = err as { message?: unknown; status?: unknown; details?: unknown };
+  return {
+    message: typeof e.message === "string" ? e.message : undefined,
+    status: typeof e.status === "string" ? e.status : undefined,
+    details: Array.isArray(e.details) ? e.details : undefined,
+  };
+};
+
+/**
  * Match a GCP API error response to the appropriate error class.
+ *
+ * `HTTP_STATUS_MAP` is core's table of (HTTP status → error class). Core
+ * classes declare only `message` (and `retryAfter` for retryable
+ * statuses). The per-service inline error classes generated under
+ * `services/*.ts` declare additional `code` / `status` / `reason` /
+ * `domain` / `details` fields — these describe the *shape callers
+ * narrow to* via `Effect.catch("BadRequest", e => …)`.
+ *
+ * Since `Effect.catch` matches by `_tag` (string) and the runtime
+ * instance built here shares a tag with the per-service class, we can
+ * surface the structured envelope fields by attaching them to the
+ * runtime instance after construction. The Schema-level field set on
+ * the core class is unchanged; the tacked-on properties become visible
+ * exclusively at the per-service narrowed type. This keeps core
+ * untouched while delivering the structured info to consumers.
  */
 const matchError = (
   status: number,
@@ -29,22 +106,42 @@ const matchError = (
   headers?: Record<string, string | undefined>,
 ): Effect.Effect<never, unknown> => {
   const ErrorClass = (HTTP_STATUS_MAP as any)[status];
-  const message =
-    typeof errorBody === "object" && errorBody !== null && "error" in errorBody
-      ? ((errorBody as any).error?.message ?? String(status))
-      : String(status);
+  const envelope = extractGCPErrorEnvelope(errorBody);
+  const message = envelope.message ?? String(status);
 
   if (ErrorClass) {
-    return Effect.fail(
-      new ErrorClass({
-        message,
-        retryAfter: parseRetryAfterForStatus(status, headers),
-      }),
-    );
+    const instance = new ErrorClass({
+      message,
+      retryAfter: parseRetryAfterForStatus(status, headers),
+    });
+    const tackOn = instance as unknown as EnvelopeAddenda;
+    if (envelope.status !== undefined) tackOn.status = envelope.status;
+    if (envelope.details !== undefined) tackOn.details = envelope.details;
+    return Effect.fail(instance);
   }
-  return Effect.fail(
-    new UnknownGCPError({ code: status, message, body: errorBody }),
-  );
+
+  // `UnknownGCPError`'s schema *does* declare `status` already, so we
+  // could pass it through the constructor — but routing all envelope
+  // fields through the same tack-on path keeps `matchError` uniform.
+  const unknownInstance = new UnknownGCPError({
+    code: status,
+    message,
+    body: errorBody,
+  });
+  const tackOnUnknown = unknownInstance as unknown as EnvelopeAddenda;
+  if (envelope.status !== undefined) tackOnUnknown.status = envelope.status;
+  return Effect.fail(unknownInstance);
+};
+
+/**
+ * The two envelope fields the per-service inline error classes declare
+ * but the core HTTP_STATUS_MAP classes don't. Used as the (narrow)
+ * mutable view through which `matchError` writes the tacked-on
+ * properties without `Record<string, unknown>` losing the field names.
+ */
+type EnvelopeAddenda = {
+  status?: string;
+  details?: ReadonlyArray<unknown>;
 };
 
 /**

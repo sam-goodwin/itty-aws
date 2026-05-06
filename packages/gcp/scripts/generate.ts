@@ -192,7 +192,9 @@ const versionFilter = args.includes("--version")
 
 async function main() {
   // Load manifest
-  const manifestPath = path.resolve("specs/distilled-spec-gcp/specs/_manifest.json");
+  const manifestPath = path.resolve(
+    "specs/distilled-spec-gcp/specs/_manifest.json",
+  );
   if (!fs.existsSync(manifestPath)) {
     console.error(
       "No manifest found. Run `git submodule update --init` first to fetch specs.",
@@ -234,10 +236,10 @@ async function main() {
   let generated = 0;
   for (const entry of entries) {
     try {
-      const specPath = path.resolve(`specs/distilled-spec-gcp/specs/${entry.filename}`);
-      const doc: DiscoveryDoc = JSON.parse(
-        fs.readFileSync(specPath, "utf-8"),
+      const specPath = path.resolve(
+        `specs/distilled-spec-gcp/specs/${entry.filename}`,
       );
+      const doc: DiscoveryDoc = JSON.parse(fs.readFileSync(specPath, "utf-8"));
 
       const outputName = `${entry.name}-${entry.version}`;
       const outputDir = entry.preferred ? STABLE_DIR : UNSTABLE_DIR;
@@ -261,11 +263,12 @@ async function main() {
 // Patch Loading
 // =============================================================================
 
-function loadPatches(
-  serviceName: string,
-  _outputName: string,
-): ServicePatch {
-  const result: ServicePatch = { operations: {}, errors: {}, errorCategories: {} };
+function loadPatches(serviceName: string, _outputName: string): ServicePatch {
+  const result: ServicePatch = {
+    operations: {},
+    errors: {},
+    errorCategories: {},
+  };
 
   // Try service-level patch: patches/{service}.json
   const servicePatchPath = path.resolve(`patches/${serviceName}.json`);
@@ -310,28 +313,53 @@ function loadPatches(
 
 // Names that conflict with imports or TypeScript keywords
 const RESERVED_SCHEMA_NAMES = new Set([
-  "Schema", "Effect", "API", "T", "C", "HttpClient",
-  "Credentials", "DefaultErrors",
+  "Schema",
+  "Effect",
+  "API",
+  "T",
+  "C",
+  "HttpClient",
+  "Credentials",
+  "DefaultErrors",
   // Standard 4xx error class names emitted via method-keyed defaults
   // (see `methodDefaultErrorTags`). Several Google APIs ship discovery
   // schemas literally named `BadRequest` / `NotFound` (e.g.
   // `datamigration-v1`'s `google.rpc.BadRequest`); rename those to
   // avoid colliding with the emitted error classes.
-  "NotFound", "Forbidden", "BadRequest", "Conflict",
+  "NotFound",
+  "Forbidden",
+  "BadRequest",
+  "Conflict",
   // TypeScript built-in global types
-  "Record", "Array", "Map", "Set", "Promise", "Error",
-  "Function", "Object", "String", "Number", "Boolean",
-  "Symbol", "Date", "RegExp", "JSON",
+  "Record",
+  "Array",
+  "Map",
+  "Set",
+  "Promise",
+  "Error",
+  "Function",
+  "Object",
+  "String",
+  "Number",
+  "Boolean",
+  "Symbol",
+  "Date",
+  "RegExp",
+  "JSON",
 ]);
 
 function generateService(doc: DiscoveryDoc, patches: ServicePatch): string {
   const lines: string[] = [];
 
   // Header
-  lines.push("// ==========================================================================");
+  lines.push(
+    "// ==========================================================================",
+  );
   lines.push(`// ${doc.title} (${doc.name} ${doc.version})`);
   lines.push("// DO NOT EDIT - Generated from GCP Discovery Document");
-  lines.push("// ==========================================================================");
+  lines.push(
+    "// ==========================================================================",
+  );
   lines.push("");
   lines.push('import * as Schema from "effect/Schema";');
   lines.push('import * as API from "../client/api.ts";');
@@ -340,7 +368,9 @@ function generateService(doc: DiscoveryDoc, patches: ServicePatch): string {
   lines.push("__DURATION_SCHEMA_IMPORT__");
   lines.push('import type { Credentials } from "../credentials.ts";');
   lines.push('import type { DefaultErrors } from "../errors.ts";');
-  lines.push('import type * as HttpClient from "effect/unstable/http/HttpClient";');
+  lines.push(
+    'import type * as HttpClient from "effect/unstable/http/HttpClient";',
+  );
   lines.push("");
 
   // Service trait
@@ -385,7 +415,13 @@ function generateService(doc: DiscoveryDoc, patches: ServicePatch): string {
 
     for (const [originalName, schema] of sortedSchemas) {
       const name = schemaRenames.get(originalName) ?? originalName;
-      const schemaLines = generateSchema(name, schema, doc.schemas, schemaRenames, recursiveSchemas.has(originalName));
+      const schemaLines = generateSchema(
+        name,
+        schema,
+        doc.schemas,
+        schemaRenames,
+        recursiveSchemas.has(originalName),
+      );
       lines.push(...schemaLines);
       lines.push("");
     }
@@ -475,10 +511,16 @@ function generateService(doc: DiscoveryDoc, patches: ServicePatch): string {
     lines.push("");
 
     for (const op of operations) {
-      const opPatch =
-        patches.operations?.[op.functionName] ?? {};
+      const opPatch = patches.operations?.[op.functionName] ?? {};
       lines.push(
-        ...generateOperation(op, doc.schemas ?? {}, opPatch, allErrors, schemaNames, schemaRenames),
+        ...generateOperation(
+          op,
+          doc.schemas ?? {},
+          opPatch,
+          allErrors,
+          schemaNames,
+          schemaRenames,
+        ),
       );
       lines.push("");
     }
@@ -487,7 +529,10 @@ function generateService(doc: DiscoveryDoc, patches: ServicePatch): string {
   let code = lines.join("\n") + "\n";
   // Only include the category import if it's actually used
   if (code.includes("C.with")) {
-    code = code.replace("__CATEGORY_IMPORT__", 'import * as C from "../category.ts";');
+    code = code.replace(
+      "__CATEGORY_IMPORT__",
+      'import * as C from "../category.ts";',
+    );
   } else {
     code = code.replace("__CATEGORY_IMPORT__\n", "");
   }
@@ -559,13 +604,15 @@ function generateSchema(
         `})).annotate({ identifier: ${JSON.stringify(name)} }) as any as Schema.Schema<${name}>;`,
       );
     } else {
-      lines.push(
-        `}).annotate({ identifier: ${JSON.stringify(name)} });`,
-      );
+      lines.push(`}).annotate({ identifier: ${JSON.stringify(name)} });`);
     }
   } else if (schema.type === "object" && schema.additionalProperties) {
     // Map type
-    const valType = propertyToTsType(schema.additionalProperties, allSchemas, renames);
+    const valType = propertyToTsType(
+      schema.additionalProperties,
+      allSchemas,
+      renames,
+    );
     const valSchema = propertyToSchemaExpr(
       schema.additionalProperties,
       allSchemas,
@@ -578,10 +625,10 @@ function generateSchema(
   } else if (schema.enum) {
     // Enum type - open union
     const literals = schema.enum.map((v) => JSON.stringify(v)).join(" | ");
+    lines.push(`export type ${name} = ${literals} | (string & {});`);
     lines.push(
-      `export type ${name} = ${literals} | (string & {});`,
+      `export const ${name} = /*@__PURE__*/ /*#__PURE__*/ Schema.String;`,
     );
-    lines.push(`export const ${name} = /*@__PURE__*/ /*#__PURE__*/ Schema.String;`);
   } else {
     // Simple type alias
     const tsType = schemaTypeToTs(schema);
@@ -606,7 +653,10 @@ function propertyToTsType(
   switch (prop.type) {
     case "string":
       if (prop.enum) {
-        return prop.enum.map((v) => JSON.stringify(v)).join(" | ") + " | (string & {})";
+        return (
+          prop.enum.map((v) => JSON.stringify(v)).join(" | ") +
+          " | (string & {})"
+        );
       }
       if (prop.format === "date-time") return "string";
       if (prop.format === "int64" || prop.format === "uint64") return "string";
@@ -816,6 +866,12 @@ function generateErrorClass(
   lines.push(`    status: Schema.optional(Schema.String),`);
   lines.push(`    reason: Schema.optional(Schema.String),`);
   lines.push(`    domain: Schema.optional(Schema.String),`);
+  // GCP's standard error envelope includes a `details[]` array of
+  // typed protobuf messages (QuotaFailure, ErrorInfo, etc.) keyed by
+  // an `@type` URL. The shared `matchError` populates this on the
+  // instance from the response body; declaring it here makes it
+  // typed at every catch site.
+  lines.push(`    details: Schema.optional(Schema.Array(Schema.Unknown)),`);
   if (isRetryable) {
     lines.push(`    retryAfter: Schema.optional(DurationSchema),`);
   }
@@ -823,9 +879,7 @@ function generateErrorClass(
   lines.push(`) {}`);
 
   // Apply error matchers
-  lines.push(
-    `T.applyErrorMatchers(${safeTag}, ${JSON.stringify(matchers)});`,
-  );
+  lines.push(`T.applyErrorMatchers(${safeTag}, ${JSON.stringify(matchers)});`);
 
   // Apply categories if any
   if (categories && categories.length > 0) {
@@ -853,7 +907,7 @@ function generateOperation(
   const fnName = op.functionName;
   let inputName = `${capitalize(fnName)}Request`;
   let outputName = `${capitalize(fnName)}Response`;
-  
+
   // Avoid name collisions with existing schemas
   if (existingSchemaNames.has(inputName)) {
     inputName = `${inputName}_Op`;
@@ -880,7 +934,9 @@ function generateOperation(
   // Check for pagination
   const hasPagination =
     op.parameters.pageToken !== undefined ||
-    Object.values(op.parameters).some((p) => p.type === "string" && /pageToken/i.test(p.description ?? ""));
+    Object.values(op.parameters).some(
+      (p) => p.type === "string" && /pageToken/i.test(p.description ?? ""),
+    );
   const responseSchema = op.responseRef
     ? allSchemas[op.responseRef]
     : undefined;
@@ -892,7 +948,20 @@ function generateOperation(
   // Collect operation parameters (excluding global params)
   const opParams = Object.entries(op.parameters).filter(
     ([name]) =>
-      !["alt", "fields", "key", "oauth_token", "prettyPrint", "quotaUser", "userIp", "uploadType", "upload_protocol", "$.xgafv", "callback", "access_token"].includes(name),
+      ![
+        "alt",
+        "fields",
+        "key",
+        "oauth_token",
+        "prettyPrint",
+        "quotaUser",
+        "userIp",
+        "uploadType",
+        "upload_protocol",
+        "$.xgafv",
+        "callback",
+        "access_token",
+      ].includes(name),
   );
 
   // Generate request interface (description goes on the operation, not the interface)
@@ -906,8 +975,12 @@ function generateOperation(
     lines.push(`  ${safePropName(paramName)}${opt}: ${tsType};`);
   }
   // Resolve $ref names through renames
-  const resolvedRequestRef = op.requestRef ? (schemaRenames.get(op.requestRef) ?? op.requestRef) : undefined;
-  const resolvedResponseRef = op.responseRef ? (schemaRenames.get(op.responseRef) ?? op.responseRef) : undefined;
+  const resolvedRequestRef = op.requestRef
+    ? (schemaRenames.get(op.requestRef) ?? op.requestRef)
+    : undefined;
+  const resolvedResponseRef = op.responseRef
+    ? (schemaRenames.get(op.responseRef) ?? op.responseRef)
+    : undefined;
 
   // If there's a request body, add it
   if (resolvedRequestRef) {
@@ -918,7 +991,9 @@ function generateOperation(
   lines.push("");
 
   // Generate request schema
-  lines.push(`export const ${inputName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`);
+  lines.push(
+    `export const ${inputName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+  );
   for (const [paramName, param] of opParams) {
     const schemaExpr = paramTypeToSchemaExpr(param);
     const traitPipe =
@@ -935,22 +1010,24 @@ function generateOperation(
     }
   }
   if (resolvedRequestRef) {
-    lines.push(`  body: Schema.optional(${resolvedRequestRef}).pipe(T.HttpBody()),`);
+    lines.push(
+      `  body: Schema.optional(${resolvedRequestRef}).pipe(T.HttpBody()),`,
+    );
   }
   lines.push(`}).pipe(`);
   lines.push(
     `  T.Http({ method: ${JSON.stringify(op.httpMethod)}, path: ${JSON.stringify(op.path)}${resolvedRequestRef || op.httpMethod === "POST" || op.httpMethod === "PUT" || op.httpMethod === "PATCH" ? ", hasBody: true" : ""} }),`,
   );
   lines.push(`  svc,`);
-  lines.push(
-    `) as unknown as Schema.Schema<${inputName}>;`,
-  );
+  lines.push(`) as unknown as Schema.Schema<${inputName}>;`);
   lines.push("");
 
   // Generate response type and schema
   if (resolvedResponseRef) {
     lines.push(`export type ${outputName} = ${resolvedResponseRef};`);
-    lines.push(`export const ${outputName} = /*@__PURE__*/ /*#__PURE__*/ ${resolvedResponseRef};`);
+    lines.push(
+      `export const ${outputName} = /*@__PURE__*/ /*#__PURE__*/ ${resolvedResponseRef};`,
+    );
   } else {
     lines.push(`export interface ${outputName} {}`);
     lines.push(
@@ -1112,7 +1189,7 @@ function methodToOperation(
   const safeName = safeIdentifier(methodName);
   const resourcePart =
     resourcePath.length > 0
-      ? resourcePath.map(r => capitalize(safeIdentifier(r))).join("")
+      ? resourcePath.map((r) => capitalize(safeIdentifier(r))).join("")
       : "";
   const functionName = safeName + resourcePart;
 
