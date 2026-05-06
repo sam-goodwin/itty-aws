@@ -73812,6 +73812,10 @@ export class InvalidVpcEndpointIdNotFound extends S.TaggedErrorClass<InvalidVpcE
   "InvalidVpcEndpointId.NotFound",
   {},
 ) {}
+export class RouteAlreadyExists extends S.TaggedErrorClass<RouteAlreadyExists>()(
+  "RouteAlreadyExists",
+  {},
+).pipe(C.withAlreadyExistsError) {}
 export class InvalidRouteServerIdNotAssociated extends S.TaggedErrorClass<InvalidRouteServerIdNotAssociated>()(
   "InvalidRouteServerId.NotAssociated",
   {},
@@ -77486,6 +77490,7 @@ export type CreateRouteError =
   | InvalidRouteTableIdMalformed
   | InvalidVpcEndpointIdNotFound
   | MissingParameter
+  | RouteAlreadyExists
   | CommonErrors;
 /**
  * Creates a route in a route table within a VPC.
@@ -77526,6 +77531,7 @@ export const createRoute: API.OperationMethod<
     InvalidRouteTableIdMalformed,
     InvalidVpcEndpointIdNotFound,
     MissingParameter,
+    RouteAlreadyExists,
   ],
 }));
 export type CreateRouteServerError =
@@ -79654,6 +79660,7 @@ export const deleteManagedPrefixList: API.OperationMethod<
 }));
 export type DeleteNatGatewayError =
   | RequestLimitExceeded
+  | DependencyViolation
   | DryRunOperation
   | InvalidParameter
   | MissingParameter
@@ -79675,6 +79682,7 @@ export const deleteNatGateway: API.OperationMethod<
   output: DeleteNatGatewayResult,
   errors: [
     RequestLimitExceeded,
+    DependencyViolation,
     DryRunOperation,
     InvalidParameter,
     MissingParameter,
@@ -88951,6 +88959,7 @@ export const disassociateRouteServer: API.OperationMethod<
 export type DisassociateRouteTableError =
   | RequestLimitExceeded
   | InvalidAssociationIDNotFound
+  | InvalidRouteTableIDNotFound
   | MissingParameter
   | CommonErrors;
 /**
@@ -88972,6 +88981,7 @@ export const disassociateRouteTable: API.OperationMethod<
   errors: [
     RequestLimitExceeded,
     InvalidAssociationIDNotFound,
+    InvalidRouteTableIDNotFound,
     MissingParameter,
   ],
 }));
@@ -94517,6 +94527,7 @@ export const rejectVpcPeeringConnection: API.OperationMethod<
 export type ReleaseAddressError =
   | RequestLimitExceeded
   | AuthFailure
+  | DependencyViolation
   | DryRunOperation
   | InvalidAddressNotFound
   | InvalidAllocationIDNotFound
@@ -94554,6 +94565,7 @@ export const releaseAddress: API.OperationMethod<
   errors: [
     RequestLimitExceeded,
     AuthFailure,
+    DependencyViolation,
     DryRunOperation,
     InvalidAddressNotFound,
     InvalidAllocationIDNotFound,
