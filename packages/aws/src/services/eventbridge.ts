@@ -3697,19 +3697,19 @@ export const UpdateEventBusResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
   "ConcurrentModificationException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withConflictError, C.withRetryableError) {}
 export class InternalException extends S.TaggedErrorClass<InternalException>()(
   "InternalException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withServerError, C.withRetryableError) {}
 export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
   "InvalidStateException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withConflictError) {}
 export class OperationDisabledException extends S.TaggedErrorClass<OperationDisabledException>()(
   "OperationDisabledException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.optional(S.String) },
@@ -3717,11 +3717,11 @@ export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFou
 export class IllegalStatusException extends S.TaggedErrorClass<IllegalStatusException>()(
   "IllegalStatusException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withConflictError) {}
 export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
   "LimitExceededException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withQuotaError) {}
 export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
   "ResourceAlreadyExistsException",
   { message: S.optional(S.String) },
@@ -3729,7 +3729,7 @@ export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceA
 export class InvalidEventPatternException extends S.TaggedErrorClass<InvalidEventPatternException>()(
   "InvalidEventPatternException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.optional(S.String) },
@@ -3737,15 +3737,15 @@ export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedExcept
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ManagedRuleException extends S.TaggedErrorClass<ManagedRuleException>()(
   "ManagedRuleException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class PolicyLengthExceededException extends S.TaggedErrorClass<PolicyLengthExceededException>()(
   "PolicyLengthExceededException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withQuotaError) {}
 
 //# Operations
 export type ActivateEventSourceError =
@@ -4167,6 +4167,7 @@ export const deleteEndpoint: API.OperationMethod<
 export type DeleteEventBusError =
   | ConcurrentModificationException
   | InternalException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Deletes the specified custom event bus or partner event bus. All rules associated with
@@ -4180,7 +4181,11 @@ export const deleteEventBus: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEventBusRequest,
   output: DeleteEventBusResponse,
-  errors: [ConcurrentModificationException, InternalException],
+  errors: [
+    ConcurrentModificationException,
+    InternalException,
+    ResourceNotFoundException,
+  ],
 }));
 export type DeletePartnerEventSourceError =
   | ConcurrentModificationException
@@ -4696,6 +4701,7 @@ export const listRules: API.OperationMethod<
 export type ListTagsForResourceError =
   | InternalException
   | ResourceNotFoundException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Displays the tags associated with an EventBridge resource. In EventBridge, rules and event
@@ -4709,7 +4715,7 @@ export const listTagsForResource: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
-  errors: [InternalException, ResourceNotFoundException],
+  errors: [InternalException, ResourceNotFoundException, ThrottlingException],
 }));
 export type ListTargetsByRuleError =
   | InternalException
@@ -5128,6 +5134,7 @@ export type TagResourceError =
   | InternalException
   | ManagedRuleException
   | ResourceNotFoundException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Assigns one or more tags (key-value pairs) to the specified EventBridge resource. Tags can
@@ -5158,6 +5165,7 @@ export const tagResource: API.OperationMethod<
     InternalException,
     ManagedRuleException,
     ResourceNotFoundException,
+    ThrottlingException,
   ],
 }));
 export type TestEventPatternError =
@@ -5187,6 +5195,7 @@ export type UntagResourceError =
   | InternalException
   | ManagedRuleException
   | ResourceNotFoundException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Removes one or more tags from the specified EventBridge resource. In Amazon EventBridge, rules and event buses can be tagged.
@@ -5204,6 +5213,7 @@ export const untagResource: API.OperationMethod<
     InternalException,
     ManagedRuleException,
     ResourceNotFoundException,
+    ThrottlingException,
   ],
 }));
 export type UpdateApiDestinationError =

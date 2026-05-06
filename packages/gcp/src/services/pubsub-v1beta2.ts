@@ -44,7 +44,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
@@ -59,7 +59,7 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
@@ -81,7 +81,7 @@ export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -91,7 +91,7 @@ export const TestIamPermissionsRequest =
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -128,7 +128,7 @@ export const PubsubMessage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PublishRequest {
   /** The messages to publish. */
-  messages?: Array<PubsubMessage>;
+  messages?: ReadonlyArray<PubsubMessage>;
 }
 
 export const PublishRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -137,7 +137,7 @@ export const PublishRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PublishResponse {
   /** The server-assigned ID of each published message, in the same order as the messages in the request. IDs are guaranteed to be unique within the topic. */
-  messageIds?: Array<string>;
+  messageIds?: ReadonlyArray<string>;
 }
 
 export const PublishResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -146,7 +146,7 @@ export const PublishResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTopicsResponse {
   /** The resulting topics. */
-  topics?: Array<Topic>;
+  topics?: ReadonlyArray<Topic>;
   /** If not empty, indicates that there may be more topics that match the request; this value should be passed in a new `ListTopicsRequest`. */
   nextPageToken?: string;
 }
@@ -158,7 +158,7 @@ export const ListTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTopicSubscriptionsResponse {
   /** The names of the subscriptions that match the request. */
-  subscriptions?: Array<string>;
+  subscriptions?: ReadonlyArray<string>;
   /** If not empty, indicates that there may be more subscriptions that match the request; this value should be passed in a new `ListTopicSubscriptionsRequest` to get more subscriptions. */
   nextPageToken?: string;
 }
@@ -222,7 +222,7 @@ export const Subscription = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSubscriptionsResponse {
   /** The subscriptions that match the request. */
-  subscriptions?: Array<Subscription>;
+  subscriptions?: ReadonlyArray<Subscription>;
   /** If not empty, indicates that there may be more subscriptions that match the request; this value should be passed in a new `ListSubscriptionsRequest` to get more subscriptions. */
   nextPageToken?: string;
 }
@@ -237,7 +237,7 @@ export interface ModifyAckDeadlineRequest {
   /** The acknowledgment ID. Either this or ack_ids must be populated, but not both. */
   ackId?: string;
   /** List of acknowledgment IDs. */
-  ackIds?: Array<string>;
+  ackIds?: ReadonlyArray<string>;
   /** The new ack deadline with respect to the time this request was sent to the Pub/Sub system. Must be >= 0. For example, if the value is 10, the new ack deadline will expire 10 seconds after the `ModifyAckDeadline` call was made. Specifying zero may immediately make the message available for another pull request. */
   ackDeadlineSeconds?: number;
 }
@@ -251,7 +251,7 @@ export const ModifyAckDeadlineRequest =
 
 export interface AcknowledgeRequest {
   /** The acknowledgment ID for the messages being acknowledged that was returned by the Pub/Sub system in the `Pull` response. Must not be empty. */
-  ackIds?: Array<string>;
+  ackIds?: ReadonlyArray<string>;
 }
 
 export const AcknowledgeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -284,7 +284,7 @@ export const ReceivedMessage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PullResponse {
   /** Received Pub/Sub messages. The Pub/Sub system will return zero messages if there are no more available in the backlog. The Pub/Sub system may return fewer than the `maxMessages` requested even if there are more messages available in the backlog. */
-  receivedMessages?: Array<ReceivedMessage>;
+  receivedMessages?: ReadonlyArray<ReceivedMessage>;
 }
 
 export const PullResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -319,7 +319,7 @@ export const SetIamPolicyProjectsSubscriptionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta2/projects/{projectsId}/subscriptions/{subscriptionsId}:setIamPolicy",
+      path: "v1beta2/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -357,10 +357,7 @@ export const GetIamPolicyProjectsSubscriptionsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta2/projects/{projectsId}/subscriptions/{subscriptionsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1beta2/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsSubscriptionsRequest>;
 
@@ -396,7 +393,7 @@ export const TestIamPermissionsProjectsSubscriptionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta2/projects/{projectsId}/subscriptions/{subscriptionsId}:testIamPermissions",
+      path: "v1beta2/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -433,11 +430,7 @@ export const CreateProjectsSubscriptionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Subscription).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1beta2/projects/{projectsId}/subscriptions/{subscriptionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1beta2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsSubscriptionsRequest>;
 
@@ -468,10 +461,7 @@ export const GetProjectsSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscription: Schema.String.pipe(T.HttpPath("subscription")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta2/projects/{projectsId}/subscriptions/{subscriptionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta2/{subscription}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsSubscriptionsRequest>;
 
@@ -508,10 +498,7 @@ export const ListProjectsSubscriptionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta2/projects/{projectsId}/subscriptions",
-    }),
+    T.Http({ method: "GET", path: "v1beta2/{project}/subscriptions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsSubscriptionsRequest>;
 
@@ -546,10 +533,7 @@ export const DeleteProjectsSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscription: Schema.String.pipe(T.HttpPath("subscription")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta2/projects/{projectsId}/subscriptions/{subscriptionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta2/{subscription}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsSubscriptionsRequest>;
 
@@ -585,7 +569,7 @@ export const ModifyAckDeadlineProjectsSubscriptionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta2/projects/{projectsId}/subscriptions/{subscriptionsId}:modifyAckDeadline",
+      path: "v1beta2/{subscription}:modifyAckDeadline",
       hasBody: true,
     }),
     svc,
@@ -623,7 +607,7 @@ export const AcknowledgeProjectsSubscriptionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta2/projects/{projectsId}/subscriptions/{subscriptionsId}:acknowledge",
+      path: "v1beta2/{subscription}:acknowledge",
       hasBody: true,
     }),
     svc,
@@ -661,7 +645,7 @@ export const PullProjectsSubscriptionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta2/projects/{projectsId}/subscriptions/{subscriptionsId}:pull",
+      path: "v1beta2/{subscription}:pull",
       hasBody: true,
     }),
     svc,
@@ -699,7 +683,7 @@ export const ModifyPushConfigProjectsSubscriptionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta2/projects/{projectsId}/subscriptions/{subscriptionsId}:modifyPushConfig",
+      path: "v1beta2/{subscription}:modifyPushConfig",
       hasBody: true,
     }),
     svc,
@@ -737,7 +721,7 @@ export const SetIamPolicyProjectsTopicsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta2/projects/{projectsId}/topics/{topicsId}:setIamPolicy",
+      path: "v1beta2/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -775,10 +759,7 @@ export const GetIamPolicyProjectsTopicsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta2/projects/{projectsId}/topics/{topicsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1beta2/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsTopicsRequest>;
 
@@ -814,7 +795,7 @@ export const TestIamPermissionsProjectsTopicsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta2/projects/{projectsId}/topics/{topicsId}:testIamPermissions",
+      path: "v1beta2/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -851,11 +832,7 @@ export const CreateProjectsTopicsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Topic).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1beta2/projects/{projectsId}/topics/{topicsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1beta2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsTopicsRequest>;
 
@@ -888,11 +865,7 @@ export const PublishProjectsTopicsRequest =
     topic: Schema.String.pipe(T.HttpPath("topic")),
     body: Schema.optional(PublishRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta2/projects/{projectsId}/topics/{topicsId}:publish",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta2/{topic}:publish", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PublishProjectsTopicsRequest>;
 
@@ -923,10 +896,7 @@ export const GetProjectsTopicsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topic: Schema.String.pipe(T.HttpPath("topic")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta2/projects/{projectsId}/topics/{topicsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta2/{topic}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsTopicsRequest>;
 
@@ -962,7 +932,7 @@ export const ListProjectsTopicsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta2/projects/{projectsId}/topics" }),
+    T.Http({ method: "GET", path: "v1beta2/{project}/topics" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsTopicsRequest>;
 
@@ -997,10 +967,7 @@ export const DeleteProjectsTopicsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     topic: Schema.String.pipe(T.HttpPath("topic")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta2/projects/{projectsId}/topics/{topicsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta2/{topic}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsTopicsRequest>;
 
@@ -1036,10 +1003,7 @@ export const ListProjectsTopicsSubscriptionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta2/projects/{projectsId}/topics/{topicsId}/subscriptions",
-    }),
+    T.Http({ method: "GET", path: "v1beta2/{topic}/subscriptions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsTopicsSubscriptionsRequest>;
 

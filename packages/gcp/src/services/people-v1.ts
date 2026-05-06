@@ -26,7 +26,7 @@ export interface ProfileMetadata {
   /** Output only. The profile object type. */
   objectType?: "OBJECT_TYPE_UNSPECIFIED" | "PERSON" | "PAGE" | (string & {});
   /** Output only. The user types. */
-  userTypes?: Array<
+  userTypes?: ReadonlyArray<
     | "USER_TYPE_UNKNOWN"
     | "GOOGLE_USER"
     | "GPLUS_USER"
@@ -182,15 +182,15 @@ export const FileAs = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PersonMetadata {
   /** The sources of data for the person. */
-  sources?: Array<Source>;
+  sources?: ReadonlyArray<Source>;
   /** Output only. Any former resource names this person has had. Populated only for `people.connections.list` requests that include a sync token. The resource name may change when adding or removing fields that link a contact and profile such as a verified email, verified phone number, or profile URL. */
-  previousResourceNames?: Array<string>;
+  previousResourceNames?: ReadonlyArray<string>;
   /** Output only. True if the person resource has been deleted. Populated only for `people.connections.list` and `otherContacts.list` sync requests. */
   deleted?: boolean;
   /** Output only. **DEPRECATED** (Please use `person.metadata.sources.profileMetadata.objectType` instead) The type of the person object. */
   objectType?: "OBJECT_TYPE_UNSPECIFIED" | "PERSON" | "PAGE" | (string & {});
   /** Output only. Resource names of people linked to this resource. */
-  linkedPeopleResourceNames?: Array<string>;
+  linkedPeopleResourceNames?: ReadonlyArray<string>;
 }
 
 export const PersonMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -826,29 +826,29 @@ export const Tagline = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Person {
   /** The person's calendar URLs. */
-  calendarUrls?: Array<CalendarUrl>;
+  calendarUrls?: ReadonlyArray<CalendarUrl>;
   /** The person's names. This field is a singleton for contact sources. */
-  names?: Array<Name>;
+  names?: ReadonlyArray<Name>;
   /** The person's skills. */
-  skills?: Array<Skill>;
+  skills?: ReadonlyArray<Skill>;
   /** The person's file-ases. */
-  fileAses?: Array<FileAs>;
+  fileAses?: ReadonlyArray<FileAs>;
   /** Output only. Metadata about the person. */
   metadata?: PersonMetadata;
   /** The person's street addresses. */
-  addresses?: Array<Address>;
+  addresses?: ReadonlyArray<Address>;
   /** The person's instant messaging clients. */
-  imClients?: Array<ImClient>;
+  imClients?: ReadonlyArray<ImClient>;
   /** The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the resource. Used for web cache validation. */
   etag?: string;
   /** The resource name for the person, assigned by the server. An ASCII string in the form of `people/{person_id}`. */
   resourceName?: string;
   /** **DEPRECATED**: No data will be returned The person's bragging rights. */
-  braggingRights?: Array<BraggingRights>;
+  braggingRights?: ReadonlyArray<BraggingRights>;
   /** The person's email addresses. For `people.connections.list` and `otherContacts.list` the number of email addresses is limited to 100. If a Person has more email addresses the entire set can be obtained by calling GetPeople. */
-  emailAddresses?: Array<EmailAddress>;
+  emailAddresses?: ReadonlyArray<EmailAddress>;
   /** The person's events. */
-  events?: Array<Event>;
+  events?: ReadonlyArray<Event>;
   /** Output only. **DEPRECATED** (Please use `person.ageRanges` instead) The person's age range. */
   ageRange?:
     | "AGE_RANGE_UNSPECIFIED"
@@ -857,55 +857,55 @@ export interface Person {
     | "TWENTY_ONE_OR_OLDER"
     | (string & {});
   /** The person's genders. This field is a singleton for contact sources. */
-  genders?: Array<Gender>;
+  genders?: ReadonlyArray<Gender>;
   /** The person's phone numbers. For `people.connections.list` and `otherContacts.list` the number of phone numbers is limited to 100. If a Person has more phone numbers the entire set can be obtained by calling GetPeople. */
-  phoneNumbers?: Array<PhoneNumber>;
+  phoneNumbers?: ReadonlyArray<PhoneNumber>;
   /** The person's nicknames. */
-  nicknames?: Array<Nickname>;
+  nicknames?: ReadonlyArray<Nickname>;
   /** The person's client data. */
-  clientData?: Array<ClientData>;
+  clientData?: ReadonlyArray<ClientData>;
   /** The person's external IDs. */
-  externalIds?: Array<ExternalId>;
+  externalIds?: ReadonlyArray<ExternalId>;
   /** Output only. The person's age ranges. */
-  ageRanges?: Array<AgeRangeType>;
+  ageRanges?: ReadonlyArray<AgeRangeType>;
   /** Output only. **DEPRECATED**: No data will be returned The person's relationship statuses. */
-  relationshipStatuses?: Array<RelationshipStatus>;
+  relationshipStatuses?: ReadonlyArray<RelationshipStatus>;
   /** The person's relations. */
-  relations?: Array<Relation>;
+  relations?: ReadonlyArray<Relation>;
   /** The person's group memberships. */
-  memberships?: Array<Membership>;
+  memberships?: ReadonlyArray<Membership>;
   /** The person's associated URLs. */
-  urls?: Array<Url>;
+  urls?: ReadonlyArray<Url>;
   /** The person's interests. */
-  interests?: Array<Interest>;
+  interests?: ReadonlyArray<Interest>;
   /** Output only. The person's photos. */
-  photos?: Array<Photo>;
+  photos?: ReadonlyArray<Photo>;
   /** **DEPRECATED**: (Please use `person.locations` instead) The person's residences. */
-  residences?: Array<Residence>;
+  residences?: ReadonlyArray<Residence>;
   /** The person's biographies. This field is a singleton for contact sources. */
-  biographies?: Array<Biography>;
+  biographies?: ReadonlyArray<Biography>;
   /** The person's occupations. */
-  occupations?: Array<Occupation>;
+  occupations?: ReadonlyArray<Occupation>;
   /** The person's locale preferences. */
-  locales?: Array<Locale>;
+  locales?: ReadonlyArray<Locale>;
   /** The person's miscellaneous keywords. */
-  miscKeywords?: Array<MiscKeyword>;
+  miscKeywords?: ReadonlyArray<MiscKeyword>;
   /** Output only. The person's cover photos. */
-  coverPhotos?: Array<CoverPhoto>;
+  coverPhotos?: ReadonlyArray<CoverPhoto>;
   /** The person's SIP addresses. */
-  sipAddresses?: Array<SipAddress>;
+  sipAddresses?: ReadonlyArray<SipAddress>;
   /** The person's past or current organizations. */
-  organizations?: Array<Organization>;
+  organizations?: ReadonlyArray<Organization>;
   /** The person's user defined data. */
-  userDefined?: Array<UserDefined>;
+  userDefined?: ReadonlyArray<UserDefined>;
   /** The person's birthdays. This field is a singleton for contact sources. */
-  birthdays?: Array<Birthday>;
+  birthdays?: ReadonlyArray<Birthday>;
   /** The person's locations. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** Output only. **DEPRECATED**: No data will be returned The person's relationship interests. */
-  relationshipInterests?: Array<RelationshipInterest>;
+  relationshipInterests?: ReadonlyArray<RelationshipInterest>;
   /** Output only. **DEPRECATED**: No data will be returned The person's taglines. */
-  taglines?: Array<Tagline>;
+  taglines?: ReadonlyArray<Tagline>;
 }
 
 export const Person = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -955,7 +955,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -986,7 +986,7 @@ export const PersonResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchCreateContactsResponse {
   /** The contacts that were created, unless the request `read_mask` is empty. */
-  createdPeople?: Array<PersonResponse>;
+  createdPeople?: ReadonlyArray<PersonResponse>;
 }
 
 export const BatchCreateContactsResponse =
@@ -996,7 +996,7 @@ export const BatchCreateContactsResponse =
 
 export interface GetPeopleResponse {
   /** The response for each requested resource name. */
-  responses?: Array<PersonResponse>;
+  responses?: ReadonlyArray<PersonResponse>;
 }
 
 export const GetPeopleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1005,9 +1005,9 @@ export const GetPeopleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ModifyContactGroupMembersResponse {
   /** The contact people resource names that cannot be removed from their last contact group. */
-  canNotRemoveLastContactGroupResourceNames?: Array<string>;
+  canNotRemoveLastContactGroupResourceNames?: ReadonlyArray<string>;
   /** The contact people resource names that were not found. */
-  notFoundResourceNames?: Array<string>;
+  notFoundResourceNames?: ReadonlyArray<string>;
 }
 
 export const ModifyContactGroupMembersResponse =
@@ -1041,7 +1041,7 @@ export interface SearchDirectoryPeopleResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The list of people in the domain directory that match the query. */
-  people?: Array<Person>;
+  people?: ReadonlyArray<Person>;
   /** The total number of items in the list without pagination. */
   totalSize?: number;
 }
@@ -1061,7 +1061,7 @@ export interface BatchUpdateContactsRequest {
   /** Required. A map of resource names to the person data to be updated. Allows up to 200 contacts in a single request. */
   contacts?: Record<string, Person>;
   /** Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set. */
-  sources?: Array<
+  sources?: ReadonlyArray<
     | "READ_SOURCE_TYPE_UNSPECIFIED"
     | "READ_SOURCE_TYPE_PROFILE"
     | "READ_SOURCE_TYPE_CONTACT"
@@ -1117,7 +1117,7 @@ export interface ContactGroup {
   /** The resource name for the contact group, assigned by the server. An ASCII string, in the form of `contactGroups/{contact_group_id}`. */
   resourceName?: string;
   /** Output only. The list of contact person resource names that are members of the contact group. The field is only populated for GET requests and will only return as many members as `maxMembers` in the get request. */
-  memberResourceNames?: Array<string>;
+  memberResourceNames?: ReadonlyArray<string>;
   /** The contact group name set by the group owner or a system provided name for system groups. For [`contactGroups.create`](/people/api/rest/v1/contactGroups/create) or [`contactGroups.update`](/people/api/rest/v1/contactGroups/update) the name must be unique to the users contact groups. Attempting to create a group with a duplicate name will return a HTTP 409 error. */
   name?: string;
   /** Output only. Metadata about the contact group. */
@@ -1125,7 +1125,7 @@ export interface ContactGroup {
   /** Output only. The total number of contacts in the group irrespective of max members in specified in the request. */
   memberCount?: number;
   /** The group's client data. */
-  clientData?: Array<GroupClientData>;
+  clientData?: ReadonlyArray<GroupClientData>;
 }
 
 export const ContactGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1142,7 +1142,7 @@ export const ContactGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListContactGroupsResponse {
   /** The list of contact groups. Members of the contact groups are not populated. */
-  contactGroups?: Array<ContactGroup>;
+  contactGroups?: ReadonlyArray<ContactGroup>;
   /** The token that can be used to retrieve changes since the last request. */
   nextSyncToken?: string;
   /** The total number of items in the list without pagination. */
@@ -1171,7 +1171,7 @@ export const DeleteContactPhotoResponse =
 
 export interface BatchDeleteContactsRequest {
   /** Required. The resource names of the contact to delete. It's repeatable. Allows up to 500 resource names in a single request. */
-  resourceNames?: Array<string>;
+  resourceNames?: ReadonlyArray<string>;
 }
 
 export const BatchDeleteContactsRequest =
@@ -1187,7 +1187,7 @@ export interface ListConnectionsResponse {
   /** A token, which can be sent as `sync_token` to retrieve changes since the last request. Request must set `request_sync_token` to return the sync token. When the response is paginated, only the last page will contain `nextSyncToken`. */
   nextSyncToken?: string;
   /** The list of people that the requestor is connected to. */
-  connections?: Array<Person>;
+  connections?: ReadonlyArray<Person>;
   /** The total number of items in the list without pagination. */
   totalItems?: number;
 }
@@ -1228,9 +1228,9 @@ export const UpdateContactPhotoResponse =
 
 export interface ModifyContactGroupMembersRequest {
   /** Optional. The resource names of the contact people to add in the form of `people/{person_id}`. The total number of resource names in `resource_names_to_add` and `resource_names_to_remove` must be less than or equal to 1000. */
-  resourceNamesToAdd?: Array<string>;
+  resourceNamesToAdd?: ReadonlyArray<string>;
   /** Optional. The resource names of the contact people to remove in the form of `people/{person_id}`. The total number of resource names in `resource_names_to_add` and `resource_names_to_remove` must be less than or equal to 1000. */
-  resourceNamesToRemove?: Array<string>;
+  resourceNamesToRemove?: ReadonlyArray<string>;
 }
 
 export const ModifyContactGroupMembersRequest =
@@ -1250,9 +1250,9 @@ export const SearchResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchCreateContactsRequest {
   /** Required. The contact to create. Allows up to 200 contacts in a single request. */
-  contacts?: Array<ContactToCreate>;
+  contacts?: ReadonlyArray<ContactToCreate>;
   /** Optional. A mask of what source types to return in the post mutate read. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set. */
-  sources?: Array<
+  sources?: ReadonlyArray<
     | "READ_SOURCE_TYPE_UNSPECIFIED"
     | "READ_SOURCE_TYPE_PROFILE"
     | "READ_SOURCE_TYPE_CONTACT"
@@ -1277,7 +1277,7 @@ export interface UpdateContactPhotoRequest {
   /** Required. Raw photo bytes */
   photoBytes?: string;
   /** Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set. */
-  sources?: Array<
+  sources?: ReadonlyArray<
     | "READ_SOURCE_TYPE_UNSPECIFIED"
     | "READ_SOURCE_TYPE_PROFILE"
     | "READ_SOURCE_TYPE_CONTACT"
@@ -1309,7 +1309,7 @@ export const CreateContactGroupRequest =
 
 export interface BatchGetContactGroupsResponse {
   /** The list of responses for each requested contact group resource. */
-  responses?: Array<ContactGroupResponse>;
+  responses?: ReadonlyArray<ContactGroupResponse>;
 }
 
 export const BatchGetContactGroupsResponse =
@@ -1319,7 +1319,7 @@ export const BatchGetContactGroupsResponse =
 
 export interface CopyOtherContactToMyContactsGroupRequest {
   /** Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set. */
-  sources?: Array<
+  sources?: ReadonlyArray<
     | "READ_SOURCE_TYPE_UNSPECIFIED"
     | "READ_SOURCE_TYPE_PROFILE"
     | "READ_SOURCE_TYPE_CONTACT"
@@ -1344,7 +1344,7 @@ export interface ListOtherContactsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The list of "Other contacts" returned as Person resources. "Other contacts" support a limited subset of fields. See ListOtherContactsRequest.request_mask for more detailed information. */
-  otherContacts?: Array<Person>;
+  otherContacts?: ReadonlyArray<Person>;
   /** The total number of other contacts in the list without pagination. */
   totalSize?: number;
   /** A token, which can be sent as `sync_token` to retrieve changes since the last request. Request must set `request_sync_token` to return the sync token. */
@@ -1365,7 +1365,7 @@ export interface ListDirectoryPeopleResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The list of people in the domain directory. */
-  people?: Array<Person>;
+  people?: ReadonlyArray<Person>;
 }
 
 export const ListDirectoryPeopleResponse =
@@ -1399,7 +1399,7 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 
 export interface SearchResponse {
   /** The results of the request. */
-  results?: Array<SearchResult>;
+  results?: ReadonlyArray<SearchResult>;
 }
 
 export const SearchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1439,7 +1439,7 @@ export const GetPeopleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("personFields"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/people/{peopleId}" }),
+  T.Http({ method: "GET", path: "v1/{resourceName}" }),
   svc,
 ) as unknown as Schema.Schema<GetPeopleRequest>;
 
@@ -1590,7 +1590,7 @@ export const UpdateContactPhotoPeopleRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v1/people/{peopleId}:updateContactPhoto",
+      path: "v1/{resourceName}:updateContactPhoto",
       hasBody: true,
     }),
     svc,
@@ -1741,10 +1741,7 @@ export const DeleteContactPhotoPeopleRequest =
       T.HttpQuery("sources"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/people/{peopleId}:deleteContactPhoto",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{resourceName}:deleteContactPhoto" }),
     svc,
   ) as unknown as Schema.Schema<DeleteContactPhotoPeopleRequest>;
 
@@ -1902,7 +1899,7 @@ export const UpdateContactPeopleRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v1/people/{peopleId}:updateContact",
+      path: "v1/{resourceName}:updateContact",
       hasBody: true,
     }),
     svc,
@@ -1995,7 +1992,7 @@ export const DeleteContactPeopleRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/people/{peopleId}:deleteContact" }),
+    T.Http({ method: "DELETE", path: "v1/{resourceName}:deleteContact" }),
     svc,
   ) as unknown as Schema.Schema<DeleteContactPeopleRequest>;
 
@@ -2068,7 +2065,7 @@ export const ListPeopleConnectionsRequest =
     sortOrder: Schema.optional(Schema.String).pipe(T.HttpQuery("sortOrder")),
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/people/{peopleId}/connections" }),
+    T.Http({ method: "GET", path: "v1/{resourceName}/connections" }),
     svc,
   ) as unknown as Schema.Schema<ListPeopleConnectionsRequest>;
 
@@ -2170,7 +2167,7 @@ export const CopyOtherContactToMyContactsGroupOtherContactsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/otherContacts/{otherContactsId}:copyOtherContactToMyContactsGroup",
+      path: "v1/{resourceName}:copyOtherContactToMyContactsGroup",
       hasBody: true,
     }),
     svc,
@@ -2245,7 +2242,7 @@ export const DeleteContactGroupsRequest =
       T.HttpQuery("deleteContacts"),
     ),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/contactGroups/{contactGroupsId}" }),
+    T.Http({ method: "DELETE", path: "v1/{resourceName}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteContactGroupsRequest>;
 
@@ -2283,7 +2280,7 @@ export const GetContactGroupsRequest =
       T.HttpQuery("groupFields"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/contactGroups/{contactGroupsId}" }),
+    T.Http({ method: "GET", path: "v1/{resourceName}" }),
     svc,
   ) as unknown as Schema.Schema<GetContactGroupsRequest>;
 
@@ -2317,11 +2314,7 @@ export const UpdateContactGroupsRequest =
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
     body: Schema.optional(UpdateContactGroupRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1/contactGroups/{contactGroupsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1/{resourceName}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateContactGroupsRequest>;
 
@@ -2475,7 +2468,7 @@ export const ModifyContactGroupsMembersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/contactGroups/{contactGroupsId}/members:modify",
+      path: "v1/{resourceName}/members:modify",
       hasBody: true,
     }),
     svc,

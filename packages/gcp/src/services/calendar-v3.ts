@@ -82,7 +82,7 @@ export interface Settings {
   /** Token used to access the next page of this result. Omitted if no further results are available, in which case nextSyncToken is provided. */
   nextPageToken?: string;
   /** List of user settings. */
-  items?: Array<Setting>;
+  items?: ReadonlyArray<Setting>;
   /** Token used at a later point in time to retrieve only the entries that have changed since this result was returned. Omitted if further results are available, in which case nextPageToken is provided. */
   nextSyncToken?: string;
   /** Type of the collection ("calendar#settings"). */
@@ -164,9 +164,9 @@ export const Calendar_Error = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FreeBusyCalendar {
   /** List of time ranges during which this calendar should be regarded as busy. */
-  busy?: Array<TimePeriod>;
+  busy?: ReadonlyArray<TimePeriod>;
   /** Optional error(s) (if computation for the calendar failed). */
-  errors?: Array<Calendar_Error>;
+  errors?: ReadonlyArray<Calendar_Error>;
 }
 
 export const FreeBusyCalendar = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -231,7 +231,7 @@ export const CreateConferenceRequest =
 
 export interface ConferenceProperties {
   /** The types of conference solutions that are supported for this calendar. The possible values are: - "eventHangout" - "eventNamedHangout" - "hangoutsMeet" Optional. */
-  allowedConferenceSolutionTypes?: Array<string>;
+  allowedConferenceSolutionTypes?: ReadonlyArray<string>;
 }
 
 export const ConferenceProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -289,9 +289,9 @@ export const EventOutOfOfficeProperties =
 
 export interface FreeBusyGroup {
   /** List of calendars' identifiers within a group. */
-  calendars?: Array<string>;
+  calendars?: ReadonlyArray<string>;
   /** Optional error(s) (if computation for the group failed). */
-  errors?: Array<Calendar_Error>;
+  errors?: ReadonlyArray<Calendar_Error>;
 }
 
 export const FreeBusyGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -360,7 +360,7 @@ export interface CalendarListEntry {
   /** Whether the calendar content shows up in the calendar UI. Optional. The default is False. */
   selected?: boolean;
   /** The default reminders that the authenticated user has for this calendar. */
-  defaultReminders?: Array<EventReminder>;
+  defaultReminders?: ReadonlyArray<EventReminder>;
   /** The time zone of the calendar. Optional. Read-only. */
   timeZone?: string;
   /** Whether the calendar has been hidden from the list. Optional. The attribute is only returned when the calendar is hidden, in which case the value is true. */
@@ -372,7 +372,9 @@ export interface CalendarListEntry {
   /** Description of the calendar. Optional. Read-only. */
   description?: string;
   /** The notifications that the authenticated user is receiving for this calendar. */
-  notificationSettings?: { notifications?: Array<CalendarNotification> };
+  notificationSettings?: {
+    notifications?: ReadonlyArray<CalendarNotification>;
+  };
   /** The color of the calendar. This is an ID referring to an entry in the calendar section of the colors definition (see the colors endpoint). This property is superseded by the backgroundColor and foregroundColor properties and can be ignored when using these properties. Optional. */
   colorId?: string;
 }
@@ -413,7 +415,7 @@ export interface CalendarList {
   /** Type of the collection ("calendar#calendarList"). */
   kind?: string;
   /** Calendars that are present on the user's calendar list. */
-  items?: Array<CalendarListEntry>;
+  items?: ReadonlyArray<CalendarListEntry>;
   /** Token used at a later point in time to retrieve only the entries that have changed since this result was returned. Omitted if further results are available, in which case nextPageToken is provided. */
   nextSyncToken?: string;
 }
@@ -505,7 +507,7 @@ export interface FreeBusyRequest {
   /** Maximal number of calendars for which FreeBusy information is to be provided. Optional. Maximum value is 50. */
   calendarExpansionMax?: number;
   /** List of calendars and/or groups to query. */
-  items?: Array<FreeBusyRequestItem>;
+  items?: ReadonlyArray<FreeBusyRequestItem>;
   /** The start of the interval for the query formatted as per RFC3339. */
   timeMin?: string;
   /** Maximal number of calendar identifiers to be provided for a single group. Optional. An error is returned for a group with more members than this value. Maximum value is 100. */
@@ -544,7 +546,7 @@ export interface EntryPoint {
   /** The PIN to access the conference. The maximum length is 128 characters. When creating new conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that match the terminology that the conference provider uses. Only the populated fields should be displayed. Optional. */
   pin?: string;
   /** Features of the entry point, such as being toll or toll-free. One entry point can have multiple features. However, toll and toll-free cannot be both set on the same entry point. */
-  entryPointFeatures?: Array<string>;
+  entryPointFeatures?: ReadonlyArray<string>;
   /** The access code to access the conference. The maximum length is 128 characters. When creating new conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that match the terminology that the conference provider uses. Only the populated fields should be displayed. Optional. */
   accessCode?: string;
   /** The type of the conference entry point. Possible values are: - "video" - joining a conference over HTTP. A conference can have zero or one video entry point. - "phone" - joining a conference by dialing a phone number. A conference can have zero or more phone entry points. - "sip" - joining a conference over SIP. A conference can have zero or one sip entry point. - "more" - further conference joining instructions, for example additional phone numbers. A conference can have zero or one more entry point. A conference with only a more entry point is not a valid conference. */
@@ -649,7 +651,7 @@ export interface ConferenceData {
   /** A request to generate a new conference and attach it to the event. The data is generated asynchronously. To see whether the data is present check the status field. Either conferenceSolution and at least one entryPoint, or createRequest is required. */
   createRequest?: CreateConferenceRequest;
   /** Information about individual conference entry points, such as URLs or phone numbers. All of them must belong to the same conference. Either conferenceSolution and at least one entryPoint, or createRequest is required. */
-  entryPoints?: Array<EntryPoint>;
+  entryPoints?: ReadonlyArray<EntryPoint>;
   /** Additional notes (such as instructions from the domain administrator, legal notices) to display to the user. Can contain HTML. The maximum length is 2048 characters. Optional. */
   notes?: string;
   /** Additional properties related to a conference. An example would be a solution-specific setting for enabling video streaming. */
@@ -694,7 +696,7 @@ export const AclRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Acl {
   /** List of rules on the access control list. */
-  items?: Array<AclRule>;
+  items?: ReadonlyArray<AclRule>;
   /** Token used at a later point in time to retrieve only the entries that have changed since this result was returned. Omitted if further results are available, in which case nextPageToken is provided. */
   nextSyncToken?: string;
   /** Type of the collection ("calendar#acl"). */
@@ -752,7 +754,7 @@ export interface Event {
   /** An absolute link to the Google Hangout associated with this event. Read-only. */
   hangoutLink?: string;
   /** List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as specified in RFC5545. Note that DTSTART and DTEND lines are not allowed in this field; event start and end times are specified in the start and end fields. This field is omitted for single events or instances of recurring events. */
-  recurrence?: Array<string>;
+  recurrence?: ReadonlyArray<string>;
   /** The creator of the event. Read-only. */
   creator?: {
     id?: string;
@@ -798,7 +800,7 @@ export interface Event {
   /** Working location event data. */
   workingLocationProperties?: EventWorkingLocationProperties;
   /** The attendees of the event. See the Events with attendees guide for more information on scheduling events with other calendar users. Service accounts need to use domain-wide delegation of authority to populate the attendee list. */
-  attendees?: Array<EventAttendee>;
+  attendees?: ReadonlyArray<EventAttendee>;
   /** Status of the event. Optional. Possible values are: - "confirmed" - The event is confirmed. This is the default status. - "tentative" - The event is tentatively confirmed. - "cancelled" - The event is cancelled (deleted). The list method returns cancelled events only on incremental sync (when syncToken or updatedMin are specified) or if the showDeleted flag is set to true. The get method always returns them. A cancelled status represents two different states depending on the event type: - Cancelled exceptions of an uncancelled recurring event indicate that this instance should no longer be presented to the user. Clients should store these events for the lifetime of the parent recurring event. Cancelled exceptions are only guaranteed to have values for the id, recurringEventId and originalStartTime fields populated. The other fields might be empty. - All other cancelled events represent deleted events. Clients should remove their locally synced copies. Such cancelled events will eventually disappear, so do not rely on them being available indefinitely. Deleted events are only guaranteed to have the id field populated. On the organizer's calendar, cancelled events continue to expose event details (summary, location, etc.) so that they can be restored (undeleted). Similarly, the events to which the user was invited and that they manually removed continue to provide details. However, incremental sync requests with showDeleted set to false will not return these details. If an event changes its organizer (for example via the move operation) and the original organizer is not on the attendee list, it will leave behind a cancelled event where only the id field is guaranteed to be populated. */
   status?: string;
   /** For an instance of a recurring event, this is the time at which this event would start according to the recurrence data in the recurring event identified by recurringEventId. It uniquely identifies the instance within the recurring event series even if the instance was moved to a different time. Immutable. */
@@ -806,7 +808,10 @@ export interface Event {
   /** Sequence number as per iCalendar. */
   sequence?: number;
   /** Information about the event's reminders for the authenticated user. Note that changing reminders does not also change the updated property of the enclosing event. */
-  reminders?: { overrides?: Array<EventReminder>; useDefault?: boolean };
+  reminders?: {
+    overrides?: ReadonlyArray<EventReminder>;
+    useDefault?: boolean;
+  };
   /** Whether the end time is actually unspecified. An end time is still provided for compatibility reasons, even if this attribute is set to True. The default is False. */
   endTimeUnspecified?: boolean;
   /** Extended properties of the event. */
@@ -819,7 +824,7 @@ export interface Event {
   /** Whether attendees other than the organizer can see who the event's attendees are. Optional. The default is True. */
   guestsCanSeeOtherGuests?: boolean;
   /** File attachments for the event. In order to modify attachments the supportsAttachments request parameter should be set to true. There can be at most 25 attachments per event, */
-  attachments?: Array<EventAttachment>;
+  attachments?: ReadonlyArray<EventAttachment>;
   /** Source from which the event was created. For example, a web page, an email message or any document identifiable by an URL with HTTP or HTTPS scheme. Can only be seen or modified by the creator of the event. */
   source?: { url?: string; title?: string };
   /** A gadget that extends this event. Gadgets are deprecated; this structure is instead only used for returning birthday calendar metadata. */
@@ -935,13 +940,13 @@ export interface Events {
   /** Description of the calendar. Read-only. */
   description?: string;
   /** List of events on the calendar. */
-  items?: Array<Event>;
+  items?: ReadonlyArray<Event>;
   /** Last modification time of the calendar (as a RFC3339 timestamp). Read-only. */
   updated?: string;
   /** The user's access role for this calendar. Read-only. Possible values are: - "none" - The user has no access. - "freeBusyReader" - The user has read access to free/busy information. - "reader" - The user has read access to the calendar. Private events will appear to users with reader access, but event details will be hidden. - "writer" - The user has read and write access to the calendar. Private events will appear to users with writer access, and event details will be visible. - "owner" - The user has manager access to the calendar. This role has all of the permissions of the writer role with the additional ability to see and modify access levels of other users. Important: the owner role is different from the calendar's data owner. A calendar has a single data owner, but can have multiple users with owner role. */
   accessRole?: string;
   /** The default reminders on the calendar for the authenticated user. These reminders apply to all events on this calendar that do not explicitly override them (i.e. do not have reminders.useDefault set to True). */
-  defaultReminders?: Array<EventReminder>;
+  defaultReminders?: ReadonlyArray<EventReminder>;
   /** Token used at a later point in time to retrieve only the entries that have changed since this result was returned. Omitted if further results are available, in which case nextPageToken is provided. */
   nextSyncToken?: string;
   /** The time zone of the calendar. Read-only. */

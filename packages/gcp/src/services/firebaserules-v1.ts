@@ -39,7 +39,7 @@ export const File = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Source {
   /** Required. `File` set constituting the `Source` bundle. */
-  files?: Array<File>;
+  files?: ReadonlyArray<File>;
 }
 
 export const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -80,7 +80,7 @@ export interface FunctionMock {
   /** The name of the function. The function name must match one provided by a service declaration. */
   function?: string;
   /** The list of `Arg` values to match. The order in which the arguments are provided is the order in which they must appear in the function invocation. */
-  args?: Array<Arg>;
+  args?: ReadonlyArray<Arg>;
   /** The mock result of the function call. */
   result?: Result;
 }
@@ -99,7 +99,7 @@ export interface TestCase {
   /** Optional resource value as it appears in persistent storage before the request is fulfilled. The resource type depends on the `request.path` value. */
   resource?: unknown;
   /** Optional function mocks for service-defined functions. If not set, any service defined function is expected to return an error, which may or may not influence the test outcome. */
-  functionMocks?: Array<FunctionMock>;
+  functionMocks?: ReadonlyArray<FunctionMock>;
   /** Specifies whether paths (such as request.path) are encoded and how. */
   pathEncoding?:
     | "ENCODING_UNSPECIFIED"
@@ -126,7 +126,7 @@ export const TestCase = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestSuite {
   /** Collection of test cases associated with the `TestSuite`. */
-  testCases?: Array<TestCase>;
+  testCases?: ReadonlyArray<TestCase>;
 }
 
 export const TestSuite = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -190,7 +190,7 @@ export interface FunctionCall {
   /** Name of the function invoked. */
   function?: string;
   /** The arguments that were provided to the function. */
-  args?: Array<unknown>;
+  args?: ReadonlyArray<unknown>;
 }
 
 export const FunctionCall = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -226,9 +226,9 @@ export interface ExpressionReport {
   /** Position of expression in original rules source. */
   sourcePosition?: SourcePosition;
   /** Values that this expression evaluated to when encountered. */
-  values?: Array<ValueCount>;
+  values?: ReadonlyArray<ValueCount>;
   /** Subexpressions */
-  children?: Array<ExpressionReport>;
+  children?: ReadonlyArray<ExpressionReport>;
 }
 
 export const ExpressionReport: Schema.Schema<ExpressionReport> =
@@ -246,15 +246,15 @@ export interface TestResult {
   /** State of the test. */
   state?: "STATE_UNSPECIFIED" | "SUCCESS" | "FAILURE" | (string & {});
   /** Debug messages related to test execution issues encountered during evaluation. Debug messages may be related to too many or too few invocations of function mocks or to runtime errors that occur during evaluation. For example: ```Unable to read variable [name: "resource"]``` */
-  debugMessages?: Array<string>;
+  debugMessages?: ReadonlyArray<string>;
   /** Position in the `Source` or `Ruleset` where the principle runtime error occurs. Evaluation of an expression may result in an error. Rules are deny by default, so a `DENY` expectation when an error is generated is valid. When there is a `DENY` with an error, the `SourcePosition` is returned. E.g. `error_position { line: 19 column: 37 }` */
   errorPosition?: SourcePosition;
   /** The set of function calls made to service-defined methods. Function calls are included in the order in which they are encountered during evaluation, are provided for both mocked and unmocked functions, and included on the response regardless of the test `state`. */
-  functionCalls?: Array<FunctionCall>;
+  functionCalls?: ReadonlyArray<FunctionCall>;
   /** The set of visited permission expressions for a given test. This returns the positions and evaluation results of all visited permission expressions which were relevant to the test case, e.g. ``` match /path { allow read if: } ``` For a detailed report of the intermediate evaluation states, see the `expression_reports` field */
-  visitedExpressions?: Array<VisitedExpression>;
+  visitedExpressions?: ReadonlyArray<VisitedExpression>;
   /** The mapping from expression in the ruleset AST to the values they were evaluated to. Partially-nested to mirror AST structure. Note that this field is actually tracking expressions and not permission statements in contrast to the "visited_expressions" field above. Literal expressions are omitted. */
-  expressionReports?: Array<ExpressionReport>;
+  expressionReports?: ReadonlyArray<ExpressionReport>;
 }
 
 export const TestResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -268,9 +268,9 @@ export const TestResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestRulesetResponse {
   /** Syntactic and semantic `Source` issues of varying severity. Issues of `ERROR` severity will prevent tests from executing. */
-  issues?: Array<Issue>;
+  issues?: ReadonlyArray<Issue>;
   /** The set of test results given the test cases in the `TestSuite`. The results will appear in the same order as the test cases appear in the `TestSuite`. */
-  testResults?: Array<TestResult>;
+  testResults?: ReadonlyArray<TestResult>;
 }
 
 export const TestRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -280,7 +280,7 @@ export const TestRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Metadata {
   /** Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these. */
-  services?: Array<string>;
+  services?: ReadonlyArray<string>;
 }
 
 export const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -310,7 +310,7 @@ export const Ruleset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListRulesetsResponse {
   /** List of `Ruleset` instances. */
-  rulesets?: Array<Ruleset>;
+  rulesets?: ReadonlyArray<Ruleset>;
   /** The pagination token to retrieve the next page of results. If the value is empty, no further results remain. */
   nextPageToken?: string;
 }
@@ -352,7 +352,7 @@ export const UpdateReleaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListReleasesResponse {
   /** List of `Release` instances. */
-  releases?: Array<Release>;
+  releases?: ReadonlyArray<Release>;
   /** The pagination token to retrieve the next page of results. If the value is empty, no further results remain. */
   nextPageToken?: string;
 }
@@ -410,11 +410,7 @@ export const TestProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(TestRulesetRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "POST",
-    path: "v1/projects/{projectsId}:test",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v1/{name}:test", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<TestProjectsRequest>;
 
@@ -448,11 +444,7 @@ export const CreateProjectsRulesetsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Ruleset).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/rulesets",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}/rulesets", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsRulesetsRequest>;
 
@@ -483,10 +475,7 @@ export const GetProjectsRulesetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/rulesets/{rulesetsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsRulesetsRequest>;
 
@@ -525,7 +514,7 @@ export const ListProjectsRulesetsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/rulesets" }),
+    T.Http({ method: "GET", path: "v1/{name}/rulesets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsRulesetsRequest>;
 
@@ -560,10 +549,7 @@ export const DeleteProjectsRulesetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/rulesets/{rulesetsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsRulesetsRequest>;
 
@@ -596,11 +582,7 @@ export const CreateProjectsReleasesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Release).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/releases",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}/releases", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsReleasesRequest>;
 
@@ -634,11 +616,7 @@ export const PatchProjectsReleasesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpdateReleaseRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/releases/{releasesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsReleasesRequest>;
 
@@ -669,10 +647,7 @@ export const GetProjectsReleasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/releases/{releasesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsReleasesRequest>;
 
@@ -711,7 +686,7 @@ export const ListProjectsReleasesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/releases" }),
+    T.Http({ method: "GET", path: "v1/{name}/releases" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsReleasesRequest>;
 
@@ -746,10 +721,7 @@ export const DeleteProjectsReleasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/releases/{releasesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsReleasesRequest>;
 
@@ -788,10 +760,7 @@ export const GetExecutableProjectsReleasesRequest =
       T.HttpQuery("executableVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/releases/{releasesId}:getExecutable",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:getExecutable" }),
     svc,
   ) as unknown as Schema.Schema<GetExecutableProjectsReleasesRequest>;
 

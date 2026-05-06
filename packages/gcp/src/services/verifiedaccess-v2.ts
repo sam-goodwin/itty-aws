@@ -60,7 +60,7 @@ export interface DeviceSignals {
     | "TRIGGER_LOGIN_SCREEN"
     | (string & {});
   /** Output only. MAC addresses of the device. */
-  macAddresses?: Array<string>;
+  macAddresses?: ReadonlyArray<string>;
   /** Output only. Information about Antivirus software on the device. Available on Windows only. */
   antivirus?: Antivirus;
   /** Output only. Whether Chrome's built-in DNS client is used. The OS DNS client is otherwise used. This value may be controlled by an enterprise policy: https://chromeenterprise.google/policies/#BuiltInDnsClientEnabled. */
@@ -113,7 +113,7 @@ export interface DeviceSignals {
   /** Output only. Whether access to the Chrome Remote Desktop application is blocked via a policy. */
   chromeRemoteDesktopAppBlocked?: boolean;
   /** Output only. Affiliation IDs of the organizations that are affiliated with the organization that is currently managing the Chrome Profile’s user or ChromeOS user. */
-  profileAffiliationIds?: Array<string>;
+  profileAffiliationIds?: ReadonlyArray<string>;
   /** Output only. The name of the device's model. */
   deviceModel?: string;
   /** Output only. The display name of the device, as defined by the user. */
@@ -141,7 +141,7 @@ export interface DeviceSignals {
     | "REALTIME_URL_CHECK_MODE_ENABLED_MAIN_FRAME"
     | (string & {});
   /** Output only. Affiliation IDs of the organizations that are affiliated with the organization that is currently managing the device. When the sets of device and profile affiliation IDs overlap, it means that the organizations managing the device and user are affiliated. To learn more about user affiliation, visit https://support.google.com/chrome/a/answer/12801245?ref_topic=9027936. */
-  deviceAffiliationIds?: Array<string>;
+  deviceAffiliationIds?: ReadonlyArray<string>;
   /** Output only. The encryption state of the disk. On ChromeOS, the main disk is always ENCRYPTED. */
   diskEncryption?:
     | "DISK_ENCRYPTION_UNSPECIFIED"
@@ -152,11 +152,11 @@ export interface DeviceSignals {
   /** Output only. The serial number of the device. On Windows, this represents the BIOS's serial number. Not available on most Linux distributions. */
   serialNumber?: string;
   /** Output only. International Mobile Equipment Identity (IMEI) of the device. Available on ChromeOS only. */
-  imei?: Array<string>;
+  imei?: ReadonlyArray<string>;
   /** Output only. Mobile Equipment Identifier (MEID) of the device. Available on ChromeOS only. */
-  meid?: Array<string>;
+  meid?: ReadonlyArray<string>;
   /** List of the addesses of all OS level DNS servers configured in the device's network settings. */
-  systemDnsServers?: Array<string>;
+  systemDnsServers?: ReadonlyArray<string>;
   /** Output only. Enrollment domain of the customer which is currently managing the profile. */
   profileEnrollmentDomain?: string;
   /** Hostname of the device. */

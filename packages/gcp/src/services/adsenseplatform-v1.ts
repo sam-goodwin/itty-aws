@@ -140,7 +140,7 @@ export const Site = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSitesResponse {
   /** The sites returned in this list response. */
-  sites?: Array<Site>;
+  sites?: ReadonlyArray<Site>;
   /** Continuation token used to page through sites. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
@@ -196,7 +196,7 @@ export const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAccountsResponse {
   /** The Accounts returned in the list response. Represented by a partial view of the Account resource, populating `name` and `creation_request_id`. */
-  accounts?: Array<Account>;
+  accounts?: ReadonlyArray<Account>;
   /** Continuation token used to page through accounts. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
@@ -228,11 +228,7 @@ export const ClosePlatformsAccountsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CloseAccountRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/platforms/{platformsId}/accounts/{accountsId}:close",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:close", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ClosePlatformsAccountsRequest>;
 
@@ -269,7 +265,7 @@ export const ListPlatformsAccountsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/platforms/{platformsId}/accounts" }),
+    T.Http({ method: "GET", path: "v1/{parent}/accounts" }),
     svc,
   ) as unknown as Schema.Schema<ListPlatformsAccountsRequest>;
 
@@ -304,10 +300,7 @@ export const GetPlatformsAccountsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/platforms/{platformsId}/accounts/{accountsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPlatformsAccountsRequest>;
 
@@ -340,11 +333,7 @@ export const CreatePlatformsAccountsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Account).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/platforms/{platformsId}/accounts",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/accounts", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreatePlatformsAccountsRequest>;
 
@@ -380,10 +369,7 @@ export const LookupPlatformsAccountsRequest =
     ),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/platforms/{platformsId}/accounts:lookup",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/accounts:lookup" }),
     svc,
   ) as unknown as Schema.Schema<LookupPlatformsAccountsRequest>;
 
@@ -414,10 +400,7 @@ export const GetPlatformsAccountsSitesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/platforms/{platformsId}/accounts/{accountsId}/sites/{sitesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPlatformsAccountsSitesRequest>;
 
@@ -451,11 +434,7 @@ export const CreatePlatformsAccountsSitesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Site).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/platforms/{platformsId}/accounts/{accountsId}/sites",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/sites", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreatePlatformsAccountsSitesRequest>;
 
@@ -486,10 +465,7 @@ export const DeletePlatformsAccountsSitesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/platforms/{platformsId}/accounts/{accountsId}/sites/{sitesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePlatformsAccountsSitesRequest>;
 
@@ -526,10 +502,7 @@ export const ListPlatformsAccountsSitesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/platforms/{platformsId}/accounts/{accountsId}/sites",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sites" }),
     svc,
   ) as unknown as Schema.Schema<ListPlatformsAccountsSitesRequest>;
 
@@ -564,11 +537,7 @@ export const RequestReviewPlatformsAccountsSitesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/platforms/{platformsId}/accounts/{accountsId}/sites/{sitesId}:requestReview",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:requestReview", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RequestReviewPlatformsAccountsSitesRequest>;
 
@@ -603,11 +572,7 @@ export const CreatePlatformsAccountsEventsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Event).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/platforms/{platformsId}/accounts/{accountsId}/events",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/events", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreatePlatformsAccountsEventsRequest>;
 

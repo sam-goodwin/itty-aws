@@ -61,7 +61,7 @@ export const DatabaseInstance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDatabaseInstancesResponse {
   /** List of each DatabaseInstance that is in the parent Firebase project. */
-  instances?: Array<DatabaseInstance>;
+  instances?: ReadonlyArray<DatabaseInstance>;
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results. This token can be used in a subsequent call to `ListDatabaseInstances` to find the next group of database instances. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
@@ -102,11 +102,7 @@ export const DisableProjectsLocationsInstancesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DisableDatabaseInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:disable",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:disable", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DisableProjectsLocationsInstancesRequest>;
 
@@ -140,11 +136,7 @@ export const UndeleteProjectsLocationsInstancesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UndeleteDatabaseInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:undelete",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:undelete", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UndeleteProjectsLocationsInstancesRequest>;
 
@@ -175,10 +167,7 @@ export const DeleteProjectsLocationsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsInstancesRequest>;
 
@@ -222,7 +211,7 @@ export const CreateProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/instances",
+      path: "v1beta/{parent}/instances",
       hasBody: true,
     }),
     svc,
@@ -258,11 +247,7 @@ export const ReenableProjectsLocationsInstancesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ReenableDatabaseInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:reenable",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:reenable", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ReenableProjectsLocationsInstancesRequest>;
 
@@ -293,10 +278,7 @@ export const GetProjectsLocationsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsInstancesRequest>;
 
@@ -338,10 +320,7 @@ export const ListProjectsLocationsInstancesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/instances",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/instances" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsInstancesRequest>;
 

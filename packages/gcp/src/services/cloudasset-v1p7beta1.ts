@@ -28,7 +28,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -128,7 +128,7 @@ export interface GoogleCloudAssetV1p7beta1ExportAssetsRequest {
   /** Timestamp to take an asset snapshot. This can only be set to a timestamp between the current time and the current time minus 35 days (inclusive). If not specified, the current time will be used. Due to delays in resource data collection and indexing, there is a volatile window during which running the same query may get different results. */
   readTime?: string;
   /** A list of asset types to take a snapshot for. For example: "compute.googleapis.com/Disk". Regular expressions are also supported. For example: * "compute.googleapis.com.*" snapshots resources whose asset type starts with "compute.googleapis.com". * ".*Instance" snapshots resources whose asset type ends with "Instance". * ".*Instance.*" snapshots resources whose asset type contains "Instance". See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the regular expression does not match any supported asset type, an INVALID_ARGUMENT error will be returned. If specified, only matching assets will be returned, otherwise, it will snapshot all asset types. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types. */
-  assetTypes?: Array<string>;
+  assetTypes?: ReadonlyArray<string>;
   /** Asset content type. If not specified, no content but the asset name will be returned. */
   contentType?:
     | "CONTENT_TYPE_UNSPECIFIED"
@@ -141,7 +141,7 @@ export interface GoogleCloudAssetV1p7beta1ExportAssetsRequest {
   /** Required. Output configuration indicating where the results will be output to. */
   outputConfig?: GoogleCloudAssetV1p7beta1OutputConfig;
   /** A list of relationship types to export, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. If specified, it will snapshot [asset_types]' specified relationships, or give errors if any relationship_types' supported types are not in [asset_types]. If not specified, it will snapshot all [asset_types]' supported relationships. An unspecified [asset_types] field means all supported asset_types. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types. */
-  relationshipTypes?: Array<string>;
+  relationshipTypes?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAssetV1p7beta1ExportAssetsRequest =
@@ -203,7 +203,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
@@ -223,7 +223,7 @@ export interface AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -235,7 +235,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
 export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -247,9 +247,9 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
@@ -263,9 +263,9 @@ export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleCloudOrgpolicyV1ListPolicy {
   /** List of values allowed at this resource. Can only be set if `all_values` is set to `ALL_VALUES_UNSPECIFIED`. */
-  allowedValues?: Array<string>;
+  allowedValues?: ReadonlyArray<string>;
   /** List of values denied at this resource. Can only be set if `all_values` is set to `ALL_VALUES_UNSPECIFIED`. */
-  deniedValues?: Array<string>;
+  deniedValues?: ReadonlyArray<string>;
   /** The policy all_values state. */
   allValues?: "ALL_VALUES_UNSPECIFIED" | "ALLOW" | "DENY" | (string & {});
   /** Optional. The Google Cloud Console will try to default to a configuration that matches the value specified in this `Policy`. If `suggested_value` is not set, it will inherit the value specified higher in the hierarchy, unless `inherit_from_parent` is `false`. */
@@ -336,7 +336,7 @@ export interface GoogleIdentityAccesscontextmanagerV1AccessPolicy {
   /** Required. Human readable title. Does not affect behavior. */
   title?: string;
   /** The scopes of the AccessPolicy. Scopes define which resources a policy can restrict and where its resources can be referenced. For example, policy A with `scopes=["folders/123"]` has the following behavior: - ServicePerimeter can only restrict projects within `folders/123`. - ServicePerimeter within policy A can only reference access levels defined within policy A. - Only one policy can include a given scope; thus, attempting to create a second policy which includes `folders/123` will result in an error. If no scopes are provided, then any resource within the organization can be restricted. Scopes cannot be modified after a policy is created. Policies can only have a single scope. Format: list of `folders/{folder_number}` or `projects/{project_number}` */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
   /** Output only. An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Policies will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format. */
   etag?: string;
 }
@@ -382,7 +382,7 @@ export interface GoogleIdentityAccesscontextmanagerV1DevicePolicy {
   /** Whether or not screenlock is required for the DevicePolicy to be true. Defaults to `false`. */
   requireScreenlock?: boolean;
   /** Allowed encryptions statuses, an empty list allows all statuses. */
-  allowedEncryptionStatuses?: Array<
+  allowedEncryptionStatuses?: ReadonlyArray<
     | "ENCRYPTION_UNSPECIFIED"
     | "ENCRYPTION_UNSUPPORTED"
     | "UNENCRYPTED"
@@ -390,9 +390,9 @@ export interface GoogleIdentityAccesscontextmanagerV1DevicePolicy {
     | (string & {})
   >;
   /** Allowed OS versions, an empty list allows all types and all versions. */
-  osConstraints?: Array<GoogleIdentityAccesscontextmanagerV1OsConstraint>;
+  osConstraints?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1OsConstraint>;
   /** Allowed device management levels, an empty list allows all management levels. */
-  allowedDeviceManagementLevels?: Array<
+  allowedDeviceManagementLevels?: ReadonlyArray<
     "MANAGEMENT_UNSPECIFIED" | "NONE" | "BASIC" | "COMPLETE" | (string & {})
   >;
   /** Whether the device needs to be approved by the customer admin. */
@@ -419,7 +419,7 @@ export interface GoogleIdentityAccesscontextmanagerV1VpcSubNetwork {
   /** Required. Network name. If the network is not part of the organization, the `compute.network.get` permission must be granted to the caller. Format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NETWORK_NAME}` Example: `//compute.googleapis.com/projects/my-project/global/networks/network-1` */
   network?: string;
   /** CIDR block IP subnetwork specification. The IP address must be an IPv4 address and can be a public or private IP address. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. If empty, all IP addresses are allowed. */
-  vpcIpSubnetworks?: Array<string>;
+  vpcIpSubnetworks?: ReadonlyArray<string>;
 }
 
 export const GoogleIdentityAccesscontextmanagerV1VpcSubNetwork =
@@ -446,19 +446,19 @@ export const GoogleIdentityAccesscontextmanagerV1VpcNetworkSource =
 
 export interface GoogleIdentityAccesscontextmanagerV1Condition {
   /** CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly, for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32" is not. The originating IP of a request must be in one of the listed subnets in order for this Condition to be true. If empty, all IP addresses are allowed. */
-  ipSubnetworks?: Array<string>;
+  ipSubnetworks?: ReadonlyArray<string>;
   /** Device specific restrictions, all restrictions must hold for the Condition to be true. If not specified, all devices are allowed. */
   devicePolicy?: GoogleIdentityAccesscontextmanagerV1DevicePolicy;
   /** A list of other access levels defined in the same `Policy`, referenced by resource name. Referencing an `AccessLevel` which does not exist is an error. All access levels listed must be granted for the Condition to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"` */
-  requiredAccessLevels?: Array<string>;
+  requiredAccessLevels?: ReadonlyArray<string>;
   /** Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields. Any non-empty field criteria evaluating to false will result in the Condition to be satisfied. Defaults to false. */
   negate?: boolean;
   /** The request must be made by one of the provided user or service accounts. Groups are not supported. Syntax: `user:{emailid}` `serviceAccount:{emailid}` If not specified, a request may come from any user. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The request must originate from one of the provided countries/regions. Must be valid ISO 3166-1 alpha-2 codes. */
-  regions?: Array<string>;
+  regions?: ReadonlyArray<string>;
   /** The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`. */
-  vpcNetworkSources?: Array<GoogleIdentityAccesscontextmanagerV1VpcNetworkSource>;
+  vpcNetworkSources?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1VpcNetworkSource>;
 }
 
 export const GoogleIdentityAccesscontextmanagerV1Condition =
@@ -478,7 +478,7 @@ export const GoogleIdentityAccesscontextmanagerV1Condition =
 
 export interface GoogleIdentityAccesscontextmanagerV1BasicLevel {
   /** Required. A list of requirements for the `AccessLevel` to be granted. */
-  conditions?: Array<GoogleIdentityAccesscontextmanagerV1Condition>;
+  conditions?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1Condition>;
   /** How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND. */
   combiningFunction?: "AND" | "OR" | (string & {});
 }
@@ -531,7 +531,7 @@ export interface GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices {
   /** Whether to restrict API calls within the Service Perimeter to the list of APIs specified in 'allowed_services'. */
   enableRestriction?: boolean;
   /** The list of APIs usable within the Service Perimeter. Must be empty unless 'enable_restriction' is True. You can specify a list of individual services, as well as include the 'RESTRICTED-SERVICES' value, which automatically includes all of the services protected by the perimeter. */
-  allowedServices?: Array<string>;
+  allowedServices?: ReadonlyArray<string>;
 }
 
 export const GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices =
@@ -559,9 +559,9 @@ export const GoogleIdentityAccesscontextmanagerV1IngressSource =
 
 export interface GoogleIdentityAccesscontextmanagerV1IngressFrom {
   /** Sources that this IngressPolicy authorizes access from. */
-  sources?: Array<GoogleIdentityAccesscontextmanagerV1IngressSource>;
+  sources?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1IngressSource>;
   /** A list of identities that are allowed access through [IngressPolicy]. Identities can be an individual user, service account, Google group, or third-party identity. For the list of supported identity types, see https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities. */
-  identities?: Array<string>;
+  identities?: ReadonlyArray<string>;
   /** Specifies the type of identities that are allowed access from outside the perimeter. If left unspecified, then members of `identities` field will be allowed access. */
   identityType?:
     | "IDENTITY_TYPE_UNSPECIFIED"
@@ -601,7 +601,7 @@ export interface GoogleIdentityAccesscontextmanagerV1ApiOperation {
   /** The name of the API whose methods or permissions the IngressPolicy or EgressPolicy want to allow. A single ApiOperation with `service_name` field set to `*` will allow all methods AND permissions for all services. */
   serviceName?: string;
   /** API methods or permissions to allow. Method or permission must belong to the service specified by `service_name` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `service_name`. */
-  methodSelectors?: Array<GoogleIdentityAccesscontextmanagerV1MethodSelector>;
+  methodSelectors?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1MethodSelector>;
 }
 
 export const GoogleIdentityAccesscontextmanagerV1ApiOperation =
@@ -616,11 +616,11 @@ export const GoogleIdentityAccesscontextmanagerV1ApiOperation =
 
 export interface GoogleIdentityAccesscontextmanagerV1IngressTo {
   /** A list of ApiOperations allowed to be performed by the sources specified in corresponding IngressFrom in this ServicePerimeter. */
-  operations?: Array<GoogleIdentityAccesscontextmanagerV1ApiOperation>;
+  operations?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1ApiOperation>;
   /** A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. If a single `*` is specified, then access to all resources inside the perimeter are allowed. */
-  resources?: Array<string>;
+  resources?: ReadonlyArray<string>;
   /** IAM roles that represent the set of operations that the sources specified in the corresponding IngressFrom are allowed to perform in this ServicePerimeter. */
-  roles?: Array<string>;
+  roles?: ReadonlyArray<string>;
 }
 
 export const GoogleIdentityAccesscontextmanagerV1IngressTo =
@@ -669,7 +669,7 @@ export const GoogleIdentityAccesscontextmanagerV1EgressSource =
 
 export interface GoogleIdentityAccesscontextmanagerV1EgressFrom {
   /** A list of identities that are allowed access through [EgressPolicy]. Identities can be an individual user, service account, Google group, or third-party identity. For the list of supported identity types, see https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities. */
-  identities?: Array<string>;
+  identities?: ReadonlyArray<string>;
   /** Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access. */
   identityType?:
     | "IDENTITY_TYPE_UNSPECIFIED"
@@ -678,7 +678,7 @@ export interface GoogleIdentityAccesscontextmanagerV1EgressFrom {
     | "ANY_SERVICE_ACCOUNT"
     | (string & {});
   /** Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`. */
-  sources?: Array<GoogleIdentityAccesscontextmanagerV1EgressSource>;
+  sources?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1EgressSource>;
   /** Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`. */
   sourceRestriction?:
     | "SOURCE_RESTRICTION_UNSPECIFIED"
@@ -699,13 +699,13 @@ export const GoogleIdentityAccesscontextmanagerV1EgressFrom =
 
 export interface GoogleIdentityAccesscontextmanagerV1EgressTo {
   /** A list of resources, currently only projects in the form `projects/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is specified for `resources`, then this EgressTo rule will authorize access to all resources outside the perimeter. */
-  resources?: Array<string>;
+  resources?: ReadonlyArray<string>;
   /** A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list. */
-  operations?: Array<GoogleIdentityAccesscontextmanagerV1ApiOperation>;
+  operations?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1ApiOperation>;
   /** A list of external resources that are allowed to be accessed. Only AWS and Azure resources are supported. For Amazon S3, the supported formats are s3://BUCKET_NAME, s3a://BUCKET_NAME, and s3n://BUCKET_NAME. For Azure Storage, the supported format is azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed. */
-  externalResources?: Array<string>;
+  externalResources?: ReadonlyArray<string>;
   /** IAM roles that represent the set of operations that the sources specified in the corresponding EgressFrom. are allowed to perform in this ServicePerimeter. */
-  roles?: Array<string>;
+  roles?: ReadonlyArray<string>;
 }
 
 export const GoogleIdentityAccesscontextmanagerV1EgressTo =
@@ -738,17 +738,17 @@ export const GoogleIdentityAccesscontextmanagerV1EgressPolicy =
 
 export interface GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
   /** A list of Google Cloud resources that are inside of the service perimeter. Currently only projects and VPCs are allowed. Project format: `projects/{project_number}` VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`. */
-  resources?: Array<string>;
+  resources?: ReadonlyArray<string>;
   /** A list of `AccessLevel` resource names that allow resources within the `ServicePerimeter` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be empty. */
-  accessLevels?: Array<string>;
+  accessLevels?: ReadonlyArray<string>;
   /** Google Cloud services that are subject to the Service Perimeter restrictions. For example, if `storage.googleapis.com` is specified, access to the storage buckets inside the perimeter must meet the perimeter's access restrictions. */
-  restrictedServices?: Array<string>;
+  restrictedServices?: ReadonlyArray<string>;
   /** Configuration for APIs allowed within Perimeter. */
   vpcAccessibleServices?: GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices;
   /** List of IngressPolicies to apply to the perimeter. A perimeter may have multiple IngressPolicies, each of which is evaluated separately. Access is granted if any Ingress Policy grants it. Must be empty for a perimeter bridge. */
-  ingressPolicies?: Array<GoogleIdentityAccesscontextmanagerV1IngressPolicy>;
+  ingressPolicies?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1IngressPolicy>;
   /** List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge. */
-  egressPolicies?: Array<GoogleIdentityAccesscontextmanagerV1EgressPolicy>;
+  egressPolicies?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1EgressPolicy>;
 }
 
 export const GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig =
@@ -836,7 +836,7 @@ export interface GoogleCloudAssetV1p7beta1RelatedAsset {
   /** The type of the asset. Example: `compute.googleapis.com/Disk` See [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information. */
   assetType?: string;
   /** The ancestors of an asset in Google Cloud [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), represented as a list of relative resource names. An ancestry path starts with the closest ancestor in the hierarchy and ends at root. Example: `["projects/123456789", "folders/5432", "organizations/1234"]` */
-  ancestors?: Array<string>;
+  ancestors?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAssetV1p7beta1RelatedAsset =
@@ -850,7 +850,7 @@ export interface GoogleCloudAssetV1p7beta1RelatedAssets {
   /** The detailed relation attributes. */
   relationshipAttributes?: GoogleCloudAssetV1p7beta1RelationshipAttributes;
   /** The peer resources of the relationship. */
-  assets?: Array<GoogleCloudAssetV1p7beta1RelatedAsset>;
+  assets?: ReadonlyArray<GoogleCloudAssetV1p7beta1RelatedAsset>;
 }
 
 export const GoogleCloudAssetV1p7beta1RelatedAssets =
@@ -875,7 +875,7 @@ export interface GoogleCloudAssetV1p7beta1Asset {
   /** A representation of the IAM policy set on a Google Cloud resource. There can be a maximum of one IAM policy set on any given resource. In addition, IAM policies inherit their granted access scope from any policies set on parent resources in the resource hierarchy. Therefore, the effectively policy is the union of both the policy set on this resource and each policy set on all of the resource's ancestry resource levels in the hierarchy. See [this topic](https://cloud.google.com/iam/help/allow-policies/inheritance) for more information. */
   iamPolicy?: Policy;
   /** A representation of an [organization policy](https://cloud.google.com/resource-manager/docs/organization-policy/overview#organization_policy). There can be more than one organization policy with different constraints set on a given resource. */
-  orgPolicy?: Array<GoogleCloudOrgpolicyV1Policy>;
+  orgPolicy?: ReadonlyArray<GoogleCloudOrgpolicyV1Policy>;
   /** Please also refer to the [access policy user guide](https://cloud.google.com/access-context-manager/docs/overview#access-policies). */
   accessPolicy?: GoogleIdentityAccesscontextmanagerV1AccessPolicy;
   /** Please also refer to the [access level user guide](https://cloud.google.com/access-context-manager/docs/overview#access-levels). */
@@ -885,7 +885,7 @@ export interface GoogleCloudAssetV1p7beta1Asset {
   /** The related assets of the asset of one relationship type. One asset only represents one type of relationship. */
   relatedAssets?: GoogleCloudAssetV1p7beta1RelatedAssets;
   /** The ancestry path of an asset in Google Cloud [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), represented as a list of relative resource names. An ancestry path starts with the closest ancestor in the hierarchy and ends at root. If the asset is a project, folder, or organization, the ancestry path starts from the asset itself. Example: `["projects/123456789", "folders/5432", "organizations/1234"]` */
-  ancestors?: Array<string>;
+  ancestors?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAssetV1p7beta1Asset =
@@ -938,10 +938,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "v1p7beta1/{v1p7beta1Id}/{v1p7beta1Id1}/operations/{operationsId}/{operationsId1}",
-  }),
+  T.Http({ method: "GET", path: "v1p7beta1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -978,7 +975,7 @@ export const ExportAssetsV1p7beta1Request =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1p7beta1/{v1p7beta1Id}/{v1p7beta1Id1}:exportAssets",
+      path: "v1p7beta1/{parent}:exportAssets",
       hasBody: true,
     }),
     svc,

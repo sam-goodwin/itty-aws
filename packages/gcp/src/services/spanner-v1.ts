@@ -48,7 +48,7 @@ export const Session = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSessionsResponse {
   /** The list of requested sessions. */
-  sessions?: Array<Session>;
+  sessions?: ReadonlyArray<Session>;
   /** `next_page_token` can be sent in a subsequent ListSessions call to fetch more of the matching sessions. */
   nextPageToken?: string;
 }
@@ -101,7 +101,7 @@ export interface KeyRangeInfo {
   /** The number of keys this range covers. */
   keysCount?: string;
   /** The list of context values for this key range. */
-  contextValues?: Array<ContextValue>;
+  contextValues?: ReadonlyArray<ContextValue>;
   /** The unit of the metric. This is an unstructured field and will be mapped as is to the user. */
   unit?: LocalizedString;
   /** The index of the start key in indexed_keys. */
@@ -134,7 +134,7 @@ export interface KeyRangeInfos {
   /** The total size of the list of all KeyRangeInfos. This may be larger than the number of repeated messages above. If that is the case, this number may be used to determine how many are not being shown. */
   totalSize?: number;
   /** The list individual KeyRangeInfos. */
-  infos?: Array<KeyRangeInfo>;
+  infos?: ReadonlyArray<KeyRangeInfo>;
 }
 
 export const KeyRangeInfos = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -204,7 +204,7 @@ export interface PlanNode {
   /** The execution statistics associated with the node, contained in a group of key-value pairs. Only present if the plan was returned as a result of a profile query. For example, number of executions, number of rows/time per execution etc. */
   executionStats?: Record<string, unknown>;
   /** List of child node `index`es and their relationship to this parent. */
-  childLinks?: Array<ChildLink>;
+  childLinks?: ReadonlyArray<ChildLink>;
   /** Condensed representation for SCALAR nodes. */
   shortRepresentation?: ShortRepresentation;
   /** Used to determine the type of node. May be needed for visualizing different kinds of nodes differently. For example, If the node is a SCALAR node, it will have a condensed representation which can be used to directly embed a description of the node in its parent. */
@@ -225,7 +225,7 @@ export const PlanNode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IndexAdvice {
   /** Optional. DDL statements to add new indexes that will improve the query. */
-  ddl?: Array<string>;
+  ddl?: ReadonlyArray<string>;
   /** Optional. Estimated latency improvement factor. For example if the query currently takes 500 ms to run and the estimated latency with new indexes is 100 ms this field will be 5. */
   improvementFactor?: number;
 }
@@ -237,7 +237,7 @@ export const IndexAdvice = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface QueryAdvisorResult {
   /** Optional. Index Recommendation for a query. This is an optional field and the recommendation will only be available when the recommendation guarantees significant improvement in query performance. */
-  indexAdvice?: Array<IndexAdvice>;
+  indexAdvice?: ReadonlyArray<IndexAdvice>;
 }
 
 export const QueryAdvisorResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -246,7 +246,7 @@ export const QueryAdvisorResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface QueryPlan {
   /** The nodes in the query plan. Plan nodes are returned in pre-order starting with the plan root. Each PlanNode's `id` corresponds to its index in `plan_nodes`. */
-  planNodes?: Array<PlanNode>;
+  planNodes?: ReadonlyArray<PlanNode>;
   /** Optional. The advise/recommendations for a query. Currently this field will be serving index recommendations for a query. */
   queryAdvice?: QueryAdvisorResult;
 }
@@ -366,7 +366,7 @@ export const Field: Schema.Schema<Field> =
 
 export interface StructType {
   /** The list of fields that make up this struct. Order is significant, because values of this struct type are represented as lists, where the order of field values matches the order of fields in the StructType. In turn, the order of fields matches the order of columns in a read request, or the order of fields in the `SELECT` clause of a query. */
-  fields?: Array<Field>;
+  fields?: ReadonlyArray<Field>;
 }
 
 export const StructType: Schema.Schema<StructType> =
@@ -393,7 +393,7 @@ export const ResultSetMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ResultSet {
   /** Each element in `rows` is a row whose format is defined by metadata.row_type. The ith element in each row matches the ith field in metadata.row_type. Elements are encoded based on type as described here. */
-  rows?: Array<Array<unknown>>;
+  rows?: ReadonlyArray<ReadonlyArray<unknown>>;
   /** Query plan and execution statistics for the SQL statement that produced this result set. These can be requested by setting ExecuteSqlRequest.query_mode. DML statements always produce stats containing the number of rows modified, unless executed using the ExecuteSqlRequest.QueryMode.PLAN ExecuteSqlRequest.query_mode. Other fields might or might not be populated, based on the ExecuteSqlRequest.query_mode. */
   stats?: ResultSetStats;
   /** Metadata about the result set, such as row type information. */
@@ -422,9 +422,9 @@ export interface Write {
   /** Required. The table whose rows will be written. */
   table?: string;
   /** The names of the columns in table to be written. The list of columns must contain enough columns to allow Cloud Spanner to derive values for all primary key columns in the row(s) to be modified. */
-  columns?: Array<string>;
+  columns?: ReadonlyArray<string>;
   /** The values to be written. `values` can contain more than one list of values. If it does, then multiple rows are written, one for each entry in `values`. Each list in `values` must have exactly as many entries as there are entries in columns above. Sending multiple lists is equivalent to sending multiple `Mutation`s, each containing one `values` entry and repeating table and columns. Individual values in each list are encoded as described here. */
-  values?: Array<Array<unknown>>;
+  values?: ReadonlyArray<ReadonlyArray<unknown>>;
 }
 
 export const Write = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -524,7 +524,7 @@ export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -541,7 +541,7 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
@@ -558,7 +558,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -610,7 +610,7 @@ export interface EncryptionConfig {
   /** The Cloud KMS key to be used for encrypting and decrypting the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`. */
   kmsKeyName?: string;
   /** Specifies the KMS configuration for one or more keys used to encrypt the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by `kms_key_names` must fully cover all regions of the database's instance configuration. Some examples: * For regional (single-region) instance configurations, specify a regional location KMS key. * For multi-region instance configurations of type `GOOGLE_MANAGED`, either specify a multi-region location KMS key or multiple regional location KMS keys that cover all regions in the instance configuration. * For an instance configuration of type `USER_MANAGED`, specify only regional location KMS keys to cover each region in the instance configuration. Multi-region location KMS keys aren't supported for `USER_MANAGED` type instance configurations. */
-  kmsKeyNames?: Array<string>;
+  kmsKeyNames?: ReadonlyArray<string>;
 }
 
 export const EncryptionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -658,7 +658,7 @@ export interface Database {
   /** Output only. If exists, the time at which the database creation started. */
   createTime?: string;
   /** Output only. For databases that are using customer managed encryption, this field contains the encryption information for the database, such as all Cloud KMS key versions that are in use. The `encryption_status` field inside of each `EncryptionInfo` is not populated. For databases that are using Google default or other types of encryption, this field is empty. This field is propagated lazily from the backend. There might be a delay from when a key version is being used and when it appears in this field. */
-  encryptionInfo?: Array<EncryptionInfo>;
+  encryptionInfo?: ReadonlyArray<EncryptionInfo>;
   /** Output only. If true, the database is being updated. If false, there are no ongoing update operations for the database. */
   reconciling?: boolean;
   /** Output only. The current database state. */
@@ -725,7 +725,7 @@ export const IndexedHotKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MetricMatrixRow {
   /** The columns of the row. */
-  cols?: Array<number>;
+  cols?: ReadonlyArray<number>;
 }
 
 export const MetricMatrixRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -734,7 +734,7 @@ export const MetricMatrixRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MetricMatrix {
   /** The rows of the matrix. */
-  rows?: Array<MetricMatrixRow>;
+  rows?: ReadonlyArray<MetricMatrixRow>;
 }
 
 export const MetricMatrix = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -858,17 +858,17 @@ export interface VisualizationData {
   /** Whether this scan contains PII. */
   hasPii?: boolean;
   /** The list of data objects for each metric. */
-  metrics?: Array<Metric>;
+  metrics?: ReadonlyArray<Metric>;
   /** The list of messages (info, alerts, ...) */
-  diagnosticMessages?: Array<DiagnosticMessage>;
+  diagnosticMessages?: ReadonlyArray<DiagnosticMessage>;
   /** The token delimiting a datasource name from the rest of a key in a data_source. */
   dataSourceSeparatorToken?: string;
   /** Keys of key ranges that contribute significantly to a given metric Can be thought of as heavy hitters. */
-  indexedKeys?: Array<string>;
+  indexedKeys?: ReadonlyArray<string>;
   /** We discretize the entire keyspace into buckets. Assuming each bucket has an inclusive keyrange and covers keys from k(i) ... k(n). In this case k(n) would be an end key for a given range. end_key_string is the collection of all such end keys */
-  endKeyStrings?: Array<string>;
+  endKeyStrings?: ReadonlyArray<string>;
   /** The list of extracted key prefix nodes used in the key prefix hierarchy. */
-  prefixNodes?: Array<PrefixNode>;
+  prefixNodes?: ReadonlyArray<PrefixNode>;
   /** The unit for the key: e.g. 'key' or 'chunk'. */
   keyUnit?: "KEY_UNIT_UNSPECIFIED" | "KEY" | "CHUNK" | (string & {});
   /** The token signifying the end of a data_source. */
@@ -930,7 +930,7 @@ export interface ListScansResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Available scans based on the list query parameters. */
-  scans?: Array<Scan>;
+  scans?: ReadonlyArray<Scan>;
 }
 
 export const ListScansResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1104,7 +1104,7 @@ export const AutoscalingTargets = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AutoscalingConfig {
   /** Optional. Optional asymmetric autoscaling options. Replicas matching the replica selection criteria will be autoscaled independently from other replicas. The autoscaler will scale the replicas based on the utilization of replicas identified by the replica selection. Replica selections should not overlap with each other. Other replicas (those do not match any replica selection) will be autoscaled together and will have the same compute capacity allocated to them. */
-  asymmetricAutoscalingOptions?: Array<AsymmetricAutoscalingOption>;
+  asymmetricAutoscalingOptions?: ReadonlyArray<AsymmetricAutoscalingOption>;
   /** Required. Autoscaling limits for an instance. */
   autoscalingLimits?: AutoscalingLimits;
   /** Required. The autoscaling targets for an instance. */
@@ -1134,7 +1134,7 @@ export interface Instance {
     | "AUTOMATIC"
     | (string & {});
   /** Deprecated. This field is not populated. */
-  endpointUris?: Array<string>;
+  endpointUris?: ReadonlyArray<string>;
   /** Required. The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs. */
   config?: string;
   /** The number of nodes allocated to this instance. At most, one of either `node_count` or `processing_units` should be present in the message. Users can set the `node_count` field to specify the target number of nodes allocated to the instance. If autoscaling is enabled, `node_count` is treated as an `OUTPUT_ONLY` field and reflects the current number of nodes allocated to the instance. This might be zero in API responses for instances that are not yet in the `READY` state. If the instance has varying node count across replicas (achieved by setting `asymmetric_autoscaling_options` in the autoscaling configuration), the `node_count` set here is the maximum node count across all replicas. For more information, see [Compute capacity, nodes, and processing units](https://cloud.google.com/spanner/docs/compute-capacity). */
@@ -1148,7 +1148,7 @@ export interface Instance {
   /** Output only. The time at which the instance was most recently updated. */
   updateTime?: string;
   /** Output only. Lists the compute capacity per ReplicaSelection. A replica selection identifies a set of replicas with common properties. Replicas identified by a ReplicaSelection are scaled with the same compute capacity. */
-  replicaComputeCapacity?: Array<ReplicaComputeCapacity>;
+  replicaComputeCapacity?: ReadonlyArray<ReplicaComputeCapacity>;
   /** Output only. The time at which the instance was created. */
   createTime?: string;
   /** Required. The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length. */
@@ -1190,9 +1190,9 @@ export interface ListInstancesResponse {
   /** `next_page_token` can be sent in a subsequent ListInstances call to fetch more of the matching instances. */
   nextPageToken?: string;
   /** The list of requested instances. */
-  instances?: Array<Instance>;
+  instances?: ReadonlyArray<Instance>;
   /** The list of unreachable instances. It includes the names of instances whose metadata could not be retrieved within instance_deadline. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1217,7 +1217,7 @@ export interface IncludeReplicas {
   /** If `true`, Spanner doesn't route requests to a replica outside the <`include_replicas` list when all of the specified replicas are unavailable or unhealthy. Default value is `false`. */
   autoFailoverDisabled?: boolean;
   /** The directed read replica selector. */
-  replicaSelections?: Array<ReplicaSelection>;
+  replicaSelections?: ReadonlyArray<ReplicaSelection>;
 }
 
 export const IncludeReplicas = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1275,7 +1275,7 @@ export interface InstanceConfig {
   /** Base configuration name, e.g. projects//instanceConfigs/nam3, based on which this configuration is created. Only set for user-managed configurations. `base_config` must refer to a configuration of type `GOOGLE_MANAGED` in the same project as this configuration. */
   baseConfig?: string;
   /** The geographic placement of nodes in this instance configuration and their replication properties. To create user-managed configurations, input `replicas` must include all replicas in `replicas` of the `base_config` and include one or more replicas in the `optional_replicas` of the `base_config`. */
-  replicas?: Array<ReplicaInfo>;
+  replicas?: ReadonlyArray<ReplicaInfo>;
   /** Output only. Describes whether free instances are available to be created in this instance configuration. */
   freeInstanceAvailability?:
     | "FREE_INSTANCE_AVAILABILITY_UNSPECIFIED"
@@ -1295,9 +1295,9 @@ export interface InstanceConfig {
   /** etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a instance configuration from overwriting each other. It is strongly suggested that systems make use of the etag in the read-modify-write cycle to perform instance configuration updates in order to avoid race conditions: An etag is returned in the response which contains instance configurations, and systems are expected to put that etag in the request to update instance configuration to ensure that their change is applied to the same version of the instance configuration. If no etag is provided in the call to update the instance configuration, then the existing instance configuration is overwritten blindly. */
   etag?: string;
   /** Allowed values of the "default_leader" schema option for databases in instances that use this instance configuration. */
-  leaderOptions?: Array<string>;
+  leaderOptions?: ReadonlyArray<string>;
   /** Output only. The available optional replicas to choose from for user-managed configurations. Populated for Google-managed configurations. */
-  optionalReplicas?: Array<ReplicaInfo>;
+  optionalReplicas?: ReadonlyArray<ReplicaInfo>;
 }
 
 export const InstanceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1319,7 +1319,7 @@ export const InstanceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListInstanceConfigsResponse {
   /** The list of requested instance configurations. */
-  instanceConfigs?: Array<InstanceConfig>;
+  instanceConfigs?: ReadonlyArray<InstanceConfig>;
   /** `next_page_token` can be sent in a subsequent ListInstanceConfigs call to fetch more of the matching instance configurations. */
   nextPageToken?: string;
 }
@@ -1374,7 +1374,7 @@ export const CreateBackupMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Key {
   /** Required. The column values making up the split key. */
-  keyParts?: Array<unknown>;
+  keyParts?: ReadonlyArray<unknown>;
 }
 
 export const Key = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1385,7 +1385,7 @@ export interface SplitPoints {
   /** The index to split. If specified, the `table` field must refer to the index's base table. */
   index?: string;
   /** Required. The list of split keys. In essence, the split boundaries. */
-  keys?: Array<Key>;
+  keys?: ReadonlyArray<Key>;
   /** Optional. The expiration timestamp of the split points. A timestamp in the past means immediate expiration. The maximum value can be 30 days in the future. Defaults to 10 days in the future if not specified. */
   expireTime?: string;
   /** The table to split. */
@@ -1422,9 +1422,9 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -1446,7 +1446,7 @@ export interface CreateBackupEncryptionConfig {
     | "CUSTOMER_MANAGED_ENCRYPTION"
     | (string & {});
   /** Optional. Specifies the KMS configuration for the one or more keys used to protect the backup. Values are of the form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by `kms_key_names` must fully cover all regions of the backup's instance configuration. Some examples: * For regional (single-region) instance configurations, specify a regional location KMS key. * For multi-region instance configurations of type `GOOGLE_MANAGED`, either specify a multi-region location KMS key or multiple regional location KMS keys that cover all regions in the instance configuration. * For an instance configuration of type `USER_MANAGED`, specify only regional location KMS keys to cover each region in the instance configuration. Multi-region location KMS keys aren't supported for `USER_MANAGED` type instance configurations. */
-  kmsKeyNames?: Array<string>;
+  kmsKeyNames?: ReadonlyArray<string>;
   /** Optional. This field is maintained for backwards compatibility. For new callers, we recommend using `kms_key_names` to specify the KMS key. Only use `kms_key_name` if the location of the KMS key matches the database instance's configuration (location) exactly. For example, if the KMS location is in `us-central1` or `nam3`, then the database instance must also be in `us-central1` or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored database. Set this field only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`. */
   kmsKeyName?: string;
 }
@@ -1464,7 +1464,7 @@ export interface InstancePartition {
   /** The number of nodes allocated to this instance partition. Users can set the `node_count` field to specify the target number of nodes allocated to the instance partition. This may be zero in API responses for instance partitions that are not yet in state `READY`. */
   nodeCount?: number;
   /** Output only. Deprecated: This field is not populated. Output only. The names of the backups that reference this instance partition. Referencing backups should share the parent instance. The existence of any referencing backup prevents the instance partition from being deleted. */
-  referencingBackups?: Array<string>;
+  referencingBackups?: ReadonlyArray<string>;
   /** Required. A unique identifier for the instance partition. Values are of the form `projects//instances//instancePartitions/a-z*[a-z0-9]`. The final segment of the name must be between 2 and 64 characters in length. An instance partition's name cannot be changed after the instance partition is created. */
   name?: string;
   /** Used for optimistic concurrency control as a way to help prevent simultaneous updates of a instance partition from overwriting each other. It is strongly suggested that systems make use of the etag in the read-modify-write cycle to perform instance partition updates in order to avoid race conditions: An etag is returned in the response which contains instance partitions, and systems are expected to put that etag in the request to update instance partitions to ensure that their change will be applied to the same version of the instance partition. If no etag is provided in the call to update instance partition, then the existing instance partition is overwritten blindly. */
@@ -1472,7 +1472,7 @@ export interface InstancePartition {
   /** Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, fields in compute_capacity are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance partition. */
   autoscalingConfig?: AutoscalingConfig;
   /** Output only. The names of the databases that reference this instance partition. Referencing databases should share the parent instance. The existence of any referencing database prevents the instance partition from being deleted. */
-  referencingDatabases?: Array<string>;
+  referencingDatabases?: ReadonlyArray<string>;
   /** The number of processing units allocated to this instance partition. Users can set the `processing_units` field to specify the target number of processing units allocated to the instance partition. This might be zero in API responses for instance partitions that are not yet in the `READY` state. */
   processingUnits?: number;
   /** Required. The descriptive name for this instance partition as it appears in UIs. Must be unique per project and between 4 and 30 characters in length. */
@@ -1519,7 +1519,7 @@ export interface Send {
   /** Required. The queue to which the message will be sent. */
   queue?: string;
   /** Required. The primary key of the message to be sent. */
-  key?: Array<unknown>;
+  key?: ReadonlyArray<unknown>;
   /** The time at which Spanner will begin attempting to deliver the message. If `deliver_time` is not set, Spanner will deliver the message immediately. If `deliver_time` is in the past, Spanner will replace it with a value closer to the current time. */
   deliverTime?: string;
 }
@@ -1535,7 +1535,7 @@ export interface Ack {
   /** Required. The queue where the message to be acked is stored. */
   queue?: string;
   /** Required. The primary key of the message to be acked. */
-  key?: Array<unknown>;
+  key?: ReadonlyArray<unknown>;
   /** By default, an attempt to ack a message that does not exist will fail with a `NOT_FOUND` error. With `ignore_not_found` set to true, the ack will succeed even if the message does not exist. This is useful for unconditionally acking a message, even if it is missing or has already been acked. */
   ignoreNotFound?: boolean;
 }
@@ -1548,13 +1548,13 @@ export const Ack = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface KeyRange {
   /** If the end is closed, then the range includes all rows whose first `len(end_closed)` key columns exactly match `end_closed`. */
-  endClosed?: Array<unknown>;
+  endClosed?: ReadonlyArray<unknown>;
   /** If the end is open, then the range excludes rows whose first `len(end_open)` key columns exactly match `end_open`. */
-  endOpen?: Array<unknown>;
+  endOpen?: ReadonlyArray<unknown>;
   /** If the start is open, then the range excludes rows whose first `len(start_open)` key columns exactly match `start_open`. */
-  startOpen?: Array<unknown>;
+  startOpen?: ReadonlyArray<unknown>;
   /** If the start is closed, then the range includes all rows whose first `len(start_closed)` key columns exactly match `start_closed`. */
-  startClosed?: Array<unknown>;
+  startClosed?: ReadonlyArray<unknown>;
 }
 
 export const KeyRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1566,9 +1566,9 @@ export const KeyRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface KeySet {
   /** A list of specific keys. Entries in `keys` should have exactly as many elements as there are columns in the primary or index key with which this `KeySet` is used. Individual key values are encoded as described here. */
-  keys?: Array<Array<unknown>>;
+  keys?: ReadonlyArray<ReadonlyArray<unknown>>;
   /** A list of key ranges. See KeyRange for more information about key range specifications. */
-  ranges?: Array<KeyRange>;
+  ranges?: ReadonlyArray<KeyRange>;
   /** For convenience `all` can be set to `true` to indicate that this `KeySet` matches all keys in the table or index. Note that any keys specified in `keys` or `ranges` are only yielded once. */
   all?: boolean;
 }
@@ -1620,7 +1620,7 @@ export const Mutation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MutationGroup {
   /** Required. The mutations in this group. */
-  mutations?: Array<Mutation>;
+  mutations?: ReadonlyArray<Mutation>;
 }
 
 export const MutationGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1659,7 +1659,7 @@ export const UpdateInstancePartitionRequest =
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -1679,17 +1679,17 @@ export const BackupInstancePartition =
 
 export interface Backup {
   /** Output only. The instance partition storing the backup. This is the same as the list of the instance partitions that the database recorded at the backup's `version_time`. */
-  instancePartitions?: Array<BackupInstancePartition>;
+  instancePartitions?: ReadonlyArray<BackupInstancePartition>;
   /** Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`. */
   name?: string;
   /** Output only. List of backup schedule URIs that are associated with creating this backup. This is only applicable for scheduled backups, and is empty for on-demand backups. To optimize for storage, whenever possible, multiple schedules are collapsed together to create one backup. In such cases, this field captures the list of all backup schedule URIs that are associated with creating this backup. If collapsing is not done, then this field captures the single backup schedule URI associated with creating this backup. */
-  backupSchedules?: Array<string>;
+  backupSchedules?: ReadonlyArray<string>;
   /** Output only. The max allowed expiration time of the backup, with microseconds granularity. A backup's expiration time can be configured in multiple APIs: CreateBackup, UpdateBackup, CopyBackup. When updating or copying an existing backup, the expiration time specified must be less than `Backup.max_expire_time`. */
   maxExpireTime?: string;
   /** Output only. Populated only for backups in an incremental backup chain. Backups share the same chain id if and only if they belong to the same incremental backup chain. Use this field to determine which backups are part of the same incremental backup chain. The ordering of backups in the chain can be determined by ordering the backup `version_time`. */
   incrementalBackupChainId?: string;
   /** Output only. The names of the restored databases that reference the backup. The database names are of the form `projects//instances//databases/`. Referencing databases may exist in different instances. The existence of any referencing database prevents the backup from being deleted. When a restored database from the backup enters the `READY` state, the reference to the backup is removed. */
-  referencingDatabases?: Array<string>;
+  referencingDatabases?: ReadonlyArray<string>;
   /** Output only. The encryption information for the backup. */
   encryptionInfo?: EncryptionInfo;
   /** The backup will contain an externally consistent copy of the database at the timestamp specified by `version_time`. If `version_time` is not specified, the system will set `version_time` to the `create_time` of the backup. */
@@ -1701,13 +1701,13 @@ export interface Backup {
   /** Output only. The number of bytes that will be freed by deleting this backup. This value will be zero if, for example, this backup is part of an incremental backup chain and younger backups in the chain require that we keep its data. For backups not in an incremental backup chain, this is always the size of the backup. This value may change if backups on the same chain get created, deleted or expired. */
   freeableSizeBytes?: string;
   /** Output only. The names of the destination backups being created by copying this source backup. The backup names are of the form `projects//instances//backups/`. Referencing backups may exist in different instances. The existence of any referencing backup prevents the backup from being deleted. When the copy operation is done (either successfully completed or cancelled or the destination backup is deleted), the reference to the backup is removed. */
-  referencingBackups?: Array<string>;
+  referencingBackups?: ReadonlyArray<string>;
   /** Output only. Data deleted at a time older than this is guaranteed not to be retained in order to support this backup. For a backup in an incremental backup chain, this is the version time of the oldest backup that exists or ever existed in the chain. For all other backups, this is the version time of the backup. This field can be used to understand what data is being retained by the backup system. */
   oldestVersionTime?: string;
   /** Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup. */
   expireTime?: string;
   /** Output only. The encryption information for the backup, whether it is protected by one or more KMS keys. The information includes all Cloud KMS key versions used to encrypt the backup. The `encryption_status` field inside of each `EncryptionInfo` is not populated. At least one of the key versions must be available for the backup to be restored. If a key version is revoked in the middle of a restore, the restore behavior is undefined. */
-  encryptionInformation?: Array<EncryptionInfo>;
+  encryptionInformation?: ReadonlyArray<EncryptionInfo>;
   /** Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`. */
   database?: string;
   /** Output only. For a backup in an incremental backup chain, this is the storage space needed to keep the data that has changed since the previous backup. For all other backups, this is always the size of the backup. This value may change if backups on the same chain get deleted or expired. This field can be used to calculate the total storage space used by a set of backups. For example, the total space used by all backups of a database can be computed by summing up this field. */
@@ -1776,7 +1776,7 @@ export const Partition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PartitionResponse {
   /** Partitions created by this request. */
-  partitions?: Array<Partition>;
+  partitions?: ReadonlyArray<Partition>;
   /** Transaction created by this request. */
   transaction?: Transaction;
 }
@@ -1851,7 +1851,7 @@ export const BackupSchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListBackupSchedulesResponse {
   /** The list of backup schedules for a database. */
-  backupSchedules?: Array<BackupSchedule>;
+  backupSchedules?: ReadonlyArray<BackupSchedule>;
   /** `next_page_token` can be sent in a subsequent ListBackupSchedules call to fetch more of the schedules. */
   nextPageToken?: string;
 }
@@ -1904,9 +1904,9 @@ export interface ListInstancePartitionOperationsResponse {
   /** `next_page_token` can be sent in a subsequent ListInstancePartitionOperations call to fetch more of the matching metadata. */
   nextPageToken?: string;
   /** The list of unreachable instance partitions. It includes the names of instance partitions whose operation metadata could not be retrieved within instance_partition_deadline. */
-  unreachableInstancePartitions?: Array<string>;
+  unreachableInstancePartitions?: ReadonlyArray<string>;
   /** The list of matching instance partition long-running operations. Each operation's name will be prefixed by the instance partition's name. The operation's metadata field type `metadata.type_url` describes the type of the metadata. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
 }
 
 export const ListInstancePartitionOperationsResponse =
@@ -1927,7 +1927,7 @@ export interface CopyBackupEncryptionConfig {
     | "CUSTOMER_MANAGED_ENCRYPTION"
     | (string & {});
   /** Optional. Specifies the KMS configuration for the one or more keys used to protect the backup. Values are of the form `projects//locations//keyRings//cryptoKeys/`. KMS keys specified can be in any order. The keys referenced by `kms_key_names` must fully cover all regions of the backup's instance configuration. Some examples: * For regional (single-region) instance configurations, specify a regional location KMS key. * For multi-region instance configurations of type `GOOGLE_MANAGED`, either specify a multi-region location KMS key or multiple regional location KMS keys that cover all regions in the instance configuration. * For an instance configuration of type `USER_MANAGED`, specify only regional location KMS keys to cover each region in the instance configuration. Multi-region location KMS keys aren't supported for `USER_MANAGED` type instance configurations. */
-  kmsKeyNames?: Array<string>;
+  kmsKeyNames?: ReadonlyArray<string>;
 }
 
 export const CopyBackupEncryptionConfig =
@@ -1978,11 +1978,11 @@ export const ModValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Mod {
   /** Returns the old values before the change for the modified columns. Always empty for INSERT, or if old values are not being captured specified by value_capture_type. */
-  oldValues?: Array<ModValue>;
+  oldValues?: ReadonlyArray<ModValue>;
   /** Returns the value of the primary key of the modified row. */
-  keys?: Array<ModValue>;
+  keys?: ReadonlyArray<ModValue>;
   /** Returns the new values after the change for the modified columns. Always empty for DELETE. */
-  newValues?: Array<ModValue>;
+  newValues?: ReadonlyArray<ModValue>;
 }
 
 export const Mod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2003,7 +2003,7 @@ export interface DdlStatementActionInfo {
   /** The action for the DDL statement, for example, CREATE, ALTER, DROP, GRANT, etc. This field is a non-empty string. */
   action?: string;
   /** The entity names being operated on the DDL statement. For example, 1. For statement "CREATE TABLE t1(...)", `entity_names` = ["t1"]. 2. For statement "GRANT ROLE r1, r2 ...", `entity_names` = ["r1", "r2"]. 3. For statement "ANALYZE", `entity_names` = []. */
-  entityNames?: Array<string>;
+  entityNames?: ReadonlyArray<string>;
 }
 
 export const DdlStatementActionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -2048,7 +2048,7 @@ export const RequestOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CommitRequest {
   /** The mutations to be executed when this transaction commits. All mutations are applied atomically, in the order they appear in this list. */
-  mutations?: Array<Mutation>;
+  mutations?: ReadonlyArray<Mutation>;
   /** Optional. If the read-write transaction was executed on a multiplexed session, then you must include the precommit token with the highest sequence number received in this transaction attempt. Failing to do so results in a `FailedPrecondition` error. */
   precommitToken?: MultiplexedSessionPrecommitToken;
   /** Common options for this request. */
@@ -2119,9 +2119,9 @@ export interface PartitionEventRecord {
   /** Record sequence numbers are unique and monotonically increasing (but not necessarily contiguous) for a specific timestamp across record types in the same partition. To guarantee ordered processing, the reader should process records (of potentially different types) in record_sequence order for a specific timestamp in the same partition. */
   recordSequence?: string;
   /** Set when one or more key ranges are moved out of the change stream partition identified by partition_token. Example: Two key ranges are moved out of partition (P1) to partition (P2) and partition (P3) in a single transaction at timestamp T. The PartitionEventRecord returned in P1 will reflect the move as: PartitionEventRecord { commit_timestamp: T partition_token: "P1" move_out_events { destination_partition_token: "P2" } move_out_events { destination_partition_token: "P3" } } The PartitionEventRecord returned in P2 will reflect the move as: PartitionEventRecord { commit_timestamp: T partition_token: "P2" move_in_events { source_partition_token: "P1" } } The PartitionEventRecord returned in P3 will reflect the move as: PartitionEventRecord { commit_timestamp: T partition_token: "P3" move_in_events { source_partition_token: "P1" } } */
-  moveOutEvents?: Array<MoveOutEvent>;
+  moveOutEvents?: ReadonlyArray<MoveOutEvent>;
   /** Set when one or more key ranges are moved into the change stream partition identified by partition_token. Example: Two key ranges are moved into partition (P1) from partition (P2) and partition (P3) in a single transaction at timestamp T. The PartitionEventRecord returned in P1 will reflect the move as: PartitionEventRecord { commit_timestamp: T partition_token: "P1" move_in_events { source_partition_token: "P2" } move_in_events { source_partition_token: "P3" } } The PartitionEventRecord returned in P2 will reflect the move as: PartitionEventRecord { commit_timestamp: T partition_token: "P2" move_out_events { destination_partition_token: "P1" } } The PartitionEventRecord returned in P3 will reflect the move as: PartitionEventRecord { commit_timestamp: T partition_token: "P3" move_out_events { destination_partition_token: "P1" } } */
-  moveInEvents?: Array<MoveInEvent>;
+  moveInEvents?: ReadonlyArray<MoveInEvent>;
   /** Indicates the commit timestamp at which the key range change occurred. DataChangeRecord.commit_timestamps, PartitionStartRecord.start_timestamps, PartitionEventRecord.commit_timestamps, and PartitionEndRecord.end_timestamps can have the same value in the same partition. */
   commitTimestamp?: string;
   /** Unique partition identifier describing the partition this event occurred on. partition_token is equal to the partition token of the change stream partition currently queried to return this PartitionEventRecord. */
@@ -2158,7 +2158,7 @@ export interface DataChangeRecord {
   /** Indicates the timestamp in which the change was committed. DataChangeRecord.commit_timestamps, PartitionStartRecord.start_timestamps, PartitionEventRecord.commit_timestamps, and PartitionEndRecord.end_timestamps can have the same value in the same partition. */
   commitTimestamp?: string;
   /** Provides metadata describing the columns associated with the mods listed below. */
-  columnMetadata?: Array<ColumnMetadata>;
+  columnMetadata?: ReadonlyArray<ColumnMetadata>;
   /** Describes the type of change. */
   modType?:
     | "MOD_TYPE_UNSPECIFIED"
@@ -2185,7 +2185,7 @@ export interface DataChangeRecord {
   /** Indicates whether this is the last record for a transaction in the current partition. Clients can use this field to determine when all records for a transaction in the current partition have been received. */
   isLastRecordInTransactionInPartition?: boolean;
   /** Describes the changes that were made. */
-  mods?: Array<Mod>;
+  mods?: ReadonlyArray<Mod>;
   /** Indicates the number of data change records that are part of this transaction across all change stream partitions. This value can be used to assemble all the records associated with a particular transaction. */
   numberOfRecordsInTransaction?: number;
   /** Indicates the number of partitions that return data change records for this transaction. This value can be helpful in assembling all records associated with a particular transaction. */
@@ -2212,7 +2212,7 @@ export const DataChangeRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PartitionStartRecord {
   /** Unique partition identifiers to be used in queries. */
-  partitionTokens?: Array<string>;
+  partitionTokens?: ReadonlyArray<string>;
   /** Start timestamp at which the partitions should be queried to return change stream records with timestamps >= start_timestamp. DataChangeRecord.commit_timestamps, PartitionStartRecord.start_timestamps, PartitionEventRecord.commit_timestamps, and PartitionEndRecord.end_timestamps can have the same value in the same partition. */
   startTimestamp?: string;
   /** Record sequence numbers are unique and monotonically increasing (but not necessarily contiguous) for a specific timestamp across record types in the same partition. To guarantee ordered processing, the reader should process records (of potentially different types) in record_sequence order for a specific timestamp in the same partition. */
@@ -2259,7 +2259,7 @@ export interface ListDatabaseRolesResponse {
   /** `next_page_token` can be sent in a subsequent ListDatabaseRoles call to fetch more of the matching roles. */
   nextPageToken?: string;
   /** Database roles that matched the request. */
-  databaseRoles?: Array<DatabaseRole>;
+  databaseRoles?: ReadonlyArray<DatabaseRole>;
 }
 
 export const ListDatabaseRolesResponse =
@@ -2318,7 +2318,7 @@ export interface CreateDatabaseRequest {
   /** Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption. */
   encryptionConfig?: EncryptionConfig;
   /** Optional. A list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc. These statements execute atomically with the creation of the database: if there is an error in any statement, the database is not created. */
-  extraStatements?: Array<string>;
+  extraStatements?: ReadonlyArray<string>;
 }
 
 export const CreateDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2404,7 +2404,7 @@ export interface InstanceEncryptionConfig {
   /** Optional. This field is maintained for backwards compatibility. For new callers, we recommend using `kms_key_names` to specify the KMS key. Only use `kms_key_name` if the location of the KMS key matches the database instance's configuration (location) exactly. For example, if the KMS location is in `us-central1` or `nam3`, then the database instance must also be in `us-central1` or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored database. Values are of the form `projects//locations//keyRings//cryptoKeys/`. */
   kmsKeyName?: string;
   /** Optional. Specifies the KMS configuration for one or more keys used to encrypt the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by `kms_key_names` must fully cover all regions of the database's instance configuration. Some examples: * For regional (single-region) instance configurations, specify a regional location KMS key. * For multi-region instance configurations of type `GOOGLE_MANAGED`, either specify a multi-region location KMS key or multiple regional location KMS keys that cover all regions in the instance configuration. * For an instance configuration of type `USER_MANAGED`, specify only regional location KMS keys to cover each region in the instance configuration. Multi-region location KMS keys aren't supported for `USER_MANAGED` type instance configurations. */
-  kmsKeyNames?: Array<string>;
+  kmsKeyNames?: ReadonlyArray<string>;
 }
 
 export const InstanceEncryptionConfig =
@@ -2427,7 +2427,7 @@ export const DatabaseMoveConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ExcludeReplicas {
   /** The directed read replica selector. */
-  replicaSelections?: Array<ReplicaSelection>;
+  replicaSelections?: ReadonlyArray<ReplicaSelection>;
 }
 
 export const ExcludeReplicas = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2464,7 +2464,7 @@ export interface BatchWriteRequest {
   /** Optional. If you don't set the `exclude_txn_from_change_streams` option or if it's set to `false`, then any change streams monitoring columns modified by transactions will capture the updates made within that transaction. */
   excludeTxnFromChangeStreams?: boolean;
   /** Required. The groups of mutations to be applied. */
-  mutationGroups?: Array<MutationGroup>;
+  mutationGroups?: ReadonlyArray<MutationGroup>;
 }
 
 export const BatchWriteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2475,7 +2475,7 @@ export const BatchWriteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AddSplitPointsRequest {
   /** Required. The split points to add. */
-  splitPoints?: Array<SplitPoints>;
+  splitPoints?: ReadonlyArray<SplitPoints>;
   /** Optional. A user-supplied tag associated with the split points. For example, "initial_data_load", "special_event_1". Defaults to "CloudAddSplitPointsAPI" if not specified. The length of the tag must not exceed 50 characters, or else it is trimmed. Only valid UTF8 characters are allowed. */
   initiator?: string;
 }
@@ -2506,7 +2506,7 @@ export interface PartitionReadRequest {
   /** Required. The name of the table in the database to be read. */
   table?: string;
   /** The columns of table to be returned for each row matching this request. */
-  columns?: Array<string>;
+  columns?: ReadonlyArray<string>;
   /** Required. `key_set` identifies the rows to be yielded. `key_set` names the primary keys of the rows in table to be yielded, unless index is present. If index is present, then key_set instead names index keys in index. It isn't an error for the `key_set` to name rows that don't exist in the database. Read yields nothing for nonexistent rows. */
   keySet?: KeySet;
   /** If non-empty, the name of an index on table. This index is used instead of the table primary key when interpreting key_set and sorting result rows. See key_set for further information. */
@@ -2533,7 +2533,7 @@ export interface RestoreDatabaseEncryptionConfig {
     | "CUSTOMER_MANAGED_ENCRYPTION"
     | (string & {});
   /** Optional. Specifies the KMS configuration for one or more keys used to encrypt the database. Values have the form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by `kms_key_names` must fully cover all regions of the database's instance configuration. Some examples: * For regional (single-region) instance configurations, specify a regional location KMS key. * For multi-region instance configurations of type `GOOGLE_MANAGED`, either specify a multi-region location KMS key or multiple regional location KMS keys that cover all regions in the instance configuration. * For an instance configuration of type `USER_MANAGED`, specify only regional location KMS keys to cover each region in the instance configuration. Multi-region location KMS keys aren't supported for `USER_MANAGED` type instance configurations. */
-  kmsKeyNames?: Array<string>;
+  kmsKeyNames?: ReadonlyArray<string>;
   /** Optional. This field is maintained for backwards compatibility. For new callers, we recommend using `kms_key_names` to specify the KMS key. Only use `kms_key_name` if the location of the KMS key matches the database instance's configuration (location) exactly. For example, if the KMS location is in `us-central1` or `nam3`, then the database instance must also be in `us-central1` or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored database. Set this field only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`. */
   kmsKeyName?: string;
 }
@@ -2575,7 +2575,7 @@ export const CreateDatabaseMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface BatchCreateSessionsResponse {
   /** The freshly created sessions. */
-  session?: Array<Session>;
+  session?: ReadonlyArray<Session>;
 }
 
 export const BatchCreateSessionsResponse =
@@ -2587,7 +2587,7 @@ export interface ListDatabasesResponse {
   /** `next_page_token` can be sent in a subsequent ListDatabases call to fetch more of the matching databases. */
   nextPageToken?: string;
   /** Databases that matched the request. */
-  databases?: Array<Database>;
+  databases?: ReadonlyArray<Database>;
 }
 
 export const ListDatabasesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2629,7 +2629,7 @@ export interface BatchWriteResponse {
   /** An `OK` status indicates success. Any other status indicates a failure. */
   status?: Status;
   /** The mutation groups applied in this batch. The values index into the `mutation_groups` field in the corresponding `BatchWriteRequest`. */
-  indexes?: Array<number>;
+  indexes?: ReadonlyArray<number>;
   /** The commit timestamp of the transaction that applied this batch. Present if status is OK and the mutation groups were applied, absent otherwise. For mutation groups with conditions, a status=OK and missing commit_timestamp means that the mutation groups were not applied due to the condition not being satisfied after evaluation. */
   commitTimestamp?: string;
 }
@@ -2663,7 +2663,7 @@ export interface ExecuteBatchDmlRequest {
   /** Common options for this request. */
   requestOptions?: RequestOptions;
   /** Required. The list of statements to execute in this batch. Statements are executed serially, such that the effects of statement `i` are visible to statement `i+1`. Each statement must be a DML statement. Execution stops at the first failed statement; the remaining statements are not executed. Callers must provide at least one statement. */
-  statements?: Array<Statement>;
+  statements?: ReadonlyArray<Statement>;
   /** Required. The transaction to use. Must be a read-write transaction. To protect against replays, single-use transactions are not supported. The caller must either supply an existing transaction ID or begin a new transaction. */
   transaction?: TransactionSelector;
   /** Required. A per-transaction sequence number used to identify this request. This field makes each request idempotent such that if the request is received multiple times, at most one succeeds. The sequence number must be monotonically increasing within the transaction. If a request arrives for the first time with an out-of-order sequence number, the transaction might be aborted. Replays of previously handled requests yield the same response as the first execution. */
@@ -2684,9 +2684,9 @@ export const ExecuteBatchDmlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListInstancePartitionsResponse {
   /** The list of unreachable instances or instance partitions. It includes the names of instances or instance partitions whose metadata could not be retrieved within instance_partition_deadline. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The list of requested instancePartitions. */
-  instancePartitions?: Array<InstancePartition>;
+  instancePartitions?: ReadonlyArray<InstancePartition>;
   /** `next_page_token` can be sent in a subsequent ListInstancePartitions call to fetch more of the matching instance partitions. */
   nextPageToken?: string;
 }
@@ -2725,7 +2725,7 @@ export const RestoreDatabaseMetadata =
 
 export interface ListBackupOperationsResponse {
   /** The list of matching backup long-running operations. Each operation's name will be prefixed by the backup's name. The operation's metadata field type `metadata.type_url` describes the type of the metadata. Operations returned include those that are pending or have completed/failed/canceled within the last 7 days. Operations returned are ordered by `operation.metadata.value.progress.start_time` in descending order starting from the most recently started operation. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** `next_page_token` can be sent in a subsequent ListBackupOperations call to fetch more of the matching metadata. */
   nextPageToken?: string;
 }
@@ -2754,7 +2754,7 @@ export const CreateInstanceConfigRequest =
 
 export interface TestIamPermissionsRequest {
   /** REQUIRED: The set of permissions to check for 'resource'. Permissions with wildcards (such as '*', 'spanner.*', 'spanner.instances.*') are not allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -2815,7 +2815,7 @@ export const ExecuteSqlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListBackupsResponse {
   /** The list of matching backups. Backups returned are ordered by `create_time` in descending order, starting from the most recent `create_time`. */
-  backups?: Array<Backup>;
+  backups?: ReadonlyArray<Backup>;
   /** `next_page_token` can be sent in a subsequent ListBackups call to fetch more of the matching backups. */
   nextPageToken?: string;
 }
@@ -2845,7 +2845,7 @@ export interface ReadRequest {
     | "ORDER_BY_NO_ORDER"
     | (string & {});
   /** Required. The columns of table to be returned for each row matching this request. */
-  columns?: Array<string>;
+  columns?: ReadonlyArray<string>;
   /** Required. `key_set` identifies the rows to be yielded. `key_set` names the primary keys of the rows in table to be yielded, unless index is present. If index is present, then key_set instead names index keys in index. If the partition_token field is empty, rows are yielded in table primary key order (if index is empty) or index key order (if index is non-empty). If the partition_token field isn't empty, rows are yielded in an unspecified order. It isn't an error for the `key_set` to name rows that don't exist in the database. Read yields nothing for nonexistent rows. */
   keySet?: KeySet;
   /** If present, results are restricted to the specified partition previously created using `PartitionRead`. There must be an exact match for the values of fields common to this message and the PartitionReadRequest message used to create this partition_token. */
@@ -2896,7 +2896,7 @@ export const UpdateInstanceConfigRequest =
 
 export interface MoveInstanceRequest {
   /** Optional. The configuration for each database in the target instance configuration. */
-  targetDatabaseMoveConfigs?: Array<DatabaseMoveConfig>;
+  targetDatabaseMoveConfigs?: ReadonlyArray<DatabaseMoveConfig>;
   /** Required. The target instance configuration where to move the instance. Values are of the form `projects//instanceConfigs/`. */
   targetConfig?: string;
 }
@@ -2910,7 +2910,7 @@ export interface ListDatabaseOperationsResponse {
   /** `next_page_token` can be sent in a subsequent ListDatabaseOperations call to fetch more of the matching metadata. */
   nextPageToken?: string;
   /** The list of matching database long-running operations. Each operation's name will be prefixed by the database's name. The operation's metadata field type `metadata.type_url` describes the type of the metadata. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
 }
 
 export const ListDatabaseOperationsResponse =
@@ -2921,7 +2921,7 @@ export const ListDatabaseOperationsResponse =
 
 export interface ExecuteBatchDmlResponse {
   /** One ResultSet for each statement in the request that ran successfully, in the same order as the statements in the request. Each ResultSet does not contain any rows. The ResultSetStats in each ResultSet contain the number of rows modified by the statement. Only the first ResultSet in the response contains valid ResultSetMetadata. */
-  resultSets?: Array<ResultSet>;
+  resultSets?: ReadonlyArray<ResultSet>;
   /** Optional. A precommit token is included if the read-write transaction is on a multiplexed session. Pass the precommit token with the highest sequence number from this transaction attempt should be passed to the Commit request for this transaction. */
   precommitToken?: MultiplexedSessionPrecommitToken;
   /** If all DML statements are executed successfully, the status is `OK`. Otherwise, the error status of the first failed statement. */
@@ -2993,7 +2993,7 @@ export const CreateInstanceConfigMetadata =
 
 export interface PartialResultSet {
   /** A streamed result set consists of a stream of values, which might be split into many `PartialResultSet` messages to accommodate large rows and/or large values. Every N complete values defines a row, where N is equal to the number of entries in metadata.row_type.fields. Most values are encoded based on type as described here. It's possible that the last value in values is "chunked", meaning that the rest of the value is sent in subsequent `PartialResultSet`(s). This is denoted by the chunked_value field. Two or more chunked values can be merged to form a complete value as follows: * `bool/number/null`: can't be chunked * `string`: concatenate the strings * `list`: concatenate the lists. If the last element in a list is a `string`, `list`, or `object`, merge it with the first element in the next list by applying these rules recursively. * `object`: concatenate the (field name, field value) pairs. If a field name is duplicated, then apply these rules recursively to merge the field values. Some examples of merging: Strings are concatenated. "foo", "bar" => "foobar" Lists of non-strings are concatenated. [2, 3], [4] => [2, 3, 4] Lists are concatenated, but the last and first elements are merged because they are strings. ["a", "b"], ["c", "d"] => ["a", "bc", "d"] Lists are concatenated, but the last and first elements are merged because they are lists. Recursively, the last and first elements of the inner lists are merged because they are strings. ["a", ["b", "c"]], [["d"], "e"] => ["a", ["b", "cd"], "e"] Non-overlapping object fields are combined. {"a": "1"}, {"b": "2"} => {"a": "1", "b": 2"} Overlapping object fields are merged. {"a": "1"}, {"a": "2"} => {"a": "12"} Examples of merging objects containing lists of strings. {"a": ["1"]}, {"a": ["2"]} => {"a": ["12"]} For a more complete example, suppose a streaming SQL query is yielding a result set whose rows contain a single string field. The following `PartialResultSet`s might be yielded: { "metadata": { ... } "values": ["Hello", "W"] "chunked_value": true "resume_token": "Af65..." } { "values": ["orl"] "chunked_value": true } { "values": ["d"] "resume_token": "Zx1B..." } This sequence of `PartialResultSet`s encodes two rows, one containing the field value `"Hello"`, and a second containing the field value `"World" = "W" + "orl" + "d"`. Not all `PartialResultSet`s contain a `resume_token`. Execution can only be resumed from a previously yielded `resume_token`. For the above sequence of `PartialResultSet`s, resuming the query with `"resume_token": "Af65..."` yields results from the `PartialResultSet` with value "orl". */
-  values?: Array<unknown>;
+  values?: ReadonlyArray<unknown>;
   /** Optional. Indicates whether this is the last `PartialResultSet` in the stream. The server might optionally set this field. Clients shouldn't rely on this field being set in all cases. */
   last?: boolean;
   /** Metadata about the result set, such as row type information. Only present in the first response. */
@@ -3022,7 +3022,7 @@ export interface GetDatabaseDdlResponse {
   /** Proto descriptors stored in the database. Contains a protobuf-serialized [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto). For more details, see protobuffer [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description). */
   protoDescriptors?: string;
   /** A list of formatted DDL statements defining the schema of the database specified in the request. */
-  statements?: Array<string>;
+  statements?: ReadonlyArray<string>;
 }
 
 export const GetDatabaseDdlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -3067,17 +3067,17 @@ export const CommitResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface UpdateDatabaseDdlMetadata {
   /** For an update this list contains all the statements. For an individual statement, this list contains only that statement. */
-  statements?: Array<string>;
+  statements?: ReadonlyArray<string>;
   /** Output only. When true, indicates that the operation is throttled, for example, due to resource constraints. When resources become available the operation will resume and this field will be false again. */
   throttled?: boolean;
   /** The database being modified. */
   database?: string;
   /** Reports the commit timestamps of all statements that have succeeded so far, where `commit_timestamps[i]` is the commit timestamp for the statement `statements[i]`. */
-  commitTimestamps?: Array<string>;
+  commitTimestamps?: ReadonlyArray<string>;
   /** The brief action info for the DDL statements. `actions[i]` is the brief info for `statements[i]`. */
-  actions?: Array<DdlStatementActionInfo>;
+  actions?: ReadonlyArray<DdlStatementActionInfo>;
   /** The progress of the UpdateDatabaseDdl operations. All DDL statements will have continuously updating progress, and `progress[i]` is the operation progress for `statements[i]`. Also, `progress[i]` will have start time and end time populated with commit timestamp of operation, as well as a progress of 100% once the operation has completed. */
-  progress?: Array<OperationProgress>;
+  progress?: ReadonlyArray<OperationProgress>;
 }
 
 export const UpdateDatabaseDdlMetadata =
@@ -3092,7 +3092,7 @@ export const UpdateDatabaseDdlMetadata =
 
 export interface UpdateDatabaseDdlRequest {
   /** Required. DDL statements to be applied to the database. */
-  statements?: Array<string>;
+  statements?: ReadonlyArray<string>;
   /** If empty, the new update request is assigned an automatically-generated operation ID. Otherwise, `operation_id` is used to construct the name of the resulting Operation. Specifying an explicit operation ID simplifies determining whether the statements were executed in the event that the UpdateDatabaseDdl call is replayed, or the return value is otherwise lost: the database and `operation_id` fields can be combined to form the `name` of the resulting longrunning.Operation: `/operations/`. `operation_id` should be unique within the database, and must be a valid identifier: `a-z*`. Note that automatically-generated operation IDs always begin with an underscore. If the named operation already exists, UpdateDatabaseDdl returns `ALREADY_EXISTS`. */
   operationId?: string;
   /** Optional. Proto descriptors used by CREATE/ALTER PROTO BUNDLE statements. Contains a protobuf-serialized [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto). To generate it, [install](https://grpc.io/docs/protoc-installation/) and run `protoc` with --include_imports and --descriptor_set_out. For example, to generate for moon/shot/app.proto, run ``` $protoc --proto_path=/app_path --proto_path=/lib_path \ --include_imports \ --descriptor_set_out=descriptors.data \ moon/shot/app.proto ``` For more details, see protobuffer [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description). */
@@ -3108,7 +3108,7 @@ export const UpdateDatabaseDdlRequest =
 
 export interface ListInstanceConfigOperationsResponse {
   /** The list of matching instance configuration long-running operations. Each operation's name will be prefixed by the name of the instance configuration. The operation's metadata field type `metadata.type_url` describes the type of the metadata. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** `next_page_token` can be sent in a subsequent ListInstanceConfigOperations call to fetch more of the matching metadata. */
   nextPageToken?: string;
 }
@@ -3198,7 +3198,7 @@ export const ListScansRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/scans" }),
+  T.Http({ method: "GET", path: "v1/{parent}" }),
   svc,
 ) as unknown as Schema.Schema<ListScansRequest>;
 
@@ -3239,7 +3239,7 @@ export const ListProjectsInstanceConfigsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/instanceConfigs" }),
+    T.Http({ method: "GET", path: "v1/{parent}/instanceConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsInstanceConfigsRequest>;
 
@@ -3274,10 +3274,7 @@ export const GetProjectsInstanceConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instanceConfigs/{instanceConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsInstanceConfigsRequest>;
 
@@ -3313,7 +3310,7 @@ export const CreateProjectsInstanceConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instanceConfigs",
+      path: "v1/{parent}/instanceConfigs",
       hasBody: true,
     }),
     svc,
@@ -3354,10 +3351,7 @@ export const DeleteProjectsInstanceConfigsRequest =
     ),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/instanceConfigs/{instanceConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsInstanceConfigsRequest>;
 
@@ -3391,11 +3385,7 @@ export const PatchProjectsInstanceConfigsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpdateInstanceConfigRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/instanceConfigs/{instanceConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsInstanceConfigsRequest>;
 
@@ -3440,10 +3430,7 @@ export const ListProjectsInstanceConfigsOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instanceConfigs/{instanceConfigsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsInstanceConfigsOperationsRequest>;
 
@@ -3479,10 +3466,7 @@ export const GetProjectsInstanceConfigsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instanceConfigs/{instanceConfigsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsInstanceConfigsOperationsRequest>;
 
@@ -3513,10 +3497,7 @@ export const DeleteProjectsInstanceConfigsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/instanceConfigs/{instanceConfigsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsInstanceConfigsOperationsRequest>;
 
@@ -3547,11 +3528,7 @@ export const CancelProjectsInstanceConfigsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/instanceConfigs/{instanceConfigsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsInstanceConfigsOperationsRequest>;
 
@@ -3596,10 +3573,7 @@ export const ListProjectsInstanceConfigsSsdCachesOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instanceConfigs/{instanceConfigsId}/ssdCaches/{ssdCachesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsInstanceConfigsSsdCachesOperationsRequest>;
 
@@ -3635,10 +3609,7 @@ export const GetProjectsInstanceConfigsSsdCachesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instanceConfigs/{instanceConfigsId}/ssdCaches/{ssdCachesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsInstanceConfigsSsdCachesOperationsRequest>;
 
@@ -3669,10 +3640,7 @@ export const DeleteProjectsInstanceConfigsSsdCachesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/instanceConfigs/{instanceConfigsId}/ssdCaches/{ssdCachesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsInstanceConfigsSsdCachesOperationsRequest>;
 
@@ -3704,11 +3672,7 @@ export const CancelProjectsInstanceConfigsSsdCachesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/instanceConfigs/{instanceConfigsId}/ssdCaches/{ssdCachesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsInstanceConfigsSsdCachesOperationsRequest>;
 
@@ -3749,10 +3713,7 @@ export const ListProjectsInstanceConfigOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instanceConfigOperations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/instanceConfigOperations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsInstanceConfigOperationsRequest>;
 
@@ -3802,7 +3763,7 @@ export const ListProjectsInstancesRequest =
       T.HttpQuery("instanceDeadline"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/instances" }),
+    T.Http({ method: "GET", path: "v1/{parent}/instances" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsInstancesRequest>;
 
@@ -3840,10 +3801,7 @@ export const GetProjectsInstancesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     fieldMask: Schema.optional(Schema.String).pipe(T.HttpQuery("fieldMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsInstancesRequest>;
 
@@ -3877,11 +3835,7 @@ export const CreateProjectsInstancesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CreateInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/instances",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/instances", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsInstancesRequest>;
 
@@ -3915,11 +3869,7 @@ export const PatchProjectsInstancesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpdateInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/instances/{instancesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsInstancesRequest>;
 
@@ -3953,11 +3903,7 @@ export const MoveProjectsInstancesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(MoveInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}:move",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:move", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MoveProjectsInstancesRequest>;
 
@@ -3993,7 +3939,7 @@ export const TestIamPermissionsProjectsInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -4027,10 +3973,7 @@ export const DeleteProjectsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/instances/{instancesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsInstancesRequest>;
 
@@ -4066,7 +4009,7 @@ export const SetIamPolicyProjectsInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4104,7 +4047,7 @@ export const GetIamPolicyProjectsInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4143,11 +4086,7 @@ export const PatchProjectsInstancesBackupsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Backup).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/backups/{backupsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsInstancesBackupsRequest>;
 
@@ -4181,11 +4120,7 @@ export const CopyProjectsInstancesBackupsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CopyBackupRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/backups:copy",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/backups:copy", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CopyProjectsInstancesBackupsRequest>;
 
@@ -4221,7 +4156,7 @@ export const TestIamPermissionsProjectsInstancesBackupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/backups/{backupsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -4255,10 +4190,7 @@ export const GetProjectsInstancesBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/backups/{backupsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsInstancesBackupsRequest>;
 
@@ -4298,10 +4230,7 @@ export const ListProjectsInstancesBackupsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/backups",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/backups" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsInstancesBackupsRequest>;
 
@@ -4362,11 +4291,7 @@ export const CreateProjectsInstancesBackupsRequest =
     ),
     body: Schema.optional(Backup).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/backups",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/backups", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsInstancesBackupsRequest>;
 
@@ -4402,7 +4327,7 @@ export const SetIamPolicyProjectsInstancesBackupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/backups/{backupsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4440,7 +4365,7 @@ export const GetIamPolicyProjectsInstancesBackupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/backups/{backupsId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4473,10 +4398,7 @@ export const DeleteProjectsInstancesBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/backups/{backupsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsInstancesBackupsRequest>;
 
@@ -4507,10 +4429,7 @@ export const DeleteProjectsInstancesBackupsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/backups/{backupsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsInstancesBackupsOperationsRequest>;
 
@@ -4541,11 +4460,7 @@ export const CancelProjectsInstancesBackupsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/backups/{backupsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsInstancesBackupsOperationsRequest>;
 
@@ -4590,10 +4505,7 @@ export const ListProjectsInstancesBackupsOperationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/backups/{backupsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsInstancesBackupsOperationsRequest>;
 
@@ -4629,10 +4541,7 @@ export const GetProjectsInstancesBackupsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/backups/{backupsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsInstancesBackupsOperationsRequest>;
 
@@ -4672,10 +4581,7 @@ export const ListProjectsInstancesBackupOperationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/backupOperations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/backupOperations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsInstancesBackupOperationsRequest>;
 
@@ -4722,10 +4628,7 @@ export const ListProjectsInstancesInstancePartitionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/instancePartitions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/instancePartitions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsInstancesInstancePartitionsRequest>;
 
@@ -4761,10 +4664,7 @@ export const GetProjectsInstancesInstancePartitionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/instancePartitions/{instancePartitionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsInstancesInstancePartitionsRequest>;
 
@@ -4800,7 +4700,7 @@ export const CreateProjectsInstancesInstancePartitionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/instancePartitions",
+      path: "v1/{parent}/instancePartitions",
       hasBody: true,
     }),
     svc,
@@ -4836,10 +4736,7 @@ export const DeleteProjectsInstancesInstancePartitionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/instancePartitions/{instancePartitionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsInstancesInstancePartitionsRequest>;
 
@@ -4873,11 +4770,7 @@ export const PatchProjectsInstancesInstancePartitionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpdateInstancePartitionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/instancePartitions/{instancePartitionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsInstancesInstancePartitionsRequest>;
 
@@ -4922,10 +4815,7 @@ export const ListProjectsInstancesInstancePartitionsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/instancePartitions/{instancePartitionsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsInstancesInstancePartitionsOperationsRequest>;
 
@@ -4962,10 +4852,7 @@ export const GetProjectsInstancesInstancePartitionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/instancePartitions/{instancePartitionsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsInstancesInstancePartitionsOperationsRequest>;
 
@@ -4998,10 +4885,7 @@ export const DeleteProjectsInstancesInstancePartitionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/instancePartitions/{instancePartitionsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsInstancesInstancePartitionsOperationsRequest>;
 
@@ -5033,11 +4917,7 @@ export const CancelProjectsInstancesInstancePartitionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/instancePartitions/{instancePartitionsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsInstancesInstancePartitionsOperationsRequest>;
 
@@ -5078,10 +4958,7 @@ export const ListProjectsInstancesDatabaseOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databaseOperations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/databaseOperations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsInstancesDatabaseOperationsRequest>;
 
@@ -5120,11 +4997,7 @@ export const CreateProjectsInstancesDatabasesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CreateDatabaseRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/databases", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsInstancesDatabasesRequest>;
 
@@ -5161,10 +5034,7 @@ export const ListProjectsInstancesDatabasesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/databases" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsInstancesDatabasesRequest>;
 
@@ -5199,10 +5069,7 @@ export const GetProjectsInstancesDatabasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsInstancesDatabasesRequest>;
 
@@ -5238,7 +5105,7 @@ export const TestIamPermissionsProjectsInstancesDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -5275,11 +5142,7 @@ export const UpdateDdlProjectsInstancesDatabasesRequest =
     database: Schema.String.pipe(T.HttpPath("database")),
     body: Schema.optional(UpdateDatabaseDdlRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/ddl",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{database}/ddl", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateDdlProjectsInstancesDatabasesRequest>;
 
@@ -5315,7 +5178,7 @@ export const RestoreProjectsInstancesDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases:restore",
+      path: "v1/{parent}/databases:restore",
       hasBody: true,
     }),
     svc,
@@ -5351,11 +5214,7 @@ export const ChangequorumProjectsInstancesDatabasesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ChangeQuorumRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}:changequorum",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:changequorum", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ChangequorumProjectsInstancesDatabasesRequest>;
 
@@ -5395,10 +5254,7 @@ export const GetScansProjectsInstancesDatabasesRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     endTime: Schema.optional(Schema.String).pipe(T.HttpQuery("endTime")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/scans",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/scans" }),
     svc,
   ) as unknown as Schema.Schema<GetScansProjectsInstancesDatabasesRequest>;
 
@@ -5429,10 +5285,7 @@ export const GetDdlProjectsInstancesDatabasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     database: Schema.String.pipe(T.HttpPath("database")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/ddl",
-    }),
+    T.Http({ method: "GET", path: "v1/{database}/ddl" }),
     svc,
   ) as unknown as Schema.Schema<GetDdlProjectsInstancesDatabasesRequest>;
 
@@ -5469,11 +5322,7 @@ export const PatchProjectsInstancesDatabasesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Database).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsInstancesDatabasesRequest>;
 
@@ -5509,7 +5358,7 @@ export const SetIamPolicyProjectsInstancesDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -5547,7 +5396,7 @@ export const GetIamPolicyProjectsInstancesDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -5585,7 +5434,7 @@ export const AddSplitPointsProjectsInstancesDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}:addSplitPoints",
+      path: "v1/{database}:addSplitPoints",
       hasBody: true,
     }),
     svc,
@@ -5619,10 +5468,7 @@ export const DropDatabaseProjectsInstancesDatabasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     database: Schema.String.pipe(T.HttpPath("database")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{database}" }),
     svc,
   ) as unknown as Schema.Schema<DropDatabaseProjectsInstancesDatabasesRequest>;
 
@@ -5658,7 +5504,7 @@ export const TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/databaseRoles/{databaseRolesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -5699,10 +5545,7 @@ export const ListProjectsInstancesDatabasesDatabaseRolesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/databaseRoles",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/databaseRoles" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsInstancesDatabasesDatabaseRolesRequest>;
 
@@ -5752,10 +5595,7 @@ export const ListProjectsInstancesDatabasesOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsInstancesDatabasesOperationsRequest>;
 
@@ -5791,10 +5631,7 @@ export const GetProjectsInstancesDatabasesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsInstancesDatabasesOperationsRequest>;
 
@@ -5825,10 +5662,7 @@ export const DeleteProjectsInstancesDatabasesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsInstancesDatabasesOperationsRequest>;
 
@@ -5859,11 +5693,7 @@ export const CancelProjectsInstancesDatabasesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsInstancesDatabasesOperationsRequest>;
 
@@ -5899,7 +5729,7 @@ export const BeginTransactionProjectsInstancesDatabasesSessionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:beginTransaction",
+      path: "v1/{session}:beginTransaction",
       hasBody: true,
     }),
     svc,
@@ -5939,7 +5769,7 @@ export const PartitionReadProjectsInstancesDatabasesSessionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:partitionRead",
+      path: "v1/{session}:partitionRead",
       hasBody: true,
     }),
     svc,
@@ -5977,11 +5807,7 @@ export const RollbackProjectsInstancesDatabasesSessionsRequest =
     session: Schema.String.pipe(T.HttpPath("session")),
     body: Schema.optional(RollbackRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:rollback",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{session}:rollback", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RollbackProjectsInstancesDatabasesSessionsRequest>;
 
@@ -6015,11 +5841,7 @@ export const BatchWriteProjectsInstancesDatabasesSessionsRequest =
     session: Schema.String.pipe(T.HttpPath("session")),
     body: Schema.optional(BatchWriteRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:batchWrite",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{session}:batchWrite", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<BatchWriteProjectsInstancesDatabasesSessionsRequest>;
 
@@ -6056,7 +5878,7 @@ export const BatchCreateProjectsInstancesDatabasesSessionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions:batchCreate",
+      path: "v1/{database}/sessions:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -6093,11 +5915,7 @@ export const CommitProjectsInstancesDatabasesSessionsRequest =
     session: Schema.String.pipe(T.HttpPath("session")),
     body: Schema.optional(CommitRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:commit",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{session}:commit", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CommitProjectsInstancesDatabasesSessionsRequest>;
 
@@ -6131,11 +5949,7 @@ export const AdaptMessageProjectsInstancesDatabasesSessionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AdaptMessageRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:adaptMessage",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:adaptMessage", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AdaptMessageProjectsInstancesDatabasesSessionsRequest>;
 
@@ -6172,7 +5986,7 @@ export const PartitionQueryProjectsInstancesDatabasesSessionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:partitionQuery",
+      path: "v1/{session}:partitionQuery",
       hasBody: true,
     }),
     svc,
@@ -6212,7 +6026,7 @@ export const ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:executeBatchDml",
+      path: "v1/{session}:executeBatchDml",
       hasBody: true,
     }),
     svc,
@@ -6250,11 +6064,7 @@ export const ExecuteSqlProjectsInstancesDatabasesSessionsRequest =
     session: Schema.String.pipe(T.HttpPath("session")),
     body: Schema.optional(ExecuteSqlRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:executeSql",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{session}:executeSql", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExecuteSqlProjectsInstancesDatabasesSessionsRequest>;
 
@@ -6288,11 +6098,7 @@ export const ReadProjectsInstancesDatabasesSessionsRequest =
     session: Schema.String.pipe(T.HttpPath("session")),
     body: Schema.optional(ReadRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:read",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{session}:read", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ReadProjectsInstancesDatabasesSessionsRequest>;
 
@@ -6326,11 +6132,7 @@ export const CreateProjectsInstancesDatabasesSessionsRequest =
     database: Schema.String.pipe(T.HttpPath("database")),
     body: Schema.optional(CreateSessionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{database}/sessions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsInstancesDatabasesSessionsRequest>;
 
@@ -6366,7 +6168,7 @@ export const StreamingReadProjectsInstancesDatabasesSessionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:streamingRead",
+      path: "v1/{session}:streamingRead",
       hasBody: true,
     }),
     svc,
@@ -6406,7 +6208,7 @@ export const AdapterProjectsInstancesDatabasesSessionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions:adapter",
+      path: "v1/{parent}/sessions:adapter",
       hasBody: true,
     }),
     svc,
@@ -6439,10 +6241,7 @@ export const GetProjectsInstancesDatabasesSessionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsInstancesDatabasesSessionsRequest>;
 
@@ -6482,10 +6281,7 @@ export const ListProjectsInstancesDatabasesSessionsRequest =
     database: Schema.String.pipe(T.HttpPath("database")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions",
-    }),
+    T.Http({ method: "GET", path: "v1/{database}/sessions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsInstancesDatabasesSessionsRequest>;
 
@@ -6521,10 +6317,7 @@ export const DeleteProjectsInstancesDatabasesSessionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsInstancesDatabasesSessionsRequest>;
 
@@ -6560,7 +6353,7 @@ export const ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/sessions/{sessionsId}:executeStreamingSql",
+      path: "v1/{session}:executeStreamingSql",
       hasBody: true,
     }),
     svc,
@@ -6605,7 +6398,7 @@ export const CreateProjectsInstancesDatabasesBackupSchedulesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/backupSchedules",
+      path: "v1/{parent}/backupSchedules",
       hasBody: true,
     }),
     svc,
@@ -6645,7 +6438,7 @@ export const SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/backupSchedules/{backupSchedulesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -6685,7 +6478,7 @@ export const GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/backupSchedules/{backupSchedulesId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -6720,10 +6513,7 @@ export const DeleteProjectsInstancesDatabasesBackupSchedulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/backupSchedules/{backupSchedulesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsInstancesDatabasesBackupSchedulesRequest>;
 
@@ -6755,10 +6545,7 @@ export const GetProjectsInstancesDatabasesBackupSchedulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/backupSchedules/{backupSchedulesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsInstancesDatabasesBackupSchedulesRequest>;
 
@@ -6796,10 +6583,7 @@ export const ListProjectsInstancesDatabasesBackupSchedulesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/backupSchedules",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/backupSchedules" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsInstancesDatabasesBackupSchedulesRequest>;
 
@@ -6840,7 +6624,7 @@ export const TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest 
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/backupSchedules/{backupSchedulesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -6881,11 +6665,7 @@ export const PatchProjectsInstancesDatabasesBackupSchedulesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(BackupSchedule).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/databases/{databasesId}/backupSchedules/{backupSchedulesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsInstancesDatabasesBackupSchedulesRequest>;
 
@@ -6931,10 +6711,7 @@ export const ListProjectsInstancesInstancePartitionOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/instancePartitionOperations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/instancePartitionOperations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsInstancesInstancePartitionOperationsRequest>;
 
@@ -6971,10 +6748,7 @@ export const DeleteProjectsInstancesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsInstancesOperationsRequest>;
 
@@ -7005,11 +6779,7 @@ export const CancelProjectsInstancesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsInstancesOperationsRequest>;
 
@@ -7054,10 +6824,7 @@ export const ListProjectsInstancesOperationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsInstancesOperationsRequest>;
 
@@ -7092,10 +6859,7 @@ export const GetProjectsInstancesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/instances/{instancesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsInstancesOperationsRequest>;
 

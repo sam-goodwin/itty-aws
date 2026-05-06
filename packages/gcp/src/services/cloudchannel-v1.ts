@@ -282,13 +282,13 @@ export interface GoogleCloudChannelV1Entitlement {
   /** Output only. The time at which the entitlement is updated. */
   updateTime?: string;
   /** Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. For Google Workspace, the following Parameters may be accepted as input: - max_units: The maximum assignable units for a flexible offer OR - num_units: The total commitment for commitment-based offers The response may additionally include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. For Google Cloud billing subaccounts, the following Parameter may be accepted as input: - display_name: The display name of the billing subaccount. */
-  parameters?: Array<GoogleCloudChannelV1Parameter>;
+  parameters?: ReadonlyArray<GoogleCloudChannelV1Parameter>;
   /** Output only. Settings for trial offers. */
   trialSettings?: GoogleCloudChannelV1TrialSettings;
   /** Output only. The time at which the entitlement is created. */
   createTime?: string;
   /** Output only. Enumerable of all current suspension reasons for an entitlement. */
-  suspensionReasons?: Array<
+  suspensionReasons?: ReadonlyArray<
     | "SUSPENSION_REASON_UNSPECIFIED"
     | "RESELLER_INITIATED"
     | "TRIAL_ENDED"
@@ -376,13 +376,13 @@ export const GoogleCloudChannelV1RepricingCondition =
 
 export interface GoogleCloudChannelV1CustomerConstraints {
   /** Allowed geographical regions of the customer. */
-  allowedRegions?: Array<string>;
+  allowedRegions?: ReadonlyArray<string>;
   /** Allowed Customer Type. */
-  allowedCustomerTypes?: Array<
+  allowedCustomerTypes?: ReadonlyArray<
     "CUSTOMER_TYPE_UNSPECIFIED" | "DOMAIN" | "TEAM" | (string & {})
   >;
   /** Allowed Promotional Order Type. Present for Promotional offers. */
-  promotionalOrderTypes?: Array<
+  promotionalOrderTypes?: ReadonlyArray<
     | "PROMOTIONAL_TYPE_UNSPECIFIED"
     | "NEW_UPGRADE"
     | "TRANSFER"
@@ -462,7 +462,7 @@ export interface GoogleCloudChannelV1Report {
   /** A human-readable name for this report. */
   displayName?: string;
   /** The list of columns included in the report. This defines the schema of the report results. */
-  columns?: Array<GoogleCloudChannelV1Column>;
+  columns?: ReadonlyArray<GoogleCloudChannelV1Column>;
   /** A description of other aspects of the report, such as the products it supports. */
   description?: string;
 }
@@ -535,7 +535,7 @@ export interface GoogleTypePostalAddress {
   /** Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. For Spain, this is the province and not the autonomous community (for example, "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. For example, in Switzerland, this should be left unpopulated. */
   administrativeArea?: string;
   /** Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information. */
-  recipients?: Array<string>;
+  recipients?: ReadonlyArray<string>;
   /** Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See https://cldr.unicode.org/ and https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland. */
   regionCode?: string;
   /** Optional. Generally refers to the city or town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave `locality` empty and use `address_lines`. */
@@ -543,7 +543,7 @@ export interface GoogleTypePostalAddress {
   /** The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions. */
   revision?: number;
   /** Unstructured address lines describing the lower levels of an address. Because values in `address_lines` do not have type information and may sometimes contain multiple values in a single field (for example, "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country or region of the address. In places where this can vary (for example, Japan), `address_language` is used to make it explicit (for example, "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). In this way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a `region_code` with all remaining information placed in the `address_lines`. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a `region_code` and `address_lines` and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas). */
-  addressLines?: Array<string>;
+  addressLines?: ReadonlyArray<string>;
   /** Optional. The name of the organization at the address. */
   organization?: string;
   /** Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en". */
@@ -622,7 +622,7 @@ export const GoogleCloudChannelV1RepricingAdjustment =
 
 export interface GoogleCloudChannelV1ListPurchasableSkusResponse {
   /** The list of SKUs requested. */
-  purchasableSkus?: Array<GoogleCloudChannelV1PurchasableSku>;
+  purchasableSkus?: ReadonlyArray<GoogleCloudChannelV1PurchasableSku>;
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -699,7 +699,7 @@ export interface GoogleCloudChannelV1EntitlementChange {
     | "TRIAL_STARTED"
     | (string & {});
   /** Extended parameters, such as: purchase_order_number, gcp_details; internal_correlation_id, long_running_operation_id, order_id; etc. */
-  parameters?: Array<GoogleCloudChannelV1Parameter>;
+  parameters?: ReadonlyArray<GoogleCloudChannelV1Parameter>;
   /** Required. Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
   entitlement?: string;
 }
@@ -722,7 +722,7 @@ export const GoogleCloudChannelV1EntitlementChange =
 
 export interface GoogleCloudChannelV1ListEntitlementChangesResponse {
   /** The list of entitlement changes. */
-  entitlementChanges?: Array<GoogleCloudChannelV1EntitlementChange>;
+  entitlementChanges?: ReadonlyArray<GoogleCloudChannelV1EntitlementChange>;
   /** A token to list the next page of results. */
   nextPageToken?: string;
 }
@@ -743,7 +743,7 @@ export interface GoogleCloudChannelV1TransferEntitlementsRequest {
   /** The super admin of the resold customer generates this token to authorize a reseller to access their Cloud Identity and purchase entitlements on their behalf. You can omit this token after authorization. See https://support.google.com/a/answer/7643790 for more details. */
   authToken?: string;
   /** Required. The new entitlements to create or transfer. */
-  entitlements?: Array<GoogleCloudChannelV1Entitlement>;
+  entitlements?: ReadonlyArray<GoogleCloudChannelV1Entitlement>;
 }
 
 export const GoogleCloudChannelV1TransferEntitlementsRequest =
@@ -759,7 +759,7 @@ export const GoogleCloudChannelV1TransferEntitlementsRequest =
 
 export interface GoogleCloudChannelV1TransferEntitlementsResponse {
   /** The transferred entitlements. */
-  entitlements?: Array<GoogleCloudChannelV1Entitlement>;
+  entitlements?: ReadonlyArray<GoogleCloudChannelV1Entitlement>;
 }
 
 export const GoogleCloudChannelV1TransferEntitlementsResponse =
@@ -939,7 +939,7 @@ export interface GoogleCloudChannelV1alpha1Report {
   /** A human-readable name for this report. */
   displayName?: string;
   /** The list of columns included in the report. This defines the schema of the report results. */
-  columns?: Array<GoogleCloudChannelV1alpha1Column>;
+  columns?: ReadonlyArray<GoogleCloudChannelV1alpha1Column>;
   /** Required. The report's resource name. Specifies the account and report used to generate report data. The report_id identifier is a UID (for example, `613bf59q`). Name uses the format: accounts/{account_id}/reports/{report_id} */
   name?: string;
 }
@@ -994,7 +994,7 @@ export interface GoogleCloudChannelV1ParameterDefinition {
   /** Maximum value of the parameter, if applicable. Inclusive. For example, maximum seats when purchasing Google Workspace Business Standard. Applicable to INT64 and DOUBLE parameter types. */
   maxValue?: GoogleCloudChannelV1Value;
   /** If not empty, parameter values must be drawn from this list. For example, [us-west1, us-west2, ...] Applicable to STRING parameter type. */
-  allowedValues?: Array<GoogleCloudChannelV1Value>;
+  allowedValues?: ReadonlyArray<GoogleCloudChannelV1Value>;
   /** If set to true, parameter is optional to purchase this Offer. */
   optional?: boolean;
   /** Name of the parameter. */
@@ -1069,7 +1069,7 @@ export interface GoogleCloudChannelV1Price {
   /** The time period with respect to which base and effective prices are defined. Example: 1 month, 6 months, 1 year, etc. */
   pricePeriod?: GoogleCloudChannelV1Period;
   /** Breakdown of the discount into its components. This will be empty if there is no discount present. */
-  discountComponents?: Array<GoogleCloudChannelV1DiscountComponent>;
+  discountComponents?: ReadonlyArray<GoogleCloudChannelV1DiscountComponent>;
 }
 
 export const GoogleCloudChannelV1Price =
@@ -1115,7 +1115,7 @@ export interface GoogleCloudChannelV1PricePhase {
   /** Defines first period for the phase. */
   lastPeriod?: number;
   /** Price by the resource tiers. */
-  priceTiers?: Array<GoogleCloudChannelV1PriceTier>;
+  priceTiers?: ReadonlyArray<GoogleCloudChannelV1PriceTier>;
 }
 
 export const GoogleCloudChannelV1PricePhase =
@@ -1131,7 +1131,7 @@ export interface GoogleCloudChannelV1PriceByResource {
   /** Price of the Offer. Present if there are no price phases. */
   price?: GoogleCloudChannelV1Price;
   /** Specifies the price by time range. */
-  pricePhases?: Array<GoogleCloudChannelV1PricePhase>;
+  pricePhases?: ReadonlyArray<GoogleCloudChannelV1PricePhase>;
   /** Resource Type. Example: SEAT */
   resourceType?:
     | "RESOURCE_TYPE_UNSPECIFIED"
@@ -1189,7 +1189,7 @@ export interface GoogleCloudChannelV1Offer {
   /** SKU the offer is associated with. */
   sku?: GoogleCloudChannelV1Sku;
   /** Parameters required to use current Offer to purchase. */
-  parameterDefinitions?: Array<GoogleCloudChannelV1ParameterDefinition>;
+  parameterDefinitions?: ReadonlyArray<GoogleCloudChannelV1ParameterDefinition>;
   /** Start of the Offer validity time. */
   startTime?: string;
   /** Output only. End of the Offer validity time. */
@@ -1199,7 +1199,7 @@ export interface GoogleCloudChannelV1Offer {
   /** Marketing information for the Offer. */
   marketingInfo?: GoogleCloudChannelV1MarketingInfo;
   /** Price for each monetizable resource type. */
-  priceByResources?: Array<GoogleCloudChannelV1PriceByResource>;
+  priceByResources?: ReadonlyArray<GoogleCloudChannelV1PriceByResource>;
   /** Describes the payment plan for the Offer. */
   plan?: GoogleCloudChannelV1Plan;
   /** Constraints on transacting the Offer. */
@@ -1241,7 +1241,7 @@ export const GoogleCloudChannelV1TransferableOffer =
 
 export interface GoogleCloudChannelV1ListTransferableOffersResponse {
   /** Information about Offers for a customer that can be used for transfer. */
-  transferableOffers?: Array<GoogleCloudChannelV1TransferableOffer>;
+  transferableOffers?: ReadonlyArray<GoogleCloudChannelV1TransferableOffer>;
   /** A token to retrieve the next page of results. Pass to ListTransferableOffersRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -1269,7 +1269,7 @@ export interface GoogleCloudChannelV1RepricingConfig {
   /** Required. Information about the adjustment. */
   adjustment?: GoogleCloudChannelV1RepricingAdjustment;
   /** The conditional overrides to apply for this configuration. If you list multiple overrides, only the first valid override is used. If you don't list any overrides, the API uses the normal adjustment and rebilling basis. */
-  conditionalOverrides?: Array<GoogleCloudChannelV1ConditionalOverride>;
+  conditionalOverrides?: ReadonlyArray<GoogleCloudChannelV1ConditionalOverride>;
   /** Required. Applies the repricing configuration at the entitlement level. Note: If a ChannelPartnerRepricingConfig using RepricingConfig.EntitlementGranularity becomes effective, then no existing or future RepricingConfig.ChannelPartnerGranularity will apply to the RepricingConfig.EntitlementGranularity.entitlement. This is the recommended value for both CustomerRepricingConfig and ChannelPartnerRepricingConfig. */
   entitlementGranularity?: GoogleCloudChannelV1RepricingConfigEntitlementGranularity;
   /** Required. The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries. */
@@ -1365,7 +1365,7 @@ export const GoogleCloudChannelV1UnregisterSubscriberResponse =
 
 export interface GoogleCloudChannelV1ListSubscribersResponse {
   /** List of service accounts which have subscriber access to the topic. */
-  serviceAccounts?: Array<string>;
+  serviceAccounts?: ReadonlyArray<string>;
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Name of the topic registered with the reseller. */
@@ -1486,7 +1486,7 @@ export interface GoogleCloudChannelV1ListChannelPartnerLinksResponse {
   /** A token to retrieve the next page of results. Pass to ListChannelPartnerLinksRequest.page_token to obtain that page. */
   nextPageToken?: string;
   /** The Channel partner links for a reseller. */
-  channelPartnerLinks?: Array<GoogleCloudChannelV1ChannelPartnerLink>;
+  channelPartnerLinks?: ReadonlyArray<GoogleCloudChannelV1ChannelPartnerLink>;
 }
 
 export const GoogleCloudChannelV1ListChannelPartnerLinksResponse =
@@ -1670,7 +1670,7 @@ export interface GoogleCloudChannelV1ListCustomerRepricingConfigsResponse {
   /** A token to retrieve the next page of results. Pass to ListCustomerRepricingConfigsRequest.page_token to obtain that page. */
   nextPageToken?: string;
   /** The repricing configs for this channel partner. */
-  customerRepricingConfigs?: Array<GoogleCloudChannelV1CustomerRepricingConfig>;
+  customerRepricingConfigs?: ReadonlyArray<GoogleCloudChannelV1CustomerRepricingConfig>;
 }
 
 export const GoogleCloudChannelV1ListCustomerRepricingConfigsResponse =
@@ -1724,7 +1724,7 @@ export const GoogleCloudChannelV1alpha1OpportunityEvent =
 
 export interface GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse {
   /** The Cloud Identity accounts associated with the domain. */
-  cloudIdentityAccounts?: Array<GoogleCloudChannelV1CloudIdentityCustomerAccount>;
+  cloudIdentityAccounts?: ReadonlyArray<GoogleCloudChannelV1CloudIdentityCustomerAccount>;
 }
 
 export const GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse =
@@ -1742,7 +1742,7 @@ export interface GoogleCloudChannelV1ChangeOfferRequest {
   /** Optional. Price reference ID for the offer. Only for offers that require additional price information. Used to guarantee that the pricing is consistent between quoting the offer and placing the order. */
   priceReferenceId?: string;
   /** Optional. Parameters needed to purchase the Offer. To view the available Parameters refer to the Offer.parameter_definitions from the desired offer. */
-  parameters?: Array<GoogleCloudChannelV1Parameter>;
+  parameters?: ReadonlyArray<GoogleCloudChannelV1Parameter>;
   /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
   requestId?: string;
   /** Optional. The billing account resource name that is used to pay for this entitlement when setting up billing on a trial subscription. This field is only relevant for multi-currency accounts. It should be left empty for single currency accounts. */
@@ -1811,7 +1811,7 @@ export const GoogleCloudChannelV1CreateEntitlementRequest =
 
 export interface GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse {
   /** The repricing configs for this channel partner. */
-  channelPartnerRepricingConfigs?: Array<GoogleCloudChannelV1ChannelPartnerRepricingConfig>;
+  channelPartnerRepricingConfigs?: ReadonlyArray<GoogleCloudChannelV1ChannelPartnerRepricingConfig>;
   /** A token to retrieve the next page of results. Pass to ListChannelPartnerRepricingConfigsRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -2161,7 +2161,7 @@ export interface GoogleCloudChannelV1alpha1Entitlement {
   /** Output only. The time at which the entitlement is created. */
   createTime?: string;
   /** Output only. Enumerable of all current suspension reasons for an entitlement. */
-  suspensionReasons?: Array<
+  suspensionReasons?: ReadonlyArray<
     | "SUSPENSION_REASON_UNSPECIFIED"
     | "RESELLER_INITIATED"
     | "TRIAL_ENDED"
@@ -2175,7 +2175,7 @@ export interface GoogleCloudChannelV1alpha1Entitlement {
   /** Maximum number of units for a non commitment-based Offer, such as Flexible, Trial or Free entitlements. For commitment-based entitlements, this is a read-only field, which only the internal support team can update. Deprecated: Use `parameters` instead. */
   maxUnits?: number;
   /** Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. For Google Workspace, the following Parameters may be accepted as input: - max_units: The maximum assignable units for a flexible offer OR - num_units: The total commitment for commitment-based offers The response may additionally include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. For Google Cloud billing subaccounts, the following Parameter may be accepted as input: - display_name: The display name of the billing subaccount. */
-  parameters?: Array<GoogleCloudChannelV1alpha1Parameter>;
+  parameters?: ReadonlyArray<GoogleCloudChannelV1alpha1Parameter>;
   /** Number of units for a commitment-based Offer. For example, for seat-based Offers, this would be the number of seats; for license-based Offers, this would be the number of licenses. Required for creating commitment-based Offers. Deprecated: Use `parameters` instead. */
   numUnits?: number;
   /** Output only. Settings for trial offers. */
@@ -2237,7 +2237,7 @@ export const GoogleCloudChannelV1alpha1Entitlement =
 
 export interface GoogleCloudChannelV1alpha1TransferEntitlementsResponse {
   /** The transferred entitlements. */
-  entitlements?: Array<GoogleCloudChannelV1alpha1Entitlement>;
+  entitlements?: ReadonlyArray<GoogleCloudChannelV1alpha1Entitlement>;
 }
 
 export const GoogleCloudChannelV1alpha1TransferEntitlementsResponse =
@@ -2264,7 +2264,7 @@ export const GoogleCloudChannelV1SkuGroup =
 
 export interface GoogleCloudChannelV1ListSkuGroupsResponse {
   /** The list of SKU groups requested. */
-  skuGroups?: Array<GoogleCloudChannelV1SkuGroup>;
+  skuGroups?: ReadonlyArray<GoogleCloudChannelV1SkuGroup>;
   /** A token to retrieve the next page of results. Pass to ListSkuGroupsRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -2279,7 +2279,7 @@ export interface GoogleCloudChannelV1Row {
   /** The key for the partition this row belongs to. This field is empty if the report is not partitioned. */
   partitionKey?: string;
   /** The list of values in the row. */
-  values?: Array<GoogleCloudChannelV1ReportValue>;
+  values?: ReadonlyArray<GoogleCloudChannelV1ReportValue>;
 }
 
 export const GoogleCloudChannelV1Row =
@@ -2322,7 +2322,7 @@ export const GoogleCloudChannelV1RunReportJobResponse =
 
 export interface GoogleCloudChannelV1ListProductsResponse {
   /** List of Products requested. */
-  products?: Array<GoogleCloudChannelV1Product>;
+  products?: ReadonlyArray<GoogleCloudChannelV1Product>;
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -2335,7 +2335,7 @@ export const GoogleCloudChannelV1ListProductsResponse =
 
 export interface GoogleCloudChannelV1ListSkusResponse {
   /** The list of SKUs requested. */
-  skus?: Array<GoogleCloudChannelV1Sku>;
+  skus?: ReadonlyArray<GoogleCloudChannelV1Sku>;
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -2417,7 +2417,7 @@ export const GoogleCloudChannelV1alpha1SubscriberEvent =
 
 export interface GoogleCloudChannelV1ListOffersResponse {
   /** The list of Offers requested. The pricing information for each Offer only includes the base price. Effective prices and discounts aren't populated. */
-  offers?: Array<GoogleCloudChannelV1Offer>;
+  offers?: ReadonlyArray<GoogleCloudChannelV1Offer>;
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -2446,7 +2446,7 @@ export const GoogleCloudChannelV1RegisterSubscriberRequest =
 
 export interface GoogleCloudChannelV1TransferEntitlementsToGoogleRequest {
   /** Required. The entitlements to transfer to Google. */
-  entitlements?: Array<GoogleCloudChannelV1Entitlement>;
+  entitlements?: ReadonlyArray<GoogleCloudChannelV1Entitlement>;
   /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
   requestId?: string;
 }
@@ -2505,7 +2505,7 @@ export const GoogleCloudChannelV1BillableSku =
 
 export interface GoogleCloudChannelV1ListSkuGroupBillableSkusResponse {
   /** The list of billable SKUs in the requested SKU group. */
-  billableSkus?: Array<GoogleCloudChannelV1BillableSku>;
+  billableSkus?: ReadonlyArray<GoogleCloudChannelV1BillableSku>;
   /** A token to retrieve the next page of results. Pass to ListSkuGroupBillableSkusRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -2522,7 +2522,7 @@ export const GoogleCloudChannelV1ListSkuGroupBillableSkusResponse =
 
 export interface GoogleCloudChannelV1ListPurchasableOffersResponse {
   /** The list of Offers requested. */
-  purchasableOffers?: Array<GoogleCloudChannelV1PurchasableOffer>;
+  purchasableOffers?: ReadonlyArray<GoogleCloudChannelV1PurchasableOffer>;
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -2539,7 +2539,7 @@ export const GoogleCloudChannelV1ListPurchasableOffersResponse =
 
 export interface GoogleCloudChannelV1ListReportsResponse {
   /** The reports available to the partner. */
-  reports?: Array<GoogleCloudChannelV1Report>;
+  reports?: ReadonlyArray<GoogleCloudChannelV1Report>;
   /** Pass this token to FetchReportResultsRequest.page_token to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -2556,7 +2556,7 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2591,7 +2591,7 @@ export const GoogleLongrunningOperation =
 
 export interface GoogleCloudChannelV1ListEntitlementsResponse {
   /** The reseller customer's entitlements. */
-  entitlements?: Array<GoogleCloudChannelV1Entitlement>;
+  entitlements?: ReadonlyArray<GoogleCloudChannelV1Entitlement>;
   /** A token to list the next page of results. Pass to ListEntitlementsRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -2634,9 +2634,9 @@ export const GoogleCloudChannelV1BillingAccountPurchaseInfo =
 
 export interface GoogleCloudChannelV1SkuPurchaseGroup {
   /** Resource names of the SKUs included in this group. Format: products/{product_id}/skus/{sku_id}. */
-  skus?: Array<string>;
+  skus?: ReadonlyArray<string>;
   /** List of billing accounts that are eligible to purhcase these SKUs. */
-  billingAccountPurchaseInfos?: Array<GoogleCloudChannelV1BillingAccountPurchaseInfo>;
+  billingAccountPurchaseInfos?: ReadonlyArray<GoogleCloudChannelV1BillingAccountPurchaseInfo>;
 }
 
 export const GoogleCloudChannelV1SkuPurchaseGroup =
@@ -2651,9 +2651,9 @@ export interface GoogleLongrunningListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
 }
 
 export const GoogleLongrunningListOperationsResponse =
@@ -2665,7 +2665,7 @@ export const GoogleLongrunningListOperationsResponse =
 
 export interface GoogleCloudChannelV1ChangeParametersRequest {
   /** Required. Entitlement parameters to update. You can only change editable parameters. To view the available Parameters for a request, refer to the Offer.parameter_definitions from the desired offer. */
-  parameters?: Array<GoogleCloudChannelV1Parameter>;
+  parameters?: ReadonlyArray<GoogleCloudChannelV1Parameter>;
   /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
   requestId?: string;
   /** Optional. Purchase order ID provided by the reseller. */
@@ -2708,7 +2708,7 @@ export const GoogleCloudChannelV1ListTransferableSkusRequest =
 
 export interface GoogleCloudChannelV1ListTransferableSkusResponse {
   /** Information about existing SKUs for a customer that needs a transfer. */
-  transferableSkus?: Array<GoogleCloudChannelV1TransferableSku>;
+  transferableSkus?: ReadonlyArray<GoogleCloudChannelV1TransferableSku>;
   /** A token to retrieve the next page of results. Pass to ListTransferableSkusRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -2733,7 +2733,7 @@ export interface GoogleCloudChannelV1FetchReportResultsRequest {
   /** Optional. Requested page size of the report. The server may return fewer results than requested. If you don't specify a page size, the server uses a sensible default (may change over time). The maximum value is 30,000; the server will change larger values to 30,000. */
   pageSize?: number;
   /** Optional. List of keys specifying which report partitions to return. If empty, returns all partitions. */
-  partitionKeys?: Array<string>;
+  partitionKeys?: ReadonlyArray<string>;
   /** Optional. A token that specifies a page of results beyond the first page. Obtained through FetchReportResultsResponse.next_page_token of the previous CloudChannelReportsService.FetchReportResults call. */
   pageToken?: string;
 }
@@ -2758,7 +2758,7 @@ export interface GoogleCloudChannelV1FetchReportResultsResponse {
   /** The metadata for the report results (display name, columns, row count, and date ranges). */
   reportMetadata?: GoogleCloudChannelV1ReportResultsMetadata;
   /** The report's lists of values. Each row follows the settings and ordering of the columns from `report_metadata`. */
-  rows?: Array<GoogleCloudChannelV1Row>;
+  rows?: ReadonlyArray<GoogleCloudChannelV1Row>;
 }
 
 export const GoogleCloudChannelV1FetchReportResultsResponse =
@@ -2770,7 +2770,7 @@ export const GoogleCloudChannelV1FetchReportResultsResponse =
 
 export interface GoogleCloudChannelV1QueryEligibleBillingAccountsResponse {
   /** List of SKU purchase groups where each group represents a set of SKUs that must be purchased using the same billing account. Each SKU from [QueryEligibleBillingAccountsRequest.skus] will appear in exactly one SKU group. */
-  skuPurchaseGroups?: Array<GoogleCloudChannelV1SkuPurchaseGroup>;
+  skuPurchaseGroups?: ReadonlyArray<GoogleCloudChannelV1SkuPurchaseGroup>;
 }
 
 export const GoogleCloudChannelV1QueryEligibleBillingAccountsResponse =
@@ -2784,7 +2784,7 @@ export const GoogleCloudChannelV1QueryEligibleBillingAccountsResponse =
 
 export interface GoogleCloudChannelV1ListCustomersResponse {
   /** The customers belonging to a reseller or distributor. */
-  customers?: Array<GoogleCloudChannelV1Customer>;
+  customers?: ReadonlyArray<GoogleCloudChannelV1Customer>;
   /** A token to retrieve the next page of results. Pass to ListCustomersRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -2821,7 +2821,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/operations" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<ListOperationsRequest>;
 
@@ -2856,7 +2856,7 @@ export const DeleteOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/operations/{operationsId}" }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOperationsRequest>;
 
@@ -2886,7 +2886,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/operations/{operationsId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -2922,11 +2922,7 @@ export const CancelOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelOperationsRequest>;
 
@@ -2964,7 +2960,7 @@ export const CheckCloudIdentityAccountsExistAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accounts/{accountsId}:checkCloudIdentityAccountsExist",
+      path: "v1/{parent}:checkCloudIdentityAccountsExist",
       hasBody: true,
     }),
     svc,
@@ -3003,11 +2999,7 @@ export const UnregisterAccountsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/accounts/{accountsId}:unregister",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{account}:unregister", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UnregisterAccountsRequest>;
 
@@ -3048,7 +3040,7 @@ export const ListSubscribersAccountsRequest =
     integrator: Schema.optional(Schema.String).pipe(T.HttpQuery("integrator")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/accounts/{accountsId}:listSubscribers" }),
+    T.Http({ method: "GET", path: "v1/{account}:listSubscribers" }),
     svc,
   ) as unknown as Schema.Schema<ListSubscribersAccountsRequest>;
 
@@ -3089,11 +3081,7 @@ export const RegisterAccountsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/accounts/{accountsId}:register",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{account}:register", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RegisterAccountsRequest>;
 
@@ -3132,7 +3120,7 @@ export const ListTransferableOffersAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accounts/{accountsId}:listTransferableOffers",
+      path: "v1/{parent}:listTransferableOffers",
       hasBody: true,
     }),
     svc,
@@ -3173,7 +3161,7 @@ export const ListTransferableSkusAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accounts/{accountsId}:listTransferableSkus",
+      path: "v1/{parent}:listTransferableSkus",
       hasBody: true,
     }),
     svc,
@@ -3214,7 +3202,7 @@ export const FetchReportResultsAccountsReportJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accounts/{accountsId}/reportJobs/{reportJobsId}:fetchReportResults",
+      path: "v1/{reportJob}:fetchReportResults",
       hasBody: true,
     }),
     svc,
@@ -3248,10 +3236,7 @@ export const DeleteAccountsCustomersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/accounts/{accountsId}/customers/{customersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsCustomersRequest>;
 
@@ -3288,11 +3273,7 @@ export const PatchAccountsCustomersRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudChannelV1Customer).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/accounts/{accountsId}/customers/{customersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsCustomersRequest>;
 
@@ -3330,7 +3311,7 @@ export const ImportAccountsCustomersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accounts/{accountsId}/customers:import",
+      path: "v1/{parent}/customers:import",
       hasBody: true,
     }),
     svc,
@@ -3370,7 +3351,7 @@ export const TransferEntitlementsToGoogleAccountsCustomersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accounts/{accountsId}/customers/{customersId}:transferEntitlementsToGoogle",
+      path: "v1/{parent}:transferEntitlementsToGoogle",
       hasBody: true,
     }),
     svc,
@@ -3407,11 +3388,7 @@ export const CreateAccountsCustomersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudChannelV1Customer).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/accounts/{accountsId}/customers",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/customers", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateAccountsCustomersRequest>;
 
@@ -3449,7 +3426,7 @@ export const ProvisionCloudIdentityAccountsCustomersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accounts/{accountsId}/customers/{customersId}:provisionCloudIdentity",
+      path: "v1/{customer}:provisionCloudIdentity",
       hasBody: true,
     }),
     svc,
@@ -3490,7 +3467,7 @@ export const QueryEligibleBillingAccountsAccountsCustomersRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/accounts/{accountsId}/customers/{customersId}:queryEligibleBillingAccounts",
+      path: "v1/{customer}:queryEligibleBillingAccounts",
     }),
     svc,
   ) as unknown as Schema.Schema<QueryEligibleBillingAccountsAccountsCustomersRequest>;
@@ -3530,7 +3507,7 @@ export const TransferEntitlementsAccountsCustomersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accounts/{accountsId}/customers/{customersId}:transferEntitlements",
+      path: "v1/{parent}:transferEntitlements",
       hasBody: true,
     }),
     svc,
@@ -3600,10 +3577,7 @@ export const ListPurchasableOffersAccountsCustomersRequest =
       T.HttpQuery("changeOfferPurchase.newSku"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accounts/{accountsId}/customers/{customersId}:listPurchasableOffers",
-    }),
+    T.Http({ method: "GET", path: "v1/{customer}:listPurchasableOffers" }),
     svc,
   ) as unknown as Schema.Schema<ListPurchasableOffersAccountsCustomersRequest>;
 
@@ -3648,7 +3622,7 @@ export const ListAccountsCustomersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/accounts/{accountsId}/customers" }),
+    T.Http({ method: "GET", path: "v1/{parent}/customers" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsCustomersRequest>;
 
@@ -3714,10 +3688,7 @@ export const ListPurchasableSkusAccountsCustomersRequest =
       T.HttpQuery("changeOfferPurchase.changeType"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accounts/{accountsId}/customers/{customersId}:listPurchasableSkus",
-    }),
+    T.Http({ method: "GET", path: "v1/{customer}:listPurchasableSkus" }),
     svc,
   ) as unknown as Schema.Schema<ListPurchasableSkusAccountsCustomersRequest>;
 
@@ -3753,10 +3724,7 @@ export const GetAccountsCustomersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accounts/{accountsId}/customers/{customersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsCustomersRequest>;
 
@@ -3794,7 +3762,7 @@ export const CreateAccountsCustomersCustomerRepricingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accounts/{accountsId}/customers/{customersId}/customerRepricingConfigs",
+      path: "v1/{parent}/customerRepricingConfigs",
       hasBody: true,
     }),
     svc,
@@ -3829,10 +3797,7 @@ export const DeleteAccountsCustomersCustomerRepricingConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/accounts/{accountsId}/customers/{customersId}/customerRepricingConfigs/{customerRepricingConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsCustomersCustomerRepricingConfigsRequest>;
 
@@ -3870,11 +3835,7 @@ export const PatchAccountsCustomersCustomerRepricingConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/accounts/{accountsId}/customers/{customersId}/customerRepricingConfigs/{customerRepricingConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsCustomersCustomerRepricingConfigsRequest>;
 
@@ -3906,10 +3867,7 @@ export const GetAccountsCustomersCustomerRepricingConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accounts/{accountsId}/customers/{customersId}/customerRepricingConfigs/{customerRepricingConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsCustomersCustomerRepricingConfigsRequest>;
 
@@ -3950,10 +3908,7 @@ export const ListAccountsCustomersCustomerRepricingConfigsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accounts/{accountsId}/customers/{customersId}/customerRepricingConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/customerRepricingConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsCustomersCustomerRepricingConfigsRequest>;
 
@@ -3994,11 +3949,7 @@ export const SuspendAccountsCustomersEntitlementsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/accounts/{accountsId}/customers/{customersId}/entitlements/{entitlementsId}:suspend",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:suspend", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SuspendAccountsCustomersEntitlementsRequest>;
 
@@ -4037,7 +3988,7 @@ export const ChangeRenewalSettingsAccountsCustomersEntitlementsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accounts/{accountsId}/customers/{customersId}/entitlements/{entitlementsId}:changeRenewalSettings",
+      path: "v1/{name}:changeRenewalSettings",
       hasBody: true,
     }),
     svc,
@@ -4072,10 +4023,7 @@ export const LookupOfferAccountsCustomersEntitlementsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     entitlement: Schema.String.pipe(T.HttpPath("entitlement")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accounts/{accountsId}/customers/{customersId}/entitlements/{entitlementsId}:lookupOffer",
-    }),
+    T.Http({ method: "GET", path: "v1/{entitlement}:lookupOffer" }),
     svc,
   ) as unknown as Schema.Schema<LookupOfferAccountsCustomersEntitlementsRequest>;
 
@@ -4112,11 +4060,7 @@ export const ChangeOfferAccountsCustomersEntitlementsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/accounts/{accountsId}/customers/{customersId}/entitlements/{entitlementsId}:changeOffer",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:changeOffer", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ChangeOfferAccountsCustomersEntitlementsRequest>;
 
@@ -4153,11 +4097,7 @@ export const CancelAccountsCustomersEntitlementsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/accounts/{accountsId}/customers/{customersId}/entitlements/{entitlementsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelAccountsCustomersEntitlementsRequest>;
 
@@ -4194,11 +4134,7 @@ export const ActivateAccountsCustomersEntitlementsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/accounts/{accountsId}/customers/{customersId}/entitlements/{entitlementsId}:activate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:activate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ActivateAccountsCustomersEntitlementsRequest>;
 
@@ -4230,10 +4166,7 @@ export const GetAccountsCustomersEntitlementsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accounts/{accountsId}/customers/{customersId}/entitlements/{entitlementsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsCustomersEntitlementsRequest>;
 
@@ -4274,10 +4207,7 @@ export const ListEntitlementChangesAccountsCustomersEntitlementsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accounts/{accountsId}/customers/{customersId}/entitlements/{entitlementsId}:listEntitlementChanges",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}:listEntitlementChanges" }),
     svc,
   ) as unknown as Schema.Schema<ListEntitlementChangesAccountsCustomersEntitlementsRequest>;
 
@@ -4320,10 +4250,7 @@ export const ListAccountsCustomersEntitlementsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accounts/{accountsId}/customers/{customersId}/entitlements",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/entitlements" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsCustomersEntitlementsRequest>;
 
@@ -4366,7 +4293,7 @@ export const ChangeParametersAccountsCustomersEntitlementsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accounts/{accountsId}/customers/{customersId}/entitlements/{entitlementsId}:changeParameters",
+      path: "v1/{name}:changeParameters",
       hasBody: true,
     }),
     svc,
@@ -4405,11 +4332,7 @@ export const CreateAccountsCustomersEntitlementsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/accounts/{accountsId}/customers/{customersId}/entitlements",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/entitlements", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateAccountsCustomersEntitlementsRequest>;
 
@@ -4448,7 +4371,7 @@ export const StartPaidServiceAccountsCustomersEntitlementsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accounts/{accountsId}/customers/{customersId}/entitlements/{entitlementsId}:startPaidService",
+      path: "v1/{name}:startPaidService",
       hasBody: true,
     }),
     svc,
@@ -4487,11 +4410,7 @@ export const RunAccountsReportsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/accounts/{accountsId}/reports/{reportsId}:run",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:run", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RunAccountsReportsRequest>;
 
@@ -4533,7 +4452,7 @@ export const ListAccountsReportsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/accounts/{accountsId}/reports" }),
+    T.Http({ method: "GET", path: "v1/{parent}/reports" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsReportsRequest>;
 
@@ -4588,7 +4507,7 @@ export const ListAccountsOffersRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/accounts/{accountsId}/offers" }),
+    T.Http({ method: "GET", path: "v1/{parent}/offers" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsOffersRequest>;
 
@@ -4632,10 +4551,7 @@ export const ListAccountsChannelPartnerLinksRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accounts/{accountsId}/channelPartnerLinks",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/channelPartnerLinks" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsChannelPartnerLinksRequest>;
 
@@ -4678,7 +4594,7 @@ export const CreateAccountsChannelPartnerLinksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accounts/{accountsId}/channelPartnerLinks",
+      path: "v1/{parent}/channelPartnerLinks",
       hasBody: true,
     }),
     svc,
@@ -4715,10 +4631,7 @@ export const GetAccountsChannelPartnerLinksRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accounts/{accountsId}/channelPartnerLinks/{channelPartnerLinksId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsChannelPartnerLinksRequest>;
 
@@ -4755,11 +4668,7 @@ export const PatchAccountsChannelPartnerLinksRequest =
       GoogleCloudChannelV1UpdateChannelPartnerLinkRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/accounts/{accountsId}/channelPartnerLinks/{channelPartnerLinksId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsChannelPartnerLinksRequest>;
 
@@ -4797,11 +4706,7 @@ export const PatchAccountsChannelPartnerLinksCustomersRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudChannelV1Customer).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/accounts/{accountsId}/channelPartnerLinks/{channelPartnerLinksId}/customers/{customersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsChannelPartnerLinksCustomersRequest>;
 
@@ -4840,7 +4745,7 @@ export const ImportAccountsChannelPartnerLinksCustomersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accounts/{accountsId}/channelPartnerLinks/{channelPartnerLinksId}/customers:import",
+      path: "v1/{parent}/customers:import",
       hasBody: true,
     }),
     svc,
@@ -4883,10 +4788,7 @@ export const ListAccountsChannelPartnerLinksCustomersRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accounts/{accountsId}/channelPartnerLinks/{channelPartnerLinksId}/customers",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/customers" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsChannelPartnerLinksCustomersRequest>;
 
@@ -4922,10 +4824,7 @@ export const GetAccountsChannelPartnerLinksCustomersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accounts/{accountsId}/channelPartnerLinks/{channelPartnerLinksId}/customers/{customersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsChannelPartnerLinksCustomersRequest>;
 
@@ -4960,11 +4859,7 @@ export const CreateAccountsChannelPartnerLinksCustomersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudChannelV1Customer).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/accounts/{accountsId}/channelPartnerLinks/{channelPartnerLinksId}/customers",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/customers", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateAccountsChannelPartnerLinksCustomersRequest>;
 
@@ -4996,10 +4891,7 @@ export const DeleteAccountsChannelPartnerLinksCustomersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/accounts/{accountsId}/channelPartnerLinks/{channelPartnerLinksId}/customers/{customersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsChannelPartnerLinksCustomersRequest>;
 
@@ -5038,7 +4930,7 @@ export const CreateAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequ
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accounts/{accountsId}/channelPartnerLinks/{channelPartnerLinksId}/channelPartnerRepricingConfigs",
+      path: "v1/{parent}/channelPartnerRepricingConfigs",
       hasBody: true,
     }),
     svc,
@@ -5074,10 +4966,7 @@ export const DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequ
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/accounts/{accountsId}/channelPartnerLinks/{channelPartnerLinksId}/channelPartnerRepricingConfigs/{channelPartnerRepricingConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest>;
 
@@ -5111,10 +5000,7 @@ export const GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accounts/{accountsId}/channelPartnerLinks/{channelPartnerLinksId}/channelPartnerRepricingConfigs/{channelPartnerRepricingConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest>;
 
@@ -5158,7 +5044,7 @@ export const ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsReques
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/accounts/{accountsId}/channelPartnerLinks/{channelPartnerLinksId}/channelPartnerRepricingConfigs",
+      path: "v1/{parent}/channelPartnerRepricingConfigs",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest>;
@@ -5201,11 +5087,7 @@ export const PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsReque
       GoogleCloudChannelV1ChannelPartnerRepricingConfig,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/accounts/{accountsId}/channelPartnerLinks/{channelPartnerLinksId}/channelPartnerRepricingConfigs/{channelPartnerRepricingConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsChannelPartnerLinksChannelPartnerRepricingConfigsRequest>;
 
@@ -5245,7 +5127,7 @@ export const ListAccountsSkuGroupsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/accounts/{accountsId}/skuGroups" }),
+    T.Http({ method: "GET", path: "v1/{parent}/skuGroups" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsSkuGroupsRequest>;
 
@@ -5287,10 +5169,7 @@ export const ListAccountsSkuGroupsBillableSkusRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accounts/{accountsId}/skuGroups/{skuGroupsId}/billableSkus",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/billableSkus" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsSkuGroupsBillableSkusRequest>;
 
@@ -5385,7 +5264,7 @@ export const ListProductsSkusRequest =
       T.HttpQuery("languageCode"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/products/{productsId}/skus" }),
+    T.Http({ method: "GET", path: "v1/{parent}/skus" }),
     svc,
   ) as unknown as Schema.Schema<ListProductsSkusRequest>;
 
@@ -5427,7 +5306,7 @@ export const RegisterSubscriberIntegratorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/integrators/{integratorsId}:registerSubscriber",
+      path: "v1/{integrator}:registerSubscriber",
       hasBody: true,
     }),
     svc,
@@ -5470,10 +5349,7 @@ export const ListSubscribersIntegratorsRequest =
     account: Schema.optional(Schema.String).pipe(T.HttpQuery("account")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/integrators/{integratorsId}:listSubscribers",
-    }),
+    T.Http({ method: "GET", path: "v1/{integrator}:listSubscribers" }),
     svc,
   ) as unknown as Schema.Schema<ListSubscribersIntegratorsRequest>;
 
@@ -5516,7 +5392,7 @@ export const UnregisterSubscriberIntegratorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/integrators/{integratorsId}:unregisterSubscriber",
+      path: "v1/{integrator}:unregisterSubscriber",
       hasBody: true,
     }),
     svc,

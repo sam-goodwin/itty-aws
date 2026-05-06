@@ -161,7 +161,7 @@ export interface LayerDetails {
   /** The layer build command that was used to build the layer. This may not be found in all layers depending on how the container image is built. */
   command?: string;
   /** The base images the layer is found within. */
-  baseImages?: Array<BaseImage>;
+  baseImages?: ReadonlyArray<BaseImage>;
 }
 
 export const LayerDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -214,7 +214,7 @@ export interface PackageIssue {
     | "CRITICAL"
     | (string & {});
   /** The location at which this package was found. */
-  fileLocation?: Array<GrafeasV1FileLocation>;
+  fileLocation?: ReadonlyArray<GrafeasV1FileLocation>;
 }
 
 export const PackageIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -289,7 +289,7 @@ export interface VexAssessment {
   /** The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc. */
   vulnerabilityId?: string;
   /** Holds a list of references associated with this vulnerability item and assessment. */
-  relatedUris?: Array<RelatedUrl>;
+  relatedUris?: ReadonlyArray<RelatedUrl>;
   /** The VulnerabilityAssessment note from which this VexAssessment was generated. This will be of the form: `projects/[PROJECT_ID]/notes/[NOTE_ID]`. */
   noteName?: string;
   /** Provides the state of this Vulnerability assessment. */
@@ -301,9 +301,9 @@ export interface VexAssessment {
     | "UNDER_INVESTIGATION"
     | (string & {});
   /** Contains information about the impact of this vulnerability, this will change with time. */
-  impacts?: Array<string>;
+  impacts?: ReadonlyArray<string>;
   /** Specifies details on how to handle (and presumably, fix) a vulnerability. */
-  remediations?: Array<Remediation>;
+  remediations?: ReadonlyArray<Remediation>;
   /** Justification provides the justification when the state of the assessment if NOT_AFFECTED. */
   justification?: Justification;
 }
@@ -371,13 +371,13 @@ export interface VulnerabilityOccurrence {
   /** The cvss v3 score for the vulnerability. */
   cvssv3?: CVSS;
   /** Required. The set of affected locations and their fixes (if available) within the associated resource. */
-  packageIssue?: Array<PackageIssue>;
+  packageIssue?: ReadonlyArray<PackageIssue>;
   /** Output only. A one sentence description of this vulnerability. */
   shortDescription?: string;
   /** Output only. A detailed description of this vulnerability. */
   longDescription?: string;
   /** Output only. URLs related to this vulnerability. */
-  relatedUrls?: Array<RelatedUrl>;
+  relatedUrls?: ReadonlyArray<RelatedUrl>;
   /** The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues. */
   effectiveSeverity?:
     | "SEVERITY_UNSPECIFIED"
@@ -427,15 +427,15 @@ export interface Command {
   /** Required. Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`. */
   name?: string;
   /** Environment variables set before running this command. */
-  env?: Array<string>;
+  env?: ReadonlyArray<string>;
   /** Command-line arguments used when executing this command. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Working directory (relative to project source root) used when running this command. */
   dir?: string;
   /** Optional unique identifier for this command, used in wait_for to reference this command as a dependency. */
   id?: string;
   /** The ID(s) of the command(s) that this command depends on. */
-  waitFor?: Array<string>;
+  waitFor?: ReadonlyArray<string>;
 }
 
 export const Command = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -453,7 +453,7 @@ export interface Artifact {
   /** Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`. */
   id?: string;
   /** Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image. */
-  names?: Array<string>;
+  names?: ReadonlyArray<string>;
 }
 
 export const Artifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -476,7 +476,7 @@ export const Hash = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FileHashes {
   /** Required. Collection of file hashes. */
-  fileHash?: Array<Hash>;
+  fileHash?: ReadonlyArray<Hash>;
 }
 
 export const FileHashes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -592,7 +592,7 @@ export interface Source {
   /** If provided, the source code used for the build came from this location. */
   context?: SourceContext;
   /** If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field. */
-  additionalContexts?: Array<SourceContext>;
+  additionalContexts?: ReadonlyArray<SourceContext>;
 }
 
 export const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -608,9 +608,9 @@ export interface BuildProvenance {
   /** ID of the project. */
   projectId?: string;
   /** Commands requested by the build. */
-  commands?: Array<Command>;
+  commands?: ReadonlyArray<Command>;
   /** Output of the build. */
-  builtArtifacts?: Array<Artifact>;
+  builtArtifacts?: ReadonlyArray<Artifact>;
   /** Time at which the build was created. */
   createTime?: string;
   /** Time at which execution of the build was started. */
@@ -663,9 +663,9 @@ export interface Recipe {
   /** String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use. */
   entryPoint?: string;
   /** Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Since the arguments field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any". */
-  arguments?: Array<Record<string, unknown>>;
+  arguments?: ReadonlyArray<Record<string, unknown>>;
   /** Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Since the environment field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any". */
-  environment?: Array<Record<string, unknown>>;
+  environment?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Recipe = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -723,7 +723,7 @@ export interface InTotoProvenance {
   recipe?: Recipe;
   metadata?: Metadata;
   /** The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty. */
-  materials?: Array<string>;
+  materials?: ReadonlyArray<string>;
 }
 
 export const InTotoProvenance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -826,7 +826,7 @@ export interface SlsaProvenance {
   recipe?: SlsaRecipe;
   metadata?: SlsaMetadata;
   /** The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty. */
-  materials?: Array<Material>;
+  materials?: ReadonlyArray<Material>;
 }
 
 export const SlsaProvenance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -922,7 +922,7 @@ export interface SlsaProvenanceZeroTwo {
   invocation?: GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation;
   buildConfig?: Record<string, unknown>;
   metadata?: GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata;
-  materials?: Array<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial>;
+  materials?: ReadonlyArray<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial>;
 }
 
 export const SlsaProvenanceZeroTwo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -939,7 +939,7 @@ export const SlsaProvenanceZeroTwo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface InTotoStatement {
   /** Always `https://in-toto.io/Statement/v0.1`. */
   _type?: string;
-  subject?: Array<Subject>;
+  subject?: ReadonlyArray<Subject>;
   /** `https://slsa.dev/provenance/v0.1` for SlsaProvenance. */
   predicateType?: string;
   provenance?: InTotoProvenance;
@@ -980,7 +980,7 @@ export interface BuildDefinition {
   buildType?: string;
   externalParameters?: Record<string, unknown>;
   internalParameters?: Record<string, unknown>;
-  resolvedDependencies?: Array<ResourceDescriptor>;
+  resolvedDependencies?: ReadonlyArray<ResourceDescriptor>;
 }
 
 export const BuildDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -997,7 +997,7 @@ export const BuildDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface ProvenanceBuilder {
   id?: string;
   version?: Record<string, string>;
-  builderDependencies?: Array<ResourceDescriptor>;
+  builderDependencies?: ReadonlyArray<ResourceDescriptor>;
 }
 
 export const ProvenanceBuilder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1021,7 +1021,7 @@ export const BuildMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface RunDetails {
   builder?: ProvenanceBuilder;
   metadata?: BuildMetadata;
-  byproducts?: Array<ResourceDescriptor>;
+  byproducts?: ReadonlyArray<ResourceDescriptor>;
 }
 
 export const RunDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1043,7 +1043,7 @@ export const SlsaProvenanceV1 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface InTotoSlsaProvenanceV1 {
   /** InToto spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement */
   _type?: string;
-  subject?: Array<Subject>;
+  subject?: ReadonlyArray<Subject>;
   predicateType?: string;
   predicate?: SlsaProvenanceV1;
 }
@@ -1082,7 +1082,7 @@ export interface Fingerprint {
   /** Required. The layer ID of the final layer in the Docker image's v1 representation. */
   v1Name?: string;
   /** Required. The ordered list of v2 blobs that represent a given image. */
-  v2Blob?: Array<string>;
+  v2Blob?: ReadonlyArray<string>;
   /** Output only. The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. */
   v2Name?: string;
 }
@@ -1111,7 +1111,7 @@ export interface ImageOccurrence {
   /** Output only. The number of layers by which this image differs from the associated image basis. */
   distance?: number;
   /** This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer. */
-  layerInfo?: Array<Layer>;
+  layerInfo?: ReadonlyArray<Layer>;
   /** Output only. This contains the base image URL for the derived image occurrence. */
   baseResourceUrl?: string;
 }
@@ -1154,7 +1154,7 @@ export interface PackageOccurrence {
   /** Required. Output only. The name of the installed package. */
   name?: string;
   /** All of the places within the filesystem versions of this package have been found. */
-  location?: Array<Location>;
+  location?: ReadonlyArray<Location>;
   /** Output only. The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.). */
   packageType?: string;
   /** Output only. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages. */
@@ -1189,7 +1189,7 @@ export interface DeploymentOccurrence {
   /** Address of the runtime element hosting this deployment. */
   address?: string;
   /** Output only. Resource URI for the artifact being deployed taken from the deployable field with the same name. */
-  resourceUri?: Array<string>;
+  resourceUri?: ReadonlyArray<string>;
   /** Platform hosting this deployment. */
   platform?: "PLATFORM_UNSPECIFIED" | "GKE" | "FLEX" | "CUSTOM" | (string & {});
 }
@@ -1205,7 +1205,7 @@ export const DeploymentOccurrence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "DeploymentOccurrence" });
 
 export interface AnalysisCompleted {
-  analysisType?: Array<string>;
+  analysisType?: ReadonlyArray<string>;
 }
 
 export const AnalysisCompleted = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1218,7 +1218,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1270,7 +1270,7 @@ export interface DiscoveryOccurrence {
     | (string & {});
   analysisCompleted?: AnalysisCompleted;
   /** Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors. */
-  analysisError?: Array<Status>;
+  analysisError?: ReadonlyArray<Status>;
   /** When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API. */
   analysisStatusError?: Status;
   /** The CPE of the resource being scanned. */
@@ -1282,7 +1282,7 @@ export interface DiscoveryOccurrence {
   /** The status of an SBOM generation. */
   sbomStatus?: SBOMStatus;
   /** Files that make up the resource described by the occurrence. */
-  files?: Array<File>;
+  files?: ReadonlyArray<File>;
   /** The last time vulnerability scan results changed. */
   lastVulnerabilityUpdateTime?: string;
 }
@@ -1326,9 +1326,9 @@ export interface AttestationOccurrence {
   /** Required. The serialized payload that is verified by one or more `signatures`. */
   serializedPayload?: string;
   /** One or more signatures over `serialized_payload`. Verifier implementations should consider this attestation message verified if at least one `signature` verifies `serialized_payload`. See `Signature` in common.proto for more details on signature structure and verification. */
-  signatures?: Array<Signature>;
+  signatures?: ReadonlyArray<Signature>;
   /** One or more JWTs encoding a self-contained attestation. Each JWT encodes the payload that it verifies within the JWT itself. Verifier implementation SHOULD ignore the `serialized_payload` field when verifying these JWTs. If only JWTs are present on this AttestationOccurrence, then the `serialized_payload` SHOULD be left empty. Each JWT SHOULD encode a claim specific to the `resource_uri` of this Occurrence, but this is not validated by Grafeas metadata API implementations. The JWT itself is opaque to Grafeas. */
-  jwts?: Array<Jwt>;
+  jwts?: ReadonlyArray<Jwt>;
 }
 
 export const AttestationOccurrence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1345,7 +1345,7 @@ export interface UpgradeDistribution {
   /** The severity as specified by the upstream operating system. */
   severity?: string;
   /** The cve tied to this Upgrade. */
-  cve?: Array<string>;
+  cve?: ReadonlyArray<string>;
 }
 
 export const UpgradeDistribution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1387,9 +1387,9 @@ export interface WindowsUpdate {
   /** The localized description of the update. */
   description?: string;
   /** The list of categories to which the update belongs. */
-  categories?: Array<Category>;
+  categories?: ReadonlyArray<Category>;
   /** The Microsoft Knowledge Base article IDs that are associated with the update. */
-  kbArticleIds?: Array<string>;
+  kbArticleIds?: ReadonlyArray<string>;
   /** The hyperlink to the support information for the update. */
   supportUrl?: string;
   /** The last published timestamp of the update. */
@@ -1455,7 +1455,7 @@ export const ComplianceVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ComplianceVersion" });
 
 export interface ComplianceOccurrence {
-  nonCompliantFiles?: Array<NonCompliantFile>;
+  nonCompliantFiles?: ReadonlyArray<NonCompliantFile>;
   nonComplianceReason?: string;
   /** The OS and config version the benchmark was run on. */
   version?: ComplianceVersion;
@@ -1480,7 +1480,7 @@ export const EnvelopeSignature = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface Envelope {
   payload?: string;
   payloadType?: string;
-  signatures?: Array<EnvelopeSignature>;
+  signatures?: ReadonlyArray<EnvelopeSignature>;
 }
 
 export const Envelope = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1526,7 +1526,7 @@ export interface SbomReferenceIntotoPayload {
   /** URI identifying the type of the Predicate. */
   predicateType?: string;
   /** Set of software artifacts that the attestation applies to. Each element represents a single software artifact. */
-  subject?: Array<Subject>;
+  subject?: ReadonlyArray<Subject>;
   /** Additional parameters of the Predicate. Includes the actual data about the SBOM. */
   predicate?: SbomReferenceIntotoPredicate;
 }
@@ -1545,7 +1545,7 @@ export interface SBOMReferenceOccurrence {
   /** The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is expected to be 'application/vnd.in-toto+json'. */
   payloadType?: string;
   /** The signatures over the payload. */
-  signatures?: Array<EnvelopeSignature>;
+  signatures?: ReadonlyArray<EnvelopeSignature>;
 }
 
 export const SBOMReferenceOccurrence =
@@ -1612,9 +1612,9 @@ export interface SecretOccurrence {
     | "SECRET_KIND_STRIPE_WEBHOOK_SECRET"
     | (string & {});
   /** Optional. Locations where the secret is detected. */
-  locations?: Array<SecretLocation>;
+  locations?: ReadonlyArray<SecretLocation>;
   /** Optional. Status of the secret. */
-  statuses?: Array<SecretStatus>;
+  statuses?: ReadonlyArray<SecretStatus>;
 }
 
 export const SecretOccurrence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1709,11 +1709,11 @@ export const Occurrence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOccurrencesResponse {
   /** The occurrences requested. */
-  occurrences?: Array<Occurrence>;
+  occurrences?: ReadonlyArray<Occurrence>;
   /** The next pagination token in the list response. It should be used as `page_token` for the following request. An empty value means no more results. */
   nextPageToken?: string;
   /** Unordered list. Unreachable regions. Populated for requests from the global region when `return_partial_success` is set. Format: `projects/[PROJECT_ID]/locations/[LOCATION]` */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOccurrencesResponse =
@@ -1731,7 +1731,7 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 
 export interface BatchCreateOccurrencesRequest {
   /** Required. The occurrences to create. Max allowed length is 1000. */
-  occurrences?: Array<Occurrence>;
+  occurrences?: ReadonlyArray<Occurrence>;
 }
 
 export const BatchCreateOccurrencesRequest =
@@ -1741,7 +1741,7 @@ export const BatchCreateOccurrencesRequest =
 
 export interface BatchCreateOccurrencesResponse {
   /** The occurrences that were created. */
-  occurrences?: Array<Occurrence>;
+  occurrences?: ReadonlyArray<Occurrence>;
 }
 
 export const BatchCreateOccurrencesResponse =
@@ -1885,7 +1885,7 @@ export interface WindowsDetail {
   /** The description of this vulnerability. */
   description?: string;
   /** Required. The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed KBs presence is considered a fix. */
-  fixingKbs?: Array<KnowledgeBase>;
+  fixingKbs?: ReadonlyArray<KnowledgeBase>;
 }
 
 export const WindowsDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1908,11 +1908,11 @@ export interface VulnerabilityNote {
     | "CRITICAL"
     | (string & {});
   /** Details of all known distros and packages affected by this vulnerability. */
-  details?: Array<Detail>;
+  details?: ReadonlyArray<Detail>;
   /** The full description of the CVSSv3 for this vulnerability. */
   cvssV3?: CVSSv3;
   /** Windows details get their own format because the information format and model don't match a normal detail. Specifically Windows updates are done as patches, thus Windows vulnerabilities really are a missing package, rather than a package being at an incorrect version. */
-  windowsDetails?: Array<WindowsDetail>;
+  windowsDetails?: ReadonlyArray<WindowsDetail>;
   /** The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker. */
   sourceUpdateTime?: string;
   /** CVSS version used to populate cvss_score and severity. */
@@ -2000,7 +2000,7 @@ export interface PackageNote {
   /** Required. Immutable. The name of the package. */
   name?: string;
   /** Deprecated. The various channels by which a package is distributed. */
-  distribution?: Array<Distribution>;
+  distribution?: ReadonlyArray<Distribution>;
   /** The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.). */
   packageType?: string;
   /** The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages. */
@@ -2018,7 +2018,7 @@ export interface PackageNote {
   /** Licenses that have been declared by the authors of the package. */
   license?: License;
   /** Hash value, typically a file digest, that allows unique identification a specific package. */
-  digest?: Array<Digest>;
+  digest?: ReadonlyArray<Digest>;
 }
 
 export const PackageNote = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2037,7 +2037,7 @@ export const PackageNote = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeploymentNote {
   /** Required. Resource URI for the artifact being deployed. */
-  resourceUri?: Array<string>;
+  resourceUri?: ReadonlyArray<string>;
 }
 
 export const DeploymentNote = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2092,7 +2092,7 @@ export interface UpgradeNote {
   /** Required for non-Windows OS. The version of the package in machine + human readable form. */
   version?: Version;
   /** Metadata about the upgrade for each specific operating system. */
-  distributions?: Array<UpgradeDistribution>;
+  distributions?: ReadonlyArray<UpgradeDistribution>;
   /** Required for Windows OS. Represents the metadata about the Windows update. */
   windowsUpdate?: WindowsUpdate;
 }
@@ -2127,7 +2127,7 @@ export interface ComplianceNote {
   /** A description about this compliance check. */
   description?: string;
   /** The OS and config versions the benchmark applies to. */
-  version?: Array<ComplianceVersion>;
+  version?: ReadonlyArray<ComplianceVersion>;
   /** A rationale for the existence of this compliance check. */
   rationale?: string;
   /** A description of remediation steps if the compliance check fails. */
@@ -2207,7 +2207,7 @@ export interface Assessment {
   /** A detailed description of this Vex. */
   longDescription?: string;
   /** Holds a list of references associated with this vulnerability item and assessment. These uris have additional information about the vulnerability and the assessment itself. E.g. Link to a document which details how this assessment concluded the state of this vulnerability. */
-  relatedUris?: Array<RelatedUrl>;
+  relatedUris?: ReadonlyArray<RelatedUrl>;
   /** Provides the state of this Vulnerability assessment. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -2217,11 +2217,11 @@ export interface Assessment {
     | "UNDER_INVESTIGATION"
     | (string & {});
   /** Contains information about the impact of this vulnerability, this will change with time. */
-  impacts?: Array<string>;
+  impacts?: ReadonlyArray<string>;
   /** Justification provides the justification when the state of the assessment if NOT_AFFECTED. */
   justification?: Justification;
   /** Specifies details on how to handle (and presumably, fix) a vulnerability. */
-  remediations?: Array<Remediation>;
+  remediations?: ReadonlyArray<Remediation>;
 }
 
 export const Assessment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2307,7 +2307,7 @@ export interface Note {
     | "SECRET"
     | (string & {});
   /** URLs associated with this note. */
-  relatedUrl?: Array<RelatedUrl>;
+  relatedUrl?: ReadonlyArray<RelatedUrl>;
   /** Time of expiration for this note. Empty if note does not expire. */
   expirationTime?: string;
   /** Output only. The time this note was created. This field can be used as a filter in list requests. */
@@ -2315,7 +2315,7 @@ export interface Note {
   /** Output only. The time this note was last updated. This field can be used as a filter in list requests. */
   updateTime?: string;
   /** Other notes related to this note. */
-  relatedNoteNames?: Array<string>;
+  relatedNoteNames?: ReadonlyArray<string>;
   /** A note describing a package vulnerability. */
   vulnerability?: VulnerabilityNote;
   /** A note describing build provenance for a verifiable build. */
@@ -2371,11 +2371,11 @@ export const Note = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListNotesResponse {
   /** The notes requested. */
-  notes?: Array<Note>;
+  notes?: ReadonlyArray<Note>;
   /** The next pagination token in the list response. It should be used as `page_token` for the following request. An empty value means no more results. */
   nextPageToken?: string;
   /** Unordered list. Unreachable regions. Populated for requests from the global region when `return_partial_success` is set. Format: `projects/[PROJECT_ID]/locations/[LOCATION]` */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2396,7 +2396,7 @@ export const BatchCreateNotesRequest =
 
 export interface BatchCreateNotesResponse {
   /** The notes that were created. */
-  notes?: Array<Note>;
+  notes?: ReadonlyArray<Note>;
 }
 
 export const BatchCreateNotesResponse =
@@ -2406,7 +2406,7 @@ export const BatchCreateNotesResponse =
 
 export interface ListNoteOccurrencesResponse {
   /** The occurrences attached to the specified note. */
-  occurrences?: Array<Occurrence>;
+  occurrences?: ReadonlyArray<Occurrence>;
   /** Token to provide to skip to a particular spot in the list. */
   nextPageToken?: string;
 }
@@ -2439,7 +2439,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
@@ -2454,7 +2454,7 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
@@ -2494,7 +2494,7 @@ export const GetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -2504,7 +2504,7 @@ export const TestIamPermissionsRequest =
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -2539,9 +2539,9 @@ export const FixableTotalByDigest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface VulnerabilityOccurrencesSummary {
   /** A listing by resource of the number of fixable and total vulnerabilities. */
-  counts?: Array<FixableTotalByDigest>;
+  counts?: ReadonlyArray<FixableTotalByDigest>;
   /** Unordered list. Unreachable regions. Populated for requests from the global region when `return_partial_success` is set. Format: `projects/[PROJECT_ID]/locations/[LOCATION]` */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const VulnerabilityOccurrencesSummary =
@@ -2623,21 +2623,21 @@ export interface ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStep {
   /** Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step. */
   name?: string;
   /** A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE". */
-  env?: Array<string>;
+  env?: ReadonlyArray<string>;
   /** A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution. */
   dir?: string;
   /** Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency. */
   id?: string;
   /** The ID(s) of the step(s) that this build step depends on. This build step will not start until all the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all previous build steps in the `Build.Steps` list have completed successfully. */
-  waitFor?: Array<string>;
+  waitFor?: ReadonlyArray<string>;
   /** Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used. */
   entrypoint?: string;
   /** A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. */
-  secretEnv?: Array<string>;
+  secretEnv?: ReadonlyArray<string>;
   /** List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect configuration. */
-  volumes?: Array<ContaineranalysisGoogleDevtoolsCloudbuildV1Volume>;
+  volumes?: ReadonlyArray<ContaineranalysisGoogleDevtoolsCloudbuildV1Volume>;
   /** Output only. Stores timing information for executing this build step. */
   timing?: ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan;
   /** Output only. Stores timing information for pulling this build step's builder image only. */
@@ -2662,7 +2662,7 @@ export interface ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStep {
   /** Output only. Return code from running the step. */
   exitCode?: number;
   /** Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence. */
-  allowExitCodes?: Array<number>;
+  allowExitCodes?: ReadonlyArray<number>;
   /** A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args. */
   script?: string;
   /** Option to include built-in and custom substitutions as env variables for this build step. This option will override the global option in BuildOption. */
@@ -2739,21 +2739,21 @@ export interface BuildStep {
   /** Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step. */
   name?: string;
   /** A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE". */
-  env?: Array<string>;
+  env?: ReadonlyArray<string>;
   /** A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution. */
   dir?: string;
   /** Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency. */
   id?: string;
   /** The ID(s) of the step(s) that this build step depends on. This build step will not start until all the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all previous build steps in the `Build.Steps` list have completed successfully. */
-  waitFor?: Array<string>;
+  waitFor?: ReadonlyArray<string>;
   /** Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used. */
   entrypoint?: string;
   /** A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. */
-  secretEnv?: Array<string>;
+  secretEnv?: ReadonlyArray<string>;
   /** List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect configuration. */
-  volumes?: Array<Volume>;
+  volumes?: ReadonlyArray<Volume>;
   /** Output only. Stores timing information for executing this build step. */
   timing?: TimeSpan;
   /** Output only. Stores timing information for pulling this build step's builder image only. */
@@ -2779,12 +2779,12 @@ export interface BuildStep {
   /** Output only. Return code from running the step. */
   exitCode?: number;
   /** Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence. */
-  allowExitCodes?: Array<number>;
+  allowExitCodes?: ReadonlyArray<number>;
   /** A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args. */
   script?: string;
   /** Option to include built-in and custom substitutions as env variables for this build step. This option will override the global option in BuildOption. */
   automapSubstitutions?: boolean;
-  results?: Array<StepResult>;
+  results?: ReadonlyArray<StepResult>;
   /** Remote configuration for the build step. */
   remoteConfig?: string;
 }
@@ -3038,7 +3038,7 @@ export const ContaineranalysisGoogleDevtoolsCloudbuildV1Hash =
 
 export interface ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes {
   /** Collection of file hashes. */
-  fileHash?: Array<ContaineranalysisGoogleDevtoolsCloudbuildV1Hash>;
+  fileHash?: ReadonlyArray<ContaineranalysisGoogleDevtoolsCloudbuildV1Hash>;
 }
 
 export const ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes =
@@ -3154,25 +3154,25 @@ export const ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedNpmPackage =
 
 export interface ContaineranalysisGoogleDevtoolsCloudbuildV1Results {
   /** Container images that were built as a part of the build. */
-  images?: Array<ContaineranalysisGoogleDevtoolsCloudbuildV1BuiltImage>;
+  images?: ReadonlyArray<ContaineranalysisGoogleDevtoolsCloudbuildV1BuiltImage>;
   /** List of build step digests, in the order corresponding to build step indices. */
-  buildStepImages?: Array<string>;
+  buildStepImages?: ReadonlyArray<string>;
   /** Path to the artifact manifest for non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage. */
   artifactManifest?: string;
   /** Number of non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage. */
   numArtifacts?: string;
   /** List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored. Note that the `$BUILDER_OUTPUT` variable is read-only and can't be substituted. */
-  buildStepOutputs?: Array<string>;
+  buildStepOutputs?: ReadonlyArray<string>;
   /** Time to push all non-container artifacts to Cloud Storage. */
   artifactTiming?: ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan;
   /** Python artifacts uploaded to Artifact Registry at the end of the build. */
-  pythonPackages?: Array<ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedPythonPackage>;
+  pythonPackages?: ReadonlyArray<ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedPythonPackage>;
   /** Maven artifacts uploaded to Artifact Registry at the end of the build. */
-  mavenArtifacts?: Array<ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedMavenArtifact>;
+  mavenArtifacts?: ReadonlyArray<ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedMavenArtifact>;
   /** Optional. Go module artifacts uploaded to Artifact Registry at the end of the build. */
-  goModules?: Array<ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedGoModule>;
+  goModules?: ReadonlyArray<ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedGoModule>;
   /** Npm packages uploaded to Artifact Registry at the end of the build. */
-  npmPackages?: Array<ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedNpmPackage>;
+  npmPackages?: ReadonlyArray<ContaineranalysisGoogleDevtoolsCloudbuildV1UploadedNpmPackage>;
 }
 
 export const ContaineranalysisGoogleDevtoolsCloudbuildV1Results =
@@ -3213,7 +3213,7 @@ export interface ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsArtifactObj
   /** Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix. */
   location?: string;
   /** Path globs used to match files in the build's workspace. */
-  paths?: Array<string>;
+  paths?: ReadonlyArray<string>;
   /** Output only. Stores timing information for pushing all artifact objects. */
   timing?: ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan;
 }
@@ -3289,7 +3289,7 @@ export interface ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsPythonPacka
   /** Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix. */
   repository?: string;
   /** Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file. */
-  paths?: Array<string>;
+  paths?: ReadonlyArray<string>;
 }
 
 export const ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsPythonPackage =
@@ -3323,7 +3323,7 @@ export interface ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsOci {
   /** Required. Registry path to upload the container to. e.g. us-east1-docker.pkg.dev/my-project/my-repo/my-image */
   registryPath?: string;
   /** Optional. Tags to apply to the uploaded image. e.g. latest, 1.0.0 */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
 }
 
 export const ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsOci =
@@ -3337,19 +3337,19 @@ export const ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsOci =
 
 export interface ContaineranalysisGoogleDevtoolsCloudbuildV1Artifacts {
   /** A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE. */
-  images?: Array<string>;
+  images?: ReadonlyArray<string>;
   /** A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE. */
   objects?: ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsArtifactObjects;
   /** A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE. */
-  mavenArtifacts?: Array<ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsMavenArtifact>;
+  mavenArtifacts?: ReadonlyArray<ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsMavenArtifact>;
   /** Optional. A list of Go modules to be uploaded to Artifact Registry upon successful completion of all build steps. If any objects fail to be pushed, the build is marked FAILURE. */
-  goModules?: Array<ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsGoModule>;
+  goModules?: ReadonlyArray<ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsGoModule>;
   /** A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE. */
-  pythonPackages?: Array<ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsPythonPackage>;
+  pythonPackages?: ReadonlyArray<ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsPythonPackage>;
   /** A list of npm packages to be uploaded to Artifact Registry upon successful completion of all build steps. Npm packages in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any packages fail to be pushed, the build is marked FAILURE. */
-  npmPackages?: Array<ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsNpmPackage>;
+  npmPackages?: ReadonlyArray<ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsNpmPackage>;
   /** Optional. A list of OCI images to be uploaded to Artifact Registry upon successful completion of all build steps. OCI images in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any images fail to be pushed, the build is marked FAILURE. */
-  oci?: Array<ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsOci>;
+  oci?: ReadonlyArray<ContaineranalysisGoogleDevtoolsCloudbuildV1ArtifactsOci>;
 }
 
 export const ContaineranalysisGoogleDevtoolsCloudbuildV1Artifacts =
@@ -3445,7 +3445,7 @@ export const ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptionsPoolOption =
 
 export interface ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptions {
   /** Requested hash for SourceProvenance. */
-  sourceProvenanceHash?: Array<
+  sourceProvenanceHash?: ReadonlyArray<
     | "NONE"
     | "SHA256"
     | "MD5"
@@ -3493,11 +3493,11 @@ export interface ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptions {
     | "NONE"
     | (string & {});
   /** A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE". */
-  env?: Array<string>;
+  env?: ReadonlyArray<string>;
   /** A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. These variables will be available to all build steps in this build. */
-  secretEnv?: Array<string>;
+  secretEnv?: ReadonlyArray<string>;
   /** Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration. */
-  volumes?: Array<ContaineranalysisGoogleDevtoolsCloudbuildV1Volume>;
+  volumes?: ReadonlyArray<ContaineranalysisGoogleDevtoolsCloudbuildV1Volume>;
   /** Optional. Option to specify how default logs buckets are setup. */
   defaultLogsBucketBehavior?:
     | "DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED"
@@ -3649,9 +3649,9 @@ export const ContaineranalysisGoogleDevtoolsCloudbuildV1InlineSecret =
 
 export interface ContaineranalysisGoogleDevtoolsCloudbuildV1Secrets {
   /** Secrets in Secret Manager and associated secret environment variable. */
-  secretManager?: Array<ContaineranalysisGoogleDevtoolsCloudbuildV1SecretManagerSecret>;
+  secretManager?: ReadonlyArray<ContaineranalysisGoogleDevtoolsCloudbuildV1SecretManagerSecret>;
   /** Secrets encrypted with KMS key and the associated secret environment variable. */
-  inline?: Array<ContaineranalysisGoogleDevtoolsCloudbuildV1InlineSecret>;
+  inline?: ReadonlyArray<ContaineranalysisGoogleDevtoolsCloudbuildV1InlineSecret>;
 }
 
 export const ContaineranalysisGoogleDevtoolsCloudbuildV1Secrets =
@@ -3823,7 +3823,7 @@ export interface ContaineranalysisGoogleDevtoolsCloudbuildV1Build {
   /** Optional. The location of the source files to build. */
   source?: ContaineranalysisGoogleDevtoolsCloudbuildV1Source;
   /** Required. The operations to be performed on the workspace. */
-  steps?: Array<ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStep>;
+  steps?: ReadonlyArray<ContaineranalysisGoogleDevtoolsCloudbuildV1BuildStep>;
   /** Output only. Results of the build. */
   results?: ContaineranalysisGoogleDevtoolsCloudbuildV1Results;
   /** Output only. Time at which the request to create the build was received. */
@@ -3835,7 +3835,7 @@ export interface ContaineranalysisGoogleDevtoolsCloudbuildV1Build {
   /** Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes. */
   timeout?: string;
   /** A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`. */
-  images?: Array<string>;
+  images?: ReadonlyArray<string>;
   /** TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time. */
   queueTtl?: string;
   /** Artifacts produced by the build that should be uploaded upon successful completion of all build steps. */
@@ -3853,9 +3853,9 @@ export interface ContaineranalysisGoogleDevtoolsCloudbuildV1Build {
   /** Substitutions data for `Build` resource. */
   substitutions?: Record<string, string>;
   /** Tags for annotation of a `Build`. These are not docker tags. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets */
-  secrets?: Array<ContaineranalysisGoogleDevtoolsCloudbuildV1Secret>;
+  secrets?: ReadonlyArray<ContaineranalysisGoogleDevtoolsCloudbuildV1Secret>;
   /** Output only. Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included. */
   timing?: Record<string, ContaineranalysisGoogleDevtoolsCloudbuildV1TimeSpan>;
   /** Output only. Describes this build's approval configuration, status, and result. */
@@ -3865,13 +3865,13 @@ export interface ContaineranalysisGoogleDevtoolsCloudbuildV1Build {
   /** Secrets and secret environment variables. */
   availableSecrets?: ContaineranalysisGoogleDevtoolsCloudbuildV1Secrets;
   /** Output only. Non-fatal problems encountered during the execution of the build. */
-  warnings?: Array<ContaineranalysisGoogleDevtoolsCloudbuildV1BuildWarning>;
+  warnings?: ReadonlyArray<ContaineranalysisGoogleDevtoolsCloudbuildV1BuildWarning>;
   /** Optional. Configuration for git operations. */
   gitConfig?: ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfig;
   /** Output only. Contains information about the build when status=FAILURE. */
   failureInfo?: ContaineranalysisGoogleDevtoolsCloudbuildV1BuildFailureInfo;
   /** Optional. Dependencies that the Cloud Build worker will fetch before executing user steps. */
-  dependencies?: Array<ContaineranalysisGoogleDevtoolsCloudbuildV1Dependency>;
+  dependencies?: ReadonlyArray<ContaineranalysisGoogleDevtoolsCloudbuildV1Dependency>;
 }
 
 export const ContaineranalysisGoogleDevtoolsCloudbuildV1Build =
@@ -3953,10 +3953,7 @@ export const GetProjectsOccurrencesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/occurrences/{occurrencesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsOccurrencesRequest>;
 
@@ -4001,7 +3998,7 @@ export const ListProjectsOccurrencesRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/occurrences" }),
+    T.Http({ method: "GET", path: "v1/{parent}/occurrences" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsOccurrencesRequest>;
 
@@ -4036,10 +4033,7 @@ export const DeleteProjectsOccurrencesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/occurrences/{occurrencesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsOccurrencesRequest>;
 
@@ -4073,11 +4067,7 @@ export const CreateProjectsOccurrencesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Occurrence).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/occurrences",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/occurrences", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsOccurrencesRequest>;
 
@@ -4113,7 +4103,7 @@ export const BatchCreateProjectsOccurrencesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/occurrences:batchCreate",
+      path: "v1/{parent}/occurrences:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -4153,11 +4143,7 @@ export const PatchProjectsOccurrencesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Occurrence).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/occurrences/{occurrencesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsOccurrencesRequest>;
 
@@ -4188,10 +4174,7 @@ export const GetNotesProjectsOccurrencesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/occurrences/{occurrencesId}/notes",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/notes" }),
     svc,
   ) as unknown as Schema.Schema<GetNotesProjectsOccurrencesRequest>;
 
@@ -4227,7 +4210,7 @@ export const SetIamPolicyProjectsOccurrencesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/occurrences/{occurrencesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4265,7 +4248,7 @@ export const GetIamPolicyProjectsOccurrencesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/occurrences/{occurrencesId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4303,7 +4286,7 @@ export const TestIamPermissionsProjectsOccurrencesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/occurrences/{occurrencesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -4347,7 +4330,7 @@ export const GetVulnerabilitySummaryProjectsOccurrencesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/occurrences:vulnerabilitySummary",
+      path: "v1/{parent}/occurrences:vulnerabilitySummary",
     }),
     svc,
   ) as unknown as Schema.Schema<GetVulnerabilitySummaryProjectsOccurrencesRequest>;
@@ -4380,10 +4363,7 @@ export const GetProjectsLocationsOccurrencesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/occurrences/{occurrencesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOccurrencesRequest>;
 
@@ -4428,10 +4408,7 @@ export const ListProjectsLocationsOccurrencesRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/occurrences",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/occurrences" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOccurrencesRequest>;
 
@@ -4466,10 +4443,7 @@ export const DeleteProjectsLocationsOccurrencesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/occurrences/{occurrencesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOccurrencesRequest>;
 
@@ -4503,11 +4477,7 @@ export const CreateProjectsLocationsOccurrencesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Occurrence).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/occurrences",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/occurrences", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsOccurrencesRequest>;
 
@@ -4543,7 +4513,7 @@ export const BatchCreateProjectsLocationsOccurrencesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/occurrences:batchCreate",
+      path: "v1/{parent}/occurrences:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -4583,11 +4553,7 @@ export const PatchProjectsLocationsOccurrencesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Occurrence).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/occurrences/{occurrencesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsOccurrencesRequest>;
 
@@ -4618,10 +4584,7 @@ export const GetNotesProjectsLocationsOccurrencesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/occurrences/{occurrencesId}/notes",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/notes" }),
     svc,
   ) as unknown as Schema.Schema<GetNotesProjectsLocationsOccurrencesRequest>;
 
@@ -4657,7 +4620,7 @@ export const SetIamPolicyProjectsLocationsOccurrencesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/occurrences/{occurrencesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4695,7 +4658,7 @@ export const GetIamPolicyProjectsLocationsOccurrencesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/occurrences/{occurrencesId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4733,7 +4696,7 @@ export const TestIamPermissionsProjectsLocationsOccurrencesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/occurrences/{occurrencesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -4777,7 +4740,7 @@ export const GetVulnerabilitySummaryProjectsLocationsOccurrencesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/occurrences:vulnerabilitySummary",
+      path: "v1/{parent}/occurrences:vulnerabilitySummary",
     }),
     svc,
   ) as unknown as Schema.Schema<GetVulnerabilitySummaryProjectsLocationsOccurrencesRequest>;
@@ -4811,10 +4774,7 @@ export const GetProjectsLocationsNotesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notes/{notesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsNotesRequest>;
 
@@ -4859,10 +4819,7 @@ export const ListProjectsLocationsNotesRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/notes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsNotesRequest>;
 
@@ -4897,10 +4854,7 @@ export const DeleteProjectsLocationsNotesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notes/{notesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsNotesRequest>;
 
@@ -4937,11 +4891,7 @@ export const CreateProjectsLocationsNotesRequest =
     noteId: Schema.optional(Schema.String).pipe(T.HttpQuery("noteId")),
     body: Schema.optional(Note).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/notes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsNotesRequest>;
 
@@ -4977,7 +4927,7 @@ export const BatchCreateProjectsLocationsNotesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notes:batchCreate",
+      path: "v1/{parent}/notes:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -5017,11 +4967,7 @@ export const PatchProjectsLocationsNotesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Note).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notes/{notesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsNotesRequest>;
 
@@ -5057,7 +5003,7 @@ export const SetIamPolicyProjectsLocationsNotesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notes/{notesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -5095,7 +5041,7 @@ export const GetIamPolicyProjectsLocationsNotesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notes/{notesId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -5133,7 +5079,7 @@ export const TestIamPermissionsProjectsLocationsNotesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notes/{notesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -5176,10 +5122,7 @@ export const ListProjectsLocationsNotesOccurrencesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notes/{notesId}/occurrences",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/occurrences" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsNotesOccurrencesRequest>;
 
@@ -5218,11 +5161,7 @@ export const ExportSBOMProjectsLocationsResourcesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ExportSBOMRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/resources/{resourcesId}:exportSBOM",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:exportSBOM", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExportSBOMProjectsLocationsResourcesRequest>;
 
@@ -5253,7 +5192,7 @@ export const GetProjectsNotesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/notes/{notesId}" }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsNotesRequest>;
 
@@ -5297,7 +5236,7 @@ export const ListProjectsNotesRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/notes" }),
+    T.Http({ method: "GET", path: "v1/{parent}/notes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsNotesRequest>;
 
@@ -5332,10 +5271,7 @@ export const DeleteProjectsNotesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/notes/{notesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsNotesRequest>;
 
@@ -5371,11 +5307,7 @@ export const CreateProjectsNotesRequest =
     noteId: Schema.optional(Schema.String).pipe(T.HttpQuery("noteId")),
     body: Schema.optional(Note).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/notes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/notes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsNotesRequest>;
 
@@ -5410,7 +5342,7 @@ export const BatchCreateProjectsNotesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/notes:batchCreate",
+      path: "v1/{parent}/notes:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -5449,11 +5381,7 @@ export const PatchProjectsNotesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Note).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/notes/{notesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsNotesRequest>;
 
@@ -5488,7 +5416,7 @@ export const SetIamPolicyProjectsNotesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/notes/{notesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -5526,7 +5454,7 @@ export const GetIamPolicyProjectsNotesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/notes/{notesId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -5564,7 +5492,7 @@ export const TestIamPermissionsProjectsNotesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/notes/{notesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -5607,10 +5535,7 @@ export const ListProjectsNotesOccurrencesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/notes/{notesId}/occurrences",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/occurrences" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsNotesOccurrencesRequest>;
 
@@ -5648,11 +5573,7 @@ export const ExportSBOMProjectsResourcesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ExportSBOMRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/resources/{resourcesId}:exportSBOM",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:exportSBOM", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExportSBOMProjectsResourcesRequest>;
 

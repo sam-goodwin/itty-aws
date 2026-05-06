@@ -48,7 +48,7 @@ export interface Criterion {
   /** The title of the criterion. */
   title?: string;
   /** The list of levels within this criterion. */
-  levels?: Array<Level>;
+  levels?: ReadonlyArray<Level>;
 }
 
 export const Criterion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -62,7 +62,7 @@ export interface Rubric {
   /** Output only. Timestamp when this rubric was created. Read-only. */
   creationTime?: string;
   /** List of criteria. Each criterion is a dimension on which performance is rated. */
-  criteria?: Array<Criterion>;
+  criteria?: ReadonlyArray<Criterion>;
   /** Identifier of the course. Read-only. */
   courseId?: string;
   /** Input only. Immutable. Google Sheets ID of the spreadsheet. This spreadsheet must contain formatted rubric settings. See [Create or reuse a rubric for an assignment](https://support.google.com/edu/classroom/answer/9335069). Use of this field requires the `https://www.googleapis.com/auth/spreadsheets.readonly` or `https://www.googleapis.com/auth/spreadsheets` scope. */
@@ -134,7 +134,7 @@ export interface UserProfile {
   /** Name of the user. Read-only. */
   name?: Name;
   /** Global permissions of the user. Read-only. */
-  permissions?: Array<GlobalPermission>;
+  permissions?: ReadonlyArray<GlobalPermission>;
   /** Represents whether a Google Workspace for Education user's domain administrator has explicitly verified them as being a teacher. This field is always false if the user is not a member of a Google Workspace for Education domain. Read-only */
   verifiedTeacher?: boolean;
 }
@@ -168,7 +168,7 @@ export const Student = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListStudentsResponse {
   /** Students who match the list request. */
-  students?: Array<Student>;
+  students?: ReadonlyArray<Student>;
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
@@ -264,7 +264,7 @@ export const Classroom_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IndividualStudentsOptions {
   /** Identifiers for the students that have access to the coursework/announcement. */
-  studentIds?: Array<string>;
+  studentIds?: ReadonlyArray<string>;
 }
 
 export const IndividualStudentsOptions =
@@ -432,7 +432,7 @@ export const Material = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MultipleChoiceQuestion {
   /** Possible choices. */
-  choices?: Array<string>;
+  choices?: ReadonlyArray<string>;
 }
 
 export const MultipleChoiceQuestion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -503,7 +503,7 @@ export interface CourseWork {
   /** Title of this course work. The title must be a valid UTF-8 string containing between 1 and 3000 characters. */
   title?: string;
   /** Additional materials. CourseWork must have no more than 20 material items. */
-  materials?: Array<Material>;
+  materials?: ReadonlyArray<Material>;
   /** Absolute link to this course work in the Classroom web UI. This is only populated if `state` is `PUBLISHED`. Read-only. */
   alternateLink?: string;
   /** Multiple choice question details. For read operations, this field is populated only when `work_type` is `MULTIPLE_CHOICE_QUESTION`. For write operations, this field must be specified when creating course work with a `work_type` of `MULTIPLE_CHOICE_QUESTION`, and it must not be set otherwise. */
@@ -541,7 +541,7 @@ export interface ListCourseWorkResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
   /** Course work items that match the request. */
-  courseWork?: Array<CourseWork>;
+  courseWork?: ReadonlyArray<CourseWork>;
 }
 
 export const ListCourseWorkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -586,7 +586,7 @@ export const Teacher = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTeachersResponse {
   /** Teachers who match the list request. */
-  teachers?: Array<Teacher>;
+  teachers?: ReadonlyArray<Teacher>;
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
@@ -616,7 +616,7 @@ export const Attachment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ModifyAttachmentsRequest {
   /** Attachments to add. A student submission may not have more than 20 attachments. Form attachments are not supported. */
-  addAttachments?: Array<Attachment>;
+  addAttachments?: ReadonlyArray<Attachment>;
 }
 
 export const ModifyAttachmentsRequest =
@@ -698,7 +698,7 @@ export interface Announcement {
   /** Identifier of the course. Read-only. */
   courseId?: string;
   /** Additional materials. Announcements must have no more than 20 material items. */
-  materials?: Array<Material>;
+  materials?: ReadonlyArray<Material>;
   /** Absolute link to this announcement in the Classroom web UI. This is only populated if `state` is `PUBLISHED`. Read-only. */
   alternateLink?: string;
   /** Status of this announcement. If unspecified, the default state is `DRAFT`. */
@@ -731,7 +731,7 @@ export const Announcement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListStudentGroupMembersResponse {
   /** The student group members. */
-  studentGroupMembers?: Array<StudentGroupMember>;
+  studentGroupMembers?: ReadonlyArray<StudentGroupMember>;
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
@@ -744,7 +744,7 @@ export const ListStudentGroupMembersResponse =
 
 export interface AssignmentSubmission {
   /** Attachments added by the student. Drive files that correspond to materials with a share mode of STUDENT_COPY may not exist yet if the student has not accessed the assignment in Classroom. Some attachment metadata is only populated if the requesting user has permission to access it. Identifier and alternate_link fields are always available, but others (for example, title) may not be. */
-  attachments?: Array<Attachment>;
+  attachments?: ReadonlyArray<Attachment>;
 }
 
 export const AssignmentSubmission = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -771,9 +771,9 @@ export const Guardian = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ModifyIndividualStudentsOptions {
   /** IDs of students to be added as having access to this coursework/announcement. */
-  addStudentIds?: Array<string>;
+  addStudentIds?: ReadonlyArray<string>;
   /** IDs of students to be removed from having access to this coursework/announcement. */
-  removeStudentIds?: Array<string>;
+  removeStudentIds?: ReadonlyArray<string>;
 }
 
 export const ModifyIndividualStudentsOptions =
@@ -823,7 +823,7 @@ export interface AddOnAttachment {
   /** Immutable. Deprecated, use `item_id` instead. */
   postId?: string;
   /** Output only. Identifiers of attachments that were previous copies of this attachment. If the attachment was previously copied by virtue of its parent post being copied, this enumerates the identifiers of attachments that were its previous copies in ascending chronological order of copy. */
-  copyHistory?: Array<CopyHistory>;
+  copyHistory?: ReadonlyArray<CopyHistory>;
   /** Immutable. Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. Unique per course. */
   itemId?: string;
   /** Time of day, in UTC, that work on this attachment is due. This must be specified if `due_date` is specified. */
@@ -853,7 +853,7 @@ export const AddOnAttachment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAddOnAttachmentsResponse {
   /** Attachments under the given post. */
-  addOnAttachments?: Array<AddOnAttachment>;
+  addOnAttachments?: ReadonlyArray<AddOnAttachment>;
   /** A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -879,7 +879,7 @@ export interface GradebookSettings {
     | "SHOW_TEACHERS_ONLY"
     | (string & {});
   /** Grade categories that are available for coursework in the course. */
-  gradeCategories?: Array<GradeCategory>;
+  gradeCategories?: ReadonlyArray<GradeCategory>;
 }
 
 export const GradebookSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -892,7 +892,7 @@ export interface CourseMaterialSet {
   /** Title for this set. */
   title?: string;
   /** Materials attached to this set. */
-  materials?: Array<CourseMaterial>;
+  materials?: ReadonlyArray<CourseMaterial>;
 }
 
 export const CourseMaterialSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -947,7 +947,7 @@ export interface Course {
   /** The gradebook settings that specify how a student's overall grade for the course will be calculated and who it will be displayed to. Read-only. */
   gradebookSettings?: GradebookSettings;
   /** Sets of materials that appear on the "about" page of this course. Read-only. */
-  courseMaterialSets?: Array<CourseMaterialSet>;
+  courseMaterialSets?: ReadonlyArray<CourseMaterialSet>;
 }
 
 export const Course = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -975,7 +975,7 @@ export const Course = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCoursesResponse {
   /** Courses that match the list request. */
-  courses?: Array<Course>;
+  courses?: ReadonlyArray<Course>;
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
@@ -1068,7 +1068,7 @@ export interface StudentSubmission {
   /** Identifier of the course. Read-only. */
   courseId?: string;
   /** The history of the submission (includes state and grade histories). Read-only. */
-  submissionHistory?: Array<SubmissionHistory>;
+  submissionHistory?: ReadonlyArray<SubmissionHistory>;
   /** Pending rubric grades based on the rubric's criteria. This map is empty if there is no rubric attached to this course work or if a rubric is attached, but no grades have been set on any criteria. Entries are only populated for grades that have been set. Key: The rubric's criterion ID. Read-only. */
   draftRubricGrades?: Record<string, RubricGrade>;
   /** Submission content when course_work_type is ASSIGNMENT. Students can modify this content using ModifyAttachments. */
@@ -1162,7 +1162,7 @@ export const ModifyCourseWorkAssigneesRequest =
 
 export interface ListStudentSubmissionsResponse {
   /** Student work that matches the request. */
-  studentSubmissions?: Array<StudentSubmission>;
+  studentSubmissions?: ReadonlyArray<StudentSubmission>;
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
@@ -1285,7 +1285,7 @@ export const ModifyAnnouncementAssigneesRequest =
 
 export interface ListGuardianInvitationsResponse {
   /** Guardian invitations that matched the list request. */
-  guardianInvitations?: Array<GuardianInvitation>;
+  guardianInvitations?: ReadonlyArray<GuardianInvitation>;
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
@@ -1323,7 +1323,7 @@ export interface ListInvitationsResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
   /** Invitations that match the list request. */
-  invitations?: Array<Invitation>;
+  invitations?: ReadonlyArray<Invitation>;
 }
 
 export const ListInvitationsResponse =
@@ -1359,7 +1359,7 @@ export const GradingPeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GradingPeriodSettings {
   /** The list of grading periods in a specific course. Grading periods must not have overlapping date ranges and must be listed in chronological order. Each grading period must have a unique title within a course. */
-  gradingPeriods?: Array<GradingPeriod>;
+  gradingPeriods?: ReadonlyArray<GradingPeriod>;
   /** Supports toggling the application of grading periods on existing stream items. Once set, this value is persisted meaning that it does not need to be set in every request to update `GradingPeriodSettings`. If not previously set, the default is False. */
   applyToExistingCoursework?: boolean;
 }
@@ -1404,7 +1404,7 @@ export interface CourseWorkMaterial {
   /** Title of this course work material. The title must be a valid UTF-8 string containing between 1 and 3000 characters. */
   title?: string;
   /** Additional materials. A course work material must have no more than 20 material items. */
-  materials?: Array<Material>;
+  materials?: ReadonlyArray<Material>;
   /** Absolute link to this course work material in the Classroom web UI. This is only populated if `state` is `PUBLISHED`. Read-only. */
   alternateLink?: string;
 }
@@ -1428,7 +1428,7 @@ export const CourseWorkMaterial = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListRubricsResponse {
   /** Rubrics that match the request. */
-  rubrics?: Array<Rubric>;
+  rubrics?: ReadonlyArray<Rubric>;
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
@@ -1440,7 +1440,7 @@ export const ListRubricsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCourseWorkMaterialResponse {
   /** Course work material items that match the request. */
-  courseWorkMaterial?: Array<CourseWorkMaterial>;
+  courseWorkMaterial?: ReadonlyArray<CourseWorkMaterial>;
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
@@ -1490,7 +1490,7 @@ export const ReclaimStudentSubmissionRequest =
 
 export interface ListTopicResponse {
   /** Topic items that match the request. */
-  topic?: Array<Topic>;
+  topic?: ReadonlyArray<Topic>;
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
@@ -1502,7 +1502,7 @@ export const ListTopicResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListGuardiansResponse {
   /** Guardians on this page of results that met the criteria specified in the request. */
-  guardians?: Array<Guardian>;
+  guardians?: ReadonlyArray<Guardian>;
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
@@ -1529,7 +1529,7 @@ export const StudentGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCourseAliasesResponse {
   /** The course aliases. */
-  aliases?: Array<CourseAlias>;
+  aliases?: ReadonlyArray<CourseAlias>;
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
@@ -1548,7 +1548,7 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 
 export interface ListStudentGroupsResponse {
   /** The student groups. */
-  studentGroups?: Array<StudentGroup>;
+  studentGroups?: ReadonlyArray<StudentGroup>;
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }
@@ -1561,7 +1561,7 @@ export const ListStudentGroupsResponse =
 
 export interface ListAnnouncementsResponse {
   /** Announcement items that match the request. */
-  announcements?: Array<Announcement>;
+  announcements?: ReadonlyArray<Announcement>;
   /** Token identifying the next page of results to return. If empty, no further results are available. */
   nextPageToken?: string;
 }

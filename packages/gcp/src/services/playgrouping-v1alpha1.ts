@@ -45,7 +45,7 @@ export const Tag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CreateOrUpdateTagsRequest {
   /** Tags to be inserted or updated. */
-  tags?: Array<Tag>;
+  tags?: ReadonlyArray<Tag>;
 }
 
 export const CreateOrUpdateTagsRequest =
@@ -55,7 +55,7 @@ export const CreateOrUpdateTagsRequest =
 
 export interface CreateOrUpdateTagsResponse {
   /** All requested tags are returned, including pre-existing ones. */
-  tags?: Array<Tag>;
+  tags?: ReadonlyArray<Tag>;
 }
 
 export const CreateOrUpdateTagsResponse =
@@ -99,7 +99,7 @@ export const VerifyAppsTokensRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/apps/{appsId}/tokens/{tokensId}:verify",
+      path: "v1alpha1/{appPackage}/{token}:verify",
       hasBody: true,
     }),
     svc,
@@ -140,7 +140,7 @@ export const CreateOrUpdateAppsTokensTagsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/apps/{appsId}/tokens/{tokensId}/tags:createOrUpdate",
+      path: "v1alpha1/{appPackage}/{token}/tags:createOrUpdate",
       hasBody: true,
     }),
     svc,

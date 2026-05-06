@@ -28,7 +28,7 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -63,11 +63,11 @@ export const GoogleLongrunningOperation =
 
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleLongrunningListOperationsResponse =
@@ -94,7 +94,7 @@ export interface GoogleCloudApihubV1EnvironmentFilter {
   /** Optional. Indicates if this filter should match all environments or only a subset of environments. If set to true, all environments are matched. */
   allEnvironments?: boolean;
   /** Optional. If provided, only environments in this list are matched. This field is ignored if `all_environments` is true. */
-  environments?: Array<string>;
+  environments?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudApihubV1EnvironmentFilter =
@@ -156,7 +156,7 @@ export const GoogleCloudApihubV1GatewayPluginConfig =
 
 export interface GoogleCloudApihubV1GatewayPluginAddonConfig {
   /** Required. The list of gateway plugin configs for which the addon is enabled. Each gateway plugin config should have a unique plugin instance. */
-  gatewayPluginConfigs?: Array<GoogleCloudApihubV1GatewayPluginConfig>;
+  gatewayPluginConfigs?: ReadonlyArray<GoogleCloudApihubV1GatewayPluginConfig>;
 }
 
 export const GoogleCloudApihubV1GatewayPluginAddonConfig =
@@ -244,7 +244,7 @@ export const GoogleCloudApihubV1ManageAddonConfigRequest =
 
 export interface GoogleCloudApihubV1ListAddonsResponse {
   /** The list of addons. */
-  addons?: Array<GoogleCloudApihubV1Addon>;
+  addons?: ReadonlyArray<GoogleCloudApihubV1Addon>;
   /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -276,7 +276,7 @@ export const GoogleCloudApihubV1AllowedValue =
 
 export interface GoogleCloudApihubV1EnumAttributeValues {
   /** Required. The attribute values in case attribute data type is enum. */
-  values?: Array<GoogleCloudApihubV1AllowedValue>;
+  values?: ReadonlyArray<GoogleCloudApihubV1AllowedValue>;
 }
 
 export const GoogleCloudApihubV1EnumAttributeValues =
@@ -286,7 +286,7 @@ export const GoogleCloudApihubV1EnumAttributeValues =
 
 export interface GoogleCloudApihubV1StringAttributeValues {
   /** Required. The attribute values in case attribute data type is string or JSON. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudApihubV1StringAttributeValues =
@@ -372,7 +372,7 @@ export const GoogleCloudApihubV1GoogleServiceAccountConfig =
 
 export interface GoogleCloudApihubV1AuthConfigTemplate {
   /** Required. The list of authentication types supported by the plugin. */
-  supportedAuthTypes?: Array<
+  supportedAuthTypes?: ReadonlyArray<
     | "AUTH_TYPE_UNSPECIFIED"
     | "NO_AUTH"
     | "GOOGLE_SERVICE_ACCOUNT"
@@ -431,9 +431,9 @@ export interface GoogleCloudApihubV1ConfigVariableTemplate {
   /** Optional. Flag represents that this `ConfigVariable` must be provided for a PluginInstance. */
   required?: boolean;
   /** Optional. Enum options. To be populated if `ValueType` is `ENUM`. */
-  enumOptions?: Array<GoogleCloudApihubV1ConfigValueOption>;
+  enumOptions?: ReadonlyArray<GoogleCloudApihubV1ConfigValueOption>;
   /** Optional. Multi select options. To be populated if `ValueType` is `MULTI_SELECT`. */
-  multiSelectOptions?: Array<GoogleCloudApihubV1ConfigValueOption>;
+  multiSelectOptions?: ReadonlyArray<GoogleCloudApihubV1ConfigValueOption>;
 }
 
 export const GoogleCloudApihubV1ConfigVariableTemplate =
@@ -455,7 +455,7 @@ export interface GoogleCloudApihubV1ConfigTemplate {
   /** Optional. The authentication template for the plugin. */
   authConfigTemplate?: GoogleCloudApihubV1AuthConfigTemplate;
   /** Optional. The list of additional configuration variables for the plugin's configuration. */
-  additionalConfigTemplate?: Array<GoogleCloudApihubV1ConfigVariableTemplate>;
+  additionalConfigTemplate?: ReadonlyArray<GoogleCloudApihubV1ConfigVariableTemplate>;
 }
 
 export const GoogleCloudApihubV1ConfigTemplate =
@@ -486,7 +486,7 @@ export interface GoogleCloudApihubV1Plugin {
   /** Optional. This field is optional. It is used to notify the plugin hosting service for any lifecycle changes of the plugin instance and trigger execution of plugin instance actions in case of API hub managed actions. This field should be provided if the plugin instance lifecycle of the developed plugin needs to be managed from API hub. Also, in this case the plugin hosting service interface needs to be implemented. This field should not be provided if the plugin wants to manage plugin instance lifecycle events outside of hub interface and use plugin framework for only registering of plugin and plugin instances to capture the source of data into hub. Note, in this case the plugin hosting service interface is not required to be implemented. Also, the plugin instance lifecycle actions will be disabled from API hub's UI. */
   hostingService?: GoogleCloudApihubV1HostingService;
   /** Optional. The configuration of actions supported by the plugin. **REQUIRED**: This field must be provided when creating or updating a Plugin. The server will reject requests if this field is missing. */
-  actionsConfig?: Array<GoogleCloudApihubV1PluginActionConfig>;
+  actionsConfig?: ReadonlyArray<GoogleCloudApihubV1PluginActionConfig>;
   /** Optional. The documentation of the plugin, that explains how to set up and use the plugin. */
   documentation?: GoogleCloudApihubV1Documentation;
   /** Optional. The category of the plugin, identifying its primary category or purpose. This field is required for all plugins. */
@@ -550,7 +550,7 @@ export const GoogleCloudApihubV1DisablePluginRequest =
 
 export interface GoogleCloudApihubV1ListPluginsResponse {
   /** The plugins from the specified parent resource. */
-  plugins?: Array<GoogleCloudApihubV1Plugin>;
+  plugins?: ReadonlyArray<GoogleCloudApihubV1Plugin>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -657,7 +657,7 @@ export const GoogleCloudApihubV1AuthConfig =
 
 export interface GoogleCloudApihubV1MultiSelectValues {
   /** Optional. The config variable value of data type multi select. */
-  values?: Array<GoogleCloudApihubV1ConfigValueOption>;
+  values?: ReadonlyArray<GoogleCloudApihubV1ConfigValueOption>;
 }
 
 export const GoogleCloudApihubV1MultiSelectValues =
@@ -667,7 +667,7 @@ export const GoogleCloudApihubV1MultiSelectValues =
 
 export interface GoogleCloudApihubV1MultiStringValues {
   /** Optional. The config variable value of data type multi string. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudApihubV1MultiStringValues =
@@ -677,7 +677,7 @@ export const GoogleCloudApihubV1MultiStringValues =
 
 export interface GoogleCloudApihubV1MultiIntValues {
   /** Optional. The config variable value of data type multi int. */
-  values?: Array<number>;
+  values?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudApihubV1MultiIntValues =
@@ -881,7 +881,7 @@ export interface GoogleCloudApihubV1PluginInstance {
   /** Output only. Error message describing the failure, if any, during Create, Delete or ApplyConfig operation corresponding to the plugin instance.This field will only be populated if the plugin instance is in the ERROR or FAILED state. */
   errorMessage?: string;
   /** Required. The action status for the plugin instance. */
-  actions?: Array<GoogleCloudApihubV1PluginInstanceAction>;
+  actions?: ReadonlyArray<GoogleCloudApihubV1PluginInstanceAction>;
   /** Output only. Timestamp indicating when the plugin instance was created. */
   createTime?: string;
   /** Output only. Timestamp indicating when the plugin instance was last updated. */
@@ -942,7 +942,7 @@ export const GoogleCloudApihubV1ExecutePluginInstanceActionRequest =
 
 export interface GoogleCloudApihubV1ListPluginInstancesResponse {
   /** The plugin instances from the specified parent resource. */
-  pluginInstances?: Array<GoogleCloudApihubV1PluginInstance>;
+  pluginInstances?: ReadonlyArray<GoogleCloudApihubV1PluginInstance>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1075,7 +1075,7 @@ export interface GoogleCloudApihubV1Api {
   /** Optional. Owner details for the API resource. */
   owner?: GoogleCloudApihubV1Owner;
   /** Output only. The list of versions present in an API resource. Note: An API resource can be associated with more than 1 version. Format is `projects/{project}/locations/{location}/apis/{api}/versions/{version}` */
-  versions?: Array<string>;
+  versions?: ReadonlyArray<string>;
   /** Output only. The time at which the API resource was created. */
   createTime?: string;
   /** Output only. The time at which the API resource was last updated. */
@@ -1099,7 +1099,7 @@ export interface GoogleCloudApihubV1Api {
   /** Optional. Fingerprint of the API resource. This must be unique for each API resource. It can neither be unset nor be updated to an existing fingerprint of another API resource. */
   fingerprint?: string;
   /** Output only. The list of sources and metadata from the sources of the API resource. */
-  sourceMetadata?: Array<GoogleCloudApihubV1SourceMetadata>;
+  sourceMetadata?: ReadonlyArray<GoogleCloudApihubV1SourceMetadata>;
   /** Optional. The api functional requirements associated with the API resource. Carinality is 1 for this attribute. This maps to the following system defined attribute: `projects/{project}/locations/{location}/attributes/system-api-functional-requirements` attribute. The value of the attribute should be a proper URI, and in case of Cloud Storage URI, it should point to a Cloud Storage object, not a directory. */
   apiFunctionalRequirements?: GoogleCloudApihubV1AttributeValues;
   /** Optional. The api technical requirements associated with the API resource. Carinality is 1 for this attribute. This maps to the following system defined attribute: `projects/{project}/locations/{location}/attributes/system-api-technical-requirements` attribute. The value of the attribute should be a proper URI, and in case of Cloud Storage URI, it should point to a Cloud Storage object, not a directory. */
@@ -1141,7 +1141,7 @@ export const GoogleCloudApihubV1Api = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface GoogleCloudApihubV1ListApisResponse {
   /** The API resources present in the API hub. */
-  apis?: Array<GoogleCloudApihubV1Api>;
+  apis?: ReadonlyArray<GoogleCloudApihubV1Api>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1162,13 +1162,13 @@ export interface GoogleCloudApihubV1Version {
   /** Optional. The documentation of the version. */
   documentation?: GoogleCloudApihubV1Documentation;
   /** Output only. The specs associated with this version. Note that an API version can be associated with multiple specs. Format is `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}` */
-  specs?: Array<string>;
+  specs?: ReadonlyArray<string>;
   /** Output only. The operations contained in the API version. These operations will be added to the version when a new spec is added or when an existing spec is updated. Format is `projects/{project}/locations/{location}/apis/{api}/versions/{version}/operations/{operation}` */
-  apiOperations?: Array<string>;
+  apiOperations?: ReadonlyArray<string>;
   /** Output only. The definitions contained in the API version. These definitions will be added to the version when a new spec is added or when an existing spec is updated. Format is `projects/{project}/locations/{location}/apis/{api}/versions/{version}/definitions/{definition}` */
-  definitions?: Array<string>;
+  definitions?: ReadonlyArray<string>;
   /** Optional. The deployments linked to this API version. Note: A particular API version could be deployed to multiple deployments (for dev deployment, UAT deployment, etc) Format is `projects/{project}/locations/{location}/deployments/{deployment}` */
-  deployments?: Array<string>;
+  deployments?: ReadonlyArray<string>;
   /** Output only. The time at which the version was created. */
   createTime?: string;
   /** Output only. The time at which the version was last updated. */
@@ -1184,7 +1184,7 @@ export interface GoogleCloudApihubV1Version {
   /** Optional. The selected deployment for a Version resource. This can be used when special handling is needed on client side for a particular deployment linked to the version. Format is `projects/{project}/locations/{location}/deployments/{deployment}` */
   selectedDeployment?: string;
   /** Output only. The list of sources and metadata from the sources of the version. */
-  sourceMetadata?: Array<GoogleCloudApihubV1SourceMetadata>;
+  sourceMetadata?: ReadonlyArray<GoogleCloudApihubV1SourceMetadata>;
 }
 
 export const GoogleCloudApihubV1Version =
@@ -1213,7 +1213,7 @@ export const GoogleCloudApihubV1Version =
 
 export interface GoogleCloudApihubV1ListVersionsResponse {
   /** The versions corresponding to an API. */
-  versions?: Array<GoogleCloudApihubV1Version>;
+  versions?: ReadonlyArray<GoogleCloudApihubV1Version>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1301,7 +1301,7 @@ export interface GoogleCloudApihubV1Issue {
   /** Required. Rule code unique to each rule defined in linter. */
   code?: string;
   /** Required. An array of strings indicating the location in the analyzed document where the rule was triggered. */
-  path?: Array<string>;
+  path?: ReadonlyArray<string>;
   /** Required. Human-readable message describing the issue found by the linter. */
   message?: string;
   /** Required. Severity level of the rule violation. */
@@ -1346,9 +1346,9 @@ export const GoogleCloudApihubV1SummaryEntry =
 
 export interface GoogleCloudApihubV1LintResponse {
   /** Optional. Array of issues found in the analyzed document. */
-  issues?: Array<GoogleCloudApihubV1Issue>;
+  issues?: ReadonlyArray<GoogleCloudApihubV1Issue>;
   /** Optional. Summary of all issue types and counts for each severity level. */
-  summary?: Array<GoogleCloudApihubV1SummaryEntry>;
+  summary?: ReadonlyArray<GoogleCloudApihubV1SummaryEntry>;
   /** Required. Lint state represents success or failure for linting. */
   state?:
     | "LINT_STATE_UNSPECIFIED"
@@ -1429,9 +1429,9 @@ export interface GoogleCloudApihubV1Spec {
     | "STRICT"
     | (string & {});
   /** Output only. The list of sources and metadata from the sources of the spec. */
-  sourceMetadata?: Array<GoogleCloudApihubV1SourceMetadata>;
+  sourceMetadata?: ReadonlyArray<GoogleCloudApihubV1SourceMetadata>;
   /** Output only. The additional spec contents for the spec. */
-  additionalSpecContents?: Array<GoogleCloudApihubV1AdditionalSpecContent>;
+  additionalSpecContents?: ReadonlyArray<GoogleCloudApihubV1AdditionalSpecContent>;
 }
 
 export const GoogleCloudApihubV1Spec =
@@ -1474,7 +1474,7 @@ export const GoogleCloudApihubV1FetchAdditionalSpecContentResponse =
 
 export interface GoogleCloudApihubV1ListSpecsResponse {
   /** The specs corresponding to an API Version. */
-  specs?: Array<GoogleCloudApihubV1Spec>;
+  specs?: ReadonlyArray<GoogleCloudApihubV1Spec>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1619,7 +1619,7 @@ export interface GoogleCloudApihubV1ApiOperation {
   /** Optional. The list of user defined attributes associated with the API operation resource. The key is the attribute name. It will be of the format: `projects/{project}/locations/{location}/attributes/{attribute}`. The value is the attribute values associated with the resource. */
   attributes?: Record<string, GoogleCloudApihubV1AttributeValues>;
   /** Output only. The list of sources and metadata from the sources of the API operation. */
-  sourceMetadata?: Array<GoogleCloudApihubV1SourceMetadata>;
+  sourceMetadata?: ReadonlyArray<GoogleCloudApihubV1SourceMetadata>;
 }
 
 export const GoogleCloudApihubV1ApiOperation =
@@ -1639,7 +1639,7 @@ export const GoogleCloudApihubV1ApiOperation =
 
 export interface GoogleCloudApihubV1ListApiOperationsResponse {
   /** The operations corresponding to an API version. */
-  apiOperations?: Array<GoogleCloudApihubV1ApiOperation>;
+  apiOperations?: ReadonlyArray<GoogleCloudApihubV1ApiOperation>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1709,9 +1709,9 @@ export interface GoogleCloudApihubV1Deployment {
   /** Required. The resource URI identifies the deployment within its gateway. For Apigee gateways, its recommended to use the format: organizations/{org}/environments/{env}/apis/{api}. For ex: if a proxy with name `orders` is deployed in `staging` environment of `cymbal` organization, the resource URI would be: `organizations/cymbal/environments/staging/apis/orders`. */
   resourceUri?: string;
   /** Required. The endpoints at which this deployment resource is listening for API requests. This could be a list of complete URIs, hostnames or an IP addresses. */
-  endpoints?: Array<string>;
+  endpoints?: ReadonlyArray<string>;
   /** Output only. The API versions linked to this deployment. Note: A particular deployment could be linked to multiple different API versions (of same or different APIs). */
-  apiVersions?: Array<string>;
+  apiVersions?: ReadonlyArray<string>;
   /** Output only. The time at which the deployment was created. */
   createTime?: string;
   /** Output only. The time at which the deployment was last updated. */
@@ -1723,7 +1723,7 @@ export interface GoogleCloudApihubV1Deployment {
   /** Optional. The list of user defined attributes associated with the deployment resource. The key is the attribute name. It will be of the format: `projects/{project}/locations/{location}/attributes/{attribute}`. The value is the attribute values associated with the resource. */
   attributes?: Record<string, GoogleCloudApihubV1AttributeValues>;
   /** Output only. The list of sources and metadata from the sources of the deployment. */
-  sourceMetadata?: Array<GoogleCloudApihubV1SourceMetadata>;
+  sourceMetadata?: ReadonlyArray<GoogleCloudApihubV1SourceMetadata>;
   /** Optional. The uri where users can navigate to for the management of the deployment. This maps to the following system defined attribute: `projects/{project}/locations/{location}/attributes/system-management-url` The number of values for this attribute will be based on the cardinality of the attribute. The same can be retrieved via GetAttribute API. The value of the attribute should be a valid URL. */
   managementUrl?: GoogleCloudApihubV1AttributeValues;
   /** Optional. The uri where additional source specific information for this deployment can be found. This maps to the following system defined attribute: `projects/{project}/locations/{location}/attributes/system-source-uri` The number of values for this attribute will be based on the cardinality of the attribute. The same can be retrieved via GetAttribute API. The value of the attribute should be a valid URI, and in case of Cloud Storage URI, it should point to a Cloud Storage object, not a directory. */
@@ -1762,7 +1762,7 @@ export const GoogleCloudApihubV1Deployment =
 
 export interface GoogleCloudApihubV1ListDeploymentsResponse {
   /** The deployment resources present in the API hub. */
-  deployments?: Array<GoogleCloudApihubV1Deployment>;
+  deployments?: ReadonlyArray<GoogleCloudApihubV1Deployment>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1808,7 +1808,7 @@ export interface GoogleCloudApihubV1Attribute {
     | "URI"
     | (string & {});
   /** Optional. The list of allowed values when the attribute value is of type enum. This is required when the data_type of the attribute is ENUM. The maximum number of allowed values of an attribute will be 1000. */
-  allowedValues?: Array<GoogleCloudApihubV1AllowedValue>;
+  allowedValues?: ReadonlyArray<GoogleCloudApihubV1AllowedValue>;
   /** Optional. The maximum number of values that the attribute can have when associated with an API Hub resource. Cardinality 1 would represent a single-valued attribute. It must not be less than 1 or greater than 20. If not specified, the cardinality would be set to 1 by default and represent a single-valued attribute. */
   cardinality?: number;
   /** Output only. When mandatory is true, the attribute is mandatory for the resource specified in the scope. Only System defined attributes can be mandatory. */
@@ -1838,7 +1838,7 @@ export const GoogleCloudApihubV1Attribute =
 
 export interface GoogleCloudApihubV1ListAttributesResponse {
   /** The list of all attributes. */
-  attributes?: Array<GoogleCloudApihubV1Attribute>;
+  attributes?: ReadonlyArray<GoogleCloudApihubV1Attribute>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1905,7 +1905,7 @@ export const GoogleCloudApihubV1SearchResult =
 
 export interface GoogleCloudApihubV1SearchResourcesResponse {
   /** List of search results according to the filter and search query specified. The order of search results represents the ranking. */
-  searchResults?: Array<GoogleCloudApihubV1SearchResult>;
+  searchResults?: ReadonlyArray<GoogleCloudApihubV1SearchResult>;
   /** Pass this token in the SearchResourcesRequest to continue to list results. If all results have been returned, this field is an empty string or not present in the response. */
   nextPageToken?: string;
 }
@@ -1926,9 +1926,9 @@ export interface GoogleCloudApihubV1ExternalApi {
   /** Optional. Description of the external API. Max length is 2000 characters (Unicode Code Points). */
   description?: string;
   /** Optional. List of endpoints on which this API is accessible. */
-  endpoints?: Array<string>;
+  endpoints?: ReadonlyArray<string>;
   /** Optional. List of paths served by this API. */
-  paths?: Array<string>;
+  paths?: ReadonlyArray<string>;
   /** Optional. Documentation of the external API. */
   documentation?: GoogleCloudApihubV1Documentation;
   /** Optional. The list of user defined attributes associated with the Version resource. The key is the attribute name. It will be of the format: `projects/{project}/locations/{location}/attributes/{attribute}`. The value is the attribute values associated with the resource. */
@@ -1956,7 +1956,7 @@ export const GoogleCloudApihubV1ExternalApi =
 
 export interface GoogleCloudApihubV1ListExternalApisResponse {
   /** The External API resources present in the API hub. */
-  externalApis?: Array<GoogleCloudApihubV1ExternalApi>;
+  externalApis?: ReadonlyArray<GoogleCloudApihubV1ExternalApi>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2025,7 +2025,7 @@ export const GoogleCloudApihubV1ApiView =
 
 export interface GoogleCloudApihubV1RetrieveApiViewsResponse {
   /** Output only. The list of API views. */
-  apiViews?: Array<GoogleCloudApihubV1ApiView>;
+  apiViews?: ReadonlyArray<GoogleCloudApihubV1ApiView>;
   /** Next page token. */
   nextPageToken?: string;
 }
@@ -2110,7 +2110,7 @@ export const GoogleCloudApihubV1Dependency =
 
 export interface GoogleCloudApihubV1ListDependenciesResponse {
   /** The dependency resources present in the API hub. */
-  dependencies?: Array<GoogleCloudApihubV1Dependency>;
+  dependencies?: ReadonlyArray<GoogleCloudApihubV1Dependency>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2163,9 +2163,9 @@ export interface GoogleCloudApihubV1VersionMetadata {
   /** Required. Represents a version of the API resource in API hub. The ID of the version will be generated by Hub. */
   version?: GoogleCloudApihubV1Version;
   /** Optional. The specs associated with this version. Note that an API version can be associated with multiple specs. */
-  specs?: Array<GoogleCloudApihubV1SpecMetadata>;
+  specs?: ReadonlyArray<GoogleCloudApihubV1SpecMetadata>;
   /** Optional. The deployments linked to this API version. Note: A particular API version could be deployed to multiple deployments (for dev deployment, UAT deployment, etc.) */
-  deployments?: Array<GoogleCloudApihubV1DeploymentMetadata>;
+  deployments?: ReadonlyArray<GoogleCloudApihubV1DeploymentMetadata>;
   /** Optional. The unique identifier of the version in the system where it was originally created. */
   originalId?: string;
   /** Optional. Timestamp indicating when the version was created at the source. */
@@ -2190,7 +2190,7 @@ export interface GoogleCloudApihubV1APIMetadata {
   /** Required. The API resource to be pushed to Hub's collect layer. The ID of the API resource will be generated by Hub to ensure uniqueness across all APIs across systems. */
   api?: GoogleCloudApihubV1Api;
   /** Optional. The list of versions present in an API resource. */
-  versions?: Array<GoogleCloudApihubV1VersionMetadata>;
+  versions?: ReadonlyArray<GoogleCloudApihubV1VersionMetadata>;
   /** Optional. The unique identifier of the API in the system where it was originally created. */
   originalId?: string;
   /** Optional. Timestamp indicating when the API was created at the source. */
@@ -2210,7 +2210,7 @@ export const GoogleCloudApihubV1APIMetadata =
 
 export interface GoogleCloudApihubV1ApiMetadataList {
   /** Required. The list of API metadata. */
-  apiMetadata?: Array<GoogleCloudApihubV1APIMetadata>;
+  apiMetadata?: ReadonlyArray<GoogleCloudApihubV1APIMetadata>;
 }
 
 export const GoogleCloudApihubV1ApiMetadataList =
@@ -2301,7 +2301,7 @@ export interface GoogleCloudApihubV1Curation {
   /** Required. The endpoint to be triggered for curation. */
   endpoint?: GoogleCloudApihubV1Endpoint;
   /** Output only. The plugin instances and associated actions that are using the curation. Note: A particular curation could be used by multiple plugin instances or multiple actions in a plugin instance. */
-  pluginInstanceActions?: Array<GoogleCloudApihubV1PluginInstanceActionID>;
+  pluginInstanceActions?: ReadonlyArray<GoogleCloudApihubV1PluginInstanceActionID>;
   /** Output only. The last execution state of the curation. */
   lastExecutionState?:
     | "LAST_EXECUTION_STATE_UNSPECIFIED"
@@ -2340,7 +2340,7 @@ export const GoogleCloudApihubV1Curation =
 
 export interface GoogleCloudApihubV1ListCurationsResponse {
   /** The curation resources present in the API hub. */
-  curations?: Array<GoogleCloudApihubV1Curation>;
+  curations?: ReadonlyArray<GoogleCloudApihubV1Curation>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2357,19 +2357,19 @@ export interface GoogleCloudApihubV1DiscoveredApiObservation {
   /** Optional. Style of ApiObservation */
   style?: "STYLE_UNSPECIFIED" | "REST" | "GRPC" | "GRAPHQL" | (string & {});
   /** Optional. The IP address (IPv4 or IPv6) of the origin server that the request was sent to. This field can include port information. Examples: `"192.168.1.1"`, `"10.0.0.1:80"`, `"FE80::0202:B3FF:FE1E:8329"`. */
-  serverIps?: Array<string>;
+  serverIps?: ReadonlyArray<string>;
   /** Optional. The hostname of requests processed for this Observation. */
   hostname?: string;
   /** Optional. Last event detected time stamp */
   lastEventDetectedTime?: string;
   /** Optional. The location of the observation source. */
-  sourceLocations?: Array<string>;
+  sourceLocations?: ReadonlyArray<string>;
   /** Optional. The number of observed API Operations. */
   apiOperationCount?: string;
   /** Optional. For an observation pushed from a Google Cloud resource, this would be the Google Cloud project id. */
   origin?: string;
   /** Optional. The type of the source from which the observation was collected. */
-  sourceTypes?: Array<
+  sourceTypes?: ReadonlyArray<
     "SOURCE_TYPE_UNSPECIFIED" | "GCP_XLB" | "GCP_ILB" | (string & {})
   >;
   /** Output only. The number of known API Operations. */
@@ -2404,7 +2404,7 @@ export const GoogleCloudApihubV1DiscoveredApiObservation =
 
 export interface GoogleCloudApihubV1ListDiscoveredApiObservationsResponse {
   /** The DiscoveredApiObservation from the specified project and location. */
-  discoveredApiObservations?: Array<GoogleCloudApihubV1DiscoveredApiObservation>;
+  discoveredApiObservations?: ReadonlyArray<GoogleCloudApihubV1DiscoveredApiObservation>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2516,7 +2516,7 @@ export interface GoogleCloudApihubV1HttpOperationDetails {
   /** Required. An HTTP Operation. */
   httpOperation?: GoogleCloudApihubV1HttpOperation;
   /** Optional. Path params of HttpOperation */
-  pathParams?: Array<GoogleCloudApihubV1PathParam>;
+  pathParams?: ReadonlyArray<GoogleCloudApihubV1PathParam>;
   /** Optional. Query params of HttpOperation */
   queryParams?: Record<string, GoogleCloudApihubV1QueryParam>;
   /** Optional. Request metadata. */
@@ -2564,7 +2564,7 @@ export interface GoogleCloudApihubV1DiscoveredApiOperation {
     | "UNKNOWN"
     | (string & {});
   /** Output only. The list of matched results for the discovered API operation. This will be populated only if the classification is known. The current usecase is for a single match. Keeping it repeated to support multiple matches in future. */
-  matchResults?: Array<GoogleCloudApihubV1MatchResult>;
+  matchResults?: ReadonlyArray<GoogleCloudApihubV1MatchResult>;
   /** Output only. The metadata of the source from which the api operation was collected. */
   sourceMetadata?: GoogleCloudApihubV1SourceMetadata;
   /** Output only. Create time stamp of the discovered API operation in API Hub. */
@@ -2589,7 +2589,7 @@ export const GoogleCloudApihubV1DiscoveredApiOperation =
 
 export interface GoogleCloudApihubV1ListDiscoveredApiOperationsResponse {
   /** The DiscoveredApiOperations from the specified project, location and DiscoveredApiObservation. */
-  discoveredApiOperations?: Array<GoogleCloudApihubV1DiscoveredApiOperation>;
+  discoveredApiOperations?: ReadonlyArray<GoogleCloudApihubV1DiscoveredApiOperation>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2622,7 +2622,7 @@ export const GoogleCloudApihubV1HostProjectRegistration =
 
 export interface GoogleCloudApihubV1ListHostProjectRegistrationsResponse {
   /** The list of host project registrations. */
-  hostProjectRegistrations?: Array<GoogleCloudApihubV1HostProjectRegistration>;
+  hostProjectRegistrations?: ReadonlyArray<GoogleCloudApihubV1HostProjectRegistration>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2780,7 +2780,7 @@ export const GoogleCloudApihubV1RuntimeProjectAttachment =
 
 export interface GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse {
   /** List of runtime project attachments. */
-  runtimeProjectAttachments?: Array<GoogleCloudApihubV1RuntimeProjectAttachment>;
+  runtimeProjectAttachments?: ReadonlyArray<GoogleCloudApihubV1RuntimeProjectAttachment>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2833,7 +2833,7 @@ export const GoogleCloudLocationLocation =
 
 export interface GoogleCloudLocationListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<GoogleCloudLocationLocation>;
+  locations?: ReadonlyArray<GoogleCloudLocationLocation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -2920,7 +2920,7 @@ export const SearchResourcesProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:searchResources",
+      path: "v1/{location}:searchResources",
       hasBody: true,
     }),
     svc,
@@ -2970,10 +2970,7 @@ export const RetrieveApiViewsProjectsLocationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:retrieveApiViews",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}:retrieveApiViews" }),
     svc,
   ) as unknown as Schema.Schema<RetrieveApiViewsProjectsLocationsRequest>;
 
@@ -3016,7 +3013,7 @@ export const CollectApiDataProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:collectApiData",
+      path: "v1/{location}:collectApiData",
       hasBody: true,
     }),
     svc,
@@ -3050,10 +3047,7 @@ export const LookupRuntimeProjectAttachmentProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:lookupRuntimeProjectAttachment",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:lookupRuntimeProjectAttachment" }),
     svc,
   ) as unknown as Schema.Schema<LookupRuntimeProjectAttachmentProjectsLocationsRequest>;
 
@@ -3100,7 +3094,7 @@ export const ListProjectsLocationsRequest =
       T.HttpQuery("extraLocationTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -3136,10 +3130,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -3184,10 +3175,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -3223,10 +3211,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -3257,10 +3242,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -3296,11 +3278,7 @@ export const CancelProjectsLocationsOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -3331,10 +3309,7 @@ export const GetProjectsLocationsAddonsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/addons/{addonsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAddonsRequest>;
 
@@ -3370,11 +3345,7 @@ export const ManageConfigProjectsLocationsAddonsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/addons/{addonsId}:manageConfig",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:manageConfig", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ManageConfigProjectsLocationsAddonsRequest>;
 
@@ -3415,10 +3386,7 @@ export const ListProjectsLocationsAddonsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/addons",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/addons" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAddonsRequest>;
 
@@ -3454,10 +3422,7 @@ export const GetProjectsLocationsPluginsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/plugins/{pluginsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsPluginsRequest>;
 
@@ -3493,11 +3458,7 @@ export const EnableProjectsLocationsPluginsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/plugins/{pluginsId}:enable",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:enable", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<EnableProjectsLocationsPluginsRequest>;
 
@@ -3533,11 +3494,7 @@ export const DisableProjectsLocationsPluginsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/plugins/{pluginsId}:disable",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:disable", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DisableProjectsLocationsPluginsRequest>;
 
@@ -3574,11 +3531,7 @@ export const CreateProjectsLocationsPluginsRequest =
     pluginId: Schema.optional(Schema.String).pipe(T.HttpQuery("pluginId")),
     body: Schema.optional(GoogleCloudApihubV1Plugin).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/plugins",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/plugins", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsPluginsRequest>;
 
@@ -3618,10 +3571,7 @@ export const ListProjectsLocationsPluginsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/plugins",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/plugins" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsPluginsRequest>;
 
@@ -3657,10 +3607,7 @@ export const DeleteProjectsLocationsPluginsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/plugins/{pluginsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsPluginsRequest>;
 
@@ -3691,10 +3638,7 @@ export const GetStyleGuideProjectsLocationsPluginsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/plugins/{pluginsId}/styleGuide",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetStyleGuideProjectsLocationsPluginsRequest>;
 
@@ -3732,11 +3676,7 @@ export const UpdateStyleGuideProjectsLocationsPluginsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1StyleGuide).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/plugins/{pluginsId}/styleGuide",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateStyleGuideProjectsLocationsPluginsRequest>;
 
@@ -3776,11 +3716,7 @@ export const CreateProjectsLocationsPluginsInstancesRequest =
     ),
     body: Schema.optional(GoogleCloudApihubV1PluginInstance).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/plugins/{pluginsId}/instances",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/instances", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsPluginsInstancesRequest>;
 
@@ -3817,11 +3753,7 @@ export const ExecuteActionProjectsLocationsPluginsInstancesRequest =
       GoogleCloudApihubV1ExecutePluginInstanceActionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/plugins/{pluginsId}/instances/{instancesId}:executeAction",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:executeAction", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExecuteActionProjectsLocationsPluginsInstancesRequest>;
 
@@ -3853,10 +3785,7 @@ export const GetProjectsLocationsPluginsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/plugins/{pluginsId}/instances/{instancesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsPluginsInstancesRequest>;
 
@@ -3897,10 +3826,7 @@ export const ListProjectsLocationsPluginsInstancesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/plugins/{pluginsId}/instances",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/instances" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsPluginsInstancesRequest>;
 
@@ -3941,11 +3867,7 @@ export const EnableActionProjectsLocationsPluginsInstancesRequest =
       GoogleCloudApihubV1EnablePluginInstanceActionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/plugins/{pluginsId}/instances/{instancesId}:enableAction",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:enableAction", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<EnableActionProjectsLocationsPluginsInstancesRequest>;
 
@@ -3982,11 +3904,7 @@ export const DisableActionProjectsLocationsPluginsInstancesRequest =
       GoogleCloudApihubV1DisablePluginInstanceActionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/plugins/{pluginsId}/instances/{instancesId}:disableAction",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:disableAction", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DisableActionProjectsLocationsPluginsInstancesRequest>;
 
@@ -4024,11 +3942,7 @@ export const PatchProjectsLocationsPluginsInstancesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1PluginInstance).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/plugins/{pluginsId}/instances/{instancesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsPluginsInstancesRequest>;
 
@@ -4060,10 +3974,7 @@ export const DeleteProjectsLocationsPluginsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/plugins/{pluginsId}/instances/{instancesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsPluginsInstancesRequest>;
 
@@ -4102,7 +4013,7 @@ export const ManageSourceDataProjectsLocationsPluginsInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/plugins/{pluginsId}/instances/{instancesId}:manageSourceData",
+      path: "v1/{name}:manageSourceData",
       hasBody: true,
     }),
     svc,
@@ -4137,10 +4048,7 @@ export const GetContentsProjectsLocationsPluginsStyleGuideRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/plugins/{pluginsId}/styleGuide:contents",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:contents" }),
     svc,
   ) as unknown as Schema.Schema<GetContentsProjectsLocationsPluginsStyleGuideRequest>;
 
@@ -4178,11 +4086,7 @@ export const CreateProjectsLocationsApisRequest =
     apiId: Schema.optional(Schema.String).pipe(T.HttpQuery("apiId")),
     body: Schema.optional(GoogleCloudApihubV1Api).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/apis", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsApisRequest>;
 
@@ -4213,10 +4117,7 @@ export const GetProjectsLocationsApisRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsApisRequest>;
 
@@ -4256,10 +4157,7 @@ export const ListProjectsLocationsApisRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/apis" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsApisRequest>;
 
@@ -4301,11 +4199,7 @@ export const PatchProjectsLocationsApisRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1Api).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsApisRequest>;
 
@@ -4339,10 +4233,7 @@ export const DeleteProjectsLocationsApisRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsApisRequest>;
 
@@ -4379,11 +4270,7 @@ export const CreateProjectsLocationsApisVersionsRequest =
     versionId: Schema.optional(Schema.String).pipe(T.HttpQuery("versionId")),
     body: Schema.optional(GoogleCloudApihubV1Version).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/versions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsApisVersionsRequest>;
 
@@ -4415,10 +4302,7 @@ export const GetProjectsLocationsApisVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsApisVersionsRequest>;
 
@@ -4459,10 +4343,7 @@ export const ListProjectsLocationsApisVersionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/versions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsApisVersionsRequest>;
 
@@ -4504,11 +4385,7 @@ export const PatchProjectsLocationsApisVersionsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1Version).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsApisVersionsRequest>;
 
@@ -4543,10 +4420,7 @@ export const DeleteProjectsLocationsApisVersionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsApisVersionsRequest>;
 
@@ -4583,11 +4457,7 @@ export const CreateProjectsLocationsApisVersionsSpecsRequest =
     specId: Schema.optional(Schema.String).pipe(T.HttpQuery("specId")),
     body: Schema.optional(GoogleCloudApihubV1Spec).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}/specs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/specs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsApisVersionsSpecsRequest>;
 
@@ -4619,10 +4489,7 @@ export const GetProjectsLocationsApisVersionsSpecsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}/specs/{specsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsApisVersionsSpecsRequest>;
 
@@ -4654,10 +4521,7 @@ export const GetContentsProjectsLocationsApisVersionsSpecsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}/specs/{specsId}:contents",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:contents" }),
     svc,
   ) as unknown as Schema.Schema<GetContentsProjectsLocationsApisVersionsSpecsRequest>;
 
@@ -4698,10 +4562,7 @@ export const FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsRequest
       T.HttpQuery("specContentType"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}/specs/{specsId}:fetchAdditionalSpecContent",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:fetchAdditionalSpecContent" }),
     svc,
   ) as unknown as Schema.Schema<FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsRequest>;
 
@@ -4743,10 +4604,7 @@ export const ListProjectsLocationsApisVersionsSpecsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}/specs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/specs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsApisVersionsSpecsRequest>;
 
@@ -4788,11 +4646,7 @@ export const PatchProjectsLocationsApisVersionsSpecsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1Spec).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}/specs/{specsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsApisVersionsSpecsRequest>;
 
@@ -4824,10 +4678,7 @@ export const DeleteProjectsLocationsApisVersionsSpecsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}/specs/{specsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsApisVersionsSpecsRequest>;
 
@@ -4863,11 +4714,7 @@ export const LintProjectsLocationsApisVersionsSpecsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}/specs/{specsId}:lint",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:lint", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<LintProjectsLocationsApisVersionsSpecsRequest>;
 
@@ -4906,11 +4753,7 @@ export const CreateProjectsLocationsApisVersionsOperationsRequest =
     ),
     body: Schema.optional(GoogleCloudApihubV1ApiOperation).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}/operations",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/operations", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsApisVersionsOperationsRequest>;
 
@@ -4942,10 +4785,7 @@ export const GetProjectsLocationsApisVersionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsApisVersionsOperationsRequest>;
 
@@ -4986,10 +4826,7 @@ export const ListProjectsLocationsApisVersionsOperationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsApisVersionsOperationsRequest>;
 
@@ -5031,11 +4868,7 @@ export const PatchProjectsLocationsApisVersionsOperationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1ApiOperation).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}/operations/{operationsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsApisVersionsOperationsRequest>;
 
@@ -5067,10 +4900,7 @@ export const DeleteProjectsLocationsApisVersionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsApisVersionsOperationsRequest>;
 
@@ -5101,10 +4931,7 @@ export const GetProjectsLocationsApisVersionsDefinitionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apis/{apisId}/versions/{versionsId}/definitions/{definitionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsApisVersionsDefinitionsRequest>;
 
@@ -5144,11 +4971,7 @@ export const CreateProjectsLocationsDeploymentsRequest =
     ),
     body: Schema.optional(GoogleCloudApihubV1Deployment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deployments",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/deployments", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDeploymentsRequest>;
 
@@ -5180,10 +5003,7 @@ export const GetProjectsLocationsDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deployments/{deploymentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDeploymentsRequest>;
 
@@ -5224,10 +5044,7 @@ export const ListProjectsLocationsDeploymentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deployments",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/deployments" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDeploymentsRequest>;
 
@@ -5269,11 +5086,7 @@ export const PatchProjectsLocationsDeploymentsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1Deployment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deployments/{deploymentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDeploymentsRequest>;
 
@@ -5305,10 +5118,7 @@ export const DeleteProjectsLocationsDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deployments/{deploymentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDeploymentsRequest>;
 
@@ -5347,11 +5157,7 @@ export const CreateProjectsLocationsAttributesRequest =
     ),
     body: Schema.optional(GoogleCloudApihubV1Attribute).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/attributes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/attributes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsAttributesRequest>;
 
@@ -5383,10 +5189,7 @@ export const GetProjectsLocationsAttributesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/attributes/{attributesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAttributesRequest>;
 
@@ -5424,11 +5227,7 @@ export const PatchProjectsLocationsAttributesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1Attribute).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/attributes/{attributesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAttributesRequest>;
 
@@ -5460,10 +5259,7 @@ export const DeleteProjectsLocationsAttributesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/attributes/{attributesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAttributesRequest>;
 
@@ -5503,10 +5299,7 @@ export const ListProjectsLocationsAttributesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/attributes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/attributes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAttributesRequest>;
 
@@ -5550,11 +5343,7 @@ export const CreateProjectsLocationsExternalApisRequest =
     ),
     body: Schema.optional(GoogleCloudApihubV1ExternalApi).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/externalApis",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/externalApis", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsExternalApisRequest>;
 
@@ -5586,10 +5375,7 @@ export const GetProjectsLocationsExternalApisRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/externalApis/{externalApisId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsExternalApisRequest>;
 
@@ -5627,11 +5413,7 @@ export const PatchProjectsLocationsExternalApisRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1ExternalApi).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/externalApis/{externalApisId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsExternalApisRequest>;
 
@@ -5663,10 +5445,7 @@ export const DeleteProjectsLocationsExternalApisRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/externalApis/{externalApisId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsExternalApisRequest>;
 
@@ -5703,10 +5482,7 @@ export const ListProjectsLocationsExternalApisRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/externalApis",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/externalApis" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsExternalApisRequest>;
 
@@ -5750,11 +5526,7 @@ export const CreateProjectsLocationsDependenciesRequest =
     ),
     body: Schema.optional(GoogleCloudApihubV1Dependency).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dependencies",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/dependencies", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDependenciesRequest>;
 
@@ -5786,10 +5558,7 @@ export const GetProjectsLocationsDependenciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dependencies/{dependenciesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDependenciesRequest>;
 
@@ -5827,11 +5596,7 @@ export const PatchProjectsLocationsDependenciesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1Dependency).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dependencies/{dependenciesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDependenciesRequest>;
 
@@ -5863,10 +5628,7 @@ export const DeleteProjectsLocationsDependenciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dependencies/{dependenciesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDependenciesRequest>;
 
@@ -5906,10 +5668,7 @@ export const ListProjectsLocationsDependenciesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dependencies",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dependencies" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDependenciesRequest>;
 
@@ -5951,11 +5710,7 @@ export const CreateProjectsLocationsCurationsRequest =
     curationId: Schema.optional(Schema.String).pipe(T.HttpQuery("curationId")),
     body: Schema.optional(GoogleCloudApihubV1Curation).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/curations",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/curations", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsCurationsRequest>;
 
@@ -5987,10 +5742,7 @@ export const GetProjectsLocationsCurationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/curations/{curationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCurationsRequest>;
 
@@ -6030,10 +5782,7 @@ export const ListProjectsLocationsCurationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/curations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/curations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCurationsRequest>;
 
@@ -6075,11 +5824,7 @@ export const PatchProjectsLocationsCurationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1Curation).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/curations/{curationsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCurationsRequest>;
 
@@ -6111,10 +5856,7 @@ export const DeleteProjectsLocationsCurationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/curations/{curationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCurationsRequest>;
 
@@ -6151,10 +5893,7 @@ export const ListProjectsLocationsDiscoveredApiObservationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/discoveredApiObservations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/discoveredApiObservations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDiscoveredApiObservationsRequest>;
 
@@ -6190,10 +5929,7 @@ export const GetProjectsLocationsDiscoveredApiObservationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/discoveredApiObservations/{discoveredApiObservationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDiscoveredApiObservationsRequest>;
 
@@ -6231,10 +5967,7 @@ export const ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperatio
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/discoveredApiObservations/{discoveredApiObservationsId}/discoveredApiOperations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/discoveredApiOperations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest>;
 
@@ -6273,10 +6006,7 @@ export const GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperation
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/discoveredApiObservations/{discoveredApiObservationsId}/discoveredApiOperations/{discoveredApiOperationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest>;
 
@@ -6323,7 +6053,7 @@ export const CreateProjectsLocationsHostProjectRegistrationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/hostProjectRegistrations",
+      path: "v1/{parent}/hostProjectRegistrations",
       hasBody: true,
     }),
     svc,
@@ -6358,10 +6088,7 @@ export const GetProjectsLocationsHostProjectRegistrationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/hostProjectRegistrations/{hostProjectRegistrationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsHostProjectRegistrationsRequest>;
 
@@ -6405,10 +6132,7 @@ export const ListProjectsLocationsHostProjectRegistrationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/hostProjectRegistrations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/hostProjectRegistrations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsHostProjectRegistrationsRequest>;
 
@@ -6454,7 +6178,7 @@ export const CreateProjectsLocationsApiHubInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apiHubInstances",
+      path: "v1/{parent}/apiHubInstances",
       hasBody: true,
     }),
     svc,
@@ -6488,10 +6212,7 @@ export const DeleteProjectsLocationsApiHubInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apiHubInstances/{apiHubInstancesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsApiHubInstancesRequest>;
 
@@ -6523,10 +6244,7 @@ export const GetProjectsLocationsApiHubInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apiHubInstances/{apiHubInstancesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsApiHubInstancesRequest>;
 
@@ -6564,11 +6282,7 @@ export const PatchProjectsLocationsApiHubInstancesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudApihubV1ApiHubInstance).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apiHubInstances/{apiHubInstancesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsApiHubInstancesRequest>;
 
@@ -6600,10 +6314,7 @@ export const LookupProjectsLocationsApiHubInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/apiHubInstances:lookup",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/apiHubInstances:lookup" }),
     svc,
   ) as unknown as Schema.Schema<LookupProjectsLocationsApiHubInstancesRequest>;
 
@@ -6647,7 +6358,7 @@ export const CreateProjectsLocationsRuntimeProjectAttachmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/runtimeProjectAttachments",
+      path: "v1/{parent}/runtimeProjectAttachments",
       hasBody: true,
     }),
     svc,
@@ -6682,10 +6393,7 @@ export const GetProjectsLocationsRuntimeProjectAttachmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/runtimeProjectAttachments/{runtimeProjectAttachmentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRuntimeProjectAttachmentsRequest>;
 
@@ -6729,10 +6437,7 @@ export const ListProjectsLocationsRuntimeProjectAttachmentsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/runtimeProjectAttachments",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/runtimeProjectAttachments" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRuntimeProjectAttachmentsRequest>;
 
@@ -6768,10 +6473,7 @@ export const DeleteProjectsLocationsRuntimeProjectAttachmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/runtimeProjectAttachments/{runtimeProjectAttachmentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsRuntimeProjectAttachmentsRequest>;
 

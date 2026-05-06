@@ -44,7 +44,7 @@ export interface RoleGrant {
   /** Optional. Principal/Identity for whom the role need to assigned. */
   principal?: "PRINCIPAL_UNSPECIFIED" | "CONNECTOR_SA" | (string & {});
   /** Optional. List of roles that need to be granted. */
-  roles?: Array<string>;
+  roles?: ReadonlyArray<string>;
   /** Optional. Template that UI can use to provide helper text to customers. */
   helperTextTemplate?: string;
   /** Optional. Resource on which the roles needs to be granted for the principal. */
@@ -77,7 +77,7 @@ export interface EndUserAuthenticationNotifyEndpointDestinationEndPoint {
   /** Required. The URI of the Endpoint. */
   endpointUri?: string;
   /** Optional. List of Header to be added to the Endpoint. */
-  headers?: Array<EndUserAuthenticationNotifyEndpointDestinationEndPointHeader>;
+  headers?: ReadonlyArray<EndUserAuthenticationNotifyEndpointDestinationEndPointHeader>;
 }
 
 export const EndUserAuthenticationNotifyEndpointDestinationEndPoint =
@@ -191,7 +191,7 @@ export const Schedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WeeklyCycle {
   /** User can specify multiple windows in a week. Minimum of 1 window. */
-  schedule?: Array<Schedule>;
+  schedule?: ReadonlyArray<Schedule>;
 }
 
 export const WeeklyCycle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -219,7 +219,7 @@ export interface AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -231,7 +231,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
 export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -243,7 +243,7 @@ export interface ToolspecOverride {
   /** Output only. Updated time. */
   updateTime?: string;
   /** Required. List of tools defined in the tool spec. Marking this field as required as this is the only field that is editable by the user in modify API so we should have at least one tool in the list. */
-  tools?: Array<Record<string, unknown>>;
+  tools?: ReadonlyArray<Record<string, unknown>>;
   /** Output only. Created time. */
   createTime?: string;
 }
@@ -461,7 +461,7 @@ export interface JsonSchema {
   /** Minimum number of items in the array field. */
   minItems?: number;
   /** JSON Schema Validation: A Vocabulary for Structural Validation of JSON */
-  type?: Array<string>;
+  type?: ReadonlyArray<string>;
   /** A description of this schema. */
   description?: string;
   /** Regex pattern of the string field. This is a string value that describes the regular expression that the string value should match. */
@@ -471,9 +471,9 @@ export interface JsonSchema {
   /** Minimum length of the string field. */
   minLength?: number;
   /** Possible values for an enumeration. This works in conjunction with `type` to represent types with a fixed set of legal values */
-  enum?: Array<unknown>;
+  enum?: ReadonlyArray<unknown>;
   /** Whether this property is required. */
-  required?: Array<string>;
+  required?: ReadonlyArray<string>;
   /** Schema that applies to array values, applicable only if this is of type `array`. */
   items?: JsonSchema;
   /** Maximum length of the string field. */
@@ -712,7 +712,7 @@ export const ResultMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RuntimeActionSchema {
   /** Output only. List of input parameter metadata for the action. */
-  inputParameters?: Array<InputParameter>;
+  inputParameters?: ReadonlyArray<InputParameter>;
   /** Output only. Display Name of action to be shown on client side */
   displayName?: string;
   /** Output only. Input schema as string. */
@@ -724,7 +724,7 @@ export interface RuntimeActionSchema {
   /** Output only. Brief Description of action */
   description?: string;
   /** Output only. List of result field metadata. */
-  resultMetadata?: Array<ResultMetadata>;
+  resultMetadata?: ReadonlyArray<ResultMetadata>;
   /** Output only. Result schema as string. */
   resultSchemaAsString?: string;
   /** Output only. JsonSchema representation of this action's input metadata */
@@ -806,7 +806,7 @@ export const NodeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Oauth2AuthCodeFlowGoogleManaged {
   /** Required. Scopes the connection will request when the user performs the auth code flow. */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
   /** Optional. Authorization code to be exchanged for access and refresh tokens. */
   authCode?: string;
   /** Optional. Redirect URI to be provided during the auth code exchange. */
@@ -836,7 +836,7 @@ export interface Oauth2AuthCodeFlow {
   /** Optional. Auth URL for Authorization Code Flow */
   authUri?: string;
   /** Optional. Scopes the connection will request when the user performs the auth code flow. */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
 }
 
 export const Oauth2AuthCodeFlow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -960,7 +960,7 @@ export interface AuthConfig {
   /** SSH Public Key. */
   sshPublicKey?: SshPublicKey;
   /** Optional. List containing additional auth configs. */
-  additionalVariables?: Array<ConfigVariable>;
+  additionalVariables?: ReadonlyArray<ConfigVariable>;
 }
 
 export const AuthConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -983,7 +983,7 @@ export interface SslConfig {
   /** Optional. Bool for enabling SSL */
   useSsl?: boolean;
   /** Optional. Additional SSL related field values */
-  additionalVariables?: Array<ConfigVariable>;
+  additionalVariables?: ReadonlyArray<ConfigVariable>;
   /** Optional. Controls the ssl type for the given connector version. */
   type?: "SSL_TYPE_UNSPECIFIED" | "TLS" | "MTLS" | (string & {});
   /** Optional. Type of Client Cert (PEM/JKS/.. etc.) */
@@ -1030,7 +1030,7 @@ export const Destination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DestinationConfig {
   /** Optional. The destinations for the key. */
-  destinations?: Array<Destination>;
+  destinations?: ReadonlyArray<Destination>;
   /** Optional. The key is the destination identifier that is supported by the Connector. */
   key?: string;
 }
@@ -1079,11 +1079,11 @@ export interface EventingConfig {
   /** Optional. Dead letter configuration for eventing of a connection. */
   deadLetterConfig?: DeadLetterConfig;
   /** Optional. List of allowed event types for the connection. */
-  allowedEventTypes?: Array<string>;
+  allowedEventTypes?: ReadonlyArray<string>;
   /** Optional. List of projects to be allowlisted for the service attachment created in the tenant project for eventing ingress. */
-  privateConnectivityAllowlistedProjects?: Array<string>;
+  privateConnectivityAllowlistedProjects?: ReadonlyArray<string>;
   /** Optional. Additional eventing related field values */
-  additionalVariables?: Array<ConfigVariable>;
+  additionalVariables?: ReadonlyArray<ConfigVariable>;
   /** Optional. Registration endpoint for auto registration. */
   registrationDestinationConfig?: DestinationConfig;
   /** Optional. Enrichment Enabled. */
@@ -1218,7 +1218,7 @@ export interface WebhookData {
   /** Output only. Timestamp when the webhook was created. */
   createTime?: string;
   /** Output only. Additional webhook related field values. */
-  additionalVariables?: Array<ConfigVariable>;
+  additionalVariables?: ReadonlyArray<ConfigVariable>;
   /** Output only. Name of the Webhook */
   name?: string;
   /** Output only. Timestamp when the webhook was last updated. */
@@ -1236,7 +1236,7 @@ export const WebhookData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WebhookSubscriptions {
   /** Output only. Webhook data. */
-  webhookData?: Array<WebhookData>;
+  webhookData?: ReadonlyArray<WebhookData>;
 }
 
 export const WebhookSubscriptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1389,7 +1389,7 @@ export interface Connection {
   /** Output only. Eventing Runtime Data. */
   eventingRuntimeData?: EventingRuntimeData;
   /** Optional. Traffic shaping configuration for the connection. */
-  trafficShapingConfigs?: Array<TrafficShapingConfig>;
+  trafficShapingConfigs?: ReadonlyArray<TrafficShapingConfig>;
   /** Required. Connector version on which the connection is created. The format is: projects/* /locations/* /providers/* /connectors/* /versions/* Only global location is supported for ConnectorVersion resource. */
   connectorVersion?: string;
   /** Output only. Is trusted tester program enabled for the project. */
@@ -1405,7 +1405,7 @@ export interface Connection {
   /** Output only. Billing config for the connection. */
   billingConfig?: BillingConfig;
   /** Optional. Configuration for configuring the connection with an external system. */
-  configVariables?: Array<ConfigVariable>;
+  configVariables?: ReadonlyArray<ConfigVariable>;
   /** Optional. Service account needed for runtime plane to access Google Cloud resources. */
   serviceAccount?: string;
   /** Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources */
@@ -1413,7 +1413,7 @@ export interface Connection {
   /** Optional. Fallback on admin credentials for the connection. If this both auth_override_enabled and fallback_on_admin_credentials are set to true, the connection will use the admin credentials if the dynamic auth header is not present during auth override. */
   fallbackOnAdminCredentials?: boolean;
   /** Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s). */
-  destinationConfigs?: Array<DestinationConfig>;
+  destinationConfigs?: ReadonlyArray<DestinationConfig>;
   /** Optional. Node configuration for the connection. */
   nodeConfig?: NodeConfig;
 }
@@ -1541,7 +1541,7 @@ export interface RuntimeEntitySchema {
   /** Output only. Name of the entity. */
   entity?: string;
   /** List of operations supported by this entity */
-  operations?: Array<
+  operations?: ReadonlyArray<
     | "OPERATION_UNSPECIFIED"
     | "LIST"
     | "GET"
@@ -1551,7 +1551,7 @@ export interface RuntimeEntitySchema {
     | (string & {})
   >;
   /** Output only. List of fields in the entity. */
-  fields?: Array<Field>;
+  fields?: ReadonlyArray<Field>;
   /** Output only. JsonSchema representation of this entity's metadata */
   jsonSchema?: JsonSchema;
 }
@@ -1581,11 +1581,11 @@ export const SearchConnectionInstance =
 
 export interface SearchConnectionsResponse {
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** Optional. page_token */
   nextPageToken?: string;
   /** A list of connectors. */
-  connections?: Array<SearchConnectionInstance>;
+  connections?: ReadonlyArray<SearchConnectionInstance>;
 }
 
 export const SearchConnectionsResponse =
@@ -1615,7 +1615,7 @@ export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -1632,7 +1632,7 @@ export interface EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged {
   /** Auth Code Data */
   oauthTokenData?: OAuthTokenData;
   /** Required. Scopes the connection will request when the user performs the auth code flow. */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
   /** Optional. Authorization code to be exchanged for access and refresh tokens. */
   authCode?: string;
   /** Optional. Redirect URI to be provided during the auth code exchange. */
@@ -1696,7 +1696,7 @@ export interface EndUserAuthenticationConfigOauth2AuthCodeFlow {
   /** Optional. PKCE verifier to be used during the auth code exchange. */
   pkceVerifier?: string;
   /** Optional. Scopes the connection will request when the user performs the auth code flow. */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
   /** Optional. Auth URL for Authorization Code Flow */
   authUri?: string;
   /** Optional. Redirect URI to be provided during the auth code exchange. */
@@ -1760,7 +1760,7 @@ export interface EndUserAuthenticationConfig {
   /** Oauth2AuthCodeFlow. */
   oauth2AuthCodeFlow?: EndUserAuthenticationConfigOauth2AuthCodeFlow;
   /** Optional. List containing additional auth configs. */
-  additionalVariables?: Array<EndUserAuthenticationConfigVariable>;
+  additionalVariables?: ReadonlyArray<EndUserAuthenticationConfigVariable>;
   /** The type of authentication configured. */
   authType?:
     | "AUTH_TYPE_UNSPECIFIED"
@@ -1830,9 +1830,9 @@ export const FieldComparison = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LogicalExpression {
   /** Optional. A list of fields to be compared. */
-  fieldComparisons?: Array<FieldComparison>;
+  fieldComparisons?: ReadonlyArray<FieldComparison>;
   /** Optional. A list of nested conditions to be compared. */
-  logicalExpressions?: Array<LogicalExpression>;
+  logicalExpressions?: ReadonlyArray<LogicalExpression>;
   /** Optional. The logical operator to use between the fields and conditions. */
   logicalOperator?: "OPERATOR_UNSPECIFIED" | "AND" | "OR" | (string & {});
 }
@@ -1893,11 +1893,11 @@ export const Provider = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListProvidersResponse {
   /** A list of providers. */
-  providers?: Array<Provider>;
+  providers?: ReadonlyArray<Provider>;
   /** Next page token. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListProvidersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1949,7 +1949,7 @@ export const MultipleSelectOption = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MultipleSelectConfig {
   /** Required. Multiple select options. */
-  multipleSelectOptions?: Array<MultipleSelectOption>;
+  multipleSelectOptions?: ReadonlyArray<MultipleSelectOption>;
   /** Optional. Allow custom values. */
   allowCustomValues?: boolean;
   /** Required. Value separator. Only "," can be used for OAuth auth code flow scope field. */
@@ -2003,7 +2003,7 @@ export const AuthObject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface JsonAuthSchema {
   /** List of AuthObjects. */
-  oneOf?: Array<AuthObject>;
+  oneOf?: ReadonlyArray<AuthObject>;
   /** JSON schema of the AuthSchemas. */
   $schema?: string;
 }
@@ -2103,7 +2103,7 @@ export interface AuthorizationCodeLink {
   /** Optional. Omit query params from the redirect URI. */
   omitQueryParams?: boolean;
   /** Optional. The scopes for which the user will authorize Google Cloud Connectors on the connector data source. */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
 }
 
 export const AuthorizationCodeLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2131,7 +2131,7 @@ export interface ConfigVariableTemplate {
   /** Optional. Key of the config variable. */
   key?: string;
   /** Optional. Enum options. To be populated if `ValueType` is `ENUM` */
-  enumOptions?: Array<EnumOption>;
+  enumOptions?: ReadonlyArray<EnumOption>;
   /** Optional. Indicates if current template is part of advanced settings */
   isAdvanced?: boolean;
   /** Optional. Condition under which a field would be required. The condition can be represented in the form of a logical expression. */
@@ -2186,7 +2186,7 @@ export const ConfigVariableTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface AuthConfigTemplate {
   /** Config variables to describe an `AuthConfig` for a `Connection`. */
-  configVariableTemplates?: Array<ConfigVariableTemplate>;
+  configVariableTemplates?: ReadonlyArray<ConfigVariableTemplate>;
   /** Connector specific description for an authentication template. */
   description?: string;
   /** The type of authentication configured. */
@@ -2244,7 +2244,7 @@ export interface DestinationConfigTemplate {
   /** Description. */
   description?: string;
   /** Autocomplete suggestions for destination URL field. */
-  autocompleteSuggestions?: Array<string>;
+  autocompleteSuggestions?: ReadonlyArray<string>;
 }
 
 export const DestinationConfigTemplate =
@@ -2267,11 +2267,15 @@ export interface SslConfigTemplate {
   /** Boolean for determining if the connector version mandates TLS. */
   isTlsMandatory?: boolean;
   /** List of supported Client Cert Types */
-  clientCertType?: Array<"CERT_TYPE_UNSPECIFIED" | "PEM" | (string & {})>;
+  clientCertType?: ReadonlyArray<
+    "CERT_TYPE_UNSPECIFIED" | "PEM" | (string & {})
+  >;
   /** Any additional fields that need to be rendered */
-  additionalVariables?: Array<ConfigVariableTemplate>;
+  additionalVariables?: ReadonlyArray<ConfigVariableTemplate>;
   /** List of supported Server Cert Types */
-  serverCertType?: Array<"CERT_TYPE_UNSPECIFIED" | "PEM" | (string & {})>;
+  serverCertType?: ReadonlyArray<
+    "CERT_TYPE_UNSPECIFIED" | "PEM" | (string & {})
+  >;
 }
 
 export const SslConfigTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2290,7 +2294,7 @@ export interface EventingConfigTemplate {
     | "JMS_LISTENER"
     | (string & {});
   /** ListenerAuthConfigTemplates represents the auth values for the event listener. */
-  listenerAuthConfigTemplates?: Array<AuthConfigTemplate>;
+  listenerAuthConfigTemplates?: ReadonlyArray<AuthConfigTemplate>;
   /** Proxy destination config template. */
   proxyDestinationConfig?: DestinationConfigTemplate;
   /** Is Eventing Supported. */
@@ -2298,15 +2302,15 @@ export interface EventingConfigTemplate {
   /** SSL Config template for the connector version. */
   sslConfigTemplate?: SslConfigTemplate;
   /** AuthConfigTemplates represents the auth values for the webhook adapter. */
-  authConfigTemplates?: Array<AuthConfigTemplate>;
+  authConfigTemplates?: ReadonlyArray<AuthConfigTemplate>;
   /** Encryption key (can be either Google managed or CMEK). */
   encryptionKeyTemplate?: ConfigVariableTemplate;
   /** Trigger Config fields that needs to be rendered */
-  triggerConfigVariables?: Array<ConfigVariableTemplate>;
+  triggerConfigVariables?: ReadonlyArray<ConfigVariableTemplate>;
   /** Auto Registration supported. */
   autoRegistrationSupported?: boolean;
   /** Additional fields that need to be rendered. */
-  additionalVariables?: Array<ConfigVariableTemplate>;
+  additionalVariables?: ReadonlyArray<ConfigVariableTemplate>;
   /** Registration host destination config template. */
   registrationDestinationConfig?: DestinationConfigTemplate;
   /** Auto refresh to extend webhook life. */
@@ -2360,7 +2364,7 @@ export const SchemaRefreshConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface VpcscConfig {
   /** The list of allowlisted FQDNs for VPCSC. */
-  defaultAllowlistedHost?: Array<string>;
+  defaultAllowlistedHost?: ReadonlyArray<string>;
   /** Whether to disable firewall VPCSC flow. */
   disableFirewallVpcscFlow?: boolean;
 }
@@ -2496,7 +2500,7 @@ export const ExtractionRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ExtractionRules {
   /** Collection of Extraction Rule. */
-  extractionRule?: Array<ExtractionRule>;
+  extractionRule?: ReadonlyArray<ExtractionRule>;
 }
 
 export const ExtractionRules = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2515,7 +2519,7 @@ export interface EgressControlConfig {
     | "ALLOW_ALL"
     | (string & {});
   /** Optional. Used when access_mode is RESTRICTED or ACCESS_MODE_UNSPECIFIED. */
-  allowlistedProjectNumbers?: Array<string>;
+  allowlistedProjectNumbers?: ReadonlyArray<string>;
   /** Launch environment for egress control. */
   launchEnvironment?:
     | "LAUNCH_ENVIRONMENT_UNSPECIFIED"
@@ -2555,17 +2559,17 @@ export interface ConnectorVersion {
   /** Output only. Created time. */
   createTime?: string;
   /** Output only. Role grant configurations for this connector version. */
-  roleGrants?: Array<RoleGrant>;
+  roleGrants?: ReadonlyArray<RoleGrant>;
   /** Output only. Is custom actions supported. */
   isCustomActionsSupported?: boolean;
   /** Output only. List of destination configs needed to create a connection. */
-  destinationConfigTemplates?: Array<DestinationConfigTemplate>;
+  destinationConfigTemplates?: ReadonlyArray<DestinationConfigTemplate>;
   /** Output only. Supported standard entities. */
-  supportedStandardEntities?: Array<StandardEntity>;
+  supportedStandardEntities?: ReadonlyArray<StandardEntity>;
   /** Output only. Information about the runtime features supported by the Connector. */
   supportedRuntimeFeatures?: SupportedRuntimeFeatures;
   /** Output only. List of auth configs supported by the Connector Version. */
-  authConfigTemplates?: Array<AuthConfigTemplate>;
+  authConfigTemplates?: ReadonlyArray<AuthConfigTemplate>;
   /** Output only. Display name. */
   displayName?: string;
   /** Connection Schema Refresh Config */
@@ -2573,7 +2577,7 @@ export interface ConnectorVersion {
   /** Output only. ReleaseVersion of the connector, for example: "1.0.1-alpha". */
   releaseVersion?: string;
   /** Output only. Unsupported connection types. */
-  unsupportedConnectionTypes?: Array<
+  unsupportedConnectionTypes?: ReadonlyArray<
     | "CONNECTION_TYPE_UNSPECIFIED"
     | "CONNECTION_WITH_EVENTING"
     | "ONLY_CONNECTION"
@@ -2585,11 +2589,11 @@ export interface ConnectorVersion {
   /** Output only. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources */
   labels?: Record<string, string>;
   /** Output only. List of config variables needed to create a connection. */
-  configVariableTemplates?: Array<ConfigVariableTemplate>;
+  configVariableTemplates?: ReadonlyArray<ConfigVariableTemplate>;
   /** Output only. VPCSC config for the connector. */
   vpcscConfig?: VpcscConfig;
   /** Output only. Supported standard actions. */
-  supportedStandardActions?: Array<StandardAction>;
+  supportedStandardActions?: ReadonlyArray<StandardAction>;
   /** Output only. Ssl configuration supported by the Connector. */
   sslConfigTemplate?: SslConfigTemplate;
   /** Output only. Role grant configuration for this config variable. It will be DEPRECATED soon. */
@@ -2636,11 +2640,11 @@ export const ConnectorVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListConnectorVersionsResponse {
   /** A list of connector versions. */
-  connectorVersions?: Array<ConnectorVersion>;
+  connectorVersions?: ReadonlyArray<ConnectorVersion>;
   /** Next page token. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListConnectorVersionsResponse =
@@ -2682,7 +2686,7 @@ export const EventType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListEventTypesResponse {
   /** A list of connector versions. */
-  eventTypes?: Array<EventType>;
+  eventTypes?: ReadonlyArray<EventType>;
   /** Next page token. */
   nextPageToken?: string;
 }
@@ -2728,7 +2732,7 @@ export interface EventingDetails {
   /** Output only. Description. */
   description?: string;
   /** Output only. Array of search keywords. */
-  searchTags?: Array<string>;
+  searchTags?: ReadonlyArray<string>;
   /** Output only. Eventing Launch Stage. */
   launchStage?:
     | "LAUNCH_STAGE_UNSPECIFIED"
@@ -2778,13 +2782,13 @@ export const EndUserAuthenticationEndUserAuthenticationStatus =
 
 export interface EndUserAuthentication {
   /** Optional. Labels for the EndUserAuthentication. */
-  labels?: Array<string>;
+  labels?: ReadonlyArray<string>;
   /** Optional. Status of the EndUserAuthentication. */
   status?: EndUserAuthenticationEndUserAuthenticationStatus;
   /** Optional. Destination configs for the EndUserAuthentication. */
-  destinationConfigs?: Array<DestinationConfig>;
+  destinationConfigs?: ReadonlyArray<DestinationConfig>;
   /** Optional. Roles for the EndUserAuthentication. */
-  roles?: Array<
+  roles?: ReadonlyArray<
     | "ROLE_UNSPECIFIED"
     | "READER"
     | "READER_DOMAIN_WIDE_ACCESSIBLE"
@@ -2799,7 +2803,7 @@ export interface EndUserAuthentication {
   /** Optional. The user id of the user. */
   userId?: string;
   /** Optional. Config variables for the EndUserAuthentication. */
-  configVariables?: Array<EndUserAuthenticationConfigVariable>;
+  configVariables?: ReadonlyArray<EndUserAuthenticationConfigVariable>;
   /** Required. Identifier. Resource name of the EndUserAuthentication. Format: projects/{project}/locations/{location}/connections/{connection}/endUserAuthentications/{end_user_authentication} */
   name?: string;
   /** Output only. Created time. */
@@ -2838,7 +2842,7 @@ export const Header = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface EndPoint {
   /** Optional. List of Header to be added to the Endpoint. */
-  headers?: Array<Header>;
+  headers?: ReadonlyArray<Header>;
   /** Optional. The URI of the Endpoint. */
   endpointUri?: string;
 }
@@ -2869,7 +2873,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2905,9 +2909,9 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -2926,7 +2930,7 @@ export interface ConnectionSchemaMetadata {
   /** Error message for users. */
   errorMessage?: string;
   /** Output only. List of entity names. */
-  entities?: Array<string>;
+  entities?: ReadonlyArray<string>;
   /** Output only. Timestamp when the connection runtime schema refresh was triggered. */
   refreshTime?: string;
   /** Output only. The current state of runtime schema. */
@@ -2941,7 +2945,7 @@ export interface ConnectionSchemaMetadata {
     | "UPDATED_FULL_SCHEMA"
     | (string & {});
   /** Output only. List of actions. */
-  actions?: Array<string>;
+  actions?: ReadonlyArray<string>;
 }
 
 export const ConnectionSchemaMetadata =
@@ -2982,7 +2986,7 @@ export interface SloMetadata {
   /** Optional. Multiple per-instance SLI eligibilities which apply for individual SLIs. */
   perSliEligibility?: PerSliSloEligibility;
   /** Optional. List of nodes. Some producers need to use per-node metadata to calculate SLO. This field allows such producers to publish per-node SLO meta data, which will be consumed by SSA Eligibility Exporter and published in the form of per node metric to Monarch. */
-  nodes?: Array<NodeSloMetadata>;
+  nodes?: ReadonlyArray<NodeSloMetadata>;
 }
 
 export const SloMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3031,7 +3035,7 @@ export interface UpdatePolicy {
   /** Optional. Maintenance window that is applied to resources covered by this policy. */
   window?: MaintenanceWindow;
   /** Deny Maintenance Period that is applied to resource to indicate when maintenance is forbidden. The protocol supports zero-to-many such periods, but the current SLM Rollout implementation only supports zero-to-one. */
-  denyMaintenancePeriods?: Array<DenyMaintenancePeriod>;
+  denyMaintenancePeriods?: ReadonlyArray<DenyMaintenancePeriod>;
   /** Optional. Relative scheduling channel applied to resource. */
   channel?:
     | "UPDATE_CHANNEL_UNSPECIFIED"
@@ -3095,7 +3099,7 @@ export const MaintenanceSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NotificationParameter {
   /** Optional. Array of string values. e.g. instance's replica information. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const NotificationParameter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3114,7 +3118,7 @@ export interface Instance {
   /** Output only. Custom string attributes used primarily to expose producer-specific information in monitoring dashboards. See go/get-instance-metadata. */
   producerMetadata?: Record<string, string>;
   /** Output only. The list of data plane resources provisioned for this instance, e.g. compute VMs. See go/get-instance-metadata. */
-  provisionedResources?: Array<ProvisionedResource>;
+  provisionedResources?: ReadonlyArray<ProvisionedResource>;
   /** Output only. Current lifecycle state of the resource (e.g. if it's being created or ready to use). */
   state?:
     | "STATE_UNSPECIFIED"
@@ -3182,7 +3186,7 @@ export const Instance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PubSub {
   /** Optional. Configuration for configuring the trigger */
-  configVariables?: Array<ConfigVariable>;
+  configVariables?: ReadonlyArray<ConfigVariable>;
   /** Required. The project id which has the Pub/Sub topic. */
   projectId?: string;
   /** Required. The topic id of the Pub/Sub topic. */
@@ -3225,9 +3229,9 @@ export interface CustomConnector {
   /** Optional. Display name. */
   displayName?: string;
   /** Output only. Active connector versions. */
-  activeConnectorVersions?: Array<string>;
+  activeConnectorVersions?: ReadonlyArray<string>;
   /** Output only. All connector versions. */
-  allConnectorVersions?: Array<string>;
+  allConnectorVersions?: ReadonlyArray<string>;
   /** Required. Type of the custom connector. */
   customConnectorType?:
     | "CUSTOM_CONNECTOR_TYPE_UNSPECIFIED"
@@ -3236,7 +3240,7 @@ export interface CustomConnector {
     | "SDK"
     | (string & {});
   /** Output only. Published marketplace versions. */
-  publishedMarketplaceVersions?: Array<string>;
+  publishedMarketplaceVersions?: ReadonlyArray<string>;
   /** Output only. Updated time. */
   updateTime?: string;
   /** Optional. Description of the resource. */
@@ -3246,7 +3250,7 @@ export interface CustomConnector {
   /** Optional. Logo of the resource. */
   logo?: string;
   /** Output only. All marketplace versions. */
-  allMarketplaceVersions?: Array<string>;
+  allMarketplaceVersions?: ReadonlyArray<string>;
 }
 
 export const CustomConnector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3296,7 +3300,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
 }
 
 export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3306,13 +3310,13 @@ export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
 }
 
 export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3379,7 +3383,7 @@ export interface EventSubscription {
   /** Required. Identifier. Resource name of the EventSubscription. Format: projects/{project}/locations/{location}/connections/{connection}/eventSubscriptions/{event_subscription} */
   name?: string;
   /** Optional. Configuration for configuring the trigger */
-  triggerConfigVariables?: Array<ConfigVariable>;
+  triggerConfigVariables?: ReadonlyArray<ConfigVariable>;
   /** Optional. Filter for the event subscription. Incoming events are filtered based on the filter expression. */
   filter?: string;
   /** Output only. Created time. */
@@ -3441,7 +3445,7 @@ export interface CustomConnectorVersion {
   /** Output only. State of the custom connector version. */
   state?: "STATE_UNSPECIFIED" | "ACTIVE" | "DEPRECATED" | (string & {});
   /** Optional. Auth Config Templates is only used when connector backend is enabled. This is used to specify the auth configs supported by the connector backend service to talk to the actual application backend. */
-  authConfigTemplates?: Array<AuthConfigTemplate>;
+  authConfigTemplates?: ReadonlyArray<AuthConfigTemplate>;
   /** Optional. Partner metadata details. This should be populated only when publishing the custom connector to partner connector. */
   partnerMetadata?: PartnerMetadata;
   /** Output only. Publish status of a custom connector. */
@@ -3451,7 +3455,7 @@ export interface CustomConnectorVersion {
   /** Output only. Updated time. */
   updateTime?: string;
   /** Output only. Server URLs parsed from the Open API spec. This is only used for Open API based custom connectors. */
-  specServerUrls?: Array<string>;
+  specServerUrls?: ReadonlyArray<string>;
   /** Optional. Indicates if Async Operations/Connector Job is supported. This is only available for SDK based custom connectors. */
   asyncOperationsSupport?: boolean;
   /** Output only. Identifier. Resource name of the Version. Format: projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version} */
@@ -3465,9 +3469,9 @@ export interface CustomConnectorVersion {
   /** Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources */
   labels?: Record<string, string>;
   /** Optional. Backend variable templates is only used when connector backend is enabled. This is used to specify the variables required by the connector backend service to talk to the actual application backend. This translates to additional variable templates in the connection config. */
-  backendVariableTemplates?: Array<ConfigVariableTemplate>;
+  backendVariableTemplates?: ReadonlyArray<ConfigVariableTemplate>;
   /** Optional. Destination config(s) for accessing connector service (facade). This is used only when enable_backend_destination_config is true. */
-  destinationConfigs?: Array<DestinationConfig>;
+  destinationConfigs?: ReadonlyArray<DestinationConfig>;
   /** Optional. Service account used by runtime plane to access auth config secrets. */
   serviceAccount?: string;
 }
@@ -3498,11 +3502,11 @@ export const CustomConnectorVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListCustomConnectorVersionsResponse {
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** Next page token. */
   nextPageToken?: string;
   /** A list of connector versions. */
-  customConnectorVersions?: Array<CustomConnectorVersion>;
+  customConnectorVersions?: ReadonlyArray<CustomConnectorVersion>;
 }
 
 export const ListCustomConnectorVersionsResponse =
@@ -3518,7 +3522,7 @@ export interface ListEntityTypesResponse {
   /** token for next page */
   nextPageToken?: string;
   /** list of entity types */
-  entityTypes?: Array<RuntimeEntitySchema>;
+  entityTypes?: ReadonlyArray<RuntimeEntitySchema>;
 }
 
 export const ListEntityTypesResponse =
@@ -3529,11 +3533,11 @@ export const ListEntityTypesResponse =
 
 export interface ListEndpointAttachmentsResponse {
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** Next page token. */
   nextPageToken?: string;
   /** EndpointAttachments. */
-  endpointAttachments?: Array<EndpointAttachment>;
+  endpointAttachments?: ReadonlyArray<EndpointAttachment>;
 }
 
 export const ListEndpointAttachmentsResponse =
@@ -3563,7 +3567,7 @@ export interface ListRuntimeEntitySchemasResponse {
   /** Next page token. */
   nextPageToken?: string;
   /** Runtime entity schemas. */
-  runtimeEntitySchemas?: Array<RuntimeEntitySchema>;
+  runtimeEntitySchemas?: ReadonlyArray<RuntimeEntitySchema>;
 }
 
 export const ListRuntimeEntitySchemasResponse =
@@ -3574,9 +3578,9 @@ export const ListRuntimeEntitySchemasResponse =
 
 export interface ListCustomConnectorsResponse {
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of customConnectors. */
-  customConnectors?: Array<CustomConnector>;
+  customConnectors?: ReadonlyArray<CustomConnector>;
   /** Next page token. */
   nextPageToken?: string;
 }
@@ -3612,7 +3616,7 @@ export const ToolName = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FetchConnectionToolspecOverrideRequest {
   /** Required. List of tools for which the tool spec override is to be generated. */
-  toolNames?: Array<ToolName>;
+  toolNames?: ReadonlyArray<ToolName>;
 }
 
 export const FetchConnectionToolspecOverrideRequest =
@@ -3660,7 +3664,7 @@ export interface Connector {
   /** Output only. Eventing details. Will be null if eventing is not supported. */
   eventingDetails?: EventingDetails;
   /** Output only. Tags of the connector. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** Output only. Created time. */
   createTime?: string;
   /** Output only. Updated time. */
@@ -3704,11 +3708,11 @@ export const Connector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListConnectorsResponse {
   /** A list of connectors. */
-  connectors?: Array<Connector>;
+  connectors?: ReadonlyArray<Connector>;
   /** Next page token. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListConnectorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -3740,7 +3744,7 @@ export interface AuthSchema {
   /** Auth key of the schema. */
   authKey?: string;
   /** List of AuthFields. */
-  authFields?: Array<AuthField>;
+  authFields?: ReadonlyArray<AuthField>;
   /** Description of the schema. */
   description?: string;
   /** Auth type of the schema. */
@@ -3775,7 +3779,7 @@ export interface NetworkConfig {
     | "STATIC_IP"
     | (string & {});
   /** Output only. Egress IPs */
-  egressIps?: Array<string>;
+  egressIps?: ReadonlyArray<string>;
 }
 
 export const NetworkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3816,7 +3820,7 @@ export const ValidateCustomConnectorSpecResponse =
 
 export interface GenerateConnectionToolspecOverrideRequest {
   /** Required. List of tools for which the tool spec override is to be generated. */
-  toolNames?: Array<ToolName>;
+  toolNames?: ReadonlyArray<ToolName>;
 }
 
 export const GenerateConnectionToolspecOverrideRequest =
@@ -3844,9 +3848,9 @@ export const RegionalSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListEventSubscriptionsResponse {
   /** Subscriptions. */
-  eventSubscriptions?: Array<EventSubscription>;
+  eventSubscriptions?: ReadonlyArray<EventSubscription>;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** Next page token. */
   nextPageToken?: string;
 }
@@ -3860,7 +3864,7 @@ export const ListEventSubscriptionsResponse =
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -3872,9 +3876,9 @@ export interface ListManagedZonesResponse {
   /** Next page token. */
   nextPageToken?: string;
   /** ManagedZones. */
-  managedZones?: Array<ManagedZone>;
+  managedZones?: ReadonlyArray<ManagedZone>;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListManagedZonesResponse =
@@ -3933,7 +3937,7 @@ export const RepairEventingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface FetchAuthSchemaResponse {
   /** List of AuthSchemas. */
-  authSchemas?: Array<AuthSchema>;
+  authSchemas?: ReadonlyArray<AuthSchema>;
   /** JSON schema of the AuthSchemas. This is only populated if the view is JSON_SCHEMA. The schema is in draft-07 format. */
   jsonSchema?: JsonAuthSchema;
 }
@@ -3955,9 +3959,9 @@ export interface ListConnectionsResponse {
   /** Next page token. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** Connections. */
-  connections?: Array<Connection>;
+  connections?: ReadonlyArray<Connection>;
 }
 
 export const ListConnectionsResponse =
@@ -3981,7 +3985,7 @@ export interface ListRuntimeActionSchemasResponse {
   /** Next page token. */
   nextPageToken?: string;
   /** Runtime action schemas. */
-  runtimeActionSchemas?: Array<RuntimeActionSchema>;
+  runtimeActionSchemas?: ReadonlyArray<RuntimeActionSchema>;
 }
 
 export const ListRuntimeActionSchemasResponse =
@@ -3992,7 +3996,7 @@ export const ListRuntimeActionSchemasResponse =
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -4031,9 +4035,9 @@ export interface ListEndUserAuthenticationsResponse {
   /** Next page token. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** Subscriptions. */
-  endUserAuthentications?: Array<EndUserAuthentication>;
+  endUserAuthentications?: ReadonlyArray<EndUserAuthentication>;
 }
 
 export const ListEndUserAuthenticationsResponse =
@@ -4047,7 +4051,7 @@ export const ListEndUserAuthenticationsResponse =
 
 export interface ListActionsResponse {
   /** list of actions */
-  actions?: Array<RuntimeActionSchema>;
+  actions?: ReadonlyArray<RuntimeActionSchema>;
   /** token for next page */
   nextPageToken?: string;
 }
@@ -4070,10 +4074,7 @@ export const GetRuntimeConfigProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/runtimeConfig",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetRuntimeConfigProjectsLocationsRequest>;
 
@@ -4104,10 +4105,7 @@ export const GetRegionalSettingsProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/regionalSettings",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetRegionalSettingsProjectsLocationsRequest>;
 
@@ -4138,10 +4136,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -4178,11 +4173,7 @@ export const UpdateRegionalSettingsProjectsLocationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RegionalSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/regionalSettings",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateRegionalSettingsProjectsLocationsRequest>;
 
@@ -4227,7 +4218,7 @@ export const ListProjectsLocationsRequest =
       T.HttpQuery("extraLocationTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -4268,11 +4259,7 @@ export const UpdateSettingsProjectsLocationsGlobalRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Settings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/global/settings",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSettingsProjectsLocationsGlobalRequest>;
 
@@ -4303,10 +4290,7 @@ export const GetSettingsProjectsLocationsGlobalRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/settings",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSettingsProjectsLocationsGlobalRequest>;
 
@@ -4343,11 +4327,7 @@ export const PatchProjectsLocationsGlobalManagedZonesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ManagedZone).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/global/managedZones/{managedZonesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsGlobalManagedZonesRequest>;
 
@@ -4378,10 +4358,7 @@ export const GetProjectsLocationsGlobalManagedZonesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/managedZones/{managedZonesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGlobalManagedZonesRequest>;
 
@@ -4420,11 +4397,7 @@ export const CreateProjectsLocationsGlobalManagedZonesRequest =
     ),
     body: Schema.optional(ManagedZone).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/global/managedZones",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/managedZones", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsGlobalManagedZonesRequest>;
 
@@ -4472,10 +4445,7 @@ export const ListProjectsLocationsGlobalManagedZonesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/managedZones",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/managedZones" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGlobalManagedZonesRequest>;
 
@@ -4511,10 +4481,7 @@ export const DeleteProjectsLocationsGlobalManagedZonesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/global/managedZones/{managedZonesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsGlobalManagedZonesRequest>;
 
@@ -4551,11 +4518,7 @@ export const PatchProjectsLocationsGlobalCustomConnectorsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CustomConnector).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/global/customConnectors/{customConnectorsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsGlobalCustomConnectorsRequest>;
 
@@ -4586,10 +4549,7 @@ export const GetProjectsLocationsGlobalCustomConnectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/customConnectors/{customConnectorsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGlobalCustomConnectorsRequest>;
 
@@ -4624,10 +4584,7 @@ export const DeleteProjectsLocationsGlobalCustomConnectorsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/global/customConnectors/{customConnectorsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsGlobalCustomConnectorsRequest>;
 
@@ -4667,10 +4624,7 @@ export const ListProjectsLocationsGlobalCustomConnectorsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/customConnectors",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/customConnectors" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGlobalCustomConnectorsRequest>;
 
@@ -4716,7 +4670,7 @@ export const CreateProjectsLocationsGlobalCustomConnectorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/global/customConnectors",
+      path: "v1/{parent}/customConnectors",
       hasBody: true,
     }),
     svc,
@@ -4749,10 +4703,7 @@ export const GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRe
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/customConnectors/{customConnectorsId}/customConnectorVersions/{customConnectorVersionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest>;
 
@@ -4797,7 +4748,7 @@ export const CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersion
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/global/customConnectors/{customConnectorsId}/customConnectorVersions",
+      path: "v1/{parent}/customConnectorVersions",
       hasBody: true,
     }),
     svc,
@@ -4840,10 +4791,7 @@ export const ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsR
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/customConnectors/{customConnectorsId}/customConnectorVersions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/customConnectorVersions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest>;
 
@@ -4882,10 +4830,7 @@ export const GetProjectsLocationsProvidersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/providers/{providersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsProvidersRequest>;
 
@@ -4921,7 +4866,7 @@ export const SetIamPolicyProjectsLocationsProvidersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/providers/{providersId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4959,10 +4904,7 @@ export const GetIamPolicyProjectsLocationsProvidersRequest =
     ),
     resource: Schema.String.pipe(T.HttpPath("resource")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/providers/{providersId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsProvidersRequest>;
 
@@ -4998,7 +4940,7 @@ export const TestIamPermissionsProjectsLocationsProvidersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/providers/{providersId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -5038,10 +4980,7 @@ export const ListProjectsLocationsProvidersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/providers",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/providers" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsProvidersRequest>;
 
@@ -5085,10 +5024,7 @@ export const ListProjectsLocationsProvidersConnectorsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/providers/{providersId}/connectors",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/connectors" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsProvidersConnectorsRequest>;
 
@@ -5124,10 +5060,7 @@ export const GetProjectsLocationsProvidersConnectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/providers/{providersId}/connectors/{connectorsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsProvidersConnectorsRequest>;
 
@@ -5165,10 +5098,7 @@ export const GetProjectsLocationsProvidersConnectorsVersionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/providers/{providersId}/connectors/{connectorsId}/versions/{versionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsProvidersConnectorsVersionsRequest>;
 
@@ -5213,10 +5143,7 @@ export const ListProjectsLocationsProvidersConnectorsVersionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/providers/{providersId}/connectors/{connectorsId}/versions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/versions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsProvidersConnectorsVersionsRequest>;
 
@@ -5261,10 +5188,7 @@ export const FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsRequest 
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/providers/{providersId}/connectors/{connectorsId}/versions/{versionsId}:fetchAuthSchema",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:fetchAuthSchema" }),
     svc,
   ) as unknown as Schema.Schema<FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsRequest>;
 
@@ -5303,10 +5227,7 @@ export const ListProjectsLocationsProvidersConnectorsVersionsEventtypesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/providers/{providersId}/connectors/{connectorsId}/versions/{versionsId}/eventtypes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/eventtypes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsProvidersConnectorsVersionsEventtypesRequest>;
 
@@ -5343,10 +5264,7 @@ export const GetProjectsLocationsProvidersConnectorsVersionsEventtypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/providers/{providersId}/connectors/{connectorsId}/versions/{versionsId}/eventtypes/{eventtypesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsProvidersConnectorsVersionsEventtypesRequest>;
 
@@ -5389,7 +5307,7 @@ export const CreateProjectsLocationsEndpointAttachmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpointAttachments",
+      path: "v1/{parent}/endpointAttachments",
       hasBody: true,
     }),
     svc,
@@ -5441,10 +5359,7 @@ export const ListProjectsLocationsEndpointAttachmentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpointAttachments",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/endpointAttachments" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEndpointAttachmentsRequest>;
 
@@ -5480,10 +5395,7 @@ export const DeleteProjectsLocationsEndpointAttachmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpointAttachments/{endpointAttachmentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsEndpointAttachmentsRequest>;
 
@@ -5521,10 +5433,7 @@ export const GetProjectsLocationsEndpointAttachmentsRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpointAttachments/{endpointAttachmentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsEndpointAttachmentsRequest>;
 
@@ -5562,11 +5471,7 @@ export const PatchProjectsLocationsEndpointAttachmentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(EndpointAttachment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpointAttachments/{endpointAttachmentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsEndpointAttachmentsRequest>;
 
@@ -5602,7 +5507,7 @@ export const SetIamPolicyProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -5642,7 +5547,7 @@ export const GenerateToolspecOverrideProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:generateToolspecOverride",
+      path: "v1/{name}:generateToolspecOverride",
       hasBody: true,
     }),
     svc,
@@ -5686,10 +5591,7 @@ export const SearchProjectsLocationsConnectionsRequest =
     query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections:search",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:search" }),
     svc,
   ) as unknown as Schema.Schema<SearchProjectsLocationsConnectionsRequest>;
 
@@ -5731,11 +5633,7 @@ export const PatchProjectsLocationsConnectionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Connection).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsConnectionsRequest>;
 
@@ -5771,10 +5669,7 @@ export const GetIamPolicyProjectsLocationsConnectionsRequest =
     ),
     resource: Schema.String.pipe(T.HttpPath("resource")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>;
 
@@ -5820,10 +5715,7 @@ export const ListProjectsLocationsConnectionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/connections" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsRequest>;
 
@@ -5866,11 +5758,7 @@ export const CreateProjectsLocationsConnectionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Connection).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/connections", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsConnectionsRequest>;
 
@@ -5908,7 +5796,7 @@ export const FetchToolspecOverrideProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:fetchToolspecOverride",
+      path: "v1/{name}:fetchToolspecOverride",
       hasBody: true,
     }),
     svc,
@@ -5946,10 +5834,7 @@ export const GetProjectsLocationsConnectionsRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsConnectionsRequest>;
 
@@ -5980,10 +5865,7 @@ export const GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/connectionSchemaMetadata",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest>;
 
@@ -6023,7 +5905,7 @@ export const RemoveToolspecOverrideProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:removeToolspecOverride",
+      path: "v1/{name}:removeToolspecOverride",
       hasBody: true,
     }),
     svc,
@@ -6062,7 +5944,7 @@ export const TestIamPermissionsProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -6103,7 +5985,7 @@ export const ModifyToolspecOverrideProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:modifyToolspecOverride",
+      path: "v1/{name}:modifyToolspecOverride",
       hasBody: true,
     }),
     svc,
@@ -6141,11 +6023,7 @@ export const RepairEventingProjectsLocationsConnectionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RepairEventingRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:repairEventing",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:repairEventing", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RepairEventingProjectsLocationsConnectionsRequest>;
 
@@ -6181,7 +6059,7 @@ export const ListenEventProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:listenEvent",
+      path: "v1/{resourcePath}:listenEvent",
       hasBody: true,
     }),
     svc,
@@ -6218,10 +6096,7 @@ export const DeleteProjectsLocationsConnectionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectionsRequest>;
 
@@ -6264,10 +6139,7 @@ export const ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataRequ
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/connectionSchemaMetadata:listActions",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:listActions" }),
     svc,
   ) as unknown as Schema.Schema<ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataRequest>;
 
@@ -6310,11 +6182,7 @@ export const RefreshProjectsLocationsConnectionsConnectionSchemaMetadataRequest 
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/connectionSchemaMetadata:refresh",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:refresh", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RefreshProjectsLocationsConnectionsConnectionSchemaMetadataRequest>;
 
@@ -6359,10 +6227,7 @@ export const ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadata
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/connectionSchemaMetadata:listEntityTypes",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:listEntityTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataRequest>;
 
@@ -6404,10 +6269,7 @@ export const GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataRe
     name: Schema.String.pipe(T.HttpPath("name")),
     entityId: Schema.optional(Schema.String).pipe(T.HttpQuery("entityId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/connectionSchemaMetadata:getEntityType",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:getEntityType" }),
     svc,
   ) as unknown as Schema.Schema<GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataRequest>;
 
@@ -6445,10 +6307,7 @@ export const GetActionProjectsLocationsConnectionsConnectionSchemaMetadataReques
     actionId: Schema.optional(Schema.String).pipe(T.HttpQuery("actionId")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/connectionSchemaMetadata:getAction",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:getAction" }),
     svc,
   ) as unknown as Schema.Schema<GetActionProjectsLocationsConnectionsConnectionSchemaMetadataRequest>;
 
@@ -6487,11 +6346,7 @@ export const PatchProjectsLocationsConnectionsEndUserAuthenticationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(EndUserAuthentication).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/endUserAuthentications/{endUserAuthenticationsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsConnectionsEndUserAuthenticationsRequest>;
 
@@ -6534,7 +6389,7 @@ export const CreateProjectsLocationsConnectionsEndUserAuthenticationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/endUserAuthentications",
+      path: "v1/{parent}/endUserAuthentications",
       hasBody: true,
     }),
     svc,
@@ -6581,10 +6436,7 @@ export const ListProjectsLocationsConnectionsEndUserAuthenticationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/endUserAuthentications",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/endUserAuthentications" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsEndUserAuthenticationsRequest>;
 
@@ -6621,10 +6473,7 @@ export const DeleteProjectsLocationsConnectionsEndUserAuthenticationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/endUserAuthentications/{endUserAuthenticationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectionsEndUserAuthenticationsRequest>;
 
@@ -6664,10 +6513,7 @@ export const GetProjectsLocationsConnectionsEndUserAuthenticationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/endUserAuthentications/{endUserAuthenticationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsConnectionsEndUserAuthenticationsRequest>;
 
@@ -6714,10 +6560,7 @@ export const ListProjectsLocationsConnectionsRuntimeActionSchemasRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/runtimeActionSchemas",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/runtimeActionSchemas" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsRuntimeActionSchemasRequest>;
 
@@ -6760,11 +6603,7 @@ export const PatchProjectsLocationsConnectionsEventSubscriptionsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(EventSubscription).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/eventSubscriptions/{eventSubscriptionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsConnectionsEventSubscriptionsRequest>;
 
@@ -6800,11 +6639,7 @@ export const RetryProjectsLocationsConnectionsEventSubscriptionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RetryEventSubscriptionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/eventSubscriptions/{eventSubscriptionsId}:retry",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:retry", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RetryProjectsLocationsConnectionsEventSubscriptionsRequest>;
 
@@ -6837,10 +6672,7 @@ export const GetProjectsLocationsConnectionsEventSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/eventSubscriptions/{eventSubscriptionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsConnectionsEventSubscriptionsRequest>;
 
@@ -6883,7 +6715,7 @@ export const CreateProjectsLocationsConnectionsEventSubscriptionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/eventSubscriptions",
+      path: "v1/{parent}/eventSubscriptions",
       hasBody: true,
     }),
     svc,
@@ -6930,10 +6762,7 @@ export const ListProjectsLocationsConnectionsEventSubscriptionsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/eventSubscriptions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/eventSubscriptions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsEventSubscriptionsRequest>;
 
@@ -6970,10 +6799,7 @@ export const DeleteProjectsLocationsConnectionsEventSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/eventSubscriptions/{eventSubscriptionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectionsEventSubscriptionsRequest>;
 
@@ -7015,10 +6841,7 @@ export const ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/runtimeEntitySchemas",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/runtimeEntitySchemas" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest>;
 
@@ -7062,7 +6885,7 @@ export const ValidateCustomConnectorSpecProjectsLocationsCustomConnectorsRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/customConnectors:validateCustomConnectorSpec",
+      path: "v1/{parent}/customConnectors:validateCustomConnectorSpec",
       hasBody: true,
     }),
     svc,
@@ -7097,10 +6920,7 @@ export const DeleteProjectsLocationsCustomConnectorsCustomConnectorVersionsReque
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/customConnectors/{customConnectorsId}/customConnectorVersions/{customConnectorVersionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest>;
 
@@ -7139,11 +6959,7 @@ export const DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsRe
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/customConnectors/{customConnectorsId}/customConnectorVersions/{customConnectorVersionsId}:deprecate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:deprecate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest>;
 
@@ -7183,11 +6999,7 @@ export const PublishProjectsLocationsCustomConnectorsCustomConnectorVersionsRequ
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/customConnectors/{customConnectorsId}/customConnectorVersions/{customConnectorVersionsId}:publish",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:publish", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PublishProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest>;
 
@@ -7226,11 +7038,7 @@ export const WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsReq
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/customConnectors/{customConnectorsId}/customConnectorVersions/{customConnectorVersionsId}:withdraw",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:withdraw", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest>;
 
@@ -7279,10 +7087,7 @@ export const ListProjectsLocationsOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -7317,10 +7122,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -7354,11 +7156,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -7389,10 +7187,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 

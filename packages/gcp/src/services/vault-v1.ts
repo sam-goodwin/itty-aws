@@ -28,7 +28,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -62,11 +62,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -111,7 +111,7 @@ export interface Matter {
   /** The state of the matter. */
   state?: "STATE_UNSPECIFIED" | "OPEN" | "CLOSED" | "DELETED" | (string & {});
   /** Lists the users and their permission for the matter. Currently there is no programmer defined limit on the number of permissions a matter can have. */
-  matterPermissions?: Array<MatterPermission>;
+  matterPermissions?: ReadonlyArray<MatterPermission>;
   /** Optional. The requested data region for the matter. */
   matterRegion?:
     | "MATTER_REGION_UNSPECIFIED"
@@ -168,7 +168,7 @@ export const UndeleteMatterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListMattersResponse {
   /** List of matters. */
-  matters?: Array<Matter>;
+  matters?: ReadonlyArray<Matter>;
   /** Page token to retrieve the next page of results in the list. */
   nextPageToken?: string;
 }
@@ -206,7 +206,7 @@ export const RemoveMatterPermissionsRequest =
 
 export interface AccountInfo {
   /** A set of accounts to search. */
-  emails?: Array<string>;
+  emails?: ReadonlyArray<string>;
 }
 
 export const AccountInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -224,7 +224,7 @@ export const OrgUnitInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SharedDriveInfo {
   /** A list of shared drive IDs, as provided by the [Drive API](https://developers.google.com/drive). */
-  sharedDriveIds?: Array<string>;
+  sharedDriveIds?: ReadonlyArray<string>;
 }
 
 export const SharedDriveInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -233,7 +233,7 @@ export const SharedDriveInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface HangoutsChatInfo {
   /** A list of Chat spaces IDs, as provided by the [Chat API](https://developers.google.com/workspace/chat). There is a limit of exporting from 500 Chat spaces per request. */
-  roomId?: Array<string>;
+  roomId?: ReadonlyArray<string>;
 }
 
 export const HangoutsChatInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -242,7 +242,7 @@ export const HangoutsChatInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SitesUrlInfo {
   /** A list of published site URLs. */
-  urls?: Array<string>;
+  urls?: ReadonlyArray<string>;
 }
 
 export const SitesUrlInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -251,7 +251,7 @@ export const SitesUrlInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DriveDocumentIds {
   /** Required. A list of Drive document IDs. */
-  ids?: Array<string>;
+  ids?: ReadonlyArray<string>;
 }
 
 export const DriveDocumentIds = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -269,7 +269,7 @@ export const DriveDocumentInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TeamDriveInfo {
   /** List of Team Drive IDs, as provided by the [Drive API](https://developers.google.com/drive). */
-  teamDriveIds?: Array<string>;
+  teamDriveIds?: ReadonlyArray<string>;
 }
 
 export const TeamDriveInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -335,7 +335,7 @@ export const HangoutsChatOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface VoiceOptions {
   /** Datatypes to search */
-  coveredData?: Array<
+  coveredData?: ReadonlyArray<
     | "COVERED_DATA_UNSPECIFIED"
     | "TEXT_MESSAGES"
     | "VOICEMAILS"
@@ -350,13 +350,13 @@ export const VoiceOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CalendarOptions {
   /** Matches only those events whose location contains all of the words in the given set. If the string contains quoted phrases, this method only matches those events whose location contain the exact phrase. Entries in the set are considered in "and". Word splitting example: ["New Zealand"] vs ["New","Zealand"] "New Zealand": matched by both "New and better Zealand": only matched by the later */
-  locationQuery?: Array<string>;
+  locationQuery?: ReadonlyArray<string>;
   /** Matches only those events whose attendees contain all of the words in the given set. Entries in the set are considered in "and". */
-  peopleQuery?: Array<string>;
+  peopleQuery?: ReadonlyArray<string>;
   /** Matches only those events that do not contain any of the words in the given set in title, description, location, or attendees. Entries in the set are considered in "or". */
-  minusWords?: Array<string>;
+  minusWords?: ReadonlyArray<string>;
   /** Matches only events for which the custodian gave one of these responses. If the set is empty or contains ATTENDEE_RESPONSE_UNSPECIFIED there will be no filtering on responses. */
-  responseStatuses?: Array<
+  responseStatuses?: ReadonlyArray<
     | "ATTENDEE_RESPONSE_UNSPECIFIED"
     | "ATTENDEE_RESPONSE_NEEDS_ACTION"
     | "ATTENDEE_RESPONSE_ACCEPTED"
@@ -692,7 +692,7 @@ export const CloudStorageFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CloudStorageSink {
   /** Output only. The exported files in Cloud Storage. */
-  files?: Array<CloudStorageFile>;
+  files?: ReadonlyArray<CloudStorageFile>;
 }
 
 export const CloudStorageSink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -745,7 +745,7 @@ export const Export = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListExportsResponse {
   /** The list of exports. */
-  exports?: Array<Export>;
+  exports?: ReadonlyArray<Export>;
   /** Page token to retrieve the next page of results in the list. */
   nextPageToken?: string;
 }
@@ -841,7 +841,7 @@ export const HeldHangoutsChatQuery = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface HeldVoiceQuery {
   /** A list of data types covered by the hold. Should be non-empty. Order does not matter and duplicates are ignored. */
-  coveredData?: Array<
+  coveredData?: ReadonlyArray<
     | "COVERED_DATA_UNSPECIFIED"
     | "TEXT_MESSAGES"
     | "VOICEMAILS"
@@ -892,7 +892,7 @@ export interface Hold {
   /** The last time this hold was modified. */
   updateTime?: string;
   /** If set, the hold applies to the specified accounts and **orgUnit** must be empty. */
-  accounts?: Array<HeldAccount>;
+  accounts?: ReadonlyArray<HeldAccount>;
   /** If set, the hold applies to all members of the organizational unit and **accounts** must be empty. This property is mutable. For Groups holds, set **accounts**. */
   orgUnit?: HeldOrgUnit;
   /** The service to be searched. */
@@ -922,7 +922,7 @@ export const Hold = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListHoldsResponse {
   /** The list of holds. */
-  holds?: Array<Hold>;
+  holds?: ReadonlyArray<Hold>;
   /** Page token to retrieve the next page of results in the list. If this is empty, then there are no more holds to list. */
   nextPageToken?: string;
 }
@@ -934,9 +934,9 @@ export const ListHoldsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AddHeldAccountsRequest {
   /** A comma-separated list of the emails of the accounts to add to the hold. Specify either **emails** or **account_ids**, but not both. */
-  emails?: Array<string>;
+  emails?: ReadonlyArray<string>;
   /** A comma-separated list of the account IDs of the accounts to add to the hold. Specify either **emails** or **account_ids**, but not both. */
-  accountIds?: Array<string>;
+  accountIds?: ReadonlyArray<string>;
 }
 
 export const AddHeldAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -960,7 +960,7 @@ export const AddHeldAccountResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AddHeldAccountsResponse {
   /** The list of responses, in the same order as the batch request. */
-  responses?: Array<AddHeldAccountResult>;
+  responses?: ReadonlyArray<AddHeldAccountResult>;
 }
 
 export const AddHeldAccountsResponse =
@@ -970,7 +970,7 @@ export const AddHeldAccountsResponse =
 
 export interface RemoveHeldAccountsRequest {
   /** The account IDs of the accounts to remove from the hold. */
-  accountIds?: Array<string>;
+  accountIds?: ReadonlyArray<string>;
 }
 
 export const RemoveHeldAccountsRequest =
@@ -980,7 +980,7 @@ export const RemoveHeldAccountsRequest =
 
 export interface RemoveHeldAccountsResponse {
   /** A list of statuses for the deleted accounts. Results have the same order as the request. */
-  statuses?: Array<Status>;
+  statuses?: ReadonlyArray<Status>;
 }
 
 export const RemoveHeldAccountsResponse =
@@ -990,7 +990,7 @@ export const RemoveHeldAccountsResponse =
 
 export interface ListHeldAccountsResponse {
   /** The held accounts on a hold. */
-  accounts?: Array<HeldAccount>;
+  accounts?: ReadonlyArray<HeldAccount>;
 }
 
 export const ListHeldAccountsResponse =
@@ -1021,7 +1021,7 @@ export const SavedQuery = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSavedQueriesResponse {
   /** List of saved queries. */
-  savedQueries?: Array<SavedQuery>;
+  savedQueries?: ReadonlyArray<SavedQuery>;
   /** Page token to retrieve the next page of results in the list. If this is empty, then there are no more saved queries to list. */
   nextPageToken?: string;
 }
@@ -1069,11 +1069,11 @@ export interface MailCountResult {
   /** Total number of accounts that can be queried and have more than zero messages. */
   matchingAccountsCount?: string;
   /** When **DataScope** is **HELD_DATA** and when account emails are passed in explicitly, the list of accounts in the request that are not queried because they are not on hold in the matter. For other data scopes, this field is not set. */
-  nonQueryableAccounts?: Array<string>;
+  nonQueryableAccounts?: ReadonlyArray<string>;
   /** Errors occurred when querying these accounts. */
-  accountCountErrors?: Array<AccountCountError>;
+  accountCountErrors?: ReadonlyArray<AccountCountError>;
   /** Subtotal count per matching account that have more than zero messages. */
-  accountCounts?: Array<AccountCount>;
+  accountCounts?: ReadonlyArray<AccountCount>;
 }
 
 export const MailCountResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1090,11 +1090,11 @@ export interface GroupsCountResult {
   /** Total number of accounts that can be queried and have more than zero messages. */
   matchingAccountsCount?: string;
   /** When **DataScope** is **HELD_DATA**, these accounts in the request are not queried because they are not on hold. For other data scope, this field is not set. */
-  nonQueryableAccounts?: Array<string>;
+  nonQueryableAccounts?: ReadonlyArray<string>;
   /** Error occurred when querying these accounts. */
-  accountCountErrors?: Array<AccountCountError>;
+  accountCountErrors?: ReadonlyArray<AccountCountError>;
   /** Subtotal count per matching account that have more than zero messages. */
-  accountCounts?: Array<AccountCount>;
+  accountCounts?: ReadonlyArray<AccountCount>;
 }
 
 export const GroupsCountResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1168,7 +1168,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("returnPartialSuccess"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/operations" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<ListOperationsRequest>;
 
@@ -1202,7 +1202,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/operations/{operationsId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -1232,7 +1232,7 @@ export const DeleteOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/operations/{operationsId}" }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOperationsRequest>;
 
@@ -1265,11 +1265,7 @@ export const CancelOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelOperationsRequest>;
 

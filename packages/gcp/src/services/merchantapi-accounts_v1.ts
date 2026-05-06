@@ -44,7 +44,7 @@ export const LoyaltyProgramTiers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LoyaltyProgram {
   /** Optional. Loyalty program tier of this shipping service. */
-  loyaltyProgramTiers?: Array<LoyaltyProgramTiers>;
+  loyaltyProgramTiers?: ReadonlyArray<LoyaltyProgramTiers>;
   /** This is the loyalty program label set in your loyalty program settings in Merchant Center. This sub-attribute allows Google to map your loyalty program to eligible offers. */
   programLabel?: string;
 }
@@ -110,7 +110,7 @@ export const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GeoTargetArea {
   /** Required. A non-empty list of [location IDs](https://developers.google.com/adwords/api/docs/appendix/geotargeting). They must all be of the same location type (for example, state). */
-  geotargetCriteriaIds?: Array<string>;
+  geotargetCriteriaIds?: ReadonlyArray<string>;
 }
 
 export const GeoTargetArea = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -167,7 +167,7 @@ export interface PostalCodeArea {
   /** Required. [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) or the country the postal code group applies to. */
   regionCode?: string;
   /** Required. A range of postal codes. */
-  postalCodes?: Array<PostalCodeRange>;
+  postalCodes?: ReadonlyArray<PostalCodeRange>;
 }
 
 export const PostalCodeArea = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -204,7 +204,7 @@ export const Region = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchUpdateRegionsResponse {
   /** The updated region(s). */
-  regions?: Array<Region>;
+  regions?: ReadonlyArray<Region>;
 }
 
 export const BatchUpdateRegionsResponse =
@@ -314,7 +314,7 @@ export const TermsOfServiceAgreementState =
 
 export interface User {
   /** Required. The [access rights](https://support.google.com/merchants/answer/12160472?sjid=6789834943175119429-EU#accesstypes) the user has. */
-  accessRights?: Array<
+  accessRights?: ReadonlyArray<
     | "ACCESS_RIGHT_UNSPECIFIED"
     | "STANDARD"
     | "READ_ONLY"
@@ -378,7 +378,7 @@ export const UnregisterGcpRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface LocationIdSet {
   /** Required. A non-empty list of [location IDs](https://developers.google.com/adwords/api/docs/appendix/geotargeting). They must all be of the same location type (For example, state). */
-  locationIds?: Array<string>;
+  locationIds?: ReadonlyArray<string>;
 }
 
 export const LocationIdSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -583,7 +583,7 @@ export interface StoreConfig {
     | "SELECTED_STORES"
     | (string & {});
   /** Optional. A list of store codes that provide local delivery. If empty, then `all_stores` must be true. */
-  storeCodes?: Array<string>;
+  storeCodes?: ReadonlyArray<string>;
   /** Maximum delivery radius. This is only required for the local delivery shipment type. */
   serviceRadius?: Distance;
   /** Configs related to local delivery ends for the day. */
@@ -599,7 +599,7 @@ export const StoreConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAccountsResponse {
   /** The accounts matching the `ListAccountsRequest`. */
-  accounts?: Array<Account>;
+  accounts?: ReadonlyArray<Account>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -634,7 +634,7 @@ export interface ImpactedDestination {
     | "YOUTUBE_CHECKOUT"
     | (string & {});
   /** The (negative) impact for various regions on the given destination. */
-  impacts?: Array<Impact>;
+  impacts?: ReadonlyArray<Impact>;
 }
 
 export const ImpactedDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -659,7 +659,7 @@ export interface AccountIssue {
   /** Link to Merchant Center Help Center providing further information about the issue and how to fix it. */
   documentationUri?: string;
   /** The impact this issue has on various destinations. */
-  impactedDestinations?: Array<ImpactedDestination>;
+  impactedDestinations?: ReadonlyArray<ImpactedDestination>;
 }
 
 export const AccountIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -673,7 +673,7 @@ export const AccountIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAccountIssuesResponse {
   /** The issues from the specified account. */
-  accountIssues?: Array<AccountIssue>;
+  accountIssues?: ReadonlyArray<AccountIssue>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -686,7 +686,7 @@ export const ListAccountIssuesResponse =
 
 export interface ListRegionsResponse {
   /** The regions from the specified business. */
-  regions?: Array<Region>;
+  regions?: ReadonlyArray<Region>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -722,7 +722,7 @@ export const TermsOfService = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListUsersResponse {
   /** The users from the specified account. */
-  users?: Array<User>;
+  users?: ReadonlyArray<User>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -749,7 +749,7 @@ export const AutofeedSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSubAccountsResponse {
   /** The accounts for which the given parent account is an aggregator. */
-  accounts?: Array<Account>;
+  accounts?: ReadonlyArray<Account>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -780,15 +780,15 @@ export const Weight = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Headers {
   /** Required. A list of location ID sets. Must be non-empty. Can only be set if all other fields are not set. */
-  locations?: Array<LocationIdSet>;
+  locations?: ReadonlyArray<LocationIdSet>;
   /** Required. A list of postal group names. The last value can be `"all other locations"`. Example: `["zone 1", "zone 2", "all other locations"]`. The referred postal code groups must match the delivery country of the service. Must be non-empty. Can only be set if all other fields are not set. */
-  postalCodeGroupNames?: Array<string>;
+  postalCodeGroupNames?: ReadonlyArray<string>;
   /** Required. A list of inclusive order price upper bounds. The last price's value can be infinity by setting price amount_micros = -1. For example `[{"amount_micros": 10000000, "currency_code": "USD"}, {"amount_micros": 500000000, "currency_code": "USD"}, {"amount_micros": -1, "currency_code": "USD"}]` represents the headers "<= $10", "<= $500", and "> $500". All prices within a service must have the same currency. Must be non-empty. Must be positive except -1. Can only be set if all other fields are not set. */
-  prices?: Array<Price>;
+  prices?: ReadonlyArray<Price>;
   /** Required. A list of inclusive order weight upper bounds. The last weight's value can be infinity by setting price amount_micros = -1. For example `[{"amount_micros": 10000000, "unit": "kg"}, {"amount_micros": 50000000, "unit": "kg"}, {"amount_micros": -1, "unit": "kg"}]` represents the headers "<= 10kg", "<= 50kg", and "> 50kg". All weights within a service must have the same unit. Must be non-empty. Must be positive except -1. Can only be set if all other fields are not set. */
-  weights?: Array<Weight>;
+  weights?: ReadonlyArray<Weight>;
   /** Required. A list of inclusive number of items upper bounds. The last value can be `"infinity"`. For example `["10", "50", "infinity"]` represents the headers "<= 10 items", "<= 50 items", and "> 50 items". Must be non-empty. Can only be set if all other fields are not set. */
-  numberOfItems?: Array<string>;
+  numberOfItems?: ReadonlyArray<string>;
 }
 
 export const Headers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -801,7 +801,7 @@ export const Headers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Row {
   /** Required. The list of cells that constitute the row. Must have the same length as `columnHeaders` for two-dimensional tables, a length of 1 for one-dimensional tables. */
-  cells?: Array<Value>;
+  cells?: ReadonlyArray<Value>;
 }
 
 export const Row = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -814,7 +814,7 @@ export interface Table {
   /** Headers of the table's columns. Optional: if not set then the table has only one dimension. */
   columnHeaders?: Headers;
   /** Required. The list of rows that constitute the table. Must have the same length as `row_headers`. */
-  rows?: Array<Row>;
+  rows?: ReadonlyArray<Row>;
   /** Name of the table. Required for subtables, ignored for the main table. */
   name?: string;
 }
@@ -846,7 +846,7 @@ export const AccountRelationship = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAccountRelationshipsResponse {
   /** The account relationships that match your filter. */
-  accountRelationships?: Array<AccountRelationship>;
+  accountRelationships?: ReadonlyArray<AccountRelationship>;
   /** A page token. You can send the `page_token` to get the next page. Only included in the `list` response if there are more pages. */
   nextPageToken?: string;
 }
@@ -861,7 +861,7 @@ export interface DeveloperRegistration {
   /** Identifier. The `name` (ID) of the developer registration. Generated upon creation of a new `DeveloperRegistration`. The `account` represents the merchant ID of the merchant that owns the registration. */
   name?: string;
   /** Output only. The GCP ids attached to this developer registration */
-  gcpIds?: Array<string>;
+  gcpIds?: ReadonlyArray<string>;
 }
 
 export const DeveloperRegistration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -893,7 +893,7 @@ export interface Requirement {
   /** Output only. The URL of a help page describing the requirement. */
   documentationUri?: string;
   /** Output only. The regions that are currently affected by this requirement not being met. Region codes are defined by [CLDR](https://cldr.unicode.org/). This is either a country where the program applies specifically to that country or `001` when the program applies globally. */
-  affectedRegionCodes?: Array<string>;
+  affectedRegionCodes?: ReadonlyArray<string>;
 }
 
 export const Requirement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -911,13 +911,13 @@ export interface Program {
     | "ENABLED"
     | (string & {});
   /** Output only. The requirements that the account has not yet satisfied that are affecting participation in the program. */
-  unmetRequirements?: Array<Requirement>;
+  unmetRequirements?: ReadonlyArray<Requirement>;
   /** Identifier. The resource name of the program. Format: `accounts/{account}/programs/{program}` */
   name?: string;
   /** Output only. The URL of a Merchant Center help page describing the program. */
   documentationUri?: string;
   /** Output only. The regions in which the account is actively participating in the program. Active regions are defined as those where all program requirements affecting the regions have been met. Region codes are defined by [CLDR](https://cldr.unicode.org/). This is either a country where the program applies specifically to that country or `001` when the program applies globally. */
-  activeRegionCodes?: Array<string>;
+  activeRegionCodes?: ReadonlyArray<string>;
 }
 
 export const Program = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -932,7 +932,7 @@ export interface ListProgramsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The programs for the given account. */
-  programs?: Array<Program>;
+  programs?: ReadonlyArray<Program>;
 }
 
 export const ListProgramsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -958,11 +958,11 @@ export interface PostalAddress {
   /** Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (for example, state or zip code validation in the United States). */
   postalCode?: string;
   /** Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information. */
-  recipients?: Array<string>;
+  recipients?: ReadonlyArray<string>;
   /** Optional. Sublocality of the address. For example, this can be a neighborhood, borough, or district. */
   sublocality?: string;
   /** Unstructured address lines describing the lower levels of an address. Because values in `address_lines` do not have type information and may sometimes contain multiple values in a single field (for example, "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country or region of the address. In places where this can vary (for example, Japan), `address_language` is used to make it explicit (for example, "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). In this way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a `region_code` with all remaining information placed in the `address_lines`. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a `region_code` and `address_lines` and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas). */
-  addressLines?: Array<string>;
+  addressLines?: ReadonlyArray<string>;
 }
 
 export const PostalAddress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1112,7 +1112,7 @@ export interface OnlineReturnPolicy {
   /** Optional. The return shipping fee. Should be set only when customer need to download and print the return label. */
   returnShippingFee?: ReturnShippingFee;
   /** Optional. The item conditions accepted for returns must not be empty unless the type of return policy is 'noReturns'. */
-  itemConditions?: Array<
+  itemConditions?: ReadonlyArray<
     "ITEM_CONDITION_UNSPECIFIED" | "NEW" | "USED" | (string & {})
   >;
   /** Optional. This field specifies if business allows customers to exchange products. */
@@ -1120,7 +1120,7 @@ export interface OnlineReturnPolicy {
   /** Identifier. The name of the `OnlineReturnPolicy` resource. Format: `accounts/{account}/onlineReturnPolicies/{return_policy}` */
   name?: string;
   /** Required. Immutable. The countries of sale where the return policy applies. The values must be a valid 2 letter ISO 3166 code. */
-  countries?: Array<string>;
+  countries?: ReadonlyArray<string>;
   /** Optional. This field specifies if business only accepts defective products for returns. */
   acceptDefectiveOnly?: boolean;
   /** Required. The return policy uri. This can used by Google to do a sanity check for the policy. It must be a valid URL. */
@@ -1133,9 +1133,9 @@ export interface OnlineReturnPolicy {
     | "CUSTOMER_RESPONSIBILITY"
     | (string & {});
   /** Optional. Overrides to the general policy for orders placed during a specific set of time intervals. */
-  seasonalOverrides?: Array<SeasonalOverride>;
+  seasonalOverrides?: ReadonlyArray<SeasonalOverride>;
   /** Optional. The return methods of how customers can return an item. This value is required to not be empty unless the type of return policy is noReturns. */
-  returnMethods?: Array<
+  returnMethods?: ReadonlyArray<
     | "RETURN_METHOD_UNSPECIFIED"
     | "BY_MAIL"
     | "IN_STORE"
@@ -1166,7 +1166,7 @@ export interface ListOnlineReturnPoliciesResponse {
   /** A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The retrieved return policies. */
-  onlineReturnPolicies?: Array<OnlineReturnPolicy>;
+  onlineReturnPolicies?: ReadonlyArray<OnlineReturnPolicy>;
 }
 
 export const ListOnlineReturnPoliciesResponse =
@@ -1225,9 +1225,9 @@ export const CarrierRate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RateGroup {
   /** Required. A list of [shipping labels](https://support.google.com/merchants/answer/6324504) defining the products to which this rate group applies to. This is a disjunction: only one of the labels has to match for the rate group to apply. May only be empty for the last rate group of a service. */
-  applicableShippingLabels?: Array<string>;
+  applicableShippingLabels?: ReadonlyArray<string>;
   /** Optional. A list of carrier rates that can be referred to by `main_table` or `single_value`. */
-  carrierRates?: Array<CarrierRate>;
+  carrierRates?: ReadonlyArray<CarrierRate>;
   /** Optional. Name of the rate group. If set has to be unique within shipping service. */
   name?: string;
   /** A table defining the rate group, when `single_value` is not expressive enough. Can only be set if `single_value` is not set. */
@@ -1235,7 +1235,7 @@ export interface RateGroup {
   /** The value of the rate group (For example flat rate $10). Can only be set if `main_table` and `subtables` are not set. */
   singleValue?: Value;
   /** Optional. A list of subtables referred to by `main_table`. Can only be set if `main_table` is set. */
-  subtables?: Array<Table>;
+  subtables?: ReadonlyArray<Table>;
 }
 
 export const RateGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1318,7 +1318,7 @@ export const OmnichannelSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOmnichannelSettingsResponse {
   /** The omnichannel settings from the specified merchant. */
-  omnichannelSettings?: Array<OmnichannelSetting>;
+  omnichannelSettings?: ReadonlyArray<OmnichannelSetting>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1370,7 +1370,7 @@ export const TransitTimeValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TransitTimeRow {
   /** Required. Transit time range (min-max) in business days. */
-  values?: Array<TransitTimeValue>;
+  values?: ReadonlyArray<TransitTimeValue>;
 }
 
 export const TransitTimeRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1379,11 +1379,11 @@ export const TransitTimeRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TransitTable {
   /** Required. A list of region names Region.name . The last value can be `"all other locations"`. Example: `["zone 1", "zone 2", "all other locations"]`. The referred postal code groups must match the delivery country of the service. */
-  postalCodeGroupNames?: Array<string>;
+  postalCodeGroupNames?: ReadonlyArray<string>;
   /** Required. A list of transit time labels. The last value can be `"all other labels"`. Example: `["food", "electronics", "all other labels"]`. */
-  transitTimeLabels?: Array<string>;
+  transitTimeLabels?: ReadonlyArray<string>;
   /** Required. If there's only one dimension set of `postal_code_group_names` or `transit_time_labels`, there are multiple rows each with one value for that dimension. If there are two dimensions, each row corresponds to a `postal_code_group_names`, and columns (values) to a `transit_time_labels`. */
-  rows?: Array<TransitTimeRow>;
+  rows?: ReadonlyArray<TransitTimeRow>;
 }
 
 export const TransitTable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1471,7 +1471,7 @@ export interface ListAccountServicesResponse {
   /** A page token. You can send the `page_token` to get the next page. Only included in the `list` response if there are more pages. */
   nextPageToken?: string;
   /** The account services that match your filter. */
-  accountServices?: Array<AccountService>;
+  accountServices?: ReadonlyArray<AccountService>;
 }
 
 export const ListAccountServicesResponse =
@@ -1495,7 +1495,7 @@ export const ProposeAccountServiceRequest =
 
 export interface BusinessDayConfig {
   /** Required. Regular business days. May not be empty. */
-  businessDays?: Array<
+  businessDays?: ReadonlyArray<
     | "WEEKDAY_UNSPECIFIED"
     | "MONDAY"
     | "TUESDAY"
@@ -1553,7 +1553,7 @@ export interface DeliveryTime {
   /** Transit time table, number of business days spent in transit based on row and column dimensions. Either `min_transit_days`, `max_transit_days` or `transit_time_table` can be set, but not both. */
   transitTimeTable?: TransitTable;
   /** Optional. Indicates that the delivery time should be calculated per warehouse (shipping origin location) based on the settings of the selected carrier. When set, no other transit time related field in delivery time should be set. */
-  warehouseBasedDeliveryTimes?: Array<WarehouseBasedDeliveryTime>;
+  warehouseBasedDeliveryTimes?: ReadonlyArray<WarehouseBasedDeliveryTime>;
   /** The business days during which orders can be in-transit. If not provided, Monday to Friday business days will be assumed. */
   transitBusinessDayConfig?: BusinessDayConfig;
   /** Minimum number of business days that is spent in transit. 0 means same day delivery, 1 means next day delivery. Either `min_transit_days`, `max_transit_days` or `transit_time_table` must be set, but not both. */
@@ -1580,7 +1580,7 @@ export const DeliveryTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StoreCodeSetWithMov {
   /** Optional. A list of unique store codes or empty for the catch all. */
-  storeCodes?: Array<string>;
+  storeCodes?: ReadonlyArray<string>;
   /** The minimum order value for the given stores. */
   value?: Price;
 }
@@ -1592,7 +1592,7 @@ export const StoreCodeSetWithMov = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MinimumOrderValueTable {
   /** Required. A list of store code sets sharing the same minimum order value (MOV). At least two sets are required and the last one must be empty, which signifies 'MOV for all other stores'. Each store code can only appear once across all the sets. All prices within a service must have the same currency. */
-  storeCodeSetWithMovs?: Array<StoreCodeSetWithMov>;
+  storeCodeSetWithMovs?: ReadonlyArray<StoreCodeSetWithMov>;
 }
 
 export const MinimumOrderValueTable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1609,7 +1609,7 @@ export interface Service {
   /** A list of stores your products are delivered from. This is only valid for the local delivery shipment type. */
   storeConfig?: StoreConfig;
   /** Required. The CLDR territory code of the countries to which the service applies. */
-  deliveryCountries?: Array<string>;
+  deliveryCountries?: ReadonlyArray<string>;
   /** Optional. Type of locations this service ships orders to. */
   shipmentType?:
     | "SHIPMENT_TYPE_UNSPECIFIED"
@@ -1618,9 +1618,9 @@ export interface Service {
     | "COLLECTION_POINT"
     | (string & {});
   /** Optional. Shipping rate group definitions. Only the last one is allowed to have an empty `applicable_shipping_labels`, which means "everything else". The other `applicable_shipping_labels` must not overlap. */
-  rateGroups?: Array<RateGroup>;
+  rateGroups?: ReadonlyArray<RateGroup>;
   /** Optional. Loyalty programs that this shipping service is limited to. */
-  loyaltyPrograms?: Array<LoyaltyProgram>;
+  loyaltyPrograms?: ReadonlyArray<LoyaltyProgram>;
   /** Required. Time spent in various aspects from order to the delivery of the product. */
   deliveryTime?: DeliveryTime;
   /** Required. Free-form name of the service. Must be unique within target account. */
@@ -1682,9 +1682,9 @@ export interface ShippingSettings {
   /** Identifier. The resource name of the shipping settings. Format: `accounts/{account}/shippingSettings`. For example, `accounts/123456/shippingSettings`. */
   name?: string;
   /** Optional. The target account's list of services. */
-  services?: Array<Service>;
+  services?: ReadonlyArray<Service>;
   /** Optional. A list of warehouses which can be referred to in `services`. */
-  warehouses?: Array<Warehouse>;
+  warehouses?: ReadonlyArray<Warehouse>;
   /** Required. This field helps avoid async issues. It ensures that the shipping setting data doesn't change between the `get` call and the `insert` call. The user should follow these steps: 1. Set the etag field as an empty string for the initial shipping setting creation. 2. After the initial creation, call the `get` method to obtain an etag and the current shipping setting data before calling `insert`. 3. Modify the shipping setting information. 4. Call the `insert` method with the shipping setting information and the etag obtained in step 2. 5. If the shipping setting data changes between step 2 and step 4, the insert request will fail because the etag changes every time the shipping setting data changes. In this case, the user should repeat steps 2-4 with the new etag. */
   etag?: string;
 }
@@ -1719,7 +1719,7 @@ export const GbpAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListGbpAccountsResponse {
   /** The GBP accounts from the specified merchant in the specified country. */
-  gbpAccounts?: Array<GbpAccount>;
+  gbpAccounts?: ReadonlyArray<GbpAccount>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1754,7 +1754,7 @@ export const UpdateRegionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchUpdateRegionsRequest {
   /** Required. The region(s) to update. The maximum number of regions that can be updated in a batch is 100. */
-  requests?: Array<UpdateRegionRequest>;
+  requests?: ReadonlyArray<UpdateRegionRequest>;
 }
 
 export const BatchUpdateRegionsRequest =
@@ -1881,11 +1881,11 @@ export const AddUser = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CreateAndConfigureAccountRequest {
   /** Optional. Users to be added to the account. */
-  user?: Array<AddUser>;
+  user?: ReadonlyArray<AddUser>;
   /** Required. An account service between the account to be created and the provider account is initialized as part of the creation. At least one such service needs to be provided. Currently exactly one of these needs to be `account_aggregation` and `accounts.createAndConfigure` method can be used to create a sub-account under an existing advanced account through this method. Additional `account_management` or `products_management` services may be provided. */
-  service?: Array<AddAccountService>;
+  service?: ReadonlyArray<AddAccountService>;
   /** Optional. If a relationship is created with a provider, you can set an alias for it with this field. The calling user must be an admin on the provider to be able to set an alias. */
-  setAlias?: Array<SetAliasForRelationship>;
+  setAlias?: ReadonlyArray<SetAliasForRelationship>;
   /** Required. The account to be created. */
   account?: Account;
 }
@@ -2028,7 +2028,7 @@ export interface ProductStatusChangeMessage {
   /** The resource that changed, in this case it will always be `Product`. */
   resourceType?: "RESOURCE_UNSPECIFIED" | "PRODUCT" | (string & {});
   /** A message to describe the change that happened to the product */
-  changes?: Array<ProductChange>;
+  changes?: ReadonlyArray<ProductChange>;
   /** The attribute in the resource that changed, in this case it will be always `Status`. */
   attribute?: "ATTRIBUTE_UNSPECIFIED" | "STATUS" | (string & {});
   /** The product name. Format: `accounts/{account}/products/{product}` */
@@ -2071,7 +2071,7 @@ export const CreateRegionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchCreateRegionsRequest {
   /** Required. The region(s) to create. The maximum number of regions that can be created in a batch is 100. */
-  requests?: Array<CreateRegionRequest>;
+  requests?: ReadonlyArray<CreateRegionRequest>;
 }
 
 export const BatchCreateRegionsRequest =
@@ -2081,7 +2081,7 @@ export const BatchCreateRegionsRequest =
 
 export interface BatchDeleteRegionsRequest {
   /** Required. The names of the regions to delete. A maximum of 100 regions can be deleted in a batch. */
-  requests?: Array<DeleteRegionRequest>;
+  requests?: ReadonlyArray<DeleteRegionRequest>;
 }
 
 export const BatchDeleteRegionsRequest =
@@ -2162,7 +2162,7 @@ export const EmailPreferences = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchCreateRegionsResponse {
   /** The created region(s). */
-  regions?: Array<Region>;
+  regions?: ReadonlyArray<Region>;
 }
 
 export const BatchCreateRegionsResponse =
@@ -2185,7 +2185,7 @@ export interface CheckoutSettings {
   /** URI settings for cart or checkout URL. */
   uriSettings?: UriSettings;
   /** Optional. Required for the create operation. The destinations (also known as [Marketing methods](https://support.google.com/merchants/answer/15130232)) to which the checkout program applies. Valid destination values are `SHOPPING_ADS` and `FREE_LISTINGS`. */
-  eligibleDestinations?: Array<
+  eligibleDestinations?: ReadonlyArray<
     | "DESTINATION_ENUM_UNSPECIFIED"
     | "SHOPPING_ADS"
     | "DISPLAY_ADS"
@@ -2248,7 +2248,7 @@ export const CheckoutSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FindLfpProvidersResponse {
   /** The LFP providers from the specified merchant in the specified country. */
-  lfpProviders?: Array<LfpProvider>;
+  lfpProviders?: ReadonlyArray<LfpProvider>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2281,7 +2281,7 @@ export const DeleteAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "accounts/v1/accounts/{accountsId}" }),
+  T.Http({ method: "DELETE", path: "accounts/v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteAccountsRequest>;
 
@@ -2316,7 +2316,7 @@ export const CreateTestAccountAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/accounts/{accountsId}:createTestAccount",
+      path: "accounts/v1/{parent}:createTestAccount",
       hasBody: true,
     }),
     svc,
@@ -2354,11 +2354,7 @@ export const PatchAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(Account).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "PATCH",
-    path: "accounts/v1/accounts/{accountsId}",
-    hasBody: true,
-  }),
+  T.Http({ method: "PATCH", path: "accounts/v1/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchAccountsRequest>;
 
@@ -2434,10 +2430,7 @@ export const ListSubaccountsAccountsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}:listSubaccounts",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{provider}:listSubaccounts" }),
     svc,
   ) as unknown as Schema.Schema<ListSubaccountsAccountsRequest>;
 
@@ -2506,7 +2499,7 @@ export interface GetAccountsRequest {
 export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "accounts/v1/accounts/{accountsId}" }),
+  T.Http({ method: "GET", path: "accounts/v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetAccountsRequest>;
 
@@ -2536,10 +2529,7 @@ export const GetShippingSettingsAccountsShippingSettingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/shippingSettings",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetShippingSettingsAccountsShippingSettingsRequest>;
 
@@ -2576,7 +2566,7 @@ export const InsertAccountsShippingSettingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/accounts/{accountsId}/shippingSettings:insert",
+      path: "accounts/v1/{parent}/shippingSettings:insert",
       hasBody: true,
     }),
     svc,
@@ -2615,11 +2605,7 @@ export const UpdateEmailPreferencesAccountsEmailPreferencesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(EmailPreferences).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "accounts/v1/accounts/{accountsId}/users/{usersId}/emailPreferences",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "accounts/v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateEmailPreferencesAccountsEmailPreferencesRequest>;
 
@@ -2651,10 +2637,7 @@ export const GetEmailPreferencesAccountsEmailPreferencesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/users/{usersId}/emailPreferences",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEmailPreferencesAccountsEmailPreferencesRequest>;
 
@@ -2700,7 +2683,7 @@ export const ListAccountsIssuesRequest =
       T.HttpQuery("languageCode"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1/accounts/{accountsId}/issues" }),
+    T.Http({ method: "GET", path: "accounts/v1/{parent}/issues" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsIssuesRequest>;
 
@@ -2741,7 +2724,7 @@ export const ListAccountsUsersRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "accounts/v1/accounts/{accountsId}/users" }),
+    T.Http({ method: "GET", path: "accounts/v1/{parent}/users" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsUsersRequest>;
 
@@ -2776,10 +2759,7 @@ export const GetAccountsUsersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/users/{usersId}",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsUsersRequest>;
 
@@ -2817,7 +2797,7 @@ export const CreateAccountsUsersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/accounts/{accountsId}/users",
+      path: "accounts/v1/{parent}/users",
       hasBody: true,
     }),
     svc,
@@ -2849,10 +2829,7 @@ export const DeleteAccountsUsersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "accounts/v1/accounts/{accountsId}/users/{usersId}",
-    }),
+    T.Http({ method: "DELETE", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsUsersRequest>;
 
@@ -2888,11 +2865,7 @@ export const PatchAccountsUsersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(User).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "accounts/v1/accounts/{accountsId}/users/{usersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "accounts/v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsUsersRequest>;
 
@@ -2927,7 +2900,7 @@ export const VerifySelfAccountsUsersMeRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "accounts/v1/accounts/{accountsId}/users/me:verifySelf",
+      path: "accounts/v1/{account}/users/me:verifySelf",
       hasBody: true,
     }),
     svc,
@@ -2960,10 +2933,7 @@ export const GetAccountsOnlineReturnPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/onlineReturnPolicies/{onlineReturnPoliciesId}",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsOnlineReturnPoliciesRequest>;
 
@@ -2999,7 +2969,7 @@ export const CreateAccountsOnlineReturnPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/accounts/{accountsId}/onlineReturnPolicies",
+      path: "accounts/v1/{parent}/onlineReturnPolicies",
       hasBody: true,
     }),
     svc,
@@ -3040,7 +3010,7 @@ export const ListAccountsOnlineReturnPoliciesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/onlineReturnPolicies",
+      path: "accounts/v1/{parent}/onlineReturnPolicies",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsOnlineReturnPoliciesRequest>;
@@ -3077,10 +3047,7 @@ export const DeleteAccountsOnlineReturnPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "accounts/v1/accounts/{accountsId}/onlineReturnPolicies/{onlineReturnPoliciesId}",
-    }),
+    T.Http({ method: "DELETE", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsOnlineReturnPoliciesRequest>;
 
@@ -3111,10 +3078,7 @@ export const GetAccountsRelationshipsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/relationships/{relationshipsId}",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsRelationshipsRequest>;
 
@@ -3151,11 +3115,7 @@ export const PatchAccountsRelationshipsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AccountRelationship).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "accounts/v1/accounts/{accountsId}/relationships/{relationshipsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "accounts/v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsRelationshipsRequest>;
 
@@ -3192,10 +3152,7 @@ export const ListAccountsRelationshipsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/relationships",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{parent}/relationships" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsRelationshipsRequest>;
 
@@ -3237,11 +3194,7 @@ export const UpdateBusinessInfoAccountsBusinessInfoRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(BusinessInfo).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "accounts/v1/accounts/{accountsId}/businessInfo",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "accounts/v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateBusinessInfoAccountsBusinessInfoRequest>;
 
@@ -3272,10 +3225,7 @@ export const GetBusinessInfoAccountsBusinessInfoRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/businessInfo",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBusinessInfoAccountsBusinessInfoRequest>;
 
@@ -3306,10 +3256,7 @@ export const GetAutofeedSettingsAccountsAutofeedSettingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/autofeedSettings",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAutofeedSettingsAccountsAutofeedSettingsRequest>;
 
@@ -3347,11 +3294,7 @@ export const UpdateAutofeedSettingsAccountsAutofeedSettingsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AutofeedSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "accounts/v1/accounts/{accountsId}/autofeedSettings",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "accounts/v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAutofeedSettingsAccountsAutofeedSettingsRequest>;
 
@@ -3390,7 +3333,7 @@ export const RequestInventoryVerificationAccountsOmnichannelSettingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/accounts/{accountsId}/omnichannelSettings/{omnichannelSettingsId}:requestInventoryVerification",
+      path: "accounts/v1/{name}:requestInventoryVerification",
       hasBody: true,
     }),
     svc,
@@ -3431,11 +3374,7 @@ export const PatchAccountsOmnichannelSettingsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(OmnichannelSetting).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "accounts/v1/accounts/{accountsId}/omnichannelSettings/{omnichannelSettingsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "accounts/v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsOmnichannelSettingsRequest>;
 
@@ -3472,10 +3411,7 @@ export const ListAccountsOmnichannelSettingsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/omnichannelSettings",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{parent}/omnichannelSettings" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsOmnichannelSettingsRequest>;
 
@@ -3511,10 +3447,7 @@ export const GetAccountsOmnichannelSettingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/omnichannelSettings/{omnichannelSettingsId}",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsOmnichannelSettingsRequest>;
 
@@ -3550,7 +3483,7 @@ export const CreateAccountsOmnichannelSettingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/accounts/{accountsId}/omnichannelSettings",
+      path: "accounts/v1/{parent}/omnichannelSettings",
       hasBody: true,
     }),
     svc,
@@ -3589,10 +3522,7 @@ export const FindAccountsOmnichannelSettingsLfpProvidersRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/omnichannelSettings/{omnichannelSettingsId}/lfpProviders:find",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{parent}/lfpProviders:find" }),
     svc,
   ) as unknown as Schema.Schema<FindAccountsOmnichannelSettingsLfpProvidersRequest>;
 
@@ -3633,7 +3563,7 @@ export const LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/accounts/{accountsId}/omnichannelSettings/{omnichannelSettingsId}/lfpProviders/{lfpProvidersId}:linkLfpProvider",
+      path: "accounts/v1/{name}:linkLfpProvider",
       hasBody: true,
     }),
     svc,
@@ -3673,7 +3603,7 @@ export const EnableAccountsProgramsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/accounts/{accountsId}/programs/{programsId}:enable",
+      path: "accounts/v1/{name}:enable",
       hasBody: true,
     }),
     svc,
@@ -3712,10 +3642,7 @@ export const ListAccountsProgramsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/programs",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{parent}/programs" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsProgramsRequest>;
 
@@ -3750,10 +3677,7 @@ export const GetAccountsProgramsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/programs/{programsId}",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsProgramsRequest>;
 
@@ -3788,7 +3712,7 @@ export const DisableAccountsProgramsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/accounts/{accountsId}/programs/{programsId}:disable",
+      path: "accounts/v1/{name}:disable",
       hasBody: true,
     }),
     svc,
@@ -3821,10 +3745,7 @@ export const GetCheckoutSettingsAccountsProgramsCheckoutSettingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/programs/{programsId}/checkoutSettings",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCheckoutSettingsAccountsProgramsCheckoutSettingsRequest>;
 
@@ -3862,7 +3783,7 @@ export const CreateAccountsProgramsCheckoutSettingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/accounts/{accountsId}/programs/{programsId}/checkoutSettings",
+      path: "accounts/v1/{parent}/checkoutSettings",
       hasBody: true,
     }),
     svc,
@@ -3901,11 +3822,7 @@ export const UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(CheckoutSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "accounts/v1/accounts/{accountsId}/programs/{programsId}/checkoutSettings",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "accounts/v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest>;
 
@@ -3938,10 +3855,7 @@ export const DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "accounts/v1/accounts/{accountsId}/programs/{programsId}/checkoutSettings",
-    }),
+    T.Http({ method: "DELETE", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest>;
 
@@ -3974,10 +3888,7 @@ export const GetDeveloperRegistrationAccountsDeveloperRegistrationRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/developerRegistration",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDeveloperRegistrationAccountsDeveloperRegistrationRequest>;
 
@@ -4015,7 +3926,7 @@ export const RegisterGcpAccountsDeveloperRegistrationRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/accounts/{accountsId}/developerRegistration:registerGcp",
+      path: "accounts/v1/{name}:registerGcp",
       hasBody: true,
     }),
     svc,
@@ -4085,7 +3996,7 @@ export const UnregisterGcpAccountsDeveloperRegistrationRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/accounts/{accountsId}/developerRegistration:unregisterGcp",
+      path: "accounts/v1/{name}:unregisterGcp",
       hasBody: true,
     }),
     svc,
@@ -4120,7 +4031,7 @@ export const RetrieveForApplicationAccountsTermsOfServiceAgreementStatesRequest 
   }).pipe(
     T.Http({
       method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/termsOfServiceAgreementStates:retrieveForApplication",
+      path: "accounts/v1/{parent}/termsOfServiceAgreementStates:retrieveForApplication",
     }),
     svc,
   ) as unknown as Schema.Schema<RetrieveForApplicationAccountsTermsOfServiceAgreementStatesRequest>;
@@ -4154,10 +4065,7 @@ export const GetAccountsTermsOfServiceAgreementStatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/termsOfServiceAgreementStates/{termsOfServiceAgreementStatesId}",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsTermsOfServiceAgreementStatesRequest>;
 
@@ -4192,11 +4100,7 @@ export const ClaimAccountsHomepageRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ClaimHomepageRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "accounts/v1/accounts/{accountsId}/homepage:claim",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "accounts/v1/{name}:claim", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ClaimAccountsHomepageRequest>;
 
@@ -4232,7 +4136,7 @@ export const UnclaimAccountsHomepageRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/accounts/{accountsId}/homepage:unclaim",
+      path: "accounts/v1/{name}:unclaim",
       hasBody: true,
     }),
     svc,
@@ -4265,10 +4169,7 @@ export const GetHomepageAccountsHomepageRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/homepage",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetHomepageAccountsHomepageRequest>;
 
@@ -4305,11 +4206,7 @@ export const UpdateHomepageAccountsHomepageRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Homepage).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "accounts/v1/accounts/{accountsId}/homepage",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "accounts/v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateHomepageAccountsHomepageRequest>;
 
@@ -4340,10 +4237,7 @@ export const GetAutomaticImprovementsAccountsAutomaticImprovementsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/automaticImprovements",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAutomaticImprovementsAccountsAutomaticImprovementsRequest>;
 
@@ -4382,11 +4276,7 @@ export const UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AutomaticImprovements).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "accounts/v1/accounts/{accountsId}/automaticImprovements",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "accounts/v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest>;
 
@@ -4425,10 +4315,7 @@ export const ListAccountsGbpAccountsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/gbpAccounts",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{parent}/gbpAccounts" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsGbpAccountsRequest>;
 
@@ -4468,7 +4355,7 @@ export const LinkGbpAccountAccountsGbpAccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/accounts/{accountsId}/gbpAccounts:linkGbpAccount",
+      path: "accounts/v1/{parent}/gbpAccounts:linkGbpAccount",
       hasBody: true,
     }),
     svc,
@@ -4507,11 +4394,7 @@ export const PatchAccountsRegionsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Region).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "accounts/v1/accounts/{accountsId}/regions/{regionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "accounts/v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsRegionsRequest>;
 
@@ -4541,10 +4424,7 @@ export const DeleteAccountsRegionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "accounts/v1/accounts/{accountsId}/regions/{regionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsRegionsRequest>;
 
@@ -4574,10 +4454,7 @@ export const GetAccountsRegionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/regions/{regionsId}",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsRegionsRequest>;
 
@@ -4615,7 +4492,7 @@ export const CreateAccountsRegionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/accounts/{accountsId}/regions",
+      path: "accounts/v1/{parent}/regions",
       hasBody: true,
     }),
     svc,
@@ -4652,7 +4529,7 @@ export const BatchUpdateAccountsRegionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/accounts/{accountsId}/regions:batchUpdate",
+      path: "accounts/v1/{parent}/regions:batchUpdate",
       hasBody: true,
     }),
     svc,
@@ -4690,7 +4567,7 @@ export const BatchDeleteAccountsRegionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/accounts/{accountsId}/regions:batchDelete",
+      path: "accounts/v1/{parent}/regions:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -4728,7 +4605,7 @@ export const BatchCreateAccountsRegionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/accounts/{accountsId}/regions:batchCreate",
+      path: "accounts/v1/{parent}/regions:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -4767,10 +4644,7 @@ export const ListAccountsRegionsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/regions",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{parent}/regions" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsRegionsRequest>;
 
@@ -4805,10 +4679,7 @@ export const GetBusinessIdentityAccountsBusinessIdentityRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/businessIdentity",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBusinessIdentityAccountsBusinessIdentityRequest>;
 
@@ -4846,11 +4717,7 @@ export const UpdateBusinessIdentityAccountsBusinessIdentityRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(BusinessIdentity).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "accounts/v1/accounts/{accountsId}/businessIdentity",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "accounts/v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateBusinessIdentityAccountsBusinessIdentityRequest>;
 
@@ -4887,7 +4754,7 @@ export const RejectAccountsServicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/accounts/{accountsId}/services/{servicesId}:reject",
+      path: "accounts/v1/{name}:reject",
       hasBody: true,
     }),
     svc,
@@ -4924,7 +4791,7 @@ export const ApproveAccountsServicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/accounts/{accountsId}/services/{servicesId}:approve",
+      path: "accounts/v1/{name}:approve",
       hasBody: true,
     }),
     svc,
@@ -4957,10 +4824,7 @@ export const GetAccountsServicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/services/{servicesId}",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsServicesRequest>;
 
@@ -4996,7 +4860,7 @@ export const ProposeAccountsServicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/accounts/{accountsId}/services:propose",
+      path: "accounts/v1/{parent}/services:propose",
       hasBody: true,
     }),
     svc,
@@ -5035,10 +4899,7 @@ export const ListAccountsServicesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/accounts/{accountsId}/services",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{parent}/services" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsServicesRequest>;
 
@@ -5073,10 +4934,7 @@ export const GetTermsOfServiceRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "accounts/v1/termsOfService/{termsOfServiceId}",
-    }),
+    T.Http({ method: "GET", path: "accounts/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetTermsOfServiceRequest>;
 
@@ -5155,7 +5013,7 @@ export const AcceptTermsOfServiceRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "accounts/v1/termsOfService/{termsOfServiceId}:accept",
+      path: "accounts/v1/{name}:accept",
       hasBody: true,
     }),
     svc,

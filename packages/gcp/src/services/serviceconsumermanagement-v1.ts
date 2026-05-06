@@ -48,7 +48,7 @@ export interface Method {
   /** The simple name of this method. */
   name?: string;
   /** Any metadata attached to the method. */
-  options?: Array<Option>;
+  options?: ReadonlyArray<Option>;
   /** The source syntax of this method. This field should be ignored, instead the syntax should be inherited from Api. This is similar to Field and EnumValue. */
   syntax?:
     | "SYNTAX_PROTO2"
@@ -93,13 +93,13 @@ export interface Api {
   /** The source edition string, only valid when syntax is SYNTAX_EDITIONS. */
   edition?: string;
   /** The methods of this interface, in unspecified order. */
-  methods?: Array<Method>;
+  methods?: ReadonlyArray<Method>;
   /** Included interfaces. See Mixin. */
-  mixins?: Array<Mixin>;
+  mixins?: ReadonlyArray<Mixin>;
   /** A version string for this interface. If specified, must have the form `major-version.minor-version`, as in `1.10`. If the minor version is omitted, it defaults to zero. If the entire version field is empty, the major version is derived from the package name, as outlined below. If the field is not empty, the version in the package name will be verified to be consistent with what is provided here. The versioning schema uses [semantic versioning](http://semver.org) where the major version number indicates a breaking change and the minor version an additive, non-breaking change. Both version numbers are signals to users what to expect from different versions, and should be carefully chosen based on the product plan. The major version is also reflected in the package name of the interface, which must end in `v`, as in `google.feature.v1`. For major versions 0 and 1, the suffix can be omitted. Zero major versions must only be used for experimental, non-GA interfaces. */
   version?: string;
   /** Any metadata attached to the interface. */
-  options?: Array<Option>;
+  options?: ReadonlyArray<Option>;
   /** The source syntax of the service. */
   syntax?:
     | "SYNTAX_PROTO2"
@@ -129,7 +129,7 @@ export interface Page {
   /** The Markdown content of the page. You can use ```(== include {path} ==)``` to include content from a Markdown file. The content can be used to produce the documentation page such as HTML format page. */
   content?: string;
   /** Subpages of this page. The order of subpages specified here will be honored in the generated docset. */
-  subpages?: Array<Page>;
+  subpages?: ReadonlyArray<Page>;
 }
 
 export const Page: Schema.Schema<Page> =
@@ -164,7 +164,7 @@ export interface LogDescriptor {
   /** The human-readable name for this log. This information appears on the user interface and should be concise. */
   displayName?: string;
   /** The set of labels that are available to describe a specific log entry. Runtime requests that contain labels not specified here are considered invalid. */
-  labels?: Array<LabelDescriptor>;
+  labels?: ReadonlyArray<LabelDescriptor>;
 }
 
 export const LogDescriptor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -236,7 +236,7 @@ export const V1Beta1QuotaOverride = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface V1Beta1BatchCreateProducerOverridesResponse {
   /** The overrides that were created. */
-  overrides?: Array<V1Beta1QuotaOverride>;
+  overrides?: ReadonlyArray<V1Beta1QuotaOverride>;
 }
 
 export const V1Beta1BatchCreateProducerOverridesResponse =
@@ -296,7 +296,7 @@ export const BackendRule: Schema.Schema<BackendRule> =
 
 export interface Backend {
   /** A list of API backend rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order. */
-  rules?: Array<BackendRule>;
+  rules?: ReadonlyArray<BackendRule>;
 }
 
 export const Backend = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -307,7 +307,7 @@ export interface BatchingDescriptorProto {
   /** The repeated field in the request message to be aggregated by batching. */
   batchedField?: string;
   /** A list of the fields in the request message. Two requests will be batched together only if the values of every field specified in `request_discriminator_fields` is equal between the two requests. */
-  discriminatorFields?: Array<string>;
+  discriminatorFields?: ReadonlyArray<string>;
   /** Optional. When present, indicates the field in the response message to be used to demultiplex the response into multiple response messages, in correspondence with the multiple request messages originally batched together. */
   subresponseField?: string;
 }
@@ -353,7 +353,7 @@ export const BillingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PolicyBinding {
   /** Uses the same format as in IAM policy. `member` must include both a prefix and ID. For example, `user:{emailId}`, `serviceAccount:{emailId}`, `group:{emailId}`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** Role. (https://cloud.google.com/iam/docs/understanding-roles) For example, `roles/viewer`, `roles/editor`, or `roles/owner`. */
   role?: string;
 }
@@ -365,7 +365,7 @@ export const PolicyBinding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TenantProjectPolicy {
   /** Policy bindings to be applied to the tenant project, in addition to the 'roles/owner' role granted to the Service Consumer Management service account. */
-  policyBindings?: Array<PolicyBinding>;
+  policyBindings?: ReadonlyArray<PolicyBinding>;
 }
 
 export const TenantProjectPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -376,7 +376,7 @@ export interface ServiceAccountConfig {
   /** ID of the IAM service account to be created in tenant project. The email format of the service account is "@.iam.gserviceaccount.com". This account ID must be unique within tenant project and service producers have to guarantee it. The ID must be 6-30 characters long, and match the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])`. */
   accountId?: string;
   /** Roles for the associated service account for the tenant project. */
-  tenantProjectRoles?: Array<string>;
+  tenantProjectRoles?: ReadonlyArray<string>;
 }
 
 export const ServiceAccountConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -392,7 +392,7 @@ export interface TenantProjectConfig {
   /** Labels that are applied to this project. */
   labels?: Record<string, string>;
   /** Google Cloud API names of services that are activated on this project during provisioning. If any of these services can't be activated, the request fails. For example: 'compute.googleapis.com','cloudfunctions.googleapis.com' */
-  services?: Array<string>;
+  services?: ReadonlyArray<string>;
   /** Describes ownership and policies for the new tenant project. */
   tenantProjectPolicy?: TenantProjectPolicy;
   /** Configuration for the IAM service account on the tenant project. */
@@ -410,7 +410,7 @@ export const TenantProjectConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -489,7 +489,7 @@ export interface Endpoint {
   /** Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed. */
   allowCors?: boolean;
   /** Aliases for this endpoint, these will be served by the same UrlMap as the parent endpoint, and will be provisioned in the GCP stack for the Regional Endpoints. */
-  aliases?: Array<string>;
+  aliases?: ReadonlyArray<string>;
 }
 
 export const Endpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -503,7 +503,7 @@ export interface BillingDestination {
   /** The monitored resource type. The type must be defined in Service.monitored_resources section. */
   monitoredResource?: string;
   /** Names of the metrics to report to this billing destination. Each name must be defined in Service.metrics section. */
-  metrics?: Array<string>;
+  metrics?: ReadonlyArray<string>;
 }
 
 export const BillingDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -513,7 +513,7 @@ export const BillingDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Billing {
   /** Billing configurations for sending metrics to the consumer project. There can be multiple consumer destinations per service, each one must have a different monitored resource type. A metric can be used in at most one consumer destination. */
-  consumerDestinations?: Array<BillingDestination>;
+  consumerDestinations?: ReadonlyArray<BillingDestination>;
 }
 
 export const Billing = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -585,7 +585,7 @@ export interface MonitoringDestination {
   /** The monitored resource type. The type must be defined in Service.monitored_resources section. */
   monitoredResource?: string;
   /** Types of the metrics to report to this monitoring destination. Each type must be defined in Service.metrics section. */
-  metrics?: Array<string>;
+  metrics?: ReadonlyArray<string>;
 }
 
 export const MonitoringDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -595,9 +595,9 @@ export const MonitoringDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Monitoring {
   /** Monitoring configurations for sending metrics to the producer project. There can be multiple producer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration. */
-  producerDestinations?: Array<MonitoringDestination>;
+  producerDestinations?: ReadonlyArray<MonitoringDestination>;
   /** Monitoring configurations for sending metrics to the consumer project. There can be multiple consumer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration. */
-  consumerDestinations?: Array<MonitoringDestination>;
+  consumerDestinations?: ReadonlyArray<MonitoringDestination>;
 }
 
 export const Monitoring = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -624,7 +624,7 @@ export interface SystemParameterRule {
   /** Selects the methods to which this rule applies. Use '*' to indicate all methods in all APIs. Refer to selector for syntax details. */
   selector?: string;
   /** Define parameters. Multiple names may be defined for a parameter. For a given method call, only one of them should be used. If multiple names are used the behavior is implementation-dependent. If none of the specified names are present the behavior is parameter-dependent. */
-  parameters?: Array<SystemParameter>;
+  parameters?: ReadonlyArray<SystemParameter>;
 }
 
 export const SystemParameterRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -634,7 +634,7 @@ export const SystemParameterRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SystemParameters {
   /** Define system parameters. The parameters defined here will override the default parameters implemented by the system. If this field is missing from the service config, default system parameters will be used. Default system parameters and names is implementation-dependent. Example: define api key for all methods system_parameters rules: - selector: "*" parameters: - name: api_key url_query_parameter: api_key Example: define 2 api key names for a specific method. system_parameters rules: - selector: "/ListShelves" parameters: - name: api_key http_header: Api-Key1 - name: api_key http_header: Api-Key2 **NOTE:** All service configuration rules follow "last one wins" order. */
-  rules?: Array<SystemParameterRule>;
+  rules?: ReadonlyArray<SystemParameterRule>;
 }
 
 export const SystemParameters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -643,7 +643,7 @@ export const SystemParameters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface EnumValue {
   /** Protocol buffer options. */
-  options?: Array<Option>;
+  options?: ReadonlyArray<Option>;
   /** Enum value name. */
   name?: string;
   /** Enum value number. */
@@ -664,9 +664,9 @@ export interface Enum {
   /** The source context. */
   sourceContext?: SourceContext;
   /** Enum value definitions. */
-  enumvalue?: Array<EnumValue>;
+  enumvalue?: ReadonlyArray<EnumValue>;
   /** Protocol buffer options. */
-  options?: Array<Option>;
+  options?: ReadonlyArray<Option>;
   /** The source syntax. */
   syntax?:
     | "SYNTAX_PROTO2"
@@ -686,7 +686,7 @@ export const Enum = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SelectiveGapicGeneration {
   /** An allowlist of the fully qualified names of RPCs that should be included on public client surfaces. */
-  methods?: Array<string>;
+  methods?: ReadonlyArray<string>;
   /** Setting this to true indicates to the client generators that methods that would be excluded from the generation should instead be generated in a way that indicates these methods should not be consumed by end users. How this is expressed is up to individual language implementations to decide. Some examples may be: added annotations, obfuscated identifiers, or other language idiomatic patterns. */
   generateOmittedAsInternal?: boolean;
 }
@@ -703,7 +703,7 @@ export interface CommonLanguageSettings {
   /** Configuration for which RPCs should be generated in the GAPIC client. Note: This field should not be used in most cases. */
   selectiveGapicGeneration?: SelectiveGapicGeneration;
   /** The destination where API teams want this client library to be published. */
-  destinations?: Array<
+  destinations?: ReadonlyArray<
     | "CLIENT_LIBRARY_DESTINATION_UNSPECIFIED"
     | "GITHUB"
     | "PACKAGE_MANAGER"
@@ -745,7 +745,7 @@ export const AspectRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Aspect {
   /** Optional. Rules of the Configuration. */
-  rules?: Array<AspectRule>;
+  rules?: ReadonlyArray<AspectRule>;
   /** The type of this aspect configuration. */
   kind?: string;
   /** Content of the configuration. The underlying schema should be defined by Aspect owners as protobuf message under `google/api/configaspects/proto`. */
@@ -794,7 +794,7 @@ export interface AuthenticationRule {
   /** If true, the service accepts API keys without any other credential. This flag only applies to HTTP and gRPC requests. */
   allowWithoutCredential?: boolean;
   /** Requirements for additional authentication providers. */
-  requirements?: Array<AuthRequirement>;
+  requirements?: ReadonlyArray<AuthRequirement>;
 }
 
 export const AuthenticationRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -845,7 +845,7 @@ export interface Field {
   /** Whether to use alternative packed wire representation. */
   packed?: boolean;
   /** The protocol buffer options. */
-  options?: Array<Option>;
+  options?: ReadonlyArray<Option>;
   /** The field JSON name. */
   jsonName?: string;
   /** The string value of the default value of this field. Proto2 syntax only. */
@@ -879,15 +879,15 @@ export const CustomHttpPattern = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ContextRule {
   /** A list of full type names of requested contexts, only the requested context will be made available to the backend. */
-  requested?: Array<string>;
+  requested?: ReadonlyArray<string>;
   /** A list of full type names or extension IDs of extensions allowed in grpc side channel from client to backend. */
-  allowedRequestExtensions?: Array<string>;
+  allowedRequestExtensions?: ReadonlyArray<string>;
   /** A list of full type names of provided contexts. It is used to support propagating HTTP headers and ETags from the response extension. */
-  provided?: Array<string>;
+  provided?: ReadonlyArray<string>;
   /** Selects the methods to which this rule applies. Refer to selector for syntax details. */
   selector?: string;
   /** A list of full type names or extension IDs of extensions allowed in grpc side channel from backend to client. */
-  allowedResponseExtensions?: Array<string>;
+  allowedResponseExtensions?: ReadonlyArray<string>;
 }
 
 export const ContextRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -925,7 +925,7 @@ export const V1Beta1ProducerQuotaPolicy =
 
 export interface V1Beta1ImportProducerQuotaPoliciesResponse {
   /** The policies that were created from the imported data. */
-  policies?: Array<V1Beta1ProducerQuotaPolicy>;
+  policies?: ReadonlyArray<V1Beta1ProducerQuotaPolicy>;
 }
 
 export const V1Beta1ImportProducerQuotaPoliciesResponse =
@@ -952,7 +952,7 @@ export interface MethodPolicy {
   /** Selects a method to which these policies should be enforced, for example, "google.pubsub.v1.Subscriber.CreateSubscription". Refer to selector for syntax details. NOTE: This field must not be set in the proto annotation. It will be automatically filled by the service config compiler . */
   selector?: string;
   /** Policies that are applicable to the request message. */
-  requestPolicies?: Array<FieldPolicy>;
+  requestPolicies?: ReadonlyArray<FieldPolicy>;
 }
 
 export const MethodPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -964,7 +964,7 @@ export interface Control {
   /** The service controller environment to use. If empty, no control plane features (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com. */
   environment?: string;
   /** Defines policies applying to the API methods of the service. */
-  methodPolicies?: Array<MethodPolicy>;
+  methodPolicies?: ReadonlyArray<MethodPolicy>;
 }
 
 export const Control = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -982,7 +982,7 @@ export interface TenancyUnit {
   /** Output only. Google Cloud API name of the managed service owning this tenancy unit. For example 'serviceconsumermanagement.googleapis.com'. */
   service?: string;
   /** Resources constituting the tenancy unit. There can be at most 512 tenant resources in a tenancy unit. */
-  tenantResources?: Array<TenantResource>;
+  tenantResources?: ReadonlyArray<TenantResource>;
 }
 
 export const TenancyUnit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -995,7 +995,7 @@ export const TenancyUnit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SearchTenancyUnitsResponse {
   /** Tenancy Units matching the request. */
-  tenancyUnits?: Array<TenancyUnit>;
+  tenancyUnits?: ReadonlyArray<TenancyUnit>;
   /** Pagination token for large results. */
   nextPageToken?: string;
 }
@@ -1017,15 +1017,15 @@ export interface DotnetSettings {
   /** Some settings. */
   common?: CommonLanguageSettings;
   /** Namespaces which must be aliased in snippets due to a known (but non-generator-predictable) naming collision */
-  forcedNamespaceAliases?: Array<string>;
+  forcedNamespaceAliases?: ReadonlyArray<string>;
   /** Map from original service names to renamed versions. This is used when the default generated types would cause a naming conflict. (Neither name is fully-qualified.) Example: Subscriber to SubscriberServiceApi. */
   renamedServices?: Record<string, string>;
   /** List of full resource types to ignore during generation. This is typically used for API-specific Location resources, which should be handled by the generator as if they were actually the common Location resources. Example entry: "documentai.googleapis.com/Location" */
-  ignoredResources?: Array<string>;
+  ignoredResources?: ReadonlyArray<string>;
   /** Map from full resource types to the effective short name for the resource. This is used when otherwise resource named from different services would cause naming collisions. Example entry: "datalabeling.googleapis.com/Dataset": "DataLabelingDataset" */
   renamedResources?: Record<string, string>;
   /** Method signatures (in the form "service.method(signature)") which are provided separately, so shouldn't be generated. Snippets *calling* these methods are still generated, however. */
-  handwrittenSignatures?: Array<string>;
+  handwrittenSignatures?: ReadonlyArray<string>;
 }
 
 export const DotnetSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1202,7 +1202,7 @@ export const BatchingConfigProto = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MethodSettings {
   /** List of top-level fields of the request message, that should be automatically populated by the client libraries based on their (google.api.field_info).format. Currently supported format: UUID4. Example of a YAML configuration: publishing: method_settings: - selector: google.example.v1.ExampleService.CreateExample auto_populated_fields: - request_id */
-  autoPopulatedFields?: Array<string>;
+  autoPopulatedFields?: ReadonlyArray<string>;
   /** Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_settings: - selector: google.cloud.speech.v2.Speech.BatchRecognize long_running: initial_poll_delay: 60s # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: 360s # 6 minutes total_poll_timeout: 54000s # 90 minutes */
   longRunning?: LongRunning;
   /** The fully qualified name of the method, for which the options below apply. This is used to find the method to apply the options. Example: publishing: method_settings: - selector: google.storage.control.v2.StorageControl.CreateFolder # method settings for CreateFolder... */
@@ -1222,15 +1222,15 @@ export interface Publishing {
   /** Used as a tracking tag when collecting data about the APIs developer relations artifacts like docs, packages delivered to package managers, etc. Example: "speech". */
   apiShortName?: string;
   /** Client library settings. If the same version string appears multiple times in this list, then the last one wins. Settings from earlier settings with the same version string are discarded. */
-  librarySettings?: Array<ClientLibrarySettings>;
+  librarySettings?: ReadonlyArray<ClientLibrarySettings>;
   /** Optional link to REST reference documentation. Example: https://cloud.google.com/pubsub/lite/docs/reference/rest */
   restReferenceDocumentationUri?: string;
   /** A list of API method settings, e.g. the behavior for methods that use the long-running operation pattern. */
-  methodSettings?: Array<MethodSettings>;
+  methodSettings?: ReadonlyArray<MethodSettings>;
   /** Link to product home page. Example: https://cloud.google.com/asset-inventory/docs/overview */
   documentationUri?: string;
   /** GitHub teams to be added to CODEOWNERS in the directory in GitHub containing source code for the client libraries for this API. */
-  codeownerGithubTeams?: Array<string>;
+  codeownerGithubTeams?: ReadonlyArray<string>;
   /** For whom the client library is being published. */
   organization?:
     | "CLIENT_LIBRARY_ORGANIZATION_UNSPECIFIED"
@@ -1284,7 +1284,7 @@ export const V1Beta1GenerateServiceIdentityResponse =
 
 export interface Context {
   /** A list of RPC context rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order. */
-  rules?: Array<ContextRule>;
+  rules?: ReadonlyArray<ContextRule>;
 }
 
 export const Context = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1306,7 +1306,7 @@ export interface MetricDescriptorMetadata {
   /** The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period. */
   samplePeriod?: string;
   /** The scope of the timeseries data of the metric. */
-  timeSeriesResourceHierarchyLevel?: Array<
+  timeSeriesResourceHierarchyLevel?: ReadonlyArray<
     | "TIME_SERIES_RESOURCE_HIERARCHY_LEVEL_UNSPECIFIED"
     | "PROJECT"
     | "ORGANIZATION"
@@ -1331,7 +1331,7 @@ export interface MetricDescriptor {
   /** A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count". This field is optional but it is recommended to be set for any metrics associated with user-visible concepts, such as Quota. */
   displayName?: string;
   /** The set of labels that can be used to describe a specific instance of this metric type. For example, the `appengine.googleapis.com/http/server/response_latencies` metric type has a label for the HTTP response code, `response_code`, so you can look at latencies for successful responses or just for responses that failed. */
-  labels?: Array<LabelDescriptor>;
+  labels?: ReadonlyArray<LabelDescriptor>;
   /** Optional. The launch stage of the metric definition. */
   launchStage?:
     | "LAUNCH_STAGE_UNSPECIFIED"
@@ -1348,7 +1348,7 @@ export interface MetricDescriptor {
   /** The units in which the metric value is reported. It is only applicable if the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The `unit` defines the representation of the stored metric values. Different systems might scale the values to be more easily displayed (so a value of `0.02kBy` _might_ be displayed as `20By`, and a value of `3523kBy` _might_ be displayed as `3.5MBy`). However, if the `unit` is `kBy`, then the value of the metric is always in thousands of bytes, no matter how it might be displayed. If you want a custom metric to record the exact number of CPU-seconds used by a job, you can create an `INT64 CUMULATIVE` metric whose `unit` is `s{CPU}` (or equivalently `1s{CPU}` or just `s`). If the job uses 12,005 CPU-seconds, then the value is written as `12005`. Alternatively, if you want a custom metric to record data in a more granular way, you can create a `DOUBLE CUMULATIVE` metric whose `unit` is `ks{CPU}`, and then write the value `12.005` (which is `12005/1000`), or use `Kis{CPU}` and write `11.723` (which is `12005/1024`). The supported units are a subset of [The Unified Code for Units of Measure](https://unitsofmeasure.org/ucum.html) standard: **Basic units (UNIT)** * `bit` bit * `By` byte * `s` second * `min` minute * `h` hour * `d` day * `1` dimensionless **Prefixes (PREFIX)** * `k` kilo (10^3) * `M` mega (10^6) * `G` giga (10^9) * `T` tera (10^12) * `P` peta (10^15) * `E` exa (10^18) * `Z` zetta (10^21) * `Y` yotta (10^24) * `m` milli (10^-3) * `u` micro (10^-6) * `n` nano (10^-9) * `p` pico (10^-12) * `f` femto (10^-15) * `a` atto (10^-18) * `z` zepto (10^-21) * `y` yocto (10^-24) * `Ki` kibi (2^10) * `Mi` mebi (2^20) * `Gi` gibi (2^30) * `Ti` tebi (2^40) * `Pi` pebi (2^50) **Grammar** The grammar also includes these connectors: * `/` division or ratio (as an infix operator). For examples, `kBy/{email}` or `MiBy/10ms` (although you should almost never have `/s` in a metric `unit`; rates should always be computed at query time from the underlying cumulative or delta value). * `.` multiplication or composition (as an infix operator). For examples, `GBy.d` or `k{watt}.h`. The grammar for a unit is as follows: Expression = Component { "." Component } { "/" Component } ; Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] | Annotation | "1" ; Annotation = "{" NAME "}" ; Notes: * `Annotation` is just a comment if it follows a `UNIT`. If the annotation is used alone, then the unit is equivalent to `1`. For examples, `{request}/s == 1/s`, `By{transmitted}/s == By/s`. * `NAME` is a sequence of non-blank printable ASCII characters not containing `{` or `}`. * `1` represents a unitary [dimensionless unit](https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as in `1/s`. It is typically used when none of the basic units are appropriate. For example, "new users per day" can be represented as `1/d` or `{new-users}/d` (and a metric value `5` would mean "5 new users). Alternatively, "thousands of page views per day" would be represented as `1000/d` or `k1/d` or `k{page_views}/d` (and a metric value of `5.3` would mean "5300 page views per day"). * `%` represents dimensionless value of 1/100, and annotates values giving a percentage (so the metric values are typically in the range of 0..100, and a metric value `3` means "3 percent"). * `10^2.%` indicates a metric contains a ratio, typically in the range 0..1, that will be multiplied by 100 and displayed as a percentage (so a metric value `0.03` means "3 percent"). */
   unit?: string;
   /** Read-only. If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. */
-  monitoredResourceTypes?: Array<string>;
+  monitoredResourceTypes?: ReadonlyArray<string>;
   /** Whether the metric records instantaneous values, changes to a value, etc. Some combinations of `metric_kind` and `value_type` might not be supported. */
   metricKind?:
     | "METRIC_KIND_UNSPECIFIED"
@@ -1455,7 +1455,7 @@ export interface MonitoredResourceDescriptor {
   /** Optional. A detailed description of the monitored resource type that might be used in documentation. */
   description?: string;
   /** Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`. */
-  labels?: Array<LabelDescriptor>;
+  labels?: ReadonlyArray<LabelDescriptor>;
   /** Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL. For a list of types, see [Monitored resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list). */
   type?: string;
   /** Optional. The launch stage of the monitored resource definition. */
@@ -1485,13 +1485,13 @@ export const MonitoredResourceDescriptor =
 
 export interface Type {
   /** The list of types appearing in `oneof` definitions in this type. */
-  oneofs?: Array<string>;
+  oneofs?: ReadonlyArray<string>;
   /** The source edition string, only valid when syntax is SYNTAX_EDITIONS. */
   edition?: string;
   /** The list of fields. */
-  fields?: Array<Field>;
+  fields?: ReadonlyArray<Field>;
   /** The protocol buffer options. */
-  options?: Array<Option>;
+  options?: ReadonlyArray<Option>;
   /** The source syntax. */
   syntax?:
     | "SYNTAX_PROTO2"
@@ -1543,7 +1543,7 @@ export interface HttpRule {
   /** Maps to HTTP POST. Used for creating a resource or performing an action. */
   post?: string;
   /** Additional HTTP bindings for the selector. Nested bindings must not contain an `additional_bindings` field themselves (that is, the nesting may only be one level deep). */
-  additionalBindings?: Array<HttpRule>;
+  additionalBindings?: ReadonlyArray<HttpRule>;
   /** Optional. The name of the response field whose value is mapped to the HTTP response body. When omitted, the entire response message will be used as the HTTP response body. NOTE: The referred field must be present at the top-level of the response message type. */
   responseBody?: string;
   /** The name of the request field whose value is mapped to the HTTP request body, or `*` for mapping all request fields not captured by the path pattern to the HTTP body, or omitted for not having any HTTP request body. NOTE: the referred field must be present at the top-level of the request message type. */
@@ -1592,15 +1592,15 @@ export interface Documentation {
   /** Specifies the service root url if the default one (the service name from the yaml file) is not suitable. This can be seen in any fully specified service urls as well as sections that show a base that other urls are relative to. */
   serviceRootUrl?: string;
   /** Specifies section and content to override the boilerplate content. Currently overrides following sections: 1. rest.service.client_libraries */
-  sectionOverrides?: Array<Page>;
+  sectionOverrides?: ReadonlyArray<Page>;
   /** A short description of what the service does. The summary must be plain text. It becomes the overview of the service displayed in Google Cloud Console. NOTE: This field is equivalent to the standard field `description`. */
   summary?: string;
   /** A list of documentation rules that apply to individual API elements. **NOTE:** All service configuration rules follow "last one wins" order. */
-  rules?: Array<DocumentationRule>;
+  rules?: ReadonlyArray<DocumentationRule>;
   /** Optional information about the IAM configuration. This is typically used to link to documentation about a product's IAM roles and permissions. */
   additionalIamInfo?: string;
   /** The top level pages for the documentation set. */
-  pages?: Array<Page>;
+  pages?: ReadonlyArray<Page>;
 }
 
 export const Documentation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1616,7 +1616,7 @@ export const Documentation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LoggingDestination {
   /** Names of the logs to be sent to this destination. Each name must be defined in the Service.logs section. If the log name is not a domain scoped name, it will be automatically prefixed with the service name followed by "/". */
-  logs?: Array<string>;
+  logs?: ReadonlyArray<string>;
   /** The monitored resource type. The type must be defined in the Service.monitored_resources section. */
   monitoredResource?: string;
 }
@@ -1628,9 +1628,9 @@ export const LoggingDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Logging {
   /** Logging configurations for sending logs to the producer project. There can be multiple producer destinations, each one must have a different monitored resource type. A log can be used in at most one producer destination. */
-  producerDestinations?: Array<LoggingDestination>;
+  producerDestinations?: ReadonlyArray<LoggingDestination>;
   /** Logging configurations for sending logs to the consumer project. There can be multiple consumer destinations, each one must have a different monitored resource type. A log can be used in at most one consumer destination. */
-  consumerDestinations?: Array<LoggingDestination>;
+  consumerDestinations?: ReadonlyArray<LoggingDestination>;
 }
 
 export const Logging = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1640,11 +1640,11 @@ export const Logging = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1676,9 +1676,9 @@ export const MetricRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Quota {
   /** List of QuotaLimit definitions for the service. */
-  limits?: Array<QuotaLimit>;
+  limits?: ReadonlyArray<QuotaLimit>;
   /** List of MetricRule definitions, each one mapping a selected method to one or more metrics. */
-  metricRules?: Array<MetricRule>;
+  metricRules?: ReadonlyArray<MetricRule>;
 }
 
 export const Quota = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1688,7 +1688,7 @@ export const Quota = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface V1Beta1ImportProducerOverridesResponse {
   /** The overrides that were created from the imported data. */
-  overrides?: Array<V1Beta1QuotaOverride>;
+  overrides?: ReadonlyArray<V1Beta1QuotaOverride>;
 }
 
 export const V1Beta1ImportProducerOverridesResponse =
@@ -1698,7 +1698,7 @@ export const V1Beta1ImportProducerOverridesResponse =
 
 export interface Http {
   /** A list of HTTP configuration rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order. */
-  rules?: Array<HttpRule>;
+  rules?: ReadonlyArray<HttpRule>;
   /** When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded. The default behavior is to not decode RFC 6570 reserved characters in multi segment matches. */
   fullyDecodeReservedExpansion?: boolean;
 }
@@ -1722,9 +1722,9 @@ export const CustomErrorRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CustomError {
   /** The list of custom error rules that apply to individual API messages. **NOTE:** All service configuration rules follow "last one wins" order. */
-  rules?: Array<CustomErrorRule>;
+  rules?: ReadonlyArray<CustomErrorRule>;
   /** The list of custom error detail types, e.g. 'google.foo.v1.CustomError'. */
-  types?: Array<string>;
+  types?: ReadonlyArray<string>;
 }
 
 export const CustomError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1740,7 +1740,7 @@ export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListTenancyUnitsResponse {
   /** Tenancy units matching the request. */
-  tenancyUnits?: Array<TenancyUnit>;
+  tenancyUnits?: ReadonlyArray<TenancyUnit>;
   /** Pagination token for large results. */
   nextPageToken?: string;
 }
@@ -1799,7 +1799,7 @@ export interface AuthProvider {
   /** The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3). that are allowed to access. A JWT containing any of these audiences will be accepted. When this setting is absent, JWTs with audiences: - "https://[service.name]/[google.protobuf.Api.name]" - "https://[service.name]/" will be accepted. For example, if no audiences are in the setting, LibraryService API will accept JWTs with the following audiences: - https://library-example.googleapis.com/google.example.library.v1.LibraryService - https://library-example.googleapis.com/ Example: audiences: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com */
   audiences?: string;
   /** Defines the locations to extract the JWT. For now it is only used by the Cloud Endpoints to store the OpenAPI extension [x-google-jwt-locations] (https://cloud.google.com/endpoints/docs/openapi/openapi-extensions#x-google-jwt-locations) JWT locations can be one of HTTP headers, URL query parameters or cookies. The rule is that the first match wins. If not specified, default to use following 3 locations: 1) Authorization: Bearer 2) x-goog-iap-jwt-assertion 3) access_token query parameter Default locations can be specified as followings: jwt_locations: - header: Authorization value_prefix: "Bearer " - header: x-goog-iap-jwt-assertion - query: access_token */
-  jwtLocations?: Array<JwtLocation>;
+  jwtLocations?: ReadonlyArray<JwtLocation>;
   /** Redirect URL if JWT token is required but not present or is expired. Implement authorizationUrl of securityDefinitions in OpenAPI spec. */
   authorizationUrl?: string;
 }
@@ -1815,7 +1815,7 @@ export const AuthProvider = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface V1RemoveVisibilityLabelsResponse {
   /** The updated set of visibility labels for this consumer on this service. */
-  labels?: Array<string>;
+  labels?: ReadonlyArray<string>;
 }
 
 export const V1RemoveVisibilityLabelsResponse =
@@ -1825,9 +1825,9 @@ export const V1RemoveVisibilityLabelsResponse =
 
 export interface Authentication {
   /** A list of authentication rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order. */
-  rules?: Array<AuthenticationRule>;
+  rules?: ReadonlyArray<AuthenticationRule>;
   /** Defines a set of authentication providers that a service supports. */
-  providers?: Array<AuthProvider>;
+  providers?: ReadonlyArray<AuthProvider>;
 }
 
 export const Authentication = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1844,11 +1844,11 @@ export const V1Beta1EnableConsumerResponse =
 
 export interface Usage {
   /** A list of usage rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order. */
-  rules?: Array<UsageRule>;
+  rules?: ReadonlyArray<UsageRule>;
   /** The full resource name of a channel used for sending notifications to the service producer. Google Service Management currently only supports [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a notification channel. To use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format documented in https://cloud.google.com/pubsub/docs/overview. */
   producerNotificationChannel?: string;
   /** Requirements that must be satisfied before a consumer project can use the service. Each requirement is of the form /; for example 'serviceusage.googleapis.com/billing-enabled'. For Google APIs, a Terms of Service requirement must be included here. Google Cloud APIs must include "serviceusage.googleapis.com/tos/cloud". Other Google APIs should include "serviceusage.googleapis.com/tos/universal". Additional ToS can be included based on the business needs. */
-  requirements?: Array<string>;
+  requirements?: ReadonlyArray<string>;
 }
 
 export const Usage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1869,7 +1869,7 @@ export const V1GenerateServiceAccountResponse =
 
 export interface SourceInfo {
   /** All files used during config generation. */
-  sourceFiles?: Array<Record<string, unknown>>;
+  sourceFiles?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const SourceInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1882,11 +1882,11 @@ export interface Service {
   /** Context configuration. */
   context?: Context;
   /** Defines the monitored resources used by this service. This is required by the `Service.monitoring` and `Service.logging` configurations. */
-  monitoredResources?: Array<MonitoredResourceDescriptor>;
+  monitoredResources?: ReadonlyArray<MonitoredResourceDescriptor>;
   /** A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF. */
-  systemTypes?: Array<Type>;
+  systemTypes?: ReadonlyArray<Type>;
   /** Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs. */
-  endpoints?: Array<Endpoint>;
+  endpoints?: ReadonlyArray<Endpoint>;
   /** The product title for this service, it is the name displayed in Google Cloud Console. */
   title?: string;
   /** The Google project that owns this service. */
@@ -1900,13 +1900,13 @@ export interface Service {
   /** Additional API documentation. */
   documentation?: Documentation;
   /** Defines the logs used by this service. */
-  logs?: Array<LogDescriptor>;
+  logs?: ReadonlyArray<LogDescriptor>;
   /** Logging configuration. */
   logging?: Logging;
   /** A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author. Example: types: - name: google.protobuf.Int32 */
-  types?: Array<Type>;
+  types?: ReadonlyArray<Type>;
   /** A list of API interfaces exported by this service. Only the `name` field of the google.protobuf.Api needs to be provided by the configuration author, as the remaining fields will be derived from the IDL during the normalization process. It is an error to specify an API interface here which cannot be resolved against the associated IDL files. */
-  apis?: Array<Api>;
+  apis?: ReadonlyArray<Api>;
   /** Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`. */
   configVersion?: number;
   /** The service name, which is a DNS-like logical identifier for the service, such as `calendar.googleapis.com`. The service name typically goes through DNS verification to make sure the owner of the service also owns the DNS name. */
@@ -1918,19 +1918,19 @@ export interface Service {
   /** Output only. The source information for this configuration if available. */
   sourceInfo?: SourceInfo;
   /** A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum */
-  enums?: Array<Enum>;
+  enums?: ReadonlyArray<Enum>;
   /** Configuration for the service control plane. */
   control?: Control;
   /** Billing configuration. */
   billing?: Billing;
   /** Defines the metrics used by this service. */
-  metrics?: Array<MetricDescriptor>;
+  metrics?: ReadonlyArray<MetricDescriptor>;
   /** Monitoring configuration. */
   monitoring?: Monitoring;
   /** Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from APIs defined as protocol buffers. */
   publishing?: Publishing;
   /** Configuration aspects. This is a repeated field to allow multiple aspects to be configured. The kind field in each ConfigAspect specifies the type of aspect. The spec field contains the configuration for that aspect. The schema for the spec field is defined by the backend service owners. */
-  aspects?: Array<Aspect>;
+  aspects?: ReadonlyArray<Aspect>;
   /** HTTP configuration. */
   http?: Http;
   /** Configuration controlling usage of this service. */
@@ -2017,7 +2017,7 @@ export const V1GenerateDefaultIdentityResponse =
 
 export interface V1AddVisibilityLabelsResponse {
   /** The updated set of visibility labels for this consumer on this service. */
-  labels?: Array<string>;
+  labels?: ReadonlyArray<string>;
 }
 
 export const V1AddVisibilityLabelsResponse =
@@ -2041,11 +2041,7 @@ export const CancelOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelOperationsRequest>;
 
@@ -2075,7 +2071,7 @@ export const DeleteOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/operations/{operationsId}" }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOperationsRequest>;
 
@@ -2118,7 +2114,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("returnPartialSuccess"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/operations" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<ListOperationsRequest>;
 
@@ -2152,7 +2148,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/operations/{operationsId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -2190,7 +2186,7 @@ export const SearchServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/services/{servicesId}:search" }),
+  T.Http({ method: "GET", path: "v1/{parent}:search" }),
   svc,
 ) as unknown as Schema.Schema<SearchServicesRequest>;
 
@@ -2228,11 +2224,7 @@ export const DeleteProjectServicesTenancyUnitsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DeleteTenantProjectRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/services/{servicesId}/{servicesId1}/{servicesId2}/tenancyUnits/{tenancyUnitsId}:deleteProject",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:deleteProject", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectServicesTenancyUnitsRequest>;
 
@@ -2268,7 +2260,7 @@ export const ApplyProjectConfigServicesTenancyUnitsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/services/{servicesId}/{servicesId1}/{servicesId2}/tenancyUnits/{tenancyUnitsId}:applyProjectConfig",
+      path: "v1/{name}:applyProjectConfig",
       hasBody: true,
     }),
     svc,
@@ -2304,11 +2296,7 @@ export const AttachProjectServicesTenancyUnitsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AttachTenantProjectRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/services/{servicesId}/{servicesId1}/{servicesId2}/tenancyUnits/{tenancyUnitsId}:attachProject",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:attachProject", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AttachProjectServicesTenancyUnitsRequest>;
 
@@ -2339,10 +2327,7 @@ export const DeleteServicesTenancyUnitsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/services/{servicesId}/{servicesId1}/{servicesId2}/tenancyUnits/{tenancyUnitsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteServicesTenancyUnitsRequest>;
 
@@ -2376,11 +2361,7 @@ export const CreateServicesTenancyUnitsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CreateTenancyUnitRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/services/{servicesId}/{servicesId1}/{servicesId2}/tenancyUnits",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/tenancyUnits", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateServicesTenancyUnitsRequest>;
 
@@ -2414,11 +2395,7 @@ export const AddProjectServicesTenancyUnitsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AddTenantProjectRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/services/{servicesId}/{servicesId1}/{servicesId2}/tenancyUnits/{tenancyUnitsId}:addProject",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}:addProject", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AddProjectServicesTenancyUnitsRequest>;
 
@@ -2452,11 +2429,7 @@ export const RemoveProjectServicesTenancyUnitsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RemoveTenantProjectRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/services/{servicesId}/{servicesId1}/{servicesId2}/tenancyUnits/{tenancyUnitsId}:removeProject",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:removeProject", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RemoveProjectServicesTenancyUnitsRequest>;
 
@@ -2492,7 +2465,7 @@ export const UndeleteProjectServicesTenancyUnitsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/services/{servicesId}/{servicesId1}/{servicesId2}/tenancyUnits/{tenancyUnitsId}:undeleteProject",
+      path: "v1/{name}:undeleteProject",
       hasBody: true,
     }),
     svc,
@@ -2534,10 +2507,7 @@ export const ListServicesTenancyUnitsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/services/{servicesId}/{servicesId1}/{servicesId2}/tenancyUnits",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/tenancyUnits" }),
     svc,
   ) as unknown as Schema.Schema<ListServicesTenancyUnitsRequest>;
 

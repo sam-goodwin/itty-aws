@@ -73835,7 +73835,7 @@ export class TransitGatewayLimitExceeded extends S.TaggedErrorClass<TransitGatew
 export class IncorrectState extends S.TaggedErrorClass<IncorrectState>()(
   "IncorrectState",
   {},
-) {}
+).pipe(C.withConflictError) {}
 export class InvalidTransitGatewayIDNotFound extends S.TaggedErrorClass<InvalidTransitGatewayIDNotFound>()(
   "InvalidTransitGatewayID.NotFound",
   {},

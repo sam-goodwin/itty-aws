@@ -145,7 +145,7 @@ export interface InsertionOrderBudget {
     | "INSERTION_ORDER_AUTOMATION_TYPE_BID_BUDGET"
     | (string & {});
   /** Required. The list of budget segments. Use a budget segment to specify a specific budget for a given period of time an insertion order is running. */
-  budgetSegments?: Array<InsertionOrderBudgetSegment>;
+  budgetSegments?: ReadonlyArray<InsertionOrderBudgetSegment>;
   /** Required. Immutable. The budget unit specifies whether the budget is currency based or impression based. */
   budgetUnit?:
     | "BUDGET_UNIT_UNSPECIFIED"
@@ -463,7 +463,7 @@ export interface InsertionOrder {
   /** Output only. The unique ID of the advertiser the insertion order belongs to. */
   advertiserId?: string;
   /** Optional. The partner costs associated with the insertion order. If absent or empty in CreateInsertionOrder method, the newly created insertion order will inherit partner costs from the partner settings. */
-  partnerCosts?: Array<PartnerCost>;
+  partnerCosts?: ReadonlyArray<PartnerCost>;
   /** Output only. The reservation type of the insertion order. */
   reservationType?:
     | "RESERVATION_TYPE_UNSPECIFIED"
@@ -499,7 +499,7 @@ export const InsertionOrder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListInsertionOrdersResponse {
   /** The list of insertion orders. This list will be absent if empty. */
-  insertionOrders?: Array<InsertionOrder>;
+  insertionOrders?: ReadonlyArray<InsertionOrder>;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListInsertionOrders` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -698,7 +698,7 @@ export interface ReviewStatusInfo {
     | "REVIEW_STATUS_PENDING"
     | (string & {});
   /** Publisher review statuses for the creative. */
-  publisherReviewStatuses?: Array<PublisherReviewStatus>;
+  publisherReviewStatuses?: ReadonlyArray<PublisherReviewStatus>;
   /** Creative and landing page review status for the creative. */
   creativeAndLandingPageReviewStatus?:
     | "REVIEW_STATUS_UNSPECIFIED"
@@ -715,7 +715,7 @@ export interface ReviewStatusInfo {
     | "APPROVAL_STATUS_REJECTED_NOT_SERVABLE"
     | (string & {});
   /** Exchange review statuses for the creative. */
-  exchangeReviewStatuses?: Array<ExchangeReviewStatus>;
+  exchangeReviewStatuses?: ReadonlyArray<ExchangeReviewStatus>;
 }
 
 export const ReviewStatusInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -728,7 +728,7 @@ export const ReviewStatusInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CmHybridConfig {
   /** A list of CM360 sites whose placements will be synced to DV360 as creatives. If absent or empty in CreateAdvertiser method, the system will automatically create a CM360 site. Removing sites from this list may cause DV360 creatives synced from CM360 to be deleted. At least one site must be specified. */
-  cmSyncableSiteIds?: Array<string>;
+  cmSyncableSiteIds?: ReadonlyArray<string>;
   /** Required. Immutable. ID of the CM360 Floodlight configuration linked with the DV360 advertiser. */
   cmFloodlightConfigId?: string;
   /** Whether or not to include DV360 data in CM360 data transfer reports. */
@@ -738,7 +738,7 @@ export interface CmHybridConfig {
   /** Required. Immutable. By setting this field to `true`, you, on behalf of your company, authorize the sharing of information from the given Floodlight configuration to this Display & Video 360 advertiser. */
   cmFloodlightLinkingAuthorized?: boolean;
   /** Output only. The set of CM360 Advertiser IDs sharing the CM360 Floodlight configuration. */
-  cmAdvertiserIds?: Array<string>;
+  cmAdvertiserIds?: ReadonlyArray<string>;
   /** Whether or not to report DV360 cost to CM360. */
   dv360ToCmCostReportingEnabled?: boolean;
 }
@@ -757,7 +757,7 @@ export interface EditGuaranteedOrderReadAccessorsResponse {
   /** Whether all advertisers of read_write_partner_id have read access to the guaranteed order. */
   readAccessInherited?: boolean;
   /** The IDs of advertisers with read access to the guaranteed order. */
-  readAdvertiserIds?: Array<string>;
+  readAdvertiserIds?: ReadonlyArray<string>;
 }
 
 export const EditGuaranteedOrderReadAccessorsResponse =
@@ -1068,7 +1068,7 @@ export interface Adloox {
     | "GARM_RISK_EXCLUSION_LOW"
     | (string & {});
   /** Scope3 categories to exclude. */
-  excludedAdlooxCategories?: Array<
+  excludedAdlooxCategories?: ReadonlyArray<
     | "ADLOOX_UNSPECIFIED"
     | "ADULT_CONTENT_HARD"
     | "ADULT_CONTENT_SOFT"
@@ -1155,7 +1155,7 @@ export interface Adloox {
     | "GARM_RISK_EXCLUSION_LOW"
     | (string & {});
   /** Optional. Scope3's fraud IVT MFA categories to exclude. */
-  excludedFraudIvtMfaCategories?: Array<
+  excludedFraudIvtMfaCategories?: ReadonlyArray<
     "FRAUD_IVT_MFA_CATEGORY_UNSPECIFIED" | "FRAUD_IVT_MFA" | (string & {})
   >;
 }
@@ -1235,7 +1235,7 @@ export const DoubleVerifyDisplayViewability =
 
 export interface DoubleVerifyBrandSafetyCategories {
   /** Brand safety medium severity avoidance categories. */
-  avoidedMediumSeverityCategories?: Array<
+  avoidedMediumSeverityCategories?: ReadonlyArray<
     | "MEDIUM_SEVERITY_UNSPECIFIED"
     | "AD_SERVERS"
     | "ADULT_CONTENT_SWIMSUIT"
@@ -1262,7 +1262,7 @@ export interface DoubleVerifyBrandSafetyCategories {
   /** Unknown or unrateable. */
   avoidUnknownBrandSafetyCategory?: boolean;
   /** Brand safety high severity avoidance categories. */
-  avoidedHighSeverityCategories?: Array<
+  avoidedHighSeverityCategories?: ReadonlyArray<
     | "HIGHER_SEVERITY_UNSPECIFIED"
     | "ADULT_CONTENT_PORNOGRAPHY"
     | "COPYRIGHT_INFRINGEMENT"
@@ -1354,7 +1354,7 @@ export interface DoubleVerify {
   /** Display viewability settings (applicable to display line items only). */
   displayViewability?: DoubleVerifyDisplayViewability;
   /** Avoid bidding on apps with the age rating. */
-  avoidedAgeRatings?: Array<
+  avoidedAgeRatings?: ReadonlyArray<
     | "AGE_RATING_UNSPECIFIED"
     | "APP_AGE_RATE_UNKNOWN"
     | "APP_AGE_RATE_4_PLUS"
@@ -1386,7 +1386,7 @@ export const DoubleVerify = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IntegralAdScience {
   /** Optional. The quality sync custom segment ID provided by Integral Ad Science. The ID must be between `3000000` and `4999999`, inclusive. */
-  qualitySyncCustomSegmentId?: Array<string>;
+  qualitySyncCustomSegmentId?: ReadonlyArray<string>;
   /** True advertising quality (applicable to Display line items only). */
   traqScoreOption?:
     | "TRAQ_UNSPECIFIED"
@@ -1405,7 +1405,7 @@ export interface IntegralAdScience {
     | "DRUGS_HMR"
     | (string & {});
   /** The custom segment ID provided by Integral Ad Science. The ID must be between `1000001` and `1999999` or `3000001` and `3999999`, inclusive. */
-  customSegmentId?: Array<string>;
+  customSegmentId?: ReadonlyArray<string>;
   /** Brand Safety - **Offensive language**. */
   excludedOffensiveLanguageRisk?:
     | "OFFENSIVE_LANGUAGE_UNSPECIFIED"
@@ -1970,7 +1970,7 @@ export const GoogleAudienceTargetingSetting =
 
 export interface GoogleAudienceGroup {
   /** Required. All Google audience targeting settings in Google audience group. Repeated settings with the same id will be ignored. */
-  settings?: Array<GoogleAudienceTargetingSetting>;
+  settings?: ReadonlyArray<GoogleAudienceTargetingSetting>;
 }
 
 export const GoogleAudienceGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1989,7 +1989,7 @@ export const CombinedAudienceTargetingSetting =
 
 export interface CombinedAudienceGroup {
   /** Required. All combined audience targeting settings in combined audience group. Repeated settings with the same id will be ignored. The number of combined audience settings should be no more than five, error will be thrown otherwise. */
-  settings?: Array<CombinedAudienceTargetingSetting>;
+  settings?: ReadonlyArray<CombinedAudienceTargetingSetting>;
 }
 
 export const CombinedAudienceGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2008,7 +2008,7 @@ export const CustomListTargetingSetting =
 
 export interface CustomListGroup {
   /** Required. All custom list targeting settings in custom list group. Repeated settings with the same id will be ignored. */
-  settings?: Array<CustomListTargetingSetting>;
+  settings?: ReadonlyArray<CustomListTargetingSetting>;
 }
 
 export const CustomListGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2061,7 +2061,7 @@ export const FirstAndThirdPartyAudienceTargetingSetting =
 
 export interface FirstAndThirdPartyAudienceGroup {
   /** Required. All first and third party audience targeting settings in first and third party audience group. Repeated settings with the same id are not allowed. */
-  settings?: Array<FirstAndThirdPartyAudienceTargetingSetting>;
+  settings?: ReadonlyArray<FirstAndThirdPartyAudienceTargetingSetting>;
 }
 
 export const FirstAndThirdPartyAudienceGroup =
@@ -2079,7 +2079,7 @@ export interface AudienceGroupAssignedTargetingOptionDetails {
   /** Optional. The custom list ids of the included custom list group. Contains custom list ids only. */
   includedCustomListGroup?: CustomListGroup;
   /** Optional. The first and third party audience ids and recencies of included first and third party audience groups. Each first and third party audience group contains first and third party audience ids only. The relation between each first and third party audience group is INTERSECTION, and the result is UNION'ed with other audience groups. Repeated groups with the same settings will be ignored. */
-  includedFirstAndThirdPartyAudienceGroups?: Array<FirstAndThirdPartyAudienceGroup>;
+  includedFirstAndThirdPartyAudienceGroups?: ReadonlyArray<FirstAndThirdPartyAudienceGroup>;
   /** Optional. The Google audience ids of the excluded Google audience group. Used for negative targeting. The COMPLEMENT of the UNION of this group and other excluded audience groups is used as an INTERSECTION to any positive audience targeting. Only contains Affinity, In-market and Installed-apps type Google audiences. All items are logically ‘OR’ of each other. */
   excludedGoogleAudienceGroup?: GoogleAudienceGroup;
   /** Optional. The first and third party audience ids and recencies of the excluded first and third party audience group. Used for negative targeting. The COMPLEMENT of the UNION of this group and other excluded audience groups is used as an INTERSECTION to any positive audience targeting. All items are logically ‘OR’ of each other. */
@@ -2165,7 +2165,7 @@ export interface KeywordAssignedTargetingOptionDetails {
   /** Required. The keyword, for example `car insurance`. Positive keyword cannot be offensive word. Must be UTF-8 encoded with a maximum size of 255 bytes. Maximum number of characters is 80. Maximum number of words is 10. */
   keyword?: string;
   /** Optional. The policy names to exempt the keyword from. When attempting to target a keyword that violates a policy, the error returned will include the name of the relevant policy. Use that name in this field to exempt the targeted keyword from the policy. This field is only applicable for positively-targeted keywords assigned to Demand Gen resources. Retrieval and management of Demand Gen resources is currently in beta. This field is only available to allowlisted users. */
-  exemptedPolicyNames?: Array<string>;
+  exemptedPolicyNames?: ReadonlyArray<string>;
   /** Indicates if this option is being negatively targeted. */
   negative?: boolean;
 }
@@ -2703,7 +2703,7 @@ export const AssignedTargetingOption =
 
 export interface ListAdGroupAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options. This list will be absent if empty. */
-  assignedTargetingOptions?: Array<AssignedTargetingOption>;
+  assignedTargetingOptions?: ReadonlyArray<AssignedTargetingOption>;
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent ListAdGroupAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more AssignedTargetingOption resources to return. */
   nextPageToken?: string;
 }
@@ -2911,7 +2911,7 @@ export const Advertiser = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAdvertisersResponse {
   /** The list of advertisers. This list will be absent if empty. */
-  advertisers?: Array<Advertiser>;
+  advertisers?: ReadonlyArray<Advertiser>;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListAdvertisers` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -2960,7 +2960,7 @@ export interface CustomBiddingScript {
   /** Output only. The time when the script was created. */
   createTime?: string;
   /** Output only. Error details of a rejected custom bidding script. This field will only be populated when state is REJECTED. */
-  errors?: Array<ScriptError>;
+  errors?: ReadonlyArray<ScriptError>;
   /** Output only. The resource name of the custom bidding script. */
   name?: string;
   /** Output only. The unique ID of the custom bidding algorithm the script belongs to. */
@@ -2995,7 +2995,7 @@ export interface ListCustomBiddingScriptsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListCustomBiddingScriptsRequest` method to retrieve the next page of results. If this field is null, it means this is the last page. */
   nextPageToken?: string;
   /** The list of custom bidding scripts. This list will be absent if empty. */
-  customBiddingScripts?: Array<CustomBiddingScript>;
+  customBiddingScripts?: ReadonlyArray<CustomBiddingScript>;
 }
 
 export const ListCustomBiddingScriptsResponse =
@@ -3006,7 +3006,7 @@ export const ListCustomBiddingScriptsResponse =
 
 export interface AdPolicyTopicEvidenceCounterfeit {
   /** The content or product owners that made a complaint. */
-  owners?: Array<string>;
+  owners?: ReadonlyArray<string>;
 }
 
 export const AdPolicyTopicEvidenceCounterfeit =
@@ -3041,11 +3041,11 @@ export interface ContactInfo {
   /** SHA256 hashed last name of the member. Before hashing, remove all whitespace and make sure the string is all lowercase. Must also be set with the following fields: * country_code * hashed_first_name * zip_codes */
   hashedLastName?: string;
   /** A list of SHA256 hashed phone numbers of the member. Before hashing, all phone numbers must be formatted using the [E.164 format](//en.wikipedia.org/wiki/E.164) and include the country calling code. */
-  hashedPhoneNumbers?: Array<string>;
+  hashedPhoneNumbers?: ReadonlyArray<string>;
   /** A list of zip codes of the member. Must also be set with the following fields: * country_code * hashed_first_name * hashed_last_name */
-  zipCodes?: Array<string>;
+  zipCodes?: ReadonlyArray<string>;
   /** A list of SHA256 hashed email of the member. Before hashing, remove all whitespace and make sure the string is all lowercase. */
-  hashedEmails?: Array<string>;
+  hashedEmails?: ReadonlyArray<string>;
 }
 
 export const ContactInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3079,7 +3079,7 @@ export const Consent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ContactInfoList {
   /** A list of ContactInfo objects defining Customer Match audience members. The size of members after splitting the contact_infos mustn't be greater than 500,000. */
-  contactInfos?: Array<ContactInfo>;
+  contactInfos?: ReadonlyArray<ContactInfo>;
   /** Input only. The consent setting for the users in contact_infos. Leaving this field unset indicates that consent is not specified. If ad_user_data or ad_personalization fields are set to `CONSENT_STATUS_DENIED`, the request will return an error. */
   consent?: Consent;
 }
@@ -3091,7 +3091,7 @@ export const ContactInfoList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MobileDeviceIdList {
   /** A list of mobile device IDs defining Customer Match audience members. The size of mobile_device_ids mustn't be greater than 500,000. */
-  mobileDeviceIds?: Array<string>;
+  mobileDeviceIds?: ReadonlyArray<string>;
   /** Input only. The consent setting for the users in mobile_device_ids. Leaving this field unset indicates that consent is not specified. If ad_user_data or ad_personalization fields are set to `CONSENT_STATUS_DENIED`, the request will return an error. */
   consent?: Consent;
 }
@@ -3180,7 +3180,7 @@ export interface GuaranteedOrder {
   /** Output only. The unique identifier of the guaranteed order. The guaranteed order IDs have the format `{exchange}-{legacy_guaranteed_order_id}`. */
   guaranteedOrderId?: string;
   /** The IDs of advertisers with read access to the guaranteed order. This field must not include the advertiser assigned to read_write_advertiser_id if it is set. All advertisers in this field must belong to read_write_partner_id or the same partner as read_write_advertiser_id. */
-  readAdvertiserIds?: Array<string>;
+  readAdvertiserIds?: ReadonlyArray<string>;
   /** Required. Immutable. The exchange where the guaranteed order originated. */
   exchange?:
     | "EXCHANGE_UNSPECIFIED"
@@ -3325,7 +3325,7 @@ export interface ListNegativeKeywordListsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListNegativeKeywordLists` method to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of negative keyword lists. This list will be absent if empty. */
-  negativeKeywordLists?: Array<NegativeKeywordList>;
+  negativeKeywordLists?: ReadonlyArray<NegativeKeywordList>;
 }
 
 export const ListNegativeKeywordListsResponse =
@@ -3493,7 +3493,7 @@ export const GenderTargetingOptionDetails =
 
 export interface ListPartnerAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options. This list will be absent if empty. */
-  assignedTargetingOptions?: Array<AssignedTargetingOption>;
+  assignedTargetingOptions?: ReadonlyArray<AssignedTargetingOption>;
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent ListPartnerAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more assigned_targeting_options to return. */
   nextPageToken?: string;
 }
@@ -3549,7 +3549,7 @@ export const AdPolicyTopicEvidenceLegalRemovalLocalLegal =
 
 export interface BulkEditAdvertiserAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options that have been successfully created. This list will be absent if empty. */
-  createdAssignedTargetingOptions?: Array<AssignedTargetingOption>;
+  createdAssignedTargetingOptions?: ReadonlyArray<AssignedTargetingOption>;
 }
 
 export const BulkEditAdvertiserAssignedTargetingOptionsResponse =
@@ -3897,7 +3897,7 @@ export const AlgorithmRulesSignalValue =
 
 export interface AlgorithmRulesRuleCondition {
   /** List of comparisons that build `if` statement condition. The comparisons are combined into a single condition with `AND` logical operators. */
-  signalComparisons?: Array<AlgorithmRulesSignalComparison>;
+  signalComparisons?: ReadonlyArray<AlgorithmRulesSignalComparison>;
   /** The value returned if the `signalComparisons` condition evaluates to `TRUE`. */
   returnValue?: AlgorithmRulesSignalValue;
 }
@@ -3912,7 +3912,7 @@ export const AlgorithmRulesRuleCondition =
 
 export interface AlgorithmRulesRule {
   /** List of conditions in this rule. The criteria among conditions should be mutually exclusive. */
-  conditions?: Array<AlgorithmRulesRuleCondition>;
+  conditions?: ReadonlyArray<AlgorithmRulesRuleCondition>;
   /** The default return value applied when none of the conditions are met. */
   defaultReturnValue?: AlgorithmRulesSignalValue;
 }
@@ -3940,7 +3940,7 @@ export interface ReplaceSitesRequest {
   /** The ID of the advertiser that owns the parent channel. */
   advertiserId?: string;
   /** The sites that will replace the existing sites assigned to the channel, specified as a list of Sites. */
-  newSites?: Array<Site>;
+  newSites?: ReadonlyArray<Site>;
 }
 
 export const ReplaceSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3960,7 +3960,7 @@ export interface AlgorithmRulesRuleset {
   /** Maximum value the ruleset can evaluate to. */
   maxValue?: number;
   /** List of rules to generate the impression value. */
-  rules?: Array<AlgorithmRulesRule>;
+  rules?: ReadonlyArray<AlgorithmRulesRule>;
 }
 
 export const AlgorithmRulesRuleset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3975,7 +3975,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3988,11 +3988,11 @@ export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BulkEditAssignedTargetingOptionsResponse {
   /** Output only. The IDs of the line items which failed. */
-  failedLineItemIds?: Array<string>;
+  failedLineItemIds?: ReadonlyArray<string>;
   /** The error information for each line item that failed to update. */
-  errors?: Array<Status>;
+  errors?: ReadonlyArray<Status>;
   /** Output only. The IDs of the line items which successfully updated. */
-  updatedLineItemIds?: Array<string>;
+  updatedLineItemIds?: ReadonlyArray<string>;
 }
 
 export const BulkEditAssignedTargetingOptionsResponse =
@@ -4004,7 +4004,7 @@ export const BulkEditAssignedTargetingOptionsResponse =
 
 export interface DeleteAssignedTargetingOptionsRequest {
   /** Required. The assigned targeting option IDs to delete. */
-  assignedTargetingOptionIds?: Array<string>;
+  assignedTargetingOptionIds?: ReadonlyArray<string>;
   /** Required. Identifies the type of this assigned targeting option. */
   targetingType?:
     | "TARGETING_TYPE_UNSPECIFIED"
@@ -4068,7 +4068,7 @@ export const DeleteAssignedTargetingOptionsRequest =
 
 export interface CreateAssignedTargetingOptionsRequest {
   /** Required. The assigned targeting options to create and add. */
-  assignedTargetingOptions?: Array<AssignedTargetingOption>;
+  assignedTargetingOptions?: ReadonlyArray<AssignedTargetingOption>;
   /** Required. Identifies the type of this assigned targeting option. */
   targetingType?:
     | "TARGETING_TYPE_UNSPECIFIED"
@@ -4134,11 +4134,11 @@ export const CreateAssignedTargetingOptionsRequest =
 
 export interface BulkEditAdGroupAssignedTargetingOptionsRequest {
   /** Optional. The assigned targeting options to delete in batch, specified as a list of `DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO` */
-  deleteRequests?: Array<DeleteAssignedTargetingOptionsRequest>;
+  deleteRequests?: ReadonlyArray<DeleteAssignedTargetingOptionsRequest>;
   /** Required. The IDs of the ad groups the assigned targeting options will belong to. A maximum of 25 ad group IDs can be specified. */
-  adGroupIds?: Array<string>;
+  adGroupIds?: ReadonlyArray<string>;
   /** Optional. The assigned targeting options to create in batch, specified as a list of `CreateAssignedTargetingOptionRequest`. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO` */
-  createRequests?: Array<CreateAssignedTargetingOptionsRequest>;
+  createRequests?: ReadonlyArray<CreateAssignedTargetingOptionsRequest>;
 }
 
 export const BulkEditAdGroupAssignedTargetingOptionsRequest =
@@ -4154,11 +4154,11 @@ export const BulkEditAdGroupAssignedTargetingOptionsRequest =
 
 export interface BulkEditAdGroupAssignedTargetingOptionsResponse {
   /** Output only. The error information for each ad group that failed to update. */
-  errors?: Array<Status>;
+  errors?: ReadonlyArray<Status>;
   /** Output only. The IDs of the ad groups which were successfully updated. */
-  updatedAdGroupIds?: Array<string>;
+  updatedAdGroupIds?: ReadonlyArray<string>;
   /** Output only. The IDs of the ad groups which failed to update. */
-  failedAdGroupIds?: Array<string>;
+  failedAdGroupIds?: ReadonlyArray<string>;
 }
 
 export const BulkEditAdGroupAssignedTargetingOptionsResponse =
@@ -4188,7 +4188,7 @@ export const AudioContentTypeTargetingOptionDetails =
 
 export interface ListGuaranteedOrdersResponse {
   /** The list of guaranteed orders. This list will be absent if empty. */
-  guaranteedOrders?: Array<GuaranteedOrder>;
+  guaranteedOrders?: ReadonlyArray<GuaranteedOrder>;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListGuaranteedOrders` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -4201,9 +4201,9 @@ export const ListGuaranteedOrdersResponse =
 
 export interface EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate {
   /** The advertisers to add. */
-  addedAdvertisers?: Array<string>;
+  addedAdvertisers?: ReadonlyArray<string>;
   /** The advertisers to remove. */
-  removedAdvertisers?: Array<string>;
+  removedAdvertisers?: ReadonlyArray<string>;
 }
 
 export const EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate =
@@ -4216,7 +4216,7 @@ export const EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate =
 
 export interface AdPolicyTopicEvidenceDestinationTextList {
   /** Destination text that caused the policy finding. */
-  destinationTexts?: Array<string>;
+  destinationTexts?: ReadonlyArray<string>;
 }
 
 export const AdPolicyTopicEvidenceDestinationTextList =
@@ -4226,7 +4226,7 @@ export const AdPolicyTopicEvidenceDestinationTextList =
 
 export interface AdPolicyTopicEvidenceDestinationMismatch {
   /** The set of URLs that do not match. The list can include single or multiple uri types. Example 1: [`DISPLAY_URL`, `FINAL_URL`] means ad display URL does not match with the ad final URL. Example 2: [`FINAL_URL`] means ad final URL did not match the crawled url, which is also considered as destination mismatch. */
-  uriTypes?: Array<
+  uriTypes?: ReadonlyArray<
     | "AD_POLICY_TOPIC_EVIDENCE_DESTINATION_MISMATCH_URL_TYPE_UNKNOWN"
     | "DISPLAY_URL"
     | "FINAL_URL"
@@ -4259,7 +4259,7 @@ export interface AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEn
   /** The legal policy that is being violated. */
   legalPolicy?: string;
   /** The countries restricted due to the legal policy. */
-  countryRestrictions?: Array<AdPolicyCriterionRestriction>;
+  countryRestrictions?: ReadonlyArray<AdPolicyCriterionRestriction>;
 }
 
 export const AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry =
@@ -4275,7 +4275,7 @@ export const AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry 
 
 export interface AdPolicyTopicEvidenceRegionalRequirements {
   /** List of regional requirements. */
-  regionalRequirementsEntries?: Array<AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry>;
+  regionalRequirementsEntries?: ReadonlyArray<AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry>;
 }
 
 export const AdPolicyTopicEvidenceRegionalRequirements =
@@ -4301,11 +4301,11 @@ export interface AdPolicyTopicEvidenceLegalRemoval {
   /** Details on the local legal regulation legal removal. */
   localLegal?: AdPolicyTopicEvidenceLegalRemovalLocalLegal;
   /** The urls restricted due to the legal removal. */
-  restrictedUris?: Array<string>;
+  restrictedUris?: ReadonlyArray<string>;
   /** Details on the DMCA regulation legal removal. */
   dmca?: AdPolicyTopicEvidenceLegalRemovalDmca;
   /** The countries restricted due to the legal removal. */
-  countryRestrictions?: Array<AdPolicyCriterionRestriction>;
+  countryRestrictions?: ReadonlyArray<AdPolicyCriterionRestriction>;
   /** The type of complaint causing the legal removal. */
   complaintType?:
     | "AD_POLICY_TOPIC_EVIDENCE_LEGAL_REMOVAL_COMPLAINT_TYPE_UNKNOWN"
@@ -4332,7 +4332,7 @@ export interface AdPolicyTopicEvidenceTrademark {
   /** The trademark term. */
   term?: string;
   /** Countries where the policy violation is relevant. */
-  countryRestrictions?: Array<AdPolicyCriterionRestriction>;
+  countryRestrictions?: ReadonlyArray<AdPolicyCriterionRestriction>;
 }
 
 export const AdPolicyTopicEvidenceTrademark =
@@ -4346,7 +4346,7 @@ export const AdPolicyTopicEvidenceTrademark =
 
 export interface AdPolicyTopicEvidenceWebsiteList {
   /** Websites that caused the policy finding. */
-  websites?: Array<string>;
+  websites?: ReadonlyArray<string>;
 }
 
 export const AdPolicyTopicEvidenceWebsiteList =
@@ -4356,7 +4356,7 @@ export const AdPolicyTopicEvidenceWebsiteList =
 
 export interface AdPolicyTopicEvidenceTextList {
   /** The fragments of text from the resource that caused the policy finding. */
-  texts?: Array<string>;
+  texts?: ReadonlyArray<string>;
 }
 
 export const AdPolicyTopicEvidenceTextList =
@@ -4430,7 +4430,7 @@ export const AdPolicyTopicAppealInfo =
 
 export interface AdPolicyTopicConstraintAdPolicyCountryConstraintList {
   /** Countries where the ad cannot serve. */
-  countries?: Array<AdPolicyCriterionRestriction>;
+  countries?: ReadonlyArray<AdPolicyCriterionRestriction>;
 }
 
 export const AdPolicyTopicConstraintAdPolicyCountryConstraintList =
@@ -4509,7 +4509,7 @@ export interface AdPolicyTopicEntry {
   /** A short summary description of the policy topic. */
   policyTopicDescription?: string;
   /** The evidence used in the policy decision. */
-  policyTopicEvidences?: Array<AdPolicyTopicEvidence>;
+  policyTopicEvidences?: ReadonlyArray<AdPolicyTopicEvidence>;
   /** The policy enforcement means used in the policy review. */
   policyEnforcementMeans?:
     | "AD_POLICY_ENFORCEMENT_MEANS_UNKNOWN"
@@ -4539,7 +4539,7 @@ export interface AdPolicyTopicEntry {
     | "GOOGLE_INVESTIGATION"
     | (string & {});
   /** The serving constraints relevant to the policy decision. */
-  policyTopicConstraints?: Array<AdPolicyTopicConstraint>;
+  policyTopicConstraints?: ReadonlyArray<AdPolicyTopicConstraint>;
 }
 
 export const AdPolicyTopicEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4567,7 +4567,7 @@ export interface AdPolicy {
     | "AREA_OF_INTEREST_ONLY"
     | (string & {});
   /** The entries for each policy topic identified as relating to the ad. Each entry includes the topic, restriction level, and guidance on how to fix policy issues. */
-  adPolicyTopicEntry?: Array<AdPolicyTopicEntry>;
+  adPolicyTopicEntry?: ReadonlyArray<AdPolicyTopicEntry>;
   /** The policy review status of an ad, indicating where in the review process the ad is currently. */
   adPolicyReviewStatus?:
     | "AD_POLICY_REVIEW_STATUS_UNKNOWN"
@@ -4643,11 +4643,11 @@ export interface VideoPerformanceAd {
   /** The URL address of the webpage that people reach after they click the ad. */
   finalUrl?: string;
   /** The list of descriptions shown on the call-to-action banner. */
-  descriptions?: Array<string>;
+  descriptions?: ReadonlyArray<string>;
   /** The custom parameters and accompanying values to add to the tracking URL. */
   customParameters?: Record<string, string>;
   /** The list of companion banners used by this ad. */
-  companionBanners?: Array<ImageAsset>;
+  companionBanners?: ReadonlyArray<ImageAsset>;
   /** The second piece after the domain in the display URL. */
   displayUrlBreadcrumb2?: string;
   /** The URL address loaded in the background for tracking purposes. */
@@ -4655,15 +4655,15 @@ export interface VideoPerformanceAd {
   /** The domain of the display URL. */
   domain?: string;
   /** The list of long headlines shown on the call-to-action banner. */
-  longHeadlines?: Array<string>;
+  longHeadlines?: ReadonlyArray<string>;
   /** The list of text assets shown on the call-to-action button. */
-  actionButtonLabels?: Array<string>;
+  actionButtonLabels?: ReadonlyArray<string>;
   /** The list of headlines shown on the call-to-action banner. */
-  headlines?: Array<string>;
+  headlines?: ReadonlyArray<string>;
   /** The first piece after the domain in the display URL. */
   displayUrlBreadcrumb1?: string;
   /** The list of YouTube video assets used by this ad. */
-  videos?: Array<YoutubeVideoDetails>;
+  videos?: ReadonlyArray<YoutubeVideoDetails>;
 }
 
 export const VideoPerformanceAd = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4765,7 +4765,7 @@ export interface DemandGenCarouselAd {
   /** Optional. The tracking URL specified by the user manually. */
   userSpecifiedTrackingUrl?: string;
   /** Required. The list of cards shown on the ad. */
-  cards?: Array<CarouselCard>;
+  cards?: ReadonlyArray<CarouselCard>;
   /** Required. The description of the ad. */
   description?: string;
   /** Optional. The suffix to append to landing page URLs. */
@@ -4801,7 +4801,7 @@ export const DemandGenCarouselAd = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DemandGenImageAd {
   /** Required. The list of descriptions shown on the ad. */
-  descriptions?: Array<string>;
+  descriptions?: ReadonlyArray<string>;
   /** Optional. The custom parameters and accompanying values to add to the tracking URL. */
   customParameters?: Record<string, string>;
   /** Optional. The suffix to append to landing page URLs. */
@@ -4813,21 +4813,21 @@ export interface DemandGenImageAd {
   /** Output only. The URL address loaded in the background for tracking purposes. */
   trackingUrl?: string;
   /** The list of portrait marketing images shown on the ad. */
-  portraitMarketingImages?: Array<ImageAsset>;
+  portraitMarketingImages?: ReadonlyArray<ImageAsset>;
   /** Optional. The URL address of the webpage that people reach after they click the ad on a mobile device. */
   finalMobileUrl?: string;
   /** Required. The call-to-action button shown on the ad. */
   callToAction?: string;
   /** The list of marketing images shown on the ad. */
-  marketingImages?: Array<ImageAsset>;
+  marketingImages?: ReadonlyArray<ImageAsset>;
   /** The list of logo images shown on the ad. */
-  logoImages?: Array<ImageAsset>;
+  logoImages?: ReadonlyArray<ImageAsset>;
   /** The list of square marketing images shown on the ad. */
-  squareMarketingImages?: Array<ImageAsset>;
+  squareMarketingImages?: ReadonlyArray<ImageAsset>;
   /** Optional. The tracking URL specified by the user manually. */
   userSpecifiedTrackingUrl?: string;
   /** Required. The list of headlines shown on the ad. */
-  headlines?: Array<string>;
+  headlines?: ReadonlyArray<string>;
 }
 
 export const DemandGenImageAd = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4853,9 +4853,9 @@ export interface DemandGenVideoAd {
   /** Optional. The tracking URL specified by the user manually. */
   userSpecifiedTrackingUrl?: string;
   /** Required. The list of long headlines shown on the ad. */
-  longHeadlines?: Array<string>;
+  longHeadlines?: ReadonlyArray<string>;
   /** Required. The list of headlines shown on the ad. */
-  headlines?: Array<string>;
+  headlines?: ReadonlyArray<string>;
   /** Optional. The companion banner used by this ad. */
   companionBanner?: ImageAsset;
   /** Optional. The first piece after the domain in the display URL. */
@@ -4889,11 +4889,11 @@ export interface DemandGenVideoAd {
   /** Optional. The URL address of the webpage that people reach after they click the ad on a mobile device. */
   finalMobileUrl?: string;
   /** Required. The list of YouTube video assets used by this ad. */
-  videos?: Array<YoutubeVideoDetails>;
+  videos?: ReadonlyArray<YoutubeVideoDetails>;
   /** Required. The URL address of the webpage that people reach after they click the ad. */
   finalUrl?: string;
   /** Required. The list of descriptions shown on the ad. */
-  descriptions?: Array<string>;
+  descriptions?: ReadonlyArray<string>;
   /** Optional. The custom parameters and accompanying values to add to the tracking URL. */
   customParameters?: Record<string, string>;
   /** Optional. The suffix to append to landing page URLs. */
@@ -4954,7 +4954,7 @@ export const VideoDiscoveryAd = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MastheadAd {
   /** The videos that appear next to the Masthead Ad on desktop. Can be no more than two. */
-  companionYoutubeVideos?: Array<YoutubeVideoDetails>;
+  companionYoutubeVideos?: ReadonlyArray<YoutubeVideoDetails>;
   /** The headline of the ad. */
   headline?: string;
   /** The aspect ratio of the autoplaying YouTube video on the Masthead. */
@@ -5147,7 +5147,7 @@ export interface AdGroupAd {
   /** Output only. Details of an [ad served on the YouTube Home feed](//support.google.com/google-ads/answer/9709826). */
   mastheadAd?: MastheadAd;
   /** Output only. List of URLs used by the ad. */
-  adUrls?: Array<AdUrl>;
+  adUrls?: ReadonlyArray<AdUrl>;
   /** Output only. Details of an [in-stream ad skippable after 5 seconds](//support.google.com/displayvideo/answer/6274216), used for brand awareness or reach marketing objectives. */
   inStreamAd?: InStreamAd;
   /** Details of a [Demand Gen product ad](//support.google.com/displayvideo/answer/15598924?&sjid=11207068802760924844-NC#Product-onlyAd). Retrieval and management of Demand Gen resources is currently in beta. This field is only available to allowlisted users. */
@@ -5184,7 +5184,7 @@ export const AdGroupAd = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAdGroupAdsResponse {
   /** The list of ads. This list will be absent if empty. */
-  adGroupAds?: Array<AdGroupAd>;
+  adGroupAds?: ReadonlyArray<AdGroupAd>;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListAdGroupAds` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -5218,7 +5218,7 @@ export interface FloodlightActivity {
   /** Output only. Whether tags are required to be compliant. */
   sslRequired?: boolean;
   /** Output only. A list of configuration objects designating whether remarketing for this Floodlight Activity is enabled and available for a specifc advertiser. If enabled, this Floodlight Activity generates a remarketing user list that is able to be used in targeting under the advertiser. */
-  remarketingConfigs?: Array<RemarketingConfig>;
+  remarketingConfigs?: ReadonlyArray<RemarketingConfig>;
   /** Output only. The unique ID of the Floodlight activity. Assigned by the system. */
   floodlightActivityId?: string;
   /** Output only. The resource name of the Floodlight activity. */
@@ -5226,7 +5226,7 @@ export interface FloodlightActivity {
   /** Required. The display name of the Floodlight activity. */
   displayName?: string;
   /** Output only. IDs of the advertisers that have access to the parent Floodlight group. Only advertisers under the provided partner ID will be listed in this field. */
-  advertiserIds?: Array<string>;
+  advertiserIds?: ReadonlyArray<string>;
   /** Required. Immutable. The ID of the parent Floodlight group. */
   floodlightGroupId?: string;
 }
@@ -5244,7 +5244,7 @@ export const FloodlightActivity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListFloodlightActivitiesResponse {
   /** The list of Floodlight activities. This list will be absent if empty. */
-  floodlightActivities?: Array<FloodlightActivity>;
+  floodlightActivities?: ReadonlyArray<FloodlightActivity>;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListFloodlightActivities` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -5432,7 +5432,7 @@ export interface Campaign {
   /** Required. The goal of the campaign. */
   campaignGoal?: CampaignGoal;
   /** The list of budgets available to this campaign. If this field is not set, the campaign uses an unlimited budget. */
-  campaignBudgets?: Array<CampaignBudget>;
+  campaignBudgets?: ReadonlyArray<CampaignBudget>;
   /** Output only. The unique ID of the advertiser the campaign belongs to. */
   advertiserId?: string;
   /** Required. The frequency cap setting of the campaign. *Warning*: On **February 28, 2025**, frequency cap time periods greater than 30 days will no longer be accepted. [Read more about this announced change](/display-video/api/deprecations#features.lifetime_frequency_cap) */
@@ -5538,7 +5538,7 @@ export const ObaIcon = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InventorySourceFilter {
   /** Inventory Sources to download by ID. All IDs must belong to the same Advertiser or Partner specified in CreateSdfDownloadTaskRequest. Leave empty to download all Inventory Sources for the selected Advertiser or Partner. */
-  inventorySourceIds?: Array<string>;
+  inventorySourceIds?: ReadonlyArray<string>;
 }
 
 export const InventorySourceFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5564,7 +5564,7 @@ export const ContentOutstreamPositionTargetingOptionDetails =
 
 export interface BulkEditAssignedInventorySourcesResponse {
   /** The list of assigned inventory sources that have been successfully created. This list will be absent if empty. */
-  assignedInventorySources?: Array<AssignedInventorySource>;
+  assignedInventorySources?: ReadonlyArray<AssignedInventorySource>;
 }
 
 export const BulkEditAssignedInventorySourcesResponse =
@@ -5645,7 +5645,7 @@ export interface VideoAdSequenceSettings {
     | "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_MONTH"
     | (string & {});
   /** The steps of which the sequence consists. */
-  steps?: Array<VideoAdSequenceStep>;
+  steps?: ReadonlyArray<VideoAdSequenceStep>;
 }
 
 export const VideoAdSequenceSettings =
@@ -5656,13 +5656,13 @@ export const VideoAdSequenceSettings =
 
 export interface ThirdPartyMeasurementConfigs {
   /** Optional. The third-party vendors measuring viewability. The following third-party vendors are applicable: * `THIRD_PARTY_VENDOR_MOAT` * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` * `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_TELEMETRY` * `THIRD_PARTY_VENDOR_MEETRICS` */
-  viewabilityVendorConfigs?: Array<ThirdPartyVendorConfig>;
+  viewabilityVendorConfigs?: ReadonlyArray<ThirdPartyVendorConfig>;
   /** Optional. The third-party vendors measuring brand safety. The following third-party vendors are applicable: * `THIRD_PARTY_VENDOR_ZEFR` * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` */
-  brandSafetyVendorConfigs?: Array<ThirdPartyVendorConfig>;
+  brandSafetyVendorConfigs?: ReadonlyArray<ThirdPartyVendorConfig>;
   /** Optional. The third-party vendors measuring brand lift. The following third-party vendors are applicable: * `THIRD_PARTY_VENDOR_DYNATA` * `THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_INTAGE` * `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_MACROMILL` */
-  brandLiftVendorConfigs?: Array<ThirdPartyVendorConfig>;
+  brandLiftVendorConfigs?: ReadonlyArray<ThirdPartyVendorConfig>;
   /** Optional. The third-party vendors measuring reach. The following third-party vendors are applicable: * `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_COMSCORE` * `THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_VIDEO_RESEARCH` * `THIRD_PARTY_VENDOR_MEDIA_SCOPE` * `THIRD_PARTY_VENDOR_AUDIENCE_PROJECT` * `THIRD_PARTY_VENDOR_VIDEO_AMP` * `THIRD_PARTY_VENDOR_ISPOT_TV` * `THIRD_PARTY_VENDOR_GEMIUS` */
-  reachVendorConfigs?: Array<ThirdPartyVendorConfig>;
+  reachVendorConfigs?: ReadonlyArray<ThirdPartyVendorConfig>;
 }
 
 export const ThirdPartyMeasurementConfigs =
@@ -5721,7 +5721,7 @@ export interface YoutubeAndPartnersSettings {
   /** Optional. The settings related to VideoAdSequence. */
   videoAdSequenceSettings?: VideoAdSequenceSettings;
   /** Optional. The IDs of the videos appear below the primary video ad when the ad is playing in the YouTube app on mobile devices. */
-  relatedVideoIds?: Array<string>;
+  relatedVideoIds?: ReadonlyArray<string>;
   /** Optional. The settings to control which inventory is allowed for this line item. */
   videoAdInventoryControl?: VideoAdInventoryControl;
   /** Optional. The third-party measurement configs of the line item. */
@@ -5751,7 +5751,7 @@ export interface BulkListAdGroupAssignedTargetingOptionsResponse {
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent call to `BulkListAdGroupAssignedTargetingOptions` to fetch the next page of results. This token will be absent if there are no more AdGroupAssignedTargetingOption resources to return. */
   nextPageToken?: string;
   /** The list of wrapper objects, each providing an assigned targeting option and the ad group it is assigned to. This list will be absent if empty. */
-  adGroupAssignedTargetingOptions?: Array<AdGroupAssignedTargetingOption>;
+  adGroupAssignedTargetingOptions?: ReadonlyArray<AdGroupAssignedTargetingOption>;
 }
 
 export const BulkListAdGroupAssignedTargetingOptionsResponse =
@@ -5817,7 +5817,7 @@ export const BrowserTargetingOptionDetails =
 
 export interface ListAssignedInventorySourcesResponse {
   /** The list of assigned inventory sources. This list will be absent if empty. */
-  assignedInventorySources?: Array<AssignedInventorySource>;
+  assignedInventorySources?: ReadonlyArray<AssignedInventorySource>;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListAssignedInventorySources` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -5842,7 +5842,7 @@ export const AppCategoryTargetingOptionDetails =
 
 export interface ParentEntityFilter {
   /** Required. File types that will be returned. */
-  fileType?: Array<
+  fileType?: ReadonlyArray<
     | "FILE_TYPE_UNSPECIFIED"
     | "FILE_TYPE_CAMPAIGN"
     | "FILE_TYPE_MEDIA_PRODUCT"
@@ -5865,7 +5865,7 @@ export interface ParentEntityFilter {
     | "FILTER_TYPE_LINE_ITEM_ID"
     | (string & {});
   /** The IDs of the specified filter type. This is used to filter entities to fetch. If filter type is not `FILTER_TYPE_NONE`, at least one ID must be specified. */
-  filterIds?: Array<string>;
+  filterIds?: ReadonlyArray<string>;
 }
 
 export const ParentEntityFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5876,21 +5876,21 @@ export const ParentEntityFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IdFilter {
   /** Media Products to download by ID. All IDs must belong to the same Advertiser or Partner specified in CreateSdfDownloadTaskRequest. */
-  mediaProductIds?: Array<string>;
+  mediaProductIds?: ReadonlyArray<string>;
   /** YouTube Ad Groups to download by ID. All IDs must belong to the same Advertiser or Partner specified in CreateSdfDownloadTaskRequest. */
-  adGroupIds?: Array<string>;
+  adGroupIds?: ReadonlyArray<string>;
   /** Campaigns to download by ID. All IDs must belong to the same Advertiser or Partner specified in CreateSdfDownloadTaskRequest. */
-  campaignIds?: Array<string>;
+  campaignIds?: ReadonlyArray<string>;
   /** Line Items to download by ID. All IDs must belong to the same Advertiser or Partner specified in CreateSdfDownloadTaskRequest. */
-  lineItemIds?: Array<string>;
+  lineItemIds?: ReadonlyArray<string>;
   /** Insertion Orders to download by ID. All IDs must belong to the same Advertiser or Partner specified in CreateSdfDownloadTaskRequest. */
-  insertionOrderIds?: Array<string>;
+  insertionOrderIds?: ReadonlyArray<string>;
   /** YouTube Ads to download by ID. All IDs must belong to the same Advertiser or Partner specified in CreateSdfDownloadTaskRequest. */
-  adGroupAdIds?: Array<string>;
+  adGroupAdIds?: ReadonlyArray<string>;
   /** Optional. Line Items, by ID, to download in QA format. All IDs must belong to the same Advertiser or Partner specified in CreateSdfDownloadTaskRequest. */
-  lineItemQaIds?: Array<string>;
+  lineItemQaIds?: ReadonlyArray<string>;
   /** Optional. YouTube Ad Groups, by ID, to download in QA format. All IDs must belong to the same Advertiser or Partner specified in CreateSdfDownloadTaskRequest. */
-  adGroupQaIds?: Array<string>;
+  adGroupQaIds?: ReadonlyArray<string>;
 }
 
 export const IdFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5965,7 +5965,7 @@ export interface ListSitesResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListSites` method to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of sites. This list will be absent if empty. */
-  sites?: Array<Site>;
+  sites?: ReadonlyArray<Site>;
 }
 
 export const ListSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -6047,7 +6047,7 @@ export interface ListCombinedAudiencesResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListCombinedAudiences` method to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of combined audiences. This list will be absent if empty. */
-  combinedAudiences?: Array<CombinedAudience>;
+  combinedAudiences?: ReadonlyArray<CombinedAudience>;
 }
 
 export const ListCombinedAudiencesResponse =
@@ -6202,7 +6202,7 @@ export const InventorySourceGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListInventorySourceGroupsResponse {
   /** The list of inventory source groups. This list will be absent if empty. */
-  inventorySourceGroups?: Array<InventorySourceGroup>;
+  inventorySourceGroups?: ReadonlyArray<InventorySourceGroup>;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListInventorySourceGroups` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -6316,7 +6316,7 @@ export interface ConversionCountingConfig {
   /** Optional. The attribution model to use for conversion measurement. This attribution model will determine how conversions are counted. The Primary model can be set by you for a floodlight config or group. More details [here](https://support.google.com/displayvideo/answer/7409983). Only applicable to Demand Gen line items. Retrieval and management of Demand Gen resources is currently in beta. This field is only available to allowlisted users. */
   primaryAttributionModelId?: string;
   /** The Floodlight activity configs used to track conversions. The number of conversions counted is the sum of all of the conversions counted by all of the Floodlight activity IDs specified in this field. This field can't be updated if a custom bidding algorithm is assigned to the line item. If you set this field and assign a custom bidding algorithm in the same request, the floodlight activities must match the ones used by the custom bidding algorithm. */
-  floodlightActivityConfigs?: Array<TrackingFloodlightActivityConfig>;
+  floodlightActivityConfigs?: ReadonlyArray<TrackingFloodlightActivityConfig>;
 }
 
 export const ConversionCountingConfig =
@@ -6432,7 +6432,7 @@ export interface LineItem {
   /** Optional. Settings specific to Demand Gen line items. */
   demandGenSettings?: DemandGenSettings;
   /** Output only. The warning messages generated by the line item. These warnings do not block saving the line item, but some may block the line item from running. */
-  warningMessages?: Array<
+  warningMessages?: ReadonlyArray<
     | "LINE_ITEM_WARNING_MESSAGE_UNSPECIFIED"
     | "INVALID_FLIGHT_DATES"
     | "EXPIRED"
@@ -6469,7 +6469,7 @@ export interface LineItem {
     | "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING"
     | (string & {});
   /** The IDs of the creatives associated with the line item. */
-  creativeIds?: Array<string>;
+  creativeIds?: ReadonlyArray<string>;
   /** Required. Immutable. The type of the line item. */
   lineItemType?:
     | "LINE_ITEM_TYPE_UNSPECIFIED"
@@ -6537,7 +6537,7 @@ export interface LineItem {
   /** Output only. The unique ID of the advertiser the line item belongs to. */
   advertiserId?: string;
   /** The partner costs associated with the line item. If absent or empty in CreateLineItem method, the newly created line item will inherit partner costs from its parent insertion order. */
-  partnerCosts?: Array<PartnerCost>;
+  partnerCosts?: ReadonlyArray<PartnerCost>;
 }
 
 export const LineItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -6730,11 +6730,11 @@ export const ExitEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Creative {
   /** Optional. Timer custom events for a rich media creative. Timers track the time during which a user views and interacts with a specified part of a rich media creative. A creative can have multiple timer events, each timed independently. Leave it empty or unset for creatives containing image assets only. */
-  timerEvents?: Array<TimerEvent>;
+  timerEvents?: ReadonlyArray<TimerEvent>;
   /** Optional. Amount of time to play the video before the skip button appears. This field is required when skippable is true. This field is only supported for the following creative_type: * `CREATIVE_TYPE_VIDEO` */
   skipOffset?: AudioVideoOffset;
   /** Optional. Additional dimensions. Applicable when creative_type is one of: * `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE` * `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_LIGHTBOX` * `CREATIVE_TYPE_PUBLISHER_HOSTED` If this field is specified, width_pixels and height_pixels are both required and must be greater than or equal to 0. */
-  additionalDimensions?: Array<Dimensions>;
+  additionalDimensions?: ReadonlyArray<Dimensions>;
   /** Optional. Indicates that the creative will wait for a return ping for attribution. Only valid when using a Campaign Manager 360 tracking ad with a third-party ad server parameter and the ${DC_DBM_TOKEN} macro. Optional and only valid for third-party tag creatives or third-party VAST tag creatives. Third-party tag creatives are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE` Third-party VAST tag creatives are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO` */
   requirePingForAttribution?: boolean;
   /** Output only. The unique ID of the Campaign Manager 360 placement associated with the creative. This field is only applicable for creatives that are synced from Campaign Manager. */
@@ -6750,17 +6750,17 @@ export interface Creative {
   /** Output only. The timestamp when the creative was created. Assigned by the system. */
   createTime?: string;
   /** Optional. The IDs of companion creatives for a video creative. You can assign existing display creatives (with image or HTML5 assets) to serve surrounding the publisher's video player. Companions display around the video player while the video is playing and remain after the video has completed. Creatives contain additional dimensions can not be companion creatives. This field is only supported for the following creative_type: * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO` */
-  companionCreativeIds?: Array<string>;
+  companionCreativeIds?: ReadonlyArray<string>;
   /** Optional. Indicates the creative will automatically expand on hover. Optional and only valid for third-party expandable creatives. Third-party expandable creatives are creatives with following hosting source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_EXPANDABLE` */
   expandOnHover?: boolean;
   /** Output only. Indicates the third-party VAST tag creative requires VPAID (Digital Video Player-Ad Interface). Output only and only valid for third-party VAST tag creatives. Third-party VAST tag creatives are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_VIDEO` */
   vpaid?: boolean;
   /** Output only. Audio/Video transcodes. Display & Video 360 transcodes the main asset into a number of alternative versions that use different file formats or have different properties (resolution, audio bit rate, and video bit rate), each designed for specific video players or bandwidths. These transcodes give a publisher's system more options to choose from for each impression on your video and ensures that the appropriate file serves based on the viewer’s connection and screen size. This field is only supported in the following creative_type: * `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_NATIVE_VIDEO` * `CREATIVE_TYPE_AUDIO` */
-  transcodes?: Array<Transcode>;
+  transcodes?: ReadonlyArray<Transcode>;
   /** Optional. An optional creative identifier provided by a registry that is unique across all platforms. Universal Ad ID is part of the VAST 4.0 standard. It can be modified after the creative is created. This field is only supported for the following creative_type: * `CREATIVE_TYPE_VIDEO` */
   universalAdId?: UniversalAdId;
   /** Output only. The IDs of the line items this creative is associated with. To associate a creative to a line item, use LineItem.creative_ids instead. */
-  lineItemIds?: Array<string>;
+  lineItemIds?: ReadonlyArray<string>;
   /** Output only. Indicates whether the creative is dynamic. */
   dynamic?: boolean;
   /** Output only. The unique ID of the creative. Assigned by the system. */
@@ -6790,7 +6790,7 @@ export interface Creative {
   /** Output only. Media duration of the creative. Applicable when creative_type is one of: * `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_NATIVE_VIDEO` * `CREATIVE_TYPE_PUBLISHER_HOSTED` */
   mediaDuration?: string;
   /** Required. Assets associated to this creative. */
-  assets?: Array<AssetAssociation>;
+  assets?: ReadonlyArray<AssetAssociation>;
   /** Optional. Indicates whether Integral Ad Science (IAS) campaign monitoring is enabled. To enable this for the creative, make sure the Advertiser.creative_config.ias_client_id has been set to your IAS client ID. */
   iasCampaignMonitoring?: boolean;
   /** Required. Primary dimensions of the creative. Applicable to all creative types. The value of width_pixels and height_pixels defaults to `0` when creative_type is one of: * `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_NATIVE_VIDEO` */
@@ -6804,7 +6804,7 @@ export interface Creative {
   /** Output only. Indicates the third-party VAST tag creative requires HTML5 Video support. Output only and only valid for third-party VAST tag creatives. Third-party VAST tag creatives are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_VIDEO` */
   html5Video?: boolean;
   /** Optional. Tracking URLs for analytics providers or third-party ad technology vendors. The URLs must start with `https:` (except on inventory that doesn't require SSL compliance). If using macros in your URL, use only macros supported by Display & Video 360. Standard URLs only, no IMG or SCRIPT tags. This field is only writeable in the following creative_type: * `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO` */
-  trackerUrls?: Array<string>;
+  trackerUrls?: ReadonlyArray<string>;
   /** Optional. Specifies the expanding direction of the creative. Required and only valid for third-party expandable creatives. Third-party expandable creatives are creatives with following hosting source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_EXPANDABLE` */
   expandingDirection?:
     | "EXPANDING_DIRECTION_UNSPECIFIED"
@@ -6822,13 +6822,13 @@ export interface Creative {
     | "EXPANDING_DIRECTION_ANY_DIAGONAL"
     | (string & {});
   /** Required. Exit events for this creative. An exit (also known as a click tag) is any area in your creative that someone can click or tap to open an advertiser's landing page. Every creative must include at least one exit. You can add an exit to your creative in any of the following ways: * Use Google Web Designer's tap area. * Define a JavaScript variable called "clickTag". * Use the Enabler (Enabler.exit()) to track exits in rich media formats. */
-  exitEvents?: Array<ExitEvent>;
+  exitEvents?: ReadonlyArray<ExitEvent>;
   /** Optional. Indicates that the creative requires MRAID (Mobile Rich Media Ad Interface Definitions system). Set this if the creative relies on mobile gestures for interactivity, such as swiping or tapping. Optional and only valid for third-party tag creatives. Third-party tag creatives are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE` */
   requireMraid?: boolean;
   /** Output only. The unique ID of the advertiser the creative belongs to. */
   advertiserId?: string;
   /** Output only. A list of attributes of the creative that is generated by the system. */
-  creativeAttributes?: Array<
+  creativeAttributes?: ReadonlyArray<
     | "CREATIVE_ATTRIBUTE_UNSPECIFIED"
     | "CREATIVE_ATTRIBUTE_VAST"
     | "CREATIVE_ATTRIBUTE_VPAID_LINEAR"
@@ -6870,9 +6870,9 @@ export interface Creative {
     | "ENTITY_STATUS_SCHEDULED_FOR_DELETION"
     | (string & {});
   /** Optional. Counter events for a rich media creative. Counters track the number of times that a user interacts with any part of a rich media creative in a specified way (mouse-overs, mouse-outs, clicks, taps, data loading, keyboard entries, etc.). Any event that can be captured in the creative can be recorded as a counter. Leave it empty or unset for creatives containing image assets only. */
-  counterEvents?: Array<CounterEvent>;
+  counterEvents?: ReadonlyArray<CounterEvent>;
   /** Optional. Tracking URLs from third parties to track interactions with a video creative. This field is only supported for the following creative_type: * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO` * `CREATIVE_TYPE_NATIVE_VIDEO` */
-  thirdPartyUrls?: Array<ThirdPartyUrl>;
+  thirdPartyUrls?: ReadonlyArray<ThirdPartyUrl>;
 }
 
 export const Creative = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -7049,7 +7049,7 @@ export const ExchangeConfigEnabledExchange =
 
 export interface ExchangeConfig {
   /** All enabled exchanges in the partner. Duplicate enabled exchanges will be ignored. */
-  enabledExchanges?: Array<ExchangeConfigEnabledExchange>;
+  enabledExchanges?: ReadonlyArray<ExchangeConfigEnabledExchange>;
 }
 
 export const ExchangeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -7134,7 +7134,7 @@ export const Partner = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListPartnersResponse {
   /** The list of partners. This list will be absent if empty. */
-  partners?: Array<Partner>;
+  partners?: ReadonlyArray<Partner>;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListPartners` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -7259,7 +7259,7 @@ export const FirstAndThirdPartyAudience =
 
 export interface ListFirstAndThirdPartyAudiencesResponse {
   /** The list of first and third party audiences. Audience size properties will not be included. This list will be absent if empty. */
-  firstAndThirdPartyAudiences?: Array<FirstAndThirdPartyAudience>;
+  firstAndThirdPartyAudiences?: ReadonlyArray<FirstAndThirdPartyAudience>;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListFirstAndThirdPartyAudiences` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -7276,7 +7276,7 @@ export interface ListLineItemsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListLineItems` method to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of line items. This list will be absent if empty. */
-  lineItems?: Array<LineItem>;
+  lineItems?: ReadonlyArray<LineItem>;
 }
 
 export const ListLineItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -7322,7 +7322,7 @@ export interface ProductFeedData {
     | "PRODUCT_MATCH_TYPE_CUSTOM_LABEL"
     | (string & {});
   /** A list of dimensions used to match products. */
-  productMatchDimensions?: Array<ProductMatchDimension>;
+  productMatchDimensions?: ReadonlyArray<ProductMatchDimension>;
 }
 
 export const ProductFeedData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -7463,7 +7463,7 @@ export const Channel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BulkEditSitesResponse {
   /** The list of sites that have been successfully created. This list will be absent if empty. */
-  sites?: Array<Site>;
+  sites?: ReadonlyArray<Site>;
 }
 
 export const BulkEditSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -7541,7 +7541,7 @@ export interface ListCreativesResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListCreativesRequest` method to retrieve the next page of results. If this field is null, it means this is the last page. */
   nextPageToken?: string;
   /** The list of creatives. This list will be absent if empty. */
-  creatives?: Array<Creative>;
+  creatives?: ReadonlyArray<Creative>;
 }
 
 export const ListCreativesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -7567,9 +7567,9 @@ export const ContentInstreamPositionTargetingOptionDetails =
 
 export interface BulkEditPartnerAssignedTargetingOptionsRequest {
   /** The assigned targeting options to delete in batch, specified as a list of `DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` */
-  deleteRequests?: Array<DeleteAssignedTargetingOptionsRequest>;
+  deleteRequests?: ReadonlyArray<DeleteAssignedTargetingOptionsRequest>;
   /** The assigned targeting options to create in batch, specified as a list of `CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` */
-  createRequests?: Array<CreateAssignedTargetingOptionsRequest>;
+  createRequests?: ReadonlyArray<CreateAssignedTargetingOptionsRequest>;
 }
 
 export const BulkEditPartnerAssignedTargetingOptionsRequest =
@@ -7612,9 +7612,9 @@ export const CustomBiddingModelDetails =
 
 export interface BulkEditAdvertiserAssignedTargetingOptionsRequest {
   /** The assigned targeting options to create in batch, specified as a list of `CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` */
-  createRequests?: Array<CreateAssignedTargetingOptionsRequest>;
+  createRequests?: ReadonlyArray<CreateAssignedTargetingOptionsRequest>;
   /** The assigned targeting options to delete in batch, specified as a list of `DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` */
-  deleteRequests?: Array<DeleteAssignedTargetingOptionsRequest>;
+  deleteRequests?: ReadonlyArray<DeleteAssignedTargetingOptionsRequest>;
 }
 
 export const BulkEditAdvertiserAssignedTargetingOptionsRequest =
@@ -7631,11 +7631,11 @@ export const BulkEditAdvertiserAssignedTargetingOptionsRequest =
 
 export interface BulkEditSitesRequest {
   /** The sites to create in batch, specified as a list of Sites. */
-  createdSites?: Array<Site>;
+  createdSites?: ReadonlyArray<Site>;
   /** The ID of the partner that owns the parent channel. */
   partnerId?: string;
   /** The sites to delete in batch, specified as a list of site url_or_app_ids. */
-  deletedSites?: Array<string>;
+  deletedSites?: ReadonlyArray<string>;
   /** The ID of the advertiser that owns the parent channel. */
   advertiserId?: string;
 }
@@ -7739,7 +7739,7 @@ export interface Invoice {
   /** The ID of the original invoice being adjusted by this invoice, if applicable. May appear on the invoice PDF as `Reference invoice number`. If replaced_invoice_ids is set, this field will be empty. */
   correctedInvoiceId?: string;
   /** The list of summarized information for each budget associated with this invoice. This field will only be set if the invoice detail level of the corresponding billing profile was set to "Budget level PO". */
-  budgetSummaries?: Array<BudgetSummary>;
+  budgetSummaries?: ReadonlyArray<BudgetSummary>;
   /** The resource name of the invoice. */
   name?: string;
   /** The display name of the invoice. */
@@ -7763,7 +7763,7 @@ export interface Invoice {
   /** The ID of the payments profile the invoice belongs to. Appears on the invoice PDF as `Billing ID`. */
   paymentsProfileId?: string;
   /** The ID(s) of any originally issued invoice that is being cancelled by this invoice, if applicable. Multiple invoices may be listed if those invoices are being consolidated into a single invoice. May appear on invoice PDF as `Replaced invoice numbers`. If corrected_invoice_id is set, this field will be empty. */
-  replacedInvoiceIds?: Array<string>;
+  replacedInvoiceIds?: ReadonlyArray<string>;
   /** The URL to download a PDF copy of the invoice. This URL is user specific and requires a valid OAuth 2.0 access token to access. The access token must be provided in an `Authorization: Bearer` HTTP header and be authorized for one of the following scopes: * `https://www.googleapis.com/auth/display-video-mediaplanning` * `https://www.googleapis.com/auth/display-video` The URL will be valid for 7 days after retrieval of this invoice object or until this invoice is retrieved again. */
   pdfUrl?: string;
   /** The date when the invoice was issued. */
@@ -7819,7 +7819,7 @@ export const NegativeKeyword = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BulkEditNegativeKeywordsResponse {
   /** The list of negative keywords that have been successfully created. This list will be absent if empty. */
-  negativeKeywords?: Array<NegativeKeyword>;
+  negativeKeywords?: ReadonlyArray<NegativeKeyword>;
 }
 
 export const BulkEditNegativeKeywordsResponse =
@@ -7892,7 +7892,7 @@ export const InventorySourceAccessorsPartnerAccessor =
 
 export interface InventorySourceAccessorsAdvertiserAccessors {
   /** The IDs of the advertisers. */
-  advertiserIds?: Array<string>;
+  advertiserIds?: ReadonlyArray<string>;
 }
 
 export const InventorySourceAccessorsAdvertiserAccessors =
@@ -7939,7 +7939,7 @@ export interface BulkUpdateLineItemsRequest {
   /** Required. A line item object containing the fields to be updated and the new values to assign to all line items specified in line_item_ids." */
   targetLineItem?: LineItem;
   /** Required. IDs of line items to update. */
-  lineItemIds?: Array<string>;
+  lineItemIds?: ReadonlyArray<string>;
 }
 
 export const BulkUpdateLineItemsRequest =
@@ -7987,9 +7987,9 @@ export interface BulkEditAssignedInventorySourcesRequest {
   /** The ID of the advertiser that owns the parent inventory source group. The parent partner does not have access to these assigned inventory sources. */
   advertiserId?: string;
   /** The IDs of the assigned inventory sources to delete in bulk, specified as a list of assigned_inventory_source_ids. */
-  deletedAssignedInventorySources?: Array<string>;
+  deletedAssignedInventorySources?: ReadonlyArray<string>;
   /** The assigned inventory sources to create in bulk, specified as a list of AssignedInventorySources. */
-  createdAssignedInventorySources?: Array<AssignedInventorySource>;
+  createdAssignedInventorySources?: ReadonlyArray<AssignedInventorySource>;
   /** The ID of the partner that owns the inventory source group. Only this partner has write access to these assigned inventory sources. */
   partnerId?: string;
 }
@@ -8010,7 +8010,7 @@ export interface ListInvoicesResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListInvoices` method to retrieve the next page of results. This token will be absent if there are no more invoices to return. */
   nextPageToken?: string;
   /** The list of invoices. This list will be absent if empty. */
-  invoices?: Array<Invoice>;
+  invoices?: ReadonlyArray<Invoice>;
 }
 
 export const ListInvoicesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -8039,7 +8039,7 @@ export interface ListChannelsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListChannels` method to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of channels. This list will be absent if empty. */
-  channels?: Array<Channel>;
+  channels?: ReadonlyArray<Channel>;
 }
 
 export const ListChannelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -8105,7 +8105,7 @@ export const BusinessChainTargetingOptionDetails =
 
 export interface ReplaceSitesResponse {
   /** The list of sites in the channel after replacing. */
-  sites?: Array<Site>;
+  sites?: ReadonlyArray<Site>;
 }
 
 export const ReplaceSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -8114,7 +8114,7 @@ export const ReplaceSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCampaignsResponse {
   /** The list of campaigns. This list will be absent if empty. */
-  campaigns?: Array<Campaign>;
+  campaigns?: ReadonlyArray<Campaign>;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListCampaigns` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -8166,7 +8166,7 @@ export const RateDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InventorySource {
   /** Output only. The IDs of partners with read-only access to the inventory source. All advertisers of partners in this field inherit read-only access to the inventory source. */
-  readPartnerIds?: Array<string>;
+  readPartnerIds?: ReadonlyArray<string>;
   /** The exchange to which the inventory source belongs. */
   exchange?:
     | "EXCHANGE_UNSPECIFIED"
@@ -8288,7 +8288,7 @@ export interface InventorySource {
     | "INVENTORY_SOURCE_DELIVERY_METHOD_TAG"
     | (string & {});
   /** The creative requirements of the inventory source. Not applicable for auction packages. */
-  creativeConfigs?: Array<CreativeConfig>;
+  creativeConfigs?: ReadonlyArray<CreativeConfig>;
   /** Output only. The product type of the inventory source, denoting the way through which it sells inventory. */
   inventorySourceProductType?:
     | "INVENTORY_SOURCE_PRODUCT_TYPE_UNSPECIFIED"
@@ -8313,7 +8313,7 @@ export interface InventorySource {
   /** Immutable. The ID of the guaranteed order that this inventory source belongs to. Only applicable when commitment is `INVENTORY_SOURCE_COMMITMENT_GUARANTEED`. */
   guaranteedOrderId?: string;
   /** Output only. The IDs of advertisers with read-only access to the inventory source. */
-  readAdvertiserIds?: Array<string>;
+  readAdvertiserIds?: ReadonlyArray<string>;
   /** The ID in the exchange space that uniquely identifies the inventory source. Must be unique across buyers within each exchange but not necessarily unique across exchanges. */
   dealId?: string;
 }
@@ -8342,7 +8342,7 @@ export const InventorySource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListInventorySourcesResponse {
   /** The list of inventory sources. This list will be absent if empty. */
-  inventorySources?: Array<InventorySource>;
+  inventorySources?: ReadonlyArray<InventorySource>;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListInventorySources` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -8355,7 +8355,7 @@ export const ListInventorySourcesResponse =
 
 export interface ListGoogleAudiencesResponse {
   /** The list of Google audiences. This list will be absent if empty. */
-  googleAudiences?: Array<GoogleAudience>;
+  googleAudiences?: ReadonlyArray<GoogleAudience>;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListGoogleAudiences` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -8380,7 +8380,7 @@ export interface ListAdGroupsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListAdGroups` method to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of ad groups. This list will be absent if empty. */
-  adGroups?: Array<AdGroup>;
+  adGroups?: ReadonlyArray<AdGroup>;
 }
 
 export const ListAdGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -8390,7 +8390,7 @@ export const ListAdGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCustomBiddingAlgorithmRulesResponse {
   /** The list of CustomBiddingAlgorithmRules resources. This list will be absent if empty. */
-  customBiddingRules?: Array<CustomBiddingAlgorithmRules>;
+  customBiddingRules?: ReadonlyArray<CustomBiddingAlgorithmRules>;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListCustomBiddingAlgorithmRulesRequest` method to retrieve the next page of results. If this field is null, it means this is the last page. */
   nextPageToken?: string;
 }
@@ -8436,7 +8436,7 @@ export const AssignedUserRole = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BulkEditAssignedUserRolesResponse {
   /** The list of assigned user roles that have been successfully created. This list will be absent if empty. */
-  createdAssignedUserRoles?: Array<AssignedUserRole>;
+  createdAssignedUserRoles?: ReadonlyArray<AssignedUserRole>;
 }
 
 export const BulkEditAssignedUserRolesResponse =
@@ -8611,7 +8611,7 @@ export const LanguageTargetingOptionDetails =
 
 export interface ReplaceNegativeKeywordsResponse {
   /** The full list of negative keywords now present in the negative keyword list. */
-  negativeKeywords?: Array<NegativeKeyword>;
+  negativeKeywords?: ReadonlyArray<NegativeKeyword>;
 }
 
 export const ReplaceNegativeKeywordsResponse =
@@ -8623,7 +8623,7 @@ export interface ListAssignedLocationsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListAssignedLocations` method to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of assigned locations. This list will be absent if empty. */
-  assignedLocations?: Array<AssignedLocation>;
+  assignedLocations?: ReadonlyArray<AssignedLocation>;
 }
 
 export const ListAssignedLocationsResponse =
@@ -8634,9 +8634,9 @@ export const ListAssignedLocationsResponse =
 
 export interface BulkEditAssignedLocationsRequest {
   /** The IDs of the assigned locations to delete in bulk, specified as a list of assignedLocationId values. */
-  deletedAssignedLocations?: Array<string>;
+  deletedAssignedLocations?: ReadonlyArray<string>;
   /** The assigned locations to create in bulk, specified as a list of AssignedLocation resources. */
-  createdAssignedLocations?: Array<AssignedLocation>;
+  createdAssignedLocations?: ReadonlyArray<AssignedLocation>;
 }
 
 export const BulkEditAssignedLocationsRequest =
@@ -8662,7 +8662,7 @@ export const ParentalStatusTargetingOptionDetails =
 
 export interface BulkEditPartnerAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options that have been successfully created. This list will be absent if empty. */
-  createdAssignedTargetingOptions?: Array<AssignedTargetingOption>;
+  createdAssignedTargetingOptions?: ReadonlyArray<AssignedTargetingOption>;
 }
 
 export const BulkEditPartnerAssignedTargetingOptionsResponse =
@@ -9031,7 +9031,7 @@ export const TargetingOption = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTargetingOptionsResponse {
   /** The list of targeting options. This list will be absent if empty. */
-  targetingOptions?: Array<TargetingOption>;
+  targetingOptions?: ReadonlyArray<TargetingOption>;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListTargetingOptions` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -9044,7 +9044,7 @@ export const ListTargetingOptionsResponse =
 
 export interface ListNegativeKeywordsResponse {
   /** The list of negative keywords. This list will be absent if empty. */
-  negativeKeywords?: Array<NegativeKeyword>;
+  negativeKeywords?: ReadonlyArray<NegativeKeyword>;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListNegativeKeywords` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -9057,7 +9057,7 @@ export const ListNegativeKeywordsResponse =
 
 export interface User {
   /** The assigned user roles. Required in CreateUser. Output only in UpdateUser. Can only be updated through BulkEditAssignedUserRoles. */
-  assignedUserRoles?: Array<AssignedUserRole>;
+  assignedUserRoles?: ReadonlyArray<AssignedUserRole>;
   /** Output only. The timestamp when the user last logged in DV360 UI. */
   lastLoginTime?: string;
   /** Output only. The resource name of the user. */
@@ -9081,13 +9081,13 @@ export const User = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BulkUpdateLineItemsResponse {
   /** The IDs of successfully updated line items. */
-  updatedLineItemIds?: Array<string>;
+  updatedLineItemIds?: ReadonlyArray<string>;
   /** The IDs of line items that are skipped for updates. For example, unnecessary mutates that will result in effectively no changes to line items will be skipped and corresponding line item IDs can be tracked here. */
-  skippedLineItemIds?: Array<string>;
+  skippedLineItemIds?: ReadonlyArray<string>;
   /** The IDs of line items that failed to update. */
-  failedLineItemIds?: Array<string>;
+  failedLineItemIds?: ReadonlyArray<string>;
   /** Errors returned by line items that failed to update. */
-  errors?: Array<Status>;
+  errors?: ReadonlyArray<Status>;
 }
 
 export const BulkUpdateLineItemsResponse =
@@ -9100,11 +9100,11 @@ export const BulkUpdateLineItemsResponse =
 
 export interface BulkEditAssignedTargetingOptionsRequest {
   /** Required. The ID of the line items whose targeting is being updated. */
-  lineItemIds?: Array<string>;
+  lineItemIds?: ReadonlyArray<string>;
   /** The assigned targeting options to delete in batch, specified as a list of DeleteAssignedTargetingOptionsRequest. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` */
-  deleteRequests?: Array<DeleteAssignedTargetingOptionsRequest>;
+  deleteRequests?: ReadonlyArray<DeleteAssignedTargetingOptionsRequest>;
   /** The assigned targeting options to create in batch, specified as a list of CreateAssignedTargetingOptionsRequest. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` */
-  createRequests?: Array<CreateAssignedTargetingOptionsRequest>;
+  createRequests?: ReadonlyArray<CreateAssignedTargetingOptionsRequest>;
 }
 
 export const BulkEditAssignedTargetingOptionsRequest =
@@ -9120,7 +9120,7 @@ export const BulkEditAssignedTargetingOptionsRequest =
 
 export interface BulkListAdvertiserAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options. This list will be absent if empty. */
-  assignedTargetingOptions?: Array<AssignedTargetingOption>;
+  assignedTargetingOptions?: ReadonlyArray<AssignedTargetingOption>;
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent BulkListAdvertiserAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more assigned_targeting_options to return. */
   nextPageToken?: string;
 }
@@ -9183,7 +9183,7 @@ export interface CustomBiddingAlgorithm {
   /** Immutable. The unique ID of the advertiser that owns the custom bidding algorithm. */
   advertiserId?: string;
   /** Output only. The details of custom bidding models for each advertiser who has access. This field may only include the details of the queried advertiser if the algorithm [`owner`](/display-video/api/reference/rest/v1/customBiddingAlgorithms#CustomBiddingAlgorithm.FIELDS.oneof_owner) is a partner and is being retrieved using an advertiser [`accessor`](/display-video/api/reference/rest/v1/customBiddingAlgorithms/list#body.QUERY_PARAMETERS.oneof_accessor). */
-  modelDetails?: Array<CustomBiddingModelDetails>;
+  modelDetails?: ReadonlyArray<CustomBiddingModelDetails>;
   /** Output only. The resource name of the custom bidding algorithm. */
   name?: string;
   /** Required. The display name of the custom bidding algorithm. Must be UTF-8 encoded with a maximum size of 240 bytes. */
@@ -9197,7 +9197,7 @@ export interface CustomBiddingAlgorithm {
     | "RULE_BASED"
     | (string & {});
   /** The IDs of the advertisers who have access to this algorithm. If advertiser_id is set, this field will only consist of that value. This field will not be set if the algorithm [`owner`](/display-video/api/reference/rest/v1/customBiddingAlgorithms#CustomBiddingAlgorithm.FIELDS.oneof_owner) is a partner and is being retrieved using an advertiser [`accessor`](/display-video/api/reference/rest/v1/customBiddingAlgorithms/list#body.QUERY_PARAMETERS.oneof_accessor). */
-  sharedAdvertiserIds?: Array<string>;
+  sharedAdvertiserIds?: ReadonlyArray<string>;
   /** Controls whether or not the custom bidding algorithm can be used as a bidding strategy. Accepted values are: * `ENTITY_STATUS_ACTIVE` * `ENTITY_STATUS_ARCHIVED` */
   entityStatus?:
     | "ENTITY_STATUS_UNSPECIFIED"
@@ -9225,7 +9225,7 @@ export const CustomBiddingAlgorithm = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListCustomBiddingAlgorithmsResponse {
   /** The list of custom bidding algorithms. This list will be absent if empty. */
-  customBiddingAlgorithms?: Array<CustomBiddingAlgorithm>;
+  customBiddingAlgorithms?: ReadonlyArray<CustomBiddingAlgorithm>;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListCustomBiddingAlgorithmsRequest` method to retrieve the next page of results. If this field is null, it means this is the last page. */
   nextPageToken?: string;
 }
@@ -9240,9 +9240,9 @@ export const ListCustomBiddingAlgorithmsResponse =
 
 export interface BulkEditNegativeKeywordsRequest {
   /** The negative keywords to delete in batch, specified as a list of keyword_values. */
-  deletedNegativeKeywords?: Array<string>;
+  deletedNegativeKeywords?: ReadonlyArray<string>;
   /** The negative keywords to create in batch, specified as a list of NegativeKeywords. */
-  createdNegativeKeywords?: Array<NegativeKeyword>;
+  createdNegativeKeywords?: ReadonlyArray<NegativeKeyword>;
 }
 
 export const BulkEditNegativeKeywordsRequest =
@@ -9253,7 +9253,7 @@ export const BulkEditNegativeKeywordsRequest =
 
 export interface BulkEditAssignedLocationsResponse {
   /** The list of assigned locations that have been successfully created. This list will be absent if empty. */
-  assignedLocations?: Array<AssignedLocation>;
+  assignedLocations?: ReadonlyArray<AssignedLocation>;
 }
 
 export const BulkEditAssignedLocationsResponse =
@@ -9275,7 +9275,7 @@ export interface ListLineItemAssignedTargetingOptionsResponse {
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent ListLineItemAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more assigned_targeting_options to return. */
   nextPageToken?: string;
   /** The list of assigned targeting options. This list will be absent if empty. */
-  assignedTargetingOptions?: Array<AssignedTargetingOption>;
+  assignedTargetingOptions?: ReadonlyArray<AssignedTargetingOption>;
 }
 
 export const ListLineItemAssignedTargetingOptionsResponse =
@@ -9288,7 +9288,7 @@ export const ListLineItemAssignedTargetingOptionsResponse =
 
 export interface ListAdvertiserAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options. This list will be absent if empty. */
-  assignedTargetingOptions?: Array<AssignedTargetingOption>;
+  assignedTargetingOptions?: ReadonlyArray<AssignedTargetingOption>;
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent ListAdvertiserAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more assigned_targeting_options to return. */
   nextPageToken?: string;
 }
@@ -9303,7 +9303,7 @@ export const ListAdvertiserAssignedTargetingOptionsResponse =
 
 export interface SearchTargetingOptionsResponse {
   /** The list of targeting options that match the search criteria. This list will be absent if empty. */
-  targetingOptions?: Array<TargetingOption>;
+  targetingOptions?: ReadonlyArray<TargetingOption>;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `SearchTargetingOptions` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -9320,9 +9320,9 @@ export interface EditGuaranteedOrderReadAccessorsRequest {
   /** Whether to give all advertisers of the read/write accessor partner read access to the guaranteed order. Only applicable if read_write_partner_id is set in the guaranteed order. */
   readAccessInherited?: boolean;
   /** The advertisers to add as read accessors to the guaranteed order. */
-  addedAdvertisers?: Array<string>;
+  addedAdvertisers?: ReadonlyArray<string>;
   /** The advertisers to remove as read accessors to the guaranteed order. */
-  removedAdvertisers?: Array<string>;
+  removedAdvertisers?: ReadonlyArray<string>;
 }
 
 export const EditGuaranteedOrderReadAccessorsRequest =
@@ -9362,7 +9362,7 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ReplaceNegativeKeywordsRequest {
   /** The negative keywords that will replace the existing keywords in the negative keyword list, specified as a list of NegativeKeywords. */
-  newNegativeKeywords?: Array<NegativeKeyword>;
+  newNegativeKeywords?: ReadonlyArray<NegativeKeyword>;
 }
 
 export const ReplaceNegativeKeywordsRequest =
@@ -9372,7 +9372,7 @@ export const ReplaceNegativeKeywordsRequest =
 
 export interface BulkListAssignedTargetingOptionsResponse {
   /** The list of wrapper objects, each providing an assigned targeting option and the line item it is assigned to. This list will be absent if empty. */
-  lineItemAssignedTargetingOptions?: Array<LineItemAssignedTargetingOption>;
+  lineItemAssignedTargetingOptions?: ReadonlyArray<LineItemAssignedTargetingOption>;
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent call to `BulkListAssignedTargetingOptions` to fetch the next page of results. This token will be absent if there are no more line_item_assigned_targeting_options to return. */
   nextPageToken?: string;
 }
@@ -9387,7 +9387,7 @@ export const BulkListAssignedTargetingOptionsResponse =
 
 export interface ListCustomListsResponse {
   /** The list of custom lists. This list will be absent if empty. */
-  customLists?: Array<CustomList>;
+  customLists?: ReadonlyArray<CustomList>;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListCustomLists` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -9400,9 +9400,9 @@ export const ListCustomListsResponse =
 
 export interface BulkEditAssignedUserRolesRequest {
   /** The assigned user roles to delete in batch, specified as a list of assigned_user_role_ids. The format of assigned_user_role_id is `entityType-entityid`, for example `partner-123`. */
-  deletedAssignedUserRoles?: Array<string>;
+  deletedAssignedUserRoles?: ReadonlyArray<string>;
   /** The assigned user roles to create in batch, specified as a list of AssignedUserRoles. */
-  createdAssignedUserRoles?: Array<AssignedUserRole>;
+  createdAssignedUserRoles?: ReadonlyArray<AssignedUserRole>;
 }
 
 export const BulkEditAssignedUserRolesRequest =
@@ -9415,7 +9415,7 @@ export interface ListLocationListsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListLocationLists` method to retrieve the next page of results. */
   nextPageToken?: string;
   /** The list of location lists. This list will be absent if empty. */
-  locationLists?: Array<LocationList>;
+  locationLists?: ReadonlyArray<LocationList>;
 }
 
 export const ListLocationListsResponse =
@@ -9426,7 +9426,7 @@ export const ListLocationListsResponse =
 
 export interface ListUsersResponse {
   /** The list of users. This list will be absent if empty. */
-  users?: Array<User>;
+  users?: ReadonlyArray<User>;
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListUsers` method to retrieve the next page of results. This token will be absent if there are no more results to return. */
   nextPageToken?: string;
 }
@@ -9461,7 +9461,7 @@ export const GetFirstAndThirdPartyAudiencesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/firstAndThirdPartyAudiences/{firstAndThirdPartyAudiencesId}",
+      path: "v3/firstAndThirdPartyAudiences/{firstAndThirdPartyAudienceId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetFirstAndThirdPartyAudiencesRequest>;
@@ -9541,7 +9541,7 @@ export const EditCustomerMatchMembersFirstAndThirdPartyAudiencesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/firstAndThirdPartyAudiences/{firstAndThirdPartyAudiencesId}:editCustomerMatchMembers",
+      path: "v3/firstAndThirdPartyAudiences/{firstAndThirdPartyAudienceId}:editCustomerMatchMembers",
       hasBody: true,
     }),
     svc,
@@ -9591,7 +9591,7 @@ export const PatchFirstAndThirdPartyAudiencesRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v3/firstAndThirdPartyAudiences/{firstAndThirdPartyAudiencesId}",
+      path: "v3/firstAndThirdPartyAudiences/{firstAndThirdPartyAudienceId}",
       hasBody: true,
     }),
     svc,
@@ -9726,7 +9726,7 @@ export const DeleteAdvertisersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     advertiserId: Schema.String.pipe(T.HttpPath("advertiserId")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v3/advertisers/{advertisersId}" }),
+    T.Http({ method: "DELETE", path: "v3/advertisers/{advertiserId}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAdvertisersRequest>;
 
@@ -9764,7 +9764,7 @@ export const PatchAdvertisersRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v3/advertisers/{advertisersId}",
+      path: "v3/advertisers/{advertiserId}",
       hasBody: true,
     }),
     svc,
@@ -9810,7 +9810,7 @@ export const ListAssignedTargetingOptionsAdvertisersRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}:listAssignedTargetingOptions",
+      path: "v3/advertisers/{advertiserId}:listAssignedTargetingOptions",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAssignedTargetingOptionsAdvertisersRequest>;
@@ -9850,7 +9850,7 @@ export const AuditAdvertisersRequest =
     advertiserId: Schema.String.pipe(T.HttpPath("advertiserId")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/advertisers/{advertisersId}:audit" }),
+    T.Http({ method: "GET", path: "v3/advertisers/{advertiserId}:audit" }),
     svc,
   ) as unknown as Schema.Schema<AuditAdvertisersRequest>;
 
@@ -9888,7 +9888,7 @@ export const EditAssignedTargetingOptionsAdvertisersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertisersId}:editAssignedTargetingOptions",
+      path: "v3/advertisers/{advertiserId}:editAssignedTargetingOptions",
       hasBody: true,
     }),
     svc,
@@ -9921,7 +9921,7 @@ export interface GetAdvertisersRequest {
 export const GetAdvertisersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   advertiserId: Schema.String.pipe(T.HttpPath("advertiserId")),
 }).pipe(
-  T.Http({ method: "GET", path: "v3/advertisers/{advertisersId}" }),
+  T.Http({ method: "GET", path: "v3/advertisers/{advertiserId}" }),
   svc,
 ) as unknown as Schema.Schema<GetAdvertisersRequest>;
 
@@ -9988,7 +9988,7 @@ export const BulkEditAssignedTargetingOptionsAdvertisersAdGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertisersId}/adGroups:bulkEditAssignedTargetingOptions",
+      path: "v3/advertisers/{advertiserId}/adGroups:bulkEditAssignedTargetingOptions",
       hasBody: true,
     }),
     svc,
@@ -10028,7 +10028,7 @@ export const GetAdvertisersAdGroupsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/adGroups/{adGroupsId}",
+      path: "v3/advertisers/{advertiserId}/adGroups/{adGroupId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetAdvertisersAdGroupsRequest>;
@@ -10065,7 +10065,7 @@ export const CreateAdvertisersAdGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertisersId}/adGroups",
+      path: "v3/advertisers/{advertiserId}/adGroups",
       hasBody: true,
     }),
     svc,
@@ -10110,7 +10110,7 @@ export const ListAdvertisersAdGroupsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     advertiserId: Schema.String.pipe(T.HttpPath("advertiserId")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/advertisers/{advertisersId}/adGroups" }),
+    T.Http({ method: "GET", path: "v3/advertisers/{advertiserId}/adGroups" }),
     svc,
   ) as unknown as Schema.Schema<ListAdvertisersAdGroupsRequest>;
 
@@ -10150,7 +10150,7 @@ export const DeleteAdvertisersAdGroupsRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "v3/advertisers/{advertisersId}/adGroups/{adGroupsId}",
+      path: "v3/advertisers/{advertiserId}/adGroups/{adGroupId}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteAdvertisersAdGroupsRequest>;
@@ -10193,7 +10193,7 @@ export const PatchAdvertisersAdGroupsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v3/advertisers/{advertisersId}/adGroups/{adGroupsId}",
+      path: "v3/advertisers/{advertiserId}/adGroups/{adGroupId}",
       hasBody: true,
     }),
     svc,
@@ -10245,7 +10245,7 @@ export const BulkListAdGroupAssignedTargetingOptionsAdvertisersAdGroupsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/adGroups:bulkListAdGroupAssignedTargetingOptions",
+      path: "v3/advertisers/{advertiserId}/adGroups:bulkListAdGroupAssignedTargetingOptions",
     }),
     svc,
   ) as unknown as Schema.Schema<BulkListAdGroupAssignedTargetingOptionsAdvertisersAdGroupsRequest>;
@@ -10347,7 +10347,7 @@ export const GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/adGroups/{adGroupsId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
+      path: "v3/advertisers/{advertiserId}/adGroups/{adGroupId}/targetingTypes/{targetingType}/assignedTargetingOptions/{assignedTargetingOptionId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest>;
@@ -10443,7 +10443,7 @@ export const CreateAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequ
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertisersId}/adGroups/{adGroupsId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
+      path: "v3/advertisers/{advertiserId}/adGroups/{adGroupId}/targetingTypes/{targetingType}/assignedTargetingOptions",
       hasBody: true,
     }),
     svc,
@@ -10550,7 +10550,7 @@ export const ListAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsReques
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/adGroups/{adGroupsId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
+      path: "v3/advertisers/{advertiserId}/adGroups/{adGroupId}/targetingTypes/{targetingType}/assignedTargetingOptions",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest>;
@@ -10652,7 +10652,7 @@ export const DeleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequ
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "v3/advertisers/{advertisersId}/adGroups/{adGroupsId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
+      path: "v3/advertisers/{advertiserId}/adGroups/{adGroupId}/targetingTypes/{targetingType}/assignedTargetingOptions/{assignedTargetingOptionId}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest>;
@@ -10702,7 +10702,7 @@ export const ListAdvertisersChannelsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     partnerId: Schema.optional(Schema.String).pipe(T.HttpQuery("partnerId")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/advertisers/{advertisersId}/channels" }),
+    T.Http({ method: "GET", path: "v3/advertisers/{advertiserId}/channels" }),
     svc,
   ) as unknown as Schema.Schema<ListAdvertisersChannelsRequest>;
 
@@ -10751,7 +10751,7 @@ export const PatchAdvertisersChannelsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v3/advertisers/{advertisersId}/channels/{channelId}",
+      path: "v3/advertisers/{advertiserId}/channels/{channelId}",
       hasBody: true,
     }),
     svc,
@@ -10792,7 +10792,7 @@ export const GetAdvertisersChannelsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/channels/{channelsId}",
+      path: "v3/advertisers/{advertiserId}/channels/{channelId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetAdvertisersChannelsRequest>;
@@ -10832,7 +10832,7 @@ export const CreateAdvertisersChannelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertisersId}/channels",
+      path: "v3/advertisers/{advertiserId}/channels",
       hasBody: true,
     }),
     svc,
@@ -10873,7 +10873,7 @@ export const ReplaceAdvertisersChannelsSitesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertiserId}/channels/{channelsId}/sites:replace",
+      path: "v3/advertisers/{advertiserId}/channels/{channelId}/sites:replace",
       hasBody: true,
     }),
     svc,
@@ -10917,7 +10917,7 @@ export const CreateAdvertisersChannelsSitesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertiserId}/channels/{channelsId}/sites",
+      path: "v3/advertisers/{advertiserId}/channels/{channelId}/sites",
       hasBody: true,
     }),
     svc,
@@ -10958,7 +10958,7 @@ export const BulkEditAdvertisersChannelsSitesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertiserId}/channels/{channelsId}/sites:bulkEdit",
+      path: "v3/advertisers/{advertiserId}/channels/{channelId}/sites:bulkEdit",
       hasBody: true,
     }),
     svc,
@@ -11011,7 +11011,7 @@ export const ListAdvertisersChannelsSitesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/channels/{channelsId}/sites",
+      path: "v3/advertisers/{advertiserId}/channels/{channelId}/sites",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAdvertisersChannelsSitesRequest>;
@@ -11058,7 +11058,7 @@ export const DeleteAdvertisersChannelsSitesRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "v3/advertisers/{advertiserId}/channels/{channelsId}/sites/{sitesId}",
+      path: "v3/advertisers/{advertiserId}/channels/{channelId}/sites/{urlOrAppId}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteAdvertisersChannelsSitesRequest>;
@@ -11097,7 +11097,7 @@ export const LookupInvoiceCurrencyAdvertisersInvoicesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/invoices:lookupInvoiceCurrency",
+      path: "v3/advertisers/{advertiserId}/invoices:lookupInvoiceCurrency",
     }),
     svc,
   ) as unknown as Schema.Schema<LookupInvoiceCurrencyAdvertisersInvoicesRequest>;
@@ -11148,7 +11148,7 @@ export const ListAdvertisersInvoicesRequest =
       T.HttpQuery("loiSapinInvoiceType"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/advertisers/{advertisersId}/invoices" }),
+    T.Http({ method: "GET", path: "v3/advertisers/{advertiserId}/invoices" }),
     svc,
   ) as unknown as Schema.Schema<ListAdvertisersInvoicesRequest>;
 
@@ -11188,7 +11188,7 @@ export const UploadAdvertisersAssetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertisersId}/assets",
+      path: "v3/advertisers/{advertiserId}/assets",
       hasBody: true,
     }),
     svc,
@@ -11228,7 +11228,7 @@ export const BulkEditAssignedTargetingOptionsAdvertisersLineItemsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertisersId}/lineItems:bulkEditAssignedTargetingOptions",
+      path: "v3/advertisers/{advertiserId}/lineItems:bulkEditAssignedTargetingOptions",
       hasBody: true,
     }),
     svc,
@@ -11282,7 +11282,7 @@ export const BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/lineItems:bulkListAssignedTargetingOptions",
+      path: "v3/advertisers/{advertiserId}/lineItems:bulkListAssignedTargetingOptions",
     }),
     svc,
   ) as unknown as Schema.Schema<BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest>;
@@ -11325,7 +11325,7 @@ export const BulkUpdateAdvertisersLineItemsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertisersId}/lineItems:bulkUpdate",
+      path: "v3/advertisers/{advertiserId}/lineItems:bulkUpdate",
       hasBody: true,
     }),
     svc,
@@ -11364,7 +11364,7 @@ export const GetAdvertisersLineItemsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/lineItems/{lineItemsId}",
+      path: "v3/advertisers/{advertiserId}/lineItems/{lineItemId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetAdvertisersLineItemsRequest>;
@@ -11401,7 +11401,7 @@ export const CreateAdvertisersLineItemsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertisersId}/lineItems",
+      path: "v3/advertisers/{advertiserId}/lineItems",
       hasBody: true,
     }),
     svc,
@@ -11442,7 +11442,7 @@ export const DuplicateAdvertisersLineItemsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertisersId}/lineItems/{lineItemsId}:duplicate",
+      path: "v3/advertisers/{advertiserId}/lineItems/{lineItemId}:duplicate",
       hasBody: true,
     }),
     svc,
@@ -11486,7 +11486,7 @@ export const PatchAdvertisersLineItemsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v3/advertisers/{advertisersId}/lineItems/{lineItemsId}",
+      path: "v3/advertisers/{advertiserId}/lineItems/{lineItemId}",
       hasBody: true,
     }),
     svc,
@@ -11531,7 +11531,7 @@ export const ListAdvertisersLineItemsRequest =
     advertiserId: Schema.String.pipe(T.HttpPath("advertiserId")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/advertisers/{advertisersId}/lineItems" }),
+    T.Http({ method: "GET", path: "v3/advertisers/{advertiserId}/lineItems" }),
     svc,
   ) as unknown as Schema.Schema<ListAdvertisersLineItemsRequest>;
 
@@ -11571,7 +11571,7 @@ export const DeleteAdvertisersLineItemsRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "v3/advertisers/{advertisersId}/lineItems/{lineItemsId}",
+      path: "v3/advertisers/{advertiserId}/lineItems/{lineItemId}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteAdvertisersLineItemsRequest>;
@@ -11674,7 +11674,7 @@ export const ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsReque
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/lineItems/{lineItemsId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
+      path: "v3/advertisers/{advertiserId}/lineItems/{lineItemId}/targetingTypes/{targetingType}/assignedTargetingOptions",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>;
@@ -11777,7 +11777,7 @@ export const DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsReq
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "v3/advertisers/{advertisersId}/lineItems/{lineItemsId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
+      path: "v3/advertisers/{advertiserId}/lineItems/{lineItemId}/targetingTypes/{targetingType}/assignedTargetingOptions/{assignedTargetingOptionId}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>;
@@ -11877,7 +11877,7 @@ export const GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsReques
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/lineItems/{lineItemsId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
+      path: "v3/advertisers/{advertiserId}/lineItems/{lineItemId}/targetingTypes/{targetingType}/assignedTargetingOptions/{assignedTargetingOptionId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest>;
@@ -11973,7 +11973,7 @@ export const CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsReq
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertisersId}/lineItems/{lineItemsId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
+      path: "v3/advertisers/{advertiserId}/lineItems/{lineItemId}/targetingTypes/{targetingType}/assignedTargetingOptions",
       hasBody: true,
     }),
     svc,
@@ -12021,7 +12021,7 @@ export const PatchAdvertisersCampaignsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v3/advertisers/{advertisersId}/campaigns/{campaignsId}",
+      path: "v3/advertisers/{advertiserId}/campaigns/{campaignId}",
       hasBody: true,
     }),
     svc,
@@ -12066,7 +12066,7 @@ export const ListAdvertisersCampaignsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/advertisers/{advertisersId}/campaigns" }),
+    T.Http({ method: "GET", path: "v3/advertisers/{advertiserId}/campaigns" }),
     svc,
   ) as unknown as Schema.Schema<ListAdvertisersCampaignsRequest>;
 
@@ -12106,7 +12106,7 @@ export const DeleteAdvertisersCampaignsRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "v3/advertisers/{advertisersId}/campaigns/{campaignsId}",
+      path: "v3/advertisers/{advertiserId}/campaigns/{campaignId}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteAdvertisersCampaignsRequest>;
@@ -12143,7 +12143,7 @@ export const GetAdvertisersCampaignsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/campaigns/{campaignsId}",
+      path: "v3/advertisers/{advertiserId}/campaigns/{campaignId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetAdvertisersCampaignsRequest>;
@@ -12180,7 +12180,7 @@ export const CreateAdvertisersCampaignsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertisersId}/campaigns",
+      path: "v3/advertisers/{advertiserId}/campaigns",
       hasBody: true,
     }),
     svc,
@@ -12218,7 +12218,7 @@ export const GetAdvertisersAdGroupAdsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/adGroupAds/{adGroupAdsId}",
+      path: "v3/advertisers/{advertiserId}/adGroupAds/{adGroupAdId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetAdvertisersAdGroupAdsRequest>;
@@ -12255,7 +12255,7 @@ export const CreateAdvertisersAdGroupAdsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertisersId}/adGroupAds",
+      path: "v3/advertisers/{advertiserId}/adGroupAds",
       hasBody: true,
     }),
     svc,
@@ -12300,10 +12300,7 @@ export const ListAdvertisersAdGroupAdsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     advertiserId: Schema.String.pipe(T.HttpPath("advertiserId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/advertisers/{advertisersId}/adGroupAds",
-    }),
+    T.Http({ method: "GET", path: "v3/advertisers/{advertiserId}/adGroupAds" }),
     svc,
   ) as unknown as Schema.Schema<ListAdvertisersAdGroupAdsRequest>;
 
@@ -12343,7 +12340,7 @@ export const DeleteAdvertisersAdGroupAdsRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "v3/advertisers/{advertisersId}/adGroupAds/{adGroupAdsId}",
+      path: "v3/advertisers/{advertiserId}/adGroupAds/{adGroupAdId}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteAdvertisersAdGroupAdsRequest>;
@@ -12386,7 +12383,7 @@ export const PatchAdvertisersAdGroupAdsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v3/advertisers/{advertisersId}/adGroupAds/{adGroupAdsId}",
+      path: "v3/advertisers/{advertiserId}/adGroupAds/{adGroupAdId}",
       hasBody: true,
     }),
     svc,
@@ -12487,7 +12484,7 @@ export const ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
+      path: "v3/advertisers/{advertiserId}/targetingTypes/{targetingType}/assignedTargetingOptions",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
@@ -12586,7 +12583,7 @@ export const DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "v3/advertisers/{advertisersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
+      path: "v3/advertisers/{advertiserId}/targetingTypes/{targetingType}/assignedTargetingOptions/{assignedTargetingOptionId}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
@@ -12681,7 +12678,7 @@ export const GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
+      path: "v3/advertisers/{advertiserId}/targetingTypes/{targetingType}/assignedTargetingOptions/{assignedTargetingOptionId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest>;
@@ -12774,7 +12771,7 @@ export const CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertisersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
+      path: "v3/advertisers/{advertiserId}/targetingTypes/{targetingType}/assignedTargetingOptions",
       hasBody: true,
     }),
     svc,
@@ -12814,7 +12811,7 @@ export const GetAdvertisersCreativesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/creatives/{creativesId}",
+      path: "v3/advertisers/{advertiserId}/creatives/{creativeId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetAdvertisersCreativesRequest>;
@@ -12851,7 +12848,7 @@ export const CreateAdvertisersCreativesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertisersId}/creatives",
+      path: "v3/advertisers/{advertiserId}/creatives",
       hasBody: true,
     }),
     svc,
@@ -12896,7 +12893,7 @@ export const ListAdvertisersCreativesRequest =
     advertiserId: Schema.String.pipe(T.HttpPath("advertiserId")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/advertisers/{advertisersId}/creatives" }),
+    T.Http({ method: "GET", path: "v3/advertisers/{advertiserId}/creatives" }),
     svc,
   ) as unknown as Schema.Schema<ListAdvertisersCreativesRequest>;
 
@@ -12936,7 +12933,7 @@ export const DeleteAdvertisersCreativesRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "v3/advertisers/{advertisersId}/creatives/{creativesId}",
+      path: "v3/advertisers/{advertiserId}/creatives/{creativeId}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteAdvertisersCreativesRequest>;
@@ -12979,7 +12976,7 @@ export const PatchAdvertisersCreativesRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v3/advertisers/{advertisersId}/creatives/{creativesId}",
+      path: "v3/advertisers/{advertiserId}/creatives/{creativeId}",
       hasBody: true,
     }),
     svc,
@@ -13017,7 +13014,7 @@ export const GetAdvertisersLocationListsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/locationLists/{locationListsId}",
+      path: "v3/advertisers/{advertiserId}/locationLists/{locationListId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetAdvertisersLocationListsRequest>;
@@ -13054,7 +13051,7 @@ export const CreateAdvertisersLocationListsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertisersId}/locationLists",
+      path: "v3/advertisers/{advertiserId}/locationLists",
       hasBody: true,
     }),
     svc,
@@ -13098,7 +13095,7 @@ export const PatchAdvertisersLocationListsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v3/advertisers/{advertisersId}/locationLists/{locationListId}",
+      path: "v3/advertisers/{advertiserId}/locationLists/{locationListId}",
       hasBody: true,
     }),
     svc,
@@ -13145,7 +13142,7 @@ export const ListAdvertisersLocationListsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/locationLists",
+      path: "v3/advertisers/{advertiserId}/locationLists",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAdvertisersLocationListsRequest>;
@@ -13243,7 +13240,7 @@ export const DeleteAdvertisersLocationListsAssignedLocationsRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "v3/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations/{assignedLocationsId}",
+      path: "v3/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations/{assignedLocationId}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteAdvertisersLocationListsAssignedLocationsRequest>;
@@ -13284,7 +13281,7 @@ export const BulkEditAdvertisersLocationListsAssignedLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertiserId}/locationLists/{locationListsId}/assignedLocations:bulkEdit",
+      path: "v3/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations:bulkEdit",
       hasBody: true,
     }),
     svc,
@@ -13369,7 +13366,7 @@ export const GetAdvertisersNegativeKeywordListsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/negativeKeywordLists/{negativeKeywordListsId}",
+      path: "v3/advertisers/{advertiserId}/negativeKeywordLists/{negativeKeywordListId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetAdvertisersNegativeKeywordListsRequest>;
@@ -13406,7 +13403,7 @@ export const CreateAdvertisersNegativeKeywordListsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertisersId}/negativeKeywordLists",
+      path: "v3/advertisers/{advertiserId}/negativeKeywordLists",
       hasBody: true,
     }),
     svc,
@@ -13452,7 +13449,7 @@ export const PatchAdvertisersNegativeKeywordListsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v3/advertisers/{advertisersId}/negativeKeywordLists/{negativeKeywordListId}",
+      path: "v3/advertisers/{advertiserId}/negativeKeywordLists/{negativeKeywordListId}",
       hasBody: true,
     }),
     svc,
@@ -13493,7 +13490,7 @@ export const ListAdvertisersNegativeKeywordListsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/negativeKeywordLists",
+      path: "v3/advertisers/{advertiserId}/negativeKeywordLists",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAdvertisersNegativeKeywordListsRequest>;
@@ -13537,7 +13534,7 @@ export const DeleteAdvertisersNegativeKeywordListsRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "v3/advertisers/{advertisersId}/negativeKeywordLists/{negativeKeywordListsId}",
+      path: "v3/advertisers/{advertiserId}/negativeKeywordLists/{negativeKeywordListId}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteAdvertisersNegativeKeywordListsRequest>;
@@ -13579,7 +13576,7 @@ export const BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertiserId}/negativeKeywordLists/{negativeKeywordListsId}/negativeKeywords:bulkEdit",
+      path: "v3/advertisers/{advertiserId}/negativeKeywordLists/{negativeKeywordListId}/negativeKeywords:bulkEdit",
       hasBody: true,
     }),
     svc,
@@ -13633,7 +13630,7 @@ export const ListAdvertisersNegativeKeywordListsNegativeKeywordsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/negativeKeywordLists/{negativeKeywordListsId}/negativeKeywords",
+      path: "v3/advertisers/{advertiserId}/negativeKeywordLists/{negativeKeywordListId}/negativeKeywords",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
@@ -13681,7 +13678,7 @@ export const DeleteAdvertisersNegativeKeywordListsNegativeKeywordsRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "v3/advertisers/{advertiserId}/negativeKeywordLists/{negativeKeywordListsId}/negativeKeywords/{negativeKeywordsId}",
+      path: "v3/advertisers/{advertiserId}/negativeKeywordLists/{negativeKeywordListId}/negativeKeywords/{keywordValue}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteAdvertisersNegativeKeywordListsNegativeKeywordsRequest>;
@@ -13725,7 +13722,7 @@ export const ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertiserId}/negativeKeywordLists/{negativeKeywordListsId}/negativeKeywords:replace",
+      path: "v3/advertisers/{advertiserId}/negativeKeywordLists/{negativeKeywordListId}/negativeKeywords:replace",
       hasBody: true,
     }),
     svc,
@@ -13770,7 +13767,7 @@ export const CreateAdvertisersNegativeKeywordListsNegativeKeywordsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertiserId}/negativeKeywordLists/{negativeKeywordListsId}/negativeKeywords",
+      path: "v3/advertisers/{advertiserId}/negativeKeywordLists/{negativeKeywordListId}/negativeKeywords",
       hasBody: true,
     }),
     svc,
@@ -13810,7 +13807,7 @@ export const GetAdvertisersInsertionOrdersRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/insertionOrders/{insertionOrdersId}",
+      path: "v3/advertisers/{advertiserId}/insertionOrders/{insertionOrderId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetAdvertisersInsertionOrdersRequest>;
@@ -13847,7 +13844,7 @@ export const CreateAdvertisersInsertionOrdersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/advertisers/{advertisersId}/insertionOrders",
+      path: "v3/advertisers/{advertiserId}/insertionOrders",
       hasBody: true,
     }),
     svc,
@@ -13891,7 +13888,7 @@ export const PatchAdvertisersInsertionOrdersRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v3/advertisers/{advertisersId}/insertionOrders/{insertionOrdersId}",
+      path: "v3/advertisers/{advertiserId}/insertionOrders/{insertionOrderId}",
       hasBody: true,
     }),
     svc,
@@ -13938,7 +13935,7 @@ export const ListAdvertisersInsertionOrdersRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/advertisers/{advertisersId}/insertionOrders",
+      path: "v3/advertisers/{advertiserId}/insertionOrders",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAdvertisersInsertionOrdersRequest>;
@@ -13980,7 +13977,7 @@ export const DeleteAdvertisersInsertionOrdersRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "v3/advertisers/{advertisersId}/insertionOrders/{insertionOrdersId}",
+      path: "v3/advertisers/{advertiserId}/insertionOrders/{insertionOrderId}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteAdvertisersInsertionOrdersRequest>;
@@ -14082,7 +14079,7 @@ export const ListTargetingTypesTargetingOptionsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/targetingTypes/{targetingTypesId}/targetingOptions",
+      path: "v3/targetingTypes/{targetingType}/targetingOptions",
     }),
     svc,
   ) as unknown as Schema.Schema<ListTargetingTypesTargetingOptionsRequest>;
@@ -14175,7 +14172,7 @@ export const SearchTargetingTypesTargetingOptionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/targetingTypes/{targetingTypesId}/targetingOptions:search",
+      path: "v3/targetingTypes/{targetingType}/targetingOptions:search",
       hasBody: true,
     }),
     svc,
@@ -14270,7 +14267,7 @@ export const GetTargetingTypesTargetingOptionsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/targetingTypes/{targetingTypesId}/targetingOptions/{targetingOptionsId}",
+      path: "v3/targetingTypes/{targetingType}/targetingOptions/{targetingOptionId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetTargetingTypesTargetingOptionsRequest>;
@@ -14314,7 +14311,7 @@ export const UploadRulesCustomBiddingAlgorithmsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/customBiddingAlgorithms/{customBiddingAlgorithmsId}:uploadRules",
+      path: "v3/customBiddingAlgorithms/{customBiddingAlgorithmId}:uploadRules",
     }),
     svc,
   ) as unknown as Schema.Schema<UploadRulesCustomBiddingAlgorithmsRequest>;
@@ -14410,7 +14407,7 @@ export const PatchCustomBiddingAlgorithmsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v3/customBiddingAlgorithms/{customBiddingAlgorithmsId}",
+      path: "v3/customBiddingAlgorithms/{customBiddingAlgorithmId}",
       hasBody: true,
     }),
     svc,
@@ -14455,7 +14452,7 @@ export const UploadScriptCustomBiddingAlgorithmsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/customBiddingAlgorithms/{customBiddingAlgorithmsId}:uploadScript",
+      path: "v3/customBiddingAlgorithms/{customBiddingAlgorithmId}:uploadScript",
     }),
     svc,
   ) as unknown as Schema.Schema<UploadScriptCustomBiddingAlgorithmsRequest>;
@@ -14500,7 +14497,7 @@ export const GetCustomBiddingAlgorithmsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/customBiddingAlgorithms/{customBiddingAlgorithmsId}",
+      path: "v3/customBiddingAlgorithms/{customBiddingAlgorithmId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetCustomBiddingAlgorithmsRequest>;
@@ -14588,7 +14585,7 @@ export const ListCustomBiddingAlgorithmsRulesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/customBiddingAlgorithms/{customBiddingAlgorithmsId}/rules",
+      path: "v3/customBiddingAlgorithms/{customBiddingAlgorithmId}/rules",
     }),
     svc,
   ) as unknown as Schema.Schema<ListCustomBiddingAlgorithmsRulesRequest>;
@@ -14640,7 +14637,7 @@ export const CreateCustomBiddingAlgorithmsRulesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/customBiddingAlgorithms/{customBiddingAlgorithmsId}/rules",
+      path: "v3/customBiddingAlgorithms/{customBiddingAlgorithmId}/rules",
       hasBody: true,
     }),
     svc,
@@ -14691,7 +14688,7 @@ export const GetCustomBiddingAlgorithmsRulesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/customBiddingAlgorithms/{customBiddingAlgorithmsId}/rules/{rulesId}",
+      path: "v3/customBiddingAlgorithms/{customBiddingAlgorithmId}/rules/{customBiddingAlgorithmRulesId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetCustomBiddingAlgorithmsRulesRequest>;
@@ -14745,7 +14742,7 @@ export const ListCustomBiddingAlgorithmsScriptsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/customBiddingAlgorithms/{customBiddingAlgorithmsId}/scripts",
+      path: "v3/customBiddingAlgorithms/{customBiddingAlgorithmId}/scripts",
     }),
     svc,
   ) as unknown as Schema.Schema<ListCustomBiddingAlgorithmsScriptsRequest>;
@@ -14797,7 +14794,7 @@ export const CreateCustomBiddingAlgorithmsScriptsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/customBiddingAlgorithms/{customBiddingAlgorithmsId}/scripts",
+      path: "v3/customBiddingAlgorithms/{customBiddingAlgorithmId}/scripts",
       hasBody: true,
     }),
     svc,
@@ -14847,7 +14844,7 @@ export const GetCustomBiddingAlgorithmsScriptsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/customBiddingAlgorithms/{customBiddingAlgorithmsId}/scripts/{scriptsId}",
+      path: "v3/customBiddingAlgorithms/{customBiddingAlgorithmId}/scripts/{customBiddingScriptId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetCustomBiddingAlgorithmsScriptsRequest>;
@@ -14883,7 +14880,7 @@ export const GetCustomListsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("advertiserId"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "v3/customLists/{customListsId}" }),
+  T.Http({ method: "GET", path: "v3/customLists/{customListId}" }),
   svc,
 ) as unknown as Schema.Schema<GetCustomListsRequest>;
 
@@ -14966,7 +14963,7 @@ export const GetFloodlightGroupsRequest =
     floodlightGroupId: Schema.String.pipe(T.HttpPath("floodlightGroupId")),
     partnerId: Schema.optional(Schema.String).pipe(T.HttpQuery("partnerId")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/floodlightGroups/{floodlightGroupsId}" }),
+    T.Http({ method: "GET", path: "v3/floodlightGroups/{floodlightGroupId}" }),
     svc,
   ) as unknown as Schema.Schema<GetFloodlightGroupsRequest>;
 
@@ -15055,7 +15052,7 @@ export const ListFloodlightGroupsFloodlightActivitiesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/floodlightGroups/{floodlightGroupsId}/floodlightActivities",
+      path: "v3/floodlightGroups/{floodlightGroupId}/floodlightActivities",
     }),
     svc,
   ) as unknown as Schema.Schema<ListFloodlightGroupsFloodlightActivitiesRequest>;
@@ -15102,7 +15099,7 @@ export const GetFloodlightGroupsFloodlightActivitiesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/floodlightGroups/{floodlightGroupsId}/floodlightActivities/{floodlightActivitiesId}",
+      path: "v3/floodlightGroups/{floodlightGroupId}/floodlightActivities/{floodlightActivityId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetFloodlightGroupsFloodlightActivitiesRequest>;
@@ -15182,7 +15179,7 @@ export const GetGuaranteedOrdersRequest =
     guaranteedOrderId: Schema.String.pipe(T.HttpPath("guaranteedOrderId")),
     partnerId: Schema.optional(Schema.String).pipe(T.HttpQuery("partnerId")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/guaranteedOrders/{guaranteedOrdersId}" }),
+    T.Http({ method: "GET", path: "v3/guaranteedOrders/{guaranteedOrderId}" }),
     svc,
   ) as unknown as Schema.Schema<GetGuaranteedOrdersRequest>;
 
@@ -15220,7 +15217,7 @@ export const EditGuaranteedOrderReadAccessorsGuaranteedOrdersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/guaranteedOrders/{guaranteedOrdersId}:editGuaranteedOrderReadAccessors",
+      path: "v3/guaranteedOrders/{guaranteedOrderId}:editGuaranteedOrderReadAccessors",
       hasBody: true,
     }),
     svc,
@@ -15323,7 +15320,7 @@ export const PatchGuaranteedOrdersRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v3/guaranteedOrders/{guaranteedOrdersId}",
+      path: "v3/guaranteedOrders/{guaranteedOrderId}",
       hasBody: true,
     }),
     svc,
@@ -15364,7 +15361,7 @@ export const GetInventorySourcesRequest =
     inventorySourceId: Schema.String.pipe(T.HttpPath("inventorySourceId")),
     partnerId: Schema.optional(Schema.String).pipe(T.HttpQuery("partnerId")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/inventorySources/{inventorySourcesId}" }),
+    T.Http({ method: "GET", path: "v3/inventorySources/{inventorySourceId}" }),
     svc,
   ) as unknown as Schema.Schema<GetInventorySourcesRequest>;
 
@@ -15441,7 +15438,7 @@ export const EditInventorySourceReadWriteAccessorsInventorySourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/inventorySources/{inventorySourcesId}:editInventorySourceReadWriteAccessors",
+      path: "v3/inventorySources/{inventorySourceId}:editInventorySourceReadWriteAccessors",
       hasBody: true,
     }),
     svc,
@@ -15492,7 +15489,7 @@ export const PatchInventorySourcesRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v3/inventorySources/{inventorySourcesId}",
+      path: "v3/inventorySources/{inventorySourceId}",
       hasBody: true,
     }),
     svc,
@@ -15637,7 +15634,7 @@ export const GetGoogleAudiencesRequest =
     partnerId: Schema.optional(Schema.String).pipe(T.HttpQuery("partnerId")),
     googleAudienceId: Schema.String.pipe(T.HttpPath("googleAudienceId")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/googleAudiences/{googleAudiencesId}" }),
+    T.Http({ method: "GET", path: "v3/googleAudiences/{googleAudienceId}" }),
     svc,
   ) as unknown as Schema.Schema<GetGoogleAudiencesRequest>;
 
@@ -15699,10 +15696,7 @@ export const GetSdfdownloadtasksOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/sdfdownloadtasks/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSdfdownloadtasksOperationsRequest>;
 
@@ -15795,7 +15789,7 @@ export const GetCombinedAudiencesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/combinedAudiences/{combinedAudiencesId}",
+      path: "v3/combinedAudiences/{combinedAudienceId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetCombinedAudiencesRequest>;
@@ -15892,7 +15886,7 @@ export const DeleteInventorySourceGroupsRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "v3/inventorySourceGroups/{inventorySourceGroupsId}",
+      path: "v3/inventorySourceGroups/{inventorySourceGroupId}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteInventorySourceGroupsRequest>;
@@ -15987,7 +15981,7 @@ export const GetInventorySourceGroupsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/inventorySourceGroups/{inventorySourceGroupsId}",
+      path: "v3/inventorySourceGroups/{inventorySourceGroupId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetInventorySourceGroupsRequest>;
@@ -16073,7 +16067,7 @@ export const CreateInventorySourceGroupsAssignedInventorySourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/inventorySourceGroups/{inventorySourceGroupsId}/assignedInventorySources",
+      path: "v3/inventorySourceGroups/{inventorySourceGroupId}/assignedInventorySources",
       hasBody: true,
     }),
     svc,
@@ -16132,7 +16126,7 @@ export const ListInventorySourceGroupsAssignedInventorySourcesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/inventorySourceGroups/{inventorySourceGroupsId}/assignedInventorySources",
+      path: "v3/inventorySourceGroups/{inventorySourceGroupId}/assignedInventorySources",
     }),
     svc,
   ) as unknown as Schema.Schema<ListInventorySourceGroupsAssignedInventorySourcesRequest>;
@@ -16187,7 +16181,7 @@ export const DeleteInventorySourceGroupsAssignedInventorySourcesRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "v3/inventorySourceGroups/{inventorySourceGroupsId}/assignedInventorySources/{assignedInventorySourcesId}",
+      path: "v3/inventorySourceGroups/{inventorySourceGroupId}/assignedInventorySources/{assignedInventorySourceId}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteInventorySourceGroupsAssignedInventorySourcesRequest>;
@@ -16229,7 +16223,7 @@ export const BulkEditInventorySourceGroupsAssignedInventorySourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/inventorySourceGroups/{inventorySourceGroupsId}/assignedInventorySources:bulkEdit",
+      path: "v3/inventorySourceGroups/{inventorySourceGroupId}/assignedInventorySources:bulkEdit",
       hasBody: true,
     }),
     svc,
@@ -16266,7 +16260,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
   body: Schema.optional(GoogleBytestreamMedia).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "POST", path: "media/{mediaId}", hasBody: true }),
+  T.Http({ method: "POST", path: "media/{resourceName}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<UploadMediaRequest>;
 
@@ -16296,7 +16290,7 @@ export interface DownloadMediaRequest {
 export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
 }).pipe(
-  T.Http({ method: "GET", path: "download/{downloadId}" }),
+  T.Http({ method: "GET", path: "download/{resourceName}" }),
   svc,
 ) as unknown as Schema.Schema<DownloadMediaRequest>;
 
@@ -16326,7 +16320,7 @@ export interface GetUsersRequest {
 export const GetUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   userId: Schema.String.pipe(T.HttpPath("userId")),
 }).pipe(
-  T.Http({ method: "GET", path: "v3/users/{usersId}" }),
+  T.Http({ method: "GET", path: "v3/users/{userId}" }),
   svc,
 ) as unknown as Schema.Schema<GetUsersRequest>;
 
@@ -16427,7 +16421,7 @@ export interface DeleteUsersRequest {
 export const DeleteUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   userId: Schema.String.pipe(T.HttpPath("userId")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v3/users/{usersId}" }),
+  T.Http({ method: "DELETE", path: "v3/users/{userId}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteUsersRequest>;
 
@@ -16462,7 +16456,7 @@ export const PatchUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   userId: Schema.String.pipe(T.HttpPath("userId")),
   body: Schema.optional(User).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PATCH", path: "v3/users/{usersId}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v3/users/{userId}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchUsersRequest>;
 
@@ -16497,7 +16491,7 @@ export const BulkEditAssignedUserRolesUsersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/users/{usersId}:bulkEditAssignedUserRoles",
+      path: "v3/users/{userId}:bulkEditAssignedUserRoles",
       hasBody: true,
     }),
     svc,
@@ -16530,7 +16524,7 @@ export interface GetPartnersRequest {
 export const GetPartnersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   partnerId: Schema.String.pipe(T.HttpPath("partnerId")),
 }).pipe(
-  T.Http({ method: "GET", path: "v3/partners/{partnersId}" }),
+  T.Http({ method: "GET", path: "v3/partners/{partnerId}" }),
   svc,
 ) as unknown as Schema.Schema<GetPartnersRequest>;
 
@@ -16567,7 +16561,7 @@ export const EditAssignedTargetingOptionsPartnersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/partners/{partnersId}:editAssignedTargetingOptions",
+      path: "v3/partners/{partnerId}:editAssignedTargetingOptions",
       hasBody: true,
     }),
     svc,
@@ -16705,7 +16699,7 @@ export const GetPartnersTargetingTypesAssignedTargetingOptionsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/partners/{partnersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
+      path: "v3/partners/{partnerId}/targetingTypes/{targetingType}/assignedTargetingOptions/{assignedTargetingOptionId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetPartnersTargetingTypesAssignedTargetingOptionsRequest>;
@@ -16798,7 +16792,7 @@ export const CreatePartnersTargetingTypesAssignedTargetingOptionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/partners/{partnersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
+      path: "v3/partners/{partnerId}/targetingTypes/{targetingType}/assignedTargetingOptions",
       hasBody: true,
     }),
     svc,
@@ -16901,7 +16895,7 @@ export const ListPartnersTargetingTypesAssignedTargetingOptionsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/partners/{partnersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions",
+      path: "v3/partners/{partnerId}/targetingTypes/{targetingType}/assignedTargetingOptions",
     }),
     svc,
   ) as unknown as Schema.Schema<ListPartnersTargetingTypesAssignedTargetingOptionsRequest>;
@@ -17000,7 +16994,7 @@ export const DeletePartnersTargetingTypesAssignedTargetingOptionsRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "v3/partners/{partnersId}/targetingTypes/{targetingTypesId}/assignedTargetingOptions/{assignedTargetingOptionsId}",
+      path: "v3/partners/{partnerId}/targetingTypes/{targetingType}/assignedTargetingOptions/{assignedTargetingOptionId}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeletePartnersTargetingTypesAssignedTargetingOptionsRequest>;
@@ -17044,7 +17038,7 @@ export const GetPartnersChannelsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/partners/{partnersId}/channels/{channelsId}",
+      path: "v3/partners/{partnerId}/channels/{channelId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetPartnersChannelsRequest>;
@@ -17085,7 +17079,7 @@ export const CreatePartnersChannelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/partners/{partnersId}/channels",
+      path: "v3/partners/{partnerId}/channels",
       hasBody: true,
     }),
     svc,
@@ -17134,7 +17128,7 @@ export const PatchPartnersChannelsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v3/partners/{partnersId}/channels/{channelId}",
+      path: "v3/partners/{partnerId}/channels/{channelId}",
       hasBody: true,
     }),
     svc,
@@ -17184,7 +17178,7 @@ export const ListPartnersChannelsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/partners/{partnersId}/channels" }),
+    T.Http({ method: "GET", path: "v3/partners/{partnerId}/channels" }),
     svc,
   ) as unknown as Schema.Schema<ListPartnersChannelsRequest>;
 
@@ -17227,7 +17221,7 @@ export const BulkEditPartnersChannelsSitesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/partners/{partnerId}/channels/{channelsId}/sites:bulkEdit",
+      path: "v3/partners/{partnerId}/channels/{channelId}/sites:bulkEdit",
       hasBody: true,
     }),
     svc,
@@ -17282,7 +17276,7 @@ export const ListPartnersChannelsSitesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v3/partners/{partnersId}/channels/{channelsId}/sites",
+      path: "v3/partners/{partnerId}/channels/{channelId}/sites",
     }),
     svc,
   ) as unknown as Schema.Schema<ListPartnersChannelsSitesRequest>;
@@ -17331,7 +17325,7 @@ export const DeletePartnersChannelsSitesRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "v3/partners/{partnerId}/channels/{channelsId}/sites/{sitesId}",
+      path: "v3/partners/{partnerId}/channels/{channelId}/sites/{urlOrAppId}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeletePartnersChannelsSitesRequest>;
@@ -17376,7 +17370,7 @@ export const CreatePartnersChannelsSitesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/partners/{partnerId}/channels/{channelsId}/sites",
+      path: "v3/partners/{partnerId}/channels/{channelId}/sites",
       hasBody: true,
     }),
     svc,
@@ -17417,7 +17411,7 @@ export const ReplacePartnersChannelsSitesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/partners/{partnerId}/channels/{channelsId}/sites:replace",
+      path: "v3/partners/{partnerId}/channels/{channelId}/sites:replace",
       hasBody: true,
     }),
     svc,

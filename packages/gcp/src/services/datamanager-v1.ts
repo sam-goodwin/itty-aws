@@ -40,7 +40,7 @@ export interface Item {
   /** Optional. A unique identifier to reference the item. */
   itemId?: string;
   /** Optional. A bucket of any [event parameters related to an item](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events) to be included within the event that were not already specified using other structured fields. */
-  additionalItemParameters?: Array<ItemParameter>;
+  additionalItemParameters?: ReadonlyArray<ItemParameter>;
   /** Optional. The number of this item associated with the event. */
   quantity?: string;
   /** Optional. The product ID within the Merchant Center account. */
@@ -63,7 +63,7 @@ export interface CartData {
   /** Optional. The sum of all discounts associated with the transaction. */
   transactionDiscount?: number;
   /** Optional. The list of items associated with the event. */
-  items?: Array<Item>;
+  items?: ReadonlyArray<Item>;
   /** Optional. The language code in ISO 639-1 associated with the Merchant Center feed of the items.where your items are uploaded. */
   merchantFeedLanguageCode?: string;
 }
@@ -157,7 +157,7 @@ export interface UserListDirectLicense {
   /** Immutable. ID of client customer which the user list is being licensed to. */
   clientAccountId?: string;
   /** Output only. Pricing history of this user list license. This field is read-only. */
-  historicalPricings?: Array<UserListLicensePricing>;
+  historicalPricings?: ReadonlyArray<UserListLicensePricing>;
   /** Optional. UserListDirectLicense pricing. */
   pricing?: UserListLicensePricing;
   /** Identifier. The resource name of the user list direct license. */
@@ -201,7 +201,7 @@ export const UserListDirectLicense = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Location {
   /** List of ISO 3166-1 alpha-2 region codes. */
-  regionCodes?: Array<string>;
+  regionCodes?: ReadonlyArray<string>;
 }
 
 export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -329,7 +329,7 @@ export const UserIdentifier = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface UserData {
   /** Required. The identifiers for the user. It's possible to provide multiple instances of the same type of data (for example, multiple email addresses). To increase the likelihood of a match, provide as many identifiers as possible. At most 10 `userIdentifiers` can be provided in a single AudienceMember or Event. */
-  userIdentifiers?: Array<UserIdentifier>;
+  userIdentifiers?: ReadonlyArray<UserIdentifier>;
 }
 
 export const UserData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -393,7 +393,7 @@ export interface CustomVariable {
   /** Optional. The value to store for the custom variable. */
   value?: string;
   /** Optional. Reference string used to determine which of the Event.destination_references the custom variable should be sent to. If empty, the Event.destination_references will be used. */
-  destinationReferences?: Array<string>;
+  destinationReferences?: ReadonlyArray<string>;
   /** Optional. The name of the custom variable to set. If the variable is not found for the given destination, it will be ignored. */
   variable?: string;
 }
@@ -432,7 +432,7 @@ export interface UserProperties {
     | "HIGH"
     | (string & {});
   /** Optional. A bucket of any additional [user properties](https://developers.google.com/analytics/devguides/collection/protocol/ga4/user-properties) for the user associated with this event. */
-  additionalUserProperties?: Array<UserProperty>;
+  additionalUserProperties?: ReadonlyArray<UserProperty>;
 }
 
 export const UserProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -443,9 +443,9 @@ export const UserProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Event {
   /** Optional. A list of key/value pairs for experimental fields that may eventually be promoted to be part of the API. */
-  experimentalFields?: Array<ExperimentalField>;
+  experimentalFields?: ReadonlyArray<ExperimentalField>;
   /** Optional. A bucket of any [event parameters](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events) to be included within the event that were not already specified using other structured fields. */
-  additionalEventParameters?: Array<EventParameter>;
+  additionalEventParameters?: ReadonlyArray<EventParameter>;
   /** Required. The time the event occurred. */
   eventTimestamp?: string;
   /** Optional. Pieces of user provided data, representing the user the event is associated with. */
@@ -470,13 +470,13 @@ export interface Event {
   /** Optional. Information about the transaction and items associated with the event. */
   cartData?: CartData;
   /** Optional. Reference string used to determine the destination. If empty, the event will be sent to all destinations in the request. */
-  destinationReferences?: Array<string>;
+  destinationReferences?: ReadonlyArray<string>;
   /** Optional. A unique identifier for a user, as defined by the advertiser. */
   userId?: string;
   /** Optional. Identifiers and other information used to match the conversion event with other online activity (such as ad clicks). */
   adIdentifiers?: AdIdentifiers;
   /** Optional. Additional key/value pair information to send to the conversion containers (conversion action or FL activity). */
-  customVariables?: Array<CustomVariable>;
+  customVariables?: ReadonlyArray<CustomVariable>;
   /** Optional. The currency code associated with all monetary values within this event. */
   currency?: string;
   /** Optional. The name of the event. Required for GA4 events. */
@@ -561,9 +561,9 @@ export const EncryptionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IngestEventsRequest {
   /** Required. The list of destinations to send the events to. */
-  destinations?: Array<Destination>;
+  destinations?: ReadonlyArray<Destination>;
   /** Required. The list of events to send to the specified destinations. At most 2000 Event resources can be sent in a single request. */
-  events?: Array<Event>;
+  events?: ReadonlyArray<Event>;
   /** Optional. Required for UserData uploads. The encoding type of the user identifiers. For hashed user identifiers, this is the encoding type of the hashed string. For encrypted hashed user identifiers, this is the encoding type of the outer encrypted string, but not necessarily the inner hashed string, meaning the inner hashed string could be encoded in a different way than the outer encrypted string. For non `UserData` uploads, this field is ignored. */
   encoding?: "ENCODING_UNSPECIFIED" | "HEX" | "BASE64" | (string & {});
   /** Optional. Request-level consent to apply to all users in the request. User-level consent overrides request-level consent, and can be specified in each Event. */
@@ -675,7 +675,7 @@ export interface UserListGlobalLicenseCustomerInfo {
   /** Output only. UserListDirectLicense pricing. */
   pricing?: UserListLicensePricing;
   /** Output only. Pricing history of this user list license. */
-  historicalPricings?: Array<UserListLicensePricing>;
+  historicalPricings?: ReadonlyArray<UserListLicensePricing>;
   /** Identifier. The resource name of the user list global license customer. */
   name?: string;
   /** Output only. Status of UserListDirectLicense - ENABLED or DISABLED. */
@@ -863,7 +863,7 @@ export interface IngestedUserListInfo {
   /** Optional. Additional information for partner audiences. This feature is only available to data partners. */
   partnerAudienceInfo?: PartnerAudienceInfo;
   /** Required. Immutable. Upload key types of this user list. */
-  uploadKeyTypes?: Array<
+  uploadKeyTypes?: ReadonlyArray<
     | "UPLOAD_KEY_TYPE_UNSPECIFIED"
     | "CONTACT_ID"
     | "MOBILE_ID"
@@ -957,7 +957,7 @@ export const UserList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PairData {
   /** Required. Cleanroom-provided PII data, hashed with SHA256, and encrypted with an EC commutative cipher using publisher key for the [PAIR]((//support.google.com/admanager/answer/15067908)) user list. At most 10 `pairIds` can be provided in a single AudienceMember. */
-  pairIds?: Array<string>;
+  pairIds?: ReadonlyArray<string>;
 }
 
 export const PairData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -989,7 +989,7 @@ export const WarningCount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WarningInfo {
   /** A list of warnings and counts per warning reason. */
-  warningCounts?: Array<WarningCount>;
+  warningCounts?: ReadonlyArray<WarningCount>;
 }
 
 export const WarningInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1048,7 +1048,7 @@ export const ErrorCount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ErrorInfo {
   /** A list of errors and counts per error reason. May not be populated in all cases. */
-  errorCounts?: Array<ErrorCount>;
+  errorCounts?: ReadonlyArray<ErrorCount>;
 }
 
 export const ErrorInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1194,7 +1194,7 @@ export const RequestStatusPerDestination =
 
 export interface RetrieveRequestStatusResponse {
   /** A list of request statuses per destination. The order of the statuses matches the order of the destinations in the original request. */
-  requestStatusPerDestination?: Array<RequestStatusPerDestination>;
+  requestStatusPerDestination?: ReadonlyArray<RequestStatusPerDestination>;
 }
 
 export const RetrieveRequestStatusResponse =
@@ -1248,7 +1248,7 @@ export interface MarketingDataInsight {
     | "GENDER"
     | (string & {});
   /** Insights for values of a given dimension. */
-  attributes?: Array<MarketingDataInsightsAttribute>;
+  attributes?: ReadonlyArray<MarketingDataInsightsAttribute>;
 }
 
 export const MarketingDataInsight = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1267,7 +1267,7 @@ export interface UserListGlobalLicense {
     | "USER_LIST_GLOBAL_LICENSE_TYPE_DATA_MART_BUY_SIDE"
     | (string & {});
   /** Output only. Pricing history of this user list license. This field is read-only. */
-  historicalPricings?: Array<UserListLicensePricing>;
+  historicalPricings?: ReadonlyArray<UserListLicensePricing>;
   /** Output only. Metrics related to this license This field is read-only and only populated if the start and end dates are set in the ListUserListGlobalLicenses call */
   metrics?: UserListLicenseMetrics;
   /** Optional. UserListGlobalLicense pricing. */
@@ -1299,7 +1299,7 @@ export interface ListUserListGlobalLicensesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The licenses for the given user list in the request. */
-  userListGlobalLicenses?: Array<UserListGlobalLicense>;
+  userListGlobalLicenses?: ReadonlyArray<UserListGlobalLicense>;
 }
 
 export const ListUserListGlobalLicensesResponse =
@@ -1335,7 +1335,7 @@ export const RemoveAudienceMembersResponse =
 
 export interface ListUserListsResponse {
   /** The user lists from the specified account. */
-  userLists?: Array<UserList>;
+  userLists?: ReadonlyArray<UserList>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1347,7 +1347,7 @@ export const ListUserListsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PpidData {
   /** Required. The list of publisher provided identifiers for a user. */
-  ppids?: Array<string>;
+  ppids?: ReadonlyArray<string>;
 }
 
 export const PpidData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1388,7 +1388,7 @@ export const IngestEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MobileData {
   /** Required. The list of mobile device IDs (advertising ID/IDFA). At most 10 `mobileIds` can be provided in a single AudienceMember. */
-  mobileIds?: Array<string>;
+  mobileIds?: ReadonlyArray<string>;
 }
 
 export const MobileData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1403,7 +1403,7 @@ export interface AudienceMember {
   /** Optional. The consent setting for the user. */
   consent?: Consent;
   /** Optional. Defines which Destination to send the audience member to. */
-  destinationReferences?: Array<string>;
+  destinationReferences?: ReadonlyArray<string>;
   /** User-provided data that identifies the user. */
   userData?: UserData;
   /** Data identifying the user's mobile devices. */
@@ -1424,7 +1424,7 @@ export const AudienceMember = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IngestAudienceMembersRequest {
   /** Required. The list of destinations to send the audience members to. */
-  destinations?: Array<Destination>;
+  destinations?: ReadonlyArray<Destination>;
   /** Optional. Required for UserData uploads. The encoding type of the user identifiers. For hashed user identifiers, this is the encoding type of the hashed string. For encrypted hashed user identifiers, this is the encoding type of the outer encrypted string, but not necessarily the inner hashed string, meaning the inner hashed string could be encoded in a different way than the outer encrypted string. For non `UserData` uploads, this field is ignored. */
   encoding?: "ENCODING_UNSPECIFIED" | "HEX" | "BASE64" | (string & {});
   /** Optional. Request-level consent to apply to all users in the request. User-level consent overrides request-level consent, and can be specified in each AudienceMember. */
@@ -1434,7 +1434,7 @@ export interface IngestAudienceMembersRequest {
   /** Optional. Encryption information for UserData uploads. If not set, it's assumed that uploaded identifying information is hashed but not encrypted. For non `UserData` uploads, this field is ignored. */
   encryptionInfo?: EncryptionInfo;
   /** Required. The list of users to send to the specified destinations. At most 10000 AudienceMember resources can be sent in a single request. */
-  audienceMembers?: Array<AudienceMember>;
+  audienceMembers?: ReadonlyArray<AudienceMember>;
   /** Optional. The terms of service that the user has accepted/rejected. */
   termsOfService?: TermsOfService;
 }
@@ -1452,7 +1452,7 @@ export const IngestAudienceMembersRequest =
 
 export interface ListUserListDirectLicensesResponse {
   /** The licenses for the given user list in the request. */
-  userListDirectLicenses?: Array<UserListDirectLicense>;
+  userListDirectLicenses?: ReadonlyArray<UserListDirectLicense>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1485,7 +1485,7 @@ export const PartnerLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListUserListGlobalLicenseCustomerInfosResponse {
   /** The customer information for the given license in the request. */
-  userListGlobalLicenseCustomerInfos?: Array<UserListGlobalLicenseCustomerInfo>;
+  userListGlobalLicenseCustomerInfos?: ReadonlyArray<UserListGlobalLicenseCustomerInfo>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1506,7 +1506,7 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 
 export interface SearchPartnerLinksResponse {
   /** The partner links for the given account. */
-  partnerLinks?: Array<PartnerLink>;
+  partnerLinks?: ReadonlyArray<PartnerLink>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1519,7 +1519,7 @@ export const SearchPartnerLinksResponse =
 
 export interface RetrieveInsightsResponse {
   /** Contains the insights for the marketing data. */
-  marketingDataInsights?: Array<MarketingDataInsight>;
+  marketingDataInsights?: ReadonlyArray<MarketingDataInsight>;
 }
 
 export const RetrieveInsightsResponse =
@@ -1529,9 +1529,9 @@ export const RetrieveInsightsResponse =
 
 export interface RemoveAudienceMembersRequest {
   /** Required. The list of users to remove. */
-  audienceMembers?: Array<AudienceMember>;
+  audienceMembers?: ReadonlyArray<AudienceMember>;
   /** Required. The list of destinations to remove the users from. */
-  destinations?: Array<Destination>;
+  destinations?: ReadonlyArray<Destination>;
   /** Optional. Required for UserData uploads. The encoding type of the user identifiers. Applies to only the outer encoding for encrypted user identifiers. For non `UserData` uploads, this field is ignored. */
   encoding?: "ENCODING_UNSPECIFIED" | "HEX" | "BASE64" | (string & {});
   /** Optional. For testing purposes. If `true`, the request is validated but not executed. Only errors are returned, not results. */
@@ -1555,7 +1555,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1642,10 +1642,7 @@ export const GetAccountTypesAccountsUserListDirectLicensesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accountTypes/{accountTypesId}/accounts/{accountsId}/userListDirectLicenses/{userListDirectLicensesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountTypesAccountsUserListDirectLicensesRequest>;
 
@@ -1686,10 +1683,7 @@ export const ListAccountTypesAccountsUserListDirectLicensesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accountTypes/{accountTypesId}/accounts/{accountsId}/userListDirectLicenses",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/userListDirectLicenses" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountTypesAccountsUserListDirectLicensesRequest>;
 
@@ -1730,7 +1724,7 @@ export const CreateAccountTypesAccountsUserListDirectLicensesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accountTypes/{accountTypesId}/accounts/{accountsId}/userListDirectLicenses",
+      path: "v1/{parent}/userListDirectLicenses",
       hasBody: true,
     }),
     svc,
@@ -1771,11 +1765,7 @@ export const PatchAccountTypesAccountsUserListDirectLicensesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(UserListDirectLicense).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/accountTypes/{accountTypesId}/accounts/{accountsId}/userListDirectLicenses/{userListDirectLicensesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountTypesAccountsUserListDirectLicensesRequest>;
 
@@ -1808,10 +1798,7 @@ export const GetAccountTypesAccountsUserListGlobalLicensesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accountTypes/{accountTypesId}/accounts/{accountsId}/userListGlobalLicenses/{userListGlobalLicensesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountTypesAccountsUserListGlobalLicensesRequest>;
 
@@ -1852,10 +1839,7 @@ export const ListAccountTypesAccountsUserListGlobalLicensesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accountTypes/{accountTypesId}/accounts/{accountsId}/userListGlobalLicenses",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/userListGlobalLicenses" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountTypesAccountsUserListGlobalLicensesRequest>;
 
@@ -1896,7 +1880,7 @@ export const CreateAccountTypesAccountsUserListGlobalLicensesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accountTypes/{accountTypesId}/accounts/{accountsId}/userListGlobalLicenses",
+      path: "v1/{parent}/userListGlobalLicenses",
       hasBody: true,
     }),
     svc,
@@ -1937,11 +1921,7 @@ export const PatchAccountTypesAccountsUserListGlobalLicensesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(UserListGlobalLicense).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/accountTypes/{accountTypesId}/accounts/{accountsId}/userListGlobalLicenses/{userListGlobalLicensesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountTypesAccountsUserListGlobalLicensesRequest>;
 
@@ -1985,7 +1965,7 @@ export const ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicense
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/accountTypes/{accountTypesId}/accounts/{accountsId}/userListGlobalLicenses/{userListGlobalLicensesId}/userListGlobalLicenseCustomerInfos",
+      path: "v1/{parent}/userListGlobalLicenseCustomerInfos",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosRequest>;
@@ -2030,7 +2010,7 @@ export const RetrieveAccountTypesAccountsInsightsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accountTypes/{accountTypesId}/accounts/{accountsId}/insights:retrieve",
+      path: "v1/{parent}/insights:retrieve",
       hasBody: true,
     }),
     svc,
@@ -2067,11 +2047,7 @@ export const CreateAccountTypesAccountsPartnerLinksRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(PartnerLink).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/accountTypes/{accountTypesId}/accounts/{accountsId}/partnerLinks",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/partnerLinks", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateAccountTypesAccountsPartnerLinksRequest>;
 
@@ -2111,10 +2087,7 @@ export const SearchAccountTypesAccountsPartnerLinksRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accountTypes/{accountTypesId}/accounts/{accountsId}/partnerLinks:search",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/partnerLinks:search" }),
     svc,
   ) as unknown as Schema.Schema<SearchAccountTypesAccountsPartnerLinksRequest>;
 
@@ -2150,10 +2123,7 @@ export const DeleteAccountTypesAccountsPartnerLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/accountTypes/{accountTypesId}/accounts/{accountsId}/partnerLinks/{partnerLinksId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountTypesAccountsPartnerLinksRequest>;
 
@@ -2184,10 +2154,7 @@ export const GetAccountTypesAccountsUserListsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accountTypes/{accountTypesId}/accounts/{accountsId}/userLists/{userListsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountTypesAccountsUserListsRequest>;
 
@@ -2229,11 +2196,7 @@ export const PatchAccountTypesAccountsUserListsRequest =
     ),
     body: Schema.optional(UserList).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/accountTypes/{accountTypesId}/accounts/{accountsId}/userLists/{userListsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountTypesAccountsUserListsRequest>;
 
@@ -2269,10 +2232,7 @@ export const DeleteAccountTypesAccountsUserListsRequest =
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/accountTypes/{accountTypesId}/accounts/{accountsId}/userLists/{userListsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountTypesAccountsUserListsRequest>;
 
@@ -2312,10 +2272,7 @@ export const ListAccountTypesAccountsUserListsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accountTypes/{accountTypesId}/accounts/{accountsId}/userLists",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/userLists" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountTypesAccountsUserListsRequest>;
 
@@ -2358,11 +2315,7 @@ export const CreateAccountTypesAccountsUserListsRequest =
     ),
     body: Schema.optional(UserList).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/accountTypes/{accountTypesId}/accounts/{accountsId}/userLists",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/userLists", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateAccountTypesAccountsUserListsRequest>;
 

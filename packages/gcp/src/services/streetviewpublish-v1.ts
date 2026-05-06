@@ -42,11 +42,11 @@ export const Measurement3d = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Imu {
   /** The magnetometer measurements of the magnetic field in microtesla (uT) with increasing timestamps from devices. */
-  magUt?: Array<Measurement3d>;
+  magUt?: ReadonlyArray<Measurement3d>;
   /** The accelerometer measurements in meters/sec^2 with increasing timestamps from devices. */
-  accelMpsps?: Array<Measurement3d>;
+  accelMpsps?: ReadonlyArray<Measurement3d>;
   /** The gyroscope measurements in radians/sec with increasing timestamps from devices. */
-  gyroRps?: Array<Measurement3d>;
+  gyroRps?: ReadonlyArray<Measurement3d>;
 }
 
 export const Imu = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -157,7 +157,7 @@ export interface Photo {
   /** Output only. The download URL for the photo bytes. This field is set only when GetPhotoRequest.view is set to PhotoView.INCLUDE_DOWNLOAD_URL. */
   downloadUrl?: string;
   /** Optional. Connections to other photos. A connection represents the link from this photo to another photo. */
-  connections?: Array<Connection>;
+  connections?: ReadonlyArray<Connection>;
   /** Output only. Status in Google Maps, whether this photo was published or rejected. */
   mapsPublishStatus?:
     | "UNSPECIFIED_MAPS_PUBLISH_STATUS"
@@ -167,7 +167,7 @@ export interface Photo {
   /** Required. Output only. Required when updating a photo. Output only when creating a photo. Identifier for the photo, which is unique among all photos in Google. */
   photoId?: PhotoId;
   /** Optional. Places where this photo belongs. */
-  places?: Array<Place>;
+  places?: ReadonlyArray<Place>;
   /** Optional. Absolute time when the photo was captured. When the photo has no exif timestamp, this is used to set a timestamp in the photo metadata. */
   captureTime?: string;
   /** Optional. Pose of the photo. */
@@ -314,7 +314,7 @@ export interface PhotoSequence {
   /** Input only. Three axis IMU data for the collection. If this data is too large to put in the request, then it should be put in the CAMM track for the video. This data always takes precedence over the equivalent CAMM data, if it exists. */
   imu?: Imu;
   /** Output only. Photos with increasing timestamps. */
-  photos?: Array<Photo>;
+  photos?: ReadonlyArray<Photo>;
   /** Input only. Required when creating photo sequence. The resource name where the bytes of the photo sequence (in the form of video) are uploaded. */
   uploadReference?: UploadRef;
   /** Input only. If both raw_gps_timeline and the Camera Motion Metadata Track (CAMM) contain GPS measurements, indicate which takes precedence. */
@@ -362,7 +362,7 @@ export interface PhotoSequence {
     | "FAILED"
     | (string & {});
   /** Input only. Raw GPS measurements with increasing timestamps from the device that aren't time synced with each photo. These raw measurements will be used to infer the pose of each frame. Required in input when InputType is VIDEO and raw GPS measurements are not in Camera Motion Metadata Track (CAMM). User can indicate which takes precedence using gps_source if raw GPS measurements are provided in both raw_gps_timeline and Camera Motion Metadata Track (CAMM). */
-  rawGpsTimeline?: Array<Pose>;
+  rawGpsTimeline?: ReadonlyArray<Pose>;
   /** Output only. If this sequence has `failure_reason` set, this may contain additional details about the failure. */
   failureDetails?: ProcessingFailureDetails;
   /** Output only. The total number of views that all the published images in this PhotoSequence have received. */
@@ -397,7 +397,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -422,7 +422,7 @@ export const UpdatePhotoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchUpdatePhotosRequest {
   /** Required. List of UpdatePhotoRequests. */
-  updatePhotoRequests?: Array<UpdatePhotoRequest>;
+  updatePhotoRequests?: ReadonlyArray<UpdatePhotoRequest>;
 }
 
 export const BatchUpdatePhotosRequest =
@@ -432,7 +432,7 @@ export const BatchUpdatePhotosRequest =
 
 export interface BatchDeletePhotosRequest {
   /** Required. IDs of the Photos. HTTP GET requests require the following syntax for the URL query parameter: `photoIds=&photoIds=&...`. */
-  photoIds?: Array<string>;
+  photoIds?: ReadonlyArray<string>;
 }
 
 export const BatchDeletePhotosRequest =
@@ -442,7 +442,7 @@ export const BatchDeletePhotosRequest =
 
 export interface ListPhotosResponse {
   /** List of photos. The pageSize field in the request determines the number of items returned. */
-  photos?: Array<Photo>;
+  photos?: ReadonlyArray<Photo>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -477,7 +477,7 @@ export interface ListPhotoSequencesResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** List of photo sequences via Operation interface. The maximum number of items returned is based on the pageSize field in the request. Each item in the list can have three possible states, * `Operation.done` = false, if the processing of PhotoSequence is not finished yet. * `Operation.done` = true and `Operation.error` is populated, if there was an error in processing. * `Operation.done` = true and `Operation.response` contains a PhotoSequence message, In each sequence, only Id is populated. */
-  photoSequences?: Array<Operation>;
+  photoSequences?: ReadonlyArray<Operation>;
 }
 
 export const ListPhotoSequencesResponse =
@@ -506,7 +506,7 @@ export const PhotoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchUpdatePhotosResponse {
   /** List of results for each individual Photo updated, in the same order as the request. */
-  results?: Array<PhotoResponse>;
+  results?: ReadonlyArray<PhotoResponse>;
 }
 
 export const BatchUpdatePhotosResponse =
@@ -516,7 +516,7 @@ export const BatchUpdatePhotosResponse =
 
 export interface BatchGetPhotosResponse {
   /** List of results for each individual Photo requested, in the same order as the requests in BatchGetPhotos. */
-  results?: Array<PhotoResponse>;
+  results?: ReadonlyArray<PhotoResponse>;
 }
 
 export const BatchGetPhotosResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -527,7 +527,7 @@ export const BatchGetPhotosResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface BatchDeletePhotosResponse {
   /** The status for the operation to delete a single Photo in the batch request. */
-  status?: Array<Status>;
+  status?: ReadonlyArray<Status>;
 }
 
 export const BatchDeletePhotosResponse =

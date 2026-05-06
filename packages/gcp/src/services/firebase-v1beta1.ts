@@ -32,7 +32,7 @@ export interface Location {
     | "MULTI_REGIONAL"
     | (string & {});
   /** Products and services that are available in the location for default Google Cloud resources. */
-  features?: Array<
+  features?: ReadonlyArray<
     | "LOCATION_FEATURE_UNSPECIFIED"
     | "FIRESTORE"
     | "DEFAULT_STORAGE"
@@ -203,7 +203,7 @@ export const WebAppConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ProductMetadata {
   /** List of warnings related to the associated operation. */
-  warningMessages?: Array<string>;
+  warningMessages?: ReadonlyArray<string>;
 }
 
 export const ProductMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -212,7 +212,7 @@ export const ProductMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WebApp {
   /** The URLs where the `WebApp` is hosted. */
-  appUrls?: Array<string>;
+  appUrls?: ReadonlyArray<string>;
   /** Output only. Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps. */
   webId?: string;
   /** Output only. Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`. */
@@ -267,7 +267,7 @@ export const ShaCertificate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListShaCertificatesResponse {
   /** The list of each `ShaCertificate` associated with the `AndroidApp`. */
-  certificates?: Array<ShaCertificate>;
+  certificates?: ReadonlyArray<ShaCertificate>;
 }
 
 export const ListShaCertificatesResponse =
@@ -277,7 +277,7 @@ export const ListShaCertificatesResponse =
 
 export interface ListFirebaseProjectsResponse {
   /** One page of the list of Projects that are accessible to the caller. */
-  results?: Array<FirebaseProject>;
+  results?: ReadonlyArray<FirebaseProject>;
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results. This token can be used in a subsequent calls to `ListFirebaseProjects` to find the next group of Projects. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
@@ -320,7 +320,7 @@ export const FirebaseAppInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SearchFirebaseAppsResponse {
   /** One page of results from a call to `SearchFirebaseApps`. */
-  apps?: Array<FirebaseAppInfo>;
+  apps?: ReadonlyArray<FirebaseAppInfo>;
   /** If the result list is too large to fit in a single response, then a token is returned. This token can be used in a subsequent calls to `SearchFirebaseApps` to find the next group of Apps. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
@@ -405,7 +405,7 @@ export const ProjectInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAvailableProjectsResponse {
   /** The list of Google Cloud `Projects` which can have Firebase resources added to them. */
-  projectInfo?: Array<ProjectInfo>;
+  projectInfo?: ReadonlyArray<ProjectInfo>;
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results. This token can be used in a subsequent calls to `ListAvailableProjects` to find the next group of Projects. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
@@ -418,7 +418,7 @@ export const ListAvailableProjectsResponse =
 
 export interface ListIosAppsResponse {
   /** List of each `IosApp` associated with the specified `FirebaseProject`. */
-  apps?: Array<IosApp>;
+  apps?: ReadonlyArray<IosApp>;
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results. This token can be used in a subsequent call to `ListIosApps` to find the next group of Apps. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
@@ -467,7 +467,7 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -547,7 +547,7 @@ export const AnalyticsProperty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AnalyticsDetails {
   /** - For `AndroidApps` and `IosApps`: a map of `app` to `streamId` for each Firebase App in the specified `FirebaseProject`. Each `app` and `streamId` appears only once. - For `WebApps`: a map of `app` to `streamId` and `measurementId` for each `WebApp` in the specified `FirebaseProject`. Each `app`, `streamId`, and `measurementId` appears only once. */
-  streamMappings?: Array<StreamMapping>;
+  streamMappings?: ReadonlyArray<StreamMapping>;
   /** The Analytics Property object associated with the specified `FirebaseProject`. This object contains the details of the Google Analytics property associated with the Project. */
   analyticsProperty?: AnalyticsProperty;
 }
@@ -569,7 +569,7 @@ export interface AndroidApp {
   /** The resource name of the AndroidApp, in the format: projects/ PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)). */
   name?: string;
   /** The SHA1 certificate hashes for the AndroidApp. */
-  sha1Hashes?: Array<string>;
+  sha1Hashes?: ReadonlyArray<string>;
   /** The user-assigned display name for the `AndroidApp`. */
   displayName?: string;
   /** This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to ensure the client has an up-to-date value before proceeding. Learn more about `etag` in Google's [AIP-154 standard](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly validated. */
@@ -579,7 +579,7 @@ export interface AndroidApp {
   /** Output only. The lifecycle state of the App. */
   state?: "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED" | (string & {});
   /** The SHA256 certificate hashes for the AndroidApp. */
-  sha256Hashes?: Array<string>;
+  sha256Hashes?: ReadonlyArray<string>;
 }
 
 export const AndroidApp = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -608,7 +608,7 @@ export const FinalizeDefaultLocationRequest =
 
 export interface ListAndroidAppsResponse {
   /** List of each `AndroidApp` associated with the specified `FirebaseProject`. */
-  apps?: Array<AndroidApp>;
+  apps?: ReadonlyArray<AndroidApp>;
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results. This token can be used in a subsequent call to `ListAndroidApps` to find the next group of Apps. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
@@ -646,7 +646,7 @@ export const AndroidAppConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAvailableLocationsResponse {
   /** One page of results from a call to `ListAvailableLocations`. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results and all available locations have been listed. This token can be used in a subsequent call to `ListAvailableLocations` to find more locations. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
@@ -698,7 +698,7 @@ export const RemoveIosAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListWebAppsResponse {
   /** List of each `WebApp` associated with the specified `FirebaseProject`. */
-  apps?: Array<WebApp>;
+  apps?: ReadonlyArray<WebApp>;
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results. This token can be used in a subsequent call to `ListWebApps` to find the next group of Apps. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
@@ -731,7 +731,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta1/operations/{operationsId}" }),
+  T.Http({ method: "GET", path: "v1beta1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -761,10 +761,7 @@ export const GetAnalyticsDetailsProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/analyticsDetails",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAnalyticsDetailsProjectsRequest>;
 
@@ -794,7 +791,7 @@ export interface GetProjectsRequest {
 export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta1/projects/{projectsId}" }),
+  T.Http({ method: "GET", path: "v1beta1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetProjectsRequest>;
 
@@ -829,7 +826,7 @@ export const RemoveAnalyticsProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}:removeAnalytics",
+      path: "v1beta1/{parent}:removeAnalytics",
       hasBody: true,
     }),
     svc,
@@ -867,7 +864,7 @@ export const AddGoogleAnalyticsProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}:addGoogleAnalytics",
+      path: "v1beta1/{parent}:addGoogleAnalytics",
       hasBody: true,
     }),
     svc,
@@ -900,10 +897,7 @@ export const GetAdminSdkConfigProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/adminSdkConfig",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAdminSdkConfigProjectsRequest>;
 
@@ -939,11 +933,7 @@ export const PatchProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(FirebaseProject).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "PATCH",
-    path: "v1beta1/projects/{projectsId}",
-    hasBody: true,
-  }),
+  T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchProjectsRequest>;
 
@@ -988,7 +978,7 @@ export const SearchAppsProjectsRequest =
     ),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/projects/{projectsId}:searchApps" }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}:searchApps" }),
     svc,
   ) as unknown as Schema.Schema<SearchAppsProjectsRequest>;
 
@@ -1068,7 +1058,7 @@ export const AddFirebaseProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}:addFirebase",
+      path: "v1beta1/{project}:addFirebase",
       hasBody: true,
     }),
     svc,
@@ -1104,11 +1094,7 @@ export const RemoveProjectsIosAppsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RemoveIosAppRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/iosApps/{iosAppsId}:remove",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:remove", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RemoveProjectsIosAppsRequest>;
 
@@ -1150,7 +1136,7 @@ export const ListProjectsIosAppsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/projects/{projectsId}/iosApps" }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/iosApps" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsIosAppsRequest>;
 
@@ -1188,11 +1174,7 @@ export const UndeleteProjectsIosAppsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UndeleteIosAppRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/iosApps/{iosAppsId}:undelete",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:undelete", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UndeleteProjectsIosAppsRequest>;
 
@@ -1223,10 +1205,7 @@ export const GetConfigProjectsIosAppsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/iosApps/{iosAppsId}/config",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConfigProjectsIosAppsRequest>;
 
@@ -1263,11 +1242,7 @@ export const PatchProjectsIosAppsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(IosApp).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/projects/{projectsId}/iosApps/{iosAppsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsIosAppsRequest>;
 
@@ -1297,10 +1272,7 @@ export const GetProjectsIosAppsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/iosApps/{iosAppsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsIosAppsRequest>;
 
@@ -1333,11 +1305,7 @@ export const CreateProjectsIosAppsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(IosApp).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/iosApps",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{parent}/iosApps", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsIosAppsRequest>;
 
@@ -1368,10 +1336,7 @@ export const GetConfigProjectsWebAppsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/webApps/{webAppsId}/config",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConfigProjectsWebAppsRequest>;
 
@@ -1402,10 +1367,7 @@ export const GetProjectsWebAppsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/webApps/{webAppsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsWebAppsRequest>;
 
@@ -1438,11 +1400,7 @@ export const CreateProjectsWebAppsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(WebApp).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/webApps",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{parent}/webApps", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsWebAppsRequest>;
 
@@ -1479,11 +1437,7 @@ export const PatchProjectsWebAppsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(WebApp).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/projects/{projectsId}/webApps/{webAppsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsWebAppsRequest>;
 
@@ -1524,7 +1478,7 @@ export const ListProjectsWebAppsRequest =
       T.HttpQuery("showDeleted"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/projects/{projectsId}/webApps" }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/webApps" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsWebAppsRequest>;
 
@@ -1562,11 +1516,7 @@ export const RemoveProjectsWebAppsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RemoveWebAppRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/webApps/{webAppsId}:remove",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:remove", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RemoveProjectsWebAppsRequest>;
 
@@ -1600,11 +1550,7 @@ export const UndeleteProjectsWebAppsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UndeleteWebAppRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/webApps/{webAppsId}:undelete",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:undelete", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UndeleteProjectsWebAppsRequest>;
 
@@ -1640,7 +1586,7 @@ export const FinalizeProjectsDefaultLocationRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/defaultLocation:finalize",
+      path: "v1beta1/{parent}/defaultLocation:finalize",
       hasBody: true,
     }),
     svc,
@@ -1676,11 +1622,7 @@ export const UndeleteProjectsAndroidAppsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UndeleteAndroidAppRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/androidApps/{androidAppsId}:undelete",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:undelete", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UndeleteProjectsAndroidAppsRequest>;
 
@@ -1714,11 +1656,7 @@ export const RemoveProjectsAndroidAppsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RemoveAndroidAppRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/androidApps/{androidAppsId}:remove",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:remove", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RemoveProjectsAndroidAppsRequest>;
 
@@ -1760,10 +1698,7 @@ export const ListProjectsAndroidAppsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/androidApps",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/androidApps" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAndroidAppsRequest>;
 
@@ -1804,11 +1739,7 @@ export const PatchProjectsAndroidAppsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AndroidApp).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/projects/{projectsId}/androidApps/{androidAppsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAndroidAppsRequest>;
 
@@ -1839,10 +1770,7 @@ export const GetProjectsAndroidAppsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/androidApps/{androidAppsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAndroidAppsRequest>;
 
@@ -1878,7 +1806,7 @@ export const CreateProjectsAndroidAppsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/androidApps",
+      path: "v1beta1/{parent}/androidApps",
       hasBody: true,
     }),
     svc,
@@ -1911,10 +1839,7 @@ export const GetConfigProjectsAndroidAppsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/androidApps/{androidAppsId}/config",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConfigProjectsAndroidAppsRequest>;
 
@@ -1945,10 +1870,7 @@ export const ListProjectsAndroidAppsShaRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/androidApps/{androidAppsId}/sha",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/sha" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAndroidAppsShaRequest>;
 
@@ -1982,11 +1904,7 @@ export const CreateProjectsAndroidAppsShaRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ShaCertificate).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/androidApps/{androidAppsId}/sha",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{parent}/sha", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsAndroidAppsShaRequest>;
 
@@ -2017,10 +1935,7 @@ export const DeleteProjectsAndroidAppsShaRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/androidApps/{androidAppsId}/sha/{shaId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsAndroidAppsShaRequest>;
 
@@ -2057,10 +1972,7 @@ export const ListProjectsAvailableLocationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/availableLocations",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/availableLocations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAvailableLocationsRequest>;
 
