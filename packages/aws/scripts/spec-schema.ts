@@ -23,6 +23,7 @@ export const NetworkError = "NetworkError" as const;
 export const AbortedError = "AbortedError" as const;
 export const NotFoundError = "NotFoundError" as const;
 export const AlreadyExistsError = "AlreadyExistsError" as const;
+export const DependencyViolationError = "DependencyViolationError" as const;
 
 /**
  * Schema for error category strings.
@@ -40,6 +41,7 @@ export const CategorySchema = S.Literals([
   AbortedError,
   NotFoundError,
   AlreadyExistsError,
+  DependencyViolationError
 ]);
 export type CategorySchema = typeof CategorySchema.Type;
 
