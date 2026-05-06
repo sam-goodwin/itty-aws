@@ -244,12 +244,11 @@ jobs:
           echo "--- Published ${PKG_NAME}@${VERSION} ---"
 
   # ── Step 3b: Build + publish all other SDKs in parallel. ──
-  # gcp is excluded — its build is too large for GitHub Actions runners.
   publish-sdk:
     needs: [bump, commit-and-tag, publish-core]
-    # aws is large enough that the default runner hangs during build; route it
-    # to a larger runner via the matrix `include` below. Everything else stays
-    # on the default ubuntu-latest.
+    # aws and gcp are large enough that the default runner hangs during build;
+    # route them to a larger runner via the matrix `include` below. Everything
+    # else stays on the default ubuntu-latest.
     runs-on: ${{ matrix.runner || 'ubuntu-latest' }}
     strategy:
       fail-fast: false
@@ -261,6 +260,7 @@ jobs:
           - cloudflare
           - coinbase
           - fly-io
+          - gcp
           - kubernetes
           - mongodb-atlas
           - neon
@@ -275,6 +275,8 @@ jobs:
           - expo-eas
         include:
           - package: aws
+            runner: ubuntu-22-large
+          - package: gcp
             runner: ubuntu-22-large
     steps:
       - uses: actions/checkout@v6

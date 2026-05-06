@@ -127,7 +127,8 @@ jobs:
   ci-aws:
     needs: detect-changes
     if: needs.detect-changes.outputs.aws == 'true'
-    runs-on: ubuntu-latest
+    # aws build is large enough that the default runner hangs; use a larger runner.
+    runs-on: ubuntu-22-large
     permissions:
       id-token: write
     steps:
@@ -186,7 +187,8 @@ jobs:
   ci-gcp:
     needs: detect-changes
     if: needs.detect-changes.outputs.gcp == 'true'
-    runs-on: ubuntu-latest
+    # gcp build is too large for the default runner; use a larger runner.
+    runs-on: ubuntu-22-large
     steps:
       - uses: actions/checkout@v6
       - uses: oven-sh/setup-bun@v2
@@ -195,9 +197,8 @@ jobs:
       - run: bun install --frozen-lockfile
       - run: bun run build
         working-directory: packages/core
-      # disable until we can optimize because its wayyy to big rn 
-      # - run: bun run check
-      #   working-directory: packages/gcp
+      - run: bun run check
+        working-directory: packages/gcp
 
   ci-neon:
     needs: detect-changes

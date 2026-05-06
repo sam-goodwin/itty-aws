@@ -137,7 +137,9 @@ jobs:
   publish:
     needs: [detect-changes, tags]
     if: needs.detect-changes.outputs.packages != '[]'
-    runs-on: ubuntu-latest
+    # aws and gcp builds are too large for the default runner; route them to a
+    # larger runner. Everything else stays on ubuntu-latest.
+    runs-on: ${{ (matrix.package == 'aws' || matrix.package == 'gcp') && 'ubuntu-22-large' || 'ubuntu-latest' }}
     strategy:
       fail-fast: false
       matrix:
@@ -163,9 +165,8 @@ jobs:
       - run: bun install --frozen-lockfile
 
       # `tsgo -b` follows project references, so building the leaf package also
-      # builds core. gcp is too large for GH runners — pack it source-only.
-      - if: matrix.package != 'gcp'
-        run: bun run build
+      # builds core.
+      - run: bun run build
         working-directory: packages/${{ matrix.package }}
 
       - name: Publish ${{ matrix.package }}
@@ -190,8 +191,8 @@ jobs:
   # ── PR-only: sticky comment with install URLs pinned to this commit. ──────
   comment:
     needs: [detect-changes, tags, publish]
-    # `always()` so a single matrix failure (e.g. gcp) doesn't drop the comment
-    # for every other package that did publish.
+    # `always()` so a single matrix failure doesn't drop the comment for every
+    # other package that did publish.
     if: always() && github.event_name == 'pull_request' && needs.detect-changes.outputs.packages != '[]' && needs.tags.result == 'success'
     runs-on: ubuntu-latest
     steps:
