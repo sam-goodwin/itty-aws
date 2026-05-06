@@ -37,7 +37,7 @@ export const GclbObservationSourcePscNetworkConfig =
 
 export interface GclbObservationSource {
   /** Required. The VPC networks where traffic will be observed. All load balancers within this network will be observed. Currently, this is limited to only one network. */
-  pscNetworkConfigs?: Array<GclbObservationSourcePscNetworkConfig>;
+  pscNetworkConfigs?: ReadonlyArray<GclbObservationSourcePscNetworkConfig>;
 }
 
 export const GclbObservationSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -69,7 +69,7 @@ export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -92,7 +92,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -140,7 +140,7 @@ export interface EditTagsApiObservationsRequest {
   /** Required. Identifier of ApiObservation need to be edit tags Format example: "apigee.googleapis.com|us-west1|443" */
   apiObservationId?: string;
   /** Required. Tag actions to be applied */
-  tagActions?: Array<TagAction>;
+  tagActions?: ReadonlyArray<TagAction>;
 }
 
 export const EditTagsApiObservationsRequest =
@@ -151,7 +151,7 @@ export const EditTagsApiObservationsRequest =
 
 export interface BatchEditTagsApiObservationsRequest {
   /** Required. The request message specifying the resources to update. A maximum of 1000 apiObservations can be modified in a batch. */
-  requests?: Array<EditTagsApiObservationsRequest>;
+  requests?: ReadonlyArray<EditTagsApiObservationsRequest>;
 }
 
 export const BatchEditTagsApiObservationsRequest =
@@ -190,9 +190,9 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -313,7 +313,7 @@ export interface HttpOperation {
   /** Query params of HttpOperation */
   queryParams?: Record<string, HttpOperationQueryParam>;
   /** Path params of HttpOperation */
-  pathParams?: Array<HttpOperationPathParam>;
+  pathParams?: ReadonlyArray<HttpOperationPathParam>;
   /** Request metadata. */
   request?: HttpOperationHttpRequest;
 }
@@ -392,7 +392,7 @@ export interface ObservationJob {
   /** Identifier. name of resource Format: projects/{project}/locations/{location}/observationJobs/{observation_job} */
   name?: string;
   /** Optional. These should be of the same kind of source. */
-  sources?: Array<string>;
+  sources?: ReadonlyArray<string>;
   /** Output only. [Output only] Update time stamp */
   updateTime?: string;
   /** Output only. [Output only] Create time stamp */
@@ -409,9 +409,9 @@ export const ObservationJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListObservationSourcesResponse {
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The ObservationSource from the specified project and location. */
-  observationSources?: Array<ObservationSource>;
+  observationSources?: ReadonlyArray<ObservationSource>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -425,7 +425,7 @@ export const ListObservationSourcesResponse =
 
 export interface ListApiObservationTagsResponse {
   /** The tags from the specified project */
-  apiObservationTags?: Array<string>;
+  apiObservationTags?: ReadonlyArray<string>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -438,7 +438,7 @@ export const ListApiObservationTagsResponse =
 
 export interface ListApiOperationsResponse {
   /** The ApiOperations from the specified project and location and ObservationJob and ApiObservation. */
-  apiOperations?: Array<ApiOperation>;
+  apiOperations?: ReadonlyArray<ApiOperation>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -459,9 +459,9 @@ export interface ListObservationJobsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The ObservationJob from the specified project and location. */
-  observationJobs?: Array<ObservationJob>;
+  observationJobs?: ReadonlyArray<ObservationJob>;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListObservationJobsResponse =
@@ -490,19 +490,19 @@ export interface ApiObservation {
   /** Last event detected time stamp */
   lastEventDetectedTime?: string;
   /** The IP address (IPv4 or IPv6) of the origin server that the request was sent to. This field can include port information. Examples: `"192.168.1.1"`, `"10.0.0.1:80"`, `"FE80::0202:B3FF:FE1E:8329"`. */
-  serverIps?: Array<string>;
+  serverIps?: ReadonlyArray<string>;
   /** Style of ApiObservation */
   style?: "STYLE_UNSPECIFIED" | "REST" | "GRPC" | "GRAPHQL" | (string & {});
   /** Create time stamp */
   createTime?: string;
   /** Location of the Observation Source, for example "us-central1" or "europe-west1." */
-  sourceLocations?: Array<string>;
+  sourceLocations?: ReadonlyArray<string>;
   /** Identifier. Name of resource */
   name?: string;
   /** Update time stamp */
   updateTime?: string;
   /** User-defined tags to organize and sort */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** The hostname of requests processed for this Observation. */
   hostname?: string;
 }
@@ -543,7 +543,7 @@ export const Entitlement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListApiObservationsResponse {
   /** The ApiObservation from the specified project and location and ObservationJobs. */
-  apiObservations?: Array<ApiObservation>;
+  apiObservations?: ReadonlyArray<ApiObservation>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -556,7 +556,7 @@ export const ListApiObservationsResponse =
 
 export interface BatchEditTagsApiObservationsResponse {
   /** ApiObservations that were changed */
-  apiObservations?: Array<ApiObservation>;
+  apiObservations?: ReadonlyArray<ApiObservation>;
 }
 
 export const BatchEditTagsApiObservationsResponse =
@@ -577,10 +577,7 @@ export const GetEntitlementProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/entitlement",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEntitlementProjectsLocationsRequest>;
 
@@ -611,10 +608,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -651,10 +645,7 @@ export const ListApiObservationTagsProjectsLocationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}:listApiObservationTags",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}:listApiObservationTags" }),
     svc,
   ) as unknown as Schema.Schema<ListApiObservationTagsProjectsLocationsRequest>;
 
@@ -704,7 +695,7 @@ export const ListProjectsLocationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1alpha/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -739,10 +730,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -773,10 +761,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -810,11 +795,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -859,10 +840,7 @@ export const ListProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -903,10 +881,7 @@ export const ListProjectsLocationsObservationJobsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/observationJobs",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/observationJobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsObservationJobsRequest>;
 
@@ -945,11 +920,7 @@ export const DisableProjectsLocationsObservationJobsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DisableObservationJobRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/observationJobs/{observationJobsId}:disable",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha/{name}:disable", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DisableProjectsLocationsObservationJobsRequest>;
 
@@ -980,10 +951,7 @@ export const GetProjectsLocationsObservationJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/observationJobs/{observationJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsObservationJobsRequest>;
 
@@ -1027,7 +995,7 @@ export const CreateProjectsLocationsObservationJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/observationJobs",
+      path: "v1alpha/{parent}/observationJobs",
       hasBody: true,
     }),
     svc,
@@ -1060,10 +1028,7 @@ export const DeleteProjectsLocationsObservationJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/observationJobs/{observationJobsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsObservationJobsRequest>;
 
@@ -1097,11 +1062,7 @@ export const EnableProjectsLocationsObservationJobsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(EnableObservationJobRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/observationJobs/{observationJobsId}:enable",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha/{name}:enable", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<EnableProjectsLocationsObservationJobsRequest>;
 
@@ -1132,10 +1093,7 @@ export const GetProjectsLocationsObservationJobsApiObservationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/observationJobs/{observationJobsId}/apiObservations/{apiObservationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsObservationJobsApiObservationsRequest>;
 
@@ -1174,10 +1132,7 @@ export const ListProjectsLocationsObservationJobsApiObservationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/observationJobs/{observationJobsId}/apiObservations",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/apiObservations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsObservationJobsApiObservationsRequest>;
 
@@ -1221,7 +1176,7 @@ export const BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/observationJobs/{observationJobsId}/apiObservations:batchEditTags",
+      path: "v1alpha/{parent}/apiObservations:batchEditTags",
       hasBody: true,
     }),
     svc,
@@ -1256,10 +1211,7 @@ export const GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequ
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/observationJobs/{observationJobsId}/apiObservations/{apiObservationsId}/apiOperations/{apiOperationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequest>;
 
@@ -1299,10 +1251,7 @@ export const ListProjectsLocationsObservationJobsApiObservationsApiOperationsReq
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/observationJobs/{observationJobsId}/apiObservations/{apiObservationsId}/apiOperations",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/apiOperations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest>;
 
@@ -1354,7 +1303,7 @@ export const CreateProjectsLocationsObservationSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/observationSources",
+      path: "v1alpha/{parent}/observationSources",
       hasBody: true,
     }),
     svc,
@@ -1387,10 +1336,7 @@ export const DeleteProjectsLocationsObservationSourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/observationSources/{observationSourcesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsObservationSourcesRequest>;
 
@@ -1421,10 +1367,7 @@ export const GetProjectsLocationsObservationSourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/observationSources/{observationSourcesId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsObservationSourcesRequest>;
 
@@ -1461,10 +1404,7 @@ export const ListProjectsLocationsObservationSourcesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}/observationSources",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/observationSources" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsObservationSourcesRequest>;
 

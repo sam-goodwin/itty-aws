@@ -53,7 +53,7 @@ export interface Webfont {
   /** The name of the font. */
   family?: string;
   /** The available variants for the font. */
-  variants?: Array<string>;
+  variants?: ReadonlyArray<string>;
   /** The font version. */
   version?: string;
   /** The category of the font. */
@@ -61,13 +61,13 @@ export interface Webfont {
   /** The date (format "yyyy-MM-dd") the font was modified for the last time. */
   lastModified?: string;
   /** Axis for variable fonts. */
-  axes?: Array<Axis>;
+  axes?: ReadonlyArray<Axis>;
   /** The color format(s) available for this family. */
-  colorCapabilities?: Array<string>;
+  colorCapabilities?: ReadonlyArray<string>;
   /** The tags that apply to this family. */
-  tags?: Array<Tag>;
+  tags?: ReadonlyArray<Tag>;
   /** The scripts supported by the font. */
-  subsets?: Array<string>;
+  subsets?: ReadonlyArray<string>;
   /** The font files (with all supported scripts) for each one of the available variants, as a key : value map. */
   files?: Record<string, string>;
   /** Font URL for menu subset, a subset of the font that is enough to display the font name */
@@ -95,7 +95,7 @@ export interface WebfontList {
   /** This kind represents a list of webfont objects in the webfonts service. */
   kind?: string;
   /** The list of fonts currently served by the Google Fonts API. */
-  items?: Array<Webfont>;
+  items?: ReadonlyArray<Webfont>;
 }
 
 export const WebfontList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

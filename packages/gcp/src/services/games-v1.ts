@@ -73,7 +73,7 @@ export interface AchievementDefinitionsListResponse {
   /** Token corresponding to the next page of results. */
   nextPageToken?: string;
   /** The achievement definitions. */
-  items?: Array<AchievementDefinition>;
+  items?: ReadonlyArray<AchievementDefinition>;
 }
 
 export const AchievementDefinitionsListResponse =
@@ -132,7 +132,7 @@ export interface PlayerAchievementListResponse {
   /** Token corresponding to the next page of results. */
   nextPageToken?: string;
   /** The achievements. */
-  items?: Array<PlayerAchievement>;
+  items?: ReadonlyArray<PlayerAchievement>;
 }
 
 export const PlayerAchievementListResponse =
@@ -244,7 +244,7 @@ export interface AchievementUpdateMultipleRequest {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#achievementUpdateMultipleRequest`. */
   kind?: string;
   /** The individual achievement update requests. */
-  updates?: Array<AchievementUpdateRequest>;
+  updates?: ReadonlyArray<AchievementUpdateRequest>;
 }
 
 export const AchievementUpdateMultipleRequest =
@@ -282,7 +282,7 @@ export interface AchievementUpdateMultipleResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#achievementUpdateMultipleResponse`. */
   kind?: string;
   /** The updated state of the achievements. */
-  updatedAchievements?: Array<AchievementUpdateResponse>;
+  updatedAchievements?: ReadonlyArray<AchievementUpdateResponse>;
 }
 
 export const AchievementUpdateMultipleResponse =
@@ -436,9 +436,9 @@ export interface Application {
   /** The category of the application. */
   category?: ApplicationCategory;
   /** The assets of the application. */
-  assets?: Array<ImageAsset>;
+  assets?: ReadonlyArray<ImageAsset>;
   /** The instances of the application. */
-  instances?: Array<Instance>;
+  instances?: ReadonlyArray<Instance>;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#application`. */
   kind?: string;
   /** The last updated timestamp of the application. */
@@ -448,7 +448,7 @@ export interface Application {
   /** The number of leaderboards visible to the currently authenticated player. */
   leaderboard_count?: number;
   /** A list of features that have been enabled for the application. */
-  enabledFeatures?: Array<"SNAPSHOTS" | (string & {})>;
+  enabledFeatures?: ReadonlyArray<"SNAPSHOTS" | (string & {})>;
   /** A hint to the client UI for what color to use as an app-themed color. The color is given as an RGB triplet (e.g. "E0E0E0"). */
   themeColor?: string;
 }
@@ -521,7 +521,7 @@ export interface PlayerEventListResponse {
   /** The pagination token for the next page of results. */
   nextPageToken?: string;
   /** The player events. */
-  items?: Array<PlayerEvent>;
+  items?: ReadonlyArray<PlayerEvent>;
 }
 
 export const PlayerEventListResponse =
@@ -553,7 +553,7 @@ export interface EventDefinition {
   /** The base URL for the image that represents the event. */
   imageUrl?: string;
   /** A list of events that are a child of this event. */
-  childEvents?: Array<EventChild>;
+  childEvents?: ReadonlyArray<EventChild>;
   /** Description of what this event represents. */
   description?: string;
   /** Indicates whether the icon image being returned is a default image, or is game-provided. */
@@ -579,7 +579,7 @@ export interface EventDefinitionListResponse {
   /** The pagination token for the next page of results. */
   nextPageToken?: string;
   /** The event definitions. */
-  items?: Array<EventDefinition>;
+  items?: ReadonlyArray<EventDefinition>;
 }
 
 export const EventDefinitionListResponse =
@@ -623,7 +623,7 @@ export interface EventPeriodUpdate {
   /** The time period being covered by this update. */
   timePeriod?: EventPeriodRange;
   /** The updates being made for this time period. */
-  updates?: Array<EventUpdateRequest>;
+  updates?: ReadonlyArray<EventUpdateRequest>;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventPeriodUpdate`. */
   kind?: string;
 }
@@ -642,7 +642,7 @@ export interface EventRecordRequest {
   /** The current time when this update was sent, in milliseconds, since 1970 UTC (Unix Epoch). */
   currentTimeMillis?: string;
   /** A list of the time period updates being made in this request. */
-  timePeriods?: Array<EventPeriodUpdate>;
+  timePeriods?: ReadonlyArray<EventPeriodUpdate>;
 }
 
 export const EventRecordRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -694,11 +694,11 @@ export interface EventUpdateResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#eventUpdateResponse`. */
   kind?: string;
   /** Any batch-wide failures which occurred applying updates. */
-  batchFailures?: Array<EventBatchRecordFailure>;
+  batchFailures?: ReadonlyArray<EventBatchRecordFailure>;
   /** Any failures updating a particular event. */
-  eventFailures?: Array<EventRecordFailure>;
+  eventFailures?: ReadonlyArray<EventRecordFailure>;
   /** The current status of any updated events */
-  playerEvents?: Array<PlayerEvent>;
+  playerEvents?: ReadonlyArray<PlayerEvent>;
 }
 
 export const EventUpdateResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -738,7 +738,7 @@ export interface LeaderboardListResponse {
   /** Token corresponding to the next page of results. */
   nextPageToken?: string;
   /** The leaderboards. */
-  items?: Array<Leaderboard>;
+  items?: ReadonlyArray<Leaderboard>;
 }
 
 export const LeaderboardListResponse =
@@ -770,7 +770,7 @@ export interface MetagameConfig {
   /** Current version of the metagame configuration data. When this data is updated, the version number will be increased by one. */
   currentVersion?: number;
   /** The list of player levels. */
-  playerLevels?: Array<PlayerLevel>;
+  playerLevels?: ReadonlyArray<PlayerLevel>;
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#metagameConfig`. */
   kind?: string;
 }
@@ -802,7 +802,7 @@ export interface CategoryListResponse {
   /** Token corresponding to the next page of results. */
   nextPageToken?: string;
   /** The list of categories with usage data. */
-  items?: Array<Category>;
+  items?: ReadonlyArray<Category>;
 }
 
 export const CategoryListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -926,7 +926,7 @@ export const ApplicationPlayerId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GetMultipleApplicationPlayerIdsResponse {
   /** Output only. The requested applications along with the scoped ids for tha player, if that player has an id for the application. If not, the application is not included in the response. */
-  playerIds?: Array<ApplicationPlayerId>;
+  playerIds?: ReadonlyArray<ApplicationPlayerId>;
 }
 
 export const GetMultipleApplicationPlayerIdsResponse =
@@ -940,7 +940,7 @@ export interface PlayerListResponse {
   /** Token corresponding to the next page of results. */
   nextPageToken?: string;
   /** The players. */
-  items?: Array<Player>;
+  items?: ReadonlyArray<Player>;
 }
 
 export const PlayerListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1031,7 +1031,7 @@ export interface PlayerLeaderboardScoreListResponse {
   /** The Player resources for the owner of this score. */
   player?: Player;
   /** The leaderboard scores. */
-  items?: Array<PlayerLeaderboardScore>;
+  items?: ReadonlyArray<PlayerLeaderboardScore>;
 }
 
 export const PlayerLeaderboardScoreListResponse =
@@ -1087,7 +1087,7 @@ export interface LeaderboardScores {
   /** The score of the requesting player on the leaderboard. The player's score may appear both here and in the list of scores above. If you are viewing a public leaderboard and the player is not sharing their gameplay information publicly, the `scoreRank`and `formattedScoreRank` values will not be present. */
   playerScore?: LeaderboardEntry;
   /** The scores in the leaderboard. */
-  items?: Array<LeaderboardEntry>;
+  items?: ReadonlyArray<LeaderboardEntry>;
 }
 
 export const LeaderboardScores = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1124,9 +1124,11 @@ export interface PlayerScoreResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerScoreResponse`. */
   kind?: string;
   /** The time spans where the submitted score is better than the existing score for that time span. */
-  beatenScoreTimeSpans?: Array<"ALL_TIME" | "WEEKLY" | "DAILY" | (string & {})>;
+  beatenScoreTimeSpans?: ReadonlyArray<
+    "ALL_TIME" | "WEEKLY" | "DAILY" | (string & {})
+  >;
   /** The scores in time spans that have not been beaten. As an example, the submitted score may be better than the player's `DAILY` score, but not better than the player's scores for the `WEEKLY` or `ALL_TIME` time spans. */
-  unbeatenScores?: Array<PlayerScore>;
+  unbeatenScores?: ReadonlyArray<PlayerScore>;
   /** The formatted value of the submitted score. */
   formattedScore?: string;
   /** The leaderboard ID that this score was submitted to. */
@@ -1169,7 +1171,7 @@ export interface PlayerScoreSubmissionList {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerScoreSubmissionList`. */
   kind?: string;
   /** The score submissions. */
-  scores?: Array<ScoreSubmission>;
+  scores?: ReadonlyArray<ScoreSubmission>;
 }
 
 export const PlayerScoreSubmissionList =
@@ -1182,7 +1184,7 @@ export interface PlayerScoreListResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `games#playerScoreListResponse`. */
   kind?: string;
   /** The score submissions statuses. */
-  submittedScores?: Array<PlayerScoreResponse>;
+  submittedScores?: ReadonlyArray<PlayerScoreResponse>;
 }
 
 export const PlayerScoreListResponse =
@@ -1257,7 +1259,7 @@ export interface SnapshotListResponse {
   /** Token corresponding to the next page of results. If there are no more results, the token is omitted. */
   nextPageToken?: string;
   /** The snapshots. */
-  items?: Array<Snapshot>;
+  items?: ReadonlyArray<Snapshot>;
 }
 
 export const SnapshotListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1361,7 +1363,7 @@ export const RecallToken = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RetrievePlayerTokensResponse {
   /** Required. Recall tokens associated with the requested PGS Player principal */
-  tokens?: Array<RecallToken>;
+  tokens?: ReadonlyArray<RecallToken>;
 }
 
 export const RetrievePlayerTokensResponse =
@@ -1393,7 +1395,7 @@ export const RetrieveDeveloperGamesLastPlayerTokenResponse =
 
 export interface RetrieveGamesPlayerTokensResponse {
   /** The requested applications along with the recall tokens for the player. If the player does not have recall tokens for an application, that application is not included in the response. */
-  gamePlayerTokens?: Array<GamePlayerToken>;
+  gamePlayerTokens?: ReadonlyArray<GamePlayerToken>;
 }
 
 export const RetrieveGamesPlayerTokensResponse =

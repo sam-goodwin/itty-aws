@@ -167,11 +167,11 @@ export interface LoginProfile {
   /** Required. A unique user ID. */
   name?: string;
   /** The list of POSIX accounts associated with the user. */
-  posixAccounts?: Array<PosixAccount>;
+  posixAccounts?: ReadonlyArray<PosixAccount>;
   /** A map from SSH public key fingerprint to the associated key object. */
   sshPublicKeys?: Record<string, SshPublicKey>;
   /** The registered security key credentials for a user. */
-  securityKeys?: Array<SecurityKey>;
+  securityKeys?: ReadonlyArray<SecurityKey>;
 }
 
 export const LoginProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -196,7 +196,7 @@ export const ImportSshPublicKeyResponse =
 
 export interface ProvisionPosixAccountRequest {
   /** Optional. The regions to wait for a POSIX account to be written to before returning a response. If unspecified, defaults to all regions. Regions are listed at https://cloud.google.com/about/locations#region. */
-  regions?: Array<string>;
+  regions?: ReadonlyArray<string>;
 }
 
 export const ProvisionPosixAccountRequest =
@@ -244,7 +244,7 @@ export const SignSshPublicKeyProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/locations/{locationsId}:signSshPublicKey",
+      path: "v1alpha/{parent}:signSshPublicKey",
       hasBody: true,
     }),
     svc,
@@ -300,7 +300,7 @@ export const GetLoginProfileUsersRequest =
     ),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/users/{usersId}/loginProfile" }),
+    T.Http({ method: "GET", path: "v1alpha/{name}/loginProfile" }),
     svc,
   ) as unknown as Schema.Schema<GetLoginProfileUsersRequest>;
 
@@ -351,7 +351,7 @@ export const ImportSshPublicKeyUsersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/users/{usersId}:importSshPublicKey",
+      path: "v1alpha/{parent}:importSshPublicKey",
       hasBody: true,
     }),
     svc,
@@ -389,7 +389,7 @@ export const CreateUsersSshPublicKeysRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/users/{usersId}/sshPublicKeys",
+      path: "v1alpha/{parent}/sshPublicKeys",
       hasBody: true,
     }),
     svc,
@@ -422,10 +422,7 @@ export const DeleteUsersSshPublicKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha/users/{usersId}/sshPublicKeys/{sshPublicKeysId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteUsersSshPublicKeysRequest>;
 
@@ -456,10 +453,7 @@ export const GetUsersSshPublicKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/users/{usersId}/sshPublicKeys/{sshPublicKeysId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetUsersSshPublicKeysRequest>;
 
@@ -496,11 +490,7 @@ export const PatchUsersSshPublicKeysRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SshPublicKey).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha/users/{usersId}/sshPublicKeys/{sshPublicKeysId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchUsersSshPublicKeysRequest>;
 
@@ -540,10 +530,7 @@ export const DeleteUsersProjectsRequest =
       T.HttpQuery("operatingSystemType"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha/users/{usersId}/projects/{projectsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteUsersProjectsRequest>;
 
@@ -576,11 +563,7 @@ export const ProvisionPosixAccountUsersProjectsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ProvisionPosixAccountRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha/users/{usersId}/projects/{projectsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ProvisionPosixAccountUsersProjectsRequest>;
 
@@ -616,7 +599,7 @@ export const SignSshPublicKeyUsersProjectsZonesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/users/{usersId}/projects/{projectsId}/zones/{zonesId}:signSshPublicKey",
+      path: "v1alpha/{parent}:signSshPublicKey",
       hasBody: true,
     }),
     svc,
@@ -655,7 +638,7 @@ export const SignSshPublicKeyUsersProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/users/{usersId}/projects/{projectsId}/locations/{locationsId}:signSshPublicKey",
+      path: "v1alpha/{parent}:signSshPublicKey",
       hasBody: true,
     }),
     svc,

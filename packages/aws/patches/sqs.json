@@ -1,4 +1,17 @@
 {
+  "errorCategories": {
+    "RequestThrottled": ["ThrottlingError", "RetryableError"],
+    "KmsThrottled": ["ThrottlingError", "RetryableError"],
+    "OverLimit": ["QuotaError"],
+    "PurgeQueueInProgress": ["ConflictError", "RetryableError"],
+    "InvalidParameterValueException": ["BadRequestError"],
+    "InvalidAttributeName": ["BadRequestError"],
+    "InvalidAttributeValue": ["BadRequestError"],
+    "InvalidIdFormat": ["BadRequestError"],
+    "MissingRequiredParameterException": ["BadRequestError"],
+    "InvalidMessageContents": ["BadRequestError"],
+    "CommonServiceException": ["ServerError"]
+  },
   "operations": {
     "cancelMessageMoveTask": {
       "errors": ["RequestLimitExceeded", "InvalidParameterValueException"]

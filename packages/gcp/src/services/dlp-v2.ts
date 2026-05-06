@@ -56,7 +56,7 @@ export const GooglePrivacyDlpV2InfoType =
 
 export interface GooglePrivacyDlpV2SelectedInfoTypes {
   /** Required. InfoTypes to apply the transformation to. Required. Provided InfoType must be unique within the ImageTransformations message. */
-  infoTypes?: Array<GooglePrivacyDlpV2InfoType>;
+  infoTypes?: ReadonlyArray<GooglePrivacyDlpV2InfoType>;
 }
 
 export const GooglePrivacyDlpV2SelectedInfoTypes =
@@ -115,7 +115,7 @@ export const GooglePrivacyDlpV2ImageTransformation =
 
 export interface GooglePrivacyDlpV2ImageTransformations {
   /** List of transforms to make. */
-  transforms?: Array<GooglePrivacyDlpV2ImageTransformation>;
+  transforms?: ReadonlyArray<GooglePrivacyDlpV2ImageTransformation>;
 }
 
 export const GooglePrivacyDlpV2ImageTransformations =
@@ -368,7 +368,7 @@ export const GooglePrivacyDlpV2Bucket =
 
 export interface GooglePrivacyDlpV2BucketingConfig {
   /** Set of buckets. Ranges must be non-overlapping. */
-  buckets?: Array<GooglePrivacyDlpV2Bucket>;
+  buckets?: ReadonlyArray<GooglePrivacyDlpV2Bucket>;
 }
 
 export const GooglePrivacyDlpV2BucketingConfig =
@@ -446,7 +446,7 @@ export const GooglePrivacyDlpV2DateShiftConfig =
 
 export interface GooglePrivacyDlpV2WordList {
   /** Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least 2 characters that are letters or digits. [required] */
-  words?: Array<string>;
+  words?: ReadonlyArray<string>;
 }
 
 export const GooglePrivacyDlpV2WordList =
@@ -488,7 +488,7 @@ export interface GooglePrivacyDlpV2CharacterMaskConfig {
   /** Character to use to mask the sensitive values—for example, `*` for an alphabetic string such as a name, or `0` for a numeric string such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to `*` for strings, and `0` for digits. */
   maskingCharacter?: string;
   /** When masking a string, items in this list will be skipped when replacing characters. For example, if the input string is `555-555-5555` and you instruct Cloud DLP to skip `-` and mask 5 characters with `*`, Cloud DLP returns `***-**5-5555`. */
-  charactersToIgnore?: Array<GooglePrivacyDlpV2CharsToIgnore>;
+  charactersToIgnore?: ReadonlyArray<GooglePrivacyDlpV2CharsToIgnore>;
   /** Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally. If `number_to_mask` is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values: - `masking_character` is `*` - `number_to_mask` is `-4` - `reverse_order` is `false` - `CharsToIgnore` includes `-` - Input string is `1234-5678-9012-3456` The resulting de-identified string is `****-****-****-3456`. Cloud DLP masks all but the last four characters. If `reverse_order` is `true`, all but the first four characters are masked as `1234-****-****-****`. */
   numberToMask?: number;
   /** Mask characters in reverse order. For example, if `masking_character` is `0`, `number_to_mask` is `14`, and `reverse_order` is `false`, then the input string `1234-5678-9012-3456` is masked as `00000000000000-3456`. If `masking_character` is `*`, `number_to_mask` is `3`, and `reverse_order` is `true`, then the string `12345` is masked as `12***`. */
@@ -560,7 +560,7 @@ export const GooglePrivacyDlpV2PrimitiveTransformation =
 
 export interface GooglePrivacyDlpV2InfoTypeTransformation {
   /** InfoTypes to apply the transformation to. An empty list will cause this transformation to apply to all findings that correspond to infoTypes that were requested in `InspectConfig`. */
-  infoTypes?: Array<GooglePrivacyDlpV2InfoType>;
+  infoTypes?: ReadonlyArray<GooglePrivacyDlpV2InfoType>;
   /** Required. Primitive transformation to apply to the infoType. */
   primitiveTransformation?: GooglePrivacyDlpV2PrimitiveTransformation;
 }
@@ -575,7 +575,7 @@ export const GooglePrivacyDlpV2InfoTypeTransformation =
 
 export interface GooglePrivacyDlpV2InfoTypeTransformations {
   /** Required. Transformation for each infoType. Cannot specify more than one for a given infoType. */
-  transformations?: Array<GooglePrivacyDlpV2InfoTypeTransformation>;
+  transformations?: ReadonlyArray<GooglePrivacyDlpV2InfoTypeTransformation>;
 }
 
 export const GooglePrivacyDlpV2InfoTypeTransformations =
@@ -612,7 +612,7 @@ export const GooglePrivacyDlpV2Condition =
 
 export interface GooglePrivacyDlpV2Conditions {
   /** A collection of conditions. */
-  conditions?: Array<GooglePrivacyDlpV2Condition>;
+  conditions?: ReadonlyArray<GooglePrivacyDlpV2Condition>;
 }
 
 export const GooglePrivacyDlpV2Conditions =
@@ -655,7 +655,7 @@ export const GooglePrivacyDlpV2RecordSuppression =
 
 export interface GooglePrivacyDlpV2FieldTransformation {
   /** Required. Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId. FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type". */
-  fields?: Array<GooglePrivacyDlpV2FieldId>;
+  fields?: ReadonlyArray<GooglePrivacyDlpV2FieldId>;
   /** Only apply the transformation if the condition evaluates to true for the given `RecordCondition`. The conditions are allowed to reference fields that are not used in the actual transformation. Example Use Cases: - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range. - Redact a field if the date of birth field is greater than 85. */
   condition?: GooglePrivacyDlpV2RecordCondition;
   /** Treat the contents of the field as free text, and selectively transform content that matches an `InfoType`. */
@@ -678,9 +678,9 @@ export const GooglePrivacyDlpV2FieldTransformation =
 
 export interface GooglePrivacyDlpV2RecordTransformations {
   /** Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output. */
-  recordSuppressions?: Array<GooglePrivacyDlpV2RecordSuppression>;
+  recordSuppressions?: ReadonlyArray<GooglePrivacyDlpV2RecordSuppression>;
   /** Transform the record by applying various field transformations. */
-  fieldTransformations?: Array<GooglePrivacyDlpV2FieldTransformation>;
+  fieldTransformations?: ReadonlyArray<GooglePrivacyDlpV2FieldTransformation>;
 }
 
 export const GooglePrivacyDlpV2RecordTransformations =
@@ -791,7 +791,7 @@ export const GooglePrivacyDlpV2DatabaseResourceRegex =
 
 export interface GooglePrivacyDlpV2DatabaseResourceRegexes {
   /** A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expression's length can't exceed 10 KiB. */
-  patterns?: Array<GooglePrivacyDlpV2DatabaseResourceRegex>;
+  patterns?: ReadonlyArray<GooglePrivacyDlpV2DatabaseResourceRegex>;
 }
 
 export const GooglePrivacyDlpV2DatabaseResourceRegexes =
@@ -850,7 +850,7 @@ export const GooglePrivacyDlpV2DiscoveryCloudSqlFilter =
 
 export interface GooglePrivacyDlpV2SchemaModifiedCadence {
   /** The types of schema modifications to consider. Defaults to NEW_COLUMNS. */
-  types?: Array<
+  types?: ReadonlyArray<
     | "SQL_SCHEMA_MODIFICATION_UNSPECIFIED"
     | "NEW_COLUMNS"
     | "REMOVED_COLUMNS"
@@ -917,14 +917,14 @@ export const GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence =
 
 export interface GooglePrivacyDlpV2DiscoveryCloudSqlConditions {
   /** Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES]. */
-  types?: Array<
+  types?: ReadonlyArray<
     | "DATABASE_RESOURCE_TYPE_UNSPECIFIED"
     | "DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES"
     | "DATABASE_RESOURCE_TYPE_TABLE"
     | (string & {})
   >;
   /** Optional. Database engines that should be profiled. Optional. Defaults to ALL_SUPPORTED_DATABASE_ENGINES if unspecified. */
-  databaseEngines?: Array<
+  databaseEngines?: ReadonlyArray<
     | "DATABASE_ENGINE_UNSPECIFIED"
     | "ALL_SUPPORTED_DATABASE_ENGINES"
     | "MYSQL"
@@ -1021,7 +1021,7 @@ export const GooglePrivacyDlpV2FileStoreRegex =
 
 export interface GooglePrivacyDlpV2FileStoreRegexes {
   /** Required. The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all regular expression's length can't exceed 10 KiB. */
-  patterns?: Array<GooglePrivacyDlpV2FileStoreRegex>;
+  patterns?: ReadonlyArray<GooglePrivacyDlpV2FileStoreRegex>;
 }
 
 export const GooglePrivacyDlpV2FileStoreRegexes =
@@ -1044,7 +1044,7 @@ export const GooglePrivacyDlpV2TagFilter =
 
 export interface GooglePrivacyDlpV2TagFilters {
   /** Required. A resource must match ALL of the specified tag filters to be included in the collection. */
-  tagFilters?: Array<GooglePrivacyDlpV2TagFilter>;
+  tagFilters?: ReadonlyArray<GooglePrivacyDlpV2TagFilter>;
 }
 
 export const GooglePrivacyDlpV2TagFilters =
@@ -1100,7 +1100,7 @@ export const GooglePrivacyDlpV2DiscoveryCloudStorageFilter =
 
 export interface GooglePrivacyDlpV2DiscoveryCloudStorageConditions {
   /** Required. Only objects with the specified attributes will be scanned. If an object has one of the specified attributes but is inside an excluded bucket, it will not be scanned. Defaults to [ALL_SUPPORTED_OBJECTS]. A profile will be created even if no objects match the included_object_attributes. */
-  includedObjectAttributes?: Array<
+  includedObjectAttributes?: ReadonlyArray<
     | "CLOUD_STORAGE_OBJECT_ATTRIBUTE_UNSPECIFIED"
     | "ALL_SUPPORTED_OBJECTS"
     | "STANDARD"
@@ -1113,7 +1113,7 @@ export interface GooglePrivacyDlpV2DiscoveryCloudStorageConditions {
     | (string & {})
   >;
   /** Required. Only objects with the specified attributes will be scanned. Defaults to [ALL_SUPPORTED_BUCKETS] if unset. */
-  includedBucketAttributes?: Array<
+  includedBucketAttributes?: ReadonlyArray<
     | "CLOUD_STORAGE_BUCKET_ATTRIBUTE_UNSPECIFIED"
     | "ALL_SUPPORTED_BUCKETS"
     | "AUTOCLASS_DISABLED"
@@ -1218,7 +1218,7 @@ export const GooglePrivacyDlpV2VertexDatasetRegex =
 
 export interface GooglePrivacyDlpV2VertexDatasetRegexes {
   /** Required. The group of regular expression patterns to match against one or more datasets. Maximum of 100 entries. The sum of the lengths of all regular expressions can't exceed 10 KiB. */
-  patterns?: Array<GooglePrivacyDlpV2VertexDatasetRegex>;
+  patterns?: ReadonlyArray<GooglePrivacyDlpV2VertexDatasetRegex>;
 }
 
 export const GooglePrivacyDlpV2VertexDatasetRegexes =
@@ -1318,7 +1318,7 @@ export const GooglePrivacyDlpV2BigQueryRegex =
 
 export interface GooglePrivacyDlpV2BigQueryRegexes {
   /** A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables. */
-  patterns?: Array<GooglePrivacyDlpV2BigQueryRegex>;
+  patterns?: ReadonlyArray<GooglePrivacyDlpV2BigQueryRegex>;
 }
 
 export const GooglePrivacyDlpV2BigQueryRegexes =
@@ -1390,7 +1390,7 @@ export const GooglePrivacyDlpV2OrConditions =
 
 export interface GooglePrivacyDlpV2BigQueryTableTypes {
   /** A set of BigQuery table types. */
-  types?: Array<
+  types?: ReadonlyArray<
     | "BIG_QUERY_TABLE_TYPE_UNSPECIFIED"
     | "BIG_QUERY_TABLE_TYPE_TABLE"
     | "BIG_QUERY_TABLE_TYPE_EXTERNAL_BIG_LAKE"
@@ -1429,7 +1429,7 @@ export const GooglePrivacyDlpV2DiscoveryBigQueryConditions =
 
 export interface GooglePrivacyDlpV2DiscoverySchemaModifiedCadence {
   /** The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMNS. */
-  types?: Array<
+  types?: ReadonlyArray<
     | "SCHEMA_MODIFICATION_UNSPECIFIED"
     | "SCHEMA_NEW_COLUMNS"
     | "SCHEMA_REMOVED_COLUMNS"
@@ -1454,7 +1454,7 @@ export const GooglePrivacyDlpV2DiscoverySchemaModifiedCadence =
 
 export interface GooglePrivacyDlpV2DiscoveryTableModifiedCadence {
   /** The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP. */
-  types?: Array<
+  types?: ReadonlyArray<
     | "TABLE_MODIFICATION_UNSPECIFIED"
     | "TABLE_MODIFIED_TIMESTAMP"
     | (string & {})
@@ -1592,7 +1592,7 @@ export const GooglePrivacyDlpV2OtherCloudResourceRegex =
 
 export interface GooglePrivacyDlpV2OtherCloudResourceRegexes {
   /** A group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all regular expression's length can't exceed 10 KiB. */
-  patterns?: Array<GooglePrivacyDlpV2OtherCloudResourceRegex>;
+  patterns?: ReadonlyArray<GooglePrivacyDlpV2OtherCloudResourceRegex>;
 }
 
 export const GooglePrivacyDlpV2OtherCloudResourceRegexes =
@@ -1669,14 +1669,14 @@ export const GooglePrivacyDlpV2DiscoveryOtherCloudFilter =
 
 export interface GooglePrivacyDlpV2AmazonS3BucketConditions {
   /** Optional. Bucket types that should be profiled. Optional. Defaults to TYPE_ALL_SUPPORTED if unspecified. */
-  bucketTypes?: Array<
+  bucketTypes?: ReadonlyArray<
     | "TYPE_UNSPECIFIED"
     | "TYPE_ALL_SUPPORTED"
     | "TYPE_GENERAL_PURPOSE"
     | (string & {})
   >;
   /** Optional. Object classes that should be profiled. Optional. Defaults to ALL_SUPPORTED_CLASSES if unspecified. */
-  objectStorageClasses?: Array<
+  objectStorageClasses?: ReadonlyArray<
     | "UNSPECIFIED"
     | "ALL_SUPPORTED_CLASSES"
     | "STANDARD"
@@ -1828,14 +1828,14 @@ export const GooglePrivacyDlpV2TagCondition =
 
 export interface GooglePrivacyDlpV2TagResources {
   /** The profile generations for which the tag should be attached to resources. If you attach a tag to only new profiles, then if the sensitivity score of a profile subsequently changes, its tag doesn't change. By default, this field includes only new profiles. To include both new and updated profiles for tagging, this field should explicitly include both `PROFILE_GENERATION_NEW` and `PROFILE_GENERATION_UPDATE`. */
-  profileGenerationsToTag?: Array<
+  profileGenerationsToTag?: ReadonlyArray<
     | "PROFILE_GENERATION_UNSPECIFIED"
     | "PROFILE_GENERATION_NEW"
     | "PROFILE_GENERATION_UPDATE"
     | (string & {})
   >;
   /** The tags to associate with different conditions. */
-  tagConditions?: Array<GooglePrivacyDlpV2TagCondition>;
+  tagConditions?: ReadonlyArray<GooglePrivacyDlpV2TagCondition>;
   /** Whether applying a tag to a resource should lower the risk of the profile for that resource. For example, in conjunction with an [IAM deny policy](https://cloud.google.com/iam/docs/deny-overview), you can deny all principals a permission if a tag value is present, mitigating the risk of the resource. This also lowers the data risk of resources at the lower levels of the resource hierarchy. For example, reducing the data risk of a table data profile also reduces the data risk of the constituent column data profiles. */
   lowerDataRiskToLow?: boolean;
 }
@@ -1895,7 +1895,7 @@ export interface GooglePrivacyDlpV2PubSubExpressions {
     | "AND"
     | (string & {});
   /** Conditions to apply to the expression. */
-  conditions?: Array<GooglePrivacyDlpV2PubSubCondition>;
+  conditions?: ReadonlyArray<GooglePrivacyDlpV2PubSubCondition>;
 }
 
 export const GooglePrivacyDlpV2PubSubExpressions =
@@ -2068,7 +2068,7 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
@@ -2085,7 +2085,7 @@ export interface GooglePrivacyDlpV2Error {
   /** Detailed error codes and messages. */
   details?: GoogleRpcStatus;
   /** The times the error occurred. List includes the oldest timestamp and the last 9 timestamps. */
-  timestamps?: Array<string>;
+  timestamps?: ReadonlyArray<string>;
   /** Additional information about the error. */
   extraInfo?:
     | "ERROR_INFO_UNSPECIFIED"
@@ -2132,17 +2132,17 @@ export interface GooglePrivacyDlpV2DiscoveryConfig {
   /** Output only. The last update timestamp of a DiscoveryConfig. */
   updateTime?: string;
   /** Target to match against for determining what to scan and how frequently. */
-  targets?: Array<GooglePrivacyDlpV2DiscoveryTarget>;
+  targets?: ReadonlyArray<GooglePrivacyDlpV2DiscoveryTarget>;
   /** Required. A status for this configuration. */
   status?: "STATUS_UNSPECIFIED" | "RUNNING" | "PAUSED" | (string & {});
   /** Actions to execute at the completion of scanning. */
-  actions?: Array<GooglePrivacyDlpV2DataProfileAction>;
+  actions?: ReadonlyArray<GooglePrivacyDlpV2DataProfileAction>;
   /** Only set when the parent is an org. */
   orgConfig?: GooglePrivacyDlpV2OrgConfig;
   /** Optional. Processing location configuration. Vertex AI dataset scanning will set processing_location.image_fallback_type to MultiRegionProcessing by default. */
   processingLocation?: GooglePrivacyDlpV2ProcessingLocation;
   /** Output only. A stream of errors encountered when the config was activated. Repeated errors may result in the config automatically being paused. Output only field. Will return the last 100 errors. Whenever the config is modified this list will be cleared. */
-  errors?: Array<GooglePrivacyDlpV2Error>;
+  errors?: ReadonlyArray<GooglePrivacyDlpV2Error>;
   /** Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created, for example `projects/dlp-test-project/locations/global/discoveryConfigs/53234423`. */
   name?: string;
   /** Output only. The timestamp of the last time this config was executed. */
@@ -2154,7 +2154,7 @@ export interface GooglePrivacyDlpV2DiscoveryConfig {
   /** Output only. The creation timestamp of a DiscoveryConfig. */
   createTime?: string;
   /** Detection logic for profile generation. Not all template features are used by Discovery. FindingLimits, include_quote and exclude_info_types have no impact on Discovery. Multiple templates may be provided if there is data in multiple regions. At most one template must be specified per-region (including "global"). Each region is scanned using the applicable template. If no region-specific template is specified, but a "global" template is specified, it will be copied to that region and used instead. If no global or region-specific template is provided for a region with data, that region's data will not be scanned. For more information, see https://cloud.google.com/sensitive-data-protection/docs/data-profiles#data-residency. */
-  inspectTemplates?: Array<string>;
+  inspectTemplates?: ReadonlyArray<string>;
 }
 
 export const GooglePrivacyDlpV2DiscoveryConfig =
@@ -2178,7 +2178,7 @@ export const GooglePrivacyDlpV2DiscoveryConfig =
 
 export interface GooglePrivacyDlpV2ListDiscoveryConfigsResponse {
   /** List of configs, up to page_size in ListDiscoveryConfigsRequest. */
-  discoveryConfigs?: Array<GooglePrivacyDlpV2DiscoveryConfig>;
+  discoveryConfigs?: ReadonlyArray<GooglePrivacyDlpV2DiscoveryConfig>;
   /** If the next page is available then this value is the next page token to be used in the following ListDiscoveryConfigs request. */
   nextPageToken?: string;
 }
@@ -2212,7 +2212,7 @@ export const GooglePrivacyDlpV2BoundingBox =
 
 export interface GooglePrivacyDlpV2ImageLocation {
   /** Bounding boxes locating the pixels within the image containing the finding. */
-  boundingBoxes?: Array<GooglePrivacyDlpV2BoundingBox>;
+  boundingBoxes?: ReadonlyArray<GooglePrivacyDlpV2BoundingBox>;
 }
 
 export const GooglePrivacyDlpV2ImageLocation =
@@ -2224,9 +2224,9 @@ export interface GooglePrivacyDlpV2CloudStorageRegexFileSet {
   /** The name of a Cloud Storage bucket. Required. */
   bucketName?: string;
   /** A list of regular expressions matching file paths to include. All files in the bucket that match at least one of these regular expressions will be included in the set of files, except for those that also match an item in `exclude_regex`. Leaving this field empty will match all files by default (this is equivalent to including `.*` in the list). Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on GitHub. */
-  includeRegex?: Array<string>;
+  includeRegex?: ReadonlyArray<string>;
   /** A list of regular expressions matching file paths to exclude. All files in the bucket that match at least one of these regular expressions will be excluded from the scan. Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on GitHub. */
-  excludeRegex?: Array<string>;
+  excludeRegex?: ReadonlyArray<string>;
 }
 
 export const GooglePrivacyDlpV2CloudStorageRegexFileSet =
@@ -2251,7 +2251,7 @@ export const GooglePrivacyDlpV2FileSet =
 
 export interface GooglePrivacyDlpV2CloudStorageOptions {
   /** List of file type groups to include in the scan. If empty, all files are scanned and available data format processors are applied. In addition, the binary content of the selected files is always scanned as well. Images are scanned only as binary if the specified region does not support image inspection and no file_types were specified. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'. */
-  fileTypes?: Array<
+  fileTypes?: ReadonlyArray<
     | "FILE_TYPE_UNSPECIFIED"
     | "BINARY_FILE"
     | "TEXT_FILE"
@@ -2293,7 +2293,7 @@ export const GooglePrivacyDlpV2CloudStorageOptions =
 
 export interface GooglePrivacyDlpV2TableOptions {
   /** The columns that are the primary keys for table objects included in ContentItem. A copy of this cell's value will stored alongside alongside each finding so that the finding can be traced to the specific row it came from. No more than 3 may be provided. */
-  identifyingFields?: Array<GooglePrivacyDlpV2FieldId>;
+  identifyingFields?: ReadonlyArray<GooglePrivacyDlpV2FieldId>;
 }
 
 export const GooglePrivacyDlpV2TableOptions =
@@ -2309,7 +2309,7 @@ export interface GooglePrivacyDlpV2HybridOptions {
   /** A short description of where the data is coming from. Will be stored once in the job. 256 max length. */
   description?: string;
   /** These are labels that each inspection request must include within their 'finding_labels' map. Request may contain others, but any missing one of these will be rejected. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. No more than 10 keys can be required. */
-  requiredFindingLabelKeys?: Array<string>;
+  requiredFindingLabelKeys?: ReadonlyArray<string>;
 }
 
 export const GooglePrivacyDlpV2HybridOptions =
@@ -2341,7 +2341,7 @@ export const GooglePrivacyDlpV2TimespanConfig =
 
 export interface GooglePrivacyDlpV2BigQueryOptions {
   /** Table fields that may uniquely identify a row within the table. When `actions.saveFindings.outputConfig.table` is specified, the values of columns specified here are available in the output table under `location.content_locations.record_location.record_key.id_values`. Nested fields such as `person.birthdate.year` are allowed. */
-  identifyingFields?: Array<GooglePrivacyDlpV2FieldId>;
+  identifyingFields?: ReadonlyArray<GooglePrivacyDlpV2FieldId>;
   /** How to sample the data. */
   sampleMethod?:
     | "SAMPLE_METHOD_UNSPECIFIED"
@@ -2349,11 +2349,11 @@ export interface GooglePrivacyDlpV2BigQueryOptions {
     | "RANDOM_START"
     | (string & {});
   /** References to fields excluded from scanning. This allows you to skip inspection of entire columns which you know have no findings. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used. */
-  excludedFields?: Array<GooglePrivacyDlpV2FieldId>;
+  excludedFields?: ReadonlyArray<GooglePrivacyDlpV2FieldId>;
   /** Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead. */
   rowsLimitPercent?: number;
   /** Limit scanning only to these fields. When inspecting a table, we recommend that you inspect all columns. Otherwise, findings might be affected because hints from excluded columns will not be used. */
-  includedFields?: Array<GooglePrivacyDlpV2FieldId>;
+  includedFields?: ReadonlyArray<GooglePrivacyDlpV2FieldId>;
   /** Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted. If not set, or if set to 0, all rows will be scanned. Only one of rows_limit and rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. */
   rowsLimit?: string;
   /** Complete BigQuery table reference. */
@@ -2444,7 +2444,7 @@ export const GooglePrivacyDlpV2QuasiIdField =
 
 export interface GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues {
   /** The quasi-identifier values. */
-  quasiIdsValues?: Array<GooglePrivacyDlpV2Value>;
+  quasiIdsValues?: ReadonlyArray<GooglePrivacyDlpV2Value>;
   /** The estimated probability that a given individual sharing these quasi-identifier values is in the dataset. This value, typically called δ, is the ratio between the number of records in the dataset with these quasi-identifier values, and the total number of individuals (inside *and* outside the dataset) with these quasi-identifier values. For example, if there are 15 individuals in the dataset who share the same quasi-identifier values, and an estimated 100 people in the entire population with these values, then δ is 0.15. */
   estimatedProbability?: number;
 }
@@ -2459,7 +2459,7 @@ export const GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues =
 
 export interface GooglePrivacyDlpV2Row {
   /** Individual cells. */
-  values?: Array<GooglePrivacyDlpV2Value>;
+  values?: ReadonlyArray<GooglePrivacyDlpV2Value>;
 }
 
 export const GooglePrivacyDlpV2Row = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2468,9 +2468,9 @@ export const GooglePrivacyDlpV2Row = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GooglePrivacyDlpV2Table {
   /** Rows of the table. */
-  rows?: Array<GooglePrivacyDlpV2Row>;
+  rows?: ReadonlyArray<GooglePrivacyDlpV2Row>;
   /** Headers of the table. */
-  headers?: Array<GooglePrivacyDlpV2FieldId>;
+  headers?: ReadonlyArray<GooglePrivacyDlpV2FieldId>;
 }
 
 export const GooglePrivacyDlpV2Table =
@@ -2494,7 +2494,7 @@ export const GooglePrivacyDlpV2KeyValueMetadataProperty =
 
 export interface GooglePrivacyDlpV2ContentMetadata {
   /** User provided key-value pairs of content metadata. */
-  properties?: Array<GooglePrivacyDlpV2KeyValueMetadataProperty>;
+  properties?: ReadonlyArray<GooglePrivacyDlpV2KeyValueMetadataProperty>;
 }
 
 export const GooglePrivacyDlpV2ContentMetadata =
@@ -2583,13 +2583,13 @@ export interface GooglePrivacyDlpV2TransformationSummary {
   /** Total size in bytes that were transformed in some way. */
   transformedBytes?: string;
   /** The field transformation that was applied. If multiple field transformations are requested for a single field, this list will contain all of them; otherwise, only one is supplied. */
-  fieldTransformations?: Array<GooglePrivacyDlpV2FieldTransformation>;
+  fieldTransformations?: ReadonlyArray<GooglePrivacyDlpV2FieldTransformation>;
   /** Set if the transformation was limited to a specific InfoType. */
   infoType?: GooglePrivacyDlpV2InfoType;
   /** Set if the transformation was limited to a specific FieldId. */
   field?: GooglePrivacyDlpV2FieldId;
   /** Collection of all transformations that took place or had an error. */
-  results?: Array<GooglePrivacyDlpV2SummaryResult>;
+  results?: ReadonlyArray<GooglePrivacyDlpV2SummaryResult>;
 }
 
 export const GooglePrivacyDlpV2TransformationSummary =
@@ -2609,7 +2609,7 @@ export interface GooglePrivacyDlpV2TransformationOverview {
   /** Total size in bytes that were transformed in some way. */
   transformedBytes?: string;
   /** Transformations applied to the dataset. */
-  transformationSummaries?: Array<GooglePrivacyDlpV2TransformationSummary>;
+  transformationSummaries?: ReadonlyArray<GooglePrivacyDlpV2TransformationSummary>;
 }
 
 export const GooglePrivacyDlpV2TransformationOverview =
@@ -2700,7 +2700,7 @@ export interface GooglePrivacyDlpV2Regex {
   /** Pattern defining the regular expression. Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub. */
   pattern?: string;
   /** The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included. */
-  groupIndexes?: Array<number>;
+  groupIndexes?: ReadonlyArray<number>;
 }
 
 export const GooglePrivacyDlpV2Regex =
@@ -2808,7 +2808,7 @@ export const GooglePrivacyDlpV2StoredType =
 
 export interface GooglePrivacyDlpV2CustomInfoType {
   /** Set of detection rules to apply to all findings of this CustomInfoType. Rules are applied in the order that they are specified. Only supported for the `dictionary`, `regex`, and `stored_type` CustomInfoTypes. */
-  detectionRules?: Array<GooglePrivacyDlpV2DetectionRule>;
+  detectionRules?: ReadonlyArray<GooglePrivacyDlpV2DetectionRule>;
   /** A list of phrases to detect as a CustomInfoType. */
   dictionary?: GooglePrivacyDlpV2Dictionary;
   /** If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching. Only supported for the `dictionary`, `regex`, and `stored_type` CustomInfoTypes. */
@@ -2874,7 +2874,7 @@ export interface GooglePrivacyDlpV2FindingLimits {
   /** Max number of findings that are returned for each item scanned. When set within an InspectContentRequest, this field is ignored. This value isn't a hard limit. If the number of findings for an item reaches this limit, the inspection of that item ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns for the item can be multiple times higher than this value. */
   maxFindingsPerItem?: number;
   /** Configuration of findings limit given for specified infoTypes. */
-  maxFindingsPerInfoType?: Array<GooglePrivacyDlpV2InfoTypeLimit>;
+  maxFindingsPerInfoType?: ReadonlyArray<GooglePrivacyDlpV2InfoTypeLimit>;
   /** Max number of findings that are returned per request or job. If you set this field in an InspectContentRequest, the resulting maximum value is the value that you set or 3,000, whichever is lower. This value isn't a hard limit. If an inspection reaches this limit, the inspection ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns can be multiple times higher than this value. */
   maxFindingsPerRequest?: number;
 }
@@ -2899,7 +2899,7 @@ export interface GooglePrivacyDlpV2AdjustByMatchingInfoTypes {
     | "VERY_LIKELY"
     | (string & {});
   /** Sensitive Data Protection adjusts the likelihood of a finding if that finding also matches one of these infoTypes. For example, you can create a rule to adjust the likelihood of a `PHONE_NUMBER` finding if the string is found within a document that is classified as `DOCUMENT_TYPE/HR/RESUME`. To configure this, set `PHONE_NUMBER` in `InspectionRuleSet.info_types`. Add an `adjustment_rule` with an `adjust_by_matching_info_types.info_types` that contains `DOCUMENT_TYPE/HR/RESUME`. In this case, the likelihood of the `PHONE_NUMBER` finding is adjusted, but the likelihood of the `DOCUMENT_TYPE/HR/RESUME` finding is not. */
-  infoTypes?: Array<GooglePrivacyDlpV2InfoType>;
+  infoTypes?: ReadonlyArray<GooglePrivacyDlpV2InfoType>;
   /** How the adjustment rule is applied. Only `MATCHING_TYPE_PARTIAL_MATCH` is supported: - Partial match: adjusts the findings of infoTypes specified in the inspection rule when they have a nonempty intersection with a finding of an infoType specified in this adjustment rule. */
   matchingType?:
     | "MATCHING_TYPE_UNSPECIFIED"
@@ -2956,7 +2956,7 @@ export const GooglePrivacyDlpV2ImageContainmentType =
 
 export interface GooglePrivacyDlpV2AdjustByImageFindings {
   /** A list of image-supported infoTypes—excluding [document infoTypes](https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference#documents)—to be used as context for the adjustment rule. Sensitive Data Protection adjusts the likelihood of an image finding if its bounding box has the specified spatial relationship (defined by `image_containment_type`) with a finding of an infoType in this list. For example, you can create a rule to adjust the likelihood of a `US_PASSPORT` finding if it is enclosed by a finding of `OBJECT_TYPE/PERSON/PASSPORT`. To configure this, set `US_PASSPORT` in `InspectionRuleSet.info_types`. Add an `adjustment_rule` with an `adjust_by_image_findings.info_types` that contains `OBJECT_TYPE/PERSON/PASSPORT` and `image_containment_type` set to `encloses`. In this case, the likelihood of the `US_PASSPORT` finding is adjusted, but the likelihood of the `OBJECT_TYPE/PERSON/PASSPORT` finding is not. */
-  infoTypes?: Array<GooglePrivacyDlpV2InfoType>;
+  infoTypes?: ReadonlyArray<GooglePrivacyDlpV2InfoType>;
   /** Specifies the required spatial relationship between the bounding boxes of the target finding and the context infoType findings. */
   imageContainmentType?: GooglePrivacyDlpV2ImageContainmentType;
   /** Required. Minimum likelihood of the `adjust_by_image_findings.info_types` finding. If the likelihood is lower than this value, Sensitive Data Protection doesn't adjust the likelihood of the `InspectionRuleSet.info_types` finding. */
@@ -3016,7 +3016,7 @@ export const GooglePrivacyDlpV2ExcludeByHotword =
 
 export interface GooglePrivacyDlpV2ExcludeByImageFindings {
   /** A list of image-supported infoTypes—excluding [document infoTypes](https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference#documents)—to be used as context for the exclusion rule. A finding is excluded if its bounding box has the specified spatial relationship (defined by `image_containment_type`) with a finding of an infoType in this list. For example, if `InspectionRuleSet.info_types` includes `OBJECT_TYPE/PERSON` and this `exclusion_rule` specifies `info_types` as `OBJECT_TYPE/PERSON/PASSPORT` with `image_containment_type` set to `encloses`, then `OBJECT_TYPE/PERSON` findings will be excluded if they are fully contained within the bounding box of an `OBJECT_TYPE/PERSON/PASSPORT` finding. */
-  infoTypes?: Array<GooglePrivacyDlpV2InfoType>;
+  infoTypes?: ReadonlyArray<GooglePrivacyDlpV2InfoType>;
   /** Specifies the required spatial relationship between the bounding boxes of the target finding and the context infoType findings. */
   imageContainmentType?: GooglePrivacyDlpV2ImageContainmentType;
 }
@@ -3031,7 +3031,7 @@ export const GooglePrivacyDlpV2ExcludeByImageFindings =
 
 export interface GooglePrivacyDlpV2ExcludeInfoTypes {
   /** InfoType list in ExclusionRule rule drops a finding when it overlaps or contained within with a finding of an infoType from this list. For example, for `InspectionRuleSet.info_types` containing "PHONE_NUMBER"` and `exclusion_rule` containing `exclude_info_types.info_types` with "EMAIL_ADDRESS" the phone number findings are dropped if they overlap with EMAIL_ADDRESS finding. That leads to "555-222-2222@example.org" to generate only a single finding, namely email address. */
-  infoTypes?: Array<GooglePrivacyDlpV2InfoType>;
+  infoTypes?: ReadonlyArray<GooglePrivacyDlpV2InfoType>;
 }
 
 export const GooglePrivacyDlpV2ExcludeInfoTypes =
@@ -3090,9 +3090,9 @@ export const GooglePrivacyDlpV2InspectionRule =
 
 export interface GooglePrivacyDlpV2InspectionRuleSet {
   /** Set of rules to be applied to infoTypes. The rules are applied in order. */
-  rules?: Array<GooglePrivacyDlpV2InspectionRule>;
+  rules?: ReadonlyArray<GooglePrivacyDlpV2InspectionRule>;
   /** List of infoTypes this rule set is applied to. */
-  infoTypes?: Array<GooglePrivacyDlpV2InfoType>;
+  infoTypes?: ReadonlyArray<GooglePrivacyDlpV2InfoType>;
 }
 
 export const GooglePrivacyDlpV2InspectionRuleSet =
@@ -3112,23 +3112,23 @@ export interface GooglePrivacyDlpV2InspectConfig {
     | "VERY_LIKELY"
     | (string & {});
   /** Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors to run, which may change over time. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time. */
-  infoTypes?: Array<GooglePrivacyDlpV2InfoType>;
+  infoTypes?: ReadonlyArray<GooglePrivacyDlpV2InfoType>;
   /** When true, excludes type information of the findings. This is not used for data profiling. */
   excludeInfoTypes?: boolean;
   /** Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood. The system only returns a finding if its likelihood is above this threshold. If this field is not set, the system uses the InspectConfig min_likelihood. */
-  minLikelihoodPerInfoType?: Array<GooglePrivacyDlpV2InfoTypeLikelihood>;
+  minLikelihoodPerInfoType?: ReadonlyArray<GooglePrivacyDlpV2InfoTypeLikelihood>;
   /** CustomInfoTypes provided by the user. See https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes to learn more. */
-  customInfoTypes?: Array<GooglePrivacyDlpV2CustomInfoType>;
+  customInfoTypes?: ReadonlyArray<GooglePrivacyDlpV2CustomInfoType>;
   /** Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error. When set within an InspectJobConfig, the specified maximum values aren't hard limits. If an inspection job reaches these limits, the job ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns can be multiple times higher than these maximum values. */
   limits?: GooglePrivacyDlpV2FindingLimits;
   /** Deprecated and unused. */
-  contentOptions?: Array<
+  contentOptions?: ReadonlyArray<
     "CONTENT_UNSPECIFIED" | "CONTENT_TEXT" | "CONTENT_IMAGE" | (string & {})
   >;
   /** When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling. */
   includeQuote?: boolean;
   /** Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end, other rules are executed in the order they are specified for each info type. Not supported for the `metadata_key_value_expression` CustomInfoType. */
-  ruleSet?: Array<GooglePrivacyDlpV2InspectionRuleSet>;
+  ruleSet?: ReadonlyArray<GooglePrivacyDlpV2InspectionRuleSet>;
 }
 
 export const GooglePrivacyDlpV2InspectConfig =
@@ -3167,9 +3167,9 @@ export interface GooglePrivacyDlpV2DataProfileJobConfig {
   /** The project that will run the scan. The DLP service account that exists within this project must have access to all resources that are profiled, and the DLP API must be enabled. */
   projectId?: string;
   /** Actions to execute at the completion of the job. */
-  dataProfileActions?: Array<GooglePrivacyDlpV2DataProfileAction>;
+  dataProfileActions?: ReadonlyArray<GooglePrivacyDlpV2DataProfileAction>;
   /** Detection logic for profile generation. Not all template features are used by profiles. FindingLimits, include_quote and exclude_info_types have no impact on data profiling. Multiple templates may be provided if there is data in multiple regions. At most one template must be specified per-region (including "global"). Each region is scanned using the applicable template. If no region-specific template is specified, but a "global" template is specified, it will be copied to that region and used instead. If no global or region-specific template is provided for a region with data, that region's data will not be scanned. For more information, see https://cloud.google.com/sensitive-data-protection/docs/data-profiles#data-residency. */
-  inspectTemplates?: Array<string>;
+  inspectTemplates?: ReadonlyArray<string>;
   /** The data to scan. */
   location?: GooglePrivacyDlpV2DataProfileLocation;
 }
@@ -3286,7 +3286,7 @@ export interface GooglePrivacyDlpV2Domain {
   /** A domain category that this profile is related to. */
   category?: "CATEGORY_UNSPECIFIED" | "AI" | "CODE" | (string & {});
   /** The collection of signals that influenced selection of the category. */
-  signals?: Array<
+  signals?: ReadonlyArray<
     | "SIGNAL_UNSPECIFIED"
     | "MODEL"
     | "TEXT_EMBEDDING"
@@ -3323,7 +3323,7 @@ export interface GooglePrivacyDlpV2TableDataProfile {
   /** The table ID. */
   tableId?: string;
   /** The infoTypes predicted from this table's data. */
-  predictedInfoTypes?: Array<GooglePrivacyDlpV2InfoTypeSummary>;
+  predictedInfoTypes?: ReadonlyArray<GooglePrivacyDlpV2InfoTypeSummary>;
   /** If the resource is BigQuery, the dataset ID. */
   datasetId?: string;
   /** How broadly a resource has been shared. */
@@ -3374,17 +3374,17 @@ export interface GooglePrivacyDlpV2TableDataProfile {
   /** The Cloud Asset Inventory resource that was profiled in order to generate this TableDataProfile. https://cloud.google.com/apis/design/resource_names#full_resource_name */
   fullResource?: string;
   /** Other infoTypes found in this table's data. */
-  otherInfoTypes?: Array<GooglePrivacyDlpV2OtherInfoTypeSummary>;
+  otherInfoTypes?: ReadonlyArray<GooglePrivacyDlpV2OtherInfoTypeSummary>;
   /** The time when this table was last modified */
   lastModifiedTime?: string;
   /** The time at which the table was created. */
   createTime?: string;
   /** The tags attached to the table, including any tags attached during profiling. Because tags are attached to Cloud SQL instances rather than Cloud SQL tables, this field is empty for Cloud SQL table profiles. */
-  tags?: Array<GooglePrivacyDlpV2Tag>;
+  tags?: ReadonlyArray<GooglePrivacyDlpV2Tag>;
   /** Domains associated with the profile. */
-  domains?: Array<GooglePrivacyDlpV2Domain>;
+  domains?: ReadonlyArray<GooglePrivacyDlpV2Domain>;
   /** Resources related to this profile. */
-  relatedResources?: Array<GooglePrivacyDlpV2RelatedResource>;
+  relatedResources?: ReadonlyArray<GooglePrivacyDlpV2RelatedResource>;
 }
 
 export const GooglePrivacyDlpV2TableDataProfile =
@@ -3481,7 +3481,7 @@ export interface GooglePrivacyDlpV2ColumnDataProfile {
     | "TYPE_RANGE_TIMESTAMP"
     | (string & {});
   /** Other types found within this column. List will be unordered. */
-  otherMatches?: Array<GooglePrivacyDlpV2OtherInfoTypeSummary>;
+  otherMatches?: ReadonlyArray<GooglePrivacyDlpV2OtherInfoTypeSummary>;
   /** Success or error status from the most recent profile generation attempt. May be empty if the profile is still being generated. */
   profileStatus?: GooglePrivacyDlpV2ProfileStatus;
   /** The resource name of the table data profile. */
@@ -3580,9 +3580,9 @@ export interface GooglePrivacyDlpV2FileClusterSummary {
   /** The sensitivity score of this cluster. The score will be SENSITIVITY_LOW if nothing has been scanned. */
   sensitivityScore?: GooglePrivacyDlpV2SensitivityScore;
   /** A list of errors detected while scanning this cluster. The list is truncated to 10 per cluster. */
-  errors?: Array<GooglePrivacyDlpV2Error>;
+  errors?: ReadonlyArray<GooglePrivacyDlpV2Error>;
   /** A sample of file types seen in this cluster. Empty if no files were seen. File extensions can be derived from the file name or the file content. */
-  fileExtensionsSeen?: Array<GooglePrivacyDlpV2FileExtensionInfo>;
+  fileExtensionsSeen?: ReadonlyArray<GooglePrivacyDlpV2FileExtensionInfo>;
   /** True if no files exist in this cluster. If the file store had more files than could be listed, this will be false even if no files for this cluster were seen and file_extensions_seen is empty. */
   noFilesExist?: boolean;
   /** The file cluster type. */
@@ -3590,9 +3590,9 @@ export interface GooglePrivacyDlpV2FileClusterSummary {
   /** The data risk level of this cluster. RISK_LOW if nothing has been scanned. */
   dataRiskLevel?: GooglePrivacyDlpV2DataRiskLevel;
   /** InfoTypes detected in this cluster. */
-  fileStoreInfoTypeSummaries?: Array<GooglePrivacyDlpV2FileStoreInfoTypeSummary>;
+  fileStoreInfoTypeSummaries?: ReadonlyArray<GooglePrivacyDlpV2FileStoreInfoTypeSummary>;
   /** A sample of file types scanned in this cluster. Empty if no files were scanned. File extensions can be derived from the file name or the file content. */
-  fileExtensionsScanned?: Array<GooglePrivacyDlpV2FileExtensionInfo>;
+  fileExtensionsScanned?: ReadonlyArray<GooglePrivacyDlpV2FileExtensionInfo>;
 }
 
 export const GooglePrivacyDlpV2FileClusterSummary =
@@ -3638,7 +3638,7 @@ export interface GooglePrivacyDlpV2FileStoreDataProfile {
   /** The BigQuery table to which the sample findings are written. */
   sampleFindingsTable?: GooglePrivacyDlpV2BigQueryTable;
   /** For resources that have multiple storage locations, these are those regions. For Cloud Storage this is the list of regions chosen for dual-region storage. `file_store_location` will normally be the corresponding multi-region for the list of individual locations. The first region is always picked as the processing and storage location for the data profile. */
-  dataStorageLocations?: Array<string>;
+  dataStorageLocations?: ReadonlyArray<string>;
   /** Attributes of the resource being profiled. Currently used attributes: * customer_managed_encryption: boolean - true: the resource is encrypted with a customer-managed key. - false: the resource is encrypted with a provider-managed key. */
   resourceAttributes?: Record<string, GooglePrivacyDlpV2Value>;
   /** The snapshot of the configurations used to generate the profile. */
@@ -3646,15 +3646,15 @@ export interface GooglePrivacyDlpV2FileStoreDataProfile {
   /** The location type of the file store (region, dual-region, multi-region, etc). If dual-region, expect data_storage_locations to be populated. */
   locationType?: string;
   /** FileClusterSummary per each cluster. */
-  fileClusterSummaries?: Array<GooglePrivacyDlpV2FileClusterSummary>;
+  fileClusterSummaries?: ReadonlyArray<GooglePrivacyDlpV2FileClusterSummary>;
   /** The time the file store was first created. */
   createTime?: string;
   /** Resources related to this profile. */
-  relatedResources?: Array<GooglePrivacyDlpV2RelatedResource>;
+  relatedResources?: ReadonlyArray<GooglePrivacyDlpV2RelatedResource>;
   /** Domains associated with the profile. */
-  domains?: Array<GooglePrivacyDlpV2Domain>;
+  domains?: ReadonlyArray<GooglePrivacyDlpV2Domain>;
   /** The tags attached to the resource, including any tags attached during profiling. */
-  tags?: Array<GooglePrivacyDlpV2Tag>;
+  tags?: ReadonlyArray<GooglePrivacyDlpV2Tag>;
   /** The resource name of the resource profiled. https://cloud.google.com/apis/design/resource_names#full_resource_name Example format of an S3 bucket full resource name: `//cloudasset.googleapis.com/organizations/{org_id}/otherCloudConnections/aws/arn:aws:s3:::{bucket_name}` */
   fullResource?: string;
   /** The resource type that was profiled. */
@@ -3670,7 +3670,7 @@ export interface GooglePrivacyDlpV2FileStoreDataProfile {
   /** The sensitivity score of this resource. */
   sensitivityScore?: GooglePrivacyDlpV2SensitivityScore;
   /** InfoTypes detected in this file store. */
-  fileStoreInfoTypeSummaries?: Array<GooglePrivacyDlpV2FileStoreInfoTypeSummary>;
+  fileStoreInfoTypeSummaries?: ReadonlyArray<GooglePrivacyDlpV2FileStoreInfoTypeSummary>;
   /** The last time the profile was generated. */
   profileLastGenerated?: string;
 }
@@ -3807,7 +3807,7 @@ export interface GooglePrivacyDlpV2Key {
   /** Entities are partitioned into subsets, currently identified by a project ID and namespace ID. Queries are scoped to a single partition. */
   partitionId?: GooglePrivacyDlpV2PartitionId;
   /** The entity path. An entity path consists of one or more elements composed of a kind and a string or numerical identifier, which identify entities. The first element identifies a _root entity_, the second element identifies a _child_ of the root entity, the third element identifies a child of the second entity, and so forth. The entities identified by all prefixes of the path are called the element's _ancestors_. A path can never be empty, and a path can have at most 100 elements. */
-  path?: Array<GooglePrivacyDlpV2PathElement>;
+  path?: ReadonlyArray<GooglePrivacyDlpV2PathElement>;
 }
 
 export const GooglePrivacyDlpV2Key = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3842,7 +3842,7 @@ export interface GooglePrivacyDlpV2RecordKey {
   /** BigQuery key */
   datastoreKey?: GooglePrivacyDlpV2DatastoreKey;
   /** Values of identifying columns in the given row. Order of values matches the order of `identifying_fields` specified in the scanning request. */
-  idValues?: Array<string>;
+  idValues?: ReadonlyArray<string>;
   /** Datastore key */
   bigQueryKey?: GooglePrivacyDlpV2BigQueryKey;
 }
@@ -3944,7 +3944,7 @@ export interface GooglePrivacyDlpV2Deidentify {
   /** User specified deidentify templates and configs for structured, unstructured, and image files. */
   transformationConfig?: GooglePrivacyDlpV2TransformationConfig;
   /** List of user-specified file type groups to transform. If specified, only the files with these file types are transformed. If empty, all supported files are transformed. Supported types may be automatically added over time. Any unsupported file types that are set in this field are excluded from de-identification. An error is recorded for each unsupported file in the TransformationDetails output table. Currently the only file types supported are: IMAGES, TEXT_FILES, CSV, TSV. */
-  fileTypesToTransform?: Array<
+  fileTypesToTransform?: ReadonlyArray<
     | "FILE_TYPE_UNSPECIFIED"
     | "BINARY_FILE"
     | "TEXT_FILE"
@@ -3974,7 +3974,7 @@ export const GooglePrivacyDlpV2Deidentify =
 
 export interface GooglePrivacyDlpV2ListTableDataProfilesResponse {
   /** List of data profiles. */
-  tableDataProfiles?: Array<GooglePrivacyDlpV2TableDataProfile>;
+  tableDataProfiles?: ReadonlyArray<GooglePrivacyDlpV2TableDataProfile>;
   /** The next page token. */
   nextPageToken?: string;
 }
@@ -3991,7 +3991,7 @@ export const GooglePrivacyDlpV2ListTableDataProfilesResponse =
 
 export interface GooglePrivacyDlpV2LDiversityConfig {
   /** Set of quasi-identifiers indicating how equivalence classes are defined for the l-diversity computation. When multiple fields are specified, they are considered a single composite key. */
-  quasiIds?: Array<GooglePrivacyDlpV2FieldId>;
+  quasiIds?: ReadonlyArray<GooglePrivacyDlpV2FieldId>;
   /** Sensitive field for computing the l-value. */
   sensitiveAttribute?: GooglePrivacyDlpV2FieldId;
 }
@@ -4014,7 +4014,7 @@ export const GooglePrivacyDlpV2EntityId =
 
 export interface GooglePrivacyDlpV2KAnonymityConfig {
   /** Set of fields to compute k-anonymity over. When multiple fields are specified, they are considered a single composite key. Structs and repeated data types are not supported; however, nested fields are supported so long as they are not structs themselves or nested within a repeated field. */
-  quasiIds?: Array<GooglePrivacyDlpV2FieldId>;
+  quasiIds?: ReadonlyArray<GooglePrivacyDlpV2FieldId>;
   /** Message indicating that multiple rows might be associated to a single individual. If the same entity_id is associated to multiple quasi-identifier tuples over distinct rows, we consider the entire collection of tuples as the composite quasi-identifier. This collection is a multiset: the order in which the different tuples appear in the dataset is ignored, but their frequency is taken into account. Important note: a maximum of 1000 rows can be associated to a single entity ID. If more rows are associated with the same entity ID, some might be ignored. */
   entityId?: GooglePrivacyDlpV2EntityId;
 }
@@ -4062,7 +4062,7 @@ export const GooglePrivacyDlpV2TaggedField =
 
 export interface GooglePrivacyDlpV2AuxiliaryTable {
   /** Required. Quasi-identifier columns. */
-  quasiIds?: Array<GooglePrivacyDlpV2QuasiIdField>;
+  quasiIds?: ReadonlyArray<GooglePrivacyDlpV2QuasiIdField>;
   /** Required. Auxiliary table location. */
   table?: GooglePrivacyDlpV2BigQueryTable;
   /** Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero. */
@@ -4078,11 +4078,11 @@ export const GooglePrivacyDlpV2AuxiliaryTable =
 
 export interface GooglePrivacyDlpV2KMapEstimationConfig {
   /** Required. Fields considered to be quasi-identifiers. No two columns can have the same tag. */
-  quasiIds?: Array<GooglePrivacyDlpV2TaggedField>;
+  quasiIds?: ReadonlyArray<GooglePrivacyDlpV2TaggedField>;
   /** ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code. */
   regionCode?: string;
   /** Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers column must appear in exactly one column of one auxiliary table. */
-  auxiliaryTables?: Array<GooglePrivacyDlpV2AuxiliaryTable>;
+  auxiliaryTables?: ReadonlyArray<GooglePrivacyDlpV2AuxiliaryTable>;
 }
 
 export const GooglePrivacyDlpV2KMapEstimationConfig =
@@ -4113,7 +4113,7 @@ export interface GooglePrivacyDlpV2StatisticalTable {
   /** Required. Auxiliary table location. */
   table?: GooglePrivacyDlpV2BigQueryTable;
   /** Required. Quasi-identifier columns. */
-  quasiIds?: Array<GooglePrivacyDlpV2QuasiIdentifierField>;
+  quasiIds?: ReadonlyArray<GooglePrivacyDlpV2QuasiIdentifierField>;
 }
 
 export const GooglePrivacyDlpV2StatisticalTable =
@@ -4146,9 +4146,9 @@ export const GooglePrivacyDlpV2QuasiId =
 
 export interface GooglePrivacyDlpV2DeltaPresenceEstimationConfig {
   /** Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers field must appear in exactly one field of one auxiliary table. */
-  auxiliaryTables?: Array<GooglePrivacyDlpV2StatisticalTable>;
+  auxiliaryTables?: ReadonlyArray<GooglePrivacyDlpV2StatisticalTable>;
   /** Required. Fields considered to be quasi-identifiers. No two fields can have the same tag. */
-  quasiIds?: Array<GooglePrivacyDlpV2QuasiId>;
+  quasiIds?: ReadonlyArray<GooglePrivacyDlpV2QuasiId>;
   /** ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code. */
   regionCode?: string;
 }
@@ -4330,7 +4330,7 @@ export interface GooglePrivacyDlpV2RiskAnalysisJobConfig {
   /** Privacy metric to compute. */
   privacyMetric?: GooglePrivacyDlpV2PrivacyMetric;
   /** Actions to execute at the completion of the job. Are executed in the order provided. */
-  actions?: Array<GooglePrivacyDlpV2Action>;
+  actions?: ReadonlyArray<GooglePrivacyDlpV2Action>;
   /** Input dataset to compute metrics over. */
   sourceTable?: GooglePrivacyDlpV2BigQueryTable;
 }
@@ -4344,7 +4344,7 @@ export const GooglePrivacyDlpV2RiskAnalysisJobConfig =
 
 export interface GooglePrivacyDlpV2InspectJobConfig {
   /** Actions to execute at the completion of the job. */
-  actions?: Array<GooglePrivacyDlpV2Action>;
+  actions?: ReadonlyArray<GooglePrivacyDlpV2Action>;
   /** How and what to scan for. */
   inspectConfig?: GooglePrivacyDlpV2InspectConfig;
   /** The data to scan. */
@@ -4429,7 +4429,7 @@ export interface GooglePrivacyDlpV2Location {
   /** Zero-based byte offsets delimiting the finding. These are relative to the finding's containing element. Note that when the content is not textual, this references the UTF-8 encoded textual representation of the content. Omitted if content is an image. */
   byteRange?: GooglePrivacyDlpV2Range;
   /** List of nested objects pointing to the precise location of the finding within the file or record. */
-  contentLocations?: Array<GooglePrivacyDlpV2ContentLocation>;
+  contentLocations?: ReadonlyArray<GooglePrivacyDlpV2ContentLocation>;
 }
 
 export const GooglePrivacyDlpV2Location =
@@ -4545,7 +4545,7 @@ export const GooglePrivacyDlpV2Finding =
 
 export interface GooglePrivacyDlpV2InspectResult {
   /** List of findings for an item. */
-  findings?: Array<GooglePrivacyDlpV2Finding>;
+  findings?: ReadonlyArray<GooglePrivacyDlpV2Finding>;
   /** If true, then this item might have more findings than were returned, and the findings returned are an arbitrary subset of all findings. The findings list might be truncated because the input items were too large, or because the server reached the maximum amount of resources allowed for a single API call. For best results, divide the input into smaller batches. */
   findingsTruncated?: boolean;
 }
@@ -4656,7 +4656,7 @@ export interface GooglePrivacyDlpV2LocationSupport {
     | "ANY_LOCATION"
     | (string & {});
   /** Specific locations where the feature may be used. Examples: us-central1, us, asia, global If scope is ANY_LOCATION, no regions will be listed. */
-  locations?: Array<string>;
+  locations?: ReadonlyArray<string>;
 }
 
 export const GooglePrivacyDlpV2LocationSupport =
@@ -4752,13 +4752,13 @@ export const GooglePrivacyDlpV2InfoTypeCategory =
 
 export interface GooglePrivacyDlpV2InfoTypeDescription {
   /** A list of available versions for the infotype. */
-  versions?: Array<GooglePrivacyDlpV2VersionDescription>;
+  versions?: ReadonlyArray<GooglePrivacyDlpV2VersionDescription>;
   /** Internal name of the infoType. */
   name?: string;
   /** The default sensitivity of the infoType. */
   sensitivityScore?: GooglePrivacyDlpV2SensitivityScore;
   /** Which parts of the API supports this InfoType. */
-  supportedBy?: Array<
+  supportedBy?: ReadonlyArray<
     "ENUM_TYPE_UNSPECIFIED" | "INSPECT" | "RISK_ANALYSIS" | (string & {})
   >;
   /** A sample that is a true positive for this infoType. */
@@ -4770,9 +4770,9 @@ export interface GooglePrivacyDlpV2InfoTypeDescription {
   /** Human readable form of the infoType name. */
   displayName?: string;
   /** If this field is set, this infoType is a general infoType and these specific infoTypes are contained within it. General infoTypes are infoTypes that encompass multiple specific infoTypes. For example, the "GEOGRAPHIC_DATA" general infoType would have set for this field "LOCATION", "LOCATION_COORDINATES", and "STREET_ADDRESS". */
-  specificInfoTypes?: Array<string>;
+  specificInfoTypes?: ReadonlyArray<string>;
   /** The category of the infoType. */
-  categories?: Array<GooglePrivacyDlpV2InfoTypeCategory>;
+  categories?: ReadonlyArray<GooglePrivacyDlpV2InfoTypeCategory>;
   /** The launch status of the infoType. */
   launchStatus?:
     | "INFO_TYPE_LAUNCH_STATUS_UNSPECIFIED"
@@ -4803,7 +4803,7 @@ export const GooglePrivacyDlpV2InfoTypeDescription =
 
 export interface GooglePrivacyDlpV2ListInfoTypesResponse {
   /** Set of sensitive infoTypes. */
-  infoTypes?: Array<GooglePrivacyDlpV2InfoTypeDescription>;
+  infoTypes?: ReadonlyArray<GooglePrivacyDlpV2InfoTypeDescription>;
 }
 
 export const GooglePrivacyDlpV2ListInfoTypesResponse =
@@ -4874,7 +4874,7 @@ export interface GooglePrivacyDlpV2Connection {
   /** Connect to a Cloud SQL instance. */
   cloudSql?: GooglePrivacyDlpV2CloudSqlProperties;
   /** Output only. Set if status == ERROR, to provide additional details. Will store the last 10 errors sorted with the most recent first. */
-  errors?: Array<GooglePrivacyDlpV2Error>;
+  errors?: ReadonlyArray<GooglePrivacyDlpV2Error>;
 }
 
 export const GooglePrivacyDlpV2Connection =
@@ -4910,7 +4910,7 @@ export const GooglePrivacyDlpV2TransformationLocation =
 
 export interface GooglePrivacyDlpV2SaveToGcsFindingsOutput {
   /** List of findings. */
-  findings?: Array<GooglePrivacyDlpV2Finding>;
+  findings?: ReadonlyArray<GooglePrivacyDlpV2Finding>;
 }
 
 export const GooglePrivacyDlpV2SaveToGcsFindingsOutput =
@@ -4920,7 +4920,7 @@ export const GooglePrivacyDlpV2SaveToGcsFindingsOutput =
 
 export interface GooglePrivacyDlpV2ListDeidentifyTemplatesResponse {
   /** List of deidentify templates, up to page_size in ListDeidentifyTemplatesRequest. */
-  deidentifyTemplates?: Array<GooglePrivacyDlpV2DeidentifyTemplate>;
+  deidentifyTemplates?: ReadonlyArray<GooglePrivacyDlpV2DeidentifyTemplate>;
   /** If the next page is available then the next page token to be used in the following ListDeidentifyTemplates request. */
   nextPageToken?: string;
 }
@@ -5041,7 +5041,7 @@ export const GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest =
 
 export interface GooglePrivacyDlpV2KMapEstimationQuasiIdValues {
   /** The quasi-identifier values. */
-  quasiIdsValues?: Array<GooglePrivacyDlpV2Value>;
+  quasiIdsValues?: ReadonlyArray<GooglePrivacyDlpV2Value>;
   /** The estimated anonymity for these quasi-identifier values. */
   estimatedAnonymity?: string;
 }
@@ -5054,7 +5054,7 @@ export const GooglePrivacyDlpV2KMapEstimationQuasiIdValues =
 
 export interface GooglePrivacyDlpV2KMapEstimationHistogramBucket {
   /** Sample of quasi-identifier tuple values in this bucket. The total number of classes returned per bucket is capped at 20. */
-  bucketValues?: Array<GooglePrivacyDlpV2KMapEstimationQuasiIdValues>;
+  bucketValues?: ReadonlyArray<GooglePrivacyDlpV2KMapEstimationQuasiIdValues>;
   /** Always positive. */
   minAnonymity?: string;
   /** Total number of distinct quasi-identifier tuple values in this bucket. */
@@ -5080,7 +5080,7 @@ export const GooglePrivacyDlpV2KMapEstimationHistogramBucket =
 
 export interface GooglePrivacyDlpV2KMapEstimationResult {
   /** The intervals [min_anonymity, max_anonymity] do not overlap. If a value doesn't correspond to any such interval, the associated frequency is zero. For example, the following records: {min_anonymity: 1, max_anonymity: 1, frequency: 17} {min_anonymity: 2, max_anonymity: 3, frequency: 42} {min_anonymity: 5, max_anonymity: 10, frequency: 99} mean that there are no record with an estimated anonymity of 4, 5, or larger than 10. */
-  kMapEstimationHistogram?: Array<GooglePrivacyDlpV2KMapEstimationHistogramBucket>;
+  kMapEstimationHistogram?: ReadonlyArray<GooglePrivacyDlpV2KMapEstimationHistogramBucket>;
 }
 
 export const GooglePrivacyDlpV2KMapEstimationResult =
@@ -5109,9 +5109,9 @@ export interface GooglePrivacyDlpV2LDiversityEquivalenceClass {
   /** Number of distinct sensitive values in this equivalence class. */
   numDistinctSensitiveValues?: string;
   /** Estimated frequencies of top sensitive values. */
-  topSensitiveValues?: Array<GooglePrivacyDlpV2ValueFrequency>;
+  topSensitiveValues?: ReadonlyArray<GooglePrivacyDlpV2ValueFrequency>;
   /** Quasi-identifier values defining the k-anonymity equivalence class. The order is always the same as the original request. */
-  quasiIdsValues?: Array<GooglePrivacyDlpV2Value>;
+  quasiIdsValues?: ReadonlyArray<GooglePrivacyDlpV2Value>;
 }
 
 export const GooglePrivacyDlpV2LDiversityEquivalenceClass =
@@ -5126,7 +5126,7 @@ export const GooglePrivacyDlpV2LDiversityEquivalenceClass =
 
 export interface GooglePrivacyDlpV2LDiversityHistogramBucket {
   /** Sample of equivalence classes in this bucket. The total number of classes returned per bucket is capped at 20. */
-  bucketValues?: Array<GooglePrivacyDlpV2LDiversityEquivalenceClass>;
+  bucketValues?: ReadonlyArray<GooglePrivacyDlpV2LDiversityEquivalenceClass>;
   /** Lower bound on the sensitive value frequencies of the equivalence classes in this bucket. */
   sensitiveValueFrequencyLowerBound?: string;
   /** Total number of distinct equivalence classes in this bucket. */
@@ -5261,7 +5261,7 @@ export const GooglePrivacyDlpV2HybridInspectResponse =
 
 export interface GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket {
   /** Sample of quasi-identifier tuple values in this bucket. The total number of classes returned per bucket is capped at 20. */
-  bucketValues?: Array<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues>;
+  bucketValues?: ReadonlyArray<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues>;
   /** Always greater than or equal to min_probability. */
   maxProbability?: number;
   /** Total number of distinct quasi-identifier tuple values in this bucket. */
@@ -5367,7 +5367,7 @@ export interface GooglePrivacyDlpV2Result {
   /** Total size in bytes that were processed. */
   processedBytes?: string;
   /** Statistics of how many instances of each info type were found during inspect job. */
-  infoTypeStats?: Array<GooglePrivacyDlpV2InfoTypeStats>;
+  infoTypeStats?: ReadonlyArray<GooglePrivacyDlpV2InfoTypeStats>;
   /** Estimate of the number of bytes to process. */
   totalEstimatedBytes?: string;
   /** Statistics related to the processing of hybrid inspect. */
@@ -5451,7 +5451,7 @@ export interface GooglePrivacyDlpV2StoredInfoTypeVersion {
     | "INVALID"
     | (string & {});
   /** Errors that occurred when creating this storedInfoType version, or anomalies detected in the storedInfoType data that render it unusable. Only the five most recent errors will be displayed, with the most recent error appearing first. For example, some of the data for stored custom dictionaries is put in the user's Cloud Storage bucket, and if this data is modified or deleted by the user or another system, the dictionary becomes invalid. If any errors occur, fix the problem indicated by the error message and use the UpdateStoredInfoType API method to create another version of the storedInfoType to continue using it, reusing the same `config` if it was not the source of the error. */
-  errors?: Array<GooglePrivacyDlpV2Error>;
+  errors?: ReadonlyArray<GooglePrivacyDlpV2Error>;
 }
 
 export const GooglePrivacyDlpV2StoredInfoTypeVersion =
@@ -5465,7 +5465,7 @@ export const GooglePrivacyDlpV2StoredInfoTypeVersion =
 
 export interface GooglePrivacyDlpV2LDiversityResult {
   /** Histogram of l-diversity equivalence class sensitive value frequencies. */
-  sensitiveValueFrequencyHistogramBuckets?: Array<GooglePrivacyDlpV2LDiversityHistogramBucket>;
+  sensitiveValueFrequencyHistogramBuckets?: ReadonlyArray<GooglePrivacyDlpV2LDiversityHistogramBucket>;
 }
 
 export const GooglePrivacyDlpV2LDiversityResult =
@@ -5551,7 +5551,7 @@ export const GooglePrivacyDlpV2ImageRedactionConfig =
 
 export interface GooglePrivacyDlpV2StoredInfoType {
   /** Pending versions of the stored info type. Empty if no versions are pending. */
-  pendingVersions?: Array<GooglePrivacyDlpV2StoredInfoTypeVersion>;
+  pendingVersions?: ReadonlyArray<GooglePrivacyDlpV2StoredInfoTypeVersion>;
   /** Resource name. */
   name?: string;
   /** Current version of the stored info type. */
@@ -5591,7 +5591,7 @@ export const GooglePrivacyDlpV2DataProfilePubSubMessage =
 
 export interface GooglePrivacyDlpV2ListConnectionsResponse {
   /** List of connections. */
-  connections?: Array<GooglePrivacyDlpV2Connection>;
+  connections?: ReadonlyArray<GooglePrivacyDlpV2Connection>;
   /** Token to retrieve the next page of results. An empty value means there are no more results. */
   nextPageToken?: string;
 }
@@ -5634,11 +5634,11 @@ export interface GooglePrivacyDlpV2JobTrigger {
     | "CANCELLED"
     | (string & {});
   /** A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object. */
-  triggers?: Array<GooglePrivacyDlpV2Trigger>;
+  triggers?: ReadonlyArray<GooglePrivacyDlpV2Trigger>;
   /** Output only. The creation timestamp of a triggeredJob. */
   createTime?: string;
   /** Output only. A stream of errors encountered when the trigger was activated. Repeated errors may result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified this list will be cleared. */
-  errors?: Array<GooglePrivacyDlpV2Error>;
+  errors?: ReadonlyArray<GooglePrivacyDlpV2Error>;
   /** Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`. */
   name?: string;
   /** Output only. The timestamp of the last time this trigger executed. */
@@ -5685,7 +5685,7 @@ export const GooglePrivacyDlpV2CreateJobTriggerRequest =
 
 export interface GooglePrivacyDlpV2KAnonymityEquivalenceClass {
   /** Set of values defining the equivalence class. One value per quasi-identifier column in the original KAnonymity metric message. The order is always the same as the original request. */
-  quasiIdsValues?: Array<GooglePrivacyDlpV2Value>;
+  quasiIdsValues?: ReadonlyArray<GooglePrivacyDlpV2Value>;
   /** Size of the equivalence class, for example number of rows with the above set of values. */
   equivalenceClassSize?: string;
 }
@@ -5698,7 +5698,7 @@ export const GooglePrivacyDlpV2KAnonymityEquivalenceClass =
 
 export interface GooglePrivacyDlpV2SearchConnectionsResponse {
   /** List of connections that match the search query. Note that only a subset of the fields will be populated, and only "name" is guaranteed to be set. For full details of a Connection, call GetConnection with the name. */
-  connections?: Array<GooglePrivacyDlpV2Connection>;
+  connections?: ReadonlyArray<GooglePrivacyDlpV2Connection>;
   /** Token to retrieve the next page of results. An empty value means there are no more results. */
   nextPageToken?: string;
 }
@@ -5756,7 +5756,7 @@ export interface GooglePrivacyDlpV2KAnonymityHistogramBucket {
   /** Total number of distinct equivalence classes in this bucket. */
   bucketValueCount?: string;
   /** Sample of equivalence classes in this bucket. The total number of classes returned per bucket is capped at 20. */
-  bucketValues?: Array<GooglePrivacyDlpV2KAnonymityEquivalenceClass>;
+  bucketValues?: ReadonlyArray<GooglePrivacyDlpV2KAnonymityEquivalenceClass>;
 }
 
 export const GooglePrivacyDlpV2KAnonymityHistogramBucket =
@@ -5772,7 +5772,7 @@ export const GooglePrivacyDlpV2KAnonymityHistogramBucket =
 
 export interface GooglePrivacyDlpV2ListStoredInfoTypesResponse {
   /** List of storedInfoTypes, up to page_size in ListStoredInfoTypesRequest. */
-  storedInfoTypes?: Array<GooglePrivacyDlpV2StoredInfoType>;
+  storedInfoTypes?: ReadonlyArray<GooglePrivacyDlpV2StoredInfoType>;
   /** If the next page is available then the next page token to be used in the following ListStoredInfoTypes request. */
   nextPageToken?: string;
 }
@@ -5789,7 +5789,7 @@ export interface GooglePrivacyDlpV2NumericalStatsResult {
   /** Maximum value appearing in the column. */
   maxValue?: GooglePrivacyDlpV2Value;
   /** List of 99 values that partition the set of field values into 100 equal sized buckets. */
-  quantileValues?: Array<GooglePrivacyDlpV2Value>;
+  quantileValues?: ReadonlyArray<GooglePrivacyDlpV2Value>;
   /** Minimum value appearing in the column. */
   minValue?: GooglePrivacyDlpV2Value;
 }
@@ -5805,7 +5805,7 @@ export interface GooglePrivacyDlpV2ListJobTriggersResponse {
   /** If the next page is available then this value is the next page token to be used in the following ListJobTriggers request. */
   nextPageToken?: string;
   /** List of triggeredJobs, up to page_size in ListJobTriggersRequest. */
-  jobTriggers?: Array<GooglePrivacyDlpV2JobTrigger>;
+  jobTriggers?: ReadonlyArray<GooglePrivacyDlpV2JobTrigger>;
 }
 
 export const GooglePrivacyDlpV2ListJobTriggersResponse =
@@ -5816,7 +5816,7 @@ export const GooglePrivacyDlpV2ListJobTriggersResponse =
 
 export interface GooglePrivacyDlpV2KAnonymityResult {
   /** Histogram of k-anonymity equivalence classes. */
-  equivalenceClassHistogramBuckets?: Array<GooglePrivacyDlpV2KAnonymityHistogramBucket>;
+  equivalenceClassHistogramBuckets?: ReadonlyArray<GooglePrivacyDlpV2KAnonymityHistogramBucket>;
 }
 
 export const GooglePrivacyDlpV2KAnonymityResult =
@@ -5905,7 +5905,7 @@ export const GooglePrivacyDlpV2ReidentifyContentRequest =
 
 export interface GooglePrivacyDlpV2DeltaPresenceEstimationResult {
   /** The intervals [min_probability, max_probability) do not overlap. If a value doesn't correspond to any such interval, the associated frequency is zero. For example, the following records: {min_probability: 0, max_probability: 0.1, frequency: 17} {min_probability: 0.2, max_probability: 0.3, frequency: 42} {min_probability: 0.3, max_probability: 0.4, frequency: 99} mean that there are no record with an estimated probability in [0.1, 0.2) nor larger or equal to 0.4. */
-  deltaPresenceEstimationHistogram?: Array<GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket>;
+  deltaPresenceEstimationHistogram?: ReadonlyArray<GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket>;
 }
 
 export const GooglePrivacyDlpV2DeltaPresenceEstimationResult =
@@ -5919,7 +5919,7 @@ export const GooglePrivacyDlpV2DeltaPresenceEstimationResult =
 
 export interface GooglePrivacyDlpV2ListInspectTemplatesResponse {
   /** List of inspectTemplates, up to page_size in ListInspectTemplatesRequest. */
-  inspectTemplates?: Array<GooglePrivacyDlpV2InspectTemplate>;
+  inspectTemplates?: ReadonlyArray<GooglePrivacyDlpV2InspectTemplate>;
   /** If the next page is available then the next page token to be used in the following ListInspectTemplates request. */
   nextPageToken?: string;
 }
@@ -5940,7 +5940,7 @@ export interface GooglePrivacyDlpV2CategoricalStatsHistogramBucket {
   /** Lower bound on the value frequency of the values in this bucket. */
   valueFrequencyLowerBound?: string;
   /** Sample of value frequencies in this bucket. The total number of values returned per bucket is capped at 20. */
-  bucketValues?: Array<GooglePrivacyDlpV2ValueFrequency>;
+  bucketValues?: ReadonlyArray<GooglePrivacyDlpV2ValueFrequency>;
   /** Total number of distinct values in this bucket. */
   bucketValueCount?: string;
 }
@@ -6010,7 +6010,7 @@ export const GooglePrivacyDlpV2ProjectDataProfile =
 
 export interface GooglePrivacyDlpV2CategoricalStatsResult {
   /** Histogram of value frequencies in the column. */
-  valueFrequencyHistogramBuckets?: Array<GooglePrivacyDlpV2CategoricalStatsHistogramBucket>;
+  valueFrequencyHistogramBuckets?: ReadonlyArray<GooglePrivacyDlpV2CategoricalStatsHistogramBucket>;
 }
 
 export const GooglePrivacyDlpV2CategoricalStatsResult =
@@ -6066,7 +6066,7 @@ export const GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails =
 
 export interface GooglePrivacyDlpV2DlpJob {
   /** A stream of errors encountered running the job. */
-  errors?: Array<GooglePrivacyDlpV2Error>;
+  errors?: ReadonlyArray<GooglePrivacyDlpV2Error>;
   /** If created by a job trigger, the resource name of the trigger that instantiated the job. */
   jobTriggerName?: string;
   /** The server-assigned name. */
@@ -6088,7 +6088,7 @@ export interface GooglePrivacyDlpV2DlpJob {
   /** Time when the job was last modified by the system. */
   lastModified?: string;
   /** Events that should occur after the job has completed. */
-  actionDetails?: Array<GooglePrivacyDlpV2ActionDetails>;
+  actionDetails?: ReadonlyArray<GooglePrivacyDlpV2ActionDetails>;
   /** Results from inspecting a data source. */
   inspectDetails?: GooglePrivacyDlpV2InspectDataSourceDetails;
   /** Results from analyzing risk of a data source. */
@@ -6127,7 +6127,7 @@ export interface GooglePrivacyDlpV2ListProjectDataProfilesResponse {
   /** The next page token. */
   nextPageToken?: string;
   /** List of data profiles. */
-  projectDataProfiles?: Array<GooglePrivacyDlpV2ProjectDataProfile>;
+  projectDataProfiles?: ReadonlyArray<GooglePrivacyDlpV2ProjectDataProfile>;
 }
 
 export const GooglePrivacyDlpV2ListProjectDataProfilesResponse =
@@ -6167,7 +6167,7 @@ export const GooglePrivacyDlpV2DeidentifyContentRequest =
 
 export interface GooglePrivacyDlpV2ListDlpJobsResponse {
   /** A list of DlpJobs that matches the specified filter in the request. */
-  jobs?: Array<GooglePrivacyDlpV2DlpJob>;
+  jobs?: ReadonlyArray<GooglePrivacyDlpV2DlpJob>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -6196,7 +6196,7 @@ export const GooglePrivacyDlpV2CreateStoredInfoTypeRequest =
 
 export interface GooglePrivacyDlpV2ListFileStoreDataProfilesResponse {
   /** List of data profiles. */
-  fileStoreDataProfiles?: Array<GooglePrivacyDlpV2FileStoreDataProfile>;
+  fileStoreDataProfiles?: ReadonlyArray<GooglePrivacyDlpV2FileStoreDataProfile>;
   /** The next page token. */
   nextPageToken?: string;
 }
@@ -6241,7 +6241,7 @@ export interface GooglePrivacyDlpV2ListColumnDataProfilesResponse {
   /** The next page token. */
   nextPageToken?: string;
   /** List of data profiles. */
-  columnDataProfiles?: Array<GooglePrivacyDlpV2ColumnDataProfile>;
+  columnDataProfiles?: ReadonlyArray<GooglePrivacyDlpV2ColumnDataProfile>;
 }
 
 export const GooglePrivacyDlpV2ListColumnDataProfilesResponse =
@@ -6302,7 +6302,7 @@ export interface GooglePrivacyDlpV2TransformationDetails {
   /** The top level name of the container where the transformation is located (this will be the source file name or table name). */
   containerName?: string;
   /** Description of transformation. This would only contain more than one element if there were multiple matching transformations and which one to apply was ambiguous. Not set for states that contain no transformation, currently only state that contains no transformation is TransformationResultStateType.METADATA_UNRETRIEVABLE. */
-  transformation?: Array<GooglePrivacyDlpV2TransformationDescription>;
+  transformation?: ReadonlyArray<GooglePrivacyDlpV2TransformationDescription>;
   /** The number of bytes that were transformed. If transformation was unsuccessful or did not take place because there was no content to transform, this will be zero. */
   transformedBytes?: string;
   /** The precise location of the transformed content in the original container. */
@@ -6329,7 +6329,7 @@ export const GooglePrivacyDlpV2TransformationDetails =
 
 export interface GooglePrivacyDlpV2RedactImageRequest {
   /** The configuration for specifying what content to redact from images. */
-  imageRedactionConfigs?: Array<GooglePrivacyDlpV2ImageRedactionConfig>;
+  imageRedactionConfigs?: ReadonlyArray<GooglePrivacyDlpV2ImageRedactionConfig>;
   /** Whether the response should include findings along with the redacted image. */
   includeFindings?: boolean;
   /** The full resource name of the inspection template to use. Settings in the main `inspect_config` field override the corresponding settings in this inspection template. The merge behavior is as follows: - Singular field: The main field's value replaces the value of the corresponding field in the template. - Repeated fields: The field values are appended to the list defined in the template. - Sub-messages and groups: The fields are recursively merged. */
@@ -6381,7 +6381,7 @@ export const ListLocationsInfoTypesRequest =
     ),
     locationId: Schema.optional(Schema.String).pipe(T.HttpQuery("locationId")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/locations/{locationsId}/infoTypes" }),
+    T.Http({ method: "GET", path: "v2/{parent}/infoTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListLocationsInfoTypesRequest>;
 
@@ -6413,10 +6413,7 @@ export const GetProjectsLocationsTableDataProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/tableDataProfiles/{tableDataProfilesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTableDataProfilesRequest>;
 
@@ -6460,10 +6457,7 @@ export const ListProjectsLocationsTableDataProfilesRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/tableDataProfiles",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/tableDataProfiles" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTableDataProfilesRequest>;
 
@@ -6499,10 +6493,7 @@ export const DeleteProjectsLocationsTableDataProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/tableDataProfiles/{tableDataProfilesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTableDataProfilesRequest>;
 
@@ -6545,10 +6536,7 @@ export const ListProjectsLocationsInfoTypesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/infoTypes",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/infoTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsInfoTypesRequest>;
 
@@ -6587,7 +6575,7 @@ export const CreateProjectsLocationsDeidentifyTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/deidentifyTemplates",
+      path: "v2/{parent}/deidentifyTemplates",
       hasBody: true,
     }),
     svc,
@@ -6633,10 +6621,7 @@ export const ListProjectsLocationsDeidentifyTemplatesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     locationId: Schema.optional(Schema.String).pipe(T.HttpQuery("locationId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/deidentifyTemplates",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/deidentifyTemplates" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDeidentifyTemplatesRequest>;
 
@@ -6672,10 +6657,7 @@ export const GetProjectsLocationsDeidentifyTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/deidentifyTemplates/{deidentifyTemplatesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDeidentifyTemplatesRequest>;
 
@@ -6707,10 +6689,7 @@ export const DeleteProjectsLocationsDeidentifyTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/deidentifyTemplates/{deidentifyTemplatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDeidentifyTemplatesRequest>;
 
@@ -6747,11 +6726,7 @@ export const PatchProjectsLocationsDeidentifyTemplatesRequest =
       GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/deidentifyTemplates/{deidentifyTemplatesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDeidentifyTemplatesRequest>;
 
@@ -6783,10 +6758,7 @@ export const GetProjectsLocationsInspectTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/inspectTemplates/{inspectTemplatesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsInspectTemplatesRequest>;
 
@@ -6830,10 +6802,7 @@ export const ListProjectsLocationsInspectTemplatesRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/inspectTemplates",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/inspectTemplates" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsInspectTemplatesRequest>;
 
@@ -6876,7 +6845,7 @@ export const CreateProjectsLocationsInspectTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/inspectTemplates",
+      path: "v2/{parent}/inspectTemplates",
       hasBody: true,
     }),
     svc,
@@ -6915,11 +6884,7 @@ export const PatchProjectsLocationsInspectTemplatesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/inspectTemplates/{inspectTemplatesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsInspectTemplatesRequest>;
 
@@ -6951,10 +6916,7 @@ export const DeleteProjectsLocationsInspectTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/inspectTemplates/{inspectTemplatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsInspectTemplatesRequest>;
 
@@ -6991,11 +6953,7 @@ export const ActivateProjectsLocationsJobTriggersRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobTriggers/{jobTriggersId}:activate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:activate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ActivateProjectsLocationsJobTriggersRequest>;
 
@@ -7027,10 +6985,7 @@ export const DeleteProjectsLocationsJobTriggersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobTriggers/{jobTriggersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsJobTriggersRequest>;
 
@@ -7066,11 +7021,7 @@ export const PatchProjectsLocationsJobTriggersRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobTriggers/{jobTriggersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsJobTriggersRequest>;
 
@@ -7107,11 +7058,7 @@ export const CreateProjectsLocationsJobTriggersRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobTriggers",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/jobTriggers", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsJobTriggersRequest>;
 
@@ -7148,11 +7095,7 @@ export const HybridInspectProjectsLocationsJobTriggersRequest =
       GooglePrivacyDlpV2HybridInspectJobTriggerRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobTriggers/{jobTriggersId}:hybridInspect",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:hybridInspect", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<HybridInspectProjectsLocationsJobTriggersRequest>;
 
@@ -7206,10 +7149,7 @@ export const ListProjectsLocationsJobTriggersRequest =
     type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
     locationId: Schema.optional(Schema.String).pipe(T.HttpQuery("locationId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobTriggers",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/jobTriggers" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsJobTriggersRequest>;
 
@@ -7245,10 +7185,7 @@ export const GetProjectsLocationsJobTriggersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobTriggers/{jobTriggersId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsJobTriggersRequest>;
 
@@ -7280,10 +7217,7 @@ export const GetProjectsLocationsProjectDataProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/projectDataProfiles/{projectDataProfilesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsProjectDataProfilesRequest>;
 
@@ -7327,10 +7261,7 @@ export const ListProjectsLocationsProjectDataProfilesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/projectDataProfiles",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/projectDataProfiles" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsProjectDataProfilesRequest>;
 
@@ -7378,10 +7309,7 @@ export const ListProjectsLocationsFileStoreDataProfilesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/fileStoreDataProfiles",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/fileStoreDataProfiles" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsFileStoreDataProfilesRequest>;
 
@@ -7417,10 +7345,7 @@ export const DeleteProjectsLocationsFileStoreDataProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/fileStoreDataProfiles/{fileStoreDataProfilesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsFileStoreDataProfilesRequest>;
 
@@ -7452,10 +7377,7 @@ export const GetProjectsLocationsFileStoreDataProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/fileStoreDataProfiles/{fileStoreDataProfilesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsFileStoreDataProfilesRequest>;
 
@@ -7492,11 +7414,7 @@ export const RedactProjectsLocationsImageRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/image:redact",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/image:redact", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RedactProjectsLocationsImageRequest>;
 
@@ -7528,10 +7446,7 @@ export const GetProjectsLocationsDlpJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/dlpJobs/{dlpJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDlpJobsRequest>;
 
@@ -7567,11 +7482,7 @@ export const FinishProjectsLocationsDlpJobsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/dlpJobs/{dlpJobsId}:finish",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:finish", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<FinishProjectsLocationsDlpJobsRequest>;
 
@@ -7624,10 +7535,7 @@ export const ListProjectsLocationsDlpJobsRequest =
     type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
     locationId: Schema.optional(Schema.String).pipe(T.HttpQuery("locationId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/dlpJobs",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/dlpJobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDlpJobsRequest>;
 
@@ -7668,11 +7576,7 @@ export const HybridInspectProjectsLocationsDlpJobsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/dlpJobs/{dlpJobsId}:hybridInspect",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:hybridInspect", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<HybridInspectProjectsLocationsDlpJobsRequest>;
 
@@ -7709,11 +7613,7 @@ export const CreateProjectsLocationsDlpJobsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/dlpJobs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/dlpJobs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDlpJobsRequest>;
 
@@ -7744,10 +7644,7 @@ export const DeleteProjectsLocationsDlpJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/dlpJobs/{dlpJobsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDlpJobsRequest>;
 
@@ -7783,11 +7680,7 @@ export const CancelProjectsLocationsDlpJobsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/dlpJobs/{dlpJobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsDlpJobsRequest>;
 
@@ -7825,7 +7718,7 @@ export const ReidentifyProjectsLocationsContentRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/content:reidentify",
+      path: "v2/{parent}/content:reidentify",
       hasBody: true,
     }),
     svc,
@@ -7866,7 +7759,7 @@ export const DeidentifyProjectsLocationsContentRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/content:deidentify",
+      path: "v2/{parent}/content:deidentify",
       hasBody: true,
     }),
     svc,
@@ -7907,7 +7800,7 @@ export const InspectProjectsLocationsContentRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/content:inspect",
+      path: "v2/{parent}/content:inspect",
       hasBody: true,
     }),
     svc,
@@ -7950,10 +7843,7 @@ export const ListProjectsLocationsConnectionsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/connections" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsRequest>;
 
@@ -7989,10 +7879,7 @@ export const GetProjectsLocationsConnectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsConnectionsRequest>;
 
@@ -8029,11 +7916,7 @@ export const CreateProjectsLocationsConnectionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/connections", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsConnectionsRequest>;
 
@@ -8074,10 +7957,7 @@ export const SearchProjectsLocationsConnectionsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections:search",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/connections:search" }),
     svc,
   ) as unknown as Schema.Schema<SearchProjectsLocationsConnectionsRequest>;
 
@@ -8113,10 +7993,7 @@ export const DeleteProjectsLocationsConnectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectionsRequest>;
 
@@ -8152,11 +8029,7 @@ export const PatchProjectsLocationsConnectionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsConnectionsRequest>;
 
@@ -8200,10 +8073,7 @@ export const ListProjectsLocationsColumnDataProfilesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/columnDataProfiles",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/columnDataProfiles" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsColumnDataProfilesRequest>;
 
@@ -8239,10 +8109,7 @@ export const GetProjectsLocationsColumnDataProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/columnDataProfiles/{columnDataProfilesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsColumnDataProfilesRequest>;
 
@@ -8283,10 +8150,7 @@ export const ListProjectsLocationsDiscoveryConfigsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/discoveryConfigs",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/discoveryConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDiscoveryConfigsRequest>;
 
@@ -8322,10 +8186,7 @@ export const GetProjectsLocationsDiscoveryConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/discoveryConfigs/{discoveryConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDiscoveryConfigsRequest>;
 
@@ -8364,7 +8225,7 @@ export const CreateProjectsLocationsDiscoveryConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/discoveryConfigs",
+      path: "v2/{parent}/discoveryConfigs",
       hasBody: true,
     }),
     svc,
@@ -8398,10 +8259,7 @@ export const DeleteProjectsLocationsDiscoveryConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/discoveryConfigs/{discoveryConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDiscoveryConfigsRequest>;
 
@@ -8438,11 +8296,7 @@ export const PatchProjectsLocationsDiscoveryConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/discoveryConfigs/{discoveryConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDiscoveryConfigsRequest>;
 
@@ -8479,11 +8333,7 @@ export const PatchProjectsLocationsStoredInfoTypesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/storedInfoTypes/{storedInfoTypesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsStoredInfoTypesRequest>;
 
@@ -8515,10 +8365,7 @@ export const DeleteProjectsLocationsStoredInfoTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/storedInfoTypes/{storedInfoTypesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsStoredInfoTypesRequest>;
 
@@ -8557,7 +8404,7 @@ export const CreateProjectsLocationsStoredInfoTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/storedInfoTypes",
+      path: "v2/{parent}/storedInfoTypes",
       hasBody: true,
     }),
     svc,
@@ -8591,10 +8438,7 @@ export const GetProjectsLocationsStoredInfoTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/storedInfoTypes/{storedInfoTypesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsStoredInfoTypesRequest>;
 
@@ -8638,10 +8482,7 @@ export const ListProjectsLocationsStoredInfoTypesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     locationId: Schema.optional(Schema.String).pipe(T.HttpQuery("locationId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/storedInfoTypes",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/storedInfoTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsStoredInfoTypesRequest>;
 
@@ -8682,11 +8523,7 @@ export const CreateProjectsJobTriggersRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/jobTriggers",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/jobTriggers", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsJobTriggersRequest>;
 
@@ -8739,7 +8576,7 @@ export const ListProjectsJobTriggersRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/projects/{projectsId}/jobTriggers" }),
+    T.Http({ method: "GET", path: "v2/{parent}/jobTriggers" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsJobTriggersRequest>;
 
@@ -8775,10 +8612,7 @@ export const GetProjectsJobTriggersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/jobTriggers/{jobTriggersId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsJobTriggersRequest>;
 
@@ -8814,11 +8648,7 @@ export const ActivateProjectsJobTriggersRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/jobTriggers/{jobTriggersId}:activate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:activate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ActivateProjectsJobTriggersRequest>;
 
@@ -8849,10 +8679,7 @@ export const DeleteProjectsJobTriggersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/jobTriggers/{jobTriggersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsJobTriggersRequest>;
 
@@ -8888,11 +8715,7 @@ export const PatchProjectsJobTriggersRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/projects/{projectsId}/jobTriggers/{jobTriggersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsJobTriggersRequest>;
 
@@ -8930,7 +8753,7 @@ export const CreateProjectsStoredInfoTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/storedInfoTypes",
+      path: "v2/{parent}/storedInfoTypes",
       hasBody: true,
     }),
     svc,
@@ -8976,7 +8799,7 @@ export const ListProjectsStoredInfoTypesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/projects/{projectsId}/storedInfoTypes" }),
+    T.Http({ method: "GET", path: "v2/{parent}/storedInfoTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsStoredInfoTypesRequest>;
 
@@ -9012,10 +8835,7 @@ export const GetProjectsStoredInfoTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/storedInfoTypes/{storedInfoTypesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsStoredInfoTypesRequest>;
 
@@ -9047,10 +8867,7 @@ export const DeleteProjectsStoredInfoTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/storedInfoTypes/{storedInfoTypesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsStoredInfoTypesRequest>;
 
@@ -9086,11 +8903,7 @@ export const PatchProjectsStoredInfoTypesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/projects/{projectsId}/storedInfoTypes/{storedInfoTypesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsStoredInfoTypesRequest>;
 
@@ -9127,11 +8940,7 @@ export const PatchProjectsInspectTemplatesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/projects/{projectsId}/inspectTemplates/{inspectTemplatesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsInspectTemplatesRequest>;
 
@@ -9163,10 +8972,7 @@ export const DeleteProjectsInspectTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/inspectTemplates/{inspectTemplatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsInspectTemplatesRequest>;
 
@@ -9204,7 +9010,7 @@ export const CreateProjectsInspectTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/inspectTemplates",
+      path: "v2/{parent}/inspectTemplates",
       hasBody: true,
     }),
     svc,
@@ -9238,10 +9044,7 @@ export const GetProjectsInspectTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/inspectTemplates/{inspectTemplatesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsInspectTemplatesRequest>;
 
@@ -9285,10 +9088,7 @@ export const ListProjectsInspectTemplatesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     locationId: Schema.optional(Schema.String).pipe(T.HttpQuery("locationId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/inspectTemplates",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/inspectTemplates" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsInspectTemplatesRequest>;
 
@@ -9331,7 +9131,7 @@ export const ReidentifyProjectsContentRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/content:reidentify",
+      path: "v2/{parent}/content:reidentify",
       hasBody: true,
     }),
     svc,
@@ -9372,7 +9172,7 @@ export const DeidentifyProjectsContentRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/content:deidentify",
+      path: "v2/{parent}/content:deidentify",
       hasBody: true,
     }),
     svc,
@@ -9413,7 +9213,7 @@ export const InspectProjectsContentRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/content:inspect",
+      path: "v2/{parent}/content:inspect",
       hasBody: true,
     }),
     svc,
@@ -9452,11 +9252,7 @@ export const RedactProjectsImageRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/image:redact",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/image:redact", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RedactProjectsImageRequest>;
 
@@ -9487,10 +9283,7 @@ export const DeleteProjectsDeidentifyTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/deidentifyTemplates/{deidentifyTemplatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDeidentifyTemplatesRequest>;
 
@@ -9526,11 +9319,7 @@ export const PatchProjectsDeidentifyTemplatesRequest =
       GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/projects/{projectsId}/deidentifyTemplates/{deidentifyTemplatesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsDeidentifyTemplatesRequest>;
 
@@ -9574,10 +9363,7 @@ export const ListProjectsDeidentifyTemplatesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     locationId: Schema.optional(Schema.String).pipe(T.HttpQuery("locationId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/deidentifyTemplates",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/deidentifyTemplates" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDeidentifyTemplatesRequest>;
 
@@ -9613,10 +9399,7 @@ export const GetProjectsDeidentifyTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/deidentifyTemplates/{deidentifyTemplatesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDeidentifyTemplatesRequest>;
 
@@ -9655,7 +9438,7 @@ export const CreateProjectsDeidentifyTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/deidentifyTemplates",
+      path: "v2/{parent}/deidentifyTemplates",
       hasBody: true,
     }),
     svc,
@@ -9711,7 +9494,7 @@ export const ListProjectsDlpJobsRequest =
     type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
     locationId: Schema.optional(Schema.String).pipe(T.HttpQuery("locationId")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/projects/{projectsId}/dlpJobs" }),
+    T.Http({ method: "GET", path: "v2/{parent}/dlpJobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDlpJobsRequest>;
 
@@ -9746,10 +9529,7 @@ export const GetProjectsDlpJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/dlpJobs/{dlpJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDlpJobsRequest>;
 
@@ -9785,11 +9565,7 @@ export const CreateProjectsDlpJobsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/dlpJobs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/dlpJobs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsDlpJobsRequest>;
 
@@ -9820,10 +9596,7 @@ export const DeleteProjectsDlpJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/dlpJobs/{dlpJobsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDlpJobsRequest>;
 
@@ -9859,11 +9632,7 @@ export const CancelProjectsDlpJobsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/dlpJobs/{dlpJobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsDlpJobsRequest>;
 
@@ -9894,10 +9663,7 @@ export const DeleteOrganizationsDeidentifyTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/organizations/{organizationsId}/deidentifyTemplates/{deidentifyTemplatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsDeidentifyTemplatesRequest>;
 
@@ -9934,11 +9700,7 @@ export const PatchOrganizationsDeidentifyTemplatesRequest =
       GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/organizations/{organizationsId}/deidentifyTemplates/{deidentifyTemplatesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsDeidentifyTemplatesRequest>;
 
@@ -9982,10 +9744,7 @@ export const ListOrganizationsDeidentifyTemplatesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/deidentifyTemplates",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/deidentifyTemplates" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsDeidentifyTemplatesRequest>;
 
@@ -10021,10 +9780,7 @@ export const GetOrganizationsDeidentifyTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/deidentifyTemplates/{deidentifyTemplatesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsDeidentifyTemplatesRequest>;
 
@@ -10063,7 +9819,7 @@ export const CreateOrganizationsDeidentifyTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/organizations/{organizationsId}/deidentifyTemplates",
+      path: "v2/{parent}/deidentifyTemplates",
       hasBody: true,
     }),
     svc,
@@ -10104,7 +9860,7 @@ export const CreateOrganizationsStoredInfoTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/organizations/{organizationsId}/storedInfoTypes",
+      path: "v2/{parent}/storedInfoTypes",
       hasBody: true,
     }),
     svc,
@@ -10150,10 +9906,7 @@ export const ListOrganizationsStoredInfoTypesRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/storedInfoTypes",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/storedInfoTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsStoredInfoTypesRequest>;
 
@@ -10189,10 +9942,7 @@ export const GetOrganizationsStoredInfoTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/storedInfoTypes/{storedInfoTypesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsStoredInfoTypesRequest>;
 
@@ -10224,10 +9974,7 @@ export const DeleteOrganizationsStoredInfoTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/organizations/{organizationsId}/storedInfoTypes/{storedInfoTypesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsStoredInfoTypesRequest>;
 
@@ -10263,11 +10010,7 @@ export const PatchOrganizationsStoredInfoTypesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/organizations/{organizationsId}/storedInfoTypes/{storedInfoTypesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsStoredInfoTypesRequest>;
 
@@ -10321,10 +10064,7 @@ export const ListOrganizationsLocationsJobTriggersRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     locationId: Schema.optional(Schema.String).pipe(T.HttpQuery("locationId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/jobTriggers",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/jobTriggers" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsJobTriggersRequest>;
 
@@ -10360,10 +10100,7 @@ export const GetOrganizationsLocationsJobTriggersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/jobTriggers/{jobTriggersId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsJobTriggersRequest>;
 
@@ -10400,11 +10137,7 @@ export const CreateOrganizationsLocationsJobTriggersRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/jobTriggers",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/jobTriggers", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsLocationsJobTriggersRequest>;
 
@@ -10436,10 +10169,7 @@ export const DeleteOrganizationsLocationsJobTriggersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/jobTriggers/{jobTriggersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsLocationsJobTriggersRequest>;
 
@@ -10476,11 +10206,7 @@ export const PatchOrganizationsLocationsJobTriggersRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/jobTriggers/{jobTriggersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsLocationsJobTriggersRequest>;
 
@@ -10512,10 +10238,7 @@ export const GetOrganizationsLocationsProjectDataProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/projectDataProfiles/{projectDataProfilesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsProjectDataProfilesRequest>;
 
@@ -10559,10 +10282,7 @@ export const ListOrganizationsLocationsProjectDataProfilesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/projectDataProfiles",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/projectDataProfiles" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsProjectDataProfilesRequest>;
 
@@ -10598,10 +10318,7 @@ export const DeleteOrganizationsLocationsStoredInfoTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/storedInfoTypes/{storedInfoTypesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsLocationsStoredInfoTypesRequest>;
 
@@ -10638,11 +10355,7 @@ export const PatchOrganizationsLocationsStoredInfoTypesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/storedInfoTypes/{storedInfoTypesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsLocationsStoredInfoTypesRequest>;
 
@@ -10686,10 +10399,7 @@ export const ListOrganizationsLocationsStoredInfoTypesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/storedInfoTypes",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/storedInfoTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsStoredInfoTypesRequest>;
 
@@ -10725,10 +10435,7 @@ export const GetOrganizationsLocationsStoredInfoTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/storedInfoTypes/{storedInfoTypesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsStoredInfoTypesRequest>;
 
@@ -10767,7 +10474,7 @@ export const CreateOrganizationsLocationsStoredInfoTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/storedInfoTypes",
+      path: "v2/{parent}/storedInfoTypes",
       hasBody: true,
     }),
     svc,
@@ -10813,10 +10520,7 @@ export const ListOrganizationsLocationsFileStoreDataProfilesRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/fileStoreDataProfiles",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/fileStoreDataProfiles" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsFileStoreDataProfilesRequest>;
 
@@ -10853,10 +10557,7 @@ export const DeleteOrganizationsLocationsFileStoreDataProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/fileStoreDataProfiles/{fileStoreDataProfilesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsLocationsFileStoreDataProfilesRequest>;
 
@@ -10889,10 +10590,7 @@ export const GetOrganizationsLocationsFileStoreDataProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/fileStoreDataProfiles/{fileStoreDataProfilesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsFileStoreDataProfilesRequest>;
 
@@ -10931,7 +10629,7 @@ export const CreateOrganizationsLocationsInspectTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/inspectTemplates",
+      path: "v2/{parent}/inspectTemplates",
       hasBody: true,
     }),
     svc,
@@ -10977,10 +10675,7 @@ export const ListOrganizationsLocationsInspectTemplatesRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     locationId: Schema.optional(Schema.String).pipe(T.HttpQuery("locationId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/inspectTemplates",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/inspectTemplates" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsInspectTemplatesRequest>;
 
@@ -11016,10 +10711,7 @@ export const GetOrganizationsLocationsInspectTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/inspectTemplates/{inspectTemplatesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsInspectTemplatesRequest>;
 
@@ -11051,10 +10743,7 @@ export const DeleteOrganizationsLocationsInspectTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/inspectTemplates/{inspectTemplatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsLocationsInspectTemplatesRequest>;
 
@@ -11091,11 +10780,7 @@ export const PatchOrganizationsLocationsInspectTemplatesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/inspectTemplates/{inspectTemplatesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsLocationsInspectTemplatesRequest>;
 
@@ -11132,11 +10817,7 @@ export const PatchOrganizationsLocationsDiscoveryConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/discoveryConfigs/{discoveryConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsLocationsDiscoveryConfigsRequest>;
 
@@ -11168,10 +10849,7 @@ export const DeleteOrganizationsLocationsDiscoveryConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/discoveryConfigs/{discoveryConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsLocationsDiscoveryConfigsRequest>;
 
@@ -11210,7 +10888,7 @@ export const CreateOrganizationsLocationsDiscoveryConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/discoveryConfigs",
+      path: "v2/{parent}/discoveryConfigs",
       hasBody: true,
     }),
     svc,
@@ -11244,10 +10922,7 @@ export const GetOrganizationsLocationsDiscoveryConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/discoveryConfigs/{discoveryConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsDiscoveryConfigsRequest>;
 
@@ -11288,10 +10963,7 @@ export const ListOrganizationsLocationsDiscoveryConfigsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/discoveryConfigs",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/discoveryConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsDiscoveryConfigsRequest>;
 
@@ -11338,10 +11010,7 @@ export const ListOrganizationsLocationsInfoTypesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/infoTypes",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/infoTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsInfoTypesRequest>;
 
@@ -11385,10 +11054,7 @@ export const ListOrganizationsLocationsColumnDataProfilesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/columnDataProfiles",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/columnDataProfiles" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsColumnDataProfilesRequest>;
 
@@ -11424,10 +11090,7 @@ export const GetOrganizationsLocationsColumnDataProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/columnDataProfiles/{columnDataProfilesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsColumnDataProfilesRequest>;
 
@@ -11464,11 +11127,7 @@ export const PatchOrganizationsLocationsDeidentifyTemplatesRequest =
       GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/deidentifyTemplates/{deidentifyTemplatesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsLocationsDeidentifyTemplatesRequest>;
 
@@ -11500,10 +11159,7 @@ export const DeleteOrganizationsLocationsDeidentifyTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/deidentifyTemplates/{deidentifyTemplatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsLocationsDeidentifyTemplatesRequest>;
 
@@ -11543,7 +11199,7 @@ export const CreateOrganizationsLocationsDeidentifyTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/deidentifyTemplates",
+      path: "v2/{parent}/deidentifyTemplates",
       hasBody: true,
     }),
     svc,
@@ -11578,10 +11234,7 @@ export const GetOrganizationsLocationsDeidentifyTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/deidentifyTemplates/{deidentifyTemplatesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsDeidentifyTemplatesRequest>;
 
@@ -11625,10 +11278,7 @@ export const ListOrganizationsLocationsDeidentifyTemplatesRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/deidentifyTemplates",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/deidentifyTemplates" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsDeidentifyTemplatesRequest>;
 
@@ -11669,11 +11319,7 @@ export const CreateOrganizationsLocationsConnectionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/connections",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/connections", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsLocationsConnectionsRequest>;
 
@@ -11714,10 +11360,7 @@ export const SearchOrganizationsLocationsConnectionsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/connections:search",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/connections:search" }),
     svc,
   ) as unknown as Schema.Schema<SearchOrganizationsLocationsConnectionsRequest>;
 
@@ -11753,10 +11396,7 @@ export const GetOrganizationsLocationsConnectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/connections/{connectionsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsConnectionsRequest>;
 
@@ -11797,10 +11437,7 @@ export const ListOrganizationsLocationsConnectionsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/connections",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/connections" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsConnectionsRequest>;
 
@@ -11841,11 +11478,7 @@ export const PatchOrganizationsLocationsConnectionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/connections/{connectionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsLocationsConnectionsRequest>;
 
@@ -11877,10 +11510,7 @@ export const DeleteOrganizationsLocationsConnectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/connections/{connectionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsLocationsConnectionsRequest>;
 
@@ -11924,10 +11554,7 @@ export const ListOrganizationsLocationsTableDataProfilesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/tableDataProfiles",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/tableDataProfiles" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsTableDataProfilesRequest>;
 
@@ -11963,10 +11590,7 @@ export const DeleteOrganizationsLocationsTableDataProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/tableDataProfiles/{tableDataProfilesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsLocationsTableDataProfilesRequest>;
 
@@ -11998,10 +11622,7 @@ export const GetOrganizationsLocationsTableDataProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/tableDataProfiles/{tableDataProfilesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsTableDataProfilesRequest>;
 
@@ -12055,10 +11676,7 @@ export const ListOrganizationsLocationsDlpJobsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     type: Schema.optional(Schema.String).pipe(T.HttpQuery("type")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/locations/{locationsId}/dlpJobs",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/dlpJobs" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsDlpJobsRequest>;
 
@@ -12106,10 +11724,7 @@ export const ListOrganizationsInspectTemplatesRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     locationId: Schema.optional(Schema.String).pipe(T.HttpQuery("locationId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/inspectTemplates",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/inspectTemplates" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsInspectTemplatesRequest>;
 
@@ -12145,10 +11760,7 @@ export const GetOrganizationsInspectTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/organizations/{organizationsId}/inspectTemplates/{inspectTemplatesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsInspectTemplatesRequest>;
 
@@ -12187,7 +11799,7 @@ export const CreateOrganizationsInspectTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/organizations/{organizationsId}/inspectTemplates",
+      path: "v2/{parent}/inspectTemplates",
       hasBody: true,
     }),
     svc,
@@ -12221,10 +11833,7 @@ export const DeleteOrganizationsInspectTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/organizations/{organizationsId}/inspectTemplates/{inspectTemplatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsInspectTemplatesRequest>;
 
@@ -12260,11 +11869,7 @@ export const PatchOrganizationsInspectTemplatesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/organizations/{organizationsId}/inspectTemplates/{inspectTemplatesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsInspectTemplatesRequest>;
 

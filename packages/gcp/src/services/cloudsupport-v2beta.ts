@@ -174,9 +174,9 @@ export interface EmailMessage {
   /** Identifier. Resource name for the email message. */
   name?: string;
   /** Output only. Email addresses CCed on the email. */
-  ccEmailAddresses?: Array<string>;
+  ccEmailAddresses?: ReadonlyArray<string>;
   /** Output only. Email addresses the email was sent to. */
-  recipientEmailAddresses?: Array<string>;
+  recipientEmailAddresses?: ReadonlyArray<string>;
   /** Output only. The full email message body. A best-effort attempt is made to remove extraneous reply threads. */
   bodyContent?: TextContent;
   /** Output only. Time when this email message object was created. */
@@ -244,7 +244,7 @@ export const FeedItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ShowFeedResponse {
   /** The list of feed items associated with the given Case. */
-  feedItems?: Array<FeedItem>;
+  feedItems?: ReadonlyArray<FeedItem>;
   /** A token to retrieve the next page of results. This should be set in the `page_token` field of subsequent `ShowFeedRequests`. If unspecified, there are no more results to retrieve. */
   nextPageToken?: string;
 }
@@ -309,7 +309,7 @@ export const CaseClassification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCommentsResponse {
   /** List of the comments associated with the case. */
-  comments?: Array<Comment>;
+  comments?: ReadonlyArray<Comment>;
   /** A token to retrieve the next page of results. Set this in the `page_token` field of subsequent `cases.comments.list` requests. If unspecified, there are no more results to retrieve. */
   nextPageToken?: string;
 }
@@ -406,7 +406,7 @@ export interface Case {
   /** Output only. The time this case was created. */
   createTime?: string;
   /** The email addresses to receive updates on this case. */
-  subscriberEmailAddresses?: Array<string>;
+  subscriberEmailAddresses?: ReadonlyArray<string>;
   /** Output only. The time this case was last updated. */
   updateTime?: string;
   /** Whether this case was created for internal API testing and should not be acted on by the support team. */
@@ -445,7 +445,7 @@ export const Case = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCasesResponse {
   /** The list of cases associated with the parent after any filters have been applied. */
-  cases?: Array<Case>;
+  cases?: ReadonlyArray<Case>;
   /** A token to retrieve the next page of results. Set this in the `page_token` field of subsequent `cases.list` requests. If unspecified, there are no more results to retrieve. */
   nextPageToken?: string;
 }
@@ -478,7 +478,7 @@ export const DiffChecksumsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SearchCasesResponse {
   /** The list of cases associated with the parent after any filters have been applied. */
-  cases?: Array<Case>;
+  cases?: ReadonlyArray<Case>;
   /** A token to retrieve the next page of results. Set this in the `page_token` field of subsequent `cases.search` requests. If unspecified, there are no more results to retrieve. */
   nextPageToken?: string;
 }
@@ -490,7 +490,7 @@ export const SearchCasesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SearchCaseClassificationsResponse {
   /** The classifications retrieved. */
-  caseClassifications?: Array<CaseClassification>;
+  caseClassifications?: ReadonlyArray<CaseClassification>;
   /** A token to retrieve the next page of results. Set this in the `page_token` field of subsequent `caseClassifications.list` requests. If unspecified, there are no more results to retrieve. */
   nextPageToken?: string;
 }
@@ -514,7 +514,7 @@ export interface ListAttachmentsResponse {
   /** A token to retrieve the next page of results. Set this in the `page_token` field of subsequent `cases.attachments.list` requests. If unspecified, there are no more results to retrieve. */
   nextPageToken?: string;
   /** The list of attachments associated with a case. */
-  attachments?: Array<Attachment>;
+  attachments?: ReadonlyArray<Attachment>;
 }
 
 export const ListAttachmentsResponse =
@@ -552,7 +552,7 @@ export const DiffUploadResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Media {
   /** # gdata.* are outside protos with mising documentation */
-  compositeMedia?: Array<CompositeMedia>;
+  compositeMedia?: ReadonlyArray<CompositeMedia>;
   /** # gdata.* are outside protos with mising documentation */
   blobstore2Info?: Blobstore2Info;
   /** # gdata.* are outside protos with mising documentation */
@@ -683,7 +683,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "POST",
-    path: "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}/attachments",
+    path: "v2beta/{parent}/attachments",
     hasBody: true,
   }),
   svc,
@@ -714,10 +714,7 @@ export interface DownloadMediaRequest {
 export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}/attachments/{attachmentsId}:download",
-  }),
+  T.Http({ method: "GET", path: "v2beta/{name}:download" }),
   svc,
 ) as unknown as Schema.Schema<DownloadMediaRequest>;
 
@@ -755,10 +752,7 @@ export const ShowFeedCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}:showFeed",
-  }),
+  T.Http({ method: "GET", path: "v2beta/{parent}:showFeed" }),
   svc,
 ) as unknown as Schema.Schema<ShowFeedCasesRequest>;
 
@@ -792,10 +786,7 @@ export interface GetCasesRequest {
 export const GetCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}",
-  }),
+  T.Http({ method: "GET", path: "v2beta/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetCasesRequest>;
 
@@ -840,7 +831,7 @@ export const ListCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   parent: Schema.String.pipe(T.HttpPath("parent")),
   filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
 }).pipe(
-  T.Http({ method: "GET", path: "v2beta/{v2betaId}/{v2betaId1}/cases" }),
+  T.Http({ method: "GET", path: "v2beta/{parent}/cases" }),
   svc,
 ) as unknown as Schema.Schema<ListCasesRequest>;
 
@@ -923,11 +914,7 @@ export const PatchCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(Case).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "PATCH",
-    path: "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}",
-    hasBody: true,
-  }),
+  T.Http({ method: "PATCH", path: "v2beta/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchCasesRequest>;
 
@@ -959,11 +946,7 @@ export const CloseCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(CloseCaseRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "POST",
-    path: "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}:close",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v2beta/{name}:close", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<CloseCasesRequest>;
 
@@ -995,11 +978,7 @@ export const CreateCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   parent: Schema.String.pipe(T.HttpPath("parent")),
   body: Schema.optional(Case).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "POST",
-    path: "v2beta/{v2betaId}/{v2betaId1}/cases",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v2beta/{parent}/cases", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<CreateCasesRequest>;
 
@@ -1031,11 +1010,7 @@ export const EscalateCasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(EscalateCaseRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "POST",
-    path: "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}:escalate",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v2beta/{name}:escalate", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<EscalateCasesRequest>;
 
@@ -1071,10 +1046,7 @@ export const ListCasesAttachmentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}/attachments",
-    }),
+    T.Http({ method: "GET", path: "v2beta/{parent}/attachments" }),
     svc,
   ) as unknown as Schema.Schema<ListCasesAttachmentsRequest>;
 
@@ -1109,10 +1081,7 @@ export const GetCasesAttachmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}/attachments/{attachmentsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCasesAttachmentsRequest>;
 
@@ -1143,10 +1112,7 @@ export const GetCasesCommentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}/comments/{commentsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCasesCommentsRequest>;
 
@@ -1182,10 +1148,7 @@ export const ListCasesCommentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}/comments",
-    }),
+    T.Http({ method: "GET", path: "v2beta/{parent}/comments" }),
     svc,
   ) as unknown as Schema.Schema<ListCasesCommentsRequest>;
 
@@ -1223,11 +1186,7 @@ export const CreateCasesCommentsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Comment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}/comments",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2beta/{parent}/comments", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateCasesCommentsRequest>;
 

@@ -78,7 +78,7 @@ export const Solar_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SizeAndSunshineStats {
   /** Quantiles of the pointwise sunniness across the area. If there are N values here, this represents the (N-1)-iles. For example, if there are 5 values, then they would be the quartiles (min, 25%, 50%, 75%, max). Values are in annual kWh/kW like max_sunshine_hours_per_year. */
-  sunshineQuantiles?: Array<number>;
+  sunshineQuantiles?: ReadonlyArray<number>;
   /** The area of the roof or roof segment, in m^2. This is the roof area (accounting for tilt), not the ground footprint area. */
   areaMeters2?: number;
   /** The ground footprint area covered by the roof or roof segment, in m^2. */
@@ -203,7 +203,7 @@ export interface DataLayers {
   /** The URL for an image of RGB data (aerial or satellite photo) of the region. */
   rgbUrl?: string;
   /** Twelve URLs for hourly shade, corresponding to January...December, in order. Each GeoTIFF will contain 24 bands, corresponding to the 24 hours of the day. Each pixel is a 32 bit integer, corresponding to the (up to) 31 days of that month; a 1 bit means that the corresponding location is able to see the sun at that day, of that hour, of that month. Invalid locations are stored as -9999 (since this is negative, it has bit 31 set, and no valid value could have bit 31 set as that would correspond to the 32nd day of the month). An example may be useful. If you want to know whether a point (at pixel location (x, y)) saw sun at 4pm on the 22nd of June you would: 1. fetch the sixth URL in this list (corresponding to June). 1. look up the 17th channel (corresponding to 4pm). 1. read the 32-bit value at (x, y). 1. read bit 21 of the value (corresponding to the 22nd of the month). 1. if that bit is a 1, then that spot saw the sun at 4pm 22 June. More formally: Given `month` (1-12), `day` (1...month max; February has 28 days) and `hour` (0-23), the shade/sun for that month/day/hour at a position `(x, y)` is the bit ``` (hourly_shade[month - 1])(x, y)[hour] & (1 << (day - 1)) ``` where `(x, y)` is spatial indexing, `[month - 1]` refers to fetching the `month - 1`st URL (indexing from zero), `[hour]` is indexing into the channels, and a final non-zero result means "sunny". There are no leap days, and DST doesn't exist (all days are 24 hours long; noon is always "standard time" noon). */
-  hourlyShadeUrls?: Array<string>;
+  hourlyShadeUrls?: ReadonlyArray<string>;
   /** The quality of the result's imagery. */
   imageryQuality?:
     | "IMAGERY_QUALITY_UNSPECIFIED"
@@ -232,7 +232,7 @@ export interface HttpBody {
   /** The HTTP request/response body as raw binary. */
   data?: string;
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
-  extensions?: Array<Record<string, unknown>>;
+  extensions?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -298,7 +298,7 @@ export interface SolarPanelConfig {
   /** How much sunlight energy this layout captures over the course of a year, in DC kWh, assuming the panels described above. */
   yearlyEnergyDcKwh?: number;
   /** Information about the production of each roof segment that is carrying at least one panel in this layout. `roof_segment_summaries[i]` describes the i-th roof segment, including its size, expected production and orientation. */
-  roofSegmentSummaries?: Array<RoofSegmentSummary>;
+  roofSegmentSummaries?: ReadonlyArray<RoofSegmentSummary>;
 }
 
 export const SolarPanelConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -384,9 +384,9 @@ export interface SolarPotential {
   /** Total size and sunlight quantiles for the part of the roof that was assigned to some roof segment. Despite the name, this may not include the entire building. See building_stats. */
   wholeRoofStats?: SizeAndSunshineStats;
   /** Size and sunlight quantiles for each roof segment. */
-  roofSegmentStats?: Array<RoofSegmentSizeAndSunshineStats>;
+  roofSegmentStats?: ReadonlyArray<RoofSegmentSizeAndSunshineStats>;
   /** Each SolarPanelConfig describes a different arrangement of solar panels on the roof. They are in order of increasing number of panels. The `SolarPanelConfig` with panels_count=N is based on the first N panels in the `solar_panels` list. This field is only populated if at least 4 panels can fit on a roof. */
-  solarPanelConfigs?: Array<SolarPanelConfig>;
+  solarPanelConfigs?: ReadonlyArray<SolarPanelConfig>;
   /** Size of the maximum array - that is, the maximum number of panels that can fit on the roof. */
   maxArrayPanelsCount?: number;
   /** Maximum number of sunshine hours received per year, by any point on the roof. Sunshine hours are a measure of the total amount of insolation (energy) received per year. 1 sunshine hour = 1 kWh per kW (where kW refers to kW of capacity under Standard Testing Conditions). */
@@ -402,11 +402,11 @@ export interface SolarPotential {
   /** Capacity, in watts, of the panel used in the calculations. */
   panelCapacityWatts?: number;
   /** Each SolarPanel describes a single solar panel. They are listed in the order that the panel layout algorithm placed this. This is usually, though not always, in decreasing order of annual energy production. */
-  solarPanels?: Array<SolarPanel>;
+  solarPanels?: ReadonlyArray<SolarPanel>;
   /** Width, in meters in portrait orientation, of the panel used in the calculations. */
   panelWidthMeters?: number;
   /** A FinancialAnalysis gives the savings from going solar assuming a given monthly bill and a given electricity provider. They are in order of increasing order of monthly bill amount. This field will be empty for buildings in areas for which the Solar API does not have enough information to perform financial computations. */
-  financialAnalyses?: Array<FinancialAnalysis>;
+  financialAnalyses?: ReadonlyArray<FinancialAnalysis>;
 }
 
 export const SolarPotential = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

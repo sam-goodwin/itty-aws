@@ -28,7 +28,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -62,11 +62,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -162,11 +162,11 @@ export interface NodeConfig {
   /** Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
   diskSizeGb?: number;
   /** Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
-  oauthScopes?: Array<string>;
+  oauthScopes?: ReadonlyArray<string>;
   /** Optional. The Google Cloud Platform Service Account to be used by the workloads. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. */
   serviceAccount?: string;
   /** Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** Optional. The IPAllocationPolicy fields for the GKE cluster. */
   ipAllocationPolicy?: IPAllocationPolicy;
   /** Optional. The maximum number of pods per node in the Cloud Composer GKE cluster. The value must be between 8 and 110 and it can be set only if the environment is VPC-native. The default value is 32. Values of this field will be propagated both to the `default-pool` node pool of the newly created GKE cluster, and to the default "Maximum Pods per Node" value which is used for newly created node pools if their value is not explicitly set during node pool creation. For more information, see [Optimizing IP address allocation] (https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
@@ -284,7 +284,7 @@ export const AllowedIpRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WebServerNetworkAccessControl {
   /** A collection of allowed IP ranges with descriptions. */
-  allowedIpRanges?: Array<AllowedIpRange>;
+  allowedIpRanges?: ReadonlyArray<AllowedIpRange>;
 }
 
 export const WebServerNetworkAccessControl =
@@ -461,7 +461,7 @@ export interface MasterAuthorizedNetworksConfig {
   /** Optional. Whether or not master authorized networks feature is enabled. */
   enabled?: boolean;
   /** Up to 50 external networks that could access Kubernetes master through HTTPS. */
-  cidrBlocks?: Array<CidrBlock>;
+  cidrBlocks?: ReadonlyArray<CidrBlock>;
 }
 
 export const MasterAuthorizedNetworksConfig =
@@ -674,7 +674,7 @@ export const Environment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListEnvironmentsResponse {
   /** The list of environments returned by a ListEnvironmentsRequest. */
-  environments?: Array<Environment>;
+  environments?: ReadonlyArray<Environment>;
   /** The page token used to query for the next page if one exists. */
   nextPageToken?: string;
 }
@@ -707,7 +707,7 @@ export interface ExecuteAirflowCommandRequest {
   /** Airflow subcommand. */
   subcommand?: string;
   /** Parameters for the Airflow command/subcommand as an array of arguments. It may contain positional arguments like `["my-dag-id"]`, key-value parameters like `["--foo=bar"]` or `["--foo","bar"]`, or other flags like `["-f"]`. */
-  parameters?: Array<string>;
+  parameters?: ReadonlyArray<string>;
 }
 
 export const ExecuteAirflowCommandRequest =
@@ -759,7 +759,7 @@ export interface StopAirflowCommandResponse {
   /** Whether the execution is still running. */
   isDone?: boolean;
   /** Output message from stopping execution request. */
-  output?: Array<string>;
+  output?: ReadonlyArray<string>;
 }
 
 export const StopAirflowCommandResponse =
@@ -813,7 +813,7 @@ export const ExitInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PollAirflowCommandResponse {
   /** Output from the command execution. It may not contain the full output and the caller may need to poll for more lines. */
-  output?: Array<Line>;
+  output?: ReadonlyArray<Line>;
   /** Whether the command execution has finished and there is no more output. */
   outputEnd?: boolean;
   /** The result exit status of the command. */
@@ -879,7 +879,7 @@ export const ComposerWorkload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListWorkloadsResponse {
   /** The list of environment workloads. */
-  workloads?: Array<ComposerWorkload>;
+  workloads?: ReadonlyArray<ComposerWorkload>;
   /** The page token used to query for the next page if one exists. */
   nextPageToken?: string;
 }
@@ -903,7 +903,7 @@ export const UserWorkloadsSecret = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListUserWorkloadsSecretsResponse {
   /** The list of Secrets returned by a ListUserWorkloadsSecretsRequest. */
-  userWorkloadsSecrets?: Array<UserWorkloadsSecret>;
+  userWorkloadsSecrets?: ReadonlyArray<UserWorkloadsSecret>;
   /** The page token used to query for the next page if one exists. */
   nextPageToken?: string;
 }
@@ -930,7 +930,7 @@ export const UserWorkloadsConfigMap = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListUserWorkloadsConfigMapsResponse {
   /** The list of ConfigMaps returned by a ListUserWorkloadsConfigMapsRequest. */
-  userWorkloadsConfigMaps?: Array<UserWorkloadsConfigMap>;
+  userWorkloadsConfigMaps?: ReadonlyArray<UserWorkloadsConfigMap>;
   /** The page token used to query for the next page if one exists. */
   nextPageToken?: string;
 }
@@ -1017,7 +1017,7 @@ export interface ImageVersion {
   /** Whether this is the default ImageVersion used by Composer during environment creation if no input ImageVersion is specified. */
   isDefault?: boolean;
   /** supported python versions */
-  supportedPythonVersions?: Array<string>;
+  supportedPythonVersions?: ReadonlyArray<string>;
   /** The date of the version release. */
   releaseDate?: Composer_Date;
   /** Whether it is impossible to create an environment with the image version. */
@@ -1037,7 +1037,7 @@ export const ImageVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListImageVersionsResponse {
   /** The list of supported ImageVersions in a location. */
-  imageVersions?: Array<ImageVersion>;
+  imageVersions?: ReadonlyArray<ImageVersion>;
   /** The page token used to query for the next page if one exists. */
   nextPageToken?: string;
 }
@@ -1120,7 +1120,7 @@ export interface CheckUpgradeResponse {
   /** Pypi dependencies specified in the environment configuration, at the time when the build was triggered. */
   pypiDependencies?: Record<string, string>;
   /** Output only. Contains information about environment configuration that is incompatible with the new image version, except for pypi modules conflicts. */
-  configConflicts?: Array<ConfigConflict>;
+  configConflicts?: ReadonlyArray<ConfigConflict>;
 }
 
 export const CheckUpgradeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1183,10 +1183,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -1221,10 +1218,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -1255,10 +1249,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -1294,7 +1285,7 @@ export const CreateProjectsLocationsEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments",
+      path: "v1beta1/{parent}/environments",
       hasBody: true,
     }),
     svc,
@@ -1327,10 +1318,7 @@ export const GetProjectsLocationsEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsEnvironmentsRequest>;
 
@@ -1367,10 +1355,7 @@ export const ListProjectsLocationsEnvironmentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/environments" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEnvironmentsRequest>;
 
@@ -1412,11 +1397,7 @@ export const PatchProjectsLocationsEnvironmentsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Environment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsEnvironmentsRequest>;
 
@@ -1447,10 +1428,7 @@ export const DeleteProjectsLocationsEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsEnvironmentsRequest>;
 
@@ -1486,7 +1464,7 @@ export const RestartWebServerProjectsLocationsEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}:restartWebServer",
+      path: "v1beta1/{name}:restartWebServer",
       hasBody: true,
     }),
     svc,
@@ -1524,7 +1502,7 @@ export const CheckUpgradeProjectsLocationsEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}:checkUpgrade",
+      path: "v1beta1/{environment}:checkUpgrade",
       hasBody: true,
     }),
     svc,
@@ -1562,7 +1540,7 @@ export const ExecuteAirflowCommandProjectsLocationsEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}:executeAirflowCommand",
+      path: "v1beta1/{environment}:executeAirflowCommand",
       hasBody: true,
     }),
     svc,
@@ -1602,7 +1580,7 @@ export const StopAirflowCommandProjectsLocationsEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}:stopAirflowCommand",
+      path: "v1beta1/{environment}:stopAirflowCommand",
       hasBody: true,
     }),
     svc,
@@ -1642,7 +1620,7 @@ export const PollAirflowCommandProjectsLocationsEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}:pollAirflowCommand",
+      path: "v1beta1/{environment}:pollAirflowCommand",
       hasBody: true,
     }),
     svc,
@@ -1682,7 +1660,7 @@ export const SaveSnapshotProjectsLocationsEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}:saveSnapshot",
+      path: "v1beta1/{environment}:saveSnapshot",
       hasBody: true,
     }),
     svc,
@@ -1720,7 +1698,7 @@ export const LoadSnapshotProjectsLocationsEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}:loadSnapshot",
+      path: "v1beta1/{environment}:loadSnapshot",
       hasBody: true,
     }),
     svc,
@@ -1758,7 +1736,7 @@ export const DatabaseFailoverProjectsLocationsEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}:databaseFailover",
+      path: "v1beta1/{environment}:databaseFailover",
       hasBody: true,
     }),
     svc,
@@ -1793,7 +1771,7 @@ export const FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}:fetchDatabaseProperties",
+      path: "v1beta1/{environment}:fetchDatabaseProperties",
     }),
     svc,
   ) as unknown as Schema.Schema<FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest>;
@@ -1836,10 +1814,7 @@ export const ListProjectsLocationsEnvironmentsWorkloadsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/workloads",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/workloads" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEnvironmentsWorkloadsRequest>;
 
@@ -1880,7 +1855,7 @@ export const CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/userWorkloadsSecrets",
+      path: "v1beta1/{parent}/userWorkloadsSecrets",
       hasBody: true,
     }),
     svc,
@@ -1915,10 +1890,7 @@ export const GetProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/userWorkloadsSecrets/{userWorkloadsSecretsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
 
@@ -1957,10 +1929,7 @@ export const ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/userWorkloadsSecrets",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/userWorkloadsSecrets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
 
@@ -2000,11 +1969,7 @@ export const UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UserWorkloadsSecret).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/userWorkloadsSecrets/{userWorkloadsSecretsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
 
@@ -2037,10 +2002,7 @@ export const DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/userWorkloadsSecrets/{userWorkloadsSecretsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest>;
 
@@ -2078,7 +2040,7 @@ export const CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/userWorkloadsConfigMaps",
+      path: "v1beta1/{parent}/userWorkloadsConfigMaps",
       hasBody: true,
     }),
     svc,
@@ -2113,10 +2075,7 @@ export const GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
 
@@ -2155,10 +2114,7 @@ export const ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/userWorkloadsConfigMaps",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/userWorkloadsConfigMaps" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
 
@@ -2198,11 +2154,7 @@ export const UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UserWorkloadsConfigMap).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
 
@@ -2235,10 +2187,7 @@ export const DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest>;
 
@@ -2282,10 +2231,7 @@ export const ListProjectsLocationsImageVersionsRequest =
       T.HttpQuery("includePastReleases"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/imageVersions",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/imageVersions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsImageVersionsRequest>;
 

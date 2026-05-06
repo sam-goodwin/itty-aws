@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface PlatformSummary {
   /** The site's regions on this platform. No longer populated, because there is no longer any semantic difference between sites in different regions. */
-  region?: Array<
+  region?: ReadonlyArray<
     "REGION_UNKNOWN" | "REGION_A" | "REGION_B" | "REGION_C" | (string & {})
   >;
   /** Whether the site is currently under review on this platform. */
@@ -79,7 +79,7 @@ export const SiteSummaryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ViolatingSitesResponse {
   /** The list of violating sites. */
-  violatingSites?: Array<SiteSummaryResponse>;
+  violatingSites?: ReadonlyArray<SiteSummaryResponse>;
 }
 
 export const ViolatingSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -100,7 +100,7 @@ export interface GetSitesRequest {
 export const GetSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/sites/{sitesId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetSitesRequest>;
 

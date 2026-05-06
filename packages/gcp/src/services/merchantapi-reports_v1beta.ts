@@ -47,9 +47,9 @@ export interface IssueSeverityPerReportingContext {
     | "YOUTUBE_CHECKOUT"
     | (string & {});
   /** List of demoted countries in the reporting context, represented in ISO 3166 format. */
-  demotedCountries?: Array<string>;
+  demotedCountries?: ReadonlyArray<string>;
   /** List of disapproved countries in the reporting context, represented in ISO 3166 format. */
-  disapprovedCountries?: Array<string>;
+  disapprovedCountries?: ReadonlyArray<string>;
 }
 
 export const IssueSeverityPerReportingContext =
@@ -61,7 +61,7 @@ export const IssueSeverityPerReportingContext =
 
 export interface ItemIssueSeverity {
   /** Issue severity per reporting context. Reporting contexts included in this list can be restricted using a filter on the `reporting_context` field. */
-  severityPerReportingContext?: Array<IssueSeverityPerReportingContext>;
+  severityPerReportingContext?: ReadonlyArray<IssueSeverityPerReportingContext>;
   /** Aggregated severity of the issue for all reporting contexts it affects. Reporting contexts included in the computation of the aggregated severity can be restricted using a filter on the `reporting_context` field. **This field can be used for filtering the results.** */
   aggregatedSeverity?:
     | "AGGREGATED_ISSUE_SEVERITY_UNSPECIFIED"
@@ -184,7 +184,7 @@ export interface BestSellersProductClusterView {
   /** Product category (1st level) of the product cluster, represented in [Google's product taxonomy](https://support.google.com/merchants/answer/6324436). */
   categoryL1?: string;
   /** GTINs of example variants of the product cluster. */
-  variantGtins?: Array<string>;
+  variantGtins?: ReadonlyArray<string>;
   /** Product category (4th level) of the product cluster, represented in [Google's product taxonomy](https://support.google.com/merchants/answer/6324436). */
   categoryL4?: string;
   /** Popularity of the product cluster on Ads and organic surfaces, in the selected category and country, based on the estimated number of units sold. */
@@ -519,9 +519,9 @@ export const ProductPerformanceView = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface StatusPerReportingContext {
   /** List of disapproved countries in the reporting context, represented in [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format, for example, `US`. */
-  disapprovedCountries?: Array<string>;
+  disapprovedCountries?: ReadonlyArray<string>;
   /** List of pending countries in the reporting context, represented in [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format, for example, `US`. */
-  pendingCountries?: Array<string>;
+  pendingCountries?: ReadonlyArray<string>;
   /** Reporting context the status applies to. */
   reportingContext?:
     | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
@@ -546,7 +546,7 @@ export interface StatusPerReportingContext {
     | "YOUTUBE_CHECKOUT"
     | (string & {});
   /** List of approved countries in the reporting context, represented in [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format, for example, `US`. */
-  approvedCountries?: Array<string>;
+  approvedCountries?: ReadonlyArray<string>;
 }
 
 export const StatusPerReportingContext =
@@ -648,7 +648,7 @@ export interface ProductView {
     | "ELIGIBLE"
     | (string & {});
   /** Detailed product status per reporting context. Reporting contexts included in this list can be restricted using a filter on the `reporting_context` field. Equivalent to `ProductStatus.destination_statuses` in Products API. **This field cannot be used for sorting or filtering the results.** */
-  statusPerReportingContext?: Array<StatusPerReportingContext>;
+  statusPerReportingContext?: ReadonlyArray<StatusPerReportingContext>;
   /** Estimated performance potential compared to highest performing products of the merchant. */
   clickPotential?:
     | "CLICK_POTENTIAL_UNSPECIFIED"
@@ -661,13 +661,13 @@ export interface ProductView {
   /** Product type (2nd level) in merchant's own [product taxonomy](https://support.google.com/merchants/answer/6324406). */
   productTypeL2?: string;
   /** List of Global Trade Item Numbers (GTINs) of the product. */
-  gtin?: Array<string>;
+  gtin?: ReadonlyArray<string>;
   /** Link to the processed image of the product, hosted on the Google infrastructure. */
   thumbnailLink?: string;
   /** Merchant-provided id of the product. */
   offerId?: string;
   /** List of item issues for the product. **This field cannot be used for sorting the results.** **Only selected attributes of this field (for example, `item_issues.severity.aggregated_severity`) can be used for filtering the results.** */
-  itemIssues?: Array<ItemIssue>;
+  itemIssues?: ReadonlyArray<ItemIssue>;
   /** Product price. Absent if the information about the price of the product is not available. */
   price?: Price;
   /** Reporting context to restrict the query to. Restricts the reporting contexts returned in `status_per_reporting_context` and `item_issues`, and used to compute `aggregated_reporting_context_status`. **This field can only be used in the `WHERE` clause and cannot be selected in the `SELECT` clause.** */
@@ -947,7 +947,7 @@ export interface ProductStatusChangeMessage {
   /** The attribute in the resource that changed, in this case it will be always `Status`. */
   attribute?: "ATTRIBUTE_UNSPECIFIED" | "STATUS" | (string & {});
   /** A message to describe the change that happened to the product */
-  changes?: Array<ProductChange>;
+  changes?: ReadonlyArray<ProductChange>;
   /** Optional. The product expiration time. This field will not be set if the notification is sent for a product deletion event. */
   expirationTime?: string;
 }
@@ -967,7 +967,7 @@ export const ProductStatusChangeMessage =
 
 export interface SearchResponse {
   /** Rows that matched the search query. */
-  results?: Array<ReportRow>;
+  results?: ReadonlyArray<ReportRow>;
   /** Token which can be sent as `page_token` to retrieve the next page. If omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -995,7 +995,7 @@ export const SearchAccountsReportsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "reports/v1beta/accounts/{accountsId}/reports:search",
+      path: "reports/v1beta/{parent}/reports:search",
       hasBody: true,
     }),
     svc,

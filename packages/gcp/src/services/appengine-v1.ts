@@ -446,7 +446,7 @@ export interface Resources {
   /** Disk size (GB) needed. */
   diskGb?: number;
   /** User specified volumes. */
-  volumes?: Array<Volume>;
+  volumes?: ReadonlyArray<Volume>;
   /** The name of the encryption key that is stored in Google Cloud KMS. Only should be used by Cloud Composer to encrypt the vm disk */
   kmsKeyReference?: string;
   /** Memory (GB) needed. */
@@ -585,7 +585,7 @@ export interface Network {
   /** Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.Defaults to default. */
   name?: string;
   /** List of ports, or port pairs, to forward from the virtual machine to the application container. Only applicable in the App Engine flexible environment. */
-  forwardedPorts?: Array<string>;
+  forwardedPorts?: ReadonlyArray<string>;
   /** The IP mode for instances. Only applicable in the App Engine flexible environment. */
   instanceIpMode?:
     | "INSTANCE_IP_MODE_UNSPECIFIED"
@@ -629,7 +629,7 @@ export interface Version {
   /** The entrypoint for the application. */
   entrypoint?: Entrypoint;
   /** Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set. */
-  libraries?: Array<Library>;
+  libraries?: ReadonlyArray<Library>;
   /** Metadata settings that are supplied to this version to enable beta runtime features. */
   betaSettings?: Record<string, string>;
   /** A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends". */
@@ -649,7 +649,7 @@ export interface Version {
     | "STOPPED"
     | (string & {});
   /** Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set. */
-  errorHandlers?: Array<ErrorHandler>;
+  errorHandlers?: ReadonlyArray<ErrorHandler>;
   /** Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment. */
   healthCheck?: HealthCheck;
   /** The channel of the runtime to use. Only available for some runtimes. Defaults to the default channel. */
@@ -671,7 +671,7 @@ export interface Version {
   /** The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag. */
   serviceAccount?: string;
   /** The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated. */
-  zones?: Array<string>;
+  zones?: ReadonlyArray<string>;
   /** The path or name of the app's main executable. */
   runtimeMainExecutablePath?: string;
   /** App Engine execution environment for this version.Defaults to standard. */
@@ -679,7 +679,7 @@ export interface Version {
   /** Time that this version was created.@OutputOnly */
   createTime?: string;
   /** Before an application can receive email or XMPP messages, the application must be configured to enable the service. */
-  inboundServices?: Array<
+  inboundServices?: ReadonlyArray<
     | "INBOUND_SERVICE_UNSPECIFIED"
     | "INBOUND_SERVICE_MAIL"
     | "INBOUND_SERVICE_MAIL_BOUNCE"
@@ -698,7 +698,7 @@ export interface Version {
   /** Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set. */
   defaultExpiration?: string;
   /** An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set. */
-  handlers?: Array<UrlMap>;
+  handlers?: ReadonlyArray<UrlMap>;
   /** Output only. Email address of the user who created this version.@OutputOnly */
   createdBy?: string;
   /** Extra network settings. Only applicable in the App Engine flexible environment. */
@@ -768,7 +768,7 @@ export interface OperationMetadataV1Beta {
   /** User who requested this operation.@OutputOnly */
   user?: string;
   /** Durable messages that persist on every operation poll. @OutputOnly */
-  warning?: Array<string>;
+  warning?: ReadonlyArray<string>;
   /** Ephemeral message that may change every time the operation is polled. @OutputOnly */
   ephemeralMessage?: string;
   createVersionMetadata?: CreateVersionMetadataV1Beta;
@@ -818,7 +818,7 @@ export const LocationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListVersionsResponse {
   /** The versions belonging to the requested service. */
-  versions?: Array<Version>;
+  versions?: ReadonlyArray<Version>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -845,7 +845,7 @@ export interface OperationMetadataV1 {
   /** User who requested this operation.@OutputOnly */
   user?: string;
   /** Durable messages that persist on every operation poll. @OutputOnly */
-  warning?: Array<string>;
+  warning?: ReadonlyArray<string>;
   /** API method that initiated this operation. Example: google.appengine.v1.Versions.CreateVersion.@OutputOnly */
   method?: string;
   /** Time that this operation completed.@OutputOnly */
@@ -883,7 +883,7 @@ export interface GceTag {
   /** The administrative_tag name. */
   tag?: string;
   /** The parents(s) of the tag. Eg. projects/123, folders/456 It usually contains only one parent. But, in some corner cases, it can contain multiple parents. Currently, organizations are not supported. */
-  parent?: Array<string>;
+  parent?: ReadonlyArray<string>;
 }
 
 export const GceTag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -910,7 +910,7 @@ export interface ProjectsMetadata {
     | "DELETED"
     | (string & {});
   /** The GCE tags associated with the consumer project and those inherited due to their ancestry, if any. Not supported by CCFE. */
-  gceTag?: Array<GceTag>;
+  gceTag?: ReadonlyArray<GceTag>;
   /** The producer project number. */
   producerProjectNumber?: string;
   /** The producer project id. */
@@ -1055,7 +1055,7 @@ export interface DomainMapping {
   /** SSL configuration for this domain. If unconfigured, this domain will not serve with SSL. */
   sslSettings?: SslSettings;
   /** Output only. The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly */
-  resourceRecords?: Array<ResourceRecord>;
+  resourceRecords?: ReadonlyArray<ResourceRecord>;
   /** Relative name of the domain serving the application. Example: example.com. */
   id?: string;
 }
@@ -1069,7 +1069,7 @@ export const DomainMapping = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDomainMappingsResponse {
   /** The domain mappings for the application. */
-  domainMappings?: Array<DomainMapping>;
+  domainMappings?: ReadonlyArray<DomainMapping>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -1107,7 +1107,7 @@ export interface Runtime {
   /** The name of the runtime, e.g., 'go113', 'nodejs12', etc. */
   name?: string;
   /** Supported operating systems for the runtime, e.g., 'ubuntu22', etc. */
-  supportedOperatingSystems?: Array<string>;
+  supportedOperatingSystems?: ReadonlyArray<string>;
   /** Date when Runtime is deprecated. */
   deprecationDate?: Appengine_Date;
   /** User-friendly display name, e.g. 'Node.js 12', etc. */
@@ -1132,7 +1132,7 @@ export interface Runtime {
     | "FLEXIBLE"
     | (string & {});
   /** Warning messages, e.g., a deprecation warning. */
-  warnings?: Array<string>;
+  warnings?: ReadonlyArray<string>;
 }
 
 export const Runtime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1151,7 +1151,7 @@ export interface ListRuntimesResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
   /** The runtimes available to the requested application. */
-  runtimes?: Array<Runtime>;
+  runtimes?: ReadonlyArray<Runtime>;
 }
 
 export const ListRuntimesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1213,7 +1213,7 @@ export interface OperationMetadataV1Alpha {
   /** User who requested this operation.@OutputOnly */
   user?: string;
   /** Durable messages that persist on every operation poll. @OutputOnly */
-  warning?: Array<string>;
+  warning?: ReadonlyArray<string>;
 }
 
 export const OperationMetadataV1Alpha =
@@ -1240,9 +1240,9 @@ export interface AuthorizedCertificate {
   /** Aggregate count of the domain mappings with this certificate mapped. This count includes domain mappings on applications for which the user does not have VIEWER permissions.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly */
   domainMappingsCount?: number;
   /** Output only. The full paths to user visible Domain Mapping resources that have this certificate mapped. Example: apps/myapp/domainMappings/example.com.This may not represent the full list of mapped domain mappings if the user does not have VIEWER permissions on all of the applications that have this certificate mapped. See domain_mappings_count for a complete count.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly */
-  visibleDomainMappings?: Array<string>;
+  visibleDomainMappings?: ReadonlyArray<string>;
   /** Output only. Topmost applicable domains of this certificate. This certificate applies to these domains and their subdomains. Example: example.com.@OutputOnly */
-  domainNames?: Array<string>;
+  domainNames?: ReadonlyArray<string>;
   /** Output only. Relative name of the certificate. This is a unique value autogenerated on AuthorizedCertificate resource creation. Example: 12345.@OutputOnly */
   id?: string;
   /** The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate. */
@@ -1277,7 +1277,7 @@ export interface ListAuthorizedDomainsResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
   /** The authorized domains belonging to the user. */
-  domains?: Array<AuthorizedDomain>;
+  domains?: ReadonlyArray<AuthorizedDomain>;
 }
 
 export const ListAuthorizedDomainsResponse =
@@ -1342,7 +1342,7 @@ export interface ListServicesResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
   /** The services belonging to the requested application. */
-  services?: Array<Service>;
+  services?: ReadonlyArray<Service>;
 }
 
 export const ListServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1380,7 +1380,7 @@ export interface ListIngressRulesResponse {
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
   /** The ingress FirewallRules for this application. */
-  ingressRules?: Array<FirewallRule>;
+  ingressRules?: ReadonlyArray<FirewallRule>;
 }
 
 export const ListIngressRulesResponse =
@@ -1482,7 +1482,7 @@ export const Instance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListInstancesResponse {
   /** The instances belonging to the requested version. */
-  instances?: Array<Instance>;
+  instances?: ReadonlyArray<Instance>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -1494,7 +1494,7 @@ export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchUpdateIngressRulesRequest {
   /** A list of FirewallRules to replace the existing set. */
-  ingressRules?: Array<FirewallRule>;
+  ingressRules?: ReadonlyArray<FirewallRule>;
 }
 
 export const BatchUpdateIngressRulesRequest =
@@ -1522,7 +1522,7 @@ export const IdentityAwareProxy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAuthorizedCertificatesResponse {
   /** The SSL certificates the user is authorized to administer. */
-  certificates?: Array<AuthorizedCertificate>;
+  certificates?: ReadonlyArray<AuthorizedCertificate>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -1574,7 +1574,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
@@ -1625,7 +1625,7 @@ export const UrlDispatchRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchUpdateIngressRulesResponse {
   /** The full list of ingress FirewallRules for this application. */
-  ingressRules?: Array<FirewallRule>;
+  ingressRules?: ReadonlyArray<FirewallRule>;
 }
 
 export const BatchUpdateIngressRulesResponse =
@@ -1635,11 +1635,11 @@ export const BatchUpdateIngressRulesResponse =
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets ListOperationsRequest.return_partial_success and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1654,7 +1654,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
 }
 
 export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1688,7 +1688,7 @@ export interface Application {
   /** Output only. Hostname used to reach this application, as resolved by App Engine.@OutputOnly */
   defaultHostname?: string;
   /** HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported. */
-  dispatchRules?: Array<UrlDispatchRule>;
+  dispatchRules?: ReadonlyArray<UrlDispatchRule>;
   /** Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp. */
   id?: string;
   /** The type of the Cloud Firestore or Cloud Datastore database associated with this application. */

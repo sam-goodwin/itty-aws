@@ -70,7 +70,7 @@ export const Gmailpostmastertools_Date =
 
 export interface StringList {
   /** The string values. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const StringList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -120,7 +120,7 @@ export interface QueryDomainStatsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** The list of domain statistics. Each DomainStat object contains the value for a metric requested in the QueryDomainStatsRequest. */
-  domainStats?: Array<DomainStat>;
+  domainStats?: ReadonlyArray<DomainStat>;
 }
 
 export const QueryDomainStatsResponse =
@@ -133,7 +133,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
@@ -161,7 +161,7 @@ export const BatchQueryDomainStatsResult =
 
 export interface BatchQueryDomainStatsResponse {
   /** A list of responses, one for each query in the BatchQueryDomainStatsRequest. The order of responses will correspond to the order of requests. */
-  results?: Array<BatchQueryDomainStatsResult>;
+  results?: ReadonlyArray<BatchQueryDomainStatsResult>;
 }
 
 export const BatchQueryDomainStatsResponse =
@@ -198,7 +198,7 @@ export const HonorUnsubscribeVerdict =
 
 export interface DateList {
   /** Required. The list of specific dates for which to retrieve data. */
-  dates?: Array<Gmailpostmastertools_Date>;
+  dates?: ReadonlyArray<Gmailpostmastertools_Date>;
 }
 
 export const DateList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -219,7 +219,7 @@ export const DateRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DateRanges {
   /** Required. The list of date ranges for which to retrieve data. */
-  dateRanges?: Array<DateRange>;
+  dateRanges?: ReadonlyArray<DateRange>;
 }
 
 export const DateRanges = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -288,7 +288,7 @@ export interface QueryDomainStatsRequest {
   /** Required. The parent resource name where the stats are queried. Format: domains/{domain} */
   parent?: string;
   /** Required. The specific metrics to query. You can define a custom name for each metric, which will be used in the response. */
-  metricDefinitions?: Array<MetricDefinition>;
+  metricDefinitions?: ReadonlyArray<MetricDefinition>;
 }
 
 export const QueryDomainStatsRequest =
@@ -303,7 +303,7 @@ export const QueryDomainStatsRequest =
 
 export interface BatchQueryDomainStatsRequest {
   /** Required. A list of individual query requests. Each request can be for a different domain. A maximum of 100 requests can be included in a single batch. */
-  requests?: Array<QueryDomainStatsRequest>;
+  requests?: ReadonlyArray<QueryDomainStatsRequest>;
 }
 
 export const BatchQueryDomainStatsRequest =
@@ -313,7 +313,7 @@ export const BatchQueryDomainStatsRequest =
 
 export interface ListDomainsResponse {
   /** The domains that have been registered by the user. */
-  domains?: Array<Domain>;
+  domains?: ReadonlyArray<Domain>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -368,7 +368,7 @@ export const OneClickUnsubscribeVerdict =
 
 export interface DomainComplianceData {
   /** Data for each of the rows of the table. Each message contains all the data that backs a single row. */
-  rowData?: Array<ComplianceRowData>;
+  rowData?: ReadonlyArray<ComplianceRowData>;
   /** Domain that this data is for. */
   domainId?: string;
   /** One-click unsubscribe compliance verdict. */
@@ -451,7 +451,7 @@ export const GetComplianceStatusDomainsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/domains/{domainsId}/complianceStatus" }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetComplianceStatusDomainsRequest>;
 
@@ -481,7 +481,7 @@ export interface GetDomainsRequest {
 export const GetDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v2/domains/{domainsId}" }),
+  T.Http({ method: "GET", path: "v2/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetDomainsRequest>;
 
@@ -516,7 +516,7 @@ export const QueryDomainsDomainStatsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/domains/{domainsId}/domainStats:query",
+      path: "v2/{parent}/domainStats:query",
       hasBody: true,
     }),
     svc,

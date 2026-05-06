@@ -106,7 +106,7 @@ export const LocalizationSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StringList {
   /** The string values. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const StringList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -145,7 +145,7 @@ export const MediationReportSpecDimensionFilter =
 
 export interface MediationReportSpec {
   /** List of dimensions of the report. The value combination of these dimensions determines the row of the report. If no dimensions are specified, the report returns a single row of requested metrics for the entire account. */
-  dimensions?: Array<
+  dimensions?: ReadonlyArray<
     | "DIMENSION_UNSPECIFIED"
     | "DATE"
     | "MONTH"
@@ -165,11 +165,11 @@ export interface MediationReportSpec {
     | (string & {})
   >;
   /** Describes which report rows to match based on their dimension values. */
-  dimensionFilters?: Array<MediationReportSpecDimensionFilter>;
+  dimensionFilters?: ReadonlyArray<MediationReportSpecDimensionFilter>;
   /** Localization settings of the report. */
   localizationSettings?: LocalizationSettings;
   /** Describes the sorting of report rows. The order of the condition in the list defines its precedence; the earlier the condition, the higher its precedence. If no sort conditions are specified, the row ordering is undefined. */
-  sortConditions?: Array<MediationReportSpecSortCondition>;
+  sortConditions?: ReadonlyArray<MediationReportSpecSortCondition>;
   /** A report time zone. Accepts an IANA TZ name values, such as "America/Los_Angeles." If no time zone is defined, the account default takes effect. Check default value by the get account action. **Warning:** The "America/Los_Angeles" is the only supported value at the moment. */
   timeZone?: string;
   /** Maximum number of report data rows to return. If the value is not set, the API returns as many rows as possible, up to 100000. Acceptable values are 1-100000, inclusive. Values larger than 100000 return an error. */
@@ -177,7 +177,7 @@ export interface MediationReportSpec {
   /** The date range for which the report is generated. */
   dateRange?: DateRange;
   /** List of metrics of the report. A report must specify at least one metric. */
-  metrics?: Array<
+  metrics?: ReadonlyArray<
     | "METRIC_UNSPECIFIED"
     | "AD_REQUESTS"
     | "CLICKS"
@@ -270,7 +270,7 @@ export const ReportWarning = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ReportFooter {
   /** Warnings associated with generation of the report. */
-  warnings?: Array<ReportWarning>;
+  warnings?: ReadonlyArray<ReportWarning>;
   /** Total number of rows that matched the request. Warning: This count does NOT always match the number of rows in the response. Do not make that assumption when processing the response. */
   matchingRowCount?: string;
 }
@@ -385,7 +385,7 @@ export interface NetworkReportSpec {
   /** The date range for which the report is generated. */
   dateRange?: DateRange;
   /** List of metrics of the report. A report must specify at least one metric. */
-  metrics?: Array<
+  metrics?: ReadonlyArray<
     | "METRIC_UNSPECIFIED"
     | "AD_REQUESTS"
     | "CLICKS"
@@ -401,11 +401,11 @@ export interface NetworkReportSpec {
   /** Maximum number of report data rows to return. If the value is not set, the API returns as many rows as possible, up to 100000. Acceptable values are 1-100000, inclusive. Values larger than 100000 return an error. */
   maxReportRows?: number;
   /** Describes the sorting of report rows. The order of the condition in the list defines its precedence; the earlier the condition, the higher its precedence. If no sort conditions are specified, the row ordering is undefined. */
-  sortConditions?: Array<NetworkReportSpecSortCondition>;
+  sortConditions?: ReadonlyArray<NetworkReportSpecSortCondition>;
   /** A report time zone. Accepts an IANA TZ name values, such as "America/Los_Angeles." If no time zone is defined, the account default takes effect. Check default value by the get account action. **Warning:** The "America/Los_Angeles" is the only supported value at the moment. */
   timeZone?: string;
   /** List of dimensions of the report. The value combination of these dimensions determines the row of the report. If no dimensions are specified, the report returns a single row of requested metrics for the entire account. */
-  dimensions?: Array<
+  dimensions?: ReadonlyArray<
     | "DIMENSION_UNSPECIFIED"
     | "DATE"
     | "MONTH"
@@ -423,7 +423,7 @@ export interface NetworkReportSpec {
     | (string & {})
   >;
   /** Describes which report rows to match based on their dimension values. */
-  dimensionFilters?: Array<NetworkReportSpecDimensionFilter>;
+  dimensionFilters?: ReadonlyArray<NetworkReportSpecDimensionFilter>;
   /** Localization settings of the report. */
   localizationSettings?: LocalizationSettings;
 }
@@ -511,7 +511,7 @@ export const App = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAppsResponse {
   /** The resulting apps for the requested account. */
-  apps?: Array<App>;
+  apps?: ReadonlyArray<App>;
   /** If not empty, indicates that there may be more apps for the request; this value should be passed in a new `ListAppsRequest`. */
   nextPageToken?: string;
 }
@@ -541,7 +541,7 @@ export interface AdUnit {
   /** The externally visible ID of the ad unit which can be used to integrate with the AdMob SDK. This is a read only property. Example: ca-app-pub-9876543210987654/0123456789 */
   adUnitId?: string;
   /** Ad media type supported by this ad unit. Possible values as follows: "RICH_MEDIA" - Text, image, and other non-video media. "VIDEO" - Video media. */
-  adTypes?: Array<string>;
+  adTypes?: ReadonlyArray<string>;
   /** Resource name for this ad unit. Format is accounts/{publisher_id}/adUnits/{ad_unit_id_fragment} Example: accounts/pub-9876543210987654/adUnits/0123456789 */
   name?: string;
   /** AdFormat of the ad unit. Possible values are as follows: "APP_OPEN" - App Open ad format. "BANNER" - Banner ad format. "BANNER_INTERSTITIAL" - Legacy format that can be used as either banner or interstitial. This format can no longer be created but can be targeted by mediation groups. "INTERSTITIAL" - A full screen ad. Supported ad types are "RICH_MEDIA" and "VIDEO". "NATIVE" - Native ad format. "REWARDED" - An ad that, once viewed, gets a callback verifying the view so that a reward can be given to the user. Supported ad types are "RICH_MEDIA" (interactive) and video where video can not be excluded. "REWARDED_INTERSTITIAL" - Rewarded Interstitial ad format. Only supports video ad type. See https://support.google.com/admob/answer/9884467. */
@@ -565,7 +565,7 @@ export interface ListAdUnitsResponse {
   /** If not empty, indicates that there may be more ad units for the request; this value should be passed in a new `ListAdUnitsRequest`. */
   nextPageToken?: string;
   /** The resulting ad units for the requested account. */
-  adUnits?: Array<AdUnit>;
+  adUnits?: ReadonlyArray<AdUnit>;
 }
 
 export const ListAdUnitsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -587,7 +587,7 @@ export interface ListPublisherAccountsResponse {
   /** If not empty, indicates that there might be more accounts for the request; you must pass this value in a new `ListPublisherAccountsRequest`. */
   nextPageToken?: string;
   /** Publisher that the client credentials can access. */
-  account?: Array<PublisherAccount>;
+  account?: ReadonlyArray<PublisherAccount>;
 }
 
 export const ListPublisherAccountsResponse =
@@ -618,7 +618,7 @@ export interface GetAccountsRequest {
 export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/accounts/{accountsId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetAccountsRequest>;
 
@@ -690,7 +690,7 @@ export const GenerateAccountsNetworkReportRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accounts/{accountsId}/networkReport:generate",
+      path: "v1/{parent}/networkReport:generate",
       hasBody: true,
     }),
     svc,
@@ -730,7 +730,7 @@ export const ListAccountsAdUnitsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/accounts/{accountsId}/adUnits" }),
+    T.Http({ method: "GET", path: "v1/{parent}/adUnits" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAdUnitsRequest>;
 
@@ -770,7 +770,7 @@ export const GenerateAccountsMediationReportRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accounts/{accountsId}/mediationReport:generate",
+      path: "v1/{parent}/mediationReport:generate",
       hasBody: true,
     }),
     svc,
@@ -810,7 +810,7 @@ export const ListAccountsAppsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/accounts/{accountsId}/apps" }),
+    T.Http({ method: "GET", path: "v1/{parent}/apps" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAppsRequest>;
 

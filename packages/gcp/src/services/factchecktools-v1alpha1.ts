@@ -128,7 +128,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
   /** The date when the claim was made or entered public discourse. Corresponds to `ClaimReview.itemReviewed.datePublished`. */
   claimDate?: string;
   /** A list of links to works in which this claim appears, aside from the one specified in `claim_first_appearance`. Corresponds to `ClaimReview.itemReviewed[@type=Claim].appearance.url`. */
-  claimAppearances?: Array<string>;
+  claimAppearances?: ReadonlyArray<string>;
   /** Info about the rating of this claim review. */
   rating?: GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating;
 }
@@ -170,7 +170,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
   /** The URL of the page associated with this `ClaimReview` markup. While every individual `ClaimReview` has its own URL field, semantically this is a page-level field, and each `ClaimReview` on this page will use this value unless individually overridden. Corresponds to `ClaimReview.url` */
   pageUrl?: string;
   /** A list of individual claim reviews for this page. Each item in the list corresponds to one `ClaimReview` element. */
-  claimReviewMarkups?: Array<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>;
+  claimReviewMarkups?: ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>;
   /** The name of this `ClaimReview` markup page resource, in the form of `pages/{page_id}`. Except for update requests, this field is output-only and should not be set by the user. */
   name?: string;
   /** Info about the author of this claim review. Similar to the above, semantically these are page-level fields, and each `ClaimReview` on this page will contain the same values. */
@@ -199,7 +199,7 @@ export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage =
 
 export interface GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse {
   /** The result list of pages of `ClaimReview` markup. */
-  claimReviewMarkupPages?: Array<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>;
+  claimReviewMarkupPages?: ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>;
   /** The next pagination token in the Search response. It should be used as the `page_token` for the following request. An empty value means no more results. */
   nextPageToken?: string;
 }
@@ -231,7 +231,7 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1Claim {
   /** The date that the claim was made. */
   claimDate?: string;
   /** One or more reviews of this claim (namely, a fact-checking article). */
-  claimReview?: Array<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview>;
+  claimReview?: ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview>;
 }
 
 export const GoogleFactcheckingFactchecktoolsV1alpha1Claim =
@@ -246,7 +246,7 @@ export const GoogleFactcheckingFactchecktoolsV1alpha1Claim =
 
 export interface GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse {
   /** The list of claims and all of their associated information. */
-  claims?: Array<GoogleFactcheckingFactchecktoolsV1alpha1Claim>;
+  claims?: ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1Claim>;
   /** The next pagination token in the Search response. It should be used as the `page_token` for the following request. An empty value means no more results. */
   nextPageToken?: string;
 }
@@ -277,7 +277,7 @@ export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearch
 
 export interface GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse {
   /** The list of claims and all of their associated information. */
-  results?: Array<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult>;
+  results?: ReadonlyArray<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult>;
   /** The next pagination token in the Search response. It should be used as the `page_token` for the following request. An empty value means no more results. */
   nextPageToken?: string;
 }
@@ -389,7 +389,7 @@ export interface DeletePagesRequest {
 export const DeletePagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v1alpha1/pages/{pagesId}" }),
+  T.Http({ method: "DELETE", path: "v1alpha1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeletePagesRequest>;
 
@@ -424,7 +424,7 @@ export const UpdatePagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage,
   ).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PUT", path: "v1alpha1/pages/{pagesId}", hasBody: true }),
+  T.Http({ method: "PUT", path: "v1alpha1/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<UpdatePagesRequest>;
 
@@ -455,7 +455,7 @@ export interface GetPagesRequest {
 export const GetPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1alpha1/pages/{pagesId}" }),
+  T.Http({ method: "GET", path: "v1alpha1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetPagesRequest>;
 

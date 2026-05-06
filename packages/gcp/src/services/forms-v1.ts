@@ -106,7 +106,7 @@ export const Option = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ChoiceQuestion {
   /** Required. List of options that a respondent must choose from. */
-  options?: Array<Option>;
+  options?: ReadonlyArray<Option>;
   /** Whether the options should be displayed in random order for different instances of the quiz. This is often used to prevent cheating by respondents who might be looking at another respondent's screen, or to address bias in a survey that might be introduced by always putting the same options first or last. */
   shuffle?: boolean;
   /** Required. The type of choice question. */
@@ -185,7 +185,7 @@ export interface Feedback {
   /** Required. The main text of the feedback. */
   text?: string;
   /** Additional information provided as part of the feedback, often used to point the respondent to more reading and resources. */
-  material?: Array<ExtraMaterial>;
+  material?: ReadonlyArray<ExtraMaterial>;
 }
 
 export const Feedback = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -204,7 +204,7 @@ export const CorrectAnswer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CorrectAnswers {
   /** A list of correct answers. A quiz response can be automatically graded based on these answers. For single-valued questions, a response is marked correct if it matches any value in this list (in other words, multiple correct answers are possible). For multiple-valued (`CHECKBOX`) questions, a response is marked correct if it contains exactly the values in this list. */
-  answers?: Array<CorrectAnswer>;
+  answers?: ReadonlyArray<CorrectAnswer>;
 }
 
 export const CorrectAnswers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -276,7 +276,7 @@ export interface FileUploadQuestion {
   /** Maximum number of bytes allowed for any single file uploaded to this question. */
   maxFileSize?: string;
   /** File types accepted by this question. */
-  types?: Array<
+  types?: ReadonlyArray<
     | "FILE_TYPE_UNSPECIFIED"
     | "ANY"
     | "DOCUMENT"
@@ -372,7 +372,7 @@ export interface QuestionGroupItem {
   /** The image displayed within the question group above the specific questions. */
   image?: Image;
   /** Required. A list of questions that belong in this question group. A question must only belong to one group. The `kind` of the group may affect what types of questions are allowed. */
-  questions?: Array<Question>;
+  questions?: ReadonlyArray<Question>;
 }
 
 export const QuestionGroupItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -605,7 +605,7 @@ export const TextAnswer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TextAnswers {
   /** Output only. Answers to a question. For multiple-value ChoiceQuestions, each answer is a separate value. */
-  answers?: Array<TextAnswer>;
+  answers?: ReadonlyArray<TextAnswer>;
 }
 
 export const TextAnswers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -632,7 +632,7 @@ export const QuizSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListWatchesResponse {
   /** The returned watches. */
-  watches?: Array<Watch>;
+  watches?: ReadonlyArray<Watch>;
 }
 
 export const ListWatchesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -723,7 +723,7 @@ export interface CreateItemResponse {
   /** The ID of the created item. */
   itemId?: string;
   /** The ID of the question created as part of this item, for a question group it lists IDs of all the questions created for this item. */
-  questionId?: Array<string>;
+  questionId?: ReadonlyArray<string>;
 }
 
 export const CreateItemResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -778,7 +778,7 @@ export const FileUploadAnswer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FileUploadAnswers {
   /** Output only. All submitted files for a FileUpload question. */
-  answers?: Array<FileUploadAnswer>;
+  answers?: ReadonlyArray<FileUploadAnswer>;
 }
 
 export const FileUploadAnswers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -859,7 +859,7 @@ export interface Form {
   /** Required. The title and description of the form. */
   info?: Info;
   /** Required. A list of the form's items, which can include section headers, questions, embedded media, etc. */
-  items?: Array<Item>;
+  items?: ReadonlyArray<Item>;
 }
 
 export const Form = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -879,7 +879,7 @@ export interface BatchUpdateFormResponse {
   /** Based on the bool request field `include_form_in_response`, a form with all applied mutations/updates is returned or not. This may be later than the revision ID created by these changes. */
   form?: Form;
   /** The reply of the updates. This maps 1:1 with the update requests, although replies to some requests may be empty. */
-  replies?: Array<Response>;
+  replies?: ReadonlyArray<Response>;
 }
 
 export const BatchUpdateFormResponse =
@@ -891,7 +891,7 @@ export const BatchUpdateFormResponse =
 
 export interface ListFormResponsesResponse {
   /** The returned form responses. Note: The `formId` field is not returned in the `FormResponse` object for list requests. */
-  responses?: Array<FormResponse>;
+  responses?: ReadonlyArray<FormResponse>;
   /** If set, there are more responses. To get the next page of responses, provide this as `page_token` in a future request. */
   nextPageToken?: string;
 }
@@ -904,7 +904,7 @@ export const ListFormResponsesResponse =
 
 export interface BatchUpdateFormRequest {
   /** Required. The update requests of this batch. */
-  requests?: Array<Request>;
+  requests?: ReadonlyArray<Request>;
   /** Provides control over how write requests are executed. */
   writeControl?: WriteControl;
   /** Whether to return an updated version of the model in the response. */

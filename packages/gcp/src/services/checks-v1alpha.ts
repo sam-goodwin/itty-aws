@@ -139,9 +139,9 @@ export interface GoogleChecksReportV1alphaDataTypeEndpointEvidence {
     | "EXFILTRATED_DATA_TYPE_INSTALLED_PACKAGES"
     | (string & {});
   /** Endpoints the data type was sent to. */
-  endpointDetails?: Array<GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails>;
+  endpointDetails?: ReadonlyArray<GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails>;
   /** Set of SDKs that are attributed to the exfiltration. */
-  attributedSdks?: Array<GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk>;
+  attributedSdks?: ReadonlyArray<GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk>;
 }
 
 export const GoogleChecksReportV1alphaDataTypeEndpointEvidence =
@@ -163,11 +163,11 @@ export const GoogleChecksReportV1alphaDataTypeEndpointEvidence =
 
 export interface GoogleChecksReportV1alphaDataTypeEvidence {
   /** List of included permissions that imply collection of the data type. */
-  permissions?: Array<GoogleChecksReportV1alphaDataTypePermissionEvidence>;
+  permissions?: ReadonlyArray<GoogleChecksReportV1alphaDataTypePermissionEvidence>;
   /** List of privacy policy texts that imply collection of the data type. */
-  privacyPolicyTexts?: Array<GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence>;
+  privacyPolicyTexts?: ReadonlyArray<GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence>;
   /** List of endpoints the data type was sent to. */
-  endpoints?: Array<GoogleChecksReportV1alphaDataTypeEndpointEvidence>;
+  endpoints?: ReadonlyArray<GoogleChecksReportV1alphaDataTypeEndpointEvidence>;
 }
 
 export const GoogleChecksReportV1alphaDataTypeEvidence =
@@ -244,7 +244,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -278,11 +278,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -301,7 +301,7 @@ export interface GoogleChecksReportV1alphaDataMonitoringResultMetadata {
   /** The timestamp when this result was last detected within the last 8 weeks. If not set, it wasn't detected within the last 8 weeks. */
   lastDetectedTime?: string;
   /** Badges that apply to this result. */
-  badges?: Array<
+  badges?: ReadonlyArray<
     "DATA_MONITORING_RESULT_BADGE_UNSPECIFIED" | "NEW" | (string & {})
   >;
 }
@@ -539,7 +539,7 @@ export const GoogleChecksRepoScanV1alphaSourceCode =
 
 export interface GoogleChecksRepoScanV1alphaCodeScan {
   /** Optional. Data type classification requests. */
-  dataTypeClassifications?: Array<GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification>;
+  dataTypeClassifications?: ReadonlyArray<GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification>;
   /** Required. Source code to analyze. */
   sourceCode?: GoogleChecksRepoScanV1alphaSourceCode;
 }
@@ -554,9 +554,9 @@ export const GoogleChecksRepoScanV1alphaCodeScan =
 
 export interface GoogleChecksRepoScanV1alphaCliAnalysis {
   /** Optional. Data sources detected in the scan. */
-  sources?: Array<GoogleChecksRepoScanV1alphaSource>;
+  sources?: ReadonlyArray<GoogleChecksRepoScanV1alphaSource>;
   /** Optional. Requested code scans resulting from preliminary CLI analysis. */
-  codeScans?: Array<GoogleChecksRepoScanV1alphaCodeScan>;
+  codeScans?: ReadonlyArray<GoogleChecksRepoScanV1alphaCodeScan>;
 }
 
 export const GoogleChecksRepoScanV1alphaCliAnalysis =
@@ -630,7 +630,7 @@ export interface GoogleChecksReportV1alphaCheckStateMetadata {
   /** The time when the check first started failing. */
   firstFailingTime?: string;
   /** Indicators related to the check state. */
-  badges?: Array<
+  badges?: ReadonlyArray<
     | "CHECK_STATE_BADGE_UNSPECIFIED"
     | "NEWLY_FAILING"
     | "RECENTLY_FAILING"
@@ -718,7 +718,7 @@ export const GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo
 
 export interface GoogleChecksReportV1alphaCheckDataSecurityEvidence {
   /** Evidence related to data in transit. */
-  dataInTransitInfo?: Array<GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo>;
+  dataInTransitInfo?: ReadonlyArray<GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo>;
 }
 
 export const GoogleChecksReportV1alphaCheckDataSecurityEvidence =
@@ -747,7 +747,7 @@ export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceE
 
 export interface GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence {
   /** Endpoints in violation. */
-  endpointDetails?: Array<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails>;
+  endpointDetails?: ReadonlyArray<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails>;
 }
 
 export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence =
@@ -777,7 +777,7 @@ export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDet
 
 export interface GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence {
   /** SDKs in violation. */
-  sdkDetails?: Array<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails>;
+  sdkDetails?: ReadonlyArray<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails>;
 }
 
 export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence =
@@ -806,7 +806,7 @@ export const GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidenc
 
 export interface GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence {
   /** Permissions in violation. */
-  permissionDetails?: Array<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails>;
+  permissionDetails?: ReadonlyArray<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails>;
 }
 
 export const GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence =
@@ -823,25 +823,25 @@ export const GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidenc
 
 export interface GoogleChecksReportV1alphaCheckEvidence {
   /** Evidence concerning data types found in your app. */
-  dataTypes?: Array<GoogleChecksReportV1alphaCheckDataTypeEvidence>;
+  dataTypes?: ReadonlyArray<GoogleChecksReportV1alphaCheckDataTypeEvidence>;
   /** Evidence concerning SDK issues. */
-  sdkIssues?: Array<GoogleChecksReportV1alphaCheckSdkIssueEvidence>;
+  sdkIssues?: ReadonlyArray<GoogleChecksReportV1alphaCheckSdkIssueEvidence>;
   /** Evidence concerning SDKs that were found in your app. */
-  sdks?: Array<GoogleChecksReportV1alphaCheckSdkEvidence>;
+  sdks?: ReadonlyArray<GoogleChecksReportV1alphaCheckSdkEvidence>;
   /** Evidence concerning permissions that were found in your app. */
-  permissions?: Array<GoogleChecksReportV1alphaCheckPermissionEvidence>;
+  permissions?: ReadonlyArray<GoogleChecksReportV1alphaCheckPermissionEvidence>;
   /** Evidence collected from your privacy policy(s). */
-  privacyPolicyTexts?: Array<GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence>;
+  privacyPolicyTexts?: ReadonlyArray<GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence>;
   /** Evidence concerning endpoints that were contacted by your app. */
-  endpoints?: Array<GoogleChecksReportV1alphaCheckEndpointEvidence>;
+  endpoints?: ReadonlyArray<GoogleChecksReportV1alphaCheckEndpointEvidence>;
   /** Evidence concerning data security. */
   dataSecurity?: GoogleChecksReportV1alphaCheckDataSecurityEvidence;
   /** Evidence collected from endpoint restriction violation analysis. */
-  endpointRestrictionViolations?: Array<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence>;
+  endpointRestrictionViolations?: ReadonlyArray<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence>;
   /** Evidence collected from SDK restriction violation analysis. */
-  sdkRestrictionViolations?: Array<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence>;
+  sdkRestrictionViolations?: ReadonlyArray<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence>;
   /** Evidence collected from permission restriction violation analysis. */
-  permissionRestrictionViolations?: Array<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence>;
+  permissionRestrictionViolations?: ReadonlyArray<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence>;
 }
 
 export const GoogleChecksReportV1alphaCheckEvidence =
@@ -893,7 +893,7 @@ export interface GoogleChecksReportV1alphaCheck {
     | "OPPORTUNITY"
     | (string & {});
   /** Regulations and policies that serve as the legal basis for the check. */
-  citations?: Array<GoogleChecksReportV1alphaCheckCitation>;
+  citations?: ReadonlyArray<GoogleChecksReportV1alphaCheckCitation>;
   /** The result after running the check. */
   state?:
     | "CHECK_STATE_UNSPECIFIED"
@@ -999,7 +999,7 @@ export interface GoogleChecksReportV1alphaCheck {
   /** Additional information about the check state in relation to past reports. */
   stateMetadata?: GoogleChecksReportV1alphaCheckStateMetadata;
   /** Regions that are impacted by the check. For more info, see https://google.aip.dev/143#countries-and-regions. */
-  regionCodes?: Array<string>;
+  regionCodes?: ReadonlyArray<string>;
   /** Evidence that substantiates the check result. */
   evidence?: GoogleChecksReportV1alphaCheckEvidence;
 }
@@ -1053,7 +1053,7 @@ export const GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult =
 
 export interface GoogleChecksAisafetyV1alphaClassifyContentResponse {
   /** Results of the classification for each policy. */
-  policyResults?: Array<GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult>;
+  policyResults?: ReadonlyArray<GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult>;
 }
 
 export const GoogleChecksAisafetyV1alphaClassifyContentResponse =
@@ -1120,7 +1120,7 @@ export const GoogleChecksAccountV1alphaApp =
 
 export interface GoogleChecksAccountV1alphaListAppsResponse {
   /** The apps. */
-  apps?: Array<GoogleChecksAccountV1alphaApp>;
+  apps?: ReadonlyArray<GoogleChecksAccountV1alphaApp>;
   /** A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1254,13 +1254,13 @@ export const GoogleChecksReportV1alphaDataMonitoringPermissionResult =
 
 export interface GoogleChecksReportV1alphaDataMonitoring {
   /** Endpoints that were found by dynamic analysis of your app. */
-  endpoints?: Array<GoogleChecksReportV1alphaDataMonitoringEndpointResult>;
+  endpoints?: ReadonlyArray<GoogleChecksReportV1alphaDataMonitoringEndpointResult>;
   /** SDKs that your app uses. */
-  sdks?: Array<GoogleChecksReportV1alphaDataMonitoringSdkResult>;
+  sdks?: ReadonlyArray<GoogleChecksReportV1alphaDataMonitoringSdkResult>;
   /** Data types that your app shares or collects. */
-  dataTypes?: Array<GoogleChecksReportV1alphaDataMonitoringDataTypeResult>;
+  dataTypes?: ReadonlyArray<GoogleChecksReportV1alphaDataMonitoringDataTypeResult>;
   /** Permissions that your app uses. */
-  permissions?: Array<GoogleChecksReportV1alphaDataMonitoringPermissionResult>;
+  permissions?: ReadonlyArray<GoogleChecksReportV1alphaDataMonitoringPermissionResult>;
 }
 
 export const GoogleChecksReportV1alphaDataMonitoring =
@@ -1287,7 +1287,7 @@ export interface GoogleChecksReportV1alphaReport {
   /** A URL to view results. */
   resultsUri?: string;
   /** List of checks that were run on the app bundle. */
-  checks?: Array<GoogleChecksReportV1alphaCheck>;
+  checks?: ReadonlyArray<GoogleChecksReportV1alphaCheck>;
   /** Information about the analyzed app bundle. */
   appBundle?: GoogleChecksReportV1alphaAppBundle;
 }
@@ -1313,7 +1313,7 @@ export interface GoogleChecksRepoScanV1alphaRepoScan {
   /** A URL to view results. */
   resultsUri?: string;
   /** Data sources detected. */
-  sources?: Array<GoogleChecksRepoScanV1alphaSource>;
+  sources?: ReadonlyArray<GoogleChecksRepoScanV1alphaSource>;
 }
 
 export const GoogleChecksRepoScanV1alphaRepoScan =
@@ -1328,7 +1328,7 @@ export const GoogleChecksRepoScanV1alphaRepoScan =
 
 export interface GoogleChecksRepoScanV1alphaListRepoScansResponse {
   /** The repo scans for the specified app. */
-  repoScans?: Array<GoogleChecksRepoScanV1alphaRepoScan>;
+  repoScans?: ReadonlyArray<GoogleChecksRepoScanV1alphaRepoScan>;
   /** A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1379,7 +1379,7 @@ export const WaitOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleChecksReportV1alphaListReportsResponse {
   /** The reports for the specified app. */
-  reports?: Array<GoogleChecksReportV1alphaReport>;
+  reports?: ReadonlyArray<GoogleChecksReportV1alphaReport>;
   /** A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1414,7 +1414,7 @@ export interface GoogleChecksAisafetyV1alphaClassifyContentRequest {
   /** Optional. Context about the input that will be used to help on the classification. */
   context?: GoogleChecksAisafetyV1alphaClassifyContentRequestContext;
   /** Required. List of policies to classify against. */
-  policies?: Array<GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig>;
+  policies?: ReadonlyArray<GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig>;
 }
 
 export const GoogleChecksAisafetyV1alphaClassifyContentRequest =
@@ -1454,7 +1454,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "POST",
-    path: "v1alpha/accounts/{accountsId}/apps/{appsId}/reports:analyzeUpload",
+    path: "v1alpha/{parent}/reports:analyzeUpload",
     hasBody: true,
   }),
   svc,
@@ -1492,7 +1492,7 @@ export const ListAccountsAppsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/accounts/{accountsId}/apps" }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/apps" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAppsRequest>;
 
@@ -1529,10 +1529,7 @@ export const GetAccountsAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     name: Schema.String.pipe(T.HttpPath("name")),
   },
 ).pipe(
-  T.Http({
-    method: "GET",
-    path: "v1alpha/accounts/{accountsId}/apps/{appsId}",
-  }),
+  T.Http({ method: "GET", path: "v1alpha/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetAccountsAppsRequest>;
 
@@ -1577,10 +1574,7 @@ export const ListAccountsAppsReportsRequest =
       T.HttpQuery("checksFilter"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/accounts/{accountsId}/apps/{appsId}/reports",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/reports" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAppsReportsRequest>;
 
@@ -1621,10 +1615,7 @@ export const GetAccountsAppsReportsRequest =
       T.HttpQuery("checksFilter"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/accounts/{accountsId}/apps/{appsId}/reports/{reportsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsAppsReportsRequest>;
 
@@ -1658,11 +1649,7 @@ export const WaitAccountsAppsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(WaitOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha/accounts/{accountsId}/apps/{appsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitAccountsAppsOperationsRequest>;
 
@@ -1693,10 +1680,7 @@ export const GetAccountsAppsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/accounts/{accountsId}/apps/{appsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsAppsOperationsRequest>;
 
@@ -1741,10 +1725,7 @@ export const ListAccountsAppsOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/accounts/{accountsId}/apps/{appsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAppsOperationsRequest>;
 
@@ -1779,10 +1760,7 @@ export const DeleteAccountsAppsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha/accounts/{accountsId}/apps/{appsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsAppsOperationsRequest>;
 
@@ -1816,11 +1794,7 @@ export const CancelAccountsAppsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha/accounts/{accountsId}/apps/{appsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelAccountsAppsOperationsRequest>;
 
@@ -1851,10 +1825,7 @@ export const GetAccountsReposOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/accounts/{accountsId}/repos/{reposId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsReposOperationsRequest>;
 
@@ -1892,7 +1863,7 @@ export const GenerateAccountsReposScansRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/accounts/{accountsId}/repos/{reposId}/scans:generate",
+      path: "v1alpha/{parent}/scans:generate",
       hasBody: true,
     }),
     svc,
@@ -1925,10 +1896,7 @@ export const GetAccountsReposScansRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/accounts/{accountsId}/repos/{reposId}/scans/{scansId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsReposScansRequest>;
 
@@ -1968,10 +1936,7 @@ export const ListAccountsReposScansRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/accounts/{accountsId}/repos/{reposId}/scans",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/scans" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsReposScansRequest>;
 

@@ -79,7 +79,7 @@ export const GoogleAppsDriveLabelsV2betaLabelLock =
 
 export interface GoogleAppsDriveLabelsV2betaListLabelLocksResponse {
   /** Label locks. */
-  labelLocks?: Array<GoogleAppsDriveLabelsV2betaLabelLock>;
+  labelLocks?: ReadonlyArray<GoogleAppsDriveLabelsV2betaLabelLock>;
   /** The token of the next page in the response. */
   nextPageToken?: string;
 }
@@ -470,7 +470,7 @@ export interface GoogleAppsDriveLabelsV2betaFieldSelectionOptions {
   /** When specified, indicates this field supports a list of values. Once the field is published, this cannot be changed. */
   listOptions?: GoogleAppsDriveLabelsV2betaFieldListOptions;
   /** The options available for this selection field. The list order is consistent, and modified with `insert_before_choice`. */
-  choices?: Array<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice>;
+  choices?: ReadonlyArray<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice>;
 }
 
 export const GoogleAppsDriveLabelsV2betaFieldSelectionOptions =
@@ -674,7 +674,7 @@ export const GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp =
 
 export interface GoogleAppsDriveLabelsV2betaLabelEnabledAppSettings {
   /** Optional. The list of apps where the label can be used. */
-  enabledApps?: Array<GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp>;
+  enabledApps?: ReadonlyArray<GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp>;
 }
 
 export const GoogleAppsDriveLabelsV2betaLabelEnabledAppSettings =
@@ -735,7 +735,7 @@ export interface GoogleAppsDriveLabelsV2betaLabel {
   /** Required. The basic properties of the label. */
   properties?: GoogleAppsDriveLabelsV2betaLabelProperties;
   /** List of fields in descending priority order. */
-  fields?: Array<GoogleAppsDriveLabelsV2betaField>;
+  fields?: ReadonlyArray<GoogleAppsDriveLabelsV2betaField>;
   /** Output only. The time this label was published. This value has no meaning when the label isn't published. */
   publishTime?: string;
   /** Output only. The time this label was created. */
@@ -886,7 +886,7 @@ export const GoogleAppsDriveLabelsV2betaLabelPermission =
 
 export interface GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse {
   /** Label permissions. */
-  labelPermissions?: Array<GoogleAppsDriveLabelsV2betaLabelPermission>;
+  labelPermissions?: ReadonlyArray<GoogleAppsDriveLabelsV2betaLabelPermission>;
   /** The token of the next page in the response. */
   nextPageToken?: string;
 }
@@ -1174,7 +1174,7 @@ export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequest {
   /** When specified, only certain fields belonging to the indicated view will be returned. */
   view?: "LABEL_VIEW_BASIC" | "LABEL_VIEW_FULL" | (string & {});
   /** A list of updates to apply to the label. Requests will be applied in the order they are specified. */
-  requests?: Array<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest>;
+  requests?: ReadonlyArray<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest>;
   /** Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. */
   useAdminAccess?: boolean;
 }
@@ -1202,7 +1202,7 @@ export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseEnableSelectionC
 
 export interface GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse {
   /** Required. Permissions updated. */
-  permissions?: Array<GoogleAppsDriveLabelsV2betaLabelPermission>;
+  permissions?: ReadonlyArray<GoogleAppsDriveLabelsV2betaLabelPermission>;
 }
 
 export const GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse =
@@ -1483,7 +1483,7 @@ export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse =
 
 export interface GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponse {
   /** The reply of the updates. This maps 1:1 with the updates, although responses to some requests may be empty. */
-  responses?: Array<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse>;
+  responses?: ReadonlyArray<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse>;
   /** The label after updates were applied. This is only set if `include_label_in_response` is `true` and there were no errors. */
   updatedLabel?: GoogleAppsDriveLabelsV2betaLabel;
 }
@@ -1575,7 +1575,7 @@ export const GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest =
 
 export interface GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsRequest {
   /** Required. The request message specifying the resources to update. */
-  requests?: Array<GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest>;
+  requests?: ReadonlyArray<GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest>;
   /** Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. If this is set, the `use_admin_access` field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. */
   useAdminAccess?: boolean;
 }
@@ -1652,7 +1652,7 @@ export const GoogleAppsDriveLabelsV2betaLongTextLimits =
 
 export interface GoogleAppsDriveLabelsV2betaBatchDeleteLabelPermissionsRequest {
   /** Required. The request message specifying the resources to update. */
-  requests?: Array<GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest>;
+  requests?: ReadonlyArray<GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest>;
   /** Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. If this is set, the `use_admin_access` field in the `DeleteLabelPermissionRequest` messages must either be empty or match this field. */
   useAdminAccess?: boolean;
 }
@@ -1765,7 +1765,7 @@ export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface GoogleAppsDriveLabelsV2betaListLabelsResponse {
   /** Labels. */
-  labels?: Array<GoogleAppsDriveLabelsV2betaLabel>;
+  labels?: ReadonlyArray<GoogleAppsDriveLabelsV2betaLabel>;
   /** The token of the next page in the response. */
   nextPageToken?: string;
 }
@@ -1792,7 +1792,7 @@ export const GetCapabilitiesUsersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     customer: Schema.optional(Schema.String).pipe(T.HttpQuery("customer")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta/users/{usersId}/capabilities" }),
+    T.Http({ method: "GET", path: "v2beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCapabilitiesUsersRequest>;
 
@@ -1863,7 +1863,7 @@ export const DeleteLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("writeControl.requiredRevisionId"),
   ),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v2beta/labels/{labelsId}" }),
+  T.Http({ method: "DELETE", path: "v2beta/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteLabelsRequest>;
 
@@ -1938,11 +1938,7 @@ export const DeltaLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequest,
   ).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "POST",
-    path: "v2beta/labels/{labelsId}:delta",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v2beta/{name}:delta", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<DeltaLabelsRequest>;
 
@@ -1978,11 +1974,7 @@ export const PublishLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpBody(),
   ),
 }).pipe(
-  T.Http({
-    method: "POST",
-    path: "v2beta/labels/{labelsId}:publish",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v2beta/{name}:publish", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PublishLabelsRequest>;
 
@@ -2092,7 +2084,7 @@ export const UpdatePermissionsLabelsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v2beta/labels/{labelsId}/permissions",
+      path: "v2beta/{parent}/permissions",
       hasBody: true,
     }),
     svc,
@@ -2138,7 +2130,7 @@ export const GetLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("languageCode"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "v2beta/labels/{labelsId}" }),
+  T.Http({ method: "GET", path: "v2beta/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetLabelsRequest>;
 
@@ -2173,11 +2165,7 @@ export const DisableLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpBody(),
   ),
 }).pipe(
-  T.Http({
-    method: "POST",
-    path: "v2beta/labels/{labelsId}:disable",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v2beta/{name}:disable", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<DisableLabelsRequest>;
 
@@ -2212,11 +2200,7 @@ export const EnableLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpBody(),
   ),
 }).pipe(
-  T.Http({
-    method: "POST",
-    path: "v2beta/labels/{labelsId}:enable",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v2beta/{name}:enable", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<EnableLabelsRequest>;
 
@@ -2254,7 +2238,7 @@ export const UpdateLabelCopyModeLabelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta/labels/{labelsId}:updateLabelCopyMode",
+      path: "v2beta/{name}:updateLabelCopyMode",
       hasBody: true,
     }),
     svc,
@@ -2295,7 +2279,7 @@ export const UpdateLabelEnabledAppSettingsLabelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta/labels/{labelsId}:updateLabelEnabledAppSettings",
+      path: "v2beta/{name}:updateLabelEnabledAppSettings",
       hasBody: true,
     }),
     svc,
@@ -2336,7 +2320,7 @@ export const ListLabelsLocksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     parent: Schema.String.pipe(T.HttpPath("parent")),
   },
 ).pipe(
-  T.Http({ method: "GET", path: "v2beta/labels/{labelsId}/locks" }),
+  T.Http({ method: "GET", path: "v2beta/{parent}/locks" }),
   svc,
 ) as unknown as Schema.Schema<ListLabelsLocksRequest>;
 
@@ -2379,7 +2363,7 @@ export const BatchUpdateLabelsPermissionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta/labels/{labelsId}/permissions:batchUpdate",
+      path: "v2beta/{parent}/permissions:batchUpdate",
       hasBody: true,
     }),
     svc,
@@ -2418,10 +2402,7 @@ export const DeleteLabelsPermissionsRequest =
       T.HttpQuery("useAdminAccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta/labels/{labelsId}/permissions/{permissionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteLabelsPermissionsRequest>;
 
@@ -2463,7 +2444,7 @@ export const ListLabelsPermissionsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta/labels/{labelsId}/permissions" }),
+    T.Http({ method: "GET", path: "v2beta/{parent}/permissions" }),
     svc,
   ) as unknown as Schema.Schema<ListLabelsPermissionsRequest>;
 
@@ -2506,7 +2487,7 @@ export const BatchDeleteLabelsPermissionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta/labels/{labelsId}/permissions:batchDelete",
+      path: "v2beta/{parent}/permissions:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -2551,7 +2532,7 @@ export const CreateLabelsPermissionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta/labels/{labelsId}/permissions",
+      path: "v2beta/{parent}/permissions",
       hasBody: true,
     }),
     svc,
@@ -2597,7 +2578,7 @@ export const UpdatePermissionsLabelsRevisionsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v2beta/labels/{labelsId}/revisions/{revisionsId}/permissions",
+      path: "v2beta/{parent}/permissions",
       hasBody: true,
     }),
     svc,
@@ -2636,10 +2617,7 @@ export const DeleteLabelsRevisionsPermissionsRequest =
       T.HttpQuery("useAdminAccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta/labels/{labelsId}/revisions/{revisionsId}/permissions/{permissionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteLabelsRevisionsPermissionsRequest>;
 
@@ -2677,7 +2655,7 @@ export const BatchUpdateLabelsRevisionsPermissionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta/labels/{labelsId}/revisions/{revisionsId}/permissions:batchUpdate",
+      path: "v2beta/{parent}/permissions:batchUpdate",
       hasBody: true,
     }),
     svc,
@@ -2722,10 +2700,7 @@ export const ListLabelsRevisionsPermissionsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta/labels/{labelsId}/revisions/{revisionsId}/permissions",
-    }),
+    T.Http({ method: "GET", path: "v2beta/{parent}/permissions" }),
     svc,
   ) as unknown as Schema.Schema<ListLabelsRevisionsPermissionsRequest>;
 
@@ -2768,7 +2743,7 @@ export const BatchDeleteLabelsRevisionsPermissionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta/labels/{labelsId}/revisions/{revisionsId}/permissions:batchDelete",
+      path: "v2beta/{parent}/permissions:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -2813,7 +2788,7 @@ export const CreateLabelsRevisionsPermissionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta/labels/{labelsId}/revisions/{revisionsId}/permissions",
+      path: "v2beta/{parent}/permissions",
       hasBody: true,
     }),
     svc,
@@ -2853,10 +2828,7 @@ export const ListLabelsRevisionsLocksRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta/labels/{labelsId}/revisions/{revisionsId}/locks",
-    }),
+    T.Http({ method: "GET", path: "v2beta/{parent}/locks" }),
     svc,
   ) as unknown as Schema.Schema<ListLabelsRevisionsLocksRequest>;
 

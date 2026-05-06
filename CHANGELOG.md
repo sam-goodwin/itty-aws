@@ -1,5 +1,14 @@
 # Changelog
 
+## [v0.16.8](https://github.com/alchemy-run/distilled/releases/tag/v0.16.8) (2026-05-06)
+
+### Bug Fixes
+
+- **cloudflare**: support traces in workers observability - by Michael (Pear) [(99183ce)](https://github.com/alchemy-run/distilled/commit/99183cea57b974c3f8be1105826b51e021dd5a28)
+- **gcp**: use path over flatPath so HttpPath substitution works - by Andy Jefferson in [#260](https://github.com/alchemy-run/distilled/pull/260) [(326d01e)](https://github.com/alchemy-run/distilled/commit/326d01ecf1a4c6ddd21bde62ad1581408468d43c)
+- **gcp**: emit ReadonlyArray<T> in struct interfaces to match Schema.Array - by Andy Jefferson in [#259](https://github.com/alchemy-run/distilled/pull/259) [(b7ca55e)](https://github.com/alchemy-run/distilled/commit/b7ca55e1534cb02d6f12eb267f35958419329062)
+- **gcp**: apply error matchers via AST + typed 4xx errors for cloudresourcemanager v3 - by Andy Jefferson in [#258](https://github.com/alchemy-run/distilled/pull/258) [(3348dbd)](https://github.com/alchemy-run/distilled/commit/3348dbd6d61f2b4f1d9610dff5ed3b76392c926b)
+
 ## [v0.16.7](https://github.com/alchemy-run/distilled/releases/tag/v0.16.7) (2026-05-04)
 
 *No significant changes*

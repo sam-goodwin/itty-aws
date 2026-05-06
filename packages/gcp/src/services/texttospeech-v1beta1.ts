@@ -28,7 +28,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -54,7 +54,7 @@ export const MultispeakerPrebuiltVoice =
 
 export interface MultiSpeakerVoiceConfig {
   /** Required. A list of configurations for the voices of the speakers. Exactly two speaker voice configurations must be provided. */
-  speakerVoiceConfigs?: Array<MultispeakerPrebuiltVoice>;
+  speakerVoiceConfigs?: ReadonlyArray<MultispeakerPrebuiltVoice>;
 }
 
 export const MultiSpeakerVoiceConfig =
@@ -78,7 +78,7 @@ export const Turn = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MultiSpeakerMarkup {
   /** Required. Speaker turns. */
-  turns?: Array<Turn>;
+  turns?: ReadonlyArray<Turn>;
 }
 
 export const MultiSpeakerMarkup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -109,7 +109,7 @@ export const CustomPronunciationParams =
 
 export interface CustomPronunciations {
   /** The pronunciation customizations are applied. */
-  pronunciations?: Array<CustomPronunciationParams>;
+  pronunciations?: ReadonlyArray<CustomPronunciationParams>;
 }
 
 export const CustomPronunciations = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -162,7 +162,7 @@ export interface AudioConfig {
     | "M4A"
     | (string & {});
   /** Optional. Input only. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given. See [audio profiles](https://cloud.google.com/text-to-speech/docs/audio-profiles) for current supported profile ids. */
-  effectsProfileId?: Array<string>;
+  effectsProfileId?: ReadonlyArray<string>;
 }
 
 export const AudioConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -201,7 +201,7 @@ export const SafetySetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SafetySettings {
   /** The safety settings for the request. */
-  settings?: Array<SafetySetting>;
+  settings?: ReadonlyArray<SafetySetting>;
 }
 
 export const SafetySettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -242,7 +242,7 @@ export interface SynthesizeSpeechResponse {
   /** The audio data bytes encoded as specified in the request, including the header for encodings that are wrapped in containers (e.g. MP3, OGG_OPUS). For LINEAR16 audio, we include the WAV header. Note: as with all bytes fields, protobuffers use a pure binary representation, whereas JSON representations use base64. */
   audioContent?: string;
   /** A link between a position in the original request input and a corresponding time in the output audio. It's only supported via `` of SSML input. */
-  timepoints?: Array<Timepoint>;
+  timepoints?: ReadonlyArray<Timepoint>;
   /** The audio metadata of `audio_content`. */
   audioConfig?: AudioConfig;
 }
@@ -277,11 +277,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -294,7 +294,7 @@ export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface Voice {
   /** The languages that this voice supports, expressed as [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags (e.g. "en-US", "es-419", "cmn-tw"). */
-  languageCodes?: Array<string>;
+  languageCodes?: ReadonlyArray<string>;
   /** The gender of this voice. */
   ssmlGender?:
     | "SSML_VOICE_GENDER_UNSPECIFIED"
@@ -317,7 +317,7 @@ export const Voice = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListVoicesResponse {
   /** The list of voices. */
-  voices?: Array<Voice>;
+  voices?: ReadonlyArray<Voice>;
 }
 
 export const ListVoicesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -438,7 +438,7 @@ export interface SynthesizeSpeechRequest {
   /** Required. The configuration of the synthesized audio. */
   audioConfig?: AudioConfig;
   /** Whether and what timepoints are returned in the response. */
-  enableTimePointing?: Array<
+  enableTimePointing?: ReadonlyArray<
     "TIMEPOINT_TYPE_UNSPECIFIED" | "SSML_MARK" | (string & {})
   >;
   /** Optional. Advanced voice options. */
@@ -506,7 +506,7 @@ export const SynthesizeLongAudioProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}:synthesizeLongAudio",
+      path: "v1beta1/{parent}:synthesizeLongAudio",
       hasBody: true,
     }),
     svc,
@@ -539,10 +539,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -587,10 +584,7 @@ export const ListProjectsLocationsOperationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 

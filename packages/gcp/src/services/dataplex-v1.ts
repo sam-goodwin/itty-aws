@@ -72,7 +72,7 @@ export const GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig =
 
 export interface GoogleCloudDataplexV1DataAccessSpec {
   /** Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on data stored within resources. */
-  readers?: Array<string>;
+  readers?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1DataAccessSpec =
@@ -82,11 +82,11 @@ export const GoogleCloudDataplexV1DataAccessSpec =
 
 export interface GoogleCloudDataplexV1ResourceAccessSpec {
   /** Optional. The set of principals to be granted writer role on the resource. */
-  writers?: Array<string>;
+  writers?: ReadonlyArray<string>;
   /** Optional. The set of principals to be granted owner role on the resource. */
-  owners?: Array<string>;
+  owners?: ReadonlyArray<string>;
   /** Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on the resource. */
-  readers?: Array<string>;
+  readers?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1ResourceAccessSpec =
@@ -145,7 +145,7 @@ export interface GoogleCloudDataplexV1DataDocumentationSpec {
   /** Optional. Whether to publish result to Dataplex Catalog. */
   catalogPublishingEnabled?: boolean;
   /** Optional. Specifies which components of the data documentation to generate. Any component that is required to generate the specified components will also be generated. If no generation scope is specified, all available documentation components will be generated. */
-  generationScopes?: Array<
+  generationScopes?: ReadonlyArray<
     | "GENERATION_SCOPE_UNSPECIFIED"
     | "ALL"
     | "TABLE_AND_COLUMN_DESCRIPTIONS"
@@ -164,7 +164,7 @@ export interface GoogleCloudDataplexV1DataDocumentationResultField {
   /** Output only. Generated description for columns and fields. */
   description?: string;
   /** Output only. Nested fields. */
-  fields?: Array<GoogleCloudDataplexV1DataDocumentationResultField>;
+  fields?: ReadonlyArray<GoogleCloudDataplexV1DataDocumentationResultField>;
   /** Output only. The name of the column. */
   name?: string;
 }
@@ -190,7 +190,7 @@ export interface GoogleCloudDataplexV1Partition {
   /** Output only. Partition values used in the HTTP URL must be double encoded. For example, url_encode(url_encode(value)) can be used to encode "US:CA/CA#Sunnyvale so that the request URL ends with "/partitions/US%253ACA/CA%2523Sunnyvale". The name field in the response retains the encoded format. */
   name?: string;
   /** Required. Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1Partition =
@@ -262,7 +262,7 @@ export interface GoogleCloudDataplexV1EntryLink {
   /** Output only. The time when the Entry Link was created. */
   createTime?: string;
   /** Required. Immutable. Specifies the Entries referenced in the Entry Link. There should be exactly two entry references. */
-  entryReferences?: Array<GoogleCloudDataplexV1EntryLinkEntryReference>;
+  entryReferences?: ReadonlyArray<GoogleCloudDataplexV1EntryLinkEntryReference>;
   /** Output only. Immutable. Identifier. The relative resource name of the Entry Link, of the form: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id} */
   name?: string;
   /** Optional. The aspects that are attached to the entry link. The format of the aspect key has to be the following: {project_id_or_number}.{location_id}.{aspect_type_id} Currently, only a single aspect of a Dataplex-owned Aspect Type is allowed. */
@@ -289,7 +289,7 @@ export const GoogleCloudDataplexV1EntryLink =
 
 export interface GoogleCloudDataplexV1LookupEntryLinksResponse {
   /** List of entry links that reference the specified entry. */
-  entryLinks?: Array<GoogleCloudDataplexV1EntryLink>;
+  entryLinks?: ReadonlyArray<GoogleCloudDataplexV1EntryLink>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -406,7 +406,7 @@ export const GoogleCloudDataplexV1DataProfileSpecPostScanActions =
 
 export interface GoogleCloudDataplexV1DataProfileSpecSelectedFields {
   /** Optional. Expected input is a list of fully qualified names of fields as in the schema.Only top-level field names for nested fields are supported. For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'. */
-  fieldNames?: Array<string>;
+  fieldNames?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1DataProfileSpecSelectedFields =
@@ -452,7 +452,7 @@ export const GoogleCloudDataplexV1DataProfileSpec =
 
 export interface GoogleCloudDataplexV1DataDocumentationResultSchema {
   /** Output only. The list of columns. */
-  fields?: Array<GoogleCloudDataplexV1DataDocumentationResultField>;
+  fields?: ReadonlyArray<GoogleCloudDataplexV1DataDocumentationResultField>;
 }
 
 export const GoogleCloudDataplexV1DataDocumentationResultSchema =
@@ -487,7 +487,7 @@ export interface GoogleCloudDataplexV1DataDocumentationResultTableResult {
   /** Output only. Schema of the table with generated metadata of the columns in the schema. */
   schema?: GoogleCloudDataplexV1DataDocumentationResultSchema;
   /** Output only. Sample SQL queries for the table. */
-  queries?: Array<GoogleCloudDataplexV1DataDocumentationResultQuery>;
+  queries?: ReadonlyArray<GoogleCloudDataplexV1DataDocumentationResultQuery>;
 }
 
 export const GoogleCloudDataplexV1DataDocumentationResultTableResult =
@@ -504,7 +504,7 @@ export const GoogleCloudDataplexV1DataDocumentationResultTableResult =
 
 export interface GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths {
   /** Output only. An ordered set of Paths to fields within the schema of the table. For fields nested within a top level field of type record, use '.' to separate field names. Examples: Top level field - top_level Nested field - top_level.child.sub_field */
-  paths?: Array<string>;
+  paths?: ReadonlyArray<string>;
   /** Output only. The service-qualified full resource name of the table Ex: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID */
   tableFqn?: string;
 }
@@ -526,7 +526,7 @@ export interface GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship 
   /** Output only. An ordered list of fields for the join from the second table. The size of this list must be the same as left_schema_paths. Each field at index i in this list must correspond to a field at the same index in the left_schema_paths list. */
   rightSchemaPaths?: GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths;
   /** Output only. Sources which generated the schema relation edge. */
-  sources?: Array<
+  sources?: ReadonlyArray<
     | "SOURCE_UNSPECIFIED"
     | "AGENT"
     | "QUERY_HISTORY"
@@ -552,9 +552,9 @@ export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship =
 
 export interface GoogleCloudDataplexV1DataDocumentationResultDatasetResult {
   /** Output only. Sample SQL queries for the dataset. */
-  queries?: Array<GoogleCloudDataplexV1DataDocumentationResultQuery>;
+  queries?: ReadonlyArray<GoogleCloudDataplexV1DataDocumentationResultQuery>;
   /** Output only. Relationships suggesting how tables in the dataset are related to each other, based on their schema. */
-  schemaRelationships?: Array<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship>;
+  schemaRelationships?: ReadonlyArray<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship>;
   /** Output only. Generated Dataset description. */
   overview?: string;
 }
@@ -646,7 +646,7 @@ export const GoogleCloudDataplexV1DataQualityRuleTemplateSql =
 
 export interface GoogleCloudDataplexV1DataQualityRuleTemplate {
   /** Output only. A list of features or properties supported by this rule template. */
-  capabilities?: Array<string>;
+  capabilities?: ReadonlyArray<string>;
   /** Output only. The name of the rule template in the format: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id} */
   name?: string;
   /** Output only. The dimension a rule template belongs to. Rule level results are also aggregated at the dimension level. */
@@ -657,7 +657,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleTemplate {
     GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription
   >;
   /** Output only. Collection of SQLs for data quality rules. Currently only one SQL is supported. */
-  sqlCollection?: Array<GoogleCloudDataplexV1DataQualityRuleTemplateSql>;
+  sqlCollection?: ReadonlyArray<GoogleCloudDataplexV1DataQualityRuleTemplateSql>;
 }
 
 export const GoogleCloudDataplexV1DataQualityRuleTemplate =
@@ -738,7 +738,7 @@ export const GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation =
 
 export interface GoogleCloudDataplexV1DataQualityRuleSetExpectation {
   /** Optional. Expected values for the column value. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1DataQualityRuleSetExpectation =
@@ -809,7 +809,7 @@ export const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement =
 
 export interface GoogleCloudDataplexV1DataQualityRuleRuleSource {
   /** Output only. Rule path elements represent information about the individual items in the relationship path between the scan resource and rule origin in that order. */
-  rulePathElements?: Array<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement>;
+  rulePathElements?: ReadonlyArray<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement>;
 }
 
 export const GoogleCloudDataplexV1DataQualityRuleRuleSource =
@@ -915,7 +915,7 @@ export interface GoogleCloudDataplexV1DataQualityRule {
   /** Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).This field is only valid for row-level type rules. */
   threshold?: number;
   /** Optional. Specifies the debug queries for this rule. Currently, only one query is supported, but this may be expanded in the future. */
-  debugQueries?: Array<GoogleCloudDataplexV1DataQualityRuleDebugQuery>;
+  debugQueries?: ReadonlyArray<GoogleCloudDataplexV1DataQualityRuleDebugQuery>;
   /** Optional. Description of the rule. The maximum length is 1,024 characters. */
   description?: string;
 }
@@ -1010,7 +1010,7 @@ export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger =
 
 export interface GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients {
   /** Optional. The email recipients who will receive the DataQualityScan results report. */
-  emails?: Array<string>;
+  emails?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients =
@@ -1077,7 +1077,7 @@ export interface GoogleCloudDataplexV1DataQualitySpec {
   /** Optional. If enabled, the data scan will retrieve rules defined in the dataplex-types.global.data-rules aspect on all paths of the catalog entry corresponding to the BigQuery table resource and all attached glossary terms. The path that data-rules aspect is attached on the table entry defines the column that the rule will be evaluated against. For glossary terms, the path that the terms are attached on the table entry defines the column that the rule will be evaluated against. At the start of scan execution, the rules reflect the latest state retrieved from the catalog entry and any updates on the rules thereafter are ignored for that execution. The updates will be reflected from the next execution. Rules defined in the datascan must be empty if this field is enabled. */
   enableCatalogBasedRules?: boolean;
   /** Required. The list of rules to evaluate against a data source. At least one rule is required. */
-  rules?: Array<GoogleCloudDataplexV1DataQualityRule>;
+  rules?: ReadonlyArray<GoogleCloudDataplexV1DataQualityRule>;
   /** Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent is not specified, 0 or 100. */
   samplingPercent?: number;
   /** Optional. Filter for selectively running a subset of rules. You can filter the request by the name or attribute key-value pairs defined on the rule. If not specified, all rules are run. The filter is applicable to both, the rules retrieved from catalog and explicitly defined rules in the scan. Please see filter syntax (https://docs.cloud.google.com/dataplex/docs/auto-data-quality-overview#rule-filtering) for more details. */
@@ -1243,11 +1243,11 @@ export interface GoogleCloudDataplexV1DataDiscoverySpecStorageConfig {
   /** Optional. Specifies configuration for unstructured data discovery. */
   unstructuredDataOptions?: GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions;
   /** Optional. Defines the data to include during discovery when only a subset of the data should be considered. Provide a list of patterns that identify the data to include. For Cloud Storage bucket assets, these patterns are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these patterns are interpreted as patterns to match table names. */
-  includePatterns?: Array<string>;
+  includePatterns?: ReadonlyArray<string>;
   /** Optional. Configuration for JSON data. */
   jsonOptions?: GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions;
   /** Optional. Defines the data to exclude during discovery. Provide a list of patterns that identify the data to exclude. For Cloud Storage bucket assets, these patterns are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these patterns are interpreted as patterns to match table names. */
-  excludePatterns?: Array<string>;
+  excludePatterns?: ReadonlyArray<string>;
   /** Optional. Configuration for CSV data. */
   csvOptions?: GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions;
 }
@@ -1397,7 +1397,7 @@ export const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult =
 
 export interface GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet {
   /** Output only. Contains all results. Up to 10 results can be returned. */
-  results?: Array<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult>;
+  results?: ReadonlyArray<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult>;
 }
 
 export const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet =
@@ -1413,7 +1413,7 @@ export interface GoogleCloudDataplexV1DataQualityRuleResult {
   /** Output only. The number of rows which passed a rule evaluation.This field is only valid for row-level type rules.This field is not set for rule SqlAssertion. */
   passedCount?: string;
   /** Output only. Contains the results of all debug queries for this rule. The number of result sets will correspond to the number of debug_queries. */
-  debugQueriesResultSets?: Array<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet>;
+  debugQueriesResultSets?: ReadonlyArray<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet>;
   /** Output only. The rule specified in the DataQualitySpec, as is. */
   rule?: GoogleCloudDataplexV1DataQualityRule;
   /** Output only. The number of rows with null values in the specified column. */
@@ -1529,7 +1529,7 @@ export const GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAsse
 
 export interface GoogleCloudDataplexV1DataQualityColumnResult {
   /** Output only. The dimension-level results for this column. */
-  dimensions?: Array<GoogleCloudDataplexV1DataQualityDimensionResult>;
+  dimensions?: ReadonlyArray<GoogleCloudDataplexV1DataQualityDimensionResult>;
   /** Output only. The column-level data quality score for this data scan job if and only if the 'column' field is set.The score ranges between between 0, 100 (up to two decimal points). */
   score?: number;
   /** Output only. The column specified in the DataQualityRule. */
@@ -1569,9 +1569,9 @@ export interface GoogleCloudDataplexV1DataQualityResult {
   /** Output only. The result of post scan actions. */
   postScanActionsResult?: GoogleCloudDataplexV1DataQualityResultPostScanActionsResult;
   /** Output only. A list of all the rules in a job, and their results. */
-  rules?: Array<GoogleCloudDataplexV1DataQualityRuleResult>;
+  rules?: ReadonlyArray<GoogleCloudDataplexV1DataQualityRuleResult>;
   /** Output only. A list of results at the dimension level.A dimension will have a corresponding DataQualityDimensionResult if and only if there is at least one rule with the 'dimension' field set to it. */
-  dimensions?: Array<GoogleCloudDataplexV1DataQualityDimensionResult>;
+  dimensions?: ReadonlyArray<GoogleCloudDataplexV1DataQualityDimensionResult>;
   /** Output only. The data scanned for this result. */
   scannedData?: GoogleCloudDataplexV1ScannedData;
   /** Output only. The generated assets for anomaly detection. */
@@ -1581,7 +1581,7 @@ export interface GoogleCloudDataplexV1DataQualityResult {
   /** Output only. Overall data quality result -- true if all rules passed. */
   passed?: boolean;
   /** Output only. A list of results at the column level.A column will have a corresponding DataQualityColumnResult if and only if there is at least one rule with the 'column' field set to it. */
-  columns?: Array<GoogleCloudDataplexV1DataQualityColumnResult>;
+  columns?: ReadonlyArray<GoogleCloudDataplexV1DataQualityColumnResult>;
   /** Output only. The count of rows processed. */
   rowCount?: string;
   /** Output only. The status of publishing the data scan as Dataplex Universal Catalog metadata. */
@@ -1752,7 +1752,7 @@ export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIn
   /** Output only. Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN. */
   standardDeviation?: number;
   /** Output only. A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of approximate quartile values for the scanned data, occurring in order Q1, median, Q3. */
-  quartiles?: Array<string>;
+  quartiles?: ReadonlyArray<string>;
   /** Output only. Minimum of non-null values in the scanned data. NaN, if the field has a NaN. */
   min?: string;
   /** Output only. Maximum of non-null values in the scanned data. NaN, if the field has a NaN. */
@@ -1779,7 +1779,7 @@ export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDo
   /** Output only. Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN. */
   standardDeviation?: number;
   /** Output only. A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3. */
-  quartiles?: Array<number>;
+  quartiles?: ReadonlyArray<number>;
   /** Output only. Minimum of non-null values in the scanned data. NaN, if the field has a NaN. */
   min?: number;
   /** Output only. Maximum of non-null values in the scanned data. NaN, if the field has a NaN. */
@@ -1806,7 +1806,7 @@ export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo {
   /** Output only. Ratio of rows with distinct values against total scanned rows. Not available for complex non-groupable field type, including RECORD, ARRAY, GEOGRAPHY, and JSON, as well as fields with REPEATABLE mode. */
   distinctRatio?: number;
   /** Output only. The list of top N non-null values, frequency and ratio with which they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type, including RECORD, ARRAY, GEOGRAPHY, and JSON, as well as fields with REPEATABLE mode. */
-  topNValues?: Array<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue>;
+  topNValues?: ReadonlyArray<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue>;
   /** Integer type field information. */
   integerProfile?: GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo;
   /** Double type field information. */
@@ -1860,7 +1860,7 @@ export const GoogleCloudDataplexV1DataProfileResultProfileField =
 
 export interface GoogleCloudDataplexV1DataProfileResultProfile {
   /** Output only. List of fields with structural and profile information for each field. */
-  fields?: Array<GoogleCloudDataplexV1DataProfileResultProfileField>;
+  fields?: ReadonlyArray<GoogleCloudDataplexV1DataProfileResultProfileField>;
 }
 
 export const GoogleCloudDataplexV1DataProfileResultProfile =
@@ -2144,11 +2144,11 @@ export interface GoogleCloudDataplexV1ZoneDiscoverySpec {
   /** Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes.To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. */
   schedule?: string;
   /** Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names. */
-  includePatterns?: Array<string>;
+  includePatterns?: ReadonlyArray<string>;
   /** Required. Whether discovery is enabled. */
   enabled?: boolean;
   /** Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names. */
-  excludePatterns?: Array<string>;
+  excludePatterns?: ReadonlyArray<string>;
   /** Optional. Configuration for CSV data. */
   csvOptions?: GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions;
 }
@@ -2187,7 +2187,7 @@ export interface GoogleCloudDataplexV1DataAttributeBindingPath {
   /** Required. The name identifier of the path. Nested columns should be of the form: 'address.city'. */
   name?: string;
   /** Optional. List of attributes to be associated with the path of the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id} */
-  attributes?: Array<string>;
+  attributes?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1DataAttributeBindingPath =
@@ -2202,13 +2202,13 @@ export interface GoogleCloudDataplexV1DataAttributeBinding {
   /** Output only. The time when the DataAttributeBinding was last updated. */
   updateTime?: string;
   /** Optional. List of attributes to be associated with the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id} */
-  attributes?: Array<string>;
+  attributes?: ReadonlyArray<string>;
   /** Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource. */
   resource?: string;
   /** Optional. User-defined labels for the DataAttributeBinding. */
   labels?: Record<string, string>;
   /** Optional. The list of paths for items within the associated resource (eg. columns and partitions within a table) along with attribute bindings. */
-  paths?: Array<GoogleCloudDataplexV1DataAttributeBindingPath>;
+  paths?: ReadonlyArray<GoogleCloudDataplexV1DataAttributeBindingPath>;
   /** Output only. System generated globally unique ID for the DataAttributeBinding. This ID will be different if the DataAttributeBinding is deleted and re-created with the same name. */
   uid?: string;
   /** Output only. The relative resource name of the Data Attribute Binding, of the form: projects/{project_number}/locations/{location}/dataAttributeBindings/{data_attribute_binding_id} */
@@ -2303,7 +2303,7 @@ export interface GoogleCloudDataplexV1EntrySource {
   /** User-defined labels. The maximum size of keys and values is 128 characters each. */
   labels?: Record<string, string>;
   /** Immutable. The entries representing the ancestors of the data resource in the source system. */
-  ancestors?: Array<GoogleCloudDataplexV1EntrySourceAncestor>;
+  ancestors?: ReadonlyArray<GoogleCloudDataplexV1EntrySourceAncestor>;
 }
 
 export const GoogleCloudDataplexV1EntrySource =
@@ -2403,7 +2403,7 @@ export interface GoogleCloudDataplexV1SchemaSchemaField {
     | "REPEATED"
     | (string & {});
   /** Optional. Any nested field for complex types. */
-  fields?: Array<GoogleCloudDataplexV1SchemaSchemaField>;
+  fields?: ReadonlyArray<GoogleCloudDataplexV1SchemaSchemaField>;
   /** Required. The type of field. */
   type?:
     | "TYPE_UNSPECIFIED"
@@ -2476,14 +2476,14 @@ export interface GoogleCloudDataplexV1Schema {
   /** Required. Set to true if user-managed or false if managed by Dataplex Universal Catalog. The default is false (managed by Dataplex Universal Catalog). Set to falseto enable Dataplex Universal Catalog discovery to update the schema. including new data discovery, schema inference, and schema evolution. Users retain the ability to input and edit the schema. Dataplex Universal Catalog treats schema input by the user as though produced by a previous Dataplex Universal Catalog discovery operation, and it will evolve the schema and take action based on that treatment. Set to true to fully manage the entity schema. This setting guarantees that Dataplex Universal Catalog will not change schema fields. */
   userManaged?: boolean;
   /** Optional. The sequence of fields describing data in table entities. Note: BigQuery SchemaFields are immutable. */
-  fields?: Array<GoogleCloudDataplexV1SchemaSchemaField>;
+  fields?: ReadonlyArray<GoogleCloudDataplexV1SchemaSchemaField>;
   /** Optional. The structure of paths containing partition data within the entity. */
   partitionStyle?:
     | "PARTITION_STYLE_UNSPECIFIED"
     | "HIVE_COMPATIBLE"
     | (string & {});
   /** Optional. The sequence of fields describing the partition structure in entities. If this field is empty, there are no partitions within the data. */
-  partitionFields?: Array<GoogleCloudDataplexV1SchemaPartitionField>;
+  partitionFields?: ReadonlyArray<GoogleCloudDataplexV1SchemaPartitionField>;
 }
 
 export const GoogleCloudDataplexV1Schema =
@@ -2651,7 +2651,7 @@ export const GoogleCloudDataplexV1Entity =
 
 export interface GoogleCloudDataplexV1ListEntitiesResponse {
   /** Entities in the specified parent zone. */
-  entities?: Array<GoogleCloudDataplexV1Entity>;
+  entities?: ReadonlyArray<GoogleCloudDataplexV1Entity>;
   /** Token to retrieve the next page of results, or empty if there are no remaining results in the list. */
   nextPageToken?: string;
 }
@@ -2747,11 +2747,11 @@ export interface GoogleCloudDataplexV1AssetDiscoverySpec {
   /** Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes.To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. */
   schedule?: string;
   /** Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names. */
-  includePatterns?: Array<string>;
+  includePatterns?: ReadonlyArray<string>;
   /** Optional. Whether discovery is enabled. */
   enabled?: boolean;
   /** Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names. */
-  excludePatterns?: Array<string>;
+  excludePatterns?: ReadonlyArray<string>;
   /** Optional. Configuration for CSV data. */
   csvOptions?: GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions;
 }
@@ -2857,7 +2857,7 @@ export interface GoogleCloudDataplexV1ListAssetsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Asset under the given parent zone. */
-  assets?: Array<GoogleCloudDataplexV1Asset>;
+  assets?: ReadonlyArray<GoogleCloudDataplexV1Asset>;
 }
 
 export const GoogleCloudDataplexV1ListAssetsResponse =
@@ -2943,7 +2943,7 @@ export interface GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork {
   /** Optional. The Cloud VPC sub-network in which the job is run. */
   subNetwork?: string;
   /** Optional. List of network tags to apply to the job. */
-  networkTags?: Array<string>;
+  networkTags?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork =
@@ -2959,9 +2959,9 @@ export interface GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntim
   /** Optional. Container image to use. */
   image?: string;
   /** Optional. A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar */
-  javaJars?: Array<string>;
+  javaJars?: ReadonlyArray<string>;
   /** Optional. A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz */
-  pythonPackages?: Array<string>;
+  pythonPackages?: ReadonlyArray<string>;
   /** Optional. Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties). */
   properties?: Record<string, string>;
 }
@@ -3019,11 +3019,11 @@ export interface GoogleCloudDataplexV1TaskNotebookTaskConfig {
   /** Optional. Infrastructure specification for the execution. */
   infrastructureSpec?: GoogleCloudDataplexV1TaskInfrastructureSpec;
   /** Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip. */
-  archiveUris?: Array<string>;
+  archiveUris?: ReadonlyArray<string>;
   /** Required. Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value). */
   notebook?: string;
   /** Optional. Cloud Storage URIs of files to be placed in the working directory of each executor. */
-  fileUris?: Array<string>;
+  fileUris?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1TaskNotebookTaskConfig =
@@ -3046,11 +3046,11 @@ export interface GoogleCloudDataplexV1TaskSparkTaskConfig {
   /** The query text. The execution args are used to declare a set of script variables (set key="value";). */
   sqlScript?: string;
   /** Optional. Cloud Storage URIs of files to be placed in the working directory of each executor. */
-  fileUris?: Array<string>;
+  fileUris?: ReadonlyArray<string>;
   /** The Gcloud Storage URI of the main Python file to use as the driver. Must be a .py file. The execution args are passed in as a sequence of named process arguments (--key=value). */
   pythonScriptFile?: string;
   /** Optional. Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip. */
-  archiveUris?: Array<string>;
+  archiveUris?: ReadonlyArray<string>;
   /** Optional. Infrastructure specification for the execution. */
   infrastructureSpec?: GoogleCloudDataplexV1TaskInfrastructureSpec;
 }
@@ -3237,9 +3237,9 @@ export interface GoogleCloudDataplexV1ListTasksResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachableLocations?: Array<string>;
+  unreachableLocations?: ReadonlyArray<string>;
   /** Tasks under the given parent lake. */
-  tasks?: Array<GoogleCloudDataplexV1Task>;
+  tasks?: ReadonlyArray<GoogleCloudDataplexV1Task>;
 }
 
 export const GoogleCloudDataplexV1ListTasksResponse =
@@ -3251,13 +3251,13 @@ export const GoogleCloudDataplexV1ListTasksResponse =
 
 export interface GoogleCloudDataplexV1SearchEntriesResponse {
   /** The results matching the search query. */
-  results?: Array<GoogleCloudDataplexV1SearchEntriesResult>;
+  results?: ReadonlyArray<GoogleCloudDataplexV1SearchEntriesResult>;
   /** The estimated total number of matching entries. This number isn't guaranteed to be accurate. */
   totalSize?: number;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Locations that the service couldn't reach. Search results don't include data from these locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1SearchEntriesResponse =
@@ -3425,7 +3425,7 @@ export interface GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations {
   /** Optional. Display order for a field. You can use this to reorder where a field is rendered. */
   displayOrder?: number;
   /** Optional. Suggested hints for string fields. You can use them to suggest values to users through console. */
-  stringValues?: Array<string>;
+  stringValues?: ReadonlyArray<string>;
   /** Optional. Description for a field. */
   description?: string;
 }
@@ -3446,7 +3446,7 @@ export interface GoogleCloudDataplexV1AspectTypeMetadataTemplate {
   /** Required. The name of the field. */
   name?: string;
   /** Optional. The list of values for an enum type. You must define it if the type is enum. */
-  enumValues?: Array<GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue>;
+  enumValues?: ReadonlyArray<GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue>;
   /** Optional. If the type is map, set map_items. map_items can refer to a primitive field or a complex (record only) field. To specify a primitive field, you only need to set name and type in the nested MetadataTemplate. The recommended value for the name field is item, as this isn't used in the actual payload. */
   mapItems?: GoogleCloudDataplexV1AspectTypeMetadataTemplate;
   /** Optional. A reference to another field definition (not an inline definition). The value must be equal to the value of an id field defined elsewhere in the MetadataTemplate. Only fields with record type can refer to other fields. */
@@ -3458,7 +3458,7 @@ export interface GoogleCloudDataplexV1AspectTypeMetadataTemplate {
   /** Optional. If the type is array, set array_items. array_items can refer to a primitive field or a complex (record only) field. To specify a primitive field, you only need to set name and type in the nested MetadataTemplate. The recommended value for the name field is item, as this isn't used in the actual payload. */
   arrayItems?: GoogleCloudDataplexV1AspectTypeMetadataTemplate;
   /** Optional. Field definition. You must specify it if the type is record. It defines the nested fields. */
-  recordFields?: Array<GoogleCloudDataplexV1AspectTypeMetadataTemplate>;
+  recordFields?: ReadonlyArray<GoogleCloudDataplexV1AspectTypeMetadataTemplate>;
   /** Required. The datatype of this field. The following values are supported:Primitive types: string int bool double datetime. Must be of the format RFC3339 UTC "Zulu" (Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z").Complex types: enum array map record */
   type?: string;
   /** Optional. Specifies annotations on this field. */
@@ -3564,7 +3564,7 @@ export const GoogleCloudDataplexV1AspectType =
 
 export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -3610,7 +3610,7 @@ export interface GoogleIamV1AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1AuditLogConfig =
@@ -3623,7 +3623,7 @@ export interface GoogleIamV1AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, storage.googleapis.com, cloudsql.googleapis.com. allServices is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<GoogleIamV1AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<GoogleIamV1AuditLogConfig>;
 }
 
 export const GoogleIamV1AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -3657,7 +3657,7 @@ export interface GoogleIamV1Binding {
   /** Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.For an overview of the IAM roles and permissions, see the IAM documentation (https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see here (https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workforce identity pool. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}: All workforce identities in a group. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All workforce identities with a specific attribute value. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*: All identities in a workforce identity pool. principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workload identity pool. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}: A workload identity pool group. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All identities in a workload identity pool with a certain attribute. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*: All identities in a workload identity pool. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: Deleted single identity in a workforce identity pool. For example, deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3668,11 +3668,11 @@ export const GoogleIamV1Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleIamV1Policy {
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<GoogleIamV1AuditConfig>;
+  auditConfigs?: ReadonlyArray<GoogleIamV1AuditConfig>;
   /** Specifies the format of the policy.Valid values are 0, 1, and 3. Requests that specify an invalid value are rejected.Any operation that affects conditional role bindings must specify version 3. This requirement applies to the following operations: Getting a policy that includes a conditional role binding Adding a conditional role binding to a policy Changing a conditional role binding in a policy Removing any role binding, with or without a condition, from a policy that includes conditionsImportant: If you use IAM Conditions, you must include the etag field whenever you call setIamPolicy. If you omit this field, then IAM allows you to overwrite a version 3 policy with a version 1 policy, and all of the conditions in the version 3 policy are lost.If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of members, or principals, with a role. Optionally, may specify a condition that determines how and when the bindings are applied. Each of the bindings must contain at least one principal.The bindings in a Policy can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the bindings grant 50 different roles to user:alice@example.com, and not to any other principal, then you can add another 1,450 principals to the bindings in the Policy. */
-  bindings?: Array<GoogleIamV1Binding>;
+  bindings?: ReadonlyArray<GoogleIamV1Binding>;
   /** etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the etag in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An etag is returned in the response to getIamPolicy, and systems are expected to put that etag in the request to setIamPolicy to ensure that their change will be applied to the same version of the policy.Important: If you use IAM Conditions, you must include the etag field whenever you call setIamPolicy. If you omit this field, then IAM allows you to overwrite a version 3 policy with a version 1 policy, and all of the conditions in the version 3 policy are lost. */
   etag?: string;
 }
@@ -3686,7 +3686,7 @@ export const GoogleIamV1Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleCloudDataplexV1GenerateDataQualityRulesResponse {
   /** The data quality rules that Dataplex Universal Catalog generates based on the results of a data profiling scan. */
-  rule?: Array<GoogleCloudDataplexV1DataQualityRule>;
+  rule?: ReadonlyArray<GoogleCloudDataplexV1DataQualityRule>;
 }
 
 export const GoogleCloudDataplexV1GenerateDataQualityRulesResponse =
@@ -3698,11 +3698,11 @@ export const GoogleCloudDataplexV1GenerateDataQualityRulesResponse =
 
 export interface GoogleCloudDataplexV1ListEncryptionConfigsResponse {
   /** The list of EncryptionConfigs under the given parent location. */
-  encryptionConfigs?: Array<GoogleCloudDataplexV1EncryptionConfig>;
+  encryptionConfigs?: ReadonlyArray<GoogleCloudDataplexV1EncryptionConfig>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachableLocations?: Array<string>;
+  unreachableLocations?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1ListEncryptionConfigsResponse =
@@ -3734,7 +3734,7 @@ export interface GoogleCloudDataplexV1DiscoveryEventPartitionDetails {
   /** The type of the containing entity resource. */
   type?: "ENTITY_TYPE_UNSPECIFIED" | "TABLE" | "FILESET" | (string & {});
   /** The locations of the data items (e.g., a Cloud Storage objects) sampled for metadata inference. */
-  sampledDataLocations?: Array<string>;
+  sampledDataLocations?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1DiscoveryEventPartitionDetails =
@@ -3882,17 +3882,17 @@ export const GoogleCloudDataplexV1GovernanceEventEntity =
 
 export interface GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope {
   /** Optional. The glossaries that are in scope for the import job, specified as relative resource names in the format projects/{project_number_or_id}/locations/{location_id}/glossaries/{glossary_id}.While importing Business Glossary entries, the user must provide glossaries. While importing entries, the user does not have to provide glossaries. If the metadata import file attempts to modify Business Glossary entries whose glossary isn't included in this list, the import job will skip those entries.The location of a glossary must either match the location of the job, or the glossary must be global. */
-  glossaries?: Array<string>;
+  glossaries?: ReadonlyArray<string>;
   /** Required. The entry groups that are in scope for the import job, specified as relative resource names in the format projects/{project_number_or_id}/locations/{location_id}/entryGroups/{entry_group_id}. Only entries and aspects that belong to the specified entry groups are affected by the job.The entry groups and the job must be in the same location. */
-  entryGroups?: Array<string>;
+  entryGroups?: ReadonlyArray<string>;
   /** Optional. The entry link types that are in scope for the import job, specified as relative resource names in the format projects/{project_number_or_id}/locations/{location_id}/entryLinkTypes/{entry_link_type_id}. The job modifies only the entryLinks that belong to these entry link types.If the metadata import file attempts to create or delete an entry link whose entry link type isn't included in this list, the import job will skip those entry links. */
-  entryLinkTypes?: Array<string>;
+  entryLinkTypes?: ReadonlyArray<string>;
   /** Optional. Defines the scope of entries that can be referenced in the entry links.Currently, projects are supported as valid scopes. Format: projects/{project_number_or_id}If the metadata import file attempts to create an entry link which references an entry that is not in the scope, the import job will skip that entry link. */
-  referencedEntryScopes?: Array<string>;
+  referencedEntryScopes?: ReadonlyArray<string>;
   /** Required. The entry types that are in scope for the import job, specified as relative resource names in the format projects/{project_number_or_id}/locations/{location_id}/entryTypes/{entry_type_id}. The job modifies only the entries and aspects that belong to these entry types.If the metadata import file attempts to modify an entry whose type isn't included in this list, the import job is halted before modifying any entries or aspects.The location of an entry type must either match the location of the job, or the entry type must be global. */
-  entryTypes?: Array<string>;
+  entryTypes?: ReadonlyArray<string>;
   /** Optional. The aspect types that are in scope for the import job, specified as relative resource names in the format projects/{project_number_or_id}/locations/{location_id}/aspectTypes/{aspect_type_id}. The job modifies only the aspects that belong to these aspect types.This field is required when creating an aspect-only import job.If the metadata import file attempts to modify an aspect whose type isn't included in this list, the import job is halted before modifying any entries or aspects.The location of an aspect type must either match the location of the job, or the aspect type must be global. */
-  aspectTypes?: Array<string>;
+  aspectTypes?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope =
@@ -3948,9 +3948,9 @@ export interface GoogleCloudDataplexV1ListGlossaryTermsResponse {
   /** A token, which can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Locations that the service couldn't reach. */
-  unreachableLocations?: Array<string>;
+  unreachableLocations?: ReadonlyArray<string>;
   /** Lists the GlossaryTerms in the specified parent. */
-  terms?: Array<GoogleCloudDataplexV1GlossaryTerm>;
+  terms?: ReadonlyArray<GoogleCloudDataplexV1GlossaryTerm>;
 }
 
 export const GoogleCloudDataplexV1ListGlossaryTermsResponse =
@@ -4003,7 +4003,7 @@ export interface GoogleCloudDataplexV1ActionIncompatibleDataSchema {
   /** The existing and expected schema of the table. The schema is provided as a JSON formatted structure listing columns and data types. */
   existingSchema?: string;
   /** The list of data locations sampled and used for format/schema inference. */
-  sampledDataLocations?: Array<string>;
+  sampledDataLocations?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1ActionIncompatibleDataSchema =
@@ -4026,7 +4026,7 @@ export const GoogleCloudDataplexV1ActionMissingResource =
 
 export interface GoogleCloudDataplexV1ActionInvalidDataFormat {
   /** The list of data locations sampled and used for format/schema inference. */
-  sampledDataLocations?: Array<string>;
+  sampledDataLocations?: ReadonlyArray<string>;
   /** The expected data format of the entity. */
   expectedFormat?: string;
   /** The new unexpected data format within the entity. */
@@ -4084,7 +4084,7 @@ export interface GoogleCloudDataplexV1Action {
   /** Details for issues related to absence of a managed resource. */
   missingResource?: GoogleCloudDataplexV1ActionMissingResource;
   /** The list of data locations associated with this action. Cloud Storage locations are represented as URI paths(E.g. gs://bucket/table1/year=2020/month=Jan/). BigQuery locations refer to resource names(E.g. bigquery.googleapis.com/projects/project-id/datasets/dataset-id). */
-  dataLocations?: Array<string>;
+  dataLocations?: ReadonlyArray<string>;
   /** Output only. The relative resource name of the lake, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}. */
   lake?: string;
   /** Output only. The relative resource name of the action, of the form: projects/{project}/locations/{location}/lakes/{lake}/actions/{action} projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/actions/{action} projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/assets/{asset}/actions/{action}. */
@@ -4135,15 +4135,15 @@ export const GoogleCloudDataplexV1Action =
 
 export interface GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope {
   /** The aspect types that are in scope for the export job, specified as relative resource names in the format projects/{project_id_or_number}/locations/{location}/aspectTypes/{aspect_type_id}. Only aspects that belong to the specified aspect types are affected by the job. */
-  aspectTypes?: Array<string>;
+  aspectTypes?: ReadonlyArray<string>;
   /** The entry types that are in scope for the export job, specified as relative resource names in the format projects/{project_id_or_number}/locations/{location}/entryTypes/{entry_type_id}. Only entries that belong to the specified entry types are affected by the job. */
-  entryTypes?: Array<string>;
+  entryTypes?: ReadonlyArray<string>;
   /** Whether the metadata export job is an organization-level export job. If true, the job exports the entries from the same organization and VPC Service Controls perimeter as the job. The project that the job belongs to determines the VPC Service Controls perimeter. If you set the job scope to be at the organization level, then don't provide a list of projects or entry groups. If false, you must specify a list of projects or a list of entry groups whose entries you want to export.The default is false. */
   organizationLevel?: boolean;
   /** The entry groups whose metadata you want to export, in the format projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}. Only the entries in the specified entry groups are exported.The entry groups must be in the same location and the same VPC Service Controls perimeter as the job.If you set the job scope to be a list of entry groups, then set the organization-level export flag to false and don't provide a list of projects. */
-  entryGroups?: Array<string>;
+  entryGroups?: ReadonlyArray<string>;
   /** The projects whose metadata you want to export, in the format projects/{project_id_or_number}. Only the entries from the specified projects are exported.The projects must be in the same organization and VPC Service Controls perimeter as the job.If you set the job scope to be a list of projects, then set the organization-level export flag to false and don't provide a list of entry groups. */
-  projects?: Array<string>;
+  projects?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope =
@@ -4268,7 +4268,7 @@ export const GoogleCloudDataplexV1DataScanJob =
 
 export interface GoogleCloudDataplexV1ListJobsResponse {
   /** Jobs under a given task. */
-  jobs?: Array<GoogleCloudDataplexV1Job>;
+  jobs?: ReadonlyArray<GoogleCloudDataplexV1Job>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -4281,11 +4281,11 @@ export const GoogleCloudDataplexV1ListJobsResponse =
 
 export interface GoogleCloudDataplexV1MetadataFeedFilters {
   /** Optional. The aspect types that you want to listen to. Depending on how the aspect is attached to the entry, in the format: projects/{project_id_or_number}/locations/{location}/aspectTypes/{aspect_type_id}. */
-  aspectTypes?: Array<string>;
+  aspectTypes?: ReadonlyArray<string>;
   /** Optional. The entry types that you want to listen to, specified as relative resource names in the format projects/{project_id_or_number}/locations/{location}/entryTypes/{entry_type_id}. Only entries that belong to the specified entry types are published. */
-  entryTypes?: Array<string>;
+  entryTypes?: ReadonlyArray<string>;
   /** Optional. The type of change that you want to listen to. If not specified, all changes are published. */
-  changeTypes?: Array<
+  changeTypes?: ReadonlyArray<
     "CHANGE_TYPE_UNSPECIFIED" | "CREATE" | "UPDATE" | "DELETE" | (string & {})
   >;
 }
@@ -4299,11 +4299,11 @@ export const GoogleCloudDataplexV1MetadataFeedFilters =
 
 export interface GoogleCloudDataplexV1ListAspectTypesResponse {
   /** AspectTypes under the given parent location. */
-  aspectTypes?: Array<GoogleCloudDataplexV1AspectType>;
+  aspectTypes?: ReadonlyArray<GoogleCloudDataplexV1AspectType>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Locations that the service couldn't reach. */
-  unreachableLocations?: Array<string>;
+  unreachableLocations?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1ListAspectTypesResponse =
@@ -4315,9 +4315,9 @@ export const GoogleCloudDataplexV1ListAspectTypesResponse =
 
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
   /** Unordered list. Unreachable resources. Populated when the request sets ListOperationsRequest.return_partial_success and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -4331,7 +4331,7 @@ export const GoogleLongrunningListOperationsResponse =
 
 export interface GoogleCloudDataplexV1DataAssetAccessGroupConfig {
   /** Optional. IAM roles granted on the resource to this access group. Role name follows https://cloud.google.com/iam/docs/reference/rest/v1/roles.Example: [ "roles/bigquery.dataViewer" ] */
-  iamRoles?: Array<string>;
+  iamRoles?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1DataAssetAccessGroupConfig =
@@ -4365,7 +4365,7 @@ export const GoogleCloudLocationLocation =
 
 export interface GoogleCloudLocationListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<GoogleCloudLocationLocation>;
+  locations?: ReadonlyArray<GoogleCloudLocationLocation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -4378,11 +4378,11 @@ export const GoogleCloudLocationListLocationsResponse =
 
 export interface GoogleCloudDataplexV1ListDataScansResponse {
   /** DataScans (BASIC view only) under the given parent location. */
-  dataScans?: Array<GoogleCloudDataplexV1DataScan>;
+  dataScans?: ReadonlyArray<GoogleCloudDataplexV1DataScan>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1ListDataScansResponse =
@@ -4394,7 +4394,7 @@ export const GoogleCloudDataplexV1ListDataScansResponse =
 
 export interface GoogleCloudDataplexV1ModifyEntryRequest {
   /** Optional. The aspect keys which the service should modify. It supports the following syntaxes: - matches an aspect of the given type and empty path. @path - matches an aspect of the given type and specified path. For example, to attach an aspect to a field that is specified by the schema aspect, the path should have the format Schema.. @* - matches aspects of the given type for all paths. *@path - matches aspects of all types on the given path.The service will not remove existing aspects matching the syntax unless delete_missing_aspects is set to true.If this field is left empty, the service treats it as specifying exactly those Aspects present in the request. */
-  aspectKeys?: Array<string>;
+  aspectKeys?: ReadonlyArray<string>;
   /** Optional. Mask of fields to update. To update Aspects, the update_mask must contain the value "aspects".If the update_mask is empty, the service will update all modifiable fields present in the request. */
   updateMask?: string;
   /** Required. The entry to modify. */
@@ -4479,7 +4479,7 @@ export interface GoogleCloudDataplexV1ListDataAssetsResponse {
   /** A token, which can be sent as page_token to retrieve the next page. If this field is empty, then there are no subsequent pages. */
   nextPageToken?: string;
   /** The data assets for the requested filter criteria. */
-  dataAssets?: Array<GoogleCloudDataplexV1DataAsset>;
+  dataAssets?: ReadonlyArray<GoogleCloudDataplexV1DataAsset>;
 }
 
 export const GoogleCloudDataplexV1ListDataAssetsResponse =
@@ -4497,11 +4497,11 @@ export const GoogleCloudDataplexV1RunDataScanRequest =
 
 export interface GoogleCloudDataplexV1ListDataAttributesResponse {
   /** DataAttributes under the given parent DataTaxonomy. */
-  dataAttributes?: Array<GoogleCloudDataplexV1DataAttribute>;
+  dataAttributes?: ReadonlyArray<GoogleCloudDataplexV1DataAttribute>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachableLocations?: Array<string>;
+  unreachableLocations?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1ListDataAttributesResponse =
@@ -4580,9 +4580,9 @@ export interface GoogleCloudDataplexV1ListDataTaxonomiesResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachableLocations?: Array<string>;
+  unreachableLocations?: ReadonlyArray<string>;
   /** DataTaxonomies under the given parent location. */
-  dataTaxonomies?: Array<GoogleCloudDataplexV1DataTaxonomy>;
+  dataTaxonomies?: ReadonlyArray<GoogleCloudDataplexV1DataTaxonomy>;
 }
 
 export const GoogleCloudDataplexV1ListDataTaxonomiesResponse =
@@ -4690,7 +4690,7 @@ export const GoogleCloudDataplexV1BusinessGlossaryEvent =
 
 export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the resource. Permissions with wildcards (such as * or storage.*) are not allowed. For more information see IAM Overview (https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1TestIamPermissionsRequest =
@@ -4774,11 +4774,11 @@ export const GoogleCloudDataplexV1Lake =
 
 export interface GoogleCloudDataplexV1ListLakesResponse {
   /** Lakes under the given parent location. */
-  lakes?: Array<GoogleCloudDataplexV1Lake>;
+  lakes?: ReadonlyArray<GoogleCloudDataplexV1Lake>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachableLocations?: Array<string>;
+  unreachableLocations?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1ListLakesResponse =
@@ -4826,7 +4826,7 @@ export interface GoogleCloudDataplexV1ListDataScanJobsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** DataScanJobs (BASIC view only) under a given dataScan. */
-  dataScanJobs?: Array<GoogleCloudDataplexV1DataScanJob>;
+  dataScanJobs?: ReadonlyArray<GoogleCloudDataplexV1DataScanJob>;
 }
 
 export const GoogleCloudDataplexV1ListDataScanJobsResponse =
@@ -4839,11 +4839,11 @@ export const GoogleCloudDataplexV1ListDataScanJobsResponse =
 
 export interface GoogleCloudDataplexV1MetadataFeedScope {
   /** Optional. The entry groups whose entries you want to listen to. Must be in the format: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}. */
-  entryGroups?: Array<string>;
+  entryGroups?: ReadonlyArray<string>;
   /** Optional. Whether the metadata feed is at the organization-level. If true, all changes happened to the entries in the same organization as the feed are published. If false, you must specify a list of projects or a list of entry groups whose entries you want to listen to.The default is false. */
   organizationLevel?: boolean;
   /** Optional. The projects whose entries you want to listen to. Must be in the same organization as the feed. Must be in the format: projects/{project_id_or_number}. */
-  projects?: Array<string>;
+  projects?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1MetadataFeedScope =
@@ -4922,11 +4922,11 @@ export const GoogleCloudDataplexV1MetadataJobImportJobResult =
 
 export interface GoogleCloudDataplexV1ListMetadataFeedsResponse {
   /** Unordered list. Locations that the service couldn't reach. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A token to retrieve the next page of results. If there are no more results in the list, the value is empty. */
   nextPageToken?: string;
   /** List of metadata feeds under the specified parent location. */
-  metadataFeeds?: Array<GoogleCloudDataplexV1MetadataFeed>;
+  metadataFeeds?: ReadonlyArray<GoogleCloudDataplexV1MetadataFeed>;
 }
 
 export const GoogleCloudDataplexV1ListMetadataFeedsResponse =
@@ -5034,7 +5034,7 @@ export interface GoogleCloudDataplexV1ImportItem {
   /** Information about the entry link. User should provide either one of the entry or entry_link. While providing entry_link, user should not provide update_mask and aspect_keys. */
   entryLink?: GoogleCloudDataplexV1EntryLink;
   /** The aspects to modify. Supports the following syntaxes: {aspect_type_reference}: matches aspects that belong to the specified aspect type and are attached directly to the entry. {aspect_type_reference}@{path}: matches aspects that belong to the specified aspect type and path. {aspect_type_reference}@* : matches aspects of the given type for all paths. *@path : matches aspects of all types on the given path.Replace {aspect_type_reference} with a reference to the aspect type, in the format {project_id_or_number}.{location_id}.{aspect_type_id}.In FULL entry sync mode, if you leave this field empty, it is treated as specifying exactly those aspects that are present within the specified entry. Dataplex Universal Catalog implicitly adds the keys for all of the required aspects of an entry. */
-  aspectKeys?: Array<string>;
+  aspectKeys?: ReadonlyArray<string>;
   /** The fields to update, in paths that are relative to the Entry resource. Separate each field with a comma.In FULL entry sync mode, Dataplex Universal Catalog includes the paths of all of the fields for an entry that can be modified, including aspects. This means that Dataplex Universal Catalog replaces the existing entry with the entry in the metadata import file. All modifiable fields are updated, regardless of the fields that are listed in the update mask, and regardless of whether a field is present in the entry object.The update_mask field is ignored when an entry is created or re-created.In an aspect-only metadata job (when entry sync mode is NONE), set this value to aspects.Dataplex Universal Catalog also determines which entries and aspects to modify by comparing the values and timestamps that you provide in the metadata import file with the values and timestamps that exist in your project. For more information, see Comparison logic (https://cloud.google.com/dataplex/docs/import-metadata#data-modification-logic). */
   updateMask?: string;
   /** Information about an entry and its attached aspects. */
@@ -5059,13 +5059,13 @@ export interface GoogleCloudDataplexV1EntryType {
   /** Output only. The time when the EntryType was last updated. */
   updateTime?: string;
   /** AspectInfo for the entry type. */
-  requiredAspects?: Array<GoogleCloudDataplexV1EntryTypeAspectInfo>;
+  requiredAspects?: ReadonlyArray<GoogleCloudDataplexV1EntryTypeAspectInfo>;
   /** Optional. The system that Entries of this type belongs to. Examples include CloudSQL, MariaDB etc */
   system?: string;
   /** Output only. System generated globally unique ID for the EntryType. This ID will be different if the EntryType is deleted and re-created with the same name. */
   uid?: string;
   /** Optional. Indicates the classes this Entry Type belongs to, for example, TABLE, DATABASE, MODEL. */
-  typeAliases?: Array<string>;
+  typeAliases?: ReadonlyArray<string>;
   /** Optional. User-defined labels for the EntryType. */
   labels?: Record<string, string>;
   /** Immutable. Authorization defined for this type. */
@@ -5115,7 +5115,7 @@ export interface GoogleCloudDataplexV1DataProduct {
   /** Identifier. Resource name of the data product. Format: projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}. */
   name?: string;
   /** Required. Emails of the data product owners. */
-  ownerEmails?: Array<string>;
+  ownerEmails?: ReadonlyArray<string>;
   /** Output only. The time at which the data product was created. */
   createTime?: string;
   /** Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
@@ -5175,7 +5175,7 @@ export const GoogleCloudDataplexV1DataScanEventDataQualityResult =
 
 export interface GoogleCloudDataplexV1LookupContextRequest {
   /** Required. The entry names to look up the context for. The maximum number of resources for a request is limited to 10.Examples:projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry} */
-  resources?: Array<string>;
+  resources?: ReadonlyArray<string>;
   /** Optional. Allows to configure the context.Supported options: format - The format of the context (one of yaml, xml, json, default is yaml). context_budget - If provided, the output will be intelligently truncated on a best-effort basis to contain approximately the desired amount of characters. There is no guarantee to achieve the specific amount. */
   options?: Record<string, string>;
 }
@@ -5188,7 +5188,7 @@ export const GoogleCloudDataplexV1LookupContextRequest =
 
 export interface GoogleCloudDataplexV1ListEntriesResponse {
   /** The list of entries under the given parent location. */
-  entries?: Array<GoogleCloudDataplexV1Entry>;
+  entries?: ReadonlyArray<GoogleCloudDataplexV1Entry>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -5201,7 +5201,7 @@ export const GoogleCloudDataplexV1ListEntriesResponse =
 
 export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of TestPermissionsRequest.permissions that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1TestIamPermissionsResponse =
@@ -5211,9 +5211,9 @@ export const GoogleIamV1TestIamPermissionsResponse =
 
 export interface GoogleCloudDataplexV1ListDataProductsResponse {
   /** The data products for the requested filter criteria. */
-  dataProducts?: Array<GoogleCloudDataplexV1DataProduct>;
+  dataProducts?: ReadonlyArray<GoogleCloudDataplexV1DataProduct>;
   /** Unordered list. Locations that the service couldn't reach. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A token, which can be sent as page_token to retrieve the next page. If this field is empty, then there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -5288,11 +5288,11 @@ export const GoogleCloudDataplexV1MetadataJob =
 
 export interface GoogleCloudDataplexV1ListMetadataJobsResponse {
   /** Metadata jobs under the specified parent location. */
-  metadataJobs?: Array<GoogleCloudDataplexV1MetadataJob>;
+  metadataJobs?: ReadonlyArray<GoogleCloudDataplexV1MetadataJob>;
   /** A token to retrieve the next page of results. If there are no more results in the list, the value is empty. */
   nextPageToken?: string;
   /** Locations that the service couldn't reach. */
-  unreachableLocations?: Array<string>;
+  unreachableLocations?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1ListMetadataJobsResponse =
@@ -5345,9 +5345,9 @@ export interface GoogleCloudDataplexV1ListGlossariesResponse {
   /** A token, which can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Locations that the service couldn't reach. */
-  unreachableLocations?: Array<string>;
+  unreachableLocations?: ReadonlyArray<string>;
   /** Lists the Glossaries in the specified parent. */
-  glossaries?: Array<GoogleCloudDataplexV1Glossary>;
+  glossaries?: ReadonlyArray<GoogleCloudDataplexV1Glossary>;
 }
 
 export const GoogleCloudDataplexV1ListGlossariesResponse =
@@ -5375,9 +5375,9 @@ export interface GoogleCloudDataplexV1ListDataAttributeBindingsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachableLocations?: Array<string>;
+  unreachableLocations?: ReadonlyArray<string>;
   /** DataAttributeBindings under the given parent Location. */
-  dataAttributeBindings?: Array<GoogleCloudDataplexV1DataAttributeBinding>;
+  dataAttributeBindings?: ReadonlyArray<GoogleCloudDataplexV1DataAttributeBinding>;
 }
 
 export const GoogleCloudDataplexV1ListDataAttributeBindingsResponse =
@@ -5393,7 +5393,7 @@ export const GoogleCloudDataplexV1ListDataAttributeBindingsResponse =
 
 export interface GoogleCloudDataplexV1ListPartitionsResponse {
   /** Partitions under the specified parent entity. */
-  partitions?: Array<GoogleCloudDataplexV1Partition>;
+  partitions?: ReadonlyArray<GoogleCloudDataplexV1Partition>;
   /** Token to retrieve the next page of results, or empty if there are no remaining results in the list. */
   nextPageToken?: string;
 }
@@ -5438,7 +5438,7 @@ export interface GoogleCloudDataplexV1ListActionsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Actions under the given parent lake/zone/asset. */
-  actions?: Array<GoogleCloudDataplexV1Action>;
+  actions?: ReadonlyArray<GoogleCloudDataplexV1Action>;
 }
 
 export const GoogleCloudDataplexV1ListActionsResponse =
@@ -5554,11 +5554,11 @@ export const GoogleCloudDataplexV1DataScanEvent =
 
 export interface GoogleCloudDataplexV1ListEntryTypesResponse {
   /** EntryTypes under the given parent location. */
-  entryTypes?: Array<GoogleCloudDataplexV1EntryType>;
+  entryTypes?: ReadonlyArray<GoogleCloudDataplexV1EntryType>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Locations that the service couldn't reach. */
-  unreachableLocations?: Array<string>;
+  unreachableLocations?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1ListEntryTypesResponse =
@@ -5570,11 +5570,11 @@ export const GoogleCloudDataplexV1ListEntryTypesResponse =
 
 export interface GoogleCloudDataplexV1ListGlossaryCategoriesResponse {
   /** Lists the GlossaryCategories in the specified parent. */
-  categories?: Array<GoogleCloudDataplexV1GlossaryCategory>;
+  categories?: ReadonlyArray<GoogleCloudDataplexV1GlossaryCategory>;
   /** A token, which can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Locations that the service couldn't reach. */
-  unreachableLocations?: Array<string>;
+  unreachableLocations?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDataplexV1ListGlossaryCategoriesResponse =
@@ -5639,9 +5639,9 @@ export interface GoogleCloudDataplexV1ListEntryGroupsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Locations that the service couldn't reach. */
-  unreachableLocations?: Array<string>;
+  unreachableLocations?: ReadonlyArray<string>;
   /** Entry groups under the given parent location. */
-  entryGroups?: Array<GoogleCloudDataplexV1EntryGroup>;
+  entryGroups?: ReadonlyArray<GoogleCloudDataplexV1EntryGroup>;
 }
 
 export const GoogleCloudDataplexV1ListEntryGroupsResponse =
@@ -5653,7 +5653,7 @@ export const GoogleCloudDataplexV1ListEntryGroupsResponse =
 
 export interface GoogleCloudDataplexV1ListZonesResponse {
   /** Zones under the given parent lake. */
-  zones?: Array<GoogleCloudDataplexV1Zone>;
+  zones?: ReadonlyArray<GoogleCloudDataplexV1Zone>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -5716,10 +5716,7 @@ export const LookupEntryProjectsLocationsRequest =
       T.HttpQuery("paths"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:lookupEntry",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:lookupEntry" }),
     svc,
   ) as unknown as Schema.Schema<LookupEntryProjectsLocationsRequest>;
 
@@ -5755,11 +5752,7 @@ export const LookupContextProjectsLocationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:lookupContext",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:lookupContext", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<LookupContextProjectsLocationsRequest>;
 
@@ -5805,7 +5798,7 @@ export const ListProjectsLocationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -5841,10 +5834,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -5892,10 +5882,7 @@ export const LookupEntryLinksProjectsLocationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     entry: Schema.optional(Schema.String).pipe(T.HttpQuery("entry")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:lookupEntryLinks",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:lookupEntryLinks" }),
     svc,
   ) as unknown as Schema.Schema<LookupEntryLinksProjectsLocationsRequest>;
 
@@ -5951,11 +5938,7 @@ export const SearchEntriesProjectsLocationsRequest =
     ),
     query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:searchEntries",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:searchEntries", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SearchEntriesProjectsLocationsRequest>;
 
@@ -5996,11 +5979,7 @@ export const ModifyEntryProjectsLocationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:modifyEntry",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:modifyEntry", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ModifyEntryProjectsLocationsRequest>;
 
@@ -6038,7 +6017,7 @@ export const TestIamPermissionsProjectsLocationsEntryGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -6083,11 +6062,7 @@ export const PatchProjectsLocationsEntryGroupsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudDataplexV1EntryGroup).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsEntryGroupsRequest>;
 
@@ -6122,10 +6097,7 @@ export const DeleteProjectsLocationsEntryGroupsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsEntryGroupsRequest>;
 
@@ -6162,7 +6134,7 @@ export const SetIamPolicyProjectsLocationsEntryGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -6208,10 +6180,7 @@ export const ListProjectsLocationsEntryGroupsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryGroups",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/entryGroups" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEntryGroupsRequest>;
 
@@ -6247,10 +6216,7 @@ export const GetProjectsLocationsEntryGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsEntryGroupsRequest>;
 
@@ -6287,10 +6253,7 @@ export const GetIamPolicyProjectsLocationsEntryGroupsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsEntryGroupsRequest>;
 
@@ -6335,11 +6298,7 @@ export const CreateProjectsLocationsEntryGroupsRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1EntryGroup).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryGroups",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/entryGroups", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsEntryGroupsRequest>;
 
@@ -6377,11 +6336,7 @@ export const CreateProjectsLocationsEntryGroupsEntriesRequest =
     entryId: Schema.optional(Schema.String).pipe(T.HttpQuery("entryId")),
     body: Schema.optional(GoogleCloudDataplexV1Entry).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entries",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/entries", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsEntryGroupsEntriesRequest>;
 
@@ -6422,10 +6377,7 @@ export const ListProjectsLocationsEntryGroupsEntriesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entries",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/entries" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEntryGroupsEntriesRequest>;
 
@@ -6480,10 +6432,7 @@ export const GetProjectsLocationsEntryGroupsEntriesRequest =
       T.HttpQuery("paths"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entries/{entriesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsEntryGroupsEntriesRequest>;
 
@@ -6515,10 +6464,7 @@ export const DeleteProjectsLocationsEntryGroupsEntriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entries/{entriesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsEntryGroupsEntriesRequest>;
 
@@ -6571,11 +6517,7 @@ export const PatchProjectsLocationsEntryGroupsEntriesRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1Entry).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entries/{entriesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsEntryGroupsEntriesRequest>;
 
@@ -6620,11 +6562,7 @@ export const PatchProjectsLocationsEntryGroupsEntryLinksRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1EntryLink).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entryLinks/{entryLinksId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsEntryGroupsEntryLinksRequest>;
 
@@ -6664,11 +6602,7 @@ export const CreateProjectsLocationsEntryGroupsEntryLinksRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudDataplexV1EntryLink).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entryLinks",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/entryLinks", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsEntryGroupsEntryLinksRequest>;
 
@@ -6700,10 +6634,7 @@ export const DeleteProjectsLocationsEntryGroupsEntryLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entryLinks/{entryLinksId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsEntryGroupsEntryLinksRequest>;
 
@@ -6735,10 +6666,7 @@ export const GetProjectsLocationsEntryGroupsEntryLinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entryLinks/{entryLinksId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsEntryGroupsEntryLinksRequest>;
 
@@ -6775,10 +6703,7 @@ export const GetIamPolicyProjectsLocationsEntryLinkTypesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryLinkTypes/{entryLinkTypesId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsEntryLinkTypesRequest>;
 
@@ -6817,7 +6742,7 @@ export const TestIamPermissionsProjectsLocationsEntryLinkTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryLinkTypes/{entryLinkTypesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -6857,7 +6782,7 @@ export const SetIamPolicyProjectsLocationsEntryLinkTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryLinkTypes/{entryLinkTypesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -6894,10 +6819,7 @@ export const DeleteProjectsLocationsGlossariesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsGlossariesRequest>;
 
@@ -6934,7 +6856,7 @@ export const SetIamPolicyProjectsLocationsGlossariesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -6978,11 +6900,7 @@ export const PatchProjectsLocationsGlossariesRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1Glossary).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsGlossariesRequest>;
 
@@ -7021,7 +6939,7 @@ export const TestIamPermissionsProjectsLocationsGlossariesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -7066,11 +6984,7 @@ export const CreateProjectsLocationsGlossariesRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1Glossary).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/glossaries", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsGlossariesRequest>;
 
@@ -7107,10 +7021,7 @@ export const GetIamPolicyProjectsLocationsGlossariesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsGlossariesRequest>;
 
@@ -7141,10 +7052,7 @@ export const GetProjectsLocationsGlossariesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGlossariesRequest>;
 
@@ -7188,10 +7096,7 @@ export const ListProjectsLocationsGlossariesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/glossaries" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGlossariesRequest>;
 
@@ -7227,10 +7132,7 @@ export const GetProjectsLocationsGlossariesTermsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}/terms/{termsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGlossariesTermsRequest>;
 
@@ -7274,10 +7176,7 @@ export const ListProjectsLocationsGlossariesTermsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}/terms",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/terms" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGlossariesTermsRequest>;
 
@@ -7318,10 +7217,7 @@ export const GetIamPolicyProjectsLocationsGlossariesTermsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}/terms/{termsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsGlossariesTermsRequest>;
 
@@ -7359,11 +7255,7 @@ export const CreateProjectsLocationsGlossariesTermsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudDataplexV1GlossaryTerm).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}/terms",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/terms", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsGlossariesTermsRequest>;
 
@@ -7402,7 +7294,7 @@ export const TestIamPermissionsProjectsLocationsGlossariesTermsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}/terms/{termsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -7443,11 +7335,7 @@ export const PatchProjectsLocationsGlossariesTermsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudDataplexV1GlossaryTerm).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}/terms/{termsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsGlossariesTermsRequest>;
 
@@ -7479,10 +7367,7 @@ export const DeleteProjectsLocationsGlossariesTermsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}/terms/{termsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsGlossariesTermsRequest>;
 
@@ -7518,7 +7403,7 @@ export const SetIamPolicyProjectsLocationsGlossariesTermsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}/terms/{termsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -7552,10 +7437,7 @@ export const GetProjectsLocationsGlossariesCategoriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}/categories/{categoriesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGlossariesCategoriesRequest>;
 
@@ -7599,10 +7481,7 @@ export const ListProjectsLocationsGlossariesCategoriesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}/categories",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/categories" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGlossariesCategoriesRequest>;
 
@@ -7643,10 +7522,7 @@ export const GetIamPolicyProjectsLocationsGlossariesCategoriesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}/categories/{categoriesId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsGlossariesCategoriesRequest>;
 
@@ -7687,11 +7563,7 @@ export const CreateProjectsLocationsGlossariesCategoriesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}/categories",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/categories", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsGlossariesCategoriesRequest>;
 
@@ -7730,7 +7602,7 @@ export const TestIamPermissionsProjectsLocationsGlossariesCategoriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}/categories/{categoriesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -7773,11 +7645,7 @@ export const PatchProjectsLocationsGlossariesCategoriesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}/categories/{categoriesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsGlossariesCategoriesRequest>;
 
@@ -7809,10 +7677,7 @@ export const DeleteProjectsLocationsGlossariesCategoriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}/categories/{categoriesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsGlossariesCategoriesRequest>;
 
@@ -7848,7 +7713,7 @@ export const SetIamPolicyProjectsLocationsGlossariesCategoriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}/categories/{categoriesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -7888,7 +7753,7 @@ export const SetIamPolicyProjectsLocationsLakesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -7921,10 +7786,7 @@ export const DeleteProjectsLocationsLakesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsLakesRequest>;
 
@@ -7966,11 +7828,7 @@ export const PatchProjectsLocationsLakesRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1Lake).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsLakesRequest>;
 
@@ -8008,7 +7866,7 @@ export const TestIamPermissionsProjectsLocationsLakesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -8053,11 +7911,7 @@ export const CreateProjectsLocationsLakesRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1Lake).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/lakes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsLakesRequest>;
 
@@ -8093,10 +7947,7 @@ export const GetIamPolicyProjectsLocationsLakesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsLakesRequest>;
 
@@ -8139,10 +7990,7 @@ export const ListProjectsLocationsLakesRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/lakes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsLakesRequest>;
 
@@ -8178,10 +8026,7 @@ export const GetProjectsLocationsLakesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsLakesRequest>;
 
@@ -8218,10 +8063,7 @@ export const ListProjectsLocationsLakesActionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/actions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/actions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsLakesActionsRequest>;
 
@@ -8268,11 +8110,7 @@ export const CreateProjectsLocationsLakesTasksRequest =
     taskId: Schema.optional(Schema.String).pipe(T.HttpQuery("taskId")),
     body: Schema.optional(GoogleCloudDataplexV1Task).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/tasks",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/tasks", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsLakesTasksRequest>;
 
@@ -8316,10 +8154,7 @@ export const ListProjectsLocationsLakesTasksRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/tasks",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/tasks" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsLakesTasksRequest>;
 
@@ -8360,11 +8195,7 @@ export const RunProjectsLocationsLakesTasksRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/tasks/{tasksId}:run",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:run", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RunProjectsLocationsLakesTasksRequest>;
 
@@ -8407,11 +8238,7 @@ export const PatchProjectsLocationsLakesTasksRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudDataplexV1Task).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/tasks/{tasksId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsLakesTasksRequest>;
 
@@ -8450,7 +8277,7 @@ export const TestIamPermissionsProjectsLocationsLakesTasksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/tasks/{tasksId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -8484,10 +8311,7 @@ export const GetProjectsLocationsLakesTasksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/tasks/{tasksId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsLakesTasksRequest>;
 
@@ -8523,10 +8347,7 @@ export const GetIamPolicyProjectsLocationsLakesTasksRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/tasks/{tasksId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsLakesTasksRequest>;
 
@@ -8562,7 +8383,7 @@ export const SetIamPolicyProjectsLocationsLakesTasksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/tasks/{tasksId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -8595,10 +8416,7 @@ export const DeleteProjectsLocationsLakesTasksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/tasks/{tasksId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsLakesTasksRequest>;
 
@@ -8635,11 +8453,7 @@ export const CancelProjectsLocationsLakesTasksJobsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/tasks/{tasksId}/jobs/{jobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsLakesTasksJobsRequest>;
 
@@ -8676,10 +8490,7 @@ export const ListProjectsLocationsLakesTasksJobsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/tasks/{tasksId}/jobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/jobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsLakesTasksJobsRequest>;
 
@@ -8715,10 +8526,7 @@ export const GetProjectsLocationsLakesTasksJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/tasks/{tasksId}/jobs/{jobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsLakesTasksJobsRequest>;
 
@@ -8757,7 +8565,7 @@ export const TestIamPermissionsProjectsLocationsLakesZonesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -8796,7 +8604,7 @@ export const SetIamPolicyProjectsLocationsLakesZonesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -8829,10 +8637,7 @@ export const DeleteProjectsLocationsLakesZonesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsLakesZonesRequest>;
 
@@ -8875,11 +8680,7 @@ export const PatchProjectsLocationsLakesZonesRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1Zone).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsLakesZonesRequest>;
 
@@ -8916,10 +8717,7 @@ export const GetIamPolicyProjectsLocationsLakesZonesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsLakesZonesRequest>;
 
@@ -8962,10 +8760,7 @@ export const ListProjectsLocationsLakesZonesRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/zones" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsLakesZonesRequest>;
 
@@ -9001,10 +8796,7 @@ export const GetProjectsLocationsLakesZonesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsLakesZonesRequest>;
 
@@ -9046,11 +8838,7 @@ export const CreateProjectsLocationsLakesZonesRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1Zone).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/zones", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsLakesZonesRequest>;
 
@@ -9090,11 +8878,7 @@ export const UpdateProjectsLocationsLakesZonesEntitiesRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1Entity).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}/entities/{entitiesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateProjectsLocationsLakesZonesEntitiesRequest>;
 
@@ -9129,10 +8913,7 @@ export const DeleteProjectsLocationsLakesZonesEntitiesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}/entities/{entitiesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsLakesZonesEntitiesRequest>;
 
@@ -9171,10 +8952,7 @@ export const GetProjectsLocationsLakesZonesEntitiesRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}/entities/{entitiesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsLakesZonesEntitiesRequest>;
 
@@ -9218,10 +8996,7 @@ export const ListProjectsLocationsLakesZonesEntitiesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}/entities",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/entities" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsLakesZonesEntitiesRequest>;
 
@@ -9265,11 +9040,7 @@ export const CreateProjectsLocationsLakesZonesEntitiesRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1Entity).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}/entities",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/entities", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsLakesZonesEntitiesRequest>;
 
@@ -9309,11 +9080,7 @@ export const CreateProjectsLocationsLakesZonesEntitiesPartitionsRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1Partition).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}/entities/{entitiesId}/partitions",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/partitions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsLakesZonesEntitiesPartitionsRequest>;
 
@@ -9349,10 +9116,7 @@ export const DeleteProjectsLocationsLakesZonesEntitiesPartitionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}/entities/{entitiesId}/partitions/{partitionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsLakesZonesEntitiesPartitionsRequest>;
 
@@ -9384,10 +9148,7 @@ export const GetProjectsLocationsLakesZonesEntitiesPartitionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}/entities/{entitiesId}/partitions/{partitionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsLakesZonesEntitiesPartitionsRequest>;
 
@@ -9429,10 +9190,7 @@ export const ListProjectsLocationsLakesZonesEntitiesPartitionsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}/entities/{entitiesId}/partitions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/partitions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsLakesZonesEntitiesPartitionsRequest>;
 
@@ -9480,11 +9238,7 @@ export const PatchProjectsLocationsLakesZonesAssetsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudDataplexV1Asset).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}/assets/{assetsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsLakesZonesAssetsRequest>;
 
@@ -9521,7 +9275,7 @@ export const SetIamPolicyProjectsLocationsLakesZonesAssetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}/assets/{assetsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -9555,10 +9309,7 @@ export const DeleteProjectsLocationsLakesZonesAssetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}/assets/{assetsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsLakesZonesAssetsRequest>;
 
@@ -9597,7 +9348,7 @@ export const TestIamPermissionsProjectsLocationsLakesZonesAssetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}/assets/{assetsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -9643,11 +9394,7 @@ export const CreateProjectsLocationsLakesZonesAssetsRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1Asset).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}/assets",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/assets", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsLakesZonesAssetsRequest>;
 
@@ -9691,10 +9438,7 @@ export const ListProjectsLocationsLakesZonesAssetsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}/assets",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/assets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsLakesZonesAssetsRequest>;
 
@@ -9730,10 +9474,7 @@ export const GetProjectsLocationsLakesZonesAssetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}/assets/{assetsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsLakesZonesAssetsRequest>;
 
@@ -9770,10 +9511,7 @@ export const GetIamPolicyProjectsLocationsLakesZonesAssetsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}/assets/{assetsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsLakesZonesAssetsRequest>;
 
@@ -9811,10 +9549,7 @@ export const ListProjectsLocationsLakesZonesAssetsActionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}/assets/{assetsId}/actions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/actions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsLakesZonesAssetsActionsRequest>;
 
@@ -9856,10 +9591,7 @@ export const ListProjectsLocationsLakesZonesActionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/lakes/{lakesId}/zones/{zonesId}/actions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/actions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsLakesZonesActionsRequest>;
 
@@ -9910,7 +9642,7 @@ export const CreateProjectsLocationsMetadataFeedsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataFeeds",
+      path: "v1/{parent}/metadataFeeds",
       hasBody: true,
     }),
     svc,
@@ -9944,10 +9676,7 @@ export const GetProjectsLocationsMetadataFeedsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataFeeds/{metadataFeedsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMetadataFeedsRequest>;
 
@@ -9991,10 +9720,7 @@ export const ListProjectsLocationsMetadataFeedsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataFeeds",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/metadataFeeds" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsMetadataFeedsRequest>;
 
@@ -10030,10 +9756,7 @@ export const DeleteProjectsLocationsMetadataFeedsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataFeeds/{metadataFeedsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsMetadataFeedsRequest>;
 
@@ -10076,11 +9799,7 @@ export const PatchProjectsLocationsMetadataFeedsRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1MetadataFeed).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataFeeds/{metadataFeedsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsMetadataFeedsRequest>;
 
@@ -10117,7 +9836,7 @@ export const SetIamPolicyProjectsLocationsChangeRequestsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/changeRequests/{changeRequestsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -10156,10 +9875,7 @@ export const GetIamPolicyProjectsLocationsChangeRequestsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/changeRequests/{changeRequestsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsChangeRequestsRequest>;
 
@@ -10198,7 +9914,7 @@ export const TestIamPermissionsProjectsLocationsChangeRequestsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/changeRequests/{changeRequestsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -10238,10 +9954,7 @@ export const GetIamPolicyProjectsLocationsPolicyIntentsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/policyIntents/{policyIntentsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsPolicyIntentsRequest>;
 
@@ -10280,7 +9993,7 @@ export const TestIamPermissionsProjectsLocationsPolicyIntentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/policyIntents/{policyIntentsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -10320,7 +10033,7 @@ export const SetIamPolicyProjectsLocationsPolicyIntentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/policyIntents/{policyIntentsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -10359,11 +10072,7 @@ export const CancelProjectsLocationsMetadataJobsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataJobs/{metadataJobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsMetadataJobsRequest>;
 
@@ -10394,10 +10103,7 @@ export const GetProjectsLocationsMetadataJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataJobs/{metadataJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMetadataJobsRequest>;
 
@@ -10441,10 +10147,7 @@ export const ListProjectsLocationsMetadataJobsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataJobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/metadataJobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsMetadataJobsRequest>;
 
@@ -10493,11 +10196,7 @@ export const CreateProjectsLocationsMetadataJobsRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1MetadataJob).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataJobs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/metadataJobs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsMetadataJobsRequest>;
 
@@ -10542,11 +10241,7 @@ export const PatchProjectsLocationsDataAttributeBindingsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataAttributeBindings/{dataAttributeBindingsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataAttributeBindingsRequest>;
 
@@ -10583,7 +10278,7 @@ export const SetIamPolicyProjectsLocationsDataAttributeBindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataAttributeBindings/{dataAttributeBindingsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -10621,10 +10316,7 @@ export const DeleteProjectsLocationsDataAttributeBindingsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataAttributeBindings/{dataAttributeBindingsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataAttributeBindingsRequest>;
 
@@ -10663,7 +10355,7 @@ export const TestIamPermissionsProjectsLocationsDataAttributeBindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataAttributeBindings/{dataAttributeBindingsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -10715,7 +10407,7 @@ export const CreateProjectsLocationsDataAttributeBindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataAttributeBindings",
+      path: "v1/{parent}/dataAttributeBindings",
       hasBody: true,
     }),
     svc,
@@ -10761,10 +10453,7 @@ export const ListProjectsLocationsDataAttributeBindingsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataAttributeBindings",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dataAttributeBindings" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataAttributeBindingsRequest>;
 
@@ -10800,10 +10489,7 @@ export const GetProjectsLocationsDataAttributeBindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataAttributeBindings/{dataAttributeBindingsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataAttributeBindingsRequest>;
 
@@ -10840,10 +10526,7 @@ export const GetIamPolicyProjectsLocationsDataAttributeBindingsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataAttributeBindings/{dataAttributeBindingsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDataAttributeBindingsRequest>;
 
@@ -10890,7 +10573,7 @@ export const CreateProjectsLocationsDataTaxonomiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies",
+      path: "v1/{parent}/dataTaxonomies",
       hasBody: true,
     }),
     svc,
@@ -10936,10 +10619,7 @@ export const ListProjectsLocationsDataTaxonomiesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dataTaxonomies" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataTaxonomiesRequest>;
 
@@ -10974,10 +10654,7 @@ export const GetProjectsLocationsDataTaxonomiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataTaxonomiesRequest>;
 
@@ -11014,10 +10691,7 @@ export const GetIamPolicyProjectsLocationsDataTaxonomiesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDataTaxonomiesRequest>;
 
@@ -11060,11 +10734,7 @@ export const PatchProjectsLocationsDataTaxonomiesRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1DataTaxonomy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataTaxonomiesRequest>;
 
@@ -11101,7 +10771,7 @@ export const SetIamPolicyProjectsLocationsDataTaxonomiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -11138,10 +10808,7 @@ export const DeleteProjectsLocationsDataTaxonomiesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataTaxonomiesRequest>;
 
@@ -11180,7 +10847,7 @@ export const TestIamPermissionsProjectsLocationsDataTaxonomiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -11228,11 +10895,7 @@ export const PatchProjectsLocationsDataTaxonomiesAttributesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}/attributes/{attributesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataTaxonomiesAttributesRequest>;
 
@@ -11269,7 +10932,7 @@ export const SetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}/attributes/{attributesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -11307,10 +10970,7 @@ export const DeleteProjectsLocationsDataTaxonomiesAttributesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}/attributes/{attributesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataTaxonomiesAttributesRequest>;
 
@@ -11350,7 +11010,7 @@ export const TestIamPermissionsProjectsLocationsDataTaxonomiesAttributesRequest 
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}/attributes/{attributesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -11400,11 +11060,7 @@ export const CreateProjectsLocationsDataTaxonomiesAttributesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}/attributes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/attributes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDataTaxonomiesAttributesRequest>;
 
@@ -11449,10 +11105,7 @@ export const ListProjectsLocationsDataTaxonomiesAttributesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}/attributes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/attributes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataTaxonomiesAttributesRequest>;
 
@@ -11488,10 +11141,7 @@ export const GetProjectsLocationsDataTaxonomiesAttributesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}/attributes/{attributesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataTaxonomiesAttributesRequest>;
 
@@ -11528,10 +11178,7 @@ export const GetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataTaxonomies/{dataTaxonomiesId}/attributes/{attributesId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDataTaxonomiesAttributesRequest>;
 
@@ -11571,7 +11218,7 @@ export const TestIamPermissionsProjectsLocationsAspectTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/aspectTypes/{aspectTypesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -11616,11 +11263,7 @@ export const PatchProjectsLocationsAspectTypesRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1AspectType).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/aspectTypes/{aspectTypesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAspectTypesRequest>;
 
@@ -11655,10 +11298,7 @@ export const DeleteProjectsLocationsAspectTypesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/aspectTypes/{aspectTypesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAspectTypesRequest>;
 
@@ -11695,7 +11335,7 @@ export const SetIamPolicyProjectsLocationsAspectTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/aspectTypes/{aspectTypesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -11741,10 +11381,7 @@ export const ListProjectsLocationsAspectTypesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/aspectTypes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/aspectTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAspectTypesRequest>;
 
@@ -11780,10 +11417,7 @@ export const GetProjectsLocationsAspectTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/aspectTypes/{aspectTypesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAspectTypesRequest>;
 
@@ -11820,10 +11454,7 @@ export const GetIamPolicyProjectsLocationsAspectTypesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/aspectTypes/{aspectTypesId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsAspectTypesRequest>;
 
@@ -11868,11 +11499,7 @@ export const CreateProjectsLocationsAspectTypesRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1AspectType).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/aspectTypes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/aspectTypes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsAspectTypesRequest>;
 
@@ -11918,10 +11545,7 @@ export const ListProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -11957,10 +11581,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -11996,11 +11617,7 @@ export const CancelProjectsLocationsOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -12031,10 +11648,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -12070,7 +11684,7 @@ export const SetIamPolicyProjectsLocationsDataProductsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataProducts/{dataProductsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -12112,10 +11726,7 @@ export const DeleteProjectsLocationsDataProductsRequest =
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataProducts/{dataProductsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataProductsRequest>;
 
@@ -12158,11 +11769,7 @@ export const PatchProjectsLocationsDataProductsRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1DataProduct).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataProducts/{dataProductsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataProductsRequest>;
 
@@ -12201,7 +11808,7 @@ export const TestIamPermissionsProjectsLocationsDataProductsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataProducts/{dataProductsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -12249,11 +11856,7 @@ export const CreateProjectsLocationsDataProductsRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1DataProduct).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataProducts",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/dataProducts", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDataProductsRequest>;
 
@@ -12290,10 +11893,7 @@ export const GetIamPolicyProjectsLocationsDataProductsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataProducts/{dataProductsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDataProductsRequest>;
 
@@ -12325,10 +11925,7 @@ export const GetProjectsLocationsDataProductsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataProducts/{dataProductsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataProductsRequest>;
 
@@ -12372,10 +11969,7 @@ export const ListProjectsLocationsDataProductsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataProducts",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dataProducts" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataProductsRequest>;
 
@@ -12419,10 +12013,7 @@ export const DeleteProjectsLocationsDataProductsDataAssetsRequest =
     ),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataProducts/{dataProductsId}/dataAssets/{dataAssetsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataProductsDataAssetsRequest>;
 
@@ -12465,11 +12056,7 @@ export const PatchProjectsLocationsDataProductsDataAssetsRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1DataAsset).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataProducts/{dataProductsId}/dataAssets/{dataAssetsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataProductsDataAssetsRequest>;
 
@@ -12514,11 +12101,7 @@ export const CreateProjectsLocationsDataProductsDataAssetsRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1DataAsset).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataProducts/{dataProductsId}/dataAssets",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/dataAssets", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDataProductsDataAssetsRequest>;
 
@@ -12550,10 +12133,7 @@ export const GetProjectsLocationsDataProductsDataAssetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataProducts/{dataProductsId}/dataAssets/{dataAssetsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataProductsDataAssetsRequest>;
 
@@ -12597,10 +12177,7 @@ export const ListProjectsLocationsDataProductsDataAssetsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataProducts/{dataProductsId}/dataAssets",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dataAssets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataProductsDataAssetsRequest>;
 
@@ -12641,10 +12218,7 @@ export const GetIamPolicyProjectsLocationsDataDomainsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataDomains/{dataDomainsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDataDomainsRequest>;
 
@@ -12683,7 +12257,7 @@ export const TestIamPermissionsProjectsLocationsDataDomainsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataDomains/{dataDomainsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -12722,7 +12296,7 @@ export const SetIamPolicyProjectsLocationsDataDomainsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataDomains/{dataDomainsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -12763,7 +12337,7 @@ export const GenerateDataQualityRulesProjectsLocationsDataScansRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataScans/{dataScansId}:generateDataQualityRules",
+      path: "v1/{name}:generateDataQualityRules",
       hasBody: true,
     }),
     svc,
@@ -12803,7 +12377,7 @@ export const SetIamPolicyProjectsLocationsDataScansRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataScans/{dataScansId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -12839,10 +12413,7 @@ export const DeleteProjectsLocationsDataScansRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataScans/{dataScansId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataScansRequest>;
 
@@ -12877,10 +12448,7 @@ export const GetProjectsLocationsDataScansRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataScans/{dataScansId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataScansRequest>;
 
@@ -12917,10 +12485,7 @@ export const GetIamPolicyProjectsLocationsDataScansRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataScans/{dataScansId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsDataScansRequest>;
 
@@ -12958,7 +12523,7 @@ export const TestIamPermissionsProjectsLocationsDataScansRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataScans/{dataScansId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -13003,11 +12568,7 @@ export const PatchProjectsLocationsDataScansRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudDataplexV1DataScan).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataScans/{dataScansId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataScansRequest>;
 
@@ -13051,10 +12612,7 @@ export const ListProjectsLocationsDataScansRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataScans",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dataScans" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataScansRequest>;
 
@@ -13095,11 +12653,7 @@ export const RunProjectsLocationsDataScansRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataScans/{dataScansId}:run",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:run", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RunProjectsLocationsDataScansRequest>;
 
@@ -13142,11 +12696,7 @@ export const CreateProjectsLocationsDataScansRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1DataScan).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataScans",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/dataScans", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDataScansRequest>;
 
@@ -13181,10 +12731,7 @@ export const GetProjectsLocationsDataScansJobsRequest =
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataScans/{dataScansId}/jobs/{jobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataScansJobsRequest>;
 
@@ -13225,10 +12772,7 @@ export const ListProjectsLocationsDataScansJobsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataScans/{dataScansId}/jobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/jobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataScansJobsRequest>;
 
@@ -13271,7 +12815,7 @@ export const GenerateDataQualityRulesProjectsLocationsDataScansJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataScans/{dataScansId}/jobs/{jobsId}:generateDataQualityRules",
+      path: "v1/{name}:generateDataQualityRules",
       hasBody: true,
     }),
     svc,
@@ -13311,11 +12855,7 @@ export const CancelProjectsLocationsDataScansJobsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataScans/{dataScansId}/jobs/{jobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsDataScansJobsRequest>;
 
@@ -13352,10 +12892,7 @@ export const GetIamPolicyProjectsLocationsGovernanceRulesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/governanceRules/{governanceRulesId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsGovernanceRulesRequest>;
 
@@ -13394,7 +12931,7 @@ export const TestIamPermissionsProjectsLocationsGovernanceRulesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/governanceRules/{governanceRulesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -13434,7 +12971,7 @@ export const SetIamPolicyProjectsLocationsGovernanceRulesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/governanceRules/{governanceRulesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -13475,7 +13012,7 @@ export const TestIamPermissionsProjectsLocationsEntryTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryTypes/{entryTypesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -13512,10 +13049,7 @@ export const DeleteProjectsLocationsEntryTypesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryTypes/{entryTypesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsEntryTypesRequest>;
 
@@ -13552,7 +13086,7 @@ export const SetIamPolicyProjectsLocationsEntryTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryTypes/{entryTypesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -13596,11 +13130,7 @@ export const PatchProjectsLocationsEntryTypesRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1EntryType).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryTypes/{entryTypesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsEntryTypesRequest>;
 
@@ -13637,10 +13167,7 @@ export const GetIamPolicyProjectsLocationsEntryTypesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryTypes/{entryTypesId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsEntryTypesRequest>;
 
@@ -13683,10 +13210,7 @@ export const ListProjectsLocationsEntryTypesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryTypes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/entryTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEntryTypesRequest>;
 
@@ -13722,10 +13246,7 @@ export const GetProjectsLocationsEntryTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryTypes/{entryTypesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsEntryTypesRequest>;
 
@@ -13770,11 +13291,7 @@ export const CreateProjectsLocationsEntryTypesRequest =
     ),
     body: Schema.optional(GoogleCloudDataplexV1EntryType).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entryTypes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/entryTypes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsEntryTypesRequest>;
 
@@ -13820,10 +13337,7 @@ export const ListOrganizationsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsOperationsRequest>;
 
@@ -13859,10 +13373,7 @@ export const GetOrganizationsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsOperationsRequest>;
 
@@ -13899,11 +13410,7 @@ export const CancelOrganizationsLocationsOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelOrganizationsLocationsOperationsRequest>;
 
@@ -13934,10 +13441,7 @@ export const DeleteOrganizationsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsLocationsOperationsRequest>;
 
@@ -13975,7 +13479,7 @@ export const TestIamPermissionsOrganizationsLocationsEncryptionConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/encryptionConfigs/{encryptionConfigsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -14018,11 +13522,7 @@ export const PatchOrganizationsLocationsEncryptionConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/encryptionConfigs/{encryptionConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsLocationsEncryptionConfigsRequest>;
 
@@ -14057,10 +13557,7 @@ export const DeleteOrganizationsLocationsEncryptionConfigsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/encryptionConfigs/{encryptionConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsLocationsEncryptionConfigsRequest>;
 
@@ -14097,7 +13594,7 @@ export const SetIamPolicyOrganizationsLocationsEncryptionConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/encryptionConfigs/{encryptionConfigsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -14144,10 +13641,7 @@ export const ListOrganizationsLocationsEncryptionConfigsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/encryptionConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/encryptionConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsEncryptionConfigsRequest>;
 
@@ -14183,10 +13677,7 @@ export const GetOrganizationsLocationsEncryptionConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/encryptionConfigs/{encryptionConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsEncryptionConfigsRequest>;
 
@@ -14223,10 +13714,7 @@ export const GetIamPolicyOrganizationsLocationsEncryptionConfigsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/encryptionConfigs/{encryptionConfigsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyOrganizationsLocationsEncryptionConfigsRequest>;
 
@@ -14271,7 +13759,7 @@ export const CreateOrganizationsLocationsEncryptionConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/encryptionConfigs",
+      path: "v1/{parent}/encryptionConfigs",
       hasBody: true,
     }),
     svc,

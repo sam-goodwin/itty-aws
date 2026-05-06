@@ -57,7 +57,7 @@ export interface SiteVerificationWebResourceResource {
   /** The string used to identify this site. This value should be used in the "id" portion of the REST URL for the Get, Update, and Delete operations. */
   id?: string;
   /** The email addresses of all verified owners. */
-  owners?: Array<string>;
+  owners?: ReadonlyArray<string>;
   /** The address and type of a site that is verified or will be verified. */
   site?: { identifier?: string; type?: string };
 }
@@ -76,7 +76,7 @@ export const SiteVerificationWebResourceResource =
 
 export interface SiteVerificationWebResourceListResponse {
   /** The list of sites that are owned by the authenticated user. */
-  items?: Array<SiteVerificationWebResourceResource>;
+  items?: ReadonlyArray<SiteVerificationWebResourceResource>;
 }
 
 export const SiteVerificationWebResourceListResponse =

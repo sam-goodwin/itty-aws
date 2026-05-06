@@ -28,7 +28,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -201,7 +201,7 @@ export const HelpLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Help {
   /** URL(s) pointing to additional information on handling the current error. */
-  links?: Array<HelpLink>;
+  links?: ReadonlyArray<HelpLink>;
 }
 
 export const Help = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -259,11 +259,11 @@ export interface Operation {
   endTime?: string;
   /** [Output Only] If errors are generated during processing of the operation, this field will be populated. */
   error?: {
-    errors?: Array<{
+    errors?: ReadonlyArray<{
       code?: string;
       location?: string;
       message?: string;
-      errorDetails?: Array<{
+      errorDetails?: ReadonlyArray<{
         errorInfo?: ErrorInfo;
         quotaInfo?: QuotaExceededInfo;
         help?: Help;
@@ -272,7 +272,7 @@ export interface Operation {
     }>;
   };
   /** [Output Only] If warning messages are generated during processing of the operation, this field will be populated. */
-  warnings?: Array<{
+  warnings?: ReadonlyArray<{
     code?:
       | "CLEANUP_FAILED"
       | "DEPRECATED_RESOURCE_USED"
@@ -305,7 +305,7 @@ export interface Operation {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   }>;
   /** [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found. */
   httpErrorStatusCode?: number;
@@ -398,7 +398,7 @@ export interface OperationList {
   /** [Output Only] The unique identifier for the resource. This identifier is defined by the server. */
   id?: string;
   /** [Output Only] A list of Operation resources. */
-  items?: Array<Operation>;
+  items?: ReadonlyArray<Operation>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than `maxResults`, use the `nextPageToken` as a value for the query parameter `pageToken` in the next list request. Subsequent list requests will have their own `nextPageToken` to continue paging through the results. */
   nextPageToken?: string;
   /** [Output Only] Server-defined URL for this resource. */
@@ -437,7 +437,7 @@ export interface OperationList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -465,7 +465,7 @@ export const OperationList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface OperationsScopedList {
   /** [Output Only] A list of operations contained in this scope. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** [Output Only] Informational warning which replaces the list of operations when the list is empty. */
   warning?: {
     code?:
@@ -500,7 +500,7 @@ export interface OperationsScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -567,10 +567,10 @@ export interface OperationAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const OperationAggregatedList =
@@ -657,7 +657,7 @@ export interface AcceleratorTypeList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of AcceleratorType resources. */
-  items?: Array<AcceleratorType>;
+  items?: ReadonlyArray<AcceleratorType>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -696,7 +696,7 @@ export interface AcceleratorTypeList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -724,7 +724,7 @@ export const AcceleratorTypeList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AcceleratorTypesScopedList {
   /** [Output Only] A list of accelerator types contained in this scope. */
-  acceleratorTypes?: Array<AcceleratorType>;
+  acceleratorTypes?: ReadonlyArray<AcceleratorType>;
   /** [Output Only] An informational warning that appears when the accelerator types list is empty. */
   warning?: {
     code?:
@@ -759,7 +759,7 @@ export interface AcceleratorTypesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -827,10 +827,10 @@ export interface AcceleratorTypeAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const AcceleratorTypeAggregatedList =
@@ -881,7 +881,7 @@ export interface Address {
   /** [Output Only] Server-defined URL for the resource. */
   selfLink?: string;
   /** [Output Only] The URLs of the resources that are using this address. */
-  users?: Array<string>;
+  users?: ReadonlyArray<string>;
   /** This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM orSTANDARD. Internal IP addresses are always Premium Tier; global external IP addresses are always Premium Tier; regional external IP addresses can be either Standard or Premium Tier. If this field is not specified, it is assumed to be PREMIUM. */
   networkTier?:
     | "FIXED_STANDARD"
@@ -948,7 +948,7 @@ export interface AddressList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of Address resources. */
-  items?: Array<Address>;
+  items?: ReadonlyArray<Address>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** [Output Only] Informational warning message. */
@@ -985,7 +985,7 @@ export interface AddressList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Server-defined URL for this resource. */
   selfLink?: string;
@@ -1028,7 +1028,7 @@ export const GlobalAddressesMoveRequest =
 
 export interface TestPermissionsRequest {
   /** The set of permissions to check for the 'resource'. Permissions with wildcards (such as '*' or 'storage.*') are not allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestPermissionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1039,7 +1039,7 @@ export const TestPermissionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface TestPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestPermissionsResponse =
@@ -1063,7 +1063,7 @@ export const GlobalSetLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface AddressesScopedList {
   /** [Output Only] A list of addresses contained in this scope. */
-  addresses?: Array<Address>;
+  addresses?: ReadonlyArray<Address>;
   /** [Output Only] Informational warning which replaces the list of addresses when the list is empty. */
   warning?: {
     code?:
@@ -1098,7 +1098,7 @@ export interface AddressesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -1165,10 +1165,10 @@ export interface AddressAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const AddressAggregatedList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1283,11 +1283,11 @@ export interface InitialStateConfig {
   /** The Platform Key (PK). */
   pk?: FileContentBuffer;
   /** The Key Exchange Key (KEK). */
-  keks?: Array<FileContentBuffer>;
+  keks?: ReadonlyArray<FileContentBuffer>;
   /** The Key Database (db). */
-  dbs?: Array<FileContentBuffer>;
+  dbs?: ReadonlyArray<FileContentBuffer>;
   /** The forbidden key database (dbx). */
-  dbxs?: Array<FileContentBuffer>;
+  dbxs?: ReadonlyArray<FileContentBuffer>;
 }
 
 export const InitialStateConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1340,7 +1340,7 @@ export interface Image {
   /** Output only. [Output Only] The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given disk name. */
   sourceDiskId?: string;
   /** Any applicable license URI. */
-  licenses?: Array<string>;
+  licenses?: ReadonlyArray<string>;
   /** The name of the image family to which this image belongs. The image family name can be from a publicly managed image family provided by Compute Engine, or from a custom image family you create. For example,centos-stream-9 is a publicly available image family. For more information, see Image family best practices. When creating disks, you can specify an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035. */
   family?: string;
   /** Encrypts the image using acustomer-supplied encryption key. After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later. */
@@ -1354,9 +1354,9 @@ export interface Image {
   /** A fingerprint for the labels being applied to this image, which is essentially a hash of the labels used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an image. */
   labelFingerprint?: string;
   /** A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see theguestOSfeatures[].type parameter. */
-  guestOsFeatures?: Array<GuestOsFeature>;
+  guestOsFeatures?: ReadonlyArray<GuestOsFeature>;
   /** Integer license codes indicating which licenses are attached to this image. */
-  licenseCodes?: Array<string>;
+  licenseCodes?: ReadonlyArray<string>;
   /** URL of the source image used to create this image. The following are valid formats for the URL: - https://www.googleapis.com/compute/v1/projects/project_id/global/ images/image_name - projects/project_id/global/images/image_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL */
   sourceImage?: string;
   /** Output only. [Output Only] The ID value of the image used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given image name. */
@@ -1370,7 +1370,7 @@ export interface Image {
   /** The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key. */
   sourceSnapshotEncryptionKey?: CustomerEncryptionKey;
   /** Cloud Storage bucket storage location of the image (regional or multi-regional). */
-  storageLocations?: Array<string>;
+  storageLocations?: ReadonlyArray<string>;
   /** Set the secure boot keys of shielded instance. */
   shieldedInstanceInitialState?: InitialStateConfig;
   /** Output only. [Output Only] Reserved for future use. */
@@ -1439,7 +1439,7 @@ export interface ImageList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of Image resources. */
-  items?: Array<Image>;
+  items?: ReadonlyArray<Image>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -1478,7 +1478,7 @@ export interface ImageList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -1526,7 +1526,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
@@ -1546,7 +1546,7 @@ export interface AuditLogConfig {
     | "LOG_TYPE_UNSPECIFIED"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1558,7 +1558,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
 export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1570,9 +1570,9 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
@@ -1588,7 +1588,7 @@ export interface GlobalSetPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might reject them. */
   policy?: Policy;
   /** Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify bindings. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the etag. */
   etag?: string;
 }
@@ -1651,7 +1651,7 @@ export interface Snapshot {
   /** Output only. [Output Only] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date. */
   storageBytesStatus?: "UPDATING" | "UP_TO_DATE" | (string & {});
   /** Output only. [Output Only] A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses attached (such as a Windows image). */
-  licenses?: Array<string>;
+  licenses?: ReadonlyArray<string>;
   /** Encrypts the snapshot using acustomer-supplied encryption key. After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted snapshot in a future request. Customer-supplied encryption keys do not protect access to metadata of the snapshot. If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically generated key and you do not need to provide a key to use the snapshot later. */
   snapshotEncryptionKey?: CustomerEncryptionKey;
   /** The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key. */
@@ -1663,13 +1663,13 @@ export interface Snapshot {
   /** A fingerprint for the labels being applied to this snapshot, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a snapshot. */
   labelFingerprint?: string;
   /** Output only. [Output Only] Integer license codes indicating which licenses are attached to this snapshot. */
-  licenseCodes?: Array<string>;
+  licenseCodes?: ReadonlyArray<string>;
   /** Cloud Storage bucket storage location of the snapshot (regional or multi-regional). */
-  storageLocations?: Array<string>;
+  storageLocations?: ReadonlyArray<string>;
   /** Output only. [Output Only] Set to true if snapshots are automatically created by applying resource policy on the target disk. */
   autoCreated?: boolean;
   /** Output only. [Output Only] A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. */
-  guestOsFeatures?: Array<GuestOsFeature>;
+  guestOsFeatures?: ReadonlyArray<GuestOsFeature>;
   /** Output only. [Output Only] Number of bytes downloaded to restore a snapshot to a disk. */
   downloadBytes?: string;
   /** Creates the new snapshot in the snapshot chain labeled with the specified name. The chain name must be 1-63 characters long and comply with RFC1035. This is an uncommon option only for advanced service owners who needs to create separate snapshot chains, for example, for chargeback tracking. When you describe your snapshot resource, this field is visible only if it has a non-empty value. */
@@ -1766,7 +1766,7 @@ export interface SnapshotList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of Snapshot resources. */
-  items?: Array<Snapshot>;
+  items?: ReadonlyArray<Snapshot>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -1805,7 +1805,7 @@ export interface SnapshotList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -1845,7 +1845,7 @@ export interface RegionSetPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might reject them. */
   policy?: Policy;
   /** Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use 'policy' to specify bindings. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the etag. */
   etag?: string;
 }
@@ -1979,15 +1979,15 @@ export interface Disk {
   /** URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example:projects/project/zones/zone/diskTypes/pd-ssd. See Persistent disk types. */
   type?: string;
   /** A list of publicly visible licenses. Reserved for Google's use. */
-  licenses?: Array<string>;
+  licenses?: ReadonlyArray<string>;
   /** A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. */
-  guestOsFeatures?: Array<GuestOsFeature>;
+  guestOsFeatures?: ReadonlyArray<GuestOsFeature>;
   /** Output only. [Output Only] Last attach timestamp inRFC3339 text format. */
   lastAttachTimestamp?: string;
   /** Output only. [Output Only] Last detach timestamp inRFC3339 text format. */
   lastDetachTimestamp?: string;
   /** Output only. [Output Only] Links to the users of the disk (attached instances) in form:projects/project/zones/zone/instances/instance */
-  users?: Array<string>;
+  users?: ReadonlyArray<string>;
   /** Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, thediskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later. */
   diskEncryptionKey?: CustomerEncryptionKey;
   /** Thecustomer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. */
@@ -2001,13 +2001,13 @@ export interface Disk {
   /** Output only. [Output Only] URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body. */
   region?: string;
   /** URLs of the zones where the disk should be replicated to. Only applicable for regional resources. */
-  replicaZones?: Array<string>;
+  replicaZones?: ReadonlyArray<string>;
   /** Integer license codes indicating which licenses are attached to this disk. */
-  licenseCodes?: Array<string>;
+  licenseCodes?: ReadonlyArray<string>;
   /** Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project. */
   physicalBlockSizeBytes?: string;
   /** Resource policies applied to this disk for automatic snapshot creations. */
-  resourcePolicies?: Array<string>;
+  resourcePolicies?: ReadonlyArray<string>;
   /** The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk */
   sourceDisk?: string;
   /** Output only. [Output Only] The unique ID of the disk used to create this disk. This value identifies the exact disk that was used to create this persistent disk. For example, if you created the persistent disk from a disk that was later deleted and recreated under the same name, the source disk ID would identify the exact version of the disk that was used. */
@@ -2117,7 +2117,7 @@ export interface DiskList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of Disk resources. */
-  items?: Array<Disk>;
+  items?: ReadonlyArray<Disk>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -2156,7 +2156,7 @@ export interface DiskList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -2184,7 +2184,7 @@ export const DiskList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DisksScopedList {
   /** [Output Only] A list of disks contained in this scope. */
-  disks?: Array<Disk>;
+  disks?: ReadonlyArray<Disk>;
   /** [Output Only] Informational warning which replaces the list of disks when the list is empty. */
   warning?: {
     code?:
@@ -2219,7 +2219,7 @@ export interface DisksScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -2286,10 +2286,10 @@ export interface DiskAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const DiskAggregatedList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2340,7 +2340,7 @@ export const BulkSetLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "BulkSetLabelsRequest" });
 
 export interface BulkZoneSetLabelsRequest {
-  requests?: Array<BulkSetLabelsRequest>;
+  requests?: ReadonlyArray<BulkSetLabelsRequest>;
 }
 
 export const BulkZoneSetLabelsRequest =
@@ -2359,7 +2359,7 @@ export const DisksResizeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DisksAddResourcePoliciesRequest {
   /** Full or relative path to the resource policy to be added to this disk. You can only specify one resource policy. */
-  resourcePolicies?: Array<string>;
+  resourcePolicies?: ReadonlyArray<string>;
 }
 
 export const DisksAddResourcePoliciesRequest =
@@ -2369,7 +2369,7 @@ export const DisksAddResourcePoliciesRequest =
 
 export interface DisksRemoveResourcePoliciesRequest {
   /** Resource policies to be removed from this disk. */
-  resourcePolicies?: Array<string>;
+  resourcePolicies?: ReadonlyArray<string>;
 }
 
 export const DisksRemoveResourcePoliciesRequest =
@@ -2381,7 +2381,7 @@ export interface ZoneSetPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might reject them. */
   policy?: Policy;
   /** Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use 'policy' to specify bindings. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the etag. */
   etag?: string;
 }
@@ -2428,7 +2428,7 @@ export interface SnapshotGroupParameters {
   /** URL of the disk type resource describing which disk type to use to create disks. Provide this when creating the disk. For example:projects/project/zones/zone/diskTypes/pd-ssd. See Persistent disk types. */
   type?: string;
   /** URLs of the zones where disks should be replicated to. Only applicable for regional resources. */
-  replicaZones?: Array<string>;
+  replicaZones?: ReadonlyArray<string>;
 }
 
 export const SnapshotGroupParameters =
@@ -2479,7 +2479,7 @@ export const RegionDisksResizeRequest =
 
 export interface RegionDisksAddResourcePoliciesRequest {
   /** Resource policies to be added to this disk. */
-  resourcePolicies?: Array<string>;
+  resourcePolicies?: ReadonlyArray<string>;
 }
 
 export const RegionDisksAddResourcePoliciesRequest =
@@ -2489,7 +2489,7 @@ export const RegionDisksAddResourcePoliciesRequest =
 
 export interface RegionDisksRemoveResourcePoliciesRequest {
   /** Resource policies to be removed from this disk. */
-  resourcePolicies?: Array<string>;
+  resourcePolicies?: ReadonlyArray<string>;
 }
 
 export const RegionDisksRemoveResourcePoliciesRequest =
@@ -2556,21 +2556,27 @@ export interface Firewall {
   /** Priority for this rule. This is an integer between `0` and `65535`, both inclusive. The default value is `1000`. Relative priorities determine which rule takes effect if multiple rules apply. Lower values indicate higher priority. For example, a rule with priority `0` has higher precedence than a rule with priority `1`. DENY rules take precedence over ALLOW rules if they have equal priority. Note that VPC networks have implied rules with a priority of `65535`. To avoid conflicts with the implied rules, use a priority number less than `65535`. */
   priority?: number;
   /** If source ranges are specified, the firewall rule applies only to traffic that has a source IP address in these ranges. These ranges must be expressed inCIDR format. One or both of sourceRanges and sourceTags may be set. If both fields are set, the rule applies to traffic that has a source IP address within sourceRanges OR a source IP from a resource with a matching tag listed in thesourceTags field. The connection does not need to match both fields for the rule to apply. Both IPv4 and IPv6 are supported. */
-  sourceRanges?: Array<string>;
+  sourceRanges?: ReadonlyArray<string>;
   /** If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed inCIDR format. Both IPv4 and IPv6 are supported. */
-  destinationRanges?: Array<string>;
+  destinationRanges?: ReadonlyArray<string>;
   /** If source tags are specified, the firewall rule applies only to traffic with source IPs that match the primary network interfaces of VM instances that have the tag and are in the same VPC network. Source tags cannot be used to control traffic to an instance's external IP address, it only applies to traffic between instances in the same virtual network. Because tags are associated with instances, not IP addresses. One or both of sourceRanges and sourceTags may be set. If both fields are set, the firewall applies to traffic that has a source IP address within sourceRanges OR a source IP from a resource with a matching tag listed in the sourceTags field. The connection does not need to match both fields for the firewall to apply. */
-  sourceTags?: Array<string>;
+  sourceTags?: ReadonlyArray<string>;
   /** A list of tags that controls which instances the firewall rule applies to. If targetTags are specified, then the firewall rule applies only to instances in the VPC network that have one of those tags. If no targetTags are specified, the firewall rule applies to all instances on the specified network. */
-  targetTags?: Array<string>;
+  targetTags?: ReadonlyArray<string>;
   /** If source service accounts are specified, the firewall rules apply only to traffic originating from an instance with a service account in this list. Source service accounts cannot be used to control traffic to an instance's external IP address because service accounts are associated with an instance, not an IP address.sourceRanges can be set at the same time assourceServiceAccounts. If both are set, the firewall applies to traffic that has a source IP address within the sourceRanges OR a source IP that belongs to an instance with service account listed insourceServiceAccount. The connection does not need to match both fields for the firewall to apply.sourceServiceAccounts cannot be used at the same time assourceTags or targetTags. */
-  sourceServiceAccounts?: Array<string>;
+  sourceServiceAccounts?: ReadonlyArray<string>;
   /** A list of service accounts indicating sets of instances located in the network that may make network connections as specified inallowed[].targetServiceAccounts cannot be used at the same time astargetTags or sourceTags. If neither targetServiceAccounts nor targetTags are specified, the firewall rule applies to all instances on the specified network. */
-  targetServiceAccounts?: Array<string>;
+  targetServiceAccounts?: ReadonlyArray<string>;
   /** The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection. */
-  allowed?: Array<{ IPProtocol?: string; ports?: Array<string> }>;
+  allowed?: ReadonlyArray<{
+    IPProtocol?: string;
+    ports?: ReadonlyArray<string>;
+  }>;
   /** The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection. */
-  denied?: Array<{ IPProtocol?: string; ports?: Array<string> }>;
+  denied?: ReadonlyArray<{
+    IPProtocol?: string;
+    ports?: ReadonlyArray<string>;
+  }>;
   /** Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `EGRESS` traffic, you cannot specify the sourceTags fields. */
   direction?: "EGRESS" | "INGRESS" | (string & {});
   /** This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging. */
@@ -2626,7 +2632,7 @@ export interface FirewallList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of Firewall resources. */
-  items?: Array<Firewall>;
+  items?: ReadonlyArray<Firewall>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -2665,7 +2671,7 @@ export interface FirewallList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -2695,7 +2701,7 @@ export interface FirewallPolicyRuleMatcherLayer4Config {
   /** The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp,udp, icmp, esp,ah, ipip, sctp), or the IP protocol number. */
   ipProtocol?: string;
   /** An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ["22"],["80","443"], and ["12345-12349"]. */
-  ports?: Array<string>;
+  ports?: ReadonlyArray<string>;
 }
 
 export const FirewallPolicyRuleMatcherLayer4Config =
@@ -2719,29 +2725,29 @@ export const FirewallPolicyRuleSecureTag =
 
 export interface FirewallPolicyRuleMatcher {
   /** CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000. */
-  srcIpRanges?: Array<string>;
+  srcIpRanges?: ReadonlyArray<string>;
   /** CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000. */
-  destIpRanges?: Array<string>;
+  destIpRanges?: ReadonlyArray<string>;
   /** Pairs of IP protocols and ports that the rule should match. */
-  layer4Configs?: Array<FirewallPolicyRuleMatcherLayer4Config>;
+  layer4Configs?: ReadonlyArray<FirewallPolicyRuleMatcherLayer4Config>;
   /** List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256. */
-  srcSecureTags?: Array<FirewallPolicyRuleSecureTag>;
+  srcSecureTags?: ReadonlyArray<FirewallPolicyRuleSecureTag>;
   /** Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. */
-  destAddressGroups?: Array<string>;
+  destAddressGroups?: ReadonlyArray<string>;
   /** Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. */
-  srcAddressGroups?: Array<string>;
+  srcAddressGroups?: ReadonlyArray<string>;
   /** Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100. */
-  srcFqdns?: Array<string>;
+  srcFqdns?: ReadonlyArray<string>;
   /** Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100. */
-  destFqdns?: Array<string>;
+  destFqdns?: ReadonlyArray<string>;
   /** Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000. */
-  srcRegionCodes?: Array<string>;
+  srcRegionCodes?: ReadonlyArray<string>;
   /** Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000. */
-  destRegionCodes?: Array<string>;
+  destRegionCodes?: ReadonlyArray<string>;
   /** Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination. */
-  destThreatIntelligences?: Array<string>;
+  destThreatIntelligences?: ReadonlyArray<string>;
   /** Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source. */
-  srcThreatIntelligences?: Array<string>;
+  srcThreatIntelligences?: ReadonlyArray<string>;
   /** Network type of the traffic source. Allowed values are: - UNSPECIFIED - INTERNET - INTRA_VPC - NON_INTERNET - VPC_NETWORKS */
   srcNetworkType?:
     | "INTERNET"
@@ -2759,7 +2765,7 @@ export interface FirewallPolicyRuleMatcher {
     | "VPC_NETWORKS"
     | (string & {});
   /** Networks of the traffic source. It can be either a full or partial url. */
-  srcNetworks?: Array<string>;
+  srcNetworks?: ReadonlyArray<string>;
   /** Network type of the traffic destination. Allowed values are: - UNSPECIFIED - INTERNET - NON_INTERNET */
   destNetworkType?:
     | "INTERNET"
@@ -2821,15 +2827,15 @@ export interface FirewallPolicyRule {
   /** The direction in which this rule applies. */
   direction?: "EGRESS" | "INGRESS" | (string & {});
   /** A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule. */
-  targetResources?: Array<string>;
+  targetResources?: ReadonlyArray<string>;
   /** Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. */
   enableLogging?: boolean;
   /** Output only. [Output Only] Calculation of the complexity of a single firewall policy rule. */
   ruleTupleCount?: number;
   /** A list of service accounts indicating the sets of instances that are applied with this rule. */
-  targetServiceAccounts?: Array<string>;
+  targetServiceAccounts?: ReadonlyArray<string>;
   /** A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.targetSecureTag may not be set at the same time astargetServiceAccounts. If neither targetServiceAccounts nortargetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256. */
-  targetSecureTags?: Array<FirewallPolicyRuleSecureTag>;
+  targetSecureTags?: ReadonlyArray<FirewallPolicyRuleSecureTag>;
   /** Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled. */
   disabled?: boolean;
 }
@@ -2886,9 +2892,9 @@ export interface FirewallPolicy {
   /** An optional description of this resource. Provide this property when you create the resource. */
   description?: string;
   /** A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a firewall policy, a default rule with action "allow" will be added. */
-  rules?: Array<FirewallPolicyRule>;
+  rules?: ReadonlyArray<FirewallPolicyRule>;
   /** A list of packet mirroring rules that belong to this policy. */
-  packetMirroringRules?: Array<FirewallPolicyRule>;
+  packetMirroringRules?: ReadonlyArray<FirewallPolicyRule>;
   /** Specifies a fingerprint for this resource, which is essentially a hash of the metadata's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update metadata. You must always provide an up-to-date fingerprint hash in order to update or change metadata, otherwise the request will fail with error412 conditionNotMet. To see the latest fingerprint, make get() request to the firewall policy. */
   fingerprint?: string;
   /** [Output Only] Server-defined URL for the resource. */
@@ -2896,7 +2902,7 @@ export interface FirewallPolicy {
   /** Output only. [Output Only] Server-defined URL for this resource with the resource id. */
   selfLinkWithId?: string;
   /** A list of associations that belong to this firewall policy. */
-  associations?: Array<FirewallPolicyAssociation>;
+  associations?: ReadonlyArray<FirewallPolicyAssociation>;
   /** Output only. [Output Only] Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples. */
   ruleTupleCount?: number;
   /** User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
@@ -2937,7 +2943,7 @@ export interface FirewallPolicyList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of FirewallPolicy resources. */
-  items?: Array<FirewallPolicy>;
+  items?: ReadonlyArray<FirewallPolicy>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** [Output Only] Informational warning message. */
@@ -2974,7 +2980,7 @@ export interface FirewallPolicyList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -3003,7 +3009,7 @@ export interface FirewallPoliciesListAssociationsResponse {
   /** Output only. [Output Only] Type of firewallPolicy associations. Alwayscompute#FirewallPoliciesListAssociations for lists of firewallPolicy associations. */
   kind?: string;
   /** A list of associations. */
-  associations?: Array<FirewallPolicyAssociation>;
+  associations?: ReadonlyArray<FirewallPolicyAssociation>;
 }
 
 export const FirewallPoliciesListAssociationsResponse =
@@ -3016,7 +3022,7 @@ export interface GlobalOrganizationSetPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might reject them. */
   policy?: Policy;
   /** Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify bindings. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the etag. */
   etag?: string;
 }
@@ -3030,7 +3036,7 @@ export const GlobalOrganizationSetPolicyRequest =
 
 export interface FirewallPoliciesScopedList {
   /** A list of firewall policies contained in this scope. */
-  firewallPolicies?: Array<FirewallPolicy>;
+  firewallPolicies?: ReadonlyArray<FirewallPolicy>;
   /** Informational warning which replaces the list of firewall policies when the list is empty. */
   warning?: {
     code?:
@@ -3065,7 +3071,7 @@ export interface FirewallPoliciesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -3133,10 +3139,10 @@ export interface NetworkFirewallPolicyAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const NetworkFirewallPolicyAggregatedList =
@@ -3180,9 +3186,9 @@ export interface RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffec
   /** Output only. [Output Only] The display name of the firewall policy. */
   displayName?: string;
   /** Output only. [Output only] The rules that apply to the network. */
-  rules?: Array<FirewallPolicyRule>;
+  rules?: ReadonlyArray<FirewallPolicyRule>;
   /** Output only. [Output only] The packet mirroring rules that apply to the network. */
-  packetMirroringRules?: Array<FirewallPolicyRule>;
+  packetMirroringRules?: ReadonlyArray<FirewallPolicyRule>;
   /** Output only. [Output only] Priority of firewall policy association. Not applicable for type=HIERARCHY. */
   priority?: number;
 }
@@ -3202,9 +3208,9 @@ export const RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffective
 
 export interface RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponse {
   /** Effective firewalls on the network. */
-  firewalls?: Array<Firewall>;
+  firewalls?: ReadonlyArray<Firewall>;
   /** Output only. [Output only] Effective firewalls from firewall policy. It applies to Regional Network Firewall Policies in the specified region, Global Network Firewall Policies and Hierachial Firewall Policies which are associated with the network. */
-  firewallPolicys?: Array<RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
+  firewallPolicys?: ReadonlyArray<RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
 }
 
 export const RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponse =
@@ -3243,9 +3249,9 @@ export const SecurityPolicyUserDefinedField =
 
 export interface SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions {
   /** A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created. */
-  actionTokenSiteKeys?: Array<string>;
+  actionTokenSiteKeys?: ReadonlyArray<string>;
   /** A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created. */
-  sessionTokenSiteKeys?: Array<string>;
+  sessionTokenSiteKeys?: ReadonlyArray<string>;
 }
 
 export const SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions =
@@ -3270,7 +3276,7 @@ export const SecurityPolicyRuleMatcherExprOptions =
 
 export interface SecurityPolicyRuleMatcherConfig {
   /** CIDR IP address range. Maximum number of src_ip_ranges allowed is 10. */
-  srcIpRanges?: Array<string>;
+  srcIpRanges?: ReadonlyArray<string>;
 }
 
 export const SecurityPolicyRuleMatcherConfig =
@@ -3301,7 +3307,7 @@ export interface SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch {
   /** Name of the user-defined field, as given in the definition. */
   name?: string;
   /** Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff"). */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch =
@@ -3314,21 +3320,21 @@ export const SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch =
 
 export interface SecurityPolicyRuleNetworkMatcher {
   /** User-defined fields. Each element names a defined field and lists the matching values for that field. */
-  userDefinedFields?: Array<SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch>;
+  userDefinedFields?: ReadonlyArray<SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch>;
   /** Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format. */
-  srcIpRanges?: Array<string>;
+  srcIpRanges?: ReadonlyArray<string>;
   /** Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format. */
-  destIpRanges?: Array<string>;
+  destIpRanges?: ReadonlyArray<string>;
   /** IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp". */
-  ipProtocols?: Array<string>;
+  ipProtocols?: ReadonlyArray<string>;
   /** Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023"). */
-  srcPorts?: Array<string>;
+  srcPorts?: ReadonlyArray<string>;
   /** Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023"). */
-  destPorts?: Array<string>;
+  destPorts?: ReadonlyArray<string>;
   /** Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address. */
-  srcRegionCodes?: Array<string>;
+  srcRegionCodes?: ReadonlyArray<string>;
   /** BGP Autonomous System Number associated with the source IP address. */
-  srcAsns?: Array<number>;
+  srcAsns?: ReadonlyArray<number>;
 }
 
 export const SecurityPolicyRuleNetworkMatcher =
@@ -3424,7 +3430,7 @@ export interface SecurityPolicyRuleRateLimitOptions {
   /** Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value. */
   enforceOnKeyName?: string;
   /** If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified. */
-  enforceOnKeyConfigs?: Array<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig>;
+  enforceOnKeyConfigs?: ReadonlyArray<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig>;
   /** Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'. */
   banThreshold?: SecurityPolicyRuleRateLimitOptionsThreshold;
   /** Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold. */
@@ -3465,7 +3471,7 @@ export const SecurityPolicyRuleHttpHeaderActionHttpHeaderOption =
 
 export interface SecurityPolicyRuleHttpHeaderAction {
   /** The list of request headers to add or overwrite if they're already present. */
-  requestHeadersToAdds?: Array<SecurityPolicyRuleHttpHeaderActionHttpHeaderOption>;
+  requestHeadersToAdds?: ReadonlyArray<SecurityPolicyRuleHttpHeaderActionHttpHeaderOption>;
 }
 
 export const SecurityPolicyRuleHttpHeaderAction =
@@ -3500,15 +3506,15 @@ export interface SecurityPolicyRulePreconfiguredWafConfigExclusion {
   /** Target WAF rule set to apply the preconfigured WAF exclusion. */
   targetRuleSet?: string;
   /** A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set. */
-  targetRuleIds?: Array<string>;
+  targetRuleIds?: ReadonlyArray<string>;
   /** A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation. */
-  requestHeadersToExclude?: Array<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>;
+  requestHeadersToExclude?: ReadonlyArray<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>;
   /** A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation. */
-  requestCookiesToExclude?: Array<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>;
+  requestCookiesToExclude?: ReadonlyArray<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>;
   /** A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. */
-  requestQueryParamsToExclude?: Array<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>;
+  requestQueryParamsToExclude?: ReadonlyArray<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>;
   /** A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. */
-  requestUrisToExclude?: Array<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>;
+  requestUrisToExclude?: ReadonlyArray<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>;
 }
 
 export const SecurityPolicyRulePreconfiguredWafConfigExclusion =
@@ -3541,7 +3547,7 @@ export const SecurityPolicyRulePreconfiguredWafConfigExclusion =
 
 export interface SecurityPolicyRulePreconfiguredWafConfig {
   /** A list of exclusions to apply during preconfigured WAF evaluation. */
-  exclusions?: Array<SecurityPolicyRulePreconfiguredWafConfigExclusion>;
+  exclusions?: ReadonlyArray<SecurityPolicyRulePreconfiguredWafConfigExclusion>;
 }
 
 export const SecurityPolicyRulePreconfiguredWafConfig =
@@ -3622,7 +3628,7 @@ export interface SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigTh
   detectionAbsoluteQps?: number;
   detectionRelativeToBaselineQps?: number;
   /** Configuration options for enabling Adaptive Protection to operate on specified granular traffic units. */
-  trafficGranularityConfigs?: Array<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig>;
+  trafficGranularityConfigs?: ReadonlyArray<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig>;
 }
 
 export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig =
@@ -3651,7 +3657,7 @@ export interface SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
   /** Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR. */
   ruleVisibility?: "PREMIUM" | "STANDARD" | (string & {});
   /** Configuration options for layer7 adaptive protection for various customizable thresholds. */
-  thresholdConfigs?: Array<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig>;
+  thresholdConfigs?: ReadonlyArray<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig>;
 }
 
 export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig =
@@ -3690,7 +3696,7 @@ export const SecurityPolicyDdosProtectionConfig =
 
 export interface SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
   /** A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded. */
-  contentTypes?: Array<string>;
+  contentTypes?: ReadonlyArray<string>;
 }
 
 export const SecurityPolicyAdvancedOptionsConfigJsonCustomConfig =
@@ -3710,7 +3716,7 @@ export interface SecurityPolicyAdvancedOptionsConfig {
   jsonCustomConfig?: SecurityPolicyAdvancedOptionsConfigJsonCustomConfig;
   logLevel?: "NORMAL" | "VERBOSE" | (string & {});
   /** An optional list of case-insensitive request header names to use for resolving the callers client IP address. */
-  userIpRequestHeaders?: Array<string>;
+  userIpRequestHeaders?: ReadonlyArray<string>;
   /** The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB". Values are case insensitive. */
   requestBodyInspectionSize?: string;
 }
@@ -3742,9 +3748,9 @@ export interface SecurityPolicyAssociation {
   /** The resource that the security policy is attached to. */
   attachmentId?: string;
   /** A list of projects to exclude from the security policy. */
-  excludedProjects?: Array<string>;
+  excludedProjects?: ReadonlyArray<string>;
   /** A list of folders to exclude from the security policy. */
-  excludedFolders?: Array<string>;
+  excludedFolders?: ReadonlyArray<string>;
   /** Output only. [Output Only] The security policy ID of the association. */
   securityPolicyId?: string;
   /** Output only. [Output Only] The short name of the security policy of the association. */
@@ -3766,7 +3772,7 @@ export const SecurityPolicyAssociation =
 
 export interface SecurityPolicy {
   /** Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies. A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits. Rules may then specify matching values for these fields. Example: userDefinedFields: - name: "ipv4_fragment_offset" base: IPV4 offset: 6 size: 2 mask: "0x1fff" */
-  userDefinedFields?: Array<SecurityPolicyUserDefinedField>;
+  userDefinedFields?: ReadonlyArray<SecurityPolicyUserDefinedField>;
   /** Output only. [Output only] Type of the resource. Alwayscompute#securityPolicyfor security policies */
   kind?: string;
   /** Output only. [Output Only] The unique identifier for the resource. This identifier is defined by the server. */
@@ -3778,7 +3784,7 @@ export interface SecurityPolicy {
   /** An optional description of this resource. Provide this property when you create the resource. */
   description?: string;
   /** A list of rules that belong to this policy. There must always be a default rule which is a rule with priority 2147483647 and match all condition (for the match condition this means match "*" for srcIpRanges and for the networkMatch condition every field must be either match "*" or not set). If no rules are provided when creating a security policy, a default rule with action "allow" will be added. */
-  rules?: Array<SecurityPolicyRule>;
+  rules?: ReadonlyArray<SecurityPolicyRule>;
   adaptiveProtectionConfig?: SecurityPolicyAdaptiveProtectionConfig;
   ddosProtectionConfig?: SecurityPolicyDdosProtectionConfig;
   advancedOptionsConfig?: SecurityPolicyAdvancedOptionsConfig;
@@ -3794,7 +3800,7 @@ export interface SecurityPolicy {
     | "CLOUD_ARMOR_NETWORK"
     | (string & {});
   /** A list of associations that belong to this policy. */
-  associations?: Array<SecurityPolicyAssociation>;
+  associations?: ReadonlyArray<SecurityPolicyAssociation>;
   /** Labels for this resource. These can only be added or modified by thesetLabels method. Each label key/value pair must comply withRFC1035. Label values may be empty. */
   labels?: Record<string, string>;
   /** A fingerprint for the labels being applied to this security policy, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels. To see the latest fingerprint, make get() request to the security policy. */
@@ -3840,7 +3846,7 @@ export interface SecurityPolicyList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of SecurityPolicy resources. */
-  items?: Array<SecurityPolicy>;
+  items?: ReadonlyArray<SecurityPolicy>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** [Output Only] Informational warning message. */
@@ -3877,7 +3883,7 @@ export interface SecurityPolicyList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -3919,9 +3925,9 @@ export interface WafExpressionSet {
   /** Google specified expression set ID. The format should be: - E.g. XSS-20170329 required */
   id?: string;
   /** A list of alternate IDs. The format should be: - E.g. XSS-stable Generic suffix like "stable" is particularly useful if a policy likes to avail newer set of expressions without having to change the policy. A given alias name can't be used for more than one entity set. */
-  aliases?: Array<string>;
+  aliases?: ReadonlyArray<string>;
   /** List of available expressions. */
-  expressions?: Array<WafExpressionSetExpression>;
+  expressions?: ReadonlyArray<WafExpressionSetExpression>;
 }
 
 export const WafExpressionSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3932,7 +3938,7 @@ export const WafExpressionSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PreconfiguredWafSet {
   /** List of entities that are currently supported for WAF rules. */
-  expressionSets?: Array<WafExpressionSet>;
+  expressionSets?: ReadonlyArray<WafExpressionSet>;
 }
 
 export const PreconfiguredWafSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3961,7 +3967,7 @@ export const SecurityPoliciesListPreconfiguredExpressionSetsResponse =
 
 export interface SecurityPoliciesScopedList {
   /** A list of SecurityPolicies contained in this scope. */
-  securityPolicies?: Array<SecurityPolicy>;
+  securityPolicies?: ReadonlyArray<SecurityPolicy>;
   /** Informational warning which replaces the list of security policies when the list is empty. */
   warning?: {
     code?:
@@ -3996,7 +4002,7 @@ export interface SecurityPoliciesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -4064,11 +4070,11 @@ export interface SecurityPoliciesAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   etag?: string;
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const SecurityPoliciesAggregatedList =
@@ -4102,7 +4108,7 @@ export interface OrganizationSecurityPoliciesListAssociationsResponse {
   /** Output only. [Output Only] Type of securityPolicy associations. Alwayscompute#organizationSecurityPoliciesListAssociations for lists of securityPolicy associations. */
   kind?: string;
   /** A list of associations. */
-  associations?: Array<SecurityPolicyAssociation>;
+  associations?: ReadonlyArray<SecurityPolicyAssociation>;
 }
 
 export const OrganizationSecurityPoliciesListAssociationsResponse =
@@ -4115,7 +4121,7 @@ export const OrganizationSecurityPoliciesListAssociationsResponse =
 
 export interface Tags {
   /** An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035. */
-  items?: Array<string>;
+  items?: ReadonlyArray<string>;
   /** Specifies a fingerprint for this request, which is essentially a hash of the tags' contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update tags. You must always provide an up-to-date fingerprint hash in order to update or change tags. To see the latest fingerprint, make get() request to the instance. */
   fingerprint?: string;
 }
@@ -4194,11 +4200,11 @@ export interface NetworkInterface {
   /** [Output Only] The name of the network interface, which is generated by the server. For a VM, the network interface uses the nicN naming format. Where N is a value between 0 and7. The default interface value is nic0. */
   name?: string;
   /** An array of configurations for this interface. Currently, only one access config, ONE_TO_ONE_NAT, is supported. If there are noaccessConfigs specified, then this instance will have no external internet access. */
-  accessConfigs?: Array<AccessConfig>;
+  accessConfigs?: ReadonlyArray<AccessConfig>;
   /** An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access. */
-  ipv6AccessConfigs?: Array<AccessConfig>;
+  ipv6AccessConfigs?: ReadonlyArray<AccessConfig>;
   /** An array of alias IP ranges for this network interface. You can only specify this field for network interfaces in VPC networks. */
-  aliasIpRanges?: Array<AliasIpRange>;
+  aliasIpRanges?: ReadonlyArray<AliasIpRange>;
   /** Fingerprint hash of contents stored in this network interface. This field will be ignored when inserting an Instance or adding a NetworkInterface. An up-to-date fingerprint must be provided in order to update theNetworkInterface. The request will fail with error400 Bad Request if the fingerprint is not provided, or412 Precondition Failed if the fingerprint is out of date. */
   fingerprint?: string;
   /** The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, useIPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations. */
@@ -4274,9 +4280,9 @@ export interface AttachedDiskInitializeParams {
   /** An optional description. Provide this property when creating the disk. */
   description?: string;
   /** Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. */
-  replicaZones?: Array<string>;
+  replicaZones?: ReadonlyArray<string>;
   /** Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name. */
-  resourcePolicies?: Array<string>;
+  resourcePolicies?: ReadonlyArray<string>;
   /** Specifies which action to take on instance update with this disk. Default is to use the existing disk. */
   onUpdateAction?:
     | "RECREATE_DISK"
@@ -4286,7 +4292,7 @@ export interface AttachedDiskInitializeParams {
   /** Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see theExtreme persistent disk documentation. */
   provisionedIops?: string;
   /** A list of publicly visible licenses. Reserved for Google's use. */
-  licenses?: Array<string>;
+  licenses?: ReadonlyArray<string>;
   /** The architecture of the attached disk. Valid values are arm64 or x86_64. */
   architecture?:
     | "ARCHITECTURE_UNSPECIFIED"
@@ -4350,11 +4356,11 @@ export interface AttachedDisk {
   /** Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance). */
   autoDelete?: boolean;
   /** Output only. [Output Only] Any valid publicly visible licenses. */
-  licenses?: Array<string>;
+  licenses?: ReadonlyArray<string>;
   /** Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. For most machine types, the default is SCSI. Local SSDs can use either NVME or SCSI. In certain configurations, persistent disks can use NVMe. For more information, seeAbout persistent disks. */
   interface?: "NVME" | "SCSI" | (string & {});
   /** A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. */
-  guestOsFeatures?: Array<GuestOsFeature>;
+  guestOsFeatures?: ReadonlyArray<GuestOsFeature>;
   /** Encrypts or decrypts a disk using acustomer-supplied encryption key. If you are creating a new disk, this field encrypts the new disk using an encryption key that you provide. If you are attaching an existing disk that is already encrypted, this field decrypts the disk using the customer-supplied encryption key. If you encrypt a disk using a customer-supplied key, you must provide the same key again when you attempt to use this resource at a later time. For example, you must provide the key when you create a snapshot or an image from the disk or when you attach the disk to a virtual machine instance. If you do not provide an encryption key, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later. Note: Instance templates do not storecustomer-supplied encryption keys, so you cannot use your own keys to encrypt disks in amanaged instance group. You cannot create VMs that have disks with customer-supplied keys using the bulk insert method. */
   diskEncryptionKey?: CustomerEncryptionKey;
   /** The size of the disk in GB. */
@@ -4398,7 +4404,7 @@ export interface Metadata {
   /** Specifies a fingerprint for this request, which is essentially a hash of the metadata's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update metadata. You must always provide an up-to-date fingerprint hash in order to update or change metadata, otherwise the request will fail with error412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the resource. */
   fingerprint?: string;
   /** Array of key/value pairs. The total size of all keys and values must be less than 512 KB. */
-  items?: Array<{ key?: string; value?: string }>;
+  items?: ReadonlyArray<{ key?: string; value?: string }>;
 }
 
 export const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4418,7 +4424,7 @@ export interface ServiceAccount {
   /** Email address of the service account. */
   email?: string;
   /** The list of scopes to be made available for this service account. */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
 }
 
 export const ServiceAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4454,7 +4460,7 @@ export interface SchedulingNodeAffinity {
   /** Defines the operation of node selection. Valid operators areIN for affinity and NOT_IN for anti-affinity. */
   operator?: "IN" | "NOT_IN" | "OPERATOR_UNSPECIFIED" | (string & {});
   /** Corresponds to the label values of Node resource. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const SchedulingNodeAffinity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -4478,7 +4484,7 @@ export interface Scheduling {
   /** Defines whether the instance is preemptible. This can only be set during instance creation or while the instance isstopped and therefore, in a `TERMINATED` state. SeeInstance Life Cycle for more information on the possible instance states. */
   preemptible?: boolean;
   /** A set of node affinity and anti-affinity configurations. Refer toConfiguring node affinity for more information. Overrides reservationAffinity. */
-  nodeAffinities?: Array<SchedulingNodeAffinity>;
+  nodeAffinities?: ReadonlyArray<SchedulingNodeAffinity>;
   /** The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node. */
   minNodeCpus?: number;
   /** An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API. */
@@ -4561,7 +4567,7 @@ export interface ReservationAffinity {
   /** Corresponds to the label key of a reservation resource. To target aSPECIFIC_RESERVATION by name, specifygoogleapis.com/reservation-name as the key and specify the name of your reservation as its value. */
   key?: string;
   /** Corresponds to the label values of a reservation resource. This can be either a name to a reservation in the same project or "projects/different-project/reservations/some-reservation-name" to target a shared reservation in the same zone but in a different project. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const ReservationAffinity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4718,7 +4724,7 @@ export interface UpcomingMaintenance {
   /** Indicates whether the UpcomingMaintenance will be triggered on VM shutdown. */
   maintenanceOnShutdown?: boolean;
   /** The reasons for the maintenance. Only valid for vms. */
-  maintenanceReasons?: Array<
+  maintenanceReasons?: ReadonlyArray<
     | "FAILURE_DISK"
     | "FAILURE_GPU"
     | "FAILURE_GPU_MULTIPLE_FAULTY_HOSTS_CUSTOMER_REPORTED"
@@ -4863,13 +4869,13 @@ export interface Instance {
   /** Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, seeEnabling IP Forwarding. */
   canIpForward?: boolean;
   /** An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance. */
-  networkInterfaces?: Array<NetworkInterface>;
+  networkInterfaces?: ReadonlyArray<NetworkInterface>;
   /** Array of disks associated with this instance. Persistent disks must be created before you can assign them. */
-  disks?: Array<AttachedDisk>;
+  disks?: ReadonlyArray<AttachedDisk>;
   /** The metadata key/value pairs assigned to this instance. This includes metadata keys that were explicitly defined for the instance. */
   metadata?: Metadata;
   /** A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. SeeService Accounts for more information. */
-  serviceAccounts?: Array<ServiceAccount>;
+  serviceAccounts?: ReadonlyArray<ServiceAccount>;
   /** Output only. [Output Only] Server-defined URL for this resource. */
   selfLink?: string;
   /** Sets the scheduling options for this instance. */
@@ -4887,13 +4893,13 @@ export interface Instance {
   /** Specifies aminimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge". */
   minCpuPlatform?: string;
   /** A list of the type and count of accelerator cards attached to the instance. */
-  guestAccelerators?: Array<AcceleratorConfig>;
+  guestAccelerators?: ReadonlyArray<AcceleratorConfig>;
   /** Output only. [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity. */
   startRestricted?: boolean;
   /** Whether the resource should be protected against deletion. */
   deletionProtection?: boolean;
   /** Resource policies applied to this instance. */
-  resourcePolicies?: Array<string>;
+  resourcePolicies?: ReadonlyArray<string>;
   /** Source machine image */
   sourceMachineImage?: string;
   /** Specifies the reservations that this instance can consume from. */
@@ -4997,7 +5003,7 @@ export interface InstanceList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of Instance resources. */
-  items?: Array<Instance>;
+  items?: ReadonlyArray<Instance>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -5036,7 +5042,7 @@ export interface InstanceList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -5064,7 +5070,7 @@ export const InstanceList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InstancesScopedList {
   /** [Output Only] A list of instances contained in this scope. */
-  instances?: Array<Instance>;
+  instances?: ReadonlyArray<Instance>;
   /** [Output Only] Informational warning which replaces the list of instances when the list is empty. */
   warning?: {
     code?:
@@ -5099,7 +5105,7 @@ export interface InstancesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -5166,10 +5172,10 @@ export interface InstanceAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const InstanceAggregatedList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -5221,7 +5227,7 @@ export interface InstanceListReferrers {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of Reference resources. */
-  items?: Array<Reference>;
+  items?: ReadonlyArray<Reference>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -5260,7 +5266,7 @@ export interface InstanceListReferrers {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -5304,7 +5310,7 @@ export const InstancesReportHostAsFaultyRequestFaultReason =
   }).annotate({ identifier: "InstancesReportHostAsFaultyRequestFaultReason" });
 
 export interface InstancesReportHostAsFaultyRequest {
-  faultReasons?: Array<InstancesReportHostAsFaultyRequestFaultReason>;
+  faultReasons?: ReadonlyArray<InstancesReportHostAsFaultyRequestFaultReason>;
   /** The disruption schedule for the VM. Required field, only allows IMMEDIATE. */
   disruptionSchedule?:
     | "DISRUPTION_SCHEDULE_UNSPECIFIED"
@@ -5370,7 +5376,7 @@ export const GuestAttributesEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "GuestAttributesEntry" });
 
 export interface GuestAttributesValue {
-  items?: Array<GuestAttributesEntry>;
+  items?: ReadonlyArray<GuestAttributesEntry>;
 }
 
 export const GuestAttributesValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5403,7 +5409,7 @@ export const GuestAttributes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InstancesSetMachineResourcesRequest {
   /** A list of the type and count of accelerator cards attached to the instance. */
-  guestAccelerators?: Array<AcceleratorConfig>;
+  guestAccelerators?: ReadonlyArray<AcceleratorConfig>;
 }
 
 export const InstancesSetMachineResourcesRequest =
@@ -5471,7 +5477,7 @@ export const CustomerEncryptionKeyProtectedDisk =
 
 export interface InstancesStartWithEncryptionKeyRequest {
   /** Array of disks associated with this instance that are protected with acustomer-supplied encryption key. In order to start the instance, the disk url and its corresponding key must be provided. If the disk is not protected with a customer-supplied encryption key it should not be specified. */
-  disks?: Array<CustomerEncryptionKeyProtectedDisk>;
+  disks?: ReadonlyArray<CustomerEncryptionKeyProtectedDisk>;
 }
 
 export const InstancesStartWithEncryptionKeyRequest =
@@ -5483,7 +5489,7 @@ export interface InstancesSetServiceAccountRequest {
   /** Email address of the service account. */
   email?: string;
   /** The list of scopes to be made available for this service account. */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
 }
 
 export const InstancesSetServiceAccountRequest =
@@ -5494,7 +5500,7 @@ export const InstancesSetServiceAccountRequest =
 
 export interface InstancesAddResourcePoliciesRequest {
   /** Resource policies to be added to this instance. */
-  resourcePolicies?: Array<string>;
+  resourcePolicies?: ReadonlyArray<string>;
 }
 
 export const InstancesAddResourcePoliciesRequest =
@@ -5504,7 +5510,7 @@ export const InstancesAddResourcePoliciesRequest =
 
 export interface InstancesRemoveResourcePoliciesRequest {
   /** Resource policies to be removed from this instance. */
-  resourcePolicies?: Array<string>;
+  resourcePolicies?: ReadonlyArray<string>;
 }
 
 export const InstancesRemoveResourcePoliciesRequest =
@@ -5516,7 +5522,7 @@ export interface InstancesSetSecurityPolicyRequest {
   /** A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy. */
   securityPolicy?: string;
   /** The network interfaces that the security policy will be applied to. Network interfaces use the nicN naming format. You can only set a security policy for network interfaces with an access config. */
-  networkInterfaces?: Array<string>;
+  networkInterfaces?: ReadonlyArray<string>;
 }
 
 export const InstancesSetSecurityPolicyRequest =
@@ -5587,19 +5593,19 @@ export interface InstanceProperties {
   /** Enables instances created based on these properties to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set tofalse. See theEnable IP forwarding documentation for more information. */
   canIpForward?: boolean;
   /** An array of network access configurations for this interface. */
-  networkInterfaces?: Array<NetworkInterface>;
+  networkInterfaces?: ReadonlyArray<NetworkInterface>;
   /** An array of disks that are associated with the instances that are created from these properties. */
-  disks?: Array<AttachedDisk>;
+  disks?: ReadonlyArray<AttachedDisk>;
   /** The metadata key/value pairs to assign to instances that are created from these properties. These pairs can consist of custom metadata or predefined keys. SeeProject and instance metadata for more information. */
   metadata?: Metadata;
   /** A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances. */
-  serviceAccounts?: Array<ServiceAccount>;
+  serviceAccounts?: ReadonlyArray<ServiceAccount>;
   /** Specifies the scheduling options for the instances that are created from these properties. */
   scheduling?: Scheduling;
   /** Labels to apply to instances that are created from these properties. */
   labels?: Record<string, string>;
   /** A list of guest accelerator cards' type and count to use for instances created from these properties. */
-  guestAccelerators?: Array<AcceleratorConfig>;
+  guestAccelerators?: ReadonlyArray<AcceleratorConfig>;
   /** Minimum cpu/platform to be used by instances. The instance may be scheduled on the specified or newer cpu/platform. Applicable values are the friendly names of CPU platforms, such asminCpuPlatform: "Intel Haswell" orminCpuPlatform: "Intel Sandy Bridge". For more information, read Specifying a Minimum CPU Platform. */
   minCpuPlatform?: string;
   /** Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet. */
@@ -5607,7 +5613,7 @@ export interface InstanceProperties {
   /** Note that for MachineImage, this is not supported yet. */
   shieldedInstanceConfig?: ShieldedInstanceConfig;
   /** Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet. */
-  resourcePolicies?: Array<string>;
+  resourcePolicies?: ReadonlyArray<string>;
   /** Specifies the Confidential Instance options. Note that for MachineImage, this is not supported yet. */
   confidentialInstanceConfig?: ConfidentialInstanceConfig;
   /** The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet. */
@@ -5696,7 +5702,7 @@ export interface LocationPolicy {
   /** Strategy for distributing VMs across zones in a region. */
   targetShape?: "ANY" | "ANY_SINGLE_ZONE" | "BALANCED" | (string & {});
   /** The bulkInsert operation applies any preferences set in the locations field to the specific zones listed in the zones field if the same zones are specified in both fields. */
-  zones?: Array<LocationPolicyZoneConfiguration>;
+  zones?: ReadonlyArray<LocationPolicyZoneConfiguration>;
 }
 
 export const LocationPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5709,11 +5715,11 @@ export const LocationPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InstanceFlexibilityPolicyInstanceSelection {
   /** Alternative machine types to use for instances that are created from these properties. This field only accepts a machine type names, for example `n2-standard-4` and not URLs or partial URLs. */
-  machineTypes?: Array<string>;
+  machineTypes?: ReadonlyArray<string>;
   /** Rank when prioritizing the shape flexibilities. The instance selections with rank are considered first, in the ascending order of the rank. If not set, defaults to 0. */
   rank?: string;
   /** Disks to be attached to the instances created from in this selection. They override the disks specified in the instance properties. */
-  disks?: Array<AttachedDisk>;
+  disks?: ReadonlyArray<AttachedDisk>;
 }
 
 export const InstanceFlexibilityPolicyInstanceSelection =
@@ -5794,9 +5800,9 @@ export interface InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy {
   /** Output only. [Output Only] Deprecated, please use short name instead. The display name of the firewall policy. */
   displayName?: string;
   /** [Output Only] The rules that apply to the instance. Only rules that target the specific VM instance are returned if target service accounts or target secure tags are specified in the rules. */
-  rules?: Array<FirewallPolicyRule>;
+  rules?: ReadonlyArray<FirewallPolicyRule>;
   /** Output only. [Output Only] The packet mirroring rules that apply to the instance. */
-  packetMirroringRules?: Array<FirewallPolicyRule>;
+  packetMirroringRules?: ReadonlyArray<FirewallPolicyRule>;
   /** Output only. [Output only] Priority of firewall policy association. Not applicable for type=HIERARCHY. */
   priority?: number;
 }
@@ -5816,9 +5822,9 @@ export const InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy =
 
 export interface InstancesGetEffectiveFirewallsResponse {
   /** Effective firewalls on the instance. */
-  firewalls?: Array<Firewall>;
+  firewalls?: ReadonlyArray<Firewall>;
   /** [Output Only] Effective firewalls from firewall policies. */
-  firewallPolicys?: Array<InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
+  firewallPolicys?: ReadonlyArray<InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
 }
 
 export const InstancesGetEffectiveFirewallsResponse =
@@ -5851,11 +5857,11 @@ export interface AllocationSpecificSKUAllocationReservedInstanceProperties {
   /** Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern. */
   machineType?: string;
   /** Specifies accelerator type and count. */
-  guestAccelerators?: Array<AcceleratorConfig>;
+  guestAccelerators?: ReadonlyArray<AcceleratorConfig>;
   /** Minimum cpu platform the reservation. */
   minCpuPlatform?: string;
   /** Specifies amount of local ssd to reserve with each instance. The type of disk is local-ssd. */
-  localSsds?: Array<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>;
+  localSsds?: ReadonlyArray<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>;
   /** An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API. */
   locationHint?: string;
 }
@@ -5941,9 +5947,9 @@ export interface AllocationAggregateReservation {
     | "VM_FAMILY_CLOUD_TPU_POD_SLICE_TPU7X"
     | (string & {});
   /** List of reserved resources (CPUs, memory, accelerators). */
-  reservedResources?: Array<AllocationAggregateReservationReservedResourceInfo>;
+  reservedResources?: ReadonlyArray<AllocationAggregateReservationReservedResourceInfo>;
   /** Output only. [Output only] List of resources currently in use. */
-  inUseResources?: Array<AllocationAggregateReservationReservedResourceInfo>;
+  inUseResources?: ReadonlyArray<AllocationAggregateReservationReservedResourceInfo>;
   /** The workload type of the instances that will target this reservation. */
   workloadType?: "BATCH" | "SERVING" | "UNSPECIFIED" | (string & {});
 }
@@ -6142,7 +6148,7 @@ export interface Reservation {
   /** Output only. [Output Only] Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment. */
   commitment?: string;
   /** Output only. [Output Only] Full or partial URL to parent commitments. This field displays for reservations that are tied to multiple commitments. */
-  linkedCommitments?: Array<string>;
+  linkedCommitments?: ReadonlyArray<string>;
   /** Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation. */
   specificReservationRequired?: boolean;
   /** Output only. [Output Only] The status of the reservation. - CREATING: Reservation resources are being allocated. - READY: Reservation resources have been allocated, and the reservation is ready for use. - DELETING: Reservation deletion is in progress. - UPDATING: Reservation update is in progress. */
@@ -6236,7 +6242,7 @@ export interface ReservationList {
   /** [Output Only] The unique identifier for the resource. This identifier is defined by the server. */
   id?: string;
   /** [Output Only] A list of Allocation resources. */
-  items?: Array<Reservation>;
+  items?: ReadonlyArray<Reservation>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** [Output Only] Informational warning message. */
@@ -6273,7 +6279,7 @@ export interface ReservationList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Server-defined URL for this resource. */
   selfLink?: string;
@@ -6303,7 +6309,7 @@ export const ReservationList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ReservationsScopedList {
   /** A list of reservations contained in this scope. */
-  reservations?: Array<Reservation>;
+  reservations?: ReadonlyArray<Reservation>;
   /** Informational warning which replaces the list of reservations when the list is empty. */
   warning?: {
     code?:
@@ -6338,7 +6344,7 @@ export interface ReservationsScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -6407,10 +6413,10 @@ export interface ReservationAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const ReservationAggregatedList =
@@ -6488,7 +6494,7 @@ export interface InstanceGroup {
   /** An optional description of this resource. Provide this property when you create the resource. */
   description?: string;
   /** Optional. Assigns a name to a port number. For example:{name: "http", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example:[{name: "app1", port: 8080}, {name: "app1", port: 8081}, {name: "app2", port: 8082}] Named ports apply to all instances in this instance group. */
-  namedPorts?: Array<NamedPort>;
+  namedPorts?: ReadonlyArray<NamedPort>;
   /** [Output Only] The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0). */
   network?: string;
   /** Output only. [Output Only] The fingerprint of the named ports. The system uses this fingerprint to detect conflicts when multiple users change the named ports concurrently. */
@@ -6527,7 +6533,7 @@ export interface InstanceGroupList {
   /** Output only. [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of InstanceGroup resources. */
-  items?: Array<InstanceGroup>;
+  items?: ReadonlyArray<InstanceGroup>;
   /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -6566,7 +6572,7 @@ export interface InstanceGroupList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -6594,7 +6600,7 @@ export const InstanceGroupList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InstanceGroupsScopedList {
   /** Output only. [Output Only] The list ofinstance groups that are contained in this scope. */
-  instanceGroups?: Array<InstanceGroup>;
+  instanceGroups?: ReadonlyArray<InstanceGroup>;
   /** Output only. [Output Only] An informational warning that replaces the list of instance groups when the list is empty. */
   warning?: {
     code?:
@@ -6629,7 +6635,7 @@ export interface InstanceGroupsScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -6697,10 +6703,10 @@ export interface InstanceGroupAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const InstanceGroupAggregatedList =
@@ -6740,7 +6746,7 @@ export const InstanceReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InstanceGroupsAddInstancesRequest {
   /** The list of instances to add to the instance group. */
-  instances?: Array<InstanceReference>;
+  instances?: ReadonlyArray<InstanceReference>;
 }
 
 export const InstanceGroupsAddInstancesRequest =
@@ -6750,7 +6756,7 @@ export const InstanceGroupsAddInstancesRequest =
 
 export interface InstanceGroupsRemoveInstancesRequest {
   /** The list of instances to remove from the instance group. */
-  instances?: Array<InstanceReference>;
+  instances?: ReadonlyArray<InstanceReference>;
 }
 
 export const InstanceGroupsRemoveInstancesRequest =
@@ -6786,7 +6792,7 @@ export interface InstanceWithNamedPorts {
     | "TERMINATED"
     | (string & {});
   /** Output only. [Output Only] The named ports that belong to this instance group. */
-  namedPorts?: Array<NamedPort>;
+  namedPorts?: ReadonlyArray<NamedPort>;
 }
 
 export const InstanceWithNamedPorts = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -6803,7 +6809,7 @@ export interface InstanceGroupsListInstances {
   /** Output only. [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of InstanceWithNamedPorts resources. */
-  items?: Array<InstanceWithNamedPorts>;
+  items?: ReadonlyArray<InstanceWithNamedPorts>;
   /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -6842,7 +6848,7 @@ export interface InstanceGroupsListInstances {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -6871,7 +6877,7 @@ export const InstanceGroupsListInstances =
 
 export interface InstanceGroupsSetNamedPortsRequest {
   /** The list of named ports to set for this instance group. */
-  namedPorts?: Array<NamedPort>;
+  namedPorts?: ReadonlyArray<NamedPort>;
   /** The fingerprint of the named ports information for this instance group. Use this optional property to prevent conflicts when multiple users change the named ports settings concurrently. Obtain the fingerprint with theinstanceGroups.get method. Then, include the fingerprint in your request to ensure that you do not overwrite changes that were applied from another concurrent request. A request with an incorrect fingerprint will fail with error412 conditionNotMet. */
   fingerprint?: string;
 }
@@ -6888,7 +6894,7 @@ export interface RegionInstanceGroupList {
   /** Output only. [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of InstanceGroup resources. */
-  items?: Array<InstanceGroup>;
+  items?: ReadonlyArray<InstanceGroup>;
   /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -6927,7 +6933,7 @@ export interface RegionInstanceGroupList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -6973,7 +6979,7 @@ export interface RegionInstanceGroupsListInstances {
   /** Output only. [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of InstanceWithNamedPorts resources. */
-  items?: Array<InstanceWithNamedPorts>;
+  items?: ReadonlyArray<InstanceWithNamedPorts>;
   /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -7012,7 +7018,7 @@ export interface RegionInstanceGroupsListInstances {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -7041,7 +7047,7 @@ export const RegionInstanceGroupsListInstances =
 
 export interface RegionInstanceGroupsSetNamedPortsRequest {
   /** The list of named ports to set for this instance group. */
-  namedPorts?: Array<NamedPort>;
+  namedPorts?: ReadonlyArray<NamedPort>;
   /** The fingerprint of the named ports information for this instance group. Use this optional property to prevent conflicts when multiple users change the named ports settings concurrently. Obtain the fingerprint with theinstanceGroups.get method. Then, include the fingerprint in your request to ensure that you do not overwrite changes that were applied from another concurrent request. */
   fingerprint?: string;
 }
@@ -7064,7 +7070,7 @@ export const DistributionPolicyZoneConfiguration =
 
 export interface DistributionPolicy {
   /** Zones where the regional managed instance group will create and manage its instances. By default, a regional MIG doesn't automatically select an AI zone to create instances, even if an AI zone is available in the specified region. To create instances in an AI zone in the selected region, you must explicitly specify it in the distribution policy together with the other preferred zones. */
-  zones?: Array<DistributionPolicyZoneConfiguration>;
+  zones?: ReadonlyArray<DistributionPolicyZoneConfiguration>;
   /** The distribution shape to which the group converges either proactively or on resize events (depending on the value set inupdatePolicy.instanceRedistributionType). */
   targetShape?: "ANY" | "ANY_SINGLE_ZONE" | "BALANCED" | "EVEN" | (string & {});
 }
@@ -7229,11 +7235,11 @@ export interface InstanceGroupManagerStatusBulkInstanceOperationLastProgressChec
   timestamp?: string;
   /** Output only. Errors encountered during bulk instance operation. */
   error?: {
-    errors?: Array<{
+    errors?: ReadonlyArray<{
       code?: string;
       location?: string;
       message?: string;
-      errorDetails?: Array<{
+      errorDetails?: ReadonlyArray<{
         errorInfo?: ErrorInfo;
         quotaInfo?: QuotaExceededInfo;
         help?: Help;
@@ -7296,11 +7302,11 @@ export interface InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopolog
   timestamp?: string;
   /** Output only. Encountered errors. */
   error?: {
-    errors?: Array<{
+    errors?: ReadonlyArray<{
       code?: string;
       location?: string;
       message?: string;
-      errorDetails?: Array<{
+      errorDetails?: ReadonlyArray<{
         errorInfo?: ErrorInfo;
         quotaInfo?: QuotaExceededInfo;
         help?: Help;
@@ -7428,7 +7434,7 @@ export interface InstanceGroupManagerStatus {
   /** Output only. The status of bulk instance operation. */
   bulkInstanceOperation?: InstanceGroupManagerStatusBulkInstanceOperation;
   /** Output only. The accelerator topology applied to this MIG. Currently only one accelerator topology is supported. */
-  appliedAcceleratorTopologies?: Array<InstanceGroupManagerStatusAcceleratorTopology>;
+  appliedAcceleratorTopologies?: ReadonlyArray<InstanceGroupManagerStatusAcceleratorTopology>;
   /** Output only. The list of instance statuses and the number of instances in this managed instance group that have the status. Currently only shown for TPU MIGs */
   currentInstanceStatuses?: InstanceGroupManagerStatusInstanceStatusSummary;
 }
@@ -7465,7 +7471,7 @@ export const InstanceGroupManagerTargetSizePolicy =
 
 export interface InstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
   /** Full machine-type names, e.g. "n1-standard-16". */
-  machineTypes?: Array<string>;
+  machineTypes?: ReadonlyArray<string>;
   /** Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference. */
   rank?: number;
 }
@@ -7656,13 +7662,13 @@ export interface InstanceGroupManager {
   /** The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, runapplyUpdatesToInstances, or set the group'supdatePolicy.type to PROACTIVE. */
   instanceTemplate?: string;
   /** Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and aname. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about therelationships between these fields. Exactly one version must leave thetargetSize field unset. That version will be applied to all remaining instances. For more information, read aboutcanary updates. */
-  versions?: Array<InstanceGroupManagerVersion>;
+  versions?: ReadonlyArray<InstanceGroupManagerVersion>;
   /** Specifies configuration that overrides the instance template configuration for the group. */
   allInstancesConfig?: InstanceGroupManagerAllInstancesConfig;
   /** Output only. The URL of the Instance Group resource. */
   instanceGroup?: string;
   /** The URLs for all TargetPool resources to which instances in theinstanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group. */
-  targetPools?: Array<string>;
+  targetPools?: ReadonlyArray<string>;
   /** The base instance name is a prefix that you want to attach to the names of all VMs in a MIG. The maximum character length is 58 and the name must comply with RFC1035 format. When a VM is created in the group, the MIG appends a hyphen and a random four-character string to the base instance name. If you want the MIG to assign sequential numbers instead of a random string, then end the base instance name with a hyphen followed by one or more hash symbols. The hash symbols indicate the number of digits. For example, a base instance name of "vm-###" results in "vm-001" as a VM name. @pattern [a-z](([-a-z0-9]{0,57})|([-a-z0-9]{0,51}-#{1,10}(\\[[0-9]{1,10}\\])?)) */
   baseInstanceName?: string;
   /** Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager. */
@@ -7688,11 +7694,11 @@ export interface InstanceGroupManager {
   /** Output only. The URL for this managed instance group. The server defines this URL. */
   selfLink?: string;
   /** The autohealing policy for this managed instance group. You can specify only one value. */
-  autoHealingPolicies?: Array<InstanceGroupManagerAutoHealingPolicy>;
+  autoHealingPolicies?: ReadonlyArray<InstanceGroupManagerAutoHealingPolicy>;
   /** The update policy for this managed instance group. */
   updatePolicy?: InstanceGroupManagerUpdatePolicy;
   /** [Output Only] Named ports configured on the Instance Groups complementary to this Instance Group Manager. */
-  namedPorts?: Array<NamedPort>;
+  namedPorts?: ReadonlyArray<NamedPort>;
   /** Stateful configuration for this Instanced Group Manager */
   statefulPolicy?: StatefulPolicy;
   /** The repair policy for this managed instance group. */
@@ -7751,7 +7757,7 @@ export interface InstanceGroupManagerList {
   /** Output only. [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of InstanceGroupManager resources. */
-  items?: Array<InstanceGroupManager>;
+  items?: ReadonlyArray<InstanceGroupManager>;
   /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -7790,7 +7796,7 @@ export interface InstanceGroupManagerList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] The resource type, which is always compute#instanceGroupManagerList for a list of managed instance groups. */
   kind?: string;
@@ -7821,7 +7827,7 @@ export const InstanceGroupManagerList =
 
 export interface InstanceGroupManagersScopedList {
   /** Output only. [Output Only] The list of managed instance groups that are contained in the specified project and zone. */
-  instanceGroupManagers?: Array<InstanceGroupManager>;
+  instanceGroupManagers?: ReadonlyArray<InstanceGroupManager>;
   /** Output only. [Output Only] The warning that replaces the list of managed instance groups when the list is empty. */
   warning?: {
     code?:
@@ -7856,7 +7862,7 @@ export interface InstanceGroupManagersScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -7924,10 +7930,10 @@ export interface InstanceGroupManagerAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const InstanceGroupManagerAggregatedList =
@@ -7958,7 +7964,7 @@ export const InstanceGroupManagerAggregatedList =
 
 export interface InstanceGroupManagersDeleteInstancesRequest {
   /** The URLs of one or more instances to delete. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME]. Queued instances do not have URL and can be deleted only by name. One cannot specify both URLs and names in a single request. */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
   /** Specifies whether the request should proceed despite the inclusion of instances that are not members of the group or that are already in the process of being deleted or abandoned. If this field is set to `false` and such an instance is specified in the request, the operation fails. The operation always fails if the request contains a malformed instance URL or a reference to an instance that exists in a zone or region other than the group's zone or region. */
   skipInstancesOnValidationError?: boolean;
 }
@@ -7971,7 +7977,7 @@ export const InstanceGroupManagersDeleteInstancesRequest =
 
 export interface InstanceGroupManagersSuspendInstancesRequest {
   /** The URLs of one or more instances to suspend. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME]. */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
   /** If this flag is set to true, the Instance Group Manager will proceed to suspend the instances, skipping initialization on them. */
   forceSuspend?: boolean;
 }
@@ -7984,7 +7990,7 @@ export const InstanceGroupManagersSuspendInstancesRequest =
 
 export interface InstanceGroupManagersResumeInstancesRequest {
   /** The URLs of one or more instances to resume. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME]. */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
 }
 
 export const InstanceGroupManagersResumeInstancesRequest =
@@ -7994,7 +8000,7 @@ export const InstanceGroupManagersResumeInstancesRequest =
 
 export interface InstanceGroupManagersStopInstancesRequest {
   /** The URLs of one or more instances to stop. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME]. */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
   /** If this flag is set to true, the Instance Group Manager will proceed to stop the instances, skipping initialization on them. */
   forceStop?: boolean;
 }
@@ -8007,7 +8013,7 @@ export const InstanceGroupManagersStopInstancesRequest =
 
 export interface InstanceGroupManagersStartInstancesRequest {
   /** The URLs of one or more instances to start. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME]. */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
 }
 
 export const InstanceGroupManagersStartInstancesRequest =
@@ -8017,7 +8023,7 @@ export const InstanceGroupManagersStartInstancesRequest =
 
 export interface InstanceGroupManagersAbandonInstancesRequest {
   /** The URLs of one or more instances to abandon. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME]. */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
 }
 
 export const InstanceGroupManagersAbandonInstancesRequest =
@@ -8027,7 +8033,7 @@ export const InstanceGroupManagersAbandonInstancesRequest =
 
 export interface InstanceGroupManagersRecreateInstancesRequest {
   /** The URLs of one or more instances to recreate. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME]. */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
 }
 
 export const InstanceGroupManagersRecreateInstancesRequest =
@@ -8049,7 +8055,7 @@ export const InstanceGroupManagersSetInstanceTemplateRequest =
 
 export interface InstanceGroupManagersSetTargetPoolsRequest {
   /** The list of target pool URLs that instances in this managed instance group belong to. The managed instance group applies these target pools to all of the instances in the group. Existing instances and new instances in the group all receive these target pool settings. */
-  targetPools?: Array<string>;
+  targetPools?: ReadonlyArray<string>;
   /** The fingerprint of the target pools information. Use this optional property to prevent conflicts when multiple users change the target pools settings concurrently. Obtain the fingerprint with theinstanceGroupManagers.get method. Then, include the fingerprint in your request to ensure that you do not overwrite changes that were applied from another concurrent request. */
   fingerprint?: string;
 }
@@ -8162,11 +8168,11 @@ export const ManagedInstanceInstanceHealth =
 export interface ManagedInstanceLastAttempt {
   /** Output only. [Output Only] Encountered errors during the last attempt to create or delete the instance. */
   errors?: {
-    errors?: Array<{
+    errors?: ReadonlyArray<{
       code?: string;
       location?: string;
       message?: string;
-      errorDetails?: Array<{
+      errorDetails?: ReadonlyArray<{
         errorInfo?: ErrorInfo;
         quotaInfo?: QuotaExceededInfo;
         help?: Help;
@@ -8257,7 +8263,7 @@ export interface ManagedInstance {
     | "VERIFYING"
     | (string & {});
   /** Output only. [Output Only] Health state of the instance per health-check. */
-  instanceHealth?: Array<ManagedInstanceInstanceHealth>;
+  instanceHealth?: ReadonlyArray<ManagedInstanceInstanceHealth>;
   /** Output only. [Output Only] Information about the last attempt to create or delete the instance. */
   lastAttempt?: ManagedInstanceLastAttempt;
   /** Output only. [Output Only] Instance properties selected for this instance resulting from InstanceFlexibilityPolicy. */
@@ -8282,7 +8288,7 @@ export const ManagedInstance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InstanceGroupManagersListManagedInstancesResponse {
   /** Output only. [Output Only] The list of instances in the managed instance group. */
-  managedInstances?: Array<ManagedInstance>;
+  managedInstances?: ReadonlyArray<ManagedInstance>;
   /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
 }
@@ -8358,7 +8364,7 @@ export const InstanceManagedByIgmError =
 
 export interface InstanceGroupManagersListErrorsResponse {
   /** Output only. [Output Only] The list of errors of the managed instance group. */
-  items?: Array<InstanceManagedByIgmError>;
+  items?: ReadonlyArray<InstanceManagedByIgmError>;
   /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
 }
@@ -8396,7 +8402,7 @@ export const PerInstanceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InstanceGroupManagersListPerInstanceConfigsResp {
   /** Output only. [Output Only] The list of PerInstanceConfig. */
-  items?: Array<PerInstanceConfig>;
+  items?: ReadonlyArray<PerInstanceConfig>;
   /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Informational warning message. */
@@ -8433,7 +8439,7 @@ export interface InstanceGroupManagersListPerInstanceConfigsResp {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -8461,7 +8467,7 @@ export const InstanceGroupManagersListPerInstanceConfigsResp =
 
 export interface InstanceGroupManagersUpdatePerInstanceConfigsReq {
   /** The list of per-instance configurations to insert or patch on this managed instance group. */
-  perInstanceConfigs?: Array<PerInstanceConfig>;
+  perInstanceConfigs?: ReadonlyArray<PerInstanceConfig>;
 }
 
 export const InstanceGroupManagersUpdatePerInstanceConfigsReq =
@@ -8473,7 +8479,7 @@ export const InstanceGroupManagersUpdatePerInstanceConfigsReq =
 
 export interface InstanceGroupManagersPatchPerInstanceConfigsReq {
   /** The list of per-instance configurations to insert or patch on this managed instance group. */
-  perInstanceConfigs?: Array<PerInstanceConfig>;
+  perInstanceConfigs?: ReadonlyArray<PerInstanceConfig>;
 }
 
 export const InstanceGroupManagersPatchPerInstanceConfigsReq =
@@ -8485,7 +8491,7 @@ export const InstanceGroupManagersPatchPerInstanceConfigsReq =
 
 export interface InstanceGroupManagersDeletePerInstanceConfigsReq {
   /** The list of instance names for which we want to delete per-instance configs on this managed instance group. */
-  names?: Array<string>;
+  names?: ReadonlyArray<string>;
 }
 
 export const InstanceGroupManagersDeletePerInstanceConfigsReq =
@@ -8497,7 +8503,7 @@ export const InstanceGroupManagersDeletePerInstanceConfigsReq =
 
 export interface InstanceGroupManagersApplyUpdatesRequest {
   /** The list of URLs of one or more instances for which you want to apply updates. Each URL can be a full URL or a partial URL, such aszones/[ZONE]/instances/[INSTANCE_NAME]. */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
   /** The minimal action that you want to perform on each instance during the update: - REPLACE: At minimum, delete the instance and create it again. - RESTART: Stop the instance and start it again. - REFRESH: Do not stop the instance and limit disruption as much as possible. - NONE: Do not disrupt the instance at all. By default, the minimum action is NONE. If your update requires a more disruptive action than you set with this flag, the necessary action is performed to execute the update. */
   minimalAction?: "NONE" | "REFRESH" | "REPLACE" | "RESTART" | (string & {});
   /** The most disruptive action that you want to perform on each instance during the update: - REPLACE: Delete the instance and create it again. - RESTART: Stop the instance and start it again. - REFRESH: Do not stop the instance and limit disruption as much as possible. - NONE: Do not disrupt the instance at all. By default, the most disruptive allowed action is REPLACE. If your update requires a more disruptive action than you set with this flag, the update request will fail. */
@@ -8521,7 +8527,7 @@ export const InstanceGroupManagersApplyUpdatesRequest =
 
 export interface InstanceGroupManagersCreateInstancesRequest {
   /** [Required] List of specifications of per-instance configs. */
-  instances?: Array<PerInstanceConfig>;
+  instances?: ReadonlyArray<PerInstanceConfig>;
 }
 
 export const InstanceGroupManagersCreateInstancesRequest =
@@ -8532,11 +8538,11 @@ export const InstanceGroupManagersCreateInstancesRequest =
 export interface InstanceGroupManagerResizeRequestStatusLastAttempt {
   /** Output only. Errors that prevented the ResizeRequest to be fulfilled. */
   error?: {
-    errors?: Array<{
+    errors?: ReadonlyArray<{
       code?: string;
       location?: string;
       message?: string;
-      errorDetails?: Array<{
+      errorDetails?: ReadonlyArray<{
         errorInfo?: ErrorInfo;
         quotaInfo?: QuotaExceededInfo;
         help?: Help;
@@ -8578,11 +8584,11 @@ export const InstanceGroupManagerResizeRequestStatusLastAttempt =
 export interface InstanceGroupManagerResizeRequestStatus {
   /** Output only. Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the last_attempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry. */
   error?: {
-    errors?: Array<{
+    errors?: ReadonlyArray<{
       code?: string;
       location?: string;
       message?: string;
-      errorDetails?: Array<{
+      errorDetails?: ReadonlyArray<{
         errorInfo?: ErrorInfo;
         quotaInfo?: QuotaExceededInfo;
         help?: Help;
@@ -8683,7 +8689,7 @@ export interface InstanceGroupManagerResizeRequestsListResponse {
   /** Output only. [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of resize request resources. */
-  items?: Array<InstanceGroupManagerResizeRequest>;
+  items?: ReadonlyArray<InstanceGroupManagerResizeRequest>;
   /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -8722,7 +8728,7 @@ export interface InstanceGroupManagerResizeRequestsListResponse {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -8755,7 +8761,7 @@ export interface RegionInstanceGroupManagerList {
   /** Output only. [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of InstanceGroupManager resources. */
-  items?: Array<InstanceGroupManager>;
+  items?: ReadonlyArray<InstanceGroupManager>;
   /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -8794,7 +8800,7 @@ export interface RegionInstanceGroupManagerList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -8823,7 +8829,7 @@ export const RegionInstanceGroupManagerList =
 
 export interface RegionInstanceGroupManagersDeleteInstancesRequest {
   /** The URLs of one or more instances to delete. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME]. */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
   /** Specifies whether the request should proceed despite the inclusion of instances that are not members of the group or that are already in the process of being deleted or abandoned. If this field is set to `false` and such an instance is specified in the request, the operation fails. The operation always fails if the request contains a malformed instance URL or a reference to an instance that exists in a zone or region other than the group's zone or region. */
   skipInstancesOnValidationError?: boolean;
 }
@@ -8838,7 +8844,7 @@ export const RegionInstanceGroupManagersDeleteInstancesRequest =
 
 export interface RegionInstanceGroupManagersSuspendInstancesRequest {
   /** The URLs of one or more instances to suspend. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME]. */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
   /** If this flag is set to true, the Instance Group Manager will proceed to suspend the instances, skipping initialization on them. */
   forceSuspend?: boolean;
 }
@@ -8853,7 +8859,7 @@ export const RegionInstanceGroupManagersSuspendInstancesRequest =
 
 export interface RegionInstanceGroupManagersResumeInstancesRequest {
   /** The URLs of one or more instances to resume. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME]. */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
 }
 
 export const RegionInstanceGroupManagersResumeInstancesRequest =
@@ -8865,7 +8871,7 @@ export const RegionInstanceGroupManagersResumeInstancesRequest =
 
 export interface RegionInstanceGroupManagersStopInstancesRequest {
   /** The URLs of one or more instances to stop. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME]. */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
   /** If this flag is set to true, the Instance Group Manager will proceed to stop the instances, skipping initialization on them. */
   forceStop?: boolean;
 }
@@ -8880,7 +8886,7 @@ export const RegionInstanceGroupManagersStopInstancesRequest =
 
 export interface RegionInstanceGroupManagersStartInstancesRequest {
   /** The URLs of one or more instances to start. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME]. */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
 }
 
 export const RegionInstanceGroupManagersStartInstancesRequest =
@@ -8892,7 +8898,7 @@ export const RegionInstanceGroupManagersStartInstancesRequest =
 
 export interface RegionInstanceGroupManagersAbandonInstancesRequest {
   /** The URLs of one or more instances to abandon. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME]. */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
 }
 
 export const RegionInstanceGroupManagersAbandonInstancesRequest =
@@ -8904,7 +8910,7 @@ export const RegionInstanceGroupManagersAbandonInstancesRequest =
 
 export interface RegionInstanceGroupManagersRecreateRequest {
   /** The URLs of one or more instances to recreate. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME]. */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
 }
 
 export const RegionInstanceGroupManagersRecreateRequest =
@@ -8924,7 +8930,7 @@ export const RegionInstanceGroupManagersSetTemplateRequest =
 
 export interface RegionInstanceGroupManagersSetTargetPoolsRequest {
   /** The URL of all TargetPool resources to which instances in theinstanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group. */
-  targetPools?: Array<string>;
+  targetPools?: ReadonlyArray<string>;
   /** Fingerprint of the target pools information, which is a hash of the contents. This field is used for optimistic locking when you update the target pool entries. This field is optional. */
   fingerprint?: string;
 }
@@ -8939,7 +8945,7 @@ export const RegionInstanceGroupManagersSetTargetPoolsRequest =
 
 export interface RegionInstanceGroupManagersListInstancesResponse {
   /** A list of managed instances. */
-  managedInstances?: Array<ManagedInstance>;
+  managedInstances?: ReadonlyArray<ManagedInstance>;
   /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
 }
@@ -8954,7 +8960,7 @@ export const RegionInstanceGroupManagersListInstancesResponse =
 
 export interface RegionInstanceGroupManagersListErrorsResponse {
   /** [Output Only] The list of errors of the managed instance group. */
-  items?: Array<InstanceManagedByIgmError>;
+  items?: ReadonlyArray<InstanceManagedByIgmError>;
   /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
 }
@@ -8967,7 +8973,7 @@ export const RegionInstanceGroupManagersListErrorsResponse =
 
 export interface RegionInstanceGroupManagersListInstanceConfigsResp {
   /** Output only. [Output Only] The list of PerInstanceConfig. */
-  items?: Array<PerInstanceConfig>;
+  items?: ReadonlyArray<PerInstanceConfig>;
   /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Informational warning message. */
@@ -9004,7 +9010,7 @@ export interface RegionInstanceGroupManagersListInstanceConfigsResp {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -9032,7 +9038,7 @@ export const RegionInstanceGroupManagersListInstanceConfigsResp =
 
 export interface RegionInstanceGroupManagerUpdateInstanceConfigReq {
   /** The list of per-instance configurations to insert or patch on this managed instance group. */
-  perInstanceConfigs?: Array<PerInstanceConfig>;
+  perInstanceConfigs?: ReadonlyArray<PerInstanceConfig>;
 }
 
 export const RegionInstanceGroupManagerUpdateInstanceConfigReq =
@@ -9044,7 +9050,7 @@ export const RegionInstanceGroupManagerUpdateInstanceConfigReq =
 
 export interface RegionInstanceGroupManagerPatchInstanceConfigReq {
   /** The list of per-instance configurations to insert or patch on this managed instance group. */
-  perInstanceConfigs?: Array<PerInstanceConfig>;
+  perInstanceConfigs?: ReadonlyArray<PerInstanceConfig>;
 }
 
 export const RegionInstanceGroupManagerPatchInstanceConfigReq =
@@ -9056,7 +9062,7 @@ export const RegionInstanceGroupManagerPatchInstanceConfigReq =
 
 export interface RegionInstanceGroupManagerDeleteInstanceConfigReq {
   /** The list of instance names for which we want to delete per-instance configs on this managed instance group. */
-  names?: Array<string>;
+  names?: ReadonlyArray<string>;
 }
 
 export const RegionInstanceGroupManagerDeleteInstanceConfigReq =
@@ -9068,7 +9074,7 @@ export const RegionInstanceGroupManagerDeleteInstanceConfigReq =
 
 export interface RegionInstanceGroupManagersApplyUpdatesRequest {
   /** The list of URLs of one or more instances for which you want to apply updates. Each URL can be a full URL or a partial URL, such aszones/[ZONE]/instances/[INSTANCE_NAME]. */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
   /** The minimal action that you want to perform on each instance during the update: - REPLACE: At minimum, delete the instance and create it again. - RESTART: Stop the instance and start it again. - REFRESH: Do not stop the instance and limit disruption as much as possible. - NONE: Do not disrupt the instance at all. By default, the minimum action is NONE. If your update requires a more disruptive action than you set with this flag, the necessary action is performed to execute the update. */
   minimalAction?: "NONE" | "REFRESH" | "REPLACE" | "RESTART" | (string & {});
   /** The most disruptive action that you want to perform on each instance during the update: - REPLACE: Delete the instance and create it again. - RESTART: Stop the instance and start it again. - REFRESH: Do not stop the instance and limit disruption as much as possible. - NONE: Do not disrupt the instance at all. By default, the most disruptive allowed action is REPLACE. If your update requires a more disruptive action than you set with this flag, the update request will fail. */
@@ -9092,7 +9098,7 @@ export const RegionInstanceGroupManagersApplyUpdatesRequest =
 
 export interface RegionInstanceGroupManagersCreateInstancesRequest {
   /** [Required] List of specifications of per-instance configs. */
-  instances?: Array<PerInstanceConfig>;
+  instances?: ReadonlyArray<PerInstanceConfig>;
 }
 
 export const RegionInstanceGroupManagersCreateInstancesRequest =
@@ -9108,7 +9114,7 @@ export interface RegionInstanceGroupManagerResizeRequestsListResponse {
   /** Output only. [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of Resize Request resources. */
-  items?: Array<InstanceGroupManagerResizeRequest>;
+  items?: ReadonlyArray<InstanceGroupManagerResizeRequest>;
   /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -9147,11 +9153,11 @@ export interface RegionInstanceGroupManagerResizeRequestsListResponse {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   etag?: string;
   /** Output only. [Output Only] Unreachable resources. end_interface: MixerListResponseWithEtagBuilder */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const RegionInstanceGroupManagerResizeRequestsListResponse =
@@ -9279,7 +9285,7 @@ export interface AutoscalingPolicy {
   /** Defines the CPU utilization policy that allows the autoscaler to scale based on the average CPU utilization of a managed instance group. */
   cpuUtilization?: AutoscalingPolicyCpuUtilization;
   /** Configuration parameters of autoscaling based on a custom metric. */
-  customMetricUtilizations?: Array<AutoscalingPolicyCustomMetricUtilization>;
+  customMetricUtilizations?: ReadonlyArray<AutoscalingPolicyCustomMetricUtilization>;
   /** Configuration parameters of autoscaling based on load balancer. */
   loadBalancingUtilization?: AutoscalingPolicyLoadBalancingUtilization;
   /** Defines the operating mode for this policy. The following modes are available: - OFF: Disables the autoscaler but maintains its configuration. - ONLY_SCALE_OUT: Restricts the autoscaler to add VM instances only. - ON: Enables all autoscaler activities according to its policy. For more information, see "Turning off or restricting an autoscaler" */
@@ -9379,7 +9385,7 @@ export interface Autoscaler {
   /** [Output Only] The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future. */
   status?: "ACTIVE" | "DELETING" | "ERROR" | "PENDING" | (string & {});
   /** [Output Only] Human-readable details about the current state of the autoscaler. Read the documentation forCommonly returned status messages for examples of status messages you might encounter. */
-  statusDetails?: Array<AutoscalerStatusDetails>;
+  statusDetails?: ReadonlyArray<AutoscalerStatusDetails>;
   /** Output only. [Output Only] Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction. */
   recommendedSize?: number;
   /** Output only. [Output Only] Status information of existing scaling schedules. */
@@ -9411,7 +9417,7 @@ export interface AutoscalerList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of Autoscaler resources. */
-  items?: Array<Autoscaler>;
+  items?: ReadonlyArray<Autoscaler>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -9450,7 +9456,7 @@ export interface AutoscalerList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -9478,7 +9484,7 @@ export const AutoscalerList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AutoscalersScopedList {
   /** [Output Only] A list of autoscalers contained in this scope. */
-  autoscalers?: Array<Autoscaler>;
+  autoscalers?: ReadonlyArray<Autoscaler>;
   /** [Output Only] Informational warning which replaces the list of autoscalers when the list is empty. */
   warning?: {
     code?:
@@ -9513,7 +9519,7 @@ export interface AutoscalersScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -9580,10 +9586,10 @@ export interface AutoscalerAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. end_interface: MixerListResponseWithEtagBuilder */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const AutoscalerAggregatedList =
@@ -9616,7 +9622,7 @@ export interface RegionAutoscalerList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of Autoscaler resources. */
-  items?: Array<Autoscaler>;
+  items?: ReadonlyArray<Autoscaler>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -9655,7 +9661,7 @@ export interface RegionAutoscalerList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -9708,9 +9714,9 @@ export const BackendBucketCdnPolicyBypassCacheOnRequestHeader =
 
 export interface BackendBucketCdnPolicyCacheKeyPolicy {
   /** Names of query string parameters to include in cache keys. Default parameters are always included. '&' and '=' will be percent encoded and not treated as delimiters. */
-  queryStringWhitelist?: Array<string>;
+  queryStringWhitelist?: ReadonlyArray<string>;
   /** Allows HTTP request headers (by name) to be used in the cache key. */
-  includeHttpHeaders?: Array<string>;
+  includeHttpHeaders?: ReadonlyArray<string>;
 }
 
 export const BackendBucketCdnPolicyCacheKeyPolicy =
@@ -9721,7 +9727,7 @@ export const BackendBucketCdnPolicyCacheKeyPolicy =
 
 export interface BackendBucketCdnPolicy {
   /** [Output Only] Names of the keys for signing request URLs. */
-  signedUrlKeyNames?: Array<string>;
+  signedUrlKeyNames?: ReadonlyArray<string>;
   /** Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered. */
   signedUrlCacheMaxAgeSec?: string;
   /** If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin. */
@@ -9742,9 +9748,9 @@ export interface BackendBucketCdnPolicy {
   /** Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is set to FORCE_CACHE_ALL, negative caching applies to all responses with the specified response code, and override any caching headers. By default, Cloud CDN will apply the following default TTLs to these status codes: HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not Found), 501 (Not Implemented): 60s. These defaults can be overridden in negative_caching_policy. */
   negativeCaching?: boolean;
   /** Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists. */
-  negativeCachingPolicy?: Array<BackendBucketCdnPolicyNegativeCachingPolicy>;
+  negativeCachingPolicy?: ReadonlyArray<BackendBucketCdnPolicyNegativeCachingPolicy>;
   /** Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings. */
-  bypassCacheOnRequestHeaders?: Array<BackendBucketCdnPolicyBypassCacheOnRequestHeader>;
+  bypassCacheOnRequestHeaders?: ReadonlyArray<BackendBucketCdnPolicyBypassCacheOnRequestHeader>;
   /** Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-maxage) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale. */
   serveWhileStale?: number;
   /** The CacheKeyPolicy for this CdnPolicy. */
@@ -9812,7 +9818,7 @@ export interface BackendBucket {
   /** Cloud CDN configuration for this BackendBucket. */
   cdnPolicy?: BackendBucketCdnPolicy;
   /** Headers that the Application Load Balancer should add to proxied responses. */
-  customResponseHeaders?: Array<string>;
+  customResponseHeaders?: ReadonlyArray<string>;
   /** [Output Only] The resource URL for the edge security policy associated with this backend bucket. */
   edgeSecurityPolicy?: string;
   /** Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header. */
@@ -9824,7 +9830,7 @@ export interface BackendBucket {
   /** Output only. [Output Only] URL of the region where the regional backend bucket resides. This field is not applicable to global backend buckets. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body. */
   region?: string;
   /** Output only. [Output Only] List of resources referencing that backend bucket. */
-  usedBy?: Array<BackendBucketUsedBy>;
+  usedBy?: ReadonlyArray<BackendBucketUsedBy>;
 }
 
 export const BackendBucket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -9852,7 +9858,7 @@ export interface BackendBucketList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of BackendBucket resources. */
-  items?: Array<BackendBucket>;
+  items?: ReadonlyArray<BackendBucket>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -9891,7 +9897,7 @@ export interface BackendBucketList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -9919,7 +9925,7 @@ export const BackendBucketList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BackendBucketsScopedList {
   /** A list of BackendBuckets contained in this scope. */
-  backendBuckets?: Array<BackendBucket>;
+  backendBuckets?: ReadonlyArray<BackendBucket>;
   /** Informational warning which replaces the list of backend services when the list is empty. */
   warning?: {
     code?:
@@ -9954,7 +9960,7 @@ export interface BackendBucketsScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -10022,7 +10028,7 @@ export interface BackendBucketAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -10057,7 +10063,7 @@ export interface BackendBucketListUsable {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of BackendBucket resources. */
-  items?: Array<BackendBucket>;
+  items?: ReadonlyArray<BackendBucket>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -10096,7 +10102,7 @@ export interface BackendBucketListUsable {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -10218,7 +10224,7 @@ export interface Backend {
     | "PREFERRED"
     | (string & {});
   /** List of custom metrics that are used for CUSTOM_METRICS BalancingMode. */
-  customMetrics?: Array<BackendCustomMetric>;
+  customMetrics?: ReadonlyArray<BackendCustomMetric>;
   /** Information about the resource or system that manages the backend. */
   orchestrationInfo?: BackendBackendOrchestrationInfo;
 }
@@ -10296,13 +10302,13 @@ export interface CacheKeyPolicy {
   /** If true, include query string parameters in the cache key according to query_string_whitelist and query_string_blacklist. If neither is set, the entire query string will be included. If false, the query string will be excluded from the cache key entirely. */
   includeQueryString?: boolean;
   /** Names of query string parameters to include in cache keys. All other parameters will be excluded. Either specify query_string_whitelist or query_string_blacklist, not both. '&' and '=' will be percent encoded and not treated as delimiters. */
-  queryStringWhitelist?: Array<string>;
+  queryStringWhitelist?: ReadonlyArray<string>;
   /** Names of query string parameters to exclude in cache keys. All other parameters will be included. Either specify query_string_whitelist or query_string_blacklist, not both. '&' and '=' will be percent encoded and not treated as delimiters. */
-  queryStringBlacklist?: Array<string>;
+  queryStringBlacklist?: ReadonlyArray<string>;
   /** Allows HTTP request headers (by name) to be used in the cache key. */
-  includeHttpHeaders?: Array<string>;
+  includeHttpHeaders?: ReadonlyArray<string>;
   /** Allows HTTP cookies (by name) to be used in the cache key. The name=value pair will be used in the cache key Cloud CDN generates. */
-  includeNamedCookies?: Array<string>;
+  includeNamedCookies?: ReadonlyArray<string>;
 }
 
 export const CacheKeyPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -10344,7 +10350,7 @@ export interface BackendServiceCdnPolicy {
   /** The CacheKeyPolicy for this CdnPolicy. */
   cacheKeyPolicy?: CacheKeyPolicy;
   /** [Output Only] Names of the keys for signing request URLs. */
-  signedUrlKeyNames?: Array<string>;
+  signedUrlKeyNames?: ReadonlyArray<string>;
   /** Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered. */
   signedUrlCacheMaxAgeSec?: string;
   /** If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin. */
@@ -10365,9 +10371,9 @@ export interface BackendServiceCdnPolicy {
   /** Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency. When the cache mode is set to CACHE_ALL_STATIC or USE_ORIGIN_HEADERS, negative caching applies to responses with the specified response code that lack any Cache-Control, Expires, or Pragma: no-cache directives. When the cache mode is set to FORCE_CACHE_ALL, negative caching applies to all responses with the specified response code, and override any caching headers. By default, Cloud CDN will apply the following default TTLs to these status codes: HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s HTTP 405 (Method Not Found), 501 (Not Implemented): 60s. These defaults can be overridden in negative_caching_policy. */
   negativeCaching?: boolean;
   /** Sets a cache TTL for the specified HTTP status code. negative_caching must be enabled to configure negative_caching_policy. Omitting the policy and leaving negative_caching enabled will use Cloud CDN's default cache TTLs. Note that when specifying an explicit negative_caching_policy, you should take care to specify a cache TTL for all response codes that you wish to cache. Cloud CDN will not apply any default negative caching when a policy exists. */
-  negativeCachingPolicy?: Array<BackendServiceCdnPolicyNegativeCachingPolicy>;
+  negativeCachingPolicy?: ReadonlyArray<BackendServiceCdnPolicyNegativeCachingPolicy>;
   /** Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings. */
-  bypassCacheOnRequestHeaders?: Array<BackendServiceCdnPolicyBypassCacheOnRequestHeader>;
+  bypassCacheOnRequestHeaders?: ReadonlyArray<BackendServiceCdnPolicyBypassCacheOnRequestHeader>;
   /** Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-maxage) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale. */
   serveWhileStale?: number;
 }
@@ -10404,7 +10410,7 @@ export interface BackendServiceLogConfig {
     | "INCLUDE_ALL_OPTIONAL"
     | (string & {});
   /** This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode" was set to CUSTOM. Contains a list of optional fields you want to include in the logs. For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace */
-  optionalFields?: Array<string>;
+  optionalFields?: ReadonlyArray<string>;
 }
 
 export const BackendServiceLogConfig =
@@ -10437,7 +10443,7 @@ export interface SecuritySettings {
   /** Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a globalBackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. */
   clientTlsPolicy?: string;
   /** Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for thisBackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate'ssubjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService withloadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attachedclientTlsPolicy with clientCertificate (mTLS mode). */
-  subjectAltNames?: Array<string>;
+  subjectAltNames?: ReadonlyArray<string>;
   /** The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication. Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends. */
   awsV4Authentication?: AWSV4Signature;
 }
@@ -10744,7 +10750,7 @@ export interface BackendServiceTlsSettings {
   /** Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it regardless of whether the Regional Internet NEG is specified with FQDN or IP address and port. When both sni and subjectAltNames[] are specified, the load balancer matches the backend certificate's SAN only to subjectAltNames[]. */
   sni?: string;
   /** A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend. When the server presents its X.509 certificate to the Load Balancer, the Load Balancer inspects the certificate's SAN field, and requires that at least one SAN match one of the subjectAltNames in the list. This field is limited to 5 entries. When both sni and subjectAltNames[] are specified, the load balancer matches the backend certificate's SAN only to subjectAltNames[]. */
-  subjectAltNames?: Array<BackendServiceTlsSettingsSubjectAltName>;
+  subjectAltNames?: ReadonlyArray<BackendServiceTlsSettingsSubjectAltName>;
   /** Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace. Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field. Can only be specified if authenticationMode is not NONE. */
   authenticationConfig?: string;
 }
@@ -10806,9 +10812,9 @@ export interface BackendService {
   /** [Output Only] Server-defined URL for the resource. */
   selfLink?: string;
   /** The list of backends that serve this BackendService. */
-  backends?: Array<Backend>;
+  backends?: ReadonlyArray<Backend>;
   /** The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check unless haPolicy is specified. Backend services with internet or serverless NEG backends must not have a health check. healthChecks[] cannot be specified with haPolicy. */
-  healthChecks?: Array<string>;
+  healthChecks?: ReadonlyArray<string>;
   /** The backend service timeout has a different meaning depending on the type of load balancer. For more information see, Backend service settings. The default is 30 seconds. The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration. */
   timeoutSec?: number;
   /** Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For internal passthrough Network Load Balancers and external passthrough Network Load Balancers, omit port. */
@@ -10865,9 +10871,9 @@ export interface BackendService {
   /** Cloud CDN configuration for this BackendService. Only available for specified load balancer types. */
   cdnPolicy?: BackendServiceCdnPolicy;
   /** Headers that the load balancer adds to proxied requests. See [Creating custom headers](https://cloud.google.com/load-balancing/docs/custom-headers). */
-  customRequestHeaders?: Array<string>;
+  customRequestHeaders?: ReadonlyArray<string>;
   /** Headers that the load balancer adds to proxied responses. See [Creating custom headers](https://cloud.google.com/load-balancing/docs/custom-headers). */
-  customResponseHeaders?: Array<string>;
+  customResponseHeaders?: ReadonlyArray<string>;
   /** [Output Only] The resource URL for the security policy associated with this backend service. */
   securityPolicy?: string;
   /** [Output Only] The resource URL for the edge security policy associated with this backend service. */
@@ -10907,9 +10913,9 @@ export interface BackendService {
   /** URL to networkservices.ServiceLbPolicy resource. Can only be set if load balancing scheme is EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global. */
   serviceLbPolicy?: string;
   /** URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty. */
-  serviceBindings?: Array<string>;
+  serviceBindings?: ReadonlyArray<string>;
   /** A list of locality load-balancing policies to be used in order of preference. When you use localityLbPolicies, you must set at least one value for either the localityLbPolicies[].policy or the localityLbPolicies[].customPolicy field. localityLbPolicies overrides any value set in the localityLbPolicy field. For an example of how to use this field, seeDefine a list of preferred policies. Caution: This field and its children are intended for use in a service mesh that includes gRPC clients only. Envoy proxies can't use backend services that have this configuration. */
-  localityLbPolicies?: Array<BackendServiceLocalityLoadBalancingPolicyConfig>;
+  localityLbPolicies?: ReadonlyArray<BackendServiceLocalityLoadBalancingPolicyConfig>;
   /** Specifies the canary migration state. Possible values are PREPARE, TEST_BY_PERCENTAGE, and TEST_ALL_TRAFFIC. To begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to PREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be changed to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate traffic by percentage using externalManagedMigrationTestingPercentage. Rolling back a migration requires the states to be set in reverse order. So changing the scheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at the same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL. */
   externalManagedMigrationState?:
     | "PREPARE"
@@ -10930,7 +10936,7 @@ export interface BackendService {
   /** Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding. The backends of this regional backend service must only specify zonal network endpoint groups (NEGs) of type GCE_VM_IP. When haPolicy is set for an Internal Passthrough Network Load Balancer, the regional backend service must set the network field. All zonal NEGs must belong to the same network. However, individual NEGs can belong to different subnetworks of that network. When haPolicy is specified, the set of attached network endpoints across all backends comprise an High Availability domain from which one endpoint is selected as the active endpoint (the leader) that receives all traffic. haPolicy can be added only at backend service creation time. Once set up, it cannot be deleted. Note that haPolicy is not for load balancing, and therefore cannot be specified with sessionAffinity, connectionTrackingPolicy, and failoverPolicy. haPolicy requires customers to be responsible for tracking backend endpoint health and electing a leader among the healthy endpoints. Therefore, haPolicy cannot be specified with healthChecks. haPolicy can only be specified for External Passthrough Network Load Balancers and Internal Passthrough Network Load Balancers. */
   haPolicy?: BackendServiceHAPolicy;
   /** Output only. [Output Only] List of resources referencing given backend service. */
-  usedBy?: Array<BackendServiceUsedBy>;
+  usedBy?: ReadonlyArray<BackendServiceUsedBy>;
   /** Configures traffic steering properties of internal passthrough Network Load Balancers. networkPassThroughLbTrafficPolicy cannot be specified with haPolicy. */
   networkPassThroughLbTrafficPolicy?: BackendServiceNetworkPassThroughLbTrafficPolicy;
   /** Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set toSTRONG_COOKIE_AFFINITY. */
@@ -10938,7 +10944,7 @@ export interface BackendService {
   /** Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2. */
   tlsSettings?: BackendServiceTlsSettings;
   /** List of custom metrics that are used for theWEIGHTED_ROUND_ROBIN locality_lb_policy. */
-  customMetrics?: Array<BackendServiceCustomMetric>;
+  customMetrics?: ReadonlyArray<BackendServiceCustomMetric>;
   /** Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload. */
   params?: BackendServiceParams;
   /** Information about the resource or system that manages the backend service. */
@@ -11012,7 +11018,7 @@ export interface BackendServiceList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of BackendService resources. */
-  items?: Array<BackendService>;
+  items?: ReadonlyArray<BackendService>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -11051,7 +11057,7 @@ export interface BackendServiceList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -11079,7 +11085,7 @@ export const BackendServiceList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BackendServicesScopedList {
   /** A list of BackendServices contained in this scope. */
-  backendServices?: Array<BackendService>;
+  backendServices?: ReadonlyArray<BackendService>;
   /** Informational warning which replaces the list of backend services when the list is empty. */
   warning?: {
     code?:
@@ -11114,7 +11120,7 @@ export interface BackendServicesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -11182,10 +11188,10 @@ export interface BackendServiceAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const BackendServiceAggregatedList =
@@ -11220,7 +11226,7 @@ export interface BackendServiceListUsable {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of BackendService resources. */
-  items?: Array<BackendService>;
+  items?: ReadonlyArray<BackendService>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -11259,7 +11265,7 @@ export interface BackendServiceListUsable {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -11342,7 +11348,7 @@ export interface BackendServiceGroupHealth {
   /** Output only. [Output Only] Type of resource. Alwayscompute#backendServiceGroupHealth for the health of backend services. */
   kind?: string;
   /** Health state of the backend instances or endpoints in requested instance or network endpoint group, determined based on configured health checks. */
-  healthStatus?: Array<HealthStatus>;
+  healthStatus?: ReadonlyArray<HealthStatus>;
   /** Metadata defined as annotations on the network endpoint group. */
   annotations?: Record<string, string>;
 }
@@ -11372,7 +11378,7 @@ export interface CompositeHealthCheck {
   /** Output only. [Output Only] URL of the region where the composite health check resides. This field applies only to the regional resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body. */
   region?: string;
   /** URLs to the HealthSource resources whose results are AND'ed. I.e. he aggregated result is is HEALTHY only if all sources are HEALTHY. Must have at least 1. Must not have more than 10. Must be regional and in the same region as theCompositeHealthCheck. Can be mutated. */
-  healthSources?: Array<string>;
+  healthSources?: ReadonlyArray<string>;
   /** URL to the destination resource. Must be set. Must be aForwardingRule. The ForwardingRule must have load balancing scheme INTERNAL orINTERNAL_MANAGED and must be regional and in the same region as the CompositeHealthCheck (cross-region deployment forINTERNAL_MANAGED is not supported). Can be mutated. */
   healthDestination?: string;
   /** Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a CompositeHealthCheck. An up-to-date fingerprint must be provided in order to patch the CompositeHealthCheck; Otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the CompositeHealthCheck. */
@@ -11395,7 +11401,7 @@ export const CompositeHealthCheck = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CompositeHealthChecksScopedList {
   /** A list of CompositeHealthChecks contained in this scope. */
-  compositeHealthChecks?: Array<CompositeHealthCheck>;
+  compositeHealthChecks?: ReadonlyArray<CompositeHealthCheck>;
   /** Informational warning which replaces the list of composite health checks when the list is empty. */
   warning?: {
     code?:
@@ -11430,7 +11436,7 @@ export interface CompositeHealthChecksScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -11498,10 +11504,10 @@ export interface CompositeHealthCheckAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const CompositeHealthCheckAggregatedList =
@@ -11536,7 +11542,7 @@ export interface CompositeHealthCheckList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of CompositeHealthCheck resources. */
-  items?: Array<CompositeHealthCheck>;
+  items?: ReadonlyArray<CompositeHealthCheck>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** [Output Only] Server-defined URL for this resource. */
@@ -11575,7 +11581,7 @@ export interface CompositeHealthCheckList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -11623,7 +11629,7 @@ export interface CompositeHealthCheckHealth {
   /** Health state of the CompositeHealthCheck. */
   healthState?: "HEALTHY" | "UNHEALTHY" | "UNKNOWN" | (string & {});
   /** Health sources and their corresponding health states. */
-  healthSources?: Array<CompositeHealthChecksGetHealthResponseHealthSourceHealth>;
+  healthSources?: ReadonlyArray<CompositeHealthChecksGetHealthResponseHealthSourceHealth>;
 }
 
 export const CompositeHealthCheckHealth =
@@ -11688,7 +11694,7 @@ export interface FutureResourcesSpecSpecificSKUResources {
   /** The machine type to use for instances that will use the reservation. This field only accepts machine type names. e.g. n2-standard-4 and does not accept machine type full or partial url. e.g. projects/my-l7ilb-project/zones/us-central1-a/machineTypes/n2-standard-4. Use for GPU reservations. */
   machineType?: string;
   /** Local SSD partitions. You do not have to include SSD partitions that are built in the machine type. */
-  localSsdPartitions?: Array<FutureResourcesSpecLocalSsdPartition>;
+  localSsdPartitions?: ReadonlyArray<FutureResourcesSpecLocalSsdPartition>;
   /** Size of the request, in instance count. */
   instanceCount?: string;
 }
@@ -11831,7 +11837,7 @@ export const CalendarModeRecommendation =
 
 export interface CalendarModeAdviceResponse {
   /** Recommendations where, how and when to create the requested resources in order to maximize their obtainability and minimize cost. */
-  recommendations?: Array<CalendarModeRecommendation>;
+  recommendations?: ReadonlyArray<CalendarModeRecommendation>;
 }
 
 export const CalendarModeAdviceResponse =
@@ -11931,7 +11937,7 @@ export interface Commitment {
   /** The category of the commitment; specifies whether the commitment is for hardware or software resources. Category MACHINE specifies that you are committing to hardware machine resources such asVCPU or MEMORY, listed in resources. Category LICENSE specifies that you are committing to software licenses, listed in licenseResources. Note that if you specify MACHINE commitments, then you must also specify a type to indicate the machine series of the hardware resource that you are committing to. */
   category?: "CATEGORY_UNSPECIFIED" | "LICENSE" | "MACHINE" | (string & {});
   /** The list of all the hardware resources, with their types and amounts, that you want to commit to. Specify as a separate entry in the list for each individual resource type. */
-  resources?: Array<ResourceCommitment>;
+  resources?: ReadonlyArray<ResourceCommitment>;
   /** The type of commitment; specifies the machine series for which you want to commit to purchasing resources. The choice of machine series affects the discount rate and the eligible resource types. The type must be one of the following:ACCELERATOR_OPTIMIZED, ACCELERATOR_OPTIMIZED_A3,ACCELERATOR_OPTIMIZED_A3_MEGA,COMPUTE_OPTIMIZED, COMPUTE_OPTIMIZED_C2D, COMPUTE_OPTIMIZED_C3, COMPUTE_OPTIMIZED_C3D,COMPUTE_OPTIMIZED_H3, GENERAL_PURPOSE,GENERAL_PURPOSE_C4, GENERAL_PURPOSE_E2,GENERAL_PURPOSE_N2, GENERAL_PURPOSE_N2D,GENERAL_PURPOSE_N4, GENERAL_PURPOSE_T2D,GRAPHICS_OPTIMIZED, GRAPHICS_OPTIMIZED_G4,MEMORY_OPTIMIZED, MEMORY_OPTIMIZED_M3,MEMORY_OPTIMIZED_X4, STORAGE_OPTIMIZED_Z3. For example, type MEMORY_OPTIMIZED specifies a commitment that applies only to eligible resources of memory optimized M1 and M2 machine series. Type GENERAL_PURPOSE specifies a commitment that applies only to eligible resources of general purpose N1 machine series. */
   type?:
     | "ACCELERATOR_OPTIMIZED"
@@ -11975,18 +11981,18 @@ export interface Commitment {
     | "TYPE_UNSPECIFIED"
     | (string & {});
   /** The list of new reservations that you want to create and attach to this commitment. You must attach reservations to your commitment if your commitment specifies any GPUs or Local SSD disks. For more information, see Attach reservations to resource-based commitments. Specify this property only if you want to create new reservations to attach. To attach existing reservations, specify theexistingReservations property instead. */
-  reservations?: Array<Reservation>;
+  reservations?: ReadonlyArray<Reservation>;
   /** The license specification required as part of a license commitment. */
   licenseResource?: LicenseResourceCommitment;
   /** Specifies whether to automatically renew the commitment at the end of its current term. The default value is false. If you set the field to true, each time your commitment reaches the end of its term, Compute Engine automatically renews it for another term. You can update this field anytime before the commitment expires. For example, if the commitment is set to expire at 12 AM UTC-8 on January 3, 2027, you can update this field until 11:59 PM UTC-8 on January 2, 2027. */
   autoRenew?: boolean;
   /** The list of source commitments that you are merging to create the new merged commitment. For more information, see Merging commitments. */
-  mergeSourceCommitments?: Array<string>;
+  mergeSourceCommitments?: ReadonlyArray<string>;
   /** The source commitment from which you are transferring resources to create the new split commitment. For more information, see Split commitments. */
   splitSourceCommitment?: string;
   /** Output only. [Output Only] Status information for Commitment resource. */
   resourceStatus?: CommitmentResourceStatus;
-  existingReservations?: Array<string>;
+  existingReservations?: ReadonlyArray<string>;
   /** [Input Only] Optional, specifies the requested commitment end time inRFC3339 text format. Use this option when the desired commitment's end date is later than the start date + term duration. */
   customEndTimestamp?: string;
   /** Input only. Additional params passed with the request, but not persisted as part of resource payload. */
@@ -12026,7 +12032,7 @@ export interface CommitmentList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of Commitment resources. */
-  items?: Array<Commitment>;
+  items?: ReadonlyArray<Commitment>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -12065,7 +12071,7 @@ export interface CommitmentList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -12093,7 +12099,7 @@ export const CommitmentList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CommitmentsScopedList {
   /** [Output Only] The list of commitments contained in this scope. */
-  commitments?: Array<Commitment>;
+  commitments?: ReadonlyArray<Commitment>;
   /** [Output Only] Informational warning which replaces the list of commitments when the list is empty. */
   warning?: {
     code?:
@@ -12128,7 +12134,7 @@ export interface CommitmentsScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -12195,10 +12201,10 @@ export interface CommitmentAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const CommitmentAggregatedList =
@@ -12255,7 +12261,7 @@ export interface CrossSiteNetworkList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of CrossSiteNetwork resources. */
-  items?: Array<CrossSiteNetwork>;
+  items?: ReadonlyArray<CrossSiteNetwork>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** [Output Only] Server-defined URL for this resource. */
@@ -12294,11 +12300,11 @@ export interface CrossSiteNetworkList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   etag?: string;
   /** Output only. [Output Only] Unreachable resources. end_interface: MixerListResponseWithEtagBuilder */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const CrossSiteNetworkList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -12370,7 +12376,7 @@ export interface DiskTypeList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of DiskType resources. */
-  items?: Array<DiskType>;
+  items?: ReadonlyArray<DiskType>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -12409,7 +12415,7 @@ export interface DiskTypeList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -12437,7 +12443,7 @@ export const DiskTypeList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DiskTypesScopedList {
   /** [Output Only] A list of disk types contained in this scope. */
-  diskTypes?: Array<DiskType>;
+  diskTypes?: ReadonlyArray<DiskType>;
   /** [Output Only] Informational warning which replaces the list of disk types when the list is empty. */
   warning?: {
     code?:
@@ -12472,7 +12478,7 @@ export interface DiskTypesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -12539,10 +12545,10 @@ export interface DiskTypeAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const DiskTypeAggregatedList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -12576,7 +12582,7 @@ export interface RegionDiskTypeList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of DiskType resources. */
-  items?: Array<DiskType>;
+  items?: ReadonlyArray<DiskType>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -12615,7 +12621,7 @@ export interface RegionDiskTypeList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -12696,7 +12702,7 @@ export interface VmExtensionPolicy {
   /** Required. A map of extension names (for example, "ops-agent") to their corresponding policy configurations. */
   extensionPolicies?: Record<string, VmExtensionPolicyExtensionPolicy>;
   /** Optional. Selectors to target VMs for this policy. VMs are selected if they match *any* of the provided selectors (logical OR). If this list is empty, the policy applies to all VMs. */
-  instanceSelectors?: Array<VmExtensionPolicyInstanceSelector>;
+  instanceSelectors?: ReadonlyArray<VmExtensionPolicyInstanceSelector>;
   /** Optional. Priority of this policy. Used to resolve conflicts when multiple policies apply to the same extension. The policy priority is an integer from 0 to 65535, inclusive. Lower integers indicate higher priorities. If you do not specify a priority when creating a rule, it is assigned a priority of 1000. If priorities are equal, the policy with the most recent creation timestamp takes precedence. */
   priority?: number;
   /** Optional. Output only. [Output Only] Indicates if this policy is managed by a global policy. */
@@ -12734,7 +12740,7 @@ export interface VmExtensionPolicyList {
   /** Output only. [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** Output only. [Output Only] A list of VM extension policy resources. */
-  items?: Array<VmExtensionPolicy>;
+  items?: ReadonlyArray<VmExtensionPolicy>;
   /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -12773,12 +12779,12 @@ export interface VmExtensionPolicyList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a VmExtensionPolicy. An up-to-date fingerprint must be provided in order to update the VmExtensionPolicy. To see the latest value of the fingerprint, make a get() request to retrieve a VmExtensionPolicy. */
   etag?: string;
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const VmExtensionPolicyList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -12848,7 +12854,7 @@ export interface InterconnectAttachmentConfigurationConstraints {
   /** Output only. [Output Only] Whether the attachment's BGP session requires/allows/disallows BGP MD5 authentication. This can take one of the following values: MD5_OPTIONAL, MD5_REQUIRED, MD5_UNSUPPORTED. For example, a Cross-Cloud Interconnect connection to a remote cloud provider that requires BGP MD5 authentication has the interconnectRemoteLocation attachment_configuration_constraints.bgp_md5 field set to MD5_REQUIRED, and that property is propagated to the attachment. Similarly, if BGP MD5 is MD5_UNSUPPORTED, an error is returned if MD5 is requested. */
   bgpMd5?: "MD5_OPTIONAL" | "MD5_REQUIRED" | "MD5_UNSUPPORTED" | (string & {});
   /** Output only. [Output Only] List of ASN ranges that the remote location is known to support. Formatted as an array of inclusive ranges {min: min-value, max: max-value}. For example, [{min: 123, max: 123}, {min: 64512, max: 65534}] allows the peer ASN to be 123 or anything in the range 64512-65534. This field is only advisory. Although the API accepts other ranges, these are the ranges that we recommend. */
-  bgpPeerAsnRanges?: Array<InterconnectAttachmentConfigurationConstraintsBgpPeerASNRange>;
+  bgpPeerAsnRanges?: ReadonlyArray<InterconnectAttachmentConfigurationConstraintsBgpPeerASNRange>;
 }
 
 export const InterconnectAttachmentConfigurationConstraints =
@@ -12863,7 +12869,7 @@ export const InterconnectAttachmentConfigurationConstraints =
 
 export interface InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping {
   /** Required in this object. Used to match the inner VLAN tag on the packet. Each entry can be a single number or a range of numbers in the range of 1 to 4094, e.g., ["1", "4001-4094"] is valid. Non-empty and Non-overlapping VLAN tag ranges are enforced, and violating operations will be rejected. The inner VLAN tags must have an ethertype value of 0x8100. */
-  innerVlanTags?: Array<string>;
+  innerVlanTags?: ReadonlyArray<string>;
   /** Required in this object. A single IPv4 or IPv6 address used as the destination IP address for ingress packets that match on both VLAN tags. */
   innerApplianceIpAddress?: string;
 }
@@ -12883,7 +12889,7 @@ export interface InterconnectAttachmentL2ForwardingApplianceMapping {
   /** Optional. A single IPv4 or IPv6 address used as the destination IP address for ingress packets that match on a VLAN tag, but do not match a more specific inner VLAN tag. Unset field (null-value) indicates both VLAN tags are required to be mapped. Otherwise, defaultApplianceIpAddress is used. */
   applianceIpAddress?: string;
   /** Optional. Used to match against the inner VLAN when the packet contains two VLAN tags. A list of mapping rules from inner VLAN tags to IP addresses. If the inner VLAN is not explicitly mapped to an IP address range, the applianceIpAddress is used. */
-  innerVlanToApplianceMappings?: Array<InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping>;
+  innerVlanToApplianceMappings?: ReadonlyArray<InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping>;
 }
 
 export const InterconnectAttachmentL2ForwardingApplianceMapping =
@@ -13004,7 +13010,7 @@ export interface InterconnectAttachment {
     | "AVAILABILITY_DOMAIN_ANY"
     | (string & {});
   /** Input only. Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will randomly select an unused /29 from all of link-local space. */
-  candidateSubnets?: Array<string>;
+  candidateSubnets?: ReadonlyArray<string>;
   /** Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: - BPS_50M: 50 Mbit/s - BPS_100M: 100 Mbit/s - BPS_200M: 200 Mbit/s - BPS_300M: 300 Mbit/s - BPS_400M: 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G: 2 Gbit/s - BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/s - BPS_100G: 100 Gbit/s - BPS_400G: 400 Gbit/s */
   bandwidth?:
     | "BPS_100G"
@@ -13043,7 +13049,7 @@ export interface InterconnectAttachment {
   /** Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *HA VPN over Cloud Interconnect*, the VLAN attachment must be created with this option. */
   encryption?: "IPSEC" | "NONE" | (string & {});
   /** A list of URLs of addresses that have been reserved for the VLAN attachment. Used only for the VLAN attachment that has the encryption option as IPSEC. The addresses must be regional internal IP address ranges. When creating an HA VPN gateway over the VLAN attachment, if the attachment is configured to use a regional internal IP address, then the VPN gateway's IP address is allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is paired to this VLAN attachment, then a regional internal IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this VLAN attachment. If this field is not specified when creating the VLAN attachment, then later on when creating an HA VPN gateway on this VLAN attachment, the HA VPN gateway's IP address is allocated from the regional external IP address pool. */
-  ipsecInternalAddresses?: Array<string>;
+  ipsecInternalAddresses?: ReadonlyArray<string>;
   /** Output only. [Output Only] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1. */
   dataplaneVersion?: number;
   /** Output only. [Output Only] Reserved for future use. */
@@ -13055,7 +13061,7 @@ export interface InterconnectAttachment {
   /** Output only. [Output Only] IPv6 address + prefix length to be configured on the customer router subinterface for this interconnect attachment. */
   customerRouterIpv6Address?: string;
   /** This field is not available. */
-  candidateIpv6Subnets?: Array<string>;
+  candidateIpv6Subnets?: ReadonlyArray<string>;
   /** This field is not available. */
   cloudRouterIpv6InterfaceId?: string;
   /** This field is not available. */
@@ -13142,7 +13148,7 @@ export interface InterconnectAttachmentList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of InterconnectAttachment resources. */
-  items?: Array<InterconnectAttachment>;
+  items?: ReadonlyArray<InterconnectAttachment>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -13181,7 +13187,7 @@ export interface InterconnectAttachmentList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -13210,7 +13216,7 @@ export const InterconnectAttachmentList =
 
 export interface InterconnectAttachmentsScopedList {
   /** A list of interconnect attachments contained in this scope. */
-  interconnectAttachments?: Array<InterconnectAttachment>;
+  interconnectAttachments?: ReadonlyArray<InterconnectAttachment>;
   /** Informational warning which replaces the list of addresses when the list is empty. */
   warning?: {
     code?:
@@ -13245,7 +13251,7 @@ export interface InterconnectAttachmentsScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -13315,10 +13321,10 @@ export interface InterconnectAttachmentAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const InterconnectAttachmentAggregatedList =
@@ -13374,7 +13380,7 @@ export interface InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZ
   /** Output only. [Output Only] The name of a zone, either "zone1" or "zone2". */
   zone?: string;
   /** Output only. [Output Only] URLs of Attachments in the given zone, to the given region, on Interconnects in the given facility and metro. Every Attachment in the AG has such an entry. */
-  attachments?: Array<string>;
+  attachments?: ReadonlyArray<string>;
 }
 
 export const InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone =
@@ -13389,7 +13395,7 @@ export const InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone 
 export interface InterconnectAttachmentGroupLogicalStructureRegionMetroFacility {
   /** Output only. [Output Only] The name of a facility, like "iad-1234". */
   facility?: string;
-  zones?: Array<InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone>;
+  zones?: ReadonlyArray<InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone>;
 }
 
 export const InterconnectAttachmentGroupLogicalStructureRegionMetroFacility =
@@ -13408,7 +13414,7 @@ export const InterconnectAttachmentGroupLogicalStructureRegionMetroFacility =
 export interface InterconnectAttachmentGroupLogicalStructureRegionMetro {
   /** Output only. [Output Only] The name of the metro, as a three-letter lowercase string like "iad". This is the first component of the location of an Interconnect. */
   metro?: string;
-  facilities?: Array<InterconnectAttachmentGroupLogicalStructureRegionMetroFacility>;
+  facilities?: ReadonlyArray<InterconnectAttachmentGroupLogicalStructureRegionMetroFacility>;
 }
 
 export const InterconnectAttachmentGroupLogicalStructureRegionMetro =
@@ -13426,7 +13432,7 @@ export const InterconnectAttachmentGroupLogicalStructureRegionMetro =
 export interface InterconnectAttachmentGroupLogicalStructureRegion {
   /** Output only. [Output Only] The name of a region, like "us-central1". */
   region?: string;
-  metros?: Array<InterconnectAttachmentGroupLogicalStructureRegionMetro>;
+  metros?: ReadonlyArray<InterconnectAttachmentGroupLogicalStructureRegionMetro>;
 }
 
 export const InterconnectAttachmentGroupLogicalStructureRegion =
@@ -13440,7 +13446,7 @@ export const InterconnectAttachmentGroupLogicalStructureRegion =
   });
 
 export interface InterconnectAttachmentGroupLogicalStructure {
-  regions?: Array<InterconnectAttachmentGroupLogicalStructureRegion>;
+  regions?: ReadonlyArray<InterconnectAttachmentGroupLogicalStructureRegion>;
 }
 
 export const InterconnectAttachmentGroupLogicalStructure =
@@ -13465,13 +13471,13 @@ export interface InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSla
   /** Output only. [Output Only] The url of Google Cloud public documentation explaining this requirement. This is set for every type of requirement. */
   documentationLink?: string;
   /** Output only. [Output Only] Regions used to explain this blocker in more detail. These are region names formatted like "us-central1". This will be set for some blockers (like INCOMPATIBLE_REGIONS) but does not apply to others. */
-  regions?: Array<string>;
+  regions?: ReadonlyArray<string>;
   /** Output only. [Output Only] Metros used to explain this blocker in more detail. These are three-letter lowercase strings like "iad". This will be set for some blockers (like NO_ATTACHMENTS_IN_METRO_AND_ZONE) but does not apply to others. */
-  metros?: Array<string>;
+  metros?: ReadonlyArray<string>;
   /** Output only. [Output Only] Zones used to explain this blocker in more detail. Format is "zone1" and/or "zone2". This will be set for some blockers (like MISSING_ZONE) but does not apply to others. */
-  zones?: Array<string>;
+  zones?: ReadonlyArray<string>;
   /** Output only. [Output Only] URLs of any particular Attachments to explain this blocker in more detail. */
-  attachments?: Array<string>;
+  attachments?: ReadonlyArray<string>;
 }
 
 export const InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockers =
@@ -13495,7 +13501,7 @@ export interface InterconnectAttachmentGroupConfiguredAvailabilitySLA {
     | "PRODUCTION_CRITICAL"
     | "PRODUCTION_NON_CRITICAL"
     | (string & {});
-  intendedSlaBlockers?: Array<InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockers>;
+  intendedSlaBlockers?: ReadonlyArray<InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockers>;
 }
 
 export const InterconnectAttachmentGroupConfiguredAvailabilitySLA =
@@ -13570,7 +13576,7 @@ export interface InterconnectAttachmentGroupsListResponse {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of InterconnectAttachmentGroup resources. */
-  items?: Array<InterconnectAttachmentGroup>;
+  items?: ReadonlyArray<InterconnectAttachmentGroup>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** [Output Only] Server-defined URL for this resource. */
@@ -13609,11 +13615,11 @@ export interface InterconnectAttachmentGroupsListResponse {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   etag?: string;
   /** Output only. [Output Only] Unreachable resources. end_interface: MixerListResponseWithEtagBuilder */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const InterconnectAttachmentGroupsListResponse =
@@ -13686,7 +13692,7 @@ export interface InterconnectAttachmentGroupsOperationalStatus {
     | "FULLY_UP"
     | "UNSPECIFIED"
     | (string & {});
-  attachmentStatuses?: Array<InterconnectAttachmentGroupsOperationalStatusAttachmentStatus>;
+  attachmentStatuses?: ReadonlyArray<InterconnectAttachmentGroupsOperationalStatusAttachmentStatus>;
   intent?: InterconnectAttachmentGroupIntent;
   configured?: InterconnectAttachmentGroupConfigured;
   /** Output only. The operational state of the group, including only active Attachments. */
@@ -13742,7 +13748,7 @@ export interface InterconnectOutageNotification {
     | "PARTIAL_OUTAGE"
     | (string & {});
   /** If issue_type is IT_PARTIAL_OUTAGE, a list of the Google-side circuit IDs that will be affected. */
-  affectedCircuits?: Array<string>;
+  affectedCircuits?: ReadonlyArray<string>;
   /** Scheduled start time for the outage (milliseconds since Unix epoch). */
   startTime?: string;
   /** Scheduled end time for the outage (milliseconds since Unix epoch). */
@@ -13792,7 +13798,7 @@ export const InterconnectMacsecPreSharedKey =
 
 export interface InterconnectMacsec {
   /** Required. A keychain placeholder describing a set of named key objects along with their start times. A MACsec CKN/CAK is generated for each key in the key chain. Google router automatically picks the key with the most recent startTime when establishing or re-establishing a MACsec secure link. */
-  preSharedKeys?: Array<InterconnectMacsecPreSharedKey>;
+  preSharedKeys?: ReadonlyArray<InterconnectMacsecPreSharedKey>;
   /** If set to true, the Interconnect connection is configured with ashould-secure MACsec security policy, that allows the Google router to fallback to cleartext traffic if the MKA session cannot be established. By default, the Interconnect connection is configured with amust-secure security policy that drops all traffic if the MKA session cannot be established with your router. */
   failOpen?: boolean;
 }
@@ -13826,7 +13832,7 @@ export const InterconnectApplicationAwareInterconnectBandwidthPercentage =
 
 export interface InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy {
   /** Specify bandwidth percentages for various traffic classes for queuing type Bandwidth Percent. */
-  bandwidthPercentages?: Array<InterconnectApplicationAwareInterconnectBandwidthPercentage>;
+  bandwidthPercentages?: ReadonlyArray<InterconnectApplicationAwareInterconnectBandwidthPercentage>;
 }
 
 export const InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy =
@@ -13845,7 +13851,7 @@ export interface InterconnectApplicationAwareInterconnect {
   /** Description for the application awareness profile on this Cloud Interconnect. */
   profileDescription?: string;
   /** Optional field to specify a list of shape average percentages to be applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy. */
-  shapeAveragePercentages?: Array<InterconnectApplicationAwareInterconnectBandwidthPercentage>;
+  shapeAveragePercentages?: ReadonlyArray<InterconnectApplicationAwareInterconnectBandwidthPercentage>;
 }
 
 export const InterconnectApplicationAwareInterconnect =
@@ -13911,7 +13917,7 @@ export interface Interconnect {
   /** Output only. [Output Only] Number of links actually provisioned in this interconnect. */
   provisionedLinkCount?: number;
   /** Output only. [Output Only] A list of the URLs of all InterconnectAttachments configured to use this Interconnect. */
-  interconnectAttachments?: Array<string>;
+  interconnectAttachments?: ReadonlyArray<string>;
   /** Output only. [Output Only] IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests. */
   peerIpAddress?: string;
   /** Output only. [Output Only] IP address configured on the Google side of the Interconnect link. This can be used only for ping tests. */
@@ -13919,9 +13925,9 @@ export interface Interconnect {
   /** Output only. [Output Only] Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. */
   googleReferenceId?: string;
   /** Output only. [Output Only] A list of outages expected for this Interconnect. */
-  expectedOutages?: Array<InterconnectOutageNotification>;
+  expectedOutages?: ReadonlyArray<InterconnectOutageNotification>;
   /** Output only. [Output Only] A list of CircuitInfo objects, that describe the individual circuits in this LAG. */
-  circuitInfos?: Array<InterconnectCircuitInfo>;
+  circuitInfos?: ReadonlyArray<InterconnectCircuitInfo>;
   /** Labels for this resource. These can only be added or modified by thesetLabels method. Each label key/value pair must comply withRFC1035. Label values may be empty. */
   labels?: Record<string, string>;
   /** A fingerprint for the labels being applied to this Interconnect, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an Interconnect. */
@@ -13937,11 +13943,11 @@ export interface Interconnect {
   /** Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to. */
   remoteLocation?: string;
   /** Optional. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH. List of features requested for this Interconnect connection, which can take one of the following values: - IF_MACSEC: If specified, then the connection is created on MACsec capable hardware ports. If not specified, non-MACsec capable ports will also be considered. - IF_CROSS_SITE_NETWORK: If specified, then the connection is created exclusively for Cross-Site Networking. The connection can not be used for Cross-Site Networking unless this feature is specified. */
-  requestedFeatures?: Array<
+  requestedFeatures?: ReadonlyArray<
     "IF_CROSS_SITE_NETWORK" | "IF_L2_FORWARDING" | "IF_MACSEC" | (string & {})
   >;
   /** [Output only] List of features available for this Interconnect connection, which can take one of the following values: - IF_MACSEC: If present, then the Interconnect connection is provisioned on MACsec capable hardware ports. If not present, then the Interconnect connection is provisioned on non-MACsec capable ports. Any attempt to enable MACsec will fail. - IF_CROSS_SITE_NETWORK: If present, then the Interconnect connection is provisioned exclusively for Cross-Site Networking. Any attempt to configure VLAN attachments will fail. If not present, then the Interconnect connection is not provisioned for Cross-Site Networking. Any attempt to use it for Cross-Site Networking will fail. */
-  availableFeatures?: Array<
+  availableFeatures?: ReadonlyArray<
     "IF_CROSS_SITE_NETWORK" | "IF_L2_FORWARDING" | "IF_MACSEC" | (string & {})
   >;
   /** Configuration information for application awareness on this Cloud Interconnect. */
@@ -13949,9 +13955,9 @@ export interface Interconnect {
   /** Enable or disable the application awareness feature on this Cloud Interconnect. */
   aaiEnabled?: boolean;
   /** Output only. [Output Only] URLs of InterconnectGroups that include this Interconnect. Order is arbitrary and items are unique. */
-  interconnectGroups?: Array<string>;
+  interconnectGroups?: ReadonlyArray<string>;
   /** Output only. [Output Only] A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty. */
-  wireGroups?: Array<string>;
+  wireGroups?: ReadonlyArray<string>;
   /** Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload. */
   params?: InterconnectParams;
 }
@@ -14005,7 +14011,7 @@ export interface InterconnectList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of Interconnect resources. */
-  items?: Array<Interconnect>;
+  items?: ReadonlyArray<Interconnect>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -14044,7 +14050,7 @@ export interface InterconnectList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -14147,7 +14153,7 @@ export interface InterconnectDiagnosticsLinkStatus {
     | "LINK_OPERATIONAL_STATUS_UP"
     | (string & {});
   /** A list of InterconnectDiagnostics.ARPEntry objects, describing the ARP neighbor entries seen on this link. This will be empty if the link is bundled */
-  arpCaches?: Array<InterconnectDiagnosticsARPEntry>;
+  arpCaches?: ReadonlyArray<InterconnectDiagnosticsARPEntry>;
   /** Describes the status of MACsec encryption on this link. */
   macsec?: InterconnectDiagnosticsMacsecStatus;
 }
@@ -14172,9 +14178,9 @@ export interface InterconnectDiagnostics {
   /** The MAC address of the Interconnect's bundle interface. */
   macAddress?: string;
   /** A list of InterconnectDiagnostics.ARPEntry objects, describing individual neighbors currently seen by the Google router in the ARP cache for the Interconnect. This will be empty when the Interconnect is not bundled. */
-  arpCaches?: Array<InterconnectDiagnosticsARPEntry>;
+  arpCaches?: ReadonlyArray<InterconnectDiagnosticsARPEntry>;
   /** A list of InterconnectDiagnostics.LinkStatus objects, describing the status for each link on the Interconnect. */
-  links?: Array<InterconnectDiagnosticsLinkStatus>;
+  links?: ReadonlyArray<InterconnectDiagnosticsLinkStatus>;
   /** The operational status of the bundle interface. */
   bundleOperationalStatus?:
     | "BUNDLE_OPERATIONAL_STATUS_DOWN"
@@ -14226,7 +14232,7 @@ export const InterconnectMacsecConfigPreSharedKey =
 
 export interface InterconnectMacsecConfig {
   /** A keychain placeholder describing a set of named key objects along with their start times. A MACsec CKN/CAK is generated for each key in the key chain. Google router automatically picks the key with the most recent startTime when establishing or re-establishing a MACsec secure link. */
-  preSharedKeys?: Array<InterconnectMacsecConfigPreSharedKey>;
+  preSharedKeys?: ReadonlyArray<InterconnectMacsecConfigPreSharedKey>;
 }
 
 export const InterconnectMacsecConfig =
@@ -14276,7 +14282,7 @@ export interface InterconnectGroupPhysicalStructureMetrosFacilitiesZones {
   /** Output only. [Output Only] The name of the zone, either "zone1" or "zone2". This is the second component of the location of Interconnects in this facility. */
   zone?: string;
   /** Output only. [Output Only] URLs of Interconnects in this redundancy group in the given metro, facility, and zone. */
-  interconnects?: Array<string>;
+  interconnects?: ReadonlyArray<string>;
 }
 
 export const InterconnectGroupPhysicalStructureMetrosFacilitiesZones =
@@ -14290,7 +14296,7 @@ export const InterconnectGroupPhysicalStructureMetrosFacilitiesZones =
 export interface InterconnectGroupPhysicalStructureMetrosFacilities {
   /** Output only. [Output Only] The ID of this facility, as a numeric string like "5467". This is the third component of the location of Interconnects in this facility. */
   facility?: string;
-  zones?: Array<InterconnectGroupPhysicalStructureMetrosFacilitiesZones>;
+  zones?: ReadonlyArray<InterconnectGroupPhysicalStructureMetrosFacilitiesZones>;
 }
 
 export const InterconnectGroupPhysicalStructureMetrosFacilities =
@@ -14306,7 +14312,7 @@ export const InterconnectGroupPhysicalStructureMetrosFacilities =
 export interface InterconnectGroupPhysicalStructureMetros {
   /** Output only. [Output Only] The name of the metro, as a three-letter lowercase string like "iad". This is the first component of the location of Interconnects underneath this. */
   metro?: string;
-  facilities?: Array<InterconnectGroupPhysicalStructureMetrosFacilities>;
+  facilities?: ReadonlyArray<InterconnectGroupPhysicalStructureMetrosFacilities>;
 }
 
 export const InterconnectGroupPhysicalStructureMetros =
@@ -14318,7 +14324,7 @@ export const InterconnectGroupPhysicalStructureMetros =
   }).annotate({ identifier: "InterconnectGroupPhysicalStructureMetros" });
 
 export interface InterconnectGroupPhysicalStructure {
-  metros?: Array<InterconnectGroupPhysicalStructureMetros>;
+  metros?: ReadonlyArray<InterconnectGroupPhysicalStructureMetros>;
 }
 
 export const InterconnectGroupPhysicalStructure =
@@ -14342,13 +14348,13 @@ export interface InterconnectGroupConfiguredTopologyCapabilityIntendedCapability
   /** Output only. [Output Only] The url of Google Cloud public documentation explaining this requirement. This is set for every type of requirement. */
   documentationLink?: string;
   /** Output only. [Output Only] Metros used to explain this blocker in more detail. These are three-letter lowercase strings like "iad". A blocker like INCOMPATIBLE_METROS will specify the problematic metros in this field. */
-  metros?: Array<string>;
+  metros?: ReadonlyArray<string>;
   /** Output only. [Output Only] Facilities used to explain this blocker in more detail. Like physicalStructure.metros.facilities.facility, this is a numeric string like "5467". */
-  facilities?: Array<string>;
+  facilities?: ReadonlyArray<string>;
   /** Output only. [Output Only] Zones used to explain this blocker in more detail. Zone names are "zone1" and/or "zone2". */
-  zones?: Array<string>;
+  zones?: ReadonlyArray<string>;
   /** Output only. [Output Only] Interconnects used to explain this blocker in more detail. */
-  interconnects?: Array<string>;
+  interconnects?: ReadonlyArray<string>;
 }
 
 export const InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockers =
@@ -14372,7 +14378,7 @@ export interface InterconnectGroupConfiguredTopologyCapability {
     | "PRODUCTION_NON_CRITICAL"
     | "UNSPECIFIED"
     | (string & {});
-  intendedCapabilityBlockers?: Array<InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockers>;
+  intendedCapabilityBlockers?: ReadonlyArray<InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockers>;
 }
 
 export const InterconnectGroupConfiguredTopologyCapability =
@@ -14439,7 +14445,7 @@ export interface InterconnectGroupsListResponse {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of InterconnectGroup resources. */
-  items?: Array<InterconnectGroup>;
+  items?: ReadonlyArray<InterconnectGroup>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** [Output Only] Server-defined URL for this resource. */
@@ -14478,11 +14484,11 @@ export interface InterconnectGroupsListResponse {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   etag?: string;
   /** Output only. [Output Only] Unreachable resources. end_interface: MixerListResponseWithEtagBuilder */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const InterconnectGroupsListResponse =
@@ -14539,7 +14545,7 @@ export interface InterconnectGroupsOperationalStatus {
     | "FULLY_UP"
     | "GROUPS_STATUS_UNSPECIFIED"
     | (string & {});
-  interconnectStatuses?: Array<InterconnectGroupsOperationalStatusInterconnectStatus>;
+  interconnectStatuses?: ReadonlyArray<InterconnectGroupsOperationalStatusInterconnectStatus>;
   /** Output only. The intent of the resource, as returned by Get. */
   intent?: InterconnectGroupIntent;
   /** Output only. The configuration analysis, as returned by Get. */
@@ -14596,7 +14602,7 @@ export interface InterconnectGroupsCreateMembersInterconnectInput {
   /** Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to. */
   remoteLocation?: string;
   /** Optional. List of features requested for this Interconnect connection, which can take one of the following values: - IF_MACSEC: If specified, then the connection is created on MACsec capable hardware ports. If not specified, non-MACsec capable ports will also be considered. - IF_CROSS_SITE_NETWORK: If specified, then the connection is created exclusively for Cross-Site Networking. The connection can not be used for Cross-Site Networking unless this feature is specified. */
-  requestedFeatures?: Array<
+  requestedFeatures?: ReadonlyArray<
     "IF_CROSS_SITE_NETWORK" | "IF_L2_FORWARDING" | "IF_MACSEC" | (string & {})
   >;
 }
@@ -14623,7 +14629,7 @@ export interface InterconnectGroupsCreateMembers {
   intentMismatchBehavior?: "CREATE" | "REJECT" | "UNSPECIFIED" | (string & {});
   /** Parameters for the Interconnects to create. */
   templateInterconnect?: InterconnectGroupsCreateMembersInterconnectInput;
-  interconnects?: Array<InterconnectGroupsCreateMembersInterconnectInput>;
+  interconnects?: ReadonlyArray<InterconnectGroupsCreateMembersInterconnectInput>;
 }
 
 export const InterconnectGroupsCreateMembers =
@@ -14694,7 +14700,7 @@ export interface ExternalVpnGateway {
     | "TWO_IPS_REDUNDANCY"
     | (string & {});
   /** A list of interfaces for this external VPN gateway. If your peer-side gateway is an on-premises gateway and non-AWS cloud providers' gateway, at most two interfaces can be provided for an external VPN gateway. If your peer side is an AWS virtual private gateway, four interfaces should be provided for an external VPN gateway. */
-  interfaces?: Array<ExternalVpnGatewayInterface>;
+  interfaces?: ReadonlyArray<ExternalVpnGatewayInterface>;
   /** Labels for this resource. These can only be added or modified by thesetLabels method. Each label key/value pair must comply withRFC1035. Label values may be empty. */
   labels?: Record<string, string>;
   /** A fingerprint for the labels being applied to this ExternalVpnGateway, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an ExternalVpnGateway. */
@@ -14723,7 +14729,7 @@ export interface ExternalVpnGatewayList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of ExternalVpnGateway resources. */
-  items?: Array<ExternalVpnGateway>;
+  items?: ReadonlyArray<ExternalVpnGateway>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -14762,7 +14768,7 @@ export interface ExternalVpnGatewayList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   etag?: string;
 }
@@ -14825,7 +14831,7 @@ export interface MetadataFilter {
   /** Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata. */
   filterMatchCriteria?: "MATCH_ALL" | "MATCH_ANY" | "NOT_SET" | (string & {});
   /** The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list must not be empty and can have at the most 64 entries. */
-  filterLabels?: Array<MetadataFilterLabelMatch>;
+  filterLabels?: ReadonlyArray<MetadataFilterLabelMatch>;
 }
 
 export const MetadataFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -14861,7 +14867,7 @@ export interface ForwardingRule {
   /** The ports, portRange, and allPorts fields are mutually exclusive. Only packets addressed to ports in the specified range will be forwarded to the backends configured with this forwarding rule. The portRange field has the following limitations: - It requires that the forwarding rule IPProtocol be TCP, UDP, or SCTP, and - It's applicable only to the following products: external passthrough Network Load Balancers, internal and external proxy Network Load Balancers, internal and external Application Load Balancers, external protocol forwarding, and Classic VPN. - Some products have restrictions on what ports can be used. See port specifications for details. For external forwarding rules, two or more forwarding rules cannot use the same [IPAddress, IPProtocol] pair, and cannot have overlappingportRanges. For internal forwarding rules within the same VPC network, two or more forwarding rules cannot use the same [IPAddress, IPProtocol] pair, and cannot have overlapping portRanges. @pattern: \\d+(?:-\\d+)? */
   portRange?: string;
   /** The ports, portRange, and allPorts fields are mutually exclusive. Only packets addressed to ports in the specified range will be forwarded to the backends configured with this forwarding rule. The ports field has the following limitations: - It requires that the forwarding rule IPProtocol be TCP, UDP, or SCTP, and - It's applicable only to the following products: internal passthrough Network Load Balancers, backend service-based external passthrough Network Load Balancers, and internal protocol forwarding. - You can specify a list of up to five ports by number, separated by commas. The ports can be contiguous or discontiguous. For external forwarding rules, two or more forwarding rules cannot use the same [IPAddress, IPProtocol] pair if they share at least one port number. For internal forwarding rules within the same VPC network, two or more forwarding rules cannot use the same [IPAddress, IPProtocol] pair if they share at least one port number. @pattern: \\d+(?:-\\d+)? */
-  ports?: Array<string>;
+  ports?: ReadonlyArray<string>;
   /** The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must be in the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing resource. The forwarded traffic must be of a type appropriate to the target object. - For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications). - For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle: - vpc-sc - APIs that support VPC Service Controls. - all-apis - All supported Google APIs. - For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment. The target is not mutable once set as a service attachment. */
   target?: string;
   /** [Output Only] Server-defined URL for the resource. */
@@ -14884,7 +14890,7 @@ export interface ForwardingRule {
   /** Identifies the backend service to which the forwarding rule sends traffic. Required for internal and external passthrough Network Load Balancers; must be omitted for all other load balancer types. */
   backendService?: string;
   /** Service Directory resources to register this forwarding rule with. Currently, only supports a single Service Directory resource. */
-  serviceDirectoryRegistrations?: Array<ForwardingRuleServiceDirectoryRegistration>;
+  serviceDirectoryRegistrations?: ReadonlyArray<ForwardingRuleServiceDirectoryRegistration>;
   /** An optional prefix to the service name for this forwarding rule. If specified, the prefix is the first label of the fully qualified service name. The label must be 1-63 characters long, and comply withRFC1035. Specifically, the label must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. This field is only used for internal load balancing. */
   serviceLabel?: string;
   /** [Output Only] The internal fully qualified service name for this forwarding rule. This field is only used for internal load balancing. */
@@ -14909,11 +14915,11 @@ export interface ForwardingRule {
   /** If set to true, clients can access the internal passthrough Network Load Balancers, the regional internal Application Load Balancer, and the regional internal proxy Network Load Balancer from all regions. If false, only allows access from the local region the load balancer is located at. Note that for INTERNAL_MANAGED forwarding rules, this field cannot be changed after the forwarding rule is created. */
   allowGlobalAccess?: boolean;
   /** Opaque filter criteria used by load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to load balancer, xDS clients present node metadata. When there is a match, the relevant configuration is made available to those proxies. Otherwise, all the resources (e.g.TargetHttpProxy, UrlMap) referenced by the ForwardingRule are not visible to those proxies. For each metadataFilter in this list, if itsfilterMatchCriteria is set to MATCH_ANY, at least one of thefilterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiplemetadataFilters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here will be applifed before those specified in the UrlMap that thisForwardingRule references. metadataFilters only applies to Loadbalancers that have their loadBalancingScheme set toINTERNAL_SELF_MANAGED. */
-  metadataFilters?: Array<MetadataFilter>;
+  metadataFilters?: ReadonlyArray<MetadataFilter>;
   /** Indicates whether or not this load balancer can be used as a collector for packet mirroring. To prevent mirroring loops, instances behind this load balancer will not have their traffic mirrored even if aPacketMirroring rule applies to them. This can only be set to true for load balancers that have theirloadBalancingScheme set to INTERNAL. */
   isMirroringCollector?: boolean;
   /** If not empty, this forwarding rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a forwarding rule can only have up to 64 source IP ranges, and this field can only be used with a regional forwarding rule whose scheme isEXTERNAL. Each source_ip_range entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24). */
-  sourceIpRanges?: Array<string>;
+  sourceIpRanges?: ReadonlyArray<string>;
   /** [Output Only] The PSC connection id of the PSC forwarding rule. */
   pscConnectionId?: string;
   pscConnectionStatus?:
@@ -14993,7 +14999,7 @@ export interface ForwardingRuleList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of ForwardingRule resources. */
-  items?: Array<ForwardingRule>;
+  items?: ReadonlyArray<ForwardingRule>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -15032,7 +15038,7 @@ export interface ForwardingRuleList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -15068,7 +15074,7 @@ export const TargetReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ForwardingRulesScopedList {
   /** A list of forwarding rules contained in this scope. */
-  forwardingRules?: Array<ForwardingRule>;
+  forwardingRules?: ReadonlyArray<ForwardingRule>;
   /** Informational warning which replaces the list of forwarding rules when the list is empty. */
   warning?: {
     code?:
@@ -15103,7 +15109,7 @@ export interface ForwardingRulesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -15171,10 +15177,10 @@ export interface ForwardingRuleAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const ForwardingRuleAggregatedList =
@@ -15343,7 +15349,7 @@ export interface FutureReservationStatus {
   /** Output only. Time when Future Reservation would become LOCKED, after which no modifications to Future Reservation will be allowed. Applicable only after the Future Reservation is in the APPROVED state. The lock_time is an RFC3339 string. The procurement_status will transition to PROCURING state at this time. */
   lockTime?: string;
   /** Output only. Fully qualified urls of the automatically created reservations at start_time. */
-  autoCreatedReservations?: Array<string>;
+  autoCreatedReservations?: ReadonlyArray<string>;
   /** Output only. This count indicates the fulfilled capacity so far. This is set during "PROVISIONING" state. This count also includes capacity delivered as part of existing matching reservations. */
   fulfilledCount?: string;
   specificSkuProperties?: FutureReservationStatusSpecificSKUProperties;
@@ -15522,7 +15528,7 @@ export interface FutureReservationsListResponse {
   /** [Output Only] The unique identifier for the resource. This identifier is defined by the server. */
   id?: string;
   /** [Output Only] A list of future reservation resources. */
-  items?: Array<FutureReservation>;
+  items?: ReadonlyArray<FutureReservation>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** [Output Only] Informational warning message. */
@@ -15559,13 +15565,13 @@ export interface FutureReservationsListResponse {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Server-defined URL for this resource. */
   selfLink?: string;
   etag?: string;
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const FutureReservationsListResponse =
@@ -15595,7 +15601,7 @@ export const FutureReservationsListResponse =
 
 export interface FutureReservationsScopedList {
   /** A list of future reservations contained in this scope. */
-  futureReservations?: Array<FutureReservation>;
+  futureReservations?: ReadonlyArray<FutureReservation>;
   /** Informational warning which replaces the list of future reservations when the list is empty. */
   warning?: {
     code?:
@@ -15630,7 +15636,7 @@ export interface FutureReservationsScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -15698,11 +15704,11 @@ export interface FutureReservationsAggregatedListResponse {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   etag?: string;
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const FutureReservationsAggregatedListResponse =
@@ -15784,7 +15790,7 @@ export interface HealthAggregationPolicyList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of HealthAggregationPolicy resources. */
-  items?: Array<HealthAggregationPolicy>;
+  items?: ReadonlyArray<HealthAggregationPolicy>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** [Output Only] Server-defined URL for this resource. */
@@ -15823,7 +15829,7 @@ export interface HealthAggregationPolicyList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -15852,7 +15858,7 @@ export const HealthAggregationPolicyList =
 
 export interface HealthAggregationPoliciesScopedList {
   /** A list of HealthAggregationPolicys contained in this scope. */
-  healthAggregationPolicies?: Array<HealthAggregationPolicy>;
+  healthAggregationPolicies?: ReadonlyArray<HealthAggregationPolicy>;
   /** Informational warning which replaces the list of health aggregation policies when the list is empty. */
   warning?: {
     code?:
@@ -15887,7 +15893,7 @@ export interface HealthAggregationPoliciesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -15957,10 +15963,10 @@ export interface HealthAggregationPolicyAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const HealthAggregationPolicyAggregatedList =
@@ -16007,11 +16013,11 @@ export interface HealthCheckService {
   /** Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reportsUNHEALTHY, then UNHEALTHY is theHealthState of the endpoint. If all health checks reportHEALTHY, the HealthState of the endpoint isHEALTHY. . This is only allowed with regional HealthCheckService. */
   healthStatusAggregationPolicy?: "AND" | "NO_AGGREGATION" | (string & {});
   /** A list of URLs to the HealthCheck resources. Must have at least one HealthCheck, and not more than 10 for regionalHealthCheckService, and not more than 1 for globalHealthCheckService.HealthCheck resources must haveportSpecification=USE_SERVING_PORT orportSpecification=USE_FIXED_PORT. For regional HealthCheckService, theHealthCheck must be regional and in the same region. For global HealthCheckService,HealthCheck must be global. Mix of regional and globalHealthChecks is not supported. Multiple regionalHealthChecks must belong to the same region. RegionalHealthChecks must belong to the same region as zones ofNetworkEndpointGroups. For globalHealthCheckService using globalINTERNET_IP_PORT NetworkEndpointGroups, the global HealthChecks must specify sourceRegions, and HealthChecks that specify sourceRegions can only be used with global INTERNET_IP_PORTNetworkEndpointGroups. */
-  healthChecks?: Array<string>;
+  healthChecks?: ReadonlyArray<string>;
   /** A list of URLs to the NetworkEndpointGroup resources. Must not have more than 100. For regionalHealthCheckService, NEGs must be in zones in the region of the HealthCheckService. For globalHealthCheckServices, the NetworkEndpointGroups must be global INTERNET_IP_PORT. */
-  networkEndpointGroups?: Array<string>;
+  networkEndpointGroups?: ReadonlyArray<string>;
   /** A list of URLs to the NotificationEndpoint resources. Must not have more than 10. A list of endpoints for receiving notifications of change in health status. For regionalHealthCheckService,NotificationEndpoint must be regional and in the same region. For global HealthCheckService,NotificationEndpoint must be global. */
-  notificationEndpoints?: Array<string>;
+  notificationEndpoints?: ReadonlyArray<string>;
   /** Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a HealthCheckService. An up-to-date fingerprint must be provided in order to patch/update the HealthCheckService; Otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the HealthCheckService. */
   fingerprint?: string;
 }
@@ -16033,7 +16039,7 @@ export const HealthCheckService = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface HealthCheckServicesScopedList {
   /** A list of HealthCheckServices contained in this scope. */
-  resources?: Array<HealthCheckService>;
+  resources?: ReadonlyArray<HealthCheckService>;
   /** Informational warning which replaces the list of backend services when the list is empty. */
   warning?: {
     code?:
@@ -16068,7 +16074,7 @@ export interface HealthCheckServicesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -16136,10 +16142,10 @@ export interface HealthCheckServiceAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const HealthCheckServiceAggregatedList =
@@ -16174,7 +16180,7 @@ export interface HealthCheckServicesList {
   /** Output only. [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** Output only. A list of HealthCheckService resources. */
-  items?: Array<HealthCheckService>;
+  items?: ReadonlyArray<HealthCheckService>;
   /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -16213,7 +16219,7 @@ export interface HealthCheckServicesList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -16477,7 +16483,7 @@ export interface HealthCheck {
   grpcHealthCheck?: GRPCHealthCheck;
   grpcTlsHealthCheck?: GRPCTLSHealthCheck;
   /** The list of cloud regions from which health checks are performed. If any regions are specified, then exactly 3 regions should be specified. The region names must be valid names of Google Cloud regions. This can only be set for global health check. If this list is non-empty, then there are restrictions on what other health check fields are supported and what other resources can use this health check: - SSL, HTTP2, and GRPC protocols are not supported. - The TCP request field is not supported. - The proxyHeader field for HTTP, HTTPS, and TCP is not supported. - The checkIntervalSec field must be at least 30. - The health check cannot be used with BackendService nor with managed instance group auto-healing. */
-  sourceRegions?: Array<string>;
+  sourceRegions?: ReadonlyArray<string>;
   /** [Output Only] Server-defined URL for the resource. */
   selfLink?: string;
   /** Output only. [Output Only] Region where the health check resides. Not applicable to global health checks. */
@@ -16516,7 +16522,7 @@ export interface HealthCheckList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of HealthCheck resources. */
-  items?: Array<HealthCheck>;
+  items?: ReadonlyArray<HealthCheck>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -16555,7 +16561,7 @@ export interface HealthCheckList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -16583,7 +16589,7 @@ export const HealthCheckList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface HealthChecksScopedList {
   /** A list of HealthChecks contained in this scope. */
-  healthChecks?: Array<HealthCheck>;
+  healthChecks?: ReadonlyArray<HealthCheck>;
   /** Informational warning which replaces the list of backend services when the list is empty. */
   warning?: {
     code?:
@@ -16618,7 +16624,7 @@ export interface HealthChecksScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -16687,10 +16693,10 @@ export interface HealthChecksAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const HealthChecksAggregatedList =
@@ -16739,7 +16745,7 @@ export interface HealthSource {
   /** Specifies the type of the HealthSource. The only allowed value is BACKEND_SERVICE. Must be specified when theHealthSource is created, and cannot be mutated. */
   sourceType?: "BACKEND_SERVICE" | (string & {});
   /** URLs to the source resources. Must be size 1. Must be aBackendService if the sourceType is BACKEND_SERVICE. TheBackendService must have load balancing schemeINTERNAL or INTERNAL_MANAGED and must be regional and in the same region as the HealthSource (cross-region deployment for INTERNAL_MANAGED is not supported). TheBackendService may use only IGs, MIGs, or NEGs of typeGCE_VM_IP or GCE_VM_IP_PORT. TheBackendService may not use haPolicy. Can be mutated. */
-  sources?: Array<string>;
+  sources?: ReadonlyArray<string>;
   /** URL to the HealthAggregationPolicy resource. Must be set. Must be regional and in the same region as the HealthSource. Can be mutated. */
   healthAggregationPolicy?: string;
   /** Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a HealthSource. An up-to-date fingerprint must be provided in order to patch the HealthSource; Otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the HealthSource. */
@@ -16763,7 +16769,7 @@ export const HealthSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface HealthSourcesScopedList {
   /** A list of HealthSources contained in this scope. */
-  healthSources?: Array<HealthSource>;
+  healthSources?: ReadonlyArray<HealthSource>;
   /** Informational warning which replaces the list of health sources when the list is empty. */
   warning?: {
     code?:
@@ -16798,7 +16804,7 @@ export interface HealthSourcesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -16866,10 +16872,10 @@ export interface HealthSourceAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const HealthSourceAggregatedList =
@@ -16904,7 +16910,7 @@ export interface HealthSourceList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of HealthSource resources. */
-  items?: Array<HealthSource>;
+  items?: ReadonlyArray<HealthSource>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** [Output Only] Server-defined URL for this resource. */
@@ -16943,7 +16949,7 @@ export interface HealthSourceList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -16993,7 +16999,7 @@ export interface HealthSourcesGetHealthResponseSourceInfo {
   /** Fully qualified URL of the forwarding rule associated with the source resource if it is a L4ILB backend service. */
   forwardingRule?: string;
   /** Represents an instance group or network endpoint group behind the source backend service. Only used if the sourceType of the regionHealthSource is BACKEND_SERVICE. */
-  backends?: Array<HealthSourcesGetHealthResponseSourceInfoBackendInfo>;
+  backends?: ReadonlyArray<HealthSourcesGetHealthResponseSourceInfoBackendInfo>;
 }
 
 export const HealthSourcesGetHealthResponseSourceInfo =
@@ -17011,7 +17017,7 @@ export interface HealthSourceHealth {
   /** Health state of the HealthSource. */
   healthState?: "HEALTHY" | "UNHEALTHY" | "UNKNOWN" | (string & {});
   /** Health state details of the sources. */
-  sources?: Array<HealthSourcesGetHealthResponseSourceInfo>;
+  sources?: ReadonlyArray<HealthSourcesGetHealthResponseSourceInfo>;
 }
 
 export const HealthSourceHealth = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -17073,7 +17079,7 @@ export interface HttpHealthCheckList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of HttpHealthCheck resources. */
-  items?: Array<HttpHealthCheck>;
+  items?: ReadonlyArray<HttpHealthCheck>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -17112,7 +17118,7 @@ export interface HttpHealthCheckList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -17189,7 +17195,7 @@ export interface HttpsHealthCheckList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of HttpsHealthCheck resources. */
-  items?: Array<HttpsHealthCheck>;
+  items?: ReadonlyArray<HttpsHealthCheck>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -17228,7 +17234,7 @@ export interface HttpsHealthCheckList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -17283,7 +17289,7 @@ export const DiskInstantiationConfig =
 
 export interface SourceInstanceParams {
   /** Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes. */
-  diskConfigs?: Array<DiskInstantiationConfig>;
+  diskConfigs?: ReadonlyArray<DiskInstantiationConfig>;
 }
 
 export const SourceInstanceParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -17332,7 +17338,7 @@ export interface InstanceTemplateList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of InstanceTemplate resources. */
-  items?: Array<InstanceTemplate>;
+  items?: ReadonlyArray<InstanceTemplate>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -17371,7 +17377,7 @@ export interface InstanceTemplateList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -17399,7 +17405,7 @@ export const InstanceTemplateList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InstanceTemplatesScopedList {
   /** [Output Only] A list of instance templates that are contained within the specified project and zone. */
-  instanceTemplates?: Array<InstanceTemplate>;
+  instanceTemplates?: ReadonlyArray<InstanceTemplate>;
   /** [Output Only] An informational warning that replaces the list of instance templates when the list is empty. */
   warning?: {
     code?:
@@ -17434,7 +17440,7 @@ export interface InstanceTemplatesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -17502,7 +17508,7 @@ export interface InstanceTemplateAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -17671,7 +17677,7 @@ export interface InstantSnapshotList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of InstantSnapshot resources. */
-  items?: Array<InstantSnapshot>;
+  items?: ReadonlyArray<InstantSnapshot>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -17710,7 +17716,7 @@ export interface InstantSnapshotList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -17738,7 +17744,7 @@ export const InstantSnapshotList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InstantSnapshotsScopedList {
   /** [Output Only] A list of instantSnapshots contained in this scope. */
-  instantSnapshots?: Array<InstantSnapshot>;
+  instantSnapshots?: ReadonlyArray<InstantSnapshot>;
   /** [Output Only] Informational warning which replaces the list of instantSnapshots when the list is empty. */
   warning?: {
     code?:
@@ -17773,7 +17779,7 @@ export interface InstantSnapshotsScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -17841,10 +17847,10 @@ export interface InstantSnapshotAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const InstantSnapshotAggregatedList =
@@ -17950,7 +17956,7 @@ export interface ListInstantSnapshotGroups {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of InstantSnapshotGroup resources. */
-  items?: Array<InstantSnapshotGroup>;
+  items?: ReadonlyArray<InstantSnapshotGroup>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -17989,11 +17995,11 @@ export interface ListInstantSnapshotGroups {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   etag?: string;
   /** Output only. [Output Only] Unreachable resources. end_interface: MixerListResponseWithEtagBuilder */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const ListInstantSnapshotGroups =
@@ -18077,9 +18083,9 @@ export interface InterconnectLocation {
   /** Output only. [Output Only] A provider-assigned Identifier for this facility (e.g., Ashburn-DC1). */
   facilityProviderFacilityId?: string;
   /** Output only. [Output Only] A list of InterconnectLocation.RegionInfo objects, that describe parameters pertaining to the relation between this InterconnectLocation and various Google Cloud regions. */
-  regionInfos?: Array<InterconnectLocationRegionInfo>;
+  regionInfos?: ReadonlyArray<InterconnectLocationRegionInfo>;
   /** [Output Only] A list of InterconnectLocation.CrossSiteInterconnectInfo objects, that describe where Cross-Site Interconnect wires may connect to from this location and associated connection parameters. Cross-Site Interconnect isn't allowed to locations which are not listed. */
-  crossSiteInterconnectInfos?: Array<InterconnectLocationCrossSiteInterconnectInfo>;
+  crossSiteInterconnectInfos?: ReadonlyArray<InterconnectLocationCrossSiteInterconnectInfo>;
   /** [Output Only] Continent for this location, which can take one of the following values: - AFRICA - ASIA_PAC - EUROPE - NORTH_AMERICA - SOUTH_AMERICA */
   continent?:
     | "AFRICA"
@@ -18102,18 +18108,18 @@ export interface InterconnectLocation {
   /** Output only. [Output Only] Reserved for future use. */
   supportsPzs?: boolean;
   /** [Output only] List of features available at this InterconnectLocation, which can take one of the following values: - IF_MACSEC - IF_CROSS_SITE_NETWORK */
-  availableFeatures?: Array<
+  availableFeatures?: ReadonlyArray<
     "IF_CROSS_SITE_NETWORK" | "IF_L2_FORWARDING" | "IF_MACSEC" | (string & {})
   >;
   /** [Output only] List of link types available at this InterconnectLocation, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR - LINK_TYPE_ETHERNET_100G_LR - LINK_TYPE_ETHERNET_400G_LR4 */
-  availableLinkTypes?: Array<
+  availableLinkTypes?: ReadonlyArray<
     | "LINK_TYPE_ETHERNET_100G_LR"
     | "LINK_TYPE_ETHERNET_10G_LR"
     | "LINK_TYPE_ETHERNET_400G_LR4"
     | (string & {})
   >;
   /** Output only. [Output Only] URLs of the other locations that can pair up with this location to support Single-Region 99.99% SLA. E.g. iad-zone1-1 and iad-zone2-5467 are Single-Region 99.99% peer locations of each other. */
-  singleRegionProductionCriticalPeerLocations?: Array<string>;
+  singleRegionProductionCriticalPeerLocations?: ReadonlyArray<string>;
 }
 
 export const InterconnectLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -18149,7 +18155,7 @@ export interface InterconnectLocationList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of InterconnectLocation resources. */
-  items?: Array<InterconnectLocation>;
+  items?: ReadonlyArray<InterconnectLocation>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -18188,7 +18194,7 @@ export interface InterconnectLocationList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -18298,7 +18304,7 @@ export interface InterconnectRemoteLocation {
   /** Output only. [Output Only] Indicates the service provider present at the remote location. Example values: "Amazon Web Services", "Microsoft Azure". */
   remoteService?: string;
   /** Output only. [Output Only] Permitted connections. */
-  permittedConnections?: Array<InterconnectRemoteLocationPermittedConnections>;
+  permittedConnections?: ReadonlyArray<InterconnectRemoteLocationPermittedConnections>;
   /** Output only. [Output Only] Constraints on the parameters for creating Cross-Cloud Interconnect and associated InterconnectAttachments. */
   constraints?: InterconnectRemoteLocationConstraints;
   /** Output only. [Output Only] Subset of fields from InterconnectAttachment's |configurationConstraints| field that apply to all attachments for this remote location. */
@@ -18348,7 +18354,7 @@ export interface InterconnectRemoteLocationList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of InterconnectRemoteLocation resources. */
-  items?: Array<InterconnectRemoteLocation>;
+  items?: ReadonlyArray<InterconnectRemoteLocation>;
   /** [Output Only] This token lets you get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -18387,7 +18393,7 @@ export interface InterconnectRemoteLocationList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -18451,7 +18457,7 @@ export interface LicenseCode {
     | "TERMINATED"
     | (string & {});
   /** [Output Only] URL and description aliases of Licenses with the same License Code. */
-  licenseAlias?: Array<LicenseCodeLicenseAlias>;
+  licenseAlias?: ReadonlyArray<LicenseCodeLicenseAlias>;
 }
 
 export const LicenseCode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -18518,13 +18524,13 @@ export interface License {
   /** If true, this license can be removed from a disk's set of licenses, with no replacement license needed. */
   removableFromDisk?: boolean;
   /** Specifies licenseCodes of licenses that can replace this license. Note: such replacements are allowed even if removable_from_disk is false. */
-  allowedReplacementLicenses?: Array<string>;
+  allowedReplacementLicenses?: ReadonlyArray<string>;
   /** If true, indicates this is an OS license. Only one OS license can be attached to a disk or image at a time. */
   osLicense?: boolean;
   /** Specifies licenseCodes of licenses that are incompatible with this license. If a license is incompatible with this license, it cannot be attached to the same disk or image. */
-  incompatibleLicenses?: Array<string>;
+  incompatibleLicenses?: ReadonlyArray<string>;
   /** Specifies the set of permissible coattached licenseCodes of licenses that satisfy the coattachment requirement of this license. At least one license from the set must be attached to the same disk or image as this license. */
-  requiredCoattachedLicenses?: Array<string>;
+  requiredCoattachedLicenses?: ReadonlyArray<string>;
   /** If true, this license can only be used on VMs on sole tenant nodes. */
   soleTenantOnly?: boolean;
   /** If true, this license can only be used on VMs on multi tenant nodes. */
@@ -18566,7 +18572,7 @@ export interface LicensesListResponse {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of License resources. */
-  items?: Array<License>;
+  items?: ReadonlyArray<License>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -18605,7 +18611,7 @@ export interface LicensesListResponse {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -18648,11 +18654,11 @@ export interface SavedAttachedDisk {
   /** Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance). */
   autoDelete?: boolean;
   /** Output only. [Output Only] Any valid publicly visible licenses. */
-  licenses?: Array<string>;
+  licenses?: ReadonlyArray<string>;
   /** Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. */
   interface?: "NVME" | "SCSI" | (string & {});
   /** A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. */
-  guestOsFeatures?: Array<GuestOsFeature>;
+  guestOsFeatures?: ReadonlyArray<GuestOsFeature>;
   /** The encryption key for the disk. */
   diskEncryptionKey?: CustomerEncryptionKey;
   /** The size of the disk in base-2 GB. */
@@ -18694,19 +18700,19 @@ export interface SourceInstanceProperties {
   /** Enables instances created based on this machine image to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set tofalse. See theEnable IP forwarding documentation for more information. */
   canIpForward?: boolean;
   /** An array of network access configurations for this interface. */
-  networkInterfaces?: Array<NetworkInterface>;
+  networkInterfaces?: ReadonlyArray<NetworkInterface>;
   /** An array of disks that are associated with the instances that are created from this machine image. */
-  disks?: Array<SavedAttachedDisk>;
+  disks?: ReadonlyArray<SavedAttachedDisk>;
   /** The metadata key/value pairs to assign to instances that are created from this machine image. These pairs can consist of custom metadata or predefined keys. SeeProject and instance metadata for more information. */
   metadata?: Metadata;
   /** A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from this machine image. Use metadata queries to obtain the access tokens for these instances. */
-  serviceAccounts?: Array<ServiceAccount>;
+  serviceAccounts?: ReadonlyArray<ServiceAccount>;
   /** Specifies the scheduling options for the instances that are created from this machine image. */
   scheduling?: Scheduling;
   /** Labels to apply to instances that are created from this machine image. */
   labels?: Record<string, string>;
   /** A list of guest accelerator cards' type and count to use for instances created from this machine image. */
-  guestAccelerators?: Array<AcceleratorConfig>;
+  guestAccelerators?: ReadonlyArray<AcceleratorConfig>;
   /** Minimum cpu/platform to be used by instances created from this machine image. The instance may be scheduled on the specified or newer cpu/platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" orminCpuPlatform: "Intel Sandy Bridge". For more information, read Specifying a Minimum CPU Platform. */
   minCpuPlatform?: string;
   /** Whether the instance created from this machine image should be protected against deletion. */
@@ -18821,9 +18827,9 @@ export interface MachineImage {
   /** [Output Only] Properties of source instance */
   instanceProperties?: InstanceProperties;
   /** Output only. An array of Machine Image specific properties for disks attached to the source instance */
-  savedDisks?: Array<SavedDisk>;
+  savedDisks?: ReadonlyArray<SavedDisk>;
   /** The regional or multi-regional Cloud Storage bucket location where themachine image is stored. */
-  storageLocations?: Array<string>;
+  storageLocations?: ReadonlyArray<string>;
   /** Encrypts the machine image using acustomer-supplied encryption key. After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request. Customer-supplied encryption keys do not protect access to metadata of the machine image. If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later. */
   machineImageEncryptionKey?: CustomerEncryptionKey;
   /** Labels to apply to this machine image. These can be later modified by the setLabels method. */
@@ -18833,7 +18839,7 @@ export interface MachineImage {
   /** [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. */
   guestFlush?: boolean;
   /** [Input Only] Thecustomer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key. */
-  sourceDiskEncryptionKeys?: Array<SourceDiskEncryptionKey>;
+  sourceDiskEncryptionKeys?: ReadonlyArray<SourceDiskEncryptionKey>;
   /** Output only. [Output Only] Total size of the storage used by the machine image. */
   totalStorageBytes?: string;
   /** Output only. [Output Only] Reserved for future use. */
@@ -18876,7 +18882,7 @@ export interface MachineImageList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of MachineImage resources. */
-  items?: Array<MachineImage>;
+  items?: ReadonlyArray<MachineImage>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -18915,7 +18921,7 @@ export interface MachineImageList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -18983,7 +18989,7 @@ export interface MachineType {
   /** [Output Only] Whether this machine type has a shared CPU. SeeShared-core machine types for more information. */
   isSharedCpu?: boolean;
   /** [Output Only] A list of accelerator configurations assigned to this machine type. */
-  accelerators?: Array<{
+  accelerators?: ReadonlyArray<{
     guestAcceleratorType?: string;
     guestAcceleratorCount?: number;
   }>;
@@ -19030,7 +19036,7 @@ export interface MachineTypeList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of MachineType resources. */
-  items?: Array<MachineType>;
+  items?: ReadonlyArray<MachineType>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -19069,7 +19075,7 @@ export interface MachineTypeList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -19097,7 +19103,7 @@ export const MachineTypeList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MachineTypesScopedList {
   /** [Output Only] A list of machine types contained in this scope. */
-  machineTypes?: Array<MachineType>;
+  machineTypes?: ReadonlyArray<MachineType>;
   /** [Output Only] An informational warning that appears when the machine types list is empty. */
   warning?: {
     code?:
@@ -19132,7 +19138,7 @@ export interface MachineTypesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -19201,10 +19207,10 @@ export interface MachineTypeAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const MachineTypeAggregatedList =
@@ -19252,7 +19258,7 @@ export interface NetworkAttachmentConnectedEndpoint {
   /** The IPv6 address assigned to the producer instance network interface. This is only assigned when the stack types of both the instance network interface and the consumer subnet are IPv4_IPv6. */
   ipv6Address?: string;
   /** Alias IP ranges from the same subnetwork. */
-  secondaryIpCidrRanges?: Array<string>;
+  secondaryIpCidrRanges?: ReadonlyArray<string>;
   /** Output only. [Output Only] The CIDR range of the subnet from which the IPv4 internal IP was allocated from. */
   subnetworkCidrRange?: string;
   /** The service class id of the producer service to which the IP was assigned. */
@@ -19294,13 +19300,13 @@ export interface NetworkAttachment {
     | "INVALID"
     | (string & {});
   /** Output only. [Output Only] An array of connections for all the producers connected to this network attachment. */
-  connectionEndpoints?: Array<NetworkAttachmentConnectedEndpoint>;
+  connectionEndpoints?: ReadonlyArray<NetworkAttachmentConnectedEndpoint>;
   /** An array of URLs where each entry is the URL of a subnet provided by the service consumer to use for endpoints in the producers that connect to this network attachment. */
-  subnetworks?: Array<string>;
+  subnetworks?: ReadonlyArray<string>;
   /** Projects that are not allowed to connect to this network attachment. The project can be specified using its id or number. */
-  producerRejectLists?: Array<string>;
+  producerRejectLists?: ReadonlyArray<string>;
   /** Projects that are allowed to connect to this network attachment. The project can be specified using its id or number. */
-  producerAcceptLists?: Array<string>;
+  producerAcceptLists?: ReadonlyArray<string>;
   /** Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. An up-to-date fingerprint must be provided in order to patch. */
   fingerprint?: string;
   /** Output only. [Output Only] The URL of the network which the Network Attachment belongs to. Practically it is inferred by fetching the network of the first subnetwork associated. Because it is required that all the subnetworks must be from the same network, it is assured that the Network Attachment belongs to the same network as all the subnetworks. */
@@ -19329,7 +19335,7 @@ export const NetworkAttachment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NetworkAttachmentsScopedList {
   /** A list of NetworkAttachments contained in this scope. */
-  networkAttachments?: Array<NetworkAttachment>;
+  networkAttachments?: ReadonlyArray<NetworkAttachment>;
   /** Informational warning which replaces the list of network attachments when the list is empty. */
   warning?: {
     code?:
@@ -19364,7 +19370,7 @@ export interface NetworkAttachmentsScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -19431,7 +19437,7 @@ export interface NetworkAttachmentAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -19465,7 +19471,7 @@ export interface NetworkAttachmentList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of NetworkAttachment resources. */
-  items?: Array<NetworkAttachment>;
+  items?: ReadonlyArray<NetworkAttachment>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** [Output Only] Server-defined URL for this resource. */
@@ -19504,7 +19510,7 @@ export interface NetworkAttachmentList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -19569,7 +19575,7 @@ export const NetworkEdgeSecurityService =
 
 export interface NetworkEdgeSecurityServicesScopedList {
   /** A list of NetworkEdgeSecurityServices contained in this scope. */
-  networkEdgeSecurityServices?: Array<NetworkEdgeSecurityService>;
+  networkEdgeSecurityServices?: ReadonlyArray<NetworkEdgeSecurityService>;
   /** Informational warning which replaces the list of security policies when the list is empty. */
   warning?: {
     code?:
@@ -19604,7 +19610,7 @@ export interface NetworkEdgeSecurityServicesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -19674,11 +19680,11 @@ export interface NetworkEdgeSecurityServiceAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   etag?: string;
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const NetworkEdgeSecurityServiceAggregatedList =
@@ -19857,7 +19863,7 @@ export interface NetworkEndpointGroupList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of NetworkEndpointGroup resources. */
-  items?: Array<NetworkEndpointGroup>;
+  items?: ReadonlyArray<NetworkEndpointGroup>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -19896,7 +19902,7 @@ export interface NetworkEndpointGroupList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -19925,7 +19931,7 @@ export const NetworkEndpointGroupList =
 
 export interface NetworkEndpointGroupsScopedList {
   /** Output only. [Output Only] The list ofnetwork endpoint groups that are contained in this scope. */
-  networkEndpointGroups?: Array<NetworkEndpointGroup>;
+  networkEndpointGroups?: ReadonlyArray<NetworkEndpointGroup>;
   /** Output only. [Output Only] An informational warning that replaces the list of network endpoint groups when the list is empty. */
   warning?: {
     code?:
@@ -19960,7 +19966,7 @@ export interface NetworkEndpointGroupsScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -20028,10 +20034,10 @@ export interface NetworkEndpointGroupAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const NetworkEndpointGroupAggregatedList =
@@ -20089,7 +20095,7 @@ export const NetworkEndpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NetworkEndpointGroupsAttachEndpointsRequest {
   /** The list of network endpoints to be attached. */
-  networkEndpoints?: Array<NetworkEndpoint>;
+  networkEndpoints?: ReadonlyArray<NetworkEndpoint>;
 }
 
 export const NetworkEndpointGroupsAttachEndpointsRequest =
@@ -20099,7 +20105,7 @@ export const NetworkEndpointGroupsAttachEndpointsRequest =
 
 export interface NetworkEndpointGroupsDetachEndpointsRequest {
   /** The list of network endpoints to be detached. */
-  networkEndpoints?: Array<NetworkEndpoint>;
+  networkEndpoints?: ReadonlyArray<NetworkEndpoint>;
 }
 
 export const NetworkEndpointGroupsDetachEndpointsRequest =
@@ -20191,7 +20197,7 @@ export interface NetworkEndpointWithHealthStatus {
   /** Output only. [Output only] The network endpoint. */
   networkEndpoint?: NetworkEndpoint;
   /** Output only. [Output only] The health status of network endpoint. Optional. Displayed only if the network endpoint has centralized health checking configured. */
-  healths?: Array<HealthStatusForNetworkEndpoint>;
+  healths?: ReadonlyArray<HealthStatusForNetworkEndpoint>;
 }
 
 export const NetworkEndpointWithHealthStatus =
@@ -20206,7 +20212,7 @@ export interface NetworkEndpointGroupsListNetworkEndpoints {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of NetworkEndpointWithHealthStatus resources. */
-  items?: Array<NetworkEndpointWithHealthStatus>;
+  items?: ReadonlyArray<NetworkEndpointWithHealthStatus>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** [Output Only] Informational warning message. */
@@ -20243,7 +20249,7 @@ export interface NetworkEndpointGroupsListNetworkEndpoints {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -20271,7 +20277,7 @@ export const NetworkEndpointGroupsListNetworkEndpoints =
 
 export interface GlobalNetworkEndpointGroupsAttachEndpointsRequest {
   /** The list of network endpoints to be attached. */
-  networkEndpoints?: Array<NetworkEndpoint>;
+  networkEndpoints?: ReadonlyArray<NetworkEndpoint>;
 }
 
 export const GlobalNetworkEndpointGroupsAttachEndpointsRequest =
@@ -20283,7 +20289,7 @@ export const GlobalNetworkEndpointGroupsAttachEndpointsRequest =
 
 export interface GlobalNetworkEndpointGroupsDetachEndpointsRequest {
   /** The list of network endpoints to be detached. */
-  networkEndpoints?: Array<NetworkEndpoint>;
+  networkEndpoints?: ReadonlyArray<NetworkEndpoint>;
 }
 
 export const GlobalNetworkEndpointGroupsDetachEndpointsRequest =
@@ -20295,7 +20301,7 @@ export const GlobalNetworkEndpointGroupsDetachEndpointsRequest =
 
 export interface RegionNetworkEndpointGroupsAttachEndpointsRequest {
   /** The list of network endpoints to be attached. */
-  networkEndpoints?: Array<NetworkEndpoint>;
+  networkEndpoints?: ReadonlyArray<NetworkEndpoint>;
 }
 
 export const RegionNetworkEndpointGroupsAttachEndpointsRequest =
@@ -20307,7 +20313,7 @@ export const RegionNetworkEndpointGroupsAttachEndpointsRequest =
 
 export interface RegionNetworkEndpointGroupsDetachEndpointsRequest {
   /** The list of network endpoints to be detached. */
-  networkEndpoints?: Array<NetworkEndpoint>;
+  networkEndpoints?: ReadonlyArray<NetworkEndpoint>;
 }
 
 export const RegionNetworkEndpointGroupsDetachEndpointsRequest =
@@ -20489,9 +20495,9 @@ export interface Network {
   /** Must be set to create a VPC network. If not set, a legacy network is created. When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode. An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described inAuto mode VPC network IP ranges. For custom mode VPC networks, you can add subnets using the subnetworksinsert method. */
   autoCreateSubnetworks?: boolean;
   /** [Output Only] Server-defined fully-qualified URLs for all subnetworks in this VPC network. */
-  subnetworks?: Array<string>;
+  subnetworks?: ReadonlyArray<string>;
   /** Output only. [Output Only] A list of network peerings for the resource. */
-  peerings?: Array<NetworkPeering>;
+  peerings?: ReadonlyArray<NetworkPeering>;
   /** The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce. */
   routingConfig?: NetworkRoutingConfig;
   /** Maximum Transmission Unit in bytes. The minimum value for this field is 1300 and the maximum value is 8896. The suggested value is 1500, which is the default MTU used on the Internet, or 8896 if you want to use Jumbo frames. If unspecified, the value defaults to 1460. */
@@ -20542,7 +20548,7 @@ export interface NetworkList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of Network resources. */
-  items?: Array<Network>;
+  items?: ReadonlyArray<Network>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -20581,7 +20587,7 @@ export interface NetworkList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -20665,9 +20671,9 @@ export interface NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy {
   /** Output only. [Output Only] Deprecated, please use short name instead. The display name of the firewall policy. */
   displayName?: string;
   /** [Output Only] The rules that apply to the network. */
-  rules?: Array<FirewallPolicyRule>;
+  rules?: ReadonlyArray<FirewallPolicyRule>;
   /** Output only. [Output Only] The packet mirroring rules that apply to the network. */
-  packetMirroringRules?: Array<FirewallPolicyRule>;
+  packetMirroringRules?: ReadonlyArray<FirewallPolicyRule>;
   /** Output only. [Output only] Priority of firewall policy association. Not applicable for type=HIERARCHY. */
   priority?: number;
 }
@@ -20687,9 +20693,9 @@ export const NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy =
 
 export interface NetworksGetEffectiveFirewallsResponse {
   /** Effective firewalls on the network. */
-  firewalls?: Array<Firewall>;
+  firewalls?: ReadonlyArray<Firewall>;
   /** [Output Only] Effective firewalls from firewall policy. It returns Global Network Firewall Policies and Hierarchical Firewall Policies. UseregionNetworkFirewallPolicies.getEffectiveFirewalls to get Regional Network Firewall Policies as well. */
-  firewallPolicys?: Array<NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
+  firewallPolicys?: ReadonlyArray<NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
 }
 
 export const NetworksGetEffectiveFirewallsResponse =
@@ -20733,7 +20739,7 @@ export interface ExchangedPeeringRoutesList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of ExchangedPeeringRoute resources. */
-  items?: Array<ExchangedPeeringRoute>;
+  items?: ReadonlyArray<ExchangedPeeringRoute>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -20772,7 +20778,7 @@ export interface ExchangedPeeringRoutesList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -20893,7 +20899,7 @@ export interface NodeGroupList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of NodeGroup resources. */
-  items?: Array<NodeGroup>;
+  items?: ReadonlyArray<NodeGroup>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -20932,7 +20938,7 @@ export interface NodeGroupList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -20960,7 +20966,7 @@ export const NodeGroupList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NodeGroupsScopedList {
   /** [Output Only] A list of node groups contained in this scope. */
-  nodeGroups?: Array<NodeGroup>;
+  nodeGroups?: ReadonlyArray<NodeGroup>;
   /** [Output Only] An informational warning that appears when the nodeGroup list is empty. */
   warning?: {
     code?:
@@ -20995,7 +21001,7 @@ export interface NodeGroupsScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -21062,10 +21068,10 @@ export interface NodeGroupAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const NodeGroupAggregatedList =
@@ -21104,7 +21110,7 @@ export const NodeGroupsAddNodesRequest =
 
 export interface NodeGroupsDeleteNodesRequest {
   /** Names of the nodes to delete. */
-  nodes?: Array<string>;
+  nodes?: ReadonlyArray<string>;
 }
 
 export const NodeGroupsDeleteNodesRequest =
@@ -21188,13 +21194,13 @@ export interface NodeGroupNode {
   /** Server ID associated with this node. */
   serverId?: string;
   /** Local disk configurations. */
-  disks?: Array<LocalDisk>;
+  disks?: ReadonlyArray<LocalDisk>;
   /** Accelerators for this node. */
-  accelerators?: Array<AcceleratorConfig>;
+  accelerators?: ReadonlyArray<AcceleratorConfig>;
   /** Instances scheduled on this node. */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
   /** Output only. Instance data that shows consumed resources on the node. */
-  instanceConsumptionData?: Array<InstanceConsumptionData>;
+  instanceConsumptionData?: ReadonlyArray<InstanceConsumptionData>;
   /** Output only. Node resources that are reserved by all instances. */
   consumedResources?: InstanceConsumptionInfo;
   /** Output only. Total amount of available resources on the node. */
@@ -21236,7 +21242,7 @@ export interface NodeGroupsListNodes {
   /** Output only. [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of Node resources. */
-  items?: Array<NodeGroupNode>;
+  items?: ReadonlyArray<NodeGroupNode>;
   /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -21275,7 +21281,7 @@ export interface NodeGroupsListNodes {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -21313,7 +21319,7 @@ export const NodeGroupsSetNodeTemplateRequest =
 
 export interface NodeGroupsSimulateMaintenanceEventRequest {
   /** Names of the nodes to go under maintenance simulation. */
-  nodes?: Array<string>;
+  nodes?: ReadonlyArray<string>;
 }
 
 export const NodeGroupsSimulateMaintenanceEventRequest =
@@ -21323,7 +21329,7 @@ export const NodeGroupsSimulateMaintenanceEventRequest =
 
 export interface NodeGroupsPerformMaintenanceRequest {
   /** [Required] List of nodes affected by the call. */
-  nodes?: Array<string>;
+  nodes?: ReadonlyArray<string>;
   /** The start time of the schedule. The timestamp is an RFC3339 string. */
   startTime?: string;
 }
@@ -21374,8 +21380,8 @@ export interface NodeTemplate {
   nodeTypeFlexibility?: NodeTemplateNodeTypeFlexibility;
   /** Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information. */
   serverBinding?: ServerBinding;
-  disks?: Array<LocalDisk>;
-  accelerators?: Array<AcceleratorConfig>;
+  disks?: ReadonlyArray<LocalDisk>;
+  accelerators?: ReadonlyArray<AcceleratorConfig>;
   /** CPU overcommit. */
   cpuOvercommitType?:
     | "CPU_OVERCOMMIT_TYPE_UNSPECIFIED"
@@ -21411,7 +21417,7 @@ export interface NodeTemplateList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of NodeTemplate resources. */
-  items?: Array<NodeTemplate>;
+  items?: ReadonlyArray<NodeTemplate>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -21450,7 +21456,7 @@ export interface NodeTemplateList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -21478,7 +21484,7 @@ export const NodeTemplateList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NodeTemplatesScopedList {
   /** [Output Only] A list of node templates contained in this scope. */
-  nodeTemplates?: Array<NodeTemplate>;
+  nodeTemplates?: ReadonlyArray<NodeTemplate>;
   /** [Output Only] An informational warning that appears when the node templates list is empty. */
   warning?: {
     code?:
@@ -21513,7 +21519,7 @@ export interface NodeTemplatesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -21581,10 +21587,10 @@ export interface NodeTemplateAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const NodeTemplateAggregatedList =
@@ -21664,7 +21670,7 @@ export interface NodeTypeList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of NodeType resources. */
-  items?: Array<NodeType>;
+  items?: ReadonlyArray<NodeType>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -21703,7 +21709,7 @@ export interface NodeTypeList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -21731,7 +21737,7 @@ export const NodeTypeList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NodeTypesScopedList {
   /** [Output Only] A list of node types contained in this scope. */
-  nodeTypes?: Array<NodeType>;
+  nodeTypes?: ReadonlyArray<NodeType>;
   /** [Output Only] An informational warning that appears when the node types list is empty. */
   warning?: {
     code?:
@@ -21766,7 +21772,7 @@ export interface NodeTypesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -21833,10 +21839,10 @@ export interface NodeTypeAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const NodeTypeAggregatedList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -21918,7 +21924,7 @@ export const NotificationEndpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NotificationEndpointsScopedList {
   /** A list of NotificationEndpoints contained in this scope. */
-  resources?: Array<NotificationEndpoint>;
+  resources?: ReadonlyArray<NotificationEndpoint>;
   /** Informational warning which replaces the list of notification endpoints when the list is empty. */
   warning?: {
     code?:
@@ -21953,7 +21959,7 @@ export interface NotificationEndpointsScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -22021,10 +22027,10 @@ export interface NotificationEndpointAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const NotificationEndpointAggregatedList =
@@ -22059,7 +22065,7 @@ export interface NotificationEndpointList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of NotificationEndpoint resources. */
-  items?: Array<NotificationEndpoint>;
+  items?: ReadonlyArray<NotificationEndpoint>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** [Output Only] Server-defined URL for this resource. */
@@ -22098,7 +22104,7 @@ export interface NotificationEndpointList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -22181,11 +22187,11 @@ export const PacketMirroringMirroredResourceInfoInstanceInfo =
 
 export interface PacketMirroringMirroredResourceInfo {
   /** A set of subnetworks for which traffic from/to all VM instances will be mirrored. They must live in the same region as this packetMirroring. You may specify a maximum of 5 subnetworks. */
-  subnetworks?: Array<PacketMirroringMirroredResourceInfoSubnetInfo>;
+  subnetworks?: ReadonlyArray<PacketMirroringMirroredResourceInfoSubnetInfo>;
   /** A set of virtual machine instances that are being mirrored. They must live in zones contained in the same region as this packetMirroring. Note that this config will apply only to those network interfaces of the Instances that belong to the network specified in this packetMirroring. You may specify a maximum of 50 Instances. */
-  instances?: Array<PacketMirroringMirroredResourceInfoInstanceInfo>;
+  instances?: ReadonlyArray<PacketMirroringMirroredResourceInfoInstanceInfo>;
   /** A set of mirrored tags. Traffic from/to all VM instances that have one or more of these tags will be mirrored. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
 }
 
 export const PacketMirroringMirroredResourceInfo =
@@ -22201,9 +22207,9 @@ export const PacketMirroringMirroredResourceInfo =
 
 export interface PacketMirroringFilter {
   /** One or more IPv4 or IPv6 CIDR ranges that apply as filters on the source (ingress) or destination (egress) IP in the IP header. If no ranges are specified, all IPv4 traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored. To mirror all IPv4 and IPv6 traffic, use "0.0.0.0/0,::/0". */
-  cidrRanges?: Array<string>;
+  cidrRanges?: ReadonlyArray<string>;
   /** Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all IPv4 traffic is mirrored. */
-  IPProtocols?: Array<string>;
+  IPProtocols?: ReadonlyArray<string>;
   /** Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH. */
   direction?: "BOTH" | "EGRESS" | "INGRESS" | (string & {});
 }
@@ -22265,7 +22271,7 @@ export interface PacketMirroringList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of PacketMirroring resources. */
-  items?: Array<PacketMirroring>;
+  items?: ReadonlyArray<PacketMirroring>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -22304,7 +22310,7 @@ export interface PacketMirroringList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -22332,7 +22338,7 @@ export const PacketMirroringList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PacketMirroringsScopedList {
   /** A list of packetMirrorings contained in this scope. */
-  packetMirrorings?: Array<PacketMirroring>;
+  packetMirrorings?: ReadonlyArray<PacketMirroring>;
   /** Informational warning which replaces the list of packetMirrorings when the list is empty. */
   warning?: {
     code?:
@@ -22367,7 +22373,7 @@ export interface PacketMirroringsScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -22435,10 +22441,10 @@ export interface PacketMirroringAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const PacketMirroringAggregatedList =
@@ -22676,11 +22682,11 @@ export interface Project {
   /** Metadata key/value pairs available to all instances contained in this project. See Custom metadata for more information. */
   commonInstanceMetadata?: Metadata;
   /** [Output Only] Quotas assigned to this project. */
-  quotas?: Array<Quota>;
+  quotas?: ReadonlyArray<Quota>;
   /** An optional naming prefix for daily usage reports and the Google Cloud Storage bucket where they are stored. */
   usageExportLocation?: UsageExportLocation;
   /** An optional list of restricted features enabled for use on this project. */
-  enabledFeatures?: Array<string>;
+  enabledFeatures?: ReadonlyArray<string>;
   /** [Output Only] Server-defined URL for the resource. */
   selfLink?: string;
   /** [Output Only] Default service account used by VMs running in this project. */
@@ -22767,7 +22773,7 @@ export interface XpnHostList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** [Output Only] A list of shared VPC host project URLs. */
-  items?: Array<Project>;
+  items?: ReadonlyArray<Project>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -22806,7 +22812,7 @@ export interface XpnHostList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -22868,7 +22874,7 @@ export interface ProjectsGetXpnResources {
   /** Output only. [Output Only] Type of resource. Alwayscompute#projectsGetXpnResources for lists of service resources (a.k.a service projects) */
   kind?: string;
   /** Service resources (a.k.a service projects) attached to this project as their shared VPC host. */
-  resources?: Array<XpnResourceId>;
+  resources?: ReadonlyArray<XpnResourceId>;
   /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
 }
@@ -22965,7 +22971,7 @@ export interface PublicAdvertisedPrefix {
   /** Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2. */
   pdpScope?: "GLOBAL" | "GLOBAL_AND_REGIONAL" | "REGIONAL" | (string & {});
   /** Output only. [Output Only] The list of public delegated prefixes that exist for this public advertised prefix. */
-  publicDelegatedPrefixs?: Array<PublicAdvertisedPrefixPublicDelegatedPrefix>;
+  publicDelegatedPrefixs?: ReadonlyArray<PublicAdvertisedPrefixPublicDelegatedPrefix>;
   /** Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update thePublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix. */
   fingerprint?: string;
   /** Output only. [Output Only] The version of BYOIP API. */
@@ -23002,7 +23008,7 @@ export interface PublicAdvertisedPrefixList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of PublicAdvertisedPrefix resources. */
-  items?: Array<PublicAdvertisedPrefix>;
+  items?: ReadonlyArray<PublicAdvertisedPrefix>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** [Output Only] Server-defined URL for this resource. */
@@ -23041,7 +23047,7 @@ export interface PublicAdvertisedPrefixList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -23143,7 +23149,7 @@ export interface PublicDelegatedPrefix {
   /** The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix. */
   parentPrefix?: string;
   /** The list of sub public delegated prefixes that exist for this public delegated prefix. */
-  publicDelegatedSubPrefixs?: Array<PublicDelegatedPrefixPublicDelegatedSubPrefix>;
+  publicDelegatedSubPrefixs?: ReadonlyArray<PublicDelegatedPrefixPublicDelegatedSubPrefix>;
   /** If true, the prefix will be live migrated. */
   isLiveMigration?: boolean;
   /** Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order to update thePublicDelegatedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix. */
@@ -23194,7 +23200,7 @@ export interface PublicDelegatedPrefixList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of PublicDelegatedPrefix resources. */
-  items?: Array<PublicDelegatedPrefix>;
+  items?: ReadonlyArray<PublicDelegatedPrefix>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** [Output Only] Server-defined URL for this resource. */
@@ -23233,7 +23239,7 @@ export interface PublicDelegatedPrefixList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -23262,7 +23268,7 @@ export const PublicDelegatedPrefixList =
 
 export interface PublicDelegatedPrefixesScopedList {
   /** [Output Only] A list of PublicDelegatedPrefixes contained in this scope. */
-  publicDelegatedPrefixes?: Array<PublicDelegatedPrefix>;
+  publicDelegatedPrefixes?: ReadonlyArray<PublicDelegatedPrefix>;
   /** [Output Only] Informational warning which replaces the list of public delegated prefixes when the list is empty. */
   warning?: {
     code?:
@@ -23297,7 +23303,7 @@ export interface PublicDelegatedPrefixesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -23367,10 +23373,10 @@ export interface PublicDelegatedPrefixAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const PublicDelegatedPrefixAggregatedList =
@@ -23413,9 +23419,9 @@ export interface Region {
   /** [Output Only] Status of the region, either UP orDOWN. */
   status?: "DOWN" | "UP" | (string & {});
   /** [Output Only] A list of zones available in this region, in the form of resource URLs. */
-  zones?: Array<string>;
+  zones?: ReadonlyArray<string>;
   /** [Output Only] Quotas assigned to this region. */
-  quotas?: Array<Quota>;
+  quotas?: ReadonlyArray<Quota>;
   /** [Output Only] The deprecation status associated with this region. */
   deprecated?: DeprecationStatus;
   /** [Output Only] Server-defined URL for the resource. */
@@ -23456,7 +23462,7 @@ export interface Region {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -23494,7 +23500,7 @@ export interface RegionList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of Region resources. */
-  items?: Array<Region>;
+  items?: ReadonlyArray<Region>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -23533,7 +23539,7 @@ export interface RegionList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -23596,7 +23602,7 @@ export interface SubnetworkLogConfig {
     | "INCLUDE_ALL_METADATA"
     | (string & {});
   /** Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA. */
-  metadataFields?: Array<string>;
+  metadataFields?: ReadonlyArray<string>;
   /** Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging. */
   filterExpr?: string;
 }
@@ -23658,7 +23664,7 @@ export const SubnetworkUtilizationDetailsIPV6Utilization =
 
 export interface SubnetworkUtilizationDetails {
   /** Utilizations of all IPV4 IP ranges. For primary ranges, the range name will be empty. */
-  ipv4Utilizations?: Array<SubnetworkUtilizationDetailsIPV4Utilization>;
+  ipv4Utilizations?: ReadonlyArray<SubnetworkUtilizationDetailsIPV4Utilization>;
   /** Utilizations of external IPV6 IP range. */
   externalIpv6InstanceUtilization?: SubnetworkUtilizationDetailsIPV6Utilization;
   /** Utilizations of external IPV6 IP range for NetLB. */
@@ -23709,7 +23715,7 @@ export interface Subnetwork {
   /** Whether the VMs in this subnet can access Google services without assigned external IP addresses. This field can be both set at resource creation time and updated using setPrivateIpGoogleAccess. */
   privateIpGoogleAccess?: boolean;
   /** An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with apatch request. Supports both IPv4 and IPv6 ranges. */
-  secondaryIpRanges?: Array<SubnetworkSecondaryRange>;
+  secondaryIpRanges?: ReadonlyArray<SubnetworkSecondaryRange>;
   /** Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork. */
   fingerprint?: string;
   /** Whether this subnetwork's ranges can conflict with existing custom routes. Setting this to true allows this subnetwork's primary and secondary ranges to overlap with (and contain) custom routes that have already been configured on the corresponding network. For example if a static route has range 10.1.0.0/16, a subnet range 10.0.0.0/8 could only be created if allow_conflicting_routes=true. Overlapping is only allowed on subnetwork operations; routes whose ranges conflict with this subnetwork's ranges won't be allowed unless route.allow_conflicting_subnetworks is set to true. Typically packets destined to IPs within the subnetwork (which may contain private/sensitive data) are prevented from leaving the virtual network. Setting this field to true will disable this feature. The default value is false and applies to all existing subnetworks and automatically created subnetworks. */
@@ -23757,9 +23763,9 @@ export interface Subnetwork {
   /** Output only. [Output Only] The current IP utilization of all subnetwork ranges. Contains the total number of allocated and free IPs in each range. */
   utilizationDetails?: SubnetworkUtilizationDetails;
   /** Output only. [Output Only] The array of internal IPv6 network ranges reserved from the subnetwork's internal IPv6 range for system use. */
-  systemReservedInternalIpv6Ranges?: Array<string>;
+  systemReservedInternalIpv6Ranges?: ReadonlyArray<string>;
   /** Output only. [Output Only] The array of external IPv6 network ranges reserved from the subnetwork's external IPv6 range for system use. */
-  systemReservedExternalIpv6Ranges?: Array<string>;
+  systemReservedExternalIpv6Ranges?: ReadonlyArray<string>;
   /** Configures subnet mask resolution for this subnetwork. */
   resolveSubnetMask?: "ARP_ALL_RANGES" | "ARP_PRIMARY_RANGE" | (string & {});
 }
@@ -23810,7 +23816,7 @@ export interface SubnetworkList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of Subnetwork resources. */
-  items?: Array<Subnetwork>;
+  items?: ReadonlyArray<Subnetwork>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -23849,7 +23855,7 @@ export interface SubnetworkList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -23877,7 +23883,7 @@ export const SubnetworkList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SubnetworksScopedList {
   /** A list of subnetworks contained in this scope. */
-  subnetworks?: Array<Subnetwork>;
+  subnetworks?: ReadonlyArray<Subnetwork>;
   /** An informational warning that appears when the list of addresses is empty. */
   warning?: {
     code?:
@@ -23912,7 +23918,7 @@ export interface SubnetworksScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -23979,10 +23985,10 @@ export interface SubnetworkAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const SubnetworkAggregatedList =
@@ -24030,7 +24036,7 @@ export interface UsableSubnetwork {
   /** The range of internal addresses that are owned by this subnetwork. */
   ipCidrRange?: string;
   /** Secondary IP ranges. */
-  secondaryIpRanges?: Array<UsableSubnetworkSecondaryRange>;
+  secondaryIpRanges?: ReadonlyArray<UsableSubnetworkSecondaryRange>;
   /** The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are assigned IPv4 addresses only. If set toIPV4_IPV6, new VMs in the subnet can be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used. This field can be both set at resource creation time and updated usingpatch. */
   stackType?: "IPV4_IPV6" | "IPV4_ONLY" | "IPV6_ONLY" | (string & {});
   /** The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. */
@@ -24105,7 +24111,7 @@ export interface SubnetworksScopedWarning {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -24134,7 +24140,7 @@ export interface UsableSubnetworksAggregatedList {
   /** [Output Only] The unique identifier for the resource. This identifier is defined by the server. */
   id?: string;
   /** [Output] A list of usable subnetwork URLs. */
-  items?: Array<UsableSubnetwork>;
+  items?: ReadonlyArray<UsableSubnetwork>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. In special cases listUsable may return 0 subnetworks andnextPageToken which still should be used to get the next page of results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -24173,12 +24179,12 @@ export interface UsableSubnetworksAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
   /** Output only. [Output Only] Informational warning messages for failures encountered from scopes. */
-  scopedWarnings?: Array<SubnetworksScopedWarning>;
+  scopedWarnings?: ReadonlyArray<SubnetworksScopedWarning>;
 }
 
 export const UsableSubnetworksAggregatedList =
@@ -24326,7 +24332,7 @@ export interface NetworkProfileNetworkFeatures {
     | "PACKET_MIRRORING_BLOCKED"
     | (string & {});
   /** Output only. Specifies which subnetwork purposes are supported. */
-  subnetworkPurposes?: Array<
+  subnetworkPurposes?: ReadonlyArray<
     | "GLOBAL_MANAGED_PROXY"
     | "INTERNAL_HTTPS_LOAD_BALANCER"
     | "PEER_MIGRATION"
@@ -24338,15 +24344,15 @@ export interface NetworkProfileNetworkFeatures {
     | (string & {})
   >;
   /** Output only. Specifies which subnetwork stack types are supported. */
-  subnetworkStackTypes?: Array<
+  subnetworkStackTypes?: ReadonlyArray<
     "IPV4_IPV6" | "IPV4_ONLY" | "IPV6_ONLY" | (string & {})
   >;
   /** Specifies which subnetwork purposes are supported. */
-  subnetPurposes?: Array<
+  subnetPurposes?: ReadonlyArray<
     "SUBNET_PURPOSE_CUSTOM_HARDWARE" | "SUBNET_PURPOSE_PRIVATE" | (string & {})
   >;
   /** Specifies which subnetwork stack types are supported. */
-  subnetStackTypes?: Array<
+  subnetStackTypes?: ReadonlyArray<
     | "SUBNET_STACK_TYPE_IPV4_IPV6"
     | "SUBNET_STACK_TYPE_IPV4_ONLY"
     | "SUBNET_STACK_TYPE_IPV6_ONLY"
@@ -24358,7 +24364,7 @@ export interface NetworkProfileNetworkFeatures {
     | "PRIVATE_GOOGLE_ACCESS_BLOCKED"
     | (string & {});
   /** If set, limits the interface types that the network supports. If empty, all interface types are supported. */
-  interfaceTypes?: Array<
+  interfaceTypes?: ReadonlyArray<
     | "GVNIC"
     | "IDPF"
     | "IRDMA"
@@ -24383,7 +24389,7 @@ export interface NetworkProfileNetworkFeatures {
     | "EXTERNAL_IP_ACCESS_BLOCKED"
     | (string & {});
   /** Specifies what address purposes are supported. If empty, all address purposes are supported. */
-  addressPurposes?: Array<
+  addressPurposes?: ReadonlyArray<
     | "DNS_RESOLVER"
     | "GCE_ENDPOINT"
     | "IPSEC_INTERCONNECT"
@@ -24421,7 +24427,7 @@ export interface NetworkProfileNetworkFeatures {
     | "FIREWALL_POLICY_ALLOWED"
     | "FIREWALL_POLICY_BLOCKED"
     | (string & {});
-  firewallPolicyTypes?: Array<
+  firewallPolicyTypes?: ReadonlyArray<
     "RDMA_ROCE_POLICY" | "VPC_POLICY" | (string & {})
   >;
   /** Specifies whether VPC firewall rules can be created under the network. */
@@ -24437,7 +24443,7 @@ export interface NetworkProfileNetworkFeatures {
   /** Specifies a predefined internal IPv6 range for the network. */
   predefinedNetworkInternalIpv6Range?: string;
   /** Predefined subnetwork ranges for the network. */
-  predefinedSubnetworkRanges?: Array<NetworkProfileNetworkFeaturesPredefinedSubnetworkRange>;
+  predefinedSubnetworkRanges?: ReadonlyArray<NetworkProfileNetworkFeaturesPredefinedSubnetworkRange>;
   /** Specifies whether subnetwork creation is allowed. */
   allowSubnetworkCreation?:
     | "SUBNETWORK_CREATION_ALLOWED"
@@ -24536,7 +24542,7 @@ export interface NetworkProfilesListResponse {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of NetworkProfile resources. */
-  items?: Array<NetworkProfile>;
+  items?: ReadonlyArray<NetworkProfile>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -24575,11 +24581,11 @@ export interface NetworkProfilesListResponse {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   etag?: string;
   /** Output only. [Output Only] Unreachable resources. end_interface: MixerListResponseWithEtagBuilder */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const NetworkProfilesListResponse =
@@ -24717,7 +24723,7 @@ export interface PreviewFeatureList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of PreviewFeature resources. */
-  items?: Array<PreviewFeature>;
+  items?: ReadonlyArray<PreviewFeature>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -24756,11 +24762,11 @@ export interface PreviewFeatureList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   etag?: string;
   /** Output only. [Output Only] Unreachable resources. end_interface: MixerListResponseWithEtagBuilder */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const PreviewFeatureList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -24825,7 +24831,7 @@ export interface ReservationBlockPhysicalTopology {
   /** The hash of the capacity block within the cluster. */
   block?: string;
   /** Output only. The detailed instances information for a given Block */
-  instances?: Array<ReservationBlockPhysicalTopologyInstance>;
+  instances?: ReadonlyArray<ReservationBlockPhysicalTopologyInstance>;
 }
 
 export const ReservationBlockPhysicalTopology =
@@ -24926,7 +24932,7 @@ export interface ReservationBlocksListResponse {
   /** Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of reservation block resources. */
-  items?: Array<ReservationBlock>;
+  items?: ReadonlyArray<ReservationBlock>;
   /** This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Server-defined URL for this resource. */
@@ -24965,7 +24971,7 @@ export interface ReservationBlocksListResponse {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -24996,7 +25002,7 @@ export interface ZoneSetNestedPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might reject them. */
   policy?: Policy;
   /** Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use 'policy' to specify bindings. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the etag. */
   etag?: string;
 }
@@ -25046,9 +25052,9 @@ export interface ReservationSlotStatus {
   /** Output only. [Output Only] The physical topology of the reservation sub-block. */
   physicalTopology?: ReservationSlotPhysicalTopology;
   /** Output only. The RDMA IP address of the physical host. */
-  rdmaIpAddresses?: Array<string>;
+  rdmaIpAddresses?: ReadonlyArray<string>;
   /** Output only. The URIs of the instances currently running on this slot. */
-  runningInstances?: Array<string>;
+  runningInstances?: ReadonlyArray<string>;
 }
 
 export const ReservationSlotStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -25117,7 +25123,7 @@ export interface ReservationSlotsListResponse {
   /** The unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of reservation slot resources. */
-  items?: Array<ReservationSlot>;
+  items?: ReadonlyArray<ReservationSlot>;
   /** This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** The server-defined URL for this resource. */
@@ -25156,7 +25162,7 @@ export interface ReservationSlotsListResponse {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -25185,7 +25191,7 @@ export const ReservationSlotsListResponse =
 
 export interface ReservationSlotsGetVersionRequest {
   /** The SBOM selection to return. Duplicate values in the list will be ignored. */
-  sbomSelections?: Array<
+  sbomSelections?: ReadonlyArray<
     | "SBOM_SELECTION_CURRENT"
     | "SBOM_SELECTION_TARGET"
     | "SBOM_SELECTION_UNSPECIFIED"
@@ -25266,7 +25272,7 @@ export interface AcceleratorTopologiesInfoAcceleratorTopologyInfo {
   /** The accelerator topology. */
   acceleratorTopology?: string;
   /** Info for each topology state. */
-  infoPerTopologyStates?: Array<AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState>;
+  infoPerTopologyStates?: ReadonlyArray<AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState>;
 }
 
 export const AcceleratorTopologiesInfoAcceleratorTopologyInfo =
@@ -25283,7 +25289,7 @@ export const AcceleratorTopologiesInfoAcceleratorTopologyInfo =
 
 export interface AcceleratorTopologiesInfo {
   /** Info for each accelerator topology. */
-  acceleratorTopologyInfos?: Array<AcceleratorTopologiesInfoAcceleratorTopologyInfo>;
+  acceleratorTopologyInfos?: ReadonlyArray<AcceleratorTopologiesInfoAcceleratorTopologyInfo>;
 }
 
 export const AcceleratorTopologiesInfo =
@@ -25359,7 +25365,7 @@ export interface ReservationSubBlocksListResponse {
   /** Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of reservation subBlock resources. */
-  items?: Array<ReservationSubBlock>;
+  items?: ReadonlyArray<ReservationSubBlock>;
   /** This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Server-defined URL for this resource. */
@@ -25398,7 +25404,7 @@ export interface ReservationSubBlocksListResponse {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -25453,7 +25459,7 @@ export interface ReservationSubBlocksReportFaultyRequest {
     | "IMMEDIATE"
     | (string & {});
   /** The reasons for the fault experienced with the subBlock. */
-  faultReasons?: Array<ReservationSubBlocksReportFaultyRequestFaultReason>;
+  faultReasons?: ReadonlyArray<ReservationSubBlocksReportFaultyRequestFaultReason>;
   /** The component that experienced the fault. */
   failureComponent?:
     | "FAILURE_COMPONENT_UNSPECIFIED"
@@ -25473,7 +25479,7 @@ export const ReservationSubBlocksReportFaultyRequest =
 
 export interface ReservationSubBlocksGetVersionRequest {
   /** The SBOM selection to return. */
-  sbomSelections?: Array<
+  sbomSelections?: ReadonlyArray<
     | "SBOM_SELECTION_CURRENT"
     | "SBOM_SELECTION_TARGET"
     | "SBOM_SELECTION_UNSPECIFIED"
@@ -25545,7 +25551,7 @@ export const ResourcePolicyWeeklyCycleDayOfWeek =
 
 export interface ResourcePolicyWeeklyCycle {
   /** Up to 7 intervals/windows, one for each day of the week. */
-  dayOfWeeks?: Array<ResourcePolicyWeeklyCycleDayOfWeek>;
+  dayOfWeeks?: ReadonlyArray<ResourcePolicyWeeklyCycleDayOfWeek>;
 }
 
 export const ResourcePolicyWeeklyCycle =
@@ -25591,7 +25597,7 @@ export interface ResourcePolicySnapshotSchedulePolicySnapshotProperties {
   /** Labels to apply to scheduled snapshots. These can be later modified by the setLabels method. Label values may be empty. */
   labels?: Record<string, string>;
   /** Cloud Storage bucket storage location of the auto snapshot (regional or multi-regional). */
-  storageLocations?: Array<string>;
+  storageLocations?: ReadonlyArray<string>;
   /** Indication to perform a 'guest aware' snapshot. */
   guestFlush?: boolean;
   /** Chain name that the snapshot is created in. */
@@ -25799,7 +25805,7 @@ export interface ResourcePolicyList {
   /** [Output Only] The unique identifier for the resource. This identifier is defined by the server. */
   id?: string;
   /** [Output Only] A list of ResourcePolicy resources. */
-  items?: Array<ResourcePolicy>;
+  items?: ReadonlyArray<ResourcePolicy>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** [Output Only] Informational warning message. */
@@ -25836,7 +25842,7 @@ export interface ResourcePolicyList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Server-defined URL for this resource. */
   selfLink?: string;
@@ -25868,7 +25874,7 @@ export const ResourcePolicyList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ResourcePoliciesScopedList {
   /** A list of resourcePolicies contained in this scope. */
-  resourcePolicies?: Array<ResourcePolicy>;
+  resourcePolicies?: ReadonlyArray<ResourcePolicy>;
   /** Informational warning which replaces the list of resourcePolicies when the list is empty. */
   warning?: {
     code?:
@@ -25903,7 +25909,7 @@ export interface ResourcePoliciesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -25971,11 +25977,11 @@ export interface ResourcePolicyAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   etag?: string;
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const ResourcePolicyAggregatedList =
@@ -26014,7 +26020,7 @@ export interface RouteAsPath {
     | "AS_SET"
     | (string & {});
   /** [Output Only] The AS numbers of the AS Path. */
-  asLists?: Array<number>;
+  asLists?: ReadonlyArray<number>;
 }
 
 export const RouteAsPath = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -26047,7 +26053,7 @@ export interface Route {
   /** Fully-qualified URL of the network that this route applies to. */
   network?: string;
   /** A list of instance tags to which this route applies. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported. Must specify an IPv4 range (e.g. 192.0.2.0/24) or an IPv6 range in RFC 4291 format (e.g. 2001:db8::/32). IPv6 range will be displayed using RFC 5952 compressed format. */
   destRange?: string;
   /** The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal prefix length. In cases where multiple routes have equal prefix length, the one with the lowest-numbered priority value wins. The default value is `1000`. The priority value must be from `0` to `65535`, inclusive. */
@@ -26065,7 +26071,7 @@ export interface Route {
   /** The URL to a forwarding rule of typeloadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule If an IP address is provided, must specify an IPv4 address in dot-decimal notation or an IPv6 address in RFC 4291 format. For example, the following are all valid IP addresses: - 10.128.0.56 - 2001:db8::2d9:51:0:0 - 2001:db8:0:0:2d9:51:0:0 IPv6 addresses will be displayed using RFC 5952 compressed format (e.g. 2001:db8::2d9:51:0:0). Should never be an IPv4-mapped IPv6 address. */
   nextHopIlb?: string;
   /** Output only. [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages. */
-  warnings?: Array<{
+  warnings?: ReadonlyArray<{
     code?:
       | "CLEANUP_FAILED"
       | "DEPRECATED_RESOURCE_USED"
@@ -26098,7 +26104,7 @@ export interface Route {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   }>;
   /** The URL to a VpnTunnel that should handle matching packets. */
   nextHopVpnTunnel?: string;
@@ -26111,7 +26117,7 @@ export interface Route {
   /** Output only. [Output Only] The type of this route, which can be one of the following values: - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers - 'SUBNET' for a route from a subnet of the VPC - 'BGP' for a route learned from a BGP peer of this router - 'STATIC' for a static route */
   routeType?: "BGP" | "STATIC" | "SUBNET" | "TRANSIT" | (string & {});
   /** Output only. [Output Only] AS path. */
-  asPaths?: Array<RouteAsPath>;
+  asPaths?: ReadonlyArray<RouteAsPath>;
   /** [Output only] The status of the route. This status applies to dynamic routes learned by Cloud Routers. It is also applicable to routes undergoing migration. */
   routeStatus?: "ACTIVE" | "DROPPED" | "INACTIVE" | "PENDING" | (string & {});
   /** Output only. [Output Only] Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE. */
@@ -26175,7 +26181,7 @@ export interface RouteList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of Route resources. */
-  items?: Array<Route>;
+  items?: ReadonlyArray<Route>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -26214,7 +26220,7 @@ export interface RouteList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -26330,9 +26336,9 @@ export interface RouterBgpPeer {
   /** User-specified flag to indicate which mode to use for advertisement. */
   advertiseMode?: "CUSTOM" | "DEFAULT" | (string & {});
   /** User-specified list of prefix groups to advertise in custom mode, which currently supports the following option: - ALL_SUBNETS: Advertises all of the router's own VPC subnets. This excludes any routes learned for subnets that use VPC Network Peering. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups. */
-  advertisedGroups?: Array<"ALL_SUBNETS" | (string & {})>;
+  advertisedGroups?: ReadonlyArray<"ALL_SUBNETS" | (string & {})>;
   /** User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These IP ranges are advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges. */
-  advertisedIpRanges?: Array<RouterAdvertisedIpRange>;
+  advertisedIpRanges?: ReadonlyArray<RouterAdvertisedIpRange>;
   /** Output only. [Output Only] The resource that configures and manages this BGP peer. - MANAGED_BY_USER is the default value and can be managed by you or other users - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted. */
   managementType?: "MANAGED_BY_ATTACHMENT" | "MANAGED_BY_USER" | (string & {});
   /** The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE. */
@@ -26352,7 +26358,7 @@ export interface RouterBgpPeer {
   /** The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route ranges for the session. You can choose a value from `0` to `65335`. If you don't provide a value, Google Cloud assigns a priority of `100` to the ranges. */
   customLearnedRoutePriority?: number;
   /** A list of user-defined custom learned route IP address ranges for a BGP session. */
-  customLearnedIpRanges?: Array<RouterBgpPeerCustomLearnedIpRange>;
+  customLearnedIpRanges?: ReadonlyArray<RouterBgpPeerCustomLearnedIpRange>;
   /** Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4. */
   enableIpv4?: boolean;
   /** IPv4 address of the interface inside Google Cloud Platform. */
@@ -26360,9 +26366,9 @@ export interface RouterBgpPeer {
   /** IPv4 address of the BGP interface outside Google Cloud Platform. */
   peerIpv4NexthopAddress?: string;
   /** List of export policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type. */
-  exportPolicies?: Array<string>;
+  exportPolicies?: ReadonlyArray<string>;
   /** List of import policies applied to this peer, in the order they must be evaluated. The name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type. */
-  importPolicies?: Array<string>;
+  importPolicies?: ReadonlyArray<string>;
 }
 
 export const RouterBgpPeer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -26400,9 +26406,9 @@ export interface RouterBgp {
   /** User-specified flag to indicate which mode to use for advertisement. The options are DEFAULT or CUSTOM. */
   advertiseMode?: "CUSTOM" | "DEFAULT" | (string & {});
   /** User-specified list of prefix groups to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and is advertised to all peers of the router. These groups will be advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups. */
-  advertisedGroups?: Array<"ALL_SUBNETS" | (string & {})>;
+  advertisedGroups?: ReadonlyArray<"ALL_SUBNETS" | (string & {})>;
   /** User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and is advertised to all peers of the router. These IP ranges will be advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges. */
-  advertisedIpRanges?: Array<RouterAdvertisedIpRange>;
+  advertisedIpRanges?: ReadonlyArray<RouterAdvertisedIpRange>;
   /** The interval in seconds between BGP keepalive messages that are sent to the peer. Hold time is three times the interval at which keepalive messages are sent, and the hold time is the maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer. BGP will use the smaller of either the local hold time value or the peer's hold time value as the hold time for the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20. */
   keepaliveInterval?: number;
   /** Explicitly specifies a range of valid BGP Identifiers for this Router. It is provided as a link-local IPv4 range (from 169.254.0.0/16), of size at least /30, even if the BGP sessions are over IPv6. It must not overlap with any IPv4 BGP session ranges. Other vendors commonly call this "router ID". */
@@ -26422,14 +26428,14 @@ export interface RouterNatSubnetworkToNat {
   /** URL for the subnetwork resource that will use NAT. */
   name?: string;
   /** Specify the options for NAT ranges in the Subnetwork. All options of a single value are valid except NAT_IP_RANGE_OPTION_UNSPECIFIED. The only valid option with multiple values is: ["PRIMARY_IP_RANGE", "LIST_OF_SECONDARY_IP_RANGES"] Default: [ALL_IP_RANGES] */
-  sourceIpRangesToNat?: Array<
+  sourceIpRangesToNat?: ReadonlyArray<
     | "ALL_IP_RANGES"
     | "LIST_OF_SECONDARY_IP_RANGES"
     | "PRIMARY_IP_RANGE"
     | (string & {})
   >;
   /** A list of the secondary ranges of the Subnetwork that are allowed to use NAT. This can be populated only if "LIST_OF_SECONDARY_IP_RANGES" is one of the values in source_ip_ranges_to_nat. */
-  secondaryIpRangeNames?: Array<string>;
+  secondaryIpRangeNames?: ReadonlyArray<string>;
 }
 
 export const RouterNatSubnetworkToNat =
@@ -26463,13 +26469,13 @@ export const RouterNatLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RouterNatRuleAction {
   /** A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project. This field is used for public NAT. */
-  sourceNatActiveIps?: Array<string>;
+  sourceNatActiveIps?: ReadonlyArray<string>;
   /** A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT. */
-  sourceNatDrainIps?: Array<string>;
+  sourceNatDrainIps?: ReadonlyArray<string>;
   /** A list of URLs of the subnetworks used as source ranges for this NAT Rule. These subnetworks must have purpose set to PRIVATE_NAT. This field is used for private NAT. */
-  sourceNatActiveRanges?: Array<string>;
+  sourceNatActiveRanges?: ReadonlyArray<string>;
   /** A list of URLs of subnetworks representing source ranges to be drained. This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule. This field is used for private NAT. */
-  sourceNatDrainRanges?: Array<string>;
+  sourceNatDrainRanges?: ReadonlyArray<string>;
 }
 
 export const RouterNatRuleAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -26510,7 +26516,7 @@ export interface RouterNat {
     | "STANDARD_OVERRIDES_FIXED_STANDARD"
     | (string & {});
   /** List of NAT-ted endpoint types supported by the Nat Gateway. If the list is empty, then it will be equivalent to include ENDPOINT_TYPE_VM */
-  endpointTypes?: Array<
+  endpointTypes?: ReadonlyArray<
     | "ENDPOINT_TYPE_MANAGED_PROXY_LB"
     | "ENDPOINT_TYPE_SWG"
     | "ENDPOINT_TYPE_VM"
@@ -26523,18 +26529,18 @@ export interface RouterNat {
     | "LIST_OF_SUBNETWORKS"
     | (string & {});
   /** A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above. */
-  subnetworks?: Array<RouterNatSubnetworkToNat>;
+  subnetworks?: ReadonlyArray<RouterNatSubnetworkToNat>;
   /** Specify the Nat option for NAT64, which can take one of the following values: - ALL_IPV6_SUBNETWORKS: All of the IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_IPV6_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field nat64_subnetwork below) The default is NAT64_OPTION_UNSPECIFIED. Note that if this field contains NAT64_ALL_V6_SUBNETWORKS no other Router.Nat section in this region can also enable NAT64 for any Subnetworks in this network. Other Router.Nat sections can still be present to enable NAT44 only. */
   sourceSubnetworkIpRangesToNat64?:
     | "ALL_IPV6_SUBNETWORKS"
     | "LIST_OF_IPV6_SUBNETWORKS"
     | (string & {});
   /** List of Subnetwork resources whose traffic should be translated by NAT64 Gateway. It is used only when LIST_OF_IPV6_SUBNETWORKS is selected for the SubnetworkIpRangeToNat64Option above. */
-  nat64Subnetworks?: Array<RouterNatSubnetworkToNat64>;
+  nat64Subnetworks?: ReadonlyArray<RouterNatSubnetworkToNat64>;
   /** A list of URLs of the IP resources used for this Nat service. These IP addresses must be valid static external IP addresses assigned to the project. */
-  natIps?: Array<string>;
+  natIps?: ReadonlyArray<string>;
   /** A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only. */
-  drainNatIps?: Array<string>;
+  drainNatIps?: ReadonlyArray<string>;
   /** Specify the NatIpAllocateOption, which can take one of the following values: - MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there are not enough specified Nat IPs, the Nat service fails for new VMs. - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers can't specify any Nat IPs. When choosing AUTO_ONLY, then nat_ip should be empty. */
   natIpAllocateOption?: "AUTO_ONLY" | "MANUAL_ONLY" | (string & {});
   /** Minimum number of ports allocated to a VM from this NAT config. If not set, a default number of ports is allocated to a VM. This is rounded up to the nearest power of 2. For example, if the value of this field is 50, at least 64 ports are allocated to a VM. */
@@ -26556,7 +26562,7 @@ export interface RouterNat {
   /** Configure logging on this NAT. */
   logConfig?: RouterNatLogConfig;
   /** A list of rules associated with this NAT. */
-  rules?: Array<RouterNatRule>;
+  rules?: ReadonlyArray<RouterNatRule>;
   enableEndpointIndependentMapping?: boolean;
 }
 
@@ -26625,19 +26631,19 @@ export interface Router {
   /** URI of the network to which this router belongs. */
   network?: string;
   /** Router interfaces. To create a BGP peer that uses a router interface, the interface must have one of the following fields specified: - linkedVpnTunnel - linkedInterconnectAttachment - subnetwork You can create a router interface without any of these fields specified. However, you cannot create a BGP peer that uses that interface. */
-  interfaces?: Array<RouterInterface>;
+  interfaces?: ReadonlyArray<RouterInterface>;
   /** BGP information that must be configured into the routing stack to establish BGP peering. This information must specify the peer ASN and either the interface name, IP address, or peer IP address. Please refer toRFC4273. */
-  bgpPeers?: Array<RouterBgpPeer>;
+  bgpPeers?: ReadonlyArray<RouterBgpPeer>;
   /** BGP information specific to this router. */
   bgp?: RouterBgp;
   /** [Output Only] Server-defined URL for the resource. */
   selfLink?: string;
   /** A list of NAT services created in this router. */
-  nats?: Array<RouterNat>;
+  nats?: ReadonlyArray<RouterNat>;
   /** Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). */
   encryptedInterconnectRouter?: boolean;
   /** Keys used for MD5 authentication. */
-  md5AuthenticationKeys?: Array<RouterMd5AuthenticationKey>;
+  md5AuthenticationKeys?: ReadonlyArray<RouterMd5AuthenticationKey>;
   /** Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload. */
   params?: RouterParams;
 }
@@ -26668,7 +26674,7 @@ export interface RouterList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of Router resources. */
-  items?: Array<Router>;
+  items?: ReadonlyArray<Router>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -26707,7 +26713,7 @@ export interface RouterList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -26735,7 +26741,7 @@ export const RouterList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RoutersScopedList {
   /** A list of routers contained in this scope. */
-  routers?: Array<Router>;
+  routers?: ReadonlyArray<Router>;
   /** Informational warning which replaces the list of routers when the list is empty. */
   warning?: {
     code?:
@@ -26770,7 +26776,7 @@ export interface RoutersScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -26837,10 +26843,10 @@ export interface RouterAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const RouterAggregatedList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -27015,7 +27021,7 @@ export interface BfdStatus {
   /** The most recent Rx control packet for this BFD session. */
   rxPacket?: BfdPacket;
   /** Inter-packet time interval statistics for control packets. */
-  controlPacketIntervals?: Array<PacketIntervals>;
+  controlPacketIntervals?: ReadonlyArray<PacketIntervals>;
   /** Negotiated transmit interval for control packets. */
   negotiatedLocalControlTxIntervalMs?: number;
   /** The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. */
@@ -27069,7 +27075,7 @@ export interface RouterStatusBgpPeerStatus {
   /** Output only. Number of routes learned from the remote BGP Peer. */
   numLearnedRoutes?: number;
   /** Routes that were advertised to the remote BGP peer */
-  advertisedRoutes?: Array<Route>;
+  advertisedRoutes?: ReadonlyArray<Route>;
   bfdStatus?: BfdStatus;
   /** Informs whether MD5 authentication is enabled on this BGP peer. */
   md5AuthEnabled?: boolean;
@@ -27116,9 +27122,9 @@ export interface RouterStatusNatStatusNatRuleStatus {
   /** Output only. Rule number of the rule. */
   ruleNumber?: number;
   /** Output only. A list of active IPs for NAT. Example: ["1.1.1.1", "179.12.26.133"]. */
-  activeNatIps?: Array<string>;
+  activeNatIps?: ReadonlyArray<string>;
   /** Output only. A list of IPs for NAT that are in drain mode. Example: ["1.1.1.1", "179.12.26.133"]. */
-  drainNatIps?: Array<string>;
+  drainNatIps?: ReadonlyArray<string>;
   /** Output only. The number of extra IPs to allocate. This will be greater than 0 only if the existing IPs in this NAT Rule are NOT enough to allow all configured VMs to use NAT. */
   minExtraIpsNeeded?: number;
   /** Output only. Number of VM endpoints (i.e., NICs) that have NAT Mappings from this NAT Rule. */
@@ -27138,21 +27144,21 @@ export interface RouterStatusNatStatus {
   /** Output only. Unique name of this NAT. */
   name?: string;
   /** Output only. A list of fully qualified URLs of reserved IP address resources. */
-  userAllocatedNatIpResources?: Array<string>;
+  userAllocatedNatIpResources?: ReadonlyArray<string>;
   /** Output only. A list of IPs user-allocated for NAT that are in drain mode. Example: ["1.1.1.1", "179.12.26.133"]. */
-  drainUserAllocatedNatIps?: Array<string>;
+  drainUserAllocatedNatIps?: ReadonlyArray<string>;
   /** Output only. A list of IPs user-allocated for NAT. They will be raw IP strings like "179.12.26.133". */
-  userAllocatedNatIps?: Array<string>;
+  userAllocatedNatIps?: ReadonlyArray<string>;
   /** Output only. A list of IPs auto-allocated for NAT. Example: ["1.1.1.1", "129.2.16.89"] */
-  autoAllocatedNatIps?: Array<string>;
+  autoAllocatedNatIps?: ReadonlyArray<string>;
   /** Output only. A list of IPs auto-allocated for NAT that are in drain mode. Example: ["1.1.1.1", "179.12.26.133"]. */
-  drainAutoAllocatedNatIps?: Array<string>;
+  drainAutoAllocatedNatIps?: ReadonlyArray<string>;
   /** Output only. The number of extra IPs to allocate. This will be greater than 0 only if user-specified IPs are NOT enough to allow all configured VMs to use NAT. This value is meaningful only when auto-allocation of NAT IPs is *not* used. */
   minExtraNatIpsNeeded?: number;
   /** Output only. Number of VM endpoints (i.e., Nics) that can use NAT. */
   numVmEndpointsWithNatMappings?: number;
   /** Status of rules in this NAT. */
-  ruleStatus?: Array<RouterStatusNatStatusNatRuleStatus>;
+  ruleStatus?: ReadonlyArray<RouterStatusNatStatusNatRuleStatus>;
 }
 
 export const RouterStatusNatStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -27171,11 +27177,11 @@ export interface RouterStatus {
   /** URI of the network to which this router belongs. */
   network?: string;
   /** A list of the best dynamic routes for this Cloud Router's Virtual Private Cloud (VPC) network in the same region as this Cloud Router. Lists all of the best routes per prefix that are programmed into this region's VPC data plane. When global dynamic routing mode is turned on in the VPC network, this list can include cross-region dynamic routes from Cloud Routers in other regions. */
-  bestRoutes?: Array<Route>;
+  bestRoutes?: ReadonlyArray<Route>;
   /** A list of the best BGP routes learned by this Cloud Router. It is possible that routes listed might not be programmed into the data plane, if the Google Cloud control plane finds a more optimal route for a prefix than a route learned by this Cloud Router. */
-  bestRoutesForRouter?: Array<Route>;
-  bgpPeerStatus?: Array<RouterStatusBgpPeerStatus>;
-  natStatus?: Array<RouterStatusNatStatus>;
+  bestRoutesForRouter?: ReadonlyArray<Route>;
+  bgpPeerStatus?: ReadonlyArray<RouterStatusBgpPeerStatus>;
+  natStatus?: ReadonlyArray<RouterStatusNatStatus>;
 }
 
 export const RouterStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -27203,9 +27209,9 @@ export interface VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings {
   /** Output only. Total number of ports across all NAT IPs allocated to this interface by this rule. It equals the aggregated port number in the field nat_ip_port_ranges. */
   numTotalNatPorts?: number;
   /** Output only. A list of all IP:port-range mappings assigned to this interface by this rule. These ranges are inclusive, that is, both the first and the last ports can be used for NAT. Example: ["2.2.2.2:12345-12355", "1.1.1.1:2234-2234"]. */
-  natIpPortRanges?: Array<string>;
+  natIpPortRanges?: ReadonlyArray<string>;
   /** Output only. List of all drain IP:port-range mappings assigned to this interface by this rule. These ranges are inclusive, that is, both the first and the last ports can be used for NAT. Example: ["2.2.2.2:12345-12355", "1.1.1.1:2234-2234"]. */
-  drainNatIpPortRanges?: Array<string>;
+  drainNatIpPortRanges?: ReadonlyArray<string>;
   /** Output only. Total number of drain ports across all NAT IPs allocated to this interface by this rule. It equals the aggregated port number in the field drain_nat_ip_port_ranges. */
   numTotalDrainNatPorts?: number;
 }
@@ -27229,13 +27235,13 @@ export interface VmEndpointNatMappingsInterfaceNatMappings {
   /** Output only. Total number of ports across all NAT IPs allocated to this interface. It equals to the aggregated port number in the field nat_ip_port_ranges. */
   numTotalNatPorts?: number;
   /** Output only. A list of all IP:port-range mappings assigned to this interface. These ranges are inclusive, that is, both the first and the last ports can be used for NAT. Example: ["2.2.2.2:12345-12355", "1.1.1.1:2234-2234"]. */
-  natIpPortRanges?: Array<string>;
+  natIpPortRanges?: ReadonlyArray<string>;
   /** Output only. List of all drain IP:port-range mappings assigned to this interface. These ranges are inclusive, that is, both the first and the last ports can be used for NAT. Example: ["2.2.2.2:12345-12355", "1.1.1.1:2234-2234"]. */
-  drainNatIpPortRanges?: Array<string>;
+  drainNatIpPortRanges?: ReadonlyArray<string>;
   /** Output only. Total number of drain ports across all NAT IPs allocated to this interface. It equals to the aggregated port number in the field drain_nat_ip_port_ranges. */
   numTotalDrainNatPorts?: number;
   /** Output only. Information about mappings provided by rules in this NAT. */
-  ruleMappings?: Array<VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings>;
+  ruleMappings?: ReadonlyArray<VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings>;
 }
 
 export const VmEndpointNatMappingsInterfaceNatMappings =
@@ -27254,7 +27260,7 @@ export const VmEndpointNatMappingsInterfaceNatMappings =
 export interface VmEndpointNatMappings {
   /** Output only. Name of the VM instance which the endpoint belongs to */
   instanceName?: string;
-  interfaceNatMappings?: Array<VmEndpointNatMappingsInterfaceNatMappings>;
+  interfaceNatMappings?: ReadonlyArray<VmEndpointNatMappingsInterfaceNatMappings>;
 }
 
 export const VmEndpointNatMappings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -27270,7 +27276,7 @@ export interface VmEndpointNatMappingsList {
   /** [Output Only] The unique identifier for the resource. This identifier is defined by the server. */
   id?: string;
   /** [Output Only] A list of Nat mapping information of VM endpoints. */
-  result?: Array<VmEndpointNatMappings>;
+  result?: ReadonlyArray<VmEndpointNatMappings>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -27309,7 +27315,7 @@ export interface VmEndpointNatMappingsList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -27356,7 +27362,7 @@ export interface NatIpInfo {
   /** Output only. Name of the NAT config which the NAT IP belongs to. */
   natName?: string;
   /** Output only. A list of all NAT IPs assigned to this NAT config. */
-  natIpInfoMappings?: Array<NatIpInfoNatIpInfoMapping>;
+  natIpInfoMappings?: ReadonlyArray<NatIpInfoNatIpInfoMapping>;
 }
 
 export const NatIpInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -27366,7 +27372,7 @@ export const NatIpInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NatIpInfoResponse {
   /** [Output Only] A list of NAT IP information. */
-  result?: Array<NatIpInfo>;
+  result?: ReadonlyArray<NatIpInfo>;
 }
 
 export const NatIpInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -27390,7 +27396,7 @@ export interface RoutePolicyPolicyTerm {
   /** CEL expression evaluated against a route to determine if this term applies. When not set, the term applies to all routes. */
   match?: Expr;
   /** CEL expressions to evaluate to modify a route when this term matches. */
-  actions?: Array<Expr>;
+  actions?: ReadonlyArray<Expr>;
 }
 
 export const RoutePolicyPolicyTerm = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -27407,7 +27413,7 @@ export interface RoutePolicy {
     | "ROUTE_POLICY_TYPE_IMPORT"
     | (string & {});
   /** List of terms (the order in the list is not important, they are evaluated in order of priority). Order of policies is not retained and might change when getting policy later. */
-  terms?: Array<RoutePolicyPolicyTerm>;
+  terms?: ReadonlyArray<RoutePolicyPolicyTerm>;
   /** A fingerprint for the Route Policy being applied to this Router, which is essentially a hash of the Route Policy used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update Route Policy. You must always provide an up-to-date fingerprint hash in order to update or change labels. To see the latest fingerprint, make a getRoutePolicy() request to retrieve a Route Policy. */
   fingerprint?: string;
   /** An optional description of route policy. */
@@ -27437,7 +27443,7 @@ export interface RoutersListRoutePolicies {
   /** [Output Only] The unique identifier for the resource. This identifier is defined by the server. */
   id?: string;
   /** [Output Only] A list of route policies. */
-  result?: Array<RoutePolicy>;
+  result?: ReadonlyArray<RoutePolicy>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -27476,11 +27482,11 @@ export interface RoutersListRoutePolicies {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   etag?: string;
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const RoutersListRoutePolicies =
@@ -27525,9 +27531,9 @@ export interface BgpRouteAsPath {
   /** Output only. [Output only] Type of AS-PATH segment (SEQUENCE or SET) */
   type?: "AS_PATH_TYPE_SEQUENCE" | "AS_PATH_TYPE_SET" | (string & {});
   /** Output only. [Output only] ASNs in the path segment. When type is SEQUENCE, these are ordered. */
-  asns?: Array<number>;
+  asns?: ReadonlyArray<number>;
   /** Output only. [Output only] ASNs in the path segment. This field is for better support of 32 bit ASNs as the other asns field suffers from overflow when the ASN is larger. When type is SEQUENCE, these are ordered. */
-  asns32?: Array<number>;
+  asns32?: ReadonlyArray<number>;
 }
 
 export const BgpRouteAsPath = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -27540,9 +27546,9 @@ export interface BgpRoute {
   /** Output only. [Output only] Destination IP range for the route, in human-readable CIDR format */
   destination?: BgpRouteNetworkLayerReachabilityInformation;
   /** Output only. [Output only] AS-PATH for the route */
-  asPaths?: Array<BgpRouteAsPath>;
+  asPaths?: ReadonlyArray<BgpRouteAsPath>;
   /** Output only. [Output only] BGP communities in human-readable A:B format. */
-  communities?: Array<string>;
+  communities?: ReadonlyArray<string>;
   /** Output only. [Output only] BGP origin (EGP, IGP or INCOMPLETE) */
   origin?:
     | "BGP_ORIGIN_EGP"
@@ -27567,7 +27573,7 @@ export interface RoutersListBgpRoutes {
   /** [Output Only] The unique identifier for the resource. This identifier is defined by the server. */
   id?: string;
   /** [Output Only] A list of bgp routes. */
-  result?: Array<BgpRoute>;
+  result?: ReadonlyArray<BgpRoute>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -27606,11 +27612,11 @@ export interface RoutersListBgpRoutes {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   etag?: string;
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const RoutersListBgpRoutes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -27658,7 +27664,7 @@ export interface ServiceAttachmentConnectedEndpoint {
   /** The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to. */
   propagatedConnectionCount?: number;
   /** NAT IPs of the connected PSC endpoint and those of other endpoints propagated from it. */
-  natIps?: Array<string>;
+  natIps?: ReadonlyArray<string>;
 }
 
 export const ServiceAttachmentConnectedEndpoint =
@@ -27717,21 +27723,21 @@ export interface ServiceAttachment {
     | "CONNECTION_PREFERENCE_UNSPECIFIED"
     | (string & {});
   /** Output only. [Output Only] An array of connections for all the consumers connected to this service attachment. */
-  connectedEndpoints?: Array<ServiceAttachmentConnectedEndpoint>;
+  connectedEndpoints?: ReadonlyArray<ServiceAttachmentConnectedEndpoint>;
   /** An array of URLs where each entry is the URL of a subnet provided by the service producer to use for NAT in this service attachment. */
-  natSubnets?: Array<string>;
+  natSubnets?: ReadonlyArray<string>;
   /** If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers. */
   enableProxyProtocol?: boolean;
   /** Specifies a list of projects or networks that are not allowed to connect to this service attachment. The project can be specified using its project ID or project number and the network can be specified using its URL. A given service attachment can manage connections at either the project or network level. Therefore, both the reject and accept lists for a given service attachment must contain either only projects or only networks. */
-  consumerRejectLists?: Array<string>;
+  consumerRejectLists?: ReadonlyArray<string>;
   /** Specifies which consumer projects or networks are allowed to connect to the service attachment. Each project or network has a connection limit. A given service attachment can manage connections at either the project or network level. Therefore, both the accept and reject lists for a given service attachment must contain either only projects or only networks or only endpoints. */
-  consumerAcceptLists?: Array<ServiceAttachmentConsumerProjectLimit>;
+  consumerAcceptLists?: ReadonlyArray<ServiceAttachmentConsumerProjectLimit>;
   /** Output only. [Output Only] An 128-bit global unique ID of the PSC service attachment. */
   pscServiceAttachmentId?: Uint128;
   /** Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment. */
   fingerprint?: string;
   /** If specified, the domain name will be used during the integration between the PSC connected endpoints and the Cloud DNS. For example, this is a valid domain name: "p.mycompany.com.". Current max number of domain names supported is 1. */
-  domainNames?: Array<string>;
+  domainNames?: ReadonlyArray<string>;
   /** This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false. */
   reconcileConnections?: boolean;
   /** The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center. This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer. If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list. If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint. If unspecified, the default propagated connection limit is 250. */
@@ -27770,7 +27776,7 @@ export const ServiceAttachment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ServiceAttachmentsScopedList {
   /** A list of ServiceAttachments contained in this scope. */
-  serviceAttachments?: Array<ServiceAttachment>;
+  serviceAttachments?: ReadonlyArray<ServiceAttachment>;
   /** Informational warning which replaces the list of service attachments when the list is empty. */
   warning?: {
     code?:
@@ -27805,7 +27811,7 @@ export interface ServiceAttachmentsScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -27873,10 +27879,10 @@ export interface ServiceAttachmentAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const ServiceAttachmentAggregatedList =
@@ -27911,7 +27917,7 @@ export interface ServiceAttachmentList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of ServiceAttachment resources. */
-  items?: Array<ServiceAttachment>;
+  items?: ReadonlyArray<ServiceAttachment>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** [Output Only] Server-defined URL for this resource. */
@@ -27950,7 +27956,7 @@ export interface ServiceAttachmentList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -28066,7 +28072,7 @@ export const SnapshotSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SslCertificateManagedSslCertificate {
   /** The domains for which a managed SSL certificate will be generated. Each Google-managed SSL certificate supports up to the [maximum number of domains per Google-managed SSL certificate](/load-balancing/docs/quotas#ssl_certificates). */
-  domains?: Array<string>;
+  domains?: ReadonlyArray<string>;
   /** Output only. [Output only] Status of the managed certificate resource. */
   status?:
     | "ACTIVE"
@@ -28134,7 +28140,7 @@ export interface SslCertificate {
   /** (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fieldscertificate and private_key are used. */
   type?: "MANAGED" | "SELF_MANAGED" | "TYPE_UNSPECIFIED" | (string & {});
   /** Output only. [Output Only] Domains associated with the certificate via Subject Alternative Name. */
-  subjectAlternativeNames?: Array<string>;
+  subjectAlternativeNames?: ReadonlyArray<string>;
   /** Output only. [Output Only] Expire time of the certificate. RFC3339 */
   expireTime?: string;
   /** Output only. [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate. */
@@ -28164,7 +28170,7 @@ export interface SslCertificateList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of SslCertificate resources. */
-  items?: Array<SslCertificate>;
+  items?: ReadonlyArray<SslCertificate>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -28203,7 +28209,7 @@ export interface SslCertificateList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -28231,7 +28237,7 @@ export const SslCertificateList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SslCertificatesScopedList {
   /** List of SslCertificates contained in this scope. */
-  sslCertificates?: Array<SslCertificate>;
+  sslCertificates?: ReadonlyArray<SslCertificate>;
   /** Informational warning which replaces the list of backend services when the list is empty. */
   warning?: {
     code?:
@@ -28266,7 +28272,7 @@ export interface SslCertificatesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -28334,10 +28340,10 @@ export interface SslCertificateAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const SslCertificateAggregatedList =
@@ -28390,13 +28396,13 @@ export interface SslPolicy {
   /** The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one ofTLS_1_0, TLS_1_1, TLS_1_2,TLS_1_3. When set to TLS_1_3, the profile field must be set to RESTRICTED. */
   minTlsVersion?: "TLS_1_0" | "TLS_1_1" | "TLS_1_2" | "TLS_1_3" | (string & {});
   /** Output only. [Output Only] The list of features enabled in the SSL policy. */
-  enabledFeatures?: Array<string>;
+  enabledFeatures?: ReadonlyArray<string>;
   /** A list of features enabled when the selected profile is CUSTOM. The method returns the set of features that can be specified in this list. This field must be empty if the profile is notCUSTOM. */
-  customFeatures?: Array<string>;
+  customFeatures?: ReadonlyArray<string>;
   /** Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an SslPolicy. */
   fingerprint?: string;
   /** Output only. [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages. */
-  warnings?: Array<{
+  warnings?: ReadonlyArray<{
     code?:
       | "CLEANUP_FAILED"
       | "DEPRECATED_RESOURCE_USED"
@@ -28429,7 +28435,7 @@ export interface SslPolicy {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   }>;
   /** Output only. [Output Only] URL of the region where the regional SSL policy resides. This field is not applicable to global SSL policies. */
   region?: string;
@@ -28472,7 +28478,7 @@ export interface SslPoliciesList {
   /** Output only. [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** Output only. A list of SslPolicy resources. */
-  items?: Array<SslPolicy>;
+  items?: ReadonlyArray<SslPolicy>;
   /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -28511,7 +28517,7 @@ export interface SslPoliciesList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -28538,7 +28544,7 @@ export const SslPoliciesList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "SslPoliciesList" });
 
 export interface SslPoliciesListAvailableFeaturesResponse {
-  features?: Array<string>;
+  features?: ReadonlyArray<string>;
 }
 
 export const SslPoliciesListAvailableFeaturesResponse =
@@ -28548,7 +28554,7 @@ export const SslPoliciesListAvailableFeaturesResponse =
 
 export interface SslPoliciesScopedList {
   /** A list of SslPolicies contained in this scope. */
-  sslPolicies?: Array<SslPolicy>;
+  sslPolicies?: ReadonlyArray<SslPolicy>;
   /** Informational warning which replaces the list of SSL policies when the list is empty. */
   warning?: {
     code?:
@@ -28583,7 +28589,7 @@ export interface SslPoliciesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -28650,11 +28656,11 @@ export interface SslPoliciesAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   etag?: string;
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const SslPoliciesAggregatedList =
@@ -28716,7 +28722,7 @@ export interface StoragePoolType {
   /** [Output Only] Maximum provisioned throughput. */
   maxPoolProvisionedThroughput?: string;
   /** [Output Only] The list of disk types supported in this storage pool type. */
-  supportedDiskTypes?: Array<string>;
+  supportedDiskTypes?: ReadonlyArray<string>;
 }
 
 export const StoragePoolType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -28745,7 +28751,7 @@ export interface StoragePoolTypeList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of StoragePoolType resources. */
-  items?: Array<StoragePoolType>;
+  items?: ReadonlyArray<StoragePoolType>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -28784,7 +28790,7 @@ export interface StoragePoolTypeList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -28812,7 +28818,7 @@ export const StoragePoolTypeList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StoragePoolTypesScopedList {
   /** [Output Only] A list of storage pool types contained in this scope. */
-  storagePoolTypes?: Array<StoragePoolType>;
+  storagePoolTypes?: ReadonlyArray<StoragePoolType>;
   /** [Output Only] Informational warning which replaces the list of storage pool types when the list is empty. */
   warning?: {
     code?:
@@ -28847,7 +28853,7 @@ export interface StoragePoolTypesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -28915,7 +28921,7 @@ export interface StoragePoolTypeAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -29105,7 +29111,7 @@ export interface StoragePoolList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of StoragePool resources. */
-  items?: Array<StoragePool>;
+  items?: ReadonlyArray<StoragePool>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -29144,11 +29150,11 @@ export interface StoragePoolList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   etag?: string;
   /** Output only. [Output Only] Unreachable resources. end_interface: MixerListResponseWithEtagBuilder */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const StoragePoolList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -29177,7 +29183,7 @@ export const StoragePoolList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StoragePoolsScopedList {
   /** [Output Only] A list of storage pool contained in this scope. */
-  storagePools?: Array<StoragePool>;
+  storagePools?: ReadonlyArray<StoragePool>;
   /** [Output Only] Informational warning which replaces the list of storage pool when the list is empty. */
   warning?: {
     code?:
@@ -29212,7 +29218,7 @@ export interface StoragePoolsScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -29281,11 +29287,11 @@ export interface StoragePoolAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   etag?: string;
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const StoragePoolAggregatedList =
@@ -29342,9 +29348,9 @@ export interface StoragePoolDisk {
   /** Output only. [Output Only] Creation timestamp inRFC3339 text format. */
   creationTimestamp?: string;
   /** Output only. [Output Only] Instances this disk is attached to. */
-  attachedInstances?: Array<string>;
+  attachedInstances?: ReadonlyArray<string>;
   /** Output only. [Output Only] Resource policies applied to disk for automatic snapshot creations. */
-  resourcePolicies?: Array<string>;
+  resourcePolicies?: ReadonlyArray<string>;
 }
 
 export const StoragePoolDisk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -29367,7 +29373,7 @@ export interface StoragePoolListDisks {
   /** Output only. [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of StoragePoolDisk resources. */
-  items?: Array<StoragePoolDisk>;
+  items?: ReadonlyArray<StoragePoolDisk>;
   /** Output only. [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -29406,11 +29412,11 @@ export interface StoragePoolListDisks {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   etag?: string;
   /** Output only. [Output Only] Unreachable resources. end_interface: MixerListResponseWithEtagBuilder */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const StoragePoolListDisks = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -29479,7 +29485,7 @@ export interface TargetGrpcProxyList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of TargetGrpcProxy resources. */
-  items?: Array<TargetGrpcProxy>;
+  items?: ReadonlyArray<TargetGrpcProxy>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** [Output Only] Server-defined URL for this resource. */
@@ -29518,7 +29524,7 @@ export interface TargetGrpcProxyList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -29589,7 +29595,7 @@ export interface TargetHttpProxyList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of TargetHttpProxy resources. */
-  items?: Array<TargetHttpProxy>;
+  items?: ReadonlyArray<TargetHttpProxy>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -29628,7 +29634,7 @@ export interface TargetHttpProxyList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -29664,7 +29670,7 @@ export const UrlMapReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TargetHttpProxiesScopedList {
   /** A list of TargetHttpProxies contained in this scope. */
-  targetHttpProxies?: Array<TargetHttpProxy>;
+  targetHttpProxies?: ReadonlyArray<TargetHttpProxy>;
   /** Informational warning which replaces the list of backend services when the list is empty. */
   warning?: {
     code?:
@@ -29699,7 +29705,7 @@ export interface TargetHttpProxiesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -29734,7 +29740,7 @@ export interface TargetHttpProxyAggregatedList {
   /** Output only. [Output Only] Server-defined URL for this resource. */
   selfLink?: string;
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const TargetHttpProxyAggregatedList =
@@ -29765,7 +29771,7 @@ export interface TargetHttpsProxy {
   /** A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map: - https://www.googleapis.compute/v1/projects/project/global/urlMaps/url-map - projects/project/global/urlMaps/url-map - global/urlMaps/url-map */
   urlMap?: string;
   /** URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer. At least one SSL certificate must be specified. SslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED. The URLs should refer to a SSL Certificate resource or Certificate Manager Certificate resource. Mixing Classic Certificates and Certificate Manager Certificates is not allowed. Certificate Manager Certificates must include the certificatemanager API namespace. Using Certificate Manager Certificates in this field is not supported by Global external Application Load Balancer or Classic Application Load Balancer, use certificate_map instead. Currently, you may specify up to 15 Classic SSL Certificates or up to 100 Certificate Manager Certificates. Certificate Manager Certificates accepted formats are: - //certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}. - https://certificatemanager.googleapis.com/v1alpha1/projects/{project}/locations/{location}/certificates/{resourceName}. */
-  sslCertificates?: Array<string>;
+  sslCertificates?: ReadonlyArray<string>;
   /** URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for Global external Application Load Balancer or Classic Application Load Balancer. For other products use Certificate Manager Certificates instead. If set, sslCertificates will be ignored. Accepted format is//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}. */
   certificateMap?: string;
   /** Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, orDISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified,NONE is implied. */
@@ -29820,7 +29826,7 @@ export interface TargetHttpsProxyList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of TargetHttpsProxy resources. */
-  items?: Array<TargetHttpsProxy>;
+  items?: ReadonlyArray<TargetHttpsProxy>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -29859,7 +29865,7 @@ export interface TargetHttpsProxyList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -29887,7 +29893,7 @@ export const TargetHttpsProxyList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TargetHttpsProxiesScopedList {
   /** A list of TargetHttpsProxies contained in this scope. */
-  targetHttpsProxies?: Array<TargetHttpsProxy>;
+  targetHttpsProxies?: ReadonlyArray<TargetHttpsProxy>;
   /** Informational warning which replaces the list of backend services when the list is empty. */
   warning?: {
     code?:
@@ -29922,7 +29928,7 @@ export interface TargetHttpsProxiesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -29990,10 +29996,10 @@ export interface TargetHttpsProxyAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const TargetHttpsProxyAggregatedList =
@@ -30024,7 +30030,7 @@ export const TargetHttpsProxyAggregatedList =
 
 export interface TargetHttpsProxiesSetSslCertificatesRequest {
   /** New set of SslCertificate resources to associate with this TargetHttpsProxy resource. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. */
-  sslCertificates?: Array<string>;
+  sslCertificates?: ReadonlyArray<string>;
 }
 
 export const TargetHttpsProxiesSetSslCertificatesRequest =
@@ -30063,7 +30069,7 @@ export const TargetHttpsProxiesSetQuicOverrideRequest =
 
 export interface RegionTargetHttpsProxiesSetSslCertificatesRequest {
   /** New set of SslCertificate resources to associate with this TargetHttpsProxy resource. */
-  sslCertificates?: Array<string>;
+  sslCertificates?: ReadonlyArray<string>;
 }
 
 export const RegionTargetHttpsProxiesSetSslCertificatesRequest =
@@ -30118,7 +30124,7 @@ export interface TargetInstanceList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of TargetInstance resources. */
-  items?: Array<TargetInstance>;
+  items?: ReadonlyArray<TargetInstance>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -30157,7 +30163,7 @@ export interface TargetInstanceList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -30185,7 +30191,7 @@ export const TargetInstanceList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TargetInstancesScopedList {
   /** A list of target instances contained in this scope. */
-  targetInstances?: Array<TargetInstance>;
+  targetInstances?: ReadonlyArray<TargetInstance>;
   /** Informational warning which replaces the list of addresses when the list is empty. */
   warning?: {
     code?:
@@ -30220,7 +30226,7 @@ export interface TargetInstancesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -30288,10 +30294,10 @@ export interface TargetInstanceAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const TargetInstanceAggregatedList =
@@ -30334,9 +30340,9 @@ export interface TargetPool {
   /** Output only. [Output Only] URL of the region where the target pool resides. */
   region?: string;
   /** The URL of the HttpHealthCheck resource. A member instance in this pool is considered healthy if and only if the health checks pass. Only legacy HttpHealthChecks are supported. Only one health check may be specified. */
-  healthChecks?: Array<string>;
+  healthChecks?: ReadonlyArray<string>;
   /** A list of resource URLs to the virtual machine instances serving this pool. They must live in zones contained in the same region as this pool. */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
   /** Session affinity option, must be one of the following values: NONE: Connections from the same client IP may go to any instance in the pool. CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy. CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy. */
   sessionAffinity?:
     | "CLIENT_IP"
@@ -30381,7 +30387,7 @@ export interface TargetPoolList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of TargetPool resources. */
-  items?: Array<TargetPool>;
+  items?: ReadonlyArray<TargetPool>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -30420,7 +30426,7 @@ export interface TargetPoolList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -30448,7 +30454,7 @@ export const TargetPoolList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TargetPoolsScopedList {
   /** A list of target pools contained in this scope. */
-  targetPools?: Array<TargetPool>;
+  targetPools?: ReadonlyArray<TargetPool>;
   /** Informational warning which replaces the list of addresses when the list is empty. */
   warning?: {
     code?:
@@ -30483,7 +30489,7 @@ export interface TargetPoolsScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -30550,10 +30556,10 @@ export interface TargetPoolAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const TargetPoolAggregatedList =
@@ -30583,7 +30589,7 @@ export const TargetPoolAggregatedList =
 export interface TargetPoolInstanceHealth {
   /** Output only. [Output Only] Type of resource. Alwayscompute#targetPoolInstanceHealth when checking the health of an instance. */
   kind?: string;
-  healthStatus?: Array<HealthStatus>;
+  healthStatus?: ReadonlyArray<HealthStatus>;
 }
 
 export const TargetPoolInstanceHealth =
@@ -30594,7 +30600,7 @@ export const TargetPoolInstanceHealth =
 
 export interface TargetPoolsAddHealthCheckRequest {
   /** The HttpHealthCheck to add to the target pool. */
-  healthChecks?: Array<HealthCheckReference>;
+  healthChecks?: ReadonlyArray<HealthCheckReference>;
 }
 
 export const TargetPoolsAddHealthCheckRequest =
@@ -30604,7 +30610,7 @@ export const TargetPoolsAddHealthCheckRequest =
 
 export interface TargetPoolsRemoveHealthCheckRequest {
   /** Health check URL to be removed. This can be a full or valid partial URL. For example, the following are valid URLs: - https://www.googleapis.com/compute/beta/projects/project/global/httpHealthChecks/health-check - projects/project/global/httpHealthChecks/health-check - global/httpHealthChecks/health-check */
-  healthChecks?: Array<HealthCheckReference>;
+  healthChecks?: ReadonlyArray<HealthCheckReference>;
 }
 
 export const TargetPoolsRemoveHealthCheckRequest =
@@ -30614,7 +30620,7 @@ export const TargetPoolsRemoveHealthCheckRequest =
 
 export interface TargetPoolsAddInstanceRequest {
   /** A full or partial URL to an instance to add to this target pool. This can be a full or partial URL. For example, the following are valid URLs: - https://www.googleapis.com/compute/v1/projects/project-id/zones/zone/instances/instance-name - projects/project-id/zones/zone/instances/instance-name - zones/zone/instances/instance-name */
-  instances?: Array<InstanceReference>;
+  instances?: ReadonlyArray<InstanceReference>;
 }
 
 export const TargetPoolsAddInstanceRequest =
@@ -30624,7 +30630,7 @@ export const TargetPoolsAddInstanceRequest =
 
 export interface TargetPoolsRemoveInstanceRequest {
   /** URLs of the instances to be removed from target pool. */
-  instances?: Array<InstanceReference>;
+  instances?: ReadonlyArray<InstanceReference>;
 }
 
 export const TargetPoolsRemoveInstanceRequest =
@@ -30648,7 +30654,7 @@ export interface TargetSslProxy {
   /** URL to the BackendService resource. */
   service?: string;
   /** URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED. */
-  sslCertificates?: Array<string>;
+  sslCertificates?: ReadonlyArray<string>;
   /** URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored. Accepted format is//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}. */
   certificateMap?: string;
   /** Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE. */
@@ -30677,7 +30683,7 @@ export interface TargetSslProxyList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of TargetSslProxy resources. */
-  items?: Array<TargetSslProxy>;
+  items?: ReadonlyArray<TargetSslProxy>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -30716,7 +30722,7 @@ export interface TargetSslProxyList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -30754,7 +30760,7 @@ export const TargetSslProxiesSetBackendServiceRequest =
 
 export interface TargetSslProxiesSetSslCertificatesRequest {
   /** New set of URLs to SslCertificate resources to associate with this TargetSslProxy. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. */
-  sslCertificates?: Array<string>;
+  sslCertificates?: ReadonlyArray<string>;
 }
 
 export const TargetSslProxiesSetSslCertificatesRequest =
@@ -30824,7 +30830,7 @@ export interface TargetTcpProxyList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of TargetTcpProxy resources. */
-  items?: Array<TargetTcpProxy>;
+  items?: ReadonlyArray<TargetTcpProxy>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -30863,7 +30869,7 @@ export interface TargetTcpProxyList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -30891,7 +30897,7 @@ export const TargetTcpProxyList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TargetTcpProxiesScopedList {
   /** A list of TargetTcpProxies contained in this scope. */
-  targetTcpProxies?: Array<TargetTcpProxy>;
+  targetTcpProxies?: ReadonlyArray<TargetTcpProxy>;
   /** Informational warning which replaces the list of backend services when the list is empty. */
   warning?: {
     code?:
@@ -30926,7 +30932,7 @@ export interface TargetTcpProxiesScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -30994,10 +31000,10 @@ export interface TargetTcpProxyAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const TargetTcpProxyAggregatedList =
@@ -31075,13 +31081,13 @@ export interface TargetVpnGateway {
   /** URL of the network to which this VPN gateway is attached. Provided by the client when the VPN gateway is created. */
   network?: string;
   /** [Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are created using the compute.vpntunnels.insert method and associated with a VPN gateway. */
-  tunnels?: Array<string>;
+  tunnels?: ReadonlyArray<string>;
   /** [Output Only] The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING. */
   status?: "CREATING" | "DELETING" | "FAILED" | "READY" | (string & {});
   /** [Output Only] Server-defined URL for the resource. */
   selfLink?: string;
   /** [Output Only] A list of URLs to the ForwardingRule resources. ForwardingRules are created usingcompute.forwardingRules.insert and associated with a VPN gateway. */
-  forwardingRules?: Array<string>;
+  forwardingRules?: ReadonlyArray<string>;
   /** Labels for this resource. These can only be added or modified by thesetLabels method. Each label key/value pair must comply withRFC1035. Label values may be empty. */
   labels?: Record<string, string>;
   /** A fingerprint for the labels being applied to this TargetVpnGateway, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a TargetVpnGateway. */
@@ -31113,7 +31119,7 @@ export interface TargetVpnGatewayList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of TargetVpnGateway resources. */
-  items?: Array<TargetVpnGateway>;
+  items?: ReadonlyArray<TargetVpnGateway>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -31152,7 +31158,7 @@ export interface TargetVpnGatewayList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -31180,7 +31186,7 @@ export const TargetVpnGatewayList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TargetVpnGatewaysScopedList {
   /** [Output Only] A list of target VPN gateways contained in this scope. */
-  targetVpnGateways?: Array<TargetVpnGateway>;
+  targetVpnGateways?: ReadonlyArray<TargetVpnGateway>;
   /** [Output Only] Informational warning which replaces the list of addresses when the list is empty. */
   warning?: {
     code?:
@@ -31215,7 +31221,7 @@ export interface TargetVpnGatewaysScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -31283,10 +31289,10 @@ export interface TargetVpnGatewayAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const TargetVpnGatewayAggregatedList =
@@ -31319,7 +31325,7 @@ export interface HostRule {
   /** An optional description of this resource. Provide this property when you create the resource. */
   description?: string;
   /** The list of host patterns to match. They must be valid hostnames with optional port numbers in the format host:port.* matches any string of ([a-z0-9-.]*). In that case, * must be the first character, and if followed by anything, the immediate following character must be either - or .. * based matching is not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true. */
-  hosts?: Array<string>;
+  hosts?: ReadonlyArray<string>;
   /** The name of the PathMatcher to use to match the path portion of the URL if the hostRule matches the URL's host portion. */
   pathMatcher?: string;
 }
@@ -31347,13 +31353,13 @@ export const HttpHeaderOption = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface HttpHeaderAction {
   /** A list of header names for headers that need to be removed from the request before forwarding the request to the backendService. */
-  requestHeadersToRemove?: Array<string>;
+  requestHeadersToRemove?: ReadonlyArray<string>;
   /** Headers to add to a matching request before forwarding the request to thebackendService. */
-  requestHeadersToAdd?: Array<HttpHeaderOption>;
+  requestHeadersToAdd?: ReadonlyArray<HttpHeaderOption>;
   /** A list of header names for headers that need to be removed from the response before sending the response back to the client. */
-  responseHeadersToRemove?: Array<string>;
+  responseHeadersToRemove?: ReadonlyArray<string>;
   /** Headers to add the response before sending the response back to the client. */
-  responseHeadersToAdd?: Array<HttpHeaderOption>;
+  responseHeadersToAdd?: ReadonlyArray<HttpHeaderOption>;
 }
 
 export const HttpHeaderAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -31397,7 +31403,7 @@ export const UrlRewrite = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface HttpRetryPolicy {
   /** Specifies one or more conditions when this retry policy applies. Valid values are: - 5xx: retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams. - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or504. - connect-failure: a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts. - retriable-4xx: a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409. - refused-stream: a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: a retry is attempted if the gRPC status code in the response header is set to cancelled. - deadline-exceeded: a retry is attempted if the gRPC status code in the response header is set todeadline-exceeded. - internal: a retry is attempted if the gRPC status code in the response header is set tointernal. - resource-exhausted: a retry is attempted if the gRPC status code in the response header is set toresource-exhausted. - unavailable: a retry is attempted if the gRPC status code in the response header is set tounavailable. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true. - cancelled - deadline-exceeded - internal - resource-exhausted - unavailable */
-  retryConditions?: Array<string>;
+  retryConditions?: ReadonlyArray<string>;
   /** Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1. */
   numRetries?: number;
   /** Specifies a non-zero timeout per retry attempt. If not specified, will use the timeout set in theHttpRouteAction field. If timeout in the HttpRouteAction field is not set, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true. */
@@ -31424,15 +31430,15 @@ export const RequestMirrorPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CorsPolicy {
   /** Specifies the list of origins that is allowed to do CORS requests. An origin is allowed if it matches either an item inallowOrigins or an item inallowOriginRegexes. */
-  allowOrigins?: Array<string>;
+  allowOrigins?: ReadonlyArray<string>;
   /** Specifies a regular expression that matches allowed origins. For more information, see regular expression syntax. An origin is allowed if it matches either an item inallowOrigins or an item inallowOriginRegexes. Regular expressions can only be used when the loadBalancingScheme is set to INTERNAL_SELF_MANAGED. */
-  allowOriginRegexes?: Array<string>;
+  allowOriginRegexes?: ReadonlyArray<string>;
   /** Specifies the content for the Access-Control-Allow-Methods header. */
-  allowMethods?: Array<string>;
+  allowMethods?: ReadonlyArray<string>;
   /** Specifies the content for the Access-Control-Allow-Headers header. */
-  allowHeaders?: Array<string>;
+  allowHeaders?: ReadonlyArray<string>;
   /** Specifies the content for the Access-Control-Expose-Headers header. */
-  exposeHeaders?: Array<string>;
+  exposeHeaders?: ReadonlyArray<string>;
   /** Specifies how long results of a preflight request can be cached in seconds. This field translates to the Access-Control-Max-Age header. */
   maxAge?: number;
   /** In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header. Default is false. */
@@ -31490,7 +31496,7 @@ export const HttpFaultInjection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface HttpRouteAction {
   /** A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be oneweightedBackendService with weight set to a non-zero number. After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction. */
-  weightedBackendServices?: Array<WeightedBackendService>;
+  weightedBackendServices?: ReadonlyArray<WeightedBackendService>;
   /** The spec to modify the URL of the request, before forwarding the request to the matched service. urlRewrite is the only action supported in UrlMaps for classic Application Load Balancers. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true. */
   urlRewrite?: UrlRewrite;
   /** Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as *end-of-stream*) up until the response has been processed. Timeout includes all retries. If not specified, this field uses the largest timeout among all backend services associated with the route. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true. */
@@ -31552,7 +31558,7 @@ export const HttpRedirectAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CustomErrorResponsePolicyCustomErrorResponseRule {
   /** Valid values include: - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value. - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599. - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499. Values must be unique within matchResponseCodes and across allerrorResponseRules ofCustomErrorResponsePolicy. */
-  matchResponseCodes?: Array<string>;
+  matchResponseCodes?: ReadonlyArray<string>;
   /** The full path to a file within backendBucket . For example:/errors/defaultError.html path must start with a leading slash. path cannot have trailing slashes. If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simpleNot Found Error is returned to the client. The value must be from 1 to 1024 characters */
   path?: string;
   /** The HTTP status code returned with the response containing the custom error content. If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client. */
@@ -31570,7 +31576,7 @@ export const CustomErrorResponsePolicyCustomErrorResponseRule =
 
 export interface CustomErrorResponsePolicy {
   /** Specifies rules for returning error responses. In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority. For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX). If the backend service returns a401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for4xx takes effect. */
-  errorResponseRules?: Array<CustomErrorResponsePolicyCustomErrorResponseRule>;
+  errorResponseRules?: ReadonlyArray<CustomErrorResponsePolicyCustomErrorResponseRule>;
   /** The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are: - https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket If errorService is not specified at lower levels likepathMatcher, pathRule and routeRule, an errorService specified at a higher level in theUrlMap will be used. IfUrlMap.defaultCustomErrorResponsePolicy contains one or moreerrorResponseRules[], it must specifyerrorService. If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (oroverrideResponseCode if configured). errorService is not supported for internal or regionalHTTP/HTTPS load balancers. */
   errorService?: string;
 }
@@ -31591,7 +31597,7 @@ export interface PathRule {
   /** When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. Only one of urlRedirect, service orrouteAction.weightedBackendService can be set. Not supported when the URL map is bound to a target gRPC proxy. */
   urlRedirect?: HttpRedirectAction;
   /** The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here. */
-  paths?: Array<string>;
+  paths?: ReadonlyArray<string>;
   /** customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceorBackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured inpathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified inpathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a404 is encountered, the policy underUrlMap.defaultCustomErrorResponsePolicy takes effect. If a404 response is encountered for the requestwww.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request forwww.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy atUrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for global external Application Load Balancers. */
   customErrorResponsePolicy?: CustomErrorResponsePolicy;
 }
@@ -31675,11 +31681,11 @@ export interface HttpRouteRuleMatch {
   /** Specifies that prefixMatch and fullPathMatch matches are case sensitive. The default value is false. ignoreCase must not be used with regexMatch. Not supported when the URL map is bound to a target gRPC proxy. */
   ignoreCase?: boolean;
   /** Specifies a list of header match criteria, all of which must match corresponding headers in the request. */
-  headerMatches?: Array<HttpHeaderMatch>;
+  headerMatches?: ReadonlyArray<HttpHeaderMatch>;
   /** Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request. Not supported when the URL map is bound to a target gRPC proxy. */
-  queryParameterMatches?: Array<HttpQueryParameterMatch>;
+  queryParameterMatches?: ReadonlyArray<HttpQueryParameterMatch>;
   /** Opaque filter criteria used by the load balancer to restrict routing configuration to a limited set of xDS compliant clients. In their xDS requests to the load balancer, xDS clients present node metadata. When there is a match, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if itsfilterMatchCriteria is set to MATCH_ANY, at least one of thefilterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. If multiple metadata filters are specified, all of them need to be satisfied in order to be considered a match. metadataFilters specified here is applied after those specified in ForwardingRule that refers to theUrlMap this HttpRouteRuleMatch belongs to. metadataFilters only applies to load balancers that haveloadBalancingScheme set toINTERNAL_SELF_MANAGED. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true. */
-  metadataFilters?: Array<MetadataFilter>;
+  metadataFilters?: ReadonlyArray<MetadataFilter>;
   /** If specified, this field defines a path template pattern that must match the :path header after the query string is removed. A path template pattern can include variables and wildcards. Variables are enclosed in curly braces, for example{variable_name}. Wildcards include * that matches a single path segment, and ** that matches zero or more path segments. The pattern must follow these rules: - The value must be between 1 and 1024 characters. - The pattern must start with a leading slash ("/"). - No more than 5 operators (variables or wildcards) may appear in the pattern. Precisely one ofprefixMatch, fullPathMatch,regexMatch, or pathTemplateMatch must be set. */
   pathTemplateMatch?: string;
 }
@@ -31701,7 +31707,7 @@ export interface HttpRouteRule {
   /** The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters. */
   description?: string;
   /** The list of criteria for matching attributes of a request to thisrouteRule. This list has OR semantics: the request matches this routeRule when any of thematchRules are satisfied. However predicates within a given matchRule have AND semantics. All predicates within a matchRule must match for the request to match the rule. */
-  matchRules?: Array<HttpRouteRuleMatch>;
+  matchRules?: ReadonlyArray<HttpRouteRuleMatch>;
   /** The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. Only one of urlRedirect, service orrouteAction.weightedBackendService can be set. */
   service?: string;
   /** In response to a matching matchRule, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. Only one of urlRedirect, service orrouteAction.weightedBackendService can be set. URL maps for classic Application Load Balancers only support the urlRewrite action within a route rule'srouteAction. */
@@ -31737,9 +31743,9 @@ export interface PathMatcher {
   /** When none of the specified pathRules orrouteRules match, the request is redirected to a URL specified by defaultUrlRedirect. Only one of defaultUrlRedirect, defaultService or defaultRouteAction.weightedBackendService can be set. Not supported when the URL map is bound to a target gRPC proxy. */
   defaultUrlRedirect?: HttpRedirectAction;
   /** The list of path rules. Use this list instead of routeRules when routing based on simple path matching is all that's required. A path rule can only include a wildcard character (*) after a forward slash character ("/"). The order by which path rules are specified does not matter. Matches are always done on the longest-path-first basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/* irrespective of the order in which those paths appear in this list. Within a given pathMatcher, only one ofpathRules or routeRules must be set. */
-  pathRules?: Array<PathRule>;
+  pathRules?: ReadonlyArray<PathRule>;
   /** The list of HTTP route rules. Use this list instead ofpathRules when advanced route matching and routing actions are desired. routeRules are evaluated in order of priority, from the lowest to highest number. Within a given pathMatcher, you can set only one ofpathRules or routeRules. */
-  routeRules?: Array<HttpRouteRule>;
+  routeRules?: ReadonlyArray<HttpRouteRule>;
   /** Specifies changes to request and response headers that need to take effect for the selected backend service. HeaderAction specified here are applied after the matchingHttpRouteRule HeaderAction and before theHeaderAction in the UrlMap HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true. */
   headerAction?: HttpHeaderAction;
   /** defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceorBackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels likeRouteRule and PathRule within thisPathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a404 is encountered, the policy underUrlMap.defaultCustomErrorResponsePolicy takes effect. If a404 response is encountered for the requestwww.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request forwww.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy atUrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction withpathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, thedefaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers. */
@@ -31778,7 +31784,7 @@ export interface UrlMapTest {
   /** Path portion of the URL. */
   path?: string;
   /** HTTP headers for this request. If headers contains a host header, then host must also match the header value. */
-  headers?: Array<UrlMapTestHeader>;
+  headers?: ReadonlyArray<UrlMapTestHeader>;
   /** Expected BackendService or BackendBucket resource the given URL should be mapped to. The service field cannot be set if expectedRedirectResponseCode is set. */
   service?: string;
   /** The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters. For rules that forward requests to backends, the test passes only whenexpectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matcheshostRewrite and pathPrefixRewrite in theurlRewrite action. When service is specified,expectedOutputUrl`s scheme is ignored. For rules with urlRedirect, the test passes only ifexpectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifieshttps_redirect, the test passes only if the scheme inexpectedOutputUrl is also set to HTTPS. If urlRedirect specifies strip_query, the test passes only if expectedOutputUrl does not contain any query parameters. expectedOutputUrl is optional whenservice is specified. */
@@ -31811,11 +31817,11 @@ export interface UrlMap {
   /** [Output Only] Server-defined URL for the resource. */
   selfLink?: string;
   /** The list of host rules to use against the URL. */
-  hostRules?: Array<HostRule>;
+  hostRules?: ReadonlyArray<HostRule>;
   /** The list of named PathMatchers to use against the URL. */
-  pathMatchers?: Array<PathMatcher>;
+  pathMatchers?: ReadonlyArray<PathMatcher>;
   /** The list of expected URL mapping tests. Request to update theUrlMap succeeds only if all test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true. */
-  tests?: Array<UrlMapTest>;
+  tests?: ReadonlyArray<UrlMapTest>;
   /** The full or partial URL of the defaultService resource to which traffic is directed if none of the hostRules match. If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. Only one of defaultUrlRedirect, defaultService or defaultRouteAction.weightedBackendService can be set. defaultService has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true. */
   defaultService?: string;
   /** defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. Only one of defaultUrlRedirect, defaultService or defaultRouteAction.weightedBackendService can be set. URL maps for classic Application Load Balancers only support the urlRewrite action within defaultRouteAction. defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true. */
@@ -31857,7 +31863,7 @@ export interface UrlMapList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of UrlMap resources. */
-  items?: Array<UrlMap>;
+  items?: ReadonlyArray<UrlMap>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -31896,7 +31902,7 @@ export interface UrlMapList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -31924,7 +31930,7 @@ export const UrlMapList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface UrlMapsScopedList {
   /** A list of UrlMaps contained in this scope. */
-  urlMaps?: Array<UrlMap>;
+  urlMaps?: ReadonlyArray<UrlMap>;
   /** Informational warning which replaces the list of backend services when the list is empty. */
   warning?: {
     code?:
@@ -31959,7 +31965,7 @@ export interface UrlMapsScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -32026,10 +32032,10 @@ export interface UrlMapsAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const UrlMapsAggregatedList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -32059,7 +32065,7 @@ export interface UrlMapsValidateRequest {
   /** Content of the UrlMap to be validated. */
   resource?: UrlMap;
   /** Specifies the load balancer type(s) this validation request is for. UseEXTERNAL_MANAGED for global external Application Load Balancers and regional external Application Load Balancers. Use EXTERNAL for classic Application Load Balancers. Use INTERNAL_MANAGED for internal Application Load Balancers. For more information, refer to Choosing a load balancer. If unspecified, the load balancing scheme will be inferred from the backend service resources this URL map references. If that can not be inferred (for example, this URL map only references backend buckets, or this Url map is for rewrites and redirects only and doesn't reference any backends),EXTERNAL will be used as the default type. If specified, the scheme(s) must not conflict with the load balancing scheme of the backend service resources this Url map references. */
-  loadBalancingSchemes?: Array<
+  loadBalancingSchemes?: ReadonlyArray<
     | "EXTERNAL"
     | "EXTERNAL_MANAGED"
     | "LOAD_BALANCING_SCHEME_UNSPECIFIED"
@@ -32080,7 +32086,7 @@ export interface TestFailure {
   /** Path portion including query parameters in the URL. */
   path?: string;
   /** HTTP headers of the request. */
-  headers?: Array<UrlMapTestHeader>;
+  headers?: ReadonlyArray<UrlMapTestHeader>;
   /** Expected BackendService or BackendBucket resource the given URL should be mapped to. */
   expectedService?: string;
   /** BackendService or BackendBucket returned by load balancer. */
@@ -32110,10 +32116,10 @@ export const TestFailure = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface UrlMapValidationResult {
   /** Whether the given UrlMap can be successfully loaded. If false, 'loadErrors' indicates the reasons. */
   loadSucceeded?: boolean;
-  loadErrors?: Array<string>;
+  loadErrors?: ReadonlyArray<string>;
   /** If successfully loaded, this field indicates whether the test passed. If false, 'testFailures's indicate the reason of failure. */
   testPassed?: boolean;
-  testFailures?: Array<TestFailure>;
+  testFailures?: ReadonlyArray<TestFailure>;
 }
 
 export const UrlMapValidationResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -32139,7 +32145,7 @@ export interface CacheInvalidationRule {
   /** If set, this invalidation rule will only apply to requests with a Host header matching host. */
   host?: string;
   /** A list of cache tags used to identify cached objects. - Cache tags are specified when the response is first cached, by setting the `Cache-Tag` response header at the origin. - Multiple cache tags in the same invalidation request are treated as Boolean `OR` - for example, `tag1 OR tag2 OR tag3`. - If other fields are also specified, these are treated as Boolean `AND` with any tags. Up to 10 tags can be specified in a single invalidation request. */
-  cacheTags?: Array<string>;
+  cacheTags?: ReadonlyArray<string>;
 }
 
 export const CacheInvalidationRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -32210,7 +32216,7 @@ export interface VpnGateway {
   /** A fingerprint for the labels being applied to this VpnGateway, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a VpnGateway. */
   labelFingerprint?: string;
   /** The list of VPN interfaces associated with this VPN gateway. */
-  vpnInterfaces?: Array<VpnGatewayVpnGatewayInterface>;
+  vpnInterfaces?: ReadonlyArray<VpnGatewayVpnGatewayInterface>;
   /** The stack type for this VPN gateway to identify the IP protocols that are enabled. Possible values are: IPV4_ONLY,IPV4_IPV6, IPV6_ONLY. If not specified,IPV4_ONLY is used if the gateway IP version isIPV4, or IPV4_IPV6 if the gateway IP version isIPV6. */
   stackType?: "IPV4_IPV6" | "IPV4_ONLY" | "IPV6_ONLY" | (string & {});
   /** The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used. */
@@ -32242,7 +32248,7 @@ export interface VpnGatewayList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of VpnGateway resources. */
-  items?: Array<VpnGateway>;
+  items?: ReadonlyArray<VpnGateway>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -32281,7 +32287,7 @@ export interface VpnGatewayList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -32309,7 +32315,7 @@ export const VpnGatewayList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface VpnGatewaysScopedList {
   /** [Output Only] A list of VPN gateways contained in this scope. */
-  vpnGateways?: Array<VpnGateway>;
+  vpnGateways?: ReadonlyArray<VpnGateway>;
   /** [Output Only] Informational warning which replaces the list of addresses when the list is empty. */
   warning?: {
     code?:
@@ -32344,7 +32350,7 @@ export interface VpnGatewaysScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -32411,10 +32417,10 @@ export interface VpnGatewayAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const VpnGatewayAggregatedList =
@@ -32482,7 +32488,7 @@ export interface VpnGatewayStatusVpnConnection {
   /** Output only. URL reference to the peer side VPN gateways to which the VPN tunnels in this VPN connection are connected. This field is mutually exclusive with peer_gcp_gateway. */
   peerGcpGateway?: string;
   /** List of VPN tunnels that are in this VPN connection. */
-  tunnels?: Array<VpnGatewayStatusTunnel>;
+  tunnels?: ReadonlyArray<VpnGatewayStatusTunnel>;
   /** HighAvailabilityRequirementState for the VPN connection. */
   state?: VpnGatewayStatusHighAvailabilityRequirementState;
 }
@@ -32497,7 +32503,7 @@ export const VpnGatewayStatusVpnConnection =
 
 export interface VpnGatewayStatus {
   /** Output only. List of VPN connection for this VpnGateway. */
-  vpnConnections?: Array<VpnGatewayStatusVpnConnection>;
+  vpnConnections?: ReadonlyArray<VpnGatewayStatusVpnConnection>;
 }
 
 export const VpnGatewayStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -32514,10 +32520,10 @@ export const VpnGatewaysGetStatusResponse =
   }).annotate({ identifier: "VpnGatewaysGetStatusResponse" });
 
 export interface VpnTunnelPhase1Algorithms {
-  encryption?: Array<string>;
-  integrity?: Array<string>;
-  prf?: Array<string>;
-  dh?: Array<string>;
+  encryption?: ReadonlyArray<string>;
+  integrity?: ReadonlyArray<string>;
+  prf?: ReadonlyArray<string>;
+  dh?: ReadonlyArray<string>;
 }
 
 export const VpnTunnelPhase1Algorithms =
@@ -32529,9 +32535,9 @@ export const VpnTunnelPhase1Algorithms =
   }).annotate({ identifier: "VpnTunnelPhase1Algorithms" });
 
 export interface VpnTunnelPhase2Algorithms {
-  encryption?: Array<string>;
-  integrity?: Array<string>;
-  pfs?: Array<string>;
+  encryption?: ReadonlyArray<string>;
+  integrity?: ReadonlyArray<string>;
+  pfs?: ReadonlyArray<string>;
 }
 
 export const VpnTunnelPhase2Algorithms =
@@ -32618,9 +32624,9 @@ export interface VpnTunnel {
   /** [Output Only] Detailed status message for the VPN tunnel. */
   detailedStatus?: string;
   /** Local traffic selector to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges must be disjoint. Only IPv4 is supported for Classic VPN tunnels. This field is output only for HA VPN tunnels. */
-  localTrafficSelector?: Array<string>;
+  localTrafficSelector?: ReadonlyArray<string>;
   /** Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported for Classic VPN tunnels. This field is output only for HA VPN tunnels. */
-  remoteTrafficSelector?: Array<string>;
+  remoteTrafficSelector?: ReadonlyArray<string>;
   /** Labels for this resource. These can only be added or modified by thesetLabels method. Each label key/value pair must comply withRFC1035. Label values may be empty. */
   labels?: Record<string, string>;
   /** A fingerprint for the labels being applied to this VpnTunnel, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a VpnTunnel. */
@@ -32666,7 +32672,7 @@ export interface VpnTunnelList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of VpnTunnel resources. */
-  items?: Array<VpnTunnel>;
+  items?: ReadonlyArray<VpnTunnel>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -32705,7 +32711,7 @@ export interface VpnTunnelList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -32733,7 +32739,7 @@ export const VpnTunnelList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface VpnTunnelsScopedList {
   /** A list of VPN tunnels contained in this scope. */
-  vpnTunnels?: Array<VpnTunnel>;
+  vpnTunnels?: ReadonlyArray<VpnTunnel>;
   /** Informational warning which replaces the list of addresses when the list is empty. */
   warning?: {
     code?:
@@ -32768,7 +32774,7 @@ export interface VpnTunnelsScopedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -32835,10 +32841,10 @@ export interface VpnTunnelAggregatedList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   /** Output only. [Output Only] Unreachable resources. */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const VpnTunnelAggregatedList =
@@ -32869,7 +32875,7 @@ export interface WireGroupEndpointInterconnect {
   /** Required. An Interconnect connection. You can specify the connection as a partial or full URL. If the connection is in a different project from the cross-site network, use a format that specifies the project. See the following examples of partial and full URLs: global/interconnects/NAME projects/PROJECT_ID/global/interconnects/NAME - https://compute.googleapis.com/compute/projects/PROJECT_ID/global/interconnects/NAME */
   interconnect?: string;
   /** Required. To configure the wire group for VLAN mode, enter a VLAN tag, which is a number from `2` to `4093`. You can autoallocate a tag by entering `0`. To configure the wire group for port mode, enter `-1`. Review the following guidelines: - A VLAN tag must be unique for an Interconnect connection across all attachments and wire groups. - Both endpoints of a wire must use the same VLAN tag value. - Single wire and redundant type wire groups must have only one VLAN tag. - Port mode pseudowires must have a single VLAN tag with a value of `-1` for both endpoints. - Box and cross type wire groups must have two VLAN tags. The first is for the same-zone pseudowire, and the second is for the cross-zone pseudowire. */
-  vlanTags?: Array<number>;
+  vlanTags?: ReadonlyArray<number>;
 }
 
 export const WireGroupEndpointInterconnect =
@@ -32921,7 +32927,7 @@ export interface Wire {
   /** Output only. [Output Only] A label that identifies the wire. The format of this label combines the existing labels of the wire group endpoints and Interconnect connections used by this wire in alphabetical order as follows: `ENDPOINT_A+CONNECTION_A1,ENDPOINT_B+CONNECTION_B1`, where: - ENDPOINT_A and ENDPOINT_B: are the labels that you entered as map keys when you specified the wire group endpoint objects. - CONNECTION_A1 and CONNECTION_B1: are the labels that you entered as map keys when you specified the wire group Interconnect objects. */
   label?: string;
   /** Output only. Wire endpoints are specific Interconnect connections. */
-  endpoints?: Array<WireEndpoint>;
+  endpoints?: ReadonlyArray<WireEndpoint>;
   /** Output only. [Output Only] Properties of the wire. */
   wireProperties?: WireProperties;
   /** Output only. [Output Only] Indicates whether the wire is enabled. When false, the wire is disabled. When true and when the wire group of the wire is also enabled, the wire is enabled. Defaults to true. */
@@ -32950,7 +32956,7 @@ export const WireGroupTopologyEndpoint =
 
 export interface WireGroupTopology {
   /** Output only. Topology details for all endpoints in the wire group. */
-  endpoints?: Array<WireGroupTopologyEndpoint>;
+  endpoints?: ReadonlyArray<WireGroupTopologyEndpoint>;
 }
 
 export const WireGroupTopology = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -32977,7 +32983,7 @@ export interface WireGroup {
   /** Indicates whether the wires in the wire group are enabled. When false, the wires in the wire group are disabled. When true and when there is simultaneously no wire-specific override of `adminEnabled` to false, a given wire is enabled. Defaults to true. */
   adminEnabled?: boolean;
   /** Output only. The single/redundant wire(s) managed by the wire group. */
-  wires?: Array<Wire>;
+  wires?: ReadonlyArray<Wire>;
   /** Output only. Topology details for the wire group configuration. */
   topology?: WireGroupTopology;
   /** Output only. [Output Only] Indicates whether there are wire changes yet to be processed. */
@@ -33005,7 +33011,7 @@ export interface WireGroupList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of wire group resources. */
-  items?: Array<WireGroup>;
+  items?: ReadonlyArray<WireGroup>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** [Output Only] Server-defined URL for this resource. */
@@ -33044,11 +33050,11 @@ export interface WireGroupList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
   etag?: string;
   /** Output only. [Output Only] Unreachable resources. end_interface: MixerListResponseWithEtagBuilder */
-  unreachables?: Array<string>;
+  unreachables?: ReadonlyArray<string>;
 }
 
 export const WireGroupList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -33095,7 +33101,7 @@ export interface Zone {
   /** [Output Only] Server-defined URL for the resource. */
   selfLink?: string;
   /** [Output Only] Available cpu/platform selections for the zone. */
-  availableCpuPlatforms?: Array<string>;
+  availableCpuPlatforms?: ReadonlyArray<string>;
   /** Output only. [Output Only] Reserved for future use. */
   supportsPzs?: boolean;
 }
@@ -33120,7 +33126,7 @@ export interface ZoneList {
   /** [Output Only] Unique identifier for the resource; defined by the server. */
   id?: string;
   /** A list of Zone resources. */
-  items?: Array<Zone>;
+  items?: ReadonlyArray<Zone>;
   /** [Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger thanmaxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results. */
   nextPageToken?: string;
   /** Output only. [Output Only] Server-defined URL for this resource. */
@@ -33159,7 +33165,7 @@ export interface ZoneList {
       | "UNREACHABLE"
       | (string & {});
     message?: string;
-    data?: Array<{ key?: string; value?: string }>;
+    data?: ReadonlyArray<{ key?: string; value?: string }>;
   };
 }
 
@@ -69035,7 +69041,7 @@ export const GetReservationSlotsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "projects/{project}/zones/{zone}/reservations/{reservationsId}/reservationBlocks/{reservationBlocksId}/reservationSubBlocks/{reservationSubBlocksId}/reservationSlots/{reservationSlot}",
+      path: "projects/{project}/zones/{zone}/{parentName}/reservationSlots/{reservationSlot}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetReservationSlotsRequest>;
@@ -69092,7 +69098,7 @@ export const ListReservationSlotsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "projects/{project}/zones/{zone}/reservations/{reservationsId}/reservationBlocks/{reservationBlocksId}/reservationSubBlocks/{reservationSubBlocksId}/reservationSlots",
+      path: "projects/{project}/zones/{zone}/{parentName}/reservationSlots",
     }),
     svc,
   ) as unknown as Schema.Schema<ListReservationSlotsRequest>;
@@ -69146,7 +69152,7 @@ export const GetVersionReservationSlotsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{project}/zones/{zone}/reservations/{reservationsId}/reservationBlocks/{reservationBlocksId}/reservationSubBlocks/{reservationSubBlocksId}/reservationSlots/{reservationSlot}/getVersion",
+      path: "projects/{project}/zones/{zone}/{parentName}/reservationSlots/{reservationSlot}/getVersion",
       hasBody: true,
     }),
     svc,
@@ -69196,7 +69202,7 @@ export const UpdateReservationSlotsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{project}/zones/{zone}/reservations/{reservationsId}/reservationBlocks/{reservationBlocksId}/reservationSubBlocks/{reservationSubBlocksId}/reservationSlots/{reservationSlot}",
+      path: "projects/{project}/zones/{zone}/{parentName}/reservationSlots/{reservationSlot}",
       hasBody: true,
     }),
     svc,
@@ -69247,7 +69253,7 @@ export const GetReservationSubBlocksRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "projects/{project}/zones/{zone}/reservations/{reservationsId}/reservationBlocks/{reservationBlocksId}/reservationSubBlocks/{reservationSubBlock}",
+      path: "projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks/{reservationSubBlock}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetReservationSubBlocksRequest>;
@@ -69304,7 +69310,7 @@ export const ListReservationSubBlocksRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "projects/{project}/zones/{zone}/reservations/{reservationsId}/reservationBlocks/{reservationBlocksId}/reservationSubBlocks",
+      path: "projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks",
     }),
     svc,
   ) as unknown as Schema.Schema<ListReservationSubBlocksRequest>;
@@ -69357,7 +69363,7 @@ export const GetIamPolicyReservationSubBlocksRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "projects/{project}/zones/{zone}/reservations/{reservationsId}/reservationBlocks/{reservationBlocksId}/reservationSubBlocks/{resource}/getIamPolicy",
+      path: "projects/{project}/zones/{zone}/{parentResource}/reservationSubBlocks/{resource}/getIamPolicy",
     }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyReservationSubBlocksRequest>;
@@ -69403,7 +69409,7 @@ export const SetIamPolicyReservationSubBlocksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{project}/zones/{zone}/reservations/{reservationsId}/reservationBlocks/{reservationBlocksId}/reservationSubBlocks/{resource}/setIamPolicy",
+      path: "projects/{project}/zones/{zone}/{parentResource}/reservationSubBlocks/{resource}/setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -69450,7 +69456,7 @@ export const TestIamPermissionsReservationSubBlocksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{project}/zones/{zone}/reservations/{reservationsId}/reservationBlocks/{reservationBlocksId}/reservationSubBlocks/{resource}/testIamPermissions",
+      path: "projects/{project}/zones/{zone}/{parentResource}/reservationSubBlocks/{resource}/testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -69498,7 +69504,7 @@ export const PerformMaintenanceReservationSubBlocksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{project}/zones/{zone}/reservations/{reservationsId}/reservationBlocks/{reservationBlocksId}/reservationSubBlocks/{reservationSubBlock}/performMaintenance",
+      path: "projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks/{reservationSubBlock}/performMaintenance",
       hasBody: true,
     }),
     svc,
@@ -69550,7 +69556,7 @@ export const ReportFaultyReservationSubBlocksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{project}/zones/{zone}/reservations/{reservationsId}/reservationBlocks/{reservationBlocksId}/reservationSubBlocks/{reservationSubBlock}/reportFaulty",
+      path: "projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks/{reservationSubBlock}/reportFaulty",
       hasBody: true,
     }),
     svc,
@@ -69602,7 +69608,7 @@ export const GetVersionReservationSubBlocksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "projects/{project}/zones/{zone}/reservations/{reservationsId}/reservationBlocks/{reservationBlocksId}/reservationSubBlocks/{reservationSubBlock}/getVersion",
+      path: "projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks/{reservationSubBlock}/getVersion",
       hasBody: true,
     }),
     svc,

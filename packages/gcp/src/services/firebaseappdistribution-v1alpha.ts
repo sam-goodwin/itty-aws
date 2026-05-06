@@ -46,7 +46,7 @@ export const GoogleFirebaseAppdistroV1alphaAiStep =
 
 export interface GoogleFirebaseAppdistroV1alphaAiInstructions {
   /** Required. Steps to be accomplished by the AI */
-  steps?: Array<GoogleFirebaseAppdistroV1alphaAiStep>;
+  steps?: ReadonlyArray<GoogleFirebaseAppdistroV1alphaAiStep>;
 }
 
 export const GoogleFirebaseAppdistroV1alphaAiInstructions =
@@ -134,7 +134,7 @@ export interface GoogleFirebaseAppdistroV1alphaTestConfig {
   /** Optional. Configuration for Robo crawler */
   roboCrawler?: GoogleFirebaseAppdistroV1alphaRoboCrawler;
   /** Optional. Tests will be run on this list of devices */
-  testDevices?: Array<GoogleFirebaseAppdistroV1alphaTestDevice>;
+  testDevices?: ReadonlyArray<GoogleFirebaseAppdistroV1alphaTestDevice>;
 }
 
 export const GoogleFirebaseAppdistroV1alphaTestConfig =
@@ -304,7 +304,7 @@ export interface GoogleFirebaseAppdistroV1alphaDeviceAction {
   /** Output only. A short description of the high level action taken by the AI agent. */
   description?: string;
   /** Output only. The interactions made with the device as part of this higher level action taken by the agent, such as taps, text entries, waits, etc. */
-  deviceInteractions?: Array<GoogleFirebaseAppdistroV1alphaDeviceInteraction>;
+  deviceInteractions?: ReadonlyArray<GoogleFirebaseAppdistroV1alphaDeviceInteraction>;
 }
 
 export const GoogleFirebaseAppdistroV1alphaDeviceAction =
@@ -383,7 +383,7 @@ export const GoogleFirebaseAppdistroV1alphaGoalAction =
 
 export interface GoogleFirebaseAppdistroV1alphaGoalDetails {
   /** Output only. The actions taken by the AI while attempting to accomplish the goal. */
-  goalActions?: Array<GoogleFirebaseAppdistroV1alphaGoalAction>;
+  goalActions?: ReadonlyArray<GoogleFirebaseAppdistroV1alphaGoalAction>;
 }
 
 export const GoogleFirebaseAppdistroV1alphaGoalDetails =
@@ -471,7 +471,7 @@ export const GoogleFirebaseAppdistroV1alphaRoboStats =
 
 export interface GoogleFirebaseAppdistroV1alphaDeviceExecution {
   /** Output only. Results of the AI steps if passed in */
-  aiStepResults?: Array<GoogleFirebaseAppdistroV1alphaAiStepResult>;
+  aiStepResults?: ReadonlyArray<GoogleFirebaseAppdistroV1alphaAiStepResult>;
   /** Output only. A URI to an image of the Robo crawl graph. */
   crawlGraphUri?: string;
   /** Output only. The type of execution for the test. */
@@ -487,7 +487,7 @@ export interface GoogleFirebaseAppdistroV1alphaDeviceExecution {
   /** Output only. The time at which the video started recording. */
   videoStartTime?: string;
   /** Output only. A list of screenshot image URIs taken from the Robo crawl. The file names are numbered by the order in which they were taken. */
-  screenshotUris?: Array<string>;
+  screenshotUris?: ReadonlyArray<string>;
   /** Output only. The state of the test. */
   state?:
     | "TEST_STATE_UNSPECIFIED"
@@ -569,7 +569,7 @@ export interface GoogleFirebaseAppdistroV1alphaTestCase {
   /** Output only. Timestamp when the test case was created */
   createTime?: string;
   /** Output only. Other test cases that depend on this test case as a prerequisite. */
-  dependentTestCases?: Array<string>;
+  dependentTestCases?: ReadonlyArray<string>;
 }
 
 export const GoogleFirebaseAppdistroV1alphaTestCase =
@@ -601,7 +601,7 @@ export const GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest =
 
 export interface GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesRequest {
   /** Required. The update requests. A maximum number of 1000 test cases can be updated in one batch */
-  requests?: Array<GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest>;
+  requests?: ReadonlyArray<GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest>;
 }
 
 export const GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesRequest =
@@ -637,7 +637,7 @@ export interface GoogleFirebaseAppdistroV1alphaReleaseTest {
   /** Output only. Timestamp when the test was run. */
   createTime?: string;
   /** Required. The results of the test on each device. */
-  deviceExecutions?: Array<GoogleFirebaseAppdistroV1alphaDeviceExecution>;
+  deviceExecutions?: ReadonlyArray<GoogleFirebaseAppdistroV1alphaDeviceExecution>;
   /** Optional. Instructions for AI driven test. */
   aiInstructions?: GoogleFirebaseAppdistroV1alphaAiInstructions;
   /** Optional. Input only. Login credentials for the test. Input only. */
@@ -664,7 +664,7 @@ export const GoogleFirebaseAppdistroV1alphaReleaseTest =
 
 export interface GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse {
   /** The tests listed. */
-  releaseTests?: Array<GoogleFirebaseAppdistroV1alphaReleaseTest>;
+  releaseTests?: ReadonlyArray<GoogleFirebaseAppdistroV1alphaReleaseTest>;
   /** A short-lived token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -751,7 +751,7 @@ export const GoogleFirebaseAppdistroV1alphaTesterUdid =
 
 export interface GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse {
   /** The UDIDs of tester iOS devices in a project */
-  testerUdids?: Array<GoogleFirebaseAppdistroV1alphaTesterUdid>;
+  testerUdids?: ReadonlyArray<GoogleFirebaseAppdistroV1alphaTesterUdid>;
 }
 
 export const GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse =
@@ -765,7 +765,7 @@ export const GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse =
 
 export interface GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse {
   /** The updated test cases. */
-  testCases?: Array<GoogleFirebaseAppdistroV1alphaTestCase>;
+  testCases?: ReadonlyArray<GoogleFirebaseAppdistroV1alphaTestCase>;
 }
 
 export const GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse =
@@ -786,7 +786,7 @@ export const GoogleFirebaseAppdistroV1UploadReleaseMetadata =
 
 export interface GoogleFirebaseAppdistroV1alphaListTestCasesResponse {
   /** The test cases from the specified app. */
-  testCases?: Array<GoogleFirebaseAppdistroV1alphaTestCase>;
+  testCases?: ReadonlyArray<GoogleFirebaseAppdistroV1alphaTestCase>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -971,7 +971,7 @@ export const GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse =
 
 export interface GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest {
   /** Required. The name of the test cases to delete. A maximum number of 1000 test cases can be deleted in one batch Format: `projects/{project_number}/apps/{app}/testCases/{test_case}` */
-  names?: Array<string>;
+  names?: ReadonlyArray<string>;
 }
 
 export const GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest =
@@ -1010,9 +1010,9 @@ export interface GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseRequest {
   /** Optional. Ignored. Used to be build version of the app release if an instance identifier was provided for the release_id. */
   buildVersion?: string;
   /** Optional. A repeated list of group aliases to enable access to a release for Note: This field is misnamed, but can't be changed because we need to maintain compatibility with old build tools */
-  groupIds?: Array<string>;
+  groupIds?: ReadonlyArray<string>;
   /** Optional. An email address which should get access to this release, for example rebeccahe@google.com */
-  emails?: Array<string>;
+  emails?: ReadonlyArray<string>;
   /** Optional. Ignored. Used to be display version of the app release if an instance identifier was provided for the release_id. */
   displayVersion?: string;
 }
@@ -1080,7 +1080,7 @@ export const GoogleFirebaseAppdistroV1alphaGetReleaseByUploadHashResponse =
 
 export interface GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest {
   /** Optional. The list of devices for which to clear the cache. If not present, clear all of them. */
-  testDevices?: Array<GoogleFirebaseAppdistroV1alphaTestDevice>;
+  testDevices?: ReadonlyArray<GoogleFirebaseAppdistroV1alphaTestDevice>;
 }
 
 export const GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest =
@@ -1370,7 +1370,7 @@ export const GetTestQuotaProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha/projects/{projectsId}/testQuota" }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetTestQuotaProjectsRequest>;
 
@@ -1407,10 +1407,7 @@ export const GetUdidsProjectsTestersRequest =
       T.HttpQuery("mobilesdkAppId"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/testers:udids",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{project}/testers:udids" }),
     svc,
   ) as unknown as Schema.Schema<GetUdidsProjectsTestersRequest>;
 
@@ -1450,11 +1447,7 @@ export const UpdateTestConfigProjectsAppsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha/projects/{projectsId}/apps/{appsId}/testConfig",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateTestConfigProjectsAppsRequest>;
 
@@ -1486,10 +1479,7 @@ export const GetTestConfigProjectsAppsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/apps/{appsId}/testConfig",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetTestConfigProjectsAppsRequest>;
 
@@ -1531,11 +1521,7 @@ export const CreateProjectsAppsReleasesTestsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha/projects/{projectsId}/apps/{appsId}/releases/{releasesId}/tests",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha/{parent}/tests", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsAppsReleasesTestsRequest>;
 
@@ -1580,10 +1566,7 @@ export const ListProjectsAppsReleasesTestsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/apps/{appsId}/releases/{releasesId}/tests",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/tests" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAppsReleasesTestsRequest>;
 
@@ -1619,10 +1602,7 @@ export const CancelProjectsAppsReleasesTestsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/apps/{appsId}/releases/{releasesId}/tests/{testsId}:cancel",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}:cancel" }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsAppsReleasesTestsRequest>;
 
@@ -1654,10 +1634,7 @@ export const GetProjectsAppsReleasesTestsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/apps/{appsId}/releases/{releasesId}/tests/{testsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAppsReleasesTestsRequest>;
 
@@ -1696,7 +1673,7 @@ export const ClearTestCaseCacheProjectsAppsTestCasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/apps/{appsId}/testCases/{testCasesId}:clearTestCaseCache",
+      path: "v1alpha/{testCase}:clearTestCaseCache",
       hasBody: true,
     }),
     svc,
@@ -1730,10 +1707,7 @@ export const DeleteProjectsAppsTestCasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha/projects/{projectsId}/apps/{appsId}/testCases/{testCasesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsAppsTestCasesRequest>;
 
@@ -1764,10 +1738,7 @@ export const GetProjectsAppsTestCasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/apps/{appsId}/testCases/{testCasesId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAppsTestCasesRequest>;
 
@@ -1806,7 +1777,7 @@ export const BatchUpdateProjectsAppsTestCasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/apps/{appsId}/testCases:batchUpdate",
+      path: "v1alpha/{parent}/testCases:batchUpdate",
       hasBody: true,
     }),
     svc,
@@ -1850,7 +1821,7 @@ export const CreateProjectsAppsTestCasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/apps/{appsId}/testCases",
+      path: "v1alpha/{parent}/testCases",
       hasBody: true,
     }),
     svc,
@@ -1890,10 +1861,7 @@ export const ListProjectsAppsTestCasesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha/projects/{projectsId}/apps/{appsId}/testCases",
-    }),
+    T.Http({ method: "GET", path: "v1alpha/{parent}/testCases" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAppsTestCasesRequest>;
 
@@ -1939,11 +1907,7 @@ export const PatchProjectsAppsTestCasesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha/projects/{projectsId}/apps/{appsId}/testCases/{testCasesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAppsTestCasesRequest>;
 
@@ -1982,7 +1946,7 @@ export const BatchDeleteProjectsAppsTestCasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha/projects/{projectsId}/apps/{appsId}/testCases:batchDelete",
+      path: "v1alpha/{parent}/testCases:batchDelete",
       hasBody: true,
     }),
     svc,
