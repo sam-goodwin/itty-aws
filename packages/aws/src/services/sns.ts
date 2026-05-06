@@ -1631,14 +1631,6 @@ export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   { message: S.optional(S.String) },
   T.AwsQueryError({ code: "NotFound", httpResponseCode: 404 }),
 ).pipe(C.withBadRequestError) {}
-export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceeded>()(
-  "RequestLimitExceeded",
-  {},
-).pipe(C.withThrottlingError) {}
-export class InvalidClientTokenId extends S.TaggedErrorClass<InvalidClientTokenId>()(
-  "InvalidClientTokenId",
-  {},
-).pipe(C.withAuthError) {}
 export class ThrottledException extends S.TaggedErrorClass<ThrottledException>()(
   "ThrottledException",
   { message: S.optional(S.String) },
@@ -1801,8 +1793,6 @@ export type AddPermissionError =
   | InternalErrorException
   | InvalidParameterException
   | NotFoundException
-  | RequestLimitExceeded
-  | InvalidClientTokenId
   | CommonErrors;
 /**
  * Adds a statement to a topic's access control policy, granting access for the specified
@@ -1825,8 +1815,6 @@ export const addPermission: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotFoundException,
-    RequestLimitExceeded,
-    InvalidClientTokenId,
   ],
 }));
 export type CheckIfPhoneNumberIsOptedOutError =
@@ -1956,8 +1944,6 @@ export type CreatePlatformEndpointError =
   | InternalErrorException
   | InvalidParameterException
   | NotFoundException
-  | RequestLimitExceeded
-  | InvalidClientTokenId
   | CommonErrors;
 /**
  * Creates an endpoint for a device and mobile app on one of the supported push
@@ -1989,8 +1975,6 @@ export const createPlatformEndpoint: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotFoundException,
-    RequestLimitExceeded,
-    InvalidClientTokenId,
   ],
 }));
 export type CreateSMSSandboxPhoneNumberError =
@@ -2073,8 +2057,6 @@ export type DeleteEndpointError =
   | AuthorizationErrorException
   | InternalErrorException
   | InvalidParameterException
-  | RequestLimitExceeded
-  | InvalidClientTokenId
   | CommonErrors;
 /**
  * Deletes the endpoint for a device and mobile app from Amazon SNS. This action is
@@ -2096,16 +2078,12 @@ export const deleteEndpoint: API.OperationMethod<
     AuthorizationErrorException,
     InternalErrorException,
     InvalidParameterException,
-    RequestLimitExceeded,
-    InvalidClientTokenId,
   ],
 }));
 export type DeletePlatformApplicationError =
   | AuthorizationErrorException
   | InternalErrorException
   | InvalidParameterException
-  | RequestLimitExceeded
-  | InvalidClientTokenId
   | CommonErrors;
 /**
  * Deletes a platform application object for one of the supported push notification
@@ -2125,8 +2103,6 @@ export const deletePlatformApplication: API.OperationMethod<
     AuthorizationErrorException,
     InternalErrorException,
     InvalidParameterException,
-    RequestLimitExceeded,
-    InvalidClientTokenId,
   ],
 }));
 export type DeleteSMSSandboxPhoneNumberError =
@@ -2176,8 +2152,6 @@ export type DeleteTopicError =
   | NotFoundException
   | StaleTagException
   | TagPolicyException
-  | RequestLimitExceeded
-  | InvalidClientTokenId
   | CommonErrors;
 /**
  * Deletes a topic and all its subscriptions. Deleting a topic might prevent some
@@ -2202,8 +2176,6 @@ export const deleteTopic: API.OperationMethod<
     NotFoundException,
     StaleTagException,
     TagPolicyException,
-    RequestLimitExceeded,
-    InvalidClientTokenId,
   ],
 }));
 export type GetDataProtectionPolicyError =
@@ -2212,8 +2184,6 @@ export type GetDataProtectionPolicyError =
   | InvalidParameterException
   | InvalidSecurityException
   | NotFoundException
-  | RequestLimitExceeded
-  | InvalidClientTokenId
   | CommonErrors;
 /**
  * Retrieves the specified inline `DataProtectionPolicy` document that is
@@ -2233,8 +2203,6 @@ export const getDataProtectionPolicy: API.OperationMethod<
     InvalidParameterException,
     InvalidSecurityException,
     NotFoundException,
-    RequestLimitExceeded,
-    InvalidClientTokenId,
   ],
 }));
 export type GetEndpointAttributesError =
@@ -2242,8 +2210,6 @@ export type GetEndpointAttributesError =
   | InternalErrorException
   | InvalidParameterException
   | NotFoundException
-  | RequestLimitExceeded
-  | InvalidClientTokenId
   | CommonErrors;
 /**
  * Retrieves the endpoint attributes for a device on one of the supported push
@@ -2263,8 +2229,6 @@ export const getEndpointAttributes: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotFoundException,
-    RequestLimitExceeded,
-    InvalidClientTokenId,
   ],
 }));
 export type GetPlatformApplicationAttributesError =
@@ -2272,8 +2236,6 @@ export type GetPlatformApplicationAttributesError =
   | InternalErrorException
   | InvalidParameterException
   | NotFoundException
-  | RequestLimitExceeded
-  | InvalidClientTokenId
   | CommonErrors;
 /**
  * Retrieves the attributes of the platform application object for the supported push
@@ -2293,8 +2255,6 @@ export const getPlatformApplicationAttributes: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotFoundException,
-    RequestLimitExceeded,
-    InvalidClientTokenId,
   ],
 }));
 export type GetSMSAttributesError =
@@ -2385,8 +2345,6 @@ export type GetTopicAttributesError =
   | InvalidParameterException
   | InvalidSecurityException
   | NotFoundException
-  | RequestLimitExceeded
-  | InvalidClientTokenId
   | CommonErrors;
 /**
  * Returns all of the properties of a topic. Topic properties returned might differ based
@@ -2406,8 +2364,6 @@ export const getTopicAttributes: API.OperationMethod<
     InvalidParameterException,
     InvalidSecurityException,
     NotFoundException,
-    RequestLimitExceeded,
-    InvalidClientTokenId,
   ],
 }));
 export type ListEndpointsByPlatformApplicationError =
@@ -2415,8 +2371,6 @@ export type ListEndpointsByPlatformApplicationError =
   | InternalErrorException
   | InvalidParameterException
   | NotFoundException
-  | RequestLimitExceeded
-  | InvalidClientTokenId
   | CommonErrors;
 /**
  * Lists the endpoints and endpoint attributes for devices in a supported push
@@ -2459,8 +2413,6 @@ export const listEndpointsByPlatformApplication: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotFoundException,
-    RequestLimitExceeded,
-    InvalidClientTokenId,
   ],
   pagination: {
     inputToken: "NextToken",
@@ -2730,8 +2682,6 @@ export type ListSubscriptionsByTopicError =
   | InternalErrorException
   | InvalidParameterException
   | NotFoundException
-  | RequestLimitExceeded
-  | InvalidClientTokenId
   | CommonErrors;
 /**
  * Returns a list of the subscriptions to a specific topic. Each call returns a limited
@@ -2769,8 +2719,6 @@ export const listSubscriptionsByTopic: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotFoundException,
-    RequestLimitExceeded,
-    InvalidClientTokenId,
   ],
   pagination: {
     inputToken: "NextToken",
@@ -2784,8 +2732,6 @@ export type ListTagsForResourceError =
   | InvalidParameterException
   | ResourceNotFoundException
   | TagPolicyException
-  | RequestLimitExceeded
-  | InvalidClientTokenId
   | CommonErrors;
 /**
  * List all tags added to the specified Amazon SNS topic. For an overview, see Amazon SNS Tags in the
@@ -2805,8 +2751,6 @@ export const listTagsForResource: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
     TagPolicyException,
-    RequestLimitExceeded,
-    InvalidClientTokenId,
   ],
 }));
 export type ListTopicsError =
@@ -2899,8 +2843,6 @@ export type PublishError =
   | NotFoundException
   | PlatformApplicationDisabledException
   | ValidationException
-  | RequestLimitExceeded
-  | InvalidClientTokenId
   | CommonErrors;
 /**
  * Sends a message to an Amazon SNS topic, a text message (SMS message) directly to a phone
@@ -2949,8 +2891,6 @@ export const publish: API.OperationMethod<
     NotFoundException,
     PlatformApplicationDisabledException,
     ValidationException,
-    RequestLimitExceeded,
-    InvalidClientTokenId,
   ],
 }));
 export type PublishBatchError =
@@ -3052,8 +2992,6 @@ export type PutDataProtectionPolicyError =
   | InvalidParameterException
   | InvalidSecurityException
   | NotFoundException
-  | RequestLimitExceeded
-  | InvalidClientTokenId
   | CommonErrors;
 /**
  * Adds or updates an inline policy document that is stored in the specified Amazon SNS
@@ -3073,8 +3011,6 @@ export const putDataProtectionPolicy: API.OperationMethod<
     InvalidParameterException,
     InvalidSecurityException,
     NotFoundException,
-    RequestLimitExceeded,
-    InvalidClientTokenId,
   ],
 }));
 export type RemovePermissionError =
@@ -3082,8 +3018,6 @@ export type RemovePermissionError =
   | InternalErrorException
   | InvalidParameterException
   | NotFoundException
-  | RequestLimitExceeded
-  | InvalidClientTokenId
   | CommonErrors;
 /**
  * Removes a statement from a topic's access control policy.
@@ -3105,8 +3039,6 @@ export const removePermission: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotFoundException,
-    RequestLimitExceeded,
-    InvalidClientTokenId,
   ],
 }));
 export type SetEndpointAttributesError =
@@ -3114,8 +3046,6 @@ export type SetEndpointAttributesError =
   | InternalErrorException
   | InvalidParameterException
   | NotFoundException
-  | RequestLimitExceeded
-  | InvalidClientTokenId
   | CommonErrors;
 /**
  * Sets the attributes for an endpoint for a device on one of the supported push
@@ -3135,8 +3065,6 @@ export const setEndpointAttributes: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotFoundException,
-    RequestLimitExceeded,
-    InvalidClientTokenId,
   ],
 }));
 export type SetPlatformApplicationAttributesError =
@@ -3144,8 +3072,6 @@ export type SetPlatformApplicationAttributesError =
   | InternalErrorException
   | InvalidParameterException
   | NotFoundException
-  | RequestLimitExceeded
-  | InvalidClientTokenId
   | CommonErrors;
 /**
  * Sets the attributes of the platform application object for the supported push
@@ -3167,8 +3093,6 @@ export const setPlatformApplicationAttributes: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotFoundException,
-    RequestLimitExceeded,
-    InvalidClientTokenId,
   ],
 }));
 export type SetSMSAttributesError =
@@ -3240,8 +3164,6 @@ export type SetTopicAttributesError =
   | InvalidParameterException
   | InvalidSecurityException
   | NotFoundException
-  | RequestLimitExceeded
-  | InvalidClientTokenId
   | CommonErrors;
 /**
  * Allows a topic owner to set an attribute of the topic to a new value.
@@ -3264,8 +3186,6 @@ export const setTopicAttributes: API.OperationMethod<
     InvalidParameterException,
     InvalidSecurityException,
     NotFoundException,
-    RequestLimitExceeded,
-    InvalidClientTokenId,
   ],
 }));
 export type SubscribeError =
@@ -3277,8 +3197,6 @@ export type SubscribeError =
   | NotFoundException
   | ReplayLimitExceededException
   | SubscriptionLimitExceededException
-  | RequestLimitExceeded
-  | InvalidClientTokenId
   | CommonErrors;
 /**
  * Subscribes an endpoint to an Amazon SNS topic. If the endpoint type is HTTP/S or email, or
@@ -3307,8 +3225,6 @@ export const subscribe: API.OperationMethod<
     NotFoundException,
     ReplayLimitExceededException,
     SubscriptionLimitExceededException,
-    RequestLimitExceeded,
-    InvalidClientTokenId,
   ],
 }));
 export type TagResourceError =
@@ -3319,8 +3235,6 @@ export type TagResourceError =
   | StaleTagException
   | TagLimitExceededException
   | TagPolicyException
-  | RequestLimitExceeded
-  | InvalidClientTokenId
   | CommonErrors;
 /**
  * Add tags to the specified Amazon SNS topic. For an overview, see Amazon SNS Tags in the
@@ -3357,8 +3271,6 @@ export const tagResource: API.OperationMethod<
     StaleTagException,
     TagLimitExceededException,
     TagPolicyException,
-    RequestLimitExceeded,
-    InvalidClientTokenId,
   ],
 }));
 export type UnsubscribeError =
@@ -3402,8 +3314,6 @@ export type UntagResourceError =
   | StaleTagException
   | TagLimitExceededException
   | TagPolicyException
-  | RequestLimitExceeded
-  | InvalidClientTokenId
   | CommonErrors;
 /**
  * Remove tags from the specified Amazon SNS topic. For an overview, see Amazon SNS Tags in the
@@ -3425,8 +3335,6 @@ export const untagResource: API.OperationMethod<
     StaleTagException,
     TagLimitExceededException,
     TagPolicyException,
-    RequestLimitExceeded,
-    InvalidClientTokenId,
   ],
 }));
 export type VerifySMSSandboxPhoneNumberError =
