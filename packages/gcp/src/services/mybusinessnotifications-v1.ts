@@ -26,7 +26,7 @@ export interface NotificationSetting {
   /** Optional. The Google Pub/Sub topic that will receive notifications when locations managed by this account are updated. If unset, no notifications will be posted. The account mybusiness-api-pubsub@system.gserviceaccount.com must have at least Publish permissions on the Pub/Sub topic. */
   pubsubTopic?: string;
   /** The types of notifications that will be sent to the Pub/Sub topic. To stop receiving notifications entirely, use NotificationSettings.UpdateNotificationSetting with an empty notification_types or set the pubsub_topic to an empty string. */
-  notificationTypes?: Array<
+  notificationTypes?: ReadonlyArray<
     | "NOTIFICATION_TYPE_UNSPECIFIED"
     | "GOOGLE_UPDATE"
     | "NEW_REVIEW"
@@ -64,10 +64,7 @@ export const GetNotificationSettingAccountsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accounts/{accountsId}/notificationSetting",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetNotificationSettingAccountsRequest>;
 
@@ -104,11 +101,7 @@ export const UpdateNotificationSettingAccountsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(NotificationSetting).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/accounts/{accountsId}/notificationSetting",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateNotificationSettingAccountsRequest>;
 

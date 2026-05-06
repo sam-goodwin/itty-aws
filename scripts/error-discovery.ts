@@ -23,7 +23,14 @@ import { Console, Effect } from "effect";
 import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
 import { Argument, Command, Flag } from "effect/unstable/cli";
-import { AgentError, AgentStatsAccumulator, BOLD, GREEN, RESET, runAgent } from "./lib/agent.ts";
+import {
+  AgentError,
+  AgentStatsAccumulator,
+  BOLD,
+  GREEN,
+  RESET,
+  runAgent,
+} from "./lib/agent.ts";
 import { metadataPromptSection } from "./lib/metadata.ts";
 
 // ============================================================================
@@ -37,8 +44,9 @@ function buildPrompt(
 ): string {
   const pkgDir = `packages/${name}`;
 
-  const serviceScope = services.length > 0
-    ? `
+  const serviceScope =
+    services.length > 0
+      ? `
 
 ## SCOPE RESTRICTION
 
@@ -53,7 +61,7 @@ Concretely:
   (e.g. for cloudflare: ${pkgDir}/patches/{${services.join(",")}}/...).
 - Ignore all other services even if you notice gaps in them — they are out of scope.
 `
-    : "";
+      : "";
 
   return `
 You are an error discovery agent for the ${name} SDK in the Distilled monorepo.
@@ -111,6 +119,29 @@ Different SDKs use different patch formats:
 4. List ${pkgDir}/patches/ to see existing patches
 5. Read a few test files in ${pkgDir}/tests/ to see how errors are tested
 6. Identify the patch format this SDK uses (OpenAPI JSON Patch, Cloudflare-style, or AWS-style)
+
+### \`matchError\` contract (do not regress)
+The \`matchError\` function in client.ts has this signature:
+\`\`\`ts
+const matchError = (
+  status: number,
+  errorBody: unknown,
+  _errors?: readonly unknown[],
+  headers?: Record<string, string | undefined>,
+): Effect.Effect<never, unknown> => { ... }
+\`\`\`
+When you construct a retryable error (TooManyRequests/429, InternalServerError/500,
+BadGateway/502, ServiceUnavailable/503, GatewayTimeout/504, Locked/423, or any
+class categorized retryable), \`retryAfter\` on that instance is **optional**.
+If the response has standard \`Retry-After\` or \`RateLimit\` headers worth honoring,
+pass \`retryAfter: parseRetryAfterForStatus(status, headers)\`. If there is no
+usable hint, omit \`retryAfter\` entirely — the default retry policy still retries
+using exponential backoff starting at 100ms (you do not need to invent a wait).
+Import: \`import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";\`
+
+If this service uses bespoke headers or body fields for cooldown, parse them in
+\`matchError\` and pass the resulting \`Duration\` as \`retryAfter\` when present, still
+with \`??\` fallback to \`parseRetryAfterForStatus(status, headers)\` when appropriate.
 
 ### Step 2: Identify operations with weak error typing
 Look for operations that only have generic errors (DefaultErrors) and no
@@ -256,15 +287,18 @@ const errorDiscovery = Command.make(
 
       const stats = new AgentStatsAccumulator();
 
-      yield* runAgent({
-        prompt: buildPrompt(config.name, root, services),
-        cwd: root,
-        systemPromptAppend:
-          "You are an error discovery agent. Your job is to find undocumented API errors " +
-          "and add typed error classes to the SDK. Be methodical and thorough. " +
-          "When looking for files, prefer direct file reads over broad searches. " +
-          "Always start by reading files at the repo root or package root directly.",
-      }, stats);
+      yield* runAgent(
+        {
+          prompt: buildPrompt(config.name, root, services),
+          cwd: root,
+          systemPromptAppend:
+            "You are an error discovery agent. Your job is to find undocumented API errors " +
+            "and add typed error classes to the SDK. Be methodical and thorough. " +
+            "When looking for files, prefer direct file reads over broad searches. " +
+            "Always start by reading files at the repo root or package root directly.",
+        },
+        stats,
+      );
 
       yield* Console.log(
         `\n${GREEN}${BOLD}Error discovery complete for ${config.name}.${RESET}`,
@@ -287,7 +321,8 @@ const errorDiscovery = Command.make(
     {
       command:
         "bun scripts/error-discovery.ts cloudflare --service r2 --service workers",
-      description: "Discover errors only in Cloudflare's R2 and Workers services",
+      description:
+        "Discover errors only in Cloudflare's R2 and Workers services",
     },
     {
       command: "bun scripts/error-discovery.ts stripe",

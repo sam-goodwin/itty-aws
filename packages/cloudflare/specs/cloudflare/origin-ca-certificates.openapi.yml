@@ -109,24 +109,35 @@ paths:
         Automatically fetches more pages as needed. for await (const
         originCACertificate of client.originCACertificates.list( { zone_id:
         '023e105f4ecef8ad9ca31a8372d0c353' }, )) { // ... } ```"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                zone_id:
-                  type: string
-                  description: Identifier.
-                limit:
-                  type: number
-                  description: Limit to the number of records returned.
-                offset:
-                  type: number
-                  description: Offset the results
-              required:
-                - zone_id
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: zone_id
+          in: query
+          required: true
+          description: Identifier.
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          description: Limit to the number of records returned.
+          schema:
+            type: number
+        - name: offset
+          in: query
+          required: false
+          description: Offset the results
+          schema:
+            type: number
       responses:
         "200":
           description: Success

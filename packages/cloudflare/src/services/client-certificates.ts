@@ -162,6 +162,8 @@ export const getClientCertificate: API.OperationMethod<
 export interface ListClientCertificatesRequest {
   /** Path param: Identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Limit to the number of records returned. */
   limit?: number;
   /** Query param: Offset the results */
@@ -178,6 +180,8 @@ export interface ListClientCertificatesRequest {
 export const ListClientCertificatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
     offset: Schema.optional(Schema.Number).pipe(T.HttpQuery("offset")),
     status: Schema.optional(

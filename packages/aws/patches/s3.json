@@ -1,4 +1,17 @@
 {
+  "errorCategories": {
+    "BucketNotEmpty": ["ConflictError", "RetryableError"],
+    "BucketAlreadyOwnedByYou": ["AlreadyExistsError"],
+    "MalformedXML": ["BadRequestError"],
+    "MalformedPolicy": ["BadRequestError"],
+    "InvalidArgument": ["BadRequestError"],
+    "InvalidBucketName": ["BadRequestError"],
+    "InvalidLocationConstraint": ["BadRequestError"],
+    "InvalidRequest": ["BadRequestError"],
+    "InvalidDigest": ["BadRequestError"],
+    "InvalidBucketState": ["ConflictError"],
+    "IllegalLocationConstraintException": ["BadRequestError"]
+  },
   "operations": {
     "createBucket": {
       "errors": [

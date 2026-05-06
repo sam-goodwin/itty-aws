@@ -1,5 +1,84 @@
 # Changelog
 
+## [v0.16.9](https://github.com/alchemy-run/distilled/releases/tag/v0.16.9) (2026-05-06)
+
+### Bug Fixes
+
+- **aws/ec2**: add missing operation errors for Route/NatGateway/EIP/RouteTableAssociation - by sam in [#255](https://github.com/alchemy-run/distilled/pull/255) [(6706ca6)](https://github.com/alchemy-run/distilled/commit/6706ca6589bfd2d4ea5f70508f4cb6bbc54a07e3)
+- **aws/secrets-manager**: add error categorization - by sam in [#254](https://github.com/alchemy-run/distilled/pull/254) [(8b8b816)](https://github.com/alchemy-run/distilled/commit/8b8b816ca80d9b110a99c42336d8759730ed881d)
+- **aws/ecs**: add error categories for retry & semantic handling - by sam in [#253](https://github.com/alchemy-run/distilled/pull/253) [(2eec35a)](https://github.com/alchemy-run/distilled/commit/2eec35a63324e269745aa507e8199163fdda2747)
+- **aws/acm**: correct error categories for retry & semantic handling - by sam in [#252](https://github.com/alchemy-run/distilled/pull/252) [(4fddb22)](https://github.com/alchemy-run/distilled/commit/4fddb224a8480fea0377cd0ff173058bcf5e4736)
+- **aws/eventbridge**: add error categories + missing operation errors - by sam in [#251](https://github.com/alchemy-run/distilled/pull/251) [(862c420)](https://github.com/alchemy-run/distilled/commit/862c420ba5a74061f787bafdb13a3274664189c0)
+- **aws/route-53**: correct error categories for retry & semantic handling - by sam in [#250](https://github.com/alchemy-run/distilled/pull/250) [(1783816)](https://github.com/alchemy-run/distilled/commit/178381654c69694845386fecec3a1d086aefeb15)
+- **aws/rds**: add error categories for retry & semantic handling - by sam in [#249](https://github.com/alchemy-run/distilled/pull/249) [(4890e81)](https://github.com/alchemy-run/distilled/commit/4890e81fa5a5cc1be297a4286ad4d5df1c6f5431)
+- **aws/scheduler**: mark ConflictException as RetryableError - by sam in [#248](https://github.com/alchemy-run/distilled/pull/248) [(5f8c4d2)](https://github.com/alchemy-run/distilled/commit/5f8c4d202da23aff6dc0cadf6ac4bf50a57d4f4b)
+- **aws/ecr**: correct error categories for retry & semantic handling - by sam in [#247](https://github.com/alchemy-run/distilled/pull/247) [(cd4bbac)](https://github.com/alchemy-run/distilled/commit/cd4bbac506bd08bd86182fac262acccdefdfcea5)
+- **aws/cloudwatch-logs**: correct error categories for retry & semantic handling - by sam in [#245](https://github.com/alchemy-run/distilled/pull/245) [(aff975c)](https://github.com/alchemy-run/distilled/commit/aff975c660b0172412945bfdaa47daec4e2be3dc)
+- **aws/iam**: correct error categories for retry & semantic handling - by sam in [#244](https://github.com/alchemy-run/distilled/pull/244) [(7327065)](https://github.com/alchemy-run/distilled/commit/732706536b00118e07671f186dbaf691d1115ec2)
+- **aws/sns**: correct error categories for retry & semantic handling - by sam in [#243](https://github.com/alchemy-run/distilled/pull/243) [(b2b01c5)](https://github.com/alchemy-run/distilled/commit/b2b01c517f93d0b02b25bc36947544fcd49a278e)
+- **aws/ec2**: tag IncorrectState as ConflictError - by sam in [#242](https://github.com/alchemy-run/distilled/pull/242) [(55d4c5d)](https://github.com/alchemy-run/distilled/commit/55d4c5deb80fca43150625d4718064ea303555ab)
+- **aws/s3**: correct error categories for retry & semantic handling - by sam in [#241](https://github.com/alchemy-run/distilled/pull/241) [(2264ea4)](https://github.com/alchemy-run/distilled/commit/2264ea481f173f2c1a042e614ce7690dcede182b)
+- **aws/kinesis**: add error categorization for retry layer - by sam in [#240](https://github.com/alchemy-run/distilled/pull/240) [(7a46f1e)](https://github.com/alchemy-run/distilled/commit/7a46f1e96f4288b50af82815c250cfc686a33e59)
+- **aws/dynamodb**: correct error categories for retry & semantic handling - by sam in [#239](https://github.com/alchemy-run/distilled/pull/239) [(58358f9)](https://github.com/alchemy-run/distilled/commit/58358f9c9f349ac044b798648701d92f2b1b56a8)
+- **cloudflare/workers**: support ratelimit upload bindings - by Alex in [#256](https://github.com/alchemy-run/distilled/pull/256) [(d5ddb5a)](https://github.com/alchemy-run/distilled/commit/d5ddb5ae2852ddb26b063ba7cc2620b5f173fc4d)
+- **aws/sqs**: correct error categories for retry & semantic handling - by sam in [#238](https://github.com/alchemy-run/distilled/pull/238) [(5fd2c0b)](https://github.com/alchemy-run/distilled/commit/5fd2c0b65b0c0d52f26485249c1a09f63a99a96a)
+
+## [v0.16.8](https://github.com/alchemy-run/distilled/releases/tag/v0.16.8) (2026-05-06)
+
+### Bug Fixes
+
+- **cloudflare**: support traces in workers observability - by Michael (Pear) [(99183ce)](https://github.com/alchemy-run/distilled/commit/99183cea57b974c3f8be1105826b51e021dd5a28)
+- **gcp**: use path over flatPath so HttpPath substitution works - by Andy Jefferson in [#260](https://github.com/alchemy-run/distilled/pull/260) [(326d01e)](https://github.com/alchemy-run/distilled/commit/326d01ecf1a4c6ddd21bde62ad1581408468d43c)
+- **gcp**: emit ReadonlyArray<T> in struct interfaces to match Schema.Array - by Andy Jefferson in [#259](https://github.com/alchemy-run/distilled/pull/259) [(b7ca55e)](https://github.com/alchemy-run/distilled/commit/b7ca55e1534cb02d6f12eb267f35958419329062)
+- **gcp**: apply error matchers via AST + typed 4xx errors for cloudresourcemanager v3 - by Andy Jefferson in [#258](https://github.com/alchemy-run/distilled/pull/258) [(3348dbd)](https://github.com/alchemy-run/distilled/commit/3348dbd6d61f2b4f1d9610dff5ed3b76392c926b)
+
+## [v0.16.7](https://github.com/alchemy-run/distilled/releases/tag/v0.16.7) (2026-05-04)
+
+*No significant changes*
+
+## [v0.16.6](https://github.com/alchemy-run/distilled/releases/tag/v0.16.6) (2026-05-04)
+
+*No significant changes*
+
+## [v0.16.5](https://github.com/alchemy-run/distilled/releases/tag/v0.16.5) (2026-05-04)
+
+### Bug Fixes
+
+- depend on effect >= 4.0.0-beta.60 - by Sam Goodwin [(e9385d5)](https://github.com/alchemy-run/distilled/commit/e9385d5d61d6bbe5322db7cf6e62713d7033e493)
+- update effect to 4.0.0-beta.60 - by @john-royal in [#235](https://github.com/alchemy-run/distilled/pull/235) [(ff934f9)](https://github.com/alchemy-run/distilled/commit/ff934f981f0c43f357438f33d0d8bd9534fd0e1c)
+- **cloudflare**: tag 10001 internal-error variant retryable - by sam in [#233](https://github.com/alchemy-run/distilled/pull/233) [(fce421b)](https://github.com/alchemy-run/distilled/commit/fce421b2c0000a72ac325da790eae11317d1db4e)
+- **aws**: wrap SSO cache JSON.parse in Effect.try - by sam in [#234](https://github.com/alchemy-run/distilled/pull/234) [(b3b151b)](https://github.com/alchemy-run/distilled/commit/b3b151b2c5b1d7b98bcbd7bc394b7b5cfda7ae07)
+
+## [v0.16.4](https://github.com/alchemy-run/distilled/releases/tag/v0.16.4) (2026-05-04)
+
+### Bug Fixes
+
+- **cloudflare**: sort Schema.Union variants by specificity - by sam in [#232](https://github.com/alchemy-run/distilled/pull/232) [(1e12c92)](https://github.com/alchemy-run/distilled/commit/1e12c9244f6696fa1dd1b3e65d034f7f551c5e22)
+
+## [v0.16.3](https://github.com/alchemy-run/distilled/releases/tag/v0.16.3) (2026-05-04)
+
+### Features
+
+- **core**: parse Retry-After / Ratelimit headers and honor them in retry policy - by sam in [#228](https://github.com/alchemy-run/distilled/pull/228) [(895697f)](https://github.com/alchemy-run/distilled/commit/895697f9c51e7247d2fa9afa28d741ea7e7f3375)
+
+### Bug Fixes
+
+- **cloudflare**: paginated list ops loop forever on page 1 - by sam in [#231](https://github.com/alchemy-run/distilled/pull/231) [(feedb11)](https://github.com/alchemy-run/distilled/commit/feedb112ed20243d0a9b7cb3f71ffb86ba439288)
+
+## [v0.16.2](https://github.com/alchemy-run/distilled/releases/tag/v0.16.2) (2026-05-04)
+
+### Bug Fixes
+
+- **cloudflare/connectivity**: make listDirectoryServices result_info optional - by sam in [#229](https://github.com/alchemy-run/distilled/pull/229) [(cfde7ce)](https://github.com/alchemy-run/distilled/commit/cfde7ceef9e21ac350d96b49ad3de6b15a9bdeb9)
+
+## [v0.16.1](https://github.com/alchemy-run/distilled/releases/tag/v0.16.1) (2026-05-04)
+
+### Bug Fixes
+
+- **cloudflare**: make ingress hostname optional for cfd tunnel configuration - by sam in [#227](https://github.com/alchemy-run/distilled/pull/227) [(3e67ad4)](https://github.com/alchemy-run/distilled/commit/3e67ad486914ab514eb9fc91cb9f484f335dfc8f)
+- **supabase**: tag FreeProjectLimitReached and recover in tests + CI nuke - by Michael K in [#221](https://github.com/alchemy-run/distilled/pull/221) [(4edd245)](https://github.com/alchemy-run/distilled/commit/4edd245c05005c0345bfb8243a3729dcd03846da)
+- **ci**: trigger nuke on merge_group destroyed - by Michael K in [#224](https://github.com/alchemy-run/distilled/pull/224) [(c0ce99b)](https://github.com/alchemy-run/distilled/commit/c0ce99b2b9b63b25172b64542e81380a239364b5)
+
 ## [v0.16.0](https://github.com/alchemy-run/distilled/releases/tag/v0.16.0) (2026-05-02)
 
 ### Features

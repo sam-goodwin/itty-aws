@@ -35,6 +35,8 @@ import * as Redacted from "effect/Redacted";
 import * as Schema from "effect/Schema";
 import * as crypto from "node:crypto";
 import { makeAPI } from "@distilled.cloud/core/client";
+import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
+import { Retry } from "./retry.ts";
 import {
   HTTP_STATUS_MAP,
   COINBASE_HTTP_STATUS_MAP,
@@ -214,6 +216,8 @@ const CoinbaseErrorResponse = Schema.Struct({
 const matchError = (
   status: number,
   errorBody: unknown,
+  _errors?: readonly unknown[],
+  headers?: Record<string, string | undefined>,
 ): Effect.Effect<never, unknown> => {
   try {
     const parsed = Schema.decodeUnknownSync(CoinbaseErrorResponse)(errorBody);
@@ -237,7 +241,10 @@ const matchError = (
     const StandardErrorClass = STANDARD_ERROR_TYPE_MAP[parsed.errorType];
     if (StandardErrorClass) {
       return Effect.fail(
-        new StandardErrorClass({ message: parsed.errorMessage ?? "" }),
+        new StandardErrorClass({
+          message: parsed.errorMessage ?? "",
+          retryAfter: parseRetryAfterForStatus(status, headers),
+        }),
       );
     }
 
@@ -245,7 +252,10 @@ const matchError = (
     const CoreErrorClass = (HTTP_STATUS_MAP as any)[status];
     if (CoreErrorClass) {
       return Effect.fail(
-        new CoreErrorClass({ message: parsed.errorMessage ?? "" }),
+        new CoreErrorClass({
+          message: parsed.errorMessage ?? "",
+          retryAfter: parseRetryAfterForStatus(status, headers),
+        }),
       );
     }
 
@@ -288,4 +298,5 @@ export const API = makeAPI<Credentials>({
   },
   matchError,
   ParseError: CoinbaseParseError as any,
+  retry: Retry as any,
 });

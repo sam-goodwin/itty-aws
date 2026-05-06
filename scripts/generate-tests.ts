@@ -24,7 +24,18 @@ import { Console, Effect, Option } from "effect";
 import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
 import { Argument, Command, Flag } from "effect/unstable/cli";
-import { AgentError, AgentStatsAccumulator, BOLD, CYAN, DIM, GREEN, RED, RESET, YELLOW, runAgent } from "./lib/agent.ts";
+import {
+  AgentError,
+  AgentStatsAccumulator,
+  BOLD,
+  CYAN,
+  DIM,
+  GREEN,
+  RED,
+  RESET,
+  YELLOW,
+  runAgent,
+} from "./lib/agent.ts";
 import {
   ensureMetadataDir,
   metadataPromptSection,
@@ -35,7 +46,12 @@ import {
 // Prompt Construction
 // ============================================================================
 
-function buildPrompt(provider: string, root: string, operation?: string, reset?: boolean): string {
+function buildPrompt(
+  provider: string,
+  root: string,
+  operation?: string,
+  reset?: boolean,
+): string {
   const pkgDir = `packages/${provider}`;
 
   const scopeDescription = operation
@@ -48,9 +64,13 @@ endpoint. Prioritize operations that create, read, update, delete, and list reso
   const scopeWorkflow = operation
     ? `
 ### Step 3: Generate tests for \`${operation}\`
-${reset ? `**RESET MODE**: Find any existing test file that contains tests for \`${operation}\`,
+${
+  reset
+    ? `**RESET MODE**: Find any existing test file that contains tests for \`${operation}\`,
 remove the describe block for \`${operation}\` from it, then regenerate those tests fresh.
-If the file becomes empty (no other describe blocks), delete it entirely.` : ""}
+If the file becomes empty (no other describe blocks), delete it entirely.`
+    : ""
+}
 Find the operation source, read its input/output schemas and error types, then
 generate tests following the rules below.
 
@@ -61,8 +81,12 @@ bun run test -- --run ${operation}
 from ${pkgDir}/. If tests fail, fix and re-run.`
     : `
 ### Step 3: Generate tests for each resource type
-${reset ? `**RESET MODE**: All existing test files (*.test.ts) have been deleted. Regenerate
-tests from scratch for every operation. The setup/helper file has been preserved.` : ""}
+${
+  reset
+    ? `**RESET MODE**: All existing test files (*.test.ts) have been deleted. Regenerate
+tests from scratch for every operation. The setup/helper file has been preserved.`
+    : ""
+}
 
 **For small SDKs (<50 operations):** test every operation.
 **For large SDKs (50+ operations):** identify every distinct resource type
@@ -409,6 +433,11 @@ This is a BUG in the SDK, not expected behavior. Your job is to FIX it.
      if (status === 401) return new Unauthorized({ ... });
      if (status === 403) return new Forbidden({ ... });
      \`\`\`
+   - **Preserve the \`headers\` parameter** on \`matchError\`. For retryable errors,
+     when the response includes a standard \`Retry-After\` / \`RateLimit\` hint, pass
+     \`retryAfter: parseRetryAfterForStatus(status, headers)\`. When there is no hint,
+     omit \`retryAfter\` — the default policy still retries with exponential backoff.
+     Import: \`import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";\`
 
 4. **OR create a patch** if the error is operation-specific:
    - For OpenAPI SDKs: add a JSON Patch entry to \`patches/*.patch.json\`
@@ -643,13 +672,20 @@ Include EVERY operation. Do not skip any.
 function buildOperationPrompt(
   provider: string,
   root: string,
-  operation: { name: string; file: string; errors: string[]; httpMethod: string; testFile: string },
+  operation: {
+    name: string;
+    file: string;
+    errors: string[];
+    httpMethod: string;
+    testFile: string;
+  },
   reset?: boolean,
 ): string {
   const pkgDir = `packages/${provider}`;
-  const errorsDesc = operation.errors.length > 0
-    ? `Non-generic errors to test: ${operation.errors.join(", ")}`
-    : "No per-operation errors — test client-level errors (e.g. InvalidRequestError for bad IDs)";
+  const errorsDesc =
+    operation.errors.length > 0
+      ? `Non-generic errors to test: ${operation.errors.join(", ")}`
+      : "No per-operation errors — test client-level errors (e.g. InvalidRequestError for bad IDs)";
 
   return `
 Generate tests for the \`${operation.name}\` operation (${operation.httpMethod}) in the ${provider} SDK.
@@ -755,9 +791,7 @@ const generateTests = Command.make(
     ),
     reset: Flag.boolean("reset").pipe(
       Flag.withDefault(false),
-      Flag.withDescription(
-        "Delete existing tests and regenerate them",
-      ),
+      Flag.withDescription("Delete existing tests and regenerate them"),
     ),
   },
   (config) =>
@@ -837,15 +871,16 @@ const generateTests = Command.make(
 
       if (op) {
         // Single operation mode — one agent call
-        yield* Console.log(
-          `${DIM}Generating tests for ${op}...${RESET}\n`,
-        );
+        yield* Console.log(`${DIM}Generating tests for ${op}...${RESET}\n`);
 
-        yield* runAgent({
-          prompt: buildPrompt(config.provider, root, op, config.reset),
-          cwd: root,
-          systemPromptAppend,
-        }, stats);
+        yield* runAgent(
+          {
+            prompt: buildPrompt(config.provider, root, op, config.reset),
+            cwd: root,
+            systemPromptAppend,
+          },
+          stats,
+        );
       } else {
         // All operations mode — two phases:
         // Phase 1: research & populate shared metadata file
@@ -858,22 +893,21 @@ const generateTests = Command.make(
           `${DIM}Phase 1: Researching SDK and building operation manifest...${RESET}\n`,
         );
 
-        const researchResult = yield* runAgent({
-          prompt: buildResearchPrompt(config.provider),
-          cwd: root,
-          systemPromptAppend,
-        }, stats);
+        const researchResult = yield* runAgent(
+          {
+            prompt: buildResearchPrompt(config.provider),
+            cwd: root,
+            systemPromptAppend,
+          },
+          stats,
+        );
 
         const sessionId = researchResult.sessionId;
 
         // Read the metadata file
         const manifestRaw = yield* fs
           .readFileString(path.join(root, manifestPath))
-          .pipe(
-            Effect.catch(() =>
-              Effect.succeed("[]"),
-            ),
-          );
+          .pipe(Effect.catch(() => Effect.succeed("[]")));
 
         let operations: Array<{
           name: string;
@@ -884,16 +918,26 @@ const generateTests = Command.make(
         }>;
         try {
           const parsed = JSON.parse(manifestRaw);
-          operations = Array.isArray(parsed) ? parsed : parsed.operations ?? [];
+          operations = Array.isArray(parsed)
+            ? parsed
+            : (parsed.operations ?? []);
         } catch {
           yield* Console.log(
             `${RED}Failed to parse manifest — falling back to single agent call${RESET}\n`,
           );
-          yield* runAgent({
-            prompt: buildPrompt(config.provider, root, undefined, config.reset),
-            cwd: root,
-            systemPromptAppend,
-          }, stats);
+          yield* runAgent(
+            {
+              prompt: buildPrompt(
+                config.provider,
+                root,
+                undefined,
+                config.reset,
+              ),
+              cwd: root,
+              systemPromptAppend,
+            },
+            stats,
+          );
           yield* Console.log(
             `\n${GREEN}${BOLD}Test generation complete for ${config.provider} / ${scope}.${RESET}`,
           );
@@ -905,7 +949,12 @@ const generateTests = Command.make(
         let skipped = 0;
         const toGenerate: typeof operations = [];
         for (const operation of operations) {
-          const testFilePath = path.join(root, "packages", config.provider, operation.testFile);
+          const testFilePath = path.join(
+            root,
+            "packages",
+            config.provider,
+            operation.testFile,
+          );
           const testExists = yield* fs.exists(testFilePath);
           if (testExists && !config.reset) {
             skipped++;
@@ -917,7 +966,9 @@ const generateTests = Command.make(
         yield* Console.log(
           `\n${BOLD}Found ${operations.length} operations:${RESET} ` +
             `${toGenerate.length} to generate` +
-            (skipped > 0 ? `, ${DIM}${skipped} skipped (test file exists)${RESET}` : ""),
+            (skipped > 0
+              ? `, ${DIM}${skipped} skipped (test file exists)${RESET}`
+              : ""),
         );
 
         // Phase 2: generate tests per operation, resuming the same session
@@ -928,24 +979,35 @@ const generateTests = Command.make(
             `\n${CYAN}[${completed}/${toGenerate.length}]${RESET} ${BOLD}${operation.name}${RESET} ${DIM}→ ${operation.testFile}${RESET}`,
           );
 
-          yield* runAgent({
-            prompt: buildOperationPrompt(config.provider, root, operation, config.reset),
-            cwd: root,
-            resume: sessionId,
-            systemPromptAppend,
-          }, stats);
+          yield* runAgent(
+            {
+              prompt: buildOperationPrompt(
+                config.provider,
+                root,
+                operation,
+                config.reset,
+              ),
+              cwd: root,
+              resume: sessionId,
+              systemPromptAppend,
+            },
+            stats,
+          );
         }
 
         // Phase 3: run the full test suite
         yield* Console.log(
           `\n${DIM}Running full test suite to verify...${RESET}\n`,
         );
-        yield* runAgent({
-          prompt: `Run the full test suite for ${pkgDir}/ with \`bun run test\` from that directory. If any tests fail, fix them and re-run until they pass. Report a summary of total tests, passed, and failed.`,
-          cwd: root,
-          resume: sessionId,
-          systemPromptAppend,
-        }, stats);
+        yield* runAgent(
+          {
+            prompt: `Run the full test suite for ${pkgDir}/ with \`bun run test\` from that directory. If any tests fail, fix them and re-run until they pass. Report a summary of total tests, passed, and failed.`,
+            cwd: root,
+            resume: sessionId,
+            systemPromptAppend,
+          },
+          stats,
+        );
       }
 
       yield* Console.log(
@@ -967,7 +1029,8 @@ const generateTests = Command.make(
       description: "Generate tests for Neon's createProject only",
     },
     {
-      command: "bun scripts/generate-tests.ts cloudflare --operation createBucket",
+      command:
+        "bun scripts/generate-tests.ts cloudflare --operation createBucket",
       description: "Generate tests for Cloudflare's R2 createBucket",
     },
   ]),

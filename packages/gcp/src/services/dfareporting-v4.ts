@@ -53,7 +53,7 @@ export interface AudienceSegmentGroup {
   /** Name of this audience segment group. This is a required field and must be less than 65 characters long. */
   name?: string;
   /** Audience segments assigned to this group. The number of segments must be between 2 and 100. */
-  audienceSegments?: Array<AudienceSegment>;
+  audienceSegments?: ReadonlyArray<AudienceSegment>;
   /** ID of this audience segment group. This is a read-only, auto-generated field. */
   id?: string;
 }
@@ -83,7 +83,7 @@ export const AccountPermissionGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface AccountPermissionGroupsListResponse {
   /** Account permission group collection. */
-  accountPermissionGroups?: Array<AccountPermissionGroup>;
+  accountPermissionGroups?: ReadonlyArray<AccountPermissionGroup>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#accountPermissionGroupGroupsListResponse". */
   kind?: string;
 }
@@ -185,7 +185,7 @@ export const PlacementAssignment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ObjectFilter {
   /** Applicable when status is ASSIGNED. The user has access to objects with these object IDs. */
-  objectIds?: Array<string>;
+  objectIds?: ReadonlyArray<string>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#objectFilter". */
   kind?: string;
   /** Status of the filter. NONE means the user has access to none of the objects. ALL means the user has access to all objects. ASSIGNED means the user has access to the objects with IDs in the objectIds list. */
@@ -267,7 +267,7 @@ export interface AccountUserProfilesListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
   /** Account user profile collection. */
-  accountUserProfiles?: Array<AccountUserProfile>;
+  accountUserProfiles?: ReadonlyArray<AccountUserProfile>;
 }
 
 export const AccountUserProfilesListResponse =
@@ -373,7 +373,7 @@ export interface AdvertisersListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#advertisersListResponse". */
   kind?: string;
   /** Advertiser collection. */
-  advertisers?: Array<Advertiser>;
+  advertisers?: ReadonlyArray<Advertiser>;
 }
 
 export const AdvertisersListResponse =
@@ -466,7 +466,7 @@ export const File = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FileList {
   /** The files returned in this response. */
-  items?: Array<File>;
+  items?: ReadonlyArray<File>;
   /** Continuation token used to page through files. To retrieve the next page of results, set the next request's "pageToken" to the value of this field. The page token is only valid for a limited amount of time and should not be persisted. */
   nextPageToken?: string;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#fileList". */
@@ -505,7 +505,7 @@ export const Country = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CountriesListResponse {
   /** Country collection. */
-  countries?: Array<Country>;
+  countries?: ReadonlyArray<Country>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#countriesListResponse". */
   kind?: string;
 }
@@ -556,7 +556,7 @@ export const DirectorySiteSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DirectorySite {
   /** Tag types for interstitial placements. Acceptable values are: - "IFRAME_JAVASCRIPT_INTERSTITIAL" - "INTERNAL_REDIRECT_INTERSTITIAL" - "JAVASCRIPT_INTERSTITIAL" */
-  interstitialTagFormats?: Array<
+  interstitialTagFormats?: ReadonlyArray<
     | "IFRAME_JAVASCRIPT_INTERSTITIAL"
     | "INTERNAL_REDIRECT_INTERSTITIAL"
     | "JAVASCRIPT_INTERSTITIAL"
@@ -577,7 +577,7 @@ export interface DirectorySite {
   /** ID of this directory site. This is a read-only, auto-generated field. */
   id?: string;
   /** Tag types for regular placements. Acceptable values are: - "STANDARD" - "IFRAME_JAVASCRIPT_INPAGE" - "INTERNAL_REDIRECT_INPAGE" - "JAVASCRIPT_INPAGE" */
-  inpageTagFormats?: Array<
+  inpageTagFormats?: ReadonlyArray<
     | "STANDARD"
     | "IFRAME_JAVASCRIPT_INPAGE"
     | "INTERNAL_REDIRECT_INPAGE"
@@ -714,7 +714,7 @@ export interface FieldError {
   /** Output only. The ID of the field. */
   fieldId?: number;
   /** Output only. The list of values of the field. */
-  fieldValues?: Array<string>;
+  fieldValues?: ReadonlyArray<string>;
   /** Output only. The name of the field. */
   fieldName?: string;
 }
@@ -731,7 +731,7 @@ export interface IngestionErrorRecord {
   /** Output only. The record ID of the ingestion error record. */
   recordId?: string;
   /** Output only. The list of field errors of the ingestion error record. */
-  errors?: Array<FieldError>;
+  errors?: ReadonlyArray<FieldError>;
 }
 
 export const IngestionErrorRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -762,7 +762,7 @@ export const IngestionStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FeedIngestionStatus {
   /** Output only. The ingestion error records of the feed. */
-  ingestionErrorRecords?: Array<IngestionErrorRecord>;
+  ingestionErrorRecords?: ReadonlyArray<IngestionErrorRecord>;
   /** Output only. The processing state of the feed. */
   state?:
     | "FEED_PROCESSING_STATE_UNKNOWN"
@@ -943,7 +943,7 @@ export interface Element {
   /** Optional. The field ID to specify the active field in the feed. */
   activeFieldId?: number;
   /** Required. The list of fields of the element. The field order and name should match the meta data in the content source source. */
-  feedFields?: Array<FeedField>;
+  feedFields?: ReadonlyArray<FeedField>;
   /** Required. The field ID to specify the field used for dynamic reporting in Campaign Manager 360. */
   reportingLabelFieldId?: number;
   /** Optional. The field ID to specify the field that represents the default field in the feed. */
@@ -988,7 +988,7 @@ export const FeedSchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ContentSourceMetaData {
   /** Output only. The list of column names in the content source. */
-  fieldNames?: Array<string>;
+  fieldNames?: ReadonlyArray<string>;
   /** Output only. The separator of the content source. */
   separator?: string;
   /** Output only. The number of rows in the content source. */
@@ -1146,15 +1146,15 @@ export const Metric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ReportCompatibleFields {
   /** Dimensions which are compatible to be selected in the "dimensions" section of the report. */
-  dimensions?: Array<Dimension>;
+  dimensions?: ReadonlyArray<Dimension>;
   /** Metrics which are compatible to be selected in the "metricNames" section of the report. */
-  metrics?: Array<Metric>;
+  metrics?: ReadonlyArray<Metric>;
   /** The kind of resource this is, in this case dfareporting#reportCompatibleFields. */
   kind?: string;
   /** Dimensions which are compatible to be selected in the "dimensionFilters" section of the report. */
-  dimensionFilters?: Array<Dimension>;
+  dimensionFilters?: ReadonlyArray<Dimension>;
   /** Metrics which are compatible to be selected as activity metrics to pivot on in the "activities" section of the report. */
-  pivotedActivityMetrics?: Array<Metric>;
+  pivotedActivityMetrics?: ReadonlyArray<Metric>;
 }
 
 export const ReportCompatibleFields = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1211,7 +1211,7 @@ export const ListPopulationTerm = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListPopulationClause {
   /** Terms of this list population clause. Each clause is made up of list population terms representing constraints and are joined by ORs. */
-  terms?: Array<ListPopulationTerm>;
+  terms?: ReadonlyArray<ListPopulationTerm>;
 }
 
 export const ListPopulationClause = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1220,7 +1220,7 @@ export const ListPopulationClause = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListPopulationRule {
   /** Clauses that make up this list population rule. Clauses are joined by ANDs, and the clauses themselves are made up of list population terms which are joined by ORs. */
-  listPopulationClauses?: Array<ListPopulationClause>;
+  listPopulationClauses?: ReadonlyArray<ListPopulationClause>;
   /** Name of floodlight activity associated with this rule. This is a read-only, auto-generated field. */
   floodlightActivityName?: string;
   /** Floodlight activity ID associated with this rule. This field can be left blank. */
@@ -1235,7 +1235,7 @@ export const ListPopulationRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface YoutubeSettings {
   /** Optional. The call to actions. Currently only one call to action is supported. */
-  callToActions?: Array<
+  callToActions?: ReadonlyArray<
     | "CALL_TO_ACTION_UNKNOWN"
     | "CALL_TO_ACTION_LEARN_MORE"
     | "CALL_TO_ACTION_GET_QUOTE"
@@ -1263,13 +1263,13 @@ export interface YoutubeSettings {
     | (string & {})
   >;
   /** Optional. The IDs of the creatives to use for the business logo. Currently only one creative is supported. */
-  businessLogoCreativeIds?: Array<string>;
+  businessLogoCreativeIds?: ReadonlyArray<string>;
   /** Optional. The descriptions. Currently only one description is supported. */
-  descriptions?: Array<string>;
+  descriptions?: ReadonlyArray<string>;
   /** Optional. The long headlines. Currently only one long headline is supported. */
-  longHeadlines?: Array<string>;
+  longHeadlines?: ReadonlyArray<string>;
   /** Optional. The headlines associated with the call to actions. Currently only one headline is supported. */
-  headlines?: Array<string>;
+  headlines?: ReadonlyArray<string>;
   /** Optional. The business name. */
   businessName?: string;
 }
@@ -1285,11 +1285,11 @@ export const YoutubeSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CrossMediaReachReportCompatibleFields {
   /** Dimensions which are compatible to be selected in the "dimensions" section of the report. */
-  dimensions?: Array<Dimension>;
+  dimensions?: ReadonlyArray<Dimension>;
   /** Metrics which are compatible to be selected in the "metricNames" section of the report. */
-  metrics?: Array<Metric>;
+  metrics?: ReadonlyArray<Metric>;
   /** Dimensions which are compatible to be selected in the "dimensionFilters" section of the report. */
-  dimensionFilters?: Array<Dimension>;
+  dimensionFilters?: ReadonlyArray<Dimension>;
   /** The kind of resource this is, in this case dfareporting#crossMediaReachReportCompatibleFields. */
   kind?: string;
 }
@@ -1540,17 +1540,17 @@ export const Browser = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TechnologyTargeting {
   /** Operating systems that this ad targets. To target specific versions, use operatingSystemVersions. For each operating system only dartId is required. The other fields are populated automatically when the ad is inserted or updated. If targeting an operating system, do not set targeting for operating system versions for the same operating system. */
-  operatingSystems?: Array<OperatingSystem>;
+  operatingSystems?: ReadonlyArray<OperatingSystem>;
   /** Platform types that this ad targets. For example, desktop, mobile, or tablet. For each platform type, only id is required, and the other fields are populated automatically when the ad is inserted or updated. */
-  platformTypes?: Array<PlatformType>;
+  platformTypes?: ReadonlyArray<PlatformType>;
   /** Operating system versions that this ad targets. To target all versions, use operatingSystems. For each operating system version, only id is required. The other fields are populated automatically when the ad is inserted or updated. If targeting an operating system version, do not set targeting for the corresponding operating system in operatingSystems. */
-  operatingSystemVersions?: Array<OperatingSystemVersion>;
+  operatingSystemVersions?: ReadonlyArray<OperatingSystemVersion>;
   /** Connection types that this ad targets. For each connection type only id is required. The other fields are populated automatically when the ad is inserted or updated. */
-  connectionTypes?: Array<ConnectionType>;
+  connectionTypes?: ReadonlyArray<ConnectionType>;
   /** Mobile carriers that this ad targets. For each mobile carrier only id is required, and the other fields are populated automatically when the ad is inserted or updated. If targeting a mobile carrier, do not set targeting for any zip codes. */
-  mobileCarriers?: Array<MobileCarrier>;
+  mobileCarriers?: ReadonlyArray<MobileCarrier>;
   /** Browsers that this ad targets. For each browser either set browserVersionId or dartId along with the version numbers. If both are specified, only browserVersionId will be used. The other fields are populated automatically when the ad is inserted or updated. */
-  browsers?: Array<Browser>;
+  browsers?: ReadonlyArray<Browser>;
 }
 
 export const TechnologyTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1587,7 +1587,7 @@ export const ContextualKeyword = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ContextualKeywordTargeting {
   /** Contextual keywords that this ad targets */
-  keywords?: Array<ContextualKeyword>;
+  keywords?: ReadonlyArray<ContextualKeyword>;
 }
 
 export const ContextualKeywordTargeting =
@@ -1597,11 +1597,11 @@ export const ContextualKeywordTargeting =
 
 export interface DayPartTargeting {
   /** Hours of the day when the ad will serve, where 0 is midnight to 1 AM and 23 is 11 PM to midnight. Can be specified with days of week, in which case the ad would serve during these hours on the specified days. For example if Monday, Wednesday, Friday are the days of week specified and 9-10am, 3-5pm (hours 9, 15, and 16) is specified, the ad would serve Monday, Wednesdays, and Fridays at 9-10am and 3-5pm. Acceptable values are 0 to 23, inclusive. */
-  hoursOfDay?: Array<number>;
+  hoursOfDay?: ReadonlyArray<number>;
   /** Whether or not to use the user's local time. If false, the America/New York time zone applies. */
   userLocalTime?: boolean;
   /** Days of the week when the ad will serve. Acceptable values are: - "SUNDAY" - "MONDAY" - "TUESDAY" - "WEDNESDAY" - "THURSDAY" - "FRIDAY" - "SATURDAY" */
-  daysOfWeek?: Array<
+  daysOfWeek?: ReadonlyArray<
     | "SUNDAY"
     | "MONDAY"
     | "TUESDAY"
@@ -1638,14 +1638,14 @@ export interface CreativeAssignment {
   /** Sequence number of the creative assignment, applicable when the rotation type is CREATIVE_ROTATION_TYPE_SEQUENTIAL. Acceptable values are 1 to 65535, inclusive. */
   sequence?: number;
   /** Rich media exit overrides for this creative assignment. Applicable when the creative type is any of the following: - DISPLAY - RICH_MEDIA_INPAGE - RICH_MEDIA_INPAGE_FLOATING - RICH_MEDIA_IM_EXPAND - RICH_MEDIA_EXPANDING - RICH_MEDIA_INTERSTITIAL_FLOAT - RICH_MEDIA_MOBILE_IN_APP - RICH_MEDIA_MULTI_FLOATING - RICH_MEDIA_PEEL_DOWN - VPAID_LINEAR - VPAID_NON_LINEAR */
-  richMediaExitOverrides?: Array<RichMediaExitOverride>;
+  richMediaExitOverrides?: ReadonlyArray<RichMediaExitOverride>;
   /** Whether the creative to be assigned is SSL-compliant. This is a read-only field that is auto-generated when the ad is inserted or updated. */
   sslCompliant?: boolean;
   startTime?: string;
   /** Companion creative overrides for this creative assignment. Applicable to video ads. */
-  companionCreativeOverrides?: Array<CompanionClickThroughOverride>;
+  companionCreativeOverrides?: ReadonlyArray<CompanionClickThroughOverride>;
   /** Creative group assignments for this creative assignment. Only one assignment per creative group number is allowed for a maximum of two assignments. */
-  creativeGroupAssignments?: Array<CreativeGroupAssignment>;
+  creativeGroupAssignments?: ReadonlyArray<CreativeGroupAssignment>;
   /** Click-through URL of the creative assignment. */
   clickThroughUrl?: ClickThroughUrl;
   /** ID of the creative to be assigned. This is a required field. */
@@ -1697,7 +1697,7 @@ export interface CreativeRotation {
     | "CREATIVE_ROTATION_TYPE_RANDOM"
     | (string & {});
   /** Creative assignments in this creative rotation. */
-  creativeAssignments?: Array<CreativeAssignment>;
+  creativeAssignments?: ReadonlyArray<CreativeAssignment>;
 }
 
 export const CreativeRotation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1727,7 +1727,7 @@ export const Language = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LanguageTargeting {
   /** Languages that this ad targets. For each language only languageId is required. The other fields are populated automatically when the ad is inserted or updated. */
-  languages?: Array<Language>;
+  languages?: ReadonlyArray<Language>;
 }
 
 export const LanguageTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1867,17 +1867,17 @@ export const Region = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GeoTargeting {
   /** Cities to be targeted. For each city only dartId is required. The other fields are populated automatically when the ad is inserted or updated. If targeting a city, do not target or exclude the country of the city, and do not target the metro or region of the city. */
-  cities?: Array<City>;
+  cities?: ReadonlyArray<City>;
   /** Metros to be targeted. For each metro only dmaId is required. The other fields are populated automatically when the ad is inserted or updated. If targeting a metro, do not target or exclude the country of the metro. */
-  metros?: Array<Metro>;
+  metros?: ReadonlyArray<Metro>;
   /** Postal codes to be targeted. For each postal code only id is required. The other fields are populated automatically when the ad is inserted or updated. If targeting a postal code, do not target or exclude the country of the postal code. */
-  postalCodes?: Array<PostalCode>;
+  postalCodes?: ReadonlyArray<PostalCode>;
   /** Whether or not to exclude the countries in the countries field from targeting. If false, the countries field refers to countries which will be targeted by the ad. */
   excludeCountries?: boolean;
   /** Countries to be targeted or excluded from targeting, depending on the setting of the excludeCountries field. For each country only dartId is required. The other fields are populated automatically when the ad is inserted or updated. If targeting or excluding a country, do not target regions, cities, metros, or postal codes in the same country. */
-  countries?: Array<Country>;
+  countries?: ReadonlyArray<Country>;
   /** Regions to be targeted. For each region only dartId is required. The other fields are populated automatically when the ad is inserted or updated. If targeting a region, do not target or exclude the country of the region. */
-  regions?: Array<Region>;
+  regions?: ReadonlyArray<Region>;
 }
 
 export const GeoTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1910,7 +1910,7 @@ export interface Ad {
   /** Click-through URL for this ad. This is a required field on insertion. Applicable when type is AD_SERVING_CLICK_TRACKER. */
   clickThroughUrl?: ClickThroughUrl;
   /** Creative group assignments for this ad. Applicable when type is AD_SERVING_CLICK_TRACKER. Only one assignment per creative group number is allowed for a maximum of two assignments. */
-  creativeGroupAssignments?: Array<CreativeGroupAssignment>;
+  creativeGroupAssignments?: ReadonlyArray<CreativeGroupAssignment>;
   /** Dimension value for the ID of this ad. This is a read-only, auto-generated field. */
   idDimensionValue?: DimensionValue;
   /** Key-value targeting information for this ad. This field must be left blank if the ad is using a targeting template. Applicable when type is AD_SERVING_STANDARD_AD. */
@@ -1945,13 +1945,13 @@ export interface Ad {
   /** Advertiser ID of this ad. This is a required field on insertion. */
   advertiserId?: string;
   /** Event tag overrides for this ad. */
-  eventTagOverrides?: Array<EventTagOverride>;
+  eventTagOverrides?: ReadonlyArray<EventTagOverride>;
   /** Whether this ad is ssl compliant. This is a read-only field that is auto-generated when the ad is inserted or updated. */
   sslCompliant?: boolean;
   /** Subaccount ID of this ad. This is a read-only field that can be left blank. */
   subaccountId?: string;
   /** Placement assignments for this ad. */
-  placementAssignments?: Array<PlacementAssignment>;
+  placementAssignments?: ReadonlyArray<PlacementAssignment>;
   /** Comments for this ad. */
   comments?: string;
   /** Name of this ad. This is a required field and must be less than 256 characters long. */
@@ -2067,7 +2067,7 @@ export const MobileApp = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MobileAppsListResponse {
   /** Mobile apps collection. */
-  mobileApps?: Array<MobileApp>;
+  mobileApps?: ReadonlyArray<MobileApp>;
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#mobileAppsListResponse". */
@@ -2107,7 +2107,7 @@ export interface DeepLink {
   /** The fallback URL. This URL will be served to users who do not have the mobile app installed. */
   fallbackUrl?: string;
   /** Ads served to users on these remarketing lists will use this deep link. Applicable when mobileApp.directory is APPLE_APP_STORE. */
-  remarketingListIds?: Array<string>;
+  remarketingListIds?: ReadonlyArray<string>;
   /** The URL of the mobile app being linked to. */
   appUrl?: string;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#deepLink". */
@@ -2128,15 +2128,15 @@ export interface ReachReportCompatibleFields {
   /** The kind of resource this is, in this case dfareporting#reachReportCompatibleFields. */
   kind?: string;
   /** Dimensions which are compatible to be selected in the "dimensionFilters" section of the report. */
-  dimensionFilters?: Array<Dimension>;
+  dimensionFilters?: ReadonlyArray<Dimension>;
   /** Metrics which are compatible to be selected as activity metrics to pivot on in the "activities" section of the report. */
-  pivotedActivityMetrics?: Array<Metric>;
+  pivotedActivityMetrics?: ReadonlyArray<Metric>;
   /** Metrics which are compatible to be selected in the "reachByFrequencyMetricNames" section of the report. */
-  reachByFrequencyMetrics?: Array<Metric>;
+  reachByFrequencyMetrics?: ReadonlyArray<Metric>;
   /** Dimensions which are compatible to be selected in the "dimensions" section of the report. */
-  dimensions?: Array<Dimension>;
+  dimensions?: ReadonlyArray<Dimension>;
   /** Metrics which are compatible to be selected in the "metricNames" section of the report. */
-  metrics?: Array<Metric>;
+  metrics?: ReadonlyArray<Metric>;
 }
 
 export const ReachReportCompatibleFields =
@@ -2151,15 +2151,15 @@ export const ReachReportCompatibleFields =
 
 export interface CrossDimensionReachReportCompatibleFields {
   /** Metrics which are compatible to be selected in the "overlapMetricNames" section of the report. */
-  overlapMetrics?: Array<Metric>;
+  overlapMetrics?: ReadonlyArray<Metric>;
   /** Metrics which are compatible to be selected in the "metricNames" section of the report. */
-  metrics?: Array<Metric>;
+  metrics?: ReadonlyArray<Metric>;
   /** Dimensions which are compatible to be selected in the "breakdown" section of the report. */
-  breakdown?: Array<Dimension>;
+  breakdown?: ReadonlyArray<Dimension>;
   /** The kind of resource this is, in this case dfareporting#crossDimensionReachReportCompatibleFields. */
   kind?: string;
   /** Dimensions which are compatible to be selected in the "dimensionFilters" section of the report. */
-  dimensionFilters?: Array<Dimension>;
+  dimensionFilters?: ReadonlyArray<Dimension>;
 }
 
 export const CrossDimensionReachReportCompatibleFields =
@@ -2175,13 +2175,13 @@ export interface PathToConversionReportCompatibleFields {
   /** The kind of resource this is, in this case dfareporting#pathToConversionReportCompatibleFields. */
   kind?: string;
   /** Per-interaction dimensions which are compatible to be selected in the "perInteractionDimensions" section of the report. */
-  perInteractionDimensions?: Array<Dimension>;
+  perInteractionDimensions?: ReadonlyArray<Dimension>;
   /** Custom floodlight variables which are compatible to be selected in the "customFloodlightVariables" section of the report. */
-  customFloodlightVariables?: Array<Dimension>;
+  customFloodlightVariables?: ReadonlyArray<Dimension>;
   /** Metrics which are compatible to be selected in the "metricNames" section of the report. */
-  metrics?: Array<Metric>;
+  metrics?: ReadonlyArray<Metric>;
   /** Conversion dimensions which are compatible to be selected in the "conversionDimensions" section of the report. */
-  conversionDimensions?: Array<Dimension>;
+  conversionDimensions?: ReadonlyArray<Dimension>;
 }
 
 export const PathToConversionReportCompatibleFields =
@@ -2197,11 +2197,11 @@ export interface FloodlightReportCompatibleFields {
   /** The kind of resource this is, in this case dfareporting#floodlightReportCompatibleFields. */
   kind?: string;
   /** Dimensions which are compatible to be selected in the "dimensionFilters" section of the report. */
-  dimensionFilters?: Array<Dimension>;
+  dimensionFilters?: ReadonlyArray<Dimension>;
   /** Dimensions which are compatible to be selected in the "dimensions" section of the report. */
-  dimensions?: Array<Dimension>;
+  dimensions?: ReadonlyArray<Dimension>;
   /** Metrics which are compatible to be selected in the "metricNames" section of the report. */
-  metrics?: Array<Metric>;
+  metrics?: ReadonlyArray<Metric>;
 }
 
 export const FloodlightReportCompatibleFields =
@@ -2297,7 +2297,7 @@ export interface UserRolePermissionsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#userRolePermissionsListResponse". */
   kind?: string;
   /** User role permission collection. */
-  userRolePermissions?: Array<UserRolePermission>;
+  userRolePermissions?: ReadonlyArray<UserRolePermission>;
 }
 
 export const UserRolePermissionsListResponse =
@@ -2501,7 +2501,7 @@ export interface CartData {
   /** The Merchant Center ID where the items are uploaded. Providing Merchant Center ID reduces ambiguity in identifying the right offer details. */
   merchantId?: string;
   /** Data of the items purchased. */
-  items?: Array<CartDataItem>;
+  items?: ReadonlyArray<CartDataItem>;
   /** The feed labels associated with the feed where your items are uploaded. For more information, please refer to ​​ https://support.google.com/merchants/answer/12453549. Providing the feed label reduces ambiguity in identifying the right offer details. */
   merchantFeedLabel?: string;
   /** The language associated with the feed where your items are uploaded. Use ISO 639-1 language codes. Providing the feed language reduces ambiguity in identifying the right offer details. */
@@ -2521,13 +2521,13 @@ export interface Conversion {
   /** Whether this particular request may come from a user under the age of 16 (may differ by country), under compliance with the European Union's General Data Protection Regulation (GDPR). */
   treatmentForUnderage?: boolean;
   /** The user identifiers to enhance the conversion. The maximum number of user identifiers for each conversion is 5. */
-  userIdentifiers?: Array<UserIdentifier>;
+  userIdentifiers?: ReadonlyArray<UserIdentifier>;
   /** A list of the alphanumeric encrypted user IDs. Any user ID with exposure prior to the conversion timestamp will be used in the inserted conversion. If no such user ID is found then the conversion will be rejected with INVALID_ARGUMENT error. When set, encryptionInfo should also be specified. This field may only be used when calling batchinsert; it is not supported by batchupdate. This field is mutually exclusive with encryptedUserId, matchId, mobileDeviceId, gclid dclid, and impressionId. This or encryptedUserId or matchId or mobileDeviceId or gclid or dclid or impressionId is a required field. */
-  encryptedUserIdCandidates?: Array<string>;
+  encryptedUserIdCandidates?: ReadonlyArray<string>;
   /** The match ID field. A match ID is your own first-party identifier that has been synced with Google using the match ID feature in Floodlight. This field is mutually exclusive with encryptedUserId, encryptedUserIdCandidates[],mobileDeviceId, gclid, dclid, and impressionId. This or encryptedUserId orencryptedUserIdCandidates[] or mobileDeviceId or gclid or dclid or impressionIdis a required field. */
   matchId?: string;
   /** Custom floodlight variables. */
-  customVariables?: Array<CustomFloodlightVariable>;
+  customVariables?: ReadonlyArray<CustomFloodlightVariable>;
   /** Whether the conversion was for a non personalized ad. */
   nonPersonalizedAd?: boolean;
   /** The display click ID. This field is mutually exclusive with encryptedUserId, encryptedUserIdCandidates[], matchId, mobileDeviceId, gclid, and impressionId. This or encryptedUserId or encryptedUserIdCandidates[] or matchId or mobileDeviceId or gclid or impressionId is a required field. */
@@ -2614,7 +2614,7 @@ export interface ConversionStatus {
   /** The original conversion that was inserted or updated. */
   conversion?: Conversion;
   /** A list of errors related to this conversion. */
-  errors?: Array<ConversionError>;
+  errors?: ReadonlyArray<ConversionError>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#conversionStatus". */
   kind?: string;
 }
@@ -2627,7 +2627,7 @@ export const ConversionStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ConversionsBatchInsertResponse {
   /** The insert status of each conversion. Statuses are returned in the same order that conversions are inserted. */
-  status?: Array<ConversionStatus>;
+  status?: ReadonlyArray<ConversionStatus>;
   /** Indicates that some or all conversions failed to insert. */
   hasFailures?: boolean;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#conversionsBatchInsertResponse". */
@@ -2717,7 +2717,7 @@ export interface ChangeLogsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#changeLogsListResponse". */
   kind?: string;
   /** Change log collection. */
-  changeLogs?: Array<ChangeLog>;
+  changeLogs?: ReadonlyArray<ChangeLog>;
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
@@ -2740,7 +2740,7 @@ export interface Subaccount {
   /** ID of this subaccount. This is a read-only, auto-generated field. */
   id?: string;
   /** IDs of the available user role permissions for this subaccount. */
-  availablePermissionIds?: Array<string>;
+  availablePermissionIds?: ReadonlyArray<string>;
 }
 
 export const Subaccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2757,7 +2757,7 @@ export interface SubaccountsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#subaccountsListResponse". */
   kind?: string;
   /** Subaccount collection. */
-  subaccounts?: Array<Subaccount>;
+  subaccounts?: ReadonlyArray<Subaccount>;
 }
 
 export const SubaccountsListResponse =
@@ -2792,7 +2792,7 @@ export interface CitiesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#citiesListResponse". */
   kind?: string;
   /** City collection. */
-  cities?: Array<City>;
+  cities?: ReadonlyArray<City>;
 }
 
 export const CitiesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2804,7 +2804,7 @@ export interface PlatformTypesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#platformTypesListResponse". */
   kind?: string;
   /** Platform type collection. */
-  platformTypes?: Array<PlatformType>;
+  platformTypes?: ReadonlyArray<PlatformType>;
 }
 
 export const PlatformTypesListResponse =
@@ -2860,7 +2860,7 @@ export interface FloodlightActivity {
   /** The type of Floodlight tag this activity will generate. This is a required field. */
   floodlightTagType?: "IFRAME" | "IMAGE" | "GLOBAL_SITE_TAG" | (string & {});
   /** Publisher dynamic floodlight tags. */
-  publisherTags?: Array<FloodlightActivityPublisherDynamicTag>;
+  publisherTags?: ReadonlyArray<FloodlightActivityPublisherDynamicTag>;
   /** Name of the associated floodlight activity group. This is a read-only field. */
   floodlightActivityGroupName?: string;
   /** Value of the cat= parameter in the floodlight tag, which the ad servers use to identify the activity. This is optional: if empty, a new tag string will be generated for you. This string must be 1 to 8 characters long, with valid characters being a-z0-9[ _ ]. This tag string must also be unique among activities of the same activity group. This field is read-only after insertion. */
@@ -2907,7 +2907,7 @@ export interface FloodlightActivity {
   /** Tag format type for the floodlight activity. If left blank, the tag format will default to HTML. */
   tagFormat?: "HTML" | "XHTML" | (string & {});
   /** Dynamic floodlight tags. */
-  defaultTags?: Array<FloodlightActivityDynamicTag>;
+  defaultTags?: ReadonlyArray<FloodlightActivityDynamicTag>;
   /** Dimension value for the ID of this floodlight activity. This is a read-only, auto-generated field. */
   idDimensionValue?: DimensionValue;
   /** Floodlight configuration ID of this floodlight activity. If this field is left blank, the value will be copied over either from the activity group's floodlight configuration or from the existing activity's floodlight configuration. */
@@ -2927,7 +2927,7 @@ export interface FloodlightActivity {
   /** URL where this tag will be deployed. If specified, must be less than 256 characters long. */
   expectedUrl?: string;
   /** List of the user-defined variables used by this conversion tag. These map to the "u[1-100]=" in the tags. Each of these can have a user defined type. Acceptable values are U1 to U100, inclusive. */
-  userDefinedVariableTypes?: Array<
+  userDefinedVariableTypes?: ReadonlyArray<
     | "U1"
     | "U2"
     | "U3"
@@ -3094,7 +3094,7 @@ export interface Pricing {
     | "PLANNING_PLACEMENT_CAP_COST_TYPE_CUMULATIVE"
     | (string & {});
   /** Flights of this inventory item. A flight (a.k.a. pricing period) represents the inventory item pricing information for a specific period of time. */
-  flights?: Array<Flight>;
+  flights?: ReadonlyArray<Flight>;
 }
 
 export const Pricing = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3140,7 +3140,7 @@ export interface StudioCreative {
   /** Studio account ID of this creative. This field, if left unset, will be auto-populated. */
   studioAccountId?: string;
   /** List of assets associated with this studio creative. It is a required field on insertion. */
-  assetIds?: Array<string>;
+  assetIds?: ReadonlyArray<string>;
   /** Format of this studio creative. This is a required field on insertion. */
   format?:
     | "UNKNOWN"
@@ -3260,7 +3260,7 @@ export interface CreativeGroupsListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
   /** Creative group collection. */
-  creativeGroups?: Array<CreativeGroup>;
+  creativeGroups?: ReadonlyArray<CreativeGroup>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#creativeGroupsListResponse". */
   kind?: string;
 }
@@ -3312,7 +3312,7 @@ export interface UserRole {
   /** Subaccount ID of this user role. This is a read-only field that can be left blank. */
   subaccountId?: string;
   /** List of permissions associated with this user role. */
-  permissions?: Array<UserRolePermission>;
+  permissions?: ReadonlyArray<UserRolePermission>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#userRole". */
   kind?: string;
   /** Whether this is a default user role. Default user roles are created by the system for the account/subaccount and cannot be modified or deleted. Each default user role comes with a basic set of preassigned permissions. */
@@ -3389,7 +3389,7 @@ export interface SiteCompanionSetting {
   /** Whether to serve only static images as companions. */
   imageOnly?: boolean;
   /** Allowlist of companion sizes to be served via this site template. Set this list to null or empty to serve all companion sizes. */
-  enabledSizes?: Array<Size>;
+  enabledSizes?: ReadonlyArray<Size>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#siteCompanionSetting". */
   kind?: string;
 }
@@ -3421,7 +3421,7 @@ export const SiteSkippableSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SiteTranscodeSetting {
   /** Allowlist of video formats to be served to this site template. Set this list to null or empty to serve all video formats. */
-  enabledVideoFormats?: Array<number>;
+  enabledVideoFormats?: ReadonlyArray<number>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#siteTranscodeSetting". */
   kind?: string;
 }
@@ -3489,7 +3489,7 @@ export interface Order {
   /** Name of the seller organization. */
   sellerOrganizationName?: string;
   /** Site IDs this order is associated with. */
-  siteId?: Array<string>;
+  siteId?: ReadonlyArray<string>;
   /** ID of the terms and conditions template used in this order. */
   planningTermId?: string;
   /** Terms and conditions of this order. */
@@ -3497,11 +3497,11 @@ export interface Order {
   /** ID of this order. This is a read-only, auto-generated field. */
   id?: string;
   /** IDs for users that have to approve documents created for this order. */
-  approverUserProfileIds?: Array<string>;
+  approverUserProfileIds?: ReadonlyArray<string>;
   /** Free-form site names this order is associated with. */
-  siteNames?: Array<string>;
+  siteNames?: ReadonlyArray<string>;
   /** Contacts for this order. */
-  contacts?: Array<OrderContact>;
+  contacts?: ReadonlyArray<OrderContact>;
 }
 
 export const Order = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3533,7 +3533,7 @@ export interface OrdersListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#ordersListResponse". */
   kind?: string;
   /** Order collection. */
-  orders?: Array<Order>;
+  orders?: ReadonlyArray<Order>;
 }
 
 export const OrdersListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3548,7 +3548,7 @@ export interface AdvertiserGroupsListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
   /** Advertiser group collection. */
-  advertiserGroups?: Array<AdvertiserGroup>;
+  advertiserGroups?: ReadonlyArray<AdvertiserGroup>;
 }
 
 export const AdvertiserGroupsListResponse =
@@ -3585,7 +3585,7 @@ export interface CompanionSetting {
   /** Whether to serve only static images as companions. */
   imageOnly?: boolean;
   /** Allowlist of companion sizes to be served to this placement. Set this list to null or empty to serve all companion sizes. */
-  enabledSizes?: Array<Size>;
+  enabledSizes?: ReadonlyArray<Size>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#companionSetting". */
   kind?: string;
 }
@@ -3605,7 +3605,7 @@ export interface LandingPage {
   /** ID of this landing page. This is a read-only, auto-generated field. */
   id?: string;
   /** Links that will direct the user to a mobile app, if installed. */
-  deepLinks?: Array<DeepLink>;
+  deepLinks?: ReadonlyArray<DeepLink>;
   /** URL of this landing page. This is a required field. */
   url?: string;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#landingPage". */
@@ -3628,7 +3628,7 @@ export interface AdvertiserLandingPagesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#advertiserLandingPagesListResponse". */
   kind?: string;
   /** Landing page collection */
-  landingPages?: Array<LandingPage>;
+  landingPages?: ReadonlyArray<LandingPage>;
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
@@ -3652,7 +3652,7 @@ export const PlacementSingleConversionDomain =
   }).annotate({ identifier: "PlacementSingleConversionDomain" });
 
 export interface PlacementConversionDomainOverride {
-  conversionDomains?: Array<PlacementSingleConversionDomain>;
+  conversionDomains?: ReadonlyArray<PlacementSingleConversionDomain>;
 }
 
 export const PlacementConversionDomainOverride =
@@ -3694,7 +3694,7 @@ export interface PricingSchedule {
     | (string & {});
   testingStartDate?: string;
   /** Pricing periods for this placement. */
-  pricingPeriods?: Array<PricingSchedulePricingPeriod>;
+  pricingPeriods?: ReadonlyArray<PricingSchedulePricingPeriod>;
   endDate?: string;
   /** Placement pricing type. This field is required on insertion. */
   pricingType?:
@@ -3741,7 +3741,7 @@ export const UniversalAdId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PlacementStrategiesListResponse {
   /** Placement strategy collection. */
-  placementStrategies?: Array<PlacementStrategy>;
+  placementStrategies?: ReadonlyArray<PlacementStrategy>;
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#placementStrategiesListResponse". */
@@ -3775,7 +3775,7 @@ export interface DimensionValueRequest {
   /** The name of the dimension for which values should be requested. */
   dimensionName?: string;
   /** The list of filters by which to filter values. The filters are ANDed. */
-  filters?: Array<DimensionFilter>;
+  filters?: ReadonlyArray<DimensionFilter>;
   endDate?: string;
   /** The kind of request this is, in this case dfareporting#dimensionValueRequest . */
   kind?: string;
@@ -3841,7 +3841,7 @@ export interface TargetingTemplatesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#targetingTemplatesListResponse". */
   kind?: string;
   /** Targeting template collection. */
-  targetingTemplates?: Array<TargetingTemplate>;
+  targetingTemplates?: ReadonlyArray<TargetingTemplate>;
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
@@ -3881,7 +3881,7 @@ export interface TvCampaignDetail {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#tvCampaignSummary". */
   kind?: string;
   /** The timepoints of the TV campaign. */
-  timepoints?: Array<TvCampaignTimepoint>;
+  timepoints?: ReadonlyArray<TvCampaignTimepoint>;
 }
 
 export const TvCampaignDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4074,7 +4074,7 @@ export interface CreativeAssetSelection {
   /** A creativeAssets[].id. This should refer to one of the parent assets in this creative, and will be served if none of the rules match. This is a required field. */
   defaultAssetId?: string;
   /** Rules determine which asset will be served to a viewer. Rules will be evaluated in the order in which they are stored in this list. This list must contain at least one rule. Applicable to INSTREAM_VIDEO creatives. */
-  rules?: Array<Rule>;
+  rules?: ReadonlyArray<Rule>;
 }
 
 export const CreativeAssetSelection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -4103,7 +4103,7 @@ export interface CreativeAsset {
   /** Whether the asset is horizontally locked. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA. */
   horizontallyLocked?: boolean;
   /** Additional sizes associated with this creative asset. HTML5 asset generated by compatible software such as GWD will be able to support more sizes this creative asset can render. */
-  additionalSizes?: Array<Size>;
+  additionalSizes?: ReadonlyArray<Size>;
   /** Offset position for an asset. Applicable to the following creative types: all RICH_MEDIA. */
   position?: OffsetPosition;
   /** Whether ActionScript3 is enabled for the flash asset. This is a read-only field. Applicable to the following creative type: FLASH_INPAGE. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE. */
@@ -4164,13 +4164,13 @@ export interface CreativeAsset {
   /** Whether the asset is transparent. Applicable to the following creative types: all RICH_MEDIA. Additionally, only applicable to HTML5 assets. */
   transparency?: boolean;
   /** List of companion creatives assigned to an in-stream video creative asset. Acceptable values include IDs of existing flash and image creatives. Applicable to INSTREAM_VIDEO creative type with dynamicAssetSelection set to true. */
-  companionCreativeIds?: Array<string>;
+  companionCreativeIds?: ReadonlyArray<string>;
   /** Detected MIME type for audio or video asset. This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID. */
   mimeType?: string;
   /** Whether the backup asset is original or changed by the user in Campaign Manager. Applicable to the following creative types: all RICH_MEDIA. */
   originalBackup?: boolean;
   /** List of feature dependencies for the creative asset that are detected by Campaign Manager. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative correctly. This is a read-only, auto-generated field. Applicable to the following creative types: HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE. */
-  detectedFeatures?: Array<
+  detectedFeatures?: ReadonlyArray<
     | "CSS_FONT_FACE"
     | "CSS_BACKGROUND_SIZE"
     | "CSS_BORDER_IMAGE"
@@ -4395,19 +4395,19 @@ export interface Creative {
   /** Whether HTML code is generated by Campaign Manager or manually entered. Set to true to ignore changes to htmlCode. Applicable to the following creative types: FLASH_INPAGE and HTML5_BANNER. */
   htmlCodeLocked?: boolean;
   /** Third-party URLs for tracking in-stream creative events. Applicable to the following creative types: all INSTREAM_VIDEO, all INSTREAM_AUDIO, and all VPAID. */
-  thirdPartyUrls?: Array<ThirdPartyTrackingUrl>;
+  thirdPartyUrls?: ReadonlyArray<ThirdPartyTrackingUrl>;
   /** Reporting label used for HTML5 banner backup image. Applicable to the following creative types: DISPLAY when the primary asset type is not HTML_IMAGE. */
   backupImageReportingLabel?: string;
   /** Set this to true to enable the use of rules to target individual assets in this creative. When set to true creativeAssetSelection must be set. This also controls asset-level companions. When this is true, companion creatives should be assigned to creative assets. Learn more. Applicable to INSTREAM_VIDEO creatives. */
   dynamicAssetSelection?: boolean;
   /** Creative field assignments for this creative. Applicable to all creative types. */
-  creativeFieldAssignments?: Array<CreativeFieldAssignment>;
+  creativeFieldAssignments?: ReadonlyArray<CreativeFieldAssignment>;
   /** Ad parameters user for VPAID creative. This is a read-only field. Applicable to the following creative types: all VPAID. */
   adParameters?: string;
   /** Dimension value for the rendering ID of this creative. This is a read-only field. Applicable to all creative types. */
   renderingIdDimensionValue?: DimensionValue;
   /** List of feature dependencies that will cause a backup image to be served if the browser that serves the ad does not support them. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative asset correctly. This field is initially auto-generated to contain all features detected by Campaign Manager for all the assets of this creative and can then be modified by the client. To reset this field, copy over all the creativeAssets' detected features. Applicable to the following creative types: HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE. */
-  backupImageFeatures?: Array<
+  backupImageFeatures?: ReadonlyArray<
     | "CSS_FONT_FACE"
     | "CSS_BACKGROUND_SIZE"
     | "CSS_BORDER_IMAGE"
@@ -4481,7 +4481,7 @@ export interface Creative {
   /** Dimension value for the ID of this creative. This is a read-only field. Applicable to all creative types. */
   idDimensionValue?: DimensionValue;
   /** Keywords for a Rich Media creative. Keywords let you customize the creative settings of a Rich Media ad running on your site without having to contact the advertiser. You can use keywords to dynamically change the look or functionality of a creative. Applicable to the following creative types: all RICH_MEDIA, and all VPAID. */
-  adTagKeys?: Array<string>;
+  adTagKeys?: ReadonlyArray<string>;
   /** Studio advertiser ID associated with rich media and VPAID creatives. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA, and all VPAID. */
   studioAdvertiserId?: string;
   /** Third-party URL used to record rich media impressions. Applicable to the following creative types: all RICH_MEDIA. */
@@ -4510,9 +4510,9 @@ export interface Creative {
   /** Required. Advertiser ID of this creative. This is a required field. Applicable to all creative types. */
   advertiserId?: string;
   /** List of timer events configured for the creative. For DISPLAY_IMAGE_GALLERY creatives, these are read-only and auto-generated from clickTags. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY, all RICH_MEDIA, and all VPAID. Applicable to DISPLAY when the primary asset is not HTML_IMAGE. */
-  timerCustomEvents?: Array<CreativeCustomEvent>;
+  timerCustomEvents?: ReadonlyArray<CreativeCustomEvent>;
   /** Additional sizes associated with a responsive creative. When inserting or updating a creative either the size ID field or size width and height fields can be used. Applicable to DISPLAY creatives when the primary asset type is HTML_IMAGE. */
-  additionalSizes?: Array<Size>;
+  additionalSizes?: ReadonlyArray<Size>;
   /** Whether the creative is SSL-compliant. This is a read-only field. Applicable to all creative types. */
   sslCompliant?: boolean;
   /** Creative audio or video duration in seconds. This is a read-only field. Applicable to the following creative types: INSTREAM_VIDEO, INSTREAM_AUDIO, all RICH_MEDIA, and all VPAID. */
@@ -4530,7 +4530,7 @@ export interface Creative {
   /** The minimum required Flash plugin version for this creative. For example, 11.2.202.235. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA, and all VPAID. */
   requiredFlashPluginVersion?: string;
   /** List of exit events configured for the creative. For DISPLAY and DISPLAY_IMAGE_GALLERY creatives, these are read-only and auto-generated from clickTags, For DISPLAY, an event is also created from the backupImageReportingLabel. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY, all RICH_MEDIA, and all VPAID. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE. */
-  exitCustomEvents?: Array<CreativeCustomEvent>;
+  exitCustomEvents?: ReadonlyArray<CreativeCustomEvent>;
   /** OpenWindow FSCommand of this creative. This lets the SWF file communicate with either Flash Player or the program hosting Flash Player, such as a web browser. This is only triggered if allowScriptAccess field is true. Applicable to the following creative types: FLASH_INPAGE. */
   fsCommand?: FsCommand;
   /** ID of current rendering version. This is a read-only field. Applicable to all creative types. */
@@ -4538,7 +4538,7 @@ export interface Creative {
   /** Whether creative should be treated as SSL compliant even if the system scan shows it's not. Applicable to all creative types. */
   sslOverride?: boolean;
   /** List of counter events configured for the creative. For DISPLAY_IMAGE_GALLERY creatives, these are read-only and auto-generated from clickTags. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY, all RICH_MEDIA, and all VPAID. */
-  counterCustomEvents?: Array<CreativeCustomEvent>;
+  counterCustomEvents?: ReadonlyArray<CreativeCustomEvent>;
   /** Type of artwork used for the creative. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA, and all VPAID. */
   artworkType?:
     | "ARTWORK_TYPE_FLASH"
@@ -4557,7 +4557,7 @@ export interface Creative {
   /** Size associated with this creative. When inserting or updating a creative either the size ID field or size width and height fields can be used. This is a required field when applicable; however for IMAGE, FLASH_INPAGE creatives, and for DISPLAY creatives with a primary asset of type HTML_IMAGE, if left blank, this field will be automatically set using the actual size of the associated image assets. Applicable to the following creative types: DISPLAY, DISPLAY_IMAGE_GALLERY, FLASH_INPAGE, HTML5_BANNER, IMAGE, and all RICH_MEDIA. */
   size?: Size;
   /** Assets associated with a creative. Applicable to all but the following creative types: INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, and REDIRECT */
-  creativeAssets?: Array<CreativeAsset>;
+  creativeAssets?: ReadonlyArray<CreativeAsset>;
   /** The 6-character HTML color code, beginning with #, for the background of the window area where the Flash file is displayed. Default is white. Applicable to the following creative types: FLASH_INPAGE. */
   backgroundColor?: string;
   /** Creative last modification information. This is a read-only field. Applicable to all creative types. */
@@ -4565,7 +4565,7 @@ export interface Creative {
   /** URL of hosted image or hosted video or another ad tag. For INSTREAM_VIDEO_REDIRECT creatives this is the in-stream video redirect URL. The standard for a VAST (Video Ad Serving Template) ad response allows for a redirect link to another VAST 2.0 or 3.0 call. This is a required field when applicable. Applicable to the following creative types: DISPLAY_REDIRECT, INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, and INSTREAM_VIDEO_REDIRECT */
   redirectUrl?: string;
   /** List of companion creatives assigned to an in-Stream video creative. Acceptable values include IDs of existing flash and image creatives. Applicable to the following creative types: all VPAID, all INSTREAM_AUDIO and all INSTREAM_VIDEO with dynamicAssetSelection set to false. */
-  companionCreatives?: Array<string>;
+  companionCreatives?: ReadonlyArray<string>;
   /** Industry standard ID assigned to creative for reach and frequency. Applicable to INSTREAM_VIDEO_REDIRECT creatives. */
   commercialId?: string;
   /** Studio trafficked creative ID associated with rich media and VPAID creatives. This is a read-only field. Applicable to the following creative types: all RICH_MEDIA, and all VPAID. */
@@ -4577,7 +4577,7 @@ export interface Creative {
   /** Online behavioral advertising icon to be added to the creative. Applicable to the following creative types: all INSTREAM_VIDEO. */
   obaIcon?: ObaIcon;
   /** Compatibilities associated with this creative. This is a read-only field. DISPLAY and DISPLAY_INTERSTITIAL refer to rendering either on desktop or on mobile devices or in mobile apps for regular or interstitial ads, respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps. Only pre-existing creatives may have these compatibilities since new creatives will either be assigned DISPLAY or DISPLAY_INTERSTITIAL instead. IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with the VAST standard. IN_STREAM_AUDIO refers to rendering in in-stream audio ads developed with the VAST standard. Applicable to all creative types. Acceptable values are: - "APP" - "APP_INTERSTITIAL" - "IN_STREAM_VIDEO" - "IN_STREAM_AUDIO" - "DISPLAY" - "DISPLAY_INTERSTITIAL" */
-  compatibility?: Array<
+  compatibility?: ReadonlyArray<
     | "DISPLAY"
     | "DISPLAY_INTERSTITIAL"
     | "APP"
@@ -4629,9 +4629,9 @@ export interface Creative {
   /** Required. Name of the creative. This must be less than 256 characters long. Applicable to all creative types. */
   name?: string;
   /** Click tags of the creative. For DISPLAY, FLASH_INPAGE, and HTML5_BANNER creatives, this is a subset of detected click tags for the assets associated with this creative. After creating a flash asset, detected click tags will be returned in the creativeAssetMetadata. When inserting the creative, populate the creative clickTags field using the creativeAssetMetadata.clickTags field. For DISPLAY_IMAGE_GALLERY creatives, there should be exactly one entry in this list for each image creative asset. A click tag is matched with a corresponding creative asset by matching the clickTag.name field with the creativeAsset.assetIdentifier.name field. Applicable to the following creative types: DISPLAY_IMAGE_GALLERY, FLASH_INPAGE, HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE. */
-  clickTags?: Array<ClickTag>;
+  clickTags?: ReadonlyArray<ClickTag>;
   /** Custom key-values for a Rich Media creative. Key-values let you customize the creative settings of a Rich Media ad running on your site without having to contact the advertiser. You can use key-values to dynamically change the look or functionality of a creative. Applicable to the following creative types: all RICH_MEDIA, and all VPAID. */
-  customKeyValues?: Array<string>;
+  customKeyValues?: ReadonlyArray<string>;
   /** HTML code for the creative. This is a required field when applicable. This field is ignored if htmlCodeLocked is true. Applicable to the following creative types: all CUSTOM, FLASH_INPAGE, and HTML5_BANNER, and all RICH_MEDIA. */
   htmlCode?: string;
   /** Target window for backup image. Applicable to the following creative types: FLASH_INPAGE and HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE. */
@@ -4716,11 +4716,11 @@ export interface RemarketingListShare {
   /** Remarketing list ID. This is a read-only, auto-generated field. */
   remarketingListId?: string;
   /** Accounts that the remarketing list is shared with. */
-  sharedAccountIds?: Array<string>;
+  sharedAccountIds?: ReadonlyArray<string>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#remarketingListShare". */
   kind?: string;
   /** Advertisers that the remarketing list is shared with. */
-  sharedAdvertiserIds?: Array<string>;
+  sharedAdvertiserIds?: ReadonlyArray<string>;
 }
 
 export const RemarketingListShare = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4732,7 +4732,7 @@ export const RemarketingListShare = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BillingProfilesListResponse {
   /** Billing profiles collection. */
-  billingProfiles?: Array<BillingProfile>;
+  billingProfiles?: ReadonlyArray<BillingProfile>;
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#billingProfilesListResponse". */
@@ -4799,7 +4799,7 @@ export interface TranscodeSetting {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#transcodeSetting". */
   kind?: string;
   /** Allowlist of video formats to be served to this placement. Set this list to null or empty to serve all video formats. */
-  enabledVideoFormats?: Array<number>;
+  enabledVideoFormats?: ReadonlyArray<number>;
 }
 
 export const TranscodeSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4863,7 +4863,7 @@ export interface Placement {
   /** Optional. Ad serving platform ID to identify the ad serving platform used by the placement. Measurement partners can use this field to add ad-server specific macros. Possible values are: * `1`, Adelphic * `2`, Adform * `3`, Adobe * `4`, Amobee * `5`, Basis (Centro) * `6`, Beeswax * `7`, Amazon * `8`, DV360 (DBM) * `9`, Innovid * `10`, MediaMath * `11`, Roku OneView DSP * `12`, TabMo Hawk * `13`, The Trade Desk * `14`, Xandr Invest DSP * `15`, Yahoo DSP * `16`, Zeta Global * `17`, Scaleout * `18`, Bidtellect * `19`, Unicorn * `20`, Teads * `21`, Quantcast * `22`, Cognitiv * `23`, AdTheorent * `24`, DeepIntent * `25`, Pulsepoint */
   adServingPlatformId?: string;
   /** Tag formats to generate for this placement. This field is required on insertion. Acceptable values are: - "PLACEMENT_TAG_STANDARD" - "PLACEMENT_TAG_IFRAME_JAVASCRIPT" - "PLACEMENT_TAG_IFRAME_ILAYER" - "PLACEMENT_TAG_INTERNAL_REDIRECT" - "PLACEMENT_TAG_JAVASCRIPT" - "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT" - "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT" - "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT" - "PLACEMENT_TAG_CLICK_COMMANDS" - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH" - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3" - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4" - "PLACEMENT_TAG_TRACKING" - "PLACEMENT_TAG_TRACKING_IFRAME" - "PLACEMENT_TAG_TRACKING_JAVASCRIPT" */
-  tagFormats?: Array<
+  tagFormats?: ReadonlyArray<
     | "PLACEMENT_TAG_STANDARD"
     | "PLACEMENT_TAG_IFRAME_JAVASCRIPT"
     | "PLACEMENT_TAG_IFRAME_ILAYER"
@@ -4909,7 +4909,7 @@ export interface Placement {
   /** Advertiser ID of this placement. This field can be left blank. */
   advertiserId?: string;
   /** Additional sizes associated with this placement. When inserting or updating a placement, only the size ID field is used. */
-  additionalSizes?: Array<Size>;
+  additionalSizes?: ReadonlyArray<Size>;
   /** External ID for this placement. */
   externalId?: string;
   /** Information about the creation of this placement. This is a read-only field. */
@@ -5255,7 +5255,7 @@ export interface EventTag {
   /** Payload URL for this event tag. The URL on a click-through event tag should have a landing page URL appended to the end of it. This field is required on insertion. */
   url?: string;
   /** Filter list of site IDs associated with this event tag. The siteFilterType determines whether this is a allowlist or blocklist filter. */
-  siteIds?: Array<string>;
+  siteIds?: ReadonlyArray<string>;
   /** Dimension value for the ID of the campaign. This is a read-only, auto-generated field. */
   campaignIdDimensionValue?: DimensionValue;
 }
@@ -5285,7 +5285,7 @@ export interface EventTagsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#eventTagsListResponse". */
   kind?: string;
   /** Event tag collection. */
-  eventTags?: Array<EventTag>;
+  eventTags?: ReadonlyArray<EventTag>;
 }
 
 export const EventTagsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5342,7 +5342,7 @@ export interface FloodlightActivityGroupsListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
   /** Floodlight activity group collection. */
-  floodlightActivityGroups?: Array<FloodlightActivityGroup>;
+  floodlightActivityGroups?: ReadonlyArray<FloodlightActivityGroup>;
 }
 
 export const FloodlightActivityGroupsListResponse =
@@ -5553,7 +5553,7 @@ export interface FloodlightConfiguration {
     | "INCLUDE_NATURAL_SEARCH_TIERED_CONVERSION_ATTRIBUTION"
     | (string & {});
   /** List of user defined variables enabled for this configuration. */
-  userDefinedVariableConfigurations?: Array<UserDefinedVariableConfiguration>;
+  userDefinedVariableConfigurations?: ReadonlyArray<UserDefinedVariableConfiguration>;
   /** Lookback window settings for this floodlight configuration. */
   lookbackConfiguration?: LookbackConfiguration;
   /** Subaccount ID of this floodlight configuration. This is a read-only field that can be left blank. */
@@ -5563,7 +5563,7 @@ export interface FloodlightConfiguration {
   /** Whether the exposure-to-conversion report is enabled. This report shows detailed pathway information on up to 10 of the most recent ad exposures seen by a user before converting. */
   exposureToConversionEnabled?: boolean;
   /** List of third-party authentication tokens enabled for this configuration. */
-  thirdPartyAuthenticationTokens?: Array<ThirdPartyAuthenticationToken>;
+  thirdPartyAuthenticationTokens?: ReadonlyArray<ThirdPartyAuthenticationToken>;
   firstDayOfWeek?: "SUNDAY" | "MONDAY" | (string & {});
   /** ID of this floodlight configuration. This is a read-only, auto-generated field. */
   id?: string;
@@ -5619,7 +5619,7 @@ export interface UserRolePermissionGroupsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#userRolePermissionGroupsListResponse". */
   kind?: string;
   /** User role permission group collection. */
-  userRolePermissionGroups?: Array<UserRolePermissionGroup>;
+  userRolePermissionGroups?: ReadonlyArray<UserRolePermissionGroup>;
 }
 
 export const UserRolePermissionGroupsListResponse =
@@ -5636,7 +5636,7 @@ export interface UserRolesListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
   /** User role collection. */
-  userRoles?: Array<UserRole>;
+  userRoles?: ReadonlyArray<UserRole>;
 }
 
 export const UserRolesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5647,7 +5647,7 @@ export const UserRolesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DynamicTargetingKeysListResponse {
   /** Dynamic targeting key collection. */
-  dynamicTargetingKeys?: Array<DynamicTargetingKey>;
+  dynamicTargetingKeys?: ReadonlyArray<DynamicTargetingKey>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#dynamicTargetingKeysListResponse". */
   kind?: string;
 }
@@ -5825,7 +5825,7 @@ export interface PlacementGroup {
   /** ID of the primary placement, used to calculate the media cost of a roadblock (placement group). Modifying this field will automatically modify the primary field on all affected roadblock child placements. */
   primaryPlacementId?: string;
   /** IDs of placements which are assigned to this placement group. This is a read-only, auto-generated field. */
-  childPlacementIds?: Array<string>;
+  childPlacementIds?: ReadonlyArray<string>;
   /** ID of this placement group. This is a read-only, auto-generated field. */
   id?: string;
   /** Directory site ID associated with this placement group. On insert, you must set either this field or the site_id field to specify the site associated with this placement group. This is a required field that is read-only after insertion. */
@@ -5875,7 +5875,7 @@ export interface PlacementGroupsListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
   /** Placement group collection. */
-  placementGroups?: Array<PlacementGroup>;
+  placementGroups?: ReadonlyArray<PlacementGroup>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#placementGroupsListResponse". */
   kind?: string;
 }
@@ -5891,7 +5891,7 @@ export interface PlacementTag {
   /** Placement ID */
   placementId?: string;
   /** Tags generated for this placement. */
-  tagDatas?: Array<TagData>;
+  tagDatas?: ReadonlyArray<TagData>;
 }
 
 export const PlacementTag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5945,11 +5945,11 @@ export interface Account {
   /** ID of the country associated with this account. */
   countryId?: string;
   /** User role permissions available to the user roles of this account. */
-  availablePermissionIds?: Array<string>;
+  availablePermissionIds?: ReadonlyArray<string>;
   /** File size limit in kilobytes of Rich Media teaser creatives. Acceptable values are 1 to 10240, inclusive. */
   teaserSizeLimit?: string;
   /** Account permissions assigned to this account. */
-  accountPermissionIds?: Array<string>;
+  accountPermissionIds?: ReadonlyArray<string>;
   /** Profile for this account. This is a read-only field that can be left blank. */
   accountProfile?:
     | "ACCOUNT_PROFILE_BASIC"
@@ -5993,7 +5993,7 @@ export interface AccountsListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
   /** Account collection. */
-  accounts?: Array<Account>;
+  accounts?: ReadonlyArray<Account>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#accountsListResponse". */
   kind?: string;
 }
@@ -6041,7 +6041,7 @@ export interface BillingRate {
     | "ADVANCED_DISPLAY_AD_SERVING"
     | (string & {});
   /** Tiered rate of this billing rate. This cannot co-exist with flat rate. */
-  tieredRates?: Array<BillingRateTieredRate>;
+  tieredRates?: ReadonlyArray<BillingRateTieredRate>;
   /** Start date of this billing rate. */
   startDate?: string;
   /** Name of this billing rate. This must be less than 256 characters long. */
@@ -6074,7 +6074,7 @@ export interface BillingRatesListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
   /** Billing rates collection. */
-  billingRates?: Array<BillingRate>;
+  billingRates?: ReadonlyArray<BillingRate>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#billingRatesListResponse". */
   kind?: string;
 }
@@ -6118,7 +6118,7 @@ export interface Invoice {
   /** The invoice total amount, in micros of the invoice's currency. */
   totalAmountMicros?: string;
   /** The originally issued invoice(s) that is being cancelled by this invoice, if applicable. May appear on invoice PDF as *Replaced invoice numbers*. Note: There may be multiple replaced invoices due to consolidation of multiple invoices into a single invoice. */
-  replacedInvoiceIds?: Array<string>;
+  replacedInvoiceIds?: ReadonlyArray<string>;
   /** The date when the invoice was issued. */
   issueDate?: string;
   /** The invoice service end date. */
@@ -6126,7 +6126,7 @@ export interface Invoice {
   /** The ID of the payments account the invoice belongs to. Appears on the invoice PDF as *Billing Account Number*. */
   paymentsAccountId?: string;
   /** The list of summarized campaign information associated with this invoice. */
-  campaign_summaries?: Array<CampaignSummary>;
+  campaign_summaries?: ReadonlyArray<CampaignSummary>;
 }
 
 export const Invoice = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -6156,7 +6156,7 @@ export interface AdvertiserInvoicesListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
   /** Invoice collection */
-  invoices?: Array<Invoice>;
+  invoices?: ReadonlyArray<Invoice>;
 }
 
 export const AdvertiserInvoicesListResponse =
@@ -6170,7 +6170,7 @@ export interface ProjectsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#projectsListResponse". */
   kind?: string;
   /** Project collection. */
-  projects?: Array<Project>;
+  projects?: ReadonlyArray<Project>;
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
@@ -6198,7 +6198,7 @@ export const SortedDimension = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CustomRichMediaEvents {
   /** List of custom rich media event IDs. Dimension values must be all of type dfa:richMediaEventTypeIdAndName. */
-  filteredEventIds?: Array<DimensionValue>;
+  filteredEventIds?: ReadonlyArray<DimensionValue>;
   /** The kind of resource this is, in this case dfareporting#customRichMediaEvents. */
   kind?: string;
 }
@@ -6210,9 +6210,9 @@ export const CustomRichMediaEvents = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Activities {
   /** List of names of floodlight activity metrics. */
-  metricNames?: Array<string>;
+  metricNames?: ReadonlyArray<string>;
   /** List of activity filters. The dimension values need to be all either of type "dfa:activity" or "dfa:activityGroup". */
-  filters?: Array<DimensionValue>;
+  filters?: ReadonlyArray<DimensionValue>;
   /** The kind of resource this is, in this case dfareporting#activities. */
   kind?: string;
 }
@@ -6242,34 +6242,34 @@ export interface Report {
   /** The report criteria for a report of type "FLOODLIGHT". */
   floodlightCriteria?: {
     floodlightConfigId?: DimensionValue;
-    customRichMediaEvents?: Array<DimensionValue>;
+    customRichMediaEvents?: ReadonlyArray<DimensionValue>;
     reportProperties?: {
       includeAttributedIPConversions?: boolean;
       includeUnattributedIPConversions?: boolean;
       includeUnattributedCookieConversions?: boolean;
     };
     dateRange?: DateRange;
-    dimensions?: Array<SortedDimension>;
-    metricNames?: Array<string>;
-    dimensionFilters?: Array<DimensionValue>;
+    dimensions?: ReadonlyArray<SortedDimension>;
+    metricNames?: ReadonlyArray<string>;
+    dimensionFilters?: ReadonlyArray<DimensionValue>;
   };
   /** The report criteria for a report of type "REACH". */
   reachCriteria?: {
     customRichMediaEvents?: CustomRichMediaEvents;
     dateRange?: DateRange;
-    dimensions?: Array<SortedDimension>;
-    metricNames?: Array<string>;
+    dimensions?: ReadonlyArray<SortedDimension>;
+    metricNames?: ReadonlyArray<string>;
     activities?: Activities;
     enableAllDimensionCombinations?: boolean;
-    dimensionFilters?: Array<DimensionValue>;
-    reachByFrequencyMetricNames?: Array<string>;
+    dimensionFilters?: ReadonlyArray<DimensionValue>;
+    reachByFrequencyMetricNames?: ReadonlyArray<string>;
   };
   /** Optional. The report criteria for a report of type "CROSS_MEDIA_REACH". */
   crossMediaReachCriteria?: {
     dateRange?: DateRange;
-    dimensions?: Array<SortedDimension>;
-    dimensionFilters?: Array<DimensionValue>;
-    metricNames?: Array<string>;
+    dimensions?: ReadonlyArray<SortedDimension>;
+    dimensionFilters?: ReadonlyArray<DimensionValue>;
+    metricNames?: ReadonlyArray<string>;
   };
   /** The kind of resource this is, in this case dfareporting#report. */
   kind?: string;
@@ -6294,7 +6294,7 @@ export interface Report {
   name?: string;
   /** The report's email delivery settings. */
   delivery?: {
-    recipients?: Array<Recipient>;
+    recipients?: ReadonlyArray<Recipient>;
     emailOwner?: boolean;
     message?: string;
     emailOwnerDeliveryType?: "LINK" | "ATTACHMENT" | (string & {});
@@ -6302,7 +6302,7 @@ export interface Report {
   /** The report's schedule. Can only be set if the report's 'dateRange' is a relative date range and the relative date range is not "TODAY". */
   schedule?: {
     expirationDate?: string;
-    repeatsOnWeekDays?: Array<
+    repeatsOnWeekDays?: ReadonlyArray<
       | "SUNDAY"
       | "MONDAY"
       | "TUESDAY"
@@ -6323,7 +6323,7 @@ export interface Report {
   pathToConversionCriteria?: {
     floodlightConfigId?: DimensionValue;
     dateRange?: DateRange;
-    customRichMediaEvents?: Array<DimensionValue>;
+    customRichMediaEvents?: ReadonlyArray<DimensionValue>;
     reportProperties?: {
       impressionsLookbackWindow?: number;
       pivotOnInteractionPath?: boolean;
@@ -6335,37 +6335,37 @@ export interface Report {
       maximumInteractionGap?: number;
       maximumClickInteractions?: number;
     };
-    activityFilters?: Array<DimensionValue>;
-    metricNames?: Array<string>;
-    conversionDimensions?: Array<SortedDimension>;
-    perInteractionDimensions?: Array<SortedDimension>;
-    customFloodlightVariables?: Array<SortedDimension>;
+    activityFilters?: ReadonlyArray<DimensionValue>;
+    metricNames?: ReadonlyArray<string>;
+    conversionDimensions?: ReadonlyArray<SortedDimension>;
+    perInteractionDimensions?: ReadonlyArray<SortedDimension>;
+    customFloodlightVariables?: ReadonlyArray<SortedDimension>;
   };
   /** The output format of the report. If not specified, default format is "CSV". Note that the actual format in the completed report file might differ if for instance the report's size exceeds the format's capabilities. "CSV" will then be the fallback format. */
   format?: "CSV" | "EXCEL" | (string & {});
   /** The report criteria for a report of type "STANDARD". */
   criteria?: {
-    dimensionFilters?: Array<DimensionValue>;
+    dimensionFilters?: ReadonlyArray<DimensionValue>;
     activities?: Activities;
     dateRange?: DateRange;
-    dimensions?: Array<SortedDimension>;
-    metricNames?: Array<string>;
+    dimensions?: ReadonlyArray<SortedDimension>;
+    metricNames?: ReadonlyArray<string>;
     customRichMediaEvents?: CustomRichMediaEvents;
   };
   /** The report criteria for a report of type "CROSS_DIMENSION_REACH". */
   crossDimensionReachCriteria?: {
     dateRange?: DateRange;
-    metricNames?: Array<string>;
+    metricNames?: ReadonlyArray<string>;
     pivoted?: boolean;
-    breakdown?: Array<SortedDimension>;
+    breakdown?: ReadonlyArray<SortedDimension>;
     dimension?:
       | "ADVERTISER"
       | "CAMPAIGN"
       | "SITE_BY_ADVERTISER"
       | "SITE_BY_CAMPAIGN"
       | (string & {});
-    dimensionFilters?: Array<DimensionValue>;
-    overlapMetricNames?: Array<string>;
+    dimensionFilters?: ReadonlyArray<DimensionValue>;
+    overlapMetricNames?: ReadonlyArray<string>;
   };
   /** The unique ID identifying this report resource. */
   id?: string;
@@ -6577,7 +6577,7 @@ export interface Site {
   /** ID of this site. This is a read-only, auto-generated field. */
   id?: string;
   /** Site contacts. */
-  siteContacts?: Array<SiteContact>;
+  siteContacts?: ReadonlyArray<SiteContact>;
   /** Dimension value for the ID of this site. This is a read-only, auto-generated field. */
   idDimensionValue?: DimensionValue;
 }
@@ -6605,7 +6605,7 @@ export interface SitesListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
   /** Site collection. */
-  sites?: Array<Site>;
+  sites?: ReadonlyArray<Site>;
 }
 
 export const SitesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -6616,7 +6616,7 @@ export const SitesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StudioCreativeAssetsResponse {
   /** The list of studio creative assets. */
-  assets?: Array<StudioCreativeAsset>;
+  assets?: ReadonlyArray<StudioCreativeAsset>;
 }
 
 export const StudioCreativeAssetsResponse =
@@ -6646,7 +6646,7 @@ export interface ContentCategoriesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#contentCategoriesListResponse". */
   kind?: string;
   /** Content category collection. */
-  contentCategories?: Array<ContentCategory>;
+  contentCategories?: ReadonlyArray<ContentCategory>;
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
@@ -6662,7 +6662,7 @@ export interface RegionsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#regionsListResponse". */
   kind?: string;
   /** Region collection. */
-  regions?: Array<Region>;
+  regions?: ReadonlyArray<Region>;
 }
 
 export const RegionsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -6674,7 +6674,7 @@ export interface BillingAssignmentsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#billingAssignmentsListResponse". */
   kind?: string;
   /** Billing assignments collection. */
-  billingAssignments?: Array<BillingAssignment>;
+  billingAssignments?: ReadonlyArray<BillingAssignment>;
 }
 
 export const BillingAssignmentsListResponse =
@@ -6689,7 +6689,7 @@ export interface RemarketingListsListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
   /** Remarketing list collection. */
-  remarketingLists?: Array<RemarketingList>;
+  remarketingLists?: ReadonlyArray<RemarketingList>;
 }
 
 export const RemarketingListsListResponse =
@@ -6701,7 +6701,7 @@ export const RemarketingListsListResponse =
 
 export interface MetrosListResponse {
   /** Metro collection. */
-  metros?: Array<Metro>;
+  metros?: ReadonlyArray<Metro>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#metrosListResponse". */
   kind?: string;
 }
@@ -6715,7 +6715,7 @@ export interface VideoFormatsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#videoFormatsListResponse". */
   kind?: string;
   /** Video format collection. */
-  videoFormats?: Array<VideoFormat>;
+  videoFormats?: ReadonlyArray<VideoFormat>;
 }
 
 export const VideoFormatsListResponse =
@@ -6728,7 +6728,7 @@ export interface BrowsersListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#browsersListResponse". */
   kind?: string;
   /** Browser collection. */
-  browsers?: Array<Browser>;
+  browsers?: ReadonlyArray<Browser>;
 }
 
 export const BrowsersListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -6740,7 +6740,7 @@ export interface RemarketingValueAttribute {
   /** Optional. Field ID in the element. */
   fieldId?: number;
   /** Optional. Remarketing user attribute IDs for auto filtering. */
-  userAttributeIds?: Array<string>;
+  userAttributeIds?: ReadonlyArray<string>;
 }
 
 export const RemarketingValueAttribute =
@@ -6751,11 +6751,11 @@ export const RemarketingValueAttribute =
 
 export interface RequestValue {
   /** Optional. User attribute IDs in the request that should be excluded. Used only when the field type is REMARKETING_VALUE or USER_ATTRIBUTE_ID. */
-  excludeFromUserAttributeIds?: Array<string>;
+  excludeFromUserAttributeIds?: ReadonlyArray<string>;
   /** Optional. Custom key in the request. Used only when the field type is CUSTOM_VALUE. */
   key?: string;
   /** Optional. User attribute IDs in the request. Used only when the field type is REMARKETING_VALUE or USER_ATTRIBUTE_ID. */
-  userAttributeIds?: Array<string>;
+  userAttributeIds?: ReadonlyArray<string>;
 }
 
 export const RequestValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -6805,7 +6805,7 @@ export const FieldFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RuleBlock {
   /** Optional. A list of non-auto field filters */
-  fieldFilter?: Array<FieldFilter>;
+  fieldFilter?: ReadonlyArray<FieldFilter>;
 }
 
 export const RuleBlock = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -6818,7 +6818,7 @@ export interface CustomRule {
   /** Optional. Priority of the custom rule. */
   priority?: number;
   /** Optional. A list of field filter, the custom rule will apply. */
-  ruleBlocks?: Array<RuleBlock>;
+  ruleBlocks?: ReadonlyArray<RuleBlock>;
 }
 
 export const CustomRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -6838,15 +6838,15 @@ export interface DynamicRules {
   /** Optional. The proximity targeting rules of the dynamic feed, only applicable when rule type is PROXIMITY_TARGETING. */
   proximityFilter?: ProximityFilter;
   /** Optional. Mapping between field ID and custom key that are used to match for auto filtering. */
-  customValueFields?: Array<CustomValueField>;
+  customValueFields?: ReadonlyArray<CustomValueField>;
   /** Optional. The link between an element field ID and a list of user attribute IDs. */
-  remarketingValueAttributes?: Array<RemarketingValueAttribute>;
+  remarketingValueAttributes?: ReadonlyArray<RemarketingValueAttribute>;
   /** Optional. The custom rules of the dynamic feed, only applicable when rule type is CUSTOM. */
-  customRules?: Array<CustomRule>;
+  customRules?: ReadonlyArray<CustomRule>;
   /** Optional. The field ID for the feed that will be used for weighted rotation, only applicable when rotation type is WEIGHTED. */
   weightFieldId?: number;
   /** Optional. List of field IDs in this element that should be auto-targeted. Applicable when rule type is AUTO. */
-  autoTargetedFieldIds?: Array<number>;
+  autoTargetedFieldIds?: ReadonlyArray<number>;
   /** Optional. The type of the rule, the default value is OPEN. */
   ruleType?:
     | "RULE_SET_TYPE_UNKNOWN"
@@ -6914,7 +6914,7 @@ export const DynamicProfileGenerateCodeResponse =
 
 export interface OperatingSystemsListResponse {
   /** Operating system collection. */
-  operatingSystems?: Array<OperatingSystem>;
+  operatingSystems?: ReadonlyArray<OperatingSystem>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#operatingSystemsListResponse". */
   kind?: string;
 }
@@ -6927,7 +6927,7 @@ export const OperatingSystemsListResponse =
 
 export interface OperatingSystemVersionsListResponse {
   /** Operating system version collection. */
-  operatingSystemVersions?: Array<OperatingSystemVersion>;
+  operatingSystemVersions?: ReadonlyArray<OperatingSystemVersion>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#operatingSystemVersionsListResponse". */
   kind?: string;
 }
@@ -6992,7 +6992,7 @@ export interface InventoryItem {
   /** ID of this inventory item. */
   id?: string;
   /** Ad slots of this inventory item. If this inventory item represents a standalone placement, there will be exactly one ad slot. If this inventory item represents a placement group, there will be more than one ad slot, each representing one child placement in that placement group. */
-  adSlots?: Array<AdSlot>;
+  adSlots?: ReadonlyArray<AdSlot>;
   /** Pricing of this inventory item. */
   pricing?: Pricing;
   /** Content category ID of this inventory item. */
@@ -7028,7 +7028,7 @@ export interface DirectorySitesListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
   /** Directory site collection. */
-  directorySites?: Array<DirectorySite>;
+  directorySites?: ReadonlyArray<DirectorySite>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#directorySitesListResponse". */
   kind?: string;
 }
@@ -7044,7 +7044,7 @@ export interface PlacementsGenerateTagsResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#placementsGenerateTagsResponse". */
   kind?: string;
   /** Set of generated tags for the specified placements. */
-  placementTags?: Array<PlacementTag>;
+  placementTags?: ReadonlyArray<PlacementTag>;
 }
 
 export const PlacementsGenerateTagsResponse =
@@ -7089,7 +7089,7 @@ export interface UserProfileList {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#userProfileList". */
   kind?: string;
   /** The user profiles returned in this response. */
-  items?: Array<UserProfile>;
+  items?: ReadonlyArray<UserProfile>;
 }
 
 export const UserProfileList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -7104,7 +7104,7 @@ export interface ReportList {
   /** The eTag of this response for caching purposes. */
   etag?: string;
   /** The reports returned in this response. */
-  items?: Array<Report>;
+  items?: ReadonlyArray<Report>;
   /** Continuation token used to page through reports. To retrieve the next page of results, set the next request's "pageToken" to the value of this field. The page token is only valid for a limited amount of time and should not be persisted. */
   nextPageToken?: string;
 }
@@ -7133,7 +7133,7 @@ export interface CampaignCreativeAssociationsListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
   /** Campaign creative association collection */
-  campaignCreativeAssociations?: Array<CampaignCreativeAssociation>;
+  campaignCreativeAssociations?: ReadonlyArray<CampaignCreativeAssociation>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#campaignCreativeAssociationsListResponse". */
   kind?: string;
 }
@@ -7181,7 +7181,7 @@ export interface ConversionsBatchInsertRequest {
   /** Describes how encryptedUserId or encryptedUserIdCandidates[] is encrypted. This is a required field if encryptedUserId or encryptedUserIdCandidates[] is used. */
   encryptionInfo?: EncryptionInfo;
   /** The set of conversions to insert. */
-  conversions?: Array<Conversion>;
+  conversions?: ReadonlyArray<Conversion>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#conversionsBatchInsertRequest". */
   kind?: string;
 }
@@ -7210,7 +7210,7 @@ export interface LanguagesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#languagesListResponse". */
   kind?: string;
   /** Language collection. */
-  languages?: Array<Language>;
+  languages?: ReadonlyArray<Language>;
 }
 
 export const LanguagesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -7230,7 +7230,7 @@ export interface CreativeOptimizationConfiguration {
     | "VIDEO_COMPLETION"
     | (string & {});
   /** List of optimization activities associated with this configuration. */
-  optimizationActivitys?: Array<OptimizationActivity>;
+  optimizationActivitys?: ReadonlyArray<OptimizationActivity>;
   /** Name of this creative optimization config. This is a required field and must be less than 129 characters long. */
   name?: string;
 }
@@ -7283,14 +7283,14 @@ export interface Campaign {
   /** Dimension value for the advertiser ID of this campaign. This is a read-only, auto-generated field. */
   advertiserIdDimensionValue?: DimensionValue;
   /** List of creative group IDs that are assigned to the campaign. */
-  creativeGroupIds?: Array<string>;
+  creativeGroupIds?: ReadonlyArray<string>;
   /** Whether this campaign has been archived. */
   archived?: boolean;
   /** Advertiser ID of this campaign. This is a required field. */
   advertiserId?: string;
   startDate?: string;
   /** Overrides that can be used to activate or deactivate advertiser event tags. */
-  eventTagOverrides?: Array<EventTagOverride>;
+  eventTagOverrides?: ReadonlyArray<EventTagOverride>;
   /** External ID for this campaign. */
   externalId?: string;
   /** Billing invoice code included in the Campaign Manager client billing invoices associated with the campaign. */
@@ -7300,9 +7300,9 @@ export interface Campaign {
   /** Subaccount ID of this campaign. This is a read-only field that can be left blank. */
   subaccountId?: string;
   /** Audience segment groups assigned to this campaign. Cannot have more than 300 segment groups. */
-  audienceSegmentGroups?: Array<AudienceSegmentGroup>;
+  audienceSegmentGroups?: ReadonlyArray<AudienceSegmentGroup>;
   /** Additional creative optimization configurations for the campaign. */
-  additionalCreativeOptimizationConfigurations?: Array<CreativeOptimizationConfiguration>;
+  additionalCreativeOptimizationConfigurations?: ReadonlyArray<CreativeOptimizationConfiguration>;
   /** The default landing page ID for this campaign. */
   defaultLandingPageId?: string;
   /** Measurement partner campaign link for tag wrapping. */
@@ -7358,7 +7358,7 @@ export interface CampaignsListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
   /** Campaign collection. */
-  campaigns?: Array<Campaign>;
+  campaigns?: ReadonlyArray<Campaign>;
 }
 
 export const CampaignsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -7387,7 +7387,7 @@ export interface DynamicProfileVersion {
   /** Output only. Version ID of this dynamic profile version. This is a read-only, auto-generated field. -1 for draft version, 0+ for published versions. */
   versionId?: string;
   /** Optional. Associated dynamic feeds and their settings (including dynamic rules) for this dynamic profile version. */
-  dynamicProfileFeedSettings?: Array<DynamicProfileFeedSettings>;
+  dynamicProfileFeedSettings?: ReadonlyArray<DynamicProfileFeedSettings>;
 }
 
 export const DynamicProfileVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -7442,7 +7442,7 @@ export const DynamicProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FloodlightConfigurationsListResponse {
   /** Floodlight configuration collection. */
-  floodlightConfigurations?: Array<FloodlightConfiguration>;
+  floodlightConfigurations?: ReadonlyArray<FloodlightConfiguration>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#floodlightConfigurationsListResponse". */
   kind?: string;
 }
@@ -7534,7 +7534,7 @@ export interface AccountPermission {
   /** Administrative level required to enable this account permission. */
   level?: "USER" | "ADMINISTRATOR" | (string & {});
   /** Account profiles associated with this account permission. Possible values are: - "ACCOUNT_PROFILE_BASIC" - "ACCOUNT_PROFILE_STANDARD" */
-  accountProfiles?: Array<
+  accountProfiles?: ReadonlyArray<
     "ACCOUNT_PROFILE_BASIC" | "ACCOUNT_PROFILE_STANDARD" | (string & {})
   >;
   /** Name of this account permission. */
@@ -7558,7 +7558,7 @@ export interface PlacementsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#placementsListResponse". */
   kind?: string;
   /** Placement collection. */
-  placements?: Array<Placement>;
+  placements?: ReadonlyArray<Placement>;
 }
 
 export const PlacementsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -7577,7 +7577,7 @@ export interface DimensionValueList {
   /** Continuation token used to page through dimension values. To retrieve the next page of results, set the next request's "pageToken" to the value of this field. The page token is only valid for a limited amount of time and should not be persisted. */
   nextPageToken?: string;
   /** The dimension values returned in this response. */
-  items?: Array<DimensionValue>;
+  items?: ReadonlyArray<DimensionValue>;
 }
 
 export const DimensionValueList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -7591,7 +7591,7 @@ export interface ConnectionTypesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#connectionTypesListResponse". */
   kind?: string;
   /** Collection of connection types such as broadband and mobile. */
-  connectionTypes?: Array<ConnectionType>;
+  connectionTypes?: ReadonlyArray<ConnectionType>;
 }
 
 export const ConnectionTypesListResponse =
@@ -7606,7 +7606,7 @@ export interface ConversionsBatchUpdateResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#conversionsBatchUpdateResponse". */
   kind?: string;
   /** The update status of each conversion. Statuses are returned in the same order that conversions are updated. */
-  status?: Array<ConversionStatus>;
+  status?: ReadonlyArray<ConversionStatus>;
 }
 
 export const ConversionsBatchUpdateResponse =
@@ -7649,7 +7649,7 @@ export interface CreativeFieldsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#creativeFieldsListResponse". */
   kind?: string;
   /** Creative field collection. */
-  creativeFields?: Array<CreativeField>;
+  creativeFields?: ReadonlyArray<CreativeField>;
 }
 
 export const CreativeFieldsListResponse =
@@ -7678,7 +7678,7 @@ export interface AccountPermissionsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#accountPermissionsListResponse". */
   kind?: string;
   /** Account permission collection. */
-  accountPermissions?: Array<AccountPermission>;
+  accountPermissions?: ReadonlyArray<AccountPermission>;
 }
 
 export const AccountPermissionsListResponse =
@@ -7689,7 +7689,7 @@ export const AccountPermissionsListResponse =
 
 export interface CreativeAssetMetadata {
   /** Rules validated during code generation that generated a warning. This is a read-only, auto-generated field. Possible values are: - "ADMOB_REFERENCED" - "ASSET_FORMAT_UNSUPPORTED_DCM" - "ASSET_INVALID" - "CLICK_TAG_HARD_CODED" - "CLICK_TAG_INVALID" - "CLICK_TAG_IN_GWD" - "CLICK_TAG_MISSING" - "CLICK_TAG_MORE_THAN_ONE" - "CLICK_TAG_NON_TOP_LEVEL" - "COMPONENT_UNSUPPORTED_DCM" - "ENABLER_UNSUPPORTED_METHOD_DCM" - "EXTERNAL_FILE_REFERENCED" - "FILE_DETAIL_EMPTY" - "FILE_TYPE_INVALID" - "GWD_PROPERTIES_INVALID" - "HTML5_FEATURE_UNSUPPORTED" - "LINKED_FILE_NOT_FOUND" - "MAX_FLASH_VERSION_11" - "MRAID_REFERENCED" - "NOT_SSL_COMPLIANT" - "ORPHANED_ASSET" - "PRIMARY_HTML_MISSING" - "SVG_INVALID" - "ZIP_INVALID" */
-  warnedValidationRules?: Array<
+  warnedValidationRules?: ReadonlyArray<
     | "CLICK_TAG_NON_TOP_LEVEL"
     | "CLICK_TAG_MISSING"
     | "CLICK_TAG_MORE_THAN_ONE"
@@ -7723,13 +7723,13 @@ export interface CreativeAssetMetadata {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#creativeAssetMetadata". */
   kind?: string;
   /** List of exit events configured for the asset. This is a read-only, auto-generated field and only applicable to a rich media asset. */
-  exitCustomEvents?: Array<CreativeCustomEvent>;
+  exitCustomEvents?: ReadonlyArray<CreativeCustomEvent>;
   /** True if the uploaded asset is a rich media asset. This is a read-only, auto-generated field. */
   richMedia?: boolean;
   /** List of timer events configured for the asset. This is a read-only, auto-generated field and only applicable to a rich media asset. */
-  timerCustomEvents?: Array<CreativeCustomEvent>;
+  timerCustomEvents?: ReadonlyArray<CreativeCustomEvent>;
   /** List of feature dependencies for the creative asset that are detected by Campaign Manager. Feature dependencies are features that a browser must be able to support in order to render your HTML5 creative correctly. This is a read-only, auto-generated field. */
-  detectedFeatures?: Array<
+  detectedFeatures?: ReadonlyArray<
     | "CSS_FONT_FACE"
     | "CSS_BACKGROUND_SIZE"
     | "CSS_BORDER_IMAGE"
@@ -7799,11 +7799,11 @@ export interface CreativeAssetMetadata {
     | (string & {})
   >;
   /** List of detected click tags for assets. This is a read-only, auto-generated field. This field is empty for a rich media asset. */
-  clickTags?: Array<ClickTag>;
+  clickTags?: ReadonlyArray<ClickTag>;
   /** Numeric ID of the asset. This is a read-only, auto-generated field. */
   id?: string;
   /** List of counter events configured for the asset. This is a read-only, auto-generated field and only applicable to a rich media asset. */
-  counterCustomEvents?: Array<CreativeCustomEvent>;
+  counterCustomEvents?: ReadonlyArray<CreativeCustomEvent>;
   /** ID of the creative asset. This is a required field. */
   assetIdentifier?: CreativeAssetId;
 }
@@ -7826,7 +7826,7 @@ export interface PostalCodesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#postalCodesListResponse". */
   kind?: string;
   /** Postal code collection. */
-  postalCodes?: Array<PostalCode>;
+  postalCodes?: ReadonlyArray<PostalCode>;
 }
 
 export const PostalCodesListResponse =
@@ -7841,7 +7841,7 @@ export interface ConversionsBatchUpdateRequest {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#conversionsBatchUpdateRequest". */
   kind?: string;
   /** The set of conversions to update. */
-  conversions?: Array<Conversion>;
+  conversions?: ReadonlyArray<Conversion>;
 }
 
 export const ConversionsBatchUpdateRequest =
@@ -7857,7 +7857,7 @@ export interface InventoryItemsListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
   /** Inventory item collection */
-  inventoryItems?: Array<InventoryItem>;
+  inventoryItems?: ReadonlyArray<InventoryItem>;
 }
 
 export const InventoryItemsListResponse =
@@ -7871,7 +7871,7 @@ export interface SizesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#sizesListResponse". */
   kind?: string;
   /** Size collection. */
-  sizes?: Array<Size>;
+  sizes?: ReadonlyArray<Size>;
 }
 
 export const SizesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -7881,7 +7881,7 @@ export const SizesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TvCampaignSummariesListResponse {
   /** List of TV campaign summaries. */
-  tvCampaignSummaries?: Array<TvCampaignSummary>;
+  tvCampaignSummaries?: ReadonlyArray<TvCampaignSummary>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#tvCampaignSummariesListResponse". */
   kind?: string;
 }
@@ -7894,7 +7894,7 @@ export const TvCampaignSummariesListResponse =
 
 export interface MobileCarriersListResponse {
   /** Mobile carrier collection. */
-  mobileCarriers?: Array<MobileCarrier>;
+  mobileCarriers?: ReadonlyArray<MobileCarrier>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#mobileCarriersListResponse". */
   kind?: string;
 }
@@ -7909,7 +7909,7 @@ export interface TargetableRemarketingListsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#targetableRemarketingListsListResponse". */
   kind?: string;
   /** Targetable remarketing list collection. */
-  targetableRemarketingLists?: Array<TargetableRemarketingList>;
+  targetableRemarketingLists?: ReadonlyArray<TargetableRemarketingList>;
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
@@ -7943,7 +7943,7 @@ export interface CreativeFieldValuesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#creativeFieldValuesListResponse". */
   kind?: string;
   /** Creative field value collection. */
-  creativeFieldValues?: Array<CreativeFieldValue>;
+  creativeFieldValues?: ReadonlyArray<CreativeFieldValue>;
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
 }
@@ -7959,7 +7959,7 @@ export interface CreativesListResponse {
   /** Pagination token to be used for the next list operation. */
   nextPageToken?: string;
   /** Creative collection. */
-  creatives?: Array<Creative>;
+  creatives?: ReadonlyArray<Creative>;
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#creativesListResponse". */
   kind?: string;
 }
@@ -7976,7 +7976,7 @@ export interface FloodlightActivitiesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#floodlightActivitiesListResponse". */
   kind?: string;
   /** Floodlight activity collection. */
-  floodlightActivities?: Array<FloodlightActivity>;
+  floodlightActivities?: ReadonlyArray<FloodlightActivity>;
 }
 
 export const FloodlightActivitiesListResponse =
@@ -7992,7 +7992,7 @@ export interface AdsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#adsListResponse". */
   kind?: string;
   /** Ad collection. */
-  ads?: Array<Ad>;
+  ads?: ReadonlyArray<Ad>;
 }
 
 export const AdsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -8013,7 +8013,7 @@ export interface ListRegionsRequest {
 export const ListRegionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   profileId: Schema.String.pipe(T.HttpPath("profileId")),
 }).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/regions" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/regions" }),
   svc,
 ) as unknown as Schema.Schema<ListRegionsRequest>;
 
@@ -8046,10 +8046,7 @@ export const GetMobileAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   profileId: Schema.String.pipe(T.HttpPath("profileId")),
   id: Schema.String.pipe(T.HttpPath("id")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "userprofiles/{userprofilesId}/mobileApps/{mobileAppsId}",
-  }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/mobileApps/{id}" }),
   svc,
 ) as unknown as Schema.Schema<GetMobileAppsRequest>;
 
@@ -8109,7 +8106,7 @@ export const ListMobileAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   ids: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpQuery("ids")),
 }).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/mobileApps" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/mobileApps" }),
   svc,
 ) as unknown as Schema.Schema<ListMobileAppsRequest>;
 
@@ -8152,7 +8149,7 @@ export const PatchRemarketingListsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "userprofiles/{userprofilesId}/remarketingLists",
+      path: "userprofiles/{profileId}/remarketingLists",
       hasBody: true,
     }),
     svc,
@@ -8190,7 +8187,7 @@ export const InsertRemarketingListsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/remarketingLists",
+      path: "userprofiles/{profileId}/remarketingLists",
       hasBody: true,
     }),
     svc,
@@ -8228,7 +8225,7 @@ export const GetRemarketingListsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/remarketingLists/{remarketingListsId}",
+      path: "userprofiles/{profileId}/remarketingLists/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetRemarketingListsRequest>;
@@ -8288,7 +8285,7 @@ export const ListRemarketingListsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/remarketingLists",
+      path: "userprofiles/{profileId}/remarketingLists",
     }),
     svc,
   ) as unknown as Schema.Schema<ListRemarketingListsRequest>;
@@ -8329,7 +8326,7 @@ export const UpdateRemarketingListsRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "userprofiles/{userprofilesId}/remarketingLists",
+      path: "userprofiles/{profileId}/remarketingLists",
       hasBody: true,
     }),
     svc,
@@ -8361,7 +8358,7 @@ export interface ListBrowsersRequest {
 export const ListBrowsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   profileId: Schema.String.pipe(T.HttpPath("profileId")),
 }).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/browsers" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/browsers" }),
   svc,
 ) as unknown as Schema.Schema<ListBrowsersRequest>;
 
@@ -8397,7 +8394,7 @@ export const InsertCreativeGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/creativeGroups",
+      path: "userprofiles/{profileId}/creativeGroups",
       hasBody: true,
     }),
     svc,
@@ -8438,7 +8435,7 @@ export const PatchCreativeGroupsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "userprofiles/{userprofilesId}/creativeGroups",
+      path: "userprofiles/{profileId}/creativeGroups",
       hasBody: true,
     }),
     svc,
@@ -8476,7 +8473,7 @@ export const GetCreativeGroupsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/creativeGroups/{creativeGroupsId}",
+      path: "userprofiles/{profileId}/creativeGroups/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetCreativeGroupsRequest>;
@@ -8538,10 +8535,7 @@ export const ListCreativeGroupsRequest =
       T.HttpQuery("searchString"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "userprofiles/{userprofilesId}/creativeGroups",
-    }),
+    T.Http({ method: "GET", path: "userprofiles/{profileId}/creativeGroups" }),
     svc,
   ) as unknown as Schema.Schema<ListCreativeGroupsRequest>;
 
@@ -8581,7 +8575,7 @@ export const UpdateCreativeGroupsRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "userprofiles/{userprofilesId}/creativeGroups",
+      path: "userprofiles/{profileId}/creativeGroups",
       hasBody: true,
     }),
     svc,
@@ -8616,10 +8610,7 @@ export const GetCreativesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.HttpPath("id")),
   profileId: Schema.String.pipe(T.HttpPath("profileId")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "userprofiles/{userprofilesId}/creatives/{creativesId}",
-  }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/creatives/{id}" }),
   svc,
 ) as unknown as Schema.Schema<GetCreativesRequest>;
 
@@ -8738,7 +8729,7 @@ export const ListCreativesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
 }).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/creatives" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/creatives" }),
   svc,
 ) as unknown as Schema.Schema<ListCreativesRequest>;
 
@@ -8779,7 +8770,7 @@ export const UpdateCreativesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({
     method: "PUT",
-    path: "userprofiles/{userprofilesId}/creatives",
+    path: "userprofiles/{profileId}/creatives",
     hasBody: true,
   }),
   svc,
@@ -8817,7 +8808,7 @@ export const InsertCreativesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({
     method: "POST",
-    path: "userprofiles/{userprofilesId}/creatives",
+    path: "userprofiles/{profileId}/creatives",
     hasBody: true,
   }),
   svc,
@@ -8856,7 +8847,7 @@ export const PatchCreativesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PATCH",
-    path: "userprofiles/{userprofilesId}/creatives",
+    path: "userprofiles/{profileId}/creatives",
     hasBody: true,
   }),
   svc,
@@ -8893,7 +8884,7 @@ export const GetConnectionTypesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/connectionTypes/{connectionTypesId}",
+      path: "userprofiles/{profileId}/connectionTypes/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetConnectionTypesRequest>;
@@ -8925,10 +8916,7 @@ export const ListConnectionTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     profileId: Schema.String.pipe(T.HttpPath("profileId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "userprofiles/{userprofilesId}/connectionTypes",
-    }),
+    T.Http({ method: "GET", path: "userprofiles/{profileId}/connectionTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListConnectionTypesRequest>;
 
@@ -8968,7 +8956,7 @@ export const PatchPlacementsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({
     method: "PATCH",
-    path: "userprofiles/{userprofilesId}/placements",
+    path: "userprofiles/{profileId}/placements",
     hasBody: true,
   }),
   svc,
@@ -9005,7 +8993,7 @@ export const InsertPlacementsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/placements",
+      path: "userprofiles/{profileId}/placements",
       hasBody: true,
     }),
     svc,
@@ -9073,7 +9061,7 @@ export const GeneratetagsPlacementsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/placements/generatetags",
+      path: "userprofiles/{profileId}/placements/generatetags",
       hasBody: true,
     }),
     svc,
@@ -9108,10 +9096,7 @@ export const GetPlacementsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   profileId: Schema.String.pipe(T.HttpPath("profileId")),
   id: Schema.String.pipe(T.HttpPath("id")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "userprofiles/{userprofilesId}/placements/{placementsId}",
-  }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/placements/{id}" }),
   svc,
 ) as unknown as Schema.Schema<GetPlacementsRequest>;
 
@@ -9259,7 +9244,7 @@ export const ListPlacementsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("paymentSource"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/placements" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/placements" }),
   svc,
 ) as unknown as Schema.Schema<ListPlacementsRequest>;
 
@@ -9299,7 +9284,7 @@ export const UpdatePlacementsRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "userprofiles/{userprofilesId}/placements",
+      path: "userprofiles/{profileId}/placements",
       hasBody: true,
     }),
     svc,
@@ -9336,7 +9321,7 @@ export const GetOperatingSystemVersionsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/operatingSystemVersions/{operatingSystemVersionsId}",
+      path: "userprofiles/{profileId}/operatingSystemVersions/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetOperatingSystemVersionsRequest>;
@@ -9370,7 +9355,7 @@ export const ListOperatingSystemVersionsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/operatingSystemVersions",
+      path: "userprofiles/{profileId}/operatingSystemVersions",
     }),
     svc,
   ) as unknown as Schema.Schema<ListOperatingSystemVersionsRequest>;
@@ -9405,10 +9390,7 @@ export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.HttpPath("id")),
   profileId: Schema.String.pipe(T.HttpPath("profileId")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "userprofiles/{userprofilesId}/projects/{projectsId}",
-  }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/projects/{id}" }),
   svc,
 ) as unknown as Schema.Schema<GetProjectsRequest>;
 
@@ -9462,7 +9444,7 @@ export const ListProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("searchString"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/projects" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/projects" }),
   svc,
 ) as unknown as Schema.Schema<ListProjectsRequest>;
 
@@ -9502,7 +9484,7 @@ export const InsertAdvertisersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/advertisers",
+      path: "userprofiles/{profileId}/advertisers",
       hasBody: true,
     }),
     svc,
@@ -9542,7 +9524,7 @@ export const PatchAdvertisersRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "userprofiles/{userprofilesId}/advertisers",
+      path: "userprofiles/{profileId}/advertisers",
       hasBody: true,
     }),
     svc,
@@ -9576,10 +9558,7 @@ export const GetAdvertisersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.HttpPath("id")),
   profileId: Schema.String.pipe(T.HttpPath("profileId")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "userprofiles/{userprofilesId}/advertisers/{advertisersId}",
-  }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/advertisers/{id}" }),
   svc,
 ) as unknown as Schema.Schema<GetAdvertisersRequest>;
 
@@ -9656,7 +9635,7 @@ export const ListAdvertisersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     onlyParent: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("onlyParent")),
   },
 ).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/advertisers" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/advertisers" }),
   svc,
 ) as unknown as Schema.Schema<ListAdvertisersRequest>;
 
@@ -9696,7 +9675,7 @@ export const UpdateAdvertisersRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "userprofiles/{userprofilesId}/advertisers",
+      path: "userprofiles/{profileId}/advertisers",
       hasBody: true,
     }),
     svc,
@@ -9736,7 +9715,7 @@ export const InsertBillingAssignmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/billingProfiles/{billingProfilesId}/billingAssignments",
+      path: "userprofiles/{profileId}/billingProfiles/{billingProfileId}/billingAssignments",
       hasBody: true,
     }),
     svc,
@@ -9774,7 +9753,7 @@ export const ListBillingAssignmentsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/billingProfiles/{billingProfilesId}/billingAssignments",
+      path: "userprofiles/{profileId}/billingProfiles/{billingProfileId}/billingAssignments",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBillingAssignmentsRequest>;
@@ -9810,7 +9789,7 @@ export const GetCountriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "GET",
-    path: "userprofiles/{userprofilesId}/countries/{countriesId}",
+    path: "userprofiles/{profileId}/countries/{dartId}",
   }),
   svc,
 ) as unknown as Schema.Schema<GetCountriesRequest>;
@@ -9840,7 +9819,7 @@ export interface ListCountriesRequest {
 export const ListCountriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   profileId: Schema.String.pipe(T.HttpPath("profileId")),
 }).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/countries" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/countries" }),
   svc,
 ) as unknown as Schema.Schema<ListCountriesRequest>;
 
@@ -9878,7 +9857,7 @@ export const GeneratetagFloodlightActivitiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/floodlightActivities/generatetag",
+      path: "userprofiles/{profileId}/floodlightActivities/generatetag",
       hasBody: true,
     }),
     svc,
@@ -9917,7 +9896,7 @@ export const GetFloodlightActivitiesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/floodlightActivities/{floodlightActivitiesId}",
+      path: "userprofiles/{profileId}/floodlightActivities/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetFloodlightActivitiesRequest>;
@@ -10004,7 +9983,7 @@ export const ListFloodlightActivitiesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/floodlightActivities",
+      path: "userprofiles/{profileId}/floodlightActivities",
     }),
     svc,
   ) as unknown as Schema.Schema<ListFloodlightActivitiesRequest>;
@@ -10045,7 +10024,7 @@ export const UpdateFloodlightActivitiesRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "userprofiles/{userprofilesId}/floodlightActivities",
+      path: "userprofiles/{profileId}/floodlightActivities",
       hasBody: true,
     }),
     svc,
@@ -10083,7 +10062,7 @@ export const DeleteFloodlightActivitiesRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "userprofiles/{userprofilesId}/floodlightActivities/{floodlightActivitiesId}",
+      path: "userprofiles/{profileId}/floodlightActivities/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteFloodlightActivitiesRequest>;
@@ -10122,7 +10101,7 @@ export const InsertFloodlightActivitiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/floodlightActivities",
+      path: "userprofiles/{profileId}/floodlightActivities",
       hasBody: true,
     }),
     svc,
@@ -10163,7 +10142,7 @@ export const PatchFloodlightActivitiesRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "userprofiles/{userprofilesId}/floodlightActivities",
+      path: "userprofiles/{profileId}/floodlightActivities",
       hasBody: true,
     }),
     svc,
@@ -10201,7 +10180,7 @@ export const ListBillingRatesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/billingProfiles/{billingProfilesId}/billingRates",
+      path: "userprofiles/{profileId}/billingProfiles/{billingProfileId}/billingRates",
     }),
     svc,
   ) as unknown as Schema.Schema<ListBillingRatesRequest>;
@@ -10237,10 +10216,7 @@ export const GetVideoFormatsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     profileId: Schema.String.pipe(T.HttpPath("profileId")),
   },
 ).pipe(
-  T.Http({
-    method: "GET",
-    path: "userprofiles/{userprofilesId}/videoFormats/{videoFormatsId}",
-  }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/videoFormats/{id}" }),
   svc,
 ) as unknown as Schema.Schema<GetVideoFormatsRequest>;
 
@@ -10270,10 +10246,7 @@ export const ListVideoFormatsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     profileId: Schema.String.pipe(T.HttpPath("profileId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "userprofiles/{userprofilesId}/videoFormats",
-    }),
+    T.Http({ method: "GET", path: "userprofiles/{profileId}/videoFormats" }),
     svc,
   ) as unknown as Schema.Schema<ListVideoFormatsRequest>;
 
@@ -10321,7 +10294,7 @@ export const ListCitiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("dartIds"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/cities" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/cities" }),
   svc,
 ) as unknown as Schema.Schema<ListCitiesRequest>;
 
@@ -10358,7 +10331,7 @@ export const InsertEventTagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({
     method: "POST",
-    path: "userprofiles/{userprofilesId}/eventTags",
+    path: "userprofiles/{profileId}/eventTags",
     hasBody: true,
   }),
   svc,
@@ -10397,7 +10370,7 @@ export const PatchEventTagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PATCH",
-    path: "userprofiles/{userprofilesId}/eventTags",
+    path: "userprofiles/{profileId}/eventTags",
     hasBody: true,
   }),
   svc,
@@ -10433,10 +10406,7 @@ export const DeleteEventTagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     profileId: Schema.String.pipe(T.HttpPath("profileId")),
   },
 ).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "userprofiles/{userprofilesId}/eventTags/{eventTagsId}",
-  }),
+  T.Http({ method: "DELETE", path: "userprofiles/{profileId}/eventTags/{id}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteEventTagsRequest>;
 
@@ -10475,7 +10445,7 @@ export const UpdateEventTagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({
     method: "PUT",
-    path: "userprofiles/{userprofilesId}/eventTags",
+    path: "userprofiles/{profileId}/eventTags",
     hasBody: true,
   }),
   svc,
@@ -10509,10 +10479,7 @@ export const GetEventTagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.HttpPath("id")),
   profileId: Schema.String.pipe(T.HttpPath("profileId")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "userprofiles/{userprofilesId}/eventTags/{eventTagsId}",
-  }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/eventTags/{id}" }),
   svc,
 ) as unknown as Schema.Schema<GetEventTagsRequest>;
 
@@ -10583,7 +10550,7 @@ export const ListEventTagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   sortField: Schema.optional(Schema.String).pipe(T.HttpQuery("sortField")),
   enabled: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("enabled")),
 }).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/eventTags" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/eventTags" }),
   svc,
 ) as unknown as Schema.Schema<ListEventTagsRequest>;
 
@@ -10619,7 +10586,7 @@ export const DeletePlacementStrategiesRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "userprofiles/{userprofilesId}/placementStrategies/{placementStrategiesId}",
+      path: "userprofiles/{profileId}/placementStrategies/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeletePlacementStrategiesRequest>;
@@ -10661,7 +10628,7 @@ export const PatchPlacementStrategiesRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "userprofiles/{userprofilesId}/placementStrategies",
+      path: "userprofiles/{profileId}/placementStrategies",
       hasBody: true,
     }),
     svc,
@@ -10699,7 +10666,7 @@ export const InsertPlacementStrategiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/placementStrategies",
+      path: "userprofiles/{profileId}/placementStrategies",
       hasBody: true,
     }),
     svc,
@@ -10737,7 +10704,7 @@ export const GetPlacementStrategiesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/placementStrategies/{placementStrategiesId}",
+      path: "userprofiles/{profileId}/placementStrategies/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetPlacementStrategiesRequest>;
@@ -10791,7 +10758,7 @@ export const ListPlacementStrategiesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/placementStrategies",
+      path: "userprofiles/{profileId}/placementStrategies",
     }),
     svc,
   ) as unknown as Schema.Schema<ListPlacementStrategiesRequest>;
@@ -10832,7 +10799,7 @@ export const UpdatePlacementStrategiesRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "userprofiles/{userprofilesId}/placementStrategies",
+      path: "userprofiles/{profileId}/placementStrategies",
       hasBody: true,
     }),
     svc,
@@ -10870,7 +10837,7 @@ export const GetUserRolePermissionGroupsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/userRolePermissionGroups/{userRolePermissionGroupsId}",
+      path: "userprofiles/{profileId}/userRolePermissionGroups/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetUserRolePermissionGroupsRequest>;
@@ -10904,7 +10871,7 @@ export const ListUserRolePermissionGroupsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/userRolePermissionGroups",
+      path: "userprofiles/{profileId}/userRolePermissionGroups",
     }),
     svc,
   ) as unknown as Schema.Schema<ListUserRolePermissionGroupsRequest>;
@@ -10942,7 +10909,7 @@ export const DeleteContentCategoriesRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "userprofiles/{userprofilesId}/contentCategories/{contentCategoriesId}",
+      path: "userprofiles/{profileId}/contentCategories/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteContentCategoriesRequest>;
@@ -10981,7 +10948,7 @@ export const InsertContentCategoriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/contentCategories",
+      path: "userprofiles/{profileId}/contentCategories",
       hasBody: true,
     }),
     svc,
@@ -11022,7 +10989,7 @@ export const PatchContentCategoriesRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "userprofiles/{userprofilesId}/contentCategories",
+      path: "userprofiles/{profileId}/contentCategories",
       hasBody: true,
     }),
     svc,
@@ -11060,7 +11027,7 @@ export const GetContentCategoriesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/contentCategories/{contentCategoriesId}",
+      path: "userprofiles/{profileId}/contentCategories/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetContentCategoriesRequest>;
@@ -11114,7 +11081,7 @@ export const ListContentCategoriesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/contentCategories",
+      path: "userprofiles/{profileId}/contentCategories",
     }),
     svc,
   ) as unknown as Schema.Schema<ListContentCategoriesRequest>;
@@ -11155,7 +11122,7 @@ export const UpdateContentCategoriesRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "userprofiles/{userprofilesId}/contentCategories",
+      path: "userprofiles/{profileId}/contentCategories",
       hasBody: true,
     }),
     svc,
@@ -11192,7 +11159,7 @@ export const GetPostalCodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "GET",
-    path: "userprofiles/{userprofilesId}/postalCodes/{postalCodesId}",
+    path: "userprofiles/{profileId}/postalCodes/{code}",
   }),
   svc,
 ) as unknown as Schema.Schema<GetPostalCodesRequest>;
@@ -11224,7 +11191,7 @@ export const ListPostalCodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     profileId: Schema.String.pipe(T.HttpPath("profileId")),
   },
 ).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/postalCodes" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/postalCodes" }),
   svc,
 ) as unknown as Schema.Schema<ListPostalCodesRequest>;
 
@@ -11262,7 +11229,7 @@ export const PatchSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PATCH",
-    path: "userprofiles/{userprofilesId}/sites",
+    path: "userprofiles/{profileId}/sites",
     hasBody: true,
   }),
   svc,
@@ -11298,7 +11265,7 @@ export const InsertSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "POST",
-    path: "userprofiles/{userprofilesId}/sites",
+    path: "userprofiles/{profileId}/sites",
     hasBody: true,
   }),
   svc,
@@ -11334,7 +11301,7 @@ export const UpdateSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PUT",
-    path: "userprofiles/{userprofilesId}/sites",
+    path: "userprofiles/{profileId}/sites",
     hasBody: true,
   }),
   svc,
@@ -11368,10 +11335,7 @@ export const GetSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   profileId: Schema.String.pipe(T.HttpPath("profileId")),
   id: Schema.String.pipe(T.HttpPath("id")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "userprofiles/{userprofilesId}/sites/{sitesId}",
-  }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/sites/{id}" }),
   svc,
 ) as unknown as Schema.Schema<GetSitesRequest>;
 
@@ -11461,7 +11425,7 @@ export const ListSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("directorySiteIds"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/sites" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/sites" }),
   svc,
 ) as unknown as Schema.Schema<ListSitesRequest>;
 
@@ -11500,7 +11464,7 @@ export const GetPlatformTypesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/platformTypes/{platformTypesId}",
+      path: "userprofiles/{profileId}/platformTypes/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetPlatformTypesRequest>;
@@ -11532,10 +11496,7 @@ export const ListPlatformTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     profileId: Schema.String.pipe(T.HttpPath("profileId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "userprofiles/{userprofilesId}/platformTypes",
-    }),
+    T.Http({ method: "GET", path: "userprofiles/{profileId}/platformTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListPlatformTypesRequest>;
 
@@ -11580,7 +11541,7 @@ export const ListAdvertiserInvoicesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/advertisers/{advertisersId}/invoices",
+      path: "userprofiles/{profileId}/advertisers/{advertiserId}/invoices",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAdvertiserInvoicesRequest>;
@@ -11617,7 +11578,7 @@ export const GetDynamicFeedsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     dynamicFeedId: Schema.String.pipe(T.HttpPath("dynamicFeedId")),
   },
 ).pipe(
-  T.Http({ method: "GET", path: "studio/dynamicFeeds/{dynamicFeedsId}" }),
+  T.Http({ method: "GET", path: "studio/dynamicFeeds/{dynamicFeedId}" }),
   svc,
 ) as unknown as Schema.Schema<GetDynamicFeedsRequest>;
 
@@ -11711,7 +11672,7 @@ export const RetransformDynamicFeedsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "studio/dynamicFeeds/{dynamicFeedsId}/retransform",
+      path: "studio/dynamicFeeds/{dynamicFeedId}/retransform",
       hasBody: true,
     }),
     svc,
@@ -11777,7 +11738,7 @@ export const PublishStudioCreativesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "studio/creatives/{creativesId}/publish",
+      path: "studio/creatives/{studioCreativeId}/publish",
       hasBody: true,
     }),
     svc,
@@ -11812,7 +11773,7 @@ export const GetStudioCreativesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     studioCreativeId: Schema.String.pipe(T.HttpPath("studioCreativeId")),
   }).pipe(
-    T.Http({ method: "GET", path: "studio/creatives/{creativesId}" }),
+    T.Http({ method: "GET", path: "studio/creatives/{studioCreativeId}" }),
     svc,
   ) as unknown as Schema.Schema<GetStudioCreativesRequest>;
 
@@ -11849,7 +11810,7 @@ export const UpdateUserRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({
     method: "PUT",
-    path: "userprofiles/{userprofilesId}/userRoles",
+    path: "userprofiles/{profileId}/userRoles",
     hasBody: true,
   }),
   svc,
@@ -11883,10 +11844,7 @@ export const GetUserRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   profileId: Schema.String.pipe(T.HttpPath("profileId")),
   id: Schema.String.pipe(T.HttpPath("id")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "userprofiles/{userprofilesId}/userRoles/{userRolesId}",
-  }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/userRoles/{id}" }),
   svc,
 ) as unknown as Schema.Schema<GetUserRolesRequest>;
 
@@ -11945,7 +11903,7 @@ export const ListUserRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   sortField: Schema.optional(Schema.String).pipe(T.HttpQuery("sortField")),
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
 }).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/userRoles" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/userRoles" }),
   svc,
 ) as unknown as Schema.Schema<ListUserRolesRequest>;
 
@@ -11987,7 +11945,7 @@ export const PatchUserRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PATCH",
-    path: "userprofiles/{userprofilesId}/userRoles",
+    path: "userprofiles/{profileId}/userRoles",
     hasBody: true,
   }),
   svc,
@@ -12025,7 +11983,7 @@ export const InsertUserRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({
     method: "POST",
-    path: "userprofiles/{userprofilesId}/userRoles",
+    path: "userprofiles/{profileId}/userRoles",
     hasBody: true,
   }),
   svc,
@@ -12061,10 +12019,7 @@ export const DeleteUserRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     profileId: Schema.String.pipe(T.HttpPath("profileId")),
   },
 ).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "userprofiles/{userprofilesId}/userRoles/{userRolesId}",
-  }),
+  T.Http({ method: "DELETE", path: "userprofiles/{profileId}/userRoles/{id}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteUserRolesRequest>;
 
@@ -12113,7 +12068,7 @@ export const DeleteDynamicTargetingKeysRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "userprofiles/{userprofilesId}/dynamicTargetingKeys/{dynamicTargetingKeysId}",
+      path: "userprofiles/{profileId}/dynamicTargetingKeys/{objectId}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteDynamicTargetingKeysRequest>;
@@ -12170,7 +12125,7 @@ export const ListDynamicTargetingKeysRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/dynamicTargetingKeys",
+      path: "userprofiles/{profileId}/dynamicTargetingKeys",
     }),
     svc,
   ) as unknown as Schema.Schema<ListDynamicTargetingKeysRequest>;
@@ -12207,7 +12162,7 @@ export const InsertDynamicTargetingKeysRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/dynamicTargetingKeys",
+      path: "userprofiles/{profileId}/dynamicTargetingKeys",
       hasBody: true,
     }),
     svc,
@@ -12278,7 +12233,7 @@ export const GetAccountPermissionsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/accountPermissions/{accountPermissionsId}",
+      path: "userprofiles/{profileId}/accountPermissions/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetAccountPermissionsRequest>;
@@ -12312,7 +12267,7 @@ export const ListAccountPermissionsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/accountPermissions",
+      path: "userprofiles/{profileId}/accountPermissions",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAccountPermissionsRequest>;
@@ -12351,7 +12306,7 @@ export const GetOrdersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "GET",
-    path: "userprofiles/{userprofilesId}/projects/{projectId}/orders/{ordersId}",
+    path: "userprofiles/{profileId}/projects/{projectId}/orders/{id}",
   }),
   svc,
 ) as unknown as Schema.Schema<GetOrdersRequest>;
@@ -12411,7 +12366,7 @@ export const ListOrdersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "GET",
-    path: "userprofiles/{userprofilesId}/projects/{projectId}/orders",
+    path: "userprofiles/{profileId}/projects/{projectId}/orders",
   }),
   svc,
 ) as unknown as Schema.Schema<ListOrdersRequest>;
@@ -12449,7 +12404,7 @@ export const GetAdsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   profileId: Schema.String.pipe(T.HttpPath("profileId")),
   id: Schema.String.pipe(T.HttpPath("id")),
 }).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/ads/{adsId}" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/ads/{id}" }),
   svc,
 ) as unknown as Schema.Schema<GetAdsRequest>;
 
@@ -12588,7 +12543,7 @@ export const ListAdsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("sslCompliant"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/ads" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/ads" }),
   svc,
 ) as unknown as Schema.Schema<ListAdsRequest>;
 
@@ -12626,7 +12581,7 @@ export const UpdateAdsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PUT",
-    path: "userprofiles/{userprofilesId}/ads",
+    path: "userprofiles/{profileId}/ads",
     hasBody: true,
   }),
   svc,
@@ -12662,7 +12617,7 @@ export const InsertAdsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "POST",
-    path: "userprofiles/{userprofilesId}/ads",
+    path: "userprofiles/{profileId}/ads",
     hasBody: true,
   }),
   svc,
@@ -12701,7 +12656,7 @@ export const PatchAdsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PATCH",
-    path: "userprofiles/{userprofilesId}/ads",
+    path: "userprofiles/{profileId}/ads",
     hasBody: true,
   }),
   svc,
@@ -12822,7 +12777,7 @@ export const UpdateCreativeFieldValuesRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "userprofiles/{userprofilesId}/creativeFields/{creativeFieldsId}/creativeFieldValues",
+      path: "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues",
       hasBody: true,
     }),
     svc,
@@ -12863,7 +12818,7 @@ export const GetCreativeFieldValuesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/creativeFields/{creativeFieldsId}/creativeFieldValues/{creativeFieldValuesId}",
+      path: "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetCreativeFieldValuesRequest>;
@@ -12920,7 +12875,7 @@ export const ListCreativeFieldValuesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/creativeFields/{creativeFieldsId}/creativeFieldValues",
+      path: "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues",
     }),
     svc,
   ) as unknown as Schema.Schema<ListCreativeFieldValuesRequest>;
@@ -12964,7 +12919,7 @@ export const InsertCreativeFieldValuesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/creativeFields/{creativeFieldsId}/creativeFieldValues",
+      path: "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues",
       hasBody: true,
     }),
     svc,
@@ -13008,7 +12963,7 @@ export const PatchCreativeFieldValuesRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "userprofiles/{userprofilesId}/creativeFields/{creativeFieldsId}/creativeFieldValues",
+      path: "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues",
       hasBody: true,
     }),
     svc,
@@ -13049,7 +13004,7 @@ export const DeleteCreativeFieldValuesRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "userprofiles/{userprofilesId}/creativeFields/{creativeFieldsId}/creativeFieldValues/{creativeFieldValuesId}",
+      path: "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteCreativeFieldValuesRequest>;
@@ -13088,7 +13043,7 @@ export const GetTargetableRemarketingListsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/targetableRemarketingLists/{targetableRemarketingListsId}",
+      path: "userprofiles/{profileId}/targetableRemarketingLists/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetTargetableRemarketingListsRequest>;
@@ -13143,7 +13098,7 @@ export const ListTargetableRemarketingListsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/targetableRemarketingLists",
+      path: "userprofiles/{profileId}/targetableRemarketingLists",
     }),
     svc,
   ) as unknown as Schema.Schema<ListTargetableRemarketingListsRequest>;
@@ -13186,7 +13141,7 @@ export const InsertCampaignsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({
     method: "POST",
-    path: "userprofiles/{userprofilesId}/campaigns",
+    path: "userprofiles/{profileId}/campaigns",
     hasBody: true,
   }),
   svc,
@@ -13225,7 +13180,7 @@ export const PatchCampaignsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PATCH",
-    path: "userprofiles/{userprofilesId}/campaigns",
+    path: "userprofiles/{profileId}/campaigns",
     hasBody: true,
   }),
   svc,
@@ -13259,10 +13214,7 @@ export const GetCampaignsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.HttpPath("id")),
   profileId: Schema.String.pipe(T.HttpPath("profileId")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "userprofiles/{userprofilesId}/campaigns/{campaignsId}",
-  }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/campaigns/{id}" }),
   svc,
 ) as unknown as Schema.Schema<GetCampaignsRequest>;
 
@@ -13344,7 +13296,7 @@ export const ListCampaignsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("advertiserGroupIds"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/campaigns" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/campaigns" }),
   svc,
 ) as unknown as Schema.Schema<ListCampaignsRequest>;
 
@@ -13385,7 +13337,7 @@ export const UpdateCampaignsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).pipe(
   T.Http({
     method: "PUT",
-    path: "userprofiles/{userprofilesId}/campaigns",
+    path: "userprofiles/{profileId}/campaigns",
     hasBody: true,
   }),
   svc,
@@ -13422,7 +13374,7 @@ export const GetMobileCarriersRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/mobileCarriers/{mobileCarriersId}",
+      path: "userprofiles/{profileId}/mobileCarriers/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetMobileCarriersRequest>;
@@ -13454,10 +13406,7 @@ export const ListMobileCarriersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     profileId: Schema.String.pipe(T.HttpPath("profileId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "userprofiles/{userprofilesId}/mobileCarriers",
-    }),
+    T.Http({ method: "GET", path: "userprofiles/{profileId}/mobileCarriers" }),
     svc,
   ) as unknown as Schema.Schema<ListMobileCarriersRequest>;
 
@@ -13493,7 +13442,7 @@ export const GetDirectorySitesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/directorySites/{directorySitesId}",
+      path: "userprofiles/{profileId}/directorySites/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetDirectorySitesRequest>;
@@ -13568,10 +13517,7 @@ export const ListDirectorySitesRequest =
       T.HttpQuery("acceptsInStreamVideoPlacements"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "userprofiles/{userprofilesId}/directorySites",
-    }),
+    T.Http({ method: "GET", path: "userprofiles/{profileId}/directorySites" }),
     svc,
   ) as unknown as Schema.Schema<ListDirectorySitesRequest>;
 
@@ -13611,7 +13557,7 @@ export const InsertDirectorySitesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/directorySites",
+      path: "userprofiles/{profileId}/directorySites",
       hasBody: true,
     }),
     svc,
@@ -13649,7 +13595,7 @@ export const GetOperatingSystemsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/operatingSystems/{operatingSystemsId}",
+      path: "userprofiles/{profileId}/operatingSystems/{dartId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetOperatingSystemsRequest>;
@@ -13683,7 +13629,7 @@ export const ListOperatingSystemsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/operatingSystems",
+      path: "userprofiles/{profileId}/operatingSystems",
     }),
     svc,
   ) as unknown as Schema.Schema<ListOperatingSystemsRequest>;
@@ -13720,7 +13666,7 @@ export const UpdateFloodlightConfigurationsRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "userprofiles/{userprofilesId}/floodlightConfigurations",
+      path: "userprofiles/{profileId}/floodlightConfigurations",
       hasBody: true,
     }),
     svc,
@@ -13761,7 +13707,7 @@ export const PatchFloodlightConfigurationsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "userprofiles/{userprofilesId}/floodlightConfigurations",
+      path: "userprofiles/{profileId}/floodlightConfigurations",
       hasBody: true,
     }),
     svc,
@@ -13799,7 +13745,7 @@ export const GetFloodlightConfigurationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/floodlightConfigurations/{floodlightConfigurationsId}",
+      path: "userprofiles/{profileId}/floodlightConfigurations/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetFloodlightConfigurationsRequest>;
@@ -13836,7 +13782,7 @@ export const ListFloodlightConfigurationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/floodlightConfigurations",
+      path: "userprofiles/{profileId}/floodlightConfigurations",
     }),
     svc,
   ) as unknown as Schema.Schema<ListFloodlightConfigurationsRequest>;
@@ -14274,7 +14220,7 @@ export interface ListMetrosRequest {
 export const ListMetrosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   profileId: Schema.String.pipe(T.HttpPath("profileId")),
 }).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/metros" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/metros" }),
   svc,
 ) as unknown as Schema.Schema<ListMetrosRequest>;
 
@@ -14307,10 +14253,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.HttpPath("id")),
   profileId: Schema.String.pipe(T.HttpPath("profileId")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "userprofiles/{userprofilesId}/accounts/{accountsId}",
-  }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/accounts/{id}" }),
   svc,
 ) as unknown as Schema.Schema<GetAccountsRequest>;
 
@@ -14362,7 +14305,7 @@ export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   sortField: Schema.optional(Schema.String).pipe(T.HttpQuery("sortField")),
   maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
 }).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/accounts" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/accounts" }),
   svc,
 ) as unknown as Schema.Schema<ListAccountsRequest>;
 
@@ -14401,7 +14344,7 @@ export const UpdateAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PUT",
-    path: "userprofiles/{userprofilesId}/accounts",
+    path: "userprofiles/{profileId}/accounts",
     hasBody: true,
   }),
   svc,
@@ -14440,7 +14383,7 @@ export const PatchAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PATCH",
-    path: "userprofiles/{userprofilesId}/accounts",
+    path: "userprofiles/{profileId}/accounts",
     hasBody: true,
   }),
   svc,
@@ -14480,7 +14423,7 @@ export const InsertCampaignCreativeAssociationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/campaigns/{campaignsId}/campaignCreativeAssociations",
+      path: "userprofiles/{profileId}/campaigns/{campaignId}/campaignCreativeAssociations",
       hasBody: true,
     }),
     svc,
@@ -14528,7 +14471,7 @@ export const ListCampaignCreativeAssociationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/campaigns/{campaignsId}/campaignCreativeAssociations",
+      path: "userprofiles/{profileId}/campaigns/{campaignId}/campaignCreativeAssociations",
     }),
     svc,
   ) as unknown as Schema.Schema<ListCampaignCreativeAssociationsRequest>;
@@ -14573,7 +14516,7 @@ export const GetInventoryItemsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/projects/{projectId}/inventoryItems/{inventoryItemsId}",
+      path: "userprofiles/{profileId}/projects/{projectId}/inventoryItems/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetInventoryItemsRequest>;
@@ -14644,7 +14587,7 @@ export const ListInventoryItemsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/projects/{projectId}/inventoryItems",
+      path: "userprofiles/{profileId}/projects/{projectId}/inventoryItems",
     }),
     svc,
   ) as unknown as Schema.Schema<ListInventoryItemsRequest>;
@@ -14688,7 +14631,7 @@ export const PatchRemarketingListSharesRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "userprofiles/{userprofilesId}/remarketingListShares",
+      path: "userprofiles/{profileId}/remarketingListShares",
       hasBody: true,
     }),
     svc,
@@ -14726,7 +14669,7 @@ export const UpdateRemarketingListSharesRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "userprofiles/{userprofilesId}/remarketingListShares",
+      path: "userprofiles/{profileId}/remarketingListShares",
       hasBody: true,
     }),
     svc,
@@ -14764,7 +14707,7 @@ export const GetRemarketingListSharesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/remarketingListShares/{remarketingListSharesId}",
+      path: "userprofiles/{profileId}/remarketingListShares/{remarketingListId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetRemarketingListSharesRequest>;
@@ -14801,7 +14744,7 @@ export const GetAccountUserProfilesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{profileId}/accountUserProfiles/{accountUserProfilesId}",
+      path: "userprofiles/{profileId}/accountUserProfiles/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetAccountUserProfilesRequest>;
@@ -14866,7 +14809,7 @@ export const ListAccountUserProfilesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/accountUserProfiles",
+      path: "userprofiles/{profileId}/accountUserProfiles",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAccountUserProfilesRequest>;
@@ -14907,7 +14850,7 @@ export const UpdateAccountUserProfilesRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "userprofiles/{userprofilesId}/accountUserProfiles",
+      path: "userprofiles/{profileId}/accountUserProfiles",
       hasBody: true,
     }),
     svc,
@@ -14945,7 +14888,7 @@ export const InsertAccountUserProfilesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/accountUserProfiles",
+      path: "userprofiles/{profileId}/accountUserProfiles",
       hasBody: true,
     }),
     svc,
@@ -14986,7 +14929,7 @@ export const PatchAccountUserProfilesRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "userprofiles/{userprofilesId}/accountUserProfiles",
+      path: "userprofiles/{profileId}/accountUserProfiles",
       hasBody: true,
     }),
     svc,
@@ -15024,7 +14967,7 @@ export const UpdateBillingProfilesRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "userprofiles/{userprofilesId}/billingProfiles",
+      path: "userprofiles/{profileId}/billingProfiles",
       hasBody: true,
     }),
     svc,
@@ -15062,7 +15005,7 @@ export const GetBillingProfilesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/billingProfiles/{billingProfilesId}",
+      path: "userprofiles/{profileId}/billingProfiles/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetBillingProfilesRequest>;
@@ -15132,10 +15075,7 @@ export const ListBillingProfilesRequest =
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
     sortField: Schema.optional(Schema.String).pipe(T.HttpQuery("sortField")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "userprofiles/{userprofilesId}/billingProfiles",
-    }),
+    T.Http({ method: "GET", path: "userprofiles/{profileId}/billingProfiles" }),
     svc,
   ) as unknown as Schema.Schema<ListBillingProfilesRequest>;
 
@@ -15175,7 +15115,7 @@ export const UpdateCreativeFieldsRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "userprofiles/{userprofilesId}/creativeFields",
+      path: "userprofiles/{profileId}/creativeFields",
       hasBody: true,
     }),
     svc,
@@ -15213,7 +15153,7 @@ export const GetCreativeFieldsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/creativeFields/{creativeFieldsId}",
+      path: "userprofiles/{profileId}/creativeFields/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetCreativeFieldsRequest>;
@@ -15270,10 +15210,7 @@ export const ListCreativeFieldsRequest =
     sortField: Schema.optional(Schema.String).pipe(T.HttpQuery("sortField")),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "userprofiles/{userprofilesId}/creativeFields",
-    }),
+    T.Http({ method: "GET", path: "userprofiles/{profileId}/creativeFields" }),
     svc,
   ) as unknown as Schema.Schema<ListCreativeFieldsRequest>;
 
@@ -15313,7 +15250,7 @@ export const InsertCreativeFieldsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/creativeFields",
+      path: "userprofiles/{profileId}/creativeFields",
       hasBody: true,
     }),
     svc,
@@ -15354,7 +15291,7 @@ export const PatchCreativeFieldsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "userprofiles/{userprofilesId}/creativeFields",
+      path: "userprofiles/{profileId}/creativeFields",
       hasBody: true,
     }),
     svc,
@@ -15392,7 +15329,7 @@ export const DeleteCreativeFieldsRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "userprofiles/{userprofilesId}/creativeFields/{creativeFieldsId}",
+      path: "userprofiles/{profileId}/creativeFields/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteCreativeFieldsRequest>;
@@ -15431,7 +15368,7 @@ export const GetAccountPermissionGroupsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/accountPermissionGroups/{accountPermissionGroupsId}",
+      path: "userprofiles/{profileId}/accountPermissionGroups/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetAccountPermissionGroupsRequest>;
@@ -15465,7 +15402,7 @@ export const ListAccountPermissionGroupsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/accountPermissionGroups",
+      path: "userprofiles/{profileId}/accountPermissionGroups",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAccountPermissionGroupsRequest>;
@@ -15506,7 +15443,7 @@ export const InsertCreativeAssetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/creativeAssets/{creativeAssetsId}/creativeAssets",
+      path: "userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets",
       hasBody: true,
     }),
     svc,
@@ -15544,7 +15481,7 @@ export const InsertAdvertiserLandingPagesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/advertiserLandingPages",
+      path: "userprofiles/{profileId}/advertiserLandingPages",
       hasBody: true,
     }),
     svc,
@@ -15585,7 +15522,7 @@ export const PatchAdvertiserLandingPagesRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "userprofiles/{userprofilesId}/advertiserLandingPages",
+      path: "userprofiles/{profileId}/advertiserLandingPages",
       hasBody: true,
     }),
     svc,
@@ -15623,7 +15560,7 @@ export const UpdateAdvertiserLandingPagesRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "userprofiles/{userprofilesId}/advertiserLandingPages",
+      path: "userprofiles/{profileId}/advertiserLandingPages",
       hasBody: true,
     }),
     svc,
@@ -15661,7 +15598,7 @@ export const GetAdvertiserLandingPagesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/advertiserLandingPages/{advertiserLandingPagesId}",
+      path: "userprofiles/{profileId}/advertiserLandingPages/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetAdvertiserLandingPagesRequest>;
@@ -15733,7 +15670,7 @@ export const ListAdvertiserLandingPagesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/advertiserLandingPages",
+      path: "userprofiles/{profileId}/advertiserLandingPages",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAdvertiserLandingPagesRequest>;
@@ -15778,7 +15715,7 @@ export const PatchSubaccountsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "userprofiles/{userprofilesId}/subaccounts",
+      path: "userprofiles/{profileId}/subaccounts",
       hasBody: true,
     }),
     svc,
@@ -15815,7 +15752,7 @@ export const InsertSubaccountsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/subaccounts",
+      path: "userprofiles/{profileId}/subaccounts",
       hasBody: true,
     }),
     svc,
@@ -15849,10 +15786,7 @@ export const GetSubaccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.HttpPath("id")),
   profileId: Schema.String.pipe(T.HttpPath("profileId")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "userprofiles/{userprofilesId}/subaccounts/{subaccountsId}",
-  }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/subaccounts/{id}" }),
   svc,
 ) as unknown as Schema.Schema<GetSubaccountsRequest>;
 
@@ -15903,7 +15837,7 @@ export const ListSubaccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
   },
 ).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/subaccounts" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/subaccounts" }),
   svc,
 ) as unknown as Schema.Schema<ListSubaccountsRequest>;
 
@@ -15943,7 +15877,7 @@ export const UpdateSubaccountsRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "userprofiles/{userprofilesId}/subaccounts",
+      path: "userprofiles/{profileId}/subaccounts",
       hasBody: true,
     }),
     svc,
@@ -15980,7 +15914,7 @@ export const GetFloodlightActivityGroupsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/floodlightActivityGroups/{floodlightActivityGroupsId}",
+      path: "userprofiles/{profileId}/floodlightActivityGroups/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetFloodlightActivityGroupsRequest>;
@@ -16047,7 +15981,7 @@ export const ListFloodlightActivityGroupsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/floodlightActivityGroups",
+      path: "userprofiles/{profileId}/floodlightActivityGroups",
     }),
     svc,
   ) as unknown as Schema.Schema<ListFloodlightActivityGroupsRequest>;
@@ -16089,7 +16023,7 @@ export const UpdateFloodlightActivityGroupsRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "userprofiles/{userprofilesId}/floodlightActivityGroups",
+      path: "userprofiles/{profileId}/floodlightActivityGroups",
       hasBody: true,
     }),
     svc,
@@ -16127,7 +16061,7 @@ export const InsertFloodlightActivityGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/floodlightActivityGroups",
+      path: "userprofiles/{profileId}/floodlightActivityGroups",
       hasBody: true,
     }),
     svc,
@@ -16168,7 +16102,7 @@ export const PatchFloodlightActivityGroupsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "userprofiles/{userprofilesId}/floodlightActivityGroups",
+      path: "userprofiles/{profileId}/floodlightActivityGroups",
       hasBody: true,
     }),
     svc,
@@ -16209,7 +16143,7 @@ export const PatchPlacementGroupsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "userprofiles/{userprofilesId}/placementGroups",
+      path: "userprofiles/{profileId}/placementGroups",
       hasBody: true,
     }),
     svc,
@@ -16247,7 +16181,7 @@ export const InsertPlacementGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/placementGroups",
+      path: "userprofiles/{profileId}/placementGroups",
       hasBody: true,
     }),
     svc,
@@ -16285,7 +16219,7 @@ export const GetPlacementGroupsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/placementGroups/{placementGroupsId}",
+      path: "userprofiles/{profileId}/placementGroups/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetPlacementGroupsRequest>;
@@ -16414,10 +16348,7 @@ export const ListPlacementGroupsRequest =
     ),
     maxResults: Schema.optional(Schema.Number).pipe(T.HttpQuery("maxResults")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "userprofiles/{userprofilesId}/placementGroups",
-    }),
+    T.Http({ method: "GET", path: "userprofiles/{profileId}/placementGroups" }),
     svc,
   ) as unknown as Schema.Schema<ListPlacementGroupsRequest>;
 
@@ -16457,7 +16388,7 @@ export const UpdatePlacementGroupsRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "userprofiles/{userprofilesId}/placementGroups",
+      path: "userprofiles/{profileId}/placementGroups",
       hasBody: true,
     }),
     svc,
@@ -16498,7 +16429,7 @@ export const ListTvCampaignSummariesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/tvCampaignSummaries",
+      path: "userprofiles/{profileId}/tvCampaignSummaries",
     }),
     svc,
   ) as unknown as Schema.Schema<ListTvCampaignSummariesRequest>;
@@ -16651,7 +16582,7 @@ export const PublishDynamicProfilesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "studio/dynamicProfiles/{dynamicProfilesId}/publish",
+      path: "studio/dynamicProfiles/{dynamicProfileId}/publish",
       hasBody: true,
     }),
     svc,
@@ -16688,7 +16619,7 @@ export const GetDynamicProfilesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "studio/dynamicProfiles/{dynamicProfilesId}",
+      path: "studio/dynamicProfiles/{dynamicProfileId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetDynamicProfilesRequest>;
@@ -16722,7 +16653,7 @@ export const GenerateCodeDynamicProfilesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "studio/dynamicProfiles/{dynamicProfilesId}/generateCode",
+      path: "studio/dynamicProfiles/{dynamicProfileId}/generateCode",
     }),
     svc,
   ) as unknown as Schema.Schema<GenerateCodeDynamicProfilesRequest>;
@@ -16760,7 +16691,7 @@ export const UpdateAdvertiserGroupsRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "userprofiles/{userprofilesId}/advertiserGroups",
+      path: "userprofiles/{profileId}/advertiserGroups",
       hasBody: true,
     }),
     svc,
@@ -16798,7 +16729,7 @@ export const GetAdvertiserGroupsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/advertiserGroups/{advertiserGroupsId}",
+      path: "userprofiles/{profileId}/advertiserGroups/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetAdvertiserGroupsRequest>;
@@ -16852,7 +16783,7 @@ export const ListAdvertiserGroupsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/advertiserGroups",
+      path: "userprofiles/{profileId}/advertiserGroups",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAdvertiserGroupsRequest>;
@@ -16893,7 +16824,7 @@ export const InsertAdvertiserGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/advertiserGroups",
+      path: "userprofiles/{profileId}/advertiserGroups",
       hasBody: true,
     }),
     svc,
@@ -16934,7 +16865,7 @@ export const PatchAdvertiserGroupsRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "userprofiles/{userprofilesId}/advertiserGroups",
+      path: "userprofiles/{profileId}/advertiserGroups",
       hasBody: true,
     }),
     svc,
@@ -16972,7 +16903,7 @@ export const DeleteAdvertiserGroupsRequest =
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "userprofiles/{userprofilesId}/advertiserGroups/{advertiserGroupsId}",
+      path: "userprofiles/{profileId}/advertiserGroups/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<DeleteAdvertiserGroupsRequest>;
@@ -17011,7 +16942,7 @@ export const GetUserRolePermissionsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/userRolePermissions/{userRolePermissionsId}",
+      path: "userprofiles/{profileId}/userRolePermissions/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetUserRolePermissionsRequest>;
@@ -17048,7 +16979,7 @@ export const ListUserRolePermissionsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/userRolePermissions",
+      path: "userprofiles/{profileId}/userRolePermissions",
     }),
     svc,
   ) as unknown as Schema.Schema<ListUserRolePermissionsRequest>;
@@ -17079,7 +17010,7 @@ export interface ListLanguagesRequest {
 export const ListLanguagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   profileId: Schema.String.pipe(T.HttpPath("profileId")),
 }).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/languages" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/languages" }),
   svc,
 ) as unknown as Schema.Schema<ListLanguagesRequest>;
 
@@ -17115,7 +17046,7 @@ export const GetAccountActiveAdSummariesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/accountActiveAdSummaries/{accountActiveAdSummariesId}",
+      path: "userprofiles/{profileId}/accountActiveAdSummaries/{summaryAccountId}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetAccountActiveAdSummariesRequest>;
@@ -17204,7 +17135,7 @@ export const GetTvCampaignDetailsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/tvCampaignDetails/{tvCampaignDetailsId}",
+      path: "userprofiles/{profileId}/tvCampaignDetails/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetTvCampaignDetailsRequest>;
@@ -17238,10 +17169,7 @@ export const GetChangeLogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.HttpPath("id")),
   profileId: Schema.String.pipe(T.HttpPath("profileId")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "userprofiles/{userprofilesId}/changeLogs/{changeLogsId}",
-  }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/changeLogs/{id}" }),
   svc,
 ) as unknown as Schema.Schema<GetChangeLogsRequest>;
 
@@ -17372,7 +17300,7 @@ export const ListChangeLogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ids: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpQuery("ids")),
   profileId: Schema.String.pipe(T.HttpPath("profileId")),
 }).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/changeLogs" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/changeLogs" }),
   svc,
 ) as unknown as Schema.Schema<ListChangeLogsRequest>;
 
@@ -17491,7 +17419,7 @@ export const PatchTargetingTemplatesRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "userprofiles/{userprofilesId}/targetingTemplates",
+      path: "userprofiles/{profileId}/targetingTemplates",
       hasBody: true,
     }),
     svc,
@@ -17529,7 +17457,7 @@ export const InsertTargetingTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "userprofiles/{userprofilesId}/targetingTemplates",
+      path: "userprofiles/{profileId}/targetingTemplates",
       hasBody: true,
     }),
     svc,
@@ -17567,7 +17495,7 @@ export const UpdateTargetingTemplatesRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "userprofiles/{userprofilesId}/targetingTemplates",
+      path: "userprofiles/{profileId}/targetingTemplates",
       hasBody: true,
     }),
     svc,
@@ -17605,7 +17533,7 @@ export const GetTargetingTemplatesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/targetingTemplates/{targetingTemplatesId}",
+      path: "userprofiles/{profileId}/targetingTemplates/{id}",
     }),
     svc,
   ) as unknown as Schema.Schema<GetTargetingTemplatesRequest>;
@@ -17664,7 +17592,7 @@ export const ListTargetingTemplatesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "userprofiles/{userprofilesId}/targetingTemplates",
+      path: "userprofiles/{profileId}/targetingTemplates",
     }),
     svc,
   ) as unknown as Schema.Schema<ListTargetingTemplatesRequest>;
@@ -17704,7 +17632,7 @@ export const InsertSizesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "POST",
-    path: "userprofiles/{userprofilesId}/sizes",
+    path: "userprofiles/{profileId}/sizes",
     hasBody: true,
   }),
   svc,
@@ -17738,10 +17666,7 @@ export const GetSizesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   profileId: Schema.String.pipe(T.HttpPath("profileId")),
   id: Schema.String.pipe(T.HttpPath("id")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "userprofiles/{userprofilesId}/sizes/{sizesId}",
-  }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/sizes/{id}" }),
   svc,
 ) as unknown as Schema.Schema<GetSizesRequest>;
 
@@ -17782,7 +17707,7 @@ export const ListSizesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ids: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpQuery("ids")),
   height: Schema.optional(Schema.Number).pipe(T.HttpQuery("height")),
 }).pipe(
-  T.Http({ method: "GET", path: "userprofiles/{userprofilesId}/sizes" }),
+  T.Http({ method: "GET", path: "userprofiles/{profileId}/sizes" }),
   svc,
 ) as unknown as Schema.Schema<ListSizesRequest>;
 

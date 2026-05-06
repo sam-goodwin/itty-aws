@@ -297,6 +297,16 @@ paths:
           description: "Path param: Account Identifier"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: action_log
           in: query
           required: false
@@ -1574,6 +1584,16 @@ paths:
           description: "Path param: Account Identifier"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: direction
           in: query
           required: false
@@ -2057,6 +2077,16 @@ paths:
           description: "Path param: Account Identifier"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: direction
           in: query
           required: false
@@ -2671,6 +2701,16 @@ paths:
           description: "Path param: Account Identifier"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: active_delivery_mode
           in: query
           required: false
@@ -3117,6 +3157,16 @@ paths:
           description: "Path param: Account Identifier"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: direction
           in: query
           required: false
@@ -3476,6 +3526,16 @@ paths:
           description: "Path param: Account Identifier"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: direction
           in: query
           required: false
@@ -3701,6 +3761,16 @@ paths:
           description: "Path param: Account Identifier"
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: end
           in: query
           required: false

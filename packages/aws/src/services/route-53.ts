@@ -4028,7 +4028,7 @@ export class NotAuthorizedException extends S.TaggedErrorClass<NotAuthorizedExce
 export class PriorRequestNotComplete extends S.TaggedErrorClass<PriorRequestNotComplete>()(
   "PriorRequestNotComplete",
   { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
+).pipe(C.withBadRequestError, C.withConflictError, C.withRetryableError) {}
 export class PublicZoneVPCAssociation extends S.TaggedErrorClass<PublicZoneVPCAssociation>()(
   "PublicZoneVPCAssociation",
   { message: S.optional(S.String) },
@@ -4056,7 +4056,7 @@ export class NoSuchHealthCheck extends S.TaggedErrorClass<NoSuchHealthCheck>()(
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
+).pipe(C.withBadRequestError, C.withThrottlingError, C.withRetryableError) {}
 export class CidrCollectionAlreadyExistsException extends S.TaggedErrorClass<CidrCollectionAlreadyExistsException>()(
   "CidrCollectionAlreadyExistsException",
   { Message: S.optional(S.String) },

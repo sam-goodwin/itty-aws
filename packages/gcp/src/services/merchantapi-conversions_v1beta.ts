@@ -36,7 +36,7 @@ export const ConversionType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AttributionSettings {
   /** Immutable. Unordered list. List of different conversion types a conversion event can be classified as. A standard "purchase" type will be automatically created if this list is empty at creation time. */
-  conversionType?: Array<ConversionType>;
+  conversionType?: ReadonlyArray<ConversionType>;
   /** Required. Lookback window (in days) used for attribution in this source. Supported values are `7`, `30` & `40`. */
   attributionLookbackWindowDays?: number;
   /** Required. Attribution model. */
@@ -166,7 +166,7 @@ export const ProductChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListConversionSourcesResponse {
   /** List of conversion sources. */
-  conversionSources?: Array<ConversionSource>;
+  conversionSources?: ReadonlyArray<ConversionSource>;
   /** Token to be used to fetch the next results page. */
   nextPageToken?: string;
 }
@@ -196,7 +196,7 @@ export interface ProductStatusChangeMessage {
   /** The resource that changed, in this case it will always be `Product`. */
   resourceType?: "RESOURCE_UNSPECIFIED" | "PRODUCT" | (string & {});
   /** A message to describe the change that happened to the product */
-  changes?: Array<ProductChange>;
+  changes?: ReadonlyArray<ProductChange>;
   /** The account that manages the merchant's account. can be the same as merchant id if it is standalone account. Format : `accounts/{service_provider_id}` */
   managingAccount?: string;
   /** The product name. Format: `accounts/{account}/products/{product}` */
@@ -242,7 +242,7 @@ export const CreateAccountsConversionSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "conversions/v1beta/accounts/{accountsId}/conversionSources",
+      path: "conversions/v1beta/{parent}/conversionSources",
       hasBody: true,
     }),
     svc,
@@ -275,10 +275,7 @@ export const DeleteAccountsConversionSourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "conversions/v1beta/accounts/{accountsId}/conversionSources/{conversionSourcesId}",
-    }),
+    T.Http({ method: "DELETE", path: "conversions/v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsConversionSourcesRequest>;
 
@@ -309,10 +306,7 @@ export const GetAccountsConversionSourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "conversions/v1beta/accounts/{accountsId}/conversionSources/{conversionSourcesId}",
-    }),
+    T.Http({ method: "GET", path: "conversions/v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsConversionSourcesRequest>;
 
@@ -348,7 +342,7 @@ export const UndeleteAccountsConversionSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "conversions/v1beta/accounts/{accountsId}/conversionSources/{conversionSourcesId}:undelete",
+      path: "conversions/v1beta/{name}:undelete",
       hasBody: true,
     }),
     svc,
@@ -394,7 +388,7 @@ export const ListAccountsConversionSourcesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "conversions/v1beta/accounts/{accountsId}/conversionSources",
+      path: "conversions/v1beta/{parent}/conversionSources",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsConversionSourcesRequest>;
@@ -439,7 +433,7 @@ export const PatchAccountsConversionSourcesRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "conversions/v1beta/accounts/{accountsId}/conversionSources/{conversionSourcesId}",
+      path: "conversions/v1beta/{name}",
       hasBody: true,
     }),
     svc,

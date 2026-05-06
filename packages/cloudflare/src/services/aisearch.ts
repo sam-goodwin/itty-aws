@@ -53,12 +53,16 @@ T.applyErrorMatchers(ValidationError, [{ code: 7001 }]);
 export interface ListInstancesRequest {
   /** Path param: */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Search by id */
   search?: string;
 }
 
 export const ListInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/ai-search/instances" }),
@@ -4097,6 +4101,8 @@ export interface ListInstanceItemsRequest {
   id: string;
   /** Path param: */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: */
   search?: string;
   /** Query param: */
@@ -4107,6 +4113,8 @@ export const ListInstanceItemsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.HttpPath("id")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
     status: Schema.optional(
       Schema.Literals(["queued", "running", "completed", "error", "skipped"]),
@@ -4281,12 +4289,16 @@ export interface ListInstanceJobsRequest {
   id: string;
   /** Path param: */
   accountId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListInstanceJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.HttpPath("id")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -4524,10 +4536,14 @@ export const logsInstanceJob: API.OperationMethod<
 export interface ListTokensRequest {
   /** Path param: */
   accountId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListTokensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/ai-search/tokens" }),
 ) as unknown as Schema.Schema<ListTokensRequest>;

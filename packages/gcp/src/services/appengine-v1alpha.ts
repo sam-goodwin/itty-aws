@@ -26,7 +26,7 @@ export interface GceTag {
   /** The administrative_tag name. */
   tag?: string;
   /** The parents(s) of the tag. Eg. projects/123, folders/456 It usually contains only one parent. But, in some corner cases, it can contain multiple parents. Currently, organizations are not supported. */
-  parent?: Array<string>;
+  parent?: ReadonlyArray<string>;
 }
 
 export const GceTag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -77,9 +77,9 @@ export interface AuthorizedCertificate {
   /** The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate. */
   displayName?: string;
   /** Output only. Topmost applicable domains of this certificate. This certificate applies to these domains and their subdomains. Example: example.com.@OutputOnly */
-  domainNames?: Array<string>;
+  domainNames?: ReadonlyArray<string>;
   /** Output only. The full paths to user visible Domain Mapping resources that have this certificate mapped. Example: apps/myapp/domainMappings/example.com.This may not represent the full list of mapped domain mappings if the user does not have VIEWER permissions on all of the applications that have this certificate mapped. See domain_mappings_count for a complete count.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly */
-  visibleDomainMappings?: Array<string>;
+  visibleDomainMappings?: ReadonlyArray<string>;
   /** The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority. */
   certificateRawData?: CertificateRawData;
   /** Output only. Full path to the AuthorizedCertificate resource in the API. Example: apps/myapp/authorizedCertificates/12345.@OutputOnly */
@@ -125,7 +125,7 @@ export interface OperationMetadataV1Alpha {
   /** User who requested this operation.@OutputOnly */
   user?: string;
   /** Durable messages that persist on every operation poll. @OutputOnly */
-  warning?: Array<string>;
+  warning?: ReadonlyArray<string>;
 }
 
 export const OperationMetadataV1Alpha =
@@ -154,7 +154,7 @@ export const AuthorizedDomain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAuthorizedDomainsResponse {
   /** The authorized domains belonging to the user. */
-  domains?: Array<AuthorizedDomain>;
+  domains?: ReadonlyArray<AuthorizedDomain>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -230,7 +230,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
@@ -276,11 +276,11 @@ export const CreateVersionMetadataV1 =
 
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets ListOperationsRequest.return_partial_success and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -331,7 +331,7 @@ export interface ProjectsMetadata {
   /** The producer project number. */
   producerProjectNumber?: string;
   /** The GCE tags associated with the consumer project and those inherited due to their ancestry, if any. Not supported by CCFE. */
-  gceTag?: Array<GceTag>;
+  gceTag?: ReadonlyArray<GceTag>;
 }
 
 export const ProjectsMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -387,7 +387,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
 }
 
 export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -412,7 +412,7 @@ export const LocationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAuthorizedCertificatesResponse {
   /** The SSL certificates the user is authorized to administer. */
-  certificates?: Array<AuthorizedCertificate>;
+  certificates?: ReadonlyArray<AuthorizedCertificate>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -440,7 +440,7 @@ export interface OperationMetadataV1 {
   /** User who requested this operation.@OutputOnly */
   user?: string;
   /** Durable messages that persist on every operation poll. @OutputOnly */
-  warning?: Array<string>;
+  warning?: ReadonlyArray<string>;
   /** API method that initiated this operation. Example: google.appengine.v1.Versions.CreateVersion.@OutputOnly */
   method?: string;
   /** Time that this operation completed.@OutputOnly */
@@ -491,7 +491,7 @@ export interface OperationMetadataV1Beta {
   /** User who requested this operation.@OutputOnly */
   user?: string;
   /** Durable messages that persist on every operation poll. @OutputOnly */
-  warning?: Array<string>;
+  warning?: ReadonlyArray<string>;
   /** API method that initiated this operation. Example: google.appengine.v1beta.Versions.CreateVersion.@OutputOnly */
   method?: string;
   /** Time that this operation completed.@OutputOnly */
@@ -556,7 +556,7 @@ export interface DomainMapping {
   /** Relative name of the domain serving the application. Example: example.com. */
   id?: string;
   /** Output only. The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly */
-  resourceRecords?: Array<ResourceRecord>;
+  resourceRecords?: ReadonlyArray<ResourceRecord>;
 }
 
 export const DomainMapping = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -568,7 +568,7 @@ export const DomainMapping = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDomainMappingsResponse {
   /** The domain mappings for the application. */
-  domainMappings?: Array<DomainMapping>;
+  domainMappings?: ReadonlyArray<DomainMapping>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }

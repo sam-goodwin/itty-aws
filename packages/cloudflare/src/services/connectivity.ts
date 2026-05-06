@@ -81,11 +81,6 @@ export const GetDirectoryServiceResponse =
     host: Schema.Union([
       Schema.Struct({
         ipv4: Schema.String,
-        network: Schema.Struct({
-          tunnelId: Schema.String,
-        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-      }),
-      Schema.Struct({
         ipv6: Schema.String,
         network: Schema.Struct({
           tunnelId: Schema.String,
@@ -93,6 +88,11 @@ export const GetDirectoryServiceResponse =
       }),
       Schema.Struct({
         ipv4: Schema.String,
+        network: Schema.Struct({
+          tunnelId: Schema.String,
+        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
+      }),
+      Schema.Struct({
         ipv6: Schema.String,
         network: Schema.Struct({
           tunnelId: Schema.String,
@@ -158,6 +158,8 @@ export const getDirectoryService: API.OperationMethod<
 export interface ListDirectoryServicesRequest {
   /** Path param: Account identifier */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: */
   type?: "http" | null;
 }
@@ -165,6 +167,8 @@ export interface ListDirectoryServicesRequest {
 export const ListDirectoryServicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     type: Schema.optional(
       Schema.Union([Schema.Literal("http"), Schema.Null]),
     ).pipe(T.HttpQuery("type")),
@@ -193,12 +197,12 @@ export interface ListDirectoryServicesResponse {
     serviceId?: string | null;
     updatedAt?: string | null;
   }[];
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
-  };
+  } | null;
 }
 
 export const ListDirectoryServicesResponse =
@@ -208,11 +212,6 @@ export const ListDirectoryServicesResponse =
         host: Schema.Union([
           Schema.Struct({
             ipv4: Schema.String,
-            network: Schema.Struct({
-              tunnelId: Schema.String,
-            }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-          }),
-          Schema.Struct({
             ipv6: Schema.String,
             network: Schema.Struct({
               tunnelId: Schema.String,
@@ -220,6 +219,11 @@ export const ListDirectoryServicesResponse =
           }),
           Schema.Struct({
             ipv4: Schema.String,
+            network: Schema.Struct({
+              tunnelId: Schema.String,
+            }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
+          }),
+          Schema.Struct({
             ipv6: Schema.String,
             network: Schema.Struct({
               tunnelId: Schema.String,
@@ -265,18 +269,25 @@ export const ListDirectoryServicesResponse =
         }),
       ),
     ),
-    resultInfo: Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
+    resultInfo: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          totalCount: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            count: "count",
+            page: "page",
+            perPage: "per_page",
+            totalCount: "total_count",
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
@@ -330,11 +341,6 @@ export const CreateDirectoryServiceRequest =
     host: Schema.Union([
       Schema.Struct({
         ipv4: Schema.String,
-        network: Schema.Struct({
-          tunnelId: Schema.String,
-        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-      }),
-      Schema.Struct({
         ipv6: Schema.String,
         network: Schema.Struct({
           tunnelId: Schema.String,
@@ -342,6 +348,11 @@ export const CreateDirectoryServiceRequest =
       }),
       Schema.Struct({
         ipv4: Schema.String,
+        network: Schema.Struct({
+          tunnelId: Schema.String,
+        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
+      }),
+      Schema.Struct({
         ipv6: Schema.String,
         network: Schema.Struct({
           tunnelId: Schema.String,
@@ -408,11 +419,6 @@ export const CreateDirectoryServiceResponse =
     host: Schema.Union([
       Schema.Struct({
         ipv4: Schema.String,
-        network: Schema.Struct({
-          tunnelId: Schema.String,
-        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-      }),
-      Schema.Struct({
         ipv6: Schema.String,
         network: Schema.Struct({
           tunnelId: Schema.String,
@@ -420,6 +426,11 @@ export const CreateDirectoryServiceResponse =
       }),
       Schema.Struct({
         ipv4: Schema.String,
+        network: Schema.Struct({
+          tunnelId: Schema.String,
+        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
+      }),
+      Schema.Struct({
         ipv6: Schema.String,
         network: Schema.Struct({
           tunnelId: Schema.String,
@@ -515,11 +526,6 @@ export const UpdateDirectoryServiceRequest =
     host: Schema.Union([
       Schema.Struct({
         ipv4: Schema.String,
-        network: Schema.Struct({
-          tunnelId: Schema.String,
-        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-      }),
-      Schema.Struct({
         ipv6: Schema.String,
         network: Schema.Struct({
           tunnelId: Schema.String,
@@ -527,6 +533,11 @@ export const UpdateDirectoryServiceRequest =
       }),
       Schema.Struct({
         ipv4: Schema.String,
+        network: Schema.Struct({
+          tunnelId: Schema.String,
+        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
+      }),
+      Schema.Struct({
         ipv6: Schema.String,
         network: Schema.Struct({
           tunnelId: Schema.String,
@@ -593,11 +604,6 @@ export const UpdateDirectoryServiceResponse =
     host: Schema.Union([
       Schema.Struct({
         ipv4: Schema.String,
-        network: Schema.Struct({
-          tunnelId: Schema.String,
-        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
-      }),
-      Schema.Struct({
         ipv6: Schema.String,
         network: Schema.Struct({
           tunnelId: Schema.String,
@@ -605,6 +611,11 @@ export const UpdateDirectoryServiceResponse =
       }),
       Schema.Struct({
         ipv4: Schema.String,
+        network: Schema.Struct({
+          tunnelId: Schema.String,
+        }).pipe(Schema.encodeKeys({ tunnelId: "tunnel_id" })),
+      }),
+      Schema.Struct({
         ipv6: Schema.String,
         network: Schema.Struct({
           tunnelId: Schema.String,

@@ -32,7 +32,7 @@ export interface GoogleApiHttpBody {
   /** The HTTP request/response body as raw binary. */
   data?: string;
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
-  extensions?: Array<Record<string, unknown>>;
+  extensions?: ReadonlyArray<Record<string, unknown>>;
   /** The HTTP Content-Type header value specifying the content type of the body. */
   contentType?: string;
 }
@@ -47,7 +47,7 @@ export const GoogleApiHttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy {
   /** Required. Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific). */
-  categories?: Array<string>;
+  categories?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy =
@@ -122,7 +122,7 @@ export interface GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
   /** Optional. A map to pass the costs associated with the product. For example: {"manufacturing": 45.5} The profit of selling this item is computed like so: * If 'exactPrice' is provided, profit = displayPrice - sum(costs) * If 'priceRange' is provided, profit = minPrice - sum(costs) */
   costs?: Record<string, number>;
   /** Optional. Product images for the catalog item. */
-  images?: Array<GoogleCloudRecommendationengineV1beta1Image>;
+  images?: ReadonlyArray<GoogleCloudRecommendationengineV1beta1Image>;
   /** Optional. Canonical URL directly linking to the item detail page with a length limit of 5 KiB.. */
   canonicalProductUri?: string;
   /** Optional. The available quantity of the item. */
@@ -153,7 +153,7 @@ export const GoogleCloudRecommendationengineV1beta1ProductCatalogItem =
 
 export interface GoogleCloudRecommendationengineV1beta1FeatureMapStringList {
   /** String feature value with a length limit of 128 bytes. */
-  value?: Array<string>;
+  value?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudRecommendationengineV1beta1FeatureMapStringList =
@@ -165,7 +165,7 @@ export const GoogleCloudRecommendationengineV1beta1FeatureMapStringList =
 
 export interface GoogleCloudRecommendationengineV1beta1FeatureMapFloatList {
   /** Float feature value. */
-  value?: Array<number>;
+  value?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudRecommendationengineV1beta1FeatureMapFloatList =
@@ -208,7 +208,7 @@ export const GoogleCloudRecommendationengineV1beta1FeatureMap =
 
 export interface GoogleCloudRecommendationengineV1beta1CatalogItem {
   /** Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ] */
-  categoryHierarchies?: Array<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>;
+  categoryHierarchies?: ReadonlyArray<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>;
   /** Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance. */
   languageCode?: string;
   /** Optional. Metadata specific to retail products. */
@@ -218,7 +218,7 @@ export interface GoogleCloudRecommendationengineV1beta1CatalogItem {
   /** Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here. */
   itemAttributes?: GoogleCloudRecommendationengineV1beta1FeatureMap;
   /** Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** Required. Catalog item title. UTF-8 encoded string with a length limit of 1 KiB. */
   title?: string;
   /** Required. Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog. */
@@ -254,7 +254,7 @@ export interface GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse 
   /** If empty, the list is complete. If nonempty, the token to pass to the next request's ListCatalogItemRequest.page_token. */
   nextPageToken?: string;
   /** The catalog items. */
-  catalogItems?: Array<GoogleCloudRecommendationengineV1beta1CatalogItem>;
+  catalogItems?: ReadonlyArray<GoogleCloudRecommendationengineV1beta1CatalogItem>;
 }
 
 export const GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse =
@@ -314,7 +314,7 @@ export const GoogleCloudRecommendationengineV1beta1Catalog =
 
 export interface GoogleCloudRecommendationengineV1beta1ListCatalogsResponse {
   /** Output only. All the customer's catalogs. */
-  catalogs?: Array<GoogleCloudRecommendationengineV1beta1Catalog>;
+  catalogs?: ReadonlyArray<GoogleCloudRecommendationengineV1beta1Catalog>;
   /** Pagination token, if not returned indicates the last page. */
   nextPageToken?: string;
 }
@@ -398,9 +398,9 @@ export interface GoogleCloudRecommendationengineV1beta1ProductEventDetail {
   /** Optional. A transaction represents the entire purchase transaction. Required for `purchase-complete` events. Optional for `checkout-start` events. Other event types should not set this field. */
   purchaseTransaction?: GoogleCloudRecommendationengineV1beta1PurchaseTransaction;
   /** Required for `category-page-view` events. At least one of search_query or page_categories is required for `search` events. Other event types should not set this field. The categories associated with a category page. Category pages include special pages such as sales or promotions. For instance, a special sale page may have the category hierarchy: categories : ["Sales", "2017 Black Friday Deals"]. */
-  pageCategories?: Array<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>;
+  pageCategories?: ReadonlyArray<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>;
   /** The main product details related to the event. This field is required for the following event types: * `add-to-cart` * `add-to-list` * `checkout-start` * `detail-page-view` * `purchase-complete` * `refund` * `remove-from-cart` * `remove-from-list` This field is optional for the following event types: * `page-visit` * `shopping-cart-page-view` - note that 'product_details' should be set for this unless the shopping cart is empty. * `search` (highly encouraged) In a `search` event, this field represents the products returned to the end user on the current page (the end user may have not finished broswing the whole page yet). When a new page is returned to the end user, after pagination/filtering/ordering even for the same query, a new SEARCH event with different product_details is desired. The end user may have not finished broswing the whole page yet. This field is not allowed for the following event types: * `category-page-view` * `home-page-view` */
-  productDetails?: Array<GoogleCloudRecommendationengineV1beta1ProductDetail>;
+  productDetails?: ReadonlyArray<GoogleCloudRecommendationengineV1beta1ProductDetail>;
   /** At least one of search_query or page_categories is required for `search` events. Other event types should not set this field. The user's search query as UTF-8 encoded text with a length limit of 5 KiB. */
   searchQuery?: string;
   /** Required for `add-to-list` and `remove-from-list` events. The id or name of the list that the item is being added to or removed from. Other event types should not set this field. */
@@ -437,7 +437,7 @@ export interface GoogleCloudRecommendationengineV1beta1EventDetail {
   /** Optional. Complete url (window.location.href) of the user's current page. When using the JavaScript pixel, this value is filled in automatically. Maximum length 5KB. */
   uri?: string;
   /** Optional. A list of identifiers for the independent experiment groups this user event belongs to. This is used to distinguish between user events associated with different experiment setups (e.g. using Recommendation Engine system, using different recommendation models). */
-  experimentIds?: Array<string>;
+  experimentIds?: ReadonlyArray<string>;
   /** Optional. A unique id of a web page view. This should be kept the same for all user events triggered from the same pageview. For example, an item detail page view could trigger multiple events as the user is browsing the page. The `pageViewId` property should be kept the same for all these events so that they can be grouped together properly. This `pageViewId` will be automatically generated if using the JavaScript pixel. */
   pageViewId?: string;
   /** Optional. Extra user event features to include in the recommendation model. For product recommendation, an example of extra user information is traffic_channel, i.e. how user arrives at the site. Users can arrive at the site by coming to the site directly, or coming through Google search, and etc. */
@@ -548,7 +548,7 @@ export const GoogleCloudRecommendationengineV1beta1PredictRequest =
 
 export interface GoogleCloudRecommendationengineV1beta1UserEventInlineSource {
   /** Optional. A list of user events to import. Recommended max of 10k items. */
-  userEvents?: Array<GoogleCloudRecommendationengineV1beta1UserEvent>;
+  userEvents?: ReadonlyArray<GoogleCloudRecommendationengineV1beta1UserEvent>;
 }
 
 export const GoogleCloudRecommendationengineV1beta1UserEventInlineSource =
@@ -637,7 +637,7 @@ export const GoogleCloudRecommendationengineV1beta1ImportMetadata =
 
 export interface GoogleCloudRecommendationengineV1beta1CatalogInlineSource {
   /** Optional. A list of catalog items to update/create. Recommended max of 10k items. */
-  catalogItems?: Array<GoogleCloudRecommendationengineV1beta1CatalogItem>;
+  catalogItems?: ReadonlyArray<GoogleCloudRecommendationengineV1beta1CatalogItem>;
 }
 
 export const GoogleCloudRecommendationengineV1beta1CatalogInlineSource =
@@ -651,7 +651,7 @@ export const GoogleCloudRecommendationengineV1beta1CatalogInlineSource =
 
 export interface GoogleCloudRecommendationengineV1beta1GcsSource {
   /** Required. Google Cloud Storage URIs to input files. URI can be up to 2000 characters long. URIs can match the full object path (for example, `gs://bucket/directory/object.json`) or a pattern matching one or more files, such as `gs://bucket/directory/*.json`. A request can contain at most 100 files, and each file can be up to 2 GB. See [Importing catalog information](/recommendations-ai/docs/upload-catalog) for the expected file format and setup instructions. */
-  inputUris?: Array<string>;
+  inputUris?: ReadonlyArray<string>;
   /** Optional. The schema to use when parsing the data from the source. Supported values for catalog imports: 1: "catalog_recommendations_ai" using https://cloud.google.com/recommendations-ai/docs/upload-catalog#json (Default for catalogItems.import) 2: "catalog_merchant_center" using https://cloud.google.com/recommendations-ai/docs/upload-catalog#mc Supported values for user events imports: 1: "user_events_recommendations_ai" using https://cloud.google.com/recommendations-ai/docs/manage-user-events#import (Default for userEvents.import) 2. "user_events_ga360" using https://support.google.com/analytics/answer/3437719?hl=en */
   jsonSchema?: string;
 }
@@ -744,7 +744,7 @@ export const GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse =
 
 export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -787,13 +787,13 @@ export interface GoogleCloudRecommendationengineV1beta1PredictResponse {
   /** If empty, the list is complete. If nonempty, the token to pass to the next request's PredictRequest.page_token. */
   nextPageToken?: string;
   /** IDs of items in the request that were missing from the catalog. */
-  itemsMissingInCatalog?: Array<string>;
+  itemsMissingInCatalog?: ReadonlyArray<string>;
   /** True if the dryRun property was set in the request. */
   dryRun?: boolean;
   /** A unique recommendation token. This should be included in the user event logs resulting from this recommendation, which enables accurate attribution of recommendation model performance. */
   recommendationToken?: string;
   /** A list of recommended items. The order represents the ranking (from the most relevant item to the least). */
-  results?: Array<GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult>;
+  results?: ReadonlyArray<GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult>;
 }
 
 export const GoogleCloudRecommendationengineV1beta1PredictResponse =
@@ -861,7 +861,7 @@ export const GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata =
 
 export interface GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse {
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
   /** Echoes the destination for the complete errors in the request if set. */
   errorsConfig?: GoogleCloudRecommendationengineV1beta1ImportErrorsConfig;
 }
@@ -908,7 +908,7 @@ export interface GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse {
   /** The total count of events purged as a result of the operation. */
   purgedEventsCount?: string;
   /** A sampling of events deleted (or will be deleted) depending on the `force` property in the request. Max of 500 items will be returned. */
-  userEventsSample?: Array<GoogleCloudRecommendationengineV1beta1UserEvent>;
+  userEventsSample?: ReadonlyArray<GoogleCloudRecommendationengineV1beta1UserEvent>;
 }
 
 export const GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse =
@@ -923,7 +923,7 @@ export const GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse =
 
 export interface GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse {
   /** The list of registered API keys. */
-  predictionApiKeyRegistrations?: Array<GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration>;
+  predictionApiKeyRegistrations?: ReadonlyArray<GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration>;
   /** If empty, the list is complete. If nonempty, pass the token to the next request's `ListPredictionApiKeysRegistrationsRequest.pageToken`. */
   nextPageToken?: string;
 }
@@ -989,7 +989,7 @@ export const GoogleCloudRecommendationengineV1beta1UserEventImportSummary =
 
 export interface GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse {
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
   /** Aggregated statistics of user event import status. */
   importSummary?: GoogleCloudRecommendationengineV1beta1UserEventImportSummary;
   /** Echoes the destination for the complete errors if this field was set in the request. */
@@ -1034,11 +1034,11 @@ export const GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest =
 
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleLongrunningListOperationsResponse =
@@ -1057,7 +1057,7 @@ export const GoogleCloudRecommendationengineV1alphaTuningResponse =
 
 export interface GoogleCloudRecommendationengineV1beta1ListUserEventsResponse {
   /** The user events. */
-  userEvents?: Array<GoogleCloudRecommendationengineV1beta1UserEvent>;
+  userEvents?: ReadonlyArray<GoogleCloudRecommendationengineV1beta1UserEvent>;
   /** If empty, the list is complete. If nonempty, the token to pass to the next request's ListUserEvents.page_token. */
   nextPageToken?: string;
 }
@@ -1093,11 +1093,7 @@ export const PatchProjectsLocationsCatalogsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCatalogsRequest>;
 
@@ -1135,10 +1131,7 @@ export const ListProjectsLocationsCatalogsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/catalogs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCatalogsRequest>;
 
@@ -1188,10 +1181,7 @@ export const ListProjectsLocationsCatalogsOperationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCatalogsOperationsRequest>;
 
@@ -1227,10 +1217,7 @@ export const GetProjectsLocationsCatalogsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCatalogsOperationsRequest>;
 
@@ -1269,7 +1256,7 @@ export const CreateProjectsLocationsCatalogsCatalogItemsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/catalogItems",
+      path: "v1beta1/{parent}/catalogItems",
       hasBody: true,
     }),
     svc,
@@ -1303,10 +1290,7 @@ export const GetProjectsLocationsCatalogsCatalogItemsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/catalogItems/{catalogItemsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCatalogsCatalogItemsRequest>;
 
@@ -1345,7 +1329,7 @@ export const ImportProjectsLocationsCatalogsCatalogItemsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/catalogItems:import",
+      path: "v1beta1/{parent}/catalogItems:import",
       hasBody: true,
     }),
     svc,
@@ -1387,11 +1371,7 @@ export const PatchProjectsLocationsCatalogsCatalogItemsRequest =
       GoogleCloudRecommendationengineV1beta1CatalogItem,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/catalogItems/{catalogItemsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCatalogsCatalogItemsRequest>;
 
@@ -1432,10 +1412,7 @@ export const ListProjectsLocationsCatalogsCatalogItemsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/catalogItems",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/catalogItems" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCatalogsCatalogItemsRequest>;
 
@@ -1471,10 +1448,7 @@ export const DeleteProjectsLocationsCatalogsCatalogItemsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/catalogItems/{catalogItemsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCatalogsCatalogItemsRequest>;
 
@@ -1510,11 +1484,7 @@ export const PredictProjectsLocationsCatalogsEventStoresPlacementsRequest =
       GoogleCloudRecommendationengineV1beta1PredictRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/placements/{placementsId}:predict",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:predict", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PredictProjectsLocationsCatalogsEventStoresPlacementsRequest>;
 
@@ -1555,7 +1525,7 @@ export const ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistratio
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/predictionApiKeyRegistrations",
+      path: "v1beta1/{parent}/predictionApiKeyRegistrations",
     }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest>;
@@ -1595,10 +1565,7 @@ export const DeleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrat
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/predictionApiKeyRegistrations/{predictionApiKeyRegistrationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest>;
 
@@ -1640,7 +1607,7 @@ export const CreateProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrat
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/predictionApiKeyRegistrations",
+      path: "v1beta1/{parent}/predictionApiKeyRegistrations",
       hasBody: true,
     }),
     svc,
@@ -1684,7 +1651,7 @@ export const PurgeProjectsLocationsCatalogsEventStoresUserEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/userEvents:purge",
+      path: "v1beta1/{parent}/userEvents:purge",
       hasBody: true,
     }),
     svc,
@@ -1728,10 +1695,7 @@ export const ListProjectsLocationsCatalogsEventStoresUserEventsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/userEvents",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/userEvents" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCatalogsEventStoresUserEventsRequest>;
 
@@ -1777,10 +1741,7 @@ export const CollectProjectsLocationsCatalogsEventStoresUserEventsRequest =
     uri: Schema.optional(Schema.String).pipe(T.HttpQuery("uri")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/userEvents:collect",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/userEvents:collect" }),
     svc,
   ) as unknown as Schema.Schema<CollectProjectsLocationsCatalogsEventStoresUserEventsRequest>;
 
@@ -1820,7 +1781,7 @@ export const WriteProjectsLocationsCatalogsEventStoresUserEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/userEvents:write",
+      path: "v1beta1/{parent}/userEvents:write",
       hasBody: true,
     }),
     svc,
@@ -1862,7 +1823,7 @@ export const ImportProjectsLocationsCatalogsEventStoresUserEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/userEvents:import",
+      path: "v1beta1/{parent}/userEvents:import",
       hasBody: true,
     }),
     svc,
@@ -1904,7 +1865,7 @@ export const RejoinProjectsLocationsCatalogsEventStoresUserEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/userEvents:rejoin",
+      path: "v1beta1/{parent}/userEvents:rejoin",
       hasBody: true,
     }),
     svc,
@@ -1953,10 +1914,7 @@ export const ListProjectsLocationsCatalogsEventStoresOperationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCatalogsEventStoresOperationsRequest>;
 
@@ -1993,10 +1951,7 @@ export const GetProjectsLocationsCatalogsEventStoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCatalogsEventStoresOperationsRequest>;
 

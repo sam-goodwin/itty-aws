@@ -217,12 +217,16 @@ export const getAiGateway: API.OperationMethod<
 export interface ListAiGatewaysRequest {
   /** Path param: */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Search by id */
   search?: string;
 }
 
 export const ListAiGatewaysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/ai-gateway/gateways" }),
@@ -1331,6 +1335,8 @@ export interface ListDatasetsRequest {
   gatewayId: string;
   /** Path param: */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: */
   enable?: boolean;
   /** Query param: */
@@ -1342,6 +1348,8 @@ export interface ListDatasetsRequest {
 export const ListDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   enable: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("enable")),
   name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
   search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
@@ -2092,6 +2100,8 @@ export interface ListEvaluationsRequest {
   gatewayId: string;
   /** Path param: */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: */
   name?: string;
   /** Query param: */
@@ -2104,6 +2114,8 @@ export const ListEvaluationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
     processed: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("processed")),
     search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
@@ -2704,6 +2716,8 @@ export const deleteEvaluation: API.OperationMethod<
 export interface ListEvaluationTypesRequest {
   /** Path param: */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: */
   orderBy?: string;
   /** Query param: */
@@ -2713,6 +2727,8 @@ export interface ListEvaluationTypesRequest {
 export const ListEvaluationTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("order_by")),
     orderByDirection: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
       T.HttpQuery("order_by_direction"),
@@ -2937,6 +2953,16 @@ export interface ListLogsRequest {
   gatewayId: string;
   /** Path param: */
   accountId: string;
+  page?: number;
+  perPage?: number;
+  /** @deprecated Query param: */
+  cached?: boolean;
+  /** @deprecated Query param: */
+  direction?: "asc" | "desc";
+  /** @deprecated Query param: */
+  endDate?: string;
+  /** @deprecated Query param: */
+  feedback?: "0" | "1";
   /** Query param: */
   filters?: {
     key:
@@ -2968,28 +2994,6 @@ export interface ListLogsRequest {
     operator: "eq" | "neq" | "contains" | "lt" | "gt";
     value: (string | null | number | boolean)[];
   }[];
-  /** Query param: */
-  metaInfo?: boolean;
-  /** Query param: */
-  orderBy?:
-    | "created_at"
-    | "provider"
-    | "model"
-    | "model_type"
-    | "success"
-    | "cached";
-  /** Query param: */
-  orderByDirection?: "asc" | "desc";
-  /** Query param: */
-  search?: string;
-  /** @deprecated Query param: */
-  cached?: boolean;
-  /** @deprecated Query param: */
-  direction?: "asc" | "desc";
-  /** @deprecated Query param: */
-  endDate?: string;
-  /** @deprecated Query param: */
-  feedback?: "0" | "1";
   /** @deprecated Query param: */
   maxCost?: number;
   /** @deprecated Query param: */
@@ -3000,6 +3004,8 @@ export interface ListLogsRequest {
   maxTokensOut?: number;
   /** @deprecated Query param: */
   maxTotalTokens?: number;
+  /** Query param: */
+  metaInfo?: boolean;
   /** @deprecated Query param: */
   minCost?: number;
   /** @deprecated Query param: */
@@ -3014,12 +3020,24 @@ export interface ListLogsRequest {
   model?: string;
   /** @deprecated Query param: */
   modelType?: string;
+  /** Query param: */
+  orderBy?:
+    | "created_at"
+    | "provider"
+    | "model"
+    | "model_type"
+    | "success"
+    | "cached";
+  /** Query param: */
+  orderByDirection?: "asc" | "desc";
   /** @deprecated Query param: */
   provider?: string;
   /** @deprecated Query param: */
   requestContentType?: string;
   /** @deprecated Query param: */
   responseContentType?: string;
+  /** Query param: */
+  search?: string;
   /** @deprecated Query param: */
   startDate?: string;
   /** @deprecated Query param: */
@@ -3029,6 +3047,16 @@ export interface ListLogsRequest {
 export const ListLogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   gatewayId: Schema.String.pipe(T.HttpPath("gatewayId")),
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  cached: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("cached")),
+  direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
+    T.HttpQuery("direction"),
+  ),
+  endDate: Schema.optional(Schema.String).pipe(T.HttpQuery("end_date")),
+  feedback: Schema.optional(Schema.Literals(["0", "1"])).pipe(
+    T.HttpQuery("feedback"),
+  ),
   filters: Schema.optional(
     Schema.Array(
       Schema.Struct({
@@ -3071,7 +3099,31 @@ export const ListLogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ).pipe(T.HttpQuery("filters")),
+  maxCost: Schema.optional(Schema.Number).pipe(T.HttpQuery("max_cost")),
+  maxDuration: Schema.optional(Schema.Number).pipe(T.HttpQuery("max_duration")),
+  maxTokensIn: Schema.optional(Schema.Number).pipe(
+    T.HttpQuery("max_tokens_in"),
+  ),
+  maxTokensOut: Schema.optional(Schema.Number).pipe(
+    T.HttpQuery("max_tokens_out"),
+  ),
+  maxTotalTokens: Schema.optional(Schema.Number).pipe(
+    T.HttpQuery("max_total_tokens"),
+  ),
   metaInfo: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("meta_info")),
+  minCost: Schema.optional(Schema.Number).pipe(T.HttpQuery("min_cost")),
+  minDuration: Schema.optional(Schema.Number).pipe(T.HttpQuery("min_duration")),
+  minTokensIn: Schema.optional(Schema.Number).pipe(
+    T.HttpQuery("min_tokens_in"),
+  ),
+  minTokensOut: Schema.optional(Schema.Number).pipe(
+    T.HttpQuery("min_tokens_out"),
+  ),
+  minTotalTokens: Schema.optional(Schema.Number).pipe(
+    T.HttpQuery("min_total_tokens"),
+  ),
+  model: Schema.optional(Schema.String).pipe(T.HttpQuery("model")),
+  modelType: Schema.optional(Schema.String).pipe(T.HttpQuery("model_type")),
   orderBy: Schema.optional(
     Schema.Literals([
       "created_at",
@@ -3085,52 +3137,17 @@ export const ListLogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   orderByDirection: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
     T.HttpQuery("order_by_direction"),
   ),
+  provider: Schema.optional(Schema.String).pipe(T.HttpQuery("provider")),
+  requestContentType: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("request_content_type"),
+  ),
+  responseContentType: Schema.optional(Schema.String).pipe(
+    T.HttpQuery("response_content_type"),
+  ),
   search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
-  cached: Schema.optional(Schema.Boolean),
-  direction: Schema.optional(Schema.Literals(["asc", "desc"])),
-  endDate: Schema.optional(Schema.String),
-  feedback: Schema.optional(Schema.Literals(["0", "1"])),
-  maxCost: Schema.optional(Schema.Number),
-  maxDuration: Schema.optional(Schema.Number),
-  maxTokensIn: Schema.optional(Schema.Number),
-  maxTokensOut: Schema.optional(Schema.Number),
-  maxTotalTokens: Schema.optional(Schema.Number),
-  minCost: Schema.optional(Schema.Number),
-  minDuration: Schema.optional(Schema.Number),
-  minTokensIn: Schema.optional(Schema.Number),
-  minTokensOut: Schema.optional(Schema.Number),
-  minTotalTokens: Schema.optional(Schema.Number),
-  model: Schema.optional(Schema.String),
-  modelType: Schema.optional(Schema.String),
-  provider: Schema.optional(Schema.String),
-  requestContentType: Schema.optional(Schema.String),
-  responseContentType: Schema.optional(Schema.String),
-  startDate: Schema.optional(Schema.String),
-  success: Schema.optional(Schema.Boolean),
+  startDate: Schema.optional(Schema.String).pipe(T.HttpQuery("start_date")),
+  success: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("success")),
 }).pipe(
-  Schema.encodeKeys({
-    cached: "cached",
-    direction: "direction",
-    endDate: "end_date",
-    feedback: "feedback",
-    maxCost: "max_cost",
-    maxDuration: "max_duration",
-    maxTokensIn: "max_tokens_in",
-    maxTokensOut: "max_tokens_out",
-    maxTotalTokens: "max_total_tokens",
-    minCost: "min_cost",
-    minDuration: "min_duration",
-    minTokensIn: "min_tokens_in",
-    minTokensOut: "min_tokens_out",
-    minTotalTokens: "min_total_tokens",
-    model: "model",
-    modelType: "model_type",
-    provider: "provider",
-    requestContentType: "request_content_type",
-    responseContentType: "response_content_type",
-    startDate: "start_date",
-    success: "success",
-  }),
   T.Http({
     method: "GET",
     path: "/accounts/{account_id}/ai-gateway/gateways/{gatewayId}/logs",

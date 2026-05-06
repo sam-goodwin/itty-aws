@@ -1325,6 +1325,8 @@ export interface ListPageTestsRequest {
   url: string;
   /** Path param: Identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: A test region. */
   region?:
     | "asia-east1"
@@ -1353,6 +1355,8 @@ export interface ListPageTestsRequest {
 export const ListPageTestsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   url: Schema.String.pipe(T.HttpPath("url")),
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   region: Schema.optional(
     Schema.Literals([
       "asia-east1",

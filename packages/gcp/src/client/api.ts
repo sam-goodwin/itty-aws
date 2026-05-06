@@ -12,8 +12,10 @@ import {
   type OperationMethod,
   type PaginatedOperationMethod,
 } from "@distilled.cloud/core/client";
+import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
 import { HTTP_STATUS_MAP, UnknownGCPError, GCPParseError } from "../errors.ts";
 import { Credentials } from "../credentials.ts";
+import { Retry } from "../retry.ts";
 
 export type { OperationMethod, PaginatedOperationMethod };
 
@@ -23,6 +25,8 @@ export type { OperationMethod, PaginatedOperationMethod };
 const matchError = (
   status: number,
   errorBody: unknown,
+  _errors?: readonly unknown[],
+  headers?: Record<string, string | undefined>,
 ): Effect.Effect<never, unknown> => {
   const ErrorClass = (HTTP_STATUS_MAP as any)[status];
   const message =
@@ -31,7 +35,12 @@ const matchError = (
       : String(status);
 
   if (ErrorClass) {
-    return Effect.fail(new ErrorClass({ message }));
+    return Effect.fail(
+      new ErrorClass({
+        message,
+        retryAfter: parseRetryAfterForStatus(status, headers),
+      }),
+    );
   }
   return Effect.fail(
     new UnknownGCPError({ code: status, message, body: errorBody }),
@@ -51,6 +60,7 @@ const _API = makeAPI<Credentials>({
   }),
   matchError,
   ParseError: GCPParseError as any,
+  retry: Retry as any,
 });
 
 export const make = _API.make;

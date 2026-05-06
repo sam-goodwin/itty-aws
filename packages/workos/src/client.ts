@@ -8,6 +8,8 @@ import * as Effect from "effect/Effect";
 import * as Redacted from "effect/Redacted";
 import * as Schema from "effect/Schema";
 import { makeAPI } from "@distilled.cloud/core/client";
+import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
+import { Retry } from "./retry.ts";
 import {
   HTTP_STATUS_MAP,
   UnknownWorkosError,
@@ -39,6 +41,8 @@ const ApiErrorResponse = Schema.Struct({
 const matchError = (
   status: number,
   errorBody: unknown,
+  _errors?: readonly unknown[],
+  headers?: Record<string, string | undefined>,
 ): Effect.Effect<never, unknown> => {
   // Try to extract a message and code from the body, but fall through to
   // status-code mapping regardless of whether the body parses as the
@@ -65,7 +69,12 @@ const matchError = (
   }
   const ErrorClass = (HTTP_STATUS_MAP as any)[status];
   if (ErrorClass) {
-    return Effect.fail(new ErrorClass({ message }));
+    return Effect.fail(
+      new ErrorClass({
+        message,
+        retryAfter: parseRetryAfterForStatus(status, headers),
+      }),
+    );
   }
   return Effect.fail(
     new UnknownWorkosError({ code, message, body: errorBody }),
@@ -83,4 +92,5 @@ export const API = makeAPI<Credentials>({
   }),
   matchError,
   ParseError: WorkosParseError as any,
+  retry: Retry as any,
 });

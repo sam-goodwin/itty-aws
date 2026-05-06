@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface FetchGitRefsResponse {
   /** Name of the refs fetched. */
-  refNames?: Array<string>;
+  refNames?: ReadonlyArray<string>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -54,7 +54,7 @@ export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -76,7 +76,7 @@ export interface AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -88,7 +88,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
 export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -100,11 +100,11 @@ export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
 }
 
 export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -208,7 +208,7 @@ export const WorkspaceDeclaration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ExecAction {
   /** Optional. Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. +optional */
-  command?: Array<string>;
+  command?: ReadonlyArray<string>;
 }
 
 export const ExecAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -293,15 +293,15 @@ export interface Sidecar {
   /** Container's working directory. */
   workingDir?: string;
   /** Arguments to the entrypoint. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Entrypoint array. */
-  command?: Array<string>;
+  command?: ReadonlyArray<string>;
   /** List of environment variables to set in the container. */
-  env?: Array<EnvVar>;
+  env?: ReadonlyArray<EnvVar>;
   /** Optional. Security options the container should be run with. */
   securityContext?: SecurityContext;
   /** Pod volumes to mount into the container's filesystem. */
-  volumeMounts?: Array<VolumeMount>;
+  volumeMounts?: ReadonlyArray<VolumeMount>;
 }
 
 export const Sidecar = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -323,7 +323,7 @@ export interface ParamValue {
   /** Value of the parameter if type is string. */
   stringVal?: string;
   /** Value of the parameter if type is array. */
-  arrayVal?: Array<string>;
+  arrayVal?: ReadonlyArray<string>;
   /** Optional. Value of the parameter if type is object. */
   objectVal?: Record<string, string>;
 }
@@ -351,7 +351,7 @@ export interface StepRef {
   /** Optional. Name of the step. */
   name?: string;
   /** Optional. Parameters used to control the resolution. */
-  params?: Array<Param>;
+  params?: ReadonlyArray<Param>;
   /** Optional. Type of the resolver. */
   resolver?:
     | "RESOLVER_NAME_UNSPECIFIED"
@@ -385,21 +385,21 @@ export interface Step {
     | "CONTINUE"
     | (string & {});
   /** List of environment variables to set in the container. */
-  env?: Array<EnvVar>;
+  env?: ReadonlyArray<EnvVar>;
   /** Entrypoint array. */
-  command?: Array<string>;
+  command?: ReadonlyArray<string>;
   /** Arguments to the entrypoint. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** The contents of an executable file to execute. */
   script?: string;
   /** Optional. SecurityContext defines the security options the Step should be run with. If set, the fields of SecurityContext override the equivalent fields of PodSecurityContext. More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/ +optional */
   securityContext?: SecurityContext;
   /** Optional. Optional parameters passed to the StepAction. */
-  params?: Array<Param>;
+  params?: ReadonlyArray<Param>;
   /** Optional. Optional reference to a remote StepAction. */
   ref?: StepRef;
   /** Pod volumes to mount into the container's filesystem. */
-  volumeMounts?: Array<VolumeMount>;
+  volumeMounts?: ReadonlyArray<VolumeMount>;
 }
 
 export const Step = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -486,9 +486,9 @@ export const VolumeSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StepTemplate {
   /** Optional. Pod volumes to mount into the container's filesystem. */
-  volumeMounts?: Array<VolumeMount>;
+  volumeMounts?: ReadonlyArray<VolumeMount>;
   /** Optional. List of environment variables to set in the Step. Cannot be updated. */
-  env?: Array<EnvVar>;
+  env?: ReadonlyArray<EnvVar>;
 }
 
 export const StepTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -498,23 +498,23 @@ export const StepTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TaskSpec {
   /** The volumes that this Task requires. */
-  workspaces?: Array<WorkspaceDeclaration>;
+  workspaces?: ReadonlyArray<WorkspaceDeclaration>;
   /** Sidecars that run alongside the Task's step containers. */
-  sidecars?: Array<Sidecar>;
+  sidecars?: ReadonlyArray<Sidecar>;
   /** Steps of the task. */
-  steps?: Array<Step>;
+  steps?: ReadonlyArray<Step>;
   /** Values that this Task can output. */
-  results?: Array<TaskResult>;
+  results?: ReadonlyArray<TaskResult>;
   /** Sidecars that run alongside the Task’s step containers that should be added to this Task. */
-  managedSidecars?: Array<
+  managedSidecars?: ReadonlyArray<
     "MANAGED_SIDECAR_UNSPECIFIED" | "PRIVILEGED_DOCKER_DAEMON" | (string & {})
   >;
   /** Description of the task. */
   description?: string;
   /** List of parameters. */
-  params?: Array<ParamSpec>;
+  params?: ReadonlyArray<ParamSpec>;
   /** A collection of volumes that are available to mount into steps. */
-  volumes?: Array<VolumeSource>;
+  volumes?: ReadonlyArray<VolumeSource>;
   /** Optional. StepTemplate can be used as the basis for all step containers within the Task, so that the steps inherit settings on the base container. */
   stepTemplate?: StepTemplate;
 }
@@ -608,7 +608,7 @@ export interface WhenExpression {
     | "NOT_IN"
     | (string & {});
   /** Values is an array of strings, which is compared against the input, for guard checking. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const WhenExpression = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -619,7 +619,7 @@ export const WhenExpression = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TaskRef {
   /** Params contains the parameters used to identify the referenced Tekton resource. Example entries might include "repo" or "path" but the set of params ultimately depends on the chosen resolver. */
-  params?: Array<Param>;
+  params?: ReadonlyArray<Param>;
   /** Resolver is the name of the resolver that should perform resolution of the referenced Tekton resource. */
   resolver?:
     | "RESOLVER_NAME_UNSPECIFIED"
@@ -657,9 +657,9 @@ export const WorkspacePipelineTaskBinding =
 
 export interface PipelineTask {
   /** Conditions that need to be true for the task to run. */
-  whenExpressions?: Array<WhenExpression>;
+  whenExpressions?: ReadonlyArray<WhenExpression>;
   /** Params is a list of parameter names and values. */
-  params?: Array<Param>;
+  params?: ReadonlyArray<Param>;
   /** Spec to instantiate this TaskRun. */
   taskSpec?: EmbeddedTask;
   /** Reference to a specific instance of a task. */
@@ -671,9 +671,9 @@ export interface PipelineTask {
   /** Name of the task. */
   name?: string;
   /** RunAfter is the list of PipelineTask names that should be executed before this Task executes. (Used to force a specific ordering in graph execution.) */
-  runAfter?: Array<string>;
+  runAfter?: ReadonlyArray<string>;
   /** Workspaces maps workspaces from the pipeline spec to the workspaces declared in the Task. */
-  workspaces?: Array<WorkspacePipelineTaskBinding>;
+  workspaces?: ReadonlyArray<WorkspacePipelineTaskBinding>;
 }
 
 export const PipelineTask = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -718,7 +718,7 @@ export interface ResultValue {
   /** Value of the result if type is string. */
   stringVal?: string;
   /** Value of the result if type is array. */
-  arrayVal?: Array<string>;
+  arrayVal?: ReadonlyArray<string>;
   /** Value of the result if type is object. */
   objectVal?: Record<string, string>;
 }
@@ -982,9 +982,9 @@ export const PipelineResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListRepositoriesResponse {
   /** The list of Repositories. */
-  repositories?: Array<Repository>;
+  repositories?: ReadonlyArray<Repository>;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -998,11 +998,11 @@ export const ListRepositoriesResponse =
 
 export interface ListConnectionsResponse {
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
   /** The list of Connections. */
-  connections?: Array<Connection>;
+  connections?: ReadonlyArray<Connection>;
 }
 
 export const ListConnectionsResponse =
@@ -1023,7 +1023,7 @@ export interface PipelineRef {
     | "DEFAULT"
     | (string & {});
   /** Params contains the parameters used to identify the referenced Tekton resource. Example entries might include "repo" or "path" but the set of params ultimately depends on the chosen resolver. */
-  params?: Array<Param>;
+  params?: ReadonlyArray<Param>;
   /** Optional. Name of the Pipeline. */
   name?: string;
 }
@@ -1036,7 +1036,7 @@ export const PipelineRef = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -1080,7 +1080,7 @@ export const FetchReadWriteTokenRequest =
 
 export interface FetchLinkableRepositoriesResponse {
   /** repositories ready to be created. */
-  repositories?: Array<Repository>;
+  repositories?: ReadonlyArray<Repository>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -1099,7 +1099,7 @@ export const FetchReadTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface HttpBody {
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
-  extensions?: Array<Record<string, unknown>>;
+  extensions?: ReadonlyArray<Record<string, unknown>>;
   /** The HTTP Content-Type header value specifying the content type of the body. */
   contentType?: string;
   /** The HTTP request/response body as raw binary. */
@@ -1129,17 +1129,17 @@ export const FetchReadWriteTokenResponse =
 
 export interface PipelineSpec {
   /** Workspaces declares a set of named workspaces that are expected to be provided by a PipelineRun. */
-  workspaces?: Array<PipelineWorkspaceDeclaration>;
+  workspaces?: ReadonlyArray<PipelineWorkspaceDeclaration>;
   /** List of Tasks that execute just before leaving the Pipeline i.e. either after all Tasks are finished executing successfully or after a failure which would result in ending the Pipeline. */
-  finallyTasks?: Array<PipelineTask>;
+  finallyTasks?: ReadonlyArray<PipelineTask>;
   /** Output only. auto-generated yaml that is output only for display purpose for workflows using pipeline_spec, used by UI/gcloud cli for Workflows. */
   generatedYaml?: string;
   /** List of Tasks that execute when this Pipeline is run. */
-  tasks?: Array<PipelineTask>;
+  tasks?: ReadonlyArray<PipelineTask>;
   /** List of parameters. */
-  params?: Array<ParamSpec>;
+  params?: ReadonlyArray<ParamSpec>;
   /** Optional. Output only. List of results written out by the pipeline's containers */
-  results?: Array<PipelineResult>;
+  results?: ReadonlyArray<PipelineResult>;
 }
 
 export const PipelineSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1178,7 +1178,7 @@ export const Security = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SkippedTask {
   /** WhenExpressions is the list of checks guarding the execution of the PipelineTask */
-  whenExpressions?: Array<WhenExpression>;
+  whenExpressions?: ReadonlyArray<WhenExpression>;
   /** Name is the Pipeline Task name */
   name?: string;
   /** Output only. Reason is the cause of the PipelineTask being skipped. */
@@ -1259,7 +1259,7 @@ export interface ChildStatusReference {
   /** Name is the name of the TaskRun or Run this is referencing. */
   name?: string;
   /** WhenExpressions is the list of checks guarding the execution of the PipelineTask */
-  whenExpressions?: Array<WhenExpression>;
+  whenExpressions?: ReadonlyArray<WhenExpression>;
   /** Output only. Type of the child reference. */
   type?: "TYPE_UNSPECIFIED" | "TASK_RUN" | (string & {});
 }
@@ -1297,15 +1297,15 @@ export interface PipelineRun {
   /** Output only. The `Record` of this `PipelineRun`. Format: `projects/{project}/locations/{location}/results/{result_id}/records/{record_id}` */
   record?: string;
   /** Output only. List of tasks that were skipped due to when expressions evaluating to false. */
-  skippedTasks?: Array<SkippedTask>;
+  skippedTasks?: ReadonlyArray<SkippedTask>;
   /** Output only. Kubernetes Conditions convention for PipelineRun status and error. */
-  conditions?: Array<GoogleDevtoolsCloudbuildV2Condition>;
+  conditions?: ReadonlyArray<GoogleDevtoolsCloudbuildV2Condition>;
   /** Output only. The exact PipelineSpec used to instantiate the run. */
   resolvedPipelineSpec?: PipelineSpec;
   /** Output only. The `PipelineRun` name with format `projects/{project}/locations/{location}/pipelineRuns/{pipeline_run}` */
   name?: string;
   /** Workspaces is a list of WorkspaceBindings from volumes to workspaces. */
-  workspaces?: Array<WorkspaceBinding>;
+  workspaces?: ReadonlyArray<WorkspaceBinding>;
   /** PipelineRef refer to a specific instance of a Pipeline. */
   pipelineRef?: PipelineRef;
   /** Output only. The Workflow used to create this PipelineRun. */
@@ -1320,7 +1320,7 @@ export interface PipelineRun {
   /** Output only. Time the pipeline completed. */
   completionTime?: string;
   /** Optional. Output only. List of results written out by the pipeline's containers */
-  results?: Array<PipelineRunResult>;
+  results?: ReadonlyArray<PipelineRunResult>;
   /** Output only. A unique identifier for the `PipelineRun`. */
   uid?: string;
   /** Time after which the Pipeline times out. Currently three keys are accepted in the map pipeline, tasks and finally with Timeouts.pipeline >= Timeouts.tasks + Timeouts.finally */
@@ -1330,9 +1330,9 @@ export interface PipelineRun {
   /** Output only. The WorkerPool used to run this PipelineRun. */
   workerPool?: string;
   /** Params is a list of parameter names and values. */
-  params?: Array<Param>;
+  params?: ReadonlyArray<Param>;
   /** Output only. List of TaskRun and Run names and PipelineTask names for children of this PipelineRun. */
-  childReferences?: Array<ChildStatusReference>;
+  childReferences?: ReadonlyArray<ChildStatusReference>;
 }
 
 export const PipelineRun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1371,7 +1371,7 @@ export const PipelineRun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -1381,7 +1381,7 @@ export const TestIamPermissionsRequest =
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -1439,7 +1439,7 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 
 export interface BatchCreateRepositoriesRequest {
   /** Required. The request messages specifying the repositories to create. */
-  requests?: Array<CreateRepositoryRequest>;
+  requests?: ReadonlyArray<CreateRepositoryRequest>;
 }
 
 export const BatchCreateRepositoriesRequest =
@@ -1477,7 +1477,7 @@ export const RunWorkflowCustomOperationMetadata =
 
 export interface BatchCreateRepositoriesResponse {
   /** Repository resources created. */
-  repositories?: Array<Repository>;
+  repositories?: ReadonlyArray<Repository>;
 }
 
 export const BatchCreateRepositoriesResponse =
@@ -1508,7 +1508,7 @@ export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -1545,7 +1545,7 @@ export const ListProjectsLocationsRequest =
       T.HttpQuery("extraLocationTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v2/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -1580,10 +1580,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -1614,10 +1611,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -1651,11 +1645,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -1700,11 +1690,7 @@ export const PatchProjectsLocationsConnectionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Connection).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsConnectionsRequest>;
 
@@ -1746,10 +1732,7 @@ export const ListProjectsLocationsConnectionsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/connections" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsRequest>;
 
@@ -1792,11 +1775,7 @@ export const CreateProjectsLocationsConnectionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Connection).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/connections", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsConnectionsRequest>;
 
@@ -1832,7 +1811,7 @@ export const SetIamPolicyProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:setIamPolicy",
+      path: "v2/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -1870,10 +1849,7 @@ export const GetIamPolicyProjectsLocationsConnectionsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v2/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>;
 
@@ -1912,7 +1888,7 @@ export const ProcessWebhookProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections:processWebhook",
+      path: "v2/{parent}/connections:processWebhook",
       hasBody: true,
     }),
     svc,
@@ -1945,10 +1921,7 @@ export const GetProjectsLocationsConnectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsConnectionsRequest>;
 
@@ -1987,7 +1960,7 @@ export const FetchLinkableRepositoriesProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:fetchLinkableRepositories",
+      path: "v2/{connection}:fetchLinkableRepositories",
     }),
     svc,
   ) as unknown as Schema.Schema<FetchLinkableRepositoriesProjectsLocationsConnectionsRequest>;
@@ -2030,7 +2003,7 @@ export const TestIamPermissionsProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:testIamPermissions",
+      path: "v2/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2072,10 +2045,7 @@ export const DeleteProjectsLocationsConnectionsRequest =
     ),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectionsRequest>;
 
@@ -2114,10 +2084,7 @@ export const DeleteProjectsLocationsConnectionsRepositoriesRequest =
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/repositories/{repositoriesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectionsRepositoriesRequest>;
 
@@ -2156,11 +2123,7 @@ export const CreateProjectsLocationsConnectionsRepositoriesRequest =
     ),
     body: Schema.optional(Repository).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/repositories",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/repositories", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsConnectionsRepositoriesRequest>;
 
@@ -2196,7 +2159,7 @@ export const BatchCreateProjectsLocationsConnectionsRepositoriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/repositories:batchCreate",
+      path: "v2/{parent}/repositories:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -2231,10 +2194,7 @@ export const GetProjectsLocationsConnectionsRepositoriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/repositories/{repositoriesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsConnectionsRepositoriesRequest>;
 
@@ -2279,10 +2239,7 @@ export const ListProjectsLocationsConnectionsRepositoriesRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/repositories",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/repositories" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsRepositoriesRequest>;
 
@@ -2323,7 +2280,7 @@ export const AccessReadWriteTokenProjectsLocationsConnectionsRepositoriesRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/repositories/{repositoriesId}:accessReadWriteToken",
+      path: "v2/{repository}:accessReadWriteToken",
       hasBody: true,
     }),
     svc,
@@ -2363,7 +2320,7 @@ export const AccessReadTokenProjectsLocationsConnectionsRepositoriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/repositories/{repositoriesId}:accessReadToken",
+      path: "v2/{repository}:accessReadToken",
       hasBody: true,
     }),
     svc,
@@ -2407,10 +2364,7 @@ export const FetchGitRefsProjectsLocationsConnectionsRepositoriesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     refType: Schema.optional(Schema.String).pipe(T.HttpQuery("refType")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/repositories/{repositoriesId}:fetchGitRefs",
-    }),
+    T.Http({ method: "GET", path: "v2/{repository}:fetchGitRefs" }),
     svc,
   ) as unknown as Schema.Schema<FetchGitRefsProjectsLocationsConnectionsRepositoriesRequest>;
 

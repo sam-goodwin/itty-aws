@@ -63,7 +63,6 @@ const quoteForCmd = (arg: string): string => {
     .join("^%");
 };
 
-
 /**
  * Run a shell command, capturing stdout/stderr. Fails with CommandError on non-zero exit
  * unless ignoreError is set.
@@ -1188,6 +1187,7 @@ export const CredentialsFromEnv = Layer.effect(
 import * as Effect from "effect/Effect";
 import * as Schema from "effect/Schema";
 import { makeAPI } from "@distilled.cloud/core/client";
+import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
 import { HTTP_STATUS_MAP, Unknown${capitalName}Error, ${capitalName}ParseError } from "./errors.ts";
 
 // Re-export for backwards compatibility
@@ -1202,16 +1202,29 @@ const ApiErrorResponse = Schema.Struct({
 
 /**
  * Match a ${capitalName} API error response to the appropriate error class based on HTTP status.
+ *
+ * For status codes whose error class declares \`retryAfter\`, pass
+ * \`retryAfter: parseRetryAfterForStatus(status, headers)\`. That is \`undefined\`
+ * when no standard \`Retry-After\` / \`RateLimit\` hint is present — omitting the
+ * field is fine; the default retry policy still uses exponential backoff.
+ * For bespoke rate-limit hints, parse them here and pass \`retryAfter\` when known.
  */
 const matchError = (
   status: number,
   errorBody: unknown,
+  _errors?: readonly unknown[],
+  headers?: Record<string, string | undefined>,
 ): Effect.Effect<never, unknown> => {
   try {
     const parsed = Schema.decodeUnknownSync(ApiErrorResponse)(errorBody);
     const ErrorClass = (HTTP_STATUS_MAP as any)[status];
     if (ErrorClass) {
-      return Effect.fail(new ErrorClass({ message: parsed.message ?? "" }));
+      return Effect.fail(
+        new ErrorClass({
+          message: parsed.message ?? "",
+          retryAfter: parseRetryAfterForStatus(status, headers),
+        }),
+      );
     }
     return Effect.fail(
       new Unknown${capitalName}Error({
@@ -1372,7 +1385,8 @@ const updateTestYml = (
     // current format is `name: ${{ steps.force.outputs.all || steps.changes.outputs.name }}`
     // (with the force-ci escape hatch). The negative lookahead pins to the
     // tail of the block so we splice after the last entry regardless of name.
-    const outputLineRegex = /(      [a-z0-9-]+: \$\{\{ steps\.force\.outputs\.all \|\| steps\.changes\.outputs\.[a-z0-9-]+ \}\})(?![\s\S]*      [a-z0-9-]+: \$\{\{ steps\.force\.outputs\.all \|\| steps\.changes\.outputs)/;
+    const outputLineRegex =
+      /(      [a-z0-9-]+: \$\{\{ steps\.force\.outputs\.all \|\| steps\.changes\.outputs\.[a-z0-9-]+ \}\})(?![\s\S]*      [a-z0-9-]+: \$\{\{ steps\.force\.outputs\.all \|\| steps\.changes\.outputs)/;
     const outputsMatch = content.match(outputLineRegex);
     if (outputsMatch) {
       content = content.replace(
@@ -1382,7 +1396,8 @@ const updateTestYml = (
     }
 
     // Splice after the last paths-filter block.
-    const filtersRegex = /(            [a-z0-9-]+:\n              - 'packages\/[a-z0-9-]+\/\*\*'\n              - 'packages\/core\/\*\*')(?![\s\S]*            [a-z0-9-]+:\n              - 'packages\/[a-z0-9-]+\/\*\*'\n              - 'packages\/core\/\*\*')/;
+    const filtersRegex =
+      /(            [a-z0-9-]+:\n              - 'packages\/[a-z0-9-]+\/\*\*'\n              - 'packages\/core\/\*\*')(?![\s\S]*            [a-z0-9-]+:\n              - 'packages\/[a-z0-9-]+\/\*\*'\n              - 'packages\/core\/\*\*')/;
     const filtersMatch = content.match(filtersRegex);
     if (filtersMatch) {
       content = content.replace(
@@ -1504,9 +1519,9 @@ const wireTestEnvVars = (
 
     // Find the end of the ci-{name} block (next `  ci-` or EOF).
     const blockStart = headerIdx + 1;
-    const nextJobMatch = content.slice(blockStart + jobHeader.length).match(
-      /\n  ci-[a-z0-9-]+:\n/,
-    );
+    const nextJobMatch = content
+      .slice(blockStart + jobHeader.length)
+      .match(/\n  ci-[a-z0-9-]+:\n/);
     const blockEnd = nextJobMatch
       ? blockStart + jobHeader.length + nextJobMatch.index!
       : content.length;
@@ -1597,7 +1612,8 @@ const updatePkgPrYml = (
     // the last block ending with `'packages/core/**'` (negative lookahead pins
     // to the tail).
     const filterEntry = `\n            ${name}:\n              - 'packages/${name}/**'\n              - 'packages/core/**'`;
-    const lastFilterRegex = /(\n            [a-z0-9-]+:\n              - 'packages\/[a-z0-9-]+\/\*\*'\n              - 'packages\/core\/\*\*')(?![\s\S]*\n            [a-z0-9-]+:\n              - 'packages\/[a-z0-9-]+\/\*\*'\n              - 'packages\/core\/\*\*')/;
+    const lastFilterRegex =
+      /(\n            [a-z0-9-]+:\n              - 'packages\/[a-z0-9-]+\/\*\*'\n              - 'packages\/core\/\*\*')(?![\s\S]*\n            [a-z0-9-]+:\n              - 'packages\/[a-z0-9-]+\/\*\*'\n              - 'packages\/core\/\*\*')/;
     const lastFilterMatch = content.match(lastFilterRegex);
     if (lastFilterMatch) {
       content = content.replace(
@@ -1654,13 +1670,11 @@ const updateReleaseYml = (
     // Insert into the publish-sdk matrix list. Anchor on the `steps:` line
     // that follows the matrix block so we splice before it.
     if (!alreadyInMatrix) {
-      const matrixEndAnchor = /(    strategy:[\s\S]*?package:\n(?:          - [a-z0-9-]+\n)+)(    steps:)/;
+      const matrixEndAnchor =
+        /(    strategy:[\s\S]*?package:\n(?:          - [a-z0-9-]+\n)+)(    steps:)/;
       const m = content.match(matrixEndAnchor);
       if (m) {
-        content = content.replace(
-          matrixEndAnchor,
-          `$1${matrixLine}$2`,
-        );
+        content = content.replace(matrixEndAnchor, `$1${matrixLine}$2`);
       }
     }
 
@@ -1689,7 +1703,9 @@ const updateNukeYml = (
 
     const inputHeader = `      ${name}:`;
     if (content.includes(inputHeader)) {
-      yield* Console.log(`\n⚠️  nuke.yml already has input for ${name}, skipping`);
+      yield* Console.log(
+        `\n⚠️  nuke.yml already has input for ${name}, skipping`,
+      );
       return;
     }
 
@@ -1697,7 +1713,8 @@ const updateNukeYml = (
 
     // Splice a workflow_dispatch input after the last existing one. The block
     // ends with the `jobs:` key, so anchor on the last input + `default: false`.
-    const lastInputRegex = /(      [a-z0-9-]+:\n        description: "[^"]+"\n        type: boolean\n        default: false\n)(?![\s\S]*      [a-z0-9-]+:\n        description: "[^"]+"\n        type: boolean\n        default: false\n)/;
+    const lastInputRegex =
+      /(      [a-z0-9-]+:\n        description: "[^"]+"\n        type: boolean\n        default: false\n)(?![\s\S]*      [a-z0-9-]+:\n        description: "[^"]+"\n        type: boolean\n        default: false\n)/;
     const description = name
       .split("-")
       .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
@@ -1710,7 +1727,8 @@ const updateNukeYml = (
 
     // Also append to the validate-inputs check so the workflow doesn't reject
     // a run that selected only this SDK.
-    const validateRegex = /(\s+&& "\$\{\{ inputs\.[a-z0-9-]+ \}\}" != "true" \\)\n(             \]\];)/;
+    const validateRegex =
+      /(\s+&& "\$\{\{ inputs\.[a-z0-9-]+ \}\}" != "true" \\)\n(             \]\];)/;
     const vMatch = content.match(validateRegex);
     if (vMatch) {
       content = content.replace(

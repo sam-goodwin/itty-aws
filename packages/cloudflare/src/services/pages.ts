@@ -1018,10 +1018,14 @@ export const getProject: API.OperationMethod<
 export interface ListProjectsRequest {
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/pages/projects" }),
 ) as unknown as Schema.Schema<ListProjectsRequest>;
@@ -4895,6 +4899,8 @@ export interface ListProjectDeploymentsRequest {
   projectName: string;
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: What type of deployments to fetch. */
   env?: "production" | "preview";
 }
@@ -4903,6 +4909,8 @@ export const ListProjectDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectName: Schema.String.pipe(T.HttpPath("projectName")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     env: Schema.optional(Schema.Literals(["production", "preview"])).pipe(
       T.HttpQuery("env"),
     ),

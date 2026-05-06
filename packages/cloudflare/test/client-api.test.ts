@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { buildRequestParts, getHttpTrait } from "@distilled.cloud/core/traits";
 import { transformCloudflareRequestParts } from "~/client/api";
-import { CreateAssetUploadRequest } from "~/services/workers";
+import { CreateAssetUploadRequest, PutScriptRequest } from "~/services/workers";
 
 describe("client api", () => {
   it("maps createAssetUpload jwtToken to a bearer authorization header", () => {
@@ -50,6 +50,59 @@ describe("client api", () => {
 
     expect(transformed.headers).toEqual({
       Authorization: "Bearer upload-session-jwt",
+    });
+  });
+
+  it("encodes Worker script uploads with ratelimit bindings", () => {
+    const httpTrait = getHttpTrait(PutScriptRequest.ast);
+    expect(httpTrait).toBeDefined();
+
+    const parts = buildRequestParts(
+      PutScriptRequest.ast,
+      httpTrait!,
+      {
+        accountId: "account-123",
+        scriptName: "rate-limited-worker",
+        metadata: {
+          mainModule: "index.mjs",
+          compatibilityDate: "2026-03-17",
+          bindings: [
+            {
+              type: "ratelimit",
+              name: "PUBLIC_SIGNUP_THROTTLE",
+              namespaceId: "10005",
+              simple: {
+                limit: 1,
+                period: 60,
+              },
+            },
+          ],
+        },
+        files: [
+          new File(["export default {}"], "index.mjs", {
+            type: "application/javascript+module",
+          }),
+        ],
+      },
+      PutScriptRequest,
+    );
+
+    expect(parts.body).toMatchObject({
+      metadata: {
+        main_module: "index.mjs",
+        compatibility_date: "2026-03-17",
+        bindings: [
+          {
+            type: "ratelimit",
+            name: "PUBLIC_SIGNUP_THROTTLE",
+            namespace_id: "10005",
+            simple: {
+              limit: 1,
+              period: 60,
+            },
+          },
+        ],
+      },
     });
   });
 });

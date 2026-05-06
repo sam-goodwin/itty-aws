@@ -1833,7 +1833,7 @@ export interface Services {
     | "DEPENDENT_ON_DAY_OF_WEEK"
     | (string & {});
   /** Languages spoken by at least one staff member. */
-  languagesSpoken?: Array<LanguageSpoken>;
+  languagesSpoken?: ReadonlyArray<LanguageSpoken>;
   /** Wake up calls. By direction of the guest, a hotel staff member will phone the guest unit at the requested hour. Also known as morning call. */
   wakeUpCalls?: boolean;
   /** Self service laundry. On-site clothes washers and dryers accessible to guests for the purpose of washing and drying their own clothes. May or may not require payment to use the machines. */
@@ -2762,7 +2762,7 @@ export interface SustainabilityCertifications {
     | "BREEAM_OUTSTANDING"
     | (string & {});
   /** The eco certificates awarded to the hotel. */
-  ecoCertifications?: Array<EcoCertification>;
+  ecoCertifications?: ReadonlyArray<EcoCertification>;
   /** BREEAM certification exception. */
   breeamCertificationException?:
     | "EXCEPTION_UNSPECIFIED"
@@ -2898,7 +2898,7 @@ export interface GuestUnitType {
   /** Required. Short, English label or name of the GuestUnitType. Target <50 chars. */
   label?: string;
   /** Required. Unit or room code identifiers for a single GuestUnitType. Each code must be unique within a Lodging instance. */
-  codes?: Array<string>;
+  codes?: ReadonlyArray<string>;
 }
 
 export const GuestUnitType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3396,7 +3396,7 @@ export interface Lodging {
   /** Parking options at the property. */
   parking?: Parking;
   /** Individual GuestUnitTypes that are available in this Lodging. */
-  guestUnits?: Array<GuestUnitType>;
+  guestUnits?: ReadonlyArray<GuestUnitType>;
   /** Amenities and features related to leisure and play. */
   activities?: Activities;
   /** Policies regarding guest-owned animals. */
@@ -3470,7 +3470,7 @@ export const GetLodgingLocationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/locations/{locationsId}/lodging" }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetLodgingLocationsRequest>;
 
@@ -3506,11 +3506,7 @@ export const UpdateLodgingLocationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Lodging).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/locations/{locationsId}/lodging",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateLodgingLocationsRequest>;
 
@@ -3544,10 +3540,7 @@ export const GetGoogleUpdatedLocationsLodgingRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/locations/{locationsId}/lodging:getGoogleUpdated",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:getGoogleUpdated" }),
     svc,
   ) as unknown as Schema.Schema<GetGoogleUpdatedLocationsLodgingRequest>;
 

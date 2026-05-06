@@ -1,0 +1,6 @@
+{
+  "errorCategories": {
+    "PriorRequestNotComplete": ["ConflictError", "RetryableError"],
+    "ThrottlingException": ["ThrottlingError", "RetryableError"]
+  }
+}

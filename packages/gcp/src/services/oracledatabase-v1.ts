@@ -126,7 +126,7 @@ export const AutonomousDatabaseBackup =
 
 export interface ListAutonomousDatabaseBackupsResponse {
   /** The list of Autonomous Database Backups. */
-  autonomousDatabaseBackups?: Array<AutonomousDatabaseBackup>;
+  autonomousDatabaseBackups?: ReadonlyArray<AutonomousDatabaseBackup>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -169,7 +169,7 @@ export interface MaintenanceWindow {
   /** Optional. If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations. */
   isCustomActionTimeoutEnabled?: boolean;
   /** Optional. Days during the week when maintenance should be performed. */
-  daysOfWeek?: Array<
+  daysOfWeek?: ReadonlyArray<
     | "DAY_OF_WEEK_UNSPECIFIED"
     | "MONDAY"
     | "TUESDAY"
@@ -189,9 +189,9 @@ export interface MaintenanceWindow {
     | "NO_PREFERENCE"
     | (string & {});
   /** Optional. Weeks during the month when maintenance should be performed. Weeks start on the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7 days. Weeks start and end based on calendar dates, not days of the week. */
-  weeksOfMonth?: Array<number>;
+  weeksOfMonth?: ReadonlyArray<number>;
   /** Optional. The window of hours during the day when maintenance should be performed. The window is a 4 hour slot. Valid values are: 0 - represents time slot 0:00 - 3:59 UTC 4 - represents time slot 4:00 - 7:59 UTC 8 - represents time slot 8:00 - 11:59 UTC 12 - represents time slot 12:00 - 15:59 UTC 16 - represents time slot 16:00 - 19:59 UTC 20 - represents time slot 20:00 - 23:59 UTC */
-  hoursOfDay?: Array<number>;
+  hoursOfDay?: ReadonlyArray<number>;
   /** Optional. Cloud CloudExadataInfrastructure node patching method, either "ROLLING" or "NONROLLING". Default value is ROLLING. */
   patchingMode?:
     | "PATCHING_MODE_UNSPECIFIED"
@@ -199,7 +199,7 @@ export interface MaintenanceWindow {
     | "NON_ROLLING"
     | (string & {});
   /** Optional. Months during the year when maintenance should be performed. */
-  months?: Array<
+  months?: ReadonlyArray<
     | "MONTH_UNSPECIFIED"
     | "JANUARY"
     | "FEBRUARY"
@@ -340,7 +340,7 @@ export interface DbBackupConfig {
     | "SUNDAY"
     | (string & {});
   /** Optional. Details of the database backup destinations. */
-  backupDestinationDetails?: Array<BackupDestinationDetails>;
+  backupDestinationDetails?: ReadonlyArray<BackupDestinationDetails>;
   /** Optional. This defines when the backups will be deleted after Database termination. */
   backupDeletionPolicy?:
     | "BACKUP_DELETION_POLICY_UNSPECIFIED"
@@ -615,7 +615,7 @@ export interface DbSystemProperties {
   /** Output only. The hostname of the DbSystem. */
   hostname?: string;
   /** Required. SSH public keys to be stored with the DbSystem. */
-  sshPublicKeys?: Array<string>;
+  sshPublicKeys?: ReadonlyArray<string>;
   /** Optional. Time zone of the DbSystem. */
   timeZone?: TimeZone;
   /** Optional. The data storage size in GB that is currently available to DbSystems. */
@@ -700,7 +700,7 @@ export interface DbServerProperties {
   /** Optional. Maximum memory allocated in GBs. */
   maxMemorySizeGb?: number;
   /** Output only. OCID of database nodes associated with the database server. */
-  dbNodeIds?: Array<string>;
+  dbNodeIds?: ReadonlyArray<string>;
   /** Output only. OCID of database server. */
   ocid?: string;
   /** Optional. Memory allocated in GBs. */
@@ -755,7 +755,7 @@ export const RestartAutonomousDatabaseRequest =
 
 export interface ListDbSystemsResponse {
   /** The list of DbSystems. */
-  dbSystems?: Array<DbSystem>;
+  dbSystems?: ReadonlyArray<DbSystem>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -885,7 +885,7 @@ export interface AutonomousDatabaseConnectionStrings {
   /** Output only. The database service provides the least level of resources to each SQL statement. */
   low?: string;
   /** Output only. A list of connection string profiles to allow clients to group, filter, and select values based on the structured metadata. */
-  profiles?: Array<DatabaseConnectionStringProfile>;
+  profiles?: ReadonlyArray<DatabaseConnectionStringProfile>;
   /** Output only. The database service provides the highest level of resources to each SQL statement. */
   high?: string;
   /** Output only. The database service provides a lower level of resources to each SQL statement. */
@@ -1034,7 +1034,7 @@ export interface AutonomousDatabaseProperties {
     | "FAILED_DISABLING"
     | (string & {});
   /** Output only. The list and details of the scheduled operations of the Autonomous Database. */
-  scheduledOperationDetails?: Array<ScheduledOperationDetails>;
+  scheduledOperationDetails?: ReadonlyArray<ScheduledOperationDetails>;
   /** Required. Immutable. The workload type of the Autonomous Database. */
   dbWorkload?:
     | "DB_WORKLOAD_UNSPECIFIED"
@@ -1046,7 +1046,7 @@ export interface AutonomousDatabaseProperties {
   /** Optional. This field indicates the maximum data loss limit for an Autonomous Database, in seconds. */
   localAdgAutoFailoverMaxDataLossLimitDuration?: number;
   /** Output only. The list of OCIDs of standby databases located in Autonomous Data Guard remote regions that are associated with the source database. */
-  peerDbIds?: Array<string>;
+  peerDbIds?: ReadonlyArray<string>;
   /** Output only. The current state of the Data Safe registration for the Autonomous Database. */
   dataSafeState?:
     | "DATA_SAFE_STATE_UNSPECIFIED"
@@ -1124,7 +1124,7 @@ export interface AutonomousDatabaseProperties {
   /** Output only. The date and time the Disaster Recovery role was changed for the standby Autonomous Database. */
   disasterRecoveryRoleChangedTime?: string;
   /** Optional. Immutable. The list of allowlisted IP addresses for the Autonomous Database. */
-  allowlistedIps?: Array<string>;
+  allowlistedIps?: ReadonlyArray<string>;
   /** Optional. Immutable. The number of CPU cores to be made available to the database. */
   cpuCoreCount?: number;
   /** Output only. The amount of storage currently allocated for the database tables and billed for, rounded up in terabytes. */
@@ -1158,9 +1158,9 @@ export interface AutonomousDatabaseProperties {
     | "NOT_AVAILABLE"
     | (string & {});
   /** Output only. The list of available Oracle Database upgrade versions for an Autonomous Database. */
-  availableUpgradeVersions?: Array<string>;
+  availableUpgradeVersions?: ReadonlyArray<string>;
   /** Output only. The list of available regions that can be used to create a clone for the Autonomous Database. */
-  supportedCloneRegions?: Array<string>;
+  supportedCloneRegions?: ReadonlyArray<string>;
   /** Output only. The amount of memory enabled per ECPU, in gigabytes. */
   memoryPerOracleComputeUnitGbs?: number;
   /** Output only. The storage space used by Autonomous Database, in gigabytes. */
@@ -1206,13 +1206,13 @@ export interface AutonomousDatabaseProperties {
   /** Optional. Indicates whether the Autonomous Database has a local (in-region) standby database. Not applicable to cross-region Data Guard or dedicated Exadata infrastructure. */
   localDataGuardEnabled?: boolean;
   /** Output only. The history of the encryption keys used to encrypt the Autonomous Database. */
-  encryptionKeyHistoryEntries?: Array<EncryptionKeyHistoryEntry>;
+  encryptionKeyHistoryEntries?: ReadonlyArray<EncryptionKeyHistoryEntry>;
   /** Output only. This field indicates the status of Data Guard and Access control for the Autonomous Database. The field's value is null if Data Guard is disabled or Access Control is disabled. The field's value is TRUE if both Data Guard and Access Control are enabled, and the Autonomous Database is using primary IP access control list (ACL) for standby. The field's value is FALSE if both Data Guard and Access Control are enabled, and the Autonomous Database is using a different IP access control list (ACL) for standby compared to primary. */
   arePrimaryAllowlistedIpsUsed?: boolean;
   /** Output only. The date and time when maintenance will end. */
   maintenanceEndTime?: string;
   /** Optional. Immutable. The list of customer contacts. */
-  customerContacts?: Array<CustomerContact>;
+  customerContacts?: ReadonlyArray<CustomerContact>;
   /** Optional. Immutable. The maintenance schedule of the Autonomous Database. */
   maintenanceScheduleType?:
     | "MAINTENANCE_SCHEDULE_TYPE_UNSPECIFIED"
@@ -1334,11 +1334,11 @@ export interface AutonomousDatabase {
   /** Optional. The labels or tags associated with the Autonomous Database. */
   labels?: Record<string, string>;
   /** Output only. List of supported GCP region to clone the Autonomous Database for disaster recovery. Format: `project/{project}/locations/{location}`. */
-  disasterRecoverySupportedLocations?: Array<string>;
+  disasterRecoverySupportedLocations?: ReadonlyArray<string>;
   /** Optional. The properties of the Autonomous Database. */
   properties?: AutonomousDatabaseProperties;
   /** Output only. The peer Autonomous Database names of the given Autonomous Database. */
-  peerAutonomousDatabases?: Array<string>;
+  peerAutonomousDatabases?: ReadonlyArray<string>;
   /** Optional. Immutable. The password for the default ADMIN user. Note: Only one of `admin_password_secret_version` or `admin_password` can be populated. */
   adminPassword?: string;
   /** Optional. Immutable. The resource name of a secret version in Secret Manager which contains the database admin user's password. Format: projects/{project}/secrets/{secret}/versions/{version}. Note: Only one of `admin_password_secret_version` or `admin_password` can be populated. */
@@ -1386,7 +1386,7 @@ export const AutonomousDatabase = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAutonomousDatabasesResponse {
   /** The list of Autonomous Databases. */
-  autonomousDatabases?: Array<AutonomousDatabase>;
+  autonomousDatabases?: ReadonlyArray<AutonomousDatabase>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -1466,11 +1466,11 @@ export const OdbSubnet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOdbSubnetsResponse {
   /** The list of ODB Subnets. */
-  odbSubnets?: Array<OdbSubnet>;
+  odbSubnets?: ReadonlyArray<OdbSubnet>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
   /** Unreachable locations when listing resources across all locations using wildcard location '-'. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOdbSubnetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1575,7 +1575,7 @@ export interface ExadbVmClusterProperties {
     | "BLOCK_STORAGE"
     | (string & {});
   /** Required. Immutable. The SSH public keys for the ExadbVmCluster. */
-  sshPublicKeys?: Array<string>;
+  sshPublicKeys?: ReadonlyArray<string>;
   /** Optional. Immutable. The cluster name for Exascale vm cluster. The cluster name must begin with an alphabetic character and may contain hyphens(-) but can not contain underscores(_). It should be not more than 11 characters and is not case sensitive. OCI Cluster name. */
   clusterName?: string;
   /** Output only. The hostname of the ExadbVmCluster. */
@@ -1615,7 +1615,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1673,7 +1673,7 @@ export const MinorVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListMinorVersionsResponse {
   /** The list of MinorVersions. */
-  minorVersions?: Array<MinorVersion>;
+  minorVersions?: ReadonlyArray<MinorVersion>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -1825,7 +1825,7 @@ export interface PluggableDatabaseProperties {
   /** Output only. Additional information about the current lifecycle state. */
   lifecycleDetails?: string;
   /** Optional. Pluggable Database Node Level Details */
-  pdbNodeLevelDetails?: Array<PluggableDatabaseNodeLevelDetails>;
+  pdbNodeLevelDetails?: ReadonlyArray<PluggableDatabaseNodeLevelDetails>;
 }
 
 export const PluggableDatabaseProperties =
@@ -1888,7 +1888,7 @@ export interface CloudVmClusterProperties {
   /** Optional. Number of database servers. */
   nodeCount?: number;
   /** Output only. OCIDs of scan IPs. */
-  scanIpIds?: Array<string>;
+  scanIpIds?: ReadonlyArray<string>;
   /** Optional. Grid Infrastructure Version. */
   giVersion?: string;
   /** Optional. Local storage per VM. */
@@ -1909,7 +1909,7 @@ export interface CloudVmClusterProperties {
     | "MAINTENANCE_IN_PROGRESS"
     | (string & {});
   /** Optional. SSH public keys to be stored with cluster. */
-  sshPublicKeys?: Array<string>;
+  sshPublicKeys?: ReadonlyArray<string>;
   /** Output only. host name without domain. format: "-" with some suffix. ex: sp2-yi0xq where "sp2" is the hostname_prefix. */
   hostname?: string;
   /** Optional. OCI Cluster name. */
@@ -1935,7 +1935,7 @@ export interface CloudVmClusterProperties {
   /** Optional. Prefix for VM cluster host names. */
   hostnamePrefix?: string;
   /** Optional. OCID of database servers. */
-  dbServerOcids?: Array<string>;
+  dbServerOcids?: ReadonlyArray<string>;
   /** Output only. Parent DNS domain where SCAN DNS and hosts names are qualified. ex: ocispdelegated.ocisp10jvnet.oraclevcn.com */
   domain?: string;
   /** Output only. The compute model of the VM Cluster. */
@@ -2102,7 +2102,7 @@ export interface CloudExadataInfrastructureProperties {
   /** Optional. The number of Cloud Exadata storage servers for the Exadata Infrastructure. */
   storageCount?: number;
   /** Optional. The list of customer contacts. */
-  customerContacts?: Array<CustomerContact>;
+  customerContacts?: ReadonlyArray<CustomerContact>;
   /** Output only. The number of enabled CPU cores. */
   cpuCount?: number;
   /** Output only. The time when the next maintenance run will occur. */
@@ -2221,7 +2221,7 @@ export const AutonomousDatabaseCharacterSet =
 
 export interface ListAutonomousDatabaseCharacterSetsResponse {
   /** The list of Autonomous Database Character Sets. */
-  autonomousDatabaseCharacterSets?: Array<AutonomousDatabaseCharacterSet>;
+  autonomousDatabaseCharacterSets?: ReadonlyArray<AutonomousDatabaseCharacterSet>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -2246,7 +2246,7 @@ export const FailoverAutonomousDatabaseRequest =
 
 export interface ListDatabaseCharacterSetsResponse {
   /** The list of DatabaseCharacterSets. */
-  databaseCharacterSets?: Array<DatabaseCharacterSet>;
+  databaseCharacterSets?: ReadonlyArray<DatabaseCharacterSet>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -2274,7 +2274,7 @@ export interface ExascaleDbStorageVaultProperties {
   /** Optional. The description of the ExascaleDbStorageVault. */
   description?: string;
   /** Output only. The shape attributes of the VM clusters attached to the ExascaleDbStorageVault. */
-  attachedShapeAttributes?: Array<
+  attachedShapeAttributes?: ReadonlyArray<
     | "SHAPE_ATTRIBUTE_UNSPECIFIED"
     | "SMART_STORAGE"
     | "BLOCK_STORAGE"
@@ -2289,7 +2289,7 @@ export interface ExascaleDbStorageVaultProperties {
   /** Output only. Deep link to the OCI console to view this resource. */
   ociUri?: string;
   /** Output only. The shape attributes available for the VM clusters to be attached to the ExascaleDbStorageVault. */
-  availableShapeAttributes?: Array<
+  availableShapeAttributes?: ReadonlyArray<
     | "SHAPE_ATTRIBUTE_UNSPECIFIED"
     | "SMART_STORAGE"
     | "BLOCK_STORAGE"
@@ -2308,7 +2308,7 @@ export interface ExascaleDbStorageVaultProperties {
     | "FAILED"
     | (string & {});
   /** Output only. The list of VM cluster OCIDs associated with the ExascaleDbStorageVault. */
-  vmClusterIds?: Array<string>;
+  vmClusterIds?: ReadonlyArray<string>;
   /** Required. The storage details of the ExascaleDbStorageVault. */
   exascaleDbStorageDetails?: ExascaleDbStorageDetails;
 }
@@ -2353,7 +2353,7 @@ export interface ListCloudExadataInfrastructuresResponse {
   /** A token for fetching next page of response. */
   nextPageToken?: string;
   /** The list of Exadata Infrastructures. */
-  cloudExadataInfrastructures?: Array<CloudExadataInfrastructure>;
+  cloudExadataInfrastructures?: ReadonlyArray<CloudExadataInfrastructure>;
 }
 
 export const ListCloudExadataInfrastructuresResponse =
@@ -2395,7 +2395,7 @@ export const ExascaleDbStorageVault = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListExascaleDbStorageVaultsResponse {
   /** The ExascaleDbStorageVaults. */
-  exascaleDbStorageVaults?: Array<ExascaleDbStorageVault>;
+  exascaleDbStorageVaults?: ReadonlyArray<ExascaleDbStorageVault>;
   /** A token identifying a page of results the server should return. If present, the next page token can be provided to a subsequent ListExascaleDbStorageVaults call to list the next page. If empty, there are no more pages. */
   nextPageToken?: string;
 }
@@ -2410,7 +2410,7 @@ export const ListExascaleDbStorageVaultsResponse =
 
 export interface LocationMetadata {
   /** Output only. Google Cloud Platform Oracle zones in a location. */
-  gcpOracleZones?: Array<string>;
+  gcpOracleZones?: ReadonlyArray<string>;
 }
 
 export const LocationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2433,7 +2433,7 @@ export interface DbSystemInitialStorageSizeProperties {
   /** Output only. VM shape platform type */
   shapeType?: "SHAPE_TYPE_UNSPECIFIED" | "STANDARD_X86" | (string & {});
   /** Output only. List of storage disk details available for launches from backup. */
-  launchFromBackupStorageSizeDetails?: Array<StorageSizeDetails>;
+  launchFromBackupStorageSizeDetails?: ReadonlyArray<StorageSizeDetails>;
   /** Output only. The storage option used in DB system. */
   storageManagement?:
     | "STORAGE_MANAGEMENT_UNSPECIFIED"
@@ -2441,7 +2441,7 @@ export interface DbSystemInitialStorageSizeProperties {
     | "LVM"
     | (string & {});
   /** Output only. List of storage disk details. */
-  storageSizeDetails?: Array<StorageSizeDetails>;
+  storageSizeDetails?: ReadonlyArray<StorageSizeDetails>;
 }
 
 export const DbSystemInitialStorageSizeProperties =
@@ -2472,7 +2472,7 @@ export const GenerateAutonomousDatabaseWalletRequest =
 
 export interface ListEntitlementsResponse {
   /** The list of Entitlements */
-  entitlements?: Array<Entitlement>;
+  entitlements?: ReadonlyArray<Entitlement>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -2485,7 +2485,7 @@ export const ListEntitlementsResponse =
 
 export interface ListDatabasesResponse {
   /** The list of Databases. */
-  databases?: Array<Database>;
+  databases?: ReadonlyArray<Database>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -2539,7 +2539,7 @@ export const DbSystemShape = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDbSystemShapesResponse {
   /** The list of Database System shapes. */
-  dbSystemShapes?: Array<DbSystemShape>;
+  dbSystemShapes?: ReadonlyArray<DbSystemShape>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -2570,7 +2570,7 @@ export const PluggableDatabase = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListPluggableDatabasesResponse {
   /** The list of PluggableDatabases. */
-  pluggableDatabases?: Array<PluggableDatabase>;
+  pluggableDatabases?: ReadonlyArray<PluggableDatabase>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -2585,7 +2585,7 @@ export interface ListDbServersResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
   /** The list of database servers. */
-  dbServers?: Array<DbServer>;
+  dbServers?: ReadonlyArray<DbServer>;
 }
 
 export const ListDbServersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2628,9 +2628,9 @@ export const OdbNetwork = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOdbNetworksResponse {
   /** Unreachable locations when listing resources across all locations using wildcard location '-'. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The list of ODB Networks. */
-  odbNetworks?: Array<OdbNetwork>;
+  odbNetworks?: ReadonlyArray<OdbNetwork>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -2690,7 +2690,7 @@ export const RestoreAutonomousDatabaseRequest =
 
 export interface ListGiVersionsResponse {
   /** The list of Oracle Grid Infrastructure (GI) versions. */
-  giVersions?: Array<GiVersion>;
+  giVersions?: ReadonlyArray<GiVersion>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -2735,7 +2735,7 @@ export const AutonomousDbVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAutonomousDbVersionsResponse {
   /** The list of Autonomous Database versions. */
-  autonomousDbVersions?: Array<AutonomousDbVersion>;
+  autonomousDbVersions?: ReadonlyArray<AutonomousDbVersion>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -2748,7 +2748,7 @@ export const ListAutonomousDbVersionsResponse =
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -2760,9 +2760,9 @@ export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -2777,7 +2777,7 @@ export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface RemoveVirtualMachineExadbVmClusterRequest {
   /** Required. The list of host names of db nodes to be removed from the ExadbVmCluster. */
-  hostnames?: Array<string>;
+  hostnames?: ReadonlyArray<string>;
   /** Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
@@ -2790,7 +2790,7 @@ export const RemoveVirtualMachineExadbVmClusterRequest =
 
 export interface ListExadbVmClustersResponse {
   /** The list of ExadbVmClusters. */
-  exadbVmClusters?: Array<ExadbVmCluster>;
+  exadbVmClusters?: ReadonlyArray<ExadbVmCluster>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -2838,7 +2838,7 @@ export const DbSystemInitialStorageSize =
 
 export interface ListDbSystemInitialStorageSizesResponse {
   /** The list of DbSystemInitialStorageSizes. */
-  dbSystemInitialStorageSizes?: Array<DbSystemInitialStorageSize>;
+  dbSystemInitialStorageSizes?: ReadonlyArray<DbSystemInitialStorageSize>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -2863,7 +2863,7 @@ export const SwitchoverAutonomousDatabaseRequest =
 
 export interface ListDbNodesResponse {
   /** The list of DB Nodes */
-  dbNodes?: Array<DbNode>;
+  dbNodes?: ReadonlyArray<DbNode>;
   /** A token identifying a page of results the node should return. */
   nextPageToken?: string;
 }
@@ -2875,7 +2875,7 @@ export const ListDbNodesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCloudVmClustersResponse {
   /** The list of VM Clusters. */
-  cloudVmClusters?: Array<CloudVmCluster>;
+  cloudVmClusters?: ReadonlyArray<CloudVmCluster>;
   /** A token to fetch the next page of results. */
   nextPageToken?: string;
 }
@@ -2901,7 +2901,7 @@ export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListDbVersionsResponse {
   /** The list of DbVersions. */
-  dbVersions?: Array<DbVersion>;
+  dbVersions?: ReadonlyArray<DbVersion>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -2940,7 +2940,7 @@ export const ListProjectsLocationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -2975,10 +2975,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -3015,10 +3012,7 @@ export const ListProjectsLocationsDbSystemInitialStorageSizesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dbSystemInitialStorageSizes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dbSystemInitialStorageSizes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDbSystemInitialStorageSizesRequest>;
 
@@ -3058,10 +3052,7 @@ export const DeleteProjectsLocationsDbSystemsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dbSystems/{dbSystemsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDbSystemsRequest>;
 
@@ -3104,10 +3095,7 @@ export const ListProjectsLocationsDbSystemsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dbSystems",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dbSystems" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDbSystemsRequest>;
 
@@ -3142,10 +3130,7 @@ export const GetProjectsLocationsDbSystemsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dbSystems/{dbSystemsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDbSystemsRequest>;
 
@@ -3185,11 +3170,7 @@ export const CreateProjectsLocationsDbSystemsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(DbSystem).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dbSystems",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/dbSystems", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDbSystemsRequest>;
 
@@ -3223,11 +3204,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -3272,10 +3249,7 @@ export const ListProjectsLocationsOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -3310,10 +3284,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -3344,10 +3315,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -3384,10 +3352,7 @@ export const ListProjectsLocationsEntitlementsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/entitlements",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/entitlements" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEntitlementsRequest>;
 
@@ -3426,10 +3391,7 @@ export const DeleteProjectsLocationsOdbNetworksRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/odbNetworks/{odbNetworksId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOdbNetworksRequest>;
 
@@ -3472,10 +3434,7 @@ export const ListProjectsLocationsOdbNetworksRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/odbNetworks",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/odbNetworks" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOdbNetworksRequest>;
 
@@ -3510,10 +3469,7 @@ export const GetProjectsLocationsOdbNetworksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/odbNetworks/{odbNetworksId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOdbNetworksRequest>;
 
@@ -3555,11 +3511,7 @@ export const CreateProjectsLocationsOdbNetworksRequest =
     ),
     body: Schema.optional(OdbNetwork).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/odbNetworks",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/odbNetworks", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsOdbNetworksRequest>;
 
@@ -3602,10 +3554,7 @@ export const ListProjectsLocationsOdbNetworksOdbSubnetsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/odbNetworks/{odbNetworksId}/odbSubnets",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/odbSubnets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOdbNetworksOdbSubnetsRequest>;
 
@@ -3641,10 +3590,7 @@ export const GetProjectsLocationsOdbNetworksOdbSubnetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/odbNetworks/{odbNetworksId}/odbSubnets/{odbSubnetsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOdbNetworksOdbSubnetsRequest>;
 
@@ -3686,11 +3632,7 @@ export const CreateProjectsLocationsOdbNetworksOdbSubnetsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(OdbSubnet).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/odbNetworks/{odbNetworksId}/odbSubnets",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/odbSubnets", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsOdbNetworksOdbSubnetsRequest>;
 
@@ -3724,10 +3666,7 @@ export const DeleteProjectsLocationsOdbNetworksOdbSubnetsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/odbNetworks/{odbNetworksId}/odbSubnets/{odbSubnetsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOdbNetworksOdbSubnetsRequest>;
 
@@ -3764,10 +3703,7 @@ export const DeleteProjectsLocationsCloudVmClustersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cloudVmClusters/{cloudVmClustersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCloudVmClustersRequest>;
 
@@ -3807,10 +3743,7 @@ export const ListProjectsLocationsCloudVmClustersRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cloudVmClusters",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/cloudVmClusters" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCloudVmClustersRequest>;
 
@@ -3846,10 +3779,7 @@ export const GetProjectsLocationsCloudVmClustersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cloudVmClusters/{cloudVmClustersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCloudVmClustersRequest>;
 
@@ -3893,7 +3823,7 @@ export const CreateProjectsLocationsCloudVmClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cloudVmClusters",
+      path: "v1/{parent}/cloudVmClusters",
       hasBody: true,
     }),
     svc,
@@ -3932,10 +3862,7 @@ export const ListProjectsLocationsCloudVmClustersDbNodesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cloudVmClusters/{cloudVmClustersId}/dbNodes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dbNodes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCloudVmClustersDbNodesRequest>;
 
@@ -3980,10 +3907,7 @@ export const ListProjectsLocationsDatabaseCharacterSetsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/databaseCharacterSets",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/databaseCharacterSets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatabaseCharacterSetsRequest>;
 
@@ -4028,10 +3952,7 @@ export const ListProjectsLocationsPluggableDatabasesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pluggableDatabases",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/pluggableDatabases" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsPluggableDatabasesRequest>;
 
@@ -4067,10 +3988,7 @@ export const GetProjectsLocationsPluggableDatabasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pluggableDatabases/{pluggableDatabasesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsPluggableDatabasesRequest>;
 
@@ -4110,10 +4028,7 @@ export const ListProjectsLocationsGiVersionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/giVersions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/giVersions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGiVersionsRequest>;
 
@@ -4157,10 +4072,7 @@ export const ListProjectsLocationsGiVersionsMinorVersionsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/giVersions/{giVersionsId}/minorVersions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/minorVersions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGiVersionsMinorVersionsRequest>;
 
@@ -4202,10 +4114,7 @@ export const ListProjectsLocationsAutonomousDbVersionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autonomousDbVersions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/autonomousDbVersions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAutonomousDbVersionsRequest>;
 
@@ -4253,10 +4162,7 @@ export const ListProjectsLocationsCloudExadataInfrastructuresRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cloudExadataInfrastructures",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/cloudExadataInfrastructures" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCloudExadataInfrastructuresRequest>;
 
@@ -4293,10 +4199,7 @@ export const GetProjectsLocationsCloudExadataInfrastructuresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cloudExadataInfrastructures/{cloudExadataInfrastructuresId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCloudExadataInfrastructuresRequest>;
 
@@ -4342,7 +4245,7 @@ export const CreateProjectsLocationsCloudExadataInfrastructuresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cloudExadataInfrastructures",
+      path: "v1/{parent}/cloudExadataInfrastructures",
       hasBody: true,
     }),
     svc,
@@ -4383,10 +4286,7 @@ export const DeleteProjectsLocationsCloudExadataInfrastructuresRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cloudExadataInfrastructures/{cloudExadataInfrastructuresId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCloudExadataInfrastructuresRequest>;
 
@@ -4425,10 +4325,7 @@ export const ListProjectsLocationsCloudExadataInfrastructuresDbServersRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cloudExadataInfrastructures/{cloudExadataInfrastructuresId}/dbServers",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dbServers" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCloudExadataInfrastructuresDbServersRequest>;
 
@@ -4474,10 +4371,7 @@ export const ListProjectsLocationsAutonomousDatabaseBackupsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autonomousDatabaseBackups",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/autonomousDatabaseBackups" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAutonomousDatabaseBackupsRequest>;
 
@@ -4522,10 +4416,7 @@ export const ListProjectsLocationsDatabasesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/databases",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/databases" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatabasesRequest>;
 
@@ -4560,10 +4451,7 @@ export const GetProjectsLocationsDatabasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/databases/{databasesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatabasesRequest>;
 
@@ -4603,10 +4491,7 @@ export const ListProjectsLocationsDbVersionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dbVersions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dbVersions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDbVersionsRequest>;
 
@@ -4650,10 +4535,7 @@ export const ListProjectsLocationsDbSystemShapesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dbSystemShapes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dbSystemShapes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDbSystemShapesRequest>;
 
@@ -4692,10 +4574,7 @@ export const DeleteProjectsLocationsExadbVmClustersRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/exadbVmClusters/{exadbVmClustersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsExadbVmClustersRequest>;
 
@@ -4733,7 +4612,7 @@ export const RemoveVirtualMachineProjectsLocationsExadbVmClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/exadbVmClusters/{exadbVmClustersId}:removeVirtualMachine",
+      path: "v1/{name}:removeVirtualMachine",
       hasBody: true,
     }),
     svc,
@@ -4780,10 +4659,7 @@ export const ListProjectsLocationsExadbVmClustersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/exadbVmClusters",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/exadbVmClusters" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsExadbVmClustersRequest>;
 
@@ -4819,10 +4695,7 @@ export const GetProjectsLocationsExadbVmClustersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/exadbVmClusters/{exadbVmClustersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsExadbVmClustersRequest>;
 
@@ -4862,11 +4735,7 @@ export const PatchProjectsLocationsExadbVmClustersRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(ExadbVmCluster).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/exadbVmClusters/{exadbVmClustersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsExadbVmClustersRequest>;
 
@@ -4910,7 +4779,7 @@ export const CreateProjectsLocationsExadbVmClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/exadbVmClusters",
+      path: "v1/{parent}/exadbVmClusters",
       hasBody: true,
     }),
     svc,
@@ -4949,10 +4818,7 @@ export const ListProjectsLocationsExadbVmClustersDbNodesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/exadbVmClusters/{exadbVmClustersId}/dbNodes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dbNodes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsExadbVmClustersDbNodesRequest>;
 
@@ -4993,11 +4859,7 @@ export const SwitchoverProjectsLocationsAutonomousDatabasesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autonomousDatabases/{autonomousDatabasesId}:switchover",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:switchover", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SwitchoverProjectsLocationsAutonomousDatabasesRequest>;
 
@@ -5031,11 +4893,7 @@ export const FailoverProjectsLocationsAutonomousDatabasesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(FailoverAutonomousDatabaseRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autonomousDatabases/{autonomousDatabasesId}:failover",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:failover", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<FailoverProjectsLocationsAutonomousDatabasesRequest>;
 
@@ -5069,10 +4927,7 @@ export const DeleteProjectsLocationsAutonomousDatabasesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autonomousDatabases/{autonomousDatabasesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAutonomousDatabasesRequest>;
 
@@ -5108,11 +4963,7 @@ export const GenerateWalletProjectsLocationsAutonomousDatabasesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autonomousDatabases/{autonomousDatabasesId}:generateWallet",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:generateWallet", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<GenerateWalletProjectsLocationsAutonomousDatabasesRequest>;
 
@@ -5148,11 +4999,7 @@ export const StopProjectsLocationsAutonomousDatabasesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(StopAutonomousDatabaseRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autonomousDatabases/{autonomousDatabasesId}:stop",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:stop", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StopProjectsLocationsAutonomousDatabasesRequest>;
 
@@ -5186,11 +5033,7 @@ export const RestoreProjectsLocationsAutonomousDatabasesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RestoreAutonomousDatabaseRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autonomousDatabases/{autonomousDatabasesId}:restore",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:restore", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RestoreProjectsLocationsAutonomousDatabasesRequest>;
 
@@ -5230,11 +5073,7 @@ export const PatchProjectsLocationsAutonomousDatabasesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(AutonomousDatabase).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autonomousDatabases/{autonomousDatabasesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAutonomousDatabasesRequest>;
 
@@ -5268,11 +5107,7 @@ export const RestartProjectsLocationsAutonomousDatabasesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RestartAutonomousDatabaseRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autonomousDatabases/{autonomousDatabasesId}:restart",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:restart", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RestartProjectsLocationsAutonomousDatabasesRequest>;
 
@@ -5315,10 +5150,7 @@ export const ListProjectsLocationsAutonomousDatabasesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autonomousDatabases",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/autonomousDatabases" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAutonomousDatabasesRequest>;
 
@@ -5354,10 +5186,7 @@ export const GetProjectsLocationsAutonomousDatabasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autonomousDatabases/{autonomousDatabasesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAutonomousDatabasesRequest>;
 
@@ -5402,7 +5231,7 @@ export const CreateProjectsLocationsAutonomousDatabasesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autonomousDatabases",
+      path: "v1/{parent}/autonomousDatabases",
       hasBody: true,
     }),
     svc,
@@ -5438,11 +5267,7 @@ export const StartProjectsLocationsAutonomousDatabasesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(StartAutonomousDatabaseRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autonomousDatabases/{autonomousDatabasesId}:start",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:start", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StartProjectsLocationsAutonomousDatabasesRequest>;
 
@@ -5485,10 +5310,7 @@ export const ListProjectsLocationsExascaleDbStorageVaultsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/exascaleDbStorageVaults",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/exascaleDbStorageVaults" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsExascaleDbStorageVaultsRequest>;
 
@@ -5524,10 +5346,7 @@ export const GetProjectsLocationsExascaleDbStorageVaultsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/exascaleDbStorageVaults/{exascaleDbStorageVaultsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsExascaleDbStorageVaultsRequest>;
 
@@ -5572,7 +5391,7 @@ export const CreateProjectsLocationsExascaleDbStorageVaultsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/exascaleDbStorageVaults",
+      path: "v1/{parent}/exascaleDbStorageVaults",
       hasBody: true,
     }),
     svc,
@@ -5608,10 +5427,7 @@ export const DeleteProjectsLocationsExascaleDbStorageVaultsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/exascaleDbStorageVaults/{exascaleDbStorageVaultsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsExascaleDbStorageVaultsRequest>;
 
@@ -5653,7 +5469,7 @@ export const ListProjectsLocationsAutonomousDatabaseCharacterSetsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autonomousDatabaseCharacterSets",
+      path: "v1/{parent}/autonomousDatabaseCharacterSets",
     }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAutonomousDatabaseCharacterSetsRequest>;

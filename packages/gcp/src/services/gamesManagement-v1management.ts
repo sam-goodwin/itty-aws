@@ -45,7 +45,7 @@ export interface AchievementResetAllResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#achievementResetAllResponse`. */
   kind?: string;
   /** The achievement reset results. */
-  results?: Array<AchievementResetResponse>;
+  results?: ReadonlyArray<AchievementResetResponse>;
 }
 
 export const AchievementResetAllResponse =
@@ -58,7 +58,7 @@ export interface AchievementResetMultipleForAllRequest {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#achievementResetMultipleForAllRequest`. */
   kind?: string;
   /** The IDs of achievements to reset. */
-  achievement_ids?: Array<string>;
+  achievement_ids?: ReadonlyArray<string>;
 }
 
 export const AchievementResetMultipleForAllRequest =
@@ -71,7 +71,7 @@ export interface EventsResetMultipleForAllRequest {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#eventsResetMultipleForAllRequest`. */
   kind?: string;
   /** The IDs of events to reset. */
-  event_ids?: Array<string>;
+  event_ids?: ReadonlyArray<string>;
 }
 
 export const EventsResetMultipleForAllRequest =
@@ -189,7 +189,7 @@ export interface HiddenPlayerList {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#hiddenPlayerList`. */
   kind?: string;
   /** The players. */
-  items?: Array<HiddenPlayer>;
+  items?: ReadonlyArray<HiddenPlayer>;
   /** The pagination token for the next page of results. */
   nextPageToken?: string;
 }
@@ -206,7 +206,7 @@ export interface PlayerScoreResetResponse {
   /** The ID of an leaderboard for which player state has been updated. */
   definitionId?: string;
   /** The time spans of the updated score. Possible values are: - "`ALL_TIME`" - The score is an all-time score. - "`WEEKLY`" - The score is a weekly score. - "`DAILY`" - The score is a daily score. */
-  resetScoreTimeSpans?: Array<string>;
+  resetScoreTimeSpans?: ReadonlyArray<string>;
 }
 
 export const PlayerScoreResetResponse =
@@ -220,7 +220,7 @@ export interface PlayerScoreResetAllResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#playerScoreResetAllResponse`. */
   kind?: string;
   /** The leaderboard reset results. */
-  results?: Array<PlayerScoreResetResponse>;
+  results?: ReadonlyArray<PlayerScoreResetResponse>;
 }
 
 export const PlayerScoreResetAllResponse =
@@ -233,7 +233,7 @@ export interface ScoresResetMultipleForAllRequest {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#scoresResetMultipleForAllRequest`. */
   kind?: string;
   /** The IDs of leaderboards to reset. */
-  leaderboard_ids?: Array<string>;
+  leaderboard_ids?: ReadonlyArray<string>;
 }
 
 export const ScoresResetMultipleForAllRequest =

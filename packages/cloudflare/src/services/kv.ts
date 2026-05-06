@@ -139,6 +139,8 @@ export const getNamespace: API.OperationMethod<
 export interface ListNamespacesRequest {
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Direction to order namespaces. */
   direction?: "asc" | "desc";
   /** Query param: Field to order results by. */
@@ -147,6 +149,8 @@ export interface ListNamespacesRequest {
 
 export const ListNamespacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
     T.HttpQuery("direction"),
   ),
@@ -536,6 +540,7 @@ export interface ListNamespaceKeysRequest {
   namespaceId: string;
   /** Path param: Identifier. */
   accountId: string;
+  cursor?: string;
   /** Query param: Limits the number of keys returned in the response. The cursor attribute may be used to iterate over the next batch of keys if there are more than the limit. */
   limit?: number;
   /** Query param: Filters returned keys by a name prefix. Exact matches and any key names that begin with the prefix will be returned. */
@@ -546,6 +551,7 @@ export const ListNamespaceKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     namespaceId: Schema.String.pipe(T.HttpPath("namespaceId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
     limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
     prefix: Schema.optional(Schema.String).pipe(T.HttpQuery("prefix")),
   }).pipe(

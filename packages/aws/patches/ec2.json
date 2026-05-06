@@ -1,6 +1,7 @@
 {
   "errorCategories": {
-    "RequestLimitExceeded": ["ThrottlingError"]
+    "RequestLimitExceeded": ["ThrottlingError"],
+    "IncorrectState": ["ConflictError"]
   },
   "operations": {
     "createVpc": {
@@ -100,7 +101,8 @@
         "InvalidRouteTableID.NotFound",
         "InvalidRouteTableId.Malformed",
         "InvalidVpcEndpointId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "RouteAlreadyExists"
       ]
     },
     "createNatGateway": {
@@ -222,6 +224,7 @@
       "errors": [
         "RequestLimitExceeded",
         "InvalidAssociationID.NotFound",
+        "InvalidRouteTableID.NotFound",
         "MissingParameter"
       ]
     },
@@ -805,6 +808,7 @@
       "errors": [
         "RequestLimitExceeded",
         "AuthFailure",
+        "DependencyViolation",
         "DryRunOperation",
         "InvalidAddress.NotFound",
         "InvalidAllocationID.NotFound",
@@ -1160,6 +1164,7 @@
     "deleteNatGateway": {
       "errors": [
         "RequestLimitExceeded",
+        "DependencyViolation",
         "DryRunOperation",
         "InvalidParameter",
         "MissingParameter",

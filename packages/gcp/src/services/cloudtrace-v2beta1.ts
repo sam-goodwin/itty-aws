@@ -48,7 +48,7 @@ export const TraceSink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTraceSinksResponse {
   /** A list of sinks. */
-  sinks?: Array<TraceSink>;
+  sinks?: ReadonlyArray<TraceSink>;
   /** A paginated response where more pages might be available has `next_page_token` set. To get the next set of results, call the same method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
 }
@@ -85,7 +85,7 @@ export const ListProjectsTraceSinksRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2beta1/projects/{projectsId}/traceSinks" }),
+    T.Http({ method: "GET", path: "v2beta1/{parent}/traceSinks" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsTraceSinksRequest>;
 
@@ -125,7 +125,7 @@ export const CreateProjectsTraceSinksRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta1/projects/{projectsId}/traceSinks",
+      path: "v2beta1/{parent}/traceSinks",
       hasBody: true,
     }),
     svc,
@@ -158,10 +158,7 @@ export const DeleteProjectsTraceSinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2beta1/projects/{projectsId}/traceSinks/{traceSinksId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsTraceSinksRequest>;
 
@@ -192,10 +189,7 @@ export const GetProjectsTraceSinksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta1/projects/{projectsId}/traceSinks/{traceSinksId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsTraceSinksRequest>;
 
@@ -232,11 +226,7 @@ export const PatchProjectsTraceSinksRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(TraceSink).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2beta1/projects/{projectsId}/traceSinks/{traceSinksId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsTraceSinksRequest>;
 

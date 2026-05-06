@@ -28,7 +28,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -259,7 +259,7 @@ export interface ListReservationsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
   nextPageToken?: string;
   /** The list of reservation in the requested parent. The order of the reservations is unspecified. */
-  reservations?: Array<Reservation>;
+  reservations?: ReadonlyArray<Reservation>;
 }
 
 export const ListReservationsResponse =
@@ -286,7 +286,7 @@ export const ComputeHeadCursorResponse =
 
 export interface ListPartitionCursorsResponse {
   /** The partition cursors from this request. */
-  partitionCursors?: Array<PartitionCursor>;
+  partitionCursors?: ReadonlyArray<PartitionCursor>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -299,9 +299,9 @@ export const ListPartitionCursorsResponse =
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -316,7 +316,7 @@ export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListReservationTopicsResponse {
   /** The names of topics attached to the reservation. The order of the topics is unspecified. */
-  topics?: Array<string>;
+  topics?: ReadonlyArray<string>;
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
   nextPageToken?: string;
 }
@@ -454,7 +454,7 @@ export const ComputeHeadCursorRequest =
 
 export interface ListSubscriptionsResponse {
   /** The list of subscriptions in the requested parent. The order of the subscriptions is unspecified. */
-  subscriptions?: Array<Subscription>;
+  subscriptions?: ReadonlyArray<Subscription>;
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
   nextPageToken?: string;
 }
@@ -469,7 +469,7 @@ export interface ListTopicsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
   nextPageToken?: string;
   /** The list of topic in the requested parent. The order of the topics is unspecified. */
-  topics?: Array<Topic>;
+  topics?: ReadonlyArray<Topic>;
 }
 
 export const ListTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -479,7 +479,7 @@ export const ListTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTopicSubscriptionsResponse {
   /** The names of subscriptions attached to the topic. The order of the subscriptions is unspecified. */
-  subscriptions?: Array<string>;
+  subscriptions?: ReadonlyArray<string>;
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
   nextPageToken?: string;
 }
@@ -503,10 +503,7 @@ export const GetAdminProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/admin/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAdminProjectsLocationsOperationsRequest>;
 
@@ -551,10 +548,7 @@ export const ListAdminProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/admin/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListAdminProjectsLocationsOperationsRequest>;
 
@@ -590,10 +584,7 @@ export const DeleteAdminProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/admin/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAdminProjectsLocationsOperationsRequest>;
 
@@ -627,11 +618,7 @@ export const CancelAdminProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/admin/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelAdminProjectsLocationsOperationsRequest>;
 
@@ -668,11 +655,7 @@ export const PatchAdminProjectsLocationsTopicsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Topic).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/admin/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAdminProjectsLocationsTopicsRequest>;
 
@@ -709,11 +692,7 @@ export const CreateAdminProjectsLocationsTopicsRequest =
     topicId: Schema.optional(Schema.String).pipe(T.HttpQuery("topicId")),
     body: Schema.optional(Topic).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/topics",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/admin/{parent}/topics", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateAdminProjectsLocationsTopicsRequest>;
 
@@ -744,10 +723,7 @@ export const GetAdminProjectsLocationsTopicsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/admin/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAdminProjectsLocationsTopicsRequest>;
 
@@ -778,10 +754,7 @@ export const GetPartitionsAdminProjectsLocationsTopicsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}/partitions",
-    }),
+    T.Http({ method: "GET", path: "v1/admin/{name}/partitions" }),
     svc,
   ) as unknown as Schema.Schema<GetPartitionsAdminProjectsLocationsTopicsRequest>;
 
@@ -818,10 +791,7 @@ export const ListAdminProjectsLocationsTopicsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/topics",
-    }),
+    T.Http({ method: "GET", path: "v1/admin/{parent}/topics" }),
     svc,
   ) as unknown as Schema.Schema<ListAdminProjectsLocationsTopicsRequest>;
 
@@ -856,10 +826,7 @@ export const DeleteAdminProjectsLocationsTopicsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/admin/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAdminProjectsLocationsTopicsRequest>;
 
@@ -896,10 +863,7 @@ export const ListAdminProjectsLocationsTopicsSubscriptionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}/subscriptions",
-    }),
+    T.Http({ method: "GET", path: "v1/admin/{name}/subscriptions" }),
     svc,
   ) as unknown as Schema.Schema<ListAdminProjectsLocationsTopicsSubscriptionsRequest>;
 
@@ -938,11 +902,7 @@ export const SeekAdminProjectsLocationsSubscriptionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SeekSubscriptionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}:seek",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/admin/{name}:seek", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SeekAdminProjectsLocationsSubscriptionsRequest>;
 
@@ -979,11 +939,7 @@ export const PatchAdminProjectsLocationsSubscriptionsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Subscription).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/admin/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAdminProjectsLocationsSubscriptionsRequest>;
 
@@ -1020,10 +976,7 @@ export const ListAdminProjectsLocationsSubscriptionsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions",
-    }),
+    T.Http({ method: "GET", path: "v1/admin/{parent}/subscriptions" }),
     svc,
   ) as unknown as Schema.Schema<ListAdminProjectsLocationsSubscriptionsRequest>;
 
@@ -1059,10 +1012,7 @@ export const DeleteAdminProjectsLocationsSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/admin/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAdminProjectsLocationsSubscriptionsRequest>;
 
@@ -1108,7 +1058,7 @@ export const CreateAdminProjectsLocationsSubscriptionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions",
+      path: "v1/admin/{parent}/subscriptions",
       hasBody: true,
     }),
     svc,
@@ -1141,10 +1091,7 @@ export const GetAdminProjectsLocationsSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/admin/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAdminProjectsLocationsSubscriptionsRequest>;
 
@@ -1185,7 +1132,7 @@ export const CreateAdminProjectsLocationsReservationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/reservations",
+      path: "v1/admin/{parent}/reservations",
       hasBody: true,
     }),
     svc,
@@ -1218,10 +1165,7 @@ export const GetAdminProjectsLocationsReservationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/admin/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAdminProjectsLocationsReservationsRequest>;
 
@@ -1258,10 +1202,7 @@ export const ListAdminProjectsLocationsReservationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/reservations",
-    }),
+    T.Http({ method: "GET", path: "v1/admin/{parent}/reservations" }),
     svc,
   ) as unknown as Schema.Schema<ListAdminProjectsLocationsReservationsRequest>;
 
@@ -1297,10 +1238,7 @@ export const DeleteAdminProjectsLocationsReservationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/admin/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAdminProjectsLocationsReservationsRequest>;
 
@@ -1337,11 +1275,7 @@ export const PatchAdminProjectsLocationsReservationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Reservation).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/admin/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAdminProjectsLocationsReservationsRequest>;
 
@@ -1378,10 +1312,7 @@ export const ListAdminProjectsLocationsReservationsTopicsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/admin/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}/topics",
-    }),
+    T.Http({ method: "GET", path: "v1/admin/{name}/topics" }),
     svc,
   ) as unknown as Schema.Schema<ListAdminProjectsLocationsReservationsTopicsRequest>;
 
@@ -1422,7 +1353,7 @@ export const CommitCursorCursorProjectsLocationsSubscriptionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/cursor/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}:commitCursor",
+      path: "v1/cursor/{subscription}:commitCursor",
       hasBody: true,
     }),
     svc,
@@ -1463,10 +1394,7 @@ export const ListCursorProjectsLocationsSubscriptionsCursorsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/cursor/projects/{projectsId}/locations/{locationsId}/subscriptions/{subscriptionsId}/cursors",
-    }),
+    T.Http({ method: "GET", path: "v1/cursor/{parent}/cursors" }),
     svc,
   ) as unknown as Schema.Schema<ListCursorProjectsLocationsSubscriptionsCursorsRequest>;
 
@@ -1508,7 +1436,7 @@ export const ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/topicStats/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}:computeTimeCursor",
+      path: "v1/topicStats/{topic}:computeTimeCursor",
       hasBody: true,
     }),
     svc,
@@ -1548,7 +1476,7 @@ export const ComputeMessageStatsTopicStatsProjectsLocationsTopicsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/topicStats/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}:computeMessageStats",
+      path: "v1/topicStats/{topic}:computeMessageStats",
       hasBody: true,
     }),
     svc,
@@ -1588,7 +1516,7 @@ export const ComputeHeadCursorTopicStatsProjectsLocationsTopicsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/topicStats/projects/{projectsId}/locations/{locationsId}/topics/{topicsId}:computeHeadCursor",
+      path: "v1/topicStats/{topic}:computeHeadCursor",
       hasBody: true,
     }),
     svc,

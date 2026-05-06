@@ -1212,21 +1212,6 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     }),
   ),
   Schema.Struct({
-    id: Schema.Literal("aegis"),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    value: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          poolId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(Schema.encodeKeys({ enabled: "enabled", poolId: "pool_id" })),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ id: "id", modifiedOn: "modified_on", value: "value" }),
-  ),
-  Schema.Struct({
     id: Schema.Literal("always_online"),
     value: Schema.Literals(["on", "off"]),
     editable: Schema.optional(
@@ -1737,22 +1722,6 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     }),
   ),
   Schema.Struct({
-    id: Schema.Literal("origin_h2_max_streams"),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({ id: "id", modifiedOn: "modified_on", value: "value" }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("origin_max_http_version"),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    value: Schema.optional(
-      Schema.Union([Schema.Literals(["2", "1"]), Schema.Null]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ id: "id", modifiedOn: "modified_on", value: "value" }),
-  ),
-  Schema.Struct({
     id: Schema.Literal("polish"),
     value: Schema.Literals(["off", "lossless", "lossy"]),
     editable: Schema.optional(
@@ -2034,12 +2003,6 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     }),
   ),
   Schema.Struct({
-    id: Schema.optional(
-      Schema.Union([Schema.Literal("ssl_recommender"), Schema.Null]),
-    ),
-    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-  }),
-  Schema.Struct({
     id: Schema.Literal("tls_1_2_only"),
     value: Schema.Literals(["off", "on"]),
     editable: Schema.optional(
@@ -2174,6 +2137,43 @@ export const GetSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       modifiedOn: "modified_on",
     }),
   ),
+  Schema.Struct({
+    id: Schema.Literal("aegis"),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    value: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+          poolId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }).pipe(Schema.encodeKeys({ enabled: "enabled", poolId: "pool_id" })),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({ id: "id", modifiedOn: "modified_on", value: "value" }),
+  ),
+  Schema.Struct({
+    id: Schema.Literal("origin_h2_max_streams"),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({ id: "id", modifiedOn: "modified_on", value: "value" }),
+  ),
+  Schema.Struct({
+    id: Schema.Literal("origin_max_http_version"),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    value: Schema.optional(
+      Schema.Union([Schema.Literals(["2", "1"]), Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({ id: "id", modifiedOn: "modified_on", value: "value" }),
+  ),
+  Schema.Struct({
+    id: Schema.optional(
+      Schema.Union([Schema.Literal("ssl_recommender"), Schema.Null]),
+    ),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }),
 ]).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<GetSettingResponse>;
@@ -2668,21 +2668,6 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     }),
   ),
   Schema.Struct({
-    id: Schema.Literal("aegis"),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    value: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          poolId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(Schema.encodeKeys({ enabled: "enabled", poolId: "pool_id" })),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ id: "id", modifiedOn: "modified_on", value: "value" }),
-  ),
-  Schema.Struct({
     id: Schema.Literal("always_online"),
     value: Schema.Literals(["on", "off"]),
     editable: Schema.optional(
@@ -3193,22 +3178,6 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     }),
   ),
   Schema.Struct({
-    id: Schema.Literal("origin_h2_max_streams"),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({ id: "id", modifiedOn: "modified_on", value: "value" }),
-  ),
-  Schema.Struct({
-    id: Schema.Literal("origin_max_http_version"),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    value: Schema.optional(
-      Schema.Union([Schema.Literals(["2", "1"]), Schema.Null]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ id: "id", modifiedOn: "modified_on", value: "value" }),
-  ),
-  Schema.Struct({
     id: Schema.Literal("polish"),
     value: Schema.Literals(["off", "lossless", "lossy"]),
     editable: Schema.optional(
@@ -3490,12 +3459,6 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
     }),
   ),
   Schema.Struct({
-    id: Schema.optional(
-      Schema.Union([Schema.Literal("ssl_recommender"), Schema.Null]),
-    ),
-    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-  }),
-  Schema.Struct({
     id: Schema.Literal("tls_1_2_only"),
     value: Schema.Literals(["off", "on"]),
     editable: Schema.optional(
@@ -3630,6 +3593,43 @@ export const PatchSettingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
       modifiedOn: "modified_on",
     }),
   ),
+  Schema.Struct({
+    id: Schema.Literal("aegis"),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    value: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+          poolId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }).pipe(Schema.encodeKeys({ enabled: "enabled", poolId: "pool_id" })),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({ id: "id", modifiedOn: "modified_on", value: "value" }),
+  ),
+  Schema.Struct({
+    id: Schema.Literal("origin_h2_max_streams"),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({ id: "id", modifiedOn: "modified_on", value: "value" }),
+  ),
+  Schema.Struct({
+    id: Schema.Literal("origin_max_http_version"),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    value: Schema.optional(
+      Schema.Union([Schema.Literals(["2", "1"]), Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({ id: "id", modifiedOn: "modified_on", value: "value" }),
+  ),
+  Schema.Struct({
+    id: Schema.optional(
+      Schema.Union([Schema.Literal("ssl_recommender"), Schema.Null]),
+    ),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }),
 ]).pipe(
   T.ResponsePath("result"),
 ) as unknown as Schema.Schema<PatchSettingResponse>;

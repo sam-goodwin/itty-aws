@@ -217,6 +217,8 @@ export const getWidget: API.OperationMethod<
 export interface ListWidgetsRequest {
   /** Path param: Identifier */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Direction to order widgets. */
   direction?: "asc" | "desc";
   /** Query param: Field to order widgets by. */
@@ -225,6 +227,8 @@ export interface ListWidgetsRequest {
 
 export const ListWidgetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
     T.HttpQuery("direction"),
   ),

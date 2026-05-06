@@ -15,12 +15,17 @@ import {
   type OperationMethod,
   type PaginatedOperationMethod,
 } from "@distilled.cloud/core/client";
+import { retryableKey } from "@distilled.cloud/core/category";
 import {
   paginateCursor,
   paginateSingle,
   paginateWithDefaults,
   type PaginationStrategy,
 } from "@distilled.cloud/core/pagination";
+import {
+  parseRetryAfterForStatus,
+  parseServerRetryHint,
+} from "@distilled.cloud/core/retry-after";
 import { getPath, type RequestParts } from "@distilled.cloud/core/traits";
 import {
   CloudflareHttpError,
@@ -32,6 +37,7 @@ import {
   UnknownCloudflareError,
 } from "../errors.ts";
 import { Credentials, formatHeaders } from "../credentials.ts";
+import { Retry } from "../retry.ts";
 import { type ErrorMatcher, getErrorMatchers } from "../traits.ts";
 
 // ============================================================================
@@ -39,12 +45,35 @@ import { type ErrorMatcher, getErrorMatchers } from "../traits.ts";
 // ============================================================================
 
 /**
+ * Tag an error instance as retryable. Cloudflare reuses code 10001 for
+ * both a permanent permission failure ("Method not allowed for token")
+ * and a transient internal hiccup ("internal error"). Marking the
+ * specific instance — not the whole class — keeps legitimate
+ * permission failures non-retryable while letting the blanket retry
+ * policy ride out the transient case.
+ */
+const tagRetryable = <E>(error: E): E => {
+  (error as Record<string, unknown>)[retryableKey] = {};
+  return error;
+};
+
+/**
  * Cloudflare error codes that map to global/default errors regardless of operation.
  * These are infrastructure-level errors that can occur on any endpoint.
  */
-const GLOBAL_ERROR_CODE_MAP: Record<number, (message: string) => unknown> = {
+const GLOBAL_ERROR_CODE_MAP: Record<
+  number,
+  (message: string, headers?: Record<string, string | undefined>) => unknown
+> = {
   // "Please wait and consider throttling your request speed"
-  971: (message) => new TooManyRequests({ message }),
+  // Cloudflare returns this code inside an envelope with arbitrary HTTP status
+  // (often 200), so we don't gate on status — TooManyRequests always declares
+  // `retryAfter`.
+  971: (message, headers) =>
+    new TooManyRequests({
+      message,
+      retryAfter: parseServerRetryHint(headers),
+    }),
   // Authentication-related error codes — surfaced regardless of HTTP status
   // (Cloudflare frequently returns these inside a 400 envelope rather than 401).
   // 6003: Invalid request headers (e.g. missing/invalid auth headers)
@@ -55,10 +84,23 @@ const GLOBAL_ERROR_CODE_MAP: Record<number, (message: string) => unknown> = {
   9106: (message) => new Unauthorized({ message }),
   // 9109: Unauthorized to access requested resource / Max auth failures reached
   9109: (message) => new Unauthorized({ message }),
-  // 10000: Authentication error / Authentication failed
+  // 10000: Authentication error / Authentication failed.
+  // Deliberately NOT tagged retryable: Cloudflare uses the same message
+  // for both transient auth-edge blips and a genuinely invalid token,
+  // so there is no message we can match on to discriminate. Auto-retrying
+  // would silently loop on real auth failures, making them slower to
+  // surface without fixing anything. If callers want to retry these
+  // anyway, they can override the retry predicate.
   10000: (message) => new Unauthorized({ message }),
-  // 10001: Method not allowed for token (authorization, not authentication)
-  10001: (message) => new Forbidden({ message }),
+  // 10001: dual-use code. The permanent-failure variant has message
+  // "Method not allowed for token" (legitimate permission denial); the
+  // transient variant has message "internal error" (CF infrastructure
+  // hiccup mistagged as 403). Those two messages are unambiguously
+  // distinct, so we can safely tag only the transient variant retryable.
+  10001: (message) => {
+    const error = new Forbidden({ message });
+    return /internal error/i.test(message) ? tagRetryable(error) : error;
+  },
 };
 
 /**
@@ -68,17 +110,30 @@ const GLOBAL_ERROR_CODE_MAP: Record<number, (message: string) => unknown> = {
  * returns the properly categorized error (with retry categories for 5xx).
  * For unmapped 5xx codes (e.g., Cloudflare-specific 520-530), returns a
  * CloudflareHttpError so the status is preserved.
+ *
+ * Retryable errors carry an optional `retryAfter` parsed from the standard
+ * `Retry-After` / `RateLimit` response headers; the retry policy honors it.
  */
-function httpStatusError(status: number, body?: string): unknown {
+function httpStatusError(
+  status: number,
+  body?: string,
+  headers?: Record<string, string | undefined>,
+): unknown {
   const ErrorClass = HTTP_STATUS_MAP[status as keyof typeof HTTP_STATUS_MAP];
   const message = body ?? String(status);
   if (ErrorClass) {
-    return new ErrorClass({ message });
+    return new ErrorClass({
+      message,
+      retryAfter: parseRetryAfterForStatus(status, headers),
+    });
   }
   // For unmapped 5xx codes (e.g., Cloudflare-specific 520-530), use
   // InternalServerError so they get ServerError + Retryable categories
   if (status >= 500) {
-    return new InternalServerError({ message });
+    return new InternalServerError({
+      message,
+      retryAfter: parseRetryAfterForStatus(status, headers),
+    });
   }
   return new CloudflareHttpError({
     status,
@@ -192,6 +247,7 @@ const matchError = (
   status: number,
   errorBody: unknown,
   errors?: readonly ApiErrorClass[],
+  headers?: Record<string, string | undefined>,
 ): Effect.Effect<never, unknown> => {
   // Handle non-JSON error responses (e.g., HTML from malformed URLs, 520 pages)
   const isNonJsonError =
@@ -202,7 +258,7 @@ const matchError = (
     const message = String((errorBody as any).body);
     // For 5xx errors, return a properly categorized error so retries work
     if (status >= 500) {
-      return Effect.fail(httpStatusError(status, message));
+      return Effect.fail(httpStatusError(status, message, headers));
     }
     return Effect.fail(
       new CloudflareHttpError({
@@ -245,7 +301,7 @@ const matchError = (
     const bodyStr =
       typeof errorBody === "string" ? errorBody : JSON.stringify(errorBody);
     if (status >= 500) {
-      return Effect.fail(httpStatusError(status, bodyStr));
+      return Effect.fail(httpStatusError(status, bodyStr, headers));
     }
     return Effect.fail(
       new CloudflareHttpError({
@@ -305,7 +361,7 @@ const matchError = (
 
   // Check global error codes before falling through to unknown
   if (errorCode !== undefined && errorCode in GLOBAL_ERROR_CODE_MAP) {
-    return Effect.fail(GLOBAL_ERROR_CODE_MAP[errorCode](errorMessage));
+    return Effect.fail(GLOBAL_ERROR_CODE_MAP[errorCode](errorMessage, headers));
   }
 
   // Heuristic fallback:
@@ -378,6 +434,7 @@ const _API = makeAPI<Credentials>({
   ParseError: CloudflareDecodeError as any,
   transformRequestParts: ({ pathTemplate, parts }) =>
     transformCloudflareRequestParts({ pathTemplate, parts }),
+  retry: Retry as any,
 });
 
 const paginatePageByItems: PaginationStrategy = (

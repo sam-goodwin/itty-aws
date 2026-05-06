@@ -54,7 +54,7 @@ export const Property = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CustomOutputSpec {
   /** Optional. The custom source properties that can appear in findings. */
-  properties?: Array<Property>;
+  properties?: ReadonlyArray<Property>;
 }
 
 export const CustomOutputSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -63,7 +63,7 @@ export const CustomOutputSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ResourceSelector {
   /** Required. The resource types to run the detector on. Each custom module can specify up to 5 resource types. */
-  resourceTypes?: Array<string>;
+  resourceTypes?: ReadonlyArray<string>;
 }
 
 export const ResourceSelector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -118,7 +118,7 @@ export interface PolicyDetails {
   /** Information about the constraint that was violated. The format of this information can change at any time without prior notice. Your application must not depend on this information in any way. */
   constraint?: string;
   /** The compliance standards that the policy maps to. For example, `CIS-2.0 1.15`. */
-  complianceStandards?: Array<string>;
+  complianceStandards?: ReadonlyArray<string>;
   /** The type of constraint that was violated. */
   constraintType?:
     | "CONSTRAINT_TYPE_UNSPECIFIED"
@@ -205,7 +205,7 @@ export const Violation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IaCValidationReport {
   /** A list of every Violation found in the IaC configuration. */
-  violations?: Array<Violation>;
+  violations?: ReadonlyArray<Violation>;
   /** Additional information about the report. */
   note?: string;
 }
@@ -237,9 +237,9 @@ export interface ListReportsResponse {
   /** A pagination token. To retrieve the next page of results, call the method again with this token. */
   nextPageToken?: string;
   /** Locations that were temporarily unavailable and could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The list of Report resources. */
-  reports?: Array<Report>;
+  reports?: ReadonlyArray<Report>;
 }
 
 export const ListReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -250,7 +250,7 @@ export const ListReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ResourceTypes {
   /** Optional. The resource types we currently support. */
-  included?: Array<string>;
+  included?: ReadonlyArray<string>;
 }
 
 export const ResourceTypes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -291,7 +291,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
@@ -360,7 +360,7 @@ export interface PostureDeployment {
   /** Required. The posture used in the deployment, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. */
   postureId?: string;
   /** Output only. The categories that the posture deployment belongs to, as determined by the Security Posture API. */
-  categories?: Array<
+  categories?: ReadonlyArray<
     "CATEGORY_UNSPECIFIED" | "AI" | "AWS" | "GCP" | "AZURE" | (string & {})
   >;
   /** Output only. Whether the posture deployment is in the process of being updated. */
@@ -389,9 +389,9 @@ export const PostureDeployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListPostureDeploymentsResponse {
   /** The list of PostureDeployment resources. */
-  postureDeployments?: Array<PostureDeployment>;
+  postureDeployments?: ReadonlyArray<PostureDeployment>;
   /** Locations that were temporarily unavailable and could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A pagination token. To retrieve the next page of results, call the method again with this token. */
   nextPageToken?: string;
 }
@@ -457,11 +457,11 @@ export const SecurityHealthAnalyticsCustomModule =
 
 export interface GoogleCloudSecuritypostureV1CustomConstraint {
   /** Immutable. The resource type that the constraint applies to, in the format `{canonical_service_name}/{resource_type_name}`. For example, `compute.googleapis.com/Instance`. */
-  resourceTypes?: Array<string>;
+  resourceTypes?: ReadonlyArray<string>;
   /** Whether to allow or deny the action. */
   actionType?: "ACTION_TYPE_UNSPECIFIED" | "ALLOW" | "DENY" | (string & {});
   /** The types of operations that the constraint applies to. */
-  methodTypes?: Array<
+  methodTypes?: ReadonlyArray<
     "METHOD_TYPE_UNSPECIFIED" | "CREATE" | "UPDATE" | "DELETE" | (string & {})
   >;
   /** A Common Expression Language (CEL) condition expression that must evaluate to `true` for the constraint to be enforced. The maximum length is 1000 characters. For example: + `resource.instanceName.matches('(production|test)_(.+_)?[\d]+')`: Evaluates to `true` if the resource's `instanceName` attribute contains the following: + The prefix `production` or `test` + An underscore (`_`) + Optional: One or more characters, followed by an underscore (`_`) + One or more digits + `resource.management.auto_upgrade == true`: Evaluates to `true` if the resource's `management.auto_upgrade` attribute is `true`. */
@@ -490,9 +490,9 @@ export const GoogleCloudSecuritypostureV1CustomConstraint =
 
 export interface GoogleCloudSecuritypostureV1PolicyRuleStringValues {
   /** The allowed values for the constraint. */
-  allowedValues?: Array<string>;
+  allowedValues?: ReadonlyArray<string>;
   /** The denied values for the constraint. */
-  deniedValues?: Array<string>;
+  deniedValues?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudSecuritypostureV1PolicyRuleStringValues =
@@ -535,7 +535,7 @@ export interface OrgPolicyConstraintCustom {
   /** Required. Metadata for the constraint. */
   customConstraint?: GoogleCloudSecuritypostureV1CustomConstraint;
   /** Required. The rules enforced by the constraint. */
-  policyRules?: Array<GoogleCloudSecuritypostureV1PolicyRule>;
+  policyRules?: ReadonlyArray<GoogleCloudSecuritypostureV1PolicyRule>;
 }
 
 export const OrgPolicyConstraintCustom =
@@ -552,7 +552,7 @@ export interface OrgPolicyConstraint {
   /** Required. A unique identifier for the constraint. */
   cannedConstraintId?: string;
   /** Required. The rules enforced by the constraint. */
-  policyRules?: Array<GoogleCloudSecuritypostureV1PolicyRule>;
+  policyRules?: ReadonlyArray<GoogleCloudSecuritypostureV1PolicyRule>;
 }
 
 export const OrgPolicyConstraint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -588,7 +588,7 @@ export interface Policy {
   /** Required. A user-specified identifier for the policy. In a PolicySet, each policy must have a unique identifier. */
   policyId?: string;
   /** Optional. The compliance standards that the policy helps enforce. */
-  complianceStandards?: Array<ComplianceStandard>;
+  complianceStandards?: ReadonlyArray<ComplianceStandard>;
   /** Required. The constraints that the policy includes. */
   constraint?: Constraint;
 }
@@ -606,7 +606,7 @@ export interface PolicySet {
   /** Required. An identifier for the policy set. */
   policySetId?: string;
   /** Required. The Policy resources in the policy set. Each policy must have a policy_id that's unique within the policy set. */
-  policies?: Array<Policy>;
+  policies?: ReadonlyArray<Policy>;
 }
 
 export const PolicySet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -619,7 +619,7 @@ export interface Posture {
   /** Optional. A description of the posture. */
   description?: string;
   /** Required. The PolicySet resources that the posture includes. */
-  policySets?: Array<PolicySet>;
+  policySets?: ReadonlyArray<PolicySet>;
   /** Required. The state of the posture at the specified `revision_id`. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -628,7 +628,7 @@ export interface Posture {
     | "ACTIVE"
     | (string & {});
   /** Output only. The categories that the posture belongs to, as determined by the Security Posture API. */
-  categories?: Array<
+  categories?: ReadonlyArray<
     "CATEGORY_UNSPECIFIED" | "AI" | "AWS" | "GCP" | "AZURE" | (string & {})
   >;
   /** Output only. The time at which the posture was created. */
@@ -663,7 +663,7 @@ export const Posture = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListPostureRevisionsResponse {
   /** The list of revisions for the Posture. */
-  revisions?: Array<Posture>;
+  revisions?: ReadonlyArray<Posture>;
   /** A pagination token. To retrieve the next page of results, call the method again with this token. */
   nextPageToken?: string;
 }
@@ -678,13 +678,13 @@ export interface PostureTemplate {
   /** Output only. The state of the posture template at the specified `revision_id`. */
   state?: "STATE_UNSPECIFIED" | "ACTIVE" | "DEPRECATED" | (string & {});
   /** Output only. The categories that the posture template belongs to, as determined by the Security Posture API. */
-  categories?: Array<
+  categories?: ReadonlyArray<
     "CATEGORY_UNSPECIFIED" | "AI" | "AWS" | "GCP" | "AZURE" | (string & {})
   >;
   /** Output only. A string that identifies the revision of the posture template. */
   revisionId?: string;
   /** Output only. The PolicySet resources that the posture template includes. */
-  policySets?: Array<PolicySet>;
+  policySets?: ReadonlyArray<PolicySet>;
   /** Output only. Identifier. The name of the posture template, in the format `organizations/{organization}/locations/global/postureTemplates/{posture_template}`. */
   name?: string;
   /** Output only. A description of the posture template. */
@@ -702,7 +702,7 @@ export const PostureTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListPostureTemplatesResponse {
   /** The list of PostureTemplate resources. */
-  postureTemplates?: Array<PostureTemplate>;
+  postureTemplates?: ReadonlyArray<PostureTemplate>;
   /** A pagination token. To retrieve the next page of results, call the method again with this token. */
   nextPageToken?: string;
 }
@@ -715,11 +715,11 @@ export const ListPostureTemplatesResponse =
 
 export interface ListPosturesResponse {
   /** The list of Posture resources. */
-  postures?: Array<Posture>;
+  postures?: ReadonlyArray<Posture>;
   /** A pagination token. To retrieve the next page of results, call the method again with this token. */
   nextPageToken?: string;
   /** Locations that were temporarily unavailable and could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListPosturesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -732,9 +732,9 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -801,7 +801,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
 }
 
 export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -828,11 +828,7 @@ export const PatchOrganizationsLocationsPostureDeploymentsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(PostureDeployment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/postureDeployments/{postureDeploymentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsLocationsPostureDeploymentsRequest>;
 
@@ -866,10 +862,7 @@ export const DeleteOrganizationsLocationsPostureDeploymentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/postureDeployments/{postureDeploymentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsLocationsPostureDeploymentsRequest>;
 
@@ -900,10 +893,7 @@ export const GetOrganizationsLocationsPostureDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/postureDeployments/{postureDeploymentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsPostureDeploymentsRequest>;
 
@@ -944,10 +934,7 @@ export const ListOrganizationsLocationsPostureDeploymentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/postureDeployments",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/postureDeployments" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsPostureDeploymentsRequest>;
 
@@ -993,7 +980,7 @@ export const CreateOrganizationsLocationsPostureDeploymentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/postureDeployments",
+      path: "v1/{parent}/postureDeployments",
       hasBody: true,
     }),
     svc,
@@ -1035,10 +1022,7 @@ export const ListOrganizationsLocationsPostureTemplatesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/postureTemplates",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/postureTemplates" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsPostureTemplatesRequest>;
 
@@ -1077,10 +1061,7 @@ export const GetOrganizationsLocationsPostureTemplatesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     revisionId: Schema.optional(Schema.String).pipe(T.HttpQuery("revisionId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/postureTemplates/{postureTemplatesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsPostureTemplatesRequest>;
 
@@ -1111,10 +1092,7 @@ export const GetOrganizationsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsOperationsRequest>;
 
@@ -1148,11 +1126,7 @@ export const CancelOrganizationsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelOrganizationsLocationsOperationsRequest>;
 
@@ -1197,10 +1171,7 @@ export const ListOrganizationsLocationsOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsOperationsRequest>;
 
@@ -1236,10 +1207,7 @@ export const DeleteOrganizationsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsLocationsOperationsRequest>;
 
@@ -1279,10 +1247,7 @@ export const ListOrganizationsLocationsReportsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/reports",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/reports" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsReportsRequest>;
 
@@ -1317,10 +1282,7 @@ export const GetOrganizationsLocationsReportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/reports/{reportsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsReportsRequest>;
 
@@ -1356,7 +1318,7 @@ export const CreateIaCValidationReportOrganizationsLocationsReportsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/reports:createIaCValidationReport",
+      path: "v1/{parent}/reports:createIaCValidationReport",
       hasBody: true,
     }),
     svc,
@@ -1396,7 +1358,7 @@ export const ExtractOrganizationsLocationsPosturesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/postures:extract",
+      path: "v1/{parent}/postures:extract",
       hasBody: true,
     }),
     svc,
@@ -1435,11 +1397,7 @@ export const CreateOrganizationsLocationsPosturesRequest =
     postureId: Schema.optional(Schema.String).pipe(T.HttpQuery("postureId")),
     body: Schema.optional(Posture).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/postures",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/postures", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsLocationsPosturesRequest>;
 
@@ -1479,10 +1437,7 @@ export const ListOrganizationsLocationsPosturesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/postures",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/postures" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsPosturesRequest>;
 
@@ -1523,10 +1478,7 @@ export const ListRevisionsOrganizationsLocationsPosturesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/postures/{posturesId}:listRevisions",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:listRevisions" }),
     svc,
   ) as unknown as Schema.Schema<ListRevisionsOrganizationsLocationsPosturesRequest>;
 
@@ -1565,10 +1517,7 @@ export const GetOrganizationsLocationsPosturesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     revisionId: Schema.optional(Schema.String).pipe(T.HttpQuery("revisionId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/postures/{posturesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsPosturesRequest>;
 
@@ -1602,10 +1551,7 @@ export const DeleteOrganizationsLocationsPosturesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/postures/{posturesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsLocationsPosturesRequest>;
 
@@ -1645,11 +1591,7 @@ export const PatchOrganizationsLocationsPosturesRequest =
     revisionId: Schema.optional(Schema.String).pipe(T.HttpQuery("revisionId")),
     body: Schema.optional(Posture).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/postures/{posturesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsLocationsPosturesRequest>;
 
@@ -1694,7 +1636,7 @@ export const ListProjectsLocationsRequest =
       T.HttpQuery("extraLocationTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -1729,10 +1671,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 

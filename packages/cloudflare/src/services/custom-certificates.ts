@@ -188,6 +188,8 @@ export const getCustomCertificate: API.OperationMethod<
 export interface ListCustomCertificatesRequest {
   /** Path param: Identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Whether to match all search requirements or at least one (any). */
   match?: "any" | "all";
   /** Query param: Status of the zone's custom SSL. */
@@ -197,6 +199,8 @@ export interface ListCustomCertificatesRequest {
 export const ListCustomCertificatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     match: Schema.optional(Schema.Literals(["any", "all"])).pipe(
       T.HttpQuery("match"),
     ),

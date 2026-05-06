@@ -89,6 +89,8 @@ export const getSchema: API.OperationMethod<
 export interface ListSchemasRequest {
   /** Path param: Identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Omit the source-files of schemas and only retrieve their meta-data. */
   omitSource?: boolean;
   /** Query param: Filter for enabled schemas */
@@ -97,6 +99,8 @@ export interface ListSchemasRequest {
 
 export const ListSchemasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   omitSource: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("omit_source")),
   validationEnabled: Schema.optional(Schema.Boolean).pipe(
     T.HttpQuery("validation_enabled"),
@@ -617,11 +621,15 @@ export const getSettingOperation: API.OperationMethod<
 export interface ListSettingOperationsRequest {
   /** Path param: Identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListSettingOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   }).pipe(
     T.Http({
       method: "GET",

@@ -158,7 +158,7 @@ export interface Deployment {
   /** Last modified date time stamp. */
   updateTime?: string;
   /** The deployment's entry points. */
-  entryPoints?: Array<EntryPoint>;
+  entryPoints?: ReadonlyArray<EntryPoint>;
 }
 
 export const Deployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -186,7 +186,7 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 
 export interface ListDeploymentsResponse {
   /** The list of deployments. */
-  deployments?: Array<Deployment>;
+  deployments?: ReadonlyArray<Deployment>;
   /** The token that can be used in the next call to get the next page of results. */
   nextPageToken?: string;
 }
@@ -214,11 +214,11 @@ export const MetricsValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Metrics {
   /** Number of active users. */
-  activeUsers?: Array<MetricsValue>;
+  activeUsers?: ReadonlyArray<MetricsValue>;
   /** Number of total executions. */
-  totalExecutions?: Array<MetricsValue>;
+  totalExecutions?: ReadonlyArray<MetricsValue>;
   /** Number of failed executions. */
-  failedExecutions?: Array<MetricsValue>;
+  failedExecutions?: ReadonlyArray<MetricsValue>;
 }
 
 export const Metrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -292,7 +292,7 @@ export const GoogleAppsScriptTypeProcess =
 
 export interface ListScriptProcessesResponse {
   /** List of processes matching request parameters. */
-  processes?: Array<GoogleAppsScriptTypeProcess>;
+  processes?: ReadonlyArray<GoogleAppsScriptTypeProcess>;
   /** Token for the next page of results. If empty, there are no more pages remaining. */
   nextPageToken?: string;
 }
@@ -305,7 +305,7 @@ export const ListScriptProcessesResponse =
 
 export interface ListUserProcessesResponse {
   /** List of processes matching request parameters. */
-  processes?: Array<GoogleAppsScriptTypeProcess>;
+  processes?: ReadonlyArray<GoogleAppsScriptTypeProcess>;
   /** Token for the next page of results. If empty, there are no more pages remaining. */
   nextPageToken?: string;
 }
@@ -378,7 +378,7 @@ export interface GoogleAppsScriptTypeFunction {
   /** The function name in the script project. */
   name?: string;
   /** The ordered list of parameter names of the function in the script project. */
-  parameters?: Array<string>;
+  parameters?: ReadonlyArray<string>;
 }
 
 export const GoogleAppsScriptTypeFunction =
@@ -389,7 +389,7 @@ export const GoogleAppsScriptTypeFunction =
 
 export interface GoogleAppsScriptTypeFunctionSet {
   /** A list of functions composing the set. */
-  values?: Array<GoogleAppsScriptTypeFunction>;
+  values?: ReadonlyArray<GoogleAppsScriptTypeFunction>;
 }
 
 export const GoogleAppsScriptTypeFunctionSet =
@@ -433,7 +433,7 @@ export interface Content {
   /** The script project's Drive ID. */
   scriptId?: string;
   /** The list of script project files. One of the files is a script manifest; it must be named "appsscript", must have type of JSON, and include the manifest configurations for the project. */
-  files?: Array<File>;
+  files?: ReadonlyArray<File>;
 }
 
 export const Content = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -461,7 +461,7 @@ export const Version = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListVersionsResponse {
   /** The list of versions. */
-  versions?: Array<Version>;
+  versions?: ReadonlyArray<Version>;
   /** The token use to fetch the next page of records. if not exist in the response, that means no more versions to list. */
   nextPageToken?: string;
 }
@@ -475,7 +475,7 @@ export interface ExecutionRequest {
   /** The name of the function to execute in the given script. The name does not include parentheses or parameters. It can reference a function in an included library such as `Library.libFunction1`. */
   function?: string;
   /** The parameters to be passed to the function being executed. The object type for each parameter should match the expected type in Apps Script. Parameters cannot be Apps Script-specific object types (such as a `Document` or a `Calendar`); they can only be primitive types such as `string`, `number`, `array`, `object`, or `boolean`. Optional. */
-  parameters?: Array<unknown>;
+  parameters?: ReadonlyArray<unknown>;
   /** *Deprecated*. For use with Android add-ons only. An ID that represents the user's current session in the Android app for Google Docs or Sheets, included as extra data in the [Intent](https://developer.android.com/guide/components/intents-filters.html) that launches the add-on. When an Android add-on is run with a session state, it gains the privileges of a [bound](https://developers.google.com/apps-script/guides/bound) script—that is, it can access information like the user's current cursor position (in Docs) or selected cell (in Sheets). To retrieve the state, call `Intent.getStringExtra("com.google.android.apps.docs.addons.SessionState")`. Optional. */
   sessionState?: string;
   /** If `true` and the user is an owner of the script, the script runs at the most recently saved version rather than the version deployed for use with the Apps Script API. Optional; default is `false`. */
@@ -495,7 +495,7 @@ export interface Status {
   /** A developer-facing error message, which is in English. Any user-facing error message is localized and sent in the details field, or localized by the client. */
   message?: string;
   /** An array that contains a single ExecutionError object that provides information about the nature of the error. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -536,7 +536,7 @@ export const ScriptStackTraceElement =
 
 export interface ExecutionError {
   /** An array of objects that provide a stack trace through the script to show where the execution failed, with the deepest call first. */
-  scriptStackTraceElements?: Array<ScriptStackTraceElement>;
+  scriptStackTraceElements?: ReadonlyArray<ScriptStackTraceElement>;
   /** The error message thrown by Apps Script, usually localized into the user's language. */
   errorMessage?: string;
   /** The error type, for example `TypeError` or `ReferenceError`. If the error type is unavailable, this field is not included. */

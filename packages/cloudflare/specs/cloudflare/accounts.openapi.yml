@@ -380,6 +380,11 @@ paths:
           description: "Path param: The unique id that identifies the account."
           schema:
             type: string
+        - name: cursor
+          in: query
+          required: false
+          schema:
+            type: string
         - name: before
           in: query
           required: true
@@ -1331,6 +1336,16 @@ paths:
           description: "Path param: Account identifier tag."
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: direction
           in: query
           required: false
@@ -1931,6 +1946,16 @@ paths:
           description: "Path param: Account identifier tag."
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
       responses:
         "200":
           description: Success
@@ -2895,6 +2920,16 @@ paths:
           description: "Path param: Account identifier tag."
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: direction
           in: query
           required: false

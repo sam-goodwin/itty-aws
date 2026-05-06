@@ -25,11 +25,13 @@
  * const result = yield* fn({ organization: "my-org" });
  * ```
  */
-import * as Duration from "effect/Duration";
+import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
+import { pipe } from "effect/Function";
+import * as Option from "effect/Option";
 import { pipeArguments } from "effect/Pipeable";
 import { MinimumLogLevel } from "effect/References";
-import * as Schedule from "effect/Schedule";
+import * as Ref from "effect/Ref";
 import * as Schema from "effect/Schema";
 import * as AST from "effect/SchemaAST";
 import * as Stream from "effect/Stream";
@@ -45,7 +47,7 @@ import {
   type PaginatedTrait,
   type PaginationStrategy,
 } from "./pagination.ts";
-import * as Category from "./category.ts";
+import { makeDefault, type Policy as RetryPolicy } from "./retry.ts";
 import * as Traits from "./traits.ts";
 import { getPath } from "./traits.ts";
 
@@ -143,11 +145,21 @@ export interface ClientConfig<Creds> {
    *  Should return Effect.fail(error) for known errors,
    *  or Effect.fail(fallbackError) for unknown errors.
    *  The optional `errors` parameter provides per-operation typed error classes.
+   *  The optional `headers` parameter is the response header bag (lowercase
+   *  keys) — for retryable status codes, pass `retryAfter: parseRetryAfterForStatus(status, headers)`
+   *  from `@distilled.cloud/core/retry-after` when a standard `Retry-After` /
+   *  `RateLimit` hint is present; omit `retryAfter` when there is no hint (the
+   *  default retry policy still uses exponential backoff). The status-gated
+   *  helper avoids attaching stale `retryAfter` to non-retryable classes
+   *  (BadRequest/401/404/etc.). The maximum honored hint is capped (default
+   *  60s) — override with \`DISTILLED_SERVER_RETRY_HINT_CAP_MS\` or provide
+   *  \`ServerRetryHintCapMs\` via \`Layer\` from \`@distilled.cloud/core/retry\`.
    */
   matchError: (
     status: number,
     body: unknown,
     errors?: readonly ApiErrorClass[],
+    headers?: Record<string, string | undefined>,
   ) => Effect.Effect<never, unknown>;
 
   /** Parse error class for schema decode failures */
@@ -169,6 +181,20 @@ export interface ClientConfig<Creds> {
     pathTemplate: string;
     parts: Traits.RequestParts;
   }) => Traits.RequestParts;
+
+  /**
+   * The SDK's `Retry` Context.Service tag. Each per-SDK client wires its
+   * own tag here so callers can install a blanket policy at the layer
+   * level (e.g. `myEffect.pipe(Cloudflare.Retry.transient)`) and have
+   * every API call below it pick it up — same pattern as
+   * `packages/aws/src/client/api.ts`.
+   *
+   * `makeAPI` reads the policy via `Effect.serviceOption(retry)` on every
+   * call and falls back to `Retry.makeDefault` (transient/throttling/server
+   * with capped exponential backoff + jitter, 5 attempts) when no policy
+   * is provided.
+   */
+  retry: Context.Key<any, RetryPolicy>;
 }
 
 /**
@@ -408,19 +434,6 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
 
       const method = httpTrait.method;
 
-      // Capped exponential backoff bounded to 8 attempts so a
-      // pathologically rate-limited endpoint can't hang a test run.
-      // Effect 4's `Schedule.exponential(base, factor)` already produces
-      // delays of base, base*factor, base*factor^2, ...; combined with
-      // `Schedule.both(Schedule.recurs(8))` to cap retries. We don't
-      // currently honour Retry-After (would require a per-attempt Ref);
-      // the exponential ramp is conservative enough for the rate limits
-      // we hit in practice.
-      const throttlingRetrySchedule = Schedule.both(
-        Schedule.exponential(Duration.seconds(1), 2),
-        Schedule.recurs(8),
-      );
-
       const spanName = `${method} ${httpTrait.path}`;
 
       const innerFn = (input: Input): Effect.Effect<any, any, any> =>
@@ -603,6 +616,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
               response.status,
               errorBody,
               opConfig.errors,
+              response.headers,
             );
           }
 
@@ -651,6 +665,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
                 response.status,
                 envelope,
                 opConfig.errors,
+                response.headers,
               );
             }
             responseBody = envelope?.data ?? null;
@@ -697,18 +712,39 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
           );
         });
 
-      // Auto-retry whenever the SDK's matchError returns a typed error
-      // tagged with the throttling category (e.g. `TooManyRequests`,
-      // or any SDK-specific subclass marked with `withThrottlingError`
-      // / `withRetryable({ throttling: true })`). After retries are
-      // exhausted the original typed error propagates to the caller as
-      // usual.
+      // Auto-retry every operation using the SDK's per-client `Retry`
+      // Context.Service. The policy is read with `Effect.serviceOption`
+      // and falls back to `Retry.makeDefault` (transient/throttling/server
+      // errors with capped exponential backoff + jitter, 5 attempts) when
+      // no policy has been provided in context. This mirrors the AWS
+      // pattern in `packages/aws/src/client/api.ts` and lets callers
+      // install a blanket policy at the layer level instead of wrapping
+      // every call site with `Effect.retry(...)`.
+      const retryTag = config.retry;
       const fn = (input: Input): Effect.Effect<any, any, any> => {
-        const withRetry = innerFn(input).pipe(
-          Effect.retry({
-            schedule: throttlingRetrySchedule,
-            while: (e) => Category.isThrottling(e),
-          }),
+        const withRetry = Effect.gen(function* () {
+          const lastError = yield* Ref.make<unknown>(undefined);
+          const policy = (yield* Effect.serviceOption(retryTag)).pipe(
+            Option.map((value) =>
+              typeof value === "function" ? value(lastError) : value,
+            ),
+            Option.getOrElse(() => makeDefault(lastError)),
+          );
+
+          return yield* pipe(
+            innerFn(input),
+            Effect.tapError((error) => Ref.set(lastError, error)),
+            policy.while
+              ? (eff) =>
+                  Effect.retry(eff, {
+                    while: policy.while,
+                    schedule: policy.schedule,
+                  })
+              : (eff) => eff,
+          );
+        });
+
+        const withSpan = withRetry.pipe(
           Effect.withSpan(spanName, {
             attributes: {
               "http.method": method,
@@ -717,8 +753,8 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
           }),
         );
         return distilledDebugEnv
-          ? Effect.provideService(withRetry, MinimumLogLevel, "Debug")
-          : withRetry;
+          ? Effect.provideService(withSpan, MinimumLogLevel, "Debug")
+          : withSpan;
       };
 
       const Proto = {

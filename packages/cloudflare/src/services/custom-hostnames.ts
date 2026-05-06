@@ -845,6 +845,8 @@ export const getCustomHostname: API.OperationMethod<
 export interface ListCustomHostnamesRequest {
   /** Path param: Identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Hostname ID to match against. This ID was generated and returned during the initial custom_hostname creation. This parameter cannot be used with the 'hostname' parameter. */
   id?: string;
   /** Query param: Direction to order hostnames. */
@@ -860,6 +862,8 @@ export interface ListCustomHostnamesRequest {
 export const ListCustomHostnamesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
     direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
       T.HttpQuery("direction"),

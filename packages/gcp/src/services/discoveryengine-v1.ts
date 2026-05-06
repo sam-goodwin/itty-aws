@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface GoogleCloudDiscoveryengineV1AnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpec {
   /** Enabled query classification types. */
-  types?: Array<
+  types?: ReadonlyArray<
     | "TYPE_UNSPECIFIED"
     | "ADVERSARIAL_QUERY"
     | "NON_ANSWER_SEEKING_QUERY"
@@ -72,7 +72,7 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -89,7 +89,7 @@ export interface GoogleCloudDiscoveryengineV1DocumentIndexStatus {
   /** The time when the document was indexed. If this field is populated, it means the document has been indexed. While documents typically become searchable within seconds of indexing, it can sometimes take up to a few hours. */
   indexTime?: string;
   /** A sample of errors encountered while indexing the document. If this field is populated, the document is not indexed due to errors. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudDiscoveryengineV1DocumentIndexStatus =
@@ -119,7 +119,7 @@ export const GoogleCloudDiscoveryengineV1Principal =
 
 export interface GoogleCloudDiscoveryengineV1DocumentAclInfoAccessRestriction {
   /** List of principals. */
-  principals?: Array<GoogleCloudDiscoveryengineV1Principal>;
+  principals?: ReadonlyArray<GoogleCloudDiscoveryengineV1Principal>;
   /** All users within the Identity Provider. */
   idpWide?: boolean;
 }
@@ -136,7 +136,7 @@ export const GoogleCloudDiscoveryengineV1DocumentAclInfoAccessRestriction =
 
 export interface GoogleCloudDiscoveryengineV1DocumentAclInfo {
   /** Readers of the document. */
-  readers?: Array<GoogleCloudDiscoveryengineV1DocumentAclInfoAccessRestriction>;
+  readers?: ReadonlyArray<GoogleCloudDiscoveryengineV1DocumentAclInfoAccessRestriction>;
 }
 
 export const GoogleCloudDiscoveryengineV1DocumentAclInfo =
@@ -258,7 +258,7 @@ export const GoogleCloudDiscoveryengineV1Citation =
 
 export interface GoogleCloudDiscoveryengineV1CitationMetadata {
   /** Output only. List of citations. */
-  citations?: Array<GoogleCloudDiscoveryengineV1Citation>;
+  citations?: ReadonlyArray<GoogleCloudDiscoveryengineV1Citation>;
 }
 
 export const GoogleCloudDiscoveryengineV1CitationMetadata =
@@ -385,7 +385,7 @@ export interface GoogleCloudDiscoveryengineV1FetchDomainVerificationStatusRespon
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** List of TargetSites containing the site verification status. */
-  targetSites?: Array<GoogleCloudDiscoveryengineV1TargetSite>;
+  targetSites?: ReadonlyArray<GoogleCloudDiscoveryengineV1TargetSite>;
 }
 
 export const GoogleCloudDiscoveryengineV1FetchDomainVerificationStatusResponse =
@@ -476,7 +476,7 @@ export interface GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolation
   /** Optional. The name of the field whose value will be used to determine the boost amount. */
   fieldName?: string;
   /** Optional. The control points used to define the curve. The monotonic function (defined through the interpolation_type above) passes through the control points listed here. */
-  controlPoints?: Array<GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPoint>;
+  controlPoints?: ReadonlyArray<GoogleCloudDiscoveryengineV1betaControlBoostActionInterpolationBoostSpecControlPoint>;
   /** Optional. The attribute type to be used to determine the boost amount. The attribute value can be derived from the field value of the specified field_name. In the case of numerical it is straightforward i.e. attribute_value = numerical_field_value. In the case of freshness however, attribute_value = (time.now() - datetime_field_value). */
   attributeType?:
     | "ATTRIBUTE_TYPE_UNSPECIFIED"
@@ -548,7 +548,7 @@ export const GoogleCloudDiscoveryengineV1betaControlFilterAction =
 
 export interface GoogleCloudDiscoveryengineV1betaControlSynonymsAction {
   /** Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms. Otherwise an INVALID ARGUMENT error is thrown. */
-  synonyms?: Array<string>;
+  synonyms?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1betaControlSynonymsAction =
@@ -577,9 +577,9 @@ export interface GoogleCloudDiscoveryengineV1betaCondition {
   /** Optional. Query regex to match the whole search query. Cannot be set when Condition.query_terms is set. Only supported for Basic Site Search promotion serving controls. */
   queryRegex?: string;
   /** Range of time(s) specifying when condition is active. Maximum of 10 time ranges. */
-  activeTimeRange?: Array<GoogleCloudDiscoveryengineV1betaConditionTimeRange>;
+  activeTimeRange?: ReadonlyArray<GoogleCloudDiscoveryengineV1betaConditionTimeRange>;
   /** Search only A list of terms to match the query on. Cannot be set when Condition.query_regex is set. Maximum of 10 query terms. */
-  queryTerms?: Array<GoogleCloudDiscoveryengineV1betaConditionQueryTerm>;
+  queryTerms?: ReadonlyArray<GoogleCloudDiscoveryengineV1betaConditionQueryTerm>;
 }
 
 export const GoogleCloudDiscoveryengineV1betaCondition =
@@ -597,7 +597,7 @@ export interface GoogleCloudDiscoveryengineV1betaControl {
   /** Immutable. Fully qualified name `projects/* /locations/global/dataStore/* /controls/*` */
   name?: string;
   /** Specifies the use case for the control. Affects what condition fields can be set. Only applies to SOLUTION_TYPE_SEARCH. Currently only allow one use case per control. Must be set when solution_type is SolutionType.SOLUTION_TYPE_SEARCH. */
-  useCases?: Array<
+  useCases?: ReadonlyArray<
     | "SEARCH_USE_CASE_UNSPECIFIED"
     | "SEARCH_USE_CASE_SEARCH"
     | "SEARCH_USE_CASE_BROWSE"
@@ -614,7 +614,7 @@ export interface GoogleCloudDiscoveryengineV1betaControl {
   /** Defines a filter-type control Currently not supported by Recommendation */
   filterAction?: GoogleCloudDiscoveryengineV1betaControlFilterAction;
   /** Output only. List of all ServingConfig IDs this control is attached to. May take up to 10 minutes to update after changes. */
-  associatedServingConfigIds?: Array<string>;
+  associatedServingConfigIds?: ReadonlyArray<string>;
   /** Required. Immutable. What solution the control belongs to. Must be compatible with vertical of resource. Otherwise an INVALID ARGUMENT error is thrown. */
   solutionType?:
     | "SOLUTION_TYPE_UNSPECIFIED"
@@ -627,7 +627,7 @@ export interface GoogleCloudDiscoveryengineV1betaControl {
   /** Treats a group of terms as synonyms of one another. */
   synonymsAction?: GoogleCloudDiscoveryengineV1betaControlSynonymsAction;
   /** Determines when the associated action will trigger. Omit to always apply the action. Currently only a single condition may be specified. Otherwise an INVALID ARGUMENT error is thrown. */
-  conditions?: Array<GoogleCloudDiscoveryengineV1betaCondition>;
+  conditions?: ReadonlyArray<GoogleCloudDiscoveryengineV1betaCondition>;
 }
 
 export const GoogleCloudDiscoveryengineV1betaControl =
@@ -862,7 +862,7 @@ export const GoogleCloudDiscoveryengineV1SearchResponseSummaryCitationSource =
 
 export interface GoogleCloudDiscoveryengineV1SearchResponseSummaryCitation {
   /** Citation sources for the attributed segment. */
-  sources?: Array<GoogleCloudDiscoveryengineV1SearchResponseSummaryCitationSource>;
+  sources?: ReadonlyArray<GoogleCloudDiscoveryengineV1SearchResponseSummaryCitationSource>;
   /** End of the attributed segment, exclusive. */
   endIndex?: string;
   /** Index indicates the start of the segment, measured in bytes/unicode. */
@@ -890,7 +890,7 @@ export interface GoogleCloudDiscoveryengineV1alphaFieldConfig {
     | "DYNAMIC_FACETABLE_DISABLED"
     | (string & {});
   /** Field paths for indexing custom attribute from schema.org data. More details of schema.org and its defined types can be found at [schema.org](https://schema.org). It is only used on advanced site search schema. Currently only support full path from root. The full path to a field is constructed by concatenating field names, starting from `_root`, with a period `.` as the delimiter. Examples: * Publish date of the root: _root.datePublished * Publish date of the reviews: _root.review.datePublished */
-  schemaOrgPaths?: Array<string>;
+  schemaOrgPaths?: ReadonlyArray<string>;
   /** Output only. Raw type of the field. */
   fieldType?:
     | "FIELD_TYPE_UNSPECIFIED"
@@ -948,7 +948,7 @@ export interface GoogleCloudDiscoveryengineV1alphaFieldConfig {
     | "INDEXABLE_DISABLED"
     | (string & {});
   /** If this field is set, only the corresponding source will be indexed for this field. Otherwise, the values from different sources are merged. Assuming a page with `` in meta tag, and `` in page map: if this enum is set to METATAGS, we will only index ``; if this enum is not set, we will merge them and index ``. */
-  advancedSiteSearchDataSources?: Array<
+  advancedSiteSearchDataSources?: ReadonlyArray<
     | "ADVANCED_SITE_SEARCH_DATA_SOURCE_UNSPECIFIED"
     | "METATAGS"
     | "PAGEMAP"
@@ -983,7 +983,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSchema {
   /** The JSON representation of the schema. */
   jsonSchema?: string;
   /** Output only. Configurations for fields of the schema. */
-  fieldConfigs?: Array<GoogleCloudDiscoveryengineV1alphaFieldConfig>;
+  fieldConfigs?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaFieldConfig>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaSchema =
@@ -1033,9 +1033,9 @@ export const GoogleCloudDiscoveryengineV1UserLicense =
 
 export interface GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesResponse {
   /** UserLicenses successfully updated. */
-  userLicenses?: Array<GoogleCloudDiscoveryengineV1UserLicense>;
+  userLicenses?: ReadonlyArray<GoogleCloudDiscoveryengineV1UserLicense>;
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesResponse =
@@ -1091,7 +1091,7 @@ export const GoogleCloudDiscoveryengineV1alphaDisableAdvancedSiteSearchMetadata 
 
 export interface A2aV1AuthenticationInfo {
   /** Supported authentication schemes - e.g. Basic, Bearer, etc */
-  schemes?: Array<string>;
+  schemes?: ReadonlyArray<string>;
   /** Optional credentials */
   credentials?: string;
 }
@@ -1212,7 +1212,7 @@ export const GoogleCloudDiscoveryengineV1alphaAnswerCitationSource =
 
 export interface GoogleCloudDiscoveryengineV1alphaAnswerCitation {
   /** Citation sources for the attributed segment. */
-  sources?: Array<GoogleCloudDiscoveryengineV1alphaAnswerCitationSource>;
+  sources?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerCitationSource>;
   /** Index indicates the start of the segment, measured in bytes (UTF-8 unicode). If there are multi-byte characters,such as non-ASCII characters, the index measurement is longer than the string length. */
   startIndex?: string;
   /** End of the attributed segment, exclusive. Measured in bytes (UTF-8 unicode). If there are multi-byte characters,such as non-ASCII characters, the index measurement is longer than the string length. */
@@ -1255,7 +1255,7 @@ export const GoogleCloudDiscoveryengineV1alphaAnswerQueryUnderstandingInfoQueryC
 
 export interface GoogleCloudDiscoveryengineV1alphaAnswerQueryUnderstandingInfo {
   /** Query classification information. */
-  queryClassificationInfo?: Array<GoogleCloudDiscoveryengineV1alphaAnswerQueryUnderstandingInfoQueryClassificationInfo>;
+  queryClassificationInfo?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerQueryUnderstandingInfoQueryClassificationInfo>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaAnswerQueryUnderstandingInfo =
@@ -1308,11 +1308,11 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSea
   /** Document resource name. */
   document?: string;
   /** If citation_type is CHUNK_LEVEL_CITATION and chunk mode is on, populate chunk info. */
-  chunkInfo?: Array<GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResultChunkInfo>;
+  chunkInfo?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResultChunkInfo>;
   /** Data representation. The structured JSON data for the document. It's populated from the struct data from the Document, or the Chunk in search result. */
   structData?: Record<string, unknown>;
   /** If citation_type is DOCUMENT_LEVEL_CITATION, populate document level snippets. */
-  snippetInfo?: Array<GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResultSnippetInfo>;
+  snippetInfo?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResultSnippetInfo>;
   /** Title. */
   title?: string;
   /** URI for the document. */
@@ -1342,7 +1342,7 @@ export const GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchR
 
 export interface GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservation {
   /** Search results observed by the search action, it can be snippets info or chunk info, depending on the citation type set by the user. */
-  searchResults?: Array<GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResult>;
+  searchResults?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResult>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservation =
@@ -1389,7 +1389,7 @@ export const GoogleCloudDiscoveryengineV1alphaAnswerStepAction =
 
 export interface GoogleCloudDiscoveryengineV1alphaAnswerStep {
   /** Actions. */
-  actions?: Array<GoogleCloudDiscoveryengineV1alphaAnswerStepAction>;
+  actions?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerStepAction>;
   /** The state of the step. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -1479,7 +1479,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDoc
   /** Chunk textual content. */
   content?: string;
   /** Output only. Stores indexes of blobattachments linked to this chunk. */
-  blobAttachmentIndexes?: Array<string>;
+  blobAttachmentIndexes?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfoChunkContent =
@@ -1495,7 +1495,7 @@ export const GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumen
 
 export interface GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfo {
   /** List of cited chunk contents derived from document content. */
-  chunkContents?: Array<GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfoChunkContent>;
+  chunkContents?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfoChunkContent>;
   /** The structured JSON metadata for the document. It is populated from the struct data from the Chunk in search result. */
   structData?: Record<string, unknown>;
   /** Document resource name. */
@@ -1551,7 +1551,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo {
   /** Document metadata. */
   documentMetadata?: GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfoDocumentMetadata;
   /** Output only. Stores indexes of blobattachments linked to this chunk. */
-  blobAttachmentIndexes?: Array<string>;
+  blobAttachmentIndexes?: ReadonlyArray<string>;
   /** The relevance of the chunk for a given query. Values range from 0.0 (completely irrelevant) to 1.0 (completely relevant). This value is for informational purpose only. It may change for the same query and chunk at any time due to a model retraining or change in implementation. */
   relevanceScore?: number;
   /** Chunk textual content. */
@@ -1607,7 +1607,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswerGroundingSupport {
   /** A score in the range of [0, 1] describing how grounded is a specific claim by the references. Higher value means that the claim is better supported by the reference chunks. */
   groundingScore?: number;
   /** Optional. Citation sources for the claim. */
-  sources?: Array<GoogleCloudDiscoveryengineV1alphaAnswerCitationSource>;
+  sources?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerCitationSource>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaAnswerGroundingSupport =
@@ -1669,15 +1669,15 @@ export const GoogleCloudDiscoveryengineV1alphaSafetyRating =
 
 export interface GoogleCloudDiscoveryengineV1alphaAnswer {
   /** Citations. */
-  citations?: Array<GoogleCloudDiscoveryengineV1alphaAnswerCitation>;
+  citations?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerCitation>;
   /** Output only. Answer creation timestamp. */
   createTime?: string;
   /** Query understanding information. */
   queryUnderstandingInfo?: GoogleCloudDiscoveryengineV1alphaAnswerQueryUnderstandingInfo;
   /** Answer generation steps. */
-  steps?: Array<GoogleCloudDiscoveryengineV1alphaAnswerStep>;
+  steps?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerStep>;
   /** Output only. List of blob attachments in the answer. */
-  blobAttachments?: Array<GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachment>;
+  blobAttachments?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerBlobAttachment>;
   /** The state of the answer generation. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -1691,19 +1691,19 @@ export interface GoogleCloudDiscoveryengineV1alphaAnswer {
   /** A score in the range of [0, 1] describing how grounded the answer is by the reference chunks. */
   groundingScore?: number;
   /** References. */
-  references?: Array<GoogleCloudDiscoveryengineV1alphaAnswerReference>;
+  references?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerReference>;
   /** Suggested related questions. */
-  relatedQuestions?: Array<string>;
+  relatedQuestions?: ReadonlyArray<string>;
   /** The textual answer. */
   answerText?: string;
   /** Optional. Grounding supports. */
-  groundingSupports?: Array<GoogleCloudDiscoveryengineV1alphaAnswerGroundingSupport>;
+  groundingSupports?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAnswerGroundingSupport>;
   /** Output only. Answer completed timestamp. */
   completeTime?: string;
   /** Optional. Safety ratings. */
-  safetyRatings?: Array<GoogleCloudDiscoveryengineV1alphaSafetyRating>;
+  safetyRatings?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSafetyRating>;
   /** Additional answer-skipped reasons. This provides the reason for ignored cases. If nothing is skipped, this field is not set. */
-  answerSkippedReasons?: Array<
+  answerSkippedReasons?: ReadonlyArray<
     | "ANSWER_SKIPPED_REASON_UNSPECIFIED"
     | "ADVERSARIAL_QUERY_IGNORED"
     | "NON_ANSWER_SEEKING_QUERY_IGNORED"
@@ -1988,7 +1988,7 @@ export interface GoogleCloudDiscoveryengineV1betaImportUserEventsResponse {
   /** Count of user events imported, but with Document information not found in the existing Branch. */
   unjoinedEventsCount?: string;
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
   /** Echoes the destination for the complete errors if this field was set in the request. */
   errorConfig?: GoogleCloudDiscoveryengineV1betaImportErrorConfig;
 }
@@ -2053,7 +2053,7 @@ export interface GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConf
   /** If true, will use native text instead of OCR text on pages containing native text. */
   useNativeText?: boolean;
   /** [DEPRECATED] This field is deprecated. To use the additional enhanced document elements processing, please switch to `layout_parsing_config`. */
-  enhancedDocumentElements?: Array<string>;
+  enhancedDocumentElements?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigOcrParsingConfig =
@@ -2069,19 +2069,19 @@ export interface GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConf
   /** Optional. If true, the processed document will be made available for the GetProcessedDocument API. */
   enableGetProcessedDocument?: boolean;
   /** Optional. List of HTML classes to exclude from the parsed content. */
-  excludeHtmlClasses?: Array<string>;
+  excludeHtmlClasses?: ReadonlyArray<string>;
   /** Optional. If true, the pdf layout will be refined using an LLM. */
   enableLlmLayoutParsing?: boolean;
   /** Optional. List of HTML elements to exclude from the parsed content. */
-  excludeHtmlElements?: Array<string>;
+  excludeHtmlElements?: ReadonlyArray<string>;
   /** Optional. Contains the required structure types to extract from the document. Supported values: * `shareholder-structure` */
-  structuredContentTypes?: Array<string>;
+  structuredContentTypes?: ReadonlyArray<string>;
   /** Optional. If true, the LLM based annotation is added to the table during parsing. */
   enableTableAnnotation?: boolean;
   /** Optional. If true, the LLM based annotation is added to the image during parsing. */
   enableImageAnnotation?: boolean;
   /** Optional. List of HTML ids to exclude from the parsed content. */
-  excludeHtmlIds?: Array<string>;
+  excludeHtmlIds?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig =
@@ -2188,7 +2188,7 @@ export interface GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloy
   /** Required. Configuration for connecting to AlloyDB. */
   alloydbConnectionConfig?: GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig;
   /** Optional. Fields to be returned in the search results. If empty, all fields will be returned. */
-  returnedFields?: Array<string>;
+  returnedFields?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1DataStoreFederatedSearchConfigAlloyDbConfig =
@@ -2239,7 +2239,7 @@ export interface GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsResp
   /** Whether the completion suggestions were successfully purged. */
   purgeSucceeded?: boolean;
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsResponse =
@@ -2356,7 +2356,7 @@ export interface GoogleCloudDiscoveryengineV1HealthcareFhirConfig {
   /** Whether to enable static indexing for `HEALTHCARE_FHIR` batch ingestion. If set to `true`, the batch ingestion will be processed in a static indexing mode which is slower but more capable of handling larger volume. */
   enableStaticIndexingForBatchIngestion?: boolean;
   /** Optional. Names of the Group resources to use as a basis for the initial patient filter, in format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Group/{group_id}`. The filter group must be a FHIR resource name of type Group, and the filter will be constructed from the direct members of the group which are Patient resources. */
-  initialFilterGroups?: Array<string>;
+  initialFilterGroups?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1HealthcareFhirConfig =
@@ -2549,7 +2549,7 @@ export interface GoogleCloudDiscoveryengineV1CmekConfig {
   /** Output only. The timestamp of the last key rotation. */
   lastRotationTimestampMicros?: string;
   /** Optional. Single-regional CMEKs that are required for some VAIS features. */
-  singleRegionKeys?: Array<GoogleCloudDiscoveryengineV1SingleRegionKey>;
+  singleRegionKeys?: ReadonlyArray<GoogleCloudDiscoveryengineV1SingleRegionKey>;
   /** Required. KMS key resource name which will be used to encrypt resources `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`. */
   kmsKey?: string;
   /** Required. The name of the CmekConfig of the form `projects/{project}/locations/{location}/cmekConfig` or `projects/{project}/locations/{location}/cmekConfigs/{cmek_config}`. */
@@ -2620,7 +2620,7 @@ export interface GoogleCloudDiscoveryengineV1DataStore {
   /** Optional. Configuration for Natural Language Query Understanding. */
   naturalLanguageQueryUnderstandingConfig?: GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingConfig;
   /** The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`: `SOLUTION_TYPE_RECOMMENDATION` and `SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is automatically enrolled. Other solutions cannot be enrolled. */
-  solutionTypes?: Array<
+  solutionTypes?: ReadonlyArray<
     | "SOLUTION_TYPE_UNSPECIFIED"
     | "SOLUTION_TYPE_RECOMMENDATION"
     | "SOLUTION_TYPE_SEARCH"
@@ -2738,7 +2738,7 @@ export const GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySp
 
 export interface GoogleApiHttpBody {
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
-  extensions?: Array<Record<string, unknown>>;
+  extensions?: ReadonlyArray<Record<string, unknown>>;
   /** The HTTP request/response body as raw binary. */
   data?: string;
   /** The HTTP Content-Type header value specifying the content type of the body. */
@@ -3097,7 +3097,7 @@ export interface A2aV1Message {
   /** protolint:enable REPEATED_FIELD_NAMES_PLURALIZED Any optional metadata to provide along with the message. */
   metadata?: Record<string, unknown>;
   /** protolint:disable REPEATED_FIELD_NAMES_PLURALIZED Content is the container of the message content. */
-  content?: Array<A2aV1Part>;
+  content?: ReadonlyArray<A2aV1Part>;
   /** A role for the message. */
   role?: "ROLE_UNSPECIFIED" | "ROLE_USER" | "ROLE_AGENT" | (string & {});
   /** The unique identifier (e.g. UUID)of the message. This is required and created by the message creator. */
@@ -3107,7 +3107,7 @@ export interface A2aV1Message {
   /** The context id of the message. This is optional and if set, the message will be associated with the given context. */
   contextId?: string;
   /** The URIs of extensions that are present or contributed to this Message. */
-  extensions?: Array<string>;
+  extensions?: ReadonlyArray<string>;
 }
 
 export const A2aV1Message = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3195,7 +3195,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpecEmbe
   /** Embedding field path in schema. */
   fieldPath?: string;
   /** Query embedding vector. */
-  vector?: Array<number>;
+  vector?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpecEmbeddingVector =
@@ -3306,7 +3306,7 @@ export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSumma
 
 export interface GoogleCloudDiscoveryengineV1alphaRemovePatientFilterRequest {
   /** Required. Names of the Group resources to use as a basis for the list of patients to remove from the patient filter, in format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Group/{group_id}`. if the caller does not have permission to access the FHIR store, regardless of whether it exists, PERMISSION_DENIED error is returned. If the discovery engine service account does not have permission to access the FHIR store, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the group is not found at the location, a RESOURCE_NOT_FOUND error will be returned. The filter group must be a FHIR resource name of type Group, and the list of IDs to remove will be constructed from the direct members of the group which are Patient resources. */
-  filterGroups?: Array<string>;
+  filterGroups?: ReadonlyArray<string>;
   /** Required. Full resource name of DataStore, such as `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If the caller does not have permission to access the DataStore, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a NOT_FOUND error is returned. If the requested DataStore does not have a patient filter, a NOT_FOUND error will be returned */
   dataStore?: string;
 }
@@ -3369,7 +3369,7 @@ export interface GoogleCloudDiscoveryengineV1WidgetConfigCollectionComponent {
   /** The name of the data source, retrieved from `Collection.data_connector.data_source`. */
   dataSource?: string;
   /** For the data store collection, list of the children data stores. */
-  dataStoreComponents?: Array<GoogleCloudDiscoveryengineV1WidgetConfigDataStoreComponent>;
+  dataStoreComponents?: ReadonlyArray<GoogleCloudDiscoveryengineV1WidgetConfigDataStoreComponent>;
   /** Output only. The display name of the data source. */
   dataSourceDisplayName?: string;
   /** The name of the collection. It should be collection resource name. Format: `projects/{project}/locations/{location}/collections/{collection_id}`. For APIs under WidgetService, such as WidgetService.LookupWidgetConfig, the project number and location part is erased in this field. */
@@ -3474,19 +3474,19 @@ export interface GoogleCloudDiscoveryengineV1Chunk {
   /** Content is a string from a document (parsed content). */
   content?: string;
   /** Output only. Annotation contents if the current chunk contains annotations. */
-  annotationContents?: Array<string>;
+  annotationContents?: ReadonlyArray<string>;
   /** Output only. This field is OUTPUT_ONLY. It contains derived data that are not in the original input document. */
   derivedStructData?: Record<string, unknown>;
   /** Metadata of the document from the current chunk. */
   documentMetadata?: GoogleCloudDiscoveryengineV1ChunkDocumentMetadata;
   /** Output only. The annotation metadata includes structured content in the current chunk. */
-  annotationMetadata?: Array<GoogleCloudDiscoveryengineV1ChunkAnnotationMetadata>;
+  annotationMetadata?: ReadonlyArray<GoogleCloudDiscoveryengineV1ChunkAnnotationMetadata>;
   /** Output only. Metadata of the current chunk. */
   chunkMetadata?: GoogleCloudDiscoveryengineV1ChunkChunkMetadata;
   /** Unique chunk ID of the current chunk. */
   id?: string;
   /** Output only. Image Data URLs if the current chunk contains images. Data URLs are composed of four parts: a prefix (data:), a MIME type indicating the type of data, an optional base64 token if non-textual, and the data itself: data:, */
-  dataUrls?: Array<string>;
+  dataUrls?: ReadonlyArray<string>;
   /** The full resource name of the chunk. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}/chunks/{chunk_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. */
   name?: string;
 }
@@ -3520,9 +3520,9 @@ export const GoogleCloudDiscoveryengineV1Chunk: Schema.Schema<GoogleCloudDiscove
 
 export interface GoogleCloudDiscoveryengineV1ChunkChunkMetadata {
   /** The next chunks of the current chunk. The number is controlled by SearchRequest.ContentSearchSpec.ChunkSpec.num_next_chunks. This field is only populated on SearchService.Search API. */
-  nextChunks?: Array<GoogleCloudDiscoveryengineV1Chunk>;
+  nextChunks?: ReadonlyArray<GoogleCloudDiscoveryengineV1Chunk>;
   /** The previous chunks of the current chunk. The number is controlled by SearchRequest.ContentSearchSpec.ChunkSpec.num_previous_chunks. This field is only populated on SearchService.Search API. */
-  previousChunks?: Array<GoogleCloudDiscoveryengineV1Chunk>;
+  previousChunks?: ReadonlyArray<GoogleCloudDiscoveryengineV1Chunk>;
 }
 
 export const GoogleCloudDiscoveryengineV1ChunkChunkMetadata: Schema.Schema<GoogleCloudDiscoveryengineV1ChunkChunkMetadata> =
@@ -3545,7 +3545,7 @@ export interface GoogleCloudDiscoveryengineV1alphaQuery {
   /** Output only. Unique Id for the query. */
   queryId?: string;
   /** Query content parts. */
-  parts?: Array<GoogleCloudDiscoveryengineV1alphaQueryPart>;
+  parts?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaQueryPart>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaQuery =
@@ -3559,7 +3559,7 @@ export const GoogleCloudDiscoveryengineV1alphaQuery =
 
 export interface A2aV1AgentCapabilities {
   /** Extensions supported by this agent. */
-  extensions?: Array<A2aV1AgentExtension>;
+  extensions?: ReadonlyArray<A2aV1AgentExtension>;
   /** If the agent can send push notifications to the clients webhook */
   pushNotifications?: boolean;
   /** If the agent will support streaming responses */
@@ -3663,7 +3663,7 @@ export const GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfo
 
 export interface GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfo {
   /** List of cited chunk contents derived from document content. */
-  chunkContents?: Array<GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfoChunkContent>;
+  chunkContents?: ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerReferenceUnstructuredDocumentInfoChunkContent>;
   /** Document resource name. */
   document?: string;
   /** Title. */
@@ -3803,7 +3803,7 @@ export const GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMet
 
 export interface GoogleCloudDiscoveryengineV1ControlSynonymsAction {
   /** Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms. Otherwise an INVALID ARGUMENT error is thrown. */
-  synonyms?: Array<string>;
+  synonyms?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1ControlSynonymsAction =
@@ -3882,7 +3882,7 @@ export interface GoogleCloudDiscoveryengineV1ListIdentityMappingsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The Identity Mapping Entries. */
-  identityMappingEntries?: Array<GoogleCloudDiscoveryengineV1IdentityMappingEntry>;
+  identityMappingEntries?: ReadonlyArray<GoogleCloudDiscoveryengineV1IdentityMappingEntry>;
 }
 
 export const GoogleCloudDiscoveryengineV1ListIdentityMappingsResponse =
@@ -3949,11 +3949,11 @@ export interface GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchR
   /** URI for the document. */
   uri?: string;
   /** List of extractive segments. */
-  extractiveSegments?: Array<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment>;
+  extractiveSegments?: ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment>;
   /** Deprecated: This field is deprecated and will have no effect on the Answer generation. Please use document_contexts and extractive_segments fields. List of extractive answers. */
-  extractiveAnswers?: Array<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer>;
+  extractiveAnswers?: ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer>;
   /** List of document contexts. The content will be used for Answer Generation. This is supposed to be the main content of the document that can be long and comprehensive. */
-  documentContexts?: Array<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext>;
+  documentContexts?: ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext>;
   /** Title. */
   title?: string;
 }
@@ -4049,9 +4049,9 @@ export interface GoogleCloudDiscoveryengineV1alphaRecrawlUrisMetadata {
   /** Total number of URIs that were rejected due to insufficient indexing resources. */
   quotaExceededCount?: number;
   /** URIs that have no index meta tag. Sample limited to 1000. */
-  noindexUris?: Array<string>;
+  noindexUris?: ReadonlyArray<string>;
   /** Unique URIs in the request that don't match any TargetSite in the DataStore, only match TargetSites that haven't been fully indexed, or match a TargetSite with type EXCLUDE. Sample limited to 1000. */
-  urisNotMatchingTargetSites?: Array<string>;
+  urisNotMatchingTargetSites?: ReadonlyArray<string>;
   /** Operation last update time. If the operation is done, this is also the finish time. */
   updateTime?: string;
   /** Total number of URIs that have yet to be crawled. */
@@ -4059,7 +4059,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRecrawlUrisMetadata {
   /** Total number of unique URIs in the request that are not in invalid_uris. */
   validUrisCount?: number;
   /** Unique URIs in the request that have invalid format. Sample limited to 1000. */
-  invalidUris?: Array<string>;
+  invalidUris?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaRecrawlUrisMetadata =
@@ -4145,7 +4145,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsin
   /** If true, will use native text instead of OCR text on pages containing native text. */
   useNativeText?: boolean;
   /** [DEPRECATED] This field is deprecated. To use the additional enhanced document elements processing, please switch to `layout_parsing_config`. */
-  enhancedDocumentElements?: Array<string>;
+  enhancedDocumentElements?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigOcrParsingConfig =
@@ -4204,7 +4204,7 @@ export const GoogleCloudDiscoveryengineV1WidgetConfigUiSettingsGenerativeAnswerC
 
 export interface GoogleCloudDiscoveryengineV1betaImportIdentityMappingsResponse {
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudDiscoveryengineV1betaImportIdentityMappingsResponse =
@@ -4427,7 +4427,7 @@ export interface GoogleCloudDiscoveryengineV1SearchResponseSummaryReference {
   /** Cloud Storage or HTTP uri for the document. */
   uri?: string;
   /** List of cited chunk contents derived from document content. */
-  chunkContents?: Array<GoogleCloudDiscoveryengineV1SearchResponseSummaryReferenceChunkContent>;
+  chunkContents?: ReadonlyArray<GoogleCloudDiscoveryengineV1SearchResponseSummaryReferenceChunkContent>;
 }
 
 export const GoogleCloudDiscoveryengineV1SearchResponseSummaryReference =
@@ -4516,7 +4516,7 @@ export const GoogleCloudDiscoveryengineV1betaDeleteDataStoreMetadata =
 
 export interface GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsResponse {
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
   /** The desired location of errors incurred during the Import. */
   errorConfig?: GoogleCloudDiscoveryengineV1betaImportErrorConfig;
 }
@@ -4603,7 +4603,7 @@ export interface GoogleCloudDiscoveryengineV1ConversationContext {
   /** The current active document the user opened. It contains the document resource reference. */
   activeDocument?: string;
   /** The current list of documents the user is seeing. It contains the document resource references. */
-  contextDocuments?: Array<string>;
+  contextDocuments?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1ConversationContext =
@@ -4629,7 +4629,7 @@ export const GoogleCloudDiscoveryengineV1TextInput =
 
 export interface GoogleCloudDiscoveryengineV1SearchResponseSummaryCitationMetadata {
   /** Citations for segments. */
-  citations?: Array<GoogleCloudDiscoveryengineV1SearchResponseSummaryCitation>;
+  citations?: ReadonlyArray<GoogleCloudDiscoveryengineV1SearchResponseSummaryCitation>;
 }
 
 export const GoogleCloudDiscoveryengineV1SearchResponseSummaryCitationMetadata =
@@ -4644,7 +4644,7 @@ export const GoogleCloudDiscoveryengineV1SearchResponseSummaryCitationMetadata =
 
 export interface GoogleCloudDiscoveryengineV1SearchResponseSummarySummaryWithMetadata {
   /** Document References. */
-  references?: Array<GoogleCloudDiscoveryengineV1SearchResponseSummaryReference>;
+  references?: ReadonlyArray<GoogleCloudDiscoveryengineV1SearchResponseSummaryReference>;
   /** Summary text with no citation information. */
   summary?: string;
   /** Citation metadata for given summary. */
@@ -4667,9 +4667,9 @@ export const GoogleCloudDiscoveryengineV1SearchResponseSummarySummaryWithMetadat
 
 export interface GoogleCloudDiscoveryengineV1SearchResponseSummarySafetyAttributes {
   /** The display names of Safety Attribute categories associated with the generated content. Order matches the Scores. */
-  categories?: Array<string>;
+  categories?: ReadonlyArray<string>;
   /** The confidence scores of the each category, higher value means higher confidence. Order matches the Categories. */
-  scores?: Array<number>;
+  scores?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudDiscoveryengineV1SearchResponseSummarySafetyAttributes =
@@ -4685,7 +4685,7 @@ export interface GoogleCloudDiscoveryengineV1SearchResponseSummary {
   /** Summary with metadata information. */
   summaryWithMetadata?: GoogleCloudDiscoveryengineV1SearchResponseSummarySummaryWithMetadata;
   /** Additional summary-skipped reasons. This provides the reason for ignored cases. If nothing is skipped, this field is not set. */
-  summarySkippedReasons?: Array<
+  summarySkippedReasons?: ReadonlyArray<
     | "SUMMARY_SKIPPED_REASON_UNSPECIFIED"
     | "ADVERSARIAL_QUERY_IGNORED"
     | "NON_SUMMARY_SEEKING_QUERY_IGNORED"
@@ -4749,7 +4749,7 @@ export const GoogleCloudDiscoveryengineV1ConversationMessage =
 
 export interface GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterStringConstraint {
   /** Values of the string field. The record will only be returned if the field value matches one of the values specified here. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
   /** Name of the string field as defined in the schema. */
   fieldName?: string;
   /** Identifies the keywords within the search query that match a filter. */
@@ -4837,7 +4837,7 @@ export const GoogleApiDistributionBucketOptionsExponential =
 
 export interface GoogleApiDistributionBucketOptionsExplicit {
   /** The values must be monotonically increasing. */
-  bounds?: Array<number>;
+  bounds?: ReadonlyArray<number>;
 }
 
 export const GoogleApiDistributionBucketOptionsExplicit =
@@ -4869,7 +4869,7 @@ export interface GoogleApiDistributionExemplar {
   /** The observation (sampling) time of the above value. */
   timestamp?: string;
   /** Contextual information about the example value. Examples are: Trace: type.googleapis.com/google.monitoring.v3.SpanContext Literal string: type.googleapis.com/google.protobuf.StringValue Labels dropped during aggregation: type.googleapis.com/google.monitoring.v3.DroppedLabels There may be only a single attachment of any given message type in a single exemplar, and this is enforced by the system. */
-  attachments?: Array<Record<string, unknown>>;
+  attachments?: ReadonlyArray<Record<string, unknown>>;
   /** Value of the exemplar point. This value determines to which bucket the exemplar belongs. */
   value?: number;
 }
@@ -4893,11 +4893,11 @@ export interface GoogleApiDistribution {
   /** Defines the histogram bucket boundaries. If the distribution does not contain a histogram, then omit this field. */
   bucketOptions?: GoogleApiDistributionBucketOptions;
   /** Must be in increasing order of `value` field. */
-  exemplars?: Array<GoogleApiDistributionExemplar>;
+  exemplars?: ReadonlyArray<GoogleApiDistributionExemplar>;
   /** If specified, contains the range of the population values. The field must not be present if the `count` is zero. */
   range?: GoogleApiDistributionRange;
   /** The number of values in each bucket of the histogram, as described in `bucket_options`. If the distribution does not have a histogram, then omit this field. If there is a histogram, then the sum of the values in `bucket_counts` must equal the value in the `count` field of the distribution. If present, `bucket_counts` should contain N values, where N is the number of buckets specified in `bucket_options`. If you supply fewer than N values, the remaining values are assumed to be 0. The order of the values in `bucket_counts` follows the bucket numbering schemes described for the three bucket types. The first value must be the count for the underflow bucket (number 0). The next N-2 values are the counts for the finite buckets (number 1 through N-2). The N'th value in `bucket_counts` is the count for the overflow bucket (number N-1). */
-  bucketCounts?: Array<string>;
+  bucketCounts?: ReadonlyArray<string>;
 }
 
 export const GoogleApiDistribution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4988,11 +4988,11 @@ export interface GoogleCloudDiscoveryengineV1SearchResponseSearchResultRankSigna
   /** Optional. Semantic similarity adjustment. */
   semanticSimilarityScore?: number;
   /** Optional. A list of precomputed expression results for a given document, in the same order as requested in `SearchRequest.custom_ranking_params.expressions_to_precompute`. */
-  precomputedExpressionValues?: Array<number>;
+  precomputedExpressionValues?: ReadonlyArray<number>;
   /** Optional. Age of the document in hours. */
   documentAge?: number;
   /** Optional. A list of custom clearbox signals. */
-  customSignals?: Array<GoogleCloudDiscoveryengineV1SearchResponseSearchResultRankSignalsCustomSignal>;
+  customSignals?: ReadonlyArray<GoogleCloudDiscoveryengineV1SearchResponseSearchResultRankSignalsCustomSignal>;
   /** Optional. The default rank of the result. */
   defaultRank?: number;
 }
@@ -5020,7 +5020,7 @@ export const GoogleCloudDiscoveryengineV1SearchResponseSearchResultRankSignals =
 
 export interface GoogleCloudDiscoveryengineV1DoubleList {
   /** Double values. */
-  values?: Array<number>;
+  values?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudDiscoveryengineV1DoubleList =
@@ -5230,7 +5230,7 @@ export interface GoogleMonitoringV3TimeSeries {
     | "MONEY"
     | (string & {});
   /** The data points of this time series. When listing time series, points are returned in reverse time order. When creating a time series, this field must contain exactly one point and the point's type must be the same as the value type of the associated metric. If the associated metric's descriptor must be auto-created, then the value type of the descriptor is determined by the point's type, which must be `BOOL`, `INT64`, `DOUBLE`, or `DISTRIBUTION`. */
-  points?: Array<GoogleMonitoringV3Point>;
+  points?: ReadonlyArray<GoogleMonitoringV3Point>;
 }
 
 export const GoogleMonitoringV3TimeSeries =
@@ -5334,7 +5334,7 @@ export interface GoogleCloudDiscoveryengineV1DocumentInfo {
   /** The Document resource full name, of the form: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/branches/{branch_id}/documents/{document_id}` */
   name?: string;
   /** The promotion IDs associated with this Document. Currently, this field is restricted to at most one ID. */
-  promotionIds?: Array<string>;
+  promotionIds?: ReadonlyArray<string>;
   /** Output only. Whether the referenced Document can be found in the data store. */
   joined?: boolean;
   /** The Document resource ID. */
@@ -5364,7 +5364,7 @@ export interface GoogleCloudDiscoveryengineV1PanelInfo {
   /** The ordered position of the panel, if shown to the user with other panels. If set, then total_panels must also be set. */
   panelPosition?: number;
   /** Optional. The document IDs associated with this panel. */
-  documents?: Array<GoogleCloudDiscoveryengineV1DocumentInfo>;
+  documents?: ReadonlyArray<GoogleCloudDiscoveryengineV1DocumentInfo>;
   /** The total number of panels, including this one, shown to the user. Must be set if panel_position is set. */
   totalPanels?: number;
 }
@@ -5397,7 +5397,7 @@ export interface GoogleCloudDiscoveryengineV1PurgeDocumentsResponse {
   /** The total count of documents purged as a result of the operation. */
   purgeCount?: string;
   /** A sample of document names that will be deleted. Only populated if `force` is set to false. A max of 100 names will be returned and the names are chosen at random. */
-  purgeSample?: Array<string>;
+  purgeSample?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1PurgeDocumentsResponse =
@@ -5434,7 +5434,7 @@ export interface GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundi
   /** End of the segment, exclusive. */
   endIndex?: string;
   /** References for the segment. */
-  referenceIndices?: Array<number>;
+  referenceIndices?: ReadonlyArray<number>;
   /** Zero-based index indicating the start of the segment, measured in bytes of a UTF-8 string (i.e. characters encoded on multiple bytes have a length of more than one). */
   startIndex?: string;
   /** The text segment itself. */
@@ -5457,9 +5457,9 @@ export const GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMe
 
 export interface GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadata {
   /** Grounding information for parts of the text. */
-  segments?: Array<GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataSegment>;
+  segments?: ReadonlyArray<GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataSegment>;
   /** References for the grounded text. */
-  references?: Array<GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataReference>;
+  references?: ReadonlyArray<GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadataReference>;
 }
 
 export const GoogleCloudDiscoveryengineV1AssistantGroundedContentTextGroundingMetadata =
@@ -5537,19 +5537,19 @@ export const GoogleCloudDiscoveryengineV1alphaInterval =
 
 export interface GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpecFacetKey {
   /** Set only if values should be bucketed into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30. */
-  intervals?: Array<GoogleCloudDiscoveryengineV1alphaInterval>;
+  intervals?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaInterval>;
   /** Only get facet for the given restricted values. Only supported on textual fields. For example, suppose "category" has three values "Action > 2022", "Action > 2021" and "Sci-Fi > 2022". If set "restricted_values" to "Action > 2022", the "category" facet only contains "Action > 2022". Only supported on textual fields. Maximum is 10. */
-  restrictedValues?: Array<string>;
+  restrictedValues?: ReadonlyArray<string>;
   /** Required. Supported textual and numerical facet keys in Document object, over which the facet values are computed. Facet key is case-sensitive. */
   key?: string;
   /** Only get facet values that contain the given strings. For example, suppose "category" has three values "Action > 2022", "Action > 2021" and "Sci-Fi > 2022". If set "contains" to "2022", the "category" facet only contains "Action > 2022" and "Sci-Fi > 2022". Only supported on textual fields. Maximum is 10. */
-  contains?: Array<string>;
+  contains?: ReadonlyArray<string>;
   /** True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise. */
   caseInsensitive?: boolean;
   /** The order in which documents are returned. Allowed values are: * "count desc", which means order by SearchResponse.Facet.values.count descending. * "value desc", which means order by SearchResponse.Facet.values.value descending. Only applies to textual facets. If not set, textual values are sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in the order given by FacetSpec.FacetKey.intervals. */
   orderBy?: string;
   /** Only get facet values that start with the given string prefix. For example, suppose "category" has three values "Action > 2022", "Action > 2021" and "Sci-Fi > 2022". If set "prefixes" to "Action", the "category" facet only contains "Action > 2022" and "Action > 2021". Only supported on textual fields. Maximum is 10. */
-  prefixes?: Array<string>;
+  prefixes?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpecFacetKey =
@@ -5576,7 +5576,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpec {
   /** Required. The facet key specification. */
   facetKey?: GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpecFacetKey;
   /** List of keys to exclude when faceting. By default, FacetKey.key is not excluded from the filter unless it is listed in this field. Listing a facet key in this field allows its values to appear as facet results, even when they are filtered out of search results. Using this field does not affect what search results are returned. For example, suppose there are 100 documents with the color facet "Red" and 200 documents with the color facet "Blue". A query containing the filter "color:ANY("Red")" and having "color" as FacetKey.key would by default return only "Red" documents in the search results, and also return "Red" with count 100 as the only color facet. Although there are also blue documents available, "Blue" would not be shown as an available facet value. If "color" is listed in "excludedFilterKeys", then the query returns the facet values "Red" with count 100 and "Blue" with count 200, because the "color" key is now excluded from the filter. Because this field doesn't affect search results, the search results are still correctly filtered to return only "Red" documents. A maximum of 100 values are allowed. Otherwise, an `INVALID_ARGUMENT` error is returned. */
-  excludedFilterKeys?: Array<string>;
+  excludedFilterKeys?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpec =
@@ -5666,7 +5666,7 @@ export interface GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoos
     | "LINEAR"
     | (string & {});
   /** The control points used to define the curve. The monotonic function (defined through the interpolation_type above) passes through the control points listed here. */
-  controlPoints?: Array<GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
+  controlPoints?: ReadonlyArray<GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
 }
 
 export const GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpecBoostControlSpec =
@@ -5707,7 +5707,7 @@ export const GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpe
 
 export interface GoogleCloudDiscoveryengineV1SearchRequestBoostSpec {
   /** Condition boost specifications. If a document matches multiple conditions in the specifications, boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 20. */
-  conditionBoostSpecs?: Array<GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpec>;
+  conditionBoostSpecs?: ReadonlyArray<GoogleCloudDiscoveryengineV1SearchRequestBoostSpecConditionBoostSpec>;
 }
 
 export const GoogleCloudDiscoveryengineV1SearchRequestBoostSpec =
@@ -5780,7 +5780,7 @@ export const GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecSummarySp
 
 export interface GoogleCloudDiscoveryengineV1Conversation {
   /** Conversation messages. */
-  messages?: Array<GoogleCloudDiscoveryengineV1ConversationMessage>;
+  messages?: ReadonlyArray<GoogleCloudDiscoveryengineV1ConversationMessage>;
   /** Output only. The time the conversation finished. */
   endTime?: string;
   /** The state of the Conversation. */
@@ -5859,7 +5859,7 @@ export const GoogleCloudDiscoveryengineV1CreateTargetSiteRequest =
 
 export interface GoogleCloudDiscoveryengineV1BatchCreateTargetSitesRequest {
   /** Required. The request message specifying the resources to create. A maximum of 20 TargetSites can be created in a batch. */
-  requests?: Array<GoogleCloudDiscoveryengineV1CreateTargetSiteRequest>;
+  requests?: ReadonlyArray<GoogleCloudDiscoveryengineV1CreateTargetSiteRequest>;
 }
 
 export const GoogleCloudDiscoveryengineV1BatchCreateTargetSitesRequest =
@@ -6004,13 +6004,13 @@ export const GoogleCloudDiscoveryengineV1alphaContactDetails =
 
 export interface GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfig {
   /** Optional. The enrollment state of each alert. */
-  alertEnrollments?: Array<GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfigAlertEnrollment>;
+  alertEnrollments?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAlertPolicyResourceConfigAlertEnrollment>;
   /** Optional. The language code used for notifications */
   languageCode?: string;
   /** Optional. The region code used of the user that subscribed to the alert policy. */
   regionCode?: string;
   /** Optional. The contact details for each alert policy. */
-  contactDetails?: Array<GoogleCloudDiscoveryengineV1alphaContactDetails>;
+  contactDetails?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaContactDetails>;
   /** Immutable. The fully qualified resource name of the AlertPolicy. */
   alertPolicy?: string;
 }
@@ -6278,7 +6278,7 @@ export const GoogleCloudDiscoveryengineV1alphaCitation =
 
 export interface GoogleCloudDiscoveryengineV1alphaCitationMetadata {
   /** Output only. List of citations. */
-  citations?: Array<GoogleCloudDiscoveryengineV1alphaCitation>;
+  citations?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaCitation>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaCitationMetadata =
@@ -6342,7 +6342,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGr
   /** Score for the segment. */
   groundingScore?: number;
   /** References for the segment. */
-  referenceIndices?: Array<number>;
+  referenceIndices?: ReadonlyArray<number>;
   /** The text segment itself. */
   text?: string;
   /** Zero-based index indicating the start of the segment, measured in bytes of a UTF-8 string (i.e. characters encoded on multiple bytes have a length of more than one). */
@@ -6363,9 +6363,9 @@ export const GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGround
 
 export interface GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadata {
   /** References for the grounded text. */
-  references?: Array<GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataReference>;
+  references?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataReference>;
   /** Grounding information for parts of the text. */
-  segments?: Array<GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataSegment>;
+  segments?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadataSegment>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaAssistantGroundedContentTextGroundingMetadata =
@@ -6429,7 +6429,7 @@ export const GoogleCloudDiscoveryengineV1alphaAssistAnswerReply =
 
 export interface GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult {
   /** The banned phrases that were found in the query or the answer. */
-  bannedPhrases?: Array<string>;
+  bannedPhrases?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult =
@@ -6480,7 +6480,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnfo
   /** Final verdict of the customer policy enforcement. If only one policy blocked the processing, the verdict is BLOCK. */
   verdict?: "UNSPECIFIED" | "ALLOW" | "BLOCK" | (string & {});
   /** Customer policy enforcement results. Populated only if the assist call was skipped due to a policy violation. It contains results from those filters that blocked the processing of the query. */
-  policyResults?: Array<GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult>;
+  policyResults?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcementResult =
@@ -6498,7 +6498,7 @@ export const GoogleCloudDiscoveryengineV1alphaAssistAnswerCustomerPolicyEnforcem
 
 export interface GoogleCloudDiscoveryengineV1alphaAssistAnswer {
   /** Replies of the assistant. */
-  replies?: Array<GoogleCloudDiscoveryengineV1alphaAssistAnswerReply>;
+  replies?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAssistAnswerReply>;
   /** State of the answer generation. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -6508,7 +6508,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAssistAnswer {
     | "SKIPPED"
     | (string & {});
   /** Reasons for not answering the assist call. */
-  assistSkippedReasons?: Array<
+  assistSkippedReasons?: ReadonlyArray<
     | "ASSIST_SKIPPED_REASON_UNSPECIFIED"
     | "NON_ASSIST_SEEKING_QUERY_IGNORED"
     | "CUSTOMER_POLICY_VIOLATION"
@@ -6653,11 +6653,11 @@ export const GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResult
 
 export interface GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResult {
   /** If citation_type is CHUNK_LEVEL_CITATION and chunk mode is on, populate chunk info. */
-  chunkInfo?: Array<GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultChunkInfo>;
+  chunkInfo?: ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultChunkInfo>;
   /** URI for the document. */
   uri?: string;
   /** If citation_type is DOCUMENT_LEVEL_CITATION, populate document level snippets. */
-  snippetInfo?: Array<GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultSnippetInfo>;
+  snippetInfo?: ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultSnippetInfo>;
   /** Title. */
   title?: string;
   /** Data representation. The structured JSON data for the document. It's populated from the struct data from the Document, or the Chunk in search result. */
@@ -6689,7 +6689,7 @@ export const GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResult
 
 export interface GoogleCloudDiscoveryengineV1AnswerStepActionObservation {
   /** Search results observed by the search action, it can be snippets info or chunk info, depending on the citation type set by the user. */
-  searchResults?: Array<GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResult>;
+  searchResults?: ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResult>;
 }
 
 export const GoogleCloudDiscoveryengineV1AnswerStepActionObservation =
@@ -6757,7 +6757,7 @@ export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseContentSug
 
 export interface GoogleCloudDiscoveryengineV1alphaActionConfigScopeList {
   /** Optional. The list of scopes. */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaActionConfigScopeList =
@@ -6781,9 +6781,9 @@ export interface GoogleCloudDiscoveryengineV1SearchRequestNaturalLanguageQueryUn
     | "ENABLED"
     | (string & {});
   /** Field names used for location-based filtering, where geolocation filters are detected in natural language search queries. Only valid when the FilterExtractionCondition is set to `ENABLED`. */
-  geoSearchQueryDetectionFieldNames?: Array<string>;
+  geoSearchQueryDetectionFieldNames?: ReadonlyArray<string>;
   /** Optional. Allowlist of fields that can be used for natural language filter extraction. By default, if this is unspecified, all indexable fields are eligible for natural language filter extraction (but are not guaranteed to be used). If any fields are specified in allowed_field_names, only the fields that are both marked as indexable in the schema and specified in the allowlist will be eligible for natural language filter extraction. Note: for multi-datastore search, this is not yet supported, and will be ignored. */
-  allowedFieldNames?: Array<string>;
+  allowedFieldNames?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1SearchRequestNaturalLanguageQueryUnderstandingSpec =
@@ -6813,7 +6813,7 @@ export const GoogleCloudDiscoveryengineV1AnswerCitationSource =
 
 export interface GoogleCloudDiscoveryengineV1AnswerStep {
   /** Actions. */
-  actions?: Array<GoogleCloudDiscoveryengineV1AnswerStepAction>;
+  actions?: ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerStepAction>;
   /** The state of the step. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -6885,7 +6885,7 @@ export interface GoogleCloudDiscoveryengineV1AnswerCitation {
   /** Index indicates the start of the segment, measured in bytes (UTF-8 unicode). If there are multi-byte characters,such as non-ASCII characters, the index measurement is longer than the string length. */
   startIndex?: string;
   /** Citation sources for the attributed segment. */
-  sources?: Array<GoogleCloudDiscoveryengineV1AnswerCitationSource>;
+  sources?: ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerCitationSource>;
   /** End of the attributed segment, exclusive. Measured in bytes (UTF-8 unicode). If there are multi-byte characters,such as non-ASCII characters, the index measurement is longer than the string length. */
   endIndex?: string;
 }
@@ -6901,7 +6901,7 @@ export const GoogleCloudDiscoveryengineV1AnswerCitation =
 
 export interface GoogleCloudDiscoveryengineV1AnswerGroundingSupport {
   /** Optional. Citation sources for the claim. */
-  sources?: Array<GoogleCloudDiscoveryengineV1AnswerCitationSource>;
+  sources?: ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerCitationSource>;
   /** Required. Index indicates the start of the claim, measured in bytes (UTF-8 unicode). */
   startIndex?: string;
   /** Required. End of the claim, exclusive. */
@@ -6950,7 +6950,7 @@ export const GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfoQueryClassi
 
 export interface GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfo {
   /** Query classification information. */
-  queryClassificationInfo?: Array<GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfoQueryClassificationInfo>;
+  queryClassificationInfo?: ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfoQueryClassificationInfo>;
 }
 
 export const GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfo =
@@ -6966,11 +6966,11 @@ export const GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfo =
 
 export interface GoogleCloudDiscoveryengineV1Answer {
   /** Answer generation steps. */
-  steps?: Array<GoogleCloudDiscoveryengineV1AnswerStep>;
+  steps?: ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerStep>;
   /** Output only. Answer creation timestamp. */
   createTime?: string;
   /** Additional answer-skipped reasons. This provides the reason for ignored cases. If nothing is skipped, this field is not set. */
-  answerSkippedReasons?: Array<
+  answerSkippedReasons?: ReadonlyArray<
     | "ANSWER_SKIPPED_REASON_UNSPECIFIED"
     | "ADVERSARIAL_QUERY_IGNORED"
     | "NON_ANSWER_SEEKING_QUERY_IGNORED"
@@ -6988,11 +6988,11 @@ export interface GoogleCloudDiscoveryengineV1Answer {
   /** Immutable. Fully qualified name `projects/{project}/locations/global/collections/{collection}/engines/{engine}/sessions/* /answers/*` */
   name?: string;
   /** Optional. Safety ratings. */
-  safetyRatings?: Array<GoogleCloudDiscoveryengineV1SafetyRating>;
+  safetyRatings?: ReadonlyArray<GoogleCloudDiscoveryengineV1SafetyRating>;
   /** Suggested related questions. */
-  relatedQuestions?: Array<string>;
+  relatedQuestions?: ReadonlyArray<string>;
   /** Citations. */
-  citations?: Array<GoogleCloudDiscoveryengineV1AnswerCitation>;
+  citations?: ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerCitation>;
   /** Output only. Answer completed timestamp. */
   completeTime?: string;
   /** The state of the answer generation. */
@@ -7006,11 +7006,11 @@ export interface GoogleCloudDiscoveryengineV1Answer {
   /** A score in the range of [0, 1] describing how grounded the answer is by the reference chunks. */
   groundingScore?: number;
   /** Optional. Grounding supports. */
-  groundingSupports?: Array<GoogleCloudDiscoveryengineV1AnswerGroundingSupport>;
+  groundingSupports?: ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerGroundingSupport>;
   /** Query understanding information. */
   queryUnderstandingInfo?: GoogleCloudDiscoveryengineV1AnswerQueryUnderstandingInfo;
   /** References. */
-  references?: Array<GoogleCloudDiscoveryengineV1AnswerReference>;
+  references?: ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerReference>;
   /** The textual answer. */
   answerText?: string;
 }
@@ -7060,7 +7060,7 @@ export const GoogleCloudDiscoveryengineV1Query =
 
 export interface GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult {
   /** The banned phrases that were found in the query or the answer. */
-  bannedPhrases?: Array<string>;
+  bannedPhrases?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResultBannedPhraseEnforcementResult =
@@ -7093,7 +7093,7 @@ export const GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementRe
 
 export interface GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResult {
   /** Customer policy enforcement results. Populated only if the assist call was skipped due to a policy violation. It contains results from those filters that blocked the processing of the query. */
-  policyResults?: Array<GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult>;
+  policyResults?: ReadonlyArray<GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementResultPolicyEnforcementResult>;
   /** Final verdict of the customer policy enforcement. If only one policy blocked the processing, the verdict is BLOCK. */
   verdict?: "UNSPECIFIED" | "ALLOW" | "BLOCK" | (string & {});
 }
@@ -7113,7 +7113,7 @@ export const GoogleCloudDiscoveryengineV1AssistAnswerCustomerPolicyEnforcementRe
 
 export interface GoogleCloudDiscoveryengineV1AssistAnswer {
   /** Replies of the assistant. */
-  replies?: Array<GoogleCloudDiscoveryengineV1AssistAnswerReply>;
+  replies?: ReadonlyArray<GoogleCloudDiscoveryengineV1AssistAnswerReply>;
   /** State of the answer generation. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -7123,7 +7123,7 @@ export interface GoogleCloudDiscoveryengineV1AssistAnswer {
     | "SKIPPED"
     | (string & {});
   /** Reasons for not answering the assist call. */
-  assistSkippedReasons?: Array<
+  assistSkippedReasons?: ReadonlyArray<
     | "ASSIST_SKIPPED_REASON_UNSPECIFIED"
     | "NON_ASSIST_SEEKING_QUERY_IGNORED"
     | "CUSTOMER_POLICY_VIOLATION"
@@ -7174,11 +7174,11 @@ export const GoogleCloudDiscoveryengineV1SessionTurn =
 
 export interface GoogleCloudDiscoveryengineV1Session {
   /** Turns. */
-  turns?: Array<GoogleCloudDiscoveryengineV1SessionTurn>;
+  turns?: ReadonlyArray<GoogleCloudDiscoveryengineV1SessionTurn>;
   /** A unique identifier for tracking users. */
   userPseudoId?: string;
   /** Optional. The labels for the session. Can be set as filter in ListSessionsRequest. */
-  labels?: Array<string>;
+  labels?: ReadonlyArray<string>;
   /** Optional. The display name of the session. This field is used to identify the session in the UI. By default, the display name is the first turn query text in the session. */
   displayName?: string;
   /** The state of the session. */
@@ -7258,17 +7258,17 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecFacetKey 
   /** Required. Supported textual and numerical facet keys in Document object, over which the facet values are computed. Facet key is case-sensitive. */
   key?: string;
   /** Only get facet values that start with the given string prefix. For example, suppose "category" has three values "Action > 2022", "Action > 2021" and "Sci-Fi > 2022". If set "prefixes" to "Action", the "category" facet only contains "Action > 2022" and "Action > 2021". Only supported on textual fields. Maximum is 10. */
-  prefixes?: Array<string>;
+  prefixes?: ReadonlyArray<string>;
   /** True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise. */
   caseInsensitive?: boolean;
   /** Only get facet values that contain the given strings. For example, suppose "category" has three values "Action > 2022", "Action > 2021" and "Sci-Fi > 2022". If set "contains" to "2022", the "category" facet only contains "Action > 2022" and "Sci-Fi > 2022". Only supported on textual fields. Maximum is 10. */
-  contains?: Array<string>;
+  contains?: ReadonlyArray<string>;
   /** Set only if values should be bucketed into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30. */
-  intervals?: Array<GoogleCloudDiscoveryengineV1betaInterval>;
+  intervals?: ReadonlyArray<GoogleCloudDiscoveryengineV1betaInterval>;
   /** The order in which documents are returned. Allowed values are: * "count desc", which means order by SearchResponse.Facet.values.count descending. * "value desc", which means order by SearchResponse.Facet.values.value descending. Only applies to textual facets. If not set, textual values are sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in the order given by FacetSpec.FacetKey.intervals. */
   orderBy?: string;
   /** Only get facet for the given restricted values. Only supported on textual fields. For example, suppose "category" has three values "Action > 2022", "Action > 2021" and "Sci-Fi > 2022". If set "restricted_values" to "Action > 2022", the "category" facet only contains "Action > 2022". Only supported on textual fields. Maximum is 10. */
-  restrictedValues?: Array<string>;
+  restrictedValues?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecFacetKey =
@@ -7295,7 +7295,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpec {
   /** Maximum facet values that are returned for this facet. If unspecified, defaults to 20. The maximum allowed value is 300. Values above 300 are coerced to 300. For aggregation in healthcare search, when the [FacetKey.key] is "healthcare_aggregation_key", the limit will be overridden to 10,000 internally, regardless of the value set here. If this field is negative, an `INVALID_ARGUMENT` is returned. */
   limit?: number;
   /** List of keys to exclude when faceting. By default, FacetKey.key is not excluded from the filter unless it is listed in this field. Listing a facet key in this field allows its values to appear as facet results, even when they are filtered out of search results. Using this field does not affect what search results are returned. For example, suppose there are 100 documents with the color facet "Red" and 200 documents with the color facet "Blue". A query containing the filter "color:ANY("Red")" and having "color" as FacetKey.key would by default return only "Red" documents in the search results, and also return "Red" with count 100 as the only color facet. Although there are also blue documents available, "Blue" would not be shown as an available facet value. If "color" is listed in "excludedFilterKeys", then the query returns the facet values "Red" with count 100 and "Blue" with count 200, because the "color" key is now excluded from the filter. Because this field doesn't affect search results, the search results are still correctly filtered to return only "Red" documents. A maximum of 100 values are allowed. Otherwise, an `INVALID_ARGUMENT` error is returned. */
-  excludedFilterKeys?: Array<string>;
+  excludedFilterKeys?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpec =
@@ -7366,7 +7366,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecCondition
   /** The name of the field whose value will be used to determine the boost amount. */
   fieldName?: string;
   /** The control points used to define the curve. The monotonic function (defined through the interpolation_type above) passes through the control points listed here. */
-  controlPoints?: Array<GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
+  controlPoints?: ReadonlyArray<GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
   /** The attribute type to be used to determine the boost amount. The attribute value can be derived from the field value of the specified field_name. In the case of numerical it is straightforward i.e. attribute_value = numerical_field_value. In the case of freshness however, attribute_value = (time.now() - datetime_field_value). */
   attributeType?:
     | "ATTRIBUTE_TYPE_UNSPECIFIED"
@@ -7413,7 +7413,7 @@ export const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoos
 
 export interface GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec {
   /** Condition boost specifications. If a document matches multiple conditions in the specifications, boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 20. */
-  conditionBoostSpecs?: Array<GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpec>;
+  conditionBoostSpecs?: ReadonlyArray<GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpec>;
 }
 
 export const GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec =
@@ -7499,7 +7499,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditio
     | "LINEAR"
     | (string & {});
   /** The control points used to define the curve. The monotonic function (defined through the interpolation_type above) passes through the control points listed here. */
-  controlPoints?: Array<GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
+  controlPoints?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpecBoostControlSpec =
@@ -7566,11 +7566,11 @@ export interface GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfig {
   /** Whether to enable the Private Knowledge Graph for the engine. Defaults to false if not specified. */
   enablePrivateKnowledgeGraph?: boolean;
   /** Specify entity types to support. */
-  cloudKnowledgeGraphTypes?: Array<string>;
+  cloudKnowledgeGraphTypes?: ReadonlyArray<string>;
   /** Optional. Feature config for the Knowledge Graph. */
   featureConfig?: GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfigFeatureConfig;
   /** Specify entity types to support. */
-  privateKnowledgeGraphTypes?: Array<string>;
+  privateKnowledgeGraphTypes?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaEngineKnowledgeGraphConfig =
@@ -7608,7 +7608,7 @@ export interface GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsResponse
   /** The desired location of errors incurred during the Import. */
   errorConfig?: GoogleCloudDiscoveryengineV1ImportErrorConfig;
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsResponse =
@@ -7645,7 +7645,7 @@ export const GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase =
 
 export interface GoogleCloudDiscoveryengineV1AssistantCustomerPolicy {
   /** Optional. List of banned phrases. */
-  bannedPhrases?: Array<GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase>;
+  bannedPhrases?: ReadonlyArray<GoogleCloudDiscoveryengineV1AssistantCustomerPolicyBannedPhrase>;
   /** Optional. Model Armor configuration to be used for sanitizing user prompts and assistant responses. */
   modelArmorConfig?: GoogleCloudDiscoveryengineV1AssistantCustomerPolicyModelArmorConfig;
 }
@@ -7723,9 +7723,9 @@ export const GoogleCloudDiscoveryengineV1betaUserLicense =
 
 export interface GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesResponse {
   /** UserLicenses successfully updated. */
-  userLicenses?: Array<GoogleCloudDiscoveryengineV1betaUserLicense>;
+  userLicenses?: ReadonlyArray<GoogleCloudDiscoveryengineV1betaUserLicense>;
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesResponse =
@@ -7741,9 +7741,9 @@ export const GoogleCloudDiscoveryengineV1betaBatchUpdateUserLicensesResponse =
 
 export interface GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec {
   /** Optional. Allowlist of fields that can be used for natural language filter extraction. By default, if this is unspecified, all indexable fields are eligible for natural language filter extraction (but are not guaranteed to be used). If any fields are specified in allowed_field_names, only the fields that are both marked as indexable in the schema and specified in the allowlist will be eligible for natural language filter extraction. Note: for multi-datastore search, this is not yet supported, and will be ignored. */
-  allowedFieldNames?: Array<string>;
+  allowedFieldNames?: ReadonlyArray<string>;
   /** Field names used for location-based filtering, where geolocation filters are detected in natural language search queries. Only valid when the FilterExtractionCondition is set to `ENABLED`. */
-  geoSearchQueryDetectionFieldNames?: Array<string>;
+  geoSearchQueryDetectionFieldNames?: ReadonlyArray<string>;
   /** The condition under which filter extraction should occur. Server behavior defaults to `DISABLED`. */
   filterExtractionCondition?:
     | "CONDITION_UNSPECIFIED"
@@ -7792,7 +7792,7 @@ export const GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSnipp
 
 export interface GoogleCloudDiscoveryengineV1SearchRequestCustomRankingParams {
   /** Optional. A list of ranking expressions (see `ranking_expression` for the syntax documentation) to evaluate. The evaluation results will be returned in `SearchResponse.SearchResult.rank_signals.precomputed_expression_values` field. */
-  expressionsToPrecompute?: Array<string>;
+  expressionsToPrecompute?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1SearchRequestCustomRankingParams =
@@ -7899,7 +7899,7 @@ export const GoogleCloudDiscoveryengineV1alphaPurgeDocumentsMetadata =
 
 export interface GoogleCloudDiscoveryengineV1betaImportDocumentsResponse {
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
   /** Echoes the destination for the complete errors in the request if set. */
   errorConfig?: GoogleCloudDiscoveryengineV1betaImportErrorConfig;
 }
@@ -7932,7 +7932,7 @@ export const GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecChunkSpec
 
 export interface GoogleCloudDiscoveryengineV1CompletionSuggestion {
   /** Alternative matching phrases for this suggestion. */
-  alternativePhrases?: Array<string>;
+  alternativePhrases?: ReadonlyArray<string>;
   /** Global score of this suggestion. Control how this suggestion would be scored / ranked. */
   globalScore?: number;
   /** Frequency of this suggestion. Will be used to rank suggestions when score is not available. */
@@ -8000,7 +8000,7 @@ export const GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpecQuerySetSp
 
 export interface GoogleCloudDiscoveryengineV1ImportIdentityMappingsResponse {
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudDiscoveryengineV1ImportIdentityMappingsResponse =
@@ -8076,7 +8076,7 @@ export const GoogleCloudDiscoveryengineV1CustomTuningModel =
 
 export interface GoogleCloudDiscoveryengineV1ListCustomModelsResponse {
   /** List of custom tuning models. */
-  models?: Array<GoogleCloudDiscoveryengineV1CustomTuningModel>;
+  models?: ReadonlyArray<GoogleCloudDiscoveryengineV1CustomTuningModel>;
 }
 
 export const GoogleCloudDiscoveryengineV1ListCustomModelsResponse =
@@ -8094,7 +8094,7 @@ export interface GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig {
   /** Whether to enable configurable schema for `HEALTHCARE_FHIR` vertical. If set to `true`, the predefined healthcare fhir schema can be extended for more customized searching and filtering. */
   enableConfigurableSchema?: boolean;
   /** Optional. Names of the Group resources to use as a basis for the initial patient filter, in format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Group/{group_id}`. The filter group must be a FHIR resource name of type Group, and the filter will be constructed from the direct members of the group which are Patient resources. */
-  initialFilterGroups?: Array<string>;
+  initialFilterGroups?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaHealthcareFhirConfig =
@@ -8140,7 +8140,7 @@ export interface GoogleCloudDiscoveryengineV1WidgetConfigUIComponentField {
   /** Required. Registered field name. The format is `field.abc`. */
   field?: string;
   /** The field visibility on different types of devices. */
-  deviceVisibility?: Array<
+  deviceVisibility?: ReadonlyArray<
     "DEVICE_VISIBILITY_UNSPECIFIED" | "MOBILE" | "DESKTOP" | (string & {})
   >;
   /** The template to customize how the field is displayed. An example value would be a string that looks like: "Price: {value}". */
@@ -8158,7 +8158,7 @@ export const GoogleCloudDiscoveryengineV1WidgetConfigUIComponentField =
 
 export interface GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfig {
   /** Facet fields that store the mapping of fields to end user widget appearance. */
-  facetField?: Array<GoogleCloudDiscoveryengineV1WidgetConfigFacetField>;
+  facetField?: ReadonlyArray<GoogleCloudDiscoveryengineV1WidgetConfigFacetField>;
   /** Output only. the identifier of the data store, used for widget service. For now it refers to data_store_id, in the future we will migrate the field to encrypted data store name UUID. */
   id?: string;
   /** The key is the UI component. Mock. Currently supported `title`, `thumbnail`, `url`, `custom1`, `custom2`, `custom3`. The value is the name of the field along with its device visibility. The 3 custom fields are optional and can be added or removed. `title`, `thumbnail`, `url` are required UI components that cannot be removed. */
@@ -8218,7 +8218,7 @@ export interface GoogleCloudDiscoveryengineV1WidgetConfigUiSettings {
   /** Whether to enable search-as-you-type behavior for the search widget. */
   enableSearchAsYouType?: boolean;
   /** Per data store configuration. */
-  dataStoreUiConfigs?: Array<GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfig>;
+  dataStoreUiConfigs?: ReadonlyArray<GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfig>;
   /** Output only. Maps a model name to its specific configuration for this engine. This allows admin users to turn on/off individual models. This only stores models whose states are overridden by the admin. When the state is unspecified, or model_configs is empty for this model, the system will decide if this model should be available or not based on the default configuration. For example, a preview model should be disabled by default if the admin has not chosen to enable it. */
   modelConfigs?: Record<
     string,
@@ -8302,7 +8302,7 @@ export const GoogleCloudDiscoveryengineV1ControlFilterAction =
 
 export interface GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig {
   /** [DEPRECATED] This field is deprecated. To use the additional enhanced document elements processing, please switch to `layout_parsing_config`. */
-  enhancedDocumentElements?: Array<string>;
+  enhancedDocumentElements?: ReadonlyArray<string>;
   /** If true, will use native text instead of OCR text on pages containing native text. */
   useNativeText?: boolean;
 }
@@ -8402,7 +8402,7 @@ export const GoogleCloudDiscoveryengineV1alphaAgentGatewaySetting =
 
 export interface GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec {
   /** Condition boost specifications. If a document matches multiple conditions in the specifications, boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 20. */
-  conditionBoostSpecs?: Array<GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpec>;
+  conditionBoostSpecs?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpec>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec =
@@ -8563,7 +8563,7 @@ export const GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceFilterSpec =
 
 export interface GoogleCloudDiscoveryengineV1alphaSession {
   /** Turns. */
-  turns?: Array<GoogleCloudDiscoveryengineV1alphaSessionTurn>;
+  turns?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSessionTurn>;
   /** Output only. The time the session started. */
   startTime?: string;
   /** Optional. The display name of the session. This field is used to identify the session in the UI. By default, the display name is the first turn query text in the session. */
@@ -8575,7 +8575,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSession {
   /** Output only. The time the session finished. */
   endTime?: string;
   /** Optional. The labels for the session. Can be set as filter in ListSessionsRequest. */
-  labels?: Array<string>;
+  labels?: ReadonlyArray<string>;
   /** Optional. Whether the session is pinned, pinned session will be displayed on the top of the session list. */
   isPinned?: boolean;
   /** A unique identifier for tracking users. */
@@ -8617,7 +8617,7 @@ export interface GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfo
   /** URI that failed to be crawled. */
   uri?: string;
   /** List of failure reasons by corpus type (e.g. desktop, mobile). */
-  failureReasons?: Array<GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfoFailureReason>;
+  failureReasons?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfoFailureReason>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfo =
@@ -8672,11 +8672,11 @@ export interface GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfig {
   /** Whether to enable the Cloud Knowledge Graph for the engine. Defaults to false if not specified. */
   enableCloudKnowledgeGraph?: boolean;
   /** Specify entity types to support. */
-  cloudKnowledgeGraphTypes?: Array<string>;
+  cloudKnowledgeGraphTypes?: ReadonlyArray<string>;
   /** Whether to enable the Private Knowledge Graph for the engine. Defaults to false if not specified. */
   enablePrivateKnowledgeGraph?: boolean;
   /** Specify entity types to support. */
-  privateKnowledgeGraphTypes?: Array<string>;
+  privateKnowledgeGraphTypes?: ReadonlyArray<string>;
   /** Optional. Feature config for the Knowledge Graph. */
   featureConfig?: GoogleCloudDiscoveryengineV1betaEngineKnowledgeGraphConfigFeatureConfig;
 }
@@ -8746,7 +8746,7 @@ export interface GoogleCloudDiscoveryengineV1betaCmekConfig {
     | "NOTEBOOK_LM_NOT_ENABLED"
     | (string & {});
   /** Optional. Single-regional CMEKs that are required for some VAIS features. */
-  singleRegionKeys?: Array<GoogleCloudDiscoveryengineV1betaSingleRegionKey>;
+  singleRegionKeys?: ReadonlyArray<GoogleCloudDiscoveryengineV1betaSingleRegionKey>;
   /** Output only. The default CmekConfig for the Customer. */
   isDefault?: boolean;
   /** Required. KMS key resource name which will be used to encrypt resources `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`. */
@@ -8910,7 +8910,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig {
     | "SUBSCRIPTION_TIER_FRONTLINE_STARTER"
     | (string & {});
   /** The add-on that this search engine enables. */
-  searchAddOns?: Array<
+  searchAddOns?: ReadonlyArray<
     "SEARCH_ADD_ON_UNSPECIFIED" | "SEARCH_ADD_ON_LLM" | (string & {})
   >;
 }
@@ -9003,7 +9003,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngine {
   /** Output only. CMEK-related information for the Engine. */
   cmekConfig?: GoogleCloudDiscoveryengineV1betaCmekConfig;
   /** Optional. The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be associated here. Note that when used in CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary initializations. */
-  dataStoreIds?: Array<string>;
+  dataStoreIds?: ReadonlyArray<string>;
   /** Optional. The visibility of marketplace agents in the agent gallery. */
   marketplaceAgentVisibility?:
     | "MARKETPLACE_AGENT_VISIBILITY_UNSPECIFIED"
@@ -9036,7 +9036,7 @@ export interface GoogleCloudDiscoveryengineV1betaEngine {
     | "HEALTHCARE_FHIR"
     | (string & {});
   /** Optional. The emails of the procurement contacts. */
-  procurementContactEmails?: Array<string>;
+  procurementContactEmails?: ReadonlyArray<string>;
   /** Optional. Configuration for configurable billing approach. */
   configurableBillingApproach?:
     | "CONFIGURABLE_BILLING_APPROACH_UNSPECIFIED"
@@ -9100,7 +9100,7 @@ export interface GoogleCloudDiscoveryengineV1CompleteQueryResponseQuerySuggestio
   /** The suggestion for the query. */
   suggestion?: string;
   /** The unique document field paths that serve as the source of this suggestion if it was generated from completable fields. This field is only populated for the document-completable model. */
-  completableFieldPaths?: Array<string>;
+  completableFieldPaths?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1CompleteQueryResponseQuerySuggestion =
@@ -9116,7 +9116,7 @@ export interface GoogleCloudDiscoveryengineV1CompleteQueryResponse {
   /** True if the returned suggestions are all tail suggestions. For tail matching to be triggered, include_tail_suggestions in the request must be true and there must be no suggestions that match the full query. */
   tailMatchTriggered?: boolean;
   /** Results of the matched query suggestions. The result list is ordered and the first result is a top suggestion. */
-  querySuggestions?: Array<GoogleCloudDiscoveryengineV1CompleteQueryResponseQuerySuggestion>;
+  querySuggestions?: ReadonlyArray<GoogleCloudDiscoveryengineV1CompleteQueryResponseQuerySuggestion>;
 }
 
 export const GoogleCloudDiscoveryengineV1CompleteQueryResponse =
@@ -9152,15 +9152,15 @@ export const GoogleCloudDiscoveryengineV1Interval =
 
 export interface GoogleCloudDiscoveryengineV1SearchRequestFacetSpecFacetKey {
   /** Set only if values should be bucketed into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30. */
-  intervals?: Array<GoogleCloudDiscoveryengineV1Interval>;
+  intervals?: ReadonlyArray<GoogleCloudDiscoveryengineV1Interval>;
   /** Only get facet values that contain the given strings. For example, suppose "category" has three values "Action > 2022", "Action > 2021" and "Sci-Fi > 2022". If set "contains" to "2022", the "category" facet only contains "Action > 2022" and "Sci-Fi > 2022". Only supported on textual fields. Maximum is 10. */
-  contains?: Array<string>;
+  contains?: ReadonlyArray<string>;
   /** Required. Supported textual and numerical facet keys in Document object, over which the facet values are computed. Facet key is case-sensitive. */
   key?: string;
   /** Only get facet for the given restricted values. Only supported on textual fields. For example, suppose "category" has three values "Action > 2022", "Action > 2021" and "Sci-Fi > 2022". If set "restricted_values" to "Action > 2022", the "category" facet only contains "Action > 2022". Only supported on textual fields. Maximum is 10. */
-  restrictedValues?: Array<string>;
+  restrictedValues?: ReadonlyArray<string>;
   /** Only get facet values that start with the given string prefix. For example, suppose "category" has three values "Action > 2022", "Action > 2021" and "Sci-Fi > 2022". If set "prefixes" to "Action", the "category" facet only contains "Action > 2022" and "Action > 2021". Only supported on textual fields. Maximum is 10. */
-  prefixes?: Array<string>;
+  prefixes?: ReadonlyArray<string>;
   /** True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise. */
   caseInsensitive?: boolean;
   /** The order in which documents are returned. Allowed values are: * "count desc", which means order by SearchResponse.Facet.values.count descending. * "value desc", which means order by SearchResponse.Facet.values.value descending. Only applies to textual facets. If not set, textual values are sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in the order given by FacetSpec.FacetKey.intervals. */
@@ -9186,7 +9186,7 @@ export interface GoogleCloudDiscoveryengineV1SearchRequestFacetSpec {
   /** Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the response is determined automatically. If dynamic facets are enabled, it is ordered together. If set to false, the position of this facet in the response is the same as in the request, and it is ranked before the facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating facet returned in the response, but it's not necessarily to always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of rating facet in response is determined automatically. Another example, assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic facets enabled, which generates a facet `gender`. Then the final order of the facets in the response can be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how API orders "gender" and "rating" facets. However, notice that "price" and "brands" are always ranked at first and second position because their enable_dynamic_position is false. */
   enableDynamicPosition?: boolean;
   /** List of keys to exclude when faceting. By default, FacetKey.key is not excluded from the filter unless it is listed in this field. Listing a facet key in this field allows its values to appear as facet results, even when they are filtered out of search results. Using this field does not affect what search results are returned. For example, suppose there are 100 documents with the color facet "Red" and 200 documents with the color facet "Blue". A query containing the filter "color:ANY("Red")" and having "color" as FacetKey.key would by default return only "Red" documents in the search results, and also return "Red" with count 100 as the only color facet. Although there are also blue documents available, "Blue" would not be shown as an available facet value. If "color" is listed in "excludedFilterKeys", then the query returns the facet values "Red" with count 100 and "Blue" with count 200, because the "color" key is now excluded from the filter. Because this field doesn't affect search results, the search results are still correctly filtered to return only "Red" documents. A maximum of 100 values are allowed. Otherwise, an `INVALID_ARGUMENT` error is returned. */
-  excludedFilterKeys?: Array<string>;
+  excludedFilterKeys?: ReadonlyArray<string>;
   /** Required. The facet key specification. */
   facetKey?: GoogleCloudDiscoveryengineV1SearchRequestFacetSpecFacetKey;
   /** Maximum facet values that are returned for this facet. If unspecified, defaults to 20. The maximum allowed value is 300. Values above 300 are coerced to 300. For aggregation in healthcare search, when the [FacetKey.key] is "healthcare_aggregation_key", the limit will be overridden to 10,000 internally, regardless of the value set here. If this field is negative, an `INVALID_ARGUMENT` is returned. */
@@ -9207,7 +9207,7 @@ export const GoogleCloudDiscoveryengineV1SearchRequestFacetSpec =
 
 export interface GoogleCloudDiscoveryengineV1ActionConfigScopeList {
   /** Optional. The list of scopes. */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1ActionConfigScopeList =
@@ -9233,7 +9233,7 @@ export interface GoogleCloudDiscoveryengineV1alphaCmekConfig {
   /** Output only. The default CmekConfig for the Customer. */
   isDefault?: boolean;
   /** Optional. Single-regional CMEKs that are required for some VAIS features. */
-  singleRegionKeys?: Array<GoogleCloudDiscoveryengineV1alphaSingleRegionKey>;
+  singleRegionKeys?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSingleRegionKey>;
   /** Output only. KMS key version resource name which will be used to encrypt resources `/cryptoKeyVersions/{keyVersion}`. */
   kmsKeyVersion?: string;
   /** Output only. The states of the CmekConfig. */
@@ -9338,7 +9338,7 @@ export const GoogleCloudDiscoveryengineV1betaTuneEngineMetadata =
 
 export interface GoogleCloudDiscoveryengineV1ListCmekConfigsResponse {
   /** All the customer's CmekConfigs. */
-  cmekConfigs?: Array<GoogleCloudDiscoveryengineV1CmekConfig>;
+  cmekConfigs?: ReadonlyArray<GoogleCloudDiscoveryengineV1CmekConfig>;
 }
 
 export const GoogleCloudDiscoveryengineV1ListCmekConfigsResponse =
@@ -9406,9 +9406,9 @@ export const A2aV1TaskStatusUpdateEvent =
 
 export interface A2aV1Artifact {
   /** The URIs of extensions that are present or contributed to this Artifact. */
-  extensions?: Array<string>;
+  extensions?: ReadonlyArray<string>;
   /** The content of the artifact. */
-  parts?: Array<A2aV1Part>;
+  parts?: ReadonlyArray<A2aV1Part>;
   /** Unique identifier (e.g. UUID) for the artifact. It must be at least unique within a task. */
   artifactId?: string;
   /** A human readable name for the artifact. */
@@ -9436,11 +9436,11 @@ export interface A2aV1Task {
   /** protolint:enable REPEATED_FIELD_NAMES_PLURALIZED A key/value object to store custom metadata about a task. */
   metadata?: Record<string, unknown>;
   /** protolint:disable REPEATED_FIELD_NAMES_PLURALIZED The history of interactions from a task. */
-  history?: Array<A2aV1Message>;
+  history?: ReadonlyArray<A2aV1Message>;
   /** Unique identifier (e.g. UUID) for the task, generated by the server for a new task. */
   id?: string;
   /** A set of output artifacts for a Task. */
-  artifacts?: Array<A2aV1Artifact>;
+  artifacts?: ReadonlyArray<A2aV1Artifact>;
 }
 
 export const A2aV1Task = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -9508,9 +9508,9 @@ export const GoogleCloudDiscoveryengineV1DeleteSitemapMetadata =
 
 export interface GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQueryUnderstandingSpec {
   /** Field names used for location-based filtering, where geolocation filters are detected in natural language search queries. Only valid when the FilterExtractionCondition is set to `ENABLED`. */
-  geoSearchQueryDetectionFieldNames?: Array<string>;
+  geoSearchQueryDetectionFieldNames?: ReadonlyArray<string>;
   /** Optional. Allowlist of fields that can be used for natural language filter extraction. By default, if this is unspecified, all indexable fields are eligible for natural language filter extraction (but are not guaranteed to be used). If any fields are specified in allowed_field_names, only the fields that are both marked as indexable in the schema and specified in the allowlist will be eligible for natural language filter extraction. Note: for multi-datastore search, this is not yet supported, and will be ignored. */
-  allowedFieldNames?: Array<string>;
+  allowedFieldNames?: ReadonlyArray<string>;
   /** The condition under which filter extraction should occur. Server behavior defaults to `DISABLED`. */
   filterExtractionCondition?:
     | "CONDITION_UNSPECIFIED"
@@ -9558,7 +9558,7 @@ export interface GoogleCloudDiscoveryengineV1ListSessionsResponse {
   /** Pagination token, if not returned indicates the last page. */
   nextPageToken?: string;
   /** All the Sessions for a given data store. */
-  sessions?: Array<GoogleCloudDiscoveryengineV1Session>;
+  sessions?: ReadonlyArray<GoogleCloudDiscoveryengineV1Session>;
 }
 
 export const GoogleCloudDiscoveryengineV1ListSessionsResponse =
@@ -9924,7 +9924,7 @@ export const GoogleCloudDiscoveryengineV1betaSearchRequestPersonalizationSpec =
 
 export interface GoogleCloudDiscoveryengineV1betaSearchRequestCustomRankingParams {
   /** Optional. A list of ranking expressions (see `ranking_expression` for the syntax documentation) to evaluate. The evaluation results will be returned in `SearchResponse.SearchResult.rank_signals.precomputed_expression_values` field. */
-  expressionsToPrecompute?: Array<string>;
+  expressionsToPrecompute?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1betaSearchRequestCustomRankingParams =
@@ -9939,7 +9939,7 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbed
   /** Embedding field path in schema. */
   fieldPath?: string;
   /** Query embedding vector. */
-  vector?: Array<number>;
+  vector?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVector =
@@ -9953,7 +9953,7 @@ export const GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbedding
 
 export interface GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec {
   /** The embedding vector used for retrieval. Limit to 1. */
-  embeddingVectors?: Array<GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVector>;
+  embeddingVectors?: ReadonlyArray<GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVector>;
 }
 
 export const GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec =
@@ -10021,11 +10021,11 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequest {
   /** Maximum number of Documents to return. The maximum allowed value depends on the data type. Values above the maximum value are coerced to the maximum value. * Websites with basic indexing: Default `10`, Maximum `25`. * Websites with advanced indexing: Default `25`, Maximum `50`. * Other: Default `50`, Maximum `100`. If this field is negative, an `INVALID_ARGUMENT` is returned. */
   pageSize?: number;
   /** Optional. Crowding specifications for improving result diversity. If multiple CrowdingSpecs are specified, crowding will be evaluated on each unique combination of the `field` values, and max_count will be the maximum value of `max_count` across all CrowdingSpecs. For example, if the first CrowdingSpec has `field` = "color" and `max_count` = 3, and the second CrowdingSpec has `field` = "size" and `max_count` = 2, then after 3 documents that share the same color AND size have been returned, subsequent ones should be removed or demoted. */
-  crowdingSpecs?: Array<GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec>;
+  crowdingSpecs?: ReadonlyArray<GoogleCloudDiscoveryengineV1betaSearchRequestCrowdingSpec>;
   /** A page token received from a previous SearchService.Search call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to SearchService.Search must match the call that provided the page token. Otherwise, an `INVALID_ARGUMENT` error is returned. */
   pageToken?: string;
   /** Specifications that define the specific DataStores to be searched, along with configurations for those data stores. This is only considered for Engines with multiple data stores. For engines with a single data store, the specs directly under SearchRequest should be used. */
-  dataStoreSpecs?: Array<GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec>;
+  dataStoreSpecs?: ReadonlyArray<GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec>;
   /** Information about the end user. Highly recommended for analytics and personalization. UserInfo.user_agent is used to deduce `device_type` for analytics. */
   userInfo?: GoogleCloudDiscoveryengineV1betaUserInfo;
   /** Optional. The backend to use for the ranking expression evaluation. */
@@ -10039,11 +10039,11 @@ export interface GoogleCloudDiscoveryengineV1betaSearchRequest {
   /** Optional. The granular relevance filtering specification. If not specified, the global `relevance_threshold` will be used for all sub-searches. If specified, this overrides the global `relevance_threshold` to use thresholds on a per sub-search basis. This feature is currently supported only for custom and site search. */
   relevanceFilterSpec?: GoogleCloudDiscoveryengineV1betaSearchRequestRelevanceFilterSpec;
   /** Optional. The categories associated with a category page. Must be set for category navigation queries to achieve good search quality. The format should be the same as PageInfo.page_category. This field is the equivalent of the query for browse (navigation) queries. It's used by the browse model when the query is empty. If the field is empty, it will not be used by the browse model. If the field contains more than one element, only the first element will be used. To represent full path of a category, use '>' character to separate different hierarchies. If '>' is part of the category name, replace it with other character(s). For example, `Graphics Cards > RTX>4090 > Founders Edition` where "RTX > 4090" represents one level, can be rewritten as `Graphics Cards > RTX_4090 > Founders Edition` */
-  pageCategories?: Array<string>;
+  pageCategories?: ReadonlyArray<string>;
   /** The spell correction specification that specifies the mode under which spell correction takes effect. */
   spellCorrectionSpec?: GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpec;
   /** Facet specifications for faceted search. If empty, no facets are returned. A maximum of 100 values are allowed. Otherwise, an `INVALID_ARGUMENT` error is returned. */
-  facetSpecs?: Array<GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpec>;
+  facetSpecs?: ReadonlyArray<GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpec>;
   /** The branch resource name, such as `projects/* /locations/global/collections/default_collection/dataStores/default_data_store/branches/0`. Use `default_branch` as the branch ID or leave this field empty, to search documents under the default branch. */
   branch?: string;
   /** The Unicode country/region code (CLDR) of a location, such as "US" and "419". For more information, see [Standard fields](https://cloud.google.com/apis/design/standard_fields). If set, then results will be boosted based on the region_code provided. */
@@ -10169,7 +10169,7 @@ export const GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpec =
 
 export interface GoogleCloudDiscoveryengineV1betaEvaluation {
   /** Output only. A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. The state of the evaluation. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -10276,7 +10276,7 @@ export const A2aV1OpenIdConnectSecurityScheme =
 
 export interface GoogleCloudDiscoveryengineV1ImportIdentityMappingsRequestInlineSource {
   /** A maximum of 10000 entries can be imported at one time */
-  identityMappingEntries?: Array<GoogleCloudDiscoveryengineV1IdentityMappingEntry>;
+  identityMappingEntries?: ReadonlyArray<GoogleCloudDiscoveryengineV1IdentityMappingEntry>;
 }
 
 export const GoogleCloudDiscoveryengineV1ImportIdentityMappingsRequestInlineSource =
@@ -10438,7 +10438,7 @@ export const A2aV1OAuth2SecurityScheme =
   }).annotate({ identifier: "A2aV1OAuth2SecurityScheme" });
 
 export interface A2aV1StringList {
-  list?: Array<string>;
+  list?: ReadonlyArray<string>;
 }
 
 export const A2aV1StringList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -10455,17 +10455,17 @@ export const A2aV1Security = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface A2aV1AgentSkill {
   /** Possible input modalities supported. */
-  inputModes?: Array<string>;
+  inputModes?: ReadonlyArray<string>;
   /** Possible output modalities produced */
-  outputModes?: Array<string>;
+  outputModes?: ReadonlyArray<string>;
   /** A human (or llm) readable description of the skill details and behaviors. */
   description?: string;
   /** protolint:disable REPEATED_FIELD_NAMES_PLURALIZED Security schemes necessary for the agent to leverage this skill. As in the overall AgentCard.security, this list represents a logical OR of security requirement objects. Each object is a set of security schemes that must be used together (a logical AND). protolint:enable REPEATED_FIELD_NAMES_PLURALIZED */
-  security?: Array<A2aV1Security>;
+  security?: ReadonlyArray<A2aV1Security>;
   /** A set of tags for the skill to enhance categorization/utilization. Example: ["cooking", "customer support", "billing"] */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** A set of example queries that this skill is designed to address. These examples should help the caller to understand how to craft requests to the agent to achieve specific goals. Example: ["I need a recipe for bread"] */
-  examples?: Array<string>;
+  examples?: ReadonlyArray<string>;
   /** Unique identifier of the skill within this agent. */
   id?: string;
   /** A human readable name for the skill. */
@@ -10566,9 +10566,9 @@ export interface A2aV1AgentCard {
   /** A url to provide additional documentation about the agent. */
   documentationUrl?: string;
   /** Skills represent a unit of ability an agent can perform. This may somewhat abstract but represents a more focused set of actions that the agent is highly likely to succeed at. */
-  skills?: Array<A2aV1AgentSkill>;
+  skills?: ReadonlyArray<A2aV1AgentSkill>;
   /** The mime types supported as outputs from this agent. */
-  defaultOutputModes?: Array<string>;
+  defaultOutputModes?: ReadonlyArray<string>;
   /** The security scheme details used for authenticating with this agent. */
   securitySchemes?: Record<string, A2aV1SecurityScheme>;
   /** A2A Capability set supported by the agent. */
@@ -10578,9 +10578,9 @@ export interface A2aV1AgentCard {
   /** The transport of the preferred endpoint. If empty, defaults to JSONRPC. */
   preferredTransport?: string;
   /** protolint:enable REPEATED_FIELD_NAMES_PLURALIZED The set of interaction modes that the agent supports across all skills. This can be overridden per skill. Defined as mime types. */
-  defaultInputModes?: Array<string>;
+  defaultInputModes?: ReadonlyArray<string>;
   /** Announcement of additional supported transports. Client can use any of the supported transports. */
-  additionalInterfaces?: Array<A2aV1AgentInterface>;
+  additionalInterfaces?: ReadonlyArray<A2aV1AgentInterface>;
   /** An optional URL to an icon for the agent. */
   iconUrl?: string;
   /** The version of the A2A protocol this agent supports. */
@@ -10594,9 +10594,9 @@ export interface A2aV1AgentCard {
   /** Whether the agent supports providing an extended agent card when the user is authenticated, i.e. is the card from .well-known different than the card from GetAgentCard. */
   supportsAuthenticatedExtendedCard?: boolean;
   /** JSON Web Signatures computed for this AgentCard. */
-  signatures?: Array<A2aV1AgentCardSignature>;
+  signatures?: ReadonlyArray<A2aV1AgentCardSignature>;
   /** protolint:disable REPEATED_FIELD_NAMES_PLURALIZED Security requirements for contacting the agent. This list can be seen as an OR of ANDs. Each object in the list describes one possible set of security requirements that must be present on a request. This allows specifying, for example, "callers must either use OAuth OR an API Key AND mTLS." Example: security { schemes { key: "oauth" value { list: ["read"] } } } security { schemes { key: "api-key" } schemes { key: "mtls" } } */
-  security?: Array<A2aV1Security>;
+  security?: ReadonlyArray<A2aV1Security>;
 }
 
 export const A2aV1AgentCard = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -10626,7 +10626,7 @@ export interface GoogleCloudDiscoveryengineV1AssistantGenerationConfig {
   /** The default language to use for the generation of the assistant response. Use an ISO 639-1 language code such as `en`. If not specified, the language will be automatically detected. */
   defaultLanguage?: string;
   /** Optional. The list of models that are allowed to be used for assistant. */
-  allowedModelIds?: Array<string>;
+  allowedModelIds?: ReadonlyArray<string>;
   /** Optional. The default model to use for assistant. */
   defaultModelId?: string;
   /** System instruction, also known as the prompt preamble for LLM calls. See also https://cloud.google.com/vertex-ai/generative-ai/docs/learn/prompts/system-instructions */
@@ -10660,7 +10660,7 @@ export const GoogleCloudDiscoveryengineV1AssistantToolInfo =
 
 export interface GoogleCloudDiscoveryengineV1AssistantToolList {
   /** The list of tools with corresponding tool information. */
-  toolInfo?: Array<GoogleCloudDiscoveryengineV1AssistantToolInfo>;
+  toolInfo?: ReadonlyArray<GoogleCloudDiscoveryengineV1AssistantToolInfo>;
 }
 
 export const GoogleCloudDiscoveryengineV1AssistantToolList =
@@ -10717,7 +10717,7 @@ export const GoogleCloudDiscoveryengineV1Assistant =
 
 export interface GoogleCloudDiscoveryengineV1ListAssistantsResponse {
   /** All the customer's Assistants. */
-  assistants?: Array<GoogleCloudDiscoveryengineV1Assistant>;
+  assistants?: ReadonlyArray<GoogleCloudDiscoveryengineV1Assistant>;
   /** A token that can be sent as ListAssistantsRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -10765,7 +10765,7 @@ export interface GoogleCloudDiscoveryengineV1betaImportSampleQueriesResponse {
   /** The desired location of errors incurred during the Import. */
   errorConfig?: GoogleCloudDiscoveryengineV1betaImportErrorConfig;
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudDiscoveryengineV1betaImportSampleQueriesResponse =
@@ -10815,7 +10815,7 @@ export interface GoogleCloudDiscoveryengineV1ListIdentityMappingStoresResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The Identity Mapping Stores. */
-  identityMappingStores?: Array<GoogleCloudDiscoveryengineV1IdentityMappingStore>;
+  identityMappingStores?: ReadonlyArray<GoogleCloudDiscoveryengineV1IdentityMappingStore>;
 }
 
 export const GoogleCloudDiscoveryengineV1ListIdentityMappingStoresResponse =
@@ -11009,11 +11009,11 @@ export interface GoogleCloudDiscoveryengineV1ServingConfig {
   /** The id of the model to use at serving time. Currently only RecommendationModels are supported. Can be changed but only to a compatible model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when SolutionType is SOLUTION_TYPE_RECOMMENDATION. */
   modelId?: string;
   /** Condition replacement specifications. Applied according to the order in the list. A previously replaced term can not be re-replaced. Maximum number of specifications is 100. Can only be set if SolutionType is SOLUTION_TYPE_SEARCH. */
-  replacementControlIds?: Array<string>;
+  replacementControlIds?: ReadonlyArray<string>;
   /** The GenericConfig of the serving configuration. */
   genericConfig?: GoogleCloudDiscoveryengineV1ServingConfigGenericConfig;
   /** Condition ignore specifications. If multiple ignore conditions match, all matching ignore controls in the list will execute. Order does not matter. Maximum number of specifications is 100. */
-  ignoreControlIds?: Array<string>;
+  ignoreControlIds?: ReadonlyArray<string>;
   /** Required. Immutable. Specifies the solution type that a serving config can be associated with. */
   solutionType?:
     | "SOLUTION_TYPE_UNSPECIFIED"
@@ -11024,27 +11024,27 @@ export interface GoogleCloudDiscoveryengineV1ServingConfig {
     | "SOLUTION_TYPE_AI_MODE"
     | (string & {});
   /** Condition synonyms specifications. If multiple synonyms conditions match, all matching synonyms controls in the list will execute. Maximum number of specifications is 100. Can only be set if SolutionType is SOLUTION_TYPE_SEARCH. */
-  synonymsControlIds?: Array<string>;
+  synonymsControlIds?: ReadonlyArray<string>;
   /** Boost controls to use in serving path. All triggered boost controls will be applied. Boost controls must be in the same data store as the serving config. Maximum of 20 boost controls. */
-  boostControlIds?: Array<string>;
+  boostControlIds?: ReadonlyArray<string>;
   /** Filter controls to use in serving path. All triggered filter controls will be applied. Filter controls must be in the same data store as the serving config. Maximum of 20 filter controls. */
-  filterControlIds?: Array<string>;
+  filterControlIds?: ReadonlyArray<string>;
   /** The ranking expression controls the customized ranking on retrieval documents. To leverage this, document embedding is required. The ranking expression setting in ServingConfig applies to all search requests served by the serving config. However, if `SearchRequest.ranking_expression` is specified, it overrides the ServingConfig ranking expression. The ranking expression is a single function or multiple functions that are joined by "+". * ranking_expression = function, { " + ", function }; Supported functions: * double * relevance_score * double * dotProduct(embedding_field_path) Function variables: * `relevance_score`: pre-defined keywords, used for measure relevance between query and document. * `embedding_field_path`: the document embedding field used with query embedding vector. * `dotProduct`: embedding function between embedding_field_path and query embedding vector. Example ranking expression: If document has an embedding field doc_embedding, the ranking expression could be `0.5 * relevance_score + 0.3 * dotProduct(doc_embedding)`. */
   rankingExpression?: string;
   /** How much diversity to use in recommendation model results e.g. `medium-diversity` or `high-diversity`. Currently supported values: * `no-diversity` * `low-diversity` * `medium-diversity` * `high-diversity` * `auto-diversity` If not specified, we choose default based on recommendation model type. Default value: `no-diversity`. Can only be set if SolutionType is SOLUTION_TYPE_RECOMMENDATION. */
   diversityLevel?: string;
   /** Condition do not associate specifications. If multiple do not associate conditions match, all matching do not associate controls in the list will execute. Order does not matter. Maximum number of specifications is 100. Can only be set if SolutionType is SOLUTION_TYPE_SEARCH. */
-  dissociateControlIds?: Array<string>;
+  dissociateControlIds?: ReadonlyArray<string>;
   /** Condition oneway synonyms specifications. If multiple oneway synonyms conditions match, all matching oneway synonyms controls in the list will execute. Maximum number of specifications is 100. Can only be set if SolutionType is SOLUTION_TYPE_SEARCH. */
-  onewaySynonymsControlIds?: Array<string>;
+  onewaySynonymsControlIds?: ReadonlyArray<string>;
   /** Required. The human readable serving config display name. Used in Discovery UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. */
   displayName?: string;
   /** Optional. The specification for answer generation. */
   answerGenerationSpec?: GoogleCloudDiscoveryengineV1AnswerGenerationSpec;
   /** Condition promote specifications. Maximum number of specifications is 100. */
-  promoteControlIds?: Array<string>;
+  promoteControlIds?: ReadonlyArray<string>;
   /** IDs of the redirect controls. Only the first triggered redirect action is applied, even if multiple apply. Maximum number of specifications is 100. Can only be set if SolutionType is SOLUTION_TYPE_SEARCH. */
-  redirectControlIds?: Array<string>;
+  redirectControlIds?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1ServingConfig =
@@ -11081,7 +11081,7 @@ export interface GoogleCloudDiscoveryengineV1ListServingConfigsResponse {
   /** Pagination token, if not returned indicates the last page. */
   nextPageToken?: string;
   /** All the ServingConfigs for a given dataStore. */
-  servingConfigs?: Array<GoogleCloudDiscoveryengineV1ServingConfig>;
+  servingConfigs?: ReadonlyArray<GoogleCloudDiscoveryengineV1ServingConfig>;
 }
 
 export const GoogleCloudDiscoveryengineV1ListServingConfigsResponse =
@@ -11150,7 +11150,7 @@ export interface GoogleCloudDiscoveryengineV1WidgetConfigAccessSettings {
   /** Optional. The workforce identity pool provider used to access the widget. */
   workforceIdentityPoolProvider?: string;
   /** List of domains that are allowed to integrate the search widget. */
-  allowlistedDomains?: Array<string>;
+  allowlistedDomains?: ReadonlyArray<string>;
   /** Whether public unauthenticated access is allowed. */
   allowPublicAccess?: boolean;
   /** Optional. Language code for user interface. Use language tags defined by [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). If unset, the default language code is "en-US". */
@@ -11170,7 +11170,7 @@ export const GoogleCloudDiscoveryengineV1WidgetConfigAccessSettings =
 
 export interface GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesResponse {
   /** TargetSites created. */
-  targetSites?: Array<GoogleCloudDiscoveryengineV1alphaTargetSite>;
+  targetSites?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaTargetSite>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesResponse =
@@ -11302,7 +11302,7 @@ export const GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec =
 
 export interface GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpecVertexAiSearchSpec {
   /** Optional. Specs defining DataStores to filter on in a search call and configurations for those data stores. This is only considered for Engines with multiple data stores. */
-  dataStoreSpecs?: Array<GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec>;
+  dataStoreSpecs?: ReadonlyArray<GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec>;
   /** Optional. The filter syntax consists of an expression language for constructing a predicate from one or more fields of the documents being filtered. Filter expression is case-sensitive. If this field is unrecognizable, an `INVALID_ARGUMENT` is returned. Filtering in Vertex AI Search is done by mapping the LHS filter key to a key property defined in the Vertex AI Search backend -- this mapping is defined by the customer in their schema. For example a media customer might have a field 'name' in their schema. In this case the filter would look like this: filter --> name:'ANY("king kong")' For more information about filtering including syntax and filter operators, see [Filter](https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata) */
   filter?: string;
 }
@@ -11510,7 +11510,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsRes
   /** The desired location of errors incurred during the Import. */
   errorConfig?: GoogleCloudDiscoveryengineV1alphaImportErrorConfig;
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsResponse =
@@ -11560,7 +11560,7 @@ export const GoogleCloudDiscoveryengineV1LicenseConfigScheduledUpdate =
 
 export interface GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression {
   /** The expressions that were ORed together. */
-  expressions?: Array<GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression>;
+  expressions?: ReadonlyArray<GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression>;
 }
 
 export const GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression: Schema.Schema<GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterOrExpression> =
@@ -11579,7 +11579,7 @@ export const GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnder
 
 export interface GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression {
   /** The expressions that were ANDed together. */
-  expressions?: Array<GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression>;
+  expressions?: ReadonlyArray<GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterExpression>;
 }
 
 export const GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression: Schema.Schema<GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilterAndExpression> =
@@ -11710,7 +11710,7 @@ export interface GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryU
   /** The filters that were extracted from the input query represented in a structured form. */
   structuredExtractedFilter?: GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfoStructuredExtractedFilter;
   /** The classified intents from the input query. */
-  classifiedIntents?: Array<string>;
+  classifiedIntents?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1SearchResponseNaturalLanguageQueryUnderstandingInfo =
@@ -11832,9 +11832,9 @@ export const GoogleCloudDiscoveryengineV1CompletionInfo =
 
 export interface GoogleCloudDiscoveryengineV1CustomAttribute {
   /** The numerical values of this custom attribute. For example, `[2.3, 15.4]` when the key is "lengths_cm". Exactly one of CustomAttribute.text or CustomAttribute.numbers should be set. Otherwise, an `INVALID_ARGUMENT` error is returned. */
-  numbers?: Array<number>;
+  numbers?: ReadonlyArray<number>;
   /** The textual values of this custom attribute. For example, `["yellow", "green"]` when the key is "color". Empty string is not allowed. Otherwise, an `INVALID_ARGUMENT` error is returned. Exactly one of CustomAttribute.text or CustomAttribute.numbers should be set. Otherwise, an `INVALID_ARGUMENT` error is returned. */
-  text?: Array<string>;
+  text?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1CustomAttribute =
@@ -11870,7 +11870,7 @@ export const GoogleCloudDiscoveryengineV1TransactionInfo =
 
 export interface GoogleCloudDiscoveryengineV1UserEvent {
   /** List of Documents associated with this user event. This field is optional except for the following event types: * `view-item` * `add-to-cart` * `purchase` * `media-play` * `media-complete` In a `search` event, this field represents the documents returned to the end user on the current page (the end user may have not finished browsing the whole page yet). When a new page is returned to the end user, after pagination/filtering/ordering even for the same query, a new `search` event with different UserEvent.documents is desired. */
-  documents?: Array<GoogleCloudDiscoveryengineV1DocumentInfo>;
+  documents?: ReadonlyArray<GoogleCloudDiscoveryengineV1DocumentInfo>;
   /** Required. User event type. Allowed values are: Generic values: * `search`: Search for Documents. * `view-item`: Detailed page view of a Document. * `view-item-list`: View of a panel or ordered list of Documents. * `view-home-page`: View of the home page. * `view-category-page`: View of a category page, e.g. Home > Men > Jeans Retail-related values: * `add-to-cart`: Add an item(s) to cart, e.g. in Retail online shopping * `purchase`: Purchase an item(s) Media-related values: * `media-play`: Start/resume watching a video, playing a song, etc. * `media-complete`: Finished or stopped midway through a video, song, etc. Custom conversion value: * `conversion`: Customer defined conversion event. */
   eventType?: string;
   /** Only required for UserEventService.ImportUserEvents method. Timestamp of when the user event happened. */
@@ -11880,9 +11880,9 @@ export interface GoogleCloudDiscoveryengineV1UserEvent {
   /** Media-specific info. */
   mediaInfo?: GoogleCloudDiscoveryengineV1MediaInfo;
   /** The promotion IDs if this is an event associated with promotions. Currently, this field is restricted to at most one ID. */
-  promotionIds?: Array<string>;
+  promotionIds?: ReadonlyArray<string>;
   /** Optional. List of panels associated with this event. Used for page-level impression data. */
-  panels?: Array<GoogleCloudDiscoveryengineV1PanelInfo>;
+  panels?: ReadonlyArray<GoogleCloudDiscoveryengineV1PanelInfo>;
   /** Information about the end user. */
   userInfo?: GoogleCloudDiscoveryengineV1UserInfo;
   /** Optional. Conversion type. Required if UserEvent.event_type is `conversion`. This is a customer-defined conversion name in lowercase letters or numbers separated by "-", such as "watch", "good-visit" etc. Do not set the field if UserEvent.event_type is not `conversion`. This mixes the custom conversion event with predefined events like `search`, `view-item` etc. */
@@ -11910,7 +11910,7 @@ export interface GoogleCloudDiscoveryengineV1UserEvent {
   /** Optional. The filter syntax consists of an expression language for constructing a predicate from one or more fields of the documents being filtered. One example is for `search` events, the associated SearchRequest may contain a filter expression in SearchRequest.filter conforming to https://google.aip.dev/160#filtering. Similarly, for `view-item-list` events that are generated from a RecommendRequest, this field may be populated directly from RecommendRequest.filter conforming to https://google.aip.dev/160#filtering. The value must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an `INVALID_ARGUMENT` error is returned. */
   filter?: string;
   /** A list of identifiers for the independent experiment groups this user event belongs to. This is used to distinguish between user events associated with different experiment setups. */
-  tagIds?: Array<string>;
+  tagIds?: ReadonlyArray<string>;
   /** A unique identifier for tracking a visitor session with a length limit of 128 bytes. A session is an aggregation of an end user behavior in a time span. A general guideline to populate the session_id: 1. If user has no activity for 30 min, a new session_id should be assigned. 2. The session_id should be unique across users, suggest use uuid or add UserEvent.user_pseudo_id as prefix. */
   sessionId?: string;
   /** The transaction metadata (if any) associated with this user event. */
@@ -11954,7 +11954,7 @@ export const GoogleCloudDiscoveryengineV1UserEvent =
 
 export interface GoogleCloudDiscoveryengineV1ImportUserEventsRequestInlineSource {
   /** Required. A list of user events to import. Recommended max of 10k items. */
-  userEvents?: Array<GoogleCloudDiscoveryengineV1UserEvent>;
+  userEvents?: ReadonlyArray<GoogleCloudDiscoveryengineV1UserEvent>;
 }
 
 export const GoogleCloudDiscoveryengineV1ImportUserEventsRequestInlineSource =
@@ -12048,7 +12048,7 @@ export interface GoogleCloudDiscoveryengineV1betaPurgeDocumentsResponse {
   /** The total count of documents purged as a result of the operation. */
   purgeCount?: string;
   /** A sample of document names that will be deleted. Only populated if `force` is set to false. A max of 100 names will be returned and the names are chosen at random. */
-  purgeSample?: Array<string>;
+  purgeSample?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1betaPurgeDocumentsResponse =
@@ -12096,7 +12096,7 @@ export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponsePersonSugg
 
 export interface GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource {
   /** Required. A list of user licenses to update. Each user license must have a valid UserLicense.user_principal. */
-  userLicenses?: Array<GoogleCloudDiscoveryengineV1UserLicense>;
+  userLicenses?: ReadonlyArray<GoogleCloudDiscoveryengineV1UserLicense>;
   /** Optional. The list of fields to update. */
   updateMask?: string;
 }
@@ -12203,7 +12203,7 @@ export interface GoogleIamV1Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: GoogleTypeExpr;
 }
@@ -12218,7 +12218,7 @@ export interface GoogleIamV1Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<GoogleIamV1Binding>;
+  bindings?: ReadonlyArray<GoogleIamV1Binding>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
@@ -12260,13 +12260,13 @@ export const GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfigFeatureConfig
 
 export interface GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfig {
   /** Specify entity types to support. */
-  cloudKnowledgeGraphTypes?: Array<string>;
+  cloudKnowledgeGraphTypes?: ReadonlyArray<string>;
   /** Optional. Feature config for the Knowledge Graph. */
   featureConfig?: GoogleCloudDiscoveryengineV1EngineKnowledgeGraphConfigFeatureConfig;
   /** Whether to enable the Private Knowledge Graph for the engine. Defaults to false if not specified. */
   enablePrivateKnowledgeGraph?: boolean;
   /** Specify entity types to support. */
-  privateKnowledgeGraphTypes?: Array<string>;
+  privateKnowledgeGraphTypes?: ReadonlyArray<string>;
   /** Whether to enable the Cloud Knowledge Graph for the engine. Defaults to false if not specified. */
   enableCloudKnowledgeGraph?: boolean;
 }
@@ -12377,7 +12377,7 @@ export interface GoogleCloudDiscoveryengineV1EngineSearchEngineConfig {
     | "SUBSCRIPTION_TIER_FRONTLINE_STARTER"
     | (string & {});
   /** The add-on that this search engine enables. */
-  searchAddOns?: Array<
+  searchAddOns?: ReadonlyArray<
     "SEARCH_ADD_ON_UNSPECIFIED" | "SEARCH_ADD_ON_LLM" | (string & {})
   >;
   /** The search feature tier of this engine. Different tiers might have different pricing. To learn more, check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified. */
@@ -12437,7 +12437,7 @@ export interface GoogleCloudDiscoveryengineV1Engine {
   /** Output only. Timestamp the Recommendation Engine was last updated. */
   updateTime?: string;
   /** Optional. The emails of the procurement contacts. */
-  procurementContactEmails?: Array<string>;
+  procurementContactEmails?: ReadonlyArray<string>;
   /** Common config spec that specifies the metadata of the engine. */
   commonConfig?: GoogleCloudDiscoveryengineV1EngineCommonConfig;
   /** Optional. Immutable. This the application type which this engine resource represents. NOTE: this is a new concept independ of existing industry vertical or solution type. */
@@ -12464,7 +12464,7 @@ export interface GoogleCloudDiscoveryengineV1Engine {
     | "SOLUTION_TYPE_AI_MODE"
     | (string & {});
   /** Optional. The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be associated here. Note that when used in CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary initializations. */
-  dataStoreIds?: Array<string>;
+  dataStoreIds?: ReadonlyArray<string>;
   /** Optional. Maps a model name to its specific configuration for this engine. This allows admin users to turn on/off individual models. This only stores models whose states are overridden by the admin. When the state is unspecified, or model_configs is empty for this model, the system will decide if this model should be available or not based on the default configuration. For example, a preview model should be disabled by default if the admin has not chosen to enable it. */
   modelConfigs?: Record<
     string,
@@ -12531,7 +12531,7 @@ export interface GoogleCloudDiscoveryengineV1ListEnginesResponse {
   /** Not supported. */
   nextPageToken?: string;
   /** All the customer's Engines. */
-  engines?: Array<GoogleCloudDiscoveryengineV1Engine>;
+  engines?: ReadonlyArray<GoogleCloudDiscoveryengineV1Engine>;
 }
 
 export const GoogleCloudDiscoveryengineV1ListEnginesResponse =
@@ -12575,7 +12575,7 @@ export const GoogleCloudDiscoveryengineV1SuggestionDenyListEntry =
 
 export interface GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequestInlineSource {
   /** Required. A list of all denylist entries to import. Max of 1000 items. */
-  entries?: Array<GoogleCloudDiscoveryengineV1SuggestionDenyListEntry>;
+  entries?: ReadonlyArray<GoogleCloudDiscoveryengineV1SuggestionDenyListEntry>;
 }
 
 export const GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequestInlineSource =
@@ -12592,7 +12592,7 @@ export interface GoogleCloudDiscoveryengineV1GcsSource {
   /** The schema to use when parsing the data from the source. Supported values for document imports: * `document` (default): One JSON Document per line. Each document must have a valid Document.id. * `content`: Unstructured data (e.g. PDF, HTML). Each file matched by `input_uris` becomes a document, with the ID set to the first 128 bits of SHA256(URI) encoded as a hex string. * `custom`: One custom data JSON per row in arbitrary format that conforms to the defined Schema of the data store. This can only be used by the GENERIC Data Store vertical. * `csv`: A CSV file with header conforming to the defined Schema of the data store. Each entry after the header is imported as a Document. This can only be used by the GENERIC Data Store vertical. Supported values for user event imports: * `user_event` (default): One JSON UserEvent per line. */
   dataSchema?: string;
   /** Required. Cloud Storage URIs to input files. Each URI can be up to 2000 characters long. URIs can match the full object path (for example, `gs://bucket/directory/object.json`) or a pattern matching one or more files, such as `gs://bucket/directory/*.json`. A request can contain at most 100 files (or 100,000 files if `data_schema` is `content`). Each file can be up to 2 GB (or 100 MB if `data_schema` is `content`). */
-  inputUris?: Array<string>;
+  inputUris?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1GcsSource =
@@ -12672,7 +12672,7 @@ export const GoogleCloudDiscoveryengineV1alphaNaturalLanguageQueryUnderstandingC
 
 export interface GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesResponse {
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
   /** Count of deny list entries that failed to be imported. */
   failedEntriesCount?: string;
   /** Count of deny list entries successfully imported. */
@@ -12711,7 +12711,7 @@ export const GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResul
 
 export interface GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultList {
   /** Search results. */
-  searchResults?: Array<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResult>;
+  searchResults?: ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultListSearchResult>;
 }
 
 export const GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchResultList =
@@ -12790,7 +12790,7 @@ export const GoogleCloudDiscoveryengineV1AnswerQueryRequestRelatedQuestionsSpec 
 
 export interface GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig {
   /** The add-on that this search engine enables. */
-  searchAddOns?: Array<
+  searchAddOns?: ReadonlyArray<
     "SEARCH_ADD_ON_UNSPECIFIED" | "SEARCH_ADD_ON_LLM" | (string & {})
   >;
   /** Optional. The required subscription tier of this engine. They cannot be modified after engine creation. If the required subscription tier is search, user with higher license tier like assist can still access the standalone app associated with this engine. */
@@ -12889,7 +12889,7 @@ export const GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloy
 
 export interface GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfig {
   /** Optional. Fields to be returned in the search results. If empty, all fields will be returned. */
-  returnedFields?: Array<string>;
+  returnedFields?: ReadonlyArray<string>;
   /** Optional. Configuration for Magic. */
   alloydbAiNlConfig?: GoogleCloudDiscoveryengineV1betaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbAiNaturalLanguageConfig;
   /** Required. Configuration for connecting to AlloyDB. */
@@ -13014,7 +13014,7 @@ export const GoogleCloudDiscoveryengineV1alphaSearchRequestSpellCorrectionSpec =
 
 export interface GoogleCloudDiscoveryengineV1PurgeDocumentsRequestInlineSource {
   /** Required. A list of full resource name of documents to purge. In the format `projects/* /locations/* /collections/* /dataStores/* /branches/* /documents/*`. Recommended max of 100 items. */
-  documents?: Array<string>;
+  documents?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1PurgeDocumentsRequestInlineSource =
@@ -13221,7 +13221,7 @@ export interface GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRun {
   /** The timestamp for either extracted_documents_count, indexed_documents_count and error_documents_count was last updated. */
   statsUpdateTime?: string;
   /** The errors from the entity's sync run. Only exist if running into an error state. Contains error code and error message. */
-  errors?: Array<GoogleRpcStatus>;
+  errors?: ReadonlyArray<GoogleRpcStatus>;
   /** Optional. The number of documents deleted. */
   deletedRecordCount?: string;
   /** Optional. The number of documents extracted from connector source, ready to be ingested to VAIS. */
@@ -13285,7 +13285,7 @@ export const GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRun =
 
 export interface GoogleCloudDiscoveryengineV1ImportDocumentsRequestInlineSource {
   /** Required. A list of documents to update/create. Each document must have a valid Document.id. Recommended max of 100 items. */
-  documents?: Array<GoogleCloudDiscoveryengineV1Document>;
+  documents?: ReadonlyArray<GoogleCloudDiscoveryengineV1Document>;
 }
 
 export const GoogleCloudDiscoveryengineV1ImportDocumentsRequestInlineSource =
@@ -13327,7 +13327,7 @@ export const GoogleCloudDiscoveryengineV1ProjectConfigurableBillingStatus =
 
 export interface GoogleCloudDiscoveryengineV1PurgeIdentityMappingsRequestInlineSource {
   /** A maximum of 10000 entries can be purged at one time */
-  identityMappingEntries?: Array<GoogleCloudDiscoveryengineV1IdentityMappingEntry>;
+  identityMappingEntries?: ReadonlyArray<GoogleCloudDiscoveryengineV1IdentityMappingEntry>;
 }
 
 export const GoogleCloudDiscoveryengineV1PurgeIdentityMappingsRequestInlineSource =
@@ -13448,7 +13448,7 @@ export const GoogleCloudDiscoveryengineV1GroundingFact =
 
 export interface GoogleCloudDiscoveryengineV1CheckGroundingRequest {
   /** List of facts for the grounding check. We support up to 200 facts. */
-  facts?: Array<GoogleCloudDiscoveryengineV1GroundingFact>;
+  facts?: ReadonlyArray<GoogleCloudDiscoveryengineV1GroundingFact>;
   /** The user labels applied to a resource must meet the following requirements: * Each resource can have multiple labels, up to a maximum of 64. * Each label must be a key-value pair. * Keys have a minimum length of 1 character and a maximum length of 63 characters and cannot be empty. Values can be empty and have a maximum length of 63 characters. * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. All characters must use UTF-8 encoding, and international characters are allowed. * The key portion of a label must be unique. However, you can use the same key with multiple resources. * Keys must start with a lowercase letter or international character. See [Google Cloud Document](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements) for more details. */
   userLabels?: Record<string, string>;
   /** Configuration of the grounding check. */
@@ -13553,7 +13553,7 @@ export interface GoogleCloudDiscoveryengineV1AnswerQueryRequestSearchSpecSearchP
     | "CHUNKS"
     | (string & {});
   /** Specs defining dataStores to filter on in a search call and configurations for those dataStores. This is only considered for engines with multiple dataStores use case. For single dataStore within an engine, they should use the specs at the top level. */
-  dataStoreSpecs?: Array<GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec>;
+  dataStoreSpecs?: ReadonlyArray<GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec>;
   /** The order in which documents are returned. Documents can be ordered by a field in an Document object. Leave it unset if ordered by relevance. `order_by` expression is case-sensitive. For more information on ordering, see [Ordering](https://cloud.google.com/retail/docs/filter-and-order#order) If this field is unrecognizable, an `INVALID_ARGUMENT` is returned. */
   orderBy?: string;
   /** Boost specification to boost certain documents in search results which may affect the answer query response. For more information on boosting, see [Boosting](https://cloud.google.com/retail/docs/boosting#boost) */
@@ -13645,7 +13645,7 @@ export interface GoogleCloudDiscoveryengineV1BigtableOptionsBigtableColumnFamily
   /** The encoding mode of the values when the type is not STRING. Acceptable encoding values are: * `TEXT`: indicates values are alphanumeric text strings. * `BINARY`: indicates values are encoded using `HBase Bytes.toBytes` family of functions. This can be overridden for a specific column by listing that column in `columns` and specifying an encoding for it. */
   encoding?: "ENCODING_UNSPECIFIED" | "TEXT" | "BINARY" | (string & {});
   /** The list of objects that contains column level information for each column. If a column is not present in this list it will be ignored. */
-  columns?: Array<GoogleCloudDiscoveryengineV1BigtableOptionsBigtableColumn>;
+  columns?: ReadonlyArray<GoogleCloudDiscoveryengineV1BigtableOptionsBigtableColumn>;
 }
 
 export const GoogleCloudDiscoveryengineV1BigtableOptionsBigtableColumnFamily =
@@ -13797,7 +13797,7 @@ export const GoogleCloudDiscoveryengineV1DynamicTool =
 
 export interface GoogleCloudDiscoveryengineV1DestinationConfig {
   /** Optional. The destinations for the corresponding key. */
-  destinations?: Array<GoogleCloudDiscoveryengineV1DestinationConfigDestination>;
+  destinations?: ReadonlyArray<GoogleCloudDiscoveryengineV1DestinationConfigDestination>;
   /** Optional. Unique destination identifier that is supported by the connector. */
   key?: string;
   /** Additional parameters for this destination config in json string format. */
@@ -13949,7 +13949,7 @@ export interface GoogleCloudDiscoveryengineV1AlertPolicyConfig {
   /** Immutable. The fully qualified resource name of the AlertPolicy. */
   alertPolicyName?: string;
   /** Optional. The enrollment states of each alert. */
-  alertEnrollments?: Array<GoogleCloudDiscoveryengineV1AlertPolicyConfigAlertEnrollment>;
+  alertEnrollments?: ReadonlyArray<GoogleCloudDiscoveryengineV1AlertPolicyConfigAlertEnrollment>;
 }
 
 export const GoogleCloudDiscoveryengineV1AlertPolicyConfig =
@@ -13964,7 +13964,7 @@ export const GoogleCloudDiscoveryengineV1AlertPolicyConfig =
 
 export interface GoogleCloudDiscoveryengineV1BAPConfig {
   /** Required. The supported connector modes for the associated BAP connection. */
-  supportedConnectorModes?: Array<
+  supportedConnectorModes?: ReadonlyArray<
     | "CONNECTOR_MODE_UNSPECIFIED"
     | "DATA_INGESTION"
     | "ACTIONS"
@@ -13972,7 +13972,7 @@ export interface GoogleCloudDiscoveryengineV1BAPConfig {
     | (string & {})
   >;
   /** Optional. The actions enabled on the associated BAP connection. */
-  enabledActions?: Array<string>;
+  enabledActions?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1BAPConfig =
@@ -13985,11 +13985,11 @@ export interface GoogleCloudDiscoveryengineV1DataConnector {
   /** The configuration for the identity data synchronization runs. This contains the refresh interval to sync the Access Control List information for the documents ingested by this connector. */
   identityScheduleConfig?: GoogleCloudDiscoveryengineV1IdentityScheduleConfig;
   /** Output only. The dynamic tools fetched for this connector. */
-  dynamicTools?: Array<GoogleCloudDiscoveryengineV1DynamicTool>;
+  dynamicTools?: ReadonlyArray<GoogleCloudDiscoveryengineV1DynamicTool>;
   /** Optional. Any target destinations used to connect to third-party services. */
-  destinationConfigs?: Array<GoogleCloudDiscoveryengineV1DestinationConfig>;
+  destinationConfigs?: ReadonlyArray<GoogleCloudDiscoveryengineV1DestinationConfig>;
   /** Output only. User actions that must be completed before the connector can start syncing data. */
-  blockingReasons?: Array<
+  blockingReasons?: ReadonlyArray<
     | "BLOCKING_REASON_UNSPECIFIED"
     | "ALLOWLIST_STATIC_IP"
     | "ALLOWLIST_IN_SERVICE_ATTACHMENT"
@@ -13997,7 +13997,7 @@ export interface GoogleCloudDiscoveryengineV1DataConnector {
     | (string & {})
   >;
   /** Output only. The static IP addresses used by this connector. */
-  staticIpAddresses?: Array<string>;
+  staticIpAddresses?: ReadonlyArray<string>;
   /** Optional. Whether the END USER AUTHENTICATION connector is created in SaaS. */
   createEuaSaas?: boolean;
   /** The refresh interval to sync the Access Control List information for the documents ingested by this connector. If not set, the access control list will be refreshed at the default interval of 30 minutes. The identity refresh interval can be at least 30 minutes and at most 7 days. */
@@ -14018,7 +14018,7 @@ export interface GoogleCloudDiscoveryengineV1DataConnector {
     | "UPDATING"
     | (string & {});
   /** List of entities from the connected data source to ingest. */
-  entities?: Array<GoogleCloudDiscoveryengineV1DataConnectorSourceEntity>;
+  entities?: ReadonlyArray<GoogleCloudDiscoveryengineV1DataConnectorSourceEntity>;
   /** Optional. The refresh interval specifically for incremental data syncs. If unset, incremental syncs will use the default from env, set to 3hrs. The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P connectors. When the refresh interval is set to the same value as the incremental refresh interval, incremental sync will be disabled. */
   incrementalRefreshInterval?: string;
   /** Output only. State of the action connector. This reflects whether the action connector is initializing, active or has encountered errors. */
@@ -14035,7 +14035,7 @@ export interface GoogleCloudDiscoveryengineV1DataConnector {
   /** Required data connector parameters in json string format. */
   jsonParams?: string;
   /** Output only. The errors from initialization or from the latest connector run. */
-  errors?: Array<GoogleRpcStatus>;
+  errors?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. Timestamp the DataConnector was created at. */
   createTime?: string;
   /** Optional. Any params and credentials used specifically for hybrid connectors supporting FEDERATED mode. This field should only be set if the connector is a hybrid connector and we want to enable FEDERATED mode. */
@@ -14055,7 +14055,7 @@ export interface GoogleCloudDiscoveryengineV1DataConnector {
   /** Optional. Indicates whether incremental syncs are paused for this connector. This is independent of auto_run_disabled. Applicable to only 3P connectors. When the refresh interval is set to the same value as the incremental refresh interval, incremental sync will be disabled, i.e. set to true. */
   incrementalSyncDisabled?: boolean;
   /** Optional. The modes enabled for this connector. Default state is CONNECTOR_MODE_UNSPECIFIED. */
-  connectorModes?: Array<
+  connectorModes?: ReadonlyArray<
     | "CONNECTOR_MODE_UNSPECIFIED"
     | "DATA_INGESTION"
     | "ACTIONS"
@@ -14084,11 +14084,11 @@ export interface GoogleCloudDiscoveryengineV1DataConnector {
   /** Required data connector parameters in structured json format. */
   params?: Record<string, unknown>;
   /** Optional. Specifies keys to be removed from the 'params' field. This is only active when 'params' is included in the 'update_mask' in an UpdateDataConnectorRequest. Deletion takes precedence if a key is both in 'remove_param_keys' and present in the 'params' field of the request. */
-  removeParamKeys?: Array<string>;
+  removeParamKeys?: ReadonlyArray<string>;
   /** Optional. Action configurations to make the connector support actions. */
   actionConfig?: GoogleCloudDiscoveryengineV1ActionConfig;
   /** Optional. The connector level alert config. */
-  alertPolicyConfigs?: Array<GoogleCloudDiscoveryengineV1AlertPolicyConfig>;
+  alertPolicyConfigs?: ReadonlyArray<GoogleCloudDiscoveryengineV1AlertPolicyConfig>;
   /** Optional. The configuration for establishing a BAP connection. */
   bapConfig?: GoogleCloudDiscoveryengineV1BAPConfig;
   /** Output only. The most recent timestamp when this DataConnector was paused, affecting all functionalities such as data synchronization. Pausing a connector has the following effects: - All functionalities, including data synchronization, are halted. - Any ongoing data synchronization job will be canceled. - No future data synchronization runs will be scheduled nor can be triggered. */
@@ -14118,7 +14118,7 @@ export interface GoogleCloudDiscoveryengineV1DataConnector {
     | "REMOTE_MCP"
     | (string & {});
   /** Output only. The list of FQDNs of the data connector can egress to. This includes both FQDN derived from the customer provided instance URL and default per connector type FQDNs. */
-  egressFqdns?: Array<string>;
+  egressFqdns?: ReadonlyArray<string>;
   /** Required. The refresh interval for data sync. If duration is set to 0, the data will be synced in real time. The streaming feature is not supported yet. The minimum is 30 minutes and maximum is 7 days. When the refresh interval is set to the same value as the incremental refresh interval, incremental sync will be disabled. */
   refreshInterval?: string;
   /** Input only. The KMS key to be used to protect the DataStores managed by this connector. Must be set for requests that need to comply with CMEK Org Policy protections. If this field is set and processed successfully, the DataStores created by this connector will be protected by the KMS key. */
@@ -14305,7 +14305,7 @@ export interface A2aV1SendMessageConfiguration {
   /** The maximum number of messages to include in the history. if 0, the history will be unlimited. */
   historyLength?: number;
   /** The output modes that the agent is expected to respond with. */
-  acceptedOutputModes?: Array<string>;
+  acceptedOutputModes?: ReadonlyArray<string>;
 }
 
 export const A2aV1SendMessageConfiguration =
@@ -14490,9 +14490,9 @@ export const GoogleCloudDiscoveryengineV1RecommendResponseRecommendationResult =
 
 export interface GoogleCloudDiscoveryengineV1RecommendResponse {
   /** A list of recommended Documents. The order represents the ranking (from the most relevant Document to the least). */
-  results?: Array<GoogleCloudDiscoveryengineV1RecommendResponseRecommendationResult>;
+  results?: ReadonlyArray<GoogleCloudDiscoveryengineV1RecommendResponseRecommendationResult>;
   /** IDs of documents in the request that were missing from the default Branch associated with the requested ServingConfig. */
-  missingIds?: Array<string>;
+  missingIds?: ReadonlyArray<string>;
   /** A unique attribution token. This should be included in the UserEvent logs resulting from this recommendation, which enables accurate attribution of recommendation model performance. */
   attributionToken?: string;
   /** True if RecommendRequest.validate_only was set. */
@@ -14515,7 +14515,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportDocumentsResponse {
   /** Echoes the destination for the complete errors in the request if set. */
   errorConfig?: GoogleCloudDiscoveryengineV1alphaImportErrorConfig;
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaImportDocumentsResponse =
@@ -14649,7 +14649,7 @@ export interface GoogleCloudDiscoveryengineV1CheckGroundingResponseClaim {
   /** Position indicating the end of the claim in the answer candidate, exclusive, in bytes. Note that this is not measured in characters and, therefore, must be rendered as such. For example, if the claim text contains non-ASCII characters, the start and end positions vary when measured in characters (programming-language-dependent) and when measured in bytes (programming-language-independent). */
   endPos?: number;
   /** A list of indices (into 'cited_chunks') specifying the citations associated with the claim. For instance [1,3,4] means that cited_chunks[1], cited_chunks[3], cited_chunks[4] are the facts cited supporting for the claim. A citation to a fact indicates that the claim is supported by the fact. */
-  citationIndices?: Array<number>;
+  citationIndices?: ReadonlyArray<number>;
   /** Confidence score for the claim in the answer candidate, in the range of [0, 1]. This is set only when `CheckGroundingRequest.grounding_spec.enable_claim_level_score` is true. */
   score?: number;
   /** Text for the claim in the answer candidate. Always provided regardless of whether citations or anti-citations are found. */
@@ -14695,7 +14695,7 @@ export interface GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolatio
     | "LINEAR"
     | (string & {});
   /** Optional. The control points used to define the curve. The monotonic function (defined through the interpolation_type above) passes through the control points listed here. */
-  controlPoints?: Array<GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpecControlPoint>;
+  controlPoints?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaControlBoostActionInterpolationBoostSpecControlPoint>;
   /** Optional. The name of the field whose value will be used to determine the boost amount. */
   fieldName?: string;
   /** Optional. The attribute type to be used to determine the boost amount. The attribute value can be derived from the field value of the specified field_name. In the case of numerical it is straightforward i.e. attribute_value = numerical_field_value. In the case of freshness however, attribute_value = (time.now() - datetime_field_value). */
@@ -14764,7 +14764,7 @@ export const GoogleCloudDiscoveryengineV1alphaDestinationConfigDestination =
 
 export interface GoogleCloudDiscoveryengineV1alphaDestinationConfig {
   /** Optional. The destinations for the corresponding key. */
-  destinations?: Array<GoogleCloudDiscoveryengineV1alphaDestinationConfigDestination>;
+  destinations?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaDestinationConfigDestination>;
   /** Optional. Additional parameters for this destination config in structured json format. */
   params?: Record<string, unknown>;
   /** Optional. Unique destination identifier that is supported by the connector. */
@@ -14813,9 +14813,9 @@ export interface GoogleLongrunningListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleLongrunningListOperationsResponse =
@@ -14827,7 +14827,7 @@ export const GoogleLongrunningListOperationsResponse =
 
 export interface GoogleCloudDiscoveryengineV1alphaPurgeDocumentsResponse {
   /** A sample of document names that will be deleted. Only populated if `force` is set to false. A max of 100 names will be returned and the names are chosen at random. */
-  purgeSample?: Array<string>;
+  purgeSample?: ReadonlyArray<string>;
   /** The total count of documents purged as a result of the operation. */
   purgeCount?: string;
 }
@@ -14964,7 +14964,7 @@ export const GoogleCloudDiscoveryengineLoggingConnectorRunErrorContext =
 
 export interface GoogleCloudDiscoveryengineV1alphaConnectorRun {
   /** Contains info about errors incurred during the sync. Only exist if running into an error state. Contains error code and error message. Use with the `state` field. */
-  errors?: Array<GoogleRpcStatus>;
+  errors?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. The time when the connector run was most recently paused. */
   latestPauseTime?: string;
   /** Output only. The time when the connector run started. */
@@ -14994,7 +14994,7 @@ export interface GoogleCloudDiscoveryengineV1alphaConnectorRun {
   /** Timestamp at which the connector run sync state was last updated. */
   stateUpdateTime?: string;
   /** Output only. The details of the entities synced at the ConnectorRun. Each ConnectorRun consists of syncing one or more entities. */
-  entityRuns?: Array<GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRun>;
+  entityRuns?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaConnectorRunEntityRun>;
   /** Output only. The time when the connector run ended. */
   endTime?: string;
 }
@@ -15191,13 +15191,13 @@ export const GoogleCloudDiscoveryengineV1alphaProjectConfigurableBillingStatus =
 
 export interface GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseQuerySuggestion {
   /** The name of the dataStore that this suggestion belongs to. */
-  dataStore?: Array<string>;
+  dataStore?: ReadonlyArray<string>;
   /** The suggestion for the query. */
   suggestion?: string;
   /** The score of each suggestion. The score is in the range of [0, 1]. */
   score?: number;
   /** The unique document field paths that serve as the source of this suggestion if it was generated from completable fields. This field is only populated for the document-completable model. */
-  completableFieldPaths?: Array<string>;
+  completableFieldPaths?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseQuerySuggestion =
@@ -15217,7 +15217,7 @@ export interface GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig {
   /** Whether to enable configurable schema for `HEALTHCARE_FHIR` vertical. If set to `true`, the predefined healthcare fhir schema can be extended for more customized searching and filtering. */
   enableConfigurableSchema?: boolean;
   /** Optional. Names of the Group resources to use as a basis for the initial patient filter, in format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Group/{group_id}`. The filter group must be a FHIR resource name of type Group, and the filter will be constructed from the direct members of the group which are Patient resources. */
-  initialFilterGroups?: Array<string>;
+  initialFilterGroups?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1betaHealthcareFhirConfig =
@@ -15233,7 +15233,7 @@ export interface GoogleCloudDiscoveryengineV1ConverseConversationResponse {
   /** Answer to the current query. */
   reply?: GoogleCloudDiscoveryengineV1Reply;
   /** Search Results. */
-  searchResults?: Array<GoogleCloudDiscoveryengineV1SearchResponseSearchResult>;
+  searchResults?: ReadonlyArray<GoogleCloudDiscoveryengineV1SearchResponseSearchResult>;
   /** Updated conversation including the answer. */
   conversation?: GoogleCloudDiscoveryengineV1Conversation;
 }
@@ -15251,7 +15251,7 @@ export const GoogleCloudDiscoveryengineV1ConverseConversationResponse =
 
 export interface GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestBoostSpec {
   /** Condition boost specifications. If a suggestion matches multiple conditions in the specifications, boost values from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 20. Note: Currently only support language condition boost. */
-  conditionBoostSpecs?: Array<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestBoostSpecConditionBoostSpec>;
+  conditionBoostSpecs?: ReadonlyArray<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestBoostSpecConditionBoostSpec>;
 }
 
 export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestBoostSpec =
@@ -15334,7 +15334,7 @@ export const GoogleCloudDiscoveryengineV1betaDedicatedCrawlRateTimeSeries =
 
 export interface GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesResponse {
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
   /** Number of suggestion deny list entries purged. */
   purgeCount?: string;
 }
@@ -15371,7 +15371,7 @@ export interface GoogleCloudDiscoveryengineV1AnswerQueryRequestSafetySpec {
   /** Enable the safety filtering on the answer response. It is false by default. */
   enable?: boolean;
   /** Optional. Safety settings. This settings are effective only when the safety_spec.enable is true. */
-  safetySettings?: Array<GoogleCloudDiscoveryengineV1AnswerQueryRequestSafetySpecSafetySetting>;
+  safetySettings?: ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerQueryRequestSafetySpecSafetySetting>;
 }
 
 export const GoogleCloudDiscoveryengineV1AnswerQueryRequestSafetySpec =
@@ -15407,15 +15407,15 @@ export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseRecentSear
 
 export interface GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse {
   /** Results of the matched people suggestions. The result list is ordered and the first result is the top suggestion. */
-  peopleSuggestions?: Array<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponsePersonSuggestion>;
+  peopleSuggestions?: ReadonlyArray<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponsePersonSuggestion>;
   /** Results of the matched "recent search" suggestions. The result list is ordered and the first result is the top suggestion. */
-  recentSearchSuggestions?: Array<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseRecentSearchSuggestion>;
+  recentSearchSuggestions?: ReadonlyArray<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseRecentSearchSuggestion>;
   /** True if the returned suggestions are all tail suggestions. For tail matching to be triggered, include_tail_suggestions in the request must be true and there must be no suggestions that match the full query. */
   tailMatchTriggered?: boolean;
   /** Results of the matched content suggestions. The result list is ordered and the first result is the top suggestion. */
-  contentSuggestions?: Array<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseContentSuggestion>;
+  contentSuggestions?: ReadonlyArray<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseContentSuggestion>;
   /** Results of the matched query suggestions. The result list is ordered and the first result is a top suggestion. */
-  querySuggestions?: Array<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseQuerySuggestion>;
+  querySuggestions?: ReadonlyArray<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponseQuerySuggestion>;
 }
 
 export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse =
@@ -15454,21 +15454,21 @@ export const GoogleLongrunningCancelOperationRequest =
 
 export interface GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigLayoutParsingConfig {
   /** Optional. Contains the required structure types to extract from the document. Supported values: * `shareholder-structure` */
-  structuredContentTypes?: Array<string>;
+  structuredContentTypes?: ReadonlyArray<string>;
   /** Optional. If true, the LLM based annotation is added to the table during parsing. */
   enableTableAnnotation?: boolean;
   /** Optional. If true, the processed document will be made available for the GetProcessedDocument API. */
   enableGetProcessedDocument?: boolean;
   /** Optional. List of HTML classes to exclude from the parsed content. */
-  excludeHtmlClasses?: Array<string>;
+  excludeHtmlClasses?: ReadonlyArray<string>;
   /** Optional. If true, the LLM based annotation is added to the image during parsing. */
   enableImageAnnotation?: boolean;
   /** Optional. List of HTML elements to exclude from the parsed content. */
-  excludeHtmlElements?: Array<string>;
+  excludeHtmlElements?: ReadonlyArray<string>;
   /** Optional. If true, the pdf layout will be refined using an LLM. */
   enableLlmLayoutParsing?: boolean;
   /** Optional. List of HTML ids to exclude from the parsed content. */
-  excludeHtmlIds?: Array<string>;
+  excludeHtmlIds?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigLayoutParsingConfig =
@@ -15551,7 +15551,7 @@ export const GoogleCloudDiscoveryengineV1betaSetDedicatedCrawlRateResponse =
 
 export interface GoogleCloudDiscoveryengineV1ImportDocumentsResponse {
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
   /** Echoes the destination for the complete errors in the request if set. */
   errorConfig?: GoogleCloudDiscoveryengineV1ImportErrorConfig;
 }
@@ -15587,7 +15587,7 @@ export const GoogleCloudDiscoveryengineV1DistributeLicenseConfigRequest =
 
 export interface GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsResponse {
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaImportIdentityMappingsResponse =
@@ -15619,7 +15619,7 @@ export const GoogleCloudDiscoveryengineV1WidgetConfigHomepageSettingShortcut =
 
 export interface GoogleCloudDiscoveryengineV1WidgetConfigHomepageSetting {
   /** Optional. The shortcuts to display on the homepage. */
-  shortcuts?: Array<GoogleCloudDiscoveryengineV1WidgetConfigHomepageSettingShortcut>;
+  shortcuts?: ReadonlyArray<GoogleCloudDiscoveryengineV1WidgetConfigHomepageSettingShortcut>;
 }
 
 export const GoogleCloudDiscoveryengineV1WidgetConfigHomepageSetting =
@@ -15760,7 +15760,7 @@ export const GoogleCloudDiscoveryengineV1alphaDataConnectorEndUserConfig =
 
 export interface GoogleCloudDiscoveryengineV1alphaBAPConfig {
   /** Required. The supported connector modes for the associated BAP connection. */
-  supportedConnectorModes?: Array<
+  supportedConnectorModes?: ReadonlyArray<
     | "CONNECTOR_MODE_UNSPECIFIED"
     | "DATA_INGESTION"
     | "ACTIONS"
@@ -15768,7 +15768,7 @@ export interface GoogleCloudDiscoveryengineV1alphaBAPConfig {
     | (string & {})
   >;
   /** Optional. The actions enabled on the associated BAP connection. */
-  enabledActions?: Array<string>;
+  enabledActions?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaBAPConfig =
@@ -15801,7 +15801,7 @@ export interface GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig {
   /** Immutable. The fully qualified resource name of the AlertPolicy. */
   alertPolicyName?: string;
   /** Optional. The enrollment states of each alert. */
-  alertEnrollments?: Array<GoogleCloudDiscoveryengineV1alphaAlertPolicyConfigAlertEnrollment>;
+  alertEnrollments?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAlertPolicyConfigAlertEnrollment>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig =
@@ -15818,7 +15818,7 @@ export const GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig =
 
 export interface GoogleCloudDiscoveryengineV1alphaDataConnector {
   /** Output only. The list of FQDNs of the data connector can egress to. This includes both FQDN derived from the customer provided instance URL and default per connector type FQDNs. */
-  egressFqdns?: Array<string>;
+  egressFqdns?: ReadonlyArray<string>;
   /** Optional. Specifies the data protection policy for the connector. */
   dataProtectionPolicy?: GoogleCloudDiscoveryengineV1alphaDataProtectionPolicy;
   /** Identifier. The full resource name of the Data Connector. Format: `projects/* /locations/* /collections/* /dataConnector`. */
@@ -15853,7 +15853,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDataConnector {
   /** Required. The identifier for the data source. This is a partial list of supported connectors. Please refer to the [documentation](https://docs.cloud.google.com/gemini/enterprise/docs/connectors/introduction-to-connectors-and-data-stores) for the full list of connectors. Supported first-party connectors include: * `gcs` * `bigquery` * `gcp_fhir` * `google_mail` * `google_drive` * `google_calendar` * `google_chat` Supported third-party connectors include: Generally available (GA) connectors: * `onedrive` * `outlook` * `confluence` * `jira` * `servicenow` * `sharepoint` Preview connectors: * `asana` * `azure_active_directory` * `box` * `canva` * `confluence_server` * `custom_connector` * `docusign` * `dropbox` * `dynamics365` * `github` * `gitlab` * `hubspot` * `jira_server` * `linear` * `native_cloud_identity` * `notion` * `okta` * `pagerduty` * `peoplesoft` * `salesforce` * `shopify` * `slack` * `snowflake` * `teams` * `trello` * `workday` * `zendesk` */
   dataSource?: string;
   /** Optional. The modes enabled for this connector. Default state is CONNECTOR_MODE_UNSPECIFIED. */
-  connectorModes?: Array<
+  connectorModes?: ReadonlyArray<
     | "CONNECTOR_MODE_UNSPECIFIED"
     | "DATA_INGESTION"
     | "ACTIONS"
@@ -15863,9 +15863,9 @@ export interface GoogleCloudDiscoveryengineV1alphaDataConnector {
     | (string & {})
   >;
   /** Output only. The dynamic tools fetched for this connector. */
-  dynamicTools?: Array<GoogleCloudDiscoveryengineV1alphaDynamicTool>;
+  dynamicTools?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaDynamicTool>;
   /** List of entities from the connected data source to ingest. */
-  entities?: Array<GoogleCloudDiscoveryengineV1alphaDataConnectorSourceEntity>;
+  entities?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaDataConnectorSourceEntity>;
   /** Optional. Action configurations to make the connector support actions. */
   actionConfig?: GoogleCloudDiscoveryengineV1alphaActionConfig;
   /** Output only. State of the connector. */
@@ -15907,11 +15907,11 @@ export interface GoogleCloudDiscoveryengineV1alphaDataConnector {
   /** Optional. Indicates whether the connector is disabled for auto run. It can be used to pause periodical and real time sync. Update: with the introduction of incremental_sync_disabled, auto_run_disabled is used to pause/disable only full syncs */
   autoRunDisabled?: boolean;
   /** Output only. The static IP addresses used by this connector. */
-  staticIpAddresses?: Array<string>;
+  staticIpAddresses?: ReadonlyArray<string>;
   /** The refresh interval to sync the Access Control List information for the documents ingested by this connector. If not set, the access control list will be refreshed at the default interval of 30 minutes. The identity refresh interval can be at least 30 minutes and at most 7 days. */
   identityRefreshInterval?: string;
   /** Output only. User actions that must be completed before the connector can start syncing data. */
-  blockingReasons?: Array<
+  blockingReasons?: ReadonlyArray<
     | "BLOCKING_REASON_UNSPECIFIED"
     | "ALLOWLIST_STATIC_IP"
     | "ALLOWLIST_IN_SERVICE_ATTACHMENT"
@@ -15923,13 +15923,13 @@ export interface GoogleCloudDiscoveryengineV1alphaDataConnector {
   /** Output only. The most recent timestamp when this DataConnector was paused, affecting all functionalities such as data synchronization. Pausing a connector has the following effects: - All functionalities, including data synchronization, are halted. - Any ongoing data synchronization job will be canceled. - No future data synchronization runs will be scheduled nor can be triggered. */
   latestPauseTime?: string;
   /** Optional. Specifies keys to be removed from the 'params' field. This is only active when 'params' is included in the 'update_mask' in an UpdateDataConnectorRequest. Deletion takes precedence if a key is both in 'remove_param_keys' and present in the 'params' field of the request. */
-  removeParamKeys?: Array<string>;
+  removeParamKeys?: ReadonlyArray<string>;
   /** Optional. Indicates whether incremental syncs are paused for this connector. This is independent of auto_run_disabled. Applicable to only 3P connectors. When the refresh interval is set to the same value as the incremental refresh interval, incremental sync will be disabled, i.e. set to true. */
   incrementalSyncDisabled?: boolean;
   /** Required data connector parameters in json string format. */
   jsonParams?: string;
   /** Output only. The errors from initialization or from the latest connector run. */
-  errors?: Array<GoogleRpcStatus>;
+  errors?: ReadonlyArray<GoogleRpcStatus>;
   /** Optional. The refresh interval specifically for incremental data syncs. If unset, incremental syncs will use the default from env, set to 3hrs. The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P connectors. When the refresh interval is set to the same value as the incremental refresh interval, incremental sync will be disabled. */
   incrementalRefreshInterval?: string;
   /** Required. The refresh interval for data sync. If duration is set to 0, the data will be synced in real time. The streaming feature is not supported yet. The minimum is 30 minutes and maximum is 7 days. When the refresh interval is set to the same value as the incremental refresh interval, incremental sync will be disabled. */
@@ -15953,9 +15953,9 @@ export interface GoogleCloudDiscoveryengineV1alphaDataConnector {
     | "REMOTE_MCP"
     | (string & {});
   /** Optional. Any target destinations used to connect to third-party services. */
-  destinationConfigs?: Array<GoogleCloudDiscoveryengineV1alphaDestinationConfig>;
+  destinationConfigs?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaDestinationConfig>;
   /** Optional. The connector level alert config. */
-  alertPolicyConfigs?: Array<GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig>;
+  alertPolicyConfigs?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaAlertPolicyConfig>;
   /** Required data connector parameters in structured json format. */
   params?: Record<string, unknown>;
   /** Output only. Whether the connector is created with VPC-SC enabled. */
@@ -16079,7 +16079,7 @@ export const GoogleCloudDiscoveryengineV1alphaSearchRequestSessionSpec =
 
 export interface GoogleCloudDiscoveryengineV1alphaSearchRequestCustomRankingParams {
   /** Optional. A list of ranking expressions (see `ranking_expression` for the syntax documentation) to evaluate. The evaluation results will be returned in `SearchResponse.SearchResult.rank_signals.precomputed_expression_values` field. */
-  expressionsToPrecompute?: Array<string>;
+  expressionsToPrecompute?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaSearchRequestCustomRankingParams =
@@ -16113,7 +16113,7 @@ export const GoogleCloudDiscoveryengineV1alphaUserInfo =
 
 export interface GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpec {
   /** The embedding vector used for retrieval. Limit to 1. */
-  embeddingVectors?: Array<GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpecEmbeddingVector>;
+  embeddingVectors?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpecEmbeddingVector>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpec =
@@ -16184,13 +16184,13 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequest {
   /** The order in which documents are returned. Documents can be ordered by a field in an Document object. Leave it unset if ordered by relevance. `order_by` expression is case-sensitive. For more information on ordering the website search results, see [Order web search results](https://cloud.google.com/generative-ai-app-builder/docs/order-web-search-results). For more information on ordering the healthcare search results, see [Order healthcare search results](https://cloud.google.com/generative-ai-app-builder/docs/order-hc-results). If this field is unrecognizable, an `INVALID_ARGUMENT` is returned. */
   orderBy?: string;
   /** Facet specifications for faceted search. If empty, no facets are returned. A maximum of 100 values are allowed. Otherwise, an `INVALID_ARGUMENT` error is returned. */
-  facetSpecs?: Array<GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpec>;
+  facetSpecs?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpec>;
   /** Optional. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier should not change if the visitor logs in or out of the website. This field should NOT have a fixed value such as `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and CompleteQueryRequest.user_pseudo_id The field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error is returned. */
   userPseudoId?: string;
   /** The branch resource name, such as `projects/* /locations/global/collections/default_collection/dataStores/default_data_store/branches/0`. Use `default_branch` as the branch ID or leave this field empty, to search documents under the default branch. */
   branch?: string;
   /** Optional. Crowding specifications for improving result diversity. If multiple CrowdingSpecs are specified, crowding will be evaluated on each unique combination of the `field` values, and max_count will be the maximum value of `max_count` across all CrowdingSpecs. For example, if the first CrowdingSpec has `field` = "color" and `max_count` = 3, and the second CrowdingSpec has `field` = "size" and `max_count` = 2, then after 3 documents that share the same color AND size have been returned, subsequent ones should be removed or demoted. */
-  crowdingSpecs?: Array<GoogleCloudDiscoveryengineV1alphaSearchRequestCrowdingSpec>;
+  crowdingSpecs?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSearchRequestCrowdingSpec>;
   /** Whether to turn on safe search. This is only supported for website search. */
   safeSearch?: boolean;
   /** Raw image query. */
@@ -16202,7 +16202,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequest {
   /** Optional. The specification for returning the relevance score. */
   relevanceScoreSpec?: GoogleCloudDiscoveryengineV1alphaSearchRequestRelevanceScoreSpec;
   /** Specifications that define the specific DataStores to be searched, along with configurations for those data stores. This is only considered for Engines with multiple data stores. For engines with a single data store, the specs directly under SearchRequest should be used. */
-  dataStoreSpecs?: Array<GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec>;
+  dataStoreSpecs?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec>;
   /** A 0-indexed integer that specifies the current offset (that is, starting result location, amongst the Documents deemed by the API as relevant) in search results. This field is only considered if page_token is unset. If this field is negative, an `INVALID_ARGUMENT` is returned. A large offset may be capped to a reasonable threshold. */
   offset?: number;
   /** Optional. Config for natural language query understanding capabilities, such as extracting structured field filters from the query. Refer to [this documentation](https://cloud.google.com/generative-ai-app-builder/docs/natural-language-queries) for more information. If `naturalLanguageQueryUnderstandingSpec` is not specified, no additional natural language query understanding will be done. */
@@ -16226,7 +16226,7 @@ export interface GoogleCloudDiscoveryengineV1alphaSearchRequest {
   /** Optional. Config for display feature, like match highlighting on search results. */
   displaySpec?: GoogleCloudDiscoveryengineV1alphaSearchRequestDisplaySpec;
   /** Optional. The categories associated with a category page. Must be set for category navigation queries to achieve good search quality. The format should be the same as PageInfo.page_category. This field is the equivalent of the query for browse (navigation) queries. It's used by the browse model when the query is empty. If the field is empty, it will not be used by the browse model. If the field contains more than one element, only the first element will be used. To represent full path of a category, use '>' character to separate different hierarchies. If '>' is part of the category name, replace it with other character(s). For example, `Graphics Cards > RTX>4090 > Founders Edition` where "RTX > 4090" represents one level, can be rewritten as `Graphics Cards > RTX_4090 > Founders Edition` */
-  pageCategories?: Array<string>;
+  pageCategories?: ReadonlyArray<string>;
   /** Required. The resource name of the Search serving config, such as `projects/* /locations/global/collections/default_collection/engines/* /servingConfigs/default_serving_config`, or `projects/* /locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. */
   servingConfig?: string;
   /** The global relevance threshold of the search results. Defaults to Google defined threshold, leveraging a balance of precision and recall to deliver both highly accurate results and comprehensive coverage of relevant information. If more granular relevance filtering is required, use the `relevance_filter_spec` instead. This feature is not supported for healthcare search. */
@@ -16331,7 +16331,7 @@ export const GoogleCloudDiscoveryengineV1alphaSearchRequest =
 
 export interface GoogleCloudDiscoveryengineV1ListDataStoresResponse {
   /** All the customer's DataStores. */
-  dataStores?: Array<GoogleCloudDiscoveryengineV1DataStore>;
+  dataStores?: ReadonlyArray<GoogleCloudDiscoveryengineV1DataStore>;
   /** A token that can be sent as ListDataStoresRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -16439,7 +16439,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEvaluation {
   /** Output only. The metrics produced by the evaluation, averaged across all SampleQuerys in the SampleQuerySet. Only populated when the evaluation's state is SUCCEEDED. */
   qualityMetrics?: GoogleCloudDiscoveryengineV1alphaQualityMetrics;
   /** Output only. A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. Timestamp the Evaluation was created at. */
   createTime?: string;
   /** Required. The specification of the evaluation. */
@@ -16530,7 +16530,7 @@ export const GoogleCloudDiscoveryengineV1alphaDeleteSessionRequest =
 
 export interface GoogleCloudDiscoveryengineV1ListConversationsResponse {
   /** All the Conversations for a given data store. */
-  conversations?: Array<GoogleCloudDiscoveryengineV1Conversation>;
+  conversations?: ReadonlyArray<GoogleCloudDiscoveryengineV1Conversation>;
   /** Pagination token, if not returned indicates the last page. */
   nextPageToken?: string;
 }
@@ -16549,7 +16549,7 @@ export interface GoogleCloudDiscoveryengineV1alphaImportSampleQueriesResponse {
   /** The desired location of errors incurred during the Import. */
   errorConfig?: GoogleCloudDiscoveryengineV1alphaImportErrorConfig;
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaImportSampleQueriesResponse =
@@ -16591,7 +16591,7 @@ export interface GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest {
   /** Required. Full resource name of DataStore, such as `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If the caller does not have permission to access the DataStore, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a NOT_FOUND error is returned. If the requested DataStore already has a patient filter, an ALREADY_EXISTS error will be returned. */
   dataStore?: string;
   /** Required. Names of the Group resources to use as a basis for the list of patients for the new patient filter, in format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Group/{group_id}`. if the caller does not have permission to access the FHIR store, regardless of whether it exists, PERMISSION_DENIED error is returned. If the discovery engine service account does not have permission to access the FHIR store, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the group is not found at the location, a RESOURCE_NOT_FOUND error will be returned. The filter group must be a FHIR resource name of type Group, and the new filter will be constructed from the direct members of the group which are Patient resources. */
-  filterGroups?: Array<string>;
+  filterGroups?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaReplacePatientFilterRequest =
@@ -16674,9 +16674,9 @@ export const GoogleCloudDiscoveryengineV1ConditionTimeRange =
 
 export interface GoogleCloudDiscoveryengineV1Condition {
   /** Range of time(s) specifying when condition is active. Maximum of 10 time ranges. */
-  activeTimeRange?: Array<GoogleCloudDiscoveryengineV1ConditionTimeRange>;
+  activeTimeRange?: ReadonlyArray<GoogleCloudDiscoveryengineV1ConditionTimeRange>;
   /** Search only A list of terms to match the query on. Cannot be set when Condition.query_regex is set. Maximum of 10 query terms. */
-  queryTerms?: Array<GoogleCloudDiscoveryengineV1ConditionQueryTerm>;
+  queryTerms?: ReadonlyArray<GoogleCloudDiscoveryengineV1ConditionQueryTerm>;
   /** Optional. Query regex to match the whole search query. Cannot be set when Condition.query_terms is set. Only supported for Basic Site Search promotion serving controls. */
   queryRegex?: string;
 }
@@ -16740,7 +16740,7 @@ export interface GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoos
     | "LINEAR"
     | (string & {});
   /** Optional. The control points used to define the curve. The monotonic function (defined through the interpolation_type above) passes through the control points listed here. */
-  controlPoints?: Array<GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPoint>;
+  controlPoints?: ReadonlyArray<GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpecControlPoint>;
 }
 
 export const GoogleCloudDiscoveryengineV1ControlBoostActionInterpolationBoostSpec =
@@ -16784,14 +16784,14 @@ export const GoogleCloudDiscoveryengineV1ControlBoostAction =
 
 export interface GoogleCloudDiscoveryengineV1Control {
   /** Specifies the use case for the control. Affects what condition fields can be set. Only applies to SOLUTION_TYPE_SEARCH. Currently only allow one use case per control. Must be set when solution_type is SolutionType.SOLUTION_TYPE_SEARCH. */
-  useCases?: Array<
+  useCases?: ReadonlyArray<
     | "SEARCH_USE_CASE_UNSPECIFIED"
     | "SEARCH_USE_CASE_SEARCH"
     | "SEARCH_USE_CASE_BROWSE"
     | (string & {})
   >;
   /** Determines when the associated action will trigger. Omit to always apply the action. Currently only a single condition may be specified. Otherwise an INVALID ARGUMENT error is thrown. */
-  conditions?: Array<GoogleCloudDiscoveryengineV1Condition>;
+  conditions?: ReadonlyArray<GoogleCloudDiscoveryengineV1Condition>;
   /** Immutable. Fully qualified name `projects/* /locations/global/dataStore/* /controls/*` */
   name?: string;
   /** Treats a group of terms as synonyms of one another. */
@@ -16812,7 +16812,7 @@ export interface GoogleCloudDiscoveryengineV1Control {
   /** Defines a filter-type control Currently not supported by Recommendation */
   filterAction?: GoogleCloudDiscoveryengineV1ControlFilterAction;
   /** Output only. List of all ServingConfig IDs this control is attached to. May take up to 10 minutes to update after changes. */
-  associatedServingConfigIds?: Array<string>;
+  associatedServingConfigIds?: ReadonlyArray<string>;
   /** Promote certain links based on predefined trigger queries. */
   promoteAction?: GoogleCloudDiscoveryengineV1ControlPromoteAction;
   /** Defines a boost-type control */
@@ -16920,17 +16920,17 @@ export interface GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsing
   /** Optional. If true, the processed document will be made available for the GetProcessedDocument API. */
   enableGetProcessedDocument?: boolean;
   /** Optional. List of HTML elements to exclude from the parsed content. */
-  excludeHtmlElements?: Array<string>;
+  excludeHtmlElements?: ReadonlyArray<string>;
   /** Optional. If true, the pdf layout will be refined using an LLM. */
   enableLlmLayoutParsing?: boolean;
   /** Optional. If true, the LLM based annotation is added to the table during parsing. */
   enableTableAnnotation?: boolean;
   /** Optional. List of HTML classes to exclude from the parsed content. */
-  excludeHtmlClasses?: Array<string>;
+  excludeHtmlClasses?: ReadonlyArray<string>;
   /** Optional. Contains the required structure types to extract from the document. Supported values: * `shareholder-structure` */
-  structuredContentTypes?: Array<string>;
+  structuredContentTypes?: ReadonlyArray<string>;
   /** Optional. List of HTML ids to exclude from the parsed content. */
-  excludeHtmlIds?: Array<string>;
+  excludeHtmlIds?: ReadonlyArray<string>;
   /** Optional. If true, the LLM based annotation is added to the image during parsing. */
   enableImageAnnotation?: boolean;
 }
@@ -17055,7 +17055,7 @@ export interface GoogleCloudDiscoveryengineV1FhirStoreSource {
   /** Intermediate Cloud Storage directory used for the import with a length limit of 2,000 characters. Can be specified if one wants to have the FhirStore export to a specific Cloud Storage directory. */
   gcsStagingDir?: string;
   /** The FHIR resource types to import. The resource types should be a subset of all [supported FHIR resource types](https://cloud.google.com/generative-ai-app-builder/docs/fhir-schema-reference#resource-level-specification). Default to all supported FHIR resource types if empty. */
-  resourceTypes?: Array<string>;
+  resourceTypes?: ReadonlyArray<string>;
   /** Required. The full resource name of the FHIR store to import data from, in the format of `projects/{project}/locations/{location}/datasets/{dataset}/fhirStores/{fhir_store}`. */
   fhirStore?: string;
 }
@@ -17176,7 +17176,7 @@ export const GoogleCloudDiscoveryengineV1ImportDocumentsRequest =
 
 export interface GoogleCloudDiscoveryengineV1alphaAddPatientFilterRequest {
   /** Required. Names of the Group resources to use as a basis for the patient filter, in format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Group/{group_id}`. if the caller does not have permission to access the FHIR store, regardless of whether it exists, PERMISSION_DENIED error is returned. If the discovery engine service account does not have permission to access the FHIR store, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the group is not found at the location, a RESOURCE_NOT_FOUND error will be returned. The filter group must be a FHIR resource name of type Group, and the filter will be constructed from the direct members of the group which are Patient resources. */
-  filterGroups?: Array<string>;
+  filterGroups?: ReadonlyArray<string>;
   /** Required. Full resource name of DataStore, such as `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If the caller does not have permission to access the DataStore, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a NOT_FOUND error is returned. If the requested DataStore already has a patient filter, an ALREADY_EXISTS error will be returned. */
   dataStore?: string;
 }
@@ -17230,7 +17230,7 @@ export const GoogleCloudDiscoveryengineV1alphaConditionTimeRange =
 
 export interface GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesResponse {
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
   /** Count of deny list entries successfully imported. */
   importedEntriesCount?: string;
   /** Count of deny list entries that failed to be imported. */
@@ -17359,7 +17359,7 @@ export interface GoogleCloudDiscoveryengineV1SearchResponseFacet {
   /** Whether the facet is dynamically generated. */
   dynamicFacet?: boolean;
   /** The facet values for this field. */
-  values?: Array<GoogleCloudDiscoveryengineV1SearchResponseFacetFacetValue>;
+  values?: ReadonlyArray<GoogleCloudDiscoveryengineV1SearchResponseFacetFacetValue>;
   /** The key for this facet. For example, `"colors"` or `"price"`. It matches SearchRequest.FacetSpec.FacetKey.key. */
   key?: string;
 }
@@ -17395,7 +17395,7 @@ export interface GoogleCloudDiscoveryengineV1SearchResponse {
   /** A token that can be sent as SearchRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Promotions for site search. */
-  searchLinkPromotions?: Array<GoogleCloudDiscoveryengineV1SearchLinkPromotion>;
+  searchLinkPromotions?: ReadonlyArray<GoogleCloudDiscoveryengineV1SearchLinkPromotion>;
   /** The URI of a customer-defined redirect page. If redirect action is triggered, no search is performed, and only redirect_uri and attribution_token are set in the response. */
   redirectUri?: string;
   /** Output only. Natural language query understanding information for the returned results. */
@@ -17403,9 +17403,9 @@ export interface GoogleCloudDiscoveryengineV1SearchResponse {
   /** Contains the spell corrected query, if found. If the spell correction type is AUTOMATIC, then the search results are based on corrected_query. Otherwise the original query is used for search. */
   correctedQuery?: string;
   /** A list of matched documents. The order represents the ranking. */
-  results?: Array<GoogleCloudDiscoveryengineV1SearchResponseSearchResult>;
+  results?: ReadonlyArray<GoogleCloudDiscoveryengineV1SearchResponseSearchResult>;
   /** Results of facets requested by user. */
-  facets?: Array<GoogleCloudDiscoveryengineV1SearchResponseFacet>;
+  facets?: ReadonlyArray<GoogleCloudDiscoveryengineV1SearchResponseFacet>;
 }
 
 export const GoogleCloudDiscoveryengineV1SearchResponse =
@@ -17464,7 +17464,7 @@ export const GoogleCloudDiscoveryengineV1RetractLicenseConfigResponse =
 
 export interface GoogleCloudDiscoveryengineV1ListSchemasResponse {
   /** The Schemas. */
-  schemas?: Array<GoogleCloudDiscoveryengineV1Schema>;
+  schemas?: ReadonlyArray<GoogleCloudDiscoveryengineV1Schema>;
   /** A token that can be sent as ListSchemasRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -17479,7 +17479,7 @@ export const GoogleCloudDiscoveryengineV1ListSchemasResponse =
 
 export interface GoogleCloudDiscoveryengineV1alphaControlSynonymsAction {
   /** Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms. Otherwise an INVALID ARGUMENT error is thrown. */
-  synonyms?: Array<string>;
+  synonyms?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaControlSynonymsAction =
@@ -17491,9 +17491,9 @@ export const GoogleCloudDiscoveryengineV1alphaControlSynonymsAction =
 
 export interface GoogleCloudDiscoveryengineV1alphaCondition {
   /** Search only A list of terms to match the query on. Cannot be set when Condition.query_regex is set. Maximum of 10 query terms. */
-  queryTerms?: Array<GoogleCloudDiscoveryengineV1alphaConditionQueryTerm>;
+  queryTerms?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaConditionQueryTerm>;
   /** Range of time(s) specifying when condition is active. Maximum of 10 time ranges. */
-  activeTimeRange?: Array<GoogleCloudDiscoveryengineV1alphaConditionTimeRange>;
+  activeTimeRange?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaConditionTimeRange>;
   /** Optional. Query regex to match the whole search query. Cannot be set when Condition.query_terms is set. Only supported for Basic Site Search promotion serving controls. */
   queryRegex?: string;
 }
@@ -17511,7 +17511,7 @@ export const GoogleCloudDiscoveryengineV1alphaCondition =
 
 export interface GoogleCloudDiscoveryengineV1alphaControl {
   /** Specifies the use case for the control. Affects what condition fields can be set. Only applies to SOLUTION_TYPE_SEARCH. Currently only allow one use case per control. Must be set when solution_type is SolutionType.SOLUTION_TYPE_SEARCH. */
-  useCases?: Array<
+  useCases?: ReadonlyArray<
     | "SEARCH_USE_CASE_UNSPECIFIED"
     | "SEARCH_USE_CASE_SEARCH"
     | "SEARCH_USE_CASE_BROWSE"
@@ -17522,7 +17522,7 @@ export interface GoogleCloudDiscoveryengineV1alphaControl {
   /** Required. Human readable name. The identifier used in UI views. Must be UTF-8 encoded string. Length limit is 128 characters. Otherwise an INVALID ARGUMENT error is thrown. */
   displayName?: string;
   /** Output only. List of all ServingConfig IDs this control is attached to. May take up to 10 minutes to update after changes. */
-  associatedServingConfigIds?: Array<string>;
+  associatedServingConfigIds?: ReadonlyArray<string>;
   /** Required. Immutable. What solution the control belongs to. Must be compatible with vertical of resource. Otherwise an INVALID ARGUMENT error is thrown. */
   solutionType?:
     | "SOLUTION_TYPE_UNSPECIFIED"
@@ -17543,7 +17543,7 @@ export interface GoogleCloudDiscoveryengineV1alphaControl {
   /** Promote certain links based on predefined trigger queries. */
   promoteAction?: GoogleCloudDiscoveryengineV1alphaControlPromoteAction;
   /** Determines when the associated action will trigger. Omit to always apply the action. Currently only a single condition may be specified. Otherwise an INVALID ARGUMENT error is thrown. */
-  conditions?: Array<GoogleCloudDiscoveryengineV1alphaCondition>;
+  conditions?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaCondition>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaControl =
@@ -17707,7 +17707,7 @@ export const GoogleCloudDiscoveryengineV1alphaEngineCommonConfig =
 
 export interface GoogleCloudDiscoveryengineV1alphaEngine {
   /** Optional. The emails of the procurement contacts. */
-  procurementContactEmails?: Array<string>;
+  procurementContactEmails?: ReadonlyArray<string>;
   /** Output only. Additional information of the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT. */
   chatEngineMetadata?: GoogleCloudDiscoveryengineV1alphaEngineChatEngineMetadata;
   /** Required. The solutions of the engine. */
@@ -17720,7 +17720,7 @@ export interface GoogleCloudDiscoveryengineV1alphaEngine {
     | "SOLUTION_TYPE_AI_MODE"
     | (string & {});
   /** Optional. The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT, multiple DataStores in the same Collection can be associated here. Note that when used in CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary initializations. */
-  dataStoreIds?: Array<string>;
+  dataStoreIds?: ReadonlyArray<string>;
   /** Optional. Maps a model name to its specific configuration for this engine. This allows admin users to turn on/off individual models. This only stores models whose states are overridden by the admin. When the state is unspecified, or model_configs is empty for this model, the system will decide if this model should be available or not based on the default configuration. For example, a preview model should be disabled by default if the admin has not chosen to enable it. */
   modelConfigs?: Record<
     string,
@@ -17883,7 +17883,7 @@ export interface GoogleCloudDiscoveryengineV1StreamAssistResponse {
   /** A global unique ID that identifies the current pair of request and stream of responses. Used for feedback and support. */
   assistToken?: string;
   /** The tool names of the tools that were invoked. */
-  invocationTools?: Array<string>;
+  invocationTools?: ReadonlyArray<string>;
   /** Session information. Only included in the final StreamAssistResponse of the response stream. */
   sessionInfo?: GoogleCloudDiscoveryengineV1StreamAssistResponseSessionInfo;
   /** Assist answer resource object containing parts of the assistant's final answer for the user's query. Not present if the current response doesn't add anything to previously sent AssistAnswer.replies. Observe AssistAnswer.state to see if more parts are to be expected. While the state is `IN_PROGRESS`, the AssistAnswer.replies field in each response will contain replies (reply fragments) to be appended to the ones received in previous responses. AssistAnswer.name won't be filled. If the state is `SUCCEEDED`, `FAILED` or `SKIPPED`, the response is the last response and AssistAnswer.name will have a value. */
@@ -17904,11 +17904,11 @@ export const GoogleCloudDiscoveryengineV1StreamAssistResponse =
 
 export interface GoogleCloudDiscoveryengineV1CheckGroundingResponse {
   /** Claim texts and citation info across all claims in the answer candidate. */
-  claims?: Array<GoogleCloudDiscoveryengineV1CheckGroundingResponseClaim>;
+  claims?: ReadonlyArray<GoogleCloudDiscoveryengineV1CheckGroundingResponseClaim>;
   /** List of facts cited across all claims in the answer candidate. These are derived from the facts supplied in the request. */
-  citedChunks?: Array<GoogleCloudDiscoveryengineV1FactChunk>;
+  citedChunks?: ReadonlyArray<GoogleCloudDiscoveryengineV1FactChunk>;
   /** List of facts cited across all claims in the answer candidate. These are derived from the facts supplied in the request. */
-  citedFacts?: Array<GoogleCloudDiscoveryengineV1CheckGroundingResponseCheckGroundingFactChunk>;
+  citedFacts?: ReadonlyArray<GoogleCloudDiscoveryengineV1CheckGroundingResponseCheckGroundingFactChunk>;
   /** The support score for the input answer candidate. Higher the score, higher is the fraction of claims that are supported by the provided facts. This is always set when a response is returned. */
   supportScore?: number;
 }
@@ -18134,7 +18134,7 @@ export interface GoogleCloudDiscoveryengineV1betaDataStore {
   /** Output only. The id of the default Schema associated to this data store. */
   defaultSchemaId?: string;
   /** The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`: `SOLUTION_TYPE_RECOMMENDATION` and `SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is automatically enrolled. Other solutions cannot be enrolled. */
-  solutionTypes?: Array<
+  solutionTypes?: ReadonlyArray<
     | "SOLUTION_TYPE_UNSPECIFIED"
     | "SOLUTION_TYPE_RECOMMENDATION"
     | "SOLUTION_TYPE_SEARCH"
@@ -18277,7 +18277,7 @@ export const GoogleCloudDiscoveryengineV1alphaCreateDataStoreMetadata =
 
 export interface GoogleCloudDiscoveryengineV1ListControlsResponse {
   /** All the Controls for a given data store. */
-  controls?: Array<GoogleCloudDiscoveryengineV1Control>;
+  controls?: ReadonlyArray<GoogleCloudDiscoveryengineV1Control>;
   /** Pagination token, if not returned indicates the last page. */
   nextPageToken?: string;
 }
@@ -18307,7 +18307,7 @@ export const A2aV1TaskPushNotificationConfig =
 
 export interface A2aV1ListTaskPushNotificationConfigResponse {
   /** The list of push notification configurations. */
-  configs?: Array<A2aV1TaskPushNotificationConfig>;
+  configs?: ReadonlyArray<A2aV1TaskPushNotificationConfig>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -18356,7 +18356,7 @@ export const GoogleCloudDiscoveryengineV1UpdateSchemaMetadata =
 
 export interface GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse {
   /** The metadata of the Documents. */
-  documentsMetadata?: Array<GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata>;
+  documentsMetadata?: ReadonlyArray<GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata>;
 }
 
 export const GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse =
@@ -18419,7 +18419,7 @@ export const GoogleCloudDiscoveryengineV1alphaRemoveDedicatedCrawlRateResponse =
 
 export interface GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsRequestInlineSource {
   /** Required. A list of all denylist entries to import. Max of 1000 items. */
-  suggestions?: Array<GoogleCloudDiscoveryengineV1CompletionSuggestion>;
+  suggestions?: ReadonlyArray<GoogleCloudDiscoveryengineV1CompletionSuggestion>;
 }
 
 export const GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsRequestInlineSource =
@@ -18434,7 +18434,7 @@ export const GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsRequestInlin
 
 export interface GoogleCloudDiscoveryengineV1ListLicenseConfigsUsageStatsResponse {
   /** All the customer's LicenseConfigUsageStats. */
-  licenseConfigUsageStats?: Array<GoogleCloudDiscoveryengineV1LicenseConfigUsageStats>;
+  licenseConfigUsageStats?: ReadonlyArray<GoogleCloudDiscoveryengineV1LicenseConfigUsageStats>;
 }
 
 export const GoogleCloudDiscoveryengineV1ListLicenseConfigsUsageStatsResponse =
@@ -18513,7 +18513,7 @@ export const GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig =
 
 export interface GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfig {
   /** Optional. Fields to be returned in the search results. If empty, all fields will be returned. */
-  returnedFields?: Array<string>;
+  returnedFields?: ReadonlyArray<string>;
   /** Required. Configuration for connecting to AlloyDB. */
   alloydbConnectionConfig?: GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAlloyDbConfigAlloyDbConnectionConfig;
   /** Optional. Configuration for Magic. */
@@ -18536,7 +18536,7 @@ export const GoogleCloudDiscoveryengineV1alphaDataStoreFederatedSearchConfigAllo
 
 export interface GoogleCloudDiscoveryengineV1RecrawlUrisRequest {
   /** Required. List of URIs to crawl. At most 10K URIs are supported, otherwise an INVALID_ARGUMENT error is thrown. Each URI should match at least one TargetSite in `site_search_engine`. */
-  uris?: Array<string>;
+  uris?: ReadonlyArray<string>;
   /** Optional. Credential id to use for crawling. */
   siteCredential?: string;
 }
@@ -18579,7 +18579,7 @@ export const GoogleCloudDiscoveryengineV1EnableAdvancedSiteSearchMetadata =
 
 export interface GoogleCloudDiscoveryengineV1FetchSitemapsResponse {
   /** List of Sitemaps fetched. */
-  sitemapsMetadata?: Array<GoogleCloudDiscoveryengineV1FetchSitemapsResponseSitemapMetadata>;
+  sitemapsMetadata?: ReadonlyArray<GoogleCloudDiscoveryengineV1FetchSitemapsResponseSitemapMetadata>;
 }
 
 export const GoogleCloudDiscoveryengineV1FetchSitemapsResponse =
@@ -18747,7 +18747,7 @@ export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestSuggestionT
 
 export interface GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequest {
   /** Optional. Suggestion types to return. If empty or unspecified, query suggestions are returned. Only one suggestion type is supported at the moment. */
-  suggestionTypes?: Array<
+  suggestionTypes?: ReadonlyArray<
     | "SUGGESTION_TYPE_UNSPECIFIED"
     | "QUERY"
     | "PEOPLE"
@@ -18767,11 +18767,11 @@ export interface GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequest {
   /** Required. The typeahead input used to fetch suggestions. Maximum length is 128 characters. The query can not be empty for most of the suggestion types. If it is empty, an `INVALID_ARGUMENT` error is returned. The exception is when the suggestion_types contains only the type `RECENT_SEARCH`, the query can be an empty string. The is called "zero prefix" feature, which returns user's recently searched queries given the empty query. */
   query?: string;
   /** Optional. Specification of each suggestion type. */
-  suggestionTypeSpecs?: Array<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestSuggestionTypeSpec>;
+  suggestionTypeSpecs?: ReadonlyArray<GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequestSuggestionTypeSpec>;
   /** Indicates if tail suggestions should be returned if there are no suggestions that match the full query. Even if set to true, if there are suggestions that match the full query, those are returned and no tail suggestions are returned. */
   includeTailSuggestions?: boolean;
   /** Optional. Experiment ids for this request. */
-  experimentIds?: Array<string>;
+  experimentIds?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1AdvancedCompleteQueryRequest =
@@ -18804,7 +18804,7 @@ export const GoogleCloudDiscoveryengineV1alphaSetUpDataConnectorMetadata =
 
 export interface GoogleCloudDiscoveryengineV1ListTargetSitesResponse {
   /** List of TargetSites. */
-  targetSites?: Array<GoogleCloudDiscoveryengineV1TargetSite>;
+  targetSites?: ReadonlyArray<GoogleCloudDiscoveryengineV1TargetSite>;
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The total number of items matching the request. This will always be populated in the response. */
@@ -18897,7 +18897,7 @@ export interface GoogleCloudDiscoveryengineV1SearchRequest {
   /** Additional search parameters. For public website search only, supported values are: * `user_country_code`: string. Default empty. If set to non-empty, results are restricted or boosted based on the location provided. For example, `user_country_code: "au"` For available codes see [Country Codes](https://developers.google.com/custom-search/docs/json_api_reference#countryCodes) * `search_type`: double. Default empty. Enables non-webpage searching depending on the value. The only valid non-default value is 1, which enables image searching. For example, `search_type: 1` */
   params?: Record<string, unknown>;
   /** Optional. The categories associated with a category page. Must be set for category navigation queries to achieve good search quality. The format should be the same as PageInfo.page_category. This field is the equivalent of the query for browse (navigation) queries. It's used by the browse model when the query is empty. If the field is empty, it will not be used by the browse model. If the field contains more than one element, only the first element will be used. To represent full path of a category, use '>' character to separate different hierarchies. If '>' is part of the category name, replace it with other character(s). For example, `Graphics Cards > RTX>4090 > Founders Edition` where "RTX > 4090" represents one level, can be rewritten as `Graphics Cards > RTX_4090 > Founders Edition` */
-  pageCategories?: Array<string>;
+  pageCategories?: ReadonlyArray<string>;
   /** Optional. The maximum number of results to retrieve from each data store. If not specified, it will use the SearchRequest.DataStoreSpec.num_results if provided, otherwise there is no limit. */
   numResultsPerDataStore?: number;
   /** Optional. The specification for returning the relevance score. */
@@ -18923,7 +18923,7 @@ export interface GoogleCloudDiscoveryengineV1SearchRequest {
   /** The maximum number of results to return for OneBox. This applies to each OneBox type individually. Default number is 10. */
   oneBoxPageSize?: number;
   /** Specifications that define the specific DataStores to be searched, along with configurations for those data stores. This is only considered for Engines with multiple data stores. For engines with a single data store, the specs directly under SearchRequest should be used. */
-  dataStoreSpecs?: Array<GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec>;
+  dataStoreSpecs?: ReadonlyArray<GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec>;
   /** The user labels applied to a resource must meet the following requirements: * Each resource can have multiple labels, up to a maximum of 64. * Each label must be a key-value pair. * Keys have a minimum length of 1 character and a maximum length of 63 characters and cannot be empty. Values can be empty and have a maximum length of 63 characters. * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. All characters must use UTF-8 encoding, and international characters are allowed. * The key portion of a label must be unique. However, you can use the same key with multiple resources. * Keys must start with a lowercase letter or international character. See [Google Cloud Document](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements) for more details. */
   userLabels?: Record<string, string>;
   /** Optional. The backend to use for the ranking expression evaluation. */
@@ -18937,9 +18937,9 @@ export interface GoogleCloudDiscoveryengineV1SearchRequest {
   /** A specification for configuring the behavior of content search. */
   contentSearchSpec?: GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpec;
   /** Optional. Crowding specifications for improving result diversity. If multiple CrowdingSpecs are specified, crowding will be evaluated on each unique combination of the `field` values, and max_count will be the maximum value of `max_count` across all CrowdingSpecs. For example, if the first CrowdingSpec has `field` = "color" and `max_count` = 3, and the second CrowdingSpec has `field` = "size" and `max_count` = 2, then after 3 documents that share the same color AND size have been returned, subsequent ones should be removed or demoted. */
-  crowdingSpecs?: Array<GoogleCloudDiscoveryengineV1SearchRequestCrowdingSpec>;
+  crowdingSpecs?: ReadonlyArray<GoogleCloudDiscoveryengineV1SearchRequestCrowdingSpec>;
   /** Facet specifications for faceted search. If empty, no facets are returned. A maximum of 100 values are allowed. Otherwise, an `INVALID_ARGUMENT` error is returned. */
-  facetSpecs?: Array<GoogleCloudDiscoveryengineV1SearchRequestFacetSpec>;
+  facetSpecs?: ReadonlyArray<GoogleCloudDiscoveryengineV1SearchRequestFacetSpec>;
   /** Optional. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier should not change if the visitor logs in or out of the website. This field should NOT have a fixed value such as `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and CompleteQueryRequest.user_pseudo_id The field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error is returned. */
   userPseudoId?: string;
   /** The query expansion specification that specifies the conditions under which query expansion occurs. */
@@ -19018,7 +19018,7 @@ export interface GoogleCloudDiscoveryengineV1alphaListSessionsResponse {
   /** Pagination token, if not returned indicates the last page. */
   nextPageToken?: string;
   /** All the Sessions for a given data store. */
-  sessions?: Array<GoogleCloudDiscoveryengineV1alphaSession>;
+  sessions?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaSession>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaListSessionsResponse =
@@ -19089,7 +19089,7 @@ export const GoogleCloudDiscoveryengineV1CreateDataStoreMetadata =
 
 export interface GoogleCloudDiscoveryengineV1ImportUserEventsResponse {
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
   /** Count of user events imported, but with Document information not found in the existing Branch. */
   unjoinedEventsCount?: string;
   /** Count of user events imported with complete existing Documents. */
@@ -19271,7 +19271,7 @@ export const GoogleCloudDiscoveryengineV1alphaDeleteCmekConfigMetadata =
 
 export interface GoogleCloudDiscoveryengineV1betaBatchCreateTargetSitesResponse {
   /** TargetSites created. */
-  targetSites?: Array<GoogleCloudDiscoveryengineV1betaTargetSite>;
+  targetSites?: ReadonlyArray<GoogleCloudDiscoveryengineV1betaTargetSite>;
 }
 
 export const GoogleCloudDiscoveryengineV1betaBatchCreateTargetSitesResponse =
@@ -19301,7 +19301,7 @@ export const GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMet
 
 export interface GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpec {
   /** Optional. End user metadata. */
-  endUserMetadata?: Array<GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMetaData>;
+  endUserMetadata?: ReadonlyArray<GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpecEndUserMetaData>;
 }
 
 export const GoogleCloudDiscoveryengineV1AnswerQueryRequestEndUserSpec =
@@ -19329,9 +19329,9 @@ export const GoogleCloudDiscoveryengineV1WidgetConfigUiBrandingSettings =
 
 export interface GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponse {
   /** Details for a sample of up to 10 `failed_uris`. */
-  failureSamples?: Array<GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfo>;
+  failureSamples?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfo>;
   /** URIs that were not crawled before the LRO terminated. */
-  failedUris?: Array<string>;
+  failedUris?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponse =
@@ -19348,7 +19348,7 @@ export const GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponse =
 
 export interface GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesResponse {
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
   /** Number of suggestion deny list entries purged. */
   purgeCount?: string;
 }
@@ -19366,7 +19366,7 @@ export interface GoogleCloudDiscoveryengineV1ListDocumentsResponse {
   /** A token that can be sent as ListDocumentsRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The Documents. */
-  documents?: Array<GoogleCloudDiscoveryengineV1Document>;
+  documents?: ReadonlyArray<GoogleCloudDiscoveryengineV1Document>;
 }
 
 export const GoogleCloudDiscoveryengineV1ListDocumentsResponse =
@@ -19409,7 +19409,7 @@ export interface GoogleCloudDiscoveryengineV1WidgetConfig {
   /** Describes general widget search settings as seen in cloud console widget configuration page. Replaces top deprecated top level properties. */
   uiSettings?: GoogleCloudDiscoveryengineV1WidgetConfigUiSettings;
   /** Output only. Collection components that lists all collections and child data stores associated with the widget config, those data sources can be used for filtering in widget service APIs, users can return results that from selected data sources. */
-  collectionComponents?: Array<GoogleCloudDiscoveryengineV1WidgetConfigCollectionComponent>;
+  collectionComponents?: ReadonlyArray<GoogleCloudDiscoveryengineV1WidgetConfigCollectionComponent>;
   /** Whether to allow conversational search (LLM, multi-turn) or not (non-LLM, single-turn). */
   enableConversationalSearch?: boolean;
   /** Whether to show the result score. */
@@ -19436,7 +19436,7 @@ export interface GoogleCloudDiscoveryengineV1WidgetConfig {
     | "BLENDED"
     | (string & {});
   /** Configurable UI configurations per data store. */
-  dataStoreUiConfigs?: Array<GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfig>;
+  dataStoreUiConfigs?: ReadonlyArray<GoogleCloudDiscoveryengineV1WidgetConfigDataStoreUiConfig>;
   /** Turn on or off collecting the search result quality feedback from end users. */
   enableQualityFeedback?: boolean;
   /** Immutable. The full resource name of the widget config. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. */
@@ -19446,9 +19446,9 @@ export interface GoogleCloudDiscoveryengineV1WidgetConfig {
   /** Describes search widget UI branding settings, such as the widget title, logo, favicons, and colors. */
   uiBranding?: GoogleCloudDiscoveryengineV1WidgetConfigUiBrandingSettings;
   /** Allowlisted domains that can load this widget. */
-  allowlistedDomains?: Array<string>;
+  allowlistedDomains?: ReadonlyArray<string>;
   /** The configuration and appearance of facets in the end user view. */
-  facetField?: Array<GoogleCloudDiscoveryengineV1WidgetConfigFacetField>;
+  facetField?: ReadonlyArray<GoogleCloudDiscoveryengineV1WidgetConfigFacetField>;
   /** Optional. Describes the homepage settings of the widget. */
   homepageSetting?: GoogleCloudDiscoveryengineV1WidgetConfigHomepageSetting;
   /** Optional. Output only. Whether to enable private knowledge graph. */
@@ -19504,7 +19504,7 @@ export interface GoogleCloudDiscoveryengineV1WidgetConfig {
   /** Output only. Timestamp the WidgetConfig was updated. */
   updateTime?: string;
   /** Output only. The nodes associated with the Widget Config. */
-  nodes?: Array<GoogleCloudDiscoveryengineV1WidgetConfigNode>;
+  nodes?: ReadonlyArray<GoogleCloudDiscoveryengineV1WidgetConfigNode>;
 }
 
 export const GoogleCloudDiscoveryengineV1WidgetConfig =
@@ -19577,7 +19577,7 @@ export const GoogleCloudDiscoveryengineV1WidgetConfig =
 
 export interface GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesResponse {
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
   /** Count of deny list entries that failed to be imported. */
   failedEntriesCount?: string;
   /** Count of deny list entries successfully imported. */
@@ -19643,7 +19643,7 @@ export interface GoogleCloudDiscoveryengineV1alphaDataStore {
   /** Output only. The id of the default Schema associated to this data store. */
   defaultSchemaId?: string;
   /** The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`: `SOLUTION_TYPE_RECOMMENDATION` and `SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is automatically enrolled. Other solutions cannot be enrolled. */
-  solutionTypes?: Array<
+  solutionTypes?: ReadonlyArray<
     | "SOLUTION_TYPE_UNSPECIFIED"
     | "SOLUTION_TYPE_RECOMMENDATION"
     | "SOLUTION_TYPE_SEARCH"
@@ -19821,7 +19821,7 @@ export const GoogleCloudDiscoveryengineV1alphaPurgeUserEventsResponse =
 
 export interface GoogleCloudDiscoveryengineV1alphaImportUserEventsResponse {
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
   /** Count of user events imported, but with Document information not found in the existing Branch. */
   unjoinedEventsCount?: string;
   /** Echoes the destination for the complete errors if this field was set in the request. */
@@ -19844,7 +19844,7 @@ export const GoogleCloudDiscoveryengineV1alphaImportUserEventsResponse =
 
 export interface GoogleCloudDiscoveryengineV1PurgeSuggestionDenyListEntriesResponse {
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
   /** Number of suggestion deny list entries purged. */
   purgeCount?: string;
 }
@@ -19893,7 +19893,7 @@ export interface GoogleCloudDiscoveryengineV1betaTrainCustomModelResponse {
   /** The trained model status. Possible values are: * **bad-data**: The training data quality is bad. * **no-improvement**: Tuning didn't improve performance. Won't deploy. * **in-progress**: Model training job creation is in progress. * **training**: Model is actively training. * **evaluating**: The model is evaluating trained metrics. * **indexing**: The model trained metrics are indexing. * **ready**: The model is ready for serving. */
   modelStatus?: string;
   /** A sample of errors encountered while processing the data. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudDiscoveryengineV1betaTrainCustomModelResponse =
@@ -20010,7 +20010,7 @@ export const GoogleCloudDiscoveryengineV1betaProject =
 
 export interface GoogleCloudDiscoveryengineV1RankResponse {
   /** A list of records sorted by descending score. */
-  records?: Array<GoogleCloudDiscoveryengineV1RankingRecord>;
+  records?: ReadonlyArray<GoogleCloudDiscoveryengineV1RankingRecord>;
 }
 
 export const GoogleCloudDiscoveryengineV1RankResponse =
@@ -20030,7 +20030,7 @@ export interface GoogleCloudDiscoveryengineV1TrainCustomModelResponse {
   /** Fully qualified name of the CustomTuningModel. */
   modelName?: string;
   /** A sample of errors encountered while processing the data. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudDiscoveryengineV1TrainCustomModelResponse =
@@ -20093,7 +20093,7 @@ export const GoogleCloudDiscoveryengineV1alphaSetDedicatedCrawlRateResponse =
 
 export interface GoogleCloudDiscoveryengineV1ListUserLicensesResponse {
   /** All the customer's UserLicenses. */
-  userLicenses?: Array<GoogleCloudDiscoveryengineV1UserLicense>;
+  userLicenses?: ReadonlyArray<GoogleCloudDiscoveryengineV1UserLicense>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -20209,7 +20209,7 @@ export const GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsRequest =
 
 export interface GoogleCloudDiscoveryengineV1alphaTrainCustomModelResponse {
   /** A sample of errors encountered while processing the data. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
   /** Echoes the destination for the complete errors in the request if set. */
   errorConfig?: GoogleCloudDiscoveryengineV1alphaImportErrorConfig;
   /** The metrics of the trained model. */
@@ -20292,7 +20292,7 @@ export const GoogleCloudDiscoveryengineV1AnswerQueryRequest =
 
 export interface GoogleCloudDiscoveryengineV1BatchCreateTargetSitesResponse {
   /** TargetSites created. */
-  targetSites?: Array<GoogleCloudDiscoveryengineV1TargetSite>;
+  targetSites?: ReadonlyArray<GoogleCloudDiscoveryengineV1TargetSite>;
 }
 
 export const GoogleCloudDiscoveryengineV1BatchCreateTargetSitesResponse =
@@ -20350,7 +20350,7 @@ export interface GoogleCloudDiscoveryengineV1RankRequest {
   /** The user labels applied to a resource must meet the following requirements: * Each resource can have multiple labels, up to a maximum of 64. * Each label must be a key-value pair. * Keys have a minimum length of 1 character and a maximum length of 63 characters and cannot be empty. Values can be empty and have a maximum length of 63 characters. * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. All characters must use UTF-8 encoding, and international characters are allowed. * The key portion of a label must be unique. However, you can use the same key with multiple resources. * Keys must start with a lowercase letter or international character. See [Google Cloud Document](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements) for more details. */
   userLabels?: Record<string, string>;
   /** Required. A list of records to rank. */
-  records?: Array<GoogleCloudDiscoveryengineV1RankingRecord>;
+  records?: ReadonlyArray<GoogleCloudDiscoveryengineV1RankingRecord>;
   /** The identifier of the model to use. It is one of: * `semantic-ranker-512@latest`: Semantic ranking model with maximum input token size 512. It is set to `semantic-ranker-512@latest` by default if unspecified. */
   model?: string;
   /** The number of results to return. If this is unset or no bigger than zero, returns all results. */
@@ -20534,7 +20534,7 @@ export interface GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsResponse 
   /** Whether the completion suggestions were successfully purged. */
   purgeSucceeded?: boolean;
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsResponse =
@@ -20548,9 +20548,9 @@ export const GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsResponse =
 
 export interface GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesResponse {
   /** A sample of errors encountered while processing the request. */
-  errorSamples?: Array<GoogleRpcStatus>;
+  errorSamples?: ReadonlyArray<GoogleRpcStatus>;
   /** UserLicenses successfully updated. */
-  userLicenses?: Array<GoogleCloudDiscoveryengineV1alphaUserLicense>;
+  userLicenses?: ReadonlyArray<GoogleCloudDiscoveryengineV1alphaUserLicense>;
 }
 
 export const GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesResponse =
@@ -20586,7 +20586,7 @@ export const DistributeLicenseConfigBillingAccountsBillingAccountLicenseConfigsR
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/billingAccounts/{billingAccountsId}/billingAccountLicenseConfigs/{billingAccountLicenseConfigsId}:distributeLicenseConfig",
+      path: "v1/{billingAccountLicenseConfig}:distributeLicenseConfig",
       hasBody: true,
     }),
     svc,
@@ -20632,7 +20632,7 @@ export const RetractLicenseConfigBillingAccountsBillingAccountLicenseConfigsRequ
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/billingAccounts/{billingAccountsId}/billingAccountLicenseConfigs/{billingAccountLicenseConfigsId}:retractLicenseConfig",
+      path: "v1/{billingAccountLicenseConfig}:retractLicenseConfig",
       hasBody: true,
     }),
     svc,
@@ -20673,11 +20673,7 @@ export const ProvisionProjectsRequest =
       GoogleCloudDiscoveryengineV1ProvisionProjectRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}:provision",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:provision", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ProvisionProjectsRequest>;
 
@@ -20725,7 +20721,7 @@ export const SetUpDataConnectorV2ProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:setUpDataConnectorV2",
+      path: "v1/{parent}:setUpDataConnectorV2",
       hasBody: true,
     }),
     svc,
@@ -20759,10 +20755,7 @@ export const GetAclConfigProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/aclConfig",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAclConfigProjectsLocationsRequest>;
 
@@ -20802,11 +20795,7 @@ export const UpdateCmekConfigProjectsLocationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cmekConfig",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateCmekConfigProjectsLocationsRequest>;
 
@@ -20843,11 +20832,7 @@ export const UpdateAclConfigProjectsLocationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/aclConfig",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateAclConfigProjectsLocationsRequest>;
 
@@ -20879,10 +20864,7 @@ export const GetCmekConfigProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cmekConfig",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCmekConfigProjectsLocationsRequest>;
 
@@ -20921,7 +20903,7 @@ export const SetUpDataConnectorProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:setUpDataConnector",
+      path: "v1/{parent}:setUpDataConnector",
       hasBody: true,
     }),
     svc,
@@ -20962,7 +20944,7 @@ export const ImportProjectsLocationsUserEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/userEvents:import",
+      path: "v1/{parent}/userEvents:import",
       hasBody: true,
     }),
     svc,
@@ -21006,7 +20988,7 @@ export const WriteProjectsLocationsUserEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/userEvents:write",
+      path: "v1/{parent}/userEvents:write",
       hasBody: true,
     }),
     svc,
@@ -21049,10 +21031,7 @@ export const CollectProjectsLocationsUserEventsRequest =
     userEvent: Schema.optional(Schema.String).pipe(T.HttpQuery("userEvent")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/userEvents:collect",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/userEvents:collect" }),
     svc,
   ) as unknown as Schema.Schema<CollectProjectsLocationsUserEventsRequest>;
 
@@ -21083,10 +21062,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -21131,10 +21107,7 @@ export const ListProjectsLocationsOperationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -21177,7 +21150,7 @@ export const CheckProjectsLocationsGroundingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/groundingConfigs/{groundingConfigsId}:check",
+      path: "v1/{groundingConfig}:check",
       hasBody: true,
     }),
     svc,
@@ -21211,10 +21184,7 @@ export const ListProjectsLocationsCmekConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cmekConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/cmekConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCmekConfigsRequest>;
 
@@ -21246,10 +21216,7 @@ export const DeleteProjectsLocationsCmekConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cmekConfigs/{cmekConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCmekConfigsRequest>;
 
@@ -21281,10 +21248,7 @@ export const GetProjectsLocationsCmekConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cmekConfigs/{cmekConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCmekConfigsRequest>;
 
@@ -21324,11 +21288,7 @@ export const PatchProjectsLocationsCmekConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cmekConfigs/{cmekConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCmekConfigsRequest>;
 
@@ -21360,10 +21320,7 @@ export const GetProjectsLocationsPodcastsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/podcasts/{podcastsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsPodcastsOperationsRequest>;
 
@@ -21400,11 +21357,7 @@ export const RankProjectsLocationsRankingConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/rankingConfigs/{rankingConfigsId}:rank",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{rankingConfig}:rank", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RankProjectsLocationsRankingConfigsRequest>;
 
@@ -21445,10 +21398,7 @@ export const ListProjectsLocationsDataStoresRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dataStores" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresRequest>;
 
@@ -21514,11 +21464,7 @@ export const CreateProjectsLocationsDataStoresRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/dataStores", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDataStoresRequest>;
 
@@ -21550,10 +21496,7 @@ export const DeleteProjectsLocationsDataStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresRequest>;
 
@@ -21601,10 +21544,7 @@ export const CompleteQueryProjectsLocationsDataStoresRequest =
     ),
     dataStore: Schema.String.pipe(T.HttpPath("dataStore")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}:completeQuery",
-    }),
+    T.Http({ method: "GET", path: "v1/{dataStore}:completeQuery" }),
     svc,
   ) as unknown as Schema.Schema<CompleteQueryProjectsLocationsDataStoresRequest>;
 
@@ -21636,10 +21576,7 @@ export const GetProjectsLocationsDataStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresRequest>;
 
@@ -21671,10 +21608,7 @@ export const GetSiteSearchEngineProjectsLocationsDataStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/siteSearchEngine",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSiteSearchEngineProjectsLocationsDataStoresRequest>;
 
@@ -21714,11 +21648,7 @@ export const PatchProjectsLocationsDataStoresRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresRequest>;
 
@@ -21756,10 +21686,7 @@ export const ListProjectsLocationsDataStoresSchemasRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/schemas",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/schemas" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresSchemasRequest>;
 
@@ -21803,11 +21730,7 @@ export const CreateProjectsLocationsDataStoresSchemasRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/schemas",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/schemas", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDataStoresSchemasRequest>;
 
@@ -21839,10 +21762,7 @@ export const GetProjectsLocationsDataStoresSchemasRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/schemas/{schemasId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresSchemasRequest>;
 
@@ -21874,10 +21794,7 @@ export const DeleteProjectsLocationsDataStoresSchemasRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/schemas/{schemasId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresSchemasRequest>;
 
@@ -21919,11 +21836,7 @@ export const PatchProjectsLocationsDataStoresSchemasRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/schemas/{schemasId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresSchemasRequest>;
 
@@ -21962,7 +21875,7 @@ export const CompleteQueryProjectsLocationsDataStoresCompletionConfigRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/completionConfig:completeQuery",
+      path: "v1/{completionConfig}:completeQuery",
       hasBody: true,
     }),
     svc,
@@ -22006,10 +21919,7 @@ export const CollectProjectsLocationsDataStoresUserEventsRequest =
     ets: Schema.optional(Schema.String).pipe(T.HttpQuery("ets")),
     userEvent: Schema.optional(Schema.String).pipe(T.HttpQuery("userEvent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/userEvents:collect",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/userEvents:collect" }),
     svc,
   ) as unknown as Schema.Schema<CollectProjectsLocationsDataStoresUserEventsRequest>;
 
@@ -22051,7 +21961,7 @@ export const WriteProjectsLocationsDataStoresUserEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/userEvents:write",
+      path: "v1/{parent}/userEvents:write",
       hasBody: true,
     }),
     svc,
@@ -22092,7 +22002,7 @@ export const ImportProjectsLocationsDataStoresUserEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/userEvents:import",
+      path: "v1/{parent}/userEvents:import",
       hasBody: true,
     }),
     svc,
@@ -22133,7 +22043,7 @@ export const PurgeProjectsLocationsDataStoresUserEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/userEvents:purge",
+      path: "v1/{parent}/userEvents:purge",
       hasBody: true,
     }),
     svc,
@@ -22181,10 +22091,7 @@ export const ListProjectsLocationsDataStoresModelsOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/models/{modelsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresModelsOperationsRequest>;
 
@@ -22221,10 +22128,7 @@ export const GetProjectsLocationsDataStoresModelsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/models/{modelsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresModelsOperationsRequest>;
 
@@ -22256,10 +22160,7 @@ export const DeleteProjectsLocationsDataStoresControlsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/controls/{controlsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresControlsRequest>;
 
@@ -22291,10 +22192,7 @@ export const GetProjectsLocationsDataStoresControlsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/controls/{controlsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresControlsRequest>;
 
@@ -22335,10 +22233,7 @@ export const ListProjectsLocationsDataStoresControlsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/controls",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/controls" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresControlsRequest>;
 
@@ -22382,11 +22277,7 @@ export const PatchProjectsLocationsDataStoresControlsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/controls/{controlsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresControlsRequest>;
 
@@ -22426,11 +22317,7 @@ export const CreateProjectsLocationsDataStoresControlsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/controls",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/controls", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDataStoresControlsRequest>;
 
@@ -22474,10 +22361,7 @@ export const GetProjectsLocationsDataStoresWidgetConfigsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/widgetConfigs/{widgetConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresWidgetConfigsRequest>;
 
@@ -22517,11 +22401,7 @@ export const PatchProjectsLocationsDataStoresWidgetConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/widgetConfigs/{widgetConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresWidgetConfigsRequest>;
 
@@ -22560,7 +22440,7 @@ export const SearchProjectsLocationsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/servingConfigs/{servingConfigsId}:search",
+      path: "v1/{servingConfig}:search",
       hasBody: true,
     }),
     svc,
@@ -22595,10 +22475,7 @@ export const GetProjectsLocationsDataStoresServingConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/servingConfigs/{servingConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresServingConfigsRequest>;
 
@@ -22637,7 +22514,7 @@ export const AnswerProjectsLocationsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/servingConfigs/{servingConfigsId}:answer",
+      path: "v1/{servingConfig}:answer",
       hasBody: true,
     }),
     svc,
@@ -22679,7 +22556,7 @@ export const StreamAnswerProjectsLocationsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/servingConfigs/{servingConfigsId}:streamAnswer",
+      path: "v1/{servingConfig}:streamAnswer",
       hasBody: true,
     }),
     svc,
@@ -22722,11 +22599,7 @@ export const PatchProjectsLocationsDataStoresServingConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/servingConfigs/{servingConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresServingConfigsRequest>;
 
@@ -22765,7 +22638,7 @@ export const RecommendProjectsLocationsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/servingConfigs/{servingConfigsId}:recommend",
+      path: "v1/{servingConfig}:recommend",
       hasBody: true,
     }),
     svc,
@@ -22806,10 +22679,7 @@ export const ListProjectsLocationsDataStoresServingConfigsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/servingConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/servingConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresServingConfigsRequest>;
 
@@ -22845,10 +22715,7 @@ export const DeleteProjectsLocationsDataStoresServingConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/servingConfigs/{servingConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresServingConfigsRequest>;
 
@@ -22893,7 +22760,7 @@ export const CreateProjectsLocationsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/servingConfigs",
+      path: "v1/{parent}/servingConfigs",
       hasBody: true,
     }),
     svc,
@@ -22935,7 +22802,7 @@ export const SearchLiteProjectsLocationsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/servingConfigs/{servingConfigsId}:searchLite",
+      path: "v1/{servingConfig}:searchLite",
       hasBody: true,
     }),
     svc,
@@ -22978,11 +22845,7 @@ export const PatchProjectsLocationsDataStoresConversationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/conversations/{conversationsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresConversationsRequest>;
 
@@ -23014,10 +22877,7 @@ export const DeleteProjectsLocationsDataStoresConversationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/conversations/{conversationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresConversationsRequest>;
 
@@ -23056,7 +22916,7 @@ export const CreateProjectsLocationsDataStoresConversationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/conversations",
+      path: "v1/{parent}/conversations",
       hasBody: true,
     }),
     svc,
@@ -23095,11 +22955,7 @@ export const ConverseProjectsLocationsDataStoresConversationsRequest =
       GoogleCloudDiscoveryengineV1ConverseConversationRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/conversations/{conversationsId}:converse",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:converse", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ConverseProjectsLocationsDataStoresConversationsRequest>;
 
@@ -23144,10 +23000,7 @@ export const ListProjectsLocationsDataStoresConversationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/conversations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/conversations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresConversationsRequest>;
 
@@ -23183,10 +23036,7 @@ export const GetProjectsLocationsDataStoresConversationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/conversations/{conversationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresConversationsRequest>;
 
@@ -23218,10 +23068,7 @@ export const GetProjectsLocationsDataStoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresOperationsRequest>;
 
@@ -23267,10 +23114,7 @@ export const ListProjectsLocationsDataStoresOperationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresOperationsRequest>;
 
@@ -23314,11 +23158,7 @@ export const PatchProjectsLocationsDataStoresSessionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/sessions/{sessionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresSessionsRequest>;
 
@@ -23358,11 +23198,7 @@ export const CreateProjectsLocationsDataStoresSessionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/sessions",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/sessions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDataStoresSessionsRequest>;
 
@@ -23406,10 +23242,7 @@ export const ListProjectsLocationsDataStoresSessionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/sessions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sessions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresSessionsRequest>;
 
@@ -23450,10 +23283,7 @@ export const GetProjectsLocationsDataStoresSessionsRequest =
       T.HttpQuery("includeAnswerDetails"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/sessions/{sessionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresSessionsRequest>;
 
@@ -23485,10 +23315,7 @@ export const DeleteProjectsLocationsDataStoresSessionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/sessions/{sessionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresSessionsRequest>;
 
@@ -23520,10 +23347,7 @@ export const GetProjectsLocationsDataStoresSessionsAnswersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/sessions/{sessionsId}/answers/{answersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresSessionsAnswersRequest>;
 
@@ -23562,7 +23386,7 @@ export const PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/suggestionDenyListEntries:purge",
+      path: "v1/{parent}/suggestionDenyListEntries:purge",
       hasBody: true,
     }),
     svc,
@@ -23604,7 +23428,7 @@ export const ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/suggestionDenyListEntries:import",
+      path: "v1/{parent}/suggestionDenyListEntries:import",
       hasBody: true,
     }),
     svc,
@@ -23646,7 +23470,7 @@ export const RecrawlUrisProjectsLocationsDataStoresSiteSearchEngineRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/siteSearchEngine:recrawlUris",
+      path: "v1/{siteSearchEngine}:recrawlUris",
       hasBody: true,
     }),
     svc,
@@ -23688,7 +23512,7 @@ export const DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngin
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/siteSearchEngine:disableAdvancedSiteSearch",
+      path: "v1/{siteSearchEngine}:disableAdvancedSiteSearch",
       hasBody: true,
     }),
     svc,
@@ -23732,7 +23556,7 @@ export const EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngine
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/siteSearchEngine:enableAdvancedSiteSearch",
+      path: "v1/{siteSearchEngine}:enableAdvancedSiteSearch",
       hasBody: true,
     }),
     svc,
@@ -23774,11 +23598,7 @@ export const CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/siteSearchEngine/sitemaps",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/sitemaps", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest>;
 
@@ -23811,10 +23631,7 @@ export const DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/siteSearchEngine/sitemaps/{sitemapsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest>;
 
@@ -23852,10 +23669,7 @@ export const FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest =
       Schema.Array(Schema.String),
     ).pipe(T.HttpQuery("matcher.urisMatcher.uris")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/siteSearchEngine/sitemaps:fetch",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sitemaps:fetch" }),
     svc,
   ) as unknown as Schema.Schema<FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest>;
 
@@ -23893,11 +23707,7 @@ export const CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/siteSearchEngine/targetSites",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/targetSites", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
 
@@ -23935,11 +23745,7 @@ export const PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest 
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/siteSearchEngine/targetSites/{targetSitesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
 
@@ -23972,10 +23778,7 @@ export const GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/siteSearchEngine/targetSites/{targetSitesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
 
@@ -24008,10 +23811,7 @@ export const DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/siteSearchEngine/targetSites/{targetSitesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
 
@@ -24050,10 +23850,7 @@ export const ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/siteSearchEngine/targetSites",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/targetSites" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
 
@@ -24097,7 +23894,7 @@ export const BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRe
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/siteSearchEngine/targetSites:batchCreate",
+      path: "v1/{parent}/targetSites:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -24144,10 +23941,7 @@ export const BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest
     ).pipe(T.HttpQuery("matcher.fhirMatcher.fhirResources")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/branches/{branchesId}/batchGetDocumentsMetadata",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/batchGetDocumentsMetadata" }),
     svc,
   ) as unknown as Schema.Schema<BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest>;
 
@@ -24193,11 +23987,7 @@ export const PatchProjectsLocationsDataStoresBranchesDocumentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/branches/{branchesId}/documents/{documentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDataStoresBranchesDocumentsRequest>;
 
@@ -24238,11 +24028,7 @@ export const CreateProjectsLocationsDataStoresBranchesDocumentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/branches/{branchesId}/documents",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/documents", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDataStoresBranchesDocumentsRequest>;
 
@@ -24282,7 +24068,7 @@ export const PurgeProjectsLocationsDataStoresBranchesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/branches/{branchesId}/documents:purge",
+      path: "v1/{parent}/documents:purge",
       hasBody: true,
     }),
     svc,
@@ -24323,10 +24109,7 @@ export const ListProjectsLocationsDataStoresBranchesDocumentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/branches/{branchesId}/documents",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/documents" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresBranchesDocumentsRequest>;
 
@@ -24363,10 +24146,7 @@ export const GetProjectsLocationsDataStoresBranchesDocumentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/branches/{branchesId}/documents/{documentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresBranchesDocumentsRequest>;
 
@@ -24399,10 +24179,7 @@ export const DeleteProjectsLocationsDataStoresBranchesDocumentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/branches/{branchesId}/documents/{documentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataStoresBranchesDocumentsRequest>;
 
@@ -24442,7 +24219,7 @@ export const ImportProjectsLocationsDataStoresBranchesDocumentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/branches/{branchesId}/documents:import",
+      path: "v1/{parent}/documents:import",
       hasBody: true,
     }),
     svc,
@@ -24482,11 +24259,7 @@ export const CancelProjectsLocationsDataStoresBranchesOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/branches/{branchesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsDataStoresBranchesOperationsRequest>;
 
@@ -24519,10 +24292,7 @@ export const GetProjectsLocationsDataStoresBranchesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/branches/{branchesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataStoresBranchesOperationsRequest>;
 
@@ -24569,10 +24339,7 @@ export const ListProjectsLocationsDataStoresBranchesOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/branches/{branchesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataStoresBranchesOperationsRequest>;
 
@@ -24616,7 +24383,7 @@ export const ImportProjectsLocationsDataStoresCompletionSuggestionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/completionSuggestions:import",
+      path: "v1/{parent}/completionSuggestions:import",
       hasBody: true,
     }),
     svc,
@@ -24658,7 +24425,7 @@ export const PurgeProjectsLocationsDataStoresCompletionSuggestionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataStores/{dataStoresId}/completionSuggestions:purge",
+      path: "v1/{parent}/completionSuggestions:purge",
       hasBody: true,
     }),
     svc,
@@ -24700,7 +24467,7 @@ export const BatchUpdateUserLicensesProjectsLocationsUserStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/userStores/{userStoresId}:batchUpdateUserLicenses",
+      path: "v1/{parent}:batchUpdateUserLicenses",
       hasBody: true,
     }),
     svc,
@@ -24743,11 +24510,7 @@ export const PatchProjectsLocationsUserStoresRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/userStores/{userStoresId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsUserStoresRequest>;
 
@@ -24779,10 +24542,7 @@ export const GetProjectsLocationsUserStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/userStores/{userStoresId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsUserStoresRequest>;
 
@@ -24826,10 +24586,7 @@ export const ListProjectsLocationsUserStoresUserLicensesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/userStores/{userStoresId}/userLicenses",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/userLicenses" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsUserStoresUserLicensesRequest>;
 
@@ -24865,10 +24622,7 @@ export const ListProjectsLocationsUserStoresLicenseConfigsUsageStatsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/userStores/{userStoresId}/licenseConfigsUsageStats",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/licenseConfigsUsageStats" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsUserStoresLicenseConfigsUsageStatsRequest>;
 
@@ -24910,7 +24664,7 @@ export const PurgeIdentityMappingsProjectsLocationsIdentityMappingStoresRequest 
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/identityMappingStores/{identityMappingStoresId}:purgeIdentityMappings",
+      path: "v1/{identityMappingStore}:purgeIdentityMappings",
       hasBody: true,
     }),
     svc,
@@ -24955,7 +24709,7 @@ export const ListIdentityMappingsProjectsLocationsIdentityMappingStoresRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/identityMappingStores/{identityMappingStoresId}:listIdentityMappings",
+      path: "v1/{identityMappingStore}:listIdentityMappings",
     }),
     svc,
   ) as unknown as Schema.Schema<ListIdentityMappingsProjectsLocationsIdentityMappingStoresRequest>;
@@ -24993,10 +24747,7 @@ export const GetProjectsLocationsIdentityMappingStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/identityMappingStores/{identityMappingStoresId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsIdentityMappingStoresRequest>;
 
@@ -25050,7 +24801,7 @@ export const CreateProjectsLocationsIdentityMappingStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/identityMappingStores",
+      path: "v1/{parent}/identityMappingStores",
       hasBody: true,
     }),
     svc,
@@ -25090,10 +24841,7 @@ export const ListProjectsLocationsIdentityMappingStoresRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/identityMappingStores",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/identityMappingStores" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsIdentityMappingStoresRequest>;
 
@@ -25138,7 +24886,7 @@ export const ImportIdentityMappingsProjectsLocationsIdentityMappingStoresRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/identityMappingStores/{identityMappingStoresId}:importIdentityMappings",
+      path: "v1/{identityMappingStore}:importIdentityMappings",
       hasBody: true,
     }),
     svc,
@@ -25173,10 +24921,7 @@ export const DeleteProjectsLocationsIdentityMappingStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/identityMappingStores/{identityMappingStoresId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsIdentityMappingStoresRequest>;
 
@@ -25208,10 +24953,7 @@ export const GetProjectsLocationsIdentityMappingStoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/identityMappingStores/{identityMappingStoresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsIdentityMappingStoresOperationsRequest>;
 
@@ -25258,10 +25000,7 @@ export const ListProjectsLocationsIdentityMappingStoresOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/identityMappingStores/{identityMappingStoresId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsIdentityMappingStoresOperationsRequest>;
 
@@ -25298,10 +25037,7 @@ export const DeleteProjectsLocationsCollectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsRequest>;
 
@@ -25341,11 +25077,7 @@ export const UpdateDataConnectorProjectsLocationsCollectionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataConnector",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateDataConnectorProjectsLocationsCollectionsRequest>;
 
@@ -25378,10 +25110,7 @@ export const GetDataConnectorProjectsLocationsCollectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataConnector",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDataConnectorProjectsLocationsCollectionsRequest>;
 
@@ -25413,10 +25142,7 @@ export const GetProjectsLocationsCollectionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsOperationsRequest>;
 
@@ -25462,10 +25188,7 @@ export const ListProjectsLocationsCollectionsOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsOperationsRequest>;
 
@@ -25552,10 +25275,7 @@ export const GetProjectsLocationsCollectionsDataConnectorOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataConnector/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataConnectorOperationsRequest>;
 
@@ -25602,10 +25322,7 @@ export const ListProjectsLocationsCollectionsDataConnectorOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataConnector/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataConnectorOperationsRequest>;
 
@@ -25650,11 +25367,7 @@ export const PatchProjectsLocationsCollectionsDataStoresRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresRequest>;
 
@@ -25702,10 +25415,7 @@ export const CompleteQueryProjectsLocationsCollectionsDataStoresRequest =
     query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
     dataStore: Schema.String.pipe(T.HttpPath("dataStore")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}:completeQuery",
-    }),
+    T.Http({ method: "GET", path: "v1/{dataStore}:completeQuery" }),
     svc,
   ) as unknown as Schema.Schema<CompleteQueryProjectsLocationsCollectionsDataStoresRequest>;
 
@@ -25747,10 +25457,7 @@ export const ListProjectsLocationsCollectionsDataStoresRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dataStores" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresRequest>;
 
@@ -25793,7 +25500,7 @@ export const TrainCustomModelProjectsLocationsCollectionsDataStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}:trainCustomModel",
+      path: "v1/{dataStore}:trainCustomModel",
       hasBody: true,
     }),
     svc,
@@ -25828,10 +25535,7 @@ export const GetSiteSearchEngineProjectsLocationsCollectionsDataStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/siteSearchEngine",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSiteSearchEngineProjectsLocationsCollectionsDataStoresRequest>;
 
@@ -25864,10 +25568,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresRequest>;
 
@@ -25929,11 +25630,7 @@ export const CreateProjectsLocationsCollectionsDataStoresRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/dataStores", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsDataStoresRequest>;
 
@@ -25965,10 +25662,7 @@ export const GetProjectsLocationsCollectionsDataStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresRequest>;
 
@@ -26007,7 +25701,7 @@ export const SearchProjectsLocationsCollectionsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/servingConfigs/{servingConfigsId}:search",
+      path: "v1/{servingConfig}:search",
       hasBody: true,
     }),
     svc,
@@ -26042,10 +25736,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresServingConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/servingConfigs/{servingConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
@@ -26090,7 +25781,7 @@ export const CreateProjectsLocationsCollectionsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/servingConfigs",
+      path: "v1/{parent}/servingConfigs",
       hasBody: true,
     }),
     svc,
@@ -26133,11 +25824,7 @@ export const PatchProjectsLocationsCollectionsDataStoresServingConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/servingConfigs/{servingConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
@@ -26177,7 +25864,7 @@ export const StreamAnswerProjectsLocationsCollectionsDataStoresServingConfigsReq
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/servingConfigs/{servingConfigsId}:streamAnswer",
+      path: "v1/{servingConfig}:streamAnswer",
       hasBody: true,
     }),
     svc,
@@ -26221,7 +25908,7 @@ export const SearchLiteProjectsLocationsCollectionsDataStoresServingConfigsReque
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/servingConfigs/{servingConfigsId}:searchLite",
+      path: "v1/{servingConfig}:searchLite",
       hasBody: true,
     }),
     svc,
@@ -26263,10 +25950,7 @@ export const ListProjectsLocationsCollectionsDataStoresServingConfigsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/servingConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/servingConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
@@ -26310,7 +25994,7 @@ export const RecommendProjectsLocationsCollectionsDataStoresServingConfigsReques
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/servingConfigs/{servingConfigsId}:recommend",
+      path: "v1/{servingConfig}:recommend",
       hasBody: true,
     }),
     svc,
@@ -26345,10 +26029,7 @@ export const GetProjectsLocationsCollectionsDataStoresServingConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/servingConfigs/{servingConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresServingConfigsRequest>;
 
@@ -26388,7 +26069,7 @@ export const AnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/servingConfigs/{servingConfigsId}:answer",
+      path: "v1/{servingConfig}:answer",
       hasBody: true,
     }),
     svc,
@@ -26423,10 +26104,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresSessionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/sessions/{sessionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresSessionsRequest>;
 
@@ -26464,10 +26142,7 @@ export const GetProjectsLocationsCollectionsDataStoresSessionsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/sessions/{sessionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresSessionsRequest>;
 
@@ -26508,11 +26183,7 @@ export const CreateProjectsLocationsCollectionsDataStoresSessionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/sessions",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/sessions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsDataStoresSessionsRequest>;
 
@@ -26553,11 +26224,7 @@ export const PatchProjectsLocationsCollectionsDataStoresSessionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/sessions/{sessionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresSessionsRequest>;
 
@@ -26602,10 +26269,7 @@ export const ListProjectsLocationsCollectionsDataStoresSessionsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/sessions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sessions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresSessionsRequest>;
 
@@ -26642,10 +26306,7 @@ export const GetProjectsLocationsCollectionsDataStoresSessionsAnswersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/sessions/{sessionsId}/answers/{answersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresSessionsAnswersRequest>;
 
@@ -26692,10 +26353,7 @@ export const ListProjectsLocationsCollectionsDataStoresOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresOperationsRequest>;
 
@@ -26732,10 +26390,7 @@ export const GetProjectsLocationsCollectionsDataStoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresOperationsRequest>;
 
@@ -26782,10 +26437,7 @@ export const ListProjectsLocationsCollectionsDataStoresModelsOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/models/{modelsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresModelsOperationsRequest>;
 
@@ -26822,10 +26474,7 @@ export const GetProjectsLocationsCollectionsDataStoresModelsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/models/{modelsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresModelsOperationsRequest>;
 
@@ -26858,10 +26507,7 @@ export const GetProjectsLocationsCollectionsDataStoresConversationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/conversations/{conversationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
@@ -26901,7 +26547,7 @@ export const CreateProjectsLocationsCollectionsDataStoresConversationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/conversations",
+      path: "v1/{parent}/conversations",
       hasBody: true,
     }),
     svc,
@@ -26941,11 +26587,7 @@ export const ConverseProjectsLocationsCollectionsDataStoresConversationsRequest 
       GoogleCloudDiscoveryengineV1ConverseConversationRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/conversations/{conversationsId}:converse",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:converse", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ConverseProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
@@ -26978,10 +26620,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresConversationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/conversations/{conversationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
@@ -27026,10 +26665,7 @@ export const ListProjectsLocationsCollectionsDataStoresConversationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/conversations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/conversations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
@@ -27074,11 +26710,7 @@ export const PatchProjectsLocationsCollectionsDataStoresConversationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/conversations/{conversationsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresConversationsRequest>;
 
@@ -27119,11 +26751,7 @@ export const CreateProjectsLocationsCollectionsDataStoresSchemasRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/schemas",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/schemas", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsDataStoresSchemasRequest>;
 
@@ -27162,10 +26790,7 @@ export const ListProjectsLocationsCollectionsDataStoresSchemasRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/schemas",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/schemas" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresSchemasRequest>;
 
@@ -27202,10 +26827,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresSchemasRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/schemas/{schemasId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresSchemasRequest>;
 
@@ -27248,11 +26870,7 @@ export const PatchProjectsLocationsCollectionsDataStoresSchemasRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/schemas/{schemasId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresSchemasRequest>;
 
@@ -27285,10 +26903,7 @@ export const GetProjectsLocationsCollectionsDataStoresSchemasRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/schemas/{schemasId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresSchemasRequest>;
 
@@ -27335,10 +26950,7 @@ export const ListProjectsLocationsCollectionsDataStoresSchemasOperationsRequest 
     ),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/schemas/{schemasId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresSchemasOperationsRequest>;
 
@@ -27375,10 +26987,7 @@ export const GetProjectsLocationsCollectionsDataStoresSchemasOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/schemas/{schemasId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresSchemasOperationsRequest>;
 
@@ -27418,7 +27027,7 @@ export const PurgeProjectsLocationsCollectionsDataStoresUserEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/userEvents:purge",
+      path: "v1/{parent}/userEvents:purge",
       hasBody: true,
     }),
     svc,
@@ -27460,7 +27069,7 @@ export const ImportProjectsLocationsCollectionsDataStoresUserEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/userEvents:import",
+      path: "v1/{parent}/userEvents:import",
       hasBody: true,
     }),
     svc,
@@ -27505,7 +27114,7 @@ export const WriteProjectsLocationsCollectionsDataStoresUserEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/userEvents:write",
+      path: "v1/{parent}/userEvents:write",
       hasBody: true,
     }),
     svc,
@@ -27549,10 +27158,7 @@ export const CollectProjectsLocationsCollectionsDataStoresUserEventsRequest =
     uri: Schema.optional(Schema.String).pipe(T.HttpQuery("uri")),
     ets: Schema.optional(Schema.String).pipe(T.HttpQuery("ets")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/userEvents:collect",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/userEvents:collect" }),
     svc,
   ) as unknown as Schema.Schema<CollectProjectsLocationsCollectionsDataStoresUserEventsRequest>;
 
@@ -27592,7 +27198,7 @@ export const PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsReq
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/completionSuggestions:purge",
+      path: "v1/{parent}/completionSuggestions:purge",
       hasBody: true,
     }),
     svc,
@@ -27636,7 +27242,7 @@ export const ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsRe
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/completionSuggestions:import",
+      path: "v1/{parent}/completionSuggestions:import",
       hasBody: true,
     }),
     svc,
@@ -27673,10 +27279,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresControlsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/controls/{controlsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresControlsRequest>;
 
@@ -27718,10 +27321,7 @@ export const ListProjectsLocationsCollectionsDataStoresControlsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/controls",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/controls" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresControlsRequest>;
 
@@ -27766,11 +27366,7 @@ export const PatchProjectsLocationsCollectionsDataStoresControlsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/controls/{controlsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresControlsRequest>;
 
@@ -27811,11 +27407,7 @@ export const CreateProjectsLocationsCollectionsDataStoresControlsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/controls",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/controls", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsDataStoresControlsRequest>;
 
@@ -27848,10 +27440,7 @@ export const GetProjectsLocationsCollectionsDataStoresControlsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/controls/{controlsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresControlsRequest>;
 
@@ -27891,7 +27480,7 @@ export const ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntri
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/suggestionDenyListEntries:import",
+      path: "v1/{parent}/suggestionDenyListEntries:import",
       hasBody: true,
     }),
     svc,
@@ -27935,7 +27524,7 @@ export const PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntrie
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/suggestionDenyListEntries:purge",
+      path: "v1/{parent}/suggestionDenyListEntries:purge",
       hasBody: true,
     }),
     svc,
@@ -27979,7 +27568,7 @@ export const DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSite
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/siteSearchEngine:disableAdvancedSiteSearch",
+      path: "v1/{siteSearchEngine}:disableAdvancedSiteSearch",
       hasBody: true,
     }),
     svc,
@@ -28023,7 +27612,7 @@ export const EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteS
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/siteSearchEngine:enableAdvancedSiteSearch",
+      path: "v1/{siteSearchEngine}:enableAdvancedSiteSearch",
       hasBody: true,
     }),
     svc,
@@ -28067,7 +27656,7 @@ export const RecrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngineRe
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/siteSearchEngine:recrawlUris",
+      path: "v1/{siteSearchEngine}:recrawlUris",
       hasBody: true,
     }),
     svc,
@@ -28111,7 +27700,7 @@ export const BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSea
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/siteSearchEngine:batchVerifyTargetSites",
+      path: "v1/{parent}:batchVerifyTargetSites",
       hasBody: true,
     }),
     svc,
@@ -28156,7 +27745,7 @@ export const FetchDomainVerificationStatusProjectsLocationsCollectionsDataStores
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/siteSearchEngine:fetchDomainVerificationStatus",
+      path: "v1/{siteSearchEngine}:fetchDomainVerificationStatus",
     }),
     svc,
   ) as unknown as Schema.Schema<FetchDomainVerificationStatusProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>;
@@ -28202,10 +27791,7 @@ export const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSit
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/siteSearchEngine/targetSites",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/targetSites" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
 
@@ -28249,11 +27835,7 @@ export const PatchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSi
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/siteSearchEngine/targetSites/{targetSitesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
 
@@ -28293,11 +27875,7 @@ export const CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetS
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/siteSearchEngine/targetSites",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/targetSites", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
 
@@ -28332,10 +27910,7 @@ export const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSite
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/siteSearchEngine/targetSites/{targetSitesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
 
@@ -28377,7 +27952,7 @@ export const BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTa
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/siteSearchEngine/targetSites:batchCreate",
+      path: "v1/{parent}/targetSites:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -28414,10 +27989,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetS
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/siteSearchEngine/targetSites/{targetSitesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
 
@@ -28466,10 +28038,7 @@ export const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSit
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/siteSearchEngine/targetSites/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsRequest>;
 
@@ -28508,10 +28077,7 @@ export const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSite
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/siteSearchEngine/targetSites/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsRequest>;
 
@@ -28551,11 +28117,7 @@ export const CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemap
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/siteSearchEngine/sitemaps",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/sitemaps", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest>;
 
@@ -28595,10 +28157,7 @@ export const FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemaps
       Schema.Array(Schema.String),
     ).pipe(T.HttpQuery("matcher.urisMatcher.uris")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/siteSearchEngine/sitemaps:fetch",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sitemaps:fetch" }),
     svc,
   ) as unknown as Schema.Schema<FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest>;
 
@@ -28633,10 +28192,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemap
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/siteSearchEngine/sitemaps/{sitemapsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest>;
 
@@ -28685,10 +28241,7 @@ export const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOperation
     ),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/siteSearchEngine/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsRequest>;
 
@@ -28727,10 +28280,7 @@ export const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineOperations
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/siteSearchEngine/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsRequest>;
 
@@ -28775,10 +28325,7 @@ export const BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBran
     ).pipe(T.HttpQuery("matcher.urisMatcher.uris")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/branches/{branchesId}/batchGetDocumentsMetadata",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/batchGetDocumentsMetadata" }),
     svc,
   ) as unknown as Schema.Schema<BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesRequest>;
 
@@ -28813,10 +28360,7 @@ export const GetProjectsLocationsCollectionsDataStoresBranchesOperationsRequest 
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/branches/{branchesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresBranchesOperationsRequest>;
 
@@ -28863,10 +28407,7 @@ export const ListProjectsLocationsCollectionsDataStoresBranchesOperationsRequest
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/branches/{branchesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresBranchesOperationsRequest>;
 
@@ -28908,11 +28449,7 @@ export const CancelProjectsLocationsCollectionsDataStoresBranchesOperationsReque
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/branches/{branchesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsCollectionsDataStoresBranchesOperationsRequest>;
 
@@ -28954,11 +28491,7 @@ export const CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsReques
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/branches/{branchesId}/documents",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/documents", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
 
@@ -28997,10 +28530,7 @@ export const ListProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest 
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/branches/{branchesId}/documents",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/documents" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
 
@@ -29037,10 +28567,7 @@ export const GetProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/branches/{branchesId}/documents/{documentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
 
@@ -29080,7 +28607,7 @@ export const ImportProjectsLocationsCollectionsDataStoresBranchesDocumentsReques
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/branches/{branchesId}/documents:import",
+      path: "v1/{parent}/documents:import",
       hasBody: true,
     }),
     svc,
@@ -29115,10 +28642,7 @@ export const DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsReques
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/branches/{branchesId}/documents/{documentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
 
@@ -29164,11 +28688,7 @@ export const PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/branches/{branchesId}/documents/{documentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest>;
 
@@ -29208,7 +28728,7 @@ export const PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/branches/{branchesId}/documents:purge",
+      path: "v1/{parent}/documents:purge",
       hasBody: true,
     }),
     svc,
@@ -29250,7 +28770,7 @@ export const CompleteQueryProjectsLocationsCollectionsDataStoresCompletionConfig
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/completionConfig:completeQuery",
+      path: "v1/{completionConfig}:completeQuery",
       hasBody: true,
     }),
     svc,
@@ -29287,10 +28807,7 @@ export const ListProjectsLocationsCollectionsDataStoresCustomModelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dataStore: Schema.String.pipe(T.HttpPath("dataStore")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/customModels",
-    }),
+    T.Http({ method: "GET", path: "v1/{dataStore}/customModels" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsDataStoresCustomModelsRequest>;
 
@@ -29331,11 +28848,7 @@ export const PatchProjectsLocationsCollectionsDataStoresWidgetConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/widgetConfigs/{widgetConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsDataStoresWidgetConfigsRequest>;
 
@@ -29380,10 +28893,7 @@ export const GetProjectsLocationsCollectionsDataStoresWidgetConfigsRequest =
       T.HttpQuery("getWidgetConfigRequestOption.turnOffCollectionComponents"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/dataStores/{dataStoresId}/widgetConfigs/{widgetConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsDataStoresWidgetConfigsRequest>;
 
@@ -29416,10 +28926,7 @@ export const DeleteProjectsLocationsCollectionsEnginesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesRequest>;
 
@@ -29451,10 +28958,7 @@ export const GetProjectsLocationsCollectionsEnginesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesRequest>;
 
@@ -29494,11 +28998,7 @@ export const CreateProjectsLocationsCollectionsEnginesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/engines", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsEnginesRequest>;
 
@@ -29539,10 +29039,7 @@ export const ListProjectsLocationsCollectionsEnginesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/engines" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesRequest>;
 
@@ -29586,11 +29083,7 @@ export const PatchProjectsLocationsCollectionsEnginesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesRequest>;
 
@@ -29627,10 +29120,7 @@ export const GetIamPolicyProjectsLocationsCollectionsEnginesRequest =
     ),
     resource: Schema.String.pipe(T.HttpPath("resource")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsCollectionsEnginesRequest>;
 
@@ -29668,7 +29158,7 @@ export const SetIamPolicyProjectsLocationsCollectionsEnginesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -29709,10 +29199,7 @@ export const ListProjectsLocationsCollectionsEnginesServingConfigsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/servingConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/servingConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
@@ -29756,7 +29243,7 @@ export const SearchProjectsLocationsCollectionsEnginesServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/servingConfigs/{servingConfigsId}:search",
+      path: "v1/{servingConfig}:search",
       hasBody: true,
     }),
     svc,
@@ -29791,10 +29278,7 @@ export const DeleteProjectsLocationsCollectionsEnginesServingConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/servingConfigs/{servingConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
@@ -29834,7 +29318,7 @@ export const RecommendProjectsLocationsCollectionsEnginesServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/servingConfigs/{servingConfigsId}:recommend",
+      path: "v1/{servingConfig}:recommend",
       hasBody: true,
     }),
     svc,
@@ -29877,11 +29361,7 @@ export const PatchProjectsLocationsCollectionsEnginesServingConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/servingConfigs/{servingConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
@@ -29926,7 +29406,7 @@ export const CreateProjectsLocationsCollectionsEnginesServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/servingConfigs",
+      path: "v1/{parent}/servingConfigs",
       hasBody: true,
     }),
     svc,
@@ -29968,7 +29448,7 @@ export const StreamAnswerProjectsLocationsCollectionsEnginesServingConfigsReques
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/servingConfigs/{servingConfigsId}:streamAnswer",
+      path: "v1/{servingConfig}:streamAnswer",
       hasBody: true,
     }),
     svc,
@@ -30003,10 +29483,7 @@ export const GetProjectsLocationsCollectionsEnginesServingConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/servingConfigs/{servingConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesServingConfigsRequest>;
 
@@ -30046,7 +29523,7 @@ export const SearchLiteProjectsLocationsCollectionsEnginesServingConfigsRequest 
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/servingConfigs/{servingConfigsId}:searchLite",
+      path: "v1/{servingConfig}:searchLite",
       hasBody: true,
     }),
     svc,
@@ -30088,7 +29565,7 @@ export const AnswerProjectsLocationsCollectionsEnginesServingConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/servingConfigs/{servingConfigsId}:answer",
+      path: "v1/{servingConfig}:answer",
       hasBody: true,
     }),
     svc,
@@ -30123,10 +29600,7 @@ export const GetProjectsLocationsCollectionsEnginesConversationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/conversations/{conversationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesConversationsRequest>;
 
@@ -30166,7 +29640,7 @@ export const CreateProjectsLocationsCollectionsEnginesConversationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/conversations",
+      path: "v1/{parent}/conversations",
       hasBody: true,
     }),
     svc,
@@ -30213,10 +29687,7 @@ export const ListProjectsLocationsCollectionsEnginesConversationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/conversations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/conversations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesConversationsRequest>;
 
@@ -30258,11 +29729,7 @@ export const ConverseProjectsLocationsCollectionsEnginesConversationsRequest =
       GoogleCloudDiscoveryengineV1ConverseConversationRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/conversations/{conversationsId}:converse",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:converse", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ConverseProjectsLocationsCollectionsEnginesConversationsRequest>;
 
@@ -30295,10 +29762,7 @@ export const DeleteProjectsLocationsCollectionsEnginesConversationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/conversations/{conversationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesConversationsRequest>;
 
@@ -30339,11 +29803,7 @@ export const PatchProjectsLocationsCollectionsEnginesConversationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/conversations/{conversationsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesConversationsRequest>;
 
@@ -30384,11 +29844,7 @@ export const PatchProjectsLocationsCollectionsEnginesWidgetConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/widgetConfigs/{widgetConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesWidgetConfigsRequest>;
 
@@ -30433,10 +29889,7 @@ export const GetProjectsLocationsCollectionsEnginesWidgetConfigsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/widgetConfigs/{widgetConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesWidgetConfigsRequest>;
 
@@ -30477,11 +29930,7 @@ export const PatchProjectsLocationsCollectionsEnginesControlsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/controls/{controlsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesControlsRequest>;
 
@@ -30523,10 +29972,7 @@ export const ListProjectsLocationsCollectionsEnginesControlsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/controls",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/controls" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesControlsRequest>;
 
@@ -30563,10 +30009,7 @@ export const GetProjectsLocationsCollectionsEnginesControlsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/controls/{controlsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesControlsRequest>;
 
@@ -30606,11 +30049,7 @@ export const CreateProjectsLocationsCollectionsEnginesControlsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/controls",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/controls", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsEnginesControlsRequest>;
 
@@ -30643,10 +30082,7 @@ export const DeleteProjectsLocationsCollectionsEnginesControlsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/controls/{controlsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesControlsRequest>;
 
@@ -30684,11 +30120,7 @@ export const CancelProjectsLocationsCollectionsEnginesOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsCollectionsEnginesOperationsRequest>;
 
@@ -30721,10 +30153,7 @@ export const GetProjectsLocationsCollectionsEnginesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesOperationsRequest>;
 
@@ -30771,10 +30200,7 @@ export const ListProjectsLocationsCollectionsEnginesOperationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesOperationsRequest>;
 
@@ -30811,10 +30237,7 @@ export const GetProjectsLocationsCollectionsEnginesAssistantsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/assistants/{assistantsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesAssistantsRequest>;
 
@@ -30855,11 +30278,7 @@ export const PatchProjectsLocationsCollectionsEnginesAssistantsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/assistants/{assistantsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesAssistantsRequest>;
 
@@ -30902,11 +30321,7 @@ export const CreateProjectsLocationsCollectionsEnginesAssistantsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/assistants",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/assistants", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsEnginesAssistantsRequest>;
 
@@ -30939,10 +30354,7 @@ export const DeleteProjectsLocationsCollectionsEnginesAssistantsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/assistants/{assistantsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesAssistantsRequest>;
 
@@ -30980,11 +30392,7 @@ export const StreamAssistProjectsLocationsCollectionsEnginesAssistantsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/assistants/{assistantsId}:streamAssist",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:streamAssist", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StreamAssistProjectsLocationsCollectionsEnginesAssistantsRequest>;
 
@@ -31023,10 +30431,7 @@ export const ListProjectsLocationsCollectionsEnginesAssistantsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/assistants",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/assistants" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesAssistantsRequest>;
 
@@ -31063,10 +30468,7 @@ export const GetProjectsLocationsCollectionsEnginesAssistantsAgentsOperationsReq
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/assistants/{assistantsId}/agents/{agentsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesAssistantsAgentsOperationsRequest>;
 
@@ -31101,10 +30503,7 @@ export const GetCardProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Requ
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tenant: Schema.String.pipe(T.HttpPath("tenant")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/assistants/{assistantsId}/agents/{agentsId}/a2a/v1/card",
-    }),
+    T.Http({ method: "GET", path: "v1/{tenant}/a2a/v1/card" }),
     svc,
   ) as unknown as Schema.Schema<GetCardProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Request>;
 
@@ -31141,10 +30540,7 @@ export const SubscribeProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Ta
     tenant: Schema.String.pipe(T.HttpPath("tenant")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/assistants/{assistantsId}/agents/{agentsId}/a2a/v1/tasks/{tasksId}:subscribe",
-    }),
+    T.Http({ method: "GET", path: "v1/{tenant}/a2a/v1/{name}:subscribe" }),
     svc,
   ) as unknown as Schema.Schema<SubscribeProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksRequest>;
 
@@ -31187,7 +30583,7 @@ export const CancelProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Tasks
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/assistants/{assistantsId}/agents/{agentsId}/a2a/v1/tasks/{tasksId}:cancel",
+      path: "v1/{tenant}/a2a/v1/{name}:cancel",
       hasBody: true,
     }),
     svc,
@@ -31232,10 +30628,7 @@ export const GetProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksReq
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/assistants/{assistantsId}/agents/{agentsId}/a2a/v1/tasks/{tasksId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{tenant}/a2a/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksRequest>;
 
@@ -31273,10 +30666,7 @@ export const DeleteProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Tasks
     name: Schema.String.pipe(T.HttpPath("name")),
     tenant: Schema.String.pipe(T.HttpPath("tenant")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/assistants/{assistantsId}/agents/{agentsId}/a2a/v1/tasks/{tasksId}/pushNotificationConfigs/{pushNotificationConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{tenant}/a2a/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsRequest>;
 
@@ -31322,7 +30712,7 @@ export const ListProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPu
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/assistants/{assistantsId}/agents/{agentsId}/a2a/v1/tasks/{tasksId}/pushNotificationConfigs",
+      path: "v1/{tenant}/a2a/v1/{parent}/pushNotificationConfigs",
     }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsRequest>;
@@ -31365,10 +30755,7 @@ export const GetProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPus
     name: Schema.String.pipe(T.HttpPath("name")),
     tenant: Schema.String.pipe(T.HttpPath("tenant")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/assistants/{assistantsId}/agents/{agentsId}/a2a/v1/tasks/{tasksId}/pushNotificationConfigs/{pushNotificationConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{tenant}/a2a/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsRequest>;
 
@@ -31414,7 +30801,7 @@ export const CreateProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Tasks
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/assistants/{assistantsId}/agents/{agentsId}/a2a/v1/tasks/{tasksId}/pushNotificationConfigs",
+      path: "v1/{tenant}/a2a/v1/{parent}",
       hasBody: true,
     }),
     svc,
@@ -31456,7 +30843,7 @@ export const StreamProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Messa
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/assistants/{assistantsId}/agents/{agentsId}/a2a/v1/message:stream",
+      path: "v1/{tenant}/a2a/v1/message:stream",
       hasBody: true,
     }),
     svc,
@@ -31498,7 +30885,7 @@ export const SendProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Message
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/assistants/{assistantsId}/agents/{agentsId}/a2a/v1/message:send",
+      path: "v1/{tenant}/a2a/v1/message:send",
       hasBody: true,
     }),
     svc,
@@ -31542,7 +30929,7 @@ export const CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfigReq
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/completionConfig:completeQuery",
+      path: "v1/{completionConfig}:completeQuery",
       hasBody: true,
     }),
     svc,
@@ -31591,10 +30978,7 @@ export const ListProjectsLocationsCollectionsEnginesSessionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/sessions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sessions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCollectionsEnginesSessionsRequest>;
 
@@ -31631,10 +31015,7 @@ export const DeleteProjectsLocationsCollectionsEnginesSessionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/sessions/{sessionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCollectionsEnginesSessionsRequest>;
 
@@ -31675,11 +31056,7 @@ export const CreateProjectsLocationsCollectionsEnginesSessionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/sessions",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/sessions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsCollectionsEnginesSessionsRequest>;
 
@@ -31720,11 +31097,7 @@ export const PatchProjectsLocationsCollectionsEnginesSessionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/sessions/{sessionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCollectionsEnginesSessionsRequest>;
 
@@ -31762,10 +31135,7 @@ export const GetProjectsLocationsCollectionsEnginesSessionsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/sessions/{sessionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesSessionsRequest>;
 
@@ -31797,10 +31167,7 @@ export const GetProjectsLocationsCollectionsEnginesSessionsAnswersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/collections/{collectionsId}/engines/{enginesId}/sessions/{sessionsId}/answers/{answersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCollectionsEnginesSessionsAnswersRequest>;
 
@@ -31845,7 +31212,7 @@ export const CreateProjectsLocationsLicenseConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/licenseConfigs",
+      path: "v1/{parent}/licenseConfigs",
       hasBody: true,
     }),
     svc,
@@ -31879,10 +31246,7 @@ export const GetProjectsLocationsLicenseConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/licenseConfigs/{licenseConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsLicenseConfigsRequest>;
 
@@ -31922,11 +31286,7 @@ export const PatchProjectsLocationsLicenseConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/licenseConfigs/{licenseConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsLicenseConfigsRequest>;
 
@@ -31958,10 +31318,7 @@ export const GetProjectsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsOperationsRequest>;
 
@@ -31997,11 +31354,7 @@ export const CancelProjectsOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsOperationsRequest>;
 
@@ -32046,7 +31399,7 @@ export const ListProjectsOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/operations" }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsOperationsRequest>;
 

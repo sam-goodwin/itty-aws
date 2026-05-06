@@ -98,6 +98,12 @@
 [submodule "packages/expo-eas/specs/eas-cli"]
 	path = packages/expo-eas/specs/eas-cli
 	url = https://github.com/expo/eas-cli
+	shallow = true
+	ignore = dirty
+	fetchRecurseSubmodules = false
 [submodule "packages/expo-eas/specs/expo"]
 	path = packages/expo-eas/specs/expo
 	url = https://github.com/expo/expo
+	shallow = true
+	ignore = dirty
+	fetchRecurseSubmodules = false

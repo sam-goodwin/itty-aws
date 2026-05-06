@@ -41,10 +41,14 @@ T.applyErrorMatchers(NamespaceNotFound, [{ code: 10066 }]);
 export interface ListNamespacesRequest {
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListNamespacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
 }).pipe(
   T.Http({
     method: "GET",
@@ -133,6 +137,7 @@ export interface ListNamespaceObjectsRequest {
   id: string;
   /** Path param: Identifier. */
   accountId: string;
+  cursor?: string;
   /** Query param: The number of objects to return. The cursor attribute may be used to iterate over the next batch of objects if there are more than the limit. */
   limit?: number;
 }
@@ -141,6 +146,7 @@ export const ListNamespaceObjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.HttpPath("id")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
     limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
   }).pipe(
     T.Http({

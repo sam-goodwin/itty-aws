@@ -491,6 +491,16 @@ paths:
           description: "Path param: Identifier."
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
       responses:
         "200":
           description: Success
@@ -1559,6 +1569,16 @@ paths:
           description: "Path param: Identifier."
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
       responses:
         "200":
           description: Success
@@ -4225,6 +4245,8 @@ paths:
           - code: 10007
         InvalidRoute:
           - code: 7003
+        HostnameAlreadyInUse:
+          - code: 100116
   /accounts/{account_id}/workers/observability/telemetry/keys:
     post:
       operationId: keysObservabilityTelemetry
@@ -6693,6 +6715,31 @@ paths:
                               - name
                               - type
                               - namespace
+                          - type: object
+                            properties:
+                              name:
+                                type: string
+                              type:
+                                type: string
+                                enum:
+                                  - ratelimit
+                              namespace_id:
+                                type: string
+                              simple:
+                                type: object
+                                properties:
+                                  limit:
+                                    type: number
+                                  period:
+                                    type: number
+                                required:
+                                  - limit
+                                  - period
+                            required:
+                              - name
+                              - type
+                              - namespace_id
+                              - simple
                       description: "List of bindings attached to a Worker. You can find more about
                         bindings on our docs:
                         https://developers.cloudflare.com/workers/configuration\
@@ -6892,6 +6939,21 @@ paths:
                                 - invocation_logs
                           nullable: true
                           description: Log settings for the Worker.
+                        traces:
+                          type: object
+                          properties:
+                            enabled:
+                              type: boolean
+                            head_sampling_rate:
+                              type: number
+                            destinations:
+                              type: array
+                              items:
+                                type: string
+                            persist:
+                              type: boolean
+                          required:
+                            - enabled
                       required:
                         - enabled
                       description: Observability settings for the Worker.
@@ -7108,6 +7170,21 @@ paths:
                               - invocation_logs
                         nullable: true
                         description: Log settings for the Worker.
+                      traces:
+                        type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                          head_sampling_rate:
+                            type: number
+                          destinations:
+                            type: array
+                            items:
+                              type: string
+                          persist:
+                            type: boolean
+                        required:
+                          - enabled
                     required:
                       - enabled
                     description: Observability settings for the Worker.
@@ -7260,6 +7337,12 @@ paths:
           - code: 10074
             message:
               includes: cannot be the target of more than one migration
+        ScriptStartupError:
+          - code: 10021
+        ScriptModuleNotFound:
+          - code: 10021
+            message:
+              includes: No such module
     delete:
       operationId: deleteScript
       description: "Delete your worker. This call has no response body on a successful
@@ -8098,6 +8181,12 @@ paths:
           - code: 10007
         InvalidWorkerScript:
           - code: 10068
+        ScriptStartupError:
+          - code: 10021
+        ScriptModuleNotFound:
+          - code: 10021
+            message:
+              includes: No such module
   /accounts/{account_id}/workers/scripts/{scriptName}/deployments/{deploymentId}:
     get:
       operationId: getScriptDeployment
@@ -10053,6 +10142,21 @@ paths:
                               - invocation_logs
                         nullable: true
                         description: Log settings for the Worker.
+                      traces:
+                        type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                          head_sampling_rate:
+                            type: number
+                          destinations:
+                            type: array
+                            items:
+                              type: string
+                          persist:
+                            type: boolean
+                        required:
+                          - enabled
                     required:
                       - enabled
                     description: Observability settings for the Worker.
@@ -12089,6 +12193,21 @@ paths:
                                   - invocation_logs
                             nullable: true
                             description: Log settings for the Worker.
+                          traces:
+                            type: object
+                            properties:
+                              enabled:
+                                type: boolean
+                              head_sampling_rate:
+                                type: number
+                              destinations:
+                                type: array
+                                items:
+                                  type: string
+                              persist:
+                                type: boolean
+                            required:
+                              - enabled
                         required:
                           - enabled
                     nullable: true
@@ -12197,6 +12316,21 @@ paths:
                                 - invocation_logs
                           nullable: true
                           description: Log settings for the Worker.
+                        traces:
+                          type: object
+                          properties:
+                            enabled:
+                              type: boolean
+                            head_sampling_rate:
+                              type: number
+                            destinations:
+                              type: array
+                              items:
+                                type: string
+                            persist:
+                              type: boolean
+                          required:
+                            - enabled
                       required:
                         - enabled
                   nullable: true
@@ -12283,6 +12417,21 @@ paths:
                                   - invocation_logs
                             nullable: true
                             description: Log settings for the Worker.
+                          traces:
+                            type: object
+                            properties:
+                              enabled:
+                                type: boolean
+                              head_sampling_rate:
+                                type: number
+                              destinations:
+                                type: array
+                                items:
+                                  type: string
+                              persist:
+                                type: boolean
+                            required:
+                              - enabled
                         required:
                           - enabled
                     nullable: true
@@ -13374,6 +13523,16 @@ paths:
           description: "Path param: Identifier."
           schema:
             type: string
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: number
+        - name: per_page
+          in: query
+          required: false
+          schema:
+            type: number
         - name: deployable
           in: query
           required: false

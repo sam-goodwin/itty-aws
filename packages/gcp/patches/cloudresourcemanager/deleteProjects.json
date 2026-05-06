@@ -1,0 +1,7 @@
+{
+  "errors": {
+    "BadRequest": [{ "httpStatus": 400 }],
+    "Forbidden": [{ "httpStatus": 403 }],
+    "NotFound": [{ "httpStatus": 404 }]
+  }
+}

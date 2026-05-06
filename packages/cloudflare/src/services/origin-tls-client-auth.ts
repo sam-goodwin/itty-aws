@@ -188,11 +188,37 @@ export const PutHostnameRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PutHostnameResponse {
   result: {
-    id?: string | null;
     certId?: string | null;
+    certStatus?:
+      | "initializing"
+      | "pending_deployment"
+      | "pending_deletion"
+      | "active"
+      | "deleted"
+      | "deployment_timed_out"
+      | "deletion_timed_out"
+      | null;
+    certUpdatedAt?: string | null;
+    certUploadedOn?: string | null;
     certificate?: string | null;
+    createdAt?: string | null;
     enabled?: boolean | null;
+    expiresOn?: string | null;
     hostname?: string | null;
+    issuer?: string | null;
+    serialNumber?: string | null;
+    signature?: string | null;
+    status?:
+      | "initializing"
+      | "pending_deployment"
+      | "pending_deletion"
+      | "active"
+      | "deleted"
+      | "deployment_timed_out"
+      | "deletion_timed_out"
+      | null;
+    updatedAt?: string | null;
+    id?: string | null;
     privateKey?: string | null;
   }[];
 }
@@ -200,19 +226,69 @@ export interface PutHostnameResponse {
 export const PutHostnameResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   result: Schema.Array(
     Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       certId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      certStatus: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "initializing",
+            "pending_deployment",
+            "pending_deletion",
+            "active",
+            "deleted",
+            "deployment_timed_out",
+            "deletion_timed_out",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      certUpdatedAt: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      certUploadedOn: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
       certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       hostname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      serialNumber: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "initializing",
+            "pending_deployment",
+            "pending_deletion",
+            "active",
+            "deleted",
+            "deployment_timed_out",
+            "deletion_timed_out",
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       privateKey: Schema.optional(Schema.Union([SensitiveString, Schema.Null])),
     }).pipe(
       Schema.encodeKeys({
-        id: "id",
         certId: "cert_id",
+        certStatus: "cert_status",
+        certUpdatedAt: "cert_updated_at",
+        certUploadedOn: "cert_uploaded_on",
         certificate: "certificate",
+        createdAt: "created_at",
         enabled: "enabled",
+        expiresOn: "expires_on",
         hostname: "hostname",
+        issuer: "issuer",
+        serialNumber: "serial_number",
+        signature: "signature",
+        status: "status",
+        updatedAt: "updated_at",
+        id: "id",
         privateKey: "private_key",
       }),
     ),
@@ -354,11 +430,37 @@ export const ListHostnameCertificatesRequest =
 
 export interface ListHostnameCertificatesResponse {
   result: {
-    id?: string | null;
     certId?: string | null;
+    certStatus?:
+      | "initializing"
+      | "pending_deployment"
+      | "pending_deletion"
+      | "active"
+      | "deleted"
+      | "deployment_timed_out"
+      | "deletion_timed_out"
+      | null;
+    certUpdatedAt?: string | null;
+    certUploadedOn?: string | null;
     certificate?: string | null;
+    createdAt?: string | null;
     enabled?: boolean | null;
+    expiresOn?: string | null;
     hostname?: string | null;
+    issuer?: string | null;
+    serialNumber?: string | null;
+    signature?: string | null;
+    status?:
+      | "initializing"
+      | "pending_deployment"
+      | "pending_deletion"
+      | "active"
+      | "deleted"
+      | "deployment_timed_out"
+      | "deletion_timed_out"
+      | null;
+    updatedAt?: string | null;
+    id?: string | null;
     privateKey?: string | null;
   }[];
 }
@@ -367,23 +469,75 @@ export const ListHostnameCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     result: Schema.Array(
       Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         certId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        certStatus: Schema.optional(
+          Schema.Union([
+            Schema.Literals([
+              "initializing",
+              "pending_deployment",
+              "pending_deletion",
+              "active",
+              "deleted",
+              "deployment_timed_out",
+              "deletion_timed_out",
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        certUpdatedAt: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        certUploadedOn: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
         certificate: Schema.optional(
           Schema.Union([Schema.String, Schema.Null]),
         ),
+        createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         hostname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        serialNumber: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        status: Schema.optional(
+          Schema.Union([
+            Schema.Literals([
+              "initializing",
+              "pending_deployment",
+              "pending_deletion",
+              "active",
+              "deleted",
+              "deployment_timed_out",
+              "deletion_timed_out",
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         privateKey: Schema.optional(
           Schema.Union([SensitiveString, Schema.Null]),
         ),
       }).pipe(
         Schema.encodeKeys({
-          id: "id",
           certId: "cert_id",
+          certStatus: "cert_status",
+          certUpdatedAt: "cert_updated_at",
+          certUploadedOn: "cert_uploaded_on",
           certificate: "certificate",
+          createdAt: "created_at",
           enabled: "enabled",
+          expiresOn: "expires_on",
           hostname: "hostname",
+          issuer: "issuer",
+          serialNumber: "serial_number",
+          signature: "signature",
+          status: "status",
+          updatedAt: "updated_at",
+          id: "id",
           privateKey: "private_key",
         }),
       ),
@@ -635,6 +789,24 @@ export interface GetOriginTlsClientAuthResponse {
   id?: string | null;
   /** The zone's leaf certificate. */
   certificate?: string | null;
+  /** When the certificate from the authority expires. */
+  expiresOn?: string | null;
+  /** The certificate authority that issued the certificate. */
+  issuer?: string | null;
+  /** The type of hash used for the certificate. */
+  signature?: string | null;
+  /** Status of the certificate activation. */
+  status?:
+    | "initializing"
+    | "pending_deployment"
+    | "pending_deletion"
+    | "active"
+    | "deleted"
+    | "deployment_timed_out"
+    | "deletion_timed_out"
+    | null;
+  /** This is the time the certificate was uploaded. */
+  uploadedOn?: string | null;
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
   enabled?: boolean | null;
   /** The zone's private key. */
@@ -645,6 +817,24 @@ export const GetOriginTlsClientAuthResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "initializing",
+          "pending_deployment",
+          "pending_deletion",
+          "active",
+          "deleted",
+          "deployment_timed_out",
+          "deletion_timed_out",
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     privateKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
@@ -652,6 +842,11 @@ export const GetOriginTlsClientAuthResponse =
       Schema.encodeKeys({
         id: "id",
         certificate: "certificate",
+        expiresOn: "expires_on",
+        issuer: "issuer",
+        signature: "signature",
+        status: "status",
+        uploadedOn: "uploaded_on",
         enabled: "enabled",
         privateKey: "private_key",
       }),
@@ -689,6 +884,19 @@ export interface ListOriginTlsClientAuthsResponse {
   result: {
     id?: string | null;
     certificate?: string | null;
+    expiresOn?: string | null;
+    issuer?: string | null;
+    signature?: string | null;
+    status?:
+      | "initializing"
+      | "pending_deployment"
+      | "pending_deletion"
+      | "active"
+      | "deleted"
+      | "deployment_timed_out"
+      | "deletion_timed_out"
+      | null;
+    uploadedOn?: string | null;
     enabled?: boolean | null;
     privateKey?: string | null;
   }[];
@@ -702,6 +910,24 @@ export const ListOriginTlsClientAuthsResponse =
         certificate: Schema.optional(
           Schema.Union([Schema.String, Schema.Null]),
         ),
+        expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        status: Schema.optional(
+          Schema.Union([
+            Schema.Literals([
+              "initializing",
+              "pending_deployment",
+              "pending_deletion",
+              "active",
+              "deleted",
+              "deployment_timed_out",
+              "deletion_timed_out",
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
         privateKey: Schema.optional(
           Schema.Union([SensitiveString, Schema.Null]),
@@ -710,6 +936,11 @@ export const ListOriginTlsClientAuthsResponse =
         Schema.encodeKeys({
           id: "id",
           certificate: "certificate",
+          expiresOn: "expires_on",
+          issuer: "issuer",
+          signature: "signature",
+          status: "status",
+          uploadedOn: "uploaded_on",
           enabled: "enabled",
           privateKey: "private_key",
         }),
@@ -761,6 +992,24 @@ export interface CreateOriginTlsClientAuthResponse {
   id?: string | null;
   /** The zone's leaf certificate. */
   certificate?: string | null;
+  /** When the certificate from the authority expires. */
+  expiresOn?: string | null;
+  /** The certificate authority that issued the certificate. */
+  issuer?: string | null;
+  /** The type of hash used for the certificate. */
+  signature?: string | null;
+  /** Status of the certificate activation. */
+  status?:
+    | "initializing"
+    | "pending_deployment"
+    | "pending_deletion"
+    | "active"
+    | "deleted"
+    | "deployment_timed_out"
+    | "deletion_timed_out"
+    | null;
+  /** This is the time the certificate was uploaded. */
+  uploadedOn?: string | null;
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
   enabled?: boolean | null;
   /** The zone's private key. */
@@ -771,6 +1020,24 @@ export const CreateOriginTlsClientAuthResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "initializing",
+          "pending_deployment",
+          "pending_deletion",
+          "active",
+          "deleted",
+          "deployment_timed_out",
+          "deletion_timed_out",
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     privateKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
@@ -778,6 +1045,11 @@ export const CreateOriginTlsClientAuthResponse =
       Schema.encodeKeys({
         id: "id",
         certificate: "certificate",
+        expiresOn: "expires_on",
+        issuer: "issuer",
+        signature: "signature",
+        status: "status",
+        uploadedOn: "uploaded_on",
         enabled: "enabled",
         privateKey: "private_key",
       }),
@@ -821,6 +1093,24 @@ export interface DeleteOriginTlsClientAuthResponse {
   id?: string | null;
   /** The zone's leaf certificate. */
   certificate?: string | null;
+  /** When the certificate from the authority expires. */
+  expiresOn?: string | null;
+  /** The certificate authority that issued the certificate. */
+  issuer?: string | null;
+  /** The type of hash used for the certificate. */
+  signature?: string | null;
+  /** Status of the certificate activation. */
+  status?:
+    | "initializing"
+    | "pending_deployment"
+    | "pending_deletion"
+    | "active"
+    | "deleted"
+    | "deployment_timed_out"
+    | "deletion_timed_out"
+    | null;
+  /** This is the time the certificate was uploaded. */
+  uploadedOn?: string | null;
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
   enabled?: boolean | null;
   /** The zone's private key. */
@@ -831,6 +1121,24 @@ export const DeleteOriginTlsClientAuthResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    issuer: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    signature: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "initializing",
+          "pending_deployment",
+          "pending_deletion",
+          "active",
+          "deleted",
+          "deployment_timed_out",
+          "deletion_timed_out",
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    uploadedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     privateKey: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   })
@@ -838,6 +1146,11 @@ export const DeleteOriginTlsClientAuthResponse =
       Schema.encodeKeys({
         id: "id",
         certificate: "certificate",
+        expiresOn: "expires_on",
+        issuer: "issuer",
+        signature: "signature",
+        status: "status",
+        uploadedOn: "uploaded_on",
         enabled: "enabled",
         privateKey: "private_key",
       }),

@@ -41,7 +41,7 @@ export interface OperationErrors {
   /** This is always `sql#operationErrors`. */
   kind?: string;
   /** The list of errors encountered while processing this operation. */
-  errors?: Array<OperationError>;
+  errors?: ReadonlyArray<OperationError>;
 }
 
 export const OperationErrors = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -88,7 +88,7 @@ export interface ImportContext {
   /** Options for importing data as CSV. */
   csvImportOptions?: {
     table?: string;
-    columns?: Array<string>;
+    columns?: ReadonlyArray<string>;
     escapeCharacter?: string;
     quoteCharacter?: string;
     fieldsTerminatedBy?: string;
@@ -186,12 +186,12 @@ export interface ExportContext {
   /** The path to the file in Google Cloud Storage where the export will be stored. The URI is in the form `gs://bucketName/fileName`. If the file already exists, the request succeeds, but the operation fails. If `fileType` is `SQL` and the filename ends with .gz, the contents are compressed. */
   uri?: string;
   /** Databases to be exported. `MySQL instances:` If `fileType` is `SQL` and no database is specified, all databases are exported, except for the `mysql` system database. If `fileType` is `CSV`, you can specify one database, either by using this property or by using the `csvExportOptions.selectQuery` property, which takes precedence over this property. `PostgreSQL instances:` If you don't specify a database by name, all user databases in the instance are exported. This excludes system databases and Cloud SQL databases used to manage internal operations. Exporting all user databases is only available for directory-formatted parallel export. If `fileType` is `CSV`, this database must match the one specified in the `csvExportOptions.selectQuery` property. `SQL Server instances:` You must specify one database to be exported, and the `fileType` must be `BAK`. */
-  databases?: Array<string>;
+  databases?: ReadonlyArray<string>;
   /** This is always `sql#exportContext`. */
   kind?: string;
   /** Options for exporting data as SQL statements. */
   sqlExportOptions?: {
-    tables?: Array<string>;
+    tables?: ReadonlyArray<string>;
     schemaOnly?: boolean;
     mysqlExportOptions?: { masterData?: number };
     threads?: number;
@@ -314,7 +314,7 @@ export interface PreCheckResponse {
     | "ERROR"
     | (string & {});
   /** The actions that the user needs to take. Use repeated for multiple actions. */
-  actionsRequired?: Array<string>;
+  actionsRequired?: ReadonlyArray<string>;
 }
 
 export const PreCheckResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -382,7 +382,7 @@ export interface PreCheckMajorVersionUpgradeContext {
     | "SQLSERVER_2025_EXPRESS"
     | (string & {});
   /** Output only. The responses from the precheck operation. */
-  preCheckResponse?: Array<PreCheckResponse>;
+  preCheckResponse?: ReadonlyArray<PreCheckResponse>;
   /** Optional. This is always `sql#preCheckMajorVersionUpgradeContext`. */
   kind?: string;
 }
@@ -720,7 +720,7 @@ export interface BackupRunsListResponse {
   /** This is always `sql#backupRunsList`. */
   kind?: string;
   /** A list of backup runs in reverse chronological order of the enqueued time. */
-  items?: Array<BackupRun>;
+  items?: ReadonlyArray<BackupRun>;
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
   nextPageToken?: string;
 }
@@ -782,7 +782,7 @@ export interface DatabasesListResponse {
   /** This is always `sql#databasesList`. */
   kind?: string;
   /** List of database resources in the instance. */
-  items?: Array<Database>;
+  items?: ReadonlyArray<Database>;
 }
 
 export const DatabasesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -805,7 +805,7 @@ export interface Flag {
     | "REPEATED_STRING"
     | (string & {});
   /** The database version this flag applies to. Can be MySQL instances: `MYSQL_8_0`, `MYSQL_8_0_18`, `MYSQL_8_0_26`, `MYSQL_5_7`, or `MYSQL_5_6`. PostgreSQL instances: `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11` or `POSTGRES_12`. SQL Server instances: `SQLSERVER_2017_STANDARD`, `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`, or `SQLSERVER_2019_WEB`. See [the complete list](/sql/docs/mysql/admin-api/rest/v1/SqlDatabaseVersion). */
-  appliesTo?: Array<
+  appliesTo?: ReadonlyArray<
     | "SQL_DATABASE_VERSION_UNSPECIFIED"
     | "MYSQL_5_1"
     | "MYSQL_5_5"
@@ -863,7 +863,7 @@ export interface Flag {
     | (string & {})
   >;
   /** For `STRING` flags, a list of strings that the value can be set to. */
-  allowedStringValues?: Array<string>;
+  allowedStringValues?: ReadonlyArray<string>;
   /** For `INTEGER` flags, the minimum allowed value. */
   minValue?: string;
   /** For `INTEGER` flags, the maximum allowed value. */
@@ -875,7 +875,7 @@ export interface Flag {
   /** Whether or not the flag is considered in beta. */
   inBeta?: boolean;
   /** Use this field if only certain integers are accepted. Can be combined with min_value and max_value to add additional values. */
-  allowedIntValues?: Array<string>;
+  allowedIntValues?: ReadonlyArray<string>;
   /** Scope of flag. */
   flagScope?:
     | "SQL_FLAG_SCOPE_UNSPECIFIED"
@@ -908,7 +908,7 @@ export interface FlagsListResponse {
   /** This is always `sql#flagsList`. */
   kind?: string;
   /** List of flags. */
-  items?: Array<Flag>;
+  items?: ReadonlyArray<Flag>;
 }
 
 export const FlagsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -945,7 +945,7 @@ export interface CloneContext {
   /** The name of the allocated ip range for the private ip Cloud SQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?. Reserved for future use. */
   allocatedIpRange?: string;
   /** (SQL Server only) Clone only the specified databases from the source instance. Clone all databases if empty. */
-  databaseNames?: Array<string>;
+  databaseNames?: ReadonlyArray<string>;
   /** Optional. Copy clone and point-in-time recovery clone of an instance to the specified zone. If no zone is specified, clone to the same primary zone as the source instance. */
   preferredZone?: string;
   /** Optional. Copy clone and point-in-time recovery clone of a regional instance in the specified zones. If not specified, clone to the same secondary zone as the source instance. This value cannot be the same as the preferred_zone field. */
@@ -1180,9 +1180,9 @@ export interface PscConfig {
   /** Whether PSC connectivity is enabled for this instance. */
   pscEnabled?: boolean;
   /** Optional. The list of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric). */
-  allowedConsumerProjects?: Array<string>;
+  allowedConsumerProjects?: ReadonlyArray<string>;
   /** Optional. The list of settings for requested Private Service Connect consumer endpoints that can be used to connect to this Cloud SQL instance. */
-  pscAutoConnections?: Array<PscAutoConnectionConfig>;
+  pscAutoConnections?: ReadonlyArray<PscAutoConnectionConfig>;
   /** Optional. The network attachment of the consumer network that the Private Service Connect enabled Cloud SQL instance is authorized to connect via PSC interface. format: projects/PROJECT/regions/REGION/networkAttachments/ID */
   networkAttachmentUri?: string;
   /** Optional. Indicates whether PSC DNS automation is enabled for this instance. When enabled, Cloud SQL provisions a universal DNS record across all networks configured with Private Service Connect (PSC) auto-connections. This will default to true for new instances when Private Service Connect is enabled. */
@@ -1208,7 +1208,7 @@ export interface IpConfiguration {
   /** Use `ssl_mode` instead. Whether SSL/TLS connections over IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified. If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the `ssl_mode` flag instead of the legacy `require_ssl` flag. */
   requireSsl?: boolean;
   /** The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: `157.197.200.0/24`). */
-  authorizedNetworks?: Array<AclEntry>;
+  authorizedNetworks?: ReadonlyArray<AclEntry>;
   /** The name of the allocated ip range for the private ip Cloud SQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?.` */
   allocatedIpRange?: string;
   /** Controls connectivity to private IP instances from Google services, such as BigQuery. */
@@ -1230,7 +1230,7 @@ export interface IpConfiguration {
     | "CUSTOMER_MANAGED_CAS_CA"
     | (string & {});
   /** Optional. Custom Subject Alternative Name(SAN)s for a Cloud SQL instance. */
-  customSubjectAlternativeNames?: Array<string>;
+  customSubjectAlternativeNames?: ReadonlyArray<string>;
   /** Optional. The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`. Format: projects/{PROJECT}/locations/{REGION}/caPools/{CA_POOL_ID} */
   serverCaPool?: string;
   /** Optional. Controls the automatic server certificate rotation feature. This feature is disabled by default. When enabled, the server certificate will be automatically rotated during Cloud SQL scheduled maintenance or self-service maintenance updates up to six months before it expires. This setting can only be set if server_ca_mode is either GOOGLE_MANAGED_CAS_CA or CUSTOMER_MANAGED_CAS_CA. */
@@ -1385,7 +1385,7 @@ export interface SqlActiveDirectoryConfig {
     | "CUSTOMER_MANAGED_ACTIVE_DIRECTORY"
     | (string & {});
   /** Optional. Domain controller IPv4 addresses used to bootstrap Active Directory. */
-  dnsServers?: Array<string>;
+  dnsServers?: ReadonlyArray<string>;
   /** Optional. The secret manager key storing the administrator credential. (e.g., projects/{project}/secrets/{secret}). */
   adminCredentialSecretName?: string;
   /** Optional. The organizational unit distinguished name. This is the full hierarchical path to the organizational unit. */
@@ -1522,7 +1522,7 @@ export interface ConnectionPoolConfig {
   /** Whether managed connection pooling is enabled. */
   connectionPoolingEnabled?: boolean;
   /** Optional. List of connection pool configuration flags. */
-  flags?: Array<ConnectionPoolFlags>;
+  flags?: ReadonlyArray<ConnectionPoolFlags>;
   /** Output only. Number of connection poolers. */
   poolerCount?: number;
 }
@@ -1565,7 +1565,7 @@ export interface ReadPoolAutoScaleConfig {
   /** Maximum number of read pool nodes to be maintained. */
   maxNodeCount?: number;
   /** Optional. Target metrics for read pool auto scaling. */
-  targetMetrics?: Array<TargetMetric>;
+  targetMetrics?: ReadonlyArray<TargetMetric>;
   /** Indicates whether read pool auto scaling supports scale in operations (removing nodes). */
   disableScaleIn?: boolean;
   /** The cooldown period for scale in operations. */
@@ -1631,7 +1631,7 @@ export interface Settings {
   /** The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value. */
   settingsVersion?: string;
   /** The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only. */
-  authorizedGaeApplications?: Array<string>;
+  authorizedGaeApplications?: ReadonlyArray<string>;
   /** The tier (or machine type) for this instance, for example `db-custom-1-3840`. WARNING: Changing this restarts the instance. */
   tier?: string;
   /** This is always `sql#settings`. */
@@ -1672,7 +1672,7 @@ export interface Settings {
   /** The location preference settings. This allows the instance to be located as near as possible to either an App Engine app or Compute Engine zone for better performance. App Engine co-location was only applicable to First Generation instances. */
   locationPreference?: LocationPreference;
   /** The database flags passed to the instance at startup. */
-  databaseFlags?: Array<DatabaseFlags>;
+  databaseFlags?: ReadonlyArray<DatabaseFlags>;
   /** The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances. */
   dataDiskType?:
     | "SQL_DATA_DISK_TYPE_UNSPECIFIED"
@@ -1696,7 +1696,7 @@ export interface Settings {
   /** The name of server Instance collation. */
   collation?: string;
   /** Deny maintenance periods */
-  denyMaintenancePeriods?: Array<DenyMaintenancePeriod>;
+  denyMaintenancePeriods?: ReadonlyArray<DenyMaintenancePeriod>;
   /** Insights configuration, for now relevant only for Postgres. */
   insightsConfig?: InsightsConfig;
   /** The local user password validation policy of the instance. */
@@ -1904,7 +1904,7 @@ export interface OnPremisesConfiguration {
   /** The reference to Cloud SQL instance if the source is Cloud SQL. */
   sourceInstance?: InstanceReference;
   /** Optional. A list of objects that the user selects for replication from an external source instance. */
-  selectedObjects?: Array<SelectedObjects>;
+  selectedObjects?: ReadonlyArray<SelectedObjects>;
   /** Optional. SslOption for replica connection to the on-premises source. */
   sslOption?:
     | "SSL_OPTION_UNSPECIFIED"
@@ -2109,7 +2109,7 @@ export interface PoolNodeConfig {
   /** Output only. The zone of the read pool node. */
   gceZone?: string;
   /** Output only. Mappings containing IP addresses that can be used to connect to the read pool node. */
-  ipAddresses?: Array<IpMapping>;
+  ipAddresses?: ReadonlyArray<IpMapping>;
   /** Output only. The DNS name of the read pool node. */
   dnsName?: string;
   /** Output only. The current state of the read pool node. */
@@ -2125,11 +2125,11 @@ export interface PoolNodeConfig {
     | "REPAIRING"
     | (string & {});
   /** Output only. The list of DNS names used by this read pool node. */
-  dnsNames?: Array<DnsNameMapping>;
+  dnsNames?: ReadonlyArray<DnsNameMapping>;
   /** Output only. The Private Service Connect (PSC) service attachment of the read pool node. */
   pscServiceAttachmentLink?: string;
   /** Output only. The list of settings for requested automatically-setup Private Service Connect (PSC) consumer endpoints that can be used to connect to this read pool node. */
-  pscAutoConnections?: Array<PscAutoConnectionConfig>;
+  pscAutoConnections?: ReadonlyArray<PscAutoConnectionConfig>;
 }
 
 export const PoolNodeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2224,13 +2224,13 @@ export interface DatabaseInstance {
   /** The name of the instance which will act as primary in the replication setup. */
   masterInstanceName?: string;
   /** The replicas of the instance. */
-  replicaNames?: Array<string>;
+  replicaNames?: ReadonlyArray<string>;
   /** The maximum disk size of the instance in bytes. */
   maxDiskSize?: string;
   /** The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see [this announcement](https://groups.google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ) for details. */
   currentDiskSize?: string;
   /** The assigned IP addresses for the instance. */
-  ipAddresses?: Array<IpMapping>;
+  ipAddresses?: ReadonlyArray<IpMapping>;
   /** SSL configuration. */
   serverCaCert?: SslCert;
   /** The instance type. */
@@ -2261,7 +2261,7 @@ export interface DatabaseInstance {
   /** The URI of this resource. */
   selfLink?: string;
   /** If the instance state is SUSPENDED, the reason for the suspension. */
-  suspensionReason?: Array<
+  suspensionReason?: ReadonlyArray<
     | "SQL_SUSPENSION_REASON_UNSPECIFIED"
     | "BILLING_ISSUE"
     | "LEGAL_ISSUE"
@@ -2296,11 +2296,11 @@ export interface DatabaseInstance {
   /** Output only. The time when the instance was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`. */
   createTime?: string;
   /** Output only. List all maintenance versions applicable on the instance */
-  availableMaintenanceVersions?: Array<string>;
+  availableMaintenanceVersions?: ReadonlyArray<string>;
   /** The current software version on the instance. */
   maintenanceVersion?: string;
   /** Output only. All database versions that are available for upgrade. */
-  upgradableDatabaseVersions?: Array<AvailableDatabaseVersion>;
+  upgradableDatabaseVersions?: ReadonlyArray<AvailableDatabaseVersion>;
   /** The SQL network architecture for the instance. */
   sqlNetworkArchitecture?:
     | "SQL_NETWORK_ARCHITECTURE_UNSPECIFIED"
@@ -2330,9 +2330,9 @@ export interface DatabaseInstance {
   /** The number of read pool nodes in a read pool. */
   nodeCount?: number;
   /** Output only. Entries containing information about each read pool node of the read pool. */
-  nodes?: Array<PoolNodeConfig>;
+  nodes?: ReadonlyArray<PoolNodeConfig>;
   /** Output only. The list of DNS names used by this instance. */
-  dnsNames?: Array<DnsNameMapping>;
+  dnsNames?: ReadonlyArray<DnsNameMapping>;
 }
 
 export const DatabaseInstance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2411,9 +2411,9 @@ export interface InstancesListResponse {
   /** This is always `sql#instancesList`. */
   kind?: string;
   /** List of warnings that occurred while handling the request. */
-  warnings?: Array<ApiWarning>;
+  warnings?: ReadonlyArray<ApiWarning>;
   /** List of database instance resources. */
-  items?: Array<DatabaseInstance>;
+  items?: ReadonlyArray<DatabaseInstance>;
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
   nextPageToken?: string;
 }
@@ -2427,7 +2427,7 @@ export const InstancesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InstancesListServerCasResponse {
   /** List of server CA certificates for the instance. */
-  certs?: Array<SslCert>;
+  certs?: ReadonlyArray<SslCert>;
   activeVersion?: string;
   /** This is always `sql#instancesListServerCas`. */
   kind?: string;
@@ -2442,9 +2442,9 @@ export const InstancesListServerCasResponse =
 
 export interface InstancesListServerCertificatesResponse {
   /** List of server CA certificates for the instance. */
-  caCerts?: Array<SslCert>;
+  caCerts?: ReadonlyArray<SslCert>;
   /** List of server certificates for the instance, signed by the corresponding CA from the `ca_certs` list. */
-  serverCerts?: Array<SslCert>;
+  serverCerts?: ReadonlyArray<SslCert>;
   /** The `sha1_fingerprint` of the active certificate from `server_certs`. */
   activeVersion?: string;
   /** This is always `sql#instancesListServerCertificates`. */
@@ -2461,7 +2461,7 @@ export const InstancesListServerCertificatesResponse =
 
 export interface InstancesListEntraIdCertificatesResponse {
   /** List of Entra ID certificates for the instance. */
-  certs?: Array<SslCert>;
+  certs?: ReadonlyArray<SslCert>;
   /** The `sha1_fingerprint` of the active certificate from `certs`. */
   activeVersion?: string;
   /** This is always `sql#instancesListEntraIdCertificates`. */
@@ -2503,7 +2503,7 @@ export interface InstancesRestoreBackupRequest {
   /** Optional. By using this parameter, Cloud SQL overrides any instance settings stored in the backup you are restoring from. You can't change the instance's major database version and you can only increase the disk size. You can use this field to restore new instances only. This field is not applicable for restore to existing instances. */
   restoreInstanceSettings?: DatabaseInstance;
   /** Optional. This field has the same purpose as restore_instance_settings, changes any instance settings stored in the backup you are restoring from. With the difference that these fields are cleared in the settings. */
-  restoreInstanceClearOverridesFieldNames?: Array<string>;
+  restoreInstanceClearOverridesFieldNames?: ReadonlyArray<string>;
 }
 
 export const InstancesRestoreBackupRequest =
@@ -2665,7 +2665,7 @@ export const SyncFlags = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MySqlSyncConfig {
   /** Flags to use for the initial dump. */
-  initialSyncFlags?: Array<SyncFlags>;
+  initialSyncFlags?: ReadonlyArray<SyncFlags>;
 }
 
 export const MySqlSyncConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2709,7 +2709,7 @@ export interface SqlInstancesVerifyExternalSyncSettingsRequest {
     | "MAX"
     | (string & {});
   /** Optional. Migrate only the specified objects from the source instance. If this field is empty, then migrate all objects. */
-  selectedObjects?: Array<ExternalSyncSelectedObject>;
+  selectedObjects?: ReadonlyArray<ExternalSyncSelectedObject>;
 }
 
 export const SqlInstancesVerifyExternalSyncSettingsRequest =
@@ -2803,9 +2803,9 @@ export interface SqlInstancesVerifyExternalSyncSettingsResponse {
   /** This is always `sql#migrationSettingErrorList`. */
   kind?: string;
   /** List of migration violations. */
-  errors?: Array<SqlExternalSyncSettingError>;
+  errors?: ReadonlyArray<SqlExternalSyncSettingError>;
   /** List of migration warnings. */
-  warnings?: Array<SqlExternalSyncSettingError>;
+  warnings?: ReadonlyArray<SqlExternalSyncSettingError>;
 }
 
 export const SqlInstancesVerifyExternalSyncSettingsResponse =
@@ -2980,7 +2980,7 @@ export const Value = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Row {
   /** The values for the row. */
-  values?: Array<Value>;
+  values?: ReadonlyArray<Value>;
 }
 
 export const Row = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2993,7 +2993,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3006,9 +3006,9 @@ export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface QueryResult {
   /** List of columns included in the result. This also includes the data type of the column. */
-  columns?: Array<Column>;
+  columns?: ReadonlyArray<Column>;
   /** Rows returned by the SQL statement. */
-  rows?: Array<Row>;
+  rows?: ReadonlyArray<Row>;
   /** Message related to the SQL execution result. */
   message?: string;
   /** Set to true if the SQL execution's result is truncated due to size limits or an error retrieving results. */
@@ -3027,11 +3027,11 @@ export const QueryResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SqlInstancesExecuteSqlResponse {
   /** A list of notices and warnings generated during query execution. For PostgreSQL, this includes all notices and warnings. For MySQL, this includes warnings generated by the last executed statement. To retrieve all warnings for a multi-statement query, `SHOW WARNINGS` must be executed after each statement. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
   /** The additional metadata information regarding the execution of the SQL statements. */
   metadata?: Metadata;
   /** The list of results after executing all the SQL statements. */
-  results?: Array<QueryResult>;
+  results?: ReadonlyArray<QueryResult>;
   /** Contains the error from the database if the SQL execution failed. */
   status?: Status;
 }
@@ -3104,7 +3104,7 @@ export interface PointInTimeRestoreContext {
   /** Optional. Specifies the instance settings that will be overridden from the source instance. This field is only applicable for cross project PITRs. */
   targetInstanceSettings?: DatabaseInstance;
   /** Optional. Specifies the instance settings that will be cleared from the source instance. This field is only applicable for cross project PITRs. */
-  targetInstanceClearSettingsFieldNames?: Array<string>;
+  targetInstanceClearSettingsFieldNames?: ReadonlyArray<string>;
   /** Optional. The region of the target instance where the datasource will be restored. For example: "us-central1". */
   region?: string;
 }
@@ -3129,7 +3129,7 @@ export interface OperationsListResponse {
   /** This is always `sql#operationsList`. */
   kind?: string;
   /** List of operation resources. */
-  items?: Array<Operation>;
+  items?: ReadonlyArray<Operation>;
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
   nextPageToken?: string;
 }
@@ -3193,7 +3193,7 @@ export interface SslCertsListResponse {
   /** This is always `sql#sslCertsList`. */
   kind?: string;
   /** List of client certificates for the instance. */
-  items?: Array<SslCert>;
+  items?: ReadonlyArray<SslCert>;
 }
 
 export const SslCertsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3362,11 +3362,11 @@ export const Backup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListBackupsResponse {
   /** A list of backups. */
-  backups?: Array<Backup>;
+  backups?: ReadonlyArray<Backup>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, then there aren't subsequent pages. */
   nextPageToken?: string;
   /** If a region isn't unavailable or if an unknown error occurs, then a warning message is returned. */
-  warnings?: Array<ApiWarning>;
+  warnings?: ReadonlyArray<ApiWarning>;
 }
 
 export const ListBackupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3379,11 +3379,11 @@ export interface ConnectPoolNodeConfig {
   /** Output only. The name of the read pool node. Doesn't include the project ID. */
   name?: string;
   /** Output only. Mappings containing IP addresses that can be used to connect to the read pool node. */
-  ipAddresses?: Array<IpMapping>;
+  ipAddresses?: ReadonlyArray<IpMapping>;
   /** Output only. The DNS name of the read pool node. */
   dnsName?: string;
   /** Output only. The list of DNS names used by this read pool node. */
-  dnsNames?: Array<DnsNameMapping>;
+  dnsNames?: ReadonlyArray<DnsNameMapping>;
 }
 
 export const ConnectPoolNodeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3399,7 +3399,7 @@ export interface ConnectSettings {
   /** SSL configuration. */
   serverCaCert?: SslCert;
   /** The assigned IP addresses for the instance. */
-  ipAddresses?: Array<IpMapping>;
+  ipAddresses?: ReadonlyArray<IpMapping>;
   /** The cloud region for the instance. e.g. `us-central1`, `europe-west1`. The region cannot be changed after instance creation. */
   region?: string;
   /** The database engine type and version. The `databaseVersion` field cannot be changed after instance creation. MySQL instances: `MYSQL_8_0`, `MYSQL_5_7` (default), or `MYSQL_5_6`. PostgreSQL instances: `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11` or `POSTGRES_12` (default), `POSTGRES_13`, or `POSTGRES_14`. SQL Server instances: `SQLSERVER_2017_STANDARD` (default), `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`, `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`, or `SQLSERVER_2019_WEB`. */
@@ -3478,15 +3478,15 @@ export interface ConnectSettings {
     | "CUSTOMER_MANAGED_CAS_CA"
     | (string & {});
   /** Custom subject alternative names for the server certificate. */
-  customSubjectAlternativeNames?: Array<string>;
+  customSubjectAlternativeNames?: ReadonlyArray<string>;
   /** Output only. The list of DNS names used by this instance. */
-  dnsNames?: Array<DnsNameMapping>;
+  dnsNames?: ReadonlyArray<DnsNameMapping>;
   /** The number of read pool nodes in a read pool. */
   nodeCount?: number;
   /** Output only. Entries containing information about each read pool node of the read pool. */
-  nodes?: Array<ConnectPoolNodeConfig>;
+  nodes?: ReadonlyArray<ConnectPoolNodeConfig>;
   /** Optional. Output only. mdx_protocol_support controls how the client uses metadata exchange when connecting to the instance. The values in the list representing parts of the MDX protocol that are supported by this instance. When the list is empty, the instance does not support MDX, so the client must not send an MDX request. The default is empty. */
-  mdxProtocolSupport?: Array<
+  mdxProtocolSupport?: ReadonlyArray<
     "MDX_PROTOCOL_SUPPORT_UNSPECIFIED" | "CLIENT_PROTOCOL_TYPE" | (string & {})
   >;
 }
@@ -3547,7 +3547,7 @@ export interface Tier {
   /** The maximum disk size of this tier in bytes. */
   DiskQuota?: string;
   /** The applicable regions for this tier. */
-  region?: Array<string>;
+  region?: ReadonlyArray<string>;
 }
 
 export const Tier = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3562,7 +3562,7 @@ export interface TiersListResponse {
   /** This is always `sql#tiersList`. */
   kind?: string;
   /** List of tiers. */
-  items?: Array<Tier>;
+  items?: ReadonlyArray<Tier>;
 }
 
 export const TiersListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3574,7 +3574,7 @@ export interface SqlServerUserDetails {
   /** If the user has been disabled */
   disabled?: boolean;
   /** The server roles for this user */
-  serverRoles?: Array<string>;
+  serverRoles?: ReadonlyArray<string>;
 }
 
 export const SqlServerUserDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3656,7 +3656,7 @@ export interface User {
   /** Indicates if a group is active or inactive for IAM database authentication. */
   iamStatus?: "IAM_STATUS_UNSPECIFIED" | "INACTIVE" | "ACTIVE" | (string & {});
   /** Optional. Role memberships of the user */
-  databaseRoles?: Array<string>;
+  databaseRoles?: ReadonlyArray<string>;
 }
 
 export const User = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3680,7 +3680,7 @@ export interface UsersListResponse {
   /** This is always *sql#usersList*. */
   kind?: string;
   /** List of user resources in the instance. */
-  items?: Array<User>;
+  items?: ReadonlyArray<User>;
   /** Unused. */
   nextPageToken?: string;
 }
@@ -5558,7 +5558,7 @@ export const PointInTimeRestoreInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "sql/v1beta4/projects/{projectsId}:pointInTimeRestore",
+      path: "sql/v1beta4/{parent}:pointInTimeRestore",
       hasBody: true,
     }),
     svc,
@@ -6200,7 +6200,7 @@ export const CreateBackupBackupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "sql/v1beta4/projects/{projectsId}/backups",
+      path: "sql/v1beta4/{parent}/backups",
       hasBody: true,
     }),
     svc,
@@ -6233,10 +6233,7 @@ export const GetBackupBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "sql/v1beta4/projects/{projectsId}/backups/{backupsId}",
-    }),
+    T.Http({ method: "GET", path: "sql/v1beta4/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBackupBackupsRequest>;
 
@@ -6275,10 +6272,7 @@ export const ListBackupsBackupsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "sql/v1beta4/projects/{projectsId}/backups",
-    }),
+    T.Http({ method: "GET", path: "sql/v1beta4/{parent}/backups" }),
     svc,
   ) as unknown as Schema.Schema<ListBackupsBackupsRequest>;
 
@@ -6319,11 +6313,7 @@ export const UpdateBackupBackupsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Backup).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "sql/v1beta4/projects/{projectsId}/backups/{backupsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "sql/v1beta4/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateBackupBackupsRequest>;
 
@@ -6354,10 +6344,7 @@ export const DeleteBackupBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "sql/v1beta4/projects/{projectsId}/backups/{backupsId}",
-    }),
+    T.Http({ method: "DELETE", path: "sql/v1beta4/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteBackupBackupsRequest>;
 

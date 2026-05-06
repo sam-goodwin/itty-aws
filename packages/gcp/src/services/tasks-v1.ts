@@ -100,7 +100,7 @@ export interface Task {
   /** Output only. An absolute link to the task in the Google Tasks Web UI. */
   webViewLink?: string;
   /** Output only. Collection of links. This collection is read-only. */
-  links?: Array<{ type?: string; description?: string; link?: string }>;
+  links?: ReadonlyArray<{ type?: string; description?: string; link?: string }>;
 }
 
 export const Task = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -135,7 +135,7 @@ export interface Tasks {
   /** Token used to access the next page of this result. */
   nextPageToken?: string;
   /** Collection of tasks. */
-  items?: Array<Task>;
+  items?: ReadonlyArray<Task>;
   /** ETag of the resource. */
   etag?: string;
   /** Type of the resource. This is always "tasks#tasks". */
@@ -177,7 +177,7 @@ export interface TaskLists {
   /** Token that can be used to request the next page of this result. */
   nextPageToken?: string;
   /** Collection of task lists. */
-  items?: Array<TaskList>;
+  items?: ReadonlyArray<TaskList>;
   /** Type of the resource. This is always "tasks#taskLists". */
   kind?: string;
   /** ETag of the resource. */

@@ -8,6 +8,8 @@ import * as Effect from "effect/Effect";
 import * as Redacted from "effect/Redacted";
 import * as Schema from "effect/Schema";
 import { makeAPI } from "@distilled.cloud/core/client";
+import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
+import { Retry } from "./retry.ts";
 import {
   HTTP_STATUS_MAP,
   PaymentRequired,
@@ -40,13 +42,18 @@ const ApiErrorResponse = Schema.Struct({
 const matchError = (
   status: number,
   errorBody: unknown,
+  _errors?: readonly unknown[],
+  headers?: Record<string, string | undefined>,
 ): Effect.Effect<never, unknown> => {
   try {
     const parsed = Schema.decodeUnknownSync(ApiErrorResponse)(errorBody);
     const ErrorClass = STATUS_MAP[status];
     if (ErrorClass) {
       return Effect.fail(
-        new ErrorClass({ message: parsed.detail ?? parsed.reason ?? "" }),
+        new ErrorClass({
+          message: parsed.detail ?? parsed.reason ?? "",
+          retryAfter: parseRetryAfterForStatus(status, headers),
+        }),
       );
     }
     return Effect.fail(
@@ -73,4 +80,5 @@ export const API = makeAPI<Credentials>({
   }),
   matchError,
   ParseError: MongodbAtlasParseError as any,
+  retry: Retry as any,
 });

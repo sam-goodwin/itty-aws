@@ -440,14 +440,6 @@ export const CreateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String,
   origin: Schema.Union([
     Schema.Struct({
-      database: Schema.String,
-      host: Schema.String,
-      password: SensitiveString,
-      port: Schema.Number,
-      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
-      user: Schema.String,
-    }),
-    Schema.Struct({
       accessClientId: Schema.String,
       accessClientSecret: SensitiveString,
       database: Schema.String,
@@ -466,6 +458,14 @@ export const CreateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         user: "user",
       }),
     ),
+    Schema.Struct({
+      database: Schema.String,
+      host: Schema.String,
+      password: SensitiveString,
+      port: Schema.Number,
+      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      user: Schema.String,
+    }),
   ]),
   caching: Schema.optional(
     Schema.Union([
@@ -713,14 +713,6 @@ export const UpdateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String,
   origin: Schema.Union([
     Schema.Struct({
-      database: Schema.String,
-      host: Schema.String,
-      password: SensitiveString,
-      port: Schema.Number,
-      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
-      user: Schema.String,
-    }),
-    Schema.Struct({
       accessClientId: Schema.String,
       accessClientSecret: SensitiveString,
       database: Schema.String,
@@ -739,6 +731,14 @@ export const UpdateConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         user: "user",
       }),
     ),
+    Schema.Struct({
+      database: Schema.String,
+      host: Schema.String,
+      password: SensitiveString,
+      port: Schema.Number,
+      scheme: Schema.Literals(["postgres", "postgresql", "mysql"]),
+      user: Schema.String,
+    }),
   ]),
   caching: Schema.optional(
     Schema.Union([
@@ -1014,18 +1014,6 @@ export const PatchConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   origin: Schema.optional(
     Schema.Union([
       Schema.Struct({
-        database: Schema.optional(Schema.String),
-        password: Schema.optional(SensitiveString),
-        scheme: Schema.optional(
-          Schema.Literals(["postgres", "postgresql", "mysql"]),
-        ),
-        user: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        host: Schema.String,
-        port: Schema.Number,
-      }),
-      Schema.Struct({
         accessClientId: Schema.String,
         accessClientSecret: SensitiveString,
         host: Schema.String,
@@ -1036,6 +1024,18 @@ export const PatchConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           host: "host",
         }),
       ),
+      Schema.Struct({
+        host: Schema.String,
+        port: Schema.Number,
+      }),
+      Schema.Struct({
+        database: Schema.optional(Schema.String),
+        password: Schema.optional(SensitiveString),
+        scheme: Schema.optional(
+          Schema.Literals(["postgres", "postgresql", "mysql"]),
+        ),
+        user: Schema.optional(Schema.String),
+      }),
     ]),
   ),
   originConnectionLimit: Schema.optional(Schema.Number),

@@ -67,7 +67,7 @@ export interface GoogleCloudMlV1__PredictionInput {
   /** Required. The output Google Cloud Storage location. */
   outputPath?: string;
   /** Required. The Cloud Storage location of the input data files. May contain wildcards. */
-  inputPaths?: Array<string>;
+  inputPaths?: ReadonlyArray<string>;
   /** Optional. The AI Platform runtime version to use for this batch prediction. If not set, AI Platform will pick the runtime version used during the CreateVersion request for this model version, or choose the latest stable version when model version information is not available such as when the model is specified by uri. */
   runtimeVersion?: string;
   /** Required. The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services. */
@@ -122,7 +122,7 @@ export const GoogleCloudMlV1__PredictionInput =
 
 export interface GoogleRpc__Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -161,11 +161,11 @@ export const GoogleLongrunning__Operation =
 
 export interface GoogleLongrunning__ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunning__Operation>;
+  operations?: ReadonlyArray<GoogleLongrunning__Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleLongrunning__ListOperationsResponse =
@@ -177,7 +177,7 @@ export const GoogleLongrunning__ListOperationsResponse =
 
 export interface GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec {
   /** Matches values of the parent parameter with type 'DISCRETE'. All values must exist in `discrete_value_spec` of parent parameter. */
-  values?: Array<number>;
+  values?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec =
@@ -203,7 +203,7 @@ export const GoogleCloudMlV1_StudyConfig_MetricSpec =
 
 export interface GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec {
   /** Matches values of the parent parameter with type 'CATEGORICAL'. All values must exist in `categorical_value_spec` of parent parameter. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec =
@@ -216,7 +216,7 @@ export const GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalV
 
 export interface GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec {
   /** Must be specified if type is `CATEGORICAL`. The list of possible categories. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec =
@@ -258,7 +258,7 @@ export const GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec =
 
 export interface GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec {
   /** Must be specified if type is `DISCRETE`. A list of feasible points. The list should be in strictly increasing order. For instance, this parameter might have possible settings of 1.5, 2.5, and 4.0. This list should not contain more than 1,000 values. */
-  values?: Array<number>;
+  values?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec =
@@ -270,7 +270,7 @@ export const GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec =
 
 export interface GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec {
   /** Matches values of the parent parameter with type 'INTEGER'. All values must lie in `integer_value_spec` of parent parameter. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec =
@@ -311,7 +311,7 @@ export interface GoogleCloudMlV1_StudyConfig_ParameterSpec {
   parentIntValues?: GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec;
   parentDiscreteValues?: GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec;
   /** A child node is active if the parameter's value matches the child node's matching_parent_values. If two items in child_parameter_specs have the same name, they must have disjoint matching_parent_values. */
-  childParameterSpecs?: Array<GoogleCloudMlV1_StudyConfig_ParameterSpec>;
+  childParameterSpecs?: ReadonlyArray<GoogleCloudMlV1_StudyConfig_ParameterSpec>;
 }
 
 export const GoogleCloudMlV1_StudyConfig_ParameterSpec: Schema.Schema<GoogleCloudMlV1_StudyConfig_ParameterSpec> =
@@ -351,7 +351,7 @@ export const GoogleCloudMlV1_StudyConfig_ParameterSpec: Schema.Schema<GoogleClou
 
 export interface GoogleCloudMlV1__StudyConfig {
   /** Metric specs for the study. */
-  metrics?: Array<GoogleCloudMlV1_StudyConfig_MetricSpec>;
+  metrics?: ReadonlyArray<GoogleCloudMlV1_StudyConfig_MetricSpec>;
   /** The search algorithm specified for the study. */
   algorithm?:
     | "ALGORITHM_UNSPECIFIED"
@@ -360,7 +360,7 @@ export interface GoogleCloudMlV1__StudyConfig {
     | "RANDOM_SEARCH"
     | (string & {});
   /** Required. The set of parameters to tune. */
-  parameters?: Array<GoogleCloudMlV1_StudyConfig_ParameterSpec>;
+  parameters?: ReadonlyArray<GoogleCloudMlV1_StudyConfig_ParameterSpec>;
   /** Configuration for automated stopping of unpromising Trials. */
   automatedStoppingConfig?: GoogleCloudMlV1__AutomatedStoppingConfig;
 }
@@ -456,7 +456,7 @@ export interface GoogleCloudMlV1__HyperparameterOutput {
   /** Details related to built-in algorithms jobs. Only set for trials of built-in algorithms jobs that have succeeded. */
   builtInAlgorithmOutput?: GoogleCloudMlV1__BuiltInAlgorithmOutput;
   /** All recorded object metrics for this trial. This field is not currently populated. */
-  allMetrics?: Array<GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric>;
+  allMetrics?: ReadonlyArray<GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric>;
   /** The trial id for these results. */
   trialId?: string;
   /** True if the trial is stopped early. */
@@ -507,7 +507,7 @@ export interface GoogleCloudMlV1__TrainingOutput {
   /** The amount of ML units consumed by the job. */
   consumedMLUnits?: number;
   /** Results for individual Hyperparameter trials. Only set for hyperparameter tuning jobs. */
-  trials?: Array<GoogleCloudMlV1__HyperparameterOutput>;
+  trials?: ReadonlyArray<GoogleCloudMlV1__HyperparameterOutput>;
   /** Details related to built-in algorithms jobs. Only set for built-in algorithms jobs. */
   builtInAlgorithmOutput?: GoogleCloudMlV1__BuiltInAlgorithmOutput;
   /** The number of hyperparameter tuning trials that completed successfully. Only set for hyperparameter tuning jobs. */
@@ -539,7 +539,7 @@ export interface GoogleCloudMlV1__ParameterSpec {
     | "UNIT_REVERSE_LOG_SCALE"
     | (string & {});
   /** Required if type is `DISCRETE`. A list of feasible points. The list should be in strictly increasing order. For instance, this parameter might have possible settings of 1.5, 2.5, and 4.0. This list should not contain more than 1,000 values. */
-  discreteValues?: Array<number>;
+  discreteValues?: ReadonlyArray<number>;
   /** Required if type is `DOUBLE` or `INTEGER`. This field should be unset if type is `CATEGORICAL`. This value should be integers if type is `INTEGER`. */
   maxValue?: number;
   /** Required if type is `DOUBLE` or `INTEGER`. This field should be unset if type is `CATEGORICAL`. This value should be integers if type is INTEGER. */
@@ -547,7 +547,7 @@ export interface GoogleCloudMlV1__ParameterSpec {
   /** Required. The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate". */
   parameterName?: string;
   /** Required if type is `CATEGORICAL`. The list of possible categories. */
-  categoricalValues?: Array<string>;
+  categoricalValues?: ReadonlyArray<string>;
   /** Required. The type of the parameter. */
   type?:
     | "PARAMETER_TYPE_UNSPECIFIED"
@@ -577,7 +577,7 @@ export interface GoogleCloudMlV1__HyperparameterSpec {
   /** Optional. The TensorFlow summary tag name to use for optimizing trials. For current versions of TensorFlow, this tag name should exactly match what is shown in TensorBoard, including all scopes. For versions of TensorFlow prior to 0.12, this should be only the tag passed to tf.Summary. By default, "training/hptuning/metric" will be used. */
   hyperparameterMetricTag?: string;
   /** Required. The set of parameters to tune. */
-  params?: Array<GoogleCloudMlV1__ParameterSpec>;
+  params?: ReadonlyArray<GoogleCloudMlV1__ParameterSpec>;
   /** Optional. How many training trials should be attempted to optimize the specified hyperparameters. Defaults to one. */
   maxTrials?: number;
   /** Optional. The number of failed trials that need to be seen before failing the hyperparameter tuning job. You can specify this field to override the default failing criteria for AI Platform hyperparameter tuning jobs. Defaults to zero, which means the service decides when a hyperparameter job should fail. */
@@ -666,7 +666,7 @@ export interface GoogleCloudMlV1__ReplicaConfig {
   /** Represents the type and number of accelerators used by the replica. [Learn about restrictions on accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu) */
   acceleratorConfig?: GoogleCloudMlV1__AcceleratorConfig;
   /** The command with which the replica's custom container is run. If provided, it will override default ENTRYPOINT of the docker image. If not provided, the docker image's ENTRYPOINT is used. It cannot be set if custom container image is not provided. Note that this field and [TrainingInput.args] are mutually exclusive, i.e., both cannot be set at the same time. */
-  containerCommand?: Array<string>;
+  containerCommand?: ReadonlyArray<string>;
   /** The Docker image to run on the replica. This image must be in Container Registry. Learn more about [configuring custom containers](/ai-platform/training/docs/distributed-training-containers). */
   imageUri?: string;
   /** The AI Platform runtime version that includes a TensorFlow version matching the one used in the custom container. This field is required if the replica is a TPU worker that uses a custom container. Otherwise, do not specify this field. This must be a [runtime version that currently supports training with TPUs](/ml-engine/docs/tensorflow/runtime-version-list#tpu-support). Note that the version of TensorFlow included in a runtime version may differ from the numbering of the runtime version itself, because it may have a different [patch version](https://www.tensorflow.org/guide/version_compat#semantic_versioning_20). In this field, you must specify the runtime version (TensorFlow minor version). For example, if your custom container runs TensorFlow `1.x.y`, specify `1.x`. */
@@ -674,7 +674,7 @@ export interface GoogleCloudMlV1__ReplicaConfig {
   /** Represents the configuration of disk options. */
   diskConfig?: GoogleCloudMlV1__DiskConfig;
   /** Arguments to the entrypoint command. The following rules apply for container_command and container_args: - If you do not supply command or args: The defaults defined in the Docker image are used. - If you supply a command but no args: The default EntryPoint and the default Cmd defined in the Docker image are ignored. Your command is run without any arguments. - If you supply only args: The default Entrypoint defined in the Docker image is run with the args that you supplied. - If you supply a command and args: The default Entrypoint and the default Cmd defined in the Docker image are ignored. Your command is run with your args. It cannot be set if custom container image is not provided. Note that this field and [TrainingInput.args] are mutually exclusive, i.e., both cannot be set at the same time. */
-  containerArgs?: Array<string>;
+  containerArgs?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudMlV1__ReplicaConfig =
@@ -699,7 +699,7 @@ export const GoogleCloudMlV1__EncryptionConfig =
 
 export interface GoogleCloudMlV1__TrainingInput {
   /** Optional. Command-line arguments passed to the training application when it starts. If your job uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Required. The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training. */
   region?: string;
   /** Optional. The set of Hyperparameters to tune. */
@@ -723,7 +723,7 @@ export interface GoogleCloudMlV1__TrainingInput {
   /** Optional. Specifies the type of virtual machine to use for your training job's worker nodes. The supported values are the same as those described in the entry for `masterType`. This value must be consistent with the category of machine type that `masterType` uses. In other words, both must be Compute Engine machine types or both must be legacy machine types. If you use `cloud_tpu` for this value, see special instructions for [configuring a custom TPU machine](/ml-engine/docs/tensorflow/using-tpus#configuring_a_custom_tpu_machine). This value must be present when `scaleTier` is set to `CUSTOM` and `workerCount` is greater than zero. */
   workerType?: string;
   /** Required. The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100. */
-  packageUris?: Array<string>;
+  packageUris?: ReadonlyArray<string>;
   /** Optional. A Google Cloud Storage path in which to store training outputs and other data needed for training. This path is passed to your TensorFlow program as the '--job-dir' command-line argument. The benefit of specifying this field is that Cloud ML validates the path for use in training. */
   jobDir?: string;
   /** Optional. The AI Platform runtime version to use for training. You must either specify this field or specify `masterConfig.imageUri`. For more information, see the [runtime version list](/ai-platform/training/docs/runtime-version-list) and learn [how to manage runtime versions](/ai-platform/training/docs/versioning). */
@@ -864,7 +864,7 @@ export const GoogleCloudMlV1__Job = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleCloudMlV1__ListJobsResponse {
   /** The list of jobs. */
-  jobs?: Array<GoogleCloudMlV1__Job>;
+  jobs?: ReadonlyArray<GoogleCloudMlV1__Job>;
   /** Optional. Pass this token as the `page_token` field of the request for a subsequent call. */
   nextPageToken?: string;
 }
@@ -911,7 +911,7 @@ export interface GoogleCloudMlV1__Measurement {
   /** The number of steps a machine learning model has been trained for. Must be non-negative. */
   stepCount?: string;
   /** Provides a list of metrics that act as inputs into the objective function. */
-  metrics?: Array<GoogleCloudMlV1_Measurement_Metric>;
+  metrics?: ReadonlyArray<GoogleCloudMlV1_Measurement_Metric>;
   /** Output only. Time that the trial has been running at the point of this measurement. */
   elapsedTime?: string;
 }
@@ -958,13 +958,13 @@ export interface GoogleCloudMlV1__Trial {
   /** The final measurement containing the objective value. */
   finalMeasurement?: GoogleCloudMlV1__Measurement;
   /** A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations. */
-  measurements?: Array<GoogleCloudMlV1__Measurement>;
+  measurements?: ReadonlyArray<GoogleCloudMlV1__Measurement>;
   /** Output only. Time at which the trial's status changed to COMPLETED. */
   endTime?: string;
   /** Output only. Time at which the trial was started. */
   startTime?: string;
   /** The parameters of the trial. */
-  parameters?: Array<GoogleCloudMlV1_Trial_Parameter>;
+  parameters?: ReadonlyArray<GoogleCloudMlV1_Trial_Parameter>;
   /** Output only. The identifier of the client that originally requested this trial. */
   clientId?: string;
   /** Output only. A human readable string describing why the trial is infeasible. This should only be set if trial_infeasible is true. */
@@ -998,7 +998,7 @@ export const GoogleCloudMlV1__Trial = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface GoogleCloudMlV1__SuggestTrialsResponse {
   /** A list of trials. */
-  trials?: Array<GoogleCloudMlV1__Trial>;
+  trials?: ReadonlyArray<GoogleCloudMlV1__Trial>;
   /** The time at which operation processing completed. */
   endTime?: string;
   /** The time at which the operation was started. */
@@ -1041,7 +1041,7 @@ export interface GoogleCloudMlV1__AutoScaling {
   /** Optional. The minimum number of nodes to allocate for this model. These nodes are always up, starting from the time the model is deployed. Therefore, the cost of operating this model will be at least `rate` * `min_nodes` * number of hours since last billing cycle, where `rate` is the cost per node-hour as documented in the [pricing guide](/ml-engine/docs/pricing), even if no predictions are performed. There is additional cost for each prediction performed. Unlike manual scaling, if the load gets too heavy for the nodes that are up, the service will automatically add nodes to handle the increased load as well as scale back as traffic drops, always maintaining at least `min_nodes`. You will be charged for the time in which additional nodes are used. If `min_nodes` is not specified and AutoScaling is used with a [legacy (MLS1) machine type](/ml-engine/docs/machine-types-online-prediction), `min_nodes` defaults to 0, in which case, when traffic to a model stops (and after a cool-down period), nodes will be shut down and no charges will be incurred until traffic to the model resumes. If `min_nodes` is not specified and AutoScaling is used with a [Compute Engine (N1) machine type](/ml-engine/docs/machine-types-online-prediction), `min_nodes` defaults to 1. `min_nodes` must be at least 1 for use with a Compute Engine machine type. You can set `min_nodes` when creating the model version, and you can also update `min_nodes` for an existing version: update_body.json: { 'autoScaling': { 'minNodes': 5 } } HTTP request: PATCH https://ml.googleapis.com/v1/{name=projects/* /models/* /versions/*}?update_mask=autoScaling.minNodes -d @./update_body.json */
   minNodes?: number;
   /** MetricSpec contains the specifications to use to calculate the desired nodes count. */
-  metrics?: Array<GoogleCloudMlV1__MetricSpec>;
+  metrics?: ReadonlyArray<GoogleCloudMlV1__MetricSpec>;
   /** The maximum number of nodes to scale this model under load. The actual value will depend on resource quota and availability. */
   maxNodes?: number;
 }
@@ -1078,13 +1078,13 @@ export const GoogleCloudMlV1__EnvVar =
 
 export interface GoogleCloudMlV1__ContainerSpec {
   /** Immutable. Specifies the command that runs when the container starts. This overrides the container's [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#entrypoint). Specify this field as an array of executable and arguments, similar to a Docker `ENTRYPOINT`'s "exec" form, not its "shell" form. If you do not specify this field, then the container's `ENTRYPOINT` runs, in conjunction with the args field or the container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd), if either exists. If this field is not specified and the container does not have an `ENTRYPOINT`, then refer to the [Docker documentation about how `CMD` and `ENTRYPOINT` interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact). If you specify this field, then you can also specify the `args` field to provide additional arguments for this command. However, if you specify this field, then the container's `CMD` is ignored. See the [Kubernetes documentation about how the `command` and `args` fields interact with a container's `ENTRYPOINT` and `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes). In this field, you can reference [environment variables set by AI Platform Prediction](/ai-platform/prediction/docs/custom-container-requirements#aip-variables) and environment variables set in the env field. You cannot reference environment variables set in the Docker image. In order for environment variables to be expanded, reference them by using the following syntax: $( VARIABLE_NAME) Note that this differs from Bash variable expansion, which does not use parentheses. If a variable cannot be resolved, the reference in the input string is used unchanged. To avoid variable expansion, you can escape this syntax with `$$`; for example: $$(VARIABLE_NAME) This field corresponds to the `command` field of the [Kubernetes Containers v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core). */
-  command?: Array<string>;
+  command?: ReadonlyArray<string>;
   /** Immutable. List of ports to expose from the container. AI Platform Prediction sends any prediction requests that it receives to the first port on this list. AI Platform Prediction also sends [liveness and health checks](/ai-platform/prediction/docs/custom-container-requirements#health) to this port. If you do not specify this field, it defaults to following value: ```json [ { "containerPort": 8080 } ] ``` AI Platform Prediction does not use ports other than the first one listed. This field corresponds to the `ports` field of the [Kubernetes Containers v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core). */
-  ports?: Array<GoogleCloudMlV1__ContainerPort>;
+  ports?: ReadonlyArray<GoogleCloudMlV1__ContainerPort>;
   /** Immutable. Specifies arguments for the command that runs when the container starts. This overrides the container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd). Specify this field as an array of executable and arguments, similar to a Docker `CMD`'s "default parameters" form. If you don't specify this field but do specify the command field, then the command from the `command` field runs without any additional arguments. See the [Kubernetes documentation about how the `command` and `args` fields interact with a container's `ENTRYPOINT` and `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes). If you don't specify this field and don't specify the `commmand` field, then the container's [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#cmd) and `CMD` determine what runs based on their default behavior. See the [Docker documentation about how `CMD` and `ENTRYPOINT` interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact). In this field, you can reference [environment variables set by AI Platform Prediction](/ai-platform/prediction/docs/custom-container-requirements#aip-variables) and environment variables set in the env field. You cannot reference environment variables set in the Docker image. In order for environment variables to be expanded, reference them by using the following syntax: $( VARIABLE_NAME) Note that this differs from Bash variable expansion, which does not use parentheses. If a variable cannot be resolved, the reference in the input string is used unchanged. To avoid variable expansion, you can escape this syntax with `$$`; for example: $$(VARIABLE_NAME) This field corresponds to the `args` field of the [Kubernetes Containers v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core). */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Immutable. List of environment variables to set in the container. After the container starts running, code running in the container can read these environment variables. Additionally, the command and args fields can reference these variables. Later entries in this list can also reference earlier entries. For example, the following example sets the variable `VAR_2` to have the value `foo bar`: ```json [ { "name": "VAR_1", "value": "foo" }, { "name": "VAR_2", "value": "$(VAR_1) bar" } ] ``` If you switch the order of the variables in the example, then the expansion does not occur. This field corresponds to the `env` field of the [Kubernetes Containers v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core). */
-  env?: Array<GoogleCloudMlV1__EnvVar>;
+  env?: ReadonlyArray<GoogleCloudMlV1__EnvVar>;
   /** URI of the Docker image to be used as the custom container for serving predictions. This URI must identify [an image in Artifact Registry](/artifact-registry/docs/overview) and begin with the hostname `{REGION}-docker.pkg.dev`, where `{REGION}` is replaced by the region that matches AI Platform Prediction [regional endpoint](/ai-platform/prediction/docs/regional-endpoints) that you are using. For example, if you are using the `us-central1-ml.googleapis.com` endpoint, then this URI must begin with `us-central1-docker.pkg.dev`. To use a custom container, the [AI Platform Google-managed service account](/ai-platform/prediction/docs/custom-service-account#default) must have permission to pull (read) the Docker image at this URI. The AI Platform Google-managed service account has the following format: `service-{PROJECT_NUMBER}@cloud-ml.google.com.iam.gserviceaccount.com` {PROJECT_NUMBER} is replaced by your Google Cloud project number. By default, this service account has necessary permissions to pull an Artifact Registry image in the same Google Cloud project where you are using AI Platform Prediction. In this case, no configuration is necessary. If you want to use an image from a different Google Cloud project, learn how to [grant the Artifact Registry Reader (roles/artifactregistry.reader) role for a repository](/artifact-registry/docs/access-control#grant-repo) to your projet's AI Platform Google-managed service account. To learn about the requirements for the Docker image itself, read [Custom container requirements](/ai-platform/prediction/docs/custom-container-requirements). */
   image?: string;
 }
@@ -1226,7 +1226,7 @@ export interface GoogleCloudMlV1__Version {
   /** Optional. Configures explainability features on the model's version. Some explanation features require additional metadata to be loaded as part of the model payload. */
   explanationConfig?: GoogleCloudMlV1__ExplanationConfig;
   /** Optional. Cloud Storage paths (`gs://…`) of packages for [custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines) or [scikit-learn pipelines with custom code](/ml-engine/docs/scikit/exporting-for-prediction#custom-pipeline-code). For a custom prediction routine, one of these packages must contain your Predictor class (see [`predictionClass`](#Version.FIELDS.prediction_class)). Additionally, include any dependencies used by your Predictor or scikit-learn pipeline uses that are not already included in your selected [runtime version](/ml-engine/docs/tensorflow/runtime-version-list). If you specify this field, you must also set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater. */
-  packageUris?: Array<string>;
+  packageUris?: ReadonlyArray<string>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform model updates in order to avoid race conditions: An `etag` is returned in the response to `GetVersion`, and systems are expected to put that etag in the request to `UpdateVersion` to ensure that their change will be applied to the model as intended. */
   etag?: string;
   /** Required. The name specified for the version when it was created. The version name must be unique within the model it is created in. */
@@ -1317,7 +1317,7 @@ export const GoogleCloudMlV1__OperationMetadata =
 
 export interface GoogleCloudMlV1__ListTrialsResponse {
   /** The trials associated with the study. */
-  trials?: Array<GoogleCloudMlV1__Trial>;
+  trials?: ReadonlyArray<GoogleCloudMlV1__Trial>;
 }
 
 export const GoogleCloudMlV1__ListTrialsResponse =
@@ -1344,7 +1344,7 @@ export interface GoogleApi__HttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
   contentType?: string;
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
-  extensions?: Array<Record<string, unknown>>;
+  extensions?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const GoogleApi__HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1357,7 +1357,7 @@ export const GoogleApi__HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleCloudMlV1__Capability {
   /** Available accelerators for the capability. */
-  availableAccelerators?: Array<
+  availableAccelerators?: ReadonlyArray<
     | "ACCELERATOR_TYPE_UNSPECIFIED"
     | "NVIDIA_TESLA_K80"
     | "NVIDIA_TESLA_P100"
@@ -1389,7 +1389,7 @@ export const GoogleCloudMlV1__Capability =
 export interface GoogleCloudMlV1__Location {
   name?: string;
   /** Capabilities available in the location. */
-  capabilities?: Array<GoogleCloudMlV1__Capability>;
+  capabilities?: ReadonlyArray<GoogleCloudMlV1__Capability>;
 }
 
 export const GoogleCloudMlV1__Location =
@@ -1400,7 +1400,7 @@ export const GoogleCloudMlV1__Location =
 
 export interface GoogleCloudMlV1__ListLocationsResponse {
   /** Locations where at least one type of CMLE capability is available. */
-  locations?: Array<GoogleCloudMlV1__Location>;
+  locations?: ReadonlyArray<GoogleCloudMlV1__Location>;
   /** Optional. Pass this token as the `page_token` field of the request for a subsequent call. */
   nextPageToken?: string;
 }
@@ -1437,7 +1437,7 @@ export interface GoogleCloudMlV1__Model {
   /** Required. The name specified for the model when it was created. The model name must be unique within the project it is created in. */
   name?: string;
   /** Optional. The list of regions where the model is going to be deployed. Only one region per model is supported. Defaults to 'us-central1' if nothing is set. See the available regions for AI Platform services. Note: * No matter where a model is deployed, it can always be accessed by users from anywhere, both for online and batch prediction. * The region for a batch prediction job is set by the region field when submitting the batch prediction job and does not take its value from this field. */
-  regions?: Array<string>;
+  regions?: ReadonlyArray<string>;
   /** Optional. If true, online prediction nodes send `stderr` and `stdout` streams to Cloud Logging. These can be more verbose than the standard access logs (see `onlinePredictionLogging`) and can incur higher cost. However, they are helpful for debugging. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high QPS. Estimate your costs before enabling this option. Default is false. */
   onlinePredictionConsoleLogging?: boolean;
   /** Optional. If true, online prediction access logs are sent to Cloud Logging. These logs are like standard server access logs, containing information like timestamp and latency for each request. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option. Default is false. */
@@ -1473,7 +1473,7 @@ export const GoogleCloudMlV1__PredictRequest =
 
 export interface GoogleCloudMlV1__ListVersionsResponse {
   /** The list of versions. */
-  versions?: Array<GoogleCloudMlV1__Version>;
+  versions?: ReadonlyArray<GoogleCloudMlV1__Version>;
   /** Optional. Pass this token as the `page_token` field of the request for a subsequent call. */
   nextPageToken?: string;
 }
@@ -1493,7 +1493,7 @@ export interface GoogleIamV1__AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1__AuditLogConfig =
@@ -1520,7 +1520,7 @@ export const GoogleCloudMlV1__CompleteTrialRequest =
 
 export interface GoogleIamV1__TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1__TestIamPermissionsRequest =
@@ -1606,7 +1606,7 @@ export interface GoogleIamV1__Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: GoogleType__Expr;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
@@ -1619,7 +1619,7 @@ export const GoogleIamV1__Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleIamV1__AuditConfig {
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<GoogleIamV1__AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<GoogleIamV1__AuditLogConfig>;
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
@@ -1634,9 +1634,9 @@ export interface GoogleIamV1__Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<GoogleIamV1__Binding>;
+  bindings?: ReadonlyArray<GoogleIamV1__Binding>;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<GoogleIamV1__AuditConfig>;
+  auditConfigs?: ReadonlyArray<GoogleIamV1__AuditConfig>;
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
 }
@@ -1663,7 +1663,7 @@ export const GoogleIamV1__SetIamPolicyRequest =
 
 export interface GoogleCloudMlV1__ListStudiesResponse {
   /** The studies associated with the project. */
-  studies?: Array<GoogleCloudMlV1__Study>;
+  studies?: ReadonlyArray<GoogleCloudMlV1__Study>;
 }
 
 export const GoogleCloudMlV1__ListStudiesResponse =
@@ -1673,7 +1673,7 @@ export const GoogleCloudMlV1__ListStudiesResponse =
 
 export interface GoogleCloudMlV1__ListModelsResponse {
   /** The list of models. */
-  models?: Array<GoogleCloudMlV1__Model>;
+  models?: ReadonlyArray<GoogleCloudMlV1__Model>;
   /** Optional. Pass this token as the `page_token` field of the request for a subsequent call. */
   nextPageToken?: string;
 }
@@ -1693,7 +1693,7 @@ export const GoogleCloudMlV1__CheckTrialEarlyStoppingStateRequest =
 
 export interface GoogleCloudMlV1__ListOptimalTrialsResponse {
   /** The pareto-optimal trials for multiple objective study or the optimal trial for single objective study. The definition of pareto-optimal can be checked in wiki page. https://en.wikipedia.org/wiki/Pareto_efficiency */
-  trials?: Array<GoogleCloudMlV1__Trial>;
+  trials?: ReadonlyArray<GoogleCloudMlV1__Trial>;
 }
 
 export const GoogleCloudMlV1__ListOptimalTrialsResponse =
@@ -1703,7 +1703,7 @@ export const GoogleCloudMlV1__ListOptimalTrialsResponse =
 
 export interface GoogleIamV1__TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1__TestIamPermissionsResponse =
@@ -1771,11 +1771,7 @@ export const ExplainProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     body: Schema.optional(GoogleCloudMlV1__ExplainRequest).pipe(T.HttpBody()),
   },
 ).pipe(
-  T.Http({
-    method: "POST",
-    path: "v1/projects/{projectsId}:explain",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v1/{name}:explain", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<ExplainProjectsRequest>;
 
@@ -1806,7 +1802,7 @@ export const GetConfigProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}:getConfig" }),
+    T.Http({ method: "GET", path: "v1/{name}:getConfig" }),
     svc,
   ) as unknown as Schema.Schema<GetConfigProjectsRequest>;
 
@@ -1841,11 +1837,7 @@ export const PredictProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     body: Schema.optional(GoogleCloudMlV1__PredictRequest).pipe(T.HttpBody()),
   },
 ).pipe(
-  T.Http({
-    method: "POST",
-    path: "v1/projects/{projectsId}:predict",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v1/{name}:predict", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PredictProjectsRequest>;
 
@@ -1885,7 +1877,7 @@ export const ListProjectsJobsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/jobs" }),
+    T.Http({ method: "GET", path: "v1/{parent}/jobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsJobsRequest>;
 
@@ -1921,7 +1913,7 @@ export const GetProjectsJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     name: Schema.String.pipe(T.HttpPath("name")),
   },
 ).pipe(
-  T.Http({ method: "GET", path: "v1/projects/{projectsId}/jobs/{jobsId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetProjectsJobsRequest>;
 
@@ -1959,7 +1951,7 @@ export const TestIamPermissionsProjectsJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/jobs/{jobsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -1999,11 +1991,7 @@ export const PatchProjectsJobsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudMlV1__Job).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/jobs/{jobsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsJobsRequest>;
 
@@ -2039,10 +2027,7 @@ export const GetIamPolicyProjectsJobsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/jobs/{jobsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsJobsRequest>;
 
@@ -2078,7 +2063,7 @@ export const SetIamPolicyProjectsJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/jobs/{jobsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2114,11 +2099,7 @@ export const CreateProjectsJobsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudMlV1__Job).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/jobs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/jobs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsJobsRequest>;
 
@@ -2152,11 +2133,7 @@ export const CancelProjectsJobsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudMlV1__CancelJobRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/jobs/{jobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsJobsRequest>;
 
@@ -2187,10 +2164,7 @@ export const GetProjectsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsOperationsRequest>;
 
@@ -2221,11 +2195,7 @@ export const CancelProjectsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsOperationsRequest>;
 
@@ -2270,7 +2240,7 @@ export const ListProjectsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/operations" }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsOperationsRequest>;
 
@@ -2309,11 +2279,7 @@ export const CreateProjectsModelsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudMlV1__Model).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/models",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/models", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsModelsRequest>;
 
@@ -2351,7 +2317,7 @@ export const TestIamPermissionsProjectsModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/models/{modelsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2390,7 +2356,7 @@ export const SetIamPolicyProjectsModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/models/{modelsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2432,7 +2398,7 @@ export const ListProjectsModelsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/models" }),
+    T.Http({ method: "GET", path: "v1/{parent}/models" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsModelsRequest>;
 
@@ -2472,10 +2438,7 @@ export const GetIamPolicyProjectsModelsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/models/{modelsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsModelsRequest>;
 
@@ -2506,10 +2469,7 @@ export const DeleteProjectsModelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/models/{modelsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsModelsRequest>;
 
@@ -2540,10 +2500,7 @@ export const GetProjectsModelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/models/{modelsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsModelsRequest>;
 
@@ -2580,11 +2537,7 @@ export const PatchProjectsModelsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudMlV1__Model).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/models/{modelsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsModelsRequest>;
 
@@ -2621,11 +2574,7 @@ export const PatchProjectsModelsVersionsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudMlV1__Version).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/models/{modelsId}/versions/{versionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsModelsVersionsRequest>;
 
@@ -2656,10 +2605,7 @@ export const GetProjectsModelsVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/models/{modelsId}/versions/{versionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsModelsVersionsRequest>;
 
@@ -2693,11 +2639,7 @@ export const CreateProjectsModelsVersionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudMlV1__Version).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/models/{modelsId}/versions",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/versions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsModelsVersionsRequest>;
 
@@ -2728,10 +2670,7 @@ export const DeleteProjectsModelsVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/models/{modelsId}/versions/{versionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsModelsVersionsRequest>;
 
@@ -2771,10 +2710,7 @@ export const ListProjectsModelsVersionsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/models/{modelsId}/versions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/versions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsModelsVersionsRequest>;
 
@@ -2815,11 +2751,7 @@ export const SetDefaultProjectsModelsVersionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/models/{modelsId}/versions/{versionsId}:setDefault",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:setDefault", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SetDefaultProjectsModelsVersionsRequest>;
 
@@ -2856,7 +2788,7 @@ export const ListProjectsLocationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{parent}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -2892,10 +2824,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -2926,10 +2855,7 @@ export const DeleteProjectsLocationsStudiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsStudiesRequest>;
 
@@ -2960,10 +2886,7 @@ export const ListProjectsLocationsStudiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/studies" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsStudiesRequest>;
 
@@ -2995,10 +2918,7 @@ export const GetProjectsLocationsStudiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsStudiesRequest>;
 
@@ -3035,11 +2955,7 @@ export const CreateProjectsLocationsStudiesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudMlV1__Study).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/studies", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsStudiesRequest>;
 
@@ -3070,10 +2986,7 @@ export const ListProjectsLocationsStudiesTrialsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/trials" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsStudiesTrialsRequest>;
 
@@ -3105,10 +3018,7 @@ export const DeleteProjectsLocationsStudiesTrialsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsStudiesTrialsRequest>;
 
@@ -3147,7 +3057,7 @@ export const SuggestProjectsLocationsStudiesTrialsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials:suggest",
+      path: "v1/{parent}/trials:suggest",
       hasBody: true,
     }),
     svc,
@@ -3186,11 +3096,7 @@ export const AddMeasurementProjectsLocationsStudiesTrialsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}:addMeasurement",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:addMeasurement", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AddMeasurementProjectsLocationsStudiesTrialsRequest>;
 
@@ -3227,11 +3133,7 @@ export const CompleteProjectsLocationsStudiesTrialsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}:complete",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:complete", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CompleteProjectsLocationsStudiesTrialsRequest>;
 
@@ -3270,7 +3172,7 @@ export const ListOptimalTrialsProjectsLocationsStudiesTrialsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials:listOptimalTrials",
+      path: "v1/{parent}/trials:listOptimalTrials",
       hasBody: true,
     }),
     svc,
@@ -3305,10 +3207,7 @@ export const GetProjectsLocationsStudiesTrialsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsStudiesTrialsRequest>;
 
@@ -3346,7 +3245,7 @@ export const CheckEarlyStoppingStateProjectsLocationsStudiesTrialsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}:checkEarlyStoppingState",
+      path: "v1/{name}:checkEarlyStoppingState",
       hasBody: true,
     }),
     svc,
@@ -3384,11 +3283,7 @@ export const StopProjectsLocationsStudiesTrialsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudMlV1__StopTrialRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}:stop",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:stop", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StopProjectsLocationsStudiesTrialsRequest>;
 
@@ -3422,11 +3317,7 @@ export const CreateProjectsLocationsStudiesTrialsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudMlV1__Trial).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/trials", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsStudiesTrialsRequest>;
 
@@ -3458,10 +3349,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -3493,11 +3381,7 @@ export const CancelProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 

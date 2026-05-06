@@ -322,6 +322,7 @@ function generateService(doc: DiscoveryDoc, patches: ServicePatch): string {
   lines.push('import * as API from "../client/api.ts";');
   lines.push('import * as T from "../traits.ts";');
   lines.push("__CATEGORY_IMPORT__");
+  lines.push("__DURATION_SCHEMA_IMPORT__");
   lines.push('import type { Credentials } from "../credentials.ts";');
   lines.push('import type { DefaultErrors } from "../errors.ts";');
   lines.push('import type * as HttpClient from "effect/unstable/http/HttpClient";');
@@ -460,6 +461,16 @@ function generateService(doc: DiscoveryDoc, patches: ServicePatch): string {
   } else {
     code = code.replace("__CATEGORY_IMPORT__\n", "");
   }
+  // Only include the DurationSchema import if any retryable error class
+  // declares a `retryAfter` field.
+  if (code.includes("DurationSchema")) {
+    code = code.replace(
+      "__DURATION_SCHEMA_IMPORT__",
+      'import { DurationSchema } from "@distilled.cloud/core/errors";',
+    );
+  } else {
+    code = code.replace("__DURATION_SCHEMA_IMPORT__\n", "");
+  }
   return code;
 }
 
@@ -580,10 +591,18 @@ function propertyToTsType(
       return "boolean";
 
     case "array":
+      // Emit `ReadonlyArray<T>` (not `Array<T>`) so the interface matches
+      // what `Schema.Type<typeof Schema.Array(...)>` produces. Without
+      // this, the schema-derived value type is `readonly T[]` while the
+      // hand-emitted interface declares mutable `T[]`, and TS rejects
+      // `readonly T[]` → `T[]` in operation method signatures (see e.g.
+      // cloudresourcemanager-v3 `getOperations` / `listTagBindings`).
+      // `ReadonlyArray<T>` is a supertype of `T[]`, so callers building
+      // requests with array literals stay compatible.
       if (prop.items) {
-        return `Array<${propertyToTsType(prop.items, allSchemas, renames)}>`;
+        return `ReadonlyArray<${propertyToTsType(prop.items, allSchemas, renames)}>`;
       }
-      return "Array<unknown>";
+      return "ReadonlyArray<unknown>";
 
     case "object":
       if (prop.additionalProperties) {
@@ -698,6 +717,19 @@ function schemaTypeToSchemaExpr(schema: SchemaObject): string {
 // Error Generation
 // =============================================================================
 
+/**
+ * Categories that imply the error carries a server-provided retry hint
+ * (parsed from `Retry-After` / `RateLimit` headers). Errors in any of these
+ * categories get an extra `retryAfter: Schema.optional(DurationSchema)` field
+ * in their generated schema so SDK code can populate it from headers or body.
+ */
+const RETRYABLE_CATEGORIES = new Set([
+  "Retryable",
+  "ThrottlingError",
+  "ServerError",
+  "LockedError",
+]);
+
 function generateErrorClass(
   tag: string,
   matchers: ErrorMatcher[],
@@ -705,6 +737,7 @@ function generateErrorClass(
 ): string[] {
   const lines: string[] = [];
   const safeTag = safeIdentifier(tag);
+  const isRetryable = !!categories?.some((c) => RETRYABLE_CATEGORIES.has(c));
 
   lines.push(
     `export class ${safeTag} extends Schema.TaggedErrorClass<${safeTag}>()(`,
@@ -716,6 +749,9 @@ function generateErrorClass(
   lines.push(`    status: Schema.optional(Schema.String),`);
   lines.push(`    reason: Schema.optional(Schema.String),`);
   lines.push(`    domain: Schema.optional(Schema.String),`);
+  if (isRetryable) {
+    lines.push(`    retryAfter: Schema.optional(DurationSchema),`);
+  }
   lines.push(`  },`);
   lines.push(`) {}`);
 
@@ -1024,7 +1060,15 @@ function methodToOperation(
     functionName,
     resourcePath,
     httpMethod: method.httpMethod,
-    path: method.flatPath ?? method.path,
+    // Prefer `path` (the templated form, e.g. `v3/{+name}`) over
+    // `flatPath` (a documentation-only form, e.g.
+    // `v3/projects/{projectsId}`). `flatPath` uses synthesized variable
+    // names that don't match the `parameters.*` keys, so substitution
+    // via `T.HttpPath(<paramName>)` would silently fail at runtime.
+    // Strip RFC 6570 reserved-expansion markers (`{+name}` -> `{name}`)
+    // so the emitted template variables align with the schema field
+    // wire names.
+    path: stripReservedExpansion(method.path ?? method.flatPath),
     parameters,
     requestRef: method.request?.$ref,
     responseRef: method.response?.$ref,
@@ -1146,6 +1190,22 @@ function collectPropertyDeps(prop: PropertySchema, deps: string[]): void {
 function capitalize(s: string): string {
   if (!s) return s;
   return s[0]!.toUpperCase() + s.slice(1);
+}
+
+/**
+ * Strip RFC 6570 reserved-expansion markers from a Discovery Document
+ * URL template. GCP publishes path templates like `v3/{+name}` to
+ * indicate that the `name` parameter should be expanded without
+ * percent-encoding the `/` characters within its value. Distilled's
+ * `buildRequestParts` always `encodeURIComponent`s path values; GCP's
+ * REST endpoints accept `%2F` as equivalent to `/` in resource-name
+ * path segments, so we drop the `+` marker and let the standard
+ * substitution path handle the rest. The variable name itself
+ * (`name`) is preserved so it lines up with the
+ * `T.HttpPath(<paramName>)` annotation on the request schema.
+ */
+function stripReservedExpansion(path: string): string {
+  return path.replace(/\{\+([^}]+)\}/g, "{$1}");
 }
 
 function safeIdentifier(name: string): string {

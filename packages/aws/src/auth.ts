@@ -155,8 +155,19 @@ export const makeAuthService = () =>
           `${cacheName}.credentials.json`,
         );
 
+        // `Effect.try` so a `JSON.parse` throw on an empty/partial file
+        // (a brief race window when another process is rewriting the
+        // SSO cache) becomes a typed error and is caught below — without
+        // the wrap it surfaces as a fiber defect that blows past
+        // `Effect.catch`.
         const cachedCreds = yield* fs.readFileString(cachedCredsFilePath).pipe(
-          Effect.map((text) => JSON.parse(text)),
+          Effect.flatMap((text) =>
+            Effect.try({
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              try: (): any => JSON.parse(text),
+              catch: (cause) => cause,
+            }),
+          ),
           Effect.catch(() => Effect.void),
         );
 
@@ -179,7 +190,16 @@ export const makeAuthService = () =>
         }
 
         const ssoToken = yield* fs.readFileString(ssoTokenFilepath).pipe(
-          Effect.map((text) => JSON.parse(text) as SSOToken),
+          // `Effect.try` so a `JSON.parse` throw on an empty/partial
+          // token file (a brief race window when another process is
+          // refreshing the cache) becomes a typed error and is caught
+          // below — without the wrap it surfaces as a fiber defect.
+          Effect.flatMap((text) =>
+            Effect.try({
+              try: () => JSON.parse(text) as SSOToken,
+              catch: (cause) => cause,
+            }),
+          ),
           Effect.catch(() =>
             new InvalidSSOToken({
               message: `The SSO session token associated with profile=${profileName} was not found or is invalid. ${REFRESH_MESSAGE}`,

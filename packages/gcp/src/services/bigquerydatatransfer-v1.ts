@@ -45,7 +45,7 @@ export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -100,7 +100,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -297,7 +297,7 @@ export const TransferStatusMetric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TransferStatusSummary {
   /** Optional. List of transfer status metrics. */
-  metrics?: Array<TransferStatusMetric>;
+  metrics?: ReadonlyArray<TransferStatusMetric>;
   /** Input only. Unit based on which transfer status progress should be calculated. */
   progressUnit?:
     | "TRANSFER_STATUS_UNIT_UNSPECIFIED"
@@ -398,7 +398,7 @@ export interface DataSourceParameter {
   /** Is parameter required. */
   required?: boolean;
   /** Deprecated. This field has no effect. */
-  fields?: Array<DataSourceParameter>;
+  fields?: ReadonlyArray<DataSourceParameter>;
   /** Deprecated. This field has no effect. */
   repeated?: boolean;
   /** For integer and double values specifies maximum allowed value. */
@@ -416,7 +416,7 @@ export interface DataSourceParameter {
   /** URL to a help document to further explain the naming requirements. */
   validationHelpUrl?: string;
   /** All possible values for the parameter. */
-  allowedValues?: Array<string>;
+  allowedValues?: ReadonlyArray<string>;
   /** Regular expression which can be used for parameter validation. */
   validationRegex?: string;
   /** For integer and double values specifies minimum allowed value. */
@@ -496,7 +496,7 @@ export const ScheduleTransferRunsRequest =
 
 export interface ListTransferResourcesResponse {
   /** Output only. The transfer resources. */
-  transferResources?: Array<TransferResource>;
+  transferResources?: ReadonlyArray<TransferResource>;
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -609,11 +609,11 @@ export interface DataSource {
   /** User friendly data source description string. */
   description?: string;
   /** Api auth scopes for which refresh token needs to be obtained. These are scopes needed by a data source to prepare data and ingest them into BigQuery, e.g., https://www.googleapis.com/auth/bigquery */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
   /** Disables backfilling and manual run scheduling for the data source. */
   manualRunsDisabled?: boolean;
   /** Data source parameters. */
-  parameters?: Array<DataSourceParameter>;
+  parameters?: ReadonlyArray<DataSourceParameter>;
   /** Default data transfer schedule. Examples of valid schedules include: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. */
   defaultSchedule?: string;
   /** Data source id. */
@@ -652,7 +652,7 @@ export interface ListDataSourcesResponse {
   /** Output only. The next-pagination token. For multiple-page list results, this token can be used as the `ListDataSourcesRequest.page_token` to request the next page of list results. */
   nextPageToken?: string;
   /** List of supported data sources and their transfer settings. */
-  dataSources?: Array<DataSource>;
+  dataSources?: ReadonlyArray<DataSource>;
 }
 
 export const ListDataSourcesResponse =
@@ -688,7 +688,7 @@ export const StartManualTransferRunsRequest =
 
 export interface ScheduleTransferRunsResponse {
   /** The transfer runs that were scheduled. */
-  runs?: Array<TransferRun>;
+  runs?: ReadonlyArray<TransferRun>;
 }
 
 export const ScheduleTransferRunsResponse =
@@ -698,7 +698,7 @@ export const ScheduleTransferRunsResponse =
 
 export interface ListTransferRunsResponse {
   /** Output only. The stored pipeline transfer runs. */
-  transferRuns?: Array<TransferRun>;
+  transferRuns?: ReadonlyArray<TransferRun>;
   /** Output only. The next-pagination token. For multiple-page list results, this token can be used as the `ListTransferRunsRequest.page_token` to request the next page of list results. */
   nextPageToken?: string;
 }
@@ -713,7 +713,7 @@ export interface ListTransferLogsResponse {
   /** Output only. The next-pagination token. For multiple-page list results, this token can be used as the `GetTransferRunLogRequest.page_token` to request the next page of list results. */
   nextPageToken?: string;
   /** Output only. The stored pipeline transfer messages. */
-  transferMessages?: Array<TransferMessage>;
+  transferMessages?: ReadonlyArray<TransferMessage>;
 }
 
 export const ListTransferLogsResponse =
@@ -724,7 +724,7 @@ export const ListTransferLogsResponse =
 
 export interface StartManualTransferRunsResponse {
   /** The transfer runs that were created. */
-  runs?: Array<TransferRun>;
+  runs?: ReadonlyArray<TransferRun>;
 }
 
 export const StartManualTransferRunsResponse =
@@ -740,7 +740,7 @@ export const CheckValidCredsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface EnrollDataSourcesRequest {
   /** Data sources that are enrolled. It is required to provide at least one data source id. */
-  dataSourceIds?: Array<string>;
+  dataSourceIds?: ReadonlyArray<string>;
 }
 
 export const EnrollDataSourcesRequest =
@@ -750,7 +750,7 @@ export const EnrollDataSourcesRequest =
 
 export interface UnenrollDataSourcesRequest {
   /** Data sources that are unenrolled. It is required to provide at least one data source id. */
-  dataSourceIds?: Array<string>;
+  dataSourceIds?: ReadonlyArray<string>;
 }
 
 export const UnenrollDataSourcesRequest =
@@ -760,7 +760,7 @@ export const UnenrollDataSourcesRequest =
 
 export interface ListTransferConfigsResponse {
   /** Output only. The stored pipeline transfer configurations. */
-  transferConfigs?: Array<TransferConfig>;
+  transferConfigs?: ReadonlyArray<TransferConfig>;
   /** Output only. The next-pagination token. For multiple-page list results, this token can be used as the `ListTransferConfigsRequest.page_token` to request the next page of list results. */
   nextPageToken?: string;
 }
@@ -795,7 +795,7 @@ export const EnrollDataSourcesProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}:enrollDataSources",
+      path: "v1/{name}:enrollDataSources",
       hasBody: true,
     }),
     svc,
@@ -828,10 +828,7 @@ export const GetProjectsDataSourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/dataSources/{dataSourcesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDataSourcesRequest>;
 
@@ -867,7 +864,7 @@ export const CheckValidCredsProjectsDataSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/dataSources/{dataSourcesId}:checkValidCreds",
+      path: "v1/{name}:checkValidCreds",
       hasBody: true,
     }),
     svc,
@@ -907,7 +904,7 @@ export const ListProjectsDataSourcesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/dataSources" }),
+    T.Http({ method: "GET", path: "v1/{parent}/dataSources" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDataSourcesRequest>;
 
@@ -947,7 +944,7 @@ export const UnenrollDataSourcesProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:unenrollDataSources",
+      path: "v1/{name}:unenrollDataSources",
       hasBody: true,
     }),
     svc,
@@ -994,7 +991,7 @@ export const ListProjectsLocationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -1034,7 +1031,7 @@ export const EnrollDataSourcesProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:enrollDataSources",
+      path: "v1/{name}:enrollDataSources",
       hasBody: true,
     }),
     svc,
@@ -1067,10 +1064,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -1121,7 +1115,7 @@ export const CreateProjectsLocationsTransferConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs",
+      path: "v1/{parent}/transferConfigs",
       hasBody: true,
     }),
     svc,
@@ -1165,10 +1159,7 @@ export const ListProjectsLocationsTransferConfigsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/transferConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTransferConfigsRequest>;
 
@@ -1225,11 +1216,7 @@ export const PatchProjectsLocationsTransferConfigsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(TransferConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsTransferConfigsRequest>;
 
@@ -1260,10 +1247,7 @@ export const DeleteProjectsLocationsTransferConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTransferConfigsRequest>;
 
@@ -1294,10 +1278,7 @@ export const GetProjectsLocationsTransferConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTransferConfigsRequest>;
 
@@ -1333,7 +1314,7 @@ export const StartManualRunsProjectsLocationsTransferConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}:startManualRuns",
+      path: "v1/{parent}:startManualRuns",
       hasBody: true,
     }),
     svc,
@@ -1371,11 +1352,7 @@ export const ScheduleRunsProjectsLocationsTransferConfigsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ScheduleTransferRunsRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}:scheduleRuns",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}:scheduleRuns", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ScheduleRunsProjectsLocationsTransferConfigsRequest>;
 
@@ -1407,10 +1384,7 @@ export const GetProjectsLocationsTransferConfigsRunsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}/runs/{runsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTransferConfigsRunsRequest>;
 
@@ -1441,10 +1415,7 @@ export const DeleteProjectsLocationsTransferConfigsRunsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}/runs/{runsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTransferConfigsRunsRequest>;
 
@@ -1496,10 +1467,7 @@ export const ListProjectsLocationsTransferConfigsRunsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     runAttempt: Schema.optional(Schema.String).pipe(T.HttpQuery("runAttempt")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}/runs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/runs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTransferConfigsRunsRequest>;
 
@@ -1551,10 +1519,7 @@ export const ListProjectsLocationsTransferConfigsRunsTransferLogsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}/runs/{runsId}/transferLogs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/transferLogs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTransferConfigsRunsTransferLogsRequest>;
 
@@ -1591,10 +1556,7 @@ export const GetProjectsLocationsTransferConfigsTransferResourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}/transferResources/{transferResourcesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTransferConfigsTransferResourcesRequest>;
 
@@ -1636,10 +1598,7 @@ export const ListProjectsLocationsTransferConfigsTransferResourcesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}/transferResources",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/transferResources" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTransferConfigsTransferResourcesRequest>;
 
@@ -1676,10 +1635,7 @@ export const GetProjectsLocationsDataSourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataSources/{dataSourcesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataSourcesRequest>;
 
@@ -1715,7 +1671,7 @@ export const CheckValidCredsProjectsLocationsDataSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataSources/{dataSourcesId}:checkValidCreds",
+      path: "v1/{name}:checkValidCreds",
       hasBody: true,
     }),
     svc,
@@ -1755,10 +1711,7 @@ export const ListProjectsLocationsDataSourcesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataSources",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dataSources" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataSourcesRequest>;
 
@@ -1793,10 +1746,7 @@ export const DeleteProjectsTransferConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsTransferConfigsRequest>;
 
@@ -1827,10 +1777,7 @@ export const GetProjectsTransferConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsTransferConfigsRequest>;
 
@@ -1866,7 +1813,7 @@ export const StartManualRunsProjectsTransferConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}:startManualRuns",
+      path: "v1/{parent}:startManualRuns",
       hasBody: true,
     }),
     svc,
@@ -1921,11 +1868,7 @@ export const PatchProjectsTransferConfigsRequest =
     ),
     body: Schema.optional(TransferConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsTransferConfigsRequest>;
 
@@ -1967,7 +1910,7 @@ export const ListProjectsTransferConfigsRequest =
     ),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/transferConfigs" }),
+    T.Http({ method: "GET", path: "v1/{parent}/transferConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsTransferConfigsRequest>;
 
@@ -2022,7 +1965,7 @@ export const CreateProjectsTransferConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/transferConfigs",
+      path: "v1/{parent}/transferConfigs",
       hasBody: true,
     }),
     svc,
@@ -2058,11 +2001,7 @@ export const ScheduleRunsProjectsTransferConfigsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ScheduleTransferRunsRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}:scheduleRuns",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}:scheduleRuns", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ScheduleRunsProjectsTransferConfigsRequest>;
 
@@ -2115,10 +2054,7 @@ export const ListProjectsTransferConfigsRunsRequest =
       T.HttpQuery("states"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}/runs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/runs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsTransferConfigsRunsRequest>;
 
@@ -2153,10 +2089,7 @@ export const GetProjectsTransferConfigsRunsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}/runs/{runsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsTransferConfigsRunsRequest>;
 
@@ -2187,10 +2120,7 @@ export const DeleteProjectsTransferConfigsRunsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}/runs/{runsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsTransferConfigsRunsRequest>;
 
@@ -2237,10 +2167,7 @@ export const ListProjectsTransferConfigsRunsTransferLogsRequest =
       T.HttpQuery("messageTypes"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}/runs/{runsId}/transferLogs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/transferLogs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsTransferConfigsRunsTransferLogsRequest>;
 
@@ -2276,10 +2203,7 @@ export const GetProjectsTransferConfigsTransferResourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}/transferResources/{transferResourcesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsTransferConfigsTransferResourcesRequest>;
 
@@ -2320,10 +2244,7 @@ export const ListProjectsTransferConfigsTransferResourcesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}/transferResources",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/transferResources" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsTransferConfigsTransferResourcesRequest>;
 

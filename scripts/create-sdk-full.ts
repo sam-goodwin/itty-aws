@@ -11,6 +11,15 @@
  * Each stage runs as its own subprocess so the Claude Agent SDK session is
  * isolated. Output streams to the terminal live.
  *
+ * Notes on built-in behaviors that the scaffold wires automatically:
+ *   - Per-SDK `Retry` Context.Service tag installed into `makeAPI`, so callers
+ *     can install a blanket retry policy at the layer level.
+ *   - The scaffolded `matchError` uses `parseRetryAfterForStatus` when standard
+ *     `Retry-After` / `RateLimit` headers are present, so retryable errors can
+ *     carry a `retryAfter` hint; when headers are absent, `retryAfter` is omitted
+ *     and the default policy still retries with exponential backoff. For bespoke
+ *     hints per service, edit `matchError` in the SDK's `client.ts`.
+ *
  * Usage:
  *   bun scripts/create-sdk-full.ts <name> --specs <url-or-repo>... [flags]
  *
@@ -163,12 +172,7 @@ const createSdkFull = Command.make(
       // If the create-sdk stage is skipped but a note was supplied, write it
       // into the existing metadata file so downstream stages still see it.
       if (config.skipCreate && note) {
-        yield* initMetadata(
-          root,
-          config.name,
-          `packages/${config.name}`,
-          note,
-        );
+        yield* initMetadata(root, config.name, `packages/${config.name}`, note);
         yield* Console.log(
           `${DIM}ℹ Wrote userNote to .ai-workspace/${config.name}-metadata.json${RESET}`,
         );

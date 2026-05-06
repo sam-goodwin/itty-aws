@@ -48,7 +48,7 @@ export const AccountLimit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAccountLimitsResponse {
   /** The limits for the given account. */
-  accountLimits?: Array<AccountLimit>;
+  accountLimits?: ReadonlyArray<AccountLimit>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -83,7 +83,7 @@ export interface QuotaGroup {
   /** Output only. The maximum number of calls allowed per day for the group. */
   quotaLimit?: string;
   /** Output only. List of all methods group quota applies to. */
-  methodDetails?: Array<MethodDetails>;
+  methodDetails?: ReadonlyArray<MethodDetails>;
   /** Identifier. The resource name of the quota group. Format: accounts/{account}/quotas/{group} Note: There is no guarantee on the format of {group} */
   name?: string;
   /** Output only. The current quota usage, meaning the number of calls already made on a given day to the methods in the group. The daily quota limits reset at at 12:00 PM midday UTC. */
@@ -100,7 +100,7 @@ export const QuotaGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListQuotaGroupsResponse {
   /** The methods, current quota usage and limits per each group. The quota is shared between all methods in the group. The groups are sorted in descending order based on quota_usage. */
-  quotaGroups?: Array<QuotaGroup>;
+  quotaGroups?: ReadonlyArray<QuotaGroup>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -164,7 +164,7 @@ export interface ProductStatusChangeMessage {
   /** The product id. */
   resourceId?: string;
   /** A message to describe the change that happened to the product */
-  changes?: Array<ProductChange>;
+  changes?: ReadonlyArray<ProductChange>;
   /** The time at which the event was generated. If you want to order the notification messages you receive you should rely on this field not on the order of receiving the notifications. */
   eventTime?: string;
   /** The resource that changed, in this case it will always be `Product`. */
@@ -203,7 +203,7 @@ export const ListAccountsQuotasRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "quota/v1/accounts/{accountsId}/quotas" }),
+    T.Http({ method: "GET", path: "quota/v1/{parent}/quotas" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsQuotasRequest>;
 
@@ -238,10 +238,7 @@ export const GetAccountsLimitsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "quota/v1/accounts/{accountsId}/limits/{limitsId}",
-    }),
+    T.Http({ method: "GET", path: "quota/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsLimitsRequest>;
 
@@ -281,7 +278,7 @@ export const ListAccountsLimitsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "quota/v1/accounts/{accountsId}/limits" }),
+    T.Http({ method: "GET", path: "quota/v1/{parent}/limits" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsLimitsRequest>;
 

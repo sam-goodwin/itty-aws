@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface BatchChangeChromeOsDeviceStatusRequest {
   /** Required. List of the IDs of the ChromeOS devices to change. Maximum 50. */
-  deviceIds?: Array<string>;
+  deviceIds?: ReadonlyArray<string>;
   /** Required. The action to take on the ChromeOS device in order to change its status. */
   changeChromeOsDeviceStatusAction?:
     | "CHANGE_CHROME_OS_DEVICE_STATUS_ACTION_UNSPECIFIED"
@@ -121,7 +121,7 @@ export interface User {
   /** Custom fields of the user. The key is a `schema_name` and its values are `'field_name': 'field_value'`. */
   customSchemas?: Record<string, UserCustomProperties>;
   /** Output only. The list of the user's alias email addresses. */
-  aliases?: Array<string>;
+  aliases?: ReadonlyArray<string>;
   /** Output only. ETag of the resource. */
   etag?: string;
   /** Output only. Is 2-step verification enforced (Read-only) */
@@ -159,7 +159,7 @@ export interface User {
   /** The list of the user's relationships to other users. The maximum allowed data size for this field is 2KB. */
   relations?: unknown;
   /** Output only. The list of the user's non-editable alias email addresses. These are typically outside the account's primary domain or sub-domain. */
-  nonEditableAliases?: Array<string>;
+  nonEditableAliases?: ReadonlyArray<string>;
   /** Recovery email of the user. */
   recoveryEmail?: string;
   /** User's G Suite account creation time. (Read-only) */
@@ -362,7 +362,7 @@ export interface Token {
   /** The Client ID of the application the token is issued to. */
   clientId?: string;
   /** A list of authorization scopes the application is granted. */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
   /** The type of the API resource. This is always `admin#directory#token`. */
   kind?: string;
   /** The unique ID of the user that issued the token. */
@@ -494,7 +494,7 @@ export interface Admin_Schema {
   /** Kind of resource this is. */
   kind?: string;
   /** A list of fields in the schema. */
-  fields?: Array<SchemaFieldSpec>;
+  fields?: ReadonlyArray<SchemaFieldSpec>;
   /** The ETag of the resource. */
   etag?: string;
 }
@@ -514,7 +514,7 @@ export interface Schemas {
   /** Kind of resource this is. */
   kind?: string;
   /** A list of UserSchema objects. */
-  schemas?: Array<Admin_Schema>;
+  schemas?: ReadonlyArray<Admin_Schema>;
 }
 
 export const Schemas = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -527,7 +527,7 @@ export interface Tokens {
   /** The type of the API resource. This is always `admin#directory#tokenList`. */
   kind?: string;
   /** A list of Token resources. */
-  items?: Array<Token>;
+  items?: ReadonlyArray<Token>;
   /** ETag of the resource. */
   etag?: string;
 }
@@ -544,7 +544,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -663,7 +663,7 @@ export interface Printer {
   /** Id of the printer. (During printer creation leave empty) */
   id?: string;
   /** Output only. Auxiliary messages about issues with the printer configuration if any. */
-  auxiliaryMessages?: Array<AuxiliaryMessage>;
+  auxiliaryMessages?: ReadonlyArray<AuxiliaryMessage>;
   /** Identifier. The resource name of the Printer object, in the format customers/{customer-id}/printers/{printer-id} (During printer creation leave empty) */
   name?: string;
   /** Editable. Make and model of printer. e.g. Lexmark MS610de Value must be in format as seen in ListPrinterModels response. */
@@ -886,7 +886,7 @@ export interface Asps {
   /** The type of the API resource. This is always `admin#directory#aspList`. */
   kind?: string;
   /** A list of ASP resources. */
-  items?: Array<Asp>;
+  items?: ReadonlyArray<Asp>;
 }
 
 export const Asps = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -897,7 +897,7 @@ export const Asps = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Group {
   /** Read-only. The list of a group's alias email addresses. To add, update, or remove a group's aliases, use the `groups.aliases` methods. If edited in a group's POST or PUT request, the edit is ignored. */
-  aliases?: Array<string>;
+  aliases?: ReadonlyArray<string>;
   /** The group's email address. If your account has multiple domains, select the appropriate domain for the email address. The `email` must be unique. This property is required when creating a group. Group email addresses are subject to the same character usage rules as usernames, see the [help center](https://support.google.com/a/answer/9193374) for details. */
   email?: string;
   /** The number of users that are direct members of the group. If a group is a member (child) of this group (the parent), members of the child group are not counted in the `directMembersCount` property of the parent group. */
@@ -909,7 +909,7 @@ export interface Group {
   /** The group's display name. */
   name?: string;
   /** Read-only. The list of the group's non-editable alias email addresses that are outside of the account's primary domain or subdomains. These are functioning email addresses used by the group. This is a read-only property returned in the API's response for a group. If edited in a group's POST or PUT request, the edit is ignored. */
-  nonEditableAliases?: Array<string>;
+  nonEditableAliases?: ReadonlyArray<string>;
   /** An extended description to help users determine the purpose of a group. For example, you can include information about who should join the group, the types of messages to send to the group, links to FAQs about the group, or related groups. Maximum length is `4,096` characters. */
   description?: string;
   /** ETag of the resource. */
@@ -956,7 +956,7 @@ export const ChangeChromeOsDeviceStatusResult =
 
 export interface BatchChangeChromeOsDeviceStatusResponse {
   /** The results for each of the ChromeOS devices provided in the request. */
-  changeChromeOsDeviceStatusResults?: Array<ChangeChromeOsDeviceStatusResult>;
+  changeChromeOsDeviceStatusResults?: ReadonlyArray<ChangeChromeOsDeviceStatusResult>;
 }
 
 export const BatchChangeChromeOsDeviceStatusResponse =
@@ -1064,7 +1064,7 @@ export const DomainAlias = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DomainAliases {
   /** A list of domain alias objects. */
-  domainAliases?: Array<DomainAlias>;
+  domainAliases?: ReadonlyArray<DomainAlias>;
   /** Kind of resource this is. */
   kind?: string;
   /** ETag of the resource. */
@@ -1079,9 +1079,9 @@ export const DomainAliases = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchCreatePrintServersResponse {
   /** A list of successfully created print servers with their IDs populated. */
-  printServers?: Array<PrintServer>;
+  printServers?: ReadonlyArray<PrintServer>;
   /** A list of create failures. `PrintServer` IDs are not populated, as print servers were not created. */
-  failures?: Array<PrintServerFailureInfo>;
+  failures?: ReadonlyArray<PrintServerFailureInfo>;
 }
 
 export const BatchCreatePrintServersResponse =
@@ -1096,7 +1096,7 @@ export interface CalendarResources {
   /** Identifies this as a collection of CalendarResources. This is always `admin#directory#resources#calendars#calendarResourcesList`. */
   kind?: string;
   /** The CalendarResources in this page of results. */
-  items?: Array<CalendarResource>;
+  items?: ReadonlyArray<CalendarResource>;
   /** ETag of the resource. */
   etag?: string;
 }
@@ -1187,7 +1187,7 @@ export const OrgUnit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface Aliases {
   etag?: string;
   kind?: string;
-  aliases?: Array<unknown>;
+  aliases?: ReadonlyArray<unknown>;
 }
 
 export const Aliases = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1198,7 +1198,7 @@ export const Aliases = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Features {
   /** The Features in this page of results. */
-  features?: Array<Feature>;
+  features?: ReadonlyArray<Feature>;
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
   nextPageToken?: string;
   /** Kind of resource this is. */
@@ -1242,7 +1242,7 @@ export interface ListPrintServersResponse {
   /** A token that can be sent as `page_token` in a request to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** List of print servers. */
-  printServers?: Array<PrintServer>;
+  printServers?: ReadonlyArray<PrintServer>;
 }
 
 export const ListPrintServersResponse =
@@ -1255,7 +1255,7 @@ export interface BuildingAddress {
   /** Optional. BCP-47 language code of the contents of this address (if known). */
   languageCode?: string;
   /** Unstructured address lines describing the lower levels of an address. */
-  addressLines?: Array<string>;
+  addressLines?: ReadonlyArray<string>;
   /** Optional. Postal code of the address. */
   postalCode?: string;
   /** Optional. Sublocality of the address. */
@@ -1306,7 +1306,7 @@ export interface Building {
   /** The building name as seen by users in Calendar. Must be unique for the customer. For example, "NYC-CHEL". The maximum length is 100 characters. */
   buildingName?: string;
   /** The display names for all floors in this building. The floors are expected to be sorted in ascending order, from lowest floor to highest floor. For example, ["B2", "B1", "L", "1", "2", "2M", "3", "PH"] Must contain at least one entry. */
-  floorNames?: Array<string>;
+  floorNames?: ReadonlyArray<string>;
 }
 
 export const Building = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1359,7 +1359,7 @@ export interface RoleAssignments {
   /** The type of the API resource. This is always `admin#directory#roleAssignments`. */
   kind?: string;
   /** A list of RoleAssignment resources. */
-  items?: Array<RoleAssignment>;
+  items?: ReadonlyArray<RoleAssignment>;
   nextPageToken?: string;
 }
 
@@ -1372,9 +1372,9 @@ export const RoleAssignments = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchDeletePrintersResponse {
   /** A list of update failures. */
-  failedPrinters?: Array<FailureInfo>;
+  failedPrinters?: ReadonlyArray<FailureInfo>;
   /** A list of Printer.id that were successfully deleted. */
-  printerIds?: Array<string>;
+  printerIds?: ReadonlyArray<string>;
 }
 
 export const BatchDeletePrintersResponse =
@@ -1418,7 +1418,7 @@ export const PrinterModel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListPrinterModelsResponse {
   /** Printer models that are currently allowed to be configured for ChromeOs. Some printers may be added or removed over time. */
-  printerModels?: Array<PrinterModel>;
+  printerModels?: ReadonlyArray<PrinterModel>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1442,7 +1442,7 @@ export interface VerificationCodes {
   /** The type of the resource. This is always `admin#directory#verificationCodesList`. */
   kind?: string;
   /** A list of verification code resources. */
-  items?: Array<VerificationCode>;
+  items?: ReadonlyArray<VerificationCode>;
   /** ETag of the resource. */
   etag?: string;
 }
@@ -1484,7 +1484,7 @@ export const OsUpdateStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchCreatePrintServersRequest {
   /** Required. A list of `PrintServer` resources to be created (max `50` per batch). */
-  requests?: Array<CreatePrintServerRequest>;
+  requests?: ReadonlyArray<CreatePrintServerRequest>;
 }
 
 export const BatchCreatePrintServersRequest =
@@ -1507,7 +1507,7 @@ export const DirectoryUsersCreateGuestRequest =
 
 export interface BatchDeletePrintersRequest {
   /** A list of Printer.id that should be deleted. Max 100 at a time. */
-  printerIds?: Array<string>;
+  printerIds?: ReadonlyArray<string>;
 }
 
 export const BatchDeletePrintersRequest =
@@ -1566,7 +1566,7 @@ export const DirectoryChromeosdevicesIssueCommandResponse =
 
 export interface Domains {
   /** A list of domain alias objects. (Read-only) */
-  domainAliases?: Array<DomainAlias>;
+  domainAliases?: ReadonlyArray<DomainAlias>;
   /** Indicates the verification state of a domain. (Read-only). */
   verified?: boolean;
   /** Indicates if the domain is a primary domain (Read-only). */
@@ -1615,7 +1615,7 @@ export const BluetoothAdapterInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchDeletePrintServersRequest {
   /** A list of print server IDs that should be deleted (max `100` per batch). */
-  printServerIds?: Array<string>;
+  printServerIds?: ReadonlyArray<string>;
 }
 
 export const BatchDeletePrintServersRequest =
@@ -1682,7 +1682,7 @@ export interface Users {
   /** ETag of the resource. */
   etag?: string;
   /** A list of user objects. */
-  users?: Array<User>;
+  users?: ReadonlyArray<User>;
 }
 
 export const Users = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1791,7 +1791,7 @@ export interface Privilege {
   /** The obfuscated ID of the service this privilege is for. This value is returned with [`Privileges.list()`](https://developers.google.com/workspace/admin/directory/v1/reference/privileges/list). */
   serviceId?: string;
   /** A list of child privileges. Privileges for a service form a tree. Each privilege can have a list of child privileges; this list is empty for a leaf privilege. */
-  childPrivileges?: Array<Privilege>;
+  childPrivileges?: ReadonlyArray<Privilege>;
 }
 
 export const Privilege: Schema.Schema<Privilege> =
@@ -1811,7 +1811,7 @@ export interface Privileges {
   /** The type of the API resource. This is always `admin#directory#privileges`. */
   kind?: string;
   /** A list of Privilege resources. */
-  items?: Array<Privilege>;
+  items?: ReadonlyArray<Privilege>;
   /** ETag of the resource. */
   etag?: string;
 }
@@ -1824,7 +1824,7 @@ export const Privileges = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ChromeOsMoveDevicesToOu {
   /** Chrome OS devices to be moved to OU */
-  deviceIds?: Array<string>;
+  deviceIds?: ReadonlyArray<string>;
 }
 
 export const ChromeOsMoveDevicesToOu =
@@ -1864,7 +1864,7 @@ export const Member = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Buildings {
   /** The Buildings in this page of results. */
-  buildings?: Array<Building>;
+  buildings?: ReadonlyArray<Building>;
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
   nextPageToken?: string;
   /** Kind of resource this is. */
@@ -1884,7 +1884,7 @@ export interface Members {
   /** Token used to access next page of this result. */
   nextPageToken?: string;
   /** A list of member objects. */
-  members?: Array<Member>;
+  members?: ReadonlyArray<Member>;
   /** ETag of the resource. */
   etag?: string;
   /** Kind of resource this is. */
@@ -1912,7 +1912,10 @@ export interface Role {
   /** The type of the API resource. This is always `admin#directory#role`. */
   kind?: string;
   /** The set of privileges that are granted to this role. */
-  rolePrivileges?: Array<{ serviceId?: string; privilegeName?: string }>;
+  rolePrivileges?: ReadonlyArray<{
+    serviceId?: string;
+    privilegeName?: string;
+  }>;
   /** Returns `true` if the role is a super admin role. */
   isSuperAdminRole?: boolean;
 }
@@ -1939,7 +1942,7 @@ export interface Roles {
   /** The type of the API resource. This is always `admin#directory#roles`. */
   kind?: string;
   /** A list of Role resources. */
-  items?: Array<Role>;
+  items?: ReadonlyArray<Role>;
   /** ETag of the resource. */
   etag?: string;
   nextPageToken?: string;
@@ -1967,7 +1970,7 @@ export interface OrgUnits {
   /** ETag of the resource. */
   etag?: string;
   /** A list of organizational unit objects. */
-  organizationUnits?: Array<OrgUnit>;
+  organizationUnits?: ReadonlyArray<OrgUnit>;
 }
 
 export const OrgUnits = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2018,7 +2021,7 @@ export interface MobileDevice {
   /** The device's MEID number. */
   meid?: string;
   /** The list of the owner's email addresses. If your application needs the current list of user emails, use the [get](https://developers.google.com/workspace/admin/directory/v1/reference/mobiledevices/get.html) method. For additional information, see the [retrieve a user](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#get_user) method. */
-  email?: Array<string>;
+  email?: ReadonlyArray<string>;
   /** DMAgentPermission (Read-only) */
   privilege?: string;
   /** Work profile supported on device (Read-only) */
@@ -2026,13 +2029,13 @@ export interface MobileDevice {
   /** The default locale used on the device. */
   defaultLanguage?: string;
   /** The list of the owner's user names. If your application needs the current list of device owner names, use the [get](https://developers.google.com/workspace/admin/directory/v1/reference/mobiledevices/get.html) method. For more information about retrieving mobile device user information, see the [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#get_user). */
-  name?: Array<string>;
+  name?: ReadonlyArray<string>;
   /** Boolean indicating if this account is on owner/primary profile or not. */
   managedAccountIsOnOwnerProfile?: boolean;
   /** The list of applications installed on an Android mobile device. It is not applicable to Google Sync and iOS devices. The list includes any Android applications that access Google Workspace data. When updating an applications list, it is important to note that updates replace the existing list. If the Android device has two existing applications and the API updates the list with five applications, the is now the updated list of five applications. */
-  applications?: Array<{
+  applications?: ReadonlyArray<{
     versionName?: string;
-    permission?: Array<string>;
+    permission?: ReadonlyArray<string>;
     versionCode?: number;
     displayName?: string;
     packageName?: string;
@@ -2058,7 +2061,7 @@ export interface MobileDevice {
   /** Mobile Device manufacturer (Read-only) */
   manufacturer?: string;
   /** The list of accounts added on device (Read-only) */
-  otherAccountsInfo?: Array<string>;
+  otherAccountsInfo?: ReadonlyArray<string>;
   /** Mobile Device release version version (Read-only) */
   releaseVersion?: string;
   /** Gives information about the device such as `os` version. This property can be [updated](https://developers.google.com/workspace/admin/directory/v1/reference/mobiledevices/update.html). For more information, see the [Developer's Guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-mobile-devices#update_mobile_device). */
@@ -2152,7 +2155,7 @@ export interface MobileDevices {
   /** ETag of the resource. */
   etag?: string;
   /** A list of Mobile Device objects. */
-  mobiledevices?: Array<MobileDevice>;
+  mobiledevices?: ReadonlyArray<MobileDevice>;
   /** Token used to access next page of this result. */
   nextPageToken?: string;
 }
@@ -2183,7 +2186,7 @@ export interface Groups {
   /** Kind of resource this is. */
   kind?: string;
   /** A list of group objects. */
-  groups?: Array<Group>;
+  groups?: ReadonlyArray<Group>;
   /** ETag of the resource. */
   etag?: string;
   /** Token used to access next page of this result. */
@@ -2207,12 +2210,15 @@ export interface ChromeOsDevice {
   /** Output only. How much disk space the device has available and is currently using. */
   diskSpaceUsage?: ByteUsage;
   /** Information regarding CPU specs in the device. */
-  cpuInfo?: Array<{
+  cpuInfo?: ReadonlyArray<{
     model?: string;
-    logicalCpus?: Array<{
+    logicalCpus?: ReadonlyArray<{
       maxScalingFrequencyKhz?: number;
       currentScalingFrequencyKhz?: number;
-      cStates?: Array<{ displayName?: string; sessionDuration?: string }>;
+      cStates?: ReadonlyArray<{
+        displayName?: string;
+        sessionDuration?: string;
+      }>;
       idleDuration?: string;
     }>;
     maxClockSpeedKhz?: number;
@@ -2248,9 +2254,9 @@ export interface ChromeOsDevice {
   /** The boot mode for the device. The possible values are: * `Verified`: The device is running a valid version of the Chrome OS. * `Dev`: The devices's developer hardware switch is enabled. When booted, the device has a command line shell. For an example of a developer switch, see the [Chromebook developer information](https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices/samsung-series-5-chromebook#TOC-Developer-switch). */
   bootMode?: string;
   /** Output only. Fan information for the device. */
-  fanInfo?: Array<FanInfo>;
+  fanInfo?: ReadonlyArray<FanInfo>;
   /** A list of device files to download (Read-only) */
-  deviceFiles?: Array<{
+  deviceFiles?: ReadonlyArray<{
     downloadUrl?: string;
     name?: string;
     createTime?: string;
@@ -2267,14 +2273,17 @@ export interface ChromeOsDevice {
     | "chromeOs"
     | (string & {});
   /** A list of active time ranges (Read-only). */
-  activeTimeRanges?: Array<{ activeTime?: number; date?: string }>;
+  activeTimeRanges?: ReadonlyArray<{ activeTime?: number; date?: string }>;
   /** Reports of amounts of available RAM memory (Read-only) */
-  systemRamFreeReports?: Array<{
-    systemRamFreeInfo?: Array<string>;
+  systemRamFreeReports?: ReadonlyArray<{
+    systemRamFreeInfo?: ReadonlyArray<string>;
     reportTime?: string;
   }>;
   /** Contains last known network (Read-only) */
-  lastKnownNetwork?: Array<{ ipAddress?: string; wanIpAddress?: string }>;
+  lastKnownNetwork?: ReadonlyArray<{
+    ipAddress?: string;
+    wanIpAddress?: string;
+  }>;
   /** The user of the device as noted by the administrator. Maximum length is 100 characters. Empty values are allowed. */
   annotatedUser?: string;
   /** The device's wireless MAC address. If the device does not have this information, it is not included in the response. */
@@ -2295,15 +2304,15 @@ export interface ChromeOsDevice {
   /** The Chrome device's firmware version. */
   firmwareVersion?: string;
   /** Reports of disk space and other info about mounted/connected volumes. */
-  diskVolumeReports?: Array<{
-    volumeInfo?: Array<{
+  diskVolumeReports?: ReadonlyArray<{
+    volumeInfo?: ReadonlyArray<{
       volumeId?: string;
       storageTotal?: string;
       storageFree?: string;
     }>;
   }>;
   /** Output only. Contains backlight information for the device. */
-  backlightInfo?: Array<BacklightInfo>;
+  backlightInfo?: ReadonlyArray<BacklightInfo>;
   /** Trusted Platform Module (TPM) (Read-only) */
   tpmVersionInfo?: {
     specLevel?: string;
@@ -2326,13 +2335,13 @@ export interface ChromeOsDevice {
   /** (Read-only) The date the device was manufactured in yyyy-mm-dd format. */
   manufactureDate?: string;
   /** Output only. Information about Bluetooth adapters of the device. */
-  bluetoothAdapterInfo?: Array<BluetoothAdapterInfo>;
+  bluetoothAdapterInfo?: ReadonlyArray<BluetoothAdapterInfo>;
   /** Notes about this device added by the administrator. This property can be [searched](https://support.google.com/chrome/a/answer/1698333) with the [list](https://developers.google.com/workspace/admin/directory/v1/reference/chromeosdevices/list) method's `query` parameter. Maximum length is 500 characters. Empty values are allowed. */
   notes?: string;
   /** Date and time the device was last synchronized with the policy settings in the G Suite administrator control panel (Read-only) */
   lastSync?: string;
   /** A list of screenshot files to download. Type is always "SCREENSHOT_FILE". (Read-only) */
-  screenshotFiles?: Array<{
+  screenshotFiles?: ReadonlyArray<{
     downloadUrl?: string;
     type?: string;
     name?: string;
@@ -2345,10 +2354,13 @@ export interface ChromeOsDevice {
   /** Output only. Whether or not the device requires the extended support opt in. */
   extendedSupportEligible?: boolean;
   /** Reports of CPU utilization and temperature (Read-only) */
-  cpuStatusReports?: Array<{
+  cpuStatusReports?: ReadonlyArray<{
     reportTime?: string;
-    cpuUtilizationPercentageInfo?: Array<number>;
-    cpuTemperatureInfo?: Array<{ temperature?: number; label?: string }>;
+    cpuUtilizationPercentageInfo?: ReadonlyArray<number>;
+    cpuTemperatureInfo?: ReadonlyArray<{
+      temperature?: number;
+      label?: string;
+    }>;
   }>;
   /** (Read-only) The timestamp after which the device will stop receiving Chrome updates or support. Please use "autoUpdateThrough" instead. */
   autoUpdateExpiration?: string;
@@ -2369,7 +2381,7 @@ export interface ChromeOsDevice {
   /** The Chrome device's platform version. */
   platformVersion?: string;
   /** A list of recent device users, in descending order, by last login time. */
-  recentUsers?: Array<{ email?: string; type?: string }>;
+  recentUsers?: ReadonlyArray<{ email?: string; type?: string }>;
   /** Date and time for the first time the device was enrolled. */
   firstEnrollmentTime?: string;
   /** The unique ID of the Chrome device. */
@@ -2562,7 +2574,7 @@ export const CreatePrinterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListPrintersResponse {
   /** List of printers. If `org_unit_id` was given in the request, then only printers visible for this OU will be returned. If `org_unit_id` was not given in the request, then all printers will be returned. */
-  printers?: Array<Printer>;
+  printers?: ReadonlyArray<Printer>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2607,7 +2619,7 @@ export const Customer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchCreatePrintersRequest {
   /** A list of Printers to be created. Max 50 at a time. */
-  requests?: Array<CreatePrinterRequest>;
+  requests?: ReadonlyArray<CreatePrinterRequest>;
 }
 
 export const BatchCreatePrintersRequest =
@@ -2617,9 +2629,9 @@ export const BatchCreatePrintersRequest =
 
 export interface BatchCreatePrintersResponse {
   /** A list of successfully created printers with their IDs populated. */
-  printers?: Array<Printer>;
+  printers?: ReadonlyArray<Printer>;
   /** A list of create failures. Printer IDs are not populated, as printer were not created. */
-  failures?: Array<FailureInfo>;
+  failures?: ReadonlyArray<FailureInfo>;
 }
 
 export const BatchCreatePrintersResponse =
@@ -2698,7 +2710,7 @@ export interface ChromeOsDevices {
   /** Kind of resource this is. */
   kind?: string;
   /** A list of Chrome OS Device objects. */
-  chromeosdevices?: Array<ChromeOsDevice>;
+  chromeosdevices?: ReadonlyArray<ChromeOsDevice>;
   /** ETag of the resource. */
   etag?: string;
   /** Token used to access the next page of this result. To access the next page, use this token's value in the `pageToken` query string of this request. */
@@ -2744,9 +2756,9 @@ export const UserPhoto = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchDeletePrintServersResponse {
   /** A list of print server IDs that were successfully deleted. */
-  printServerIds?: Array<string>;
+  printServerIds?: ReadonlyArray<string>;
   /** A list of update failures. */
-  failedPrintServers?: Array<PrintServerFailureInfo>;
+  failedPrintServers?: ReadonlyArray<PrintServerFailureInfo>;
 }
 
 export const BatchDeletePrintServersResponse =
@@ -2761,7 +2773,7 @@ export interface Domains2 {
   /** ETag of the resource. */
   etag?: string;
   /** A list of domain objects. */
-  domains?: Array<Domains>;
+  domains?: ReadonlyArray<Domains>;
 }
 
 export const Domains2 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -6815,7 +6827,7 @@ export const BatchCreatePrintServersCustomersChromePrintServersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "admin/directory/v1/customers/{customersId}/chrome/printServers:batchCreatePrintServers",
+      path: "admin/directory/v1/{parent}/chrome/printServers:batchCreatePrintServers",
       hasBody: true,
     }),
     svc,
@@ -6867,7 +6879,7 @@ export const ListCustomersChromePrintServersRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "admin/directory/v1/customers/{customersId}/chrome/printServers",
+      path: "admin/directory/v1/{parent}/chrome/printServers",
     }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersChromePrintServersRequest>;
@@ -6903,10 +6915,7 @@ export const GetCustomersChromePrintServersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "admin/directory/v1/customers/{customersId}/chrome/printServers/{printServersId}",
-    }),
+    T.Http({ method: "GET", path: "admin/directory/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersChromePrintServersRequest>;
 
@@ -6945,7 +6954,7 @@ export const PatchCustomersChromePrintServersRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "admin/directory/v1/customers/{customersId}/chrome/printServers/{printServersId}",
+      path: "admin/directory/v1/{name}",
       hasBody: true,
     }),
     svc,
@@ -6983,7 +6992,7 @@ export const CreateCustomersChromePrintServersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "admin/directory/v1/customers/{customersId}/chrome/printServers",
+      path: "admin/directory/v1/{parent}/chrome/printServers",
       hasBody: true,
     }),
     svc,
@@ -7021,7 +7030,7 @@ export const BatchDeletePrintServersCustomersChromePrintServersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "admin/directory/v1/customers/{customersId}/chrome/printServers:batchDeletePrintServers",
+      path: "admin/directory/v1/{parent}/chrome/printServers:batchDeletePrintServers",
       hasBody: true,
     }),
     svc,
@@ -7056,10 +7065,7 @@ export const DeleteCustomersChromePrintServersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "admin/directory/v1/customers/{customersId}/chrome/printServers/{printServersId}",
-    }),
+    T.Http({ method: "DELETE", path: "admin/directory/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteCustomersChromePrintServersRequest>;
 
@@ -7090,10 +7096,7 @@ export const DeleteCustomersChromePrintersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "admin/directory/v1/customers/{customersId}/chrome/printers/{printersId}",
-    }),
+    T.Http({ method: "DELETE", path: "admin/directory/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteCustomersChromePrintersRequest>;
 
@@ -7129,7 +7132,7 @@ export const CreateCustomersChromePrintersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "admin/directory/v1/customers/{customersId}/chrome/printers",
+      path: "admin/directory/v1/{parent}/chrome/printers",
       hasBody: true,
     }),
     svc,
@@ -7173,7 +7176,7 @@ export const ListPrinterModelsCustomersChromePrintersRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "admin/directory/v1/customers/{customersId}/chrome/printers:listPrinterModels",
+      path: "admin/directory/v1/{parent}/chrome/printers:listPrinterModels",
     }),
     svc,
   ) as unknown as Schema.Schema<ListPrinterModelsCustomersChromePrintersRequest>;
@@ -7221,7 +7224,7 @@ export const PatchCustomersChromePrintersRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "admin/directory/v1/customers/{customersId}/chrome/printers/{printersId}",
+      path: "admin/directory/v1/{name}",
       hasBody: true,
     }),
     svc,
@@ -7259,7 +7262,7 @@ export const BatchDeletePrintersCustomersChromePrintersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "admin/directory/v1/customers/{customersId}/chrome/printers:batchDeletePrinters",
+      path: "admin/directory/v1/{parent}/chrome/printers:batchDeletePrinters",
       hasBody: true,
     }),
     svc,
@@ -7293,10 +7296,7 @@ export const GetCustomersChromePrintersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "admin/directory/v1/customers/{customersId}/chrome/printers/{printersId}",
-    }),
+    T.Http({ method: "GET", path: "admin/directory/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersChromePrintersRequest>;
 
@@ -7332,7 +7332,7 @@ export const BatchCreatePrintersCustomersChromePrintersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "admin/directory/v1/customers/{customersId}/chrome/printers:batchCreatePrinters",
+      path: "admin/directory/v1/{parent}/chrome/printers:batchCreatePrinters",
       hasBody: true,
     }),
     svc,
@@ -7383,7 +7383,7 @@ export const ListCustomersChromePrintersRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "admin/directory/v1/customers/{customersId}/chrome/printers",
+      path: "admin/directory/v1/{parent}/chrome/printers",
     }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersChromePrintersRequest>;
@@ -7423,7 +7423,7 @@ export const DeleteOrgunitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "DELETE",
-    path: "admin/directory/v1/customer/{customerId}/orgunits/{orgunitsId}",
+    path: "admin/directory/v1/customer/{customerId}/orgunits/{orgUnitPath}",
   }),
   svc,
 ) as unknown as Schema.Schema<DeleteOrgunitsRequest>;
@@ -7464,7 +7464,7 @@ export const PatchOrgunitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PATCH",
-    path: "admin/directory/v1/customer/{customerId}/orgunits/{orgunitsId}",
+    path: "admin/directory/v1/customer/{customerId}/orgunits/{orgUnitPath}",
     hasBody: true,
   }),
   svc,
@@ -7500,7 +7500,7 @@ export const GetOrgunitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "GET",
-    path: "admin/directory/v1/customer/{customerId}/orgunits/{orgunitsId}",
+    path: "admin/directory/v1/customer/{customerId}/orgunits/{orgUnitPath}",
   }),
   svc,
 ) as unknown as Schema.Schema<GetOrgunitsRequest>;
@@ -7574,7 +7574,7 @@ export const UpdateOrgunitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "PUT",
-    path: "admin/directory/v1/customer/{customerId}/orgunits/{orgunitsId}",
+    path: "admin/directory/v1/customer/{customerId}/orgunits/{orgUnitPath}",
     hasBody: true,
   }),
   svc,

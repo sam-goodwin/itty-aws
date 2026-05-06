@@ -208,10 +208,14 @@ export const getRateLimit: API.OperationMethod<
 export interface ListRateLimitsRequest {
   /** Path param: Defines an identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListRateLimitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
 }).pipe(
   T.Http({ method: "GET", path: "/zones/{zone_id}/rate_limits" }),
 ) as unknown as Schema.Schema<ListRateLimitsRequest>;

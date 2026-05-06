@@ -76,6 +76,8 @@ export const getAddress: API.OperationMethod<
 export interface ListAddressesRequest {
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Sorts results in an ascending or descending order. */
   direction?: "asc" | "desc";
   /** Query param: Filter by verified destination addresses. */
@@ -84,6 +86,8 @@ export interface ListAddressesRequest {
 
 export const ListAddressesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
     T.HttpQuery("direction"),
   ),
@@ -1423,12 +1427,16 @@ export const getRule: API.OperationMethod<
 export interface ListRulesRequest {
   /** Path param: Identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Filter by enabled routing rules. */
   enabled?: true | false;
 }
 
 export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   enabled: Schema.optional(Schema.Literals([true, false])).pipe(
     T.HttpQuery("enabled"),
   ),

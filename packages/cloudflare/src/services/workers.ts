@@ -363,11 +363,15 @@ export const getBetaWorker: API.OperationMethod<
 export interface ListBetaWorkersRequest {
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListBetaWorkersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   },
 ).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/workers/workers" }),
@@ -1161,21 +1165,40 @@ export const GetBetaWorkerVersionResponse =
         Schema.Array(
           Schema.Union([
             Schema.Struct({
+              algorithm: Schema.Unknown,
+              format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
               name: Schema.String,
-              type: Schema.Literal("ai"),
+              type: Schema.Literal("secret_key"),
+              usages: Schema.Array(
+                Schema.Literals([
+                  "encrypt",
+                  "decrypt",
+                  "sign",
+                  "verify",
+                  "deriveKey",
+                  "deriveBits",
+                  "wrapKey",
+                  "unwrapKey",
+                ]),
+              ),
             }),
+            Schema.Struct({
+              name: Schema.String,
+              secretName: Schema.String,
+              storeId: Schema.String,
+              type: Schema.Literal("secrets_store_secret"),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                secretName: "secret_name",
+                storeId: "store_id",
+                type: "type",
+              }),
+            ),
             Schema.Struct({
               dataset: Schema.String,
               name: Schema.String,
               type: Schema.Literal("analytics_engine"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("assets"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("browser"),
             }),
             Schema.Struct({
               id: Schema.String,
@@ -1216,55 +1239,9 @@ export const GetBetaWorkerVersionResponse =
               ),
             }),
             Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("durable_object_namespace"),
-              className: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              environment: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              namespaceId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              scriptName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                type: "type",
-                className: "class_name",
-                environment: "environment",
-                namespaceId: "namespace_id",
-                scriptName: "script_name",
-              }),
-            ),
-            Schema.Struct({
               id: Schema.String,
               name: Schema.String,
               type: Schema.Literal("hyperdrive"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("inherit"),
-              oldName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              versionId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                type: "type",
-                oldName: "old_name",
-                versionId: "version_id",
-              }),
-            ),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("images"),
             }),
             Schema.Struct({
               json: Schema.String,
@@ -1331,31 +1308,6 @@ export const GetBetaWorkerVersionResponse =
             ),
             Schema.Struct({
               name: Schema.String,
-              type: Schema.Literal("secret_text"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("send_email"),
-              allowedDestinationAddresses: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              allowedSenderAddresses: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              destinationAddress: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                type: "type",
-                allowedDestinationAddresses: "allowed_destination_addresses",
-                allowedSenderAddresses: "allowed_sender_addresses",
-                destinationAddress: "destination_address",
-              }),
-            ),
-            Schema.Struct({
-              name: Schema.String,
               service: Schema.String,
               type: Schema.Literal("service"),
               environment: Schema.optional(
@@ -1378,41 +1330,6 @@ export const GetBetaWorkerVersionResponse =
                 type: "type",
               }),
             ),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("version_metadata"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              secretName: Schema.String,
-              storeId: Schema.String,
-              type: Schema.Literal("secrets_store_secret"),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                secretName: "secret_name",
-                storeId: "store_id",
-                type: "type",
-              }),
-            ),
-            Schema.Struct({
-              algorithm: Schema.Unknown,
-              format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
-              name: Schema.String,
-              type: Schema.Literal("secret_key"),
-              usages: Schema.Array(
-                Schema.Literals([
-                  "encrypt",
-                  "decrypt",
-                  "sign",
-                  "verify",
-                  "deriveKey",
-                  "deriveBits",
-                  "wrapKey",
-                  "unwrapKey",
-                ]),
-              ),
-            }),
             Schema.Struct({
               name: Schema.String,
               type: Schema.Literal("workflow"),
@@ -1439,12 +1356,99 @@ export const GetBetaWorkerVersionResponse =
             }),
             Schema.Struct({
               name: Schema.String,
-              type: Schema.Literal("worker_loader"),
+              type: Schema.Literal("artifacts"),
+              namespace: Schema.String,
             }),
             Schema.Struct({
               name: Schema.String,
-              type: Schema.Literal("artifacts"),
-              namespace: Schema.String,
+              type: Schema.Literal("ai"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("assets"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("browser"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("durable_object_namespace"),
+              className: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              environment: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              namespaceId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              scriptName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                type: "type",
+                className: "class_name",
+                environment: "environment",
+                namespaceId: "namespace_id",
+                scriptName: "script_name",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("inherit"),
+              oldName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              versionId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                type: "type",
+                oldName: "old_name",
+                versionId: "version_id",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("images"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("secret_text"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("send_email"),
+              allowedDestinationAddresses: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              allowedSenderAddresses: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              destinationAddress: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                type: "type",
+                allowedDestinationAddresses: "allowed_destination_addresses",
+                allowedSenderAddresses: "allowed_sender_addresses",
+                destinationAddress: "destination_address",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("version_metadata"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("worker_loader"),
             }),
           ]),
         ),
@@ -1630,12 +1634,16 @@ export interface ListBetaWorkerVersionsRequest {
   workerId: string;
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListBetaWorkerVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     workerId: Schema.String.pipe(T.HttpPath("workerId")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1898,21 +1906,40 @@ export const ListBetaWorkerVersionsResponse =
             Schema.Array(
               Schema.Union([
                 Schema.Struct({
+                  algorithm: Schema.Unknown,
+                  format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
                   name: Schema.String,
-                  type: Schema.Literal("ai"),
+                  type: Schema.Literal("secret_key"),
+                  usages: Schema.Array(
+                    Schema.Literals([
+                      "encrypt",
+                      "decrypt",
+                      "sign",
+                      "verify",
+                      "deriveKey",
+                      "deriveBits",
+                      "wrapKey",
+                      "unwrapKey",
+                    ]),
+                  ),
                 }),
+                Schema.Struct({
+                  name: Schema.String,
+                  secretName: Schema.String,
+                  storeId: Schema.String,
+                  type: Schema.Literal("secrets_store_secret"),
+                }).pipe(
+                  Schema.encodeKeys({
+                    name: "name",
+                    secretName: "secret_name",
+                    storeId: "store_id",
+                    type: "type",
+                  }),
+                ),
                 Schema.Struct({
                   dataset: Schema.String,
                   name: Schema.String,
                   type: Schema.Literal("analytics_engine"),
-                }),
-                Schema.Struct({
-                  name: Schema.String,
-                  type: Schema.Literal("assets"),
-                }),
-                Schema.Struct({
-                  name: Schema.String,
-                  type: Schema.Literal("browser"),
                 }),
                 Schema.Struct({
                   id: Schema.String,
@@ -1956,55 +1983,9 @@ export const ListBetaWorkerVersionsResponse =
                   ),
                 }),
                 Schema.Struct({
-                  name: Schema.String,
-                  type: Schema.Literal("durable_object_namespace"),
-                  className: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  environment: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  namespaceId: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  scriptName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    name: "name",
-                    type: "type",
-                    className: "class_name",
-                    environment: "environment",
-                    namespaceId: "namespace_id",
-                    scriptName: "script_name",
-                  }),
-                ),
-                Schema.Struct({
                   id: Schema.String,
                   name: Schema.String,
                   type: Schema.Literal("hyperdrive"),
-                }),
-                Schema.Struct({
-                  name: Schema.String,
-                  type: Schema.Literal("inherit"),
-                  oldName: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  versionId: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    name: "name",
-                    type: "type",
-                    oldName: "old_name",
-                    versionId: "version_id",
-                  }),
-                ),
-                Schema.Struct({
-                  name: Schema.String,
-                  type: Schema.Literal("images"),
                 }),
                 Schema.Struct({
                   json: Schema.String,
@@ -2074,32 +2055,6 @@ export const ListBetaWorkerVersionsResponse =
                 ),
                 Schema.Struct({
                   name: Schema.String,
-                  type: Schema.Literal("secret_text"),
-                }),
-                Schema.Struct({
-                  name: Schema.String,
-                  type: Schema.Literal("send_email"),
-                  allowedDestinationAddresses: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                  ),
-                  allowedSenderAddresses: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                  ),
-                  destinationAddress: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    name: "name",
-                    type: "type",
-                    allowedDestinationAddresses:
-                      "allowed_destination_addresses",
-                    allowedSenderAddresses: "allowed_sender_addresses",
-                    destinationAddress: "destination_address",
-                  }),
-                ),
-                Schema.Struct({
-                  name: Schema.String,
                   service: Schema.String,
                   type: Schema.Literal("service"),
                   environment: Schema.optional(
@@ -2122,41 +2077,6 @@ export const ListBetaWorkerVersionsResponse =
                     type: "type",
                   }),
                 ),
-                Schema.Struct({
-                  name: Schema.String,
-                  type: Schema.Literal("version_metadata"),
-                }),
-                Schema.Struct({
-                  name: Schema.String,
-                  secretName: Schema.String,
-                  storeId: Schema.String,
-                  type: Schema.Literal("secrets_store_secret"),
-                }).pipe(
-                  Schema.encodeKeys({
-                    name: "name",
-                    secretName: "secret_name",
-                    storeId: "store_id",
-                    type: "type",
-                  }),
-                ),
-                Schema.Struct({
-                  algorithm: Schema.Unknown,
-                  format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
-                  name: Schema.String,
-                  type: Schema.Literal("secret_key"),
-                  usages: Schema.Array(
-                    Schema.Literals([
-                      "encrypt",
-                      "decrypt",
-                      "sign",
-                      "verify",
-                      "deriveKey",
-                      "deriveBits",
-                      "wrapKey",
-                      "unwrapKey",
-                    ]),
-                  ),
-                }),
                 Schema.Struct({
                   name: Schema.String,
                   type: Schema.Literal("workflow"),
@@ -2183,12 +2103,100 @@ export const ListBetaWorkerVersionsResponse =
                 }),
                 Schema.Struct({
                   name: Schema.String,
-                  type: Schema.Literal("worker_loader"),
+                  type: Schema.Literal("artifacts"),
+                  namespace: Schema.String,
                 }),
                 Schema.Struct({
                   name: Schema.String,
-                  type: Schema.Literal("artifacts"),
-                  namespace: Schema.String,
+                  type: Schema.Literal("ai"),
+                }),
+                Schema.Struct({
+                  name: Schema.String,
+                  type: Schema.Literal("assets"),
+                }),
+                Schema.Struct({
+                  name: Schema.String,
+                  type: Schema.Literal("browser"),
+                }),
+                Schema.Struct({
+                  name: Schema.String,
+                  type: Schema.Literal("durable_object_namespace"),
+                  className: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  environment: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  namespaceId: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  scriptName: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    name: "name",
+                    type: "type",
+                    className: "class_name",
+                    environment: "environment",
+                    namespaceId: "namespace_id",
+                    scriptName: "script_name",
+                  }),
+                ),
+                Schema.Struct({
+                  name: Schema.String,
+                  type: Schema.Literal("inherit"),
+                  oldName: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  versionId: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    name: "name",
+                    type: "type",
+                    oldName: "old_name",
+                    versionId: "version_id",
+                  }),
+                ),
+                Schema.Struct({
+                  name: Schema.String,
+                  type: Schema.Literal("images"),
+                }),
+                Schema.Struct({
+                  name: Schema.String,
+                  type: Schema.Literal("secret_text"),
+                }),
+                Schema.Struct({
+                  name: Schema.String,
+                  type: Schema.Literal("send_email"),
+                  allowedDestinationAddresses: Schema.optional(
+                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                  ),
+                  allowedSenderAddresses: Schema.optional(
+                    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                  ),
+                  destinationAddress: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    name: "name",
+                    type: "type",
+                    allowedDestinationAddresses:
+                      "allowed_destination_addresses",
+                    allowedSenderAddresses: "allowed_sender_addresses",
+                    destinationAddress: "destination_address",
+                  }),
+                ),
+                Schema.Struct({
+                  name: Schema.String,
+                  type: Schema.Literal("version_metadata"),
+                }),
+                Schema.Struct({
+                  name: Schema.String,
+                  type: Schema.Literal("worker_loader"),
                 }),
               ]),
             ),
@@ -2605,21 +2613,52 @@ export const CreateBetaWorkerVersionRequest =
       Schema.Array(
         Schema.Union([
           Schema.Struct({
+            algorithm: Schema.Unknown,
+            format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
             name: Schema.String,
-            type: Schema.Literal("ai"),
-          }),
+            type: Schema.Literal("secret_key"),
+            usages: Schema.Array(
+              Schema.Literals([
+                "encrypt",
+                "decrypt",
+                "sign",
+                "verify",
+                "deriveKey",
+                "deriveBits",
+                "wrapKey",
+                "unwrapKey",
+              ]),
+            ),
+            keyBase64: Schema.optional(Schema.String),
+            keyJwk: Schema.optional(Schema.Unknown),
+          }).pipe(
+            Schema.encodeKeys({
+              algorithm: "algorithm",
+              format: "format",
+              name: "name",
+              type: "type",
+              usages: "usages",
+              keyBase64: "key_base64",
+              keyJwk: "key_jwk",
+            }),
+          ),
+          Schema.Struct({
+            name: Schema.String,
+            secretName: Schema.String,
+            storeId: Schema.String,
+            type: Schema.Literal("secrets_store_secret"),
+          }).pipe(
+            Schema.encodeKeys({
+              name: "name",
+              secretName: "secret_name",
+              storeId: "store_id",
+              type: "type",
+            }),
+          ),
           Schema.Struct({
             dataset: Schema.String,
             name: Schema.String,
             type: Schema.Literal("analytics_engine"),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            type: Schema.Literal("assets"),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            type: Schema.Literal("browser"),
           }),
           Schema.Struct({
             id: Schema.String,
@@ -2648,43 +2687,9 @@ export const CreateBetaWorkerVersionRequest =
             ),
           }),
           Schema.Struct({
-            name: Schema.String,
-            type: Schema.Literal("durable_object_namespace"),
-            className: Schema.optional(Schema.String),
-            environment: Schema.optional(Schema.String),
-            namespaceId: Schema.optional(Schema.String),
-            scriptName: Schema.optional(Schema.String),
-          }).pipe(
-            Schema.encodeKeys({
-              name: "name",
-              type: "type",
-              className: "class_name",
-              environment: "environment",
-              namespaceId: "namespace_id",
-              scriptName: "script_name",
-            }),
-          ),
-          Schema.Struct({
             id: Schema.String,
             name: Schema.String,
             type: Schema.Literal("hyperdrive"),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            type: Schema.Literal("inherit"),
-            oldName: Schema.optional(Schema.String),
-            versionId: Schema.optional(Schema.String),
-          }).pipe(
-            Schema.encodeKeys({
-              name: "name",
-              type: "type",
-              oldName: "old_name",
-              versionId: "version_id",
-            }),
-          ),
-          Schema.Struct({
-            name: Schema.String,
-            type: Schema.Literal("images"),
           }),
           Schema.Struct({
             json: Schema.String,
@@ -2754,25 +2759,6 @@ export const CreateBetaWorkerVersionRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            type: Schema.Literal("send_email"),
-            allowedDestinationAddresses: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-            allowedSenderAddresses: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-            destinationAddress: Schema.optional(Schema.String),
-          }).pipe(
-            Schema.encodeKeys({
-              name: "name",
-              type: "type",
-              allowedDestinationAddresses: "allowed_destination_addresses",
-              allowedSenderAddresses: "allowed_sender_addresses",
-              destinationAddress: "destination_address",
-            }),
-          ),
-          Schema.Struct({
-            name: Schema.String,
             service: Schema.String,
             type: Schema.Literal("service"),
             environment: Schema.optional(Schema.String),
@@ -2791,53 +2777,6 @@ export const CreateBetaWorkerVersionRequest =
               indexName: "index_name",
               name: "name",
               type: "type",
-            }),
-          ),
-          Schema.Struct({
-            name: Schema.String,
-            type: Schema.Literal("version_metadata"),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            secretName: Schema.String,
-            storeId: Schema.String,
-            type: Schema.Literal("secrets_store_secret"),
-          }).pipe(
-            Schema.encodeKeys({
-              name: "name",
-              secretName: "secret_name",
-              storeId: "store_id",
-              type: "type",
-            }),
-          ),
-          Schema.Struct({
-            algorithm: Schema.Unknown,
-            format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
-            name: Schema.String,
-            type: Schema.Literal("secret_key"),
-            usages: Schema.Array(
-              Schema.Literals([
-                "encrypt",
-                "decrypt",
-                "sign",
-                "verify",
-                "deriveKey",
-                "deriveBits",
-                "wrapKey",
-                "unwrapKey",
-              ]),
-            ),
-            keyBase64: Schema.optional(Schema.String),
-            keyJwk: Schema.optional(Schema.Unknown),
-          }).pipe(
-            Schema.encodeKeys({
-              algorithm: "algorithm",
-              format: "format",
-              name: "name",
-              type: "type",
-              usages: "usages",
-              keyBase64: "key_base64",
-              keyJwk: "key_jwk",
             }),
           ),
           Schema.Struct({
@@ -2862,12 +2801,81 @@ export const CreateBetaWorkerVersionRequest =
           }),
           Schema.Struct({
             name: Schema.String,
-            type: Schema.Literal("worker_loader"),
+            type: Schema.Literal("artifacts"),
+            namespace: Schema.String,
           }),
           Schema.Struct({
             name: Schema.String,
-            type: Schema.Literal("artifacts"),
-            namespace: Schema.String,
+            type: Schema.Literal("ai"),
+          }),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("assets"),
+          }),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("browser"),
+          }),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("durable_object_namespace"),
+            className: Schema.optional(Schema.String),
+            environment: Schema.optional(Schema.String),
+            namespaceId: Schema.optional(Schema.String),
+            scriptName: Schema.optional(Schema.String),
+          }).pipe(
+            Schema.encodeKeys({
+              name: "name",
+              type: "type",
+              className: "class_name",
+              environment: "environment",
+              namespaceId: "namespace_id",
+              scriptName: "script_name",
+            }),
+          ),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("inherit"),
+            oldName: Schema.optional(Schema.String),
+            versionId: Schema.optional(Schema.String),
+          }).pipe(
+            Schema.encodeKeys({
+              name: "name",
+              type: "type",
+              oldName: "old_name",
+              versionId: "version_id",
+            }),
+          ),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("images"),
+          }),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("send_email"),
+            allowedDestinationAddresses: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            allowedSenderAddresses: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            destinationAddress: Schema.optional(Schema.String),
+          }).pipe(
+            Schema.encodeKeys({
+              name: "name",
+              type: "type",
+              allowedDestinationAddresses: "allowed_destination_addresses",
+              allowedSenderAddresses: "allowed_sender_addresses",
+              destinationAddress: "destination_address",
+            }),
+          ),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("version_metadata"),
+          }),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("worker_loader"),
           }),
         ]),
       ),
@@ -3271,21 +3279,40 @@ export const CreateBetaWorkerVersionResponse =
         Schema.Array(
           Schema.Union([
             Schema.Struct({
+              algorithm: Schema.Unknown,
+              format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
               name: Schema.String,
-              type: Schema.Literal("ai"),
+              type: Schema.Literal("secret_key"),
+              usages: Schema.Array(
+                Schema.Literals([
+                  "encrypt",
+                  "decrypt",
+                  "sign",
+                  "verify",
+                  "deriveKey",
+                  "deriveBits",
+                  "wrapKey",
+                  "unwrapKey",
+                ]),
+              ),
             }),
+            Schema.Struct({
+              name: Schema.String,
+              secretName: Schema.String,
+              storeId: Schema.String,
+              type: Schema.Literal("secrets_store_secret"),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                secretName: "secret_name",
+                storeId: "store_id",
+                type: "type",
+              }),
+            ),
             Schema.Struct({
               dataset: Schema.String,
               name: Schema.String,
               type: Schema.Literal("analytics_engine"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("assets"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("browser"),
             }),
             Schema.Struct({
               id: Schema.String,
@@ -3326,55 +3353,9 @@ export const CreateBetaWorkerVersionResponse =
               ),
             }),
             Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("durable_object_namespace"),
-              className: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              environment: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              namespaceId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              scriptName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                type: "type",
-                className: "class_name",
-                environment: "environment",
-                namespaceId: "namespace_id",
-                scriptName: "script_name",
-              }),
-            ),
-            Schema.Struct({
               id: Schema.String,
               name: Schema.String,
               type: Schema.Literal("hyperdrive"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("inherit"),
-              oldName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              versionId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                type: "type",
-                oldName: "old_name",
-                versionId: "version_id",
-              }),
-            ),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("images"),
             }),
             Schema.Struct({
               json: Schema.String,
@@ -3441,31 +3422,6 @@ export const CreateBetaWorkerVersionResponse =
             ),
             Schema.Struct({
               name: Schema.String,
-              type: Schema.Literal("secret_text"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("send_email"),
-              allowedDestinationAddresses: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              allowedSenderAddresses: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              destinationAddress: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                type: "type",
-                allowedDestinationAddresses: "allowed_destination_addresses",
-                allowedSenderAddresses: "allowed_sender_addresses",
-                destinationAddress: "destination_address",
-              }),
-            ),
-            Schema.Struct({
-              name: Schema.String,
               service: Schema.String,
               type: Schema.Literal("service"),
               environment: Schema.optional(
@@ -3488,41 +3444,6 @@ export const CreateBetaWorkerVersionResponse =
                 type: "type",
               }),
             ),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("version_metadata"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              secretName: Schema.String,
-              storeId: Schema.String,
-              type: Schema.Literal("secrets_store_secret"),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                secretName: "secret_name",
-                storeId: "store_id",
-                type: "type",
-              }),
-            ),
-            Schema.Struct({
-              algorithm: Schema.Unknown,
-              format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
-              name: Schema.String,
-              type: Schema.Literal("secret_key"),
-              usages: Schema.Array(
-                Schema.Literals([
-                  "encrypt",
-                  "decrypt",
-                  "sign",
-                  "verify",
-                  "deriveKey",
-                  "deriveBits",
-                  "wrapKey",
-                  "unwrapKey",
-                ]),
-              ),
-            }),
             Schema.Struct({
               name: Schema.String,
               type: Schema.Literal("workflow"),
@@ -3549,12 +3470,99 @@ export const CreateBetaWorkerVersionResponse =
             }),
             Schema.Struct({
               name: Schema.String,
-              type: Schema.Literal("worker_loader"),
+              type: Schema.Literal("artifacts"),
+              namespace: Schema.String,
             }),
             Schema.Struct({
               name: Schema.String,
-              type: Schema.Literal("artifacts"),
-              namespace: Schema.String,
+              type: Schema.Literal("ai"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("assets"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("browser"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("durable_object_namespace"),
+              className: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              environment: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              namespaceId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              scriptName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                type: "type",
+                className: "class_name",
+                environment: "environment",
+                namespaceId: "namespace_id",
+                scriptName: "script_name",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("inherit"),
+              oldName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              versionId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                type: "type",
+                oldName: "old_name",
+                versionId: "version_id",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("images"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("secret_text"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("send_email"),
+              allowedDestinationAddresses: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              allowedSenderAddresses: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              destinationAddress: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                type: "type",
+                allowedDestinationAddresses: "allowed_destination_addresses",
+                allowedSenderAddresses: "allowed_sender_addresses",
+                destinationAddress: "destination_address",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("version_metadata"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("worker_loader"),
             }),
           ]),
         ),
@@ -5417,62 +5425,6 @@ export const QueryObservabilityTelemetryResponse =
                     Schema.Union([
                       Schema.Union([
                         Schema.Struct({
-                          eventType: Schema.Literals([
-                            "fetch",
-                            "scheduled",
-                            "alarm",
-                            "cron",
-                            "queue",
-                            "email",
-                            "tail",
-                            "rpc",
-                            "websocket",
-                            "unknown",
-                          ]),
-                          requestId: Schema.String,
-                          scriptName: Schema.String,
-                          durableObjectId: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                          entrypoint: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                          event: Schema.optional(
-                            Schema.Union([
-                              Schema.Record(Schema.String, Schema.Unknown),
-                              Schema.Null,
-                            ]),
-                          ),
-                          executionModel: Schema.optional(
-                            Schema.Union([
-                              Schema.Literals(["durableObject", "stateless"]),
-                              Schema.Null,
-                            ]),
-                          ),
-                          outcome: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                          scriptVersion: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                id: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                message: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                tag: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          truncated: Schema.optional(
-                            Schema.Union([Schema.Boolean, Schema.Null]),
-                          ),
-                        }),
-                        Schema.Struct({
                           cpuTimeMs: Schema.Number,
                           eventType: Schema.Literals([
                             "fetch",
@@ -5522,6 +5474,62 @@ export const QueryObservabilityTelemetryResponse =
                               Schema.Literals(["durableObject", "stateless"]),
                               Schema.Null,
                             ]),
+                          ),
+                          scriptVersion: Schema.optional(
+                            Schema.Union([
+                              Schema.Struct({
+                                id: Schema.optional(
+                                  Schema.Union([Schema.String, Schema.Null]),
+                                ),
+                                message: Schema.optional(
+                                  Schema.Union([Schema.String, Schema.Null]),
+                                ),
+                                tag: Schema.optional(
+                                  Schema.Union([Schema.String, Schema.Null]),
+                                ),
+                              }),
+                              Schema.Null,
+                            ]),
+                          ),
+                          truncated: Schema.optional(
+                            Schema.Union([Schema.Boolean, Schema.Null]),
+                          ),
+                        }),
+                        Schema.Struct({
+                          eventType: Schema.Literals([
+                            "fetch",
+                            "scheduled",
+                            "alarm",
+                            "cron",
+                            "queue",
+                            "email",
+                            "tail",
+                            "rpc",
+                            "websocket",
+                            "unknown",
+                          ]),
+                          requestId: Schema.String,
+                          scriptName: Schema.String,
+                          durableObjectId: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                          entrypoint: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
+                          ),
+                          event: Schema.optional(
+                            Schema.Union([
+                              Schema.Record(Schema.String, Schema.Unknown),
+                              Schema.Null,
+                            ]),
+                          ),
+                          executionModel: Schema.optional(
+                            Schema.Union([
+                              Schema.Literals(["durableObject", "stateless"]),
+                              Schema.Null,
+                            ]),
+                          ),
+                          outcome: Schema.optional(
+                            Schema.Union([Schema.String, Schema.Null]),
                           ),
                           scriptVersion: Schema.optional(
                             Schema.Union([
@@ -6603,6 +6611,12 @@ export interface PutScriptRequest {
       | { name: string; part: string; type: "wasm_module" }
       | { name: string; type: "worker_loader" }
       | { name: string; type: "artifacts"; namespace: string }
+      | {
+          name: string;
+          type: "ratelimit";
+          namespaceId: string;
+          simple: { limit: number; period: number };
+        }
     )[];
     bodyPart?: string;
     compatibilityDate?: string;
@@ -6651,6 +6665,12 @@ export interface PutScriptRequest {
         headSamplingRate?: number | null;
         persist?: boolean;
       } | null;
+      traces?: {
+        enabled: boolean;
+        headSamplingRate?: number;
+        destinations?: string[];
+        persist?: boolean;
+      };
     };
     placement?:
       | { mode: "smart" }
@@ -6711,21 +6731,68 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Array(
         Schema.Union([
           Schema.Struct({
+            algorithm: Schema.Unknown,
+            format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
             name: Schema.String,
-            type: Schema.Literal("ai"),
-          }),
+            type: Schema.Literal("secret_key"),
+            usages: Schema.Array(
+              Schema.Literals([
+                "encrypt",
+                "decrypt",
+                "sign",
+                "verify",
+                "deriveKey",
+                "deriveBits",
+                "wrapKey",
+                "unwrapKey",
+              ]),
+            ),
+            keyBase64: Schema.optional(Schema.String),
+            keyJwk: Schema.optional(Schema.Unknown),
+          }).pipe(
+            Schema.encodeKeys({
+              algorithm: "algorithm",
+              format: "format",
+              name: "name",
+              type: "type",
+              usages: "usages",
+              keyBase64: "key_base64",
+              keyJwk: "key_jwk",
+            }),
+          ),
+          Schema.Struct({
+            name: Schema.String,
+            secretName: Schema.String,
+            storeId: Schema.String,
+            type: Schema.Literal("secrets_store_secret"),
+          }).pipe(
+            Schema.encodeKeys({
+              name: "name",
+              secretName: "secret_name",
+              storeId: "store_id",
+              type: "type",
+            }),
+          ),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("ratelimit"),
+            namespaceId: Schema.String,
+            simple: Schema.Struct({
+              limit: Schema.Number,
+              period: Schema.Number,
+            }),
+          }).pipe(
+            Schema.encodeKeys({
+              name: "name",
+              type: "type",
+              namespaceId: "namespace_id",
+              simple: "simple",
+            }),
+          ),
           Schema.Struct({
             dataset: Schema.String,
             name: Schema.String,
             type: Schema.Literal("analytics_engine"),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            type: Schema.Literal("assets"),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            type: Schema.Literal("browser"),
           }),
           Schema.Struct({
             id: Schema.String,
@@ -6754,43 +6821,9 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ),
           }),
           Schema.Struct({
-            name: Schema.String,
-            type: Schema.Literal("durable_object_namespace"),
-            className: Schema.optional(Schema.String),
-            environment: Schema.optional(Schema.String),
-            namespaceId: Schema.optional(Schema.String),
-            scriptName: Schema.optional(Schema.String),
-          }).pipe(
-            Schema.encodeKeys({
-              name: "name",
-              type: "type",
-              className: "class_name",
-              environment: "environment",
-              namespaceId: "namespace_id",
-              scriptName: "script_name",
-            }),
-          ),
-          Schema.Struct({
             id: Schema.String,
             name: Schema.String,
             type: Schema.Literal("hyperdrive"),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            type: Schema.Literal("inherit"),
-            oldName: Schema.optional(Schema.String),
-            versionId: Schema.optional(Schema.String),
-          }).pipe(
-            Schema.encodeKeys({
-              name: "name",
-              type: "type",
-              oldName: "old_name",
-              versionId: "version_id",
-            }),
-          ),
-          Schema.Struct({
-            name: Schema.String,
-            type: Schema.Literal("images"),
           }),
           Schema.Struct({
             json: Schema.String,
@@ -6860,25 +6893,6 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           }),
           Schema.Struct({
             name: Schema.String,
-            type: Schema.Literal("send_email"),
-            allowedDestinationAddresses: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-            allowedSenderAddresses: Schema.optional(
-              Schema.Array(Schema.String),
-            ),
-            destinationAddress: Schema.optional(Schema.String),
-          }).pipe(
-            Schema.encodeKeys({
-              name: "name",
-              type: "type",
-              allowedDestinationAddresses: "allowed_destination_addresses",
-              allowedSenderAddresses: "allowed_sender_addresses",
-              destinationAddress: "destination_address",
-            }),
-          ),
-          Schema.Struct({
-            name: Schema.String,
             service: Schema.String,
             type: Schema.Literal("service"),
             environment: Schema.optional(Schema.String),
@@ -6897,53 +6911,6 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               indexName: "index_name",
               name: "name",
               type: "type",
-            }),
-          ),
-          Schema.Struct({
-            name: Schema.String,
-            type: Schema.Literal("version_metadata"),
-          }),
-          Schema.Struct({
-            name: Schema.String,
-            secretName: Schema.String,
-            storeId: Schema.String,
-            type: Schema.Literal("secrets_store_secret"),
-          }).pipe(
-            Schema.encodeKeys({
-              name: "name",
-              secretName: "secret_name",
-              storeId: "store_id",
-              type: "type",
-            }),
-          ),
-          Schema.Struct({
-            algorithm: Schema.Unknown,
-            format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
-            name: Schema.String,
-            type: Schema.Literal("secret_key"),
-            usages: Schema.Array(
-              Schema.Literals([
-                "encrypt",
-                "decrypt",
-                "sign",
-                "verify",
-                "deriveKey",
-                "deriveBits",
-                "wrapKey",
-                "unwrapKey",
-              ]),
-            ),
-            keyBase64: Schema.optional(Schema.String),
-            keyJwk: Schema.optional(Schema.Unknown),
-          }).pipe(
-            Schema.encodeKeys({
-              algorithm: "algorithm",
-              format: "format",
-              name: "name",
-              type: "type",
-              usages: "usages",
-              keyBase64: "key_base64",
-              keyJwk: "key_jwk",
             }),
           ),
           Schema.Struct({
@@ -6968,12 +6935,81 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
           }),
           Schema.Struct({
             name: Schema.String,
-            type: Schema.Literal("worker_loader"),
+            type: Schema.Literal("artifacts"),
+            namespace: Schema.String,
           }),
           Schema.Struct({
             name: Schema.String,
-            type: Schema.Literal("artifacts"),
-            namespace: Schema.String,
+            type: Schema.Literal("ai"),
+          }),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("assets"),
+          }),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("browser"),
+          }),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("durable_object_namespace"),
+            className: Schema.optional(Schema.String),
+            environment: Schema.optional(Schema.String),
+            namespaceId: Schema.optional(Schema.String),
+            scriptName: Schema.optional(Schema.String),
+          }).pipe(
+            Schema.encodeKeys({
+              name: "name",
+              type: "type",
+              className: "class_name",
+              environment: "environment",
+              namespaceId: "namespace_id",
+              scriptName: "script_name",
+            }),
+          ),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("inherit"),
+            oldName: Schema.optional(Schema.String),
+            versionId: Schema.optional(Schema.String),
+          }).pipe(
+            Schema.encodeKeys({
+              name: "name",
+              type: "type",
+              oldName: "old_name",
+              versionId: "version_id",
+            }),
+          ),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("images"),
+          }),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("send_email"),
+            allowedDestinationAddresses: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            allowedSenderAddresses: Schema.optional(
+              Schema.Array(Schema.String),
+            ),
+            destinationAddress: Schema.optional(Schema.String),
+          }).pipe(
+            Schema.encodeKeys({
+              name: "name",
+              type: "type",
+              allowedDestinationAddresses: "allowed_destination_addresses",
+              allowedSenderAddresses: "allowed_sender_addresses",
+              destinationAddress: "destination_address",
+            }),
+          ),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("version_metadata"),
+          }),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("worker_loader"),
           }),
         ]),
       ),
@@ -7112,11 +7148,27 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Null,
           ]),
         ),
+        traces: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.Boolean,
+            headSamplingRate: Schema.optional(Schema.Number),
+            destinations: Schema.optional(Schema.Array(Schema.String)),
+            persist: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              enabled: "enabled",
+              headSamplingRate: "head_sampling_rate",
+              destinations: "destinations",
+              persist: "persist",
+            }),
+          ),
+        ),
       }).pipe(
         Schema.encodeKeys({
           enabled: "enabled",
           headSamplingRate: "head_sampling_rate",
           logs: "logs",
+          traces: "traces",
         }),
       ),
     ),
@@ -7230,6 +7282,12 @@ export interface PutScriptResponse {
       invocationLogs: boolean;
       destinations?: string[] | null;
       headSamplingRate?: number | null;
+      persist?: boolean | null;
+    } | null;
+    traces?: {
+      enabled: boolean;
+      headSamplingRate?: number | null;
+      destinations?: string[] | null;
       persist?: boolean | null;
     } | null;
   } | null;
@@ -7363,11 +7421,36 @@ export const PutScriptResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Null,
           ]),
         ),
+        traces: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              enabled: Schema.Boolean,
+              headSamplingRate: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              destinations: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              persist: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                enabled: "enabled",
+                headSamplingRate: "head_sampling_rate",
+                destinations: "destinations",
+                persist: "persist",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
       }).pipe(
         Schema.encodeKeys({
           enabled: "enabled",
           headSamplingRate: "head_sampling_rate",
           logs: "logs",
+          traces: "traces",
         }),
       ),
       Schema.Null,
@@ -8830,6 +8913,52 @@ export const CreateScriptEdgePreviewRequest =
           Schema.Array(
             Schema.Union([
               Schema.Struct({
+                type: Schema.Literal("workflow"),
+                name: Schema.String,
+                workflowName: Schema.String,
+                className: Schema.String,
+                scriptName: Schema.optional(Schema.String),
+                raw: Schema.optional(Schema.Boolean),
+              }).pipe(
+                Schema.encodeKeys({
+                  type: "type",
+                  name: "name",
+                  workflowName: "workflow_name",
+                  className: "class_name",
+                  scriptName: "script_name",
+                  raw: "raw",
+                }),
+              ),
+              Schema.Struct({
+                type: Schema.Literal("secrets_store_secret"),
+                name: Schema.String,
+                storeId: Schema.String,
+                secretName: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  type: "type",
+                  name: "name",
+                  storeId: "store_id",
+                  secretName: "secret_name",
+                }),
+              ),
+              Schema.Struct({
+                type: Schema.Literal("ratelimit"),
+                name: Schema.String,
+                namespaceId: Schema.String,
+                simple: Schema.Struct({
+                  limit: Schema.Number,
+                  period: Schema.Literals(["10", "60"]),
+                }),
+              }).pipe(
+                Schema.encodeKeys({
+                  type: "type",
+                  name: "name",
+                  namespaceId: "namespace_id",
+                  simple: "simple",
+                }),
+              ),
+              Schema.Struct({
                 type: Schema.Literal("plain_text"),
                 name: Schema.String,
                 text: Schema.String,
@@ -8918,22 +9047,6 @@ export const CreateScriptEdgePreviewRequest =
                 entrypoint: Schema.optional(Schema.String),
               }),
               Schema.Struct({
-                type: Schema.Literal("ai"),
-                name: Schema.String,
-                staging: Schema.optional(Schema.Boolean),
-                raw: Schema.optional(Schema.Boolean),
-              }),
-              Schema.Struct({
-                type: Schema.Literal("browser"),
-                name: Schema.String,
-                raw: Schema.optional(Schema.Boolean),
-              }),
-              Schema.Struct({
-                type: Schema.Literal("images"),
-                name: Schema.String,
-                raw: Schema.optional(Schema.Boolean),
-              }),
-              Schema.Struct({
                 type: Schema.Literal("vectorize"),
                 name: Schema.String,
                 indexName: Schema.String,
@@ -8947,31 +9060,9 @@ export const CreateScriptEdgePreviewRequest =
                 }),
               ),
               Schema.Struct({
-                type: Schema.Literal("workflow"),
-                name: Schema.String,
-                workflowName: Schema.String,
-                className: Schema.String,
-                scriptName: Schema.optional(Schema.String),
-                raw: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  type: "type",
-                  name: "name",
-                  workflowName: "workflow_name",
-                  className: "class_name",
-                  scriptName: "script_name",
-                  raw: "raw",
-                }),
-              ),
-              Schema.Struct({
                 type: Schema.Literal("hyperdrive"),
                 name: Schema.String,
                 id: Schema.String,
-              }),
-              Schema.Struct({
-                type: Schema.Literal("analytics_engine"),
-                name: Schema.String,
-                dataset: Schema.optional(Schema.String),
               }),
               Schema.Struct({
                 type: Schema.Literal("dispatch_namespace"),
@@ -8995,25 +9086,6 @@ export const CreateScriptEdgePreviewRequest =
                   }),
                 ),
               }),
-              Schema.Struct({
-                type: Schema.Literal("send_email"),
-                name: Schema.String,
-                destinationAddress: Schema.optional(Schema.String),
-                allowedDestinationAddresses: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                allowedSenderAddresses: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  type: "type",
-                  name: "name",
-                  destinationAddress: "destination_address",
-                  allowedDestinationAddresses: "allowed_destination_addresses",
-                  allowedSenderAddresses: "allowed_sender_addresses",
-                }),
-              ),
               Schema.Struct({
                 type: Schema.Literal("mtls_certificate"),
                 name: Schema.String,
@@ -9046,16 +9118,64 @@ export const CreateScriptEdgePreviewRequest =
                 pipeline: Schema.String,
               }),
               Schema.Struct({
-                type: Schema.Literal("secrets_store_secret"),
+                type: Schema.Literal("logfwdr"),
                 name: Schema.String,
-                storeId: Schema.String,
-                secretName: Schema.String,
+                destination: Schema.String,
+              }),
+              Schema.Struct({
+                type: Schema.Literal("ai_search_namespace"),
+                name: Schema.String,
+                namespace: Schema.String,
+              }),
+              Schema.Struct({
+                type: Schema.Literal("ai_search"),
+                name: Schema.String,
+                instanceName: Schema.String,
               }).pipe(
                 Schema.encodeKeys({
                   type: "type",
                   name: "name",
-                  storeId: "store_id",
-                  secretName: "secret_name",
+                  instanceName: "instance_name",
+                }),
+              ),
+              Schema.Struct({
+                type: Schema.Literal("ai"),
+                name: Schema.String,
+                staging: Schema.optional(Schema.Boolean),
+                raw: Schema.optional(Schema.Boolean),
+              }),
+              Schema.Struct({
+                type: Schema.Literal("browser"),
+                name: Schema.String,
+                raw: Schema.optional(Schema.Boolean),
+              }),
+              Schema.Struct({
+                type: Schema.Literal("images"),
+                name: Schema.String,
+                raw: Schema.optional(Schema.Boolean),
+              }),
+              Schema.Struct({
+                type: Schema.Literal("analytics_engine"),
+                name: Schema.String,
+                dataset: Schema.optional(Schema.String),
+              }),
+              Schema.Struct({
+                type: Schema.Literal("send_email"),
+                name: Schema.String,
+                destinationAddress: Schema.optional(Schema.String),
+                allowedDestinationAddresses: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                allowedSenderAddresses: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  type: "type",
+                  name: "name",
+                  destinationAddress: "destination_address",
+                  allowedDestinationAddresses: "allowed_destination_addresses",
+                  allowedSenderAddresses: "allowed_sender_addresses",
                 }),
               ),
               Schema.Struct({
@@ -9078,43 +9198,6 @@ export const CreateScriptEdgePreviewRequest =
                 type: Schema.Literal("worker_loader"),
                 name: Schema.String,
               }),
-              Schema.Struct({
-                type: Schema.Literal("logfwdr"),
-                name: Schema.String,
-                destination: Schema.String,
-              }),
-              Schema.Struct({
-                type: Schema.Literal("ai_search_namespace"),
-                name: Schema.String,
-                namespace: Schema.String,
-              }),
-              Schema.Struct({
-                type: Schema.Literal("ai_search"),
-                name: Schema.String,
-                instanceName: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  type: "type",
-                  name: "name",
-                  instanceName: "instance_name",
-                }),
-              ),
-              Schema.Struct({
-                type: Schema.Literal("ratelimit"),
-                name: Schema.String,
-                namespaceId: Schema.String,
-                simple: Schema.Struct({
-                  limit: Schema.Number,
-                  period: Schema.Literals(["10", "60"]),
-                }),
-              }).pipe(
-                Schema.encodeKeys({
-                  type: "type",
-                  name: "name",
-                  namespaceId: "namespace_id",
-                  simple: "simple",
-                }),
-              ),
               Schema.Struct({
                 type: Schema.Literal("inherit"),
                 name: Schema.String,
@@ -9654,6 +9737,12 @@ export interface GetScriptScriptAndVersionSettingResponse {
       headSamplingRate?: number | null;
       persist?: boolean | null;
     } | null;
+    traces?: {
+      enabled: boolean;
+      headSamplingRate?: number | null;
+      destinations?: string[] | null;
+      persist?: boolean | null;
+    } | null;
   } | null;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted place */
   placement?: unknown | null;
@@ -9678,21 +9767,40 @@ export const GetScriptScriptAndVersionSettingResponse =
         Schema.Array(
           Schema.Union([
             Schema.Struct({
+              algorithm: Schema.Unknown,
+              format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
               name: Schema.String,
-              type: Schema.Literal("ai"),
+              type: Schema.Literal("secret_key"),
+              usages: Schema.Array(
+                Schema.Literals([
+                  "encrypt",
+                  "decrypt",
+                  "sign",
+                  "verify",
+                  "deriveKey",
+                  "deriveBits",
+                  "wrapKey",
+                  "unwrapKey",
+                ]),
+              ),
             }),
+            Schema.Struct({
+              name: Schema.String,
+              secretName: Schema.String,
+              storeId: Schema.String,
+              type: Schema.Literal("secrets_store_secret"),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                secretName: "secret_name",
+                storeId: "store_id",
+                type: "type",
+              }),
+            ),
             Schema.Struct({
               dataset: Schema.String,
               name: Schema.String,
               type: Schema.Literal("analytics_engine"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("assets"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("browser"),
             }),
             Schema.Struct({
               id: Schema.String,
@@ -9733,55 +9841,9 @@ export const GetScriptScriptAndVersionSettingResponse =
               ),
             }),
             Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("durable_object_namespace"),
-              className: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              environment: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              namespaceId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              scriptName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                type: "type",
-                className: "class_name",
-                environment: "environment",
-                namespaceId: "namespace_id",
-                scriptName: "script_name",
-              }),
-            ),
-            Schema.Struct({
               id: Schema.String,
               name: Schema.String,
               type: Schema.Literal("hyperdrive"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("inherit"),
-              oldName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              versionId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                type: "type",
-                oldName: "old_name",
-                versionId: "version_id",
-              }),
-            ),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("images"),
             }),
             Schema.Struct({
               json: Schema.String,
@@ -9848,31 +9910,6 @@ export const GetScriptScriptAndVersionSettingResponse =
             ),
             Schema.Struct({
               name: Schema.String,
-              type: Schema.Literal("secret_text"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("send_email"),
-              allowedDestinationAddresses: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              allowedSenderAddresses: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              destinationAddress: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                type: "type",
-                allowedDestinationAddresses: "allowed_destination_addresses",
-                allowedSenderAddresses: "allowed_sender_addresses",
-                destinationAddress: "destination_address",
-              }),
-            ),
-            Schema.Struct({
-              name: Schema.String,
               service: Schema.String,
               type: Schema.Literal("service"),
               environment: Schema.optional(
@@ -9895,41 +9932,6 @@ export const GetScriptScriptAndVersionSettingResponse =
                 type: "type",
               }),
             ),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("version_metadata"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              secretName: Schema.String,
-              storeId: Schema.String,
-              type: Schema.Literal("secrets_store_secret"),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                secretName: "secret_name",
-                storeId: "store_id",
-                type: "type",
-              }),
-            ),
-            Schema.Struct({
-              algorithm: Schema.Unknown,
-              format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
-              name: Schema.String,
-              type: Schema.Literal("secret_key"),
-              usages: Schema.Array(
-                Schema.Literals([
-                  "encrypt",
-                  "decrypt",
-                  "sign",
-                  "verify",
-                  "deriveKey",
-                  "deriveBits",
-                  "wrapKey",
-                  "unwrapKey",
-                ]),
-              ),
-            }),
             Schema.Struct({
               name: Schema.String,
               type: Schema.Literal("workflow"),
@@ -9956,12 +9958,99 @@ export const GetScriptScriptAndVersionSettingResponse =
             }),
             Schema.Struct({
               name: Schema.String,
-              type: Schema.Literal("worker_loader"),
+              type: Schema.Literal("artifacts"),
+              namespace: Schema.String,
             }),
             Schema.Struct({
               name: Schema.String,
-              type: Schema.Literal("artifacts"),
-              namespace: Schema.String,
+              type: Schema.Literal("ai"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("assets"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("browser"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("durable_object_namespace"),
+              className: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              environment: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              namespaceId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              scriptName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                type: "type",
+                className: "class_name",
+                environment: "environment",
+                namespaceId: "namespace_id",
+                scriptName: "script_name",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("inherit"),
+              oldName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              versionId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                type: "type",
+                oldName: "old_name",
+                versionId: "version_id",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("images"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("secret_text"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("send_email"),
+              allowedDestinationAddresses: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              allowedSenderAddresses: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              destinationAddress: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                type: "type",
+                allowedDestinationAddresses: "allowed_destination_addresses",
+                allowedSenderAddresses: "allowed_sender_addresses",
+                destinationAddress: "destination_address",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("version_metadata"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("worker_loader"),
             }),
           ]),
         ),
@@ -10016,11 +10105,36 @@ export const GetScriptScriptAndVersionSettingResponse =
               Schema.Null,
             ]),
           ),
+          traces: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                enabled: Schema.Boolean,
+                headSamplingRate: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                destinations: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                persist: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  enabled: "enabled",
+                  headSamplingRate: "head_sampling_rate",
+                  destinations: "destinations",
+                  persist: "persist",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             enabled: "enabled",
             headSamplingRate: "head_sampling_rate",
             logs: "logs",
+            traces: "traces",
           }),
         ),
         Schema.Null,
@@ -10245,21 +10359,52 @@ export const PatchScriptScriptAndVersionSettingRequest =
           Schema.Array(
             Schema.Union([
               Schema.Struct({
+                algorithm: Schema.Unknown,
+                format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
                 name: Schema.String,
-                type: Schema.Literal("ai"),
-              }),
+                type: Schema.Literal("secret_key"),
+                usages: Schema.Array(
+                  Schema.Literals([
+                    "encrypt",
+                    "decrypt",
+                    "sign",
+                    "verify",
+                    "deriveKey",
+                    "deriveBits",
+                    "wrapKey",
+                    "unwrapKey",
+                  ]),
+                ),
+                keyBase64: Schema.optional(Schema.String),
+                keyJwk: Schema.optional(Schema.Unknown),
+              }).pipe(
+                Schema.encodeKeys({
+                  algorithm: "algorithm",
+                  format: "format",
+                  name: "name",
+                  type: "type",
+                  usages: "usages",
+                  keyBase64: "key_base64",
+                  keyJwk: "key_jwk",
+                }),
+              ),
+              Schema.Struct({
+                name: Schema.String,
+                secretName: Schema.String,
+                storeId: Schema.String,
+                type: Schema.Literal("secrets_store_secret"),
+              }).pipe(
+                Schema.encodeKeys({
+                  name: "name",
+                  secretName: "secret_name",
+                  storeId: "store_id",
+                  type: "type",
+                }),
+              ),
               Schema.Struct({
                 dataset: Schema.String,
                 name: Schema.String,
                 type: Schema.Literal("analytics_engine"),
-              }),
-              Schema.Struct({
-                name: Schema.String,
-                type: Schema.Literal("assets"),
-              }),
-              Schema.Struct({
-                name: Schema.String,
-                type: Schema.Literal("browser"),
               }),
               Schema.Struct({
                 id: Schema.String,
@@ -10288,43 +10433,9 @@ export const PatchScriptScriptAndVersionSettingRequest =
                 ),
               }),
               Schema.Struct({
-                name: Schema.String,
-                type: Schema.Literal("durable_object_namespace"),
-                className: Schema.optional(Schema.String),
-                environment: Schema.optional(Schema.String),
-                namespaceId: Schema.optional(Schema.String),
-                scriptName: Schema.optional(Schema.String),
-              }).pipe(
-                Schema.encodeKeys({
-                  name: "name",
-                  type: "type",
-                  className: "class_name",
-                  environment: "environment",
-                  namespaceId: "namespace_id",
-                  scriptName: "script_name",
-                }),
-              ),
-              Schema.Struct({
                 id: Schema.String,
                 name: Schema.String,
                 type: Schema.Literal("hyperdrive"),
-              }),
-              Schema.Struct({
-                name: Schema.String,
-                type: Schema.Literal("inherit"),
-                oldName: Schema.optional(Schema.String),
-                versionId: Schema.optional(Schema.String),
-              }).pipe(
-                Schema.encodeKeys({
-                  name: "name",
-                  type: "type",
-                  oldName: "old_name",
-                  versionId: "version_id",
-                }),
-              ),
-              Schema.Struct({
-                name: Schema.String,
-                type: Schema.Literal("images"),
               }),
               Schema.Struct({
                 json: Schema.String,
@@ -10396,25 +10507,6 @@ export const PatchScriptScriptAndVersionSettingRequest =
               }),
               Schema.Struct({
                 name: Schema.String,
-                type: Schema.Literal("send_email"),
-                allowedDestinationAddresses: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                allowedSenderAddresses: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                destinationAddress: Schema.optional(Schema.String),
-              }).pipe(
-                Schema.encodeKeys({
-                  name: "name",
-                  type: "type",
-                  allowedDestinationAddresses: "allowed_destination_addresses",
-                  allowedSenderAddresses: "allowed_sender_addresses",
-                  destinationAddress: "destination_address",
-                }),
-              ),
-              Schema.Struct({
-                name: Schema.String,
                 service: Schema.String,
                 type: Schema.Literal("service"),
                 environment: Schema.optional(Schema.String),
@@ -10433,53 +10525,6 @@ export const PatchScriptScriptAndVersionSettingRequest =
                   indexName: "index_name",
                   name: "name",
                   type: "type",
-                }),
-              ),
-              Schema.Struct({
-                name: Schema.String,
-                type: Schema.Literal("version_metadata"),
-              }),
-              Schema.Struct({
-                name: Schema.String,
-                secretName: Schema.String,
-                storeId: Schema.String,
-                type: Schema.Literal("secrets_store_secret"),
-              }).pipe(
-                Schema.encodeKeys({
-                  name: "name",
-                  secretName: "secret_name",
-                  storeId: "store_id",
-                  type: "type",
-                }),
-              ),
-              Schema.Struct({
-                algorithm: Schema.Unknown,
-                format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
-                name: Schema.String,
-                type: Schema.Literal("secret_key"),
-                usages: Schema.Array(
-                  Schema.Literals([
-                    "encrypt",
-                    "decrypt",
-                    "sign",
-                    "verify",
-                    "deriveKey",
-                    "deriveBits",
-                    "wrapKey",
-                    "unwrapKey",
-                  ]),
-                ),
-                keyBase64: Schema.optional(Schema.String),
-                keyJwk: Schema.optional(Schema.Unknown),
-              }).pipe(
-                Schema.encodeKeys({
-                  algorithm: "algorithm",
-                  format: "format",
-                  name: "name",
-                  type: "type",
-                  usages: "usages",
-                  keyBase64: "key_base64",
-                  keyJwk: "key_jwk",
                 }),
               ),
               Schema.Struct({
@@ -10504,12 +10549,81 @@ export const PatchScriptScriptAndVersionSettingRequest =
               }),
               Schema.Struct({
                 name: Schema.String,
-                type: Schema.Literal("worker_loader"),
+                type: Schema.Literal("artifacts"),
+                namespace: Schema.String,
               }),
               Schema.Struct({
                 name: Schema.String,
-                type: Schema.Literal("artifacts"),
-                namespace: Schema.String,
+                type: Schema.Literal("ai"),
+              }),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("assets"),
+              }),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("browser"),
+              }),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("durable_object_namespace"),
+                className: Schema.optional(Schema.String),
+                environment: Schema.optional(Schema.String),
+                namespaceId: Schema.optional(Schema.String),
+                scriptName: Schema.optional(Schema.String),
+              }).pipe(
+                Schema.encodeKeys({
+                  name: "name",
+                  type: "type",
+                  className: "class_name",
+                  environment: "environment",
+                  namespaceId: "namespace_id",
+                  scriptName: "script_name",
+                }),
+              ),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("inherit"),
+                oldName: Schema.optional(Schema.String),
+                versionId: Schema.optional(Schema.String),
+              }).pipe(
+                Schema.encodeKeys({
+                  name: "name",
+                  type: "type",
+                  oldName: "old_name",
+                  versionId: "version_id",
+                }),
+              ),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("images"),
+              }),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("send_email"),
+                allowedDestinationAddresses: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                allowedSenderAddresses: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                destinationAddress: Schema.optional(Schema.String),
+              }).pipe(
+                Schema.encodeKeys({
+                  name: "name",
+                  type: "type",
+                  allowedDestinationAddresses: "allowed_destination_addresses",
+                  allowedSenderAddresses: "allowed_sender_addresses",
+                  destinationAddress: "destination_address",
+                }),
+              ),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("version_metadata"),
+              }),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("worker_loader"),
               }),
             ]),
           ),
@@ -10858,21 +10972,40 @@ export const PatchScriptScriptAndVersionSettingResponse =
         Schema.Array(
           Schema.Union([
             Schema.Struct({
+              algorithm: Schema.Unknown,
+              format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
               name: Schema.String,
-              type: Schema.Literal("ai"),
+              type: Schema.Literal("secret_key"),
+              usages: Schema.Array(
+                Schema.Literals([
+                  "encrypt",
+                  "decrypt",
+                  "sign",
+                  "verify",
+                  "deriveKey",
+                  "deriveBits",
+                  "wrapKey",
+                  "unwrapKey",
+                ]),
+              ),
             }),
+            Schema.Struct({
+              name: Schema.String,
+              secretName: Schema.String,
+              storeId: Schema.String,
+              type: Schema.Literal("secrets_store_secret"),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                secretName: "secret_name",
+                storeId: "store_id",
+                type: "type",
+              }),
+            ),
             Schema.Struct({
               dataset: Schema.String,
               name: Schema.String,
               type: Schema.Literal("analytics_engine"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("assets"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("browser"),
             }),
             Schema.Struct({
               id: Schema.String,
@@ -10913,55 +11046,9 @@ export const PatchScriptScriptAndVersionSettingResponse =
               ),
             }),
             Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("durable_object_namespace"),
-              className: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              environment: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              namespaceId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              scriptName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                type: "type",
-                className: "class_name",
-                environment: "environment",
-                namespaceId: "namespace_id",
-                scriptName: "script_name",
-              }),
-            ),
-            Schema.Struct({
               id: Schema.String,
               name: Schema.String,
               type: Schema.Literal("hyperdrive"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("inherit"),
-              oldName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              versionId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                type: "type",
-                oldName: "old_name",
-                versionId: "version_id",
-              }),
-            ),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("images"),
             }),
             Schema.Struct({
               json: Schema.String,
@@ -11028,31 +11115,6 @@ export const PatchScriptScriptAndVersionSettingResponse =
             ),
             Schema.Struct({
               name: Schema.String,
-              type: Schema.Literal("secret_text"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("send_email"),
-              allowedDestinationAddresses: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              allowedSenderAddresses: Schema.optional(
-                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-              ),
-              destinationAddress: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                type: "type",
-                allowedDestinationAddresses: "allowed_destination_addresses",
-                allowedSenderAddresses: "allowed_sender_addresses",
-                destinationAddress: "destination_address",
-              }),
-            ),
-            Schema.Struct({
-              name: Schema.String,
               service: Schema.String,
               type: Schema.Literal("service"),
               environment: Schema.optional(
@@ -11075,41 +11137,6 @@ export const PatchScriptScriptAndVersionSettingResponse =
                 type: "type",
               }),
             ),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("version_metadata"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              secretName: Schema.String,
-              storeId: Schema.String,
-              type: Schema.Literal("secrets_store_secret"),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                secretName: "secret_name",
-                storeId: "store_id",
-                type: "type",
-              }),
-            ),
-            Schema.Struct({
-              algorithm: Schema.Unknown,
-              format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
-              name: Schema.String,
-              type: Schema.Literal("secret_key"),
-              usages: Schema.Array(
-                Schema.Literals([
-                  "encrypt",
-                  "decrypt",
-                  "sign",
-                  "verify",
-                  "deriveKey",
-                  "deriveBits",
-                  "wrapKey",
-                  "unwrapKey",
-                ]),
-              ),
-            }),
             Schema.Struct({
               name: Schema.String,
               type: Schema.Literal("workflow"),
@@ -11136,12 +11163,99 @@ export const PatchScriptScriptAndVersionSettingResponse =
             }),
             Schema.Struct({
               name: Schema.String,
-              type: Schema.Literal("worker_loader"),
+              type: Schema.Literal("artifacts"),
+              namespace: Schema.String,
             }),
             Schema.Struct({
               name: Schema.String,
-              type: Schema.Literal("artifacts"),
-              namespace: Schema.String,
+              type: Schema.Literal("ai"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("assets"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("browser"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("durable_object_namespace"),
+              className: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              environment: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              namespaceId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              scriptName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                type: "type",
+                className: "class_name",
+                environment: "environment",
+                namespaceId: "namespace_id",
+                scriptName: "script_name",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("inherit"),
+              oldName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              versionId: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                type: "type",
+                oldName: "old_name",
+                versionId: "version_id",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("images"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("secret_text"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("send_email"),
+              allowedDestinationAddresses: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              allowedSenderAddresses: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              destinationAddress: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                type: "type",
+                allowedDestinationAddresses: "allowed_destination_addresses",
+                allowedSenderAddresses: "allowed_sender_addresses",
+                destinationAddress: "destination_address",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("version_metadata"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("worker_loader"),
             }),
           ]),
         ),
@@ -11318,10 +11432,6 @@ export type GetScriptSecretResponse =
 export const GetScriptSecretResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
   [
     Schema.Struct({
-      name: Schema.String,
-      type: Schema.Literal("secret_text"),
-    }),
-    Schema.Struct({
       algorithm: Schema.Unknown,
       format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
       name: Schema.String,
@@ -11338,6 +11448,10 @@ export const GetScriptSecretResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
           "unwrapKey",
         ]),
       ),
+    }),
+    Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literal("secret_text"),
     }),
   ],
 ).pipe(
@@ -11404,10 +11518,6 @@ export const ListScriptSecretsResponse =
     result: Schema.Array(
       Schema.Union([
         Schema.Struct({
-          name: Schema.String,
-          type: Schema.Literal("secret_text"),
-        }),
-        Schema.Struct({
           algorithm: Schema.Unknown,
           format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
           name: Schema.String,
@@ -11424,6 +11534,10 @@ export const ListScriptSecretsResponse =
               "unwrapKey",
             ]),
           ),
+        }),
+        Schema.Struct({
+          name: Schema.String,
+          type: Schema.Literal("secret_text"),
         }),
       ]),
     ),
@@ -11495,10 +11609,6 @@ export type PutScriptSecretResponse =
 export const PutScriptSecretResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
   [
     Schema.Struct({
-      name: Schema.String,
-      type: Schema.Literal("secret_text"),
-    }),
-    Schema.Struct({
       algorithm: Schema.Unknown,
       format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
       name: Schema.String,
@@ -11515,6 +11625,10 @@ export const PutScriptSecretResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union(
           "unwrapKey",
         ]),
       ),
+    }),
+    Schema.Struct({
+      name: Schema.String,
+      type: Schema.Literal("secret_text"),
     }),
   ],
 ).pipe(
@@ -11616,6 +11730,12 @@ export interface GetScriptSettingResponse {
       headSamplingRate?: number | null;
       persist?: boolean | null;
     } | null;
+    traces?: {
+      enabled: boolean;
+      headSamplingRate?: number | null;
+      destinations?: string[] | null;
+      persist?: boolean | null;
+    } | null;
   } | null;
   /** Tags associated with the Worker. */
   tags?: string[] | null;
@@ -11665,11 +11785,36 @@ export const GetScriptSettingResponse =
               Schema.Null,
             ]),
           ),
+          traces: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                enabled: Schema.Boolean,
+                headSamplingRate: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                destinations: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                persist: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  enabled: "enabled",
+                  headSamplingRate: "head_sampling_rate",
+                  destinations: "destinations",
+                  persist: "persist",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             enabled: "enabled",
             headSamplingRate: "head_sampling_rate",
             logs: "logs",
+            traces: "traces",
           }),
         ),
         Schema.Null,
@@ -11737,6 +11882,12 @@ export interface PatchScriptSettingRequest {
       headSamplingRate?: number | null;
       persist?: boolean;
     } | null;
+    traces?: {
+      enabled: boolean;
+      headSamplingRate?: number;
+      destinations?: string[];
+      persist?: boolean;
+    };
   } | null;
   /** Body param: Tags associated with the Worker. */
   tags?: string[] | null;
@@ -11780,11 +11931,27 @@ export const PatchScriptSettingRequest =
               Schema.Null,
             ]),
           ),
+          traces: Schema.optional(
+            Schema.Struct({
+              enabled: Schema.Boolean,
+              headSamplingRate: Schema.optional(Schema.Number),
+              destinations: Schema.optional(Schema.Array(Schema.String)),
+              persist: Schema.optional(Schema.Boolean),
+            }).pipe(
+              Schema.encodeKeys({
+                enabled: "enabled",
+                headSamplingRate: "head_sampling_rate",
+                destinations: "destinations",
+                persist: "persist",
+              }),
+            ),
+          ),
         }).pipe(
           Schema.encodeKeys({
             enabled: "enabled",
             headSamplingRate: "head_sampling_rate",
             logs: "logs",
+            traces: "traces",
           }),
         ),
         Schema.Null,
@@ -11830,6 +11997,12 @@ export interface PatchScriptSettingResponse {
       invocationLogs: boolean;
       destinations?: string[] | null;
       headSamplingRate?: number | null;
+      persist?: boolean | null;
+    } | null;
+    traces?: {
+      enabled: boolean;
+      headSamplingRate?: number | null;
+      destinations?: string[] | null;
       persist?: boolean | null;
     } | null;
   } | null;
@@ -11881,11 +12054,36 @@ export const PatchScriptSettingResponse =
               Schema.Null,
             ]),
           ),
+          traces: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                enabled: Schema.Boolean,
+                headSamplingRate: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                destinations: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                persist: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  enabled: "enabled",
+                  headSamplingRate: "head_sampling_rate",
+                  destinations: "destinations",
+                  persist: "persist",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             enabled: "enabled",
             headSamplingRate: "head_sampling_rate",
             logs: "logs",
+            traces: "traces",
           }),
         ),
         Schema.Null,
@@ -12486,21 +12684,40 @@ export const GetScriptVersionResponse =
           Schema.Array(
             Schema.Union([
               Schema.Struct({
+                algorithm: Schema.Unknown,
+                format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
                 name: Schema.String,
-                type: Schema.Literal("ai"),
+                type: Schema.Literal("secret_key"),
+                usages: Schema.Array(
+                  Schema.Literals([
+                    "encrypt",
+                    "decrypt",
+                    "sign",
+                    "verify",
+                    "deriveKey",
+                    "deriveBits",
+                    "wrapKey",
+                    "unwrapKey",
+                  ]),
+                ),
               }),
+              Schema.Struct({
+                name: Schema.String,
+                secretName: Schema.String,
+                storeId: Schema.String,
+                type: Schema.Literal("secrets_store_secret"),
+              }).pipe(
+                Schema.encodeKeys({
+                  name: "name",
+                  secretName: "secret_name",
+                  storeId: "store_id",
+                  type: "type",
+                }),
+              ),
               Schema.Struct({
                 dataset: Schema.String,
                 name: Schema.String,
                 type: Schema.Literal("analytics_engine"),
-              }),
-              Schema.Struct({
-                name: Schema.String,
-                type: Schema.Literal("assets"),
-              }),
-              Schema.Struct({
-                name: Schema.String,
-                type: Schema.Literal("browser"),
               }),
               Schema.Struct({
                 id: Schema.String,
@@ -12544,55 +12761,9 @@ export const GetScriptVersionResponse =
                 ),
               }),
               Schema.Struct({
-                name: Schema.String,
-                type: Schema.Literal("durable_object_namespace"),
-                className: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                environment: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                namespaceId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                scriptName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  name: "name",
-                  type: "type",
-                  className: "class_name",
-                  environment: "environment",
-                  namespaceId: "namespace_id",
-                  scriptName: "script_name",
-                }),
-              ),
-              Schema.Struct({
                 id: Schema.String,
                 name: Schema.String,
                 type: Schema.Literal("hyperdrive"),
-              }),
-              Schema.Struct({
-                name: Schema.String,
-                type: Schema.Literal("inherit"),
-                oldName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                versionId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  name: "name",
-                  type: "type",
-                  oldName: "old_name",
-                  versionId: "version_id",
-                }),
-              ),
-              Schema.Struct({
-                name: Schema.String,
-                type: Schema.Literal("images"),
               }),
               Schema.Struct({
                 json: Schema.String,
@@ -12662,31 +12833,6 @@ export const GetScriptVersionResponse =
               ),
               Schema.Struct({
                 name: Schema.String,
-                type: Schema.Literal("secret_text"),
-              }),
-              Schema.Struct({
-                name: Schema.String,
-                type: Schema.Literal("send_email"),
-                allowedDestinationAddresses: Schema.optional(
-                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                ),
-                allowedSenderAddresses: Schema.optional(
-                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                ),
-                destinationAddress: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  name: "name",
-                  type: "type",
-                  allowedDestinationAddresses: "allowed_destination_addresses",
-                  allowedSenderAddresses: "allowed_sender_addresses",
-                  destinationAddress: "destination_address",
-                }),
-              ),
-              Schema.Struct({
-                name: Schema.String,
                 service: Schema.String,
                 type: Schema.Literal("service"),
                 environment: Schema.optional(
@@ -12709,41 +12855,6 @@ export const GetScriptVersionResponse =
                   type: "type",
                 }),
               ),
-              Schema.Struct({
-                name: Schema.String,
-                type: Schema.Literal("version_metadata"),
-              }),
-              Schema.Struct({
-                name: Schema.String,
-                secretName: Schema.String,
-                storeId: Schema.String,
-                type: Schema.Literal("secrets_store_secret"),
-              }).pipe(
-                Schema.encodeKeys({
-                  name: "name",
-                  secretName: "secret_name",
-                  storeId: "store_id",
-                  type: "type",
-                }),
-              ),
-              Schema.Struct({
-                algorithm: Schema.Unknown,
-                format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
-                name: Schema.String,
-                type: Schema.Literal("secret_key"),
-                usages: Schema.Array(
-                  Schema.Literals([
-                    "encrypt",
-                    "decrypt",
-                    "sign",
-                    "verify",
-                    "deriveKey",
-                    "deriveBits",
-                    "wrapKey",
-                    "unwrapKey",
-                  ]),
-                ),
-              }),
               Schema.Struct({
                 name: Schema.String,
                 type: Schema.Literal("workflow"),
@@ -12770,12 +12881,99 @@ export const GetScriptVersionResponse =
               }),
               Schema.Struct({
                 name: Schema.String,
-                type: Schema.Literal("worker_loader"),
+                type: Schema.Literal("artifacts"),
+                namespace: Schema.String,
               }),
               Schema.Struct({
                 name: Schema.String,
-                type: Schema.Literal("artifacts"),
-                namespace: Schema.String,
+                type: Schema.Literal("ai"),
+              }),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("assets"),
+              }),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("browser"),
+              }),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("durable_object_namespace"),
+                className: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                environment: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                namespaceId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                scriptName: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  name: "name",
+                  type: "type",
+                  className: "class_name",
+                  environment: "environment",
+                  namespaceId: "namespace_id",
+                  scriptName: "script_name",
+                }),
+              ),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("inherit"),
+                oldName: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                versionId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  name: "name",
+                  type: "type",
+                  oldName: "old_name",
+                  versionId: "version_id",
+                }),
+              ),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("images"),
+              }),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("secret_text"),
+              }),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("send_email"),
+                allowedDestinationAddresses: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                allowedSenderAddresses: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                destinationAddress: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  name: "name",
+                  type: "type",
+                  allowedDestinationAddresses: "allowed_destination_addresses",
+                  allowedSenderAddresses: "allowed_sender_addresses",
+                  destinationAddress: "destination_address",
+                }),
+              ),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("version_metadata"),
+              }),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("worker_loader"),
               }),
             ]),
           ),
@@ -12937,6 +13135,8 @@ export interface ListScriptVersionsRequest {
   scriptName: string;
   /** Path param: Identifier. */
   accountId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Only return versions that can be used in a deployment. Ignores pagination. */
   deployable?: boolean;
 }
@@ -12945,6 +13145,8 @@ export const ListScriptVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     deployable: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deployable")),
   }).pipe(
     T.Http({
@@ -13221,21 +13423,52 @@ export const CreateScriptVersionRequest =
         Schema.Array(
           Schema.Union([
             Schema.Struct({
+              algorithm: Schema.Unknown,
+              format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
               name: Schema.String,
-              type: Schema.Literal("ai"),
-            }),
+              type: Schema.Literal("secret_key"),
+              usages: Schema.Array(
+                Schema.Literals([
+                  "encrypt",
+                  "decrypt",
+                  "sign",
+                  "verify",
+                  "deriveKey",
+                  "deriveBits",
+                  "wrapKey",
+                  "unwrapKey",
+                ]),
+              ),
+              keyBase64: Schema.optional(Schema.String),
+              keyJwk: Schema.optional(Schema.Unknown),
+            }).pipe(
+              Schema.encodeKeys({
+                algorithm: "algorithm",
+                format: "format",
+                name: "name",
+                type: "type",
+                usages: "usages",
+                keyBase64: "key_base64",
+                keyJwk: "key_jwk",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
+              secretName: Schema.String,
+              storeId: Schema.String,
+              type: Schema.Literal("secrets_store_secret"),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                secretName: "secret_name",
+                storeId: "store_id",
+                type: "type",
+              }),
+            ),
             Schema.Struct({
               dataset: Schema.String,
               name: Schema.String,
               type: Schema.Literal("analytics_engine"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("assets"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("browser"),
             }),
             Schema.Struct({
               id: Schema.String,
@@ -13264,43 +13497,9 @@ export const CreateScriptVersionRequest =
               ),
             }),
             Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("durable_object_namespace"),
-              className: Schema.optional(Schema.String),
-              environment: Schema.optional(Schema.String),
-              namespaceId: Schema.optional(Schema.String),
-              scriptName: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                type: "type",
-                className: "class_name",
-                environment: "environment",
-                namespaceId: "namespace_id",
-                scriptName: "script_name",
-              }),
-            ),
-            Schema.Struct({
               id: Schema.String,
               name: Schema.String,
               type: Schema.Literal("hyperdrive"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("inherit"),
-              oldName: Schema.optional(Schema.String),
-              versionId: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                type: "type",
-                oldName: "old_name",
-                versionId: "version_id",
-              }),
-            ),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("images"),
             }),
             Schema.Struct({
               json: Schema.String,
@@ -13370,25 +13569,6 @@ export const CreateScriptVersionRequest =
             }),
             Schema.Struct({
               name: Schema.String,
-              type: Schema.Literal("send_email"),
-              allowedDestinationAddresses: Schema.optional(
-                Schema.Array(Schema.String),
-              ),
-              allowedSenderAddresses: Schema.optional(
-                Schema.Array(Schema.String),
-              ),
-              destinationAddress: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                type: "type",
-                allowedDestinationAddresses: "allowed_destination_addresses",
-                allowedSenderAddresses: "allowed_sender_addresses",
-                destinationAddress: "destination_address",
-              }),
-            ),
-            Schema.Struct({
-              name: Schema.String,
               service: Schema.String,
               type: Schema.Literal("service"),
               environment: Schema.optional(Schema.String),
@@ -13407,53 +13587,6 @@ export const CreateScriptVersionRequest =
                 indexName: "index_name",
                 name: "name",
                 type: "type",
-              }),
-            ),
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("version_metadata"),
-            }),
-            Schema.Struct({
-              name: Schema.String,
-              secretName: Schema.String,
-              storeId: Schema.String,
-              type: Schema.Literal("secrets_store_secret"),
-            }).pipe(
-              Schema.encodeKeys({
-                name: "name",
-                secretName: "secret_name",
-                storeId: "store_id",
-                type: "type",
-              }),
-            ),
-            Schema.Struct({
-              algorithm: Schema.Unknown,
-              format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
-              name: Schema.String,
-              type: Schema.Literal("secret_key"),
-              usages: Schema.Array(
-                Schema.Literals([
-                  "encrypt",
-                  "decrypt",
-                  "sign",
-                  "verify",
-                  "deriveKey",
-                  "deriveBits",
-                  "wrapKey",
-                  "unwrapKey",
-                ]),
-              ),
-              keyBase64: Schema.optional(Schema.String),
-              keyJwk: Schema.optional(Schema.Unknown),
-            }).pipe(
-              Schema.encodeKeys({
-                algorithm: "algorithm",
-                format: "format",
-                name: "name",
-                type: "type",
-                usages: "usages",
-                keyBase64: "key_base64",
-                keyJwk: "key_jwk",
               }),
             ),
             Schema.Struct({
@@ -13478,12 +13611,81 @@ export const CreateScriptVersionRequest =
             }),
             Schema.Struct({
               name: Schema.String,
-              type: Schema.Literal("worker_loader"),
+              type: Schema.Literal("artifacts"),
+              namespace: Schema.String,
             }),
             Schema.Struct({
               name: Schema.String,
-              type: Schema.Literal("artifacts"),
-              namespace: Schema.String,
+              type: Schema.Literal("ai"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("assets"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("browser"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("durable_object_namespace"),
+              className: Schema.optional(Schema.String),
+              environment: Schema.optional(Schema.String),
+              namespaceId: Schema.optional(Schema.String),
+              scriptName: Schema.optional(Schema.String),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                type: "type",
+                className: "class_name",
+                environment: "environment",
+                namespaceId: "namespace_id",
+                scriptName: "script_name",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("inherit"),
+              oldName: Schema.optional(Schema.String),
+              versionId: Schema.optional(Schema.String),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                type: "type",
+                oldName: "old_name",
+                versionId: "version_id",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("images"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("send_email"),
+              allowedDestinationAddresses: Schema.optional(
+                Schema.Array(Schema.String),
+              ),
+              allowedSenderAddresses: Schema.optional(
+                Schema.Array(Schema.String),
+              ),
+              destinationAddress: Schema.optional(Schema.String),
+            }).pipe(
+              Schema.encodeKeys({
+                name: "name",
+                type: "type",
+                allowedDestinationAddresses: "allowed_destination_addresses",
+                allowedSenderAddresses: "allowed_sender_addresses",
+                destinationAddress: "destination_address",
+              }),
+            ),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("version_metadata"),
+            }),
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("worker_loader"),
             }),
           ]),
         ),
@@ -13668,21 +13870,40 @@ export const CreateScriptVersionResponse =
           Schema.Array(
             Schema.Union([
               Schema.Struct({
+                algorithm: Schema.Unknown,
+                format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
                 name: Schema.String,
-                type: Schema.Literal("ai"),
+                type: Schema.Literal("secret_key"),
+                usages: Schema.Array(
+                  Schema.Literals([
+                    "encrypt",
+                    "decrypt",
+                    "sign",
+                    "verify",
+                    "deriveKey",
+                    "deriveBits",
+                    "wrapKey",
+                    "unwrapKey",
+                  ]),
+                ),
               }),
+              Schema.Struct({
+                name: Schema.String,
+                secretName: Schema.String,
+                storeId: Schema.String,
+                type: Schema.Literal("secrets_store_secret"),
+              }).pipe(
+                Schema.encodeKeys({
+                  name: "name",
+                  secretName: "secret_name",
+                  storeId: "store_id",
+                  type: "type",
+                }),
+              ),
               Schema.Struct({
                 dataset: Schema.String,
                 name: Schema.String,
                 type: Schema.Literal("analytics_engine"),
-              }),
-              Schema.Struct({
-                name: Schema.String,
-                type: Schema.Literal("assets"),
-              }),
-              Schema.Struct({
-                name: Schema.String,
-                type: Schema.Literal("browser"),
               }),
               Schema.Struct({
                 id: Schema.String,
@@ -13726,55 +13947,9 @@ export const CreateScriptVersionResponse =
                 ),
               }),
               Schema.Struct({
-                name: Schema.String,
-                type: Schema.Literal("durable_object_namespace"),
-                className: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                environment: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                namespaceId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                scriptName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  name: "name",
-                  type: "type",
-                  className: "class_name",
-                  environment: "environment",
-                  namespaceId: "namespace_id",
-                  scriptName: "script_name",
-                }),
-              ),
-              Schema.Struct({
                 id: Schema.String,
                 name: Schema.String,
                 type: Schema.Literal("hyperdrive"),
-              }),
-              Schema.Struct({
-                name: Schema.String,
-                type: Schema.Literal("inherit"),
-                oldName: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-                versionId: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  name: "name",
-                  type: "type",
-                  oldName: "old_name",
-                  versionId: "version_id",
-                }),
-              ),
-              Schema.Struct({
-                name: Schema.String,
-                type: Schema.Literal("images"),
               }),
               Schema.Struct({
                 json: Schema.String,
@@ -13844,31 +14019,6 @@ export const CreateScriptVersionResponse =
               ),
               Schema.Struct({
                 name: Schema.String,
-                type: Schema.Literal("secret_text"),
-              }),
-              Schema.Struct({
-                name: Schema.String,
-                type: Schema.Literal("send_email"),
-                allowedDestinationAddresses: Schema.optional(
-                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                ),
-                allowedSenderAddresses: Schema.optional(
-                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                ),
-                destinationAddress: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  name: "name",
-                  type: "type",
-                  allowedDestinationAddresses: "allowed_destination_addresses",
-                  allowedSenderAddresses: "allowed_sender_addresses",
-                  destinationAddress: "destination_address",
-                }),
-              ),
-              Schema.Struct({
-                name: Schema.String,
                 service: Schema.String,
                 type: Schema.Literal("service"),
                 environment: Schema.optional(
@@ -13891,41 +14041,6 @@ export const CreateScriptVersionResponse =
                   type: "type",
                 }),
               ),
-              Schema.Struct({
-                name: Schema.String,
-                type: Schema.Literal("version_metadata"),
-              }),
-              Schema.Struct({
-                name: Schema.String,
-                secretName: Schema.String,
-                storeId: Schema.String,
-                type: Schema.Literal("secrets_store_secret"),
-              }).pipe(
-                Schema.encodeKeys({
-                  name: "name",
-                  secretName: "secret_name",
-                  storeId: "store_id",
-                  type: "type",
-                }),
-              ),
-              Schema.Struct({
-                algorithm: Schema.Unknown,
-                format: Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
-                name: Schema.String,
-                type: Schema.Literal("secret_key"),
-                usages: Schema.Array(
-                  Schema.Literals([
-                    "encrypt",
-                    "decrypt",
-                    "sign",
-                    "verify",
-                    "deriveKey",
-                    "deriveBits",
-                    "wrapKey",
-                    "unwrapKey",
-                  ]),
-                ),
-              }),
               Schema.Struct({
                 name: Schema.String,
                 type: Schema.Literal("workflow"),
@@ -13952,12 +14067,99 @@ export const CreateScriptVersionResponse =
               }),
               Schema.Struct({
                 name: Schema.String,
-                type: Schema.Literal("worker_loader"),
+                type: Schema.Literal("artifacts"),
+                namespace: Schema.String,
               }),
               Schema.Struct({
                 name: Schema.String,
-                type: Schema.Literal("artifacts"),
-                namespace: Schema.String,
+                type: Schema.Literal("ai"),
+              }),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("assets"),
+              }),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("browser"),
+              }),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("durable_object_namespace"),
+                className: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                environment: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                namespaceId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                scriptName: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  name: "name",
+                  type: "type",
+                  className: "class_name",
+                  environment: "environment",
+                  namespaceId: "namespace_id",
+                  scriptName: "script_name",
+                }),
+              ),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("inherit"),
+                oldName: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                versionId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  name: "name",
+                  type: "type",
+                  oldName: "old_name",
+                  versionId: "version_id",
+                }),
+              ),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("images"),
+              }),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("secret_text"),
+              }),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("send_email"),
+                allowedDestinationAddresses: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                allowedSenderAddresses: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                destinationAddress: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  name: "name",
+                  type: "type",
+                  allowedDestinationAddresses: "allowed_destination_addresses",
+                  allowedSenderAddresses: "allowed_sender_addresses",
+                  destinationAddress: "destination_address",
+                }),
+              ),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("version_metadata"),
+              }),
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("worker_loader"),
               }),
             ]),
           ),
@@ -14321,6 +14523,52 @@ export const CreateServiceEdgePreviewRequest =
           Schema.Array(
             Schema.Union([
               Schema.Struct({
+                type: Schema.Literal("workflow"),
+                name: Schema.String,
+                workflowName: Schema.String,
+                className: Schema.String,
+                scriptName: Schema.optional(Schema.String),
+                raw: Schema.optional(Schema.Boolean),
+              }).pipe(
+                Schema.encodeKeys({
+                  type: "type",
+                  name: "name",
+                  workflowName: "workflow_name",
+                  className: "class_name",
+                  scriptName: "script_name",
+                  raw: "raw",
+                }),
+              ),
+              Schema.Struct({
+                type: Schema.Literal("secrets_store_secret"),
+                name: Schema.String,
+                storeId: Schema.String,
+                secretName: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  type: "type",
+                  name: "name",
+                  storeId: "store_id",
+                  secretName: "secret_name",
+                }),
+              ),
+              Schema.Struct({
+                type: Schema.Literal("ratelimit"),
+                name: Schema.String,
+                namespaceId: Schema.String,
+                simple: Schema.Struct({
+                  limit: Schema.Number,
+                  period: Schema.Literals(["10", "60"]),
+                }),
+              }).pipe(
+                Schema.encodeKeys({
+                  type: "type",
+                  name: "name",
+                  namespaceId: "namespace_id",
+                  simple: "simple",
+                }),
+              ),
+              Schema.Struct({
                 type: Schema.Literal("plain_text"),
                 name: Schema.String,
                 text: Schema.String,
@@ -14409,22 +14657,6 @@ export const CreateServiceEdgePreviewRequest =
                 entrypoint: Schema.optional(Schema.String),
               }),
               Schema.Struct({
-                type: Schema.Literal("ai"),
-                name: Schema.String,
-                staging: Schema.optional(Schema.Boolean),
-                raw: Schema.optional(Schema.Boolean),
-              }),
-              Schema.Struct({
-                type: Schema.Literal("browser"),
-                name: Schema.String,
-                raw: Schema.optional(Schema.Boolean),
-              }),
-              Schema.Struct({
-                type: Schema.Literal("images"),
-                name: Schema.String,
-                raw: Schema.optional(Schema.Boolean),
-              }),
-              Schema.Struct({
                 type: Schema.Literal("vectorize"),
                 name: Schema.String,
                 indexName: Schema.String,
@@ -14438,31 +14670,9 @@ export const CreateServiceEdgePreviewRequest =
                 }),
               ),
               Schema.Struct({
-                type: Schema.Literal("workflow"),
-                name: Schema.String,
-                workflowName: Schema.String,
-                className: Schema.String,
-                scriptName: Schema.optional(Schema.String),
-                raw: Schema.optional(Schema.Boolean),
-              }).pipe(
-                Schema.encodeKeys({
-                  type: "type",
-                  name: "name",
-                  workflowName: "workflow_name",
-                  className: "class_name",
-                  scriptName: "script_name",
-                  raw: "raw",
-                }),
-              ),
-              Schema.Struct({
                 type: Schema.Literal("hyperdrive"),
                 name: Schema.String,
                 id: Schema.String,
-              }),
-              Schema.Struct({
-                type: Schema.Literal("analytics_engine"),
-                name: Schema.String,
-                dataset: Schema.optional(Schema.String),
               }),
               Schema.Struct({
                 type: Schema.Literal("dispatch_namespace"),
@@ -14486,25 +14696,6 @@ export const CreateServiceEdgePreviewRequest =
                   }),
                 ),
               }),
-              Schema.Struct({
-                type: Schema.Literal("send_email"),
-                name: Schema.String,
-                destinationAddress: Schema.optional(Schema.String),
-                allowedDestinationAddresses: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-                allowedSenderAddresses: Schema.optional(
-                  Schema.Array(Schema.String),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  type: "type",
-                  name: "name",
-                  destinationAddress: "destination_address",
-                  allowedDestinationAddresses: "allowed_destination_addresses",
-                  allowedSenderAddresses: "allowed_sender_addresses",
-                }),
-              ),
               Schema.Struct({
                 type: Schema.Literal("mtls_certificate"),
                 name: Schema.String,
@@ -14537,16 +14728,64 @@ export const CreateServiceEdgePreviewRequest =
                 pipeline: Schema.String,
               }),
               Schema.Struct({
-                type: Schema.Literal("secrets_store_secret"),
+                type: Schema.Literal("logfwdr"),
                 name: Schema.String,
-                storeId: Schema.String,
-                secretName: Schema.String,
+                destination: Schema.String,
+              }),
+              Schema.Struct({
+                type: Schema.Literal("ai_search_namespace"),
+                name: Schema.String,
+                namespace: Schema.String,
+              }),
+              Schema.Struct({
+                type: Schema.Literal("ai_search"),
+                name: Schema.String,
+                instanceName: Schema.String,
               }).pipe(
                 Schema.encodeKeys({
                   type: "type",
                   name: "name",
-                  storeId: "store_id",
-                  secretName: "secret_name",
+                  instanceName: "instance_name",
+                }),
+              ),
+              Schema.Struct({
+                type: Schema.Literal("ai"),
+                name: Schema.String,
+                staging: Schema.optional(Schema.Boolean),
+                raw: Schema.optional(Schema.Boolean),
+              }),
+              Schema.Struct({
+                type: Schema.Literal("browser"),
+                name: Schema.String,
+                raw: Schema.optional(Schema.Boolean),
+              }),
+              Schema.Struct({
+                type: Schema.Literal("images"),
+                name: Schema.String,
+                raw: Schema.optional(Schema.Boolean),
+              }),
+              Schema.Struct({
+                type: Schema.Literal("analytics_engine"),
+                name: Schema.String,
+                dataset: Schema.optional(Schema.String),
+              }),
+              Schema.Struct({
+                type: Schema.Literal("send_email"),
+                name: Schema.String,
+                destinationAddress: Schema.optional(Schema.String),
+                allowedDestinationAddresses: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+                allowedSenderAddresses: Schema.optional(
+                  Schema.Array(Schema.String),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  type: "type",
+                  name: "name",
+                  destinationAddress: "destination_address",
+                  allowedDestinationAddresses: "allowed_destination_addresses",
+                  allowedSenderAddresses: "allowed_sender_addresses",
                 }),
               ),
               Schema.Struct({
@@ -14569,43 +14808,6 @@ export const CreateServiceEdgePreviewRequest =
                 type: Schema.Literal("worker_loader"),
                 name: Schema.String,
               }),
-              Schema.Struct({
-                type: Schema.Literal("logfwdr"),
-                name: Schema.String,
-                destination: Schema.String,
-              }),
-              Schema.Struct({
-                type: Schema.Literal("ai_search_namespace"),
-                name: Schema.String,
-                namespace: Schema.String,
-              }),
-              Schema.Struct({
-                type: Schema.Literal("ai_search"),
-                name: Schema.String,
-                instanceName: Schema.String,
-              }).pipe(
-                Schema.encodeKeys({
-                  type: "type",
-                  name: "name",
-                  instanceName: "instance_name",
-                }),
-              ),
-              Schema.Struct({
-                type: Schema.Literal("ratelimit"),
-                name: Schema.String,
-                namespaceId: Schema.String,
-                simple: Schema.Struct({
-                  limit: Schema.Number,
-                  period: Schema.Literals(["10", "60"]),
-                }),
-              }).pipe(
-                Schema.encodeKeys({
-                  type: "type",
-                  name: "name",
-                  namespaceId: "namespace_id",
-                  simple: "simple",
-                }),
-              ),
               Schema.Struct({
                 type: Schema.Literal("inherit"),
                 name: Schema.String,

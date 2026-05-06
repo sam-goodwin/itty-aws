@@ -4,6 +4,7 @@ import * as S from "effect/Schema";
 import * as stream from "effect/Stream";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import type { Region } from "../region.ts";
@@ -1157,51 +1158,51 @@ export const ValidateResourcePolicyResponse =
 export class DecryptionFailure extends S.TaggedErrorClass<DecryptionFailure>()(
   "DecryptionFailure",
   { Message: S.optional(S.String) },
-) {}
+).pipe(C.withServerError) {}
 export class InternalServiceError extends S.TaggedErrorClass<InternalServiceError>()(
   "InternalServiceError",
   { Message: S.optional(S.String) },
-) {}
+).pipe(C.withServerError, C.withRetryableError) {}
 export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
   "InvalidNextTokenException",
   { Message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
   "InvalidParameterException",
   { Message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
   "InvalidRequestException",
   { Message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.optional(S.String) },
-) {}
+).pipe(C.withNotFoundError) {}
 export class EncryptionFailure extends S.TaggedErrorClass<EncryptionFailure>()(
   "EncryptionFailure",
   { Message: S.optional(S.String) },
-) {}
+).pipe(C.withServerError) {}
 export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
   "LimitExceededException",
   { Message: S.optional(S.String) },
-) {}
+).pipe(C.withQuotaError) {}
 export class MalformedPolicyDocumentException extends S.TaggedErrorClass<MalformedPolicyDocumentException>()(
   "MalformedPolicyDocumentException",
   { Message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class PreconditionNotMetException extends S.TaggedErrorClass<PreconditionNotMetException>()(
   "PreconditionNotMetException",
   { Message: S.optional(S.String) },
-) {}
+).pipe(C.withConflictError) {}
 export class ResourceExistsException extends S.TaggedErrorClass<ResourceExistsException>()(
   "ResourceExistsException",
   { Message: S.optional(S.String) },
-) {}
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class PublicPolicyException extends S.TaggedErrorClass<PublicPolicyException>()(
   "PublicPolicyException",
   { Message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 
 //# Operations
 export type BatchGetSecretValueError =

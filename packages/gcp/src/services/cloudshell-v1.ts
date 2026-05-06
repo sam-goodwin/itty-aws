@@ -28,7 +28,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -62,11 +62,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -123,7 +123,7 @@ export interface Environment {
   /** Output only. Port to which clients can connect to initiate SSH sessions with the environment. */
   sshPort?: number;
   /** Output only. Public keys associated with the environment. Clients can connect to this environment via SSH only if they possess a private key corresponding to at least one of these public keys. Keys can be added to or removed from the environment using the AddPublicKey and RemovePublicKey methods. */
-  publicKeys?: Array<string>;
+  publicKeys?: ReadonlyArray<string>;
 }
 
 export const Environment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -142,7 +142,7 @@ export interface StartEnvironmentRequest {
   /** The initial access token passed to the environment. If this is present and valid, the environment will be pre-authenticated with gcloud so that the user can run gcloud commands in Cloud Shell without having to log in. This code can be updated later by calling AuthorizeEnvironment. */
   accessToken?: string;
   /** Public keys that should be added to the environment before it is started. */
-  publicKeys?: Array<string>;
+  publicKeys?: ReadonlyArray<string>;
 }
 
 export const StartEnvironmentRequest =
@@ -296,7 +296,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("returnPartialSuccess"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/operations" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<ListOperationsRequest>;
 
@@ -330,7 +330,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/operations/{operationsId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -360,7 +360,7 @@ export const DeleteOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/operations/{operationsId}" }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOperationsRequest>;
 
@@ -393,11 +393,7 @@ export const CancelOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelOperationsRequest>;
 
@@ -433,10 +429,7 @@ export const GenerateAccessTokenUsersEnvironmentsRequest =
     expireTime: Schema.optional(Schema.String).pipe(T.HttpQuery("expireTime")),
     ttl: Schema.optional(Schema.String).pipe(T.HttpQuery("ttl")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/users/{usersId}/environments/{environmentsId}:generateAccessToken",
-    }),
+    T.Http({ method: "GET", path: "v1/{environment}:generateAccessToken" }),
     svc,
   ) as unknown as Schema.Schema<GenerateAccessTokenUsersEnvironmentsRequest>;
 
@@ -468,10 +461,7 @@ export const GetUsersEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/users/{usersId}/environments/{environmentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetUsersEnvironmentsRequest>;
 
@@ -505,11 +495,7 @@ export const StartUsersEnvironmentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(StartEnvironmentRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/users/{usersId}/environments/{environmentsId}:start",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:start", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StartUsersEnvironmentsRequest>;
 
@@ -543,11 +529,7 @@ export const AuthorizeUsersEnvironmentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AuthorizeEnvironmentRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/users/{usersId}/environments/{environmentsId}:authorize",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:authorize", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AuthorizeUsersEnvironmentsRequest>;
 
@@ -583,7 +565,7 @@ export const AddPublicKeyUsersEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/users/{usersId}/environments/{environmentsId}:addPublicKey",
+      path: "v1/{environment}:addPublicKey",
       hasBody: true,
     }),
     svc,
@@ -621,7 +603,7 @@ export const RemovePublicKeyUsersEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/users/{usersId}/environments/{environmentsId}:removePublicKey",
+      path: "v1/{environment}:removePublicKey",
       hasBody: true,
     }),
     svc,

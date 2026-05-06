@@ -239,6 +239,8 @@ export const getDiscovery: API.OperationMethod<
 export interface ListDiscoveryOperationsRequest {
   /** Path param: Identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: When `true`, only return API Discovery results that are not saved into API Shield Endpoint Management */
   diff?: boolean;
   /** Query param: Direction to order results. */
@@ -265,6 +267,8 @@ export interface ListDiscoveryOperationsRequest {
 export const ListDiscoveryOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     diff: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("diff")),
     direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
       T.HttpQuery("direction"),
@@ -697,6 +701,29 @@ export const GetOperationResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Union([
       Schema.Union([
         Schema.Struct({
+          parameterSchemas: Schema.Struct({
+            lastUpdated: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            parameterSchemas: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  parameters: Schema.optional(
+                    Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+                  ),
+                  responses: Schema.optional(Schema.Null),
+                }),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              lastUpdated: "last_updated",
+              parameterSchemas: "parameter_schemas",
+            }),
+          ),
+        }).pipe(Schema.encodeKeys({ parameterSchemas: "parameter_schemas" })),
+        Schema.Struct({
           thresholds: Schema.optional(
             Schema.Union([
               Schema.Struct({
@@ -744,29 +771,6 @@ export const GetOperationResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ]),
           ),
         }),
-        Schema.Struct({
-          parameterSchemas: Schema.Struct({
-            lastUpdated: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            parameterSchemas: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  parameters: Schema.optional(
-                    Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
-                  ),
-                  responses: Schema.optional(Schema.Null),
-                }),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              lastUpdated: "last_updated",
-              parameterSchemas: "parameter_schemas",
-            }),
-          ),
-        }).pipe(Schema.encodeKeys({ parameterSchemas: "parameter_schemas" })),
         Schema.Struct({
           apiRouting: Schema.optional(
             Schema.Union([
@@ -957,6 +961,8 @@ export const getOperation: API.OperationMethod<
 export interface ListOperationsRequest {
   /** Path param: Identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Direction to order results. */
   direction?: "asc" | "desc";
   /** Query param: Filter results to only include endpoints containing this pattern. */
@@ -973,6 +979,8 @@ export interface ListOperationsRequest {
 
 export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   direction: Schema.optional(Schema.Literals(["asc", "desc"])).pipe(
     T.HttpQuery("direction"),
   ),
@@ -1096,6 +1104,34 @@ export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           Schema.Union([
             Schema.Union([
               Schema.Struct({
+                parameterSchemas: Schema.Struct({
+                  lastUpdated: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  parameterSchemas: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        parameters: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.Unknown),
+                            Schema.Null,
+                          ]),
+                        ),
+                        responses: Schema.optional(Schema.Null),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    lastUpdated: "last_updated",
+                    parameterSchemas: "parameter_schemas",
+                  }),
+                ),
+              }).pipe(
+                Schema.encodeKeys({ parameterSchemas: "parameter_schemas" }),
+              ),
+              Schema.Struct({
                 thresholds: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
@@ -1143,34 +1179,6 @@ export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
                   ]),
                 ),
               }),
-              Schema.Struct({
-                parameterSchemas: Schema.Struct({
-                  lastUpdated: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  parameterSchemas: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        parameters: Schema.optional(
-                          Schema.Union([
-                            Schema.Array(Schema.Unknown),
-                            Schema.Null,
-                          ]),
-                        ),
-                        responses: Schema.optional(Schema.Null),
-                      }),
-                      Schema.Null,
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    lastUpdated: "last_updated",
-                    parameterSchemas: "parameter_schemas",
-                  }),
-                ),
-              }).pipe(
-                Schema.encodeKeys({ parameterSchemas: "parameter_schemas" }),
-              ),
               Schema.Struct({
                 apiRouting: Schema.optional(
                   Schema.Union([
@@ -1537,6 +1545,29 @@ export const CreateOperationResponse =
       Schema.Union([
         Schema.Union([
           Schema.Struct({
+            parameterSchemas: Schema.Struct({
+              lastUpdated: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              parameterSchemas: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    parameters: Schema.optional(
+                      Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
+                    ),
+                    responses: Schema.optional(Schema.Null),
+                  }),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                lastUpdated: "last_updated",
+                parameterSchemas: "parameter_schemas",
+              }),
+            ),
+          }).pipe(Schema.encodeKeys({ parameterSchemas: "parameter_schemas" })),
+          Schema.Struct({
             thresholds: Schema.optional(
               Schema.Union([
                 Schema.Struct({
@@ -1584,29 +1615,6 @@ export const CreateOperationResponse =
               ]),
             ),
           }),
-          Schema.Struct({
-            parameterSchemas: Schema.Struct({
-              lastUpdated: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              parameterSchemas: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    parameters: Schema.optional(
-                      Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
-                    ),
-                    responses: Schema.optional(Schema.Null),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                lastUpdated: "last_updated",
-                parameterSchemas: "parameter_schemas",
-              }),
-            ),
-          }).pipe(Schema.encodeKeys({ parameterSchemas: "parameter_schemas" })),
           Schema.Struct({
             apiRouting: Schema.optional(
               Schema.Union([
@@ -2058,6 +2066,34 @@ export const BulkCreateOperationsResponse =
           Schema.Union([
             Schema.Union([
               Schema.Struct({
+                parameterSchemas: Schema.Struct({
+                  lastUpdated: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  parameterSchemas: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        parameters: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.Unknown),
+                            Schema.Null,
+                          ]),
+                        ),
+                        responses: Schema.optional(Schema.Null),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    lastUpdated: "last_updated",
+                    parameterSchemas: "parameter_schemas",
+                  }),
+                ),
+              }).pipe(
+                Schema.encodeKeys({ parameterSchemas: "parameter_schemas" }),
+              ),
+              Schema.Struct({
                 thresholds: Schema.optional(
                   Schema.Union([
                     Schema.Struct({
@@ -2105,34 +2141,6 @@ export const BulkCreateOperationsResponse =
                   ]),
                 ),
               }),
-              Schema.Struct({
-                parameterSchemas: Schema.Struct({
-                  lastUpdated: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                  parameterSchemas: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        parameters: Schema.optional(
-                          Schema.Union([
-                            Schema.Array(Schema.Unknown),
-                            Schema.Null,
-                          ]),
-                        ),
-                        responses: Schema.optional(Schema.Null),
-                      }),
-                      Schema.Null,
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    lastUpdated: "last_updated",
-                    parameterSchemas: "parameter_schemas",
-                  }),
-                ),
-              }).pipe(
-                Schema.encodeKeys({ parameterSchemas: "parameter_schemas" }),
-              ),
               Schema.Struct({
                 apiRouting: Schema.optional(
                   Schema.Union([
@@ -2953,6 +2961,8 @@ export const getUserSchema: API.OperationMethod<
 export interface ListUserSchemasRequest {
   /** Path param: Identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Omit the source-files of schemas and only retrieve their meta-data. */
   omitSource?: boolean;
   /** Query param: Flag whether schema is enabled for validation. */
@@ -2962,6 +2972,8 @@ export interface ListUserSchemasRequest {
 export const ListUserSchemasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     omitSource: Schema.optional(Schema.Boolean).pipe(
       T.HttpQuery("omit_source"),
     ),
@@ -3356,11 +3368,15 @@ export const deleteUserSchema: API.OperationMethod<
 export interface ListUserSchemaHostsRequest {
   /** Path param: Identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
 }
 
 export const ListUserSchemaHostsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
   }).pipe(
     T.Http({
       method: "GET",
@@ -3445,6 +3461,8 @@ export interface ListUserSchemaOperationsRequest {
   schemaId: string;
   /** Path param: Identifier. */
   zoneId: string;
+  page?: number;
+  perPage?: number;
   /** Query param: Filter results to only include endpoints containing this pattern. */
   endpoint?: string;
   /** Query param: Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the spe */
@@ -3461,6 +3479,8 @@ export const ListUserSchemaOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     schemaId: Schema.String.pipe(T.HttpPath("schemaId")),
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
     endpoint: Schema.optional(Schema.String).pipe(T.HttpQuery("endpoint")),
     feature: Schema.optional(
       Schema.Array(
@@ -3612,6 +3632,34 @@ export const ListUserSchemaOperationsResponse =
             Schema.Union([
               Schema.Union([
                 Schema.Struct({
+                  parameterSchemas: Schema.Struct({
+                    lastUpdated: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                    parameterSchemas: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          parameters: Schema.optional(
+                            Schema.Union([
+                              Schema.Array(Schema.Unknown),
+                              Schema.Null,
+                            ]),
+                          ),
+                          responses: Schema.optional(Schema.Null),
+                        }),
+                        Schema.Null,
+                      ]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      lastUpdated: "last_updated",
+                      parameterSchemas: "parameter_schemas",
+                    }),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({ parameterSchemas: "parameter_schemas" }),
+                ),
+                Schema.Struct({
                   thresholds: Schema.optional(
                     Schema.Union([
                       Schema.Struct({
@@ -3659,34 +3707,6 @@ export const ListUserSchemaOperationsResponse =
                     ]),
                   ),
                 }),
-                Schema.Struct({
-                  parameterSchemas: Schema.Struct({
-                    lastUpdated: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    parameterSchemas: Schema.optional(
-                      Schema.Union([
-                        Schema.Struct({
-                          parameters: Schema.optional(
-                            Schema.Union([
-                              Schema.Array(Schema.Unknown),
-                              Schema.Null,
-                            ]),
-                          ),
-                          responses: Schema.optional(Schema.Null),
-                        }),
-                        Schema.Null,
-                      ]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      lastUpdated: "last_updated",
-                      parameterSchemas: "parameter_schemas",
-                    }),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({ parameterSchemas: "parameter_schemas" }),
-                ),
                 Schema.Struct({
                   apiRouting: Schema.optional(
                     Schema.Union([

@@ -22,6 +22,7 @@ permissions:
 
 env:
   NODE_VERSION: "24"
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
   # Files produced by the bump job and consumed by the commit-and-tag and
   # publish jobs. Listed once here so additions stay in sync.
   BUMP_ARTIFACT_PATHS: |
@@ -122,9 +123,14 @@ jobs:
           app-id: ${{ secrets.ALCHEMY_VERSION_BOT_ID }}
           private-key: ${{ secrets.ALCHEMY_VERSION_BOT_PRIVATE_KEY }}
 
+      # Pin to the SHA captured by `bump` so concurrent pushes to the branch
+      # during the workflow can't shift the release base. The push below then
+      # targets the branch explicitly; if it advanced, the push is rejected as
+      # non-fast-forward and the workflow fails fast rather than producing a
+      # corrupt release.
       - uses: actions/checkout@v6
         with:
-          ref: ${{ github.ref }}
+          ref: ${{ needs.bump.outputs.sha }}
           fetch-depth: 0
           token: ${{ steps.bot-token.outputs.token }}
 
@@ -141,6 +147,7 @@ jobs:
         name: Commit bump + changelog, tag, push
         env:
           VERSION: ${{ needs.bump.outputs.version }}
+          BRANCH: ${{ github.ref_name }}
         run: |
           set -euo pipefail
           TAG="v${VERSION}"
@@ -168,7 +175,10 @@ jobs:
             git tag -a "${TAG}" -m "Release ${TAG}"
           fi
 
-          git push origin HEAD
+          # Push to the branch explicitly (we're on detached HEAD because we
+          # checked out by SHA). Non-fast-forward = someone pushed during the
+          # workflow → fail rather than force-push.
+          git push origin "HEAD:refs/heads/${BRANCH}"
           if git ls-remote --exit-code --tags origin "refs/tags/${TAG}" >/dev/null 2>&1; then
             echo "Tag ${TAG} already on remote, skipping tag push"
           else
@@ -237,7 +247,10 @@ jobs:
   # gcp is excluded — its build is too large for GitHub Actions runners.
   publish-sdk:
     needs: [bump, commit-and-tag, publish-core]
-    runs-on: ubuntu-latest
+    # aws is large enough that the default runner hangs during build; route it
+    # to a larger runner via the matrix `include` below. Everything else stays
+    # on the default ubuntu-latest.
+    runs-on: ${{ matrix.runner || 'ubuntu-latest' }}
     strategy:
       fail-fast: false
       matrix:
@@ -260,6 +273,9 @@ jobs:
           - typesense
           - workos
           - expo-eas
+        include:
+          - package: aws
+            runner: ubuntu-22-large
     steps:
       - uses: actions/checkout@v6
         with:

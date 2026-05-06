@@ -56,13 +56,13 @@ export interface Auth {
   /** The authenticated principal. Reflects the issuer (`iss`) and subject (`sub`) claims within a JWT. The issuer and subject should be `/` delimited, with `/` percent-encoded within the subject fragment. For Google accounts, the principal format is: "https://accounts.google.com/{id}" */
   principal?: string;
   /** The intended audience(s) for this authentication information. Reflects the audience (`aud`) claim within a JWT. The audience value(s) depends on the `issuer`, but typically include one or more of the following pieces of information: * The services intended to receive the credential. For example, ["https://pubsub.googleapis.com/", "https://storage.googleapis.com/"]. * A set of service-based scopes. For example, ["https://www.googleapis.com/auth/cloud-platform"]. * The client id of an app, such as the Firebase project id for JWTs from Firebase Auth. Consult the documentation for the credential issuer to determine the information provided. */
-  audiences?: Array<string>;
+  audiences?: ReadonlyArray<string>;
   /** The authorized presenter of the credential. Reflects the optional Authorized Presenter (`azp`) claim within a JWT or the OAuth client id. For example, a Google Cloud Platform client id looks as follows: "123456789012.apps.googleusercontent.com". */
   presenter?: string;
   /** Structured claims presented with the credential. JWTs include `{key: value}` pairs for standard and private claims. The following is a subset of the standard required and optional claims that would typically be presented for a Google-based JWT: {'iss': 'accounts.google.com', 'sub': '113289723416554971153', 'aud': ['123456789012', 'pubsub.googleapis.com'], 'azp': '123456789012.apps.googleusercontent.com', 'email': 'jsmith@example.com', 'iat': 1353601026, 'exp': 1353604926} SAML assertions are similarly specified, but with an identity provider dependent structure. */
   claims?: Record<string, unknown>;
   /** A list of access level resource names that allow resources to be accessed by authenticated requester. It is part of Secure GCP processing for the incoming request. An access level string has the format: "//{api_service_name}/accessPolicies/{policy_id}/accessLevels/{short_name}" Example: "//accesscontextmanager.googleapis.com/accessPolicies/MY_POLICY_ID/accessLevels/MY_LEVEL" */
-  accessLevels?: Array<string>;
+  accessLevels?: ReadonlyArray<string>;
   /** Attributes of the OAuth token associated with the request. */
   oauth?: Oauth;
 }
@@ -218,7 +218,7 @@ export interface AttributeContext {
   /** Represents an API operation that is involved to a network activity. */
   api?: Api;
   /** Supports extensions for advanced use cases, such as logs and metrics. */
-  extensions?: Array<Record<string, unknown>>;
+  extensions?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const AttributeContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -261,7 +261,7 @@ export interface CheckRequest {
   /** Describes attributes about the operation being executed by the service. */
   attributes?: AttributeContext;
   /** Describes the resources and the policies applied to each resource. */
-  resources?: Array<ResourceInfo>;
+  resources?: ReadonlyArray<ResourceInfo>;
   /** Optional. Contains a comma-separated list of flags. */
   flags?: string;
 }
@@ -279,7 +279,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -311,7 +311,7 @@ export interface ReportRequest {
   /** Specifies the version of the service configuration that should be used to process the request. Must not be empty. Set this field to 'latest' to specify using the latest configuration. */
   serviceConfigId?: string;
   /** Describes the list of operations to be reported. Each operation is represented as an AttributeContext, and contains all attributes around an API access. */
-  operations?: Array<AttributeContext>;
+  operations?: ReadonlyArray<AttributeContext>;
 }
 
 export const ReportRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -330,9 +330,9 @@ export const ReportResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ResourceLocation {
   /** The locations of a resource after the execution of the operation. Requests to create or delete a location based resource must populate the 'current_locations' field and not the 'original_locations' field. For example: "europe-west1-a" "us-east1" "nam3" */
-  currentLocations?: Array<string>;
+  currentLocations?: ReadonlyArray<string>;
   /** The locations of a resource prior to the execution of the operation. Requests that mutate the resource's location must populate both the 'original_locations' as well as the 'current_locations' fields. For example: "europe-west1-a" "us-east1" "nam3" */
-  originalLocations?: Array<string>;
+  originalLocations?: ReadonlyArray<string>;
 }
 
 export const ResourceLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -400,7 +400,7 @@ export interface ServiceDelegationHistory {
   /** The original end user who initiated the request to GCP. */
   originalPrincipal?: string;
   /** Data identifying the service specific jobs or units of work that were involved in a chain of service calls. */
-  serviceMetadata?: Array<ServiceMetadata>;
+  serviceMetadata?: ReadonlyArray<ServiceMetadata>;
 }
 
 export const ServiceDelegationHistory =
@@ -428,7 +428,7 @@ export interface AuthenticationInfo {
   /** The name of the service account key used to create or exchange credentials for authenticating the service account making the request. This is a scheme-less URI full resource name. For example: "//iam.googleapis.com/projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}" */
   serviceAccountKeyName?: string;
   /** Identity delegation history of an authenticated service account that makes the request. It contains information on the real authorities that try to access GCP resources by delegating on a service account. When multiple authorities present, they are guaranteed to be sorted based on the original ordering of the identity delegation events. */
-  serviceAccountDelegationInfo?: Array<ServiceAccountDelegationInfo>;
+  serviceAccountDelegationInfo?: ReadonlyArray<ServiceAccountDelegationInfo>;
   /** String representation of identity of requesting party. Populated for both first and third party identities. */
   principalSubject?: string;
   /** Records the history of delegated resource access across Google services. */
@@ -520,7 +520,7 @@ export interface OrgPolicyViolationInfo {
   /** Optional. Deprecated. Tags referenced on the resource at the time of evaluation. */
   resourceTags?: Record<string, string>;
   /** Optional. Policy violations */
-  violationInfo?: Array<ViolationInfo>;
+  violationInfo?: ReadonlyArray<ViolationInfo>;
 }
 
 export const OrgPolicyViolationInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -580,7 +580,7 @@ export interface AuditLog {
   /** Authentication information. */
   authenticationInfo?: AuthenticationInfo;
   /** Authorization information. If there are multiple resources or permissions involved, then there is one AuthorizationInfo element for each {resource, permission} tuple. */
-  authorizationInfo?: Array<AuthorizationInfo>;
+  authorizationInfo?: ReadonlyArray<AuthorizationInfo>;
   /** Indicates the policy violations for this request. If the request is denied by the policy, violation information will be logged here. */
   policyViolationInfo?: PolicyViolationInfo;
   /** Metadata about the operation. */

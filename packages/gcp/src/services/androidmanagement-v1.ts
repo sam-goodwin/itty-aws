@@ -57,29 +57,29 @@ export interface HardwareInfo {
   /** Output only. ID that uniquely identifies a personally-owned device in a particular organization. On the same physical device when enrolled with the same organization, this ID persists across setups and even factory resets. This ID is available on personally-owned devices with a work profile on devices running Android 12 and above. */
   enterpriseSpecificId?: string;
   /** CPU throttling temperature thresholds in Celsius for each CPU on the device. */
-  cpuThrottlingTemperatures?: Array<number>;
+  cpuThrottlingTemperatures?: ReadonlyArray<number>;
   /** Brand of the device. For example, Google. */
   brand?: string;
   /** Battery throttling temperature thresholds in Celsius for each battery on the device. */
-  batteryThrottlingTemperatures?: Array<number>;
+  batteryThrottlingTemperatures?: ReadonlyArray<number>;
   /** The device serial number. However, for personally-owned devices running Android 12 and above, this is the same as the enterpriseSpecificId. */
   serialNumber?: string;
   /** Device skin throttling temperature thresholds in Celsius. */
-  skinThrottlingTemperatures?: Array<number>;
+  skinThrottlingTemperatures?: ReadonlyArray<number>;
   /** GPU throttling temperature thresholds in Celsius for each GPU on the device. */
-  gpuThrottlingTemperatures?: Array<number>;
+  gpuThrottlingTemperatures?: ReadonlyArray<number>;
   /** GPU shutdown temperature thresholds in Celsius for each GPU on the device. */
-  gpuShutdownTemperatures?: Array<number>;
+  gpuShutdownTemperatures?: ReadonlyArray<number>;
   /** Battery shutdown temperature thresholds in Celsius for each battery on the device. */
-  batteryShutdownTemperatures?: Array<number>;
+  batteryShutdownTemperatures?: ReadonlyArray<number>;
   /** CPU shutdown temperature thresholds in Celsius for each CPU on the device. */
-  cpuShutdownTemperatures?: Array<number>;
+  cpuShutdownTemperatures?: ReadonlyArray<number>;
   /** Manufacturer. For example, Motorola. */
   manufacturer?: string;
   /** Device skin shutdown temperature thresholds in Celsius. */
-  skinShutdownTemperatures?: Array<number>;
+  skinShutdownTemperatures?: ReadonlyArray<number>;
   /** Output only. Information related to the eUICC chip. */
-  euiccChipInfo?: Array<EuiccChipInfo>;
+  euiccChipInfo?: ReadonlyArray<EuiccChipInfo>;
   /** Baseband version. For example, MDM9625_104662.22.05.34p. */
   deviceBasebandVersion?: string;
 }
@@ -288,7 +288,7 @@ export const LoggingStoppedEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface GenerateEnterpriseUpgradeUrlRequest {
   /** Optional. A list of domains that are permitted for the admin email. The IT admin cannot enter an email address with a domain name that is not in this list. Subdomains of domains in this list are not allowed but can be allowed by adding a second entry which has *. prefixed to the domain name (e.g. *.example.com). If the field is not present or is an empty list then the IT admin is free to use any valid domain name. Personal email domains are not allowed. */
-  allowedDomains?: Array<string>;
+  allowedDomains?: ReadonlyArray<string>;
   /** Optional. Email address used to prefill the admin field of the enterprise signup form as part of the upgrade process. This value is a hint only and can be altered by the user. Personal email addresses are not allowed. If allowedDomains is non-empty then this must belong to one of the allowedDomains. */
   adminEmail?: string;
 }
@@ -352,7 +352,7 @@ export const DeviceRadioState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ClearAppsDataParams {
   /** The package names of the apps whose data will be cleared when the command is executed. */
-  packageNames?: Array<string>;
+  packageNames?: ReadonlyArray<string>;
 }
 
 export const ClearAppsDataParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -476,14 +476,14 @@ export const PasswordRequirements = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface UsageLog {
   /** Specifies which log types are enabled. Note that users will receive on-device messaging when usage logging is enabled. */
-  enabledLogTypes?: Array<
+  enabledLogTypes?: ReadonlyArray<
     | "LOG_TYPE_UNSPECIFIED"
     | "SECURITY_LOGS"
     | "NETWORK_ACTIVITY_LOGS"
     | (string & {})
   >;
   /** Specifies which of the enabled log types can be uploaded over mobile data. By default logs are queued for upload when the device connects to WiFi. */
-  uploadOnCellularAllowed?: Array<
+  uploadOnCellularAllowed?: ReadonlyArray<
     | "LOG_TYPE_UNSPECIFIED"
     | "SECURITY_LOGS"
     | "NETWORK_ACTIVITY_LOGS"
@@ -555,7 +555,7 @@ export interface ContentProviderEndpoint {
   /** This feature is not generally available. */
   packageName?: string;
   /** Required. This feature is not generally available. */
-  signingCertsSha256?: Array<string>;
+  signingCertsSha256?: ReadonlyArray<string>;
 }
 
 export const ContentProviderEndpoint =
@@ -567,7 +567,7 @@ export const ContentProviderEndpoint =
 
 export interface OncCertificateProvider {
   /** This feature is not generally available. */
-  certificateReferences?: Array<string>;
+  certificateReferences?: ReadonlyArray<string>;
   /** This feature is not generally available. */
   contentProviderEndpoint?: ContentProviderEndpoint;
 }
@@ -639,7 +639,7 @@ export interface ComplianceRule {
   /** If set to true, the rule includes a mitigating action to disable apps so that the device is effectively disabled, but app data is preserved. If the device is running an app in locked task mode, the app will be closed and a UI showing the reason for non-compliance will be displayed. */
   disableApps?: boolean;
   /** If set, the rule includes a mitigating action to disable apps specified in the list, but app data is preserved. */
-  packageNamesToDisable?: Array<string>;
+  packageNamesToDisable?: ReadonlyArray<string>;
   /** A condition which is satisfied if the Android Framework API level on the device doesn't meet a minimum requirement. */
   apiLevelCondition?: ApiLevelCondition;
 }
@@ -674,7 +674,7 @@ export interface DefaultApplicationSetting {
     | "DEFAULT_WALLET"
     | (string & {});
   /** Required. The scopes to which the policy should be applied. This list must not be empty or contain duplicates.A NonComplianceDetail with MANAGEMENT_MODE reason and DEFAULT_APPLICATION_SETTING_UNSUPPORTED_SCOPES specific reason is reported if none of the specified scopes can be applied to the management mode (e.g. a fully managed device receives a policy with only SCOPE_PERSONAL_PROFILE in the list). */
-  defaultApplicationScopes?: Array<
+  defaultApplicationScopes?: ReadonlyArray<
     | "DEFAULT_APPLICATION_SCOPE_UNSPECIFIED"
     | "SCOPE_FULLY_MANAGED"
     | "SCOPE_WORK_PROFILE"
@@ -682,7 +682,7 @@ export interface DefaultApplicationSetting {
     | (string & {})
   >;
   /** Required. The list of applications that can be set as the default app for a given type. This list must not be empty or contain duplicates. The first app in the list that is installed and qualified for the defaultApplicationType (e.g. SMS app for DEFAULT_SMS) is set as the default app. The signing key certificate fingerprint of the app on the device must also match one of the signing key certificate fingerprints obtained from Play Store or one of the entries in ApplicationPolicy.signingKeyCerts in order to be set as the default.If the defaultApplicationScopes contains SCOPE_FULLY_MANAGED or SCOPE_WORK_PROFILE, the app must have an entry in applications with installType set to a value other than BLOCKED.A NonComplianceDetail with APP_NOT_INSTALLED reason and DEFAULT_APPLICATION_SETTING_FAILED_FOR_SCOPE specific reason is reported if none of the apps in the list are installed. A NonComplianceDetail with INVALID_VALUE reason and DEFAULT_APPLICATION_SETTING_FAILED_FOR_SCOPE specific reason is reported if at least one app is installed but the policy fails to apply due to other reasons (e.g. the app is not of the right type).When applying to SCOPE_PERSONAL_PROFILE on a company-owned device with a work profile, only pre-installed system apps can be set as the default. A NonComplianceDetail with INVALID_VALUE reason and DEFAULT_APPLICATION_SETTING_FAILED_FOR_SCOPE specific reason is reported if the policy fails to apply to the personal profile. */
-  defaultApplications?: Array<DefaultApplication>;
+  defaultApplications?: ReadonlyArray<DefaultApplication>;
 }
 
 export const DefaultApplicationSetting =
@@ -694,7 +694,7 @@ export const DefaultApplicationSetting =
 
 export interface ExtensionConfig {
   /** Hex-encoded SHA-256 hashes of the signing key certificates of the extension app. Only hexadecimal string representations of 64 characters are valid.The signing key certificate fingerprints are always obtained from the Play Store and this field is used to provide additional signing key certificate fingerprints. However, if the application is not available on the Play Store, this field needs to be set. A NonComplianceDetail with INVALID_VALUE is reported if this field is not set when the application is not available on the Play Store.The signing key certificate fingerprint of the extension app on the device must match one of the signing key certificate fingerprints obtained from the Play Store or the ones provided in this field for the app to be able to communicate with Android Device Policy.In production use cases, it is recommended to leave this empty. */
-  signingKeyFingerprintsSha256?: Array<string>;
+  signingKeyFingerprintsSha256?: ReadonlyArray<string>;
   /** Fully qualified class name of the receiver service class for Android Device Policy to notify the extension app of any local command status updates. The service must be exported in the extension app's AndroidManifest.xml and extend NotificationReceiverService (https://developers.google.com/android/management/reference/amapi/com/google/android/managementapi/notification/NotificationReceiverService) (see Integrate with the AMAPI SDK (https://developers.google.com/android/management/sdk-integration) guide for more details). */
   notificationReceiver?: string;
 }
@@ -805,7 +805,7 @@ export interface ApplicationPolicy {
   /** Managed configuration applied to the app. The format for the configuration is dictated by the ManagedProperty values supported by the app. Each field name in the managed configuration must match the key field of the ManagedProperty. The field value must be compatible with the type of the ManagedProperty: *type* *JSON value* BOOL true or false STRING string INTEGER number CHOICE string MULTISELECT array of strings HIDDEN string BUNDLE_ARRAY array of objects Note: string values cannot be longer than 65535 characters. */
   managedConfiguration?: Record<string, unknown>;
   /** The scopes delegated to the app from Android Device Policy. These provide additional privileges for the applications they are applied to. */
-  delegatedScopes?: Array<
+  delegatedScopes?: ReadonlyArray<
     | "DELEGATED_SCOPE_UNSPECIFIED"
     | "CERT_INSTALL"
     | "MANAGED_CONFIGURATIONS"
@@ -819,7 +819,7 @@ export interface ApplicationPolicy {
     | (string & {})
   >;
   /** List of the app’s track IDs that a device belonging to the enterprise can access. If the list contains multiple track IDs, devices receive the latest version among all accessible tracks. If the list contains no track IDs, devices only have access to the app’s production track. More details about each track are available in AppTrackInfo. */
-  accessibleTrackIds?: Array<string>;
+  accessibleTrackIds?: ReadonlyArray<string>;
   /** Controls whether the app can communicate with itself across a device’s work and personal profiles, subject to user consent. */
   connectedWorkAndPersonalApp?:
     | "CONNECTED_WORK_AND_PERSONAL_APP_UNSPECIFIED"
@@ -837,7 +837,7 @@ export interface ApplicationPolicy {
   /** Configuration to enable this app as an extension app, with the capability of interacting with Android Device Policy offline.This field can be set for at most one app. If there is any app with COMPANION_APP role, this field cannot be set.The signing key certificate fingerprint of the app on the device must match one of the entries in ApplicationPolicy.signingKeyCerts or ExtensionConfig.signingKeyFingerprintsSha256 (deprecated) or the signing key certificate fingerprints obtained from Play Store for the app to be able to communicate with Android Device Policy. If the app is not on Play Store and if ApplicationPolicy.signingKeyCerts and ExtensionConfig.signingKeyFingerprintsSha256 (deprecated) are not set, a NonComplianceDetail with INVALID_VALUE is reported. */
   extensionConfig?: ExtensionConfig;
   /** Optional. Roles the app has.Apps having certain roles can be exempted from power and background execution restrictions, suspension and hibernation on Android 14 and above. The user control can also be disallowed for apps with certain roles on Android 11 and above. Refer to the documentation of each RoleType for more details.The app is notified about the roles that are set for it if the app has a notification receiver service with . The app is notified whenever its roles are updated or after the app is installed when it has nonempty list of roles. The app can use this notification to bootstrap itself after the installation. See Integrate with the AMAPI SDK (https://developers.google.com/android/management/sdk-integration) and Manage app roles (https://developers.google.com/android/management/app-roles) guides for more details on the requirements for the service.For the exemptions to be applied and the app to be notified about the roles, the signing key certificate fingerprint of the app on the device must match one of the signing key certificate fingerprints obtained from Play Store or one of the entries in ApplicationPolicy.signingKeyCerts. Otherwise, a NonComplianceDetail with APP_SIGNING_CERT_MISMATCH is reported.There must not be duplicate roles with the same roleType. Multiple apps cannot hold a role with the same roleType. A role with type ROLE_TYPE_UNSPECIFIED is not allowed. */
-  roles?: Array<Role>;
+  roles?: ReadonlyArray<Role>;
   /** Controls the auto-update mode for the app. */
   autoUpdateMode?:
     | "AUTO_UPDATE_MODE_UNSPECIFIED"
@@ -848,7 +848,7 @@ export interface ApplicationPolicy {
   /** The managed configurations template for the app, saved from the managed configurations iframe. This field is ignored if managed_configuration is set. */
   managedConfigurationTemplate?: ManagedConfigurationTemplate;
   /** Optional. The constraints for installing the app. You can specify a maximum of one InstallConstraint. Multiple constraints are rejected. */
-  installConstraint?: Array<InstallConstraint>;
+  installConstraint?: ReadonlyArray<InstallConstraint>;
   /** The minimum version of the app that runs on the device. If set, the device attempts to update the app to at least this version code. If the app is not up-to-date, the device will contain a NonComplianceDetail with non_compliance_reason set to APP_NOT_UPDATED. The app must already be published to Google Play with a version code greater than or equal to this value. At most 20 apps may specify a minimum version code per policy. */
   minimumVersionCode?: number;
   /** Optional. Whether the app is allowed to act as a credential provider on Android 14 and above. */
@@ -886,7 +886,7 @@ export interface ApplicationPolicy {
     | "WORK_PROFILE_WIDGETS_DISALLOWED"
     | (string & {});
   /** Explicit permission grants or denials for the app. These values override the default_permission_policy and permission_grants which apply to all apps. */
-  permissionGrants?: Array<PermissionGrant>;
+  permissionGrants?: ReadonlyArray<PermissionGrant>;
   /** Optional. ID of the preferential network the application uses. There must be a configuration for the specified network ID in preferentialNetworkServiceConfigs. If set to PREFERENTIAL_NETWORK_ID_UNSPECIFIED, the application will use the default network ID specified in defaultPreferentialNetworkId. See the documentation of defaultPreferentialNetworkId for the list of apps excluded from this defaulting. This applies on both work profiles and fully managed devices on Android 13 and above. */
   preferentialNetworkId?:
     | "PREFERENTIAL_NETWORK_ID_UNSPECIFIED"
@@ -898,7 +898,7 @@ export interface ApplicationPolicy {
     | "PREFERENTIAL_NETWORK_ID_FIVE"
     | (string & {});
   /** Optional. Signing key certificates of the app.This field is required in the following cases: The app has installType set to CUSTOM (i.e. a custom app). The app has roles set to a nonempty list and the app does not exist on the Play Store. The app has extensionConfig set (i.e. an extension app) but ExtensionConfig.signingKeyFingerprintsSha256 (deprecated) is not set and the app does not exist on the Play Store.If this field is not set for a custom app, the policy is rejected. If it is not set when required for a non-custom app, a NonComplianceDetail with INVALID_VALUE is reported.For other cases, this field is optional and the signing key certificates obtained from Play Store are used.See following policy settings to see how this field is used: choosePrivateKeyRules ApplicationPolicy.InstallType.CUSTOM ApplicationPolicy.extensionConfig ApplicationPolicy.roles */
-  signingKeyCerts?: Array<ApplicationSigningKeyCert>;
+  signingKeyCerts?: ReadonlyArray<ApplicationSigningKeyCert>;
   /** The package name of the app. For example, com.google.android.youtube for the YouTube app. */
   packageName?: string;
   /** The default policy for all permissions requested by the app. If specified, this overrides the policy-level default_permission_policy which applies to all apps. It does not override the permission_grants which applies to all apps. */
@@ -974,7 +974,7 @@ export interface SystemUpdate {
   /** If the type is WINDOWED, the end of the maintenance window, measured as the number of minutes after midnight in device's local time. This value must be between 0 and 1439, inclusive. If this value is less than start_minutes, then the maintenance window spans midnight. If the maintenance window specified is smaller than 30 minutes, the actual window is extended to 30 minutes beyond the start time. */
   endMinutes?: number;
   /** An annually repeating time period in which over-the-air (OTA) system updates are postponed to freeze the OS version running on a device. To prevent freezing the device indefinitely, each freeze period must be separated by at least 60 days. */
-  freezePeriods?: Array<FreezePeriod>;
+  freezePeriods?: ReadonlyArray<FreezePeriod>;
   /** The type of system update to configure. */
   type?:
     | "SYSTEM_UPDATE_TYPE_UNSPECIFIED"
@@ -1010,13 +1010,13 @@ export const PersonalApplicationPolicy =
 
 export interface PersonalUsagePolicies {
   /** Account types that can't be managed by the user. */
-  accountTypesWithManagementDisabled?: Array<string>;
+  accountTypesWithManagementDisabled?: ReadonlyArray<string>;
   /** If true, the camera is disabled on the personal profile. */
   cameraDisabled?: boolean;
   /** Controls how long the work profile can stay off. The minimum duration must be at least 3 days. Other details are as follows: - If the duration is set to 0, the feature is turned off. - If the duration is set to a value smaller than the minimum duration, the feature returns an error. *Note:* If you want to avoid personal profiles being suspended during long periods of off-time, you can temporarily set a large value for this parameter. */
   maxDaysWithWorkOff?: number;
   /** Policy applied to applications in the personal profile. */
-  personalApplications?: Array<PersonalApplicationPolicy>;
+  personalApplications?: ReadonlyArray<PersonalApplicationPolicy>;
   /** If true, screen capture is disabled for all users. This also blocks Circle to Search (https://support.google.com/android/answer/14508957). */
   screenCaptureDisabled?: boolean;
   /** Used together with personalApplications to control how apps in the personal profile are allowed or blocked. */
@@ -1057,7 +1057,7 @@ export const PersonalUsagePolicies = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PackageNameList {
   /** A list of package names. */
-  packageNames?: Array<string>;
+  packageNames?: ReadonlyArray<string>;
 }
 
 export const PackageNameList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1117,7 +1117,7 @@ export interface ChoosePrivateKeyRule {
   /** The alias of the private key to be used. */
   privateKeyAlias?: string;
   /** The package names to which this rule applies. The signing key certificate fingerprint of the app is verified against the signing key certificate fingerprints provided by Play Store and ApplicationPolicy.signingKeyCerts . If no package names are specified, then the alias is provided to all apps that call KeyChain.choosePrivateKeyAlias (https://developer.android.com/reference/android/security/KeyChain#choosePrivateKeyAlias%28android.app.Activity,%20android.security.KeyChainAliasCallback,%20java.lang.String[],%20java.security.Principal[],%20java.lang.String,%20int,%20java.lang.String%29) or any overloads (but not without calling KeyChain.choosePrivateKeyAlias, even on Android 11 and above). Any app with the same Android UID as a package specified here will have access when they call KeyChain.choosePrivateKeyAlias. */
-  packageNames?: Array<string>;
+  packageNames?: ReadonlyArray<string>;
 }
 
 export const ChoosePrivateKeyRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1134,7 +1134,7 @@ export interface AdvancedSecurityOverrides {
     | "DEVELOPER_SETTINGS_ALLOWED"
     | (string & {});
   /** Personal apps that can read work profile notifications using a NotificationListenerService (https://developer.android.com/reference/android/service/notification/NotificationListenerService). By default, no personal apps (aside from system apps) can read work notifications. Each value in the list must be a package name. */
-  personalAppsThatCanReadWorkNotifications?: Array<string>;
+  personalAppsThatCanReadWorkNotifications?: ReadonlyArray<string>;
   /** Whether Google Play Protect verification (https://support.google.com/accounts/answer/2812853) is enforced. Replaces ensureVerifyAppsEnabled (deprecated). */
   googlePlayProtectVerifyApps?:
     | "GOOGLE_PLAY_PROTECT_VERIFY_APPS_UNSPECIFIED"
@@ -1243,7 +1243,7 @@ export interface WifiSsidPolicy {
     | "WIFI_SSID_ALLOWLIST"
     | (string & {});
   /** Optional. List of Wi-Fi SSIDs that should be applied in the policy. This field must be non-empty when WifiSsidPolicyType is set to WIFI_SSID_ALLOWLIST. If this is set to a non-empty list, then a NonComplianceDetail detail with API_LEVEL is reported if the Android version is less than 13 and a NonComplianceDetail with MANAGEMENT_MODE is reported for non-company-owned devices. */
-  wifiSsids?: Array<WifiSsid>;
+  wifiSsids?: ReadonlyArray<WifiSsid>;
 }
 
 export const WifiSsidPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1287,7 +1287,7 @@ export const WifiRoamingSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WifiRoamingPolicy {
   /** Optional. Wi-Fi roaming settings. SSIDs provided in this list must be unique, the policy will be rejected otherwise. */
-  wifiRoamingSettings?: Array<WifiRoamingSetting>;
+  wifiRoamingSettings?: ReadonlyArray<WifiRoamingSetting>;
 }
 
 export const WifiRoamingPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1332,7 +1332,7 @@ export interface ApnSetting {
   /** Optional. The MTU (Maximum Transmission Unit) size of the IPv6 mobile interface to which the APN connected. A value of 0 (default) means not set and negative values are rejected. Supported on Android 13 and above. A NonComplianceDetail with API_LEVEL is reported if the Android version is less than 13. */
   mtuV6?: number;
   /** Required. Usage categories for the APN. Policy will be rejected if this field is empty or contains APN_TYPE_UNSPECIFIED or duplicates. Multiple APN types can be set on fully managed devices. ENTERPRISE is the only allowed APN type on work profiles. A NonComplianceDetail with MANAGEMENT_MODE is reported for any other value on work profiles. APN types that are not supported on the device or management mode will be ignored. If this results in the empty list, the APN setting will be ignored, because apnTypes is a required field. A NonComplianceDetail with INVALID_VALUE is reported if none of the APN types are supported on the device or management mode. */
-  apnTypes?: Array<
+  apnTypes?: ReadonlyArray<
     | "APN_TYPE_UNSPECIFIED"
     | "ENTERPRISE"
     | "BIP"
@@ -1385,7 +1385,7 @@ export interface ApnSetting {
   /** Optional. The numeric operator ID of the APN. Numeric operator ID is defined as MCC (Mobile Country Code) + MNC (Mobile Network Code). */
   numericOperatorId?: string;
   /** Optional. Radio technologies (network types) the APN may use. Policy will be rejected if this field contains NETWORK_TYPE_UNSPECIFIED or duplicates. */
-  networkTypes?: Array<
+  networkTypes?: ReadonlyArray<
     | "NETWORK_TYPE_UNSPECIFIED"
     | "EDGE"
     | "GPRS"
@@ -1428,7 +1428,7 @@ export const ApnSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ApnPolicy {
   /** Optional. APN settings for override APNs. There must not be any conflict between any of APN settings provided, otherwise the policy will be rejected. Two ApnSettings are considered to conflict when all of the following fields match on both: numericOperatorId, apn, proxyAddress, proxyPort, mmsProxyAddress, mmsProxyPort, mmsc, mvnoType, protocol, roamingProtocol. If some of the APN settings result in non-compliance of INVALID_VALUE , they will be ignored. This can be set on fully managed devices on Android 10 and above. This can also be set on work profiles on Android 13 and above and only with ApnSetting's with ENTERPRISE APN type. A NonComplianceDetail with API_LEVEL is reported if the Android version is less than 10. A NonComplianceDetail with MANAGEMENT_MODE is reported for work profiles on Android versions less than 13. */
-  apnSettings?: Array<ApnSetting>;
+  apnSettings?: ReadonlyArray<ApnSetting>;
   /** Optional. Whether override APNs are disabled or enabled. See DevicePolicyManager.setOverrideApnsEnabled (https://developer.android.com/reference/android/app/admin/DevicePolicyManager#setOverrideApnsEnabled) for more details. */
   overrideApns?:
     | "OVERRIDE_APNS_UNSPECIFIED"
@@ -1486,7 +1486,7 @@ export interface PreferentialNetworkServiceSettings {
     | "PREFERENTIAL_NETWORK_ID_FIVE"
     | (string & {});
   /** Required. Preferential network service configurations which enables having multiple enterprise slices. There must not be multiple configurations with the same preferentialNetworkId. If a configuration is not referenced by any application by setting ApplicationPolicy.preferentialNetworkId or by setting defaultPreferentialNetworkId, it will be ignored. For devices on 4G networks, enterprise APN needs to be configured additionally to set up data call for preferential network service. These APNs can be added using apnPolicy. */
-  preferentialNetworkServiceConfigs?: Array<PreferentialNetworkServiceConfig>;
+  preferentialNetworkServiceConfigs?: ReadonlyArray<PreferentialNetworkServiceConfig>;
 }
 
 export const PreferentialNetworkServiceSettings =
@@ -1561,11 +1561,11 @@ export const DeviceConnectivityManagement =
 
 export interface PersistentPreferredActivity {
   /** The intent actions to match in the filter. If any actions are included in the filter, then an intent's action must be one of those values for it to match. If no actions are included, the intent action is ignored. */
-  actions?: Array<string>;
+  actions?: ReadonlyArray<string>;
   /** The activity that should be the default intent handler. This should be an Android component name, e.g. com.android.enterprise.app/.MainActivity. Alternatively, the value may be the package name of an app, which causes Android Device Policy to choose an appropriate activity from the app to handle the intent. */
   receiverActivity?: string;
   /** The intent categories to match in the filter. An intent includes the categories that it requires, all of which must be included in the filter in order to match. In other words, adding a category to the filter has no impact on matching unless that category is specified in the intent. */
-  categories?: Array<string>;
+  categories?: ReadonlyArray<string>;
 }
 
 export const PersistentPreferredActivity =
@@ -1579,7 +1579,7 @@ export interface ProxyInfo {
   /** The port of the direct proxy. */
   port?: number;
   /** For a direct proxy, the hosts for which the proxy is bypassed. The host names may contain wildcards such as *.example.com. */
-  excludedHosts?: Array<string>;
+  excludedHosts?: ReadonlyArray<string>;
   /** The URI of the PAC script used to configure the proxy. */
   pacUri?: string;
   /** The host of the direct proxy. */
@@ -1669,7 +1669,7 @@ export interface Policy {
   /** The minimum allowed Android API level. */
   minimumApiLevel?: number;
   /** Rules that define the behavior when a particular policy can not be applied on device */
-  policyEnforcementRules?: Array<PolicyEnforcementRule>;
+  policyEnforcementRules?: ReadonlyArray<PolicyEnforcementRule>;
   /** Whether the user is allowed to enable debugging features. */
   debuggingFeaturesAllowed?: boolean;
   /** Whether rebooting the device into safe boot is disabled. */
@@ -1679,7 +1679,7 @@ export interface Policy {
   /** Whether factory resetting from settings is disabled. */
   factoryResetDisabled?: boolean;
   /** Password requirement policies. Different policies can be set for work profile or fully managed devices by setting the password_scope field in the policy. */
-  passwordPolicies?: Array<PasswordRequirements>;
+  passwordPolicies?: ReadonlyArray<PasswordRequirements>;
   /** The version of the policy. This is a read-only field. The version is incremented each time the policy is updated. */
   version?: string;
   /** Whether configuring mobile networks is disabled. */
@@ -1709,7 +1709,7 @@ export interface Policy {
   /** Whether the user is allowed to have fun. Controls whether the Easter egg game in Settings is disabled. */
   funDisabled?: boolean;
   /** This feature is not generally available. */
-  oncCertificateProviders?: Array<OncCertificateProvider>;
+  oncCertificateProviders?: ReadonlyArray<OncCertificateProvider>;
   /** Whether screen capture is disabled. This also blocks Circle to Search (https://support.google.com/android/answer/14508957). */
   screenCaptureDisabled?: boolean;
   /** Whether location sharing is disabled. */
@@ -1719,13 +1719,13 @@ export interface Policy {
   /** A message displayed to the user in the device administators settings screen. */
   longSupportMessage?: UserFacingMessage;
   /** Optional. Wipe flags to indicate what data is wiped when a device or profile wipe is triggered due to any reason (for example, non-compliance). This does not apply to the enterprises.devices.delete method. . This list must not have duplicates. */
-  wipeDataFlags?: Array<
+  wipeDataFlags?: ReadonlyArray<
     "WIPE_DATA_FLAG_UNSPECIFIED" | "WIPE_ESIMS" | (string & {})
   >;
   /** Covers controls for radio state such as Wi-Fi, bluetooth, and more. */
   deviceRadioState?: DeviceRadioState;
   /** Rules declaring which mitigating actions to take when a device is not compliant with its policy. When the conditions for multiple rules are satisfied, all of the mitigating actions for the rules are taken. There is a maximum limit of 100 rules. Use policy enforcement rules instead. */
-  complianceRules?: Array<ComplianceRule>;
+  complianceRules?: ReadonlyArray<ComplianceRule>;
   /** Optional. Controls whether apps on the device for fully managed devices or in the work profile for devices with work profiles are allowed to expose app functions. */
   appFunctions?:
     | "APP_FUNCTIONS_UNSPECIFIED"
@@ -1737,7 +1737,7 @@ export interface Policy {
   /** Whether transferring files over USB is disabled. This is supported only on company-owned devices. */
   usbFileTransferDisabled?: boolean;
   /** Optional. The default application setting for supported types. If the default application is successfully set for at least one app type on a profile, users are prevented from changing any default applications on that profile.Only one DefaultApplicationSetting is allowed for each DefaultApplicationType.See Default application settings (https://developers.google.com/android/management/default-application-settings) guide for more details. */
-  defaultApplicationSettings?: Array<DefaultApplicationSetting>;
+  defaultApplicationSettings?: ReadonlyArray<DefaultApplicationSetting>;
   /** Whether adding or removing accounts is disabled. */
   modifyAccountsDisabled?: boolean;
   /** Whether app verification is force-enabled. */
@@ -1759,7 +1759,7 @@ export interface Policy {
   /** Whether configuring bluetooth is disabled. */
   bluetoothConfigDisabled?: boolean;
   /** Policy applied to apps. This can have at most 3,000 elements. */
-  applications?: Array<ApplicationPolicy>;
+  applications?: ReadonlyArray<ApplicationPolicy>;
   /** If true, this disables the Lock Screen (https://source.android.com/docs/core/display/multi_display/lock-screen) for primary and/or secondary displays. This policy is supported only in dedicated device management mode. */
   keyguardDisabled?: boolean;
   /** This mode controls which apps are available to the user in the Play Store and the behavior on the device when apps are removed from the policy. */
@@ -1791,7 +1791,7 @@ export interface Policy {
   /** Maximum time in milliseconds for user activity until the device locks. A value of 0 means there is no restriction. */
   maximumTimeToLock?: string;
   /** Explicit permission or group grants or denials for all apps. These values override the default_permission_policy. */
-  permissionGrants?: Array<PermissionGrant>;
+  permissionGrants?: ReadonlyArray<PermissionGrant>;
   /** Optional. Controls which apps are allowed to act as credential providers on Android 14 and above. These apps store credentials, see this (https://developer.android.com/training/sign-in/passkeys) and this (https://developer.android.com/reference/androidx/credentials/CredentialManager) for details. See also credentialProviderPolicy. */
   credentialProviderPolicyDefault?:
     | "CREDENTIAL_PROVIDER_POLICY_DEFAULT_UNSPECIFIED"
@@ -1822,9 +1822,9 @@ export interface Policy {
   /** Whether bluetooth contact sharing is disabled. */
   bluetoothContactSharingDisabled?: boolean;
   /** Rules for determining apps' access to private keys. See ChoosePrivateKeyRule for details. This must be empty if any application has CERT_SELECTION delegation scope. */
-  choosePrivateKeyRules?: Array<ChoosePrivateKeyRule>;
+  choosePrivateKeyRules?: ReadonlyArray<ChoosePrivateKeyRule>;
   /** Account types that can't be managed by the user. */
-  accountTypesWithManagementDisabled?: Array<string>;
+  accountTypesWithManagementDisabled?: ReadonlyArray<string>;
   /** The default permission policy for runtime permission requests. */
   defaultPermissionPolicy?:
     | "PERMISSION_POLICY_UNSPECIFIED"
@@ -1854,7 +1854,7 @@ export interface Policy {
   /** If microphone_access is set to any value other than MICROPHONE_ACCESS_UNSPECIFIED, this has no effect. Otherwise this field controls whether microphones are disabled: If true, all microphones are disabled, otherwise they are available. This is available only on fully managed devices. */
   unmuteMicrophoneDisabled?: boolean;
   /** The battery plugged in modes for which the device stays on. When using this setting, it is recommended to clear maximum_time_to_lock so that the device doesn't lock itself while it stays on. */
-  stayOnPluggedModes?: Array<
+  stayOnPluggedModes?: ReadonlyArray<
     | "BATTERY_PLUGGED_MODE_UNSPECIFIED"
     | "AC"
     | "USB"
@@ -1864,7 +1864,7 @@ export interface Policy {
   /** Allows showing UI on a device for a user to choose a private key alias if there are no matching rules in ChoosePrivateKeyRules. For devices below Android P, setting this may leave enterprise keys vulnerable. This value will have no effect if any application has CERT_SELECTION delegation scope. */
   privateKeySelectionEnabled?: boolean;
   /** Default intent handler activities. */
-  persistentPreferredActivities?: Array<PersistentPreferredActivity>;
+  persistentPreferredActivities?: ReadonlyArray<PersistentPreferredActivity>;
   /** This field has no effect. */
   blockApplicationsEnabled?: boolean;
   /** Whether sending and receiving SMS messages is disabled. */
@@ -1889,7 +1889,7 @@ export interface Policy {
   /** Whether roaming data services are disabled. */
   dataRoamingDisabled?: boolean;
   /** Disabled keyguard customizations, such as widgets. */
-  keyguardDisabledFeatures?: Array<
+  keyguardDisabledFeatures?: ReadonlyArray<
     | "KEYGUARD_DISABLED_FEATURE_UNSPECIFIED"
     | "CAMERA"
     | "NOTIFICATIONS"
@@ -1933,7 +1933,7 @@ export interface Policy {
   /** Optional. Controls the work account setup configuration, such as details of whether a Google authenticated account is required. */
   workAccountSetupConfig?: WorkAccountSetupConfig;
   /** This setting is not supported. Any value is ignored. */
-  androidDevicePolicyTracks?: Array<
+  androidDevicePolicyTracks?: ReadonlyArray<
     "APP_TRACK_UNSPECIFIED" | "PRODUCTION" | "BETA" | (string & {})
   >;
   /** Whether removing other users is disabled. */
@@ -1947,11 +1947,11 @@ export interface Policy {
   /** Whether bluetooth is disabled. Prefer this setting over bluetooth_config_disabled because bluetooth_config_disabled can be bypassed by the user. */
   bluetoothDisabled?: boolean;
   /** Action to take during the setup process. At most one action may be specified. */
-  setupActions?: Array<SetupAction>;
+  setupActions?: ReadonlyArray<SetupAction>;
   /** Whether resetting network settings is disabled. This applies only on fully managed devices. A NonComplianceDetail with MANAGEMENT_MODE is reported for other management modes. */
   networkResetDisabled?: boolean;
   /** Email addresses of device administrators for factory reset protection. When the device is factory reset, it will require one of these admins to log in with the Google account email and password to unlock the device. If no admins are specified, the device won't provide factory reset protection. */
-  frpAdminEmails?: Array<string>;
+  frpAdminEmails?: ReadonlyArray<string>;
 }
 
 export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2114,7 +2114,7 @@ export interface AppProcessInfo {
   /** Process start time. */
   startTime?: string;
   /** Package names of all packages that are associated with the particular user ID. In most cases, this will be a single package name, the package that has been assigned that user ID. If multiple application share a UID then all packages sharing UID will be included. */
-  packageNames?: Array<string>;
+  packageNames?: ReadonlyArray<string>;
 }
 
 export const AppProcessInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2368,7 +2368,7 @@ export const RemoteLockEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DnsEvent {
   /** The (possibly truncated) list of the IP addresses returned for DNS lookup (max 10 IPv4 or IPv6 addresses). */
-  ipAddresses?: Array<string>;
+  ipAddresses?: ReadonlyArray<string>;
   /** The package name of the UID that performed the DNS lookup. */
   packageName?: string;
   /** The hostname that was looked up. */
@@ -2622,7 +2622,7 @@ export interface BatchUsageLogEvents {
   /** If present, the resource name of the user that owns this device in the form ‘enterprises/{enterpriseId}/users/{userId}’. */
   user?: string;
   /** The list of UsageLogEvent that were reported by the device, sorted chronologically by the event time. */
-  usageLogEvents?: Array<UsageLogEvent>;
+  usageLogEvents?: ReadonlyArray<UsageLogEvent>;
 }
 
 export const BatchUsageLogEvents = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2663,7 +2663,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2697,9 +2697,9 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets ListOperationsRequest.return_partial_success and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -2816,7 +2816,7 @@ export interface Enterprise {
   /** The topic which Pub/Sub notifications are published to, in the form projects/{project}/topics/{topic}. This field is only required if Pub/Sub notifications are enabled. */
   pubsubTopic?: string;
   /** Terms and conditions that must be accepted when provisioning a device for this enterprise. A page of terms is generated for each value in this list. */
-  termsAndConditions?: Array<TermsAndConditions>;
+  termsAndConditions?: ReadonlyArray<TermsAndConditions>;
   /** Deprecated and unused. */
   appAutoApprovalEnabled?: boolean;
   /** The enterprise contact info of an EMM-managed enterprise. */
@@ -2826,7 +2826,7 @@ export interface Enterprise {
   /** The name of the enterprise which is generated by the server during creation, in the form enterprises/{enterpriseId}. */
   name?: string;
   /** Sign-in details of the enterprise. */
-  signinDetails?: Array<SigninDetail>;
+  signinDetails?: ReadonlyArray<SigninDetail>;
   /** The name of the enterprise displayed to users. This field has a maximum length of 100 characters. */
   enterpriseDisplayName?: string;
   /** An image displayed as a logo during device provisioning. Supported types are: image/bmp, image/gif, image/x-ico, image/jpeg, image/png, image/webp, image/vnd.wap.wbmp, image/x-adobe-dng. */
@@ -2844,7 +2844,7 @@ export interface Enterprise {
     | "TYPE_DOMAIN"
     | (string & {});
   /** The types of Google Pub/Sub notifications enabled for the enterprise. */
-  enabledNotificationTypes?: Array<
+  enabledNotificationTypes?: ReadonlyArray<
     | "NOTIFICATION_TYPE_UNSPECIFIED"
     | "ENROLLMENT"
     | "COMPLIANCE_REPORT"
@@ -2992,7 +2992,7 @@ export const MigrationToken = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListMigrationTokensResponse {
   /** The migration tokens from the specified enterprise. */
-  migrationTokens?: Array<MigrationToken>;
+  migrationTokens?: ReadonlyArray<MigrationToken>;
   /** A token, which can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -3108,17 +3108,17 @@ export interface HardwareStatus {
   /** The time the measurements were taken. */
   createTime?: string;
   /** Current battery temperatures in Celsius for each battery on the device. */
-  batteryTemperatures?: Array<number>;
+  batteryTemperatures?: ReadonlyArray<number>;
   /** Fan speeds in RPM for each fan on the device. Empty array means that there are no fans or fan speed is not supported on the system. */
-  fanSpeeds?: Array<number>;
+  fanSpeeds?: ReadonlyArray<number>;
   /** CPU usages in percentage for each core available on the device. Usage is 0 for each unplugged core. Empty array implies that CPU usage is not supported in the system. */
-  cpuUsages?: Array<number>;
+  cpuUsages?: ReadonlyArray<number>;
   /** Current CPU temperatures in Celsius for each CPU on the device. */
-  cpuTemperatures?: Array<number>;
+  cpuTemperatures?: ReadonlyArray<number>;
   /** Current GPU temperatures in Celsius for each GPU on the device. */
-  gpuTemperatures?: Array<number>;
+  gpuTemperatures?: ReadonlyArray<number>;
   /** Current device skin temperatures in Celsius. */
-  skinTemperatures?: Array<number>;
+  skinTemperatures?: ReadonlyArray<number>;
 }
 
 export const HardwareStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3133,13 +3133,13 @@ export const HardwareStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ManagedProperty {
   /** For CHOICE or MULTISELECT properties, the list of possible entries. */
-  entries?: Array<ManagedPropertyEntry>;
+  entries?: ReadonlyArray<ManagedPropertyEntry>;
   /** A longer description of the property, providing more detail of what it affects. Localized. */
   description?: string;
   /** The default value of the property. BUNDLE_ARRAY properties don't have a default value. */
   defaultValue?: unknown;
   /** For BUNDLE_ARRAY properties, the list of nested properties. A BUNDLE_ARRAY property is at most two levels deep. */
-  nestedProperties?: Array<ManagedProperty>;
+  nestedProperties?: ReadonlyArray<ManagedProperty>;
   /** The type of the property. */
   type?:
     | "MANAGED_PROPERTY_TYPE_UNSPECIFIED"
@@ -3206,7 +3206,7 @@ export interface AppVersion {
   /** Unique increasing identifier for the app version. */
   versionCode?: number;
   /** Track identifiers that the app version is published in. This does not include the production track (see production instead). */
-  trackIds?: Array<string>;
+  trackIds?: ReadonlyArray<string>;
   /** If the value is True, it indicates that this version is a production track. */
   production?: boolean;
 }
@@ -3224,9 +3224,11 @@ export interface Application {
   /** The app category (e.g. RACING, SOCIAL, etc.) */
   category?: string;
   /** The set of managed properties available to be pre-configured for the app. */
-  managedProperties?: Array<ManagedProperty>;
+  managedProperties?: ReadonlyArray<ManagedProperty>;
   /** Noteworthy features (if any) of this app. */
-  features?: Array<"APP_FEATURE_UNSPECIFIED" | "VPN_APP" | (string & {})>;
+  features?: ReadonlyArray<
+    "APP_FEATURE_UNSPECIFIED" | "VPN_APP" | (string & {})
+  >;
   /** The content rating for this app. */
   contentRating?:
     | "CONTENT_RATING_UNSPECIFIED"
@@ -3250,11 +3252,11 @@ export interface Application {
   /** The name of the app in the form enterprises/{enterprise}/applications/{package_name}. */
   name?: string;
   /** The permissions required by the app. */
-  permissions?: Array<ApplicationPermission>;
+  permissions?: ReadonlyArray<ApplicationPermission>;
   /** A link to an image that can be used as an icon for the app. This image is suitable for use up to a pixel size of 512 x 512. */
   iconUrl?: string;
   /** Application tracks visible to the enterprise. */
-  appTracks?: Array<AppTrackInfo>;
+  appTracks?: ReadonlyArray<AppTrackInfo>;
   /** A link to a smaller image that can be used as an icon for the app. This image is suitable for use up to a pixel size of 128 x 128. */
   smallIconUrl?: string;
   /** How and to whom the package is made available. */
@@ -3269,15 +3271,15 @@ export interface Application {
   /** A localised description of the recent changes made to the app. */
   recentChanges?: string;
   /** A list of screenshot links representing the app. */
-  screenshotUrls?: Array<string>;
+  screenshotUrls?: ReadonlyArray<string>;
   /** Output only. The approximate time (within 7 days) the app was last published. */
   updateTime?: string;
   /** The countries which this app is available in as per ISO 3166-1 alpha-2. */
-  availableCountries?: Array<string>;
+  availableCountries?: ReadonlyArray<string>;
   /** The title of the app. Localized. */
   title?: string;
   /** Versions currently available for this app. */
-  appVersions?: Array<AppVersion>;
+  appVersions?: ReadonlyArray<AppVersion>;
   /** Full app description, if available. */
   fullDescription?: string;
 }
@@ -3372,7 +3374,7 @@ export interface WebApp {
   /** The current version of the app.Note that the version can automatically increase during the lifetime of the web app, while Google does internal housekeeping to keep the web app up-to-date. */
   versionCode?: string;
   /** A list of icons for the web app. Must have at least one element. */
-  icons?: Array<WebAppIcon>;
+  icons?: ReadonlyArray<WebAppIcon>;
   /** The display mode of the web app. */
   displayMode?:
     | "DISPLAY_MODE_UNSPECIFIED"
@@ -3446,7 +3448,7 @@ export const MemoryEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListEnrollmentTokensResponse {
   /** The list of enrollment tokens. */
-  enrollmentTokens?: Array<EnrollmentToken>;
+  enrollmentTokens?: ReadonlyArray<EnrollmentToken>;
   /** If there are more results, a token to retrieve next page of results. */
   nextPageToken?: string;
 }
@@ -3468,7 +3470,7 @@ export const Eid = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface EidInfo {
   /** Output only. EID information for each eUICC chip. */
-  eids?: Array<Eid>;
+  eids?: ReadonlyArray<Eid>;
 }
 
 export const EidInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3483,7 +3485,7 @@ export interface NetworkInfo {
   /** IMEI number of the GSM device. For example, A1000031212. */
   imei?: string;
   /** Provides telephony information associated with each SIM card on the device. Only supported on fully managed devices starting from Android 6. */
-  telephonyInfos?: Array<TelephonyInfo>;
+  telephonyInfos?: ReadonlyArray<TelephonyInfo>;
   /** Alphabetic name of current registered operator. For example, Vodafone. */
   networkOperatorName?: string;
 }
@@ -3698,7 +3700,7 @@ export interface ApplicationReport {
   /** The SHA-256 hash of the app's APK file, which can be used to verify the app hasn't been modified. Each byte of the hash value is represented as a two-digit hexadecimal number. */
   packageSha256Hash?: string;
   /** The list of app events which have occurred in the last 30 hours. */
-  events?: Array<ApplicationEvent>;
+  events?: ReadonlyArray<ApplicationEvent>;
   /** The display name of the app. */
   displayName?: string;
   /** The app version as displayed to the user. */
@@ -3714,7 +3716,7 @@ export interface ApplicationReport {
     | "CUSTOM"
     | (string & {});
   /** The SHA-1 hash of each android.content.pm.Signature (https://developer.android.com/reference/android/content/pm/Signature.html) associated with the app package. Each byte of each hash value is represented as a two-digit hexadecimal number. */
-  signingKeyCertFingerprints?: Array<string>;
+  signingKeyCertFingerprints?: ReadonlyArray<string>;
   /** Application state. */
   state?:
     | "APPLICATION_STATE_UNSPECIFIED"
@@ -3722,7 +3724,7 @@ export interface ApplicationReport {
     | "INSTALLED"
     | (string & {});
   /** List of keyed app states reported by the app. */
-  keyedAppStates?: Array<KeyedAppState>;
+  keyedAppStates?: ReadonlyArray<KeyedAppState>;
 }
 
 export const ApplicationReport = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3742,7 +3744,7 @@ export const ApplicationReport = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PostureDetail {
   /** Corresponding admin-facing advice to mitigate this security risk and improve the security posture of the device. */
-  advice?: Array<UserFacingMessage>;
+  advice?: ReadonlyArray<UserFacingMessage>;
   /** A specific security risk that negatively affects the security posture of the device. */
   securityRisk?:
     | "SECURITY_RISK_UNSPECIFIED"
@@ -3766,7 +3768,7 @@ export interface SecurityPosture {
     | "POTENTIALLY_COMPROMISED"
     | (string & {});
   /** Additional details regarding the security posture of the device. */
-  postureDetails?: Array<PostureDetail>;
+  postureDetails?: ReadonlyArray<PostureDetail>;
 }
 
 export const SecurityPosture = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3790,7 +3792,7 @@ export interface DefaultApplicationInfo {
   /** Output only. The package name of the current default application. */
   packageName?: string;
   /** Output only. Details on the default application setting attempts, in the same order as listed in defaultApplications. */
-  defaultApplicationSettingAttempts?: Array<DefaultApplicationSettingAttempt>;
+  defaultApplicationSettingAttempts?: ReadonlyArray<DefaultApplicationSettingAttempt>;
 }
 
 export const DefaultApplicationInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -3819,7 +3821,7 @@ export interface Device {
   /** The name of the policy currently applied to the device. */
   appliedPolicyName?: string;
   /** Events related to memory and storage measurements in chronological order. This information is only available if memoryInfoEnabled is true in the device's policy.Events are retained for a certain period of time and old events are deleted. */
-  memoryEvents?: Array<MemoryEvent>;
+  memoryEvents?: ReadonlyArray<MemoryEvent>;
   /** The state currently applied to the device. */
   appliedState?:
     | "DEVICE_STATE_UNSPECIFIED"
@@ -3842,15 +3844,15 @@ export interface Device {
   /** The last time the device sent a status report. */
   lastStatusReportTime?: string;
   /** Hardware status samples in chronological order. This information is only available if hardwareStatusEnabled is true in the device's policy. */
-  hardwareStatusSamples?: Array<HardwareStatus>;
+  hardwareStatusSamples?: ReadonlyArray<HardwareStatus>;
   /** Whether the device is compliant with its policy. */
   policyCompliant?: boolean;
   /** Power management events on the device in chronological order. This information is only available if powerManagementEventsEnabled is true in the device's policy. */
-  powerManagementEvents?: Array<PowerManagementEvent>;
+  powerManagementEvents?: ReadonlyArray<PowerManagementEvent>;
   /** Device settings information. This information is only available if deviceSettingsEnabled is true in the device's policy. */
   deviceSettings?: DeviceSettings;
   /** Details about policy settings that the device is not compliant with. */
-  nonComplianceDetails?: Array<NonComplianceDetail>;
+  nonComplianceDetails?: ReadonlyArray<NonComplianceDetail>;
   /** The version of the policy currently applied to the device. */
   appliedPolicyVersion?: string;
   /** Information about Common Criteria Mode—security standards defined in the Common Criteria for Information Technology Security Evaluation (https://www.commoncriteriaportal.org/) (CC).This information is only available if statusReportingSettings.commonCriteriaModeEnabled is true in the device's policy the device is company-owned. */
@@ -3873,9 +3875,9 @@ export interface Device {
     | "PROFILE_OWNER"
     | (string & {});
   /** Detailed information about displays on the device. This information is only available if displayInfoEnabled is true in the device's policy. */
-  displays?: Array<Display>;
+  displays?: ReadonlyArray<Display>;
   /** Reports for apps installed on the device. This information is only available when application_reports_enabled is true in the device's policy. */
-  applicationReports?: Array<ApplicationReport>;
+  applicationReports?: ReadonlyArray<ApplicationReport>;
   /** Ownership of the managed device. */
   ownership?:
     | "OWNERSHIP_UNSPECIFIED"
@@ -3891,7 +3893,7 @@ export interface Device {
   /** The time of device enrollment. */
   enrollmentTime?: string;
   /** Output only. The default application information for the DefaultApplicationType. This information is only available if defaultApplicationInfoReportingEnabled is true in the device's policy. Available on Android 16 and above.All app types are reported on fully managed devices. DEFAULT_BROWSER, DEFAULT_CALL_REDIRECTION, DEFAULT_CALL_SCREENING and DEFAULT_DIALER types are reported for the work profiles on company-owned devices with a work profile and personally-owned devices. DEFAULT_WALLET is also reported for company-owned devices with a work profile, but will only include work profile information. */
-  defaultApplicationInfo?: Array<DefaultApplicationInfo>;
+  defaultApplicationInfo?: ReadonlyArray<DefaultApplicationInfo>;
   /** The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}. */
   name?: string;
   /** If the device was enrolled with an enrollment token, this field contains the name of the token. */
@@ -3907,11 +3909,11 @@ export interface Device {
   /** The API level of the Android platform version running on the device. */
   apiLevel?: number;
   /** The password requirements currently applied to the device. This field exists because the applied requirements may be slightly different from those specified in passwordPolicies in some cases. Note that this field does not provide information about password compliance. For non-compliance information, see nonComplianceDetails. NonComplianceDetail.fieldPath, is set based on passwordPolicies, not based on this field. */
-  appliedPasswordPolicies?: Array<PasswordRequirements>;
+  appliedPasswordPolicies?: ReadonlyArray<PasswordRequirements>;
   /** The name of the policy applied to the device, in the form enterprises/{enterpriseId}/policies/{policyId}. If not specified, the policy_name for the device's user is applied. This field can be modified by a patch request. You can specify only the policyId when calling enterprises.devices.patch, as long as the policyId doesn’t contain any slashes. The rest of the policy name is inferred. */
   policyName?: string;
   /** If the same physical device has been enrolled multiple times, this field contains its previous device names. The serial number is used as the unique identifier to determine if the same physical device has enrolled previously. The names are in chronological order. */
-  previousDeviceNames?: Array<string>;
+  previousDeviceNames?: ReadonlyArray<string>;
   /** Device network information. This information is only available if networkInfoEnabled is true in the device's policy. */
   networkInfo?: NetworkInfo;
   /** The resource name of the user that owns this device in the form enterprises/{enterpriseId}/users/{userId}. */
@@ -3962,7 +3964,7 @@ export const Device = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDevicesResponse {
   /** The list of devices. */
-  devices?: Array<Device>;
+  devices?: ReadonlyArray<Device>;
   /** If there are more results, a token to retrieve next page of results. */
   nextPageToken?: string;
 }
@@ -4108,7 +4110,7 @@ export const ApplicationPolicyChange =
 
 export interface WipeParams {
   /** Optional. Flags to determine what data to wipe. */
-  wipeDataFlags?: Array<
+  wipeDataFlags?: ReadonlyArray<
     | "WIPE_DATA_FLAG_UNSPECIFIED"
     | "PRESERVE_RESET_PROTECTION_DATA"
     | "WIPE_EXTERNAL_STORAGE"
@@ -4126,7 +4128,7 @@ export const WipeParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RemovePolicyApplicationsRequest {
   /** Required. Package names to be removed. Entries that are not found are ignored. There must be at least one entry in package_names. */
-  packageNames?: Array<string>;
+  packageNames?: ReadonlyArray<string>;
 }
 
 export const RemovePolicyApplicationsRequest =
@@ -4176,7 +4178,7 @@ export const ClearAppsDataStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListPoliciesResponse {
   /** The list of policies. */
-  policies?: Array<Policy>;
+  policies?: ReadonlyArray<Policy>;
   /** If there are more results, a token to retrieve next page of results. */
   nextPageToken?: string;
 }
@@ -4197,7 +4199,7 @@ export const RemoveEsimParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListWebAppsResponse {
   /** The list of web apps. */
-  webApps?: Array<WebApp>;
+  webApps?: ReadonlyArray<WebApp>;
   /** If there are more results, a token to retrieve next page of results. */
   nextPageToken?: string;
 }
@@ -4209,7 +4211,7 @@ export const ListWebAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ModifyPolicyApplicationsRequest {
   /** Required. The changes to be made to the ApplicationPolicy objects. There must be at least one ApplicationPolicyChange. */
-  changes?: Array<ApplicationPolicyChange>;
+  changes?: ReadonlyArray<ApplicationPolicyChange>;
 }
 
 export const ModifyPolicyApplicationsRequest =
@@ -4219,7 +4221,7 @@ export const ModifyPolicyApplicationsRequest =
 
 export interface ListEnterprisesResponse {
   /** The list of enterprises. */
-  enterprises?: Array<Enterprise>;
+  enterprises?: ReadonlyArray<Enterprise>;
   /** If there are more results, a token to retrieve next page of results. */
   nextPageToken?: string;
 }
@@ -4238,11 +4240,11 @@ export interface WebToken {
   /** The name of the web token, which is generated by the server during creation in the form enterprises/{enterpriseId}/webTokens/{webTokenId}. */
   name?: string;
   /** Permissions available to an admin in the embedded UI. An admin must have all of these permissions in order to view the UI. This field is deprecated. */
-  permissions?: Array<
+  permissions?: ReadonlyArray<
     "WEB_TOKEN_PERMISSION_UNSPECIFIED" | "APPROVE_APPS" | (string & {})
   >;
   /** The features to enable. Use this if you want to control exactly which feature(s) will be activated; leave empty to allow all features.Restrictions / things to note: - If no features are listed here, all features are enabled — this is the default behavior where you give access to all features to your admins. - This must not contain any FEATURE_UNSPECIFIED values. - Repeated values are ignored */
-  enabledFeatures?: Array<
+  enabledFeatures?: ReadonlyArray<
     | "FEATURE_UNSPECIFIED"
     | "PLAY_SEARCH"
     | "PRIVATE_APPS"
@@ -4320,7 +4322,7 @@ export interface Command {
   /** Output only. Status of an ADD_ESIM or REMOVE_ESIM command. */
   esimStatus?: EsimCommandStatus;
   /** For commands of type RESET_PASSWORD, optionally specifies flags. */
-  resetPasswordFlags?: Array<
+  resetPasswordFlags?: ReadonlyArray<
     | "RESET_PASSWORD_FLAG_UNSPECIFIED"
     | "REQUIRE_ENTRY"
     | "DO_NOT_ASK_CREDENTIALS_ON_BOOT"
@@ -4416,7 +4418,7 @@ export interface GetEnterprisesRequest {
 export const GetEnterprisesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/enterprises/{enterprisesId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetEnterprisesRequest>;
 
@@ -4497,11 +4499,7 @@ export const PatchEnterprisesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Enterprise).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/enterprises/{enterprisesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchEnterprisesRequest>;
 
@@ -4579,7 +4577,7 @@ export const DeleteEnterprisesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/enterprises/{enterprisesId}" }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteEnterprisesRequest>;
 
@@ -4616,7 +4614,7 @@ export const GenerateEnterpriseUpgradeUrlEnterprisesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/enterprises/{enterprisesId}:generateEnterpriseUpgradeUrl",
+      path: "v1/{name}:generateEnterpriseUpgradeUrl",
       hasBody: true,
     }),
     svc,
@@ -4655,7 +4653,7 @@ export const CreateEnterprisesMigrationTokensRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/enterprises/{enterprisesId}/migrationTokens",
+      path: "v1/{parent}/migrationTokens",
       hasBody: true,
     }),
     svc,
@@ -4688,10 +4686,7 @@ export const GetEnterprisesMigrationTokensRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/enterprises/{enterprisesId}/migrationTokens/{migrationTokensId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEnterprisesMigrationTokensRequest>;
 
@@ -4728,10 +4723,7 @@ export const ListEnterprisesMigrationTokensRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/enterprises/{enterprisesId}/migrationTokens",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/migrationTokens" }),
     svc,
   ) as unknown as Schema.Schema<ListEnterprisesMigrationTokensRequest>;
 
@@ -4772,7 +4764,7 @@ export const CreateEnterprisesEnrollmentTokensRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/enterprises/{enterprisesId}/enrollmentTokens",
+      path: "v1/{parent}/enrollmentTokens",
       hasBody: true,
     }),
     svc,
@@ -4805,10 +4797,7 @@ export const GetEnterprisesEnrollmentTokensRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/enterprises/{enterprisesId}/enrollmentTokens/{enrollmentTokensId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEnterprisesEnrollmentTokensRequest>;
 
@@ -4845,10 +4834,7 @@ export const ListEnterprisesEnrollmentTokensRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/enterprises/{enterprisesId}/enrollmentTokens",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/enrollmentTokens" }),
     svc,
   ) as unknown as Schema.Schema<ListEnterprisesEnrollmentTokensRequest>;
 
@@ -4884,10 +4870,7 @@ export const DeleteEnterprisesEnrollmentTokensRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/enterprises/{enterprisesId}/enrollmentTokens/{enrollmentTokensId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteEnterprisesEnrollmentTokensRequest>;
 
@@ -4921,11 +4904,7 @@ export const CreateEnterprisesWebTokensRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(WebToken).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/enterprises/{enterprisesId}/webTokens",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/webTokens", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateEnterprisesWebTokensRequest>;
 
@@ -4962,11 +4941,7 @@ export const PatchEnterprisesWebAppsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(WebApp).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/enterprises/{enterprisesId}/webApps/{webAppsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchEnterprisesWebAppsRequest>;
 
@@ -4997,10 +4972,7 @@ export const GetEnterprisesWebAppsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/enterprises/{enterprisesId}/webApps/{webAppsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEnterprisesWebAppsRequest>;
 
@@ -5036,7 +5008,7 @@ export const ListEnterprisesWebAppsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/enterprises/{enterprisesId}/webApps" }),
+    T.Http({ method: "GET", path: "v1/{parent}/webApps" }),
     svc,
   ) as unknown as Schema.Schema<ListEnterprisesWebAppsRequest>;
 
@@ -5071,10 +5043,7 @@ export const DeleteEnterprisesWebAppsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/enterprises/{enterprisesId}/webApps/{webAppsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteEnterprisesWebAppsRequest>;
 
@@ -5108,11 +5077,7 @@ export const CreateEnterprisesWebAppsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(WebApp).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/enterprises/{enterprisesId}/webApps",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/webApps", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateEnterprisesWebAppsRequest>;
 
@@ -5149,11 +5114,7 @@ export const PatchEnterprisesDevicesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Device).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/enterprises/{enterprisesId}/devices/{devicesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchEnterprisesDevicesRequest>;
 
@@ -5184,10 +5145,7 @@ export const GetEnterprisesDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/enterprises/{enterprisesId}/devices/{devicesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEnterprisesDevicesRequest>;
 
@@ -5223,7 +5181,7 @@ export const ListEnterprisesDevicesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/enterprises/{enterprisesId}/devices" }),
+    T.Http({ method: "GET", path: "v1/{parent}/devices" }),
     svc,
   ) as unknown as Schema.Schema<ListEnterprisesDevicesRequest>;
 
@@ -5261,11 +5219,7 @@ export const IssueCommandEnterprisesDevicesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Command).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/enterprises/{enterprisesId}/devices/{devicesId}:issueCommand",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:issueCommand", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<IssueCommandEnterprisesDevicesRequest>;
 
@@ -5311,10 +5265,7 @@ export const DeleteEnterprisesDevicesRequest =
       T.HttpQuery("wipeReasonMessage"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/enterprises/{enterprisesId}/devices/{devicesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteEnterprisesDevicesRequest>;
 
@@ -5359,10 +5310,7 @@ export const ListEnterprisesDevicesOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/enterprises/{enterprisesId}/devices/{devicesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<ListEnterprisesDevicesOperationsRequest>;
 
@@ -5397,10 +5345,7 @@ export const GetEnterprisesDevicesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/enterprises/{enterprisesId}/devices/{devicesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEnterprisesDevicesOperationsRequest>;
 
@@ -5431,11 +5376,7 @@ export const CancelEnterprisesDevicesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/enterprises/{enterprisesId}/devices/{devicesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelEnterprisesDevicesOperationsRequest>;
 
@@ -5466,10 +5407,7 @@ export const GetEnterprisesPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/enterprises/{enterprisesId}/policies/{policiesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEnterprisesPoliciesRequest>;
 
@@ -5506,7 +5444,7 @@ export const ListEnterprisesPoliciesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/enterprises/{enterprisesId}/policies" }),
+    T.Http({ method: "GET", path: "v1/{parent}/policies" }),
     svc,
   ) as unknown as Schema.Schema<ListEnterprisesPoliciesRequest>;
 
@@ -5546,7 +5484,7 @@ export const ModifyPolicyApplicationsEnterprisesPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/enterprises/{enterprisesId}/policies/{policiesId}:modifyPolicyApplications",
+      path: "v1/{name}:modifyPolicyApplications",
       hasBody: true,
     }),
     svc,
@@ -5585,7 +5523,7 @@ export const RemovePolicyApplicationsEnterprisesPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/enterprises/{enterprisesId}/policies/{policiesId}:removePolicyApplications",
+      path: "v1/{name}:removePolicyApplications",
       hasBody: true,
     }),
     svc,
@@ -5625,11 +5563,7 @@ export const PatchEnterprisesPoliciesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Policy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/enterprises/{enterprisesId}/policies/{policiesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchEnterprisesPoliciesRequest>;
 
@@ -5660,10 +5594,7 @@ export const DeleteEnterprisesPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/enterprises/{enterprisesId}/policies/{policiesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteEnterprisesPoliciesRequest>;
 
@@ -5699,10 +5630,7 @@ export const GetEnterprisesApplicationsRequest =
       T.HttpQuery("languageCode"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/enterprises/{enterprisesId}/applications/{applicationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEnterprisesApplicationsRequest>;
 
@@ -5733,7 +5661,7 @@ export const GetProvisioningInfoRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/provisioningInfo/{provisioningInfoId}" }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProvisioningInfoRequest>;
 

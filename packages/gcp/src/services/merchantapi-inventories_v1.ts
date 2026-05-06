@@ -77,7 +77,7 @@ export interface ProductStatusChangeMessage {
   /** The attribute in the resource that changed, in this case it will be always `Status`. */
   attribute?: "ATTRIBUTE_UNSPECIFIED" | "STATUS" | (string & {});
   /** A message to describe the change that happened to the product */
-  changes?: Array<ProductChange>;
+  changes?: ReadonlyArray<ProductChange>;
   /** The time at which the event was generated. If you want to order the notification messages you receive you should rely on this field not on the order of receiving the notifications. */
   eventTime?: string;
 }
@@ -157,7 +157,7 @@ export interface RegionalInventoryAttributes {
     | "OUT_OF_STOCK"
     | (string & {});
   /** Optional. An optional list of loyalty programs containing applicable loyalty member prices for this product in this region. This field is used to show region-specific member prices on Product Listing Ads (PLA). To use this, the loyalty program must be configured in Google Merchant Center, and the merchant must be using the Regional Availability and Pricing (RAAP) feature. The benefits provided must match the merchant's website and be clear to members. This is only applicable for merchants in supported countries. See [Loyalty program](https://support.google.com/merchants/answer/12922446) for details on supported countries and loyalty program configuration. Also see [Regional availability and pricing](https://support.google.com/merchants/answer/14644124) and [How to set up regional member pricing](https://support.google.com/merchants/answer/16388178) for more information. */
-  loyaltyPrograms?: Array<InventoryLoyaltyProgram>;
+  loyaltyPrograms?: ReadonlyArray<InventoryLoyaltyProgram>;
   /** Optional. Sale price of the product in this region. Mandatory if `salePriceEffectiveDate` is defined. */
   salePrice?: Price;
   /** Optional. Price of the product in this region. */
@@ -218,7 +218,7 @@ export interface LocalInventoryAttributes {
   /** Optional. Location of the product inside the store. Maximum length is 20 bytes. */
   instoreProductLocation?: string;
   /** Optional. An optional list of loyalty programs containing applicable loyalty member prices for this product at this store. This field is used to show store-specific member prices on Local Inventory Ads (LIA). To use this, the loyalty program must be configured in Google Merchant Center. The benefits provided must match the merchant's website and be clear to members. This is only applicable for merchants in supported countries. See [Loyalty program](https://support.google.com/merchants/answer/12922446) for details on supported countries and loyalty program configuration. For local inventory specific details, see the [Local inventory data specification](https://support.google.com/merchants/answer/3061342). */
-  loyaltyPrograms?: Array<InventoryLoyaltyProgram>;
+  loyaltyPrograms?: ReadonlyArray<InventoryLoyaltyProgram>;
   /** Optional. Quantity of the product available at this store. Must be greater than or equal to zero. */
   quantity?: string;
   /** Optional. Relative time period from the order date for an order for this product, from this store, to be ready for pickup. Must be submitted with `pickupMethod`. See more details [here](https://support.google.com/merchants/answer/3061342). */
@@ -274,7 +274,7 @@ export const LocalInventory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocalInventoriesResponse {
   /** The `LocalInventory` resources for the given product from the specified account. */
-  localInventories?: Array<LocalInventory>;
+  localInventories?: ReadonlyArray<LocalInventory>;
   /** A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -287,7 +287,7 @@ export const ListLocalInventoriesResponse =
 
 export interface ListRegionalInventoriesResponse {
   /** The `RegionalInventory` resources for the given product from the specified account. */
-  regionalInventories?: Array<RegionalInventory>;
+  regionalInventories?: ReadonlyArray<RegionalInventory>;
   /** A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -323,10 +323,7 @@ export const ListAccountsProductsLocalInventoriesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "inventories/v1/accounts/{accountsId}/products/{productsId}/localInventories",
-    }),
+    T.Http({ method: "GET", path: "inventories/v1/{parent}/localInventories" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsProductsLocalInventoriesRequest>;
 
@@ -362,10 +359,7 @@ export const DeleteAccountsProductsLocalInventoriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "inventories/v1/accounts/{accountsId}/products/{productsId}/localInventories/{localInventoriesId}",
-    }),
+    T.Http({ method: "DELETE", path: "inventories/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsProductsLocalInventoriesRequest>;
 
@@ -401,7 +395,7 @@ export const InsertAccountsProductsLocalInventoriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "inventories/v1/accounts/{accountsId}/products/{productsId}/localInventories:insert",
+      path: "inventories/v1/{parent}/localInventories:insert",
       hasBody: true,
     }),
     svc,
@@ -439,7 +433,7 @@ export const InsertAccountsProductsRegionalInventoriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "inventories/v1/accounts/{accountsId}/products/{productsId}/regionalInventories:insert",
+      path: "inventories/v1/{parent}/regionalInventories:insert",
       hasBody: true,
     }),
     svc,
@@ -481,7 +475,7 @@ export const ListAccountsProductsRegionalInventoriesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "inventories/v1/accounts/{accountsId}/products/{productsId}/regionalInventories",
+      path: "inventories/v1/{parent}/regionalInventories",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsProductsRegionalInventoriesRequest>;
@@ -518,10 +512,7 @@ export const DeleteAccountsProductsRegionalInventoriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "inventories/v1/accounts/{accountsId}/products/{productsId}/regionalInventories/{regionalInventoriesId}",
-    }),
+    T.Http({ method: "DELETE", path: "inventories/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsProductsRegionalInventoriesRequest>;
 
