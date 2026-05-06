@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface ServiceAccount {
   /** List of scopes to be enabled for this service account. */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
   /** Email address of the service account. */
   email?: string;
 }
@@ -50,7 +50,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
@@ -88,9 +88,9 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -124,11 +124,11 @@ export const Barrier = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AgentContainer {
   /** Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro */
-  volumes?: Array<string>;
+  volumes?: ReadonlyArray<string>;
   /** Arbitrary additional options to include in the "docker run" command when running this container, e.g. "--network host". */
   options?: string;
   /** Overrides the `CMD` specified in the container. If there is an ENTRYPOINT (either in the container image or with the entrypoint field below) then commands are appended as arguments to the ENTRYPOINT. */
-  commands?: Array<string>;
+  commands?: ReadonlyArray<string>;
   /** Overrides the `ENTRYPOINT` specified in the container. */
   entrypoint?: string;
   /** The URI to pull the container image from. */
@@ -283,7 +283,7 @@ export interface Volume {
   /** Device name of an attached disk volume, which should align with a device_name specified by job.allocation_policy.instances[0].policy.disks[i].device_name or defined by the given instance template in job.allocation_policy.instances[0].instance_template. */
   deviceName?: string;
   /** Mount options vary based on the type of storage volume: * For a Cloud Storage bucket, all the mount options provided by the [`gcsfuse` tool](https://cloud.google.com/storage/docs/gcsfuse-cli) are supported. * For an existing persistent disk, all mount options provided by the [`mount` command](https://man7.org/linux/man-pages/man8/mount.8.html) except writing are supported. This is due to restrictions of [multi-writer mode](https://cloud.google.com/compute/docs/disks/sharing-disks-between-vms). * For any other disk or a Network File System (NFS), all the mount options provided by the `mount` command are supported. */
-  mountOptions?: Array<string>;
+  mountOptions?: ReadonlyArray<string>;
   /** A Network File System (NFS) volume. For example, a Filestore file share. */
   nfs?: NFS;
   /** The mount path for the volume, e.g. /mnt/disks/share. */
@@ -310,7 +310,7 @@ export interface TaskStatus {
     | "UNEXECUTED"
     | (string & {});
   /** Detailed info about why the state is reached. */
-  statusEvents?: Array<StatusEvent>;
+  statusEvents?: ReadonlyArray<StatusEvent>;
 }
 
 export const TaskStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -337,7 +337,7 @@ export interface AgentInfo {
   /** The assigned task group ID. */
   taskGroupId?: string;
   /** Task Info. */
-  tasks?: Array<AgentTaskInfo>;
+  tasks?: ReadonlyArray<AgentTaskInfo>;
   /** Agent state. */
   state?:
     | "AGENT_STATE_UNSPECIFIED"
@@ -509,9 +509,9 @@ export const AttachedDisk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InstancePolicy {
   /** The accelerators attached to each VM instance. */
-  accelerators?: Array<Accelerator>;
+  accelerators?: ReadonlyArray<Accelerator>;
   /** Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted. A non-boot disk is a disk that can be of a device with a file system or a raw storage drive that is not ready for data storage and accessing. */
-  disks?: Array<AttachedDisk>;
+  disks?: ReadonlyArray<AttachedDisk>;
   /** Optional. If not specified (default), VMs will consume any applicable reservation. If "NO_RESERVATION" is specified, VMs will not consume any reservation. Otherwise, if specified, VMs will consume only the specified reservation. */
   reservation?: string;
   /** The Compute Engine machine type. */
@@ -565,7 +565,7 @@ export const InstancePolicyOrTemplate =
 
 export interface LocationPolicy {
   /** A list of allowed location names represented by internal URLs. Each location can be a region or a zone. Only one region or multiple zones in one region is supported now. For example, ["regions/us-central1"] allow VMs in any zones in region us-central1. ["zones/us-central1-a", "zones/us-central1-c"] only allow VMs in zones us-central1-a and us-central1-c. Mixing locations from different regions would cause errors. For example, ["regions/us-central1", "zones/us-central1-a", "zones/us-central1-b", "zones/us-west1-a"] contains locations from two distinct regions: us-central1 and us-west1. This combination will trigger an error. */
-  allowedLocations?: Array<string>;
+  allowedLocations?: ReadonlyArray<string>;
 }
 
 export const LocationPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -601,7 +601,7 @@ export const NetworkInterface = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NetworkPolicy {
   /** Network configurations. */
-  networkInterfaces?: Array<NetworkInterface>;
+  networkInterfaces?: ReadonlyArray<NetworkInterface>;
 }
 
 export const NetworkPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -610,7 +610,7 @@ export const NetworkPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AllocationPolicy {
   /** Describe instances that can be created by this AllocationPolicy. Only instances[0] is supported now. */
-  instances?: Array<InstancePolicyOrTemplate>;
+  instances?: ReadonlyArray<InstancePolicyOrTemplate>;
   /** Defines the service account for Batch-created VMs. If omitted, the [default Compute Engine service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used. Must match the service account specified in any used instance template configured in the Batch job. Includes the following fields: * email: The service account's email address. If not set, the default Compute Engine service account is used. * scopes: Additional OAuth scopes to grant the service account, beyond the default cloud-platform scope. (list of strings) */
   serviceAccount?: ServiceAccount;
   /** Location where compute resources should be allocated for the Job. */
@@ -618,7 +618,7 @@ export interface AllocationPolicy {
   /** The placement policy. */
   placement?: PlacementPolicy;
   /** Optional. Tags applied to the VM instances. The tags identify valid sources or targets for network firewalls. Each tag must be 1-63 characters long, and comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** The network policy. If you define an instance template in the `InstancePolicyOrTemplate` field, Batch will use the network settings in the instance template instead of this field. */
   network?: NetworkPolicy;
   /** Custom labels to apply to the job and all the Compute Engine resources that both are created by this allocation policy and support labels. Use labels to group and describe the resources they are applied to. Batch automatically applies predefined labels and supports multiple `labels` fields for each job, which each let you apply custom labels to various resources. Label names that start with "goog-" or "google-" are reserved for predefined labels. For more information about labels with Batch, see [Organize resources using labels](https://cloud.google.com/batch/docs/organize-resources-using-labels). */
@@ -713,7 +713,7 @@ export interface TaskGroupStatus {
   /** Count of task in each state in the TaskGroup. The map key is task state name. */
   counts?: Record<string, string>;
   /** Status of instances allocated for the TaskGroup. */
-  instances?: Array<InstanceStatus>;
+  instances?: ReadonlyArray<InstanceStatus>;
 }
 
 export const TaskGroupStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -723,7 +723,7 @@ export const TaskGroupStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface JobStatus {
   /** Job status events */
-  statusEvents?: Array<StatusEvent>;
+  statusEvents?: ReadonlyArray<StatusEvent>;
   /** Aggregated task status for each TaskGroup in the Job. The map key is TaskGroup ID. */
   taskGroups?: Record<string, TaskGroupStatus>;
   /** The duration of time that the Job spent in status RUNNING. */
@@ -778,7 +778,7 @@ export const Environment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ActionCondition {
   /** Exit codes of a task execution. If there are more than 1 exit codes, when task executes with any of the exit code in the list, the condition is met and the action will be executed. */
-  exitCodes?: Array<number>;
+  exitCodes?: ReadonlyArray<number>;
 }
 
 export const ActionCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -805,7 +805,7 @@ export interface Container {
   /** Optional. If set to true, this container runnable uses Image streaming. Use Image streaming to allow the runnable to initialize without waiting for the entire container image to download, which can significantly reduce startup time for large container images. When `enableImageStreaming` is set to true, the container runtime is [containerd](https://containerd.io/) instead of Docker. Additionally, this container runnable only supports the following `container` subfields: `imageUri`, `commands[]`, `entrypoint`, and `volumes[]`; any other `container` subfields are ignored. For more information about the requirements and limitations for using Image streaming with Batch, see the [`image-streaming` sample on GitHub](https://github.com/GoogleCloudPlatform/batch-samples/tree/main/api-samples/image-streaming). */
   enableImageStreaming?: boolean;
   /** Required for some container images. Overrides the `CMD` specified in the container. If there is an `ENTRYPOINT` (either in the container image or with the `entrypoint` field below) then these commands are appended as arguments to the `ENTRYPOINT`. */
-  commands?: Array<string>;
+  commands?: ReadonlyArray<string>;
   /** Required if the container image is from a private Docker registry. The username to login to the Docker registry that contains the image. You can either specify the username directly by using plain text or specify an encrypted username by using a Secret Manager secret: `projects/* /secrets/* /versions/*`. However, using a secret is recommended for enhanced security. Caution: If you specify the username using plain text, you risk the username being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the username instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager). */
   username?: string;
   /** Required if the container image is from a private Docker registry. The password to login to the Docker registry that contains the image. For security, it is strongly recommended to specify an encrypted password by using a Secret Manager secret: `projects/* /secrets/* /versions/*`. Warning: If you specify the password using plain text, you risk the password being exposed to any users who can view the job or its logs. To avoid this risk, specify a secret that contains the password instead. Learn more about [Secret Manager](https://cloud.google.com/secret-manager/docs/) and [using Secret Manager with Batch](https://cloud.google.com/batch/docs/create-run-job-secret-manager). */
@@ -815,7 +815,7 @@ export interface Container {
   /** If set to true, external network access to and from container will be blocked, containers that are with block_external_network as true can still communicate with each other, network cannot be specified in the `container.options` field. */
   blockExternalNetwork?: boolean;
   /** Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match `--volume` option for the `docker run` command—for example, `/foo:/bar` or `/foo:/bar:ro`. If the `TaskSpec.Volumes` field is specified but this field is not, Batch will mount each volume from the host machine to the container with the same mount path by default. In this case, the default mount option for containers will be read-only (`ro`) for existing persistent disks and read-write (`rw`) for other volume types, regardless of the original mount options specified in `TaskSpec.Volumes`. If you need different mount settings, you can explicitly configure them in this field. */
-  volumes?: Array<string>;
+  volumes?: ReadonlyArray<string>;
 }
 
 export const Container = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -868,15 +868,15 @@ export const Runnable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TaskSpec {
   /** Volumes to mount before running Tasks using this TaskSpec. */
-  volumes?: Array<Volume>;
+  volumes?: ReadonlyArray<Volume>;
   /** Environment variables to set before running the Task. */
   environment?: Environment;
   /** Maximum number of retries on failures. The default, 0, which means never retry. The valid value range is [0, 10]. */
   maxRetryCount?: number;
   /** Lifecycle management schema when any task in a task group is failed. Currently we only support one lifecycle policy. When the lifecycle policy condition is met, the action in the policy will execute. If task execution result does not meet with the defined lifecycle policy, we consider it as the default policy. Default policy means if the exit code is 0, exit task. If task ends with non-zero exit code, retry the task with max_retry_count. */
-  lifecyclePolicies?: Array<LifecyclePolicy>;
+  lifecyclePolicies?: ReadonlyArray<LifecyclePolicy>;
   /** Required. The sequence of one or more runnables (executable scripts, executable containers, and/or barriers) for each task in this task group to run. Each task runs this list of runnables in order. For a task to succeed, all of its script and container runnables each must meet at least one of the following conditions: + The runnable exited with a zero status. + The runnable didn't finish, but you enabled its `background` subfield. + The runnable exited with a non-zero status, but you enabled its `ignore_exit_status` subfield. */
-  runnables?: Array<Runnable>;
+  runnables?: ReadonlyArray<Runnable>;
   /** Maximum duration the task should run before being automatically retried (if enabled) or automatically failed. Format the value of this field as a time limit in seconds followed by `s`—for example, `3600s` for 1 hour. The field accepts any value between 0 and the maximum listed for the `Duration` field type at https://protobuf.dev/reference/protobuf/google.protobuf/#duration; however, the actual maximum run time for a job will be limited to the maximum run time for a job listed at https://cloud.google.com/batch/quotas#max-job-duration. */
   maxRunDuration?: string;
   /** Deprecated: please use environment(non-plural) instead. */
@@ -908,7 +908,7 @@ export interface TaskGroup {
   /** Max number of tasks that can be run on a VM at the same time. If not specified, the system will decide a value based on available compute resources on a VM and task requirements. */
   taskCountPerNode?: string;
   /** An array of environment variable mappings, which are passed to Tasks with matching indices. If task_environments is used then task_count should not be specified in the request (and will be ignored). Task count will be the length of task_environments. Tasks get a BATCH_TASK_INDEX and BATCH_TASK_COUNT environment variable, in addition to any environment variables set in task_environments, specifying the number of Tasks in the Task's parent TaskGroup, and the specific Task's index in the TaskGroup (0 through BATCH_TASK_COUNT - 1). */
-  taskEnvironments?: Array<Environment>;
+  taskEnvironments?: ReadonlyArray<Environment>;
   /** Optional. If not set or set to false, Batch uses the root user to execute runnables. If set to true, Batch runs the runnables using a non-root user. Currently, the non-root user Batch used is generated by OS Login. For more information, see [About OS Login](https://cloud.google.com/compute/docs/oslogin). */
   runAsNonRoot?: boolean;
   /** Number of Tasks in the TaskGroup. Default is 1. */
@@ -950,13 +950,13 @@ export interface Job {
   /** Output only. The last time the Job was updated. */
   updateTime?: string;
   /** Notification configurations. */
-  notifications?: Array<JobNotification>;
+  notifications?: ReadonlyArray<JobNotification>;
   /** Priority of the Job. The valid value range is [0, 100). Default value is 0. Higher value indicates higher priority. A job with higher priority value is more likely to run earlier if all other requirements are satisfied. */
   priority?: string;
   /** Output only. Job status. It is read only for users. */
   status?: JobStatus;
   /** Required. TaskGroups in the Job. Only one TaskGroup is supported now. */
-  taskGroups?: Array<TaskGroup>;
+  taskGroups?: ReadonlyArray<TaskGroup>;
   /** Custom labels to apply to the job and any Cloud Logging [LogEntry](https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry) that it generates. Use labels to group and describe the resources they are applied to. Batch automatically applies predefined labels and supports multiple `labels` fields for each job, which each let you apply custom labels to various resources. Label names that start with "goog-" or "google-" are reserved for predefined labels. For more information about labels with Batch, see [Organize resources using labels](https://cloud.google.com/batch/docs/organize-resources-using-labels). */
   labels?: Record<string, string>;
 }
@@ -977,11 +977,11 @@ export const Job = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListJobsResponse {
   /** Jobs. */
-  jobs?: Array<Job>;
+  jobs?: ReadonlyArray<Job>;
   /** Next page token. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1015,7 +1015,7 @@ export const AgentTaskLoggingOption = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface AgentTaskSpec {
   /** AgentTaskRunnable is runanbles that will be executed on the agent. */
-  runnables?: Array<AgentTaskRunnable>;
+  runnables?: ReadonlyArray<AgentTaskRunnable>;
   /** Maximum duration the task should run before being automatically retried (if enabled) or automatically failed. Format the value of this field as a time limit in seconds followed by `s`—for example, `3600s` for 1 hour. The field accepts any value between 0 and the maximum listed for the `Duration` field type at https://protobuf.dev/reference/protobuf/google.protobuf/#duration; however, the actual maximum run time for a job will be limited to the maximum run time for a job listed at https://cloud.google.com/batch/quotas#max-job-duration. */
   maxRunDuration?: string;
   /** User account on the VM to run the runnables in the agentTaskSpec. If not set, the runnable will be run under root user. */
@@ -1076,7 +1076,7 @@ export interface ReportAgentStateResponse {
   /** If true, the cloud logging for batch agent will use batch.googleapis.com/Job as monitored resource for Batch job related logging. */
   useBatchMonitoredResource?: boolean;
   /** Tasks assigned to the agent */
-  tasks?: Array<AgentTask>;
+  tasks?: ReadonlyArray<AgentTask>;
   /** Default report interval override */
   defaultReportInterval?: string;
 }
@@ -1166,7 +1166,7 @@ export const Task = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -1180,9 +1180,9 @@ export interface ListTasksResponse {
   /** Next page token. */
   nextPageToken?: string;
   /** Tasks. */
-  tasks?: Array<Task>;
+  tasks?: ReadonlyArray<Task>;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1218,7 +1218,7 @@ export const ListProjectsLocationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -1253,10 +1253,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -1290,11 +1287,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -1339,10 +1332,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -1377,10 +1367,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -1411,10 +1398,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -1448,11 +1432,7 @@ export const ReportProjectsLocationsStateRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ReportAgentStateRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/state:report",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/state:report", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ReportProjectsLocationsStateRequest>;
 
@@ -1489,10 +1469,7 @@ export const DeleteProjectsLocationsJobsRequest =
     reason: Schema.optional(Schema.String).pipe(T.HttpQuery("reason")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsJobsRequest>;
 
@@ -1526,11 +1503,7 @@ export const CancelProjectsLocationsJobsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelJobRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsJobsRequest>;
 
@@ -1570,11 +1543,7 @@ export const CreateProjectsLocationsJobsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Job).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/jobs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsJobsRequest>;
 
@@ -1605,10 +1574,7 @@ export const GetProjectsLocationsJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsJobsRequest>;
 
@@ -1650,10 +1616,7 @@ export const ListProjectsLocationsJobsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/jobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsJobsRequest>;
 
@@ -1688,10 +1651,7 @@ export const GetProjectsLocationsJobsTaskGroupsTasksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}/taskGroups/{taskGroupsId}/tasks/{tasksId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsJobsTaskGroupsTasksRequest>;
 
@@ -1731,10 +1691,7 @@ export const ListProjectsLocationsJobsTaskGroupsTasksRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}/taskGroups/{taskGroupsId}/tasks",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/tasks" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsJobsTaskGroupsTasksRequest>;
 

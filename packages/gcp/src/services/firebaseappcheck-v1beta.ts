@@ -108,7 +108,7 @@ export const GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig =
 
 export interface GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse {
   /** RecaptchaEnterpriseConfigs retrieved. */
-  configs?: Array<GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig>;
+  configs?: ReadonlyArray<GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig>;
 }
 
 export const GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse =
@@ -158,7 +158,7 @@ export const GoogleFirebaseAppcheckV1betaSafetyNetConfig =
 
 export interface GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse {
   /** SafetyNetConfigs retrieved. */
-  configs?: Array<GoogleFirebaseAppcheckV1betaSafetyNetConfig>;
+  configs?: ReadonlyArray<GoogleFirebaseAppcheckV1betaSafetyNetConfig>;
 }
 
 export const GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse =
@@ -197,7 +197,7 @@ export const GoogleFirebaseAppcheckV1betaPublicJwk =
 
 export interface GoogleFirebaseAppcheckV1betaPublicJwkSet {
   /** The set of public keys. See [section 5.1 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-5). */
-  keys?: Array<GoogleFirebaseAppcheckV1betaPublicJwk>;
+  keys?: ReadonlyArray<GoogleFirebaseAppcheckV1betaPublicJwk>;
 }
 
 export const GoogleFirebaseAppcheckV1betaPublicJwkSet =
@@ -295,7 +295,7 @@ export const GoogleFirebaseAppcheckV1betaDeviceCheckConfig =
 
 export interface GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse {
   /** DeviceCheckConfigs retrieved. */
-  configs?: Array<GoogleFirebaseAppcheckV1betaDeviceCheckConfig>;
+  configs?: ReadonlyArray<GoogleFirebaseAppcheckV1betaDeviceCheckConfig>;
 }
 
 export const GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse =
@@ -310,7 +310,7 @@ export const GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse =
 
 export interface GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse {
   /** PlayIntegrityConfigs retrieved. */
-  configs?: Array<GoogleFirebaseAppcheckV1betaPlayIntegrityConfig>;
+  configs?: ReadonlyArray<GoogleFirebaseAppcheckV1betaPlayIntegrityConfig>;
 }
 
 export const GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse =
@@ -362,7 +362,7 @@ export const GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest =
 
 export interface GoogleFirebaseAppcheckV1betaListDebugTokensResponse {
   /** The DebugTokens retrieved. */
-  debugTokens?: Array<GoogleFirebaseAppcheckV1betaDebugToken>;
+  debugTokens?: ReadonlyArray<GoogleFirebaseAppcheckV1betaDebugToken>;
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty or omitted, then this response is the last page of results. This token can be used in a subsequent call to ListDebugTokens to find the next group of DebugTokens. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
@@ -450,7 +450,7 @@ export const GoogleFirebaseAppcheckV1betaUpdateServiceRequest =
 
 export interface GoogleFirebaseAppcheckV1betaListServicesResponse {
   /** The Services retrieved. */
-  services?: Array<GoogleFirebaseAppcheckV1betaService>;
+  services?: ReadonlyArray<GoogleFirebaseAppcheckV1betaService>;
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty or omitted, then this response is the last page of results. This token can be used in a subsequent call to ListServices to find the next group of Services. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
@@ -467,7 +467,7 @@ export const GoogleFirebaseAppcheckV1betaListServicesResponse =
 
 export interface GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse {
   /** RecaptchaConfigs retrieved. */
-  configs?: Array<GoogleFirebaseAppcheckV1betaRecaptchaConfig>;
+  configs?: ReadonlyArray<GoogleFirebaseAppcheckV1betaRecaptchaConfig>;
 }
 
 export const GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse =
@@ -511,7 +511,7 @@ export const GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest =
 
 export interface GoogleFirebaseAppcheckV1betaBatchGetRecaptchaV3ConfigsResponse {
   /** RecaptchaV3Configs retrieved. */
-  configs?: Array<GoogleFirebaseAppcheckV1betaRecaptchaV3Config>;
+  configs?: ReadonlyArray<GoogleFirebaseAppcheckV1betaRecaptchaV3Config>;
 }
 
 export const GoogleFirebaseAppcheckV1betaBatchGetRecaptchaV3ConfigsResponse =
@@ -548,7 +548,7 @@ export const GoogleFirebaseAppcheckV1betaResourcePolicy =
 
 export interface GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse {
   /** The ResourcePolicy objects retrieved. */
-  resourcePolicies?: Array<GoogleFirebaseAppcheckV1betaResourcePolicy>;
+  resourcePolicies?: ReadonlyArray<GoogleFirebaseAppcheckV1betaResourcePolicy>;
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty or omitted, then this response is the last page of results. This token can be used in a subsequent call to ListResourcePolicies to find the next group of ResourcePolicy objects. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
@@ -587,7 +587,7 @@ export const GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest =
 
 export interface GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse {
   /** Service objects after the updates have been applied. */
-  services?: Array<GoogleFirebaseAppcheckV1betaService>;
+  services?: ReadonlyArray<GoogleFirebaseAppcheckV1betaService>;
 }
 
 export const GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse =
@@ -653,7 +653,7 @@ export const GoogleFirebaseAppcheckV1betaAttestationTokenResponse =
 
 export interface GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse {
   /** ResourcePolicy objects after the updates have been applied. */
-  resourcePolicies?: Array<GoogleFirebaseAppcheckV1betaResourcePolicy>;
+  resourcePolicies?: ReadonlyArray<GoogleFirebaseAppcheckV1betaResourcePolicy>;
 }
 
 export const GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse =
@@ -668,7 +668,7 @@ export const GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse =
 
 export interface GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse {
   /** AppAttestConfigs retrieved. */
-  configs?: Array<GoogleFirebaseAppcheckV1betaAppAttestConfig>;
+  configs?: ReadonlyArray<GoogleFirebaseAppcheckV1betaAppAttestConfig>;
 }
 
 export const GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse =
@@ -757,7 +757,7 @@ export const GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest =
 
 export interface GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest {
   /** Required. The request messages specifying the ResourcePolicy objects to update. A maximum of 100 objects can be updated in a batch. */
-  requests?: Array<GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest>;
+  requests?: ReadonlyArray<GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest>;
   /** Optional. A comma-separated list of names of fields in the ResourcePolicy objects to update. Example: `enforcement_mode`. If this field is present, the `update_mask` field in the UpdateResourcePolicyRequest messages must all match this field, or the entire batch fails and no updates will be committed. */
   updateMask?: string;
 }
@@ -781,7 +781,7 @@ export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest {
   /** Required. The request messages specifying the Services to update. A maximum of 100 objects can be updated in a batch. */
-  requests?: Array<GoogleFirebaseAppcheckV1betaUpdateServiceRequest>;
+  requests?: ReadonlyArray<GoogleFirebaseAppcheckV1betaUpdateServiceRequest>;
   /** Optional. A comma-separated list of names of fields in the Services to update. Example: `display_name`. If the `update_mask` field is set in both this request and any of the UpdateServiceRequest messages, they must match or the entire batch fails and no updates will be committed. */
   updateMask?: string;
 }
@@ -873,7 +873,7 @@ export interface GetJwksRequest {
 export const GetJwksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1beta/jwks" }),
+  T.Http({ method: "GET", path: "v1beta/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetJwksRequest>;
 
@@ -911,7 +911,7 @@ export const ExchangeDebugTokenOauthClientsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/oauthClients/{oauthClientsId}:exchangeDebugToken",
+      path: "v1beta/{app}:exchangeDebugToken",
       hasBody: true,
     }),
     svc,
@@ -952,7 +952,7 @@ export const ExchangeAppAttestAttestationOauthClientsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/oauthClients/{oauthClientsId}:exchangeAppAttestAttestation",
+      path: "v1beta/{app}:exchangeAppAttestAttestation",
       hasBody: true,
     }),
     svc,
@@ -993,7 +993,7 @@ export const GenerateAppAttestChallengeOauthClientsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/oauthClients/{oauthClientsId}:generateAppAttestChallenge",
+      path: "v1beta/{app}:generateAppAttestChallenge",
       hasBody: true,
     }),
     svc,
@@ -1034,7 +1034,7 @@ export const ExchangeAppAttestAssertionOauthClientsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/oauthClients/{oauthClientsId}:exchangeAppAttestAssertion",
+      path: "v1beta/{app}:exchangeAppAttestAssertion",
       hasBody: true,
     }),
     svc,
@@ -1075,7 +1075,7 @@ export const VerifyAppCheckTokenProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}:verifyAppCheckToken",
+      path: "v1beta/{project}:verifyAppCheckToken",
       hasBody: true,
     }),
     svc,
@@ -1116,7 +1116,7 @@ export const BatchUpdateProjectsServicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/services:batchUpdate",
+      path: "v1beta/{parent}/services:batchUpdate",
       hasBody: true,
     }),
     svc,
@@ -1156,7 +1156,7 @@ export const ListProjectsServicesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/projects/{projectsId}/services" }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/services" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsServicesRequest>;
 
@@ -1200,11 +1200,7 @@ export const PatchProjectsServicesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/projects/{projectsId}/services/{servicesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsServicesRequest>;
 
@@ -1235,10 +1231,7 @@ export const GetProjectsServicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/services/{servicesId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsServicesRequest>;
 
@@ -1272,10 +1265,7 @@ export const DeleteProjectsServicesResourcePoliciesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/projects/{projectsId}/services/{servicesId}/resourcePolicies/{resourcePoliciesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsServicesResourcePoliciesRequest>;
 
@@ -1314,7 +1304,7 @@ export const BatchUpdateProjectsServicesResourcePoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/services/{servicesId}/resourcePolicies:batchUpdate",
+      path: "v1beta/{parent}/resourcePolicies:batchUpdate",
       hasBody: true,
     }),
     svc,
@@ -1348,10 +1338,7 @@ export const GetProjectsServicesResourcePoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/services/{servicesId}/resourcePolicies/{resourcePoliciesId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsServicesResourcePoliciesRequest>;
 
@@ -1390,7 +1377,7 @@ export const CreateProjectsServicesResourcePoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/services/{servicesId}/resourcePolicies",
+      path: "v1beta/{parent}/resourcePolicies",
       hasBody: true,
     }),
     svc,
@@ -1433,10 +1420,7 @@ export const ListProjectsServicesResourcePoliciesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/services/{servicesId}/resourcePolicies",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/resourcePolicies" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsServicesResourcePoliciesRequest>;
 
@@ -1480,11 +1464,7 @@ export const PatchProjectsServicesResourcePoliciesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/projects/{projectsId}/services/{servicesId}/resourcePolicies/{resourcePoliciesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsServicesResourcePoliciesRequest>;
 
@@ -1523,7 +1503,7 @@ export const ExchangeRecaptchaV3TokenProjectsAppsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}:exchangeRecaptchaV3Token",
+      path: "v1beta/{app}:exchangeRecaptchaV3Token",
       hasBody: true,
     }),
     svc,
@@ -1564,7 +1544,7 @@ export const ExchangeDebugTokenProjectsAppsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}:exchangeDebugToken",
+      path: "v1beta/{app}:exchangeDebugToken",
       hasBody: true,
     }),
     svc,
@@ -1605,7 +1585,7 @@ export const ExchangePlayIntegrityTokenProjectsAppsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}:exchangePlayIntegrityToken",
+      path: "v1beta/{app}:exchangePlayIntegrityToken",
       hasBody: true,
     }),
     svc,
@@ -1646,7 +1626,7 @@ export const ExchangeRecaptchaEnterpriseTokenProjectsAppsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}:exchangeRecaptchaEnterpriseToken",
+      path: "v1beta/{app}:exchangeRecaptchaEnterpriseToken",
       hasBody: true,
     }),
     svc,
@@ -1687,7 +1667,7 @@ export const ExchangeAppAttestAttestationProjectsAppsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}:exchangeAppAttestAttestation",
+      path: "v1beta/{app}:exchangeAppAttestAttestation",
       hasBody: true,
     }),
     svc,
@@ -1728,7 +1708,7 @@ export const ExchangeCustomTokenProjectsAppsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}:exchangeCustomToken",
+      path: "v1beta/{app}:exchangeCustomToken",
       hasBody: true,
     }),
     svc,
@@ -1769,7 +1749,7 @@ export const ExchangeRecaptchaTokenProjectsAppsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}:exchangeRecaptchaToken",
+      path: "v1beta/{app}:exchangeRecaptchaToken",
       hasBody: true,
     }),
     svc,
@@ -1810,7 +1790,7 @@ export const GeneratePlayIntegrityChallengeProjectsAppsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}:generatePlayIntegrityChallenge",
+      path: "v1beta/{app}:generatePlayIntegrityChallenge",
       hasBody: true,
     }),
     svc,
@@ -1851,7 +1831,7 @@ export const ExchangeDeviceCheckTokenProjectsAppsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}:exchangeDeviceCheckToken",
+      path: "v1beta/{app}:exchangeDeviceCheckToken",
       hasBody: true,
     }),
     svc,
@@ -1892,7 +1872,7 @@ export const GenerateAppAttestChallengeProjectsAppsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}:generateAppAttestChallenge",
+      path: "v1beta/{app}:generateAppAttestChallenge",
       hasBody: true,
     }),
     svc,
@@ -1933,7 +1913,7 @@ export const ExchangeAppAttestAssertionProjectsAppsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}:exchangeAppAttestAssertion",
+      path: "v1beta/{app}:exchangeAppAttestAssertion",
       hasBody: true,
     }),
     svc,
@@ -1974,7 +1954,7 @@ export const ExchangeSafetyNetTokenProjectsAppsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}:exchangeSafetyNetToken",
+      path: "v1beta/{app}:exchangeSafetyNetToken",
       hasBody: true,
     }),
     svc,
@@ -2016,11 +1996,7 @@ export const PatchProjectsAppsDeviceCheckConfigRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}/deviceCheckConfig",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAppsDeviceCheckConfigRequest>;
 
@@ -2059,7 +2035,7 @@ export const BatchGetProjectsAppsDeviceCheckConfigRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta/projects/{projectsId}/apps/-/deviceCheckConfig:batchGet",
+      path: "v1beta/{parent}/apps/-/deviceCheckConfig:batchGet",
     }),
     svc,
   ) as unknown as Schema.Schema<BatchGetProjectsAppsDeviceCheckConfigRequest>;
@@ -2092,10 +2068,7 @@ export const GetProjectsAppsDeviceCheckConfigRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}/deviceCheckConfig",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAppsDeviceCheckConfigRequest>;
 
@@ -2134,7 +2107,7 @@ export const BatchGetProjectsAppsRecaptchaEnterpriseConfigRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta/projects/{projectsId}/apps/-/recaptchaEnterpriseConfig:batchGet",
+      path: "v1beta/{parent}/apps/-/recaptchaEnterpriseConfig:batchGet",
     }),
     svc,
   ) as unknown as Schema.Schema<BatchGetProjectsAppsRecaptchaEnterpriseConfigRequest>;
@@ -2175,11 +2148,7 @@ export const PatchProjectsAppsRecaptchaEnterpriseConfigRequest =
       GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}/recaptchaEnterpriseConfig",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAppsRecaptchaEnterpriseConfigRequest>;
 
@@ -2211,10 +2180,7 @@ export const GetProjectsAppsRecaptchaEnterpriseConfigRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}/recaptchaEnterpriseConfig",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAppsRecaptchaEnterpriseConfigRequest>;
 
@@ -2252,10 +2218,7 @@ export const ListProjectsAppsDebugTokensRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}/debugTokens",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/debugTokens" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAppsDebugTokensRequest>;
 
@@ -2299,11 +2262,7 @@ export const PatchProjectsAppsDebugTokensRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}/debugTokens/{debugTokensId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAppsDebugTokensRequest>;
 
@@ -2335,10 +2294,7 @@ export const GetProjectsAppsDebugTokensRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}/debugTokens/{debugTokensId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAppsDebugTokensRequest>;
 
@@ -2377,7 +2333,7 @@ export const CreateProjectsAppsDebugTokensRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}/debugTokens",
+      path: "v1beta/{parent}/debugTokens",
       hasBody: true,
     }),
     svc,
@@ -2414,10 +2370,7 @@ export const DeleteProjectsAppsDebugTokensRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}/debugTokens/{debugTokensId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsAppsDebugTokensRequest>;
 
@@ -2455,7 +2408,7 @@ export const BatchGetProjectsAppsAppAttestConfigRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta/projects/{projectsId}/apps/-/appAttestConfig:batchGet",
+      path: "v1beta/{parent}/apps/-/appAttestConfig:batchGet",
     }),
     svc,
   ) as unknown as Schema.Schema<BatchGetProjectsAppsAppAttestConfigRequest>;
@@ -2496,11 +2449,7 @@ export const PatchProjectsAppsAppAttestConfigRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}/appAttestConfig",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAppsAppAttestConfigRequest>;
 
@@ -2532,10 +2481,7 @@ export const GetProjectsAppsAppAttestConfigRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}/appAttestConfig",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAppsAppAttestConfigRequest>;
 
@@ -2567,10 +2513,7 @@ export const GetProjectsAppsRecaptchaConfigRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}/recaptchaConfig",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAppsRecaptchaConfigRequest>;
 
@@ -2610,11 +2553,7 @@ export const PatchProjectsAppsRecaptchaConfigRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}/recaptchaConfig",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAppsRecaptchaConfigRequest>;
 
@@ -2653,7 +2592,7 @@ export const BatchGetProjectsAppsRecaptchaConfigRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta/projects/{projectsId}/apps/-/recaptchaConfig:batchGet",
+      path: "v1beta/{parent}/apps/-/recaptchaConfig:batchGet",
     }),
     svc,
   ) as unknown as Schema.Schema<BatchGetProjectsAppsRecaptchaConfigRequest>;
@@ -2694,11 +2633,7 @@ export const PatchProjectsAppsRecaptchaV3ConfigRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}/recaptchaV3Config",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAppsRecaptchaV3ConfigRequest>;
 
@@ -2737,7 +2672,7 @@ export const BatchGetProjectsAppsRecaptchaV3ConfigRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta/projects/{projectsId}/apps/-/recaptchaV3Config:batchGet",
+      path: "v1beta/{parent}/apps/-/recaptchaV3Config:batchGet",
     }),
     svc,
   ) as unknown as Schema.Schema<BatchGetProjectsAppsRecaptchaV3ConfigRequest>;
@@ -2770,10 +2705,7 @@ export const GetProjectsAppsRecaptchaV3ConfigRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}/recaptchaV3Config",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAppsRecaptchaV3ConfigRequest>;
 
@@ -2813,11 +2745,7 @@ export const PatchProjectsAppsSafetyNetConfigRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}/safetyNetConfig",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAppsSafetyNetConfigRequest>;
 
@@ -2856,7 +2784,7 @@ export const BatchGetProjectsAppsSafetyNetConfigRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta/projects/{projectsId}/apps/-/safetyNetConfig:batchGet",
+      path: "v1beta/{parent}/apps/-/safetyNetConfig:batchGet",
     }),
     svc,
   ) as unknown as Schema.Schema<BatchGetProjectsAppsSafetyNetConfigRequest>;
@@ -2889,10 +2817,7 @@ export const GetProjectsAppsSafetyNetConfigRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}/safetyNetConfig",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAppsSafetyNetConfigRequest>;
 
@@ -2924,10 +2849,7 @@ export const GetProjectsAppsPlayIntegrityConfigRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}/playIntegrityConfig",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAppsPlayIntegrityConfigRequest>;
 
@@ -2967,11 +2889,7 @@ export const PatchProjectsAppsPlayIntegrityConfigRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/projects/{projectsId}/apps/{appsId}/playIntegrityConfig",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsAppsPlayIntegrityConfigRequest>;
 
@@ -3010,7 +2928,7 @@ export const BatchGetProjectsAppsPlayIntegrityConfigRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta/projects/{projectsId}/apps/-/playIntegrityConfig:batchGet",
+      path: "v1beta/{parent}/apps/-/playIntegrityConfig:batchGet",
     }),
     svc,
   ) as unknown as Schema.Schema<BatchGetProjectsAppsPlayIntegrityConfigRequest>;

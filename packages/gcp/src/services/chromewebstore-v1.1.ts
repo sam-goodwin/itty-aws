@@ -38,9 +38,9 @@ export interface Item2 {
   /** Static string value is always "chromewebstore#item". */
   kind?: string;
   /** The status code of this publish operation. It may contain multiple elements from the following list: NOT_AUTHORIZED, INVALID_DEVELOPER, DEVELOPER_NO_OWNERSHIP, DEVELOPER_SUSPENDED, ITEM_NOT_FOUND, ITEM_PENDING_REVIEW, ITEM_TAKEN_DOWN, PUBLISHER_SUSPENDED. */
-  status?: Array<string>;
+  status?: ReadonlyArray<string>;
   /** Detailed human-comprehensible explanation of the status code above. */
-  statusDetail?: Array<string>;
+  statusDetail?: ReadonlyArray<string>;
   /** The ID of this item. */
   item_id?: string;
 }
@@ -73,7 +73,7 @@ export interface Item {
   /** Identifies this resource as an Item. Value: the fixed string "chromewebstore#item". */
   kind?: string;
   /** Detail human-readable status of the operation, in English only. Same error messages are displayed when you upload your app to the Chrome Web Store. */
-  itemError?: Array<ItemError>;
+  itemError?: ReadonlyArray<ItemError>;
   /** Public key of this item. */
   publicKey?: string;
   /** Status of the operation. Possible values are: - \"FAILURE\" - \"IN_PROGRESS\" - \"NOT_FOUND\" - \"SUCCESS\" */

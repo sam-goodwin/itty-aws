@@ -64,7 +64,7 @@ export interface ProductBundleDetails {
     | "ENTITLEMENT_MODE_INCREMENTAL"
     | (string & {});
   /** The individual products that are included in the bundle. */
-  bundleElements?: Array<ProductBundleDetailsBundleElement>;
+  bundleElements?: ReadonlyArray<ProductBundleDetailsBundleElement>;
 }
 
 export const ProductBundleDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -140,7 +140,7 @@ export const PromotionIntroductoryPricingDetailsIntroductoryPricingSpec =
 
 export interface PromotionIntroductoryPricingDetails {
   /** Output only. Specifies the introductory pricing periods. */
-  introductoryPricingSpecs?: Array<PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>;
+  introductoryPricingSpecs?: ReadonlyArray<PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>;
 }
 
 export const PromotionIntroductoryPricingDetails =
@@ -214,7 +214,7 @@ export const SubscriptionLineItemBundleDetailsBundleElementDetails =
 
 export interface SubscriptionLineItemBundleDetails {
   /** Output only. The details for each element in the hard bundle. */
-  bundleElementDetails?: Array<SubscriptionLineItemBundleDetailsBundleElementDetails>;
+  bundleElementDetails?: ReadonlyArray<SubscriptionLineItemBundleDetailsBundleElementDetails>;
 }
 
 export const SubscriptionLineItemBundleDetails =
@@ -234,7 +234,7 @@ export interface GoogleOnePayload {
     | "OFFERING_SOFT_BUNDLE"
     | (string & {});
   /** Campaign attributed to sales of this subscription. */
-  campaigns?: Array<string>;
+  campaigns?: ReadonlyArray<string>;
   /** The type of sales channel through which the subscription was sold. */
   salesChannel?:
     | "CHANNEL_UNSPECIFIED"
@@ -280,7 +280,7 @@ export interface YoutubePayload {
     | "PARTNER_PLAN_TYPE_SOFT_BUNDLE"
     | (string & {});
   /** The list of eligibility_ids which are applicable for the line item. */
-  partnerEligibilityIds?: Array<string>;
+  partnerEligibilityIds?: ReadonlyArray<string>;
 }
 
 export const YoutubePayload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -316,7 +316,7 @@ export const FiniteBillingCycleDetails =
 
 export interface SubscriptionLineItem {
   /** Optional. The promotions applied on the line item. It can be: - an introductory pricing promotion. - a free trial promotion. This feature is not enabled. If used, the request will be rejected. When used as input in Create or Provision API, specify its resource name only. */
-  lineItemPromotionSpecs?: Array<SubscriptionPromotionSpec>;
+  lineItemPromotionSpecs?: ReadonlyArray<SubscriptionPromotionSpec>;
   /** Output only. The recurrence type of the line item. */
   recurrenceType?:
     | "LINE_ITEM_RECURRENCE_TYPE_UNSPECIFIED"
@@ -425,11 +425,11 @@ export interface Subscription {
   /** Required. Identifier of the end-user in partner’s system. The value is restricted to 63 ASCII characters at the maximum. */
   partnerUserToken?: string;
   /** Required. The line items of the subscription. */
-  lineItems?: Array<SubscriptionLineItem>;
+  lineItems?: ReadonlyArray<SubscriptionLineItem>;
   /** Optional. Deprecated: consider using `line_items` as the input. Required. Resource name that identifies the purchased products. The format will be 'partners/{partner_id}/products/{product_id}'. */
-  products?: Array<string>;
+  products?: ReadonlyArray<string>;
   /** Optional. Subscription-level promotions. Only free trial is supported on this level. It determines the first renewal time of the subscription to be the end of the free trial period. Specify the promotion resource name only when used as input. */
-  promotionSpecs?: Array<SubscriptionPromotionSpec>;
+  promotionSpecs?: ReadonlyArray<SubscriptionPromotionSpec>;
   /** Output only. System generated timestamp when the subscription is created. UTC timezone. */
   createTime?: string;
   /** Output only. Describes the details of the migrated subscription. Only populated if this subscription is migrated from another system. */
@@ -470,7 +470,7 @@ export interface Subscription {
   /** Output only. End of the free trial period, in ISO 8061 format. For example, "2019-08-31T17:28:54.564Z". It will be set the same as createTime if no free trial promotion is specified. */
   freeTrialEndTime?: string;
   /** Optional. Deprecated: consider using the top-level `promotion_specs` as the input. Optional. Resource name that identifies one or more promotions that can be applied on the product. A typical promotion for a subscription is Free trial. The format will be 'partners/{partner_id}/promotions/{promotion_id}'. */
-  promotions?: Array<string>;
+  promotions?: ReadonlyArray<string>;
   /** Output only. Indicates if the subscription is entitled to the end user. */
   endUserEntitled?: boolean;
   /** Output only. The time at which the subscription is expected to be renewed by Google - a new charge will be incurred and the service entitlement will be renewed. A non-immediate cancellation will take place at this time too, before which, the service entitlement for the end user will remain valid. UTC timezone in ISO 8061 format. For example: "2019-08-31T17:28:54.564Z" */
@@ -589,7 +589,7 @@ export interface Product {
   /** Output only. Specifies the length of the billing cycle of the subscription. */
   subscriptionBillingCycleDuration?: Duration;
   /** Output only. 2-letter ISO region code where the product is available in. Ex. "US" Please refer to: https://en.wikipedia.org/wiki/ISO_3166-1 */
-  regionCodes?: Array<string>;
+  regionCodes?: ReadonlyArray<string>;
   /** Output only. Specifies the type of the product. */
   productType?:
     | "PRODUCT_TYPE_UNSPECIFIED"
@@ -599,11 +599,11 @@ export interface Product {
   /** Identifier. Response only. Resource name of the product. It will have the format of "partners/{partner_id}/products/{product_id}" */
   name?: string;
   /** Output only. Localized human readable name of the product. */
-  titles?: Array<GoogleTypeLocalizedText>;
+  titles?: ReadonlyArray<GoogleTypeLocalizedText>;
   /** Optional. Details for a subscription line item with finite billing cycles. If unset, the line item will be charged indefinitely. */
   finiteBillingCycleDetails?: FiniteBillingCycleDetails;
   /** Output only. Price configs for the product in the available regions. */
-  priceConfigs?: Array<ProductPriceConfig>;
+  priceConfigs?: ReadonlyArray<ProductPriceConfig>;
 }
 
 export const Product = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -641,15 +641,15 @@ export interface Promotion {
   /** Optional. Specifies the end time (exclusive) of the period that the promotion is available in. If unset, the promotion is available indefinitely. */
   endTime?: string;
   /** Output only. 2-letter ISO region code where the promotion is available in. Ex. "US" Please refer to: https://en.wikipedia.org/wiki/ISO_3166-1 */
-  regionCodes?: Array<string>;
+  regionCodes?: ReadonlyArray<string>;
   /** Identifier. Response only. Resource name of the subscription promotion. It will have the format of "partners/{partner_id}/promotion/{promotion_id}" */
   name?: string;
   /** Output only. The product ids this promotion can be applied to. */
-  applicableProducts?: Array<string>;
+  applicableProducts?: ReadonlyArray<string>;
   /** Optional. Specifies the introductory pricing details when the promotion_type is PROMOTION_TYPE_INTRODUCTORY_PRICING. */
   introductoryPricingDetails?: PromotionIntroductoryPricingDetails;
   /** Output only. Localized human readable name of the promotion. */
-  titles?: Array<GoogleTypeLocalizedText>;
+  titles?: ReadonlyArray<GoogleTypeLocalizedText>;
 }
 
 export const Promotion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -668,7 +668,7 @@ export const Promotion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FindEligiblePromotionsResponse {
   /** The promotions for the current user. */
-  promotions?: Array<Promotion>;
+  promotions?: ReadonlyArray<Promotion>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -746,7 +746,7 @@ export interface EntitleSubscriptionRequestLineItemEntitlementDetails {
   /** Required. The index of the line item to be entitled. */
   lineItemIndex?: number;
   /** Optional. Only applicable if the line item corresponds to a hard bundle. Product resource names that identify the bundle elements to be entitled in the line item. If unspecified, all bundle elements will be entitled. The format is 'partners/{partner_id}/products/{product_id}'. */
-  products?: Array<string>;
+  products?: ReadonlyArray<string>;
 }
 
 export const EntitleSubscriptionRequestLineItemEntitlementDetails =
@@ -759,7 +759,7 @@ export const EntitleSubscriptionRequestLineItemEntitlementDetails =
 
 export interface EntitleSubscriptionRequest {
   /** Optional. The line items to be entitled. If unspecified, all line items will be entitled. */
-  lineItemEntitlementDetails?: Array<EntitleSubscriptionRequestLineItemEntitlementDetails>;
+  lineItemEntitlementDetails?: ReadonlyArray<EntitleSubscriptionRequestLineItemEntitlementDetails>;
 }
 
 export const EntitleSubscriptionRequest =
@@ -817,7 +817,7 @@ export const EntitleSubscriptionResponse =
 
 export interface ListProductsResponse {
   /** The products for the specified partner. */
-  products?: Array<Product>;
+  products?: ReadonlyArray<Product>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -846,7 +846,7 @@ export const ResumeSubscriptionRequest =
 
 export interface ListPromotionsResponse {
   /** The promotions for the specified partner. */
-  promotions?: Array<Promotion>;
+  promotions?: ReadonlyArray<Promotion>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -920,7 +920,7 @@ export const ListPartnersProductsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/partners/{partnersId}/products" }),
+    T.Http({ method: "GET", path: "v1/{parent}/products" }),
     svc,
   ) as unknown as Schema.Schema<ListPartnersProductsRequest>;
 
@@ -960,7 +960,7 @@ export const FindEligiblePartnersPromotionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{partnersId}/promotions:findEligible",
+      path: "v1/{parent}/promotions:findEligible",
       hasBody: true,
     }),
     svc,
@@ -1003,7 +1003,7 @@ export const ListPartnersPromotionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/partners/{partnersId}/promotions" }),
+    T.Http({ method: "GET", path: "v1/{parent}/promotions" }),
     svc,
   ) as unknown as Schema.Schema<ListPartnersPromotionsRequest>;
 
@@ -1041,11 +1041,7 @@ export const ExtendPartnersSubscriptionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ExtendSubscriptionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/partners/{partnersId}/subscriptions/{subscriptionsId}:extend",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:extend", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExtendPartnersSubscriptionsRequest>;
 
@@ -1101,7 +1097,7 @@ export const ProvisionPartnersSubscriptionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{partnersId}/subscriptions:provision",
+      path: "v1/{parent}/subscriptions:provision",
       hasBody: true,
     }),
     svc,
@@ -1137,11 +1133,7 @@ export const EntitlePartnersSubscriptionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(EntitleSubscriptionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/partners/{partnersId}/subscriptions/{subscriptionsId}:entitle",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:entitle", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<EntitlePartnersSubscriptionsRequest>;
 
@@ -1175,11 +1167,7 @@ export const SuspendPartnersSubscriptionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SuspendSubscriptionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/partners/{partnersId}/subscriptions/{subscriptionsId}:suspend",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:suspend", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SuspendPartnersSubscriptionsRequest>;
 
@@ -1213,11 +1201,7 @@ export const ResumePartnersSubscriptionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ResumeSubscriptionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/partners/{partnersId}/subscriptions/{subscriptionsId}:resume",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:resume", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResumePartnersSubscriptionsRequest>;
 
@@ -1251,11 +1235,7 @@ export const CancelPartnersSubscriptionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelSubscriptionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/partners/{partnersId}/subscriptions/{subscriptionsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelPartnersSubscriptionsRequest>;
 
@@ -1289,11 +1269,7 @@ export const UndoCancelPartnersSubscriptionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UndoCancelSubscriptionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/partners/{partnersId}/subscriptions/{subscriptionsId}:undoCancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:undoCancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UndoCancelPartnersSubscriptionsRequest>;
 
@@ -1325,10 +1301,7 @@ export const GetPartnersSubscriptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/partners/{partnersId}/subscriptions/{subscriptionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPartnersSubscriptionsRequest>;
 
@@ -1369,7 +1342,7 @@ export const CreatePartnersSubscriptionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{partnersId}/subscriptions",
+      path: "v1/{parent}/subscriptions",
       hasBody: true,
     }),
     svc,
@@ -1408,11 +1381,7 @@ export const PatchPartnersSubscriptionsLineItemsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SubscriptionLineItem).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/partners/{partnersId}/subscriptions/{subscriptionsId}/lineItems/{lineItemsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchPartnersSubscriptionsLineItemsRequest>;
 
@@ -1448,7 +1417,7 @@ export const GeneratePartnersUserSessionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{partnersId}/userSessions:generate",
+      path: "v1/{parent}/userSessions:generate",
       hasBody: true,
     }),
     svc,

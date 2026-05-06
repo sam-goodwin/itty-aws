@@ -52,7 +52,7 @@ export interface ErrorProto {
   /** Error code in the error domain. This should correspond to a value of the enum type whose name is in domain. See the core error domain in error_domain.proto. */
   code?: string;
   /** Error arguments, to be used when building user-friendly error messages given the error domain and code. Different error codes require different arguments. */
-  argument?: Array<string>;
+  argument?: ReadonlyArray<string>;
   /** Location of the error, as specified by the location type. If location_type is PATH, this should be a path to a field that's relative to the request, using FieldPath notation (net/proto2/util/public/field_path.h). Examples: authenticated_user.gaia_id resource.address[2].country */
   location?: string;
   /** Debugging information, which should not be shared externally. */
@@ -87,7 +87,7 @@ export interface Errors {
     | "SERVICE_UNAVAILABLE"
     | (string & {});
   /** Specific error description and codes */
-  error?: Array<ErrorProto>;
+  error?: ReadonlyArray<ErrorProto>;
 }
 
 export const Errors = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -140,11 +140,11 @@ export interface QueryResponse {
   /** When set, indicates that the operation failed. */
   errors?: Errors;
   /** The list contains all rows of the result table. Each item in the list is an array that contains comma-delimited data corresponding to a single row of data. The order of the comma-delimited data fields will match the order of the columns listed in the `columnHeaders` field. If no data is available for the given query, the `rows` element will be omitted from the response. The response for a query with the `day` dimension will not contain rows for the most recent days. */
-  rows?: Array<Array<unknown>>;
+  rows?: ReadonlyArray<ReadonlyArray<unknown>>;
   /** This value specifies the type of data included in the API response. For the query method, the kind property value will be `youtubeAnalytics#resultTable`. */
   kind?: string;
   /** This value specifies information about the data returned in the `rows` fields. Each item in the `columnHeaders` list identifies a field returned in the `rows` value, which contains a list of comma-delimited data. The `columnHeaders` list will begin with the dimensions specified in the API request, which will be followed by the metrics specified in the API request. The order of both dimensions and metrics will match the ordering in the API request. For example, if the API request contains the parameters `dimensions=ageGroup,gender&metrics=viewerPercentage`, the API response will return columns in this order: `ageGroup`, `gender`, `viewerPercentage`. */
-  columnHeaders?: Array<ResultTableColumnHeader>;
+  columnHeaders?: ReadonlyArray<ResultTableColumnHeader>;
 }
 
 export const QueryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -171,7 +171,7 @@ export interface ListGroupsResponse {
   /** Identifies the API resource's type. The value will be `youtube#groupListResponse`. */
   kind?: string;
   /** A list of groups that match the API request parameters. Each item in the list represents a `group` resource. */
-  items?: Array<Group>;
+  items?: ReadonlyArray<Group>;
   /** Apiary error details */
   errors?: Errors;
 }
@@ -224,7 +224,7 @@ export interface ListGroupItemsResponse {
   /** The Etag of this resource. */
   etag?: string;
   /** A list of groups that match the API request parameters. Each item in the list represents a `groupItem` resource. */
-  items?: Array<GroupItem>;
+  items?: ReadonlyArray<GroupItem>;
   /** Apiary error details */
   errors?: Errors;
   /** Identifies the API resource's type. The value will be `youtube#groupItemListResponse`. */

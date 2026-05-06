@@ -28,7 +28,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -43,7 +43,7 @@ export interface CNAME {
   /** Output only. The expected value of the CNAME record for the domain, equals to `dns_resource_record.data` in the corresponding `DnsAuthorization`. */
   expectedData?: string;
   /** Output only. The resolved CNAME chain. Empty list if the CNAME record for `CNAME.name` is not found. Otherwise the first item is the value of the CNAME record for `CNAME.name`. If the CNAME chain is longer, the second item is the value of the CNAME record for the first item, and so on. */
-  resolvedData?: Array<string>;
+  resolvedData?: ReadonlyArray<string>;
   /** Output only. The name of the CNAME record for the domain, equals to `dns_resource_record.name` in the corresponding `DnsAuthorization`. */
   name?: string;
 }
@@ -56,11 +56,11 @@ export const CNAME = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IPs {
   /** Output only. The list of IP addresses, where the certificate is attached, but port 443 is not open. */
-  servingOnAltPorts?: Array<string>;
+  servingOnAltPorts?: ReadonlyArray<string>;
   /** Output only. The list of IP addresses, where the certificate is attached and port 443 is open. */
-  serving?: Array<string>;
+  serving?: ReadonlyArray<string>;
   /** Output only. The list of IP addresses resolved from the domain's A/AAAA records. Can contain both ipv4 and ipv6 addresses. */
-  resolved?: Array<string>;
+  resolved?: ReadonlyArray<string>;
 }
 
 export const IPs = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -73,7 +73,7 @@ export interface Troubleshooting {
   /** Output only. CNAME troubleshooting information. */
   cname?: CNAME;
   /** Output only. The list of issues discovered during the authorization attempt. */
-  issues?: Array<
+  issues?: ReadonlyArray<
     | "ISSUE_UNSPECIFIED"
     | "CNAME_MISMATCH"
     | "RESOLVED_TO_NOT_SERVING"
@@ -147,7 +147,7 @@ export interface ManagedCertificate {
   /** Optional. Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format `projects/* /locations/* /certificateIssuanceConfigs/*`. If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa. */
   issuanceConfig?: string;
   /** Output only. Detailed state of the latest authorization attempt for each domain specified for managed certificate resource. */
-  authorizationAttemptInfo?: Array<AuthorizationAttemptInfo>;
+  authorizationAttemptInfo?: ReadonlyArray<AuthorizationAttemptInfo>;
   /** Output only. State of the managed certificate resource. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -158,9 +158,9 @@ export interface ManagedCertificate {
   /** Output only. Information about issues with provisioning a Managed Certificate. */
   provisioningIssue?: ProvisioningIssue;
   /** Optional. Immutable. The domains for which a managed SSL certificate will be generated. Wildcard domains are only supported with DNS challenge resolution. */
-  domains?: Array<string>;
+  domains?: ReadonlyArray<string>;
   /** Optional. Immutable. Authorizations that will be used for performing domain authorization. */
-  dnsAuthorizations?: Array<string>;
+  dnsAuthorizations?: ReadonlyArray<string>;
 }
 
 export const ManagedCertificate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -268,11 +268,11 @@ export interface Certificate {
     | "CLIENT_AUTH"
     | (string & {});
   /** Output only. The list of resources that use this Certificate. */
-  usedBy?: Array<UsedBy>;
+  usedBy?: ReadonlyArray<UsedBy>;
   /** Output only. The expiry timestamp of a Certificate. */
   expireTime?: string;
   /** Output only. The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6). Managed certificates that haven't been provisioned yet have this field populated with a value of the managed.domains field. */
-  sanDnsnames?: Array<string>;
+  sanDnsnames?: ReadonlyArray<string>;
   /** Output only. The last update timestamp of a Certificate. */
   updateTime?: string;
   /** Optional. One or more paragraphs of text description of a certificate. */
@@ -303,9 +303,9 @@ export interface ListCertificatesResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
   /** A list of certificates for the parent resource. */
-  certificates?: Array<Certificate>;
+  certificates?: ReadonlyArray<Certificate>;
   /** A list of locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListCertificatesResponse =
@@ -331,7 +331,7 @@ export interface CertificateMapEntry {
   /** Output only. The update timestamp of a Certificate Map Entry. */
   updateTime?: string;
   /** Optional. A set of Certificates defines for the given `hostname`. There can be defined up to four certificates in each Certificate Map Entry. Each certificate must match pattern `projects/* /locations/* /certificates/*`. */
-  certificates?: Array<string>;
+  certificates?: ReadonlyArray<string>;
   /** Optional. One or more paragraphs of text description of a certificate map entry. */
   description?: string;
 }
@@ -365,9 +365,9 @@ export const DnsResourceRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -384,9 +384,9 @@ export interface ListCertificateMapEntriesResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of certificate map entries for the parent resource. */
-  certificateMapEntries?: Array<CertificateMapEntry>;
+  certificateMapEntries?: ReadonlyArray<CertificateMapEntry>;
 }
 
 export const ListCertificateMapEntriesResponse =
@@ -432,9 +432,9 @@ export const DnsAuthorization = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDnsAuthorizationsResponse {
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of dns authorizations for the parent resource. */
-  dnsAuthorizations?: Array<DnsAuthorization>;
+  dnsAuthorizations?: ReadonlyArray<DnsAuthorization>;
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
 }
@@ -477,9 +477,9 @@ export const TrustAnchor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TrustStore {
   /** Optional. Set of intermediate CA certificates used for the path building phase of chain validation. The field is currently not supported if TrustConfig is used for the workload certificate feature. */
-  intermediateCas?: Array<IntermediateCA>;
+  intermediateCas?: ReadonlyArray<IntermediateCA>;
   /** Optional. List of Trust Anchors to be used while performing validation against a given TrustStore. */
-  trustAnchors?: Array<TrustAnchor>;
+  trustAnchors?: ReadonlyArray<TrustAnchor>;
 }
 
 export const TrustStore = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -493,7 +493,7 @@ export interface TrustConfig {
   /** Optional. Set of labels associated with a TrustConfig. */
   labels?: Record<string, string>;
   /** Optional. A certificate matching an allowlisted certificate is always considered valid as long as the certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met. */
-  allowlistedCertificates?: Array<AllowlistedCertificate>;
+  allowlistedCertificates?: ReadonlyArray<AllowlistedCertificate>;
   /** Optional. One or more paragraphs of text description of a TrustConfig. */
   description?: string;
   /** Output only. The last update timestamp of a TrustConfig. */
@@ -501,7 +501,7 @@ export interface TrustConfig {
   /** Optional. Defines a mapping from a trust domain to a TrustStore. This is used for SPIFFE certificate validation. */
   spiffeTrustStores?: Record<string, TrustStore>;
   /** Optional. Set of trust stores to perform validation against. This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation. Only one TrustStore specified is currently allowed. */
-  trustStores?: Array<TrustStore>;
+  trustStores?: ReadonlyArray<TrustStore>;
   /** Identifier. A user-defined name of the trust config. TrustConfig names must be unique globally and match pattern `projects/* /locations/* /trustConfigs/*`. */
   name?: string;
   /** This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
@@ -574,7 +574,7 @@ export const CertificateIssuanceConfig =
 
 export interface IpConfig {
   /** Output only. Ports. */
-  ports?: Array<number>;
+  ports?: ReadonlyArray<number>;
   /** Output only. An external IP address. */
   ipAddress?: string;
 }
@@ -590,7 +590,7 @@ export interface GclbTarget {
   /** Output only. This field returns the resource name in the following format: `//compute.googleapis.com/projects/* /global/targetSslProxies/*`. */
   targetSslProxy?: string;
   /** Output only. IP configurations for this Target Proxy where the Certificate Map is serving. */
-  ipConfigs?: Array<IpConfig>;
+  ipConfigs?: ReadonlyArray<IpConfig>;
 }
 
 export const GclbTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -607,11 +607,11 @@ export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListTrustConfigsResponse {
   /** A list of TrustConfigs for the parent resource. */
-  trustConfigs?: Array<TrustConfig>;
+  trustConfigs?: ReadonlyArray<TrustConfig>;
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListTrustConfigsResponse =
@@ -625,9 +625,9 @@ export interface ListCertificateIssuanceConfigsResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of certificate configs for the parent resource. */
-  certificateIssuanceConfigs?: Array<CertificateIssuanceConfig>;
+  certificateIssuanceConfigs?: ReadonlyArray<CertificateIssuanceConfig>;
 }
 
 export const ListCertificateIssuanceConfigsResponse =
@@ -684,7 +684,7 @@ export interface CertificateMap {
   /** Identifier. A user-defined name of the Certificate Map. Certificate Map names must be unique globally and match pattern `projects/* /locations/* /certificateMaps/*`. */
   name?: string;
   /** Output only. A list of GCLB targets that use this Certificate Map. A Target Proxy is only present on this list if it's attached to a Forwarding Rule. */
-  gclbTargets?: Array<GclbTarget>;
+  gclbTargets?: ReadonlyArray<GclbTarget>;
 }
 
 export const CertificateMap = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -719,7 +719,7 @@ export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -733,9 +733,9 @@ export interface ListCertificateMapsResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
   /** A list of certificate maps for the parent resource. */
-  certificateMaps?: Array<CertificateMap>;
+  certificateMaps?: ReadonlyArray<CertificateMap>;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListCertificateMapsResponse =
@@ -772,7 +772,7 @@ export const ListProjectsLocationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -807,10 +807,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -841,10 +838,7 @@ export const DeleteProjectsLocationsDnsAuthorizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dnsAuthorizations/{dnsAuthorizationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDnsAuthorizationsRequest>;
 
@@ -885,7 +879,7 @@ export const CreateProjectsLocationsDnsAuthorizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dnsAuthorizations",
+      path: "v1/{parent}/dnsAuthorizations",
       hasBody: true,
     }),
     svc,
@@ -930,10 +924,7 @@ export const ListProjectsLocationsDnsAuthorizationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dnsAuthorizations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dnsAuthorizations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDnsAuthorizationsRequest>;
 
@@ -969,10 +960,7 @@ export const GetProjectsLocationsDnsAuthorizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dnsAuthorizations/{dnsAuthorizationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDnsAuthorizationsRequest>;
 
@@ -1009,11 +997,7 @@ export const PatchProjectsLocationsDnsAuthorizationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(DnsAuthorization).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dnsAuthorizations/{dnsAuthorizationsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDnsAuthorizationsRequest>;
 
@@ -1044,10 +1028,7 @@ export const DeleteProjectsLocationsCertificateIssuanceConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateIssuanceConfigs/{certificateIssuanceConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCertificateIssuanceConfigsRequest>;
 
@@ -1090,7 +1071,7 @@ export const CreateProjectsLocationsCertificateIssuanceConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateIssuanceConfigs",
+      path: "v1/{parent}/certificateIssuanceConfigs",
       hasBody: true,
     }),
     svc,
@@ -1137,10 +1118,7 @@ export const ListProjectsLocationsCertificateIssuanceConfigsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateIssuanceConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/certificateIssuanceConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCertificateIssuanceConfigsRequest>;
 
@@ -1177,10 +1155,7 @@ export const GetProjectsLocationsCertificateIssuanceConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateIssuanceConfigs/{certificateIssuanceConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCertificateIssuanceConfigsRequest>;
 
@@ -1218,11 +1193,7 @@ export const PatchProjectsLocationsCertificateIssuanceConfigsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(CertificateIssuanceConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateIssuanceConfigs/{certificateIssuanceConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCertificateIssuanceConfigsRequest>;
 
@@ -1255,10 +1226,7 @@ export const DeleteProjectsLocationsCertificatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificates/{certificatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCertificatesRequest>;
 
@@ -1301,10 +1269,7 @@ export const ListProjectsLocationsCertificatesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificates",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/certificates" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCertificatesRequest>;
 
@@ -1340,10 +1305,7 @@ export const GetProjectsLocationsCertificatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificates/{certificatesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCertificatesRequest>;
 
@@ -1380,11 +1342,7 @@ export const PatchProjectsLocationsCertificatesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Certificate).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificates/{certificatesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCertificatesRequest>;
 
@@ -1423,11 +1381,7 @@ export const CreateProjectsLocationsCertificatesRequest =
     ),
     body: Schema.optional(Certificate).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificates",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/certificates", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsCertificatesRequest>;
 
@@ -1470,10 +1424,7 @@ export const ListProjectsLocationsCertificateMapsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/certificateMaps" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCertificateMapsRequest>;
 
@@ -1509,10 +1460,7 @@ export const GetProjectsLocationsCertificateMapsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCertificateMapsRequest>;
 
@@ -1549,11 +1497,7 @@ export const PatchProjectsLocationsCertificateMapsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(CertificateMap).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCertificateMapsRequest>;
 
@@ -1594,7 +1538,7 @@ export const CreateProjectsLocationsCertificateMapsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps",
+      path: "v1/{parent}/certificateMaps",
       hasBody: true,
     }),
     svc,
@@ -1627,10 +1571,7 @@ export const DeleteProjectsLocationsCertificateMapsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCertificateMapsRequest>;
 
@@ -1673,10 +1614,7 @@ export const ListProjectsLocationsCertificateMapsCertificateMapEntriesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}/certificateMapEntries",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/certificateMapEntries" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCertificateMapsCertificateMapEntriesRequest>;
 
@@ -1713,10 +1651,7 @@ export const GetProjectsLocationsCertificateMapsCertificateMapEntriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}/certificateMapEntries/{certificateMapEntriesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCertificateMapsCertificateMapEntriesRequest>;
 
@@ -1755,11 +1690,7 @@ export const PatchProjectsLocationsCertificateMapsCertificateMapEntriesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(CertificateMapEntry).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}/certificateMapEntries/{certificateMapEntriesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCertificateMapsCertificateMapEntriesRequest>;
 
@@ -1802,7 +1733,7 @@ export const CreateProjectsLocationsCertificateMapsCertificateMapEntriesRequest 
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}/certificateMapEntries",
+      path: "v1/{parent}/certificateMapEntries",
       hasBody: true,
     }),
     svc,
@@ -1837,10 +1768,7 @@ export const DeleteProjectsLocationsCertificateMapsCertificateMapEntriesRequest 
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/certificateMaps/{certificateMapsId}/certificateMapEntries/{certificateMapEntriesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCertificateMapsCertificateMapEntriesRequest>;
 
@@ -1876,10 +1804,7 @@ export const DeleteProjectsLocationsTrustConfigsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/trustConfigs/{trustConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTrustConfigsRequest>;
 
@@ -1922,10 +1847,7 @@ export const ListProjectsLocationsTrustConfigsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/trustConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/trustConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTrustConfigsRequest>;
 
@@ -1961,10 +1883,7 @@ export const GetProjectsLocationsTrustConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/trustConfigs/{trustConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTrustConfigsRequest>;
 
@@ -2001,11 +1920,7 @@ export const PatchProjectsLocationsTrustConfigsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(TrustConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/trustConfigs/{trustConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsTrustConfigsRequest>;
 
@@ -2044,11 +1959,7 @@ export const CreateProjectsLocationsTrustConfigsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(TrustConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/trustConfigs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/trustConfigs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsTrustConfigsRequest>;
 
@@ -2079,10 +1990,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -2127,10 +2035,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -2165,10 +2070,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -2202,11 +2104,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 

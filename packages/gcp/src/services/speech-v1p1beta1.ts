@@ -28,7 +28,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -77,7 +77,7 @@ export const Entry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TranscriptNormalization {
   /** A list of replacement entries. We will perform replacement with one entry at a time. For example, the second entry in ["cat" => "dog", "mountain cat" => "mountain dog"] will never be applied because we will always process the first entry before it. At most 100 entries. */
-  entries?: Array<Entry>;
+  entries?: ReadonlyArray<Entry>;
 }
 
 export const TranscriptNormalization =
@@ -134,7 +134,7 @@ export const WordInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SpeechRecognitionAlternative {
   /** A list of word-specific information for each recognized word. Note: When `enable_speaker_diarization` is true, you will see all the words from the beginning of the audio. */
-  words?: Array<WordInfo>;
+  words?: ReadonlyArray<WordInfo>;
   /** Transcript text representing the words that the user spoke. In languages that use spaces to separate words, the transcript might have a leading space if it isn't the first result. You can concatenate each result to obtain the full transcript without using a separator. */
   transcript?: string;
   /** The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the recognized words are correct. This field is set only for the top alternative of a non-streaming result or, of a streaming result where `is_final=true`. This field is not guaranteed to be accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value indicating `confidence` was not set. */
@@ -154,7 +154,7 @@ export interface SpeechRecognitionResult {
   /** Time offset of the end of this result relative to the beginning of the audio. */
   resultEndTime?: string;
   /** May contain one or more recognition hypotheses (up to the maximum specified in `max_alternatives`). These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most probable, as ranked by the recognizer. */
-  alternatives?: Array<SpeechRecognitionAlternative>;
+  alternatives?: ReadonlyArray<SpeechRecognitionAlternative>;
   /** Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the language in this result. This language code was detected to have the most likelihood of being spoken in the audio. */
   languageCode?: string;
 }
@@ -177,7 +177,7 @@ export interface LongRunningRecognizeResponse {
   /** The ID associated with the request. This is a unique ID specific only to the given request. */
   requestId?: string;
   /** Sequential list of transcription results corresponding to sequential portions of audio. */
-  results?: Array<SpeechRecognitionResult>;
+  results?: ReadonlyArray<SpeechRecognitionResult>;
   /** When available, billed audio seconds for the corresponding request. */
   totalBilledTime?: string;
 }
@@ -279,7 +279,7 @@ export interface CustomClass {
   /** Output only. Whether or not this CustomClass is in the process of being updated. This field is not used. */
   reconciling?: boolean;
   /** A collection of class items. */
-  items?: Array<ClassItem>;
+  items?: ReadonlyArray<ClassItem>;
   /** Output only. The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. */
   kmsKeyName?: string;
   /** Output only. Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations. This field is not used. */
@@ -308,7 +308,7 @@ export const CustomClass = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ABNFGrammar {
   /** All declarations and rules of an ABNF grammar broken up into multiple strings that will end up concatenated. */
-  abnfStrings?: Array<string>;
+  abnfStrings?: ReadonlyArray<string>;
 }
 
 export const ABNFGrammar = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -341,7 +341,7 @@ export interface PhraseSet {
   /** Output only. Whether or not this PhraseSet is in the process of being updated. This field is not used. */
   reconciling?: boolean;
   /** A list of word and phrases. */
-  phrases?: Array<Phrase>;
+  phrases?: ReadonlyArray<Phrase>;
   /** Output only. This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding. This field is not used. */
   etag?: string;
   /** Output only. User-settable, human-readable name for the PhraseSet. Must be 63 characters or less. This field is not used. */
@@ -374,13 +374,13 @@ export const PhraseSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SpeechAdaptation {
   /** A collection of phrase set resource names to use. */
-  phraseSetReferences?: Array<string>;
+  phraseSetReferences?: ReadonlyArray<string>;
   /** A collection of custom classes. To specify the classes inline, leave the class' `name` blank and fill in the rest of its fields, giving it a unique `custom_class_id`. Refer to the inline defined class in phrase hints by its `custom_class_id`. */
-  customClasses?: Array<CustomClass>;
+  customClasses?: ReadonlyArray<CustomClass>;
   /** Augmented Backus-Naur form (ABNF) is a standardized grammar notation comprised by a set of derivation rules. See specifications: https://www.w3.org/TR/speech-grammar */
   abnfGrammar?: ABNFGrammar;
   /** A collection of phrase sets. To specify the hints inline, leave the phrase set's `name` blank and fill in the rest of its fields. Any phrase set can use any custom class. */
-  phraseSets?: Array<PhraseSet>;
+  phraseSets?: ReadonlyArray<PhraseSet>;
 }
 
 export const SpeechAdaptation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -392,7 +392,7 @@ export const SpeechAdaptation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SpeechContext {
   /** A list of strings containing words and phrases "hints" so that the speech recognition is more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for example, if specific commands are typically spoken by the user. This can also be used to add additional words to the vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech-to-text/quotas#content). List items can also be set to classes for groups of words that represent common concepts that occur in natural language. For example, rather than providing phrase hints for every month of the year, using the $MONTH class improves the likelihood of correctly transcribing audio that includes months. */
-  phrases?: Array<string>;
+  phrases?: ReadonlyArray<string>;
   /** Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 and 20. We recommend using a binary search approach to finding the optimal value for your use case. */
   boost?: number;
 }
@@ -453,13 +453,13 @@ export interface RecognitionConfig {
   /** Optional. Use transcription normalization to automatically replace parts of the transcript with phrases of your choosing. For StreamingRecognize, this normalization only applies to stable partial transcripts (stability > 0.8) and final transcripts. */
   transcriptNormalization?: TranscriptNormalization;
   /** Array of SpeechContext. A means to provide context to assist the speech recognition. For more information, see [speech adaptation](https://cloud.google.com/speech-to-text/docs/adaptation). */
-  speechContexts?: Array<SpeechContext>;
+  speechContexts?: ReadonlyArray<SpeechContext>;
   /** If 'true', enables speaker detection for each recognized word in the top alternative of the recognition result using a speaker_label provided in the WordInfo. Note: Use diarization_config instead. */
   enableSpeakerDiarization?: boolean;
   /** This needs to be set to `true` explicitly and `audio_channel_count` > 1 to get each channel recognized separately. The recognition result will contain a `channel_tag` field to state which channel that result belongs to. If this is not true, we will only recognize the first channel. The request is billed cumulatively for all channels recognized: `audio_channel_count` multiplied by the length of the audio. */
   enableSeparateRecognitionPerChannel?: boolean;
   /** A list of up to 3 additional [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags, listing possible alternative languages of the supplied audio. See [Language Support](https://cloud.google.com/speech-to-text/docs/languages) for a list of the currently supported language codes. If alternative languages are listed, recognition result will contain recognition in the most likely language detected including the main language_code. The recognition result will include the language tag of the language detected in the audio. Note: This feature is only supported for Voice Command and Voice Search use cases and performance may vary for other use cases (e.g., phone call transcription). */
-  alternativeLanguageCodes?: Array<string>;
+  alternativeLanguageCodes?: ReadonlyArray<string>;
   /** The spoken punctuation behavior for the call If not set, uses default behavior based on model of choice e.g. command_and_search will enable spoken punctuation by default If 'true', replaces spoken punctuation with the corresponding symbols in the request. For example, "how are you question mark" becomes "how are you?". See https://cloud.google.com/speech-to-text/docs/spoken-punctuation for support. If 'false', spoken punctuation is not replaced. */
   enableSpokenPunctuation?: boolean;
   /** The number of channels in the input audio data. ONLY set this for MULTI-CHANNEL recognition. Valid values for LINEAR16, OGG_OPUS and FLAC are `1`-`8`. Valid value for MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only `1`. If `0` or omitted, defaults to one channel (mono). Note: We only recognize the first channel by default. To perform independent recognition on each channel set `enable_separate_recognition_per_channel` to 'true'. */
@@ -507,7 +507,7 @@ export const RecognitionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCustomClassesResponse {
   /** The custom classes. */
-  customClasses?: Array<CustomClass>;
+  customClasses?: ReadonlyArray<CustomClass>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -555,7 +555,7 @@ export const CreateCustomClassRequest =
 
 export interface RecognizeResponse {
   /** Sequential list of transcription results corresponding to sequential portions of audio. */
-  results?: Array<SpeechRecognitionResult>;
+  results?: ReadonlyArray<SpeechRecognitionResult>;
   /** When available, billed audio seconds for the corresponding request. */
   totalBilledTime?: string;
   /** The ID associated with the request. This is a unique ID specific only to the given request. */
@@ -582,7 +582,7 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 
 export interface ListPhraseSetResponse {
   /** The phrase set. */
-  phraseSets?: Array<PhraseSet>;
+  phraseSets?: ReadonlyArray<PhraseSet>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -634,9 +634,9 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -723,7 +723,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1p1beta1/operations/{operationsId}" }),
+  T.Http({ method: "GET", path: "v1p1beta1/operations/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -759,10 +759,7 @@ export const ListProjectsLocationsPhraseSetsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1p1beta1/projects/{projectsId}/locations/{locationsId}/phraseSets",
-    }),
+    T.Http({ method: "GET", path: "v1p1beta1/{parent}/phraseSets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsPhraseSetsRequest>;
 
@@ -797,10 +794,7 @@ export const GetProjectsLocationsPhraseSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1p1beta1/projects/{projectsId}/locations/{locationsId}/phraseSets/{phraseSetsId}",
-    }),
+    T.Http({ method: "GET", path: "v1p1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsPhraseSetsRequest>;
 
@@ -831,10 +825,7 @@ export const DeleteProjectsLocationsPhraseSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1p1beta1/projects/{projectsId}/locations/{locationsId}/phraseSets/{phraseSetsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1p1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsPhraseSetsRequest>;
 
@@ -870,7 +861,7 @@ export const CreateProjectsLocationsPhraseSetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1p1beta1/projects/{projectsId}/locations/{locationsId}/phraseSets",
+      path: "v1p1beta1/{parent}/phraseSets",
       hasBody: true,
     }),
     svc,
@@ -909,11 +900,7 @@ export const PatchProjectsLocationsPhraseSetsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(PhraseSet).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1p1beta1/projects/{projectsId}/locations/{locationsId}/phraseSets/{phraseSetsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1p1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsPhraseSetsRequest>;
 
@@ -950,10 +937,7 @@ export const ListProjectsLocationsCustomClassesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1p1beta1/projects/{projectsId}/locations/{locationsId}/customClasses",
-    }),
+    T.Http({ method: "GET", path: "v1p1beta1/{parent}/customClasses" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCustomClassesRequest>;
 
@@ -989,10 +973,7 @@ export const GetProjectsLocationsCustomClassesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1p1beta1/projects/{projectsId}/locations/{locationsId}/customClasses/{customClassesId}",
-    }),
+    T.Http({ method: "GET", path: "v1p1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCustomClassesRequest>;
 
@@ -1023,10 +1004,7 @@ export const DeleteProjectsLocationsCustomClassesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1p1beta1/projects/{projectsId}/locations/{locationsId}/customClasses/{customClassesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1p1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCustomClassesRequest>;
 
@@ -1062,7 +1040,7 @@ export const CreateProjectsLocationsCustomClassesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1p1beta1/projects/{projectsId}/locations/{locationsId}/customClasses",
+      path: "v1p1beta1/{parent}/customClasses",
       hasBody: true,
     }),
     svc,
@@ -1101,11 +1079,7 @@ export const PatchProjectsLocationsCustomClassesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(CustomClass).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1p1beta1/projects/{projectsId}/locations/{locationsId}/customClasses/{customClassesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1p1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCustomClassesRequest>;
 

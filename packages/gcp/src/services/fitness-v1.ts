@@ -48,7 +48,7 @@ export interface DataType {
   /** Each data type has a unique, namespaced, name. All data types in the com.google namespace are shared as part of the platform. */
   name?: string;
   /** A field represents one dimension of a data type. */
-  field?: Array<DataTypeField>;
+  field?: ReadonlyArray<DataTypeField>;
 }
 
 export const DataType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -108,7 +108,7 @@ export interface DataSource {
   /** A unique identifier for the data stream produced by this data source. The identifier includes: - The physical device's manufacturer, model, and serial number (UID). - The application's package name or name. Package name is used when the data source was created by an Android application. The developer project number is used when the data source was created by a REST client. - The data source's type. - The data source's stream name. Note that not all attributes of the data source are used as part of the stream identifier. In particular, the version of the hardware/the application isn't used. This allows us to preserve the same stream through version updates. This also means that two DataSource objects may represent the same data stream even if they're not equal. The exact format of the data stream ID created by an Android application is: type:dataType.name:application.packageName:device.manufacturer:device.model:device.uid:dataStreamName The exact format of the data stream ID created by a REST client is: type:dataType.name:developer project number:device.manufacturer:device.model:device.uid:dataStreamName When any of the optional fields that make up the data stream ID are absent, they will be omitted from the data stream ID. The minimum viable data stream ID would be: type:dataType.name:developer project number Finally, the developer project number and device UID are obfuscated when read by any REST or Android client that did not create the data source. Only the data source creator will see the developer project number in clear and normal form. This means a client will see a different set of data_stream_ids than another client with different credentials. */
   dataStreamId?: string;
   /** DO NOT POPULATE THIS FIELD. It is never populated in responses from the platform, and is ignored in queries. It will be removed in a future version entirely. */
-  dataQualityStandard?: Array<
+  dataQualityStandard?: ReadonlyArray<
     | "dataQualityUnknown"
     | "dataQualityBloodPressureEsh2002"
     | "dataQualityBloodPressureEsh2010"
@@ -169,7 +169,7 @@ export interface Value {
   /** Integer value. When this is set, other values must not be set. */
   intVal?: number;
   /** Map value. The valid key space and units for the corresponding value of each entry should be documented as part of the data type definition. Keys should be kept small whenever possible. Data streams with large keys and high data frequency may be down sampled. */
-  mapVal?: Array<ValueMapValEntry>;
+  mapVal?: ReadonlyArray<ValueMapValEntry>;
   /** Floating point value. When this is set, other values must not be set. */
   fpVal?: number;
   /** String value. When this is set, other values must not be set. Strings should be kept small whenever possible. Data streams with large string values and high data frequency may be down sampled. */
@@ -199,7 +199,7 @@ export interface DataPoint {
   /** The data type defining the format of the values in this data point. */
   dataTypeName?: string;
   /** Values of each data type field for the data point. It is expected that each value corresponding to a data type field will occur in the same order that the field is listed with in the data type specified in a data source. Only one of integer and floating point fields will be populated, depending on the format enum value within data source's type field. */
-  value?: Array<Value>;
+  value?: ReadonlyArray<Value>;
 }
 
 export const DataPoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -217,7 +217,7 @@ export interface Dataset {
   /** This token will be set when a dataset is received in response to a GET request and the dataset is too large to be included in a single response. Provide this value in a subsequent GET request to return the next page of data points within this dataset. */
   nextPageToken?: string;
   /** A partial list of data points contained in the dataset, ordered by endTimeNanos. This list is considered complete when retrieving a small dataset and partial when patching a dataset or retrieving a dataset that is too large to include in a single response. */
-  point?: Array<DataPoint>;
+  point?: ReadonlyArray<DataPoint>;
   /** The smallest start time of all data points in this possibly partial representation of the dataset. Time is in nanoseconds from epoch. This should also match the first part of the dataset identifier. */
   minStartTimeNs?: string;
   /** The largest end time of all data points in this possibly partial representation of the dataset. Time is in nanoseconds from epoch. This should also match the second part of the dataset identifier. */
@@ -236,7 +236,7 @@ export const Dataset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDataSourcesResponse {
   /** A previously created data source. */
-  dataSource?: Array<DataSource>;
+  dataSource?: ReadonlyArray<DataSource>;
 }
 
 export const ListDataSourcesResponse =
@@ -263,9 +263,9 @@ export interface ListDataPointChangesResponse {
   /** The data stream ID of the data source with data point changes. */
   dataSourceId?: string;
   /** Inserted data points for the user. */
-  insertedDataPoint?: Array<DataPoint>;
+  insertedDataPoint?: ReadonlyArray<DataPoint>;
   /** Deleted data points for the user. Note, for modifications this should be parsed before handling insertions. */
-  deletedDataPoint?: Array<DataPoint>;
+  deletedDataPoint?: ReadonlyArray<DataPoint>;
 }
 
 export const ListDataPointChangesResponse =
@@ -343,13 +343,13 @@ export const BucketBySession = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSessionsResponse {
   /** Sessions starting before endTime of the request and ending after startTime of the request up to (endTime of the request + 1 day). */
-  session?: Array<Session>;
+  session?: ReadonlyArray<Session>;
   /** Flag to indicate server has more data to transfer. DO NOT USE THIS FIELD. It is never populated in responses from the server. */
   hasMoreData?: boolean;
   /** The sync token which is used to sync further changes. This will only be provided if both startTime and endTime are omitted from the request. */
   nextPageToken?: string;
   /** If includeDeleted is set to true in the request, and startTime and endTime are omitted, this will include sessions which were deleted since the last sync. */
-  deletedSession?: Array<Session>;
+  deletedSession?: ReadonlyArray<Session>;
 }
 
 export const ListSessionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -373,7 +373,7 @@ export const BucketByActivity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AggregateRequest {
   /** DO NOT POPULATE THIS FIELD. It is ignored. */
-  filteredDataQualityStandard?: Array<
+  filteredDataQualityStandard?: ReadonlyArray<
     | "dataQualityUnknown"
     | "dataQualityBloodPressureEsh2002"
     | "dataQualityBloodPressureEsh2010"
@@ -399,7 +399,7 @@ export interface AggregateRequest {
   /** Specifies that data be aggregated each activity segment recorded for a user. Similar to bucketByActivitySegment, but bucketing is done for each activity segment rather than all segments of the same type. Mutually exclusive of other bucketing specifications. */
   bucketByActivitySegment?: BucketByActivity;
   /** The specification of data to be aggregated. At least one aggregateBy spec must be provided. All data that is specified will be aggregated using the same bucketing criteria. There will be one dataset in the response for every aggregateBy spec. */
-  aggregateBy?: Array<AggregateBy>;
+  aggregateBy?: ReadonlyArray<AggregateBy>;
 }
 
 export const AggregateRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -417,7 +417,7 @@ export interface AggregateBucket {
   /** The end time for the aggregated data, in milliseconds since epoch, inclusive. */
   endTimeMillis?: string;
   /** There will be one dataset per AggregateBy in the request. */
-  dataset?: Array<Dataset>;
+  dataset?: ReadonlyArray<Dataset>;
   /** Available for Bucket.Type.SESSION */
   session?: Session;
   /** The type of a bucket signifies how the data aggregation is performed in the bucket. */
@@ -445,7 +445,7 @@ export const AggregateBucket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AggregateResponse {
   /** A list of buckets containing the aggregated data. */
-  bucket?: Array<AggregateBucket>;
+  bucket?: ReadonlyArray<AggregateBucket>;
 }
 
 export const AggregateResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

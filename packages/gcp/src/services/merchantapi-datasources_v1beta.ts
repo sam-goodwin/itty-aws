@@ -182,7 +182,7 @@ export const Destination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DefaultRule {
   /** Required. The list of data sources linked in the [default rule](https://support.google.com/merchants/answer/7450276). This list is ordered by the default rule priority of joining the data. It might include none or multiple references to `self` and supplemental data sources. The list must not be empty. To link the data source to the default rule, you need to add a new reference to this list (in sequential order). To unlink the data source from the default rule, you need to remove the given reference from this list. Changing the order of this list will result in changing the priority of data sources in the default rule. For example, providing the following list: [`1001`, `self`] will take attribute values from supplemental data source `1001`, and fallback to `self` if the attribute is not set in `1001`. */
-  takeFromDataSources?: Array<DataSourceReference>;
+  takeFromDataSources?: ReadonlyArray<DataSourceReference>;
 }
 
 export const DefaultRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -191,13 +191,13 @@ export const DefaultRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PrimaryProductDataSource {
   /** Optional. A list of destinations describing where products of the data source can be shown. When retrieving the data source, the list contains all the destinations that can be used for the data source, including the ones that are disabled for the data source but enabled for the account. Only destinations that are enabled on the account, for example through program participation, can be enabled on the data source. If unset, during creation, the destinations will be inherited based on the account level program participation. If set, during creation or update, the data source will be set only for the specified destinations. Updating this field requires at least one destination. */
-  destinations?: Array<Destination>;
+  destinations?: ReadonlyArray<Destination>;
   /** Optional. Default rule management of the data source. If set, the linked data sources will be replaced. */
   defaultRule?: DefaultRule;
   /** Optional. Immutable. The two-letter ISO 639-1 language of the items in the data source. `feedLabel` and `contentLanguage` must be either both set or unset. The fields can only be unset for data sources without file input. If set, the data source will only accept products matching this combination. If unset, the data source will accept products without that restriction. */
   contentLanguage?: string;
   /** Optional. The countries where the items may be displayed. Represented as a [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml). */
-  countries?: Array<string>;
+  countries?: ReadonlyArray<string>;
   /** Optional. Immutable. Specifies the type of data source channel. */
   channel?:
     | "CHANNEL_UNSPECIFIED"
@@ -245,7 +245,7 @@ export interface SupplementalProductDataSource {
   /** Optional. Immutable. The feed label that is specified on the data source level. Must be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-). `feedLabel` and `contentLanguage` must be either both set or unset for data sources with product content type. They must be set for data sources with a file input. The fields must be unset for data sources without file input. If set, the data source will only accept products matching this combination. If unset, the data source will accept produts without that restriction. */
   feedLabel?: string;
   /** Output only. The (unordered and deduplicated) list of all primary data sources linked to this data source in either default or custom rules. Supplemental data source cannot be deleted before all links are removed. */
-  referencingPrimaryDataSources?: Array<DataSourceReference>;
+  referencingPrimaryDataSources?: ReadonlyArray<DataSourceReference>;
 }
 
 export const SupplementalProductDataSource =
@@ -339,7 +339,7 @@ export interface FileUpload {
   /** Output only. The number of items in the data source that were processed. */
   itemsTotal?: string;
   /** Output only. The list of issues occurring in the data source. */
-  issues?: Array<Issue>;
+  issues?: ReadonlyArray<Issue>;
   /** Output only. The number of items in the data source that were created. */
   itemsCreated?: string;
   /** Output only. The number of items in the data source that were updated. */
@@ -372,7 +372,7 @@ export const FileUpload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDataSourcesResponse {
   /** The data sources from the specified account. */
-  dataSources?: Array<DataSource>;
+  dataSources?: ReadonlyArray<DataSource>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -444,7 +444,7 @@ export interface ProductStatusChangeMessage {
   /** The product name. Format: `accounts/{account}/products/{product}` */
   resource?: string;
   /** A message to describe the change that happened to the product */
-  changes?: Array<ProductChange>;
+  changes?: ReadonlyArray<ProductChange>;
   /** The attribute in the resource that changed, in this case it will be always `Status`. */
   attribute?: "ATTRIBUTE_UNSPECIFIED" | "STATUS" | (string & {});
 }
@@ -483,7 +483,7 @@ export const PatchAccountsDataSourcesRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "datasources/v1beta/accounts/{accountsId}/dataSources/{dataSourcesId}",
+      path: "datasources/v1beta/{name}",
       hasBody: true,
     }),
     svc,
@@ -521,7 +521,7 @@ export const FetchAccountsDataSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "datasources/v1beta/accounts/{accountsId}/dataSources/{dataSourcesId}:fetch",
+      path: "datasources/v1beta/{name}:fetch",
       hasBody: true,
     }),
     svc,
@@ -559,7 +559,7 @@ export const CreateAccountsDataSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "datasources/v1beta/accounts/{accountsId}/dataSources",
+      path: "datasources/v1beta/{parent}/dataSources",
       hasBody: true,
     }),
     svc,
@@ -592,10 +592,7 @@ export const GetAccountsDataSourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "datasources/v1beta/accounts/{accountsId}/dataSources/{dataSourcesId}",
-    }),
+    T.Http({ method: "GET", path: "datasources/v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsDataSourcesRequest>;
 
@@ -632,10 +629,7 @@ export const ListAccountsDataSourcesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "datasources/v1beta/accounts/{accountsId}/dataSources",
-    }),
+    T.Http({ method: "GET", path: "datasources/v1beta/{parent}/dataSources" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsDataSourcesRequest>;
 
@@ -670,10 +664,7 @@ export const DeleteAccountsDataSourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "datasources/v1beta/accounts/{accountsId}/dataSources/{dataSourcesId}",
-    }),
+    T.Http({ method: "DELETE", path: "datasources/v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsDataSourcesRequest>;
 
@@ -704,10 +695,7 @@ export const GetAccountsDataSourcesFileUploadsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "datasources/v1beta/accounts/{accountsId}/dataSources/{dataSourcesId}/fileUploads/{fileUploadsId}",
-    }),
+    T.Http({ method: "GET", path: "datasources/v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsDataSourcesFileUploadsRequest>;
 

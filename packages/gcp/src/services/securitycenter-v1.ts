@@ -42,7 +42,7 @@ export interface Container {
   /** Container image URI provided when configuring a pod or container. This string can identify a container image version using mutable tags. */
   uri?: string;
   /** Container labels, as provided by the container runtime. */
-  labels?: Array<Label>;
+  labels?: ReadonlyArray<Label>;
   /** Optional container image ID, if provided by the container runtime. Uniquely identifies the container image launched using a container image digest. */
   imageId?: string;
 }
@@ -111,7 +111,7 @@ export interface GoogleCloudSecuritycenterV2CloudDlpDataProfile {
   /** Name of the data profile, for example, `projects/123/locations/europe/tableProfiles/8383929`. */
   dataProfile?: string;
   /** Type of information detected by SDP. Info type includes name, version and sensitivity of the detected information type. */
-  infoTypes?: Array<GoogleCloudSecuritycenterV2InfoType>;
+  infoTypes?: ReadonlyArray<GoogleCloudSecuritycenterV2InfoType>;
 }
 
 export const GoogleCloudSecuritycenterV2CloudDlpDataProfile =
@@ -152,7 +152,7 @@ export const GoogleCloudSecuritycenterV2ResourcePathNode =
 
 export interface GoogleCloudSecuritycenterV2ExfilResource {
   /** Subcomponents of the asset that was exfiltrated, like URIs used during exfiltration, table names, databases, and filenames. For example, multiple tables might have been exfiltrated from the same Cloud SQL instance, or multiple files might have been exfiltrated from the same Cloud Storage bucket. */
-  components?: Array<string>;
+  components?: ReadonlyArray<string>;
   /** The resource's [full resource name](https://cloud.google.com/apis/design/resource_names#full_resource_name). */
   name?: string;
 }
@@ -216,15 +216,15 @@ export const GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment
 
 export interface GoogleCloudSecuritycenterV2ResourceApplicationAttributes {
   /** Business team that ensures user needs are met and value is delivered */
-  businessOwners?: Array<GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo>;
+  businessOwners?: ReadonlyArray<GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo>;
   /** User-defined criticality information. */
   criticality?: GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality;
   /** User-defined environment information. */
   environment?: GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment;
   /** Operator team that ensures runtime and operations. */
-  operatorOwners?: Array<GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo>;
+  operatorOwners?: ReadonlyArray<GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo>;
   /** Developer team that owns development and coding. */
-  developerOwners?: Array<GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo>;
+  developerOwners?: ReadonlyArray<GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo>;
 }
 
 export const GoogleCloudSecuritycenterV2ResourceApplicationAttributes =
@@ -316,7 +316,7 @@ export const AzureResourceGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AzureMetadata {
   /** A list of Azure management groups associated with the resource, ordered from lowest level (closest to the subscription) to highest level. */
-  managementGroups?: Array<AzureManagementGroup>;
+  managementGroups?: ReadonlyArray<AzureManagementGroup>;
   /** The Azure Entra tenant associated with the resource. */
   tenant?: AzureTenant;
   /** The Azure subscription associated with the resource. */
@@ -353,7 +353,7 @@ export interface GcpMetadata {
   /** The project ID that the resource belongs to. */
   projectDisplayName?: string;
   /** Output only. Contains a Folder message for each folder in the assets ancestry. The first folder is the deepest nested folder, and the last folder is the folder directly under the Organization. */
-  folders?: Array<GoogleCloudSecuritycenterV2Folder>;
+  folders?: ReadonlyArray<GoogleCloudSecuritycenterV2Folder>;
   /** The full resource name of resource's parent. */
   parent?: string;
   /** The human readable name of resource's parent. */
@@ -401,7 +401,7 @@ export const NotificationConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListNotificationConfigsResponse {
   /** Notification configs belonging to the requested parent. */
-  notificationConfigs?: Array<NotificationConfig>;
+  notificationConfigs?: ReadonlyArray<NotificationConfig>;
   /** Token to retrieve the next page of results, or empty if there are no more results. */
   nextPageToken?: string;
 }
@@ -543,7 +543,7 @@ export const AwsOrganization = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AwsMetadata {
   /** A list of AWS organizational units associated with the resource, ordered from lowest level (closest to the account) to highest level. */
-  organizationalUnits?: Array<AwsOrganizationalUnit>;
+  organizationalUnits?: ReadonlyArray<AwsOrganizationalUnit>;
   /** The AWS account associated with the resource. */
   account?: AwsAccount;
   /** The AWS organization associated with the resource. */
@@ -584,7 +584,7 @@ export const ResourcePathNode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ResourcePath {
   /** The list of nodes that make the up resource path, ordered from lowest level to highest level. */
-  nodes?: Array<ResourcePathNode>;
+  nodes?: ReadonlyArray<ResourcePathNode>;
 }
 
 export const ResourcePath = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -654,15 +654,15 @@ export const GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment
 
 export interface GoogleCloudSecuritycenterV1ResourceApplicationAttributes {
   /** Business team that ensures user needs are met and value is delivered */
-  businessOwners?: Array<GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo>;
+  businessOwners?: ReadonlyArray<GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo>;
   /** User-defined criticality information. */
   criticality?: GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality;
   /** User-defined environment information. */
   environment?: GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment;
   /** Operator team that ensures runtime and operations. */
-  operatorOwners?: Array<GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo>;
+  operatorOwners?: ReadonlyArray<GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo>;
   /** Developer team that owns development and coding. */
-  developerOwners?: Array<GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo>;
+  developerOwners?: ReadonlyArray<GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo>;
 }
 
 export const GoogleCloudSecuritycenterV1ResourceApplicationAttributes =
@@ -788,7 +788,7 @@ export interface GoogleCloudSecuritycenterV1Resource {
   /** The Azure metadata associated with the finding. */
   azureMetadata?: AzureMetadata;
   /** Output only. Contains a Folder message for each folder in the assets ancestry. The first folder is the deepest nested folder, and the last folder is the folder directly under the Organization. */
-  folders?: Array<Folder>;
+  folders?: ReadonlyArray<Folder>;
 }
 
 export const GoogleCloudSecuritycenterV1Resource =
@@ -857,7 +857,7 @@ export interface File {
   /** Path of the file in terms of underlying disk/partition identifiers. */
   diskPath?: DiskPath;
   /** Operation(s) performed on a file. */
-  operations?: Array<FileOperation>;
+  operations?: ReadonlyArray<FileOperation>;
   /** The length in bytes of the file prefix that was hashed. If hashed_size == size, any hashes reported represent the entire file. */
   hashedSize?: string;
   /** True when the hash covers only a prefix of the file. */
@@ -915,9 +915,9 @@ export interface Pod {
   /** Kubernetes Pod name. */
   name?: string;
   /** Pod labels. For Kubernetes containers, these are applied to the container. */
-  labels?: Array<Label>;
+  labels?: ReadonlyArray<Label>;
   /** Pod containers associated with this finding, if any. */
-  containers?: Array<Container>;
+  containers?: ReadonlyArray<Container>;
 }
 
 export const Pod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -970,7 +970,7 @@ export interface GoogleCloudSecuritycenterV1Binding {
   /** Name for the binding. */
   name?: string;
   /** Represents one or more subjects that are bound to the role. Not always available for PATCH requests. */
-  subjects?: Array<Subject>;
+  subjects?: ReadonlyArray<Subject>;
 }
 
 export const GoogleCloudSecuritycenterV1Binding =
@@ -1010,7 +1010,7 @@ export const AccessReview = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NodePool {
   /** Nodes associated with the finding. */
-  nodes?: Array<Node>;
+  nodes?: ReadonlyArray<Node>;
   /** Kubernetes node pool name. */
   name?: string;
 }
@@ -1026,7 +1026,7 @@ export interface Securitycenter_Object {
   /** Kubernetes object namespace. Must be a valid DNS label. Named "ns" to avoid collision with C++ namespace keyword. For details see https://kubernetes.io/docs/tasks/administer-cluster/namespaces/. */
   ns?: string;
   /** Pod containers associated with this finding, if any. */
-  containers?: Array<Container>;
+  containers?: ReadonlyArray<Container>;
   /** Kubernetes object group, such as "policy.k8s.io/v1". */
   group?: string;
   /** Kubernetes object name. For details see https://kubernetes.io/docs/concepts/overview/working-with-objects/names/. */
@@ -1043,19 +1043,19 @@ export const Securitycenter_Object = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Kubernetes {
   /** Kubernetes [Pods](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) associated with the finding. This field contains Pod records for each container that is owned by a Pod. */
-  pods?: Array<Pod>;
+  pods?: ReadonlyArray<Pod>;
   /** Provides Kubernetes [node](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture#nodes) information. */
-  nodes?: Array<Node>;
+  nodes?: ReadonlyArray<Node>;
   /** Provides Kubernetes role binding information for findings that involve [RoleBindings or ClusterRoleBindings](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control). */
-  bindings?: Array<GoogleCloudSecuritycenterV1Binding>;
+  bindings?: ReadonlyArray<GoogleCloudSecuritycenterV1Binding>;
   /** Provides information on any Kubernetes access reviews (privilege checks) relevant to the finding. */
-  accessReviews?: Array<AccessReview>;
+  accessReviews?: ReadonlyArray<AccessReview>;
   /** Provides Kubernetes role information for findings that involve [Roles or ClusterRoles](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control). */
-  roles?: Array<Role>;
+  roles?: ReadonlyArray<Role>;
   /** GKE [node pools](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pools) associated with the finding. This field contains node pool information for each node, when it is available. */
-  nodePools?: Array<NodePool>;
+  nodePools?: ReadonlyArray<NodePool>;
   /** Kubernetes objects related to the finding. */
-  objects?: Array<Securitycenter_Object>;
+  objects?: ReadonlyArray<Securitycenter_Object>;
 }
 
 export const Kubernetes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1079,7 +1079,7 @@ export const Contact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ContactDetails {
   /** A list of contacts */
-  contacts?: Array<Contact>;
+  contacts?: ReadonlyArray<Contact>;
 }
 
 export const ContactDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1088,7 +1088,7 @@ export const ContactDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ExfilResource {
   /** Subcomponents of the asset that was exfiltrated, like URIs used during exfiltration, table names, databases, and filenames. For example, multiple tables might have been exfiltrated from the same Cloud SQL instance, or multiple files might have been exfiltrated from the same Cloud Storage bucket. */
-  components?: Array<string>;
+  components?: ReadonlyArray<string>;
   /** The resource's [full resource name](https://cloud.google.com/apis/design/resource_names#full_resource_name). */
   name?: string;
 }
@@ -1100,11 +1100,11 @@ export const ExfilResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Exfiltration {
   /** If there are multiple targets, each target would get a complete copy of the "joined" source data. */
-  targets?: Array<ExfilResource>;
+  targets?: ReadonlyArray<ExfilResource>;
   /** Total exfiltrated bytes processed for the entire job. */
   totalExfiltratedBytes?: string;
   /** If there are multiple sources, then the data is considered "joined" between them. For instance, BigQuery can join multiple tables, and each table would be considered a source. */
-  sources?: Array<ExfilResource>;
+  sources?: ReadonlyArray<ExfilResource>;
 }
 
 export const Exfiltration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1134,7 +1134,7 @@ export interface MuteInfo {
   /** If set, the static mute applied to this finding. Static mutes override dynamic mutes. If unset, there is no static mute. */
   staticMute?: StaticMute;
   /** The list of dynamic mute rules that currently match the finding. */
-  dynamicMuteRecords?: Array<DynamicMuteRecord>;
+  dynamicMuteRecords?: ReadonlyArray<DynamicMuteRecord>;
 }
 
 export const MuteInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1158,7 +1158,7 @@ export interface IpRule {
   /** The IP protocol this rule applies to. This value can either be one of the following well known protocol strings (TCP, UDP, ICMP, ESP, AH, IPIP, SCTP) or a string representation of the integer value. */
   protocol?: string;
   /** Optional. An optional list of ports to which this rule applies. This field is only applicable for the UDP or (S)TCP protocols. Each entry must be either an integer or a range including a min and max port number. */
-  portRanges?: Array<PortRange>;
+  portRanges?: ReadonlyArray<PortRange>;
 }
 
 export const IpRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1168,7 +1168,7 @@ export const IpRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Allowed {
   /** Optional. Optional list of allowed IP rules. */
-  ipRules?: Array<IpRule>;
+  ipRules?: ReadonlyArray<IpRule>;
 }
 
 export const Allowed = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1177,7 +1177,7 @@ export const Allowed = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Denied {
   /** Optional. Optional list of denied IP rules. */
-  ipRules?: Array<IpRule>;
+  ipRules?: ReadonlyArray<IpRule>;
 }
 
 export const Denied = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1188,15 +1188,15 @@ export interface IpRules {
   /** The direction that the rule is applicable to, one of ingress or egress. */
   direction?: "DIRECTION_UNSPECIFIED" | "INGRESS" | "EGRESS" | (string & {});
   /** If source IP ranges are specified, the firewall rule applies only to traffic that has a source IP address in these ranges. These ranges must be expressed in CIDR format. Only supports IPv4. */
-  sourceIpRanges?: Array<string>;
+  sourceIpRanges?: ReadonlyArray<string>;
   /** Tuple with allowed rules. */
   allowed?: Allowed;
   /** Tuple with denied rules. */
   denied?: Denied;
   /** If destination IP ranges are specified, the firewall rule applies only to traffic that has a destination IP address in these ranges. These ranges must be expressed in CIDR format. Only supports IPv4. */
-  destinationIpRanges?: Array<string>;
+  destinationIpRanges?: ReadonlyArray<string>;
   /** Name of the network protocol service, such as FTP, that is exposed by the open port. Follows the naming convention available at: https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml. */
-  exposedServices?: Array<string>;
+  exposedServices?: ReadonlyArray<string>;
 }
 
 export const IpRules = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1393,7 +1393,7 @@ export interface GoogleCloudSecuritycenterV1ExternalSystem {
   /** Full resource name of the external system, for example: "organizations/1234/sources/5678/findings/123456/externalSystems/jira", "folders/1234/sources/5678/findings/123456/externalSystems/jira", "projects/1234/sources/5678/findings/123456/externalSystems/jira" */
   name?: string;
   /** References primary/secondary etc assignees in the external system. */
-  assignees?: Array<string>;
+  assignees?: ReadonlyArray<string>;
   /** The most recent status of the finding's corresponding case, as reported by the external system. */
   status?: string;
   /** The identifier that's used to track the finding's corresponding case in the external system. */
@@ -1512,7 +1512,7 @@ export interface Access {
   /** The caller's user agent string associated with the finding. */
   userAgent?: string;
   /** The identity delegation history of an authenticated service account that made the request. The `serviceAccountDelegationInfo[]` object contains information about the real authorities that try to access Google Cloud resources by delegating on a service account. When multiple authorities are present, they are guaranteed to be sorted based on the original ordering of the identity delegation events. */
-  serviceAccountDelegationInfo?: Array<ServiceAccountDelegationInfo>;
+  serviceAccountDelegationInfo?: ReadonlyArray<ServiceAccountDelegationInfo>;
   /** Associated email, such as "foo@google.com". The email address of the authenticated user or a service account acting on behalf of a third party principal making the request. For third party identity callers, the `principal_subject` field is populated instead of this field. For privacy reasons, the principal email address is sometimes redacted. For more information, see [Caller identities in audit logs](https://cloud.google.com/logging/docs/audit#user-id). */
   principalEmail?: string;
   /** Caller's IP address, such as "1.1.1.1". */
@@ -1568,7 +1568,7 @@ export const Reference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Cwe {
   /** Any reference to the details on the CWE, for example, https://cwe.mitre.org/data/definitions/94.html */
-  references?: Array<Reference>;
+  references?: ReadonlyArray<Reference>;
   /** The CWE identifier, e.g. CWE-94 */
   id?: string;
 }
@@ -1715,7 +1715,7 @@ export interface Cve {
   /** The unique identifier for the vulnerability. e.g. CVE-2021-34527 */
   id?: string;
   /** Additional information about the CVE. e.g. https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-34527 */
-  references?: Array<Reference>;
+  references?: ReadonlyArray<Reference>;
 }
 
 export const Cve = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1733,7 +1733,7 @@ export const Cve = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Vulnerability {
   /** Represents one or more Common Weakness Enumeration (CWE) information on this vulnerability. */
-  cwes?: Array<Cwe>;
+  cwes?: ReadonlyArray<Cwe>;
   /** The fixed package is relevant to the finding. */
   fixedPackage?: Package;
   /** Represents whether the vulnerability is reachable (detected via static analysis) */
@@ -1787,9 +1787,9 @@ export const Dataset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface VertexAi {
   /** Pipelines associated with the finding. */
-  pipelines?: Array<Pipeline>;
+  pipelines?: ReadonlyArray<Pipeline>;
   /** Datasets associated with the finding. */
-  datasets?: Array<Dataset>;
+  datasets?: ReadonlyArray<Dataset>;
 }
 
 export const VertexAi = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1876,7 +1876,7 @@ export const Detection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MemoryHashSignature {
   /** The list of memory hash detections contributing to the binary family match. */
-  detections?: Array<Detection>;
+  detections?: ReadonlyArray<Detection>;
   /** The binary family. */
   binaryFamily?: string;
 }
@@ -1907,13 +1907,13 @@ export const ProcessSignature = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Indicator {
   /** The list of IP addresses that are associated with the finding. */
-  ipAddresses?: Array<string>;
+  ipAddresses?: ReadonlyArray<string>;
   /** The list of URIs associated to the Findings. */
-  uris?: Array<string>;
+  uris?: ReadonlyArray<string>;
   /** The list of matched signatures indicating that the given process is present in the environment. */
-  signatures?: Array<ProcessSignature>;
+  signatures?: ReadonlyArray<ProcessSignature>;
   /** List of domains associated to the Finding. */
-  domains?: Array<string>;
+  domains?: ReadonlyArray<string>;
 }
 
 export const Indicator = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1945,7 +1945,7 @@ export interface MitreAttack {
     | "IMPACT"
     | (string & {});
   /** Additional MITRE ATT&CK tactics related to this finding, if any. */
-  additionalTactics?: Array<
+  additionalTactics?: ReadonlyArray<
     | "TACTIC_UNSPECIFIED"
     | "RECONNAISSANCE"
     | "RESOURCE_DEVELOPMENT"
@@ -1964,7 +1964,7 @@ export interface MitreAttack {
     | (string & {})
   >;
   /** Additional MITRE ATT&CK techniques related to this finding, if any, along with any of their respective parent techniques. */
-  additionalTechniques?: Array<
+  additionalTechniques?: ReadonlyArray<
     | "TECHNIQUE_UNSPECIFIED"
     | "DATA_OBFUSCATION"
     | "DATA_OBFUSCATION_STEGANOGRAPHY"
@@ -2107,7 +2107,7 @@ export interface MitreAttack {
     | (string & {})
   >;
   /** The MITRE ATT&CK technique most closely represented by this finding, if any. primary_techniques is a repeated field because there are multiple levels of MITRE ATT&CK techniques. If the technique most closely represented by this finding is a sub-technique (e.g. `SCANNING_IP_BLOCKS`), both the sub-technique and its parent technique(s) will be listed (e.g. `SCANNING_IP_BLOCKS`, `ACTIVE_SCANNING`). */
-  primaryTechniques?: Array<
+  primaryTechniques?: ReadonlyArray<
     | "TECHNIQUE_UNSPECIFIED"
     | "DATA_OBFUSCATION"
     | "DATA_OBFUSCATION_STEGANOGRAPHY"
@@ -2286,7 +2286,7 @@ export const GroupMembership = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Chokepoint {
   /** List of resource names of findings associated with this chokepoint. For example, organizations/123/sources/456/findings/789. This list will have at most 100 findings. */
-  relatedFindings?: Array<string>;
+  relatedFindings?: ReadonlyArray<string>;
 }
 
 export const Chokepoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2297,7 +2297,7 @@ export interface Framework {
   /** Display name of the framework. For a standard framework, this will look like e.g. PCI DSS 3.2.1, whereas for a custom framework it can be a user defined string like MyFramework */
   displayName?: string;
   /** Category of the framework associated with the finding. E.g. Security Benchmark, or Assured Workloads */
-  category?: Array<
+  category?: ReadonlyArray<
     | "FRAMEWORK_CATEGORY_UNSPECIFIED"
     | "SECURITY_BENCHMARKS"
     | "ASSURED_WORKLOADS"
@@ -2309,7 +2309,7 @@ export interface Framework {
   /** Name of the framework associated with the finding */
   name?: string;
   /** The controls associated with the framework. */
-  controls?: Array<Control>;
+  controls?: ReadonlyArray<Control>;
   /** Type of the framework associated with the finding, to specify whether the framework is built-in (pre-defined and immutable) or a custom framework defined by the customer (equivalent to security posture) */
   type?:
     | "FRAMEWORK_TYPE_UNSPECIFIED"
@@ -2350,9 +2350,9 @@ export const CloudControl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ComplianceDetails {
   /** Details of Frameworks associated with the finding */
-  frameworks?: Array<Framework>;
+  frameworks?: ReadonlyArray<Framework>;
   /** Cloud Control Deployments associated with the finding. For example, organizations/123/locations/global/cloudControlDeployments/deploymentIdentifier */
-  cloudControlDeploymentNames?: Array<string>;
+  cloudControlDeploymentNames?: ReadonlyArray<string>;
   /** CloudControl associated with the finding */
   cloudControl?: CloudControl;
 }
@@ -2385,7 +2385,7 @@ export interface ArtifactGuardPolicies {
   /** The ID of the resource that has policies configured for it. */
   resourceId?: string;
   /** A list of failing policies. */
-  failingPolicies?: Array<ArtifactGuardPolicy>;
+  failingPolicies?: ReadonlyArray<ArtifactGuardPolicy>;
 }
 
 export const ArtifactGuardPolicies = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2395,7 +2395,7 @@ export const ArtifactGuardPolicies = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Database {
   /** The target usernames, roles, or groups of an SQL privilege grant, which is not an IAM policy change. */
-  grantees?: Array<string>;
+  grantees?: ReadonlyArray<string>;
   /** The human-readable name of the database that the user connected to. */
   displayName?: string;
   /** The SQL statement that is associated with the database access. */
@@ -2482,7 +2482,7 @@ export interface SecurityPosture {
   /** Name of the posture, for example, `CIS-Posture`. */
   name?: string;
   /** The details about a change in an updated policy that violates the deployed posture. */
-  policyDriftDetails?: Array<PolicyDriftDetails>;
+  policyDriftDetails?: ReadonlyArray<PolicyDriftDetails>;
   /** The ID of the updated policy, for example, `compute-policy-1`. */
   policy?: string;
 }
@@ -2500,7 +2500,7 @@ export const SecurityPosture = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ToxicCombination {
   /** List of resource names of findings associated with this toxic combination. For example, `organizations/123/sources/456/findings/789`. */
-  relatedFindings?: Array<string>;
+  relatedFindings?: ReadonlyArray<string>;
   /** The [Attack exposure score](https://cloud.google.com/security-command-center/docs/attack-exposure-learn#attack_exposure_scores) of this toxic combination. The score is a measure of how much this toxic combination exposes one or more high-value resources to potential attack. */
   attackExposureScore?: number;
 }
@@ -2549,13 +2549,13 @@ export interface Process {
   /** The process ID. */
   pid?: string;
   /** File information for libraries loaded by the process. */
-  libraries?: Array<File>;
+  libraries?: ReadonlyArray<File>;
   /** True if `env_variables` is incomplete. */
   envVariablesTruncated?: boolean;
   /** Process environment variables. */
-  envVariables?: Array<EnvironmentVariable>;
+  envVariables?: ReadonlyArray<EnvironmentVariable>;
   /** Process arguments as JSON encoded strings. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** When the process represents the invocation of a script, `binary` provides information about the interpreter, while `script` provides information about the script file provided to the interpreter. */
   script?: File;
   /** True if `args` is incomplete. */
@@ -2692,7 +2692,7 @@ export interface CloudDlpDataProfile {
   /** Name of the data profile, for example, `projects/123/locations/europe/tableProfiles/8383929`. */
   dataProfile?: string;
   /** Type of information detected by SDP. Info type includes name, version and sensitivity of the detected information type. */
-  infoTypes?: Array<InfoType>;
+  infoTypes?: ReadonlyArray<InfoType>;
   /** The resource hierarchy level at which the data profile was generated. */
   parentType?:
     | "PARENT_TYPE_UNSPECIFIED"
@@ -2767,13 +2767,13 @@ export interface BackupDisasterRecovery {
   /** The name of the Backup and DR appliance that captures, moves, and manages the lifecycle of backup data. For example, `backup-server-57137`. */
   appliance?: string;
   /** The names of Backup and DR applications. An application is a VM, database, or file system on a managed host monitored by a backup and recovery appliance. For example, `centos7-01-vol00`, `centos7-01-vol01`, `centos7-01-vol02`. */
-  applications?: Array<string>;
+  applications?: ReadonlyArray<string>;
   /** The names of Backup and DR advanced policy options of a policy applying to an application. See the [Backup and DR documentation on policy options](https://cloud.google.com/backup-disaster-recovery/docs/create-plan/policy-settings). For example, `skipofflineappsincongrp, nounmap`. */
-  policyOptions?: Array<string>;
+  policyOptions?: ReadonlyArray<string>;
   /** The name of the Backup and DR resource profile that specifies the storage media for backups of application and VM data. See the [Backup and DR documentation on profiles](https://cloud.google.com/backup-disaster-recovery/docs/concepts/backup-plan#profile). For example, `GCP`. */
   profile?: string;
   /** The names of Backup and DR policies that are associated with a template and that define when to run a backup, how frequently to run a backup, and how long to retain the backup image. For example, `onvaults`. */
-  policies?: Array<string>;
+  policies?: ReadonlyArray<string>;
 }
 
 export const BackupDisasterRecovery = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -2830,7 +2830,7 @@ export interface Compliance {
   /** Industry-wide compliance standards or benchmarks, such as CIS, PCI, and OWASP. */
   standard?: string;
   /** Policies within the standard or benchmark, for example, A.12.4.1 */
-  ids?: Array<string>;
+  ids?: ReadonlyArray<string>;
 }
 
 export const Compliance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2937,7 +2937,7 @@ export const Network = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Finding {
   /** File associated with the finding. */
-  files?: Array<File>;
+  files?: ReadonlyArray<File>;
   /** The results of an attack path simulation relevant to this finding. */
   attackExposure?: AttackExposure;
   /** Unique identifier of the module which generated the finding. Example: folders/598186756061/securityHealthAnalyticsSettings/customModules/56799441161885 */
@@ -2977,13 +2977,13 @@ export interface Finding {
   /** External exposure associated with the finding. */
   externalExposure?: ExternalExposure;
   /** Contains information about the IP connection associated with the finding. */
-  connections?: Array<Connection>;
+  connections?: ReadonlyArray<Connection>;
   /** Output only. The most recent time this finding was muted or unmuted. */
   muteUpdateTime?: string;
   /** Contains information about the org policies associated with the finding. */
-  orgPolicies?: Array<OrgPolicy>;
+  orgPolicies?: ReadonlyArray<OrgPolicy>;
   /** Containers associated with the finding. This field provides information for both Kubernetes and non-Kubernetes containers. */
-  containers?: Array<Container>;
+  containers?: ReadonlyArray<Container>;
   /** Fields related to Cloud Armor findings. */
   cloudArmor?: CloudArmor;
   /** The state of the finding. */
@@ -2999,11 +2999,11 @@ export interface Finding {
     | "LOW"
     | (string & {});
   /** Log entries that are relevant to the finding. */
-  logEntries?: Array<LogEntry>;
+  logEntries?: ReadonlyArray<LogEntry>;
   /** The [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding. Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}", "folders/{folder_id}/sources/{source_id}/findings/{finding_id}", "projects/{project_id}/sources/{source_id}/findings/{finding_id}". */
   name?: string;
   /** Data flow events associated with the finding. */
-  dataFlowEvents?: Array<DataFlowEvent>;
+  dataFlowEvents?: ReadonlyArray<DataFlowEvent>;
   /** Access details associated with the finding, such as more information on the caller, which method was accessed, and from where. */
   access?: Access;
   /** Records additional information about the mute operation, for example, the [mute configuration](/security-command-center/docs/how-to-mute-findings) that muted the finding and the user who muted the finding. */
@@ -3017,9 +3017,9 @@ export interface Finding {
   /** Job associated with the finding. */
   job?: Job;
   /** Agent data access events associated with the finding. */
-  agentDataAccessEvents?: Array<AgentDataAccessEvent>;
+  agentDataAccessEvents?: ReadonlyArray<AgentDataAccessEvent>;
   /** The load balancers associated with the finding. */
-  loadBalancers?: Array<LoadBalancer>;
+  loadBalancers?: ReadonlyArray<LoadBalancer>;
   /** Represents what's commonly known as an *indicator of compromise* (IoC) in computer forensics. This is an artifact observed on a network or in an operating system that, with high confidence, indicates a computer intrusion. For more information, see [Indicator of compromise](https://en.wikipedia.org/wiki/Indicator_of_compromise). */
   indicator?: Indicator;
   /** MITRE ATT&CK tactics and techniques related to this finding. See: https://attack.mitre.org */
@@ -3027,7 +3027,7 @@ export interface Finding {
   /** AffectedResources associated with the finding. */
   affectedResources?: AffectedResources;
   /** Contains details about groups of which this finding is a member. A group is a collection of findings that are related in some way. This field cannot be updated. Its value is ignored in all update requests. */
-  groupMemberships?: Array<GroupMembership>;
+  groupMemberships?: ReadonlyArray<GroupMembership>;
   /** The time the finding was first detected. If an existing finding is updated, then this is the time the update occurred. For example, if the finding represents an open firewall, this property captures the time the detector believes the firewall became open. The accuracy is determined by the detector. If the finding is later resolved, then this time reflects when the finding was resolved. This must not be set to a value greater than the current timestamp. */
   eventTime?: string;
   /** Contains details about a chokepoint, which is a resource or resource group where high-risk attack paths converge, based on [attack path simulations] (https://cloud.google.com/security-command-center/docs/attack-exposure-learn#attack_path_simulations). This field cannot be updated. Its value is ignored in all update requests. */
@@ -3049,7 +3049,7 @@ export interface Finding {
   /** Output only. User specified security marks. These marks are entirely managed by the user and come from the SecurityMarks resource that belongs to the finding. */
   securityMarks?: SecurityMarks;
   /** Represents operating system processes associated with the Finding. */
-  processes?: Array<Process>;
+  processes?: ReadonlyArray<Process>;
   /** Secret associated with the finding. */
   secret?: Secret;
   /** Indicates the mute state of a finding (either muted, unmuted or undefined). Unlike other attributes of a finding, a finding provider shouldn't set the value of mute. */
@@ -3057,7 +3057,7 @@ export interface Finding {
   /** Represents an application associated with the finding. */
   application?: Application;
   /** Represents IAM bindings associated with the finding. */
-  iamBindings?: Array<IamBinding>;
+  iamBindings?: ReadonlyArray<IamBinding>;
   /** Cloud DLP data profile that is associated with the finding. */
   cloudDlpDataProfile?: CloudDlpDataProfile;
   /** DiscoveredWorkload associated with the finding. */
@@ -3075,21 +3075,21 @@ export interface Finding {
   /** The canonical name of the finding. It's either "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}", "folders/{folder_id}/sources/{source_id}/findings/{finding_id}" or "projects/{project_number}/sources/{source_id}/findings/{finding_id}", depending on the closest CRM ancestor of the resource associated with the finding. */
   canonicalName?: string;
   /** Contains compliance information for security standards associated to the finding. */
-  compliances?: Array<Compliance>;
+  compliances?: ReadonlyArray<Compliance>;
   /** The AI model associated with the finding. */
   aiModel?: AiModel;
   /** The URI that, if available, points to a web page outside of Security Command Center where additional information about the finding can be found. This field is guaranteed to be either empty or a well formed URL. */
   externalUri?: string;
   /** Data retention deletion events associated with the finding. */
-  dataRetentionDeletionEvents?: Array<DataRetentionDeletionEvent>;
+  dataRetentionDeletionEvents?: ReadonlyArray<DataRetentionDeletionEvent>;
   /** The relative resource name of the source the finding belongs to. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name This field is immutable after creation time. For example: "organizations/{organization_id}/sources/{source_id}" */
   parent?: string;
   /** Output only. The human readable display name of the finding source such as "Event Threat Detection" or "Security Health Analytics". */
   parentDisplayName?: string;
   /** Data access events associated with the finding. */
-  dataAccessEvents?: Array<DataAccessEvent>;
+  dataAccessEvents?: ReadonlyArray<DataAccessEvent>;
   /** Represents the VPC networks that the resource is attached to. */
-  networks?: Array<Network>;
+  networks?: ReadonlyArray<Network>;
 }
 
 export const Finding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3245,7 +3245,7 @@ export interface GoogleCloudSecuritycenterV2AzureMetadata {
   /** The Azure resource group associated with the resource. */
   resourceGroup?: GoogleCloudSecuritycenterV2AzureResourceGroup;
   /** A list of Azure management groups associated with the resource, ordered from lowest level (closest to the subscription) to highest level. */
-  managementGroups?: Array<GoogleCloudSecuritycenterV2AzureManagementGroup>;
+  managementGroups?: ReadonlyArray<GoogleCloudSecuritycenterV2AzureManagementGroup>;
   /** The Azure Entra tenant associated with the resource. */
   tenant?: GoogleCloudSecuritycenterV2AzureTenant;
 }
@@ -3346,7 +3346,7 @@ export interface GoogleCloudSecuritycenterV2AwsMetadata {
   /** The AWS organization associated with the resource. */
   organization?: GoogleCloudSecuritycenterV2AwsOrganization;
   /** A list of AWS organizational units associated with the resource, ordered from lowest level (closest to the account) to highest level. */
-  organizationalUnits?: Array<GoogleCloudSecuritycenterV2AwsOrganizationalUnit>;
+  organizationalUnits?: ReadonlyArray<GoogleCloudSecuritycenterV2AwsOrganizationalUnit>;
   /** The AWS account associated with the resource. */
   account?: GoogleCloudSecuritycenterV2AwsAccount;
 }
@@ -3362,7 +3362,7 @@ export const GoogleCloudSecuritycenterV2AwsMetadata =
 
 export interface GoogleCloudSecuritycenterV2ResourcePath {
   /** The list of nodes that make the up resource path, ordered from lowest level to highest level. */
-  nodes?: Array<GoogleCloudSecuritycenterV2ResourcePathNode>;
+  nodes?: ReadonlyArray<GoogleCloudSecuritycenterV2ResourcePathNode>;
 }
 
 export const GoogleCloudSecuritycenterV2ResourcePath =
@@ -3456,7 +3456,7 @@ export interface AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3468,7 +3468,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
 export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3480,7 +3480,7 @@ export interface GoogleCloudSecuritycenterV2IpRule {
   /** The IP protocol this rule applies to. This value can either be one of the following well known protocol strings (TCP, UDP, ICMP, ESP, AH, IPIP, SCTP) or a string representation of the integer value. */
   protocol?: string;
   /** Optional. An optional list of ports to which this rule applies. This field is only applicable for the UDP or (S)TCP protocols. Each entry must be either an integer or a range including a min and max port number. */
-  portRanges?: Array<GoogleCloudSecuritycenterV2PortRange>;
+  portRanges?: ReadonlyArray<GoogleCloudSecuritycenterV2PortRange>;
 }
 
 export const GoogleCloudSecuritycenterV2IpRule =
@@ -3493,7 +3493,7 @@ export const GoogleCloudSecuritycenterV2IpRule =
 
 export interface GoogleCloudSecuritycenterV2Denied {
   /** Optional. Optional list of denied IP rules. */
-  ipRules?: Array<GoogleCloudSecuritycenterV2IpRule>;
+  ipRules?: ReadonlyArray<GoogleCloudSecuritycenterV2IpRule>;
 }
 
 export const GoogleCloudSecuritycenterV2Denied =
@@ -3522,7 +3522,7 @@ export const GoogleCloudSecuritycenterV2Package =
 
 export interface GoogleCloudSecuritycenterV1ResourceSelector {
   /** The resource types to run the detector on. */
-  resourceTypes?: Array<string>;
+  resourceTypes?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudSecuritycenterV1ResourceSelector =
@@ -3563,7 +3563,7 @@ export const GoogleCloudSecuritycenterV1Property =
 
 export interface GoogleCloudSecuritycenterV1CustomOutputSpec {
   /** A list of custom output properties to add to the finding. */
-  properties?: Array<GoogleCloudSecuritycenterV1Property>;
+  properties?: ReadonlyArray<GoogleCloudSecuritycenterV1Property>;
 }
 
 export const GoogleCloudSecuritycenterV1CustomOutputSpec =
@@ -3655,7 +3655,7 @@ export const GoogleCloudSecuritycenterV2Control =
 
 export interface GoogleCloudSecuritycenterV2Framework {
   /** Category of the framework associated with the finding. E.g. Security Benchmark, or Assured Workloads */
-  category?: Array<
+  category?: ReadonlyArray<
     | "FRAMEWORK_CATEGORY_UNSPECIFIED"
     | "SECURITY_BENCHMARKS"
     | "ASSURED_WORKLOADS"
@@ -3673,7 +3673,7 @@ export interface GoogleCloudSecuritycenterV2Framework {
     | "FRAMEWORK_TYPE_CUSTOM"
     | (string & {});
   /** The controls associated with the framework. */
-  controls?: Array<GoogleCloudSecuritycenterV2Control>;
+  controls?: ReadonlyArray<GoogleCloudSecuritycenterV2Control>;
   /** Name of the framework associated with the finding */
   name?: string;
 }
@@ -3717,7 +3717,7 @@ export interface GoogleCloudSecuritycenterV2NodePool {
   /** Kubernetes node pool name. */
   name?: string;
   /** Nodes associated with the finding. */
-  nodes?: Array<GoogleCloudSecuritycenterV2Node>;
+  nodes?: ReadonlyArray<GoogleCloudSecuritycenterV2Node>;
 }
 
 export const GoogleCloudSecuritycenterV2NodePool =
@@ -3743,7 +3743,7 @@ export interface GoogleCloudSecuritycenterV2Container {
   /** Optional container image ID, if provided by the container runtime. Uniquely identifies the container image launched using a container image digest. */
   imageId?: string;
   /** Container labels, as provided by the container runtime. */
-  labels?: Array<GoogleCloudSecuritycenterV2Label>;
+  labels?: ReadonlyArray<GoogleCloudSecuritycenterV2Label>;
   /** Container image URI provided when configuring a pod or container. This string can identify a container image version using mutable tags. */
   uri?: string;
   /** The time that the container was created. */
@@ -3765,7 +3765,7 @@ export interface GoogleCloudSecuritycenterV2Object {
   /** Kubernetes object namespace. Must be a valid DNS label. Named "ns" to avoid collision with C++ namespace keyword. For details see https://kubernetes.io/docs/tasks/administer-cluster/namespaces/. */
   ns?: string;
   /** Pod containers associated with this finding, if any. */
-  containers?: Array<GoogleCloudSecuritycenterV2Container>;
+  containers?: ReadonlyArray<GoogleCloudSecuritycenterV2Container>;
   /** Kubernetes object kind, such as "Namespace". */
   kind?: string;
   /** Kubernetes object name. For details see https://kubernetes.io/docs/concepts/overview/working-with-objects/names/. */
@@ -3810,7 +3810,7 @@ export interface GoogleCloudSecuritycenterV2Binding {
   /** The Role or ClusterRole referenced by the binding. */
   role?: GoogleCloudSecuritycenterV2Role;
   /** Represents one or more subjects that are bound to the role. Not always available for PATCH requests. */
-  subjects?: Array<GoogleCloudSecuritycenterV2Subject>;
+  subjects?: ReadonlyArray<GoogleCloudSecuritycenterV2Subject>;
   /** Namespace for the binding. */
   ns?: string;
   /** Name for the binding. */
@@ -3831,9 +3831,9 @@ export interface GoogleCloudSecuritycenterV2Pod {
   /** Kubernetes Pod name. */
   name?: string;
   /** Pod labels. For Kubernetes containers, these are applied to the container. */
-  labels?: Array<GoogleCloudSecuritycenterV2Label>;
+  labels?: ReadonlyArray<GoogleCloudSecuritycenterV2Label>;
   /** Pod containers associated with this finding, if any. */
-  containers?: Array<GoogleCloudSecuritycenterV2Container>;
+  containers?: ReadonlyArray<GoogleCloudSecuritycenterV2Container>;
 }
 
 export const GoogleCloudSecuritycenterV2Pod =
@@ -3876,19 +3876,19 @@ export const GoogleCloudSecuritycenterV2AccessReview =
 
 export interface GoogleCloudSecuritycenterV2Kubernetes {
   /** Provides Kubernetes role information for findings that involve [Roles or ClusterRoles](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control). */
-  roles?: Array<GoogleCloudSecuritycenterV2Role>;
+  roles?: ReadonlyArray<GoogleCloudSecuritycenterV2Role>;
   /** GKE [node pools](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pools) associated with the finding. This field contains node pool information for each node, when it is available. */
-  nodePools?: Array<GoogleCloudSecuritycenterV2NodePool>;
+  nodePools?: ReadonlyArray<GoogleCloudSecuritycenterV2NodePool>;
   /** Kubernetes objects related to the finding. */
-  objects?: Array<GoogleCloudSecuritycenterV2Object>;
+  objects?: ReadonlyArray<GoogleCloudSecuritycenterV2Object>;
   /** Provides Kubernetes role binding information for findings that involve [RoleBindings or ClusterRoleBindings](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control). */
-  bindings?: Array<GoogleCloudSecuritycenterV2Binding>;
+  bindings?: ReadonlyArray<GoogleCloudSecuritycenterV2Binding>;
   /** Kubernetes [Pods](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) associated with the finding. This field contains Pod records for each container that is owned by a Pod. */
-  pods?: Array<GoogleCloudSecuritycenterV2Pod>;
+  pods?: ReadonlyArray<GoogleCloudSecuritycenterV2Pod>;
   /** Provides Kubernetes [node](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture#nodes) information. */
-  nodes?: Array<GoogleCloudSecuritycenterV2Node>;
+  nodes?: ReadonlyArray<GoogleCloudSecuritycenterV2Node>;
   /** Provides information on any Kubernetes access reviews (privilege checks) relevant to the finding. */
-  accessReviews?: Array<GoogleCloudSecuritycenterV2AccessReview>;
+  accessReviews?: ReadonlyArray<GoogleCloudSecuritycenterV2AccessReview>;
 }
 
 export const GoogleCloudSecuritycenterV2Kubernetes =
@@ -3914,7 +3914,7 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -4008,7 +4008,7 @@ export interface GoogleCloudSecuritycenterV2File {
   /** Path of the file in terms of underlying disk/partition identifiers. */
   diskPath?: GoogleCloudSecuritycenterV2DiskPath;
   /** Operation(s) performed on a file. */
-  operations?: Array<GoogleCloudSecuritycenterV2FileOperation>;
+  operations?: ReadonlyArray<GoogleCloudSecuritycenterV2FileOperation>;
 }
 
 export const GoogleCloudSecuritycenterV2File =
@@ -4051,13 +4051,13 @@ export interface GoogleCloudSecuritycenterV2Process {
   /** The process ID. */
   pid?: string;
   /** File information for libraries loaded by the process. */
-  libraries?: Array<GoogleCloudSecuritycenterV2File>;
+  libraries?: ReadonlyArray<GoogleCloudSecuritycenterV2File>;
   /** True if `env_variables` is incomplete. */
   envVariablesTruncated?: boolean;
   /** Process environment variables. */
-  envVariables?: Array<GoogleCloudSecuritycenterV2EnvironmentVariable>;
+  envVariables?: ReadonlyArray<GoogleCloudSecuritycenterV2EnvironmentVariable>;
   /** Process arguments as JSON encoded strings. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** When the process represents the invocation of a script, `binary` provides information about the interpreter, while `script` provides information about the script file provided to the interpreter. */
   script?: GoogleCloudSecuritycenterV2File;
   /** True if `args` is incomplete. */
@@ -4123,7 +4123,7 @@ export interface GoogleCloudSecuritycenterV2ResourceValueConfig {
   /** Identifier. Name for the resource value configuration */
   name?: string;
   /** Tag values combined with `AND` to check against. For Google Cloud resources, they are tag value IDs in the form of "tagValues/123". Example: `[ "tagValues/123", "tagValues/456", "tagValues/789" ]` https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing */
-  tagValues?: Array<string>;
+  tagValues?: ReadonlyArray<string>;
   /** Project or folder to scope this configuration to. For example, "project/456" would apply this configuration only to resources in "project/456" scope and will be checked with `AND` of other resources. */
   scope?: string;
   /** Output only. Timestamp this resource value configuration was created. */
@@ -4190,7 +4190,7 @@ export interface ValuedResource {
     | "RESOURCE_VALUE_HIGH"
     | (string & {});
   /** List of resource value configurations' metadata used to determine the value of this resource. Maximum of 100. */
-  resourceValueConfigsUsed?: Array<ResourceValueConfigMetadata>;
+  resourceValueConfigsUsed?: ReadonlyArray<ResourceValueConfigMetadata>;
   /** The [resource type](https://cloud.google.com/asset-inventory/docs/supported-asset-types) of the valued resource. */
   resourceType?: string;
 }
@@ -4209,7 +4209,7 @@ export const ValuedResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListValuedResourcesResponse {
   /** The valued resources that the attack path simulation identified. */
-  valuedResources?: Array<ValuedResource>;
+  valuedResources?: ReadonlyArray<ValuedResource>;
   /** Token to retrieve the next page of results, or empty if there are no more results. */
   nextPageToken?: string;
   /** The estimated total number of results matching the query. */
@@ -4416,7 +4416,7 @@ export interface ListDescendantSecurityHealthAnalyticsCustomModulesResponse {
   /** If not empty, indicates that there may be more custom modules to be returned. */
   nextPageToken?: string;
   /** Custom modules belonging to the requested parent and its descendants. */
-  securityHealthAnalyticsCustomModules?: Array<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>;
+  securityHealthAnalyticsCustomModules?: ReadonlyArray<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>;
 }
 
 export const ListDescendantSecurityHealthAnalyticsCustomModulesResponse =
@@ -4435,7 +4435,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
@@ -4448,13 +4448,13 @@ export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Policy {
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
 }
 
 export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4543,7 +4543,7 @@ export interface GoogleCloudSecuritycenterV2MemoryHashSignature {
   /** The binary family. */
   binaryFamily?: string;
   /** The list of memory hash detections contributing to the binary family match. */
-  detections?: Array<GoogleCloudSecuritycenterV2Detection>;
+  detections?: ReadonlyArray<GoogleCloudSecuritycenterV2Detection>;
 }
 
 export const GoogleCloudSecuritycenterV2MemoryHashSignature =
@@ -4622,7 +4622,7 @@ export interface SecurityCenterProperties {
   /** The user defined display name for the parent of this resource. */
   resourceParentDisplayName?: string;
   /** Owners of the Google Cloud resource. */
-  resourceOwners?: Array<string>;
+  resourceOwners?: ReadonlyArray<string>;
   /** The type of the Google Cloud resource. Examples include: APPLICATION, PROJECT, and ORGANIZATION. This is a case insensitive field defined by Security Command Center and/or the producer of the resource and is immutable after create time. */
   resourceType?: string;
   /** The user defined display name for the project of this resource. */
@@ -4632,7 +4632,7 @@ export interface SecurityCenterProperties {
   /** The user defined display name for this resource. */
   resourceDisplayName?: string;
   /** Contains a Folder message for each folder in the assets ancestry. The first folder is the deepest nested folder, and the last folder is the folder directly under the Organization. */
-  folders?: Array<Folder>;
+  folders?: ReadonlyArray<Folder>;
   /** The full resource name of the Google Cloud resource this asset represents. This field is immutable after create time. See: https://cloud.google.com/apis/design/resource_names#full_resource_name */
   resourceName?: string;
   /** The full resource name of the project the resource belongs to. See: https://cloud.google.com/apis/design/resource_names#full_resource_name */
@@ -4721,9 +4721,9 @@ export const GoogleCloudSecuritycenterV2CloudControl =
 
 export interface GoogleCloudSecuritycenterV2ComplianceDetails {
   /** Cloud Control Deployments associated with the finding. For example, organizations/123/locations/global/cloudControlDeployments/deploymentIdentifier */
-  cloudControlDeploymentNames?: Array<string>;
+  cloudControlDeploymentNames?: ReadonlyArray<string>;
   /** Details of Frameworks associated with the finding */
-  frameworks?: Array<GoogleCloudSecuritycenterV2Framework>;
+  frameworks?: ReadonlyArray<GoogleCloudSecuritycenterV2Framework>;
   /** CloudControl associated with the finding */
   cloudControl?: GoogleCloudSecuritycenterV2CloudControl;
 }
@@ -4826,13 +4826,13 @@ export interface GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes {
   /** User-defined criticality information. */
   criticality?: GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality;
   /** Business team that ensures user needs are met and value is delivered */
-  businessOwners?: Array<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo>;
+  businessOwners?: ReadonlyArray<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo>;
   /** Developer team that owns development and coding. */
-  developerOwners?: Array<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo>;
+  developerOwners?: ReadonlyArray<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo>;
   /** User-defined environment information. */
   environment?: GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnvironment;
   /** Operator team that ensures runtime and operations. */
-  operatorOwners?: Array<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo>;
+  operatorOwners?: ReadonlyArray<GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo>;
 }
 
 export const GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes =
@@ -5017,7 +5017,7 @@ export const GoogleCloudSecuritycenterV2IssueSecurityContextAggregatedCount =
 
 export interface GoogleCloudSecuritycenterV2IssueSecurityContextContext {
   /** Context values. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
   /** Context type. */
   type?: string;
 }
@@ -5125,11 +5125,11 @@ export interface GoogleCloudSecuritycenterV2Issue {
   /** Output only. The time the issue was created. */
   createTime?: string;
   /** The domains of the issue. */
-  domains?: Array<GoogleCloudSecuritycenterV2IssueDomain>;
+  domains?: ReadonlyArray<GoogleCloudSecuritycenterV2IssueDomain>;
   /** Approaches to remediate the issue in Markdown format. */
-  remediations?: Array<string>;
+  remediations?: ReadonlyArray<string>;
   /** Additional resources associated with the issue. */
-  secondaryResources?: Array<GoogleCloudSecuritycenterV2IssueResource>;
+  secondaryResources?: ReadonlyArray<GoogleCloudSecuritycenterV2IssueResource>;
   /** The finding category or rule name that generated the issue. */
   detection?: string;
   /** The time the issue was last observed. */
@@ -5137,7 +5137,7 @@ export interface GoogleCloudSecuritycenterV2Issue {
   /** Output only. The time the issue was last updated. */
   updateTime?: string;
   /** The security context of the issue. */
-  securityContexts?: Array<GoogleCloudSecuritycenterV2IssueSecurityContext>;
+  securityContexts?: ReadonlyArray<GoogleCloudSecuritycenterV2IssueSecurityContext>;
   /** Output only. The state of the issue. */
   state?: "STATE_UNSPECIFIED" | "ACTIVE" | "INACTIVE" | (string & {});
   /** The mute information of the issue. */
@@ -5151,7 +5151,7 @@ export interface GoogleCloudSecuritycenterV2Issue {
     | "LOW"
     | (string & {});
   /** The findings related to the issue. */
-  relatedFindings?: Array<GoogleCloudSecuritycenterV2IssueFinding>;
+  relatedFindings?: ReadonlyArray<GoogleCloudSecuritycenterV2IssueFinding>;
   /** The description of the issue in Markdown format. */
   description?: string;
 }
@@ -5258,7 +5258,7 @@ export interface GoogleCloudSecuritycenterV2MitreAttack {
     | "IMPACT"
     | (string & {});
   /** Additional MITRE ATT&CK tactics related to this finding, if any. */
-  additionalTactics?: Array<
+  additionalTactics?: ReadonlyArray<
     | "TACTIC_UNSPECIFIED"
     | "RECONNAISSANCE"
     | "RESOURCE_DEVELOPMENT"
@@ -5277,7 +5277,7 @@ export interface GoogleCloudSecuritycenterV2MitreAttack {
     | (string & {})
   >;
   /** Additional MITRE ATT&CK techniques related to this finding, if any, along with any of their respective parent techniques. */
-  additionalTechniques?: Array<
+  additionalTechniques?: ReadonlyArray<
     | "TECHNIQUE_UNSPECIFIED"
     | "DATA_OBFUSCATION"
     | "DATA_OBFUSCATION_STEGANOGRAPHY"
@@ -5422,7 +5422,7 @@ export interface GoogleCloudSecuritycenterV2MitreAttack {
   /** The MITRE ATT&CK version referenced by the above fields. E.g. "8". */
   version?: string;
   /** The MITRE ATT&CK technique most closely represented by this finding, if any. primary_techniques is a repeated field because there are multiple levels of MITRE ATT&CK techniques. If the technique most closely represented by this finding is a sub-technique (e.g. `SCANNING_IP_BLOCKS`), both the sub-technique and its parent technique(s) will be listed (e.g. `SCANNING_IP_BLOCKS`, `ACTIVE_SCANNING`). */
-  primaryTechniques?: Array<
+  primaryTechniques?: ReadonlyArray<
     | "TECHNIQUE_UNSPECIFIED"
     | "DATA_OBFUSCATION"
     | "DATA_OBFUSCATION_STEGANOGRAPHY"
@@ -5648,7 +5648,7 @@ export interface GoogleCloudSecuritycenterV2Access {
   /** The caller's user agent string associated with the finding. */
   userAgent?: string;
   /** The identity delegation history of an authenticated service account that made the request. The `serviceAccountDelegationInfo[]` object contains information about the real authorities that try to access Google Cloud resources by delegating on a service account. When multiple authorities are present, they are guaranteed to be sorted based on the original ordering of the identity delegation events. */
-  serviceAccountDelegationInfo?: Array<GoogleCloudSecuritycenterV2ServiceAccountDelegationInfo>;
+  serviceAccountDelegationInfo?: ReadonlyArray<GoogleCloudSecuritycenterV2ServiceAccountDelegationInfo>;
   /** A string that represents the principal_subject that is associated with the identity. Unlike `principal_email`, `principal_subject` supports principals that aren't associated with email addresses, such as third party principals. For most identities, the format is `principal://iam.googleapis.com/{identity pool name}/subject/{subject}`. Some GKE identities, such as GKE_WORKLOAD, FREEFORM, and GKE_HUB_WORKLOAD, still use the legacy format `serviceAccount:{identity pool name}[{subject}]`. */
   principalSubject?: string;
   /** This is the API service that the service account made a call to, e.g. "iam.googleapis.com" */
@@ -5846,9 +5846,9 @@ export interface AttackPathNode {
   /** Unique id of the attack path node. */
   uuid?: string;
   /** A list of attack step nodes that exist in this attack path node. */
-  attackSteps?: Array<AttackStepNode>;
+  attackSteps?: ReadonlyArray<AttackStepNode>;
   /** The findings associated with this node in the attack path. */
-  associatedFindings?: Array<PathNodeAssociatedFinding>;
+  associatedFindings?: ReadonlyArray<PathNodeAssociatedFinding>;
 }
 
 export const AttackPathNode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5874,11 +5874,11 @@ export const AttackPathEdge = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AttackPath {
   /** A list of nodes that exist in this attack path. */
-  pathNodes?: Array<AttackPathNode>;
+  pathNodes?: ReadonlyArray<AttackPathNode>;
   /** The attack path name, for example, `organizations/12/simulation/34/valuedResources/56/attackPaths/78` */
   name?: string;
   /** A list of the edges between nodes in this attack path. */
-  edges?: Array<AttackPathEdge>;
+  edges?: ReadonlyArray<AttackPathEdge>;
 }
 
 export const AttackPath = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -5889,7 +5889,7 @@ export const AttackPath = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAttackPathsResponse {
   /** The attack paths that the attack path simulation identified. */
-  attackPaths?: Array<AttackPath>;
+  attackPaths?: ReadonlyArray<AttackPath>;
   /** Token to retrieve the next page of results, or empty if there are no more results. */
   nextPageToken?: string;
 }
@@ -5938,7 +5938,7 @@ export interface GoogleCloudSecuritycenterV2Compliance {
   /** Industry-wide compliance standards or benchmarks, such as CIS, PCI, and OWASP. */
   standard?: string;
   /** Policies within the standard or benchmark, for example, A.12.4.1 */
-  ids?: Array<string>;
+  ids?: ReadonlyArray<string>;
   /** Version of the standard or benchmark, for example, 1.1 */
   version?: string;
 }
@@ -5977,7 +5977,7 @@ export const GoogleCloudSecuritycenterV2TicketInfo =
 
 export interface GoogleCloudSecuritycenterV2ExternalSystem {
   /** References primary/secondary etc assignees in the external system. */
-  assignees?: Array<string>;
+  assignees?: ReadonlyArray<string>;
   /** The identifier that's used to track the finding's corresponding case in the external system. */
   externalUid?: string;
   /** The time when the case was created, as reported by the external system. */
@@ -6038,11 +6038,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -6068,7 +6068,7 @@ export const GoogleCloudSecuritycenterV2Reference =
 
 export interface GoogleCloudSecuritycenterV2Cwe {
   /** Any reference to the details on the CWE, for example, https://cwe.mitre.org/data/definitions/94.html */
-  references?: Array<GoogleCloudSecuritycenterV2Reference>;
+  references?: ReadonlyArray<GoogleCloudSecuritycenterV2Reference>;
   /** The CWE identifier, e.g. CWE-94 */
   id?: string;
 }
@@ -6102,7 +6102,7 @@ export const CustomModuleValidationError =
 
 export interface CustomModuleValidationErrors {
   /** The list of errors. */
-  errors?: Array<CustomModuleValidationError>;
+  errors?: ReadonlyArray<CustomModuleValidationError>;
 }
 
 export const CustomModuleValidationErrors =
@@ -6171,7 +6171,7 @@ export interface ListEffectiveSecurityHealthAnalyticsCustomModulesResponse {
   /** If not empty, indicates that there may be more effective custom modules to be returned. */
   nextPageToken?: string;
   /** Effective custom modules belonging to the requested parent. */
-  effectiveSecurityHealthAnalyticsCustomModules?: Array<GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule>;
+  effectiveSecurityHealthAnalyticsCustomModules?: ReadonlyArray<GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule>;
 }
 
 export const ListEffectiveSecurityHealthAnalyticsCustomModulesResponse =
@@ -6188,7 +6188,7 @@ export const ListEffectiveSecurityHealthAnalyticsCustomModulesResponse =
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -6216,7 +6216,7 @@ export const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSourcesResponse {
   /** Sources belonging to the requested parent. */
-  sources?: Array<Source>;
+  sources?: ReadonlyArray<Source>;
   /** Token to retrieve the next page of results, or empty if there are no more results. */
   nextPageToken?: string;
 }
@@ -6329,7 +6329,7 @@ export interface GoogleCloudSecuritycenterV2Cve {
   /** The unique identifier for the vulnerability. e.g. CVE-2021-34527 */
   id?: string;
   /** Additional information about the CVE. e.g. https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-34527 */
-  references?: Array<GoogleCloudSecuritycenterV2Reference>;
+  references?: ReadonlyArray<GoogleCloudSecuritycenterV2Reference>;
   /** Describe Common Vulnerability Scoring System specified at https://www.first.org/cvss/v3.1/specification-document */
   cvssv3?: GoogleCloudSecuritycenterV2Cvssv3;
 }
@@ -6370,7 +6370,7 @@ export interface GoogleCloudSecuritycenterV2Vulnerability {
   /** Represents whether the vulnerability is reachable (detected via static analysis) */
   reachable?: boolean;
   /** Represents one or more Common Weakness Enumeration (CWE) information on this vulnerability. */
-  cwes?: Array<GoogleCloudSecuritycenterV2Cwe>;
+  cwes?: ReadonlyArray<GoogleCloudSecuritycenterV2Cwe>;
   /** The fixed package is relevant to the finding. */
   fixedPackage?: GoogleCloudSecuritycenterV2Package;
   /** CVE stands for Common Vulnerabilities and Exposures (https://cve.mitre.org/about/) */
@@ -6465,7 +6465,7 @@ export interface GoogleCloudSecuritycenterV1p1beta1Resource {
   /** The project id that the resource belongs to. */
   projectDisplayName?: string;
   /** Output only. Contains a Folder message for each folder in the assets ancestry. The first folder is the deepest nested folder, and the last folder is the folder directly under the Organization. */
-  folders?: Array<GoogleCloudSecuritycenterV1p1beta1Folder>;
+  folders?: ReadonlyArray<GoogleCloudSecuritycenterV1p1beta1Folder>;
   /** The full resource name of project that the resource belongs to. */
   project?: string;
 }
@@ -6496,7 +6496,7 @@ export const GoogleCloudSecuritycenterV2SecretEnvironmentVariable =
 
 export interface AssetDiscoveryConfig {
   /** The project ids to use for filtering asset discovery. */
-  projectIds?: Array<string>;
+  projectIds?: ReadonlyArray<string>;
   /** The mode to use for filtering asset discovery. */
   inclusionMode?:
     | "INCLUSION_MODE_UNSPECIFIED"
@@ -6504,7 +6504,7 @@ export interface AssetDiscoveryConfig {
     | "EXCLUDE"
     | (string & {});
   /** The folder ids to use for filtering asset discovery. It consists of only digits, e.g., 756619654966. */
-  folderIds?: Array<string>;
+  folderIds?: ReadonlyArray<string>;
 }
 
 export const AssetDiscoveryConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -6562,7 +6562,7 @@ export const EventThreatDetectionCustomModule =
 
 export interface ListDescendantEventThreatDetectionCustomModulesResponse {
   /** Custom modules belonging to the requested parent. */
-  eventThreatDetectionCustomModules?: Array<EventThreatDetectionCustomModule>;
+  eventThreatDetectionCustomModules?: ReadonlyArray<EventThreatDetectionCustomModule>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -6588,7 +6588,7 @@ export interface ListEventThreatDetectionCustomModulesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Custom modules belonging to the requested parent. */
-  eventThreatDetectionCustomModules?: Array<EventThreatDetectionCustomModule>;
+  eventThreatDetectionCustomModules?: ReadonlyArray<EventThreatDetectionCustomModule>;
 }
 
 export const ListEventThreatDetectionCustomModulesResponse =
@@ -6601,7 +6601,7 @@ export const ListEventThreatDetectionCustomModulesResponse =
 
 export interface GroupFindingsResponse {
   /** Group results. There exists an element for each existing unique combination of property/values. The element contains a count for the number of times those specific property/values appear. */
-  groupByResults?: Array<GroupResult>;
+  groupByResults?: ReadonlyArray<GroupResult>;
   /** Time used for executing the groupBy request. */
   readTime?: string;
   /** Token to retrieve the next page of results, or empty if there are no more results. */
@@ -6660,7 +6660,7 @@ export interface GoogleCloudSecuritycenterV1ResourceValueConfig {
   /** Name for the resource value configuration */
   name?: string;
   /** Required. Tag values combined with `AND` to check against. For Google Cloud resources, they are tag value IDs in the form of "tagValues/123". Example: `[ "tagValues/123", "tagValues/456", "tagValues/789" ]` https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing */
-  tagValues?: Array<string>;
+  tagValues?: ReadonlyArray<string>;
   /** Project or folder to scope this configuration to. For example, "project/456" would apply this configuration only to resources in "project/456" scope will be checked with `AND` of other resources. */
   scope?: string;
   /** Output only. Timestamp this resource value configuration was created. */
@@ -6701,7 +6701,7 @@ export const GoogleCloudSecuritycenterV1ResourceValueConfig =
 
 export interface BatchCreateResourceValueConfigsResponse {
   /** The resource value configs created */
-  resourceValueConfigs?: Array<GoogleCloudSecuritycenterV1ResourceValueConfig>;
+  resourceValueConfigs?: ReadonlyArray<GoogleCloudSecuritycenterV1ResourceValueConfig>;
 }
 
 export const BatchCreateResourceValueConfigsResponse =
@@ -6768,7 +6768,7 @@ export const GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse =
 
 export interface ListResourceValueConfigsResponse {
   /** The resource value configs from the specified parent. */
-  resourceValueConfigs?: Array<GoogleCloudSecuritycenterV1ResourceValueConfig>;
+  resourceValueConfigs?: ReadonlyArray<GoogleCloudSecuritycenterV1ResourceValueConfig>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -6785,7 +6785,7 @@ export interface GoogleCloudSecuritycenterV2ToxicCombination {
   /** The [Attack exposure score](https://cloud.google.com/security-command-center/docs/attack-exposure-learn#attack_exposure_scores) of this toxic combination. The score is a measure of how much this toxic combination exposes one or more high-value resources to potential attack. */
   attackExposureScore?: number;
   /** List of resource names of findings associated with this toxic combination. For example, `organizations/123/sources/456/findings/789`. */
-  relatedFindings?: Array<string>;
+  relatedFindings?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudSecuritycenterV2ToxicCombination =
@@ -6894,11 +6894,11 @@ export const GoogleCloudSecuritycenterV2KernelRootkit =
 
 export interface GoogleCloudSecuritycenterV2Exfiltration {
   /** If there are multiple targets, each target would get a complete copy of the "joined" source data. */
-  targets?: Array<GoogleCloudSecuritycenterV2ExfilResource>;
+  targets?: ReadonlyArray<GoogleCloudSecuritycenterV2ExfilResource>;
   /** Total exfiltrated bytes processed for the entire job. */
   totalExfiltratedBytes?: string;
   /** If there are multiple sources, then the data is considered "joined" between them. For instance, BigQuery can join multiple tables, and each table would be considered a source. */
-  sources?: Array<GoogleCloudSecuritycenterV2ExfilResource>;
+  sources?: ReadonlyArray<GoogleCloudSecuritycenterV2ExfilResource>;
 }
 
 export const GoogleCloudSecuritycenterV2Exfiltration =
@@ -6998,7 +6998,7 @@ export interface ListEffectiveEventThreatDetectionCustomModulesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** Effective custom modules belonging to the requested parent. */
-  effectiveEventThreatDetectionCustomModules?: Array<EffectiveEventThreatDetectionCustomModule>;
+  effectiveEventThreatDetectionCustomModules?: ReadonlyArray<EffectiveEventThreatDetectionCustomModule>;
 }
 
 export const ListEffectiveEventThreatDetectionCustomModulesResponse =
@@ -7044,7 +7044,7 @@ export interface GoogleCloudSecuritycenterV2MuteInfo {
   /** If set, the static mute applied to this finding. Static mutes override dynamic mutes. If unset, there is no static mute. */
   staticMute?: GoogleCloudSecuritycenterV2StaticMute;
   /** The list of dynamic mute rules that currently match the finding. */
-  dynamicMuteRecords?: Array<GoogleCloudSecuritycenterV2DynamicMuteRecord>;
+  dynamicMuteRecords?: ReadonlyArray<GoogleCloudSecuritycenterV2DynamicMuteRecord>;
 }
 
 export const GoogleCloudSecuritycenterV2MuteInfo =
@@ -7057,7 +7057,7 @@ export const GoogleCloudSecuritycenterV2MuteInfo =
 
 export interface GoogleCloudSecuritycenterV2Allowed {
   /** Optional. Optional list of allowed IP rules. */
-  ipRules?: Array<GoogleCloudSecuritycenterV2IpRule>;
+  ipRules?: ReadonlyArray<GoogleCloudSecuritycenterV2IpRule>;
 }
 
 export const GoogleCloudSecuritycenterV2Allowed =
@@ -7069,15 +7069,15 @@ export interface GoogleCloudSecuritycenterV2IpRules {
   /** Tuple with denied rules. */
   denied?: GoogleCloudSecuritycenterV2Denied;
   /** If destination IP ranges are specified, the firewall rule applies only to traffic that has a destination IP address in these ranges. These ranges must be expressed in CIDR format. Only supports IPv4. */
-  destinationIpRanges?: Array<string>;
+  destinationIpRanges?: ReadonlyArray<string>;
   /** Name of the network protocol service, such as FTP, that is exposed by the open port. Follows the naming convention available at: https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml. */
-  exposedServices?: Array<string>;
+  exposedServices?: ReadonlyArray<string>;
   /** Tuple with allowed rules. */
   allowed?: GoogleCloudSecuritycenterV2Allowed;
   /** The direction that the rule is applicable to, one of ingress or egress. */
   direction?: "DIRECTION_UNSPECIFIED" | "INGRESS" | "EGRESS" | (string & {});
   /** If source IP ranges are specified, the firewall rule applies only to traffic that has a source IP address in these ranges. These ranges must be expressed in CIDR format. Only supports IPv4. */
-  sourceIpRanges?: Array<string>;
+  sourceIpRanges?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudSecuritycenterV2IpRules =
@@ -7092,7 +7092,7 @@ export const GoogleCloudSecuritycenterV2IpRules =
 
 export interface GoogleCloudSecuritycenterV2ContactDetails {
   /** A list of contacts */
-  contacts?: Array<GoogleCloudSecuritycenterV2Contact>;
+  contacts?: ReadonlyArray<GoogleCloudSecuritycenterV2Contact>;
 }
 
 export const GoogleCloudSecuritycenterV2ContactDetails =
@@ -7292,7 +7292,7 @@ export interface GoogleCloudSecuritycenterV2BackupDisasterRecovery {
   /** The name of the Backup and DR appliance that captures, moves, and manages the lifecycle of backup data. For example, `backup-server-57137`. */
   appliance?: string;
   /** The names of Backup and DR applications. An application is a VM, database, or file system on a managed host monitored by a backup and recovery appliance. For example, `centos7-01-vol00`, `centos7-01-vol01`, `centos7-01-vol02`. */
-  applications?: Array<string>;
+  applications?: ReadonlyArray<string>;
   /** The name of a Backup and DR template which comprises one or more backup policies. See the [Backup and DR documentation](https://cloud.google.com/backup-disaster-recovery/docs/concepts/backup-plan#temp) for more information. For example, `snap-ov`. */
   backupTemplate?: string;
   /** The backup type of the Backup and DR image. For example, `Snapshot`, `Remote Snapshot`, `OnVault`. */
@@ -7304,9 +7304,9 @@ export interface GoogleCloudSecuritycenterV2BackupDisasterRecovery {
   /** The timestamp at which the Backup and DR backup was created. */
   backupCreateTime?: string;
   /** The names of Backup and DR policies that are associated with a template and that define when to run a backup, how frequently to run a backup, and how long to retain the backup image. For example, `onvaults`. */
-  policies?: Array<string>;
+  policies?: ReadonlyArray<string>;
   /** The names of Backup and DR advanced policy options of a policy applying to an application. See the [Backup and DR documentation on policy options](https://cloud.google.com/backup-disaster-recovery/docs/create-plan/policy-settings). For example, `skipofflineappsincongrp, nounmap`. */
-  policyOptions?: Array<string>;
+  policyOptions?: ReadonlyArray<string>;
   /** The name of the Backup and DR resource profile that specifies the storage media for backups of application and VM data. See the [Backup and DR documentation on profiles](https://cloud.google.com/backup-disaster-recovery/docs/concepts/backup-plan#profile). For example, `GCP`. */
   profile?: string;
 }
@@ -7329,13 +7329,13 @@ export const GoogleCloudSecuritycenterV2BackupDisasterRecovery =
 
 export interface GoogleCloudSecuritycenterV2Indicator {
   /** The list of IP addresses that are associated with the finding. */
-  ipAddresses?: Array<string>;
+  ipAddresses?: ReadonlyArray<string>;
   /** The list of URIs associated to the Findings. */
-  uris?: Array<string>;
+  uris?: ReadonlyArray<string>;
   /** The list of matched signatures indicating that the given process is present in the environment. */
-  signatures?: Array<GoogleCloudSecuritycenterV2ProcessSignature>;
+  signatures?: ReadonlyArray<GoogleCloudSecuritycenterV2ProcessSignature>;
   /** List of domains associated to the Finding. */
-  domains?: Array<string>;
+  domains?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudSecuritycenterV2Indicator =
@@ -7401,9 +7401,9 @@ export const GoogleCloudSecuritycenterV2AgentDataAccessEvent =
 
 export interface GoogleCloudSecuritycenterV2VertexAi {
   /** Pipelines associated with the finding. */
-  pipelines?: Array<GoogleCloudSecuritycenterV2Pipeline>;
+  pipelines?: ReadonlyArray<GoogleCloudSecuritycenterV2Pipeline>;
   /** Datasets associated with the finding. */
-  datasets?: Array<GoogleCloudSecuritycenterV2Dataset>;
+  datasets?: ReadonlyArray<GoogleCloudSecuritycenterV2Dataset>;
 }
 
 export const GoogleCloudSecuritycenterV2VertexAi =
@@ -7420,7 +7420,7 @@ export interface GoogleCloudSecuritycenterV2SecurityPosture {
   /** Name of the posture, for example, `CIS-Posture`. */
   name?: string;
   /** The details about a change in an updated policy that violates the deployed posture. */
-  policyDriftDetails?: Array<GoogleCloudSecuritycenterV2PolicyDriftDetails>;
+  policyDriftDetails?: ReadonlyArray<GoogleCloudSecuritycenterV2PolicyDriftDetails>;
   /** The name of the posture deployment, for example, `organizations/{org_id}/posturedeployments/{posture_deployment_id}`. */
   postureDeployment?: string;
   /** The name of the updated policy set, for example, `cis-policyset`. */
@@ -7470,7 +7470,7 @@ export interface GoogleCloudSecuritycenterV2Database {
   /** The human-readable name of the database that the user connected to. */
   displayName?: string;
   /** The target usernames, roles, or groups of an SQL privilege grant, which is not an IAM policy change. */
-  grantees?: Array<string>;
+  grantees?: ReadonlyArray<string>;
   /** Some database resources may not have the [full resource name](https://google.aip.dev/122#full-resource-names) populated because these resource types are not yet supported by Cloud Asset Inventory (e.g. Cloud SQL databases). In these cases only the display name will be provided. The [full resource name](https://google.aip.dev/122#full-resource-names) of the database that the user connected to, if it is supported by Cloud Asset Inventory. */
   name?: string;
   /** The username used to connect to the database. The username might not be an IAM principal and does not have a set format. */
@@ -7493,7 +7493,7 @@ export const GoogleCloudSecuritycenterV2Database =
 
 export interface GoogleCloudSecuritycenterV2Chokepoint {
   /** List of resource names of findings associated with this chokepoint. For example, organizations/123/sources/456/findings/789. This list will have at most 100 findings. */
-  relatedFindings?: Array<string>;
+  relatedFindings?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudSecuritycenterV2Chokepoint =
@@ -7524,7 +7524,7 @@ export interface GoogleCloudSecuritycenterV2ArtifactGuardPolicies {
   /** The ID of the resource that has policies configured for it. */
   resourceId?: string;
   /** A list of failing policies. */
-  failingPolicies?: Array<GoogleCloudSecuritycenterV2ArtifactGuardPolicy>;
+  failingPolicies?: ReadonlyArray<GoogleCloudSecuritycenterV2ArtifactGuardPolicy>;
 }
 
 export const GoogleCloudSecuritycenterV2ArtifactGuardPolicies =
@@ -7586,13 +7586,13 @@ export interface GoogleCloudSecuritycenterV2Finding {
   /** Disk associated with the finding. */
   disk?: GoogleCloudSecuritycenterV2Disk;
   /** Data flow events associated with the finding. */
-  dataFlowEvents?: Array<GoogleCloudSecuritycenterV2DataFlowEvent>;
+  dataFlowEvents?: ReadonlyArray<GoogleCloudSecuritycenterV2DataFlowEvent>;
   /** Log entries that are relevant to the finding. */
-  logEntries?: Array<GoogleCloudSecuritycenterV2LogEntry>;
+  logEntries?: ReadonlyArray<GoogleCloudSecuritycenterV2LogEntry>;
   /** Identifier. The [relative resource name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding. The following list shows some examples: + `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}` + `organizations/{organization_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` + `folders/{folder_id}/sources/{source_id}/findings/{finding_id}` + `folders/{folder_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` + `projects/{project_id}/sources/{source_id}/findings/{finding_id}` + `projects/{project_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` */
   name?: string;
   /** Contains information about the IP connection associated with the finding. */
-  connections?: Array<GoogleCloudSecuritycenterV2Connection>;
+  connections?: ReadonlyArray<GoogleCloudSecuritycenterV2Connection>;
   /** Output only. The most recent time this finding was muted or unmuted. */
   muteUpdateTime?: string;
   /** Immutable. For findings on Google Cloud resources, the full resource name of the Google Cloud resource this finding is for. See: https://cloud.google.com/apis/design/resource_names#full_resource_name When the finding is for a non-Google Cloud resource, the resourceName can be a customer or partner defined string. */
@@ -7628,7 +7628,7 @@ export interface GoogleCloudSecuritycenterV2Finding {
   /** Immutable. The additional taxonomy group within findings from a given source. Example: "XSS_FLASH_INJECTION" */
   category?: string;
   /** File associated with the finding. */
-  files?: Array<GoogleCloudSecuritycenterV2File>;
+  files?: ReadonlyArray<GoogleCloudSecuritycenterV2File>;
   /** Unique identifier of the module which generated the finding. Example: folders/598186756061/securityHealthAnalyticsSettings/customModules/56799441161885 */
   moduleName?: string;
   /** Kubernetes resources associated with the finding. */
@@ -7638,13 +7638,13 @@ export interface GoogleCloudSecuritycenterV2Finding {
   /** Output only. The name of the Cloud KMS key used to encrypt this finding, if any. */
   cryptoKeyName?: string;
   /** Contains information about the org policies associated with the finding. */
-  orgPolicies?: Array<GoogleCloudSecuritycenterV2OrgPolicy>;
+  orgPolicies?: ReadonlyArray<GoogleCloudSecuritycenterV2OrgPolicy>;
   /** Containers associated with the finding. This field provides information for both Kubernetes and non-Kubernetes containers. */
-  containers?: Array<GoogleCloudSecuritycenterV2Container>;
+  containers?: ReadonlyArray<GoogleCloudSecuritycenterV2Container>;
   /** PolicyViolationSummary associated with the finding. */
   policyViolationSummary?: GoogleCloudSecuritycenterV2PolicyViolationSummary;
   /** Represents IAM bindings associated with the finding. */
-  iamBindings?: Array<GoogleCloudSecuritycenterV2IamBinding>;
+  iamBindings?: ReadonlyArray<GoogleCloudSecuritycenterV2IamBinding>;
   /** Indicates the mute state of a finding (either muted, unmuted or undefined). Unlike other attributes of a finding, a finding provider shouldn't set the value of mute. */
   mute?: "MUTE_UNSPECIFIED" | "MUTED" | "UNMUTED" | "UNDEFINED" | (string & {});
   /** Represents an application associated with the finding. */
@@ -7656,7 +7656,7 @@ export interface GoogleCloudSecuritycenterV2Finding {
   /** Output only. User specified security marks. These marks are entirely managed by the user and come from the SecurityMarks resource that belongs to the finding. */
   securityMarks?: GoogleCloudSecuritycenterV2SecurityMarks;
   /** Represents operating system processes associated with the Finding. */
-  processes?: Array<GoogleCloudSecuritycenterV2Process>;
+  processes?: ReadonlyArray<GoogleCloudSecuritycenterV2Process>;
   /** Secret associated with the finding. */
   secret?: GoogleCloudSecuritycenterV2Secret;
   /** The relative resource name of the source and location the finding belongs to. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name This field is immutable after creation time. The following list shows some examples: + `organizations/{organization_id}/sources/{source_id}` + `folders/{folders_id}/sources/{source_id}` + `projects/{projects_id}/sources/{source_id}` + `organizations/{organization_id}/sources/{source_id}/locations/{location_id}` + `folders/{folders_id}/sources/{source_id}/locations/{location_id}` + `projects/{projects_id}/sources/{source_id}/locations/{location_id}` */
@@ -7664,17 +7664,17 @@ export interface GoogleCloudSecuritycenterV2Finding {
   /** Output only. The human readable display name of the finding source such as "Event Threat Detection" or "Security Health Analytics". */
   parentDisplayName?: string;
   /** Data access events associated with the finding. */
-  dataAccessEvents?: Array<GoogleCloudSecuritycenterV2DataAccessEvent>;
+  dataAccessEvents?: ReadonlyArray<GoogleCloudSecuritycenterV2DataAccessEvent>;
   /** Represents the VPC networks that the resource is attached to. */
-  networks?: Array<GoogleCloudSecuritycenterV2Network>;
+  networks?: ReadonlyArray<GoogleCloudSecuritycenterV2Network>;
   /** The URI that, if available, points to a web page outside of Security Command Center where additional information about the finding can be found. This field is guaranteed to be either empty or a well formed URL. */
   externalUri?: string;
   /** Data retention deletion events associated with the finding. */
-  dataRetentionDeletionEvents?: Array<GoogleCloudSecuritycenterV2DataRetentionDeletionEvent>;
+  dataRetentionDeletionEvents?: ReadonlyArray<GoogleCloudSecuritycenterV2DataRetentionDeletionEvent>;
   /** Output only. The canonical name of the finding. The following list shows some examples: + `organizations/{organization_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` + `folders/{folder_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` + `projects/{project_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` The prefix is the closest CRM ancestor of the resource associated with the finding. */
   canonicalName?: string;
   /** Contains compliance information for security standards associated to the finding. */
-  compliances?: Array<GoogleCloudSecuritycenterV2Compliance>;
+  compliances?: ReadonlyArray<GoogleCloudSecuritycenterV2Compliance>;
   /** The AI model associated with the finding. */
   aiModel?: GoogleCloudSecuritycenterV2AiModel;
   /** Output only. The time at which the finding was created in Security Command Center. */
@@ -7692,9 +7692,9 @@ export interface GoogleCloudSecuritycenterV2Finding {
   /** Job associated with the finding. */
   job?: GoogleCloudSecuritycenterV2Job;
   /** Agent data access events associated with the finding. */
-  agentDataAccessEvents?: Array<GoogleCloudSecuritycenterV2AgentDataAccessEvent>;
+  agentDataAccessEvents?: ReadonlyArray<GoogleCloudSecuritycenterV2AgentDataAccessEvent>;
   /** The load balancers associated with the finding. */
-  loadBalancers?: Array<GoogleCloudSecuritycenterV2LoadBalancer>;
+  loadBalancers?: ReadonlyArray<GoogleCloudSecuritycenterV2LoadBalancer>;
   /** Represents vulnerability-specific fields like CVE and CVSS scores. CVE stands for Common Vulnerabilities and Exposures (https://cve.mitre.org/about/) */
   vulnerability?: GoogleCloudSecuritycenterV2Vulnerability;
   /** VertexAi associated with the finding. */
@@ -7718,7 +7718,7 @@ export interface GoogleCloudSecuritycenterV2Finding {
   /** ArtifactGuardPolicies associated with the finding. */
   artifactGuardPolicies?: GoogleCloudSecuritycenterV2ArtifactGuardPolicies;
   /** Contains details about groups of which this finding is a member. A group is a collection of findings that are related in some way. This field cannot be updated. Its value is ignored in all update requests. */
-  groupMemberships?: Array<GoogleCloudSecuritycenterV2GroupMembership>;
+  groupMemberships?: ReadonlyArray<GoogleCloudSecuritycenterV2GroupMembership>;
   /** AffectedResources associated with the finding. */
   affectedResources?: GoogleCloudSecuritycenterV2AffectedResources;
 }
@@ -7871,7 +7871,7 @@ export interface Resource {
   /** The Azure metadata associated with the finding. */
   azureMetadata?: AzureMetadata;
   /** Contains a Folder message for each folder in the assets ancestry. The first folder is the deepest nested folder, and the last folder is the folder directly under the Organization. */
-  folders?: Array<Folder>;
+  folders?: ReadonlyArray<Folder>;
   /** The human readable name of the resource. */
   displayName?: string;
   /** The AWS metadata associated with the finding. */
@@ -7959,7 +7959,7 @@ export interface ListMuteConfigsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The mute configs from the specified parent. */
-  muteConfigs?: Array<GoogleCloudSecuritycenterV1MuteConfig>;
+  muteConfigs?: ReadonlyArray<GoogleCloudSecuritycenterV1MuteConfig>;
 }
 
 export const ListMuteConfigsResponse =
@@ -8018,7 +8018,7 @@ export const OrganizationSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSecurityHealthAnalyticsCustomModulesResponse {
   /** Custom modules belonging to the requested parent. */
-  securityHealthAnalyticsCustomModules?: Array<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>;
+  securityHealthAnalyticsCustomModules?: ReadonlyArray<GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule>;
   /** If not empty, indicates that there may be more custom modules to be returned. */
   nextPageToken?: string;
 }
@@ -8058,7 +8058,7 @@ export const ListFindingsResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GroupAssetsResponse {
   /** Group results. There exists an element for each existing unique combination of property/values. The element contains a count for the number of times those specific property/values appear. */
-  groupByResults?: Array<GroupResult>;
+  groupByResults?: ReadonlyArray<GroupResult>;
   /** Time used for executing the groupBy request. */
   readTime?: string;
   /** Token to retrieve the next page of results, or empty if there are no more results. */
@@ -8098,7 +8098,7 @@ export const CreateResourceValueConfigRequest =
 
 export interface BatchCreateResourceValueConfigsRequest {
   /** Required. The resource value configs to be created. */
-  requests?: Array<CreateResourceValueConfigRequest>;
+  requests?: ReadonlyArray<CreateResourceValueConfigRequest>;
 }
 
 export const BatchCreateResourceValueConfigsRequest =
@@ -8126,7 +8126,7 @@ export const GoogleCloudSecuritycenterV1p1beta1NotificationMessage =
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -8148,7 +8148,7 @@ export const VulnerabilityCountBySeverity =
 
 export interface ListFindingsResponse {
   /** Findings matching the list request. */
-  listFindingsResults?: Array<ListFindingsResult>;
+  listFindingsResults?: ReadonlyArray<ListFindingsResult>;
   /** The total number of findings matching the query. */
   totalSize?: number;
   /** Time used for executing the list request. */
@@ -8245,7 +8245,7 @@ export const ExportFindingsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListAssetsResponse {
   /** Assets matching the list request. */
-  listAssetsResults?: Array<ListAssetsResult>;
+  listAssetsResults?: ReadonlyArray<ListAssetsResult>;
   /** The total number of assets matching the query. */
   totalSize?: number;
   /** Time used for executing the list request. */
@@ -8287,7 +8287,7 @@ export const ValidateEventThreatDetectionCustomModuleRequest =
 
 export interface ListBigQueryExportsResponse {
   /** The BigQuery exports from the specified parent. */
-  bigQueryExports?: Array<GoogleCloudSecuritycenterV1BigQueryExport>;
+  bigQueryExports?: ReadonlyArray<GoogleCloudSecuritycenterV1BigQueryExport>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -8304,7 +8304,7 @@ export interface Simulation {
   /** Output only. Time simulation was created */
   createTime?: string;
   /** Resource value configurations' metadata used in this simulation. Maximum of 100. */
-  resourceValueConfigsMetadata?: Array<ResourceValueConfigMetadata>;
+  resourceValueConfigsMetadata?: ReadonlyArray<ResourceValueConfigMetadata>;
   /** Indicates which cloud provider was used in this simulation. */
   cloudProvider?:
     | "CLOUD_PROVIDER_UNSPECIFIED"
@@ -8361,10 +8361,7 @@ export const GetOrganizationSettingsOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/organizationSettings",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationSettingsOrganizationsRequest>;
 
@@ -8401,11 +8398,7 @@ export const UpdateOrganizationSettingsOrganizationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(OrganizationSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/organizationSettings",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateOrganizationSettingsOrganizationsRequest>;
 
@@ -8437,10 +8430,7 @@ export const DeleteOrganizationsResourceValueConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/organizations/{organizationsId}/resourceValueConfigs/{resourceValueConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsResourceValueConfigsRequest>;
 
@@ -8471,10 +8461,7 @@ export const GetOrganizationsResourceValueConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/resourceValueConfigs/{resourceValueConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsResourceValueConfigsRequest>;
 
@@ -8514,11 +8501,7 @@ export const PatchOrganizationsResourceValueConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/resourceValueConfigs/{resourceValueConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsResourceValueConfigsRequest>;
 
@@ -8557,7 +8540,7 @@ export const BatchCreateOrganizationsResourceValueConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/resourceValueConfigs:batchCreate",
+      path: "v1/{parent}/resourceValueConfigs:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -8597,10 +8580,7 @@ export const ListOrganizationsResourceValueConfigsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/resourceValueConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/resourceValueConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsResourceValueConfigsRequest>;
 
@@ -8636,10 +8616,7 @@ export const DeleteOrganizationsMuteConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/organizations/{organizationsId}/muteConfigs/{muteConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsMuteConfigsRequest>;
 
@@ -8678,11 +8655,7 @@ export const PatchOrganizationsMuteConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/muteConfigs/{muteConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsMuteConfigsRequest>;
 
@@ -8714,10 +8687,7 @@ export const GetOrganizationsMuteConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/muteConfigs/{muteConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsMuteConfigsRequest>;
 
@@ -8759,11 +8729,7 @@ export const CreateOrganizationsMuteConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/organizations/{organizationsId}/muteConfigs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/muteConfigs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsMuteConfigsRequest>;
 
@@ -8801,10 +8767,7 @@ export const ListOrganizationsMuteConfigsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/muteConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/muteConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsMuteConfigsRequest>;
 
@@ -8847,11 +8810,7 @@ export const PatchOrganizationsLocationsMuteConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/muteConfigs/{muteConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsLocationsMuteConfigsRequest>;
 
@@ -8883,10 +8842,7 @@ export const GetOrganizationsLocationsMuteConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/muteConfigs/{muteConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsMuteConfigsRequest>;
 
@@ -8918,10 +8874,7 @@ export const DeleteOrganizationsLocationsMuteConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/muteConfigs/{muteConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsLocationsMuteConfigsRequest>;
 
@@ -8961,10 +8914,7 @@ export const ListOrganizationsAttackPathsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/attackPaths",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/attackPaths" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsAttackPathsRequest>;
 
@@ -9011,10 +8961,7 @@ export const ListOrganizationsValuedResourcesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/valuedResources",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/valuedResources" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsValuedResourcesRequest>;
 
@@ -9050,10 +8997,7 @@ export const GetOrganizationsSourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/sources/{sourcesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsSourcesRequest>;
 
@@ -9089,7 +9033,7 @@ export const TestIamPermissionsOrganizationsSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/sources/{sourcesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -9129,11 +9073,7 @@ export const PatchOrganizationsSourcesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Source).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/sources/{sourcesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsSourcesRequest>;
 
@@ -9167,11 +9107,7 @@ export const CreateOrganizationsSourcesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Source).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/organizations/{organizationsId}/sources",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/sources", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsSourcesRequest>;
 
@@ -9207,7 +9143,7 @@ export const GetIamPolicyOrganizationsSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/sources/{sourcesId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -9246,10 +9182,7 @@ export const ListOrganizationsSourcesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/sources",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sources" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsSourcesRequest>;
 
@@ -9289,7 +9222,7 @@ export const SetIamPolicyOrganizationsSourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/sources/{sourcesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -9325,11 +9258,7 @@ export const SetStateOrganizationsSourcesFindingsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SetFindingStateRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/organizations/{organizationsId}/sources/{sourcesId}/findings/{findingsId}:setState",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:setState", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SetStateOrganizationsSourcesFindingsRequest>;
 
@@ -9363,11 +9292,7 @@ export const SetMuteOrganizationsSourcesFindingsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SetMuteRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/organizations/{organizationsId}/sources/{sourcesId}/findings/{findingsId}:setMute",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:setMute", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SetMuteOrganizationsSourcesFindingsRequest>;
 
@@ -9404,11 +9329,7 @@ export const PatchOrganizationsSourcesFindingsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Finding).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/sources/{sourcesId}/findings/{findingsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsSourcesFindingsRequest>;
 
@@ -9445,11 +9366,7 @@ export const CreateOrganizationsSourcesFindingsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Finding).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/organizations/{organizationsId}/sources/{sourcesId}/findings",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/findings", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsSourcesFindingsRequest>;
 
@@ -9485,7 +9402,7 @@ export const GroupOrganizationsSourcesFindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/sources/{sourcesId}/findings:group",
+      path: "v1/{parent}/findings:group",
       hasBody: true,
     }),
     svc,
@@ -9541,10 +9458,7 @@ export const ListOrganizationsSourcesFindingsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/sources/{sourcesId}/findings",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/findings" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsSourcesFindingsRequest>;
 
@@ -9588,11 +9502,7 @@ export const UpdateSecurityMarksOrganizationsSourcesFindingsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SecurityMarks).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/sources/{sourcesId}/findings/{findingsId}/securityMarks",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSecurityMarksOrganizationsSourcesFindingsRequest>;
 
@@ -9633,11 +9543,7 @@ export const PatchOrganizationsSourcesFindingsExternalSystemsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/sources/{sourcesId}/findings/{findingsId}/externalSystems/{externalSystemsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsSourcesFindingsExternalSystemsRequest>;
 
@@ -9678,7 +9584,7 @@ export const CreateOrganizationsNotificationConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/notificationConfigs",
+      path: "v1/{parent}/notificationConfigs",
       hasBody: true,
     }),
     svc,
@@ -9717,10 +9623,7 @@ export const ListOrganizationsNotificationConfigsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/notificationConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/notificationConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsNotificationConfigsRequest>;
 
@@ -9756,10 +9659,7 @@ export const DeleteOrganizationsNotificationConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/organizations/{organizationsId}/notificationConfigs/{notificationConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsNotificationConfigsRequest>;
 
@@ -9790,10 +9690,7 @@ export const GetOrganizationsNotificationConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/notificationConfigs/{notificationConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsNotificationConfigsRequest>;
 
@@ -9830,11 +9727,7 @@ export const PatchOrganizationsNotificationConfigsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(NotificationConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/notificationConfigs/{notificationConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsNotificationConfigsRequest>;
 
@@ -9868,11 +9761,7 @@ export const GroupOrganizationsAssetsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GroupAssetsRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/organizations/{organizationsId}/assets:group",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/assets:group", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<GroupOrganizationsAssetsRequest>;
 
@@ -9926,10 +9815,7 @@ export const ListOrganizationsAssetsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/assets",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/assets" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsAssetsRequest>;
 
@@ -9973,11 +9859,7 @@ export const UpdateSecurityMarksOrganizationsAssetsRequest =
     startTime: Schema.optional(Schema.String).pipe(T.HttpQuery("startTime")),
     body: Schema.optional(SecurityMarks).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/assets/{assetsId}/securityMarks",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSecurityMarksOrganizationsAssetsRequest>;
 
@@ -10013,7 +9895,7 @@ export const RunDiscoveryOrganizationsAssetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/assets:runDiscovery",
+      path: "v1/{parent}/assets:runDiscovery",
       hasBody: true,
     }),
     svc,
@@ -10046,10 +9928,7 @@ export const DeleteOrganizationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/organizations/{organizationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsOperationsRequest>;
 
@@ -10080,11 +9959,7 @@ export const CancelOrganizationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/organizations/{organizationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelOrganizationsOperationsRequest>;
 
@@ -10115,10 +9990,7 @@ export const GetOrganizationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsOperationsRequest>;
 
@@ -10163,10 +10035,7 @@ export const ListOrganizationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsOperationsRequest>;
 
@@ -10213,7 +10082,7 @@ export const CreateOrganizationsBigQueryExportsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/bigQueryExports",
+      path: "v1/{parent}/bigQueryExports",
       hasBody: true,
     }),
     svc,
@@ -10253,10 +10122,7 @@ export const ListOrganizationsBigQueryExportsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/bigQueryExports",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/bigQueryExports" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsBigQueryExportsRequest>;
 
@@ -10292,10 +10158,7 @@ export const GetOrganizationsBigQueryExportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/bigQueryExports/{bigQueryExportsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsBigQueryExportsRequest>;
 
@@ -10335,11 +10198,7 @@ export const PatchOrganizationsBigQueryExportsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/bigQueryExports/{bigQueryExportsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsBigQueryExportsRequest>;
 
@@ -10371,10 +10230,7 @@ export const DeleteOrganizationsBigQueryExportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/organizations/{organizationsId}/bigQueryExports/{bigQueryExportsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsBigQueryExportsRequest>;
 
@@ -10405,10 +10261,7 @@ export const GetOrganizationsSimulationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/simulations/{simulationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsSimulationsRequest>;
 
@@ -10439,10 +10292,7 @@ export const GetOrganizationsSimulationsValuedResourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/simulations/{simulationsId}/valuedResources/{valuedResourcesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsSimulationsValuedResourcesRequest>;
 
@@ -10485,10 +10335,7 @@ export const ListOrganizationsSimulationsValuedResourcesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/simulations/{simulationsId}/valuedResources",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/valuedResources" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsSimulationsValuedResourcesRequest>;
 
@@ -10533,10 +10380,7 @@ export const ListOrganizationsSimulationsValuedResourcesAttackPathsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/simulations/{simulationsId}/valuedResources/{valuedResourcesId}/attackPaths",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/attackPaths" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsSimulationsValuedResourcesAttackPathsRequest>;
 
@@ -10582,10 +10426,7 @@ export const ListOrganizationsSimulationsAttackPathsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/simulations/{simulationsId}/attackPaths",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/attackPaths" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsSimulationsAttackPathsRequest>;
 
@@ -10630,10 +10471,7 @@ export const ListOrganizationsSimulationsAttackExposureResultsAttackPathsRequest
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/simulations/{simulationsId}/attackExposureResults/{attackExposureResultsId}/attackPaths",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/attackPaths" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsSimulationsAttackExposureResultsAttackPathsRequest>;
 
@@ -10682,10 +10520,7 @@ export const ListOrganizationsSimulationsAttackExposureResultsValuedResourcesReq
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/simulations/{simulationsId}/attackExposureResults/{attackExposureResultsId}/valuedResources",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/valuedResources" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsSimulationsAttackExposureResultsValuedResourcesRequest>;
 
@@ -10731,7 +10566,7 @@ export const CreateOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequ
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/securityHealthAnalyticsSettings/customModules",
+      path: "v1/{parent}/customModules",
       hasBody: true,
     }),
     svc,
@@ -10773,10 +10608,7 @@ export const ListOrganizationsSecurityHealthAnalyticsSettingsCustomModulesReques
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/securityHealthAnalyticsSettings/customModules",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/customModules" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest>;
 
@@ -10820,7 +10652,7 @@ export const SimulateOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRe
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/securityHealthAnalyticsSettings/customModules:simulate",
+      path: "v1/{parent}/customModules:simulate",
       hasBody: true,
     }),
     svc,
@@ -10863,10 +10695,7 @@ export const ListDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomMod
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/securityHealthAnalyticsSettings/customModules:listDescendant",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/customModules:listDescendant" }),
     svc,
   ) as unknown as Schema.Schema<ListDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest>;
 
@@ -10913,11 +10742,7 @@ export const PatchOrganizationsSecurityHealthAnalyticsSettingsCustomModulesReque
       GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/securityHealthAnalyticsSettings/customModules/{customModulesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest>;
 
@@ -10951,10 +10776,7 @@ export const GetOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/securityHealthAnalyticsSettings/customModules/{customModulesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest>;
 
@@ -10987,10 +10809,7 @@ export const DeleteOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequ
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/organizations/{organizationsId}/securityHealthAnalyticsSettings/customModules/{customModulesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest>;
 
@@ -11024,10 +10843,7 @@ export const GetOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModul
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/securityHealthAnalyticsSettings/effectiveCustomModules/{effectiveCustomModulesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest>;
 
@@ -11068,10 +10884,7 @@ export const ListOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModu
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/securityHealthAnalyticsSettings/effectiveCustomModules",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/effectiveCustomModules" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest>;
 
@@ -11117,7 +10930,7 @@ export const ValidateCustomModuleOrganizationsEventThreatDetectionSettingsReques
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/eventThreatDetectionSettings:validateCustomModule",
+      path: "v1/{parent}:validateCustomModule",
       hasBody: true,
     }),
     svc,
@@ -11157,7 +10970,7 @@ export const CreateOrganizationsEventThreatDetectionSettingsCustomModulesRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/eventThreatDetectionSettings/customModules",
+      path: "v1/{parent}/customModules",
       hasBody: true,
     }),
     svc,
@@ -11198,10 +11011,7 @@ export const ListOrganizationsEventThreatDetectionSettingsCustomModulesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/eventThreatDetectionSettings/customModules",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/customModules" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsEventThreatDetectionSettingsCustomModulesRequest>;
 
@@ -11238,10 +11048,7 @@ export const DeleteOrganizationsEventThreatDetectionSettingsCustomModulesRequest
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/organizations/{organizationsId}/eventThreatDetectionSettings/customModules/{customModulesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsEventThreatDetectionSettingsCustomModulesRequest>;
 
@@ -11274,10 +11081,7 @@ export const GetOrganizationsEventThreatDetectionSettingsCustomModulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/eventThreatDetectionSettings/customModules/{customModulesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEventThreatDetectionSettingsCustomModulesRequest>;
 
@@ -11316,10 +11120,7 @@ export const ListDescendantOrganizationsEventThreatDetectionSettingsCustomModule
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/eventThreatDetectionSettings/customModules:listDescendant",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/customModules:listDescendant" }),
     svc,
   ) as unknown as Schema.Schema<ListDescendantOrganizationsEventThreatDetectionSettingsCustomModulesRequest>;
 
@@ -11364,11 +11165,7 @@ export const PatchOrganizationsEventThreatDetectionSettingsCustomModulesRequest 
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(EventThreatDetectionCustomModule).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/eventThreatDetectionSettings/customModules/{customModulesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsEventThreatDetectionSettingsCustomModulesRequest>;
 
@@ -11401,10 +11198,7 @@ export const GetOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesR
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/eventThreatDetectionSettings/effectiveCustomModules/{effectiveCustomModulesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesRequest>;
 
@@ -11445,10 +11239,7 @@ export const ListOrganizationsEventThreatDetectionSettingsEffectiveCustomModules
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/eventThreatDetectionSettings/effectiveCustomModules",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/effectiveCustomModules" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesRequest>;
 
@@ -11492,7 +11283,7 @@ export const BulkMuteOrganizationsFindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/findings:bulkMute",
+      path: "v1/{parent}/findings:bulkMute",
       hasBody: true,
     }),
     svc,
@@ -11530,7 +11321,7 @@ export const BulkMuteFoldersFindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/folders/{foldersId}/findings:bulkMute",
+      path: "v1/{parent}/findings:bulkMute",
       hasBody: true,
     }),
     svc,
@@ -11569,7 +11360,7 @@ export const ListFoldersSourcesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/folders/{foldersId}/sources" }),
+    T.Http({ method: "GET", path: "v1/{parent}/sources" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersSourcesRequest>;
 
@@ -11609,7 +11400,7 @@ export const GroupFoldersSourcesFindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/folders/{foldersId}/sources/{sourcesId}/findings:group",
+      path: "v1/{parent}/findings:group",
       hasBody: true,
     }),
     svc,
@@ -11665,10 +11456,7 @@ export const ListFoldersSourcesFindingsRequest =
     readTime: Schema.optional(Schema.String).pipe(T.HttpQuery("readTime")),
     fieldMask: Schema.optional(Schema.String).pipe(T.HttpQuery("fieldMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/sources/{sourcesId}/findings",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/findings" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersSourcesFindingsRequest>;
 
@@ -11712,11 +11500,7 @@ export const UpdateSecurityMarksFoldersSourcesFindingsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SecurityMarks).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/folders/{foldersId}/sources/{sourcesId}/findings/{findingsId}/securityMarks",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSecurityMarksFoldersSourcesFindingsRequest>;
 
@@ -11750,11 +11534,7 @@ export const SetStateFoldersSourcesFindingsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SetFindingStateRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/folders/{foldersId}/sources/{sourcesId}/findings/{findingsId}:setState",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:setState", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SetStateFoldersSourcesFindingsRequest>;
 
@@ -11788,11 +11568,7 @@ export const SetMuteFoldersSourcesFindingsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SetMuteRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/folders/{foldersId}/sources/{sourcesId}/findings/{findingsId}:setMute",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:setMute", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SetMuteFoldersSourcesFindingsRequest>;
 
@@ -11829,11 +11605,7 @@ export const PatchFoldersSourcesFindingsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Finding).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/folders/{foldersId}/sources/{sourcesId}/findings/{findingsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchFoldersSourcesFindingsRequest>;
 
@@ -11872,11 +11644,7 @@ export const PatchFoldersSourcesFindingsExternalSystemsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/folders/{foldersId}/sources/{sourcesId}/findings/{findingsId}/externalSystems/{externalSystemsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchFoldersSourcesFindingsExternalSystemsRequest>;
 
@@ -11915,7 +11683,7 @@ export const ValidateCustomModuleFoldersEventThreatDetectionSettingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/folders/{foldersId}/eventThreatDetectionSettings:validateCustomModule",
+      path: "v1/{parent}:validateCustomModule",
       hasBody: true,
     }),
     svc,
@@ -11950,10 +11718,7 @@ export const GetFoldersEventThreatDetectionSettingsCustomModulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/eventThreatDetectionSettings/customModules/{customModulesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersEventThreatDetectionSettingsCustomModulesRequest>;
 
@@ -11992,10 +11757,7 @@ export const ListDescendantFoldersEventThreatDetectionSettingsCustomModulesReque
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/eventThreatDetectionSettings/customModules:listDescendant",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/customModules:listDescendant" }),
     svc,
   ) as unknown as Schema.Schema<ListDescendantFoldersEventThreatDetectionSettingsCustomModulesRequest>;
 
@@ -12039,11 +11801,7 @@ export const PatchFoldersEventThreatDetectionSettingsCustomModulesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(EventThreatDetectionCustomModule).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/folders/{foldersId}/eventThreatDetectionSettings/customModules/{customModulesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchFoldersEventThreatDetectionSettingsCustomModulesRequest>;
 
@@ -12076,10 +11834,7 @@ export const DeleteFoldersEventThreatDetectionSettingsCustomModulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/folders/{foldersId}/eventThreatDetectionSettings/customModules/{customModulesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteFoldersEventThreatDetectionSettingsCustomModulesRequest>;
 
@@ -12117,7 +11872,7 @@ export const CreateFoldersEventThreatDetectionSettingsCustomModulesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/folders/{foldersId}/eventThreatDetectionSettings/customModules",
+      path: "v1/{parent}/customModules",
       hasBody: true,
     }),
     svc,
@@ -12158,10 +11913,7 @@ export const ListFoldersEventThreatDetectionSettingsCustomModulesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/eventThreatDetectionSettings/customModules",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/customModules" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersEventThreatDetectionSettingsCustomModulesRequest>;
 
@@ -12198,10 +11950,7 @@ export const GetFoldersEventThreatDetectionSettingsEffectiveCustomModulesRequest
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/eventThreatDetectionSettings/effectiveCustomModules/{effectiveCustomModulesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersEventThreatDetectionSettingsEffectiveCustomModulesRequest>;
 
@@ -12240,10 +11989,7 @@ export const ListFoldersEventThreatDetectionSettingsEffectiveCustomModulesReques
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/eventThreatDetectionSettings/effectiveCustomModules",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/effectiveCustomModules" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersEventThreatDetectionSettingsEffectiveCustomModulesRequest>;
 
@@ -12283,11 +12029,7 @@ export const GroupFoldersAssetsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GroupAssetsRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/folders/{foldersId}/assets:group",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/assets:group", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<GroupFoldersAssetsRequest>;
 
@@ -12341,7 +12083,7 @@ export const ListFoldersAssetsRequest =
       T.HttpQuery("compareDuration"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/folders/{foldersId}/assets" }),
+    T.Http({ method: "GET", path: "v1/{parent}/assets" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersAssetsRequest>;
 
@@ -12385,11 +12127,7 @@ export const UpdateSecurityMarksFoldersAssetsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SecurityMarks).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/folders/{foldersId}/assets/{assetsId}/securityMarks",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSecurityMarksFoldersAssetsRequest>;
 
@@ -12428,7 +12166,7 @@ export const CreateFoldersNotificationConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/folders/{foldersId}/notificationConfigs",
+      path: "v1/{parent}/notificationConfigs",
       hasBody: true,
     }),
     svc,
@@ -12467,10 +12205,7 @@ export const ListFoldersNotificationConfigsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/notificationConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/notificationConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersNotificationConfigsRequest>;
 
@@ -12506,10 +12241,7 @@ export const DeleteFoldersNotificationConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/folders/{foldersId}/notificationConfigs/{notificationConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteFoldersNotificationConfigsRequest>;
 
@@ -12540,10 +12272,7 @@ export const GetFoldersNotificationConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/notificationConfigs/{notificationConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersNotificationConfigsRequest>;
 
@@ -12580,11 +12309,7 @@ export const PatchFoldersNotificationConfigsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(NotificationConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/folders/{foldersId}/notificationConfigs/{notificationConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchFoldersNotificationConfigsRequest>;
 
@@ -12615,10 +12340,7 @@ export const DeleteFoldersMuteConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/folders/{foldersId}/muteConfigs/{muteConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteFoldersMuteConfigsRequest>;
 
@@ -12649,10 +12371,7 @@ export const GetFoldersMuteConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/muteConfigs/{muteConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersMuteConfigsRequest>;
 
@@ -12692,11 +12411,7 @@ export const PatchFoldersMuteConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/folders/{foldersId}/muteConfigs/{muteConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchFoldersMuteConfigsRequest>;
 
@@ -12738,11 +12453,7 @@ export const CreateFoldersMuteConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/folders/{foldersId}/muteConfigs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/muteConfigs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateFoldersMuteConfigsRequest>;
 
@@ -12780,7 +12491,7 @@ export const ListFoldersMuteConfigsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/folders/{foldersId}/muteConfigs" }),
+    T.Http({ method: "GET", path: "v1/{parent}/muteConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersMuteConfigsRequest>;
 
@@ -12815,10 +12526,7 @@ export const GetFoldersBigQueryExportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/bigQueryExports/{bigQueryExportsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersBigQueryExportsRequest>;
 
@@ -12858,11 +12566,7 @@ export const PatchFoldersBigQueryExportsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/folders/{foldersId}/bigQueryExports/{bigQueryExportsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchFoldersBigQueryExportsRequest>;
 
@@ -12894,10 +12598,7 @@ export const DeleteFoldersBigQueryExportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/folders/{foldersId}/bigQueryExports/{bigQueryExportsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteFoldersBigQueryExportsRequest>;
 
@@ -12940,7 +12641,7 @@ export const CreateFoldersBigQueryExportsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/folders/{foldersId}/bigQueryExports",
+      path: "v1/{parent}/bigQueryExports",
       hasBody: true,
     }),
     svc,
@@ -12980,7 +12681,7 @@ export const ListFoldersBigQueryExportsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/folders/{foldersId}/bigQueryExports" }),
+    T.Http({ method: "GET", path: "v1/{parent}/bigQueryExports" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersBigQueryExportsRequest>;
 
@@ -13015,10 +12716,7 @@ export const DeleteFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/folders/{foldersId}/securityHealthAnalyticsSettings/customModules/{customModulesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest>;
 
@@ -13057,10 +12755,7 @@ export const ListDescendantFoldersSecurityHealthAnalyticsSettingsCustomModulesRe
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/securityHealthAnalyticsSettings/customModules:listDescendant",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/customModules:listDescendant" }),
     svc,
   ) as unknown as Schema.Schema<ListDescendantFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest>;
 
@@ -13107,11 +12802,7 @@ export const PatchFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest =
       GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/folders/{foldersId}/securityHealthAnalyticsSettings/customModules/{customModulesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest>;
 
@@ -13144,10 +12835,7 @@ export const GetFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/securityHealthAnalyticsSettings/customModules/{customModulesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest>;
 
@@ -13187,7 +12875,7 @@ export const CreateFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/folders/{foldersId}/securityHealthAnalyticsSettings/customModules",
+      path: "v1/{parent}/customModules",
       hasBody: true,
     }),
     svc,
@@ -13228,10 +12916,7 @@ export const ListFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/securityHealthAnalyticsSettings/customModules",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/customModules" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest>;
 
@@ -13275,7 +12960,7 @@ export const SimulateFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest 
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/folders/{foldersId}/securityHealthAnalyticsSettings/customModules:simulate",
+      path: "v1/{parent}/customModules:simulate",
       hasBody: true,
     }),
     svc,
@@ -13310,10 +12995,7 @@ export const GetFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequ
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/securityHealthAnalyticsSettings/effectiveCustomModules/{effectiveCustomModulesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest>;
 
@@ -13353,10 +13035,7 @@ export const ListFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesReq
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/securityHealthAnalyticsSettings/effectiveCustomModules",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/effectiveCustomModules" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest>;
 
@@ -13395,10 +13074,7 @@ export const DeleteFoldersLocationsMuteConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/folders/{foldersId}/locations/{locationsId}/muteConfigs/{muteConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteFoldersLocationsMuteConfigsRequest>;
 
@@ -13429,10 +13105,7 @@ export const GetFoldersLocationsMuteConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/locations/{locationsId}/muteConfigs/{muteConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersLocationsMuteConfigsRequest>;
 
@@ -13472,11 +13145,7 @@ export const PatchFoldersLocationsMuteConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/folders/{foldersId}/locations/{locationsId}/muteConfigs/{muteConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchFoldersLocationsMuteConfigsRequest>;
 
@@ -13516,11 +13185,7 @@ export const PatchProjectsMuteConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/muteConfigs/{muteConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsMuteConfigsRequest>;
 
@@ -13552,10 +13217,7 @@ export const GetProjectsMuteConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/muteConfigs/{muteConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsMuteConfigsRequest>;
 
@@ -13587,10 +13249,7 @@ export const DeleteProjectsMuteConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/muteConfigs/{muteConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsMuteConfigsRequest>;
 
@@ -13631,11 +13290,7 @@ export const CreateProjectsMuteConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/muteConfigs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/muteConfigs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsMuteConfigsRequest>;
 
@@ -13673,7 +13328,7 @@ export const ListProjectsMuteConfigsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/muteConfigs" }),
+    T.Http({ method: "GET", path: "v1/{parent}/muteConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsMuteConfigsRequest>;
 
@@ -13708,10 +13363,7 @@ export const GetProjectsBigQueryExportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/bigQueryExports/{bigQueryExportsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsBigQueryExportsRequest>;
 
@@ -13751,11 +13403,7 @@ export const PatchProjectsBigQueryExportsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/bigQueryExports/{bigQueryExportsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsBigQueryExportsRequest>;
 
@@ -13787,10 +13435,7 @@ export const DeleteProjectsBigQueryExportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/bigQueryExports/{bigQueryExportsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsBigQueryExportsRequest>;
 
@@ -13833,7 +13478,7 @@ export const CreateProjectsBigQueryExportsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/bigQueryExports",
+      path: "v1/{parent}/bigQueryExports",
       hasBody: true,
     }),
     svc,
@@ -13873,7 +13518,7 @@ export const ListProjectsBigQueryExportsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/bigQueryExports" }),
+    T.Http({ method: "GET", path: "v1/{parent}/bigQueryExports" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsBigQueryExportsRequest>;
 
@@ -13908,10 +13553,7 @@ export const DeleteProjectsLocationsMuteConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/muteConfigs/{muteConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsMuteConfigsRequest>;
 
@@ -13950,11 +13592,7 @@ export const PatchProjectsLocationsMuteConfigsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/muteConfigs/{muteConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsMuteConfigsRequest>;
 
@@ -13986,10 +13624,7 @@ export const GetProjectsLocationsMuteConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/muteConfigs/{muteConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMuteConfigsRequest>;
 
@@ -14021,10 +13656,7 @@ export const GetProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/securityHealthAnalyticsSettings/customModules/{customModulesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest>;
 
@@ -14063,10 +13695,7 @@ export const ListDescendantProjectsSecurityHealthAnalyticsSettingsCustomModulesR
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/securityHealthAnalyticsSettings/customModules:listDescendant",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/customModules:listDescendant" }),
     svc,
   ) as unknown as Schema.Schema<ListDescendantProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest>;
 
@@ -14113,11 +13742,7 @@ export const PatchProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest =
       GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/securityHealthAnalyticsSettings/customModules/{customModulesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest>;
 
@@ -14150,10 +13775,7 @@ export const DeleteProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/securityHealthAnalyticsSettings/customModules/{customModulesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest>;
 
@@ -14193,7 +13815,7 @@ export const CreateProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/securityHealthAnalyticsSettings/customModules",
+      path: "v1/{parent}/customModules",
       hasBody: true,
     }),
     svc,
@@ -14234,10 +13856,7 @@ export const ListProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/securityHealthAnalyticsSettings/customModules",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/customModules" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest>;
 
@@ -14281,7 +13900,7 @@ export const SimulateProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/securityHealthAnalyticsSettings/customModules:simulate",
+      path: "v1/{parent}/customModules:simulate",
       hasBody: true,
     }),
     svc,
@@ -14316,10 +13935,7 @@ export const GetProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesReq
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/securityHealthAnalyticsSettings/effectiveCustomModules/{effectiveCustomModulesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest>;
 
@@ -14360,10 +13976,7 @@ export const ListProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRe
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/securityHealthAnalyticsSettings/effectiveCustomModules",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/effectiveCustomModules" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest>;
 
@@ -14409,7 +14022,7 @@ export const ValidateCustomModuleProjectsEventThreatDetectionSettingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/eventThreatDetectionSettings:validateCustomModule",
+      path: "v1/{parent}:validateCustomModule",
       hasBody: true,
     }),
     svc,
@@ -14449,7 +14062,7 @@ export const CreateProjectsEventThreatDetectionSettingsCustomModulesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/eventThreatDetectionSettings/customModules",
+      path: "v1/{parent}/customModules",
       hasBody: true,
     }),
     svc,
@@ -14490,10 +14103,7 @@ export const ListProjectsEventThreatDetectionSettingsCustomModulesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/eventThreatDetectionSettings/customModules",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/customModules" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsEventThreatDetectionSettingsCustomModulesRequest>;
 
@@ -14530,10 +14140,7 @@ export const GetProjectsEventThreatDetectionSettingsCustomModulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/eventThreatDetectionSettings/customModules/{customModulesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsEventThreatDetectionSettingsCustomModulesRequest>;
 
@@ -14572,10 +14179,7 @@ export const ListDescendantProjectsEventThreatDetectionSettingsCustomModulesRequ
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/eventThreatDetectionSettings/customModules:listDescendant",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/customModules:listDescendant" }),
     svc,
   ) as unknown as Schema.Schema<ListDescendantProjectsEventThreatDetectionSettingsCustomModulesRequest>;
 
@@ -14619,11 +14223,7 @@ export const PatchProjectsEventThreatDetectionSettingsCustomModulesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(EventThreatDetectionCustomModule).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/eventThreatDetectionSettings/customModules/{customModulesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsEventThreatDetectionSettingsCustomModulesRequest>;
 
@@ -14656,10 +14256,7 @@ export const DeleteProjectsEventThreatDetectionSettingsCustomModulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/eventThreatDetectionSettings/customModules/{customModulesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsEventThreatDetectionSettingsCustomModulesRequest>;
 
@@ -14698,10 +14295,7 @@ export const ListProjectsEventThreatDetectionSettingsEffectiveCustomModulesReque
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/eventThreatDetectionSettings/effectiveCustomModules",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/effectiveCustomModules" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsEventThreatDetectionSettingsEffectiveCustomModulesRequest>;
 
@@ -14739,10 +14333,7 @@ export const GetProjectsEventThreatDetectionSettingsEffectiveCustomModulesReques
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/eventThreatDetectionSettings/effectiveCustomModules/{effectiveCustomModulesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsEventThreatDetectionSettingsEffectiveCustomModulesRequest>;
 
@@ -14780,7 +14371,7 @@ export const BulkMuteProjectsFindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/findings:bulkMute",
+      path: "v1/{parent}/findings:bulkMute",
       hasBody: true,
     }),
     svc,
@@ -14819,7 +14410,7 @@ export const ListProjectsSourcesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/sources" }),
+    T.Http({ method: "GET", path: "v1/{parent}/sources" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsSourcesRequest>;
 
@@ -14859,7 +14450,7 @@ export const GroupProjectsSourcesFindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/sources/{sourcesId}/findings:group",
+      path: "v1/{parent}/findings:group",
       hasBody: true,
     }),
     svc,
@@ -14915,10 +14506,7 @@ export const ListProjectsSourcesFindingsRequest =
       T.HttpQuery("compareDuration"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/sources/{sourcesId}/findings",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/findings" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsSourcesFindingsRequest>;
 
@@ -14962,11 +14550,7 @@ export const UpdateSecurityMarksProjectsSourcesFindingsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SecurityMarks).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/sources/{sourcesId}/findings/{findingsId}/securityMarks",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSecurityMarksProjectsSourcesFindingsRequest>;
 
@@ -15003,11 +14587,7 @@ export const PatchProjectsSourcesFindingsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Finding).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/sources/{sourcesId}/findings/{findingsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsSourcesFindingsRequest>;
 
@@ -15041,11 +14621,7 @@ export const SetStateProjectsSourcesFindingsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SetFindingStateRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/sources/{sourcesId}/findings/{findingsId}:setState",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:setState", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SetStateProjectsSourcesFindingsRequest>;
 
@@ -15079,11 +14655,7 @@ export const SetMuteProjectsSourcesFindingsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SetMuteRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/sources/{sourcesId}/findings/{findingsId}:setMute",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:setMute", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SetMuteProjectsSourcesFindingsRequest>;
 
@@ -15122,11 +14694,7 @@ export const PatchProjectsSourcesFindingsExternalSystemsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/sources/{sourcesId}/findings/{findingsId}/externalSystems/{externalSystemsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsSourcesFindingsExternalSystemsRequest>;
 
@@ -15158,10 +14726,7 @@ export const DeleteProjectsNotificationConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/notificationConfigs/{notificationConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsNotificationConfigsRequest>;
 
@@ -15192,10 +14757,7 @@ export const GetProjectsNotificationConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/notificationConfigs/{notificationConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsNotificationConfigsRequest>;
 
@@ -15232,11 +14794,7 @@ export const PatchProjectsNotificationConfigsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(NotificationConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/notificationConfigs/{notificationConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsNotificationConfigsRequest>;
 
@@ -15275,7 +14833,7 @@ export const CreateProjectsNotificationConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/notificationConfigs",
+      path: "v1/{parent}/notificationConfigs",
       hasBody: true,
     }),
     svc,
@@ -15314,10 +14872,7 @@ export const ListProjectsNotificationConfigsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/notificationConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/notificationConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsNotificationConfigsRequest>;
 
@@ -15356,11 +14911,7 @@ export const GroupProjectsAssetsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GroupAssetsRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/assets:group",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/assets:group", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<GroupProjectsAssetsRequest>;
 
@@ -15414,7 +14965,7 @@ export const ListProjectsAssetsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/assets" }),
+    T.Http({ method: "GET", path: "v1/{parent}/assets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAssetsRequest>;
 
@@ -15458,11 +15009,7 @@ export const UpdateSecurityMarksProjectsAssetsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SecurityMarks).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/assets/{assetsId}/securityMarks",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSecurityMarksProjectsAssetsRequest>;
 

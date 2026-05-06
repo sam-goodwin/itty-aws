@@ -44,7 +44,7 @@ export interface Attachment {
   /** The resource name; */
   name?: string;
   /** The MIME types (IANA media types) in which the attachment is available. */
-  mimeType?: Array<string>;
+  mimeType?: ReadonlyArray<string>;
 }
 
 export const Attachment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -109,7 +109,7 @@ export const CreatePermissionRequest =
 
 export interface BatchCreatePermissionsResponse {
   /** Permissions created. */
-  permissions?: Array<Permission>;
+  permissions?: ReadonlyArray<Permission>;
 }
 
 export const BatchCreatePermissionsResponse =
@@ -123,7 +123,7 @@ export interface ListItem {
   /** The text of this item. Length must be less than 1,000 characters. */
   text?: TextContent;
   /** If set, list of list items nested under this list item. Only one level of nesting is allowed. */
-  childListItems?: Array<ListItem>;
+  childListItems?: ReadonlyArray<ListItem>;
 }
 
 export const ListItem: Schema.Schema<ListItem> =
@@ -137,7 +137,7 @@ export const ListItem: Schema.Schema<ListItem> =
 
 export interface ListContent {
   /** The items in the list. The number of items must be less than 1,000. */
-  listItems?: Array<ListItem>;
+  listItems?: ReadonlyArray<ListItem>;
 }
 
 export const ListContent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -162,7 +162,7 @@ export interface Note {
   /** Output only. When this note was trashed. If `trashed`, the note is eventually deleted. If the note is not trashed, this field is not set (and the trashed field is `false`). */
   trashTime?: string;
   /** Output only. The attachments attached to this note. */
-  attachments?: Array<Attachment>;
+  attachments?: ReadonlyArray<Attachment>;
   /** The body of the note. */
   body?: Section;
   /** Output only. `true` if this note has been trashed. If trashed, the note is eventually deleted. */
@@ -174,7 +174,7 @@ export interface Note {
   /** The title of the note. Length must be less than 1,000 characters. */
   title?: string;
   /** Output only. The list of permissions set on the note. Contains at least one entry for the note owner. */
-  permissions?: Array<Permission>;
+  permissions?: ReadonlyArray<Permission>;
 }
 
 export const Note = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -191,7 +191,7 @@ export const Note = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListNotesResponse {
   /** A page of notes. */
-  notes?: Array<Note>;
+  notes?: ReadonlyArray<Note>;
   /** Next page's `page_token` field. */
   nextPageToken?: string;
 }
@@ -209,7 +209,7 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 
 export interface BatchCreatePermissionsRequest {
   /** The request message specifying the resources to create. */
-  requests?: Array<CreatePermissionRequest>;
+  requests?: ReadonlyArray<CreatePermissionRequest>;
 }
 
 export const BatchCreatePermissionsRequest =
@@ -219,7 +219,7 @@ export const BatchCreatePermissionsRequest =
 
 export interface BatchDeletePermissionsRequest {
   /** Required. The names of the permissions to delete. Format: `notes/{note}/permissions/{permission}` */
-  names?: Array<string>;
+  names?: ReadonlyArray<string>;
 }
 
 export const BatchDeletePermissionsRequest =
@@ -308,7 +308,7 @@ export interface GetNotesRequest {
 export const GetNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/notes/{notesId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetNotesRequest>;
 
@@ -337,7 +337,7 @@ export interface DeleteNotesRequest {
 export const DeleteNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v1/notes/{notesId}" }),
+  T.Http({ method: "DELETE", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteNotesRequest>;
 
@@ -372,7 +372,7 @@ export const BatchDeleteNotesPermissionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/notes/{notesId}/permissions:batchDelete",
+      path: "v1/{parent}/permissions:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -410,7 +410,7 @@ export const BatchCreateNotesPermissionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/notes/{notesId}/permissions:batchCreate",
+      path: "v1/{parent}/permissions:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -446,10 +446,7 @@ export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   mimeType: Schema.optional(Schema.String).pipe(T.HttpQuery("mimeType")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "v1/notes/{notesId}/attachments/{attachmentsId}",
-  }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DownloadMediaRequest>;
 

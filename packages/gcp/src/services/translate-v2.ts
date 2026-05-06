@@ -36,7 +36,7 @@ export const LanguagesResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LanguagesListResponse {
   /** List of source/target languages supported by the translation API. If target parameter is unspecified, the list is sorted by the ASCII code point order of the language code. If target parameter is specified, the list is sorted by the collation order of the language name in the target language. */
-  languages?: Array<LanguagesResource>;
+  languages?: ReadonlyArray<LanguagesResource>;
 }
 
 export const LanguagesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -48,7 +48,7 @@ export const DetectionsResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
 
 export interface DetectionsListResponse {
   /** A detections contains detection results of several text */
-  detections?: Array<DetectionsResource>;
+  detections?: ReadonlyArray<DetectionsResource>;
 }
 
 export const DetectionsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -59,7 +59,7 @@ export const DetectionsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface DetectLanguageRequest {
   /** The input text upon which to perform language detection. Repeat this parameter to perform language detection on multiple text inputs. */
-  q?: Array<string>;
+  q?: ReadonlyArray<string>;
 }
 
 export const DetectLanguageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -74,7 +74,7 @@ export interface TranslateTextRequest {
   /** The `model` type requested for this translation. Valid values are listed in public documentation. */
   model?: string;
   /** The input text to translate. Repeat this parameter to perform translation operations on multiple text inputs. */
-  q?: Array<string>;
+  q?: ReadonlyArray<string>;
   /** The language to use for translation of the input text, set to one of the language codes listed in Language Support. */
   target?: string;
 }
@@ -114,7 +114,7 @@ export const TranslationsResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TranslationsListResponse {
   /** Translations contains list of translation results of given text */
-  translations?: Array<TranslationsResource>;
+  translations?: ReadonlyArray<TranslationsResource>;
 }
 
 export const TranslationsListResponse =

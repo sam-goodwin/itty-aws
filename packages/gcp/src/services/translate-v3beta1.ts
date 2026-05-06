@@ -48,7 +48,7 @@ export interface TranslateTextRequest {
   /** Optional. The labels with user-defined metadata for the request. Label keys and values can be no longer than 63 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter. See https://cloud.google.com/translate/docs/labels for more information. */
   labels?: Record<string, string>;
   /** Required. The content of the input in string format. We recommend the total content be less than 30k codepoints. The max length of this field is 1024. Use BatchTranslateText for larger text. */
-  contents?: Array<string>;
+  contents?: ReadonlyArray<string>;
   /** Optional. Glossary to be applied. The glossary must be within the same region (have the same location-id) as the model, otherwise an INVALID_ARGUMENT (400) error is returned. */
   glossaryConfig?: TranslateTextGlossaryConfig;
   /** Optional. The BCP-47 language code of the input text if known, for example, "en-US" or "sr-Latn". Supported language codes are listed in [Language Support](https://cloud.google.com/translate/docs/languages). If the source language isn't specified, the API attempts to identify the source language automatically and returns the source language within the response. */
@@ -67,7 +67,7 @@ export const TranslateTextRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -107,9 +107,9 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -134,7 +134,7 @@ export const RefinementEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RefineTextRequest {
   /** Required. The source texts and original translations in the source and target languages. */
-  refinementEntries?: Array<RefinementEntry>;
+  refinementEntries?: ReadonlyArray<RefinementEntry>;
   /** Required. The BCP-47 language code for translation output, for example, "zh-CN". */
   targetLanguageCode?: string;
   /** Required. The BCP-47 language code of the source text in the request, for example, "en-US". */
@@ -280,7 +280,7 @@ export const GlossaryInputConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LanguageCodesSet {
   /** The BCP-47 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code. */
-  languageCodes?: Array<string>;
+  languageCodes?: ReadonlyArray<string>;
 }
 
 export const LanguageCodesSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -328,7 +328,7 @@ export const Glossary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListGlossariesResponse {
   /** The list of glossaries for a project. */
-  glossaries?: Array<Glossary>;
+  glossaries?: ReadonlyArray<Glossary>;
   /** A token to retrieve a page of results. Pass this value in the [ListGlossariesRequest.page_token] field in the subsequent call to `ListGlossaries` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -360,7 +360,7 @@ export const SupportedLanguage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SupportedLanguages {
   /** A list of supported language responses. This list contains an entry for each language the Translation API supports. */
-  languages?: Array<SupportedLanguage>;
+  languages?: ReadonlyArray<SupportedLanguage>;
 }
 
 export const SupportedLanguages = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -399,7 +399,7 @@ export const InputConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -429,9 +429,9 @@ export const Translation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TranslateTextResponse {
   /** Text translation responses if a glossary is provided in the request. This can be the same as `translations` if no terms apply. This field has the same length as `contents`. */
-  glossaryTranslations?: Array<Translation>;
+  glossaryTranslations?: ReadonlyArray<Translation>;
   /** Text translation responses with no glossary applied. This field has the same length as `contents`. */
-  translations?: Array<Translation>;
+  translations?: ReadonlyArray<Translation>;
 }
 
 export const TranslateTextResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -453,7 +453,7 @@ export const DetectedLanguage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DetectLanguageResponse {
   /** A list of detected languages sorted by detection confidence in descending order. The most probable language first. */
-  languages?: Array<DetectedLanguage>;
+  languages?: ReadonlyArray<DetectedLanguage>;
 }
 
 export const DetectLanguageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -483,7 +483,7 @@ export const OutputConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RefineTextResponse {
   /** The refined translations obtained from the original translations. */
-  refinedTranslations?: Array<string>;
+  refinedTranslations?: ReadonlyArray<string>;
 }
 
 export const RefineTextResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -501,7 +501,7 @@ export const WaitOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DocumentTranslation {
   /** The array of translated documents. It is expected to be size 1 for now. We may produce multiple translated documents in the future for other type of file formats. */
-  byteStreamOutputs?: Array<string>;
+  byteStreamOutputs?: ReadonlyArray<string>;
   /** The translated document's mime type. */
   mimeType?: string;
   /** The detected language for the input document. If the user did not provide the source language for the input document, this field will have the language code automatically detected. If the source language was passed, auto-detection of the language does not occur and this field is empty. */
@@ -516,7 +516,7 @@ export const DocumentTranslation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchTranslateTextRequest {
   /** Required. Specify up to 10 language codes here. Supported language codes are listed in [Language Support](https://cloud.google.com/translate/docs/languages). */
-  targetLanguageCodes?: Array<string>;
+  targetLanguageCodes?: ReadonlyArray<string>;
   /** Optional. The models to use for translation. Map's key is target language code. Map's value is model name. Value can be a built-in general model, or an AutoML Translation model. The value format depends on model type: - AutoML Translation models: `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}` - General (built-in) models: `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`, If the map is empty or a specific model is not requested for a language pair, then default google model (nmt) is used. */
   models?: Record<string, string>;
   /** Required. Output configuration. If 2 input configs match to the same file (that is, same input path), we don't generate output for duplicate inputs. */
@@ -524,7 +524,7 @@ export interface BatchTranslateTextRequest {
   /** Optional. Glossaries to be applied for translation. It's keyed by target language code. */
   glossaries?: Record<string, TranslateTextGlossaryConfig>;
   /** Required. Input configurations. The total number of files matched should be <= 100. The total content size should be <= 100M Unicode codepoints. The files must use UTF-8 encoding. */
-  inputConfigs?: Array<InputConfig>;
+  inputConfigs?: ReadonlyArray<InputConfig>;
   /** Optional. The labels with user-defined metadata for the request. Label keys and values can be no longer than 63 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter. See https://cloud.google.com/translate/docs/labels for more information. */
   labels?: Record<string, string>;
   /** Required. Source language code. Supported language codes are listed in [Language Support](https://cloud.google.com/translate/docs/languages). */
@@ -560,7 +560,7 @@ export interface BatchTranslateDocumentRequest {
   /** Optional. This flag is to support user customized attribution. If not provided, the default is `Machine Translated by Google`. Customized attribution should follow rules in https://cloud.google.com/translate/attribution#attribution_and_logos */
   customizedAttribution?: string;
   /** Required. The BCP-47 language code to use for translation of the input document. Specify up to 10 language codes here. Supported language codes are listed in [Language Support](https://cloud.google.com/translate/docs/languages). */
-  targetLanguageCodes?: Array<string>;
+  targetLanguageCodes?: ReadonlyArray<string>;
   /** Optional. The models to use for translation. Map's key is target language code. Map's value is the model name. Value can be a built-in general model, or an AutoML Translation model. The value format depends on model type: - AutoML Translation models: `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}` - General (built-in) models: `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`, If the map is empty or a specific model is not requested for a language pair, then default google model (nmt) is used. */
   models?: Record<string, string>;
   /** Optional. If true, use the text removal server to remove the shadow text on background image for native pdf translation. Shadow removal feature can only be enabled when is_translate_native_pdf_only: false && pdf_native_only: false */
@@ -572,7 +572,7 @@ export interface BatchTranslateDocumentRequest {
   /** Optional. Glossaries to be applied. It's keyed by target language code. */
   glossaries?: Record<string, TranslateTextGlossaryConfig>;
   /** Required. Input configurations. The total number of files matched should be <= 100. The total content size to translate should be <= 100M Unicode codepoints. The files must use UTF-8 encoding. */
-  inputConfigs?: Array<BatchDocumentInputConfig>;
+  inputConfigs?: ReadonlyArray<BatchDocumentInputConfig>;
 }
 
 export const BatchTranslateDocumentRequest =
@@ -631,7 +631,7 @@ export const TranslateTextProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3beta1/projects/{projectsId}:translateText",
+      path: "v3beta1/{parent}:translateText",
       hasBody: true,
     }),
     svc,
@@ -669,7 +669,7 @@ export const DetectLanguageProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3beta1/projects/{projectsId}:detectLanguage",
+      path: "v3beta1/{parent}:detectLanguage",
       hasBody: true,
     }),
     svc,
@@ -710,10 +710,7 @@ export const GetSupportedLanguagesProjectsRequest =
     ),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3beta1/projects/{projectsId}/supportedLanguages",
-    }),
+    T.Http({ method: "GET", path: "v3beta1/{parent}/supportedLanguages" }),
     svc,
   ) as unknown as Schema.Schema<GetSupportedLanguagesProjectsRequest>;
 
@@ -744,10 +741,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3beta1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v3beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -783,7 +777,7 @@ export const BatchTranslateTextProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3beta1/projects/{projectsId}/locations/{locationsId}:batchTranslateText",
+      path: "v3beta1/{parent}:batchTranslateText",
       hasBody: true,
     }),
     svc,
@@ -821,7 +815,7 @@ export const TranslateDocumentProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3beta1/projects/{projectsId}/locations/{locationsId}:translateDocument",
+      path: "v3beta1/{parent}:translateDocument",
       hasBody: true,
     }),
     svc,
@@ -860,7 +854,7 @@ export const DetectLanguageProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3beta1/projects/{projectsId}/locations/{locationsId}:detectLanguage",
+      path: "v3beta1/{parent}:detectLanguage",
       hasBody: true,
     }),
     svc,
@@ -901,10 +895,7 @@ export const GetSupportedLanguagesProjectsLocationsRequest =
     model: Schema.optional(Schema.String).pipe(T.HttpQuery("model")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3beta1/projects/{projectsId}/locations/{locationsId}/supportedLanguages",
-    }),
+    T.Http({ method: "GET", path: "v3beta1/{parent}/supportedLanguages" }),
     svc,
   ) as unknown as Schema.Schema<GetSupportedLanguagesProjectsLocationsRequest>;
 
@@ -940,7 +931,7 @@ export const BatchTranslateDocumentProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3beta1/projects/{projectsId}/locations/{locationsId}:batchTranslateDocument",
+      path: "v3beta1/{parent}:batchTranslateDocument",
       hasBody: true,
     }),
     svc,
@@ -987,7 +978,7 @@ export const ListProjectsLocationsRequest =
     ),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3beta1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v3beta1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -1027,7 +1018,7 @@ export const RefineTextProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3beta1/projects/{projectsId}/locations/{locationsId}:refineText",
+      path: "v3beta1/{parent}:refineText",
       hasBody: true,
     }),
     svc,
@@ -1065,7 +1056,7 @@ export const TranslateTextProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3beta1/projects/{projectsId}/locations/{locationsId}:translateText",
+      path: "v3beta1/{parent}:translateText",
       hasBody: true,
     }),
     svc,
@@ -1098,10 +1089,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v3beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -1132,10 +1120,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v3beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v3beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -1169,11 +1154,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3beta1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -1218,10 +1199,7 @@ export const ListProjectsLocationsOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3beta1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v3beta1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -1259,11 +1237,7 @@ export const WaitProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(WaitOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3beta1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3beta1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsOperationsRequest>;
 
@@ -1303,10 +1277,7 @@ export const ListProjectsLocationsGlossariesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3beta1/projects/{projectsId}/locations/{locationsId}/glossaries",
-    }),
+    T.Http({ method: "GET", path: "v3beta1/{parent}/glossaries" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGlossariesRequest>;
 
@@ -1341,10 +1312,7 @@ export const GetProjectsLocationsGlossariesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3beta1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}",
-    }),
+    T.Http({ method: "GET", path: "v3beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGlossariesRequest>;
 
@@ -1375,10 +1343,7 @@ export const DeleteProjectsLocationsGlossariesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v3beta1/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v3beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsGlossariesRequest>;
 
@@ -1414,7 +1379,7 @@ export const CreateProjectsLocationsGlossariesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3beta1/projects/{projectsId}/locations/{locationsId}/glossaries",
+      path: "v3beta1/{parent}/glossaries",
       hasBody: true,
     }),
     svc,

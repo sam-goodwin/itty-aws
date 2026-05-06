@@ -57,7 +57,7 @@ export const SiteSummaryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ViolatingSitesResponse {
   /** The list of violating sites. */
-  violatingSites?: Array<SiteSummaryResponse>;
+  violatingSites?: ReadonlyArray<SiteSummaryResponse>;
 }
 
 export const ViolatingSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -104,7 +104,7 @@ export interface GetSitesRequest {
 export const GetSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/sites/{sitesId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetSitesRequest>;
 

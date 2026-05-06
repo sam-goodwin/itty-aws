@@ -26,7 +26,7 @@ export interface PrivateClusterConfig {
   /** Output only. Hostname for the workstation cluster. This field will be populated only when private endpoint is enabled. To access workstations in the workstation cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment. */
   clusterHostname?: string;
   /** Optional. Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed. */
-  allowedProjects?: Array<string>;
+  allowedProjects?: ReadonlyArray<string>;
   /** Output only. Service attachment URI for the workstation cluster. The service attachment is created when private endpoint is enabled. To access workstations in the workstation cluster, configure access to the managed service using [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-services). */
   serviceAttachmentUri?: string;
   /** Immutable. Whether Workstations endpoint is private. */
@@ -137,7 +137,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -171,7 +171,7 @@ export interface WorkstationCluster {
   /** Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding. */
   etag?: string;
   /** Output only. Status conditions describing the workstation cluster's current state. */
-  conditions?: Array<Status>;
+  conditions?: ReadonlyArray<Status>;
   /** Output only. Reserved for future use. */
   satisfiesPzi?: boolean;
   /** Output only. Indicates whether this workstation cluster is currently being updated to match its intended state. */
@@ -329,7 +329,7 @@ export interface ReservationAffinity {
     | "SPECIFIC_RESERVATION"
     | (string & {});
   /** Optional. Corresponds to the label values of reservation resources. Valid values are either the name of a reservation in the same project or "projects/{project}/reservations/{reservation}" to target a shared reservation in the same zone but in a different project. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
   /** Optional. Corresponds to the label key of reservation resource. */
   key?: string;
 }
@@ -346,7 +346,7 @@ export interface BoostConfig {
   /** Optional. The type of machine that boosted VM instances will use—for example, `e2-standard-4`. For more information about machine types that Cloud Workstations supports, see the list of [available machine types](https://cloud.google.com/workstations/docs/available-machine-types). Defaults to `e2-standard-4`. */
   machineType?: string;
   /** Optional. A list of the type and count of accelerator cards attached to the boost instance. Defaults to `none`. */
-  accelerators?: Array<Accelerator>;
+  accelerators?: ReadonlyArray<Accelerator>;
   /** Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB. Defaults to `50` GB. */
   bootDiskSizeGb?: number;
   /** Optional. The number of boost VMs that the system should keep idle so that workstations can be boosted quickly. Defaults to `0`. */
@@ -383,17 +383,17 @@ export interface GceInstance {
   /** Optional. A set of Compute Engine Shielded instance options. */
   shieldedInstanceConfig?: GceShieldedInstanceConfig;
   /** Optional. A list of the boost configurations that workstations created using this workstation configuration are allowed to use. If specified, users will have the option to choose from the list of boost configs when starting a workstation. */
-  boostConfigs?: Array<BoostConfig>;
+  boostConfigs?: ReadonlyArray<BoostConfig>;
   /** Optional. Resource manager tags to be bound to this instance. Tag keys and values have the same definition as [resource manager tags](https://cloud.google.com/resource-manager/docs/tags/tags-overview). Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. */
   vmTags?: Record<string, string>;
   /** Optional. Scopes to grant to the service_account. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account. */
-  serviceAccountScopes?: Array<string>;
+  serviceAccountScopes?: ReadonlyArray<string>;
   /** Optional. Network tags to add to the Compute Engine VMs backing the workstations. This option applies [network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags) to VMs created with this configuration. These network tags enable the creation of [firewall rules](https://cloud.google.com/workstations/docs/configure-firewall-rules). */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** Optional. When set to true, disables public IP addresses for VMs. If you disable public IP addresses, you must set up Private Google Access or Cloud NAT on your network. If you use Private Google Access and you use `private.googleapis.com` or `restricted.googleapis.com` for Container Registry and Artifact Registry, make sure that you set up DNS records for domains `*.gcr.io` and `*.pkg.dev`. Defaults to false (VMs have public IP addresses). */
   disablePublicIpAddresses?: boolean;
   /** Optional. A list of the type and count of accelerator cards attached to the instance. */
-  accelerators?: Array<Accelerator>;
+  accelerators?: ReadonlyArray<Accelerator>;
   /** Optional. Whether to disable SSH access to the VM. */
   disableSsh?: boolean;
   /** Optional. Whether to enable nested virtualization on Cloud Workstations VMs created using this workstation configuration. Defaults to false. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a machine_type in the N1 or N2 machine series. */
@@ -470,9 +470,9 @@ export interface Container {
   /** Optional. If set, overrides the default DIR specified by the image. */
   workingDir?: string;
   /** Optional. If set, overrides the default ENTRYPOINT specified by the image. */
-  command?: Array<string>;
+  command?: ReadonlyArray<string>;
   /** Optional. Arguments passed to the entrypoint. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
 }
 
 export const Container = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -510,9 +510,9 @@ export const ReadinessCheck = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WorkstationConfig {
   /** Optional. Ephemeral directories which won't persist across workstation sessions. */
-  ephemeralDirectories?: Array<EphemeralDirectory>;
+  ephemeralDirectories?: ReadonlyArray<EphemeralDirectory>;
   /** Optional. Immutable. Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`. If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created. */
-  replicaZones?: Array<string>;
+  replicaZones?: ReadonlyArray<string>;
   /** Output only. Indicates whether this workstation configuration is currently being updated to match its intended state. */
   reconciling?: boolean;
   /** Output only. Time when this workstation configuration was soft-deleted. */
@@ -526,7 +526,7 @@ export interface WorkstationConfig {
   /** Output only. Time when this workstation configuration was most recently updated. */
   updateTime?: string;
   /** Optional. A list of PortRanges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535. */
-  allowedPorts?: Array<PortRange>;
+  allowedPorts?: ReadonlyArray<PortRange>;
   /** Optional. Human-readable name for this workstation configuration. */
   displayName?: string;
   /** Identifier. Full name of this workstation configuration. */
@@ -558,13 +558,13 @@ export interface WorkstationConfig {
   /** Optional. Grant creator of a workstation `roles/workstations.policyAdmin` role along with `roles/workstations.user` role on the workstation created by them. This allows workstation users to share access to either their entire workstation, or individual ports. Defaults to false. */
   grantWorkstationAdminRoleOnCreate?: boolean;
   /** Optional. Directories to persist across workstation sessions. */
-  persistentDirectories?: Array<PersistentDirectory>;
+  persistentDirectories?: ReadonlyArray<PersistentDirectory>;
   /** Output only. Status conditions describing the workstation configuration's current state. */
-  conditions?: Array<Status>;
+  conditions?: ReadonlyArray<Status>;
   /** Output only. Whether this workstation configuration is in degraded mode, in which case it may require user action to restore full functionality. The conditions field contains detailed information about the status of the configuration. */
   degraded?: boolean;
   /** Optional. Readiness checks to perform when starting a workstation using this workstation configuration. Mark a workstation as running only after all specified readiness checks return 200 status codes. */
-  readinessChecks?: Array<ReadinessCheck>;
+  readinessChecks?: ReadonlyArray<ReadinessCheck>;
   /** Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service_account must also be specified that has `roles/logging.logWriter` and `roles/monitoring.metricWriter` on the project. Operating system audit logging is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging) and [Container output logging](https://cloud.google.com/workstations/docs/container-output-logging#overview). Operating system audit logs are available in the [Cloud Logging](https://cloud.google.com/logging/docs) console by querying: resource.type="gce_instance" log_name:"/logs/linux-auditd" */
   enableAuditAgent?: boolean;
 }
@@ -603,11 +603,11 @@ export const WorkstationConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListWorkstationConfigsResponse {
   /** Unreachable resources. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** The requested configs. */
-  workstationConfigs?: Array<WorkstationConfig>;
+  workstationConfigs?: ReadonlyArray<WorkstationConfig>;
 }
 
 export const ListWorkstationConfigsResponse =
@@ -640,9 +640,9 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -680,7 +680,7 @@ export interface AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -692,7 +692,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
 export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -702,7 +702,7 @@ export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -721,9 +721,9 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
 }
 
 export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -766,7 +766,7 @@ export interface Workstation {
   /** Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding. */
   etag?: string;
   /** Output only. Status conditions describing the workstation's current state. */
-  conditions?: Array<Status>;
+  conditions?: ReadonlyArray<Status>;
   /** Optional. Output only. Runtime host for the workstation when in STATE_RUNNING. */
   runtimeHost?: RuntimeHost;
   /** Output only. Indicates whether this workstation is currently being updated to match its intended state. */
@@ -798,7 +798,7 @@ export interface Workstation {
   /** Optional. Human-readable name for this workstation. */
   displayName?: string;
   /** Output only. List of available boost configuration IDs that this workstation can be boosted up to. */
-  boostConfigs?: Array<WorkstationBoostConfig>;
+  boostConfigs?: ReadonlyArray<WorkstationBoostConfig>;
   /** Output only. Host to which clients can send HTTPS traffic that will be received by the workstation. Authorized traffic will be received to the workstation as HTTP on port 80. To send traffic to a different port, clients may prefix the host with the destination port in the format `{port}-{host}`. */
   host?: string;
   /** Identifier. Full name of this workstation. */
@@ -844,9 +844,9 @@ export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListWorkstationClustersResponse {
   /** The requested workstation clusters. */
-  workstationClusters?: Array<WorkstationCluster>;
+  workstationClusters?: ReadonlyArray<WorkstationCluster>;
   /** Unreachable resources. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -860,9 +860,9 @@ export const ListWorkstationClustersResponse =
 
 export interface ListUsableWorkstationsResponse {
   /** Unreachable resources. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The requested workstations. */
-  workstations?: Array<Workstation>;
+  workstations?: ReadonlyArray<Workstation>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -876,7 +876,7 @@ export const ListUsableWorkstationsResponse =
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -886,9 +886,9 @@ export const TestIamPermissionsResponse =
 
 export interface ListUsableWorkstationConfigsResponse {
   /** The requested configs. */
-  workstationConfigs?: Array<WorkstationConfig>;
+  workstationConfigs?: ReadonlyArray<WorkstationConfig>;
   /** Unreachable resources. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -968,7 +968,7 @@ export const GenerateAccessTokenResponse =
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -978,9 +978,9 @@ export const TestIamPermissionsRequest =
 
 export interface ListWorkstationsResponse {
   /** Optional. Unreachable resources. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The requested workstations. */
-  workstations?: Array<Workstation>;
+  workstations?: ReadonlyArray<Workstation>;
   /** Optional. Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -1027,10 +1027,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -1075,10 +1072,7 @@ export const ListProjectsLocationsOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -1116,11 +1110,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -1151,10 +1141,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -1201,11 +1188,7 @@ export const PatchProjectsLocationsWorkstationClustersRequest =
     ),
     body: Schema.optional(WorkstationCluster).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsWorkstationClustersRequest>;
 
@@ -1245,10 +1228,7 @@ export const ListProjectsLocationsWorkstationClustersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/workstationClusters" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsWorkstationClustersRequest>;
 
@@ -1299,7 +1279,7 @@ export const CreateProjectsLocationsWorkstationClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters",
+      path: "v1beta/{parent}/workstationClusters",
       hasBody: true,
     }),
     svc,
@@ -1343,10 +1323,7 @@ export const DeleteProjectsLocationsWorkstationClustersRequest =
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsWorkstationClustersRequest>;
 
@@ -1377,10 +1354,7 @@ export const GetProjectsLocationsWorkstationClustersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsWorkstationClustersRequest>;
 
@@ -1421,10 +1395,7 @@ export const ListProjectsLocationsWorkstationClustersWorkstationConfigsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/workstationConfigs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
 
@@ -1466,10 +1437,7 @@ export const GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsR
     ),
     resource: Schema.String.pipe(T.HttpPath("resource")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs/{workstationConfigsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
 
@@ -1515,10 +1483,7 @@ export const DeleteProjectsLocationsWorkstationClustersWorkstationConfigsRequest
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs/{workstationConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
 
@@ -1556,7 +1521,7 @@ export const SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsR
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs/{workstationConfigsId}:setIamPolicy",
+      path: "v1beta/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -1598,7 +1563,7 @@ export const TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationCo
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs/{workstationConfigsId}:testIamPermissions",
+      path: "v1beta/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -1643,7 +1608,7 @@ export const ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsReq
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs:listUsable",
+      path: "v1beta/{parent}/workstationConfigs:listUsable",
     }),
     svc,
   ) as unknown as Schema.Schema<ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
@@ -1698,7 +1663,7 @@ export const CreateProjectsLocationsWorkstationClustersWorkstationConfigsRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs",
+      path: "v1beta/{parent}/workstationConfigs",
       hasBody: true,
     }),
     svc,
@@ -1733,10 +1698,7 @@ export const GetProjectsLocationsWorkstationClustersWorkstationConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs/{workstationConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
 
@@ -1785,11 +1747,7 @@ export const PatchProjectsLocationsWorkstationClustersWorkstationConfigsRequest 
     ),
     body: Schema.optional(WorkstationConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs/{workstationConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
 
@@ -1827,7 +1785,7 @@ export const GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationC
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs/{workstationConfigsId}/workstations/{workstationsId}:generateAccessToken",
+      path: "v1beta/{workstation}:generateAccessToken",
       hasBody: true,
     }),
     svc,
@@ -1869,7 +1827,7 @@ export const TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationCo
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs/{workstationConfigsId}/workstations/{workstationsId}:testIamPermissions",
+      path: "v1beta/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -1909,11 +1867,7 @@ export const StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstat
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(StartWorkstationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs/{workstationConfigsId}/workstations/{workstationsId}:start",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:start", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
@@ -1956,10 +1910,7 @@ export const DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorksta
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs/{workstationConfigsId}/workstations/{workstationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
@@ -1999,7 +1950,7 @@ export const SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsW
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs/{workstationConfigsId}/workstations/{workstationsId}:setIamPolicy",
+      path: "v1beta/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2045,10 +1996,7 @@ export const ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstati
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs/{workstationConfigsId}/workstations",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/workstations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
@@ -2092,10 +2040,7 @@ export const GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsW
     ),
     resource: Schema.String.pipe(T.HttpPath("resource")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs/{workstationConfigsId}/workstations/{workstationsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
@@ -2146,11 +2091,7 @@ export const PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstat
     ),
     body: Schema.optional(Workstation).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs/{workstationConfigsId}/workstations/{workstationsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
@@ -2185,10 +2126,7 @@ export const GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstatio
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs/{workstationConfigsId}/workstations/{workstationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
@@ -2226,11 +2164,7 @@ export const StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstati
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(StopWorkstationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs/{workstationConfigsId}/workstations/{workstationsId}:stop",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:stop", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
@@ -2271,10 +2205,7 @@ export const ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWor
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs/{workstationConfigsId}/workstations:listUsable",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/workstations:listUsable" }),
     svc,
   ) as unknown as Schema.Schema<ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
@@ -2328,7 +2259,7 @@ export const CreateProjectsLocationsWorkstationClustersWorkstationConfigsWorksta
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/locations/{locationsId}/workstationClusters/{workstationClustersId}/workstationConfigs/{workstationConfigsId}/workstations",
+      path: "v1beta/{parent}/workstations",
       hasBody: true,
     }),
     svc,

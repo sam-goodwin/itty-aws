@@ -59,7 +59,7 @@ export const CustomPronunciationParams =
 
 export interface CustomPronunciations {
   /** The pronunciation customizations are applied. */
-  pronunciations?: Array<CustomPronunciationParams>;
+  pronunciations?: ReadonlyArray<CustomPronunciationParams>;
 }
 
 export const CustomPronunciations = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -72,7 +72,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -177,7 +177,7 @@ export const Turn = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MultiSpeakerMarkup {
   /** Required. Speaker turns. */
-  turns?: Array<Turn>;
+  turns?: ReadonlyArray<Turn>;
 }
 
 export const MultiSpeakerMarkup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -235,7 +235,7 @@ export const CustomVoiceParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MultiSpeakerVoiceConfig {
   /** Required. A list of configurations for the voices of the speakers. Exactly two speaker voice configurations must be provided. */
-  speakerVoiceConfigs?: Array<MultispeakerPrebuiltVoice>;
+  speakerVoiceConfigs?: ReadonlyArray<MultispeakerPrebuiltVoice>;
 }
 
 export const MultiSpeakerVoiceConfig =
@@ -295,7 +295,7 @@ export const SynthesizeLongAudioMetadata =
 
 export interface SafetySettings {
   /** The safety settings for the request. */
-  settings?: Array<SafetySetting>;
+  settings?: ReadonlyArray<SafetySetting>;
 }
 
 export const SafetySettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -324,7 +324,7 @@ export interface AudioConfig {
   /** Optional. Input only. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. Strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that. */
   volumeGainDb?: number;
   /** Optional. Input only. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given. See [audio profiles](https://cloud.google.com/text-to-speech/docs/audio-profiles) for current supported profile ids. */
-  effectsProfileId?: Array<string>;
+  effectsProfileId?: ReadonlyArray<string>;
   /** Optional. The synthesis sample rate (in hertz) for this audio. When this is specified in SynthesizeSpeechRequest, if this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality), unless the specified sample rate is not supported for the encoding chosen, in which case it will fail the request and return google.rpc.Code.INVALID_ARGUMENT. */
   sampleRateHertz?: number;
   /** Required. The format of the audio byte stream. */
@@ -355,7 +355,7 @@ export const AudioConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Voice {
   /** The languages that this voice supports, expressed as [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags (e.g. "en-US", "es-419", "cmn-tw"). */
-  languageCodes?: Array<string>;
+  languageCodes?: ReadonlyArray<string>;
   /** The name of this voice. Each distinct voice has a unique name. */
   name?: string;
   /** The natural sample rate (in hertz) for this voice. */
@@ -378,7 +378,7 @@ export const Voice = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListVoicesResponse {
   /** The list of voices. */
-  voices?: Array<Voice>;
+  voices?: ReadonlyArray<Voice>;
 }
 
 export const ListVoicesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -431,11 +431,11 @@ export const SynthesizeLongAudioRequest =
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -494,7 +494,7 @@ export const SynthesizeLongAudioProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:synthesizeLongAudio",
+      path: "v1/{parent}:synthesizeLongAudio",
       hasBody: true,
     }),
     svc,
@@ -541,10 +541,7 @@ export const ListProjectsLocationsOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -579,10 +576,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -645,7 +639,7 @@ export const DeleteOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/operations/{operationsId}" }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOperationsRequest>;
 
@@ -678,11 +672,7 @@ export const CancelOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelOperationsRequest>;
 

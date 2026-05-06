@@ -163,9 +163,9 @@ export const DynamicLinkEventStat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DynamicLinkStats {
   /** Optional warnings associated this API request. */
-  warnings?: Array<DynamicLinkWarning>;
+  warnings?: ReadonlyArray<DynamicLinkWarning>;
   /** Dynamic Link event stats. */
-  linkEventStats?: Array<DynamicLinkEventStat>;
+  linkEventStats?: ReadonlyArray<DynamicLinkEventStat>;
 }
 
 export const DynamicLinkStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -181,7 +181,7 @@ export interface GetIosReopenAttributionResponse {
   /** The deep-link attributed the app universal link open. For both regular FDL links and invite FDL links. */
   deepLink?: string;
   /** Optional warnings associated this API request. */
-  warning?: Array<DynamicLinkWarning>;
+  warning?: ReadonlyArray<DynamicLinkWarning>;
   /** Scion term value to be propagated by iSDK to Scion at app-reopen. */
   utmTerm?: string;
   /** Scion campaign value to be propagated by iSDK to Scion at app-reopen. */
@@ -409,7 +409,9 @@ export interface ManagedShortLink {
   /** Creation timestamp of the short link. */
   creationTime?: string;
   /** Attributes that have been flagged about this short url. */
-  flaggedAttribute?: Array<"UNSPECIFIED_ATTRIBUTE" | "SPAM" | (string & {})>;
+  flaggedAttribute?: ReadonlyArray<
+    "UNSPECIFIED_ATTRIBUTE" | "SPAM" | (string & {})
+  >;
   /** Full Dyamic Link info */
   info?: DynamicLinkInfo;
   /** Short durable link url, for example, "https://sample.app.goo.gl/xyz123". Required. */
@@ -438,7 +440,7 @@ export interface CreateManagedShortLinkResponse {
   /** Short Dynamic Link value. e.g. https://abcd.app.goo.gl/wxyz */
   managedShortLink?: ManagedShortLink;
   /** Information about potential warnings on link creation. */
-  warning?: Array<DynamicLinkWarning>;
+  warning?: ReadonlyArray<DynamicLinkWarning>;
   /** Preview link to show the link flow chart. (debug info.) */
   previewLink?: string;
 }
@@ -562,7 +564,7 @@ export interface CreateShortDynamicLinkResponse {
   /** Short Dynamic Link value. e.g. https://abcd.app.goo.gl/wxyz */
   shortLink?: string;
   /** Information about potential warnings on link creation. */
-  warning?: Array<DynamicLinkWarning>;
+  warning?: ReadonlyArray<DynamicLinkWarning>;
   /** Preview link to show the link flow chart. (debug info.) */
   previewLink?: string;
 }

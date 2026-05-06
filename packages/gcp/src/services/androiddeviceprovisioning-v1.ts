@@ -197,7 +197,7 @@ export interface DevicesLongRunningOperationResponse {
   /** A summary of how many items in the operation the server processed successfully. Updated as the operation progresses. */
   successCount?: number;
   /** The processing status for each device in the operation. One `PerDeviceStatus` per device. The list order matches the items in the original request. */
-  perDeviceStatus?: Array<OperationPerDevice>;
+  perDeviceStatus?: ReadonlyArray<OperationPerDevice>;
 }
 
 export const DevicesLongRunningOperationResponse =
@@ -224,7 +224,7 @@ export interface GoogleWorkspaceAccount {
   /** Required. The customer ID. */
   customerId?: string;
   /** Output only. The pre-provisioning tokens previously used to claim devices. */
-  preProvisioningTokens?: Array<string>;
+  preProvisioningTokens?: ReadonlyArray<string>;
 }
 
 export const GoogleWorkspaceAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -238,7 +238,7 @@ export interface Company {
   /** Required. The name of the company. For example _XYZ Corp_. Displayed to the company's employees in the zero-touch enrollment portal. */
   companyName?: string;
   /** Required. Input only. Email address of customer's users in the owner role. At least one `owner_email` is required. Owners share the same access as admins but can also add, delete, and edit your organization's portal users. */
-  ownerEmails?: Array<string>;
+  ownerEmails?: ReadonlyArray<string>;
   /** Input only. If set to true, welcome email will not be sent to the customer. It is recommended to skip the welcome email if devices will be claimed with additional DEVICE_PROTECTION service, as the customer will receive separate emails at device claim time. This field is ignored if this is not a Zero-touch customer. */
   skipWelcomeEmail?: boolean;
   /** Output only. The Google Workspace account associated with this customer. Only used for customer Companies. */
@@ -246,7 +246,7 @@ export interface Company {
   /** Output only. The API resource name of the company. The resource name is one of the following formats: * `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]` * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]` * `partners/[PARTNER_ID]/vendors/[VENDOR_ID]/customers/[CUSTOMER_ID]` Assigned by the server. */
   name?: string;
   /** Optional. Email address of customer's users in the admin role. Each email address must be associated with a Google Account. */
-  adminEmails?: Array<string>;
+  adminEmails?: ReadonlyArray<string>;
   /** Output only. Whether any user from the company has accepted the latest Terms of Service (ToS). See TermsStatus. */
   termsStatus?:
     | "TERMS_STATUS_UNSPECIFIED"
@@ -274,7 +274,7 @@ export const Company = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CustomerListCustomersResponse {
   /** The customer accounts the calling user is a member of. */
-  customers?: Array<Company>;
+  customers?: ReadonlyArray<Company>;
   /** A token used to access the next page of results. Omitted if no further results are available. */
   nextPageToken?: string;
 }
@@ -381,7 +381,7 @@ export interface Device {
   /** Not available to resellers. */
   configuration?: string;
   /** Output only. The provisioning claims for a device. Devices claimed for zero-touch enrollment have a claim with the type `SECTION_TYPE_ZERO_TOUCH`. Call `partners.devices.unclaim` or `partners.devices.unclaimAsync` to remove the device from zero-touch enrollment. */
-  claims?: Array<DeviceClaim>;
+  claims?: ReadonlyArray<DeviceClaim>;
   /** Output only. The ID of the device. Assigned by the server. */
   deviceId?: string;
   /** The metadata attached to the device. Structured as key-value pairs. To learn more, read [Device metadata](https://developers.google.com/zero-touch/guides/metadata). */
@@ -403,7 +403,7 @@ export interface FindDevicesByDeviceIdentifierResponse {
   /** The total count of items in the list irrespective of pagination. */
   totalSize?: number;
   /** Found devices. */
-  devices?: Array<Device>;
+  devices?: ReadonlyArray<Device>;
   /** A token used to access the next page of results. Omitted if no further results are available. */
   nextPageToken?: string;
 }
@@ -456,7 +456,7 @@ export const Configuration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -504,7 +504,7 @@ export const UpdateDeviceMetadataRequest =
 
 export interface ClaimDevicesRequest {
   /** Required. A list of device claims. */
-  claims?: Array<PartnerClaim>;
+  claims?: ReadonlyArray<PartnerClaim>;
 }
 
 export const ClaimDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -513,7 +513,7 @@ export const ClaimDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface UnclaimDevicesRequest {
   /** Required. The list of devices to unclaim. */
-  unclaims?: Array<PartnerUnclaim>;
+  unclaims?: ReadonlyArray<PartnerUnclaim>;
 }
 
 export const UnclaimDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -522,7 +522,7 @@ export const UnclaimDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface UpdateDeviceMetadataInBatchRequest {
   /** Required. The list of metadata updates. */
-  updates?: Array<UpdateMetadataArguments>;
+  updates?: ReadonlyArray<UpdateMetadataArguments>;
 }
 
 export const UpdateDeviceMetadataInBatchRequest =
@@ -532,7 +532,7 @@ export const UpdateDeviceMetadataInBatchRequest =
 
 export interface CustomerListConfigurationsResponse {
   /** The configurations. */
-  configurations?: Array<Configuration>;
+  configurations?: ReadonlyArray<Configuration>;
 }
 
 export const CustomerListConfigurationsResponse =
@@ -595,7 +595,7 @@ export const DevicesLongRunningOperationMetadata =
 
 export interface ListCustomersResponse {
   /** List of customers related to this reseller partner. */
-  customers?: Array<Company>;
+  customers?: ReadonlyArray<Company>;
   /** A token to retrieve the next page of results. Omitted if no further results are available. */
   nextPageToken?: string;
   /** The total count of items in the list irrespective of pagination. */
@@ -637,7 +637,7 @@ export interface ListVendorsResponse {
   /** The total count of items in the list irrespective of pagination. */
   totalSize?: number;
   /** List of vendors of the reseller partner. Fields `name`, `companyId` and `companyName` are populated to the Company object. */
-  vendors?: Array<Company>;
+  vendors?: ReadonlyArray<Company>;
   /** A token to retrieve the next page of results. Omitted if no further results are available. */
   nextPageToken?: string;
 }
@@ -684,7 +684,7 @@ export const ClaimDeviceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CustomerListDevicesResponse {
   /** The customer's devices. */
-  devices?: Array<Device>;
+  devices?: ReadonlyArray<Device>;
   /** A token used to access the next page of results. Omitted if no further results are available. */
   nextPageToken?: string;
 }
@@ -699,7 +699,7 @@ export interface FindDevicesByOwnerResponse {
   /** The total count of items in the list irrespective of pagination. */
   totalSize?: number;
   /** The customer's devices. */
-  devices?: Array<Device>;
+  devices?: ReadonlyArray<Device>;
   /** A token used to access the next page of results. Omitted if no further results are available. */
   nextPageToken?: string;
 }
@@ -725,7 +725,7 @@ export interface ListVendorCustomersResponse {
   /** The total count of items in the list irrespective of pagination. */
   totalSize?: number;
   /** List of customers of the vendor. */
-  customers?: Array<Company>;
+  customers?: ReadonlyArray<Company>;
   /** A token to retrieve the next page of results. Omitted if no further results are available. */
   nextPageToken?: string;
 }
@@ -754,7 +754,7 @@ export const Dpc = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CustomerListDpcsResponse {
   /** The list of DPCs available to the customer that support zero-touch enrollment. */
-  dpcs?: Array<Dpc>;
+  dpcs?: ReadonlyArray<Dpc>;
 }
 
 export const CustomerListDpcsResponse =
@@ -774,9 +774,9 @@ export interface FindDevicesByOwnerRequest {
     | "SECTION_TYPE_ZERO_TOUCH"
     | (string & {});
   /** The list of customer IDs to search for. */
-  customerId?: Array<string>;
+  customerId?: ReadonlyArray<string>;
   /** The list of IDs of Google Workspace accounts to search for. */
-  googleWorkspaceCustomerId?: Array<string>;
+  googleWorkspaceCustomerId?: ReadonlyArray<string>;
 }
 
 export const FindDevicesByOwnerRequest =
@@ -843,7 +843,7 @@ export const ApplyConfigurationCustomersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/customers/{customersId}/devices:applyConfiguration",
+      path: "v1/{parent}/devices:applyConfiguration",
       hasBody: true,
     }),
     svc,
@@ -883,7 +883,7 @@ export const RemoveConfigurationCustomersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/customers/{customersId}/devices:removeConfiguration",
+      path: "v1/{parent}/devices:removeConfiguration",
       hasBody: true,
     }),
     svc,
@@ -922,7 +922,7 @@ export const ListCustomersDevicesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.String).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/customers/{customersId}/devices" }),
+    T.Http({ method: "GET", path: "v1/{parent}/devices" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersDevicesRequest>;
 
@@ -957,10 +957,7 @@ export const GetCustomersDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/customers/{customersId}/devices/{devicesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersDevicesRequest>;
 
@@ -995,7 +992,7 @@ export const UnclaimCustomersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/customers/{customersId}/devices:unclaim",
+      path: "v1/{parent}/devices:unclaim",
       hasBody: true,
     }),
     svc,
@@ -1028,7 +1025,7 @@ export const ListCustomersDpcsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/customers/{customersId}/dpcs" }),
+    T.Http({ method: "GET", path: "v1/{parent}/dpcs" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersDpcsRequest>;
 
@@ -1064,7 +1061,7 @@ export const CreateCustomersConfigurationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/customers/{customersId}/configurations",
+      path: "v1/{parent}/configurations",
       hasBody: true,
     }),
     svc,
@@ -1097,10 +1094,7 @@ export const GetCustomersConfigurationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/customers/{customersId}/configurations/{configurationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersConfigurationsRequest>;
 
@@ -1131,10 +1125,7 @@ export const DeleteCustomersConfigurationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/customers/{customersId}/configurations/{configurationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteCustomersConfigurationsRequest>;
 
@@ -1165,10 +1156,7 @@ export const ListCustomersConfigurationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/customers/{customersId}/configurations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/configurations" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersConfigurationsRequest>;
 
@@ -1206,11 +1194,7 @@ export const PatchCustomersConfigurationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Configuration).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/customers/{customersId}/configurations/{configurationsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchCustomersConfigurationsRequest>;
 
@@ -1240,7 +1224,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/operations/{operationsId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -1276,7 +1260,7 @@ export const ListPartnersVendorsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/partners/{partnersId}/vendors" }),
+    T.Http({ method: "GET", path: "v1/{parent}/vendors" }),
     svc,
   ) as unknown as Schema.Schema<ListPartnersVendorsRequest>;
 
@@ -1317,10 +1301,7 @@ export const ListPartnersVendorsCustomersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/partners/{partnersId}/vendors/{vendorsId}/customers",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/customers" }),
     svc,
   ) as unknown as Schema.Schema<ListPartnersVendorsCustomersRequest>;
 
@@ -1358,11 +1339,7 @@ export const CreatePartnersCustomersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CreateCustomerRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/partners/{partnersId}/customers",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/customers", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreatePartnersCustomersRequest>;
 
@@ -1399,7 +1376,7 @@ export const ListPartnersCustomersRequest =
     partnerId: Schema.String.pipe(T.HttpPath("partnerId")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/partners/{partnersId}/customers" }),
+    T.Http({ method: "GET", path: "v1/partners/{partnerId}/customers" }),
     svc,
   ) as unknown as Schema.Schema<ListPartnersCustomersRequest>;
 
@@ -1439,7 +1416,7 @@ export const UnclaimAsyncPartnersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{partnersId}/devices:unclaimAsync",
+      path: "v1/partners/{partnerId}/devices:unclaimAsync",
       hasBody: true,
     }),
     svc,
@@ -1477,7 +1454,7 @@ export const FindByOwnerPartnersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{partnersId}/devices:findByOwner",
+      path: "v1/partners/{partnerId}/devices:findByOwner",
       hasBody: true,
     }),
     svc,
@@ -1515,7 +1492,7 @@ export const GetSimLockStatePartnersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{partnersId}/devices:getSimLockState",
+      path: "v1/partners/{partnerId}/devices:getSimLockState",
       hasBody: true,
     }),
     svc,
@@ -1557,7 +1534,7 @@ export const MetadataPartnersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{partnersId}/devices/{devicesId}/metadata",
+      path: "v1/partners/{metadataOwnerId}/devices/{deviceId}/metadata",
       hasBody: true,
     }),
     svc,
@@ -1595,7 +1572,7 @@ export const ClaimAsyncPartnersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{partnersId}/devices:claimAsync",
+      path: "v1/partners/{partnerId}/devices:claimAsync",
       hasBody: true,
     }),
     svc,
@@ -1635,7 +1612,7 @@ export const UpdateMetadataAsyncPartnersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{partnersId}/devices:updateMetadataAsync",
+      path: "v1/partners/{partnerId}/devices:updateMetadataAsync",
       hasBody: true,
     }),
     svc,
@@ -1673,7 +1650,7 @@ export const ClaimPartnersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{partnersId}/devices:claim",
+      path: "v1/partners/{partnerId}/devices:claim",
       hasBody: true,
     }),
     svc,
@@ -1713,7 +1690,7 @@ export const FindByIdentifierPartnersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{partnersId}/devices:findByIdentifier",
+      path: "v1/partners/{partnerId}/devices:findByIdentifier",
       hasBody: true,
     }),
     svc,
@@ -1747,10 +1724,7 @@ export const GetPartnersDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/partners/{partnersId}/devices/{devicesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPartnersDevicesRequest>;
 
@@ -1785,7 +1759,7 @@ export const UnclaimPartnersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/partners/{partnersId}/devices:unclaim",
+      path: "v1/partners/{partnerId}/devices:unclaim",
       hasBody: true,
     }),
     svc,

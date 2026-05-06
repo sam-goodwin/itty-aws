@@ -41,7 +41,7 @@ export interface LocalizedStringBundle {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#localizedStringBundle`. */
   kind?: string;
   /** The locale strings. */
-  translations?: Array<LocalizedString>;
+  translations?: ReadonlyArray<LocalizedString>;
 }
 
 export const LocalizedStringBundle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -117,7 +117,7 @@ export interface AchievementConfigurationListResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#achievementConfigurationListResponse`. */
   kind?: string;
   /** The achievement configurations. */
-  items?: Array<AchievementConfiguration>;
+  items?: ReadonlyArray<AchievementConfiguration>;
   /** The pagination token for the next page of results. */
   nextPageToken?: string;
 }
@@ -238,7 +238,7 @@ export interface LeaderboardConfigurationListResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#leaderboardConfigurationListResponse`. */
   kind?: string;
   /** The leaderboard configurations. */
-  items?: Array<LeaderboardConfiguration>;
+  items?: ReadonlyArray<LeaderboardConfiguration>;
   /** The pagination token for the next page of results. */
   nextPageToken?: string;
 }

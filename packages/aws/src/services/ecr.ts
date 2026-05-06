@@ -3878,19 +3878,19 @@ export const ValidatePullThroughCacheRuleResponse =
 export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
   "InvalidParameterException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class RepositoryNotFoundException extends S.TaggedErrorClass<RepositoryNotFoundException>()(
   "RepositoryNotFoundException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withNotFoundError) {}
 export class ServerException extends S.TaggedErrorClass<ServerException>()(
   "ServerException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withServerError, C.withRetryableError) {}
 export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
   "LimitExceededException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withQuotaError) {}
 export class UnableToGetUpstreamImageException extends S.TaggedErrorClass<UnableToGetUpstreamImageException>()(
   "UnableToGetUpstreamImageException",
   { message: S.optional(S.String) },
@@ -3950,11 +3950,11 @@ export class InvalidTagParameterException extends S.TaggedErrorClass<InvalidTagP
 export class RepositoryAlreadyExistsException extends S.TaggedErrorClass<RepositoryAlreadyExistsException>()(
   "RepositoryAlreadyExistsException",
   { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
   "TooManyTagsException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withQuotaError, C.withBadRequestError) {}
 export class TemplateAlreadyExistsException extends S.TaggedErrorClass<TemplateAlreadyExistsException>()(
   "TemplateAlreadyExistsException",
   { message: S.optional(S.String) },
@@ -3962,7 +3962,7 @@ export class TemplateAlreadyExistsException extends S.TaggedErrorClass<TemplateA
 export class LifecyclePolicyNotFoundException extends S.TaggedErrorClass<LifecyclePolicyNotFoundException>()(
   "LifecyclePolicyNotFoundException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withNotFoundError) {}
 export class PullThroughCacheRuleNotFoundException extends S.TaggedErrorClass<PullThroughCacheRuleNotFoundException>()(
   "PullThroughCacheRuleNotFoundException",
   { message: S.optional(S.String) },
@@ -3974,7 +3974,7 @@ export class RegistryPolicyNotFoundException extends S.TaggedErrorClass<Registry
 export class RepositoryNotEmptyException extends S.TaggedErrorClass<RepositoryNotEmptyException>()(
   "RepositoryNotEmptyException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withConflictError, C.withDependencyViolationError) {}
 export class TemplateNotFoundException extends S.TaggedErrorClass<TemplateNotFoundException>()(
   "TemplateNotFoundException",
   { message: S.optional(S.String) },
@@ -3982,7 +3982,7 @@ export class TemplateNotFoundException extends S.TaggedErrorClass<TemplateNotFou
 export class RepositoryPolicyNotFoundException extends S.TaggedErrorClass<RepositoryPolicyNotFoundException>()(
   "RepositoryPolicyNotFoundException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withNotFoundError) {}
 export class SigningConfigurationNotFoundException extends S.TaggedErrorClass<SigningConfigurationNotFoundException>()(
   "SigningConfigurationNotFoundException",
   { message: S.optional(S.String) },

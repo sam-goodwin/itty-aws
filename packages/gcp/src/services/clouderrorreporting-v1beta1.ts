@@ -37,7 +37,7 @@ export interface ErrorGroup {
   /** An opaque identifier of the group. This field is assigned by the Error Reporting system and always populated. In the group resource name, the `group_id` is a unique identifier for a particular error group. The identifier is derived from key parts of the error-log content and is treated as Service Data. For information about how Service Data is handled, see [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice). */
   groupId?: string;
   /** Associated tracking issues. */
-  trackingIssues?: Array<TrackingIssue>;
+  trackingIssues?: ReadonlyArray<TrackingIssue>;
   /** Error group's resolution status. An unspecified resolution status will be interpreted as OPEN */
   resolutionStatus?:
     | "RESOLUTION_STATUS_UNSPECIFIED"
@@ -144,7 +144,7 @@ export interface ErrorContext {
   /** The location in the source code where the decision was made to report the error, usually the place where it was logged. For a logged exception this would be the source line where the exception is logged, usually close to the place where it was caught. */
   reportLocation?: SourceLocation;
   /** Source code that was used to build the executable which has caused the given error message. */
-  sourceReferences?: Array<SourceReference>;
+  sourceReferences?: ReadonlyArray<SourceReference>;
 }
 
 export const ErrorContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -180,13 +180,13 @@ export interface ErrorGroupStats {
   /** Approximate number of affected users in the given group that match the filter criteria. Users are distinguished by data in the ErrorContext of the individual error events, such as their login name or their remote IP address in case of HTTP requests. The number of affected users can be zero even if the number of errors is non-zero if no data was provided from which the affected user could be deduced. Users are counted based on data in the request context that was provided in the error report. If more users are implicitly affected, such as due to a crash of the whole service, this is not reflected here. */
   affectedUsersCount?: string;
   /** Approximate number of occurrences over time. Timed counts returned by ListGroups are guaranteed to be: - Inside the requested time interval - Non-overlapping, and - Ordered by ascending time. */
-  timedCounts?: Array<TimedCount>;
+  timedCounts?: ReadonlyArray<TimedCount>;
   /** Approximate first occurrence that was ever seen for this group and which matches the given filter criteria, ignoring the time_range that was specified in the request. */
   firstSeenTime?: string;
   /** Approximate last occurrence that was ever seen for this group and which matches the given filter criteria, ignoring the time_range that was specified in the request. */
   lastSeenTime?: string;
   /** Service contexts with a non-zero error count for the given filter criteria. This list can be truncated if multiple services are affected. Refer to `num_affected_services` for the total count. */
-  affectedServices?: Array<ServiceContext>;
+  affectedServices?: ReadonlyArray<ServiceContext>;
   /** The total number of services with a non-zero error count for the given filter criteria. */
   numAffectedServices?: number;
   /** An arbitrary event that is chosen as representative for the whole group. The representative event is intended to be used as a quick preview for the whole group. Events in the group are usually sufficiently similar to each other such that showing an arbitrary representative provides insight into the characteristics of the group as a whole. */
@@ -207,7 +207,7 @@ export const ErrorGroupStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListGroupStatsResponse {
   /** The error group stats which match the given request. */
-  errorGroupStats?: Array<ErrorGroupStats>;
+  errorGroupStats?: ReadonlyArray<ErrorGroupStats>;
   /** If non-empty, more results are available. Pass this token, along with the same query parameters as the first request, to view the next page of results. */
   nextPageToken?: string;
   /** The timestamp specifies the start time to which the request was restricted. The start time is set based on the requested time range. It may be adjusted to a later time if a project has exceeded the storage quota and older data has been deleted. */
@@ -224,7 +224,7 @@ export const ListGroupStatsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListEventsResponse {
   /** The error events which match the given request. */
-  errorEvents?: Array<ErrorEvent>;
+  errorEvents?: ReadonlyArray<ErrorEvent>;
   /** If non-empty, more results are available. Pass this token, along with the same query parameters as the first request, to view the next page of results. */
   nextPageToken?: string;
   /** The timestamp specifies the start time to which the request was restricted. */
@@ -281,7 +281,7 @@ export const DeleteEventsProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectName: Schema.String.pipe(T.HttpPath("projectName")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1beta1/projects/{projectsId}/events" }),
+    T.Http({ method: "DELETE", path: "v1beta1/{projectName}/events" }),
     svc,
   ) as unknown as Schema.Schema<DeleteEventsProjectsRequest>;
 
@@ -312,10 +312,7 @@ export const GetProjectsGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupName: Schema.String.pipe(T.HttpPath("groupName")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/groups/{groupsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{groupName}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsGroupsRequest>;
 
@@ -348,11 +345,7 @@ export const UpdateProjectsGroupsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ErrorGroup).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1beta1/projects/{projectsId}/groups/{groupsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateProjectsGroupsRequest>;
 
@@ -447,7 +440,7 @@ export const ListProjectsGroupStatsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/projects/{projectsId}/groupStats" }),
+    T.Http({ method: "GET", path: "v1beta1/{projectName}/groupStats" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsGroupStatsRequest>;
 
@@ -518,7 +511,7 @@ export const ListProjectsEventsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/projects/{projectsId}/events" }),
+    T.Http({ method: "GET", path: "v1beta1/{projectName}/events" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsEventsRequest>;
 
@@ -558,7 +551,7 @@ export const ReportProjectsEventsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/events:report",
+      path: "v1beta1/{projectName}/events:report",
       hasBody: true,
     }),
     svc,
@@ -591,10 +584,7 @@ export const DeleteEventsProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     projectName: Schema.String.pipe(T.HttpPath("projectName")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/events",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{projectName}/events" }),
     svc,
   ) as unknown as Schema.Schema<DeleteEventsProjectsLocationsRequest>;
 
@@ -625,10 +615,7 @@ export const GetProjectsLocationsGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     groupName: Schema.String.pipe(T.HttpPath("groupName")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/groups/{groupsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{groupName}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGroupsRequest>;
 
@@ -662,11 +649,7 @@ export const UpdateProjectsLocationsGroupsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ErrorGroup).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/groups/{groupsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateProjectsLocationsGroupsRequest>;
 
@@ -761,10 +744,7 @@ export const ListProjectsLocationsGroupStatsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/groupStats",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{projectName}/groupStats" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGroupStatsRequest>;
 
@@ -835,10 +815,7 @@ export const ListProjectsLocationsEventsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/events",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{projectName}/events" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEventsRequest>;
 

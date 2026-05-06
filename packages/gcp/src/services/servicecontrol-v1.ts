@@ -54,7 +54,7 @@ export const ExponentialBuckets = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ExplicitBuckets {
   /** 'bound' is a list of strictly increasing boundaries between buckets. Note that a list of length N-1 defines N buckets because of fenceposting. See comments on `bucket_options` for details. The i'th finite bucket covers the interval [bound[i-1], bound[i]) where i ranges from 1 to bound_size() - 1. Note that there are no finite buckets at all if 'bound' only contains a single element; in that special case the single bound defines the boundary between the underflow and overflow buckets. bucket number lower bound upper bound i == 0 (underflow) -inf bound[i] 0 < i < bound_size() bound[i-1] bound[i] i == bound_size() (overflow) bound[i-1] +inf */
-  bounds?: Array<number>;
+  bounds?: ReadonlyArray<number>;
 }
 
 export const ExplicitBuckets = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -67,7 +67,7 @@ export interface Exemplar {
   /** The observation (sampling) time of the above value. */
   timestamp?: string;
   /** Contextual information about the example value. Examples are: Trace: type.googleapis.com/google.monitoring.v3.SpanContext Literal string: type.googleapis.com/google.protobuf.StringValue Labels dropped during aggregation: type.googleapis.com/google.monitoring.v3.DroppedLabels There may be only a single attachment of any given message type in a single exemplar, and this is enforced by the system. */
-  attachments?: Array<Record<string, unknown>>;
+  attachments?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Exemplar = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -90,7 +90,7 @@ export interface Distribution {
   /** The sum of squared deviations from the mean: Sum[i=1..count]((x_i - mean)^2) where each x_i is a sample values. If `count` is zero then this field must be zero, otherwise validation of the request fails. */
   sumOfSquaredDeviation?: number;
   /** The number of samples in each histogram bucket. `bucket_counts` are optional. If present, they must sum to the `count` value. The buckets are defined below in `bucket_option`. There are N buckets. `bucket_counts[0]` is the number of samples in the underflow bucket. `bucket_counts[1]` to `bucket_counts[N-1]` are the numbers of samples in each of the finite buckets. And `bucket_counts[N]` is the number of samples in the overflow bucket. See the comments of `bucket_option` below for more details. Any suffix of trailing zeros may be omitted. */
-  bucketCounts?: Array<string>;
+  bucketCounts?: ReadonlyArray<string>;
   /** Buckets with constant width. */
   linearBuckets?: LinearBuckets;
   /** Buckets with exponentially growing width. */
@@ -98,7 +98,7 @@ export interface Distribution {
   /** Buckets with arbitrary user-provided width. */
   explicitBuckets?: ExplicitBuckets;
   /** Example points. Must be in increasing order of `value` field. */
-  exemplars?: Array<Exemplar>;
+  exemplars?: ReadonlyArray<Exemplar>;
 }
 
 export const Distribution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -166,7 +166,7 @@ export interface MetricValueSet {
   /** The metric name defined in the service configuration. */
   metricName?: string;
   /** The values in this metric. */
-  metricValues?: Array<MetricValue>;
+  metricValues?: ReadonlyArray<MetricValue>;
 }
 
 export const MetricValueSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -184,7 +184,7 @@ export interface QuotaOperation {
   /** Labels describing the operation. */
   labels?: Record<string, string>;
   /** Represents information about this operation. Each MetricValueSet corresponds to a metric defined in the service configuration. The data type used in the MetricValueSet must agree with the data type specified in the metric definition. Within a single operation, it is not allowed to have more than one MetricValue instances that have the same metric names and identical label value combinations. If a request has such duplicated MetricValue instances, the entire request is rejected with an invalid argument error. This field is mutually exclusive with method_name. */
-  quotaMetrics?: Array<MetricValueSet>;
+  quotaMetrics?: ReadonlyArray<MetricValueSet>;
   /** Quota mode for this operation. */
   quotaMode?:
     | "UNSPECIFIED"
@@ -222,7 +222,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -268,7 +268,7 @@ export const QuotaError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AllocateInfo {
   /** A list of label keys that were unused by the server in processing the request. Thus, for similar requests repeated in a certain future time window, the caller can choose to ignore these labels in the requests to achieve better client-side cache hits and quota aggregation for rate quota. This field is not populated for allocation quota checks. */
-  unusedArguments?: Array<string>;
+  unusedArguments?: ReadonlyArray<string>;
 }
 
 export const AllocateInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -279,9 +279,9 @@ export interface AllocateQuotaResponse {
   /** The same operation_id value used in the AllocateQuotaRequest. Used for logging and diagnostics purposes. */
   operationId?: string;
   /** Indicates the decision of the allocate. */
-  allocateErrors?: Array<QuotaError>;
+  allocateErrors?: ReadonlyArray<QuotaError>;
   /** Quota metrics to indicate the result of allocation. Depending on the request, one or more of the following metrics will be included: 1. Per quota group or per quota metric incremental usage will be specified using the following delta metric : "serviceruntime.googleapis.com/api/consumer/quota_used_count" 2. The quota limit reached condition will be specified using the following boolean metric : "serviceruntime.googleapis.com/quota/exceeded" */
-  quotaMetrics?: Array<MetricValueSet>;
+  quotaMetrics?: ReadonlyArray<MetricValueSet>;
   /** ID of the actual config used to process the request. */
   serviceConfigId?: string;
   /** WARNING: DO NOT use this field until this warning message is removed. */
@@ -560,9 +560,9 @@ export interface Operation {
   /** Labels describing the operation. Only the following labels are allowed: - Labels describing monitored resources as defined in the service configuration. - Default labels of metric values. When specified, labels defined in the metric value override these default. - The following labels defined by Google Cloud Platform: - `cloud.googleapis.com/location` describing the location where the operation happened, - `servicecontrol.googleapis.com/user_agent` describing the user agent of the API request, - `servicecontrol.googleapis.com/service_agent` describing the service used to handle the API request (e.g. ESP), - `servicecontrol.googleapis.com/platform` describing the platform where the API is served, such as App Engine, Compute Engine, or Kubernetes Engine. */
   labels?: Record<string, string>;
   /** Represents information about this operation. Each MetricValueSet corresponds to a metric defined in the service configuration. The data type used in the MetricValueSet must agree with the data type specified in the metric definition. Within a single operation, it is not allowed to have more than one MetricValue instances that have the same metric names and identical label value combinations. If a request has such duplicated MetricValue instances, the entire request is rejected with an invalid argument error. */
-  metricValueSets?: Array<MetricValueSet>;
+  metricValueSets?: ReadonlyArray<MetricValueSet>;
   /** Represents information to be logged. */
-  logEntries?: Array<LogEntry>;
+  logEntries?: ReadonlyArray<LogEntry>;
   /** Represents the properties needed for quota check. Applicable only if this operation is for a quota check request. If this is not specified, no quota check will be performed. */
   quotaProperties?: QuotaProperties;
   /** DO NOT USE. This is an experimental field. */
@@ -570,9 +570,9 @@ export interface Operation {
   /** Private Preview. This feature is only available for approved services. User defined labels for the resource that this operation is associated with. */
   userLabels?: Record<string, string>;
   /** The resources that are involved in the operation. The maximum supported number of entries in this field is 100. */
-  resources?: Array<ResourceInfo>;
+  resources?: ReadonlyArray<ResourceInfo>;
   /** Unimplemented. A list of Cloud Trace spans. The span names shall contain the id of the destination project which can be either the produce or the consumer project. */
-  traceSpans?: Array<TraceSpan>;
+  traceSpans?: ReadonlyArray<TraceSpan>;
 }
 
 export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -669,9 +669,9 @@ export interface QuotaInfo {
   /** Map of quota group name to the actual number of tokens consumed. If the quota check was not successful, then this will not be populated due to no quota consumption. We are not merging this field with 'quota_metrics' field because of the complexity of scaling in Chemist client code base. For simplicity, we will keep this field for Castor (that scales quota usage) and 'quota_metrics' for SuperQuota (that doesn't scale quota usage). */
   quotaConsumed?: Record<string, number>;
   /** Quota Metrics that have exceeded quota limits. For QuotaGroup-based quota, this is QuotaGroup.name For QuotaLimit-based quota, this is QuotaLimit.name See: google.api.Quota Deprecated: Use quota_metrics to get per quota group limit exceeded status. */
-  limitExceeded?: Array<string>;
+  limitExceeded?: ReadonlyArray<string>;
   /** Quota metrics to indicate the usage. Depending on the check request, one or more of the following metrics will be included: 1. For rate quota, per quota group or per quota metric incremental usage will be specified using the following delta metric: "serviceruntime.googleapis.com/api/consumer/quota_used_count" 2. For allocation quota, per quota metric total usage will be specified using the following gauge metric: "serviceruntime.googleapis.com/allocation/consumer/quota_used_count" 3. For both rate quota and allocation quota, the quota limit reached condition will be specified using the following boolean metric: "serviceruntime.googleapis.com/quota/exceeded" */
-  quotaMetrics?: Array<MetricValueSet>;
+  quotaMetrics?: ReadonlyArray<MetricValueSet>;
   /** Output only. Indicates the state of the quota extraction. */
   quotaExtractionState?:
     | "QUOTA_EXTRACTION_STATE_UNSPECIFIED"
@@ -710,7 +710,7 @@ export const ConsumerInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CheckInfo {
   /** A list of fields and label keys that are ignored by the server. The client doesn't need to send them for following requests to improve performance and allow better aggregation. */
-  unusedArguments?: Array<string>;
+  unusedArguments?: ReadonlyArray<string>;
   /** Consumer info of this check. */
   consumerInfo?: ConsumerInfo;
   /** The unique id of the api key in the format of "apikey:". This field will be populated when the consumer passed to Chemist is an API key and all the API key related validations are successful. */
@@ -730,7 +730,7 @@ export interface CheckResponse {
   /** The same operation_id value used in the CheckRequest. Used for logging and diagnostics purposes. */
   operationId?: string;
   /** Indicate the decision of the check. If no check errors are present, the service should process the operation. Otherwise the service should use the list of errors to determine the appropriate action. */
-  checkErrors?: Array<CheckError>;
+  checkErrors?: ReadonlyArray<CheckError>;
   /** Quota information for the check request associated with this response. */
   quotaInfo?: QuotaInfo;
   /** The actual config id used to process the request. */
@@ -752,7 +752,7 @@ export const CheckResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ReportRequest {
   /** Operations to be reported. Typically the service should report one operation per request. Putting multiple operations into a single request is allowed, but should be used only when multiple operations are natually available at the time of the report. There is no limit on the number of operations in the same ReportRequest, however the ReportRequest size should be no larger than 1MB. See ReportResponse.report_errors for partial failure behavior. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** Specifies which version of service config should be used to process the request. If unspecified or no matching version can be found, the latest one will be used. */
   serviceConfigId?: string;
 }
@@ -776,7 +776,7 @@ export const ReportError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ReportResponse {
   /** Partial failures, one for each `Operation` in the request that failed processing. There are three possible combinations of the RPC status: 1. The combination of a successful RPC status and an empty `report_errors` list indicates a complete success where all `Operations` in the request are processed successfully. 2. The combination of a successful RPC status and a non-empty `report_errors` list indicates a partial success where some `Operations` in the request succeeded. Each `Operation` that failed processing has a corresponding item in this list. 3. A failed RPC status indicates a general non-deterministic failure. When this happens, it's impossible to know which of the 'Operations' in the request succeeded or failed. */
-  reportErrors?: Array<ReportError>;
+  reportErrors?: ReadonlyArray<ReportError>;
   /** The actual config id used to process the request. */
   serviceConfigId?: string;
   /** The current service rollout id used to process the request. */
@@ -791,9 +791,9 @@ export const ReportResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ResourceLocation {
   /** The locations of a resource after the execution of the operation. Requests to create or delete a location based resource must populate the 'current_locations' field and not the 'original_locations' field. For example: "europe-west1-a" "us-east1" "nam3" */
-  currentLocations?: Array<string>;
+  currentLocations?: ReadonlyArray<string>;
   /** The locations of a resource prior to the execution of the operation. Requests that mutate the resource's location must populate both the 'original_locations' as well as the 'current_locations' fields. For example: "europe-west1-a" "us-east1" "nam3" */
-  originalLocations?: Array<string>;
+  originalLocations?: ReadonlyArray<string>;
 }
 
 export const ResourceLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -861,7 +861,7 @@ export interface ServiceDelegationHistory {
   /** The original end user who initiated the request to GCP. */
   originalPrincipal?: string;
   /** Data identifying the service specific jobs or units of work that were involved in a chain of service calls. */
-  serviceMetadata?: Array<ServiceMetadata>;
+  serviceMetadata?: ReadonlyArray<ServiceMetadata>;
 }
 
 export const ServiceDelegationHistory =
@@ -889,7 +889,7 @@ export interface AuthenticationInfo {
   /** The name of the service account key used to create or exchange credentials for authenticating the service account making the request. This is a scheme-less URI full resource name. For example: "//iam.googleapis.com/projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}" */
   serviceAccountKeyName?: string;
   /** Identity delegation history of an authenticated service account that makes the request. It contains information on the real authorities that try to access GCP resources by delegating on a service account. When multiple authorities present, they are guaranteed to be sorted based on the original ordering of the identity delegation events. */
-  serviceAccountDelegationInfo?: Array<ServiceAccountDelegationInfo>;
+  serviceAccountDelegationInfo?: ReadonlyArray<ServiceAccountDelegationInfo>;
   /** String representation of identity of requesting party. Populated for both first and third party identities. */
   principalSubject?: string;
   /** Records the history of delegated resource access across Google services. */
@@ -1023,7 +1023,7 @@ export interface OrgPolicyViolationInfo {
   /** Optional. Deprecated. Tags referenced on the resource at the time of evaluation. */
   resourceTags?: Record<string, string>;
   /** Optional. Policy violations */
-  violationInfo?: Array<ViolationInfo>;
+  violationInfo?: ReadonlyArray<ViolationInfo>;
 }
 
 export const OrgPolicyViolationInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1057,13 +1057,13 @@ export interface Auth {
   /** The authenticated principal. Reflects the issuer (`iss`) and subject (`sub`) claims within a JWT. The issuer and subject should be `/` delimited, with `/` percent-encoded within the subject fragment. For Google accounts, the principal format is: "https://accounts.google.com/{id}" */
   principal?: string;
   /** The intended audience(s) for this authentication information. Reflects the audience (`aud`) claim within a JWT. The audience value(s) depends on the `issuer`, but typically include one or more of the following pieces of information: * The services intended to receive the credential. For example, ["https://pubsub.googleapis.com/", "https://storage.googleapis.com/"]. * A set of service-based scopes. For example, ["https://www.googleapis.com/auth/cloud-platform"]. * The client id of an app, such as the Firebase project id for JWTs from Firebase Auth. Consult the documentation for the credential issuer to determine the information provided. */
-  audiences?: Array<string>;
+  audiences?: ReadonlyArray<string>;
   /** The authorized presenter of the credential. Reflects the optional Authorized Presenter (`azp`) claim within a JWT or the OAuth client id. For example, a Google Cloud Platform client id looks as follows: "123456789012.apps.googleusercontent.com". */
   presenter?: string;
   /** Structured claims presented with the credential. JWTs include `{key: value}` pairs for standard and private claims. The following is a subset of the standard required and optional claims that would typically be presented for a Google-based JWT: {'iss': 'accounts.google.com', 'sub': '113289723416554971153', 'aud': ['123456789012', 'pubsub.googleapis.com'], 'azp': '123456789012.apps.googleusercontent.com', 'email': 'jsmith@example.com', 'iat': 1353601026, 'exp': 1353604926} SAML assertions are similarly specified, but with an identity provider dependent structure. */
   claims?: Record<string, unknown>;
   /** A list of access level resource names that allow resources to be accessed by authenticated requester. It is part of Secure GCP processing for the incoming request. An access level string has the format: "//{api_service_name}/accessPolicies/{policy_id}/accessLevels/{short_name}" Example: "//accesscontextmanager.googleapis.com/accessPolicies/MY_POLICY_ID/accessLevels/MY_LEVEL" */
-  accessLevels?: Array<string>;
+  accessLevels?: ReadonlyArray<string>;
   /** Attributes of the OAuth token associated with the request. */
   oauth?: Oauth;
 }
@@ -1182,7 +1182,7 @@ export interface AuditLog {
   /** Authentication information. */
   authenticationInfo?: AuthenticationInfo;
   /** Authorization information. If there are multiple resources or permissions involved, then there is one AuthorizationInfo element for each {resource, permission} tuple. */
-  authorizationInfo?: Array<AuthorizationInfo>;
+  authorizationInfo?: ReadonlyArray<AuthorizationInfo>;
   /** Indicates the policy violations for this request. If the request is denied by the policy, violation information will be logged here. */
   policyViolationInfo?: PolicyViolationInfo;
   /** Metadata about the operation. */

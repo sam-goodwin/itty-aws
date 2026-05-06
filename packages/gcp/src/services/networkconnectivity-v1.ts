@@ -28,7 +28,7 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -63,11 +63,11 @@ export const GoogleLongrunningOperation =
 
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleLongrunningListOperationsResponse =
@@ -285,11 +285,11 @@ export interface ServiceConnectionMap {
   /** Output only. The infrastructure used for connections between consumers/producers. */
   infrastructure?: "INFRASTRUCTURE_UNSPECIFIED" | "PSC" | (string & {});
   /** The PSC configurations on producer side. */
-  producerPscConfigs?: Array<ProducerPscConfig>;
+  producerPscConfigs?: ReadonlyArray<ProducerPscConfig>;
   /** The PSC configurations on consumer side. */
-  consumerPscConfigs?: Array<ConsumerPscConfig>;
+  consumerPscConfigs?: ReadonlyArray<ConsumerPscConfig>;
   /** Output only. PSC connection details on consumer side. */
-  consumerPscConnections?: Array<ConsumerPscConnection>;
+  consumerPscConnections?: ReadonlyArray<ConsumerPscConnection>;
   /** The token provided by the consumer. This token authenticates that the consumer can create a connection within the specified project and network. */
   token?: string;
   /** Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
@@ -314,11 +314,11 @@ export const ServiceConnectionMap = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListServiceConnectionMapsResponse {
   /** ServiceConnectionMaps to be returned. */
-  serviceConnectionMaps?: Array<ServiceConnectionMap>;
+  serviceConnectionMaps?: ReadonlyArray<ServiceConnectionMap>;
   /** The next pagination token in the List response. It should be used as page_token for the following request. An empty value means no more result. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListServiceConnectionMapsResponse =
@@ -330,7 +330,7 @@ export const ListServiceConnectionMapsResponse =
 
 export interface PscConfig {
   /** The resource paths of subnetworks to use for IP address management. Example: projects/{projectNumOrId}/regions/{region}/subnetworks/{resourceId}. */
-  subnetworks?: Array<string>;
+  subnetworks?: ReadonlyArray<string>;
   /** Optional. Max number of PSC connections for this policy. */
   limit?: string;
   /** Optional. ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects the Producer instance can be within. */
@@ -339,7 +339,7 @@ export interface PscConfig {
     | "CUSTOM_RESOURCE_HIERARCHY_LEVELS"
     | (string & {});
   /** Optional. List of Projects, Folders, or Organizations from where the Producer instance can be within. For example, a network administrator can provide both 'organizations/foo' and 'projects/bar' as allowed_google_producers_resource_hierarchy_levels. This allowlists this network to connect with any Producer instance within the 'foo' organization or the 'bar' project. By default, allowed_google_producers_resource_hierarchy_level is empty. The format for each allowed_google_producers_resource_hierarchy_level is / where is one of 'projects', 'folders', or 'organizations' and is either the ID or the number of the resource type. Format for each allowed_google_producers_resource_hierarchy_level value: 'projects/' or 'folders/' or 'organizations/' Eg. [projects/my-project-id, projects/567, folders/891, organizations/123] */
-  allowedGoogleProducersResourceHierarchyLevel?: Array<string>;
+  allowedGoogleProducersResourceHierarchyLevel?: ReadonlyArray<string>;
 }
 
 export const PscConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -456,7 +456,7 @@ export interface ServiceConnectionPolicy {
   /** Configuration used for Private Service Connect connections. Used when Infrastructure is PSC. */
   pscConfig?: PscConfig;
   /** Output only. [Output only] Information about each Private Service Connect connection. */
-  pscConnections?: Array<PscConnection>;
+  pscConnections?: ReadonlyArray<PscConnection>;
   /** Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
   etag?: string;
   /** Output only. Information for the automatically created subnetwork and its associated IR. */
@@ -481,11 +481,11 @@ export const ServiceConnectionPolicy =
 
 export interface ListServiceConnectionPoliciesResponse {
   /** ServiceConnectionPolicies to be returned. */
-  serviceConnectionPolicies?: Array<ServiceConnectionPolicy>;
+  serviceConnectionPolicies?: ReadonlyArray<ServiceConnectionPolicy>;
   /** The next pagination token in the List response. It should be used as page_token for the following request. An empty value means no more result. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListServiceConnectionPoliciesResponse =
@@ -526,11 +526,11 @@ export const ServiceClass = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListServiceClassesResponse {
   /** ServiceClasses to be returned. */
-  serviceClasses?: Array<ServiceClass>;
+  serviceClasses?: ReadonlyArray<ServiceClass>;
   /** The next pagination token in the List response. It should be used as page_token for the following request. An empty value means no more result. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListServiceClassesResponse =
@@ -577,11 +577,11 @@ export const ServiceConnectionToken = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListServiceConnectionTokensResponse {
   /** ServiceConnectionTokens to be returned. */
-  serviceConnectionTokens?: Array<ServiceConnectionToken>;
+  serviceConnectionTokens?: ReadonlyArray<ServiceConnectionToken>;
   /** The next pagination token in the List response. It should be used as page_token for the following request. An empty value means no more result. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListServiceConnectionTokensResponse =
@@ -618,7 +618,7 @@ export const CheckConsumerConfigRequest =
 
 export interface CheckConsumerConfigResponse {
   /** List of validation errors. If the list is empty, the consumer config is valid. */
-  errors?: Array<
+  errors?: ReadonlyArray<
     | "ERROR_UNSPECIFIED"
     | "NETWORK_PROJECT_INVALID"
     | "NETWORK_PROJECT_APIS_NOT_ENABLED"
@@ -642,7 +642,7 @@ export interface Config {
   /** Required. Number of seconds that this DNS record can be cached by resolvers. */
   ttl?: string;
   /** Required. The list of resource record data strings. The content and format of these strings depend on the AutomatedDnsRecord.type. For many common record types, this list may contain multiple strings. As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples. Examples: A record: ["192.0.2.1"] or ["192.0.2.1", "192.0.2.2"] TXT record: ["This is a text record"] CNAME record: ["target.example.com."] AAAA record: ["::1"] or ["2001:0db8:85a3:0000:0000:8a2e:0370:7334", "2001:0db8:85a3:0000:0000:8a2e:0370:7335"] */
-  rrdatas?: Array<string>;
+  rrdatas?: ReadonlyArray<string>;
 }
 
 export const Config = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -728,11 +728,11 @@ export const AutomatedDnsRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAutomatedDnsRecordsResponse {
   /** AutomatedDnsRecords to be returned. */
-  automatedDnsRecords?: Array<AutomatedDnsRecord>;
+  automatedDnsRecords?: ReadonlyArray<AutomatedDnsRecord>;
   /** The next pagination token in the List response. It should be used as page_token for the following request. An empty value means no more result. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListAutomatedDnsRecordsResponse =
@@ -763,7 +763,7 @@ export const StateMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StateTimeline {
   /** Output only. The state and activation time details of the resource state. */
-  states?: Array<StateMetadata>;
+  states?: ReadonlyArray<StateMetadata>;
 }
 
 export const StateTimeline = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -809,11 +809,11 @@ export const MulticloudDataTransferConfig =
 
 export interface ListMulticloudDataTransferConfigsResponse {
   /** The list of `MulticloudDataTransferConfig` resources to be listed. */
-  multicloudDataTransferConfigs?: Array<MulticloudDataTransferConfig>;
+  multicloudDataTransferConfigs?: ReadonlyArray<MulticloudDataTransferConfig>;
   /** The next page token. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListMulticloudDataTransferConfigsResponse =
@@ -859,7 +859,7 @@ export interface Destination {
   /** Required. Immutable. The IP prefix that represents your workload on another CSP. */
   ipPrefix?: string;
   /** Required. Unordered list. The list of `DestinationEndpoint` resources configured for the IP prefix. */
-  endpoints?: Array<DestinationEndpoint>;
+  endpoints?: ReadonlyArray<DestinationEndpoint>;
   /** Output only. The timeline of the expected `Destination` states or the current rest state. If a state change is expected, the value is `ADDING`, `DELETING` or `SUSPENDING`, depending on the action specified. Example: "state_timeline": { "states": [ { // The time when the `Destination` resource will be activated. "effectiveTime": "2024-12-01T08:00:00Z", "state": "ADDING" }, { // The time when the `Destination` resource will be suspended. "effectiveTime": "2024-12-01T20:00:00Z", "state": "SUSPENDING" } ] } */
   stateTimeline?: StateTimeline;
   /** Output only. The Google-generated unique ID for the `Destination` resource. This value is unique across all `Destination` resources. If a resource is deleted and another with the same name is created, the new resource is assigned a different and unique ID. */
@@ -881,11 +881,11 @@ export const Destination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDestinationsResponse {
   /** The list of `Destination` resources to be listed. */
-  destinations?: Array<Destination>;
+  destinations?: ReadonlyArray<Destination>;
   /** The next page token. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListDestinationsResponse =
@@ -916,7 +916,7 @@ export interface MulticloudDataTransferSupportedService {
   /** Identifier. The name of the service. */
   name?: string;
   /** Output only. The network service tier or regional endpoint supported for the service. */
-  serviceConfigs?: Array<ServiceConfig>;
+  serviceConfigs?: ReadonlyArray<ServiceConfig>;
 }
 
 export const MulticloudDataTransferSupportedService =
@@ -927,7 +927,7 @@ export const MulticloudDataTransferSupportedService =
 
 export interface ListMulticloudDataTransferSupportedServicesResponse {
   /** The list of supported services. */
-  multicloudDataTransferSupportedServices?: Array<MulticloudDataTransferSupportedService>;
+  multicloudDataTransferSupportedServices?: ReadonlyArray<MulticloudDataTransferSupportedService>;
   /** The next page token. */
   nextPageToken?: string;
 }
@@ -1019,11 +1019,11 @@ export const SpokeStateReasonCount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SpokeSummary {
   /** Output only. Counts the number of spokes of each type that are associated with a specific hub. */
-  spokeTypeCounts?: Array<SpokeTypeCount>;
+  spokeTypeCounts?: ReadonlyArray<SpokeTypeCount>;
   /** Output only. Counts the number of spokes that are in each state and associated with a given hub. */
-  spokeStateCounts?: Array<SpokeStateCount>;
+  spokeStateCounts?: ReadonlyArray<SpokeStateCount>;
   /** Output only. Counts the number of spokes that are inactive for each possible reason and associated with a given hub. */
-  spokeStateReasonCounts?: Array<SpokeStateReasonCount>;
+  spokeStateReasonCounts?: ReadonlyArray<SpokeStateReasonCount>;
 }
 
 export const SpokeSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1059,9 +1059,9 @@ export interface Hub {
     | "FAILED"
     | (string & {});
   /** Output only. The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub. */
-  routingVpcs?: Array<RoutingVPC>;
+  routingVpcs?: ReadonlyArray<RoutingVPC>;
   /** Output only. The route tables that belong to this hub. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}/routeTables/{route_table_id}` This field is read-only. Network Connectivity Center automatically populates it based on the route tables nested under the hub. */
-  routeTables?: Array<string>;
+  routeTables?: ReadonlyArray<string>;
   /** Output only. A summary of the spokes associated with a hub. The summary includes a count of spokes according to type and according to state. If any spokes are inactive, the summary also lists the reasons they are inactive, including a count for each reason. */
   spokeSummary?: SpokeSummary;
   /** Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policy_mode defaults to PRESET. */
@@ -1094,11 +1094,11 @@ export const Hub = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListHubsResponse {
   /** The requested hubs. */
-  hubs?: Array<Hub>;
+  hubs?: ReadonlyArray<Hub>;
   /** The token for the next page of the response. To see more results, use this value as the page_token for your next request. If this value is empty, there are no more results. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListHubsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1109,19 +1109,19 @@ export const ListHubsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LinkedVpnTunnels {
   /** The URIs of linked VPN tunnel resources. */
-  uris?: Array<string>;
+  uris?: ReadonlyArray<string>;
   /** A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations). */
   siteToSiteDataTransfer?: boolean;
   /** Output only. The VPC network where these VPN tunnels are located. */
   vpcNetwork?: string;
   /** Optional. Hub routes fully encompassed by include import ranges are included during import from hub. */
-  includeImportRanges?: Array<string>;
+  includeImportRanges?: ReadonlyArray<string>;
   /** Optional. Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub. */
-  excludeImportRanges?: Array<string>;
+  excludeImportRanges?: ReadonlyArray<string>;
   /** Optional. Dynamic routes fully encompassed by include export ranges are included during export to hub. */
-  includeExportRanges?: Array<string>;
+  includeExportRanges?: ReadonlyArray<string>;
   /** Optional. Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub. */
-  excludeExportRanges?: Array<string>;
+  excludeExportRanges?: ReadonlyArray<string>;
 }
 
 export const LinkedVpnTunnels = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1136,19 +1136,19 @@ export const LinkedVpnTunnels = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LinkedInterconnectAttachments {
   /** The URIs of linked interconnect attachment resources */
-  uris?: Array<string>;
+  uris?: ReadonlyArray<string>;
   /** A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations). */
   siteToSiteDataTransfer?: boolean;
   /** Output only. The VPC network where these VLAN attachments are located. */
   vpcNetwork?: string;
   /** Optional. Hub routes fully encompassed by include import ranges are included during import from hub. */
-  includeImportRanges?: Array<string>;
+  includeImportRanges?: ReadonlyArray<string>;
   /** Optional. Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub. */
-  excludeImportRanges?: Array<string>;
+  excludeImportRanges?: ReadonlyArray<string>;
   /** Optional. Dynamic routes fully encompassed by include export ranges are included during export to hub. */
-  includeExportRanges?: Array<string>;
+  includeExportRanges?: ReadonlyArray<string>;
   /** Optional. Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub. */
-  excludeExportRanges?: Array<string>;
+  excludeExportRanges?: ReadonlyArray<string>;
 }
 
 export const LinkedInterconnectAttachments =
@@ -1177,19 +1177,19 @@ export const RouterApplianceInstance =
 
 export interface LinkedRouterApplianceInstances {
   /** The list of router appliance instances. */
-  instances?: Array<RouterApplianceInstance>;
+  instances?: ReadonlyArray<RouterApplianceInstance>;
   /** A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations). */
   siteToSiteDataTransfer?: boolean;
   /** Output only. The VPC network where these router appliance instances are located. */
   vpcNetwork?: string;
   /** Optional. Hub routes fully encompassed by include import ranges are included during import from hub. */
-  includeImportRanges?: Array<string>;
+  includeImportRanges?: ReadonlyArray<string>;
   /** Optional. Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub. */
-  excludeImportRanges?: Array<string>;
+  excludeImportRanges?: ReadonlyArray<string>;
   /** Optional. Dynamic routes fully encompassed by include export ranges are included during export to hub. */
-  includeExportRanges?: Array<string>;
+  includeExportRanges?: ReadonlyArray<string>;
   /** Optional. Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub. */
-  excludeExportRanges?: Array<string>;
+  excludeExportRanges?: ReadonlyArray<string>;
 }
 
 export const LinkedRouterApplianceInstances =
@@ -1207,15 +1207,15 @@ export interface LinkedVpcNetwork {
   /** Required. The URI of the VPC network resource. */
   uri?: string;
   /** Optional. IP ranges encompassing the subnets to be excluded from peering. */
-  excludeExportRanges?: Array<string>;
+  excludeExportRanges?: ReadonlyArray<string>;
   /** Optional. IP ranges allowed to be included from peering. */
-  includeExportRanges?: Array<string>;
+  includeExportRanges?: ReadonlyArray<string>;
   /** Output only. The proposed include export IP ranges waiting for hub administrator's approval. */
-  proposedIncludeExportRanges?: Array<string>;
+  proposedIncludeExportRanges?: ReadonlyArray<string>;
   /** Output only. The proposed exclude export IP ranges waiting for hub administrator's approval. */
-  proposedExcludeExportRanges?: Array<string>;
+  proposedExcludeExportRanges?: ReadonlyArray<string>;
   /** Output only. The list of Producer VPC spokes that this VPC spoke is a service consumer VPC spoke for. These producer VPCs are connected through VPC peering to this spoke's backing VPC network. Because they are directly connected through VPC peering, NCC export filters do not apply between the service consumer VPC spoke and any of its producer VPC spokes. This VPC spoke cannot be deleted as long as any of these producer VPC spokes are connected to the NCC Hub. */
-  producerVpcSpokes?: Array<string>;
+  producerVpcSpokes?: ReadonlyArray<string>;
 }
 
 export const LinkedVpcNetwork = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1237,13 +1237,13 @@ export interface LinkedProducerVpcNetwork {
   /** Output only. The URI of the Producer VPC. */
   producerNetwork?: string;
   /** Optional. IP ranges encompassing the subnets to be excluded from peering. */
-  excludeExportRanges?: Array<string>;
+  excludeExportRanges?: ReadonlyArray<string>;
   /** Optional. IP ranges allowed to be included from peering. */
-  includeExportRanges?: Array<string>;
+  includeExportRanges?: ReadonlyArray<string>;
   /** Output only. The proposed include export IP ranges waiting for hub administrator's approval. */
-  proposedIncludeExportRanges?: Array<string>;
+  proposedIncludeExportRanges?: ReadonlyArray<string>;
   /** Output only. The proposed exclude export IP ranges waiting for hub administrator's approval. */
-  proposedExcludeExportRanges?: Array<string>;
+  proposedExcludeExportRanges?: ReadonlyArray<string>;
 }
 
 export const LinkedProducerVpcNetwork =
@@ -1323,7 +1323,7 @@ export interface Spoke {
     | "FAILED"
     | (string & {});
   /** Output only. The reasons for current state of the spoke. */
-  reasons?: Array<StateReason>;
+  reasons?: ReadonlyArray<StateReason>;
   /** Output only. The type of resource associated with the spoke. */
   spokeType?:
     | "SPOKE_TYPE_UNSPECIFIED"
@@ -1336,7 +1336,7 @@ export interface Spoke {
   /** Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
   etag?: string;
   /** Optional. The list of fields waiting for hub administrator's approval. */
-  fieldPathsPendingUpdate?: Array<string>;
+  fieldPathsPendingUpdate?: ReadonlyArray<string>;
 }
 
 export const Spoke = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1364,11 +1364,11 @@ export const Spoke = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListHubSpokesResponse {
   /** The requested spokes. The spoke fields can be partially populated based on the `view` field in the request message. */
-  spokes?: Array<Spoke>;
+  spokes?: ReadonlyArray<Spoke>;
   /** The token for the next page of the response. To see more results, use this value as the page_token for your next request. If this value is empty, there are no more results. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListHubSpokesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1429,7 +1429,7 @@ export const HubStatusEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface QueryHubStatusResponse {
   /** The list of hub status. */
-  hubStatusEntries?: Array<HubStatusEntry>;
+  hubStatusEntries?: ReadonlyArray<HubStatusEntry>;
   /** The token for the next page of the response. To see more results, use this value as the page_token for your next request. If this value is empty, there are no more results. */
   nextPageToken?: string;
 }
@@ -1443,11 +1443,11 @@ export const QueryHubStatusResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListSpokesResponse {
   /** The requested spokes. */
-  spokes?: Array<Spoke>;
+  spokes?: ReadonlyArray<Spoke>;
   /** The token for the next page of the response. To see more results, use this value as the page_token for your next request. If this value is empty, there are no more results. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListSpokesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1701,11 +1701,11 @@ export const Route = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListRoutesResponse {
   /** The requested routes. */
-  routes?: Array<Route>;
+  routes?: ReadonlyArray<Route>;
   /** The token for the next page of the response. To see more results, use this value as the page_token for your next request. If this value is empty, there are no more results. */
   nextPageToken?: string;
   /** RouteTables that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListRoutesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1716,11 +1716,11 @@ export const ListRoutesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListRouteTablesResponse {
   /** The requested route tables. */
-  routeTables?: Array<RouteTable>;
+  routeTables?: ReadonlyArray<RouteTable>;
   /** The token for the next page of the response. To see more results, use this value as the page_token for your next request. If this value is empty, there are no more results. */
   nextPageToken?: string;
   /** Hubs that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListRouteTablesResponse =
@@ -1732,7 +1732,7 @@ export const ListRouteTablesResponse =
 
 export interface AutoAccept {
   /** Optional. A list of project ids or project numbers for which you want to enable auto-accept. The auto-accept setting is applied to spokes being created or updated in these projects. */
-  autoAcceptProjects?: Array<string>;
+  autoAcceptProjects?: ReadonlyArray<string>;
 }
 
 export const AutoAccept = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1785,11 +1785,11 @@ export const Group = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListGroupsResponse {
   /** The requested groups. */
-  groups?: Array<Group>;
+  groups?: ReadonlyArray<Group>;
   /** The token for the next page of the response. To see more results, use this value as the page_token for your next request. If this value is empty, there are no more results. */
   nextPageToken?: string;
   /** Hubs that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1860,11 +1860,11 @@ export interface InternalRange {
   /** Optional. An alternate to ip_cidr_range. Can be set when trying to create an IPv4 reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size. NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as a redundant parameter. */
   prefixLength?: number;
   /** Optional. Can be set to narrow down or pick a different address space while searching for a free range. If not set, defaults to the ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"] address space (for auto-mode networks, the "10.0.0.0/9" range is used instead of "10.0.0.0/8"). This can be used to target the search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC. */
-  targetCidrRange?: Array<string>;
+  targetCidrRange?: ReadonlyArray<string>;
   /** Output only. The list of resources that refer to this internal range. Resources that use the internal range for their range allocation are referred to as users of the range. Other resources mark themselves as users while doing so by creating a reference to this internal range. Having a user, based on this reference, prevents deletion of the internal range referred to. Can be empty. */
-  users?: Array<string>;
+  users?: ReadonlyArray<string>;
   /** Optional. Types of resources that are allowed to overlap with the current internal range. */
-  overlaps?: Array<
+  overlaps?: ReadonlyArray<
     | "OVERLAP_UNSPECIFIED"
     | "OVERLAP_ROUTE_RANGE"
     | "OVERLAP_EXISTING_SUBNET_RANGE"
@@ -1877,7 +1877,7 @@ export interface InternalRange {
   /** Optional. Range auto-allocation options, may be set only when auto-allocation is selected by not setting ip_cidr_range (and setting prefix_length). */
   allocationOptions?: AllocationOptions;
   /** Optional. ExcludeCidrRanges flag. Specifies a set of CIDR blocks that allows exclusion of particular CIDR ranges from the auto-allocation process, without having to reserve these blocks */
-  excludeCidrRanges?: Array<string>;
+  excludeCidrRanges?: ReadonlyArray<string>;
 }
 
 export const InternalRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1902,11 +1902,11 @@ export const InternalRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListInternalRangesResponse {
   /** Internal ranges to be returned. */
-  internalRanges?: Array<InternalRange>;
+  internalRanges?: ReadonlyArray<InternalRange>;
   /** The next pagination token in the List response. It should be used as page_token for the following request. An empty value means no more result. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListInternalRangesResponse =
@@ -1918,7 +1918,7 @@ export const ListInternalRangesResponse =
 
 export interface VirtualMachine {
   /** Optional. A list of VM instance tags that this policy-based route applies to. VM instances that have ANY of tags specified here installs this PBR. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
 }
 
 export const VirtualMachine = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2006,7 +2006,7 @@ export interface PolicyBasedRoute {
   /** Optional. The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive. */
   priority?: number;
   /** Output only. If potential misconfigurations are detected for this route, this field will be populated with warning messages. */
-  warnings?: Array<Warnings>;
+  warnings?: ReadonlyArray<Warnings>;
   /** Output only. Server-defined fully-qualified URL for this resource. */
   selfLink?: string;
   /** Output only. Type of this resource. Always networkconnectivity#policyBasedRoute for policy-based Route resources. */
@@ -2033,11 +2033,11 @@ export const PolicyBasedRoute = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListPolicyBasedRoutesResponse {
   /** Policy-based routes to be returned. */
-  policyBasedRoutes?: Array<PolicyBasedRoute>;
+  policyBasedRoutes?: ReadonlyArray<PolicyBasedRoute>;
   /** The next pagination token in the List response. It should be used as page_token for the following request. An empty value means no more result. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListPolicyBasedRoutesResponse =
@@ -2095,11 +2095,11 @@ export const RegionalEndpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListRegionalEndpointsResponse {
   /** Regional endpoints to be returned. */
-  regionalEndpoints?: Array<RegionalEndpoint>;
+  regionalEndpoints?: ReadonlyArray<RegionalEndpoint>;
   /** The next pagination token in the List response. It should be used as page_token for the following request. An empty value means no more result. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListRegionalEndpointsResponse =
@@ -2121,7 +2121,7 @@ export interface RemoteTransportProfile {
   /** Output only. If the profile is a Cloud Service Provider with compute resources, this is populated with the region where connectivity is being established. If the profile provides facility-level selection, this is an identity of the facility any connections on this profile are going through. */
   providerSite?: string;
   /** Output only. List of bandwidth enum values that are supported by this profile. */
-  supportedBandwidths?: Array<
+  supportedBandwidths?: ReadonlyArray<
     | "BANDWIDTH_UNSPECIFIED"
     | "BPS_50M"
     | "BPS_100M"
@@ -2174,11 +2174,11 @@ export const RemoteTransportProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListRemoteTransportProfilesResponse {
   /** The list of RemoteTransportProfiles. */
-  remoteTransportProfiles?: Array<RemoteTransportProfile>;
+  remoteTransportProfiles?: ReadonlyArray<RemoteTransportProfile>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
   /** Unordered list. Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListRemoteTransportProfilesResponse =
@@ -2245,7 +2245,7 @@ export interface Transport {
   /** Optional. Immutable. Resource URI of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed. */
   network?: string;
   /** Optional. List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses are supported. */
-  advertisedRoutes?: Array<string>;
+  advertisedRoutes?: ReadonlyArray<string>;
   /** Optional. Immutable. The user supplied account id for the CSP associated with the remote profile. */
   remoteAccountId?: string;
   /** Output only. VPC Network URI that was created for the VPC Peering connection to the provided `network`. If VPC Peering is disconnected, this can be used to re-establish. */
@@ -2273,11 +2273,11 @@ export const Transport = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTransportsResponse {
   /** The list of Transport. */
-  transports?: Array<Transport>;
+  transports?: ReadonlyArray<Transport>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
   /** Unordered list. Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListTransportsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -2311,7 +2311,7 @@ export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -2343,7 +2343,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
@@ -2363,7 +2363,7 @@ export interface AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2375,7 +2375,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
 export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2387,9 +2387,9 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
@@ -2415,7 +2415,7 @@ export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -2425,7 +2425,7 @@ export const TestIamPermissionsRequest =
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -2462,7 +2462,7 @@ export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LocationMetadata {
   /** List of supported features */
-  locationFeatures?: Array<
+  locationFeatures?: ReadonlyArray<
     | "LOCATION_FEATURE_UNSPECIFIED"
     | "SITE_TO_CLOUD_SPOKES"
     | "SITE_TO_SITE_SPOKES"
@@ -2516,7 +2516,7 @@ export const CheckConsumerConfigProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:checkConsumerConfig",
+      path: "v1/{location}:checkConsumerConfig",
       hasBody: true,
     }),
     svc,
@@ -2564,7 +2564,7 @@ export const ListProjectsLocationsRequest =
       T.HttpQuery("extraLocationTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -2599,10 +2599,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -2647,10 +2644,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -2686,10 +2680,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -2720,10 +2711,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -2759,11 +2747,7 @@ export const CancelProjectsLocationsOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -2806,10 +2790,7 @@ export const ListProjectsLocationsServiceConnectionMapsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceConnectionMaps",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/serviceConnectionMaps" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsServiceConnectionMapsRequest>;
 
@@ -2845,10 +2826,7 @@ export const GetProjectsLocationsServiceConnectionMapsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceConnectionMaps/{serviceConnectionMapsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsServiceConnectionMapsRequest>;
 
@@ -2893,7 +2871,7 @@ export const CreateProjectsLocationsServiceConnectionMapsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceConnectionMaps",
+      path: "v1/{parent}/serviceConnectionMaps",
       hasBody: true,
     }),
     svc,
@@ -2936,11 +2914,7 @@ export const PatchProjectsLocationsServiceConnectionMapsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(ServiceConnectionMap).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceConnectionMaps/{serviceConnectionMapsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsServiceConnectionMapsRequest>;
 
@@ -2978,10 +2952,7 @@ export const DeleteProjectsLocationsServiceConnectionMapsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceConnectionMaps/{serviceConnectionMapsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsServiceConnectionMapsRequest>;
 
@@ -3025,10 +2996,7 @@ export const ListProjectsLocationsServiceConnectionPoliciesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceConnectionPolicies",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/serviceConnectionPolicies" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsServiceConnectionPoliciesRequest>;
 
@@ -3064,10 +3032,7 @@ export const GetProjectsLocationsServiceConnectionPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceConnectionPolicies/{serviceConnectionPoliciesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsServiceConnectionPoliciesRequest>;
 
@@ -3141,7 +3106,7 @@ export const CreateProjectsLocationsServiceConnectionPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceConnectionPolicies",
+      path: "v1/{parent}/serviceConnectionPolicies",
       hasBody: true,
     }),
     svc,
@@ -3185,11 +3150,7 @@ export const PatchProjectsLocationsServiceConnectionPoliciesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(ServiceConnectionPolicy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceConnectionPolicies/{serviceConnectionPoliciesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsServiceConnectionPoliciesRequest>;
 
@@ -3228,10 +3189,7 @@ export const DeleteProjectsLocationsServiceConnectionPoliciesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceConnectionPolicies/{serviceConnectionPoliciesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsServiceConnectionPoliciesRequest>;
 
@@ -3276,10 +3234,7 @@ export const ListProjectsLocationsServiceClassesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceClasses",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/serviceClasses" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsServiceClassesRequest>;
 
@@ -3315,10 +3270,7 @@ export const GetProjectsLocationsServiceClassesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceClasses/{serviceClassesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsServiceClassesRequest>;
 
@@ -3358,11 +3310,7 @@ export const PatchProjectsLocationsServiceClassesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(ServiceClass).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceClasses/{serviceClassesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsServiceClassesRequest>;
 
@@ -3400,10 +3348,7 @@ export const DeleteProjectsLocationsServiceClassesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceClasses/{serviceClassesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsServiceClassesRequest>;
 
@@ -3435,10 +3380,7 @@ export const GetProjectsLocationsServiceConnectionTokensRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceConnectionTokens/{serviceConnectionTokensId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsServiceConnectionTokensRequest>;
 
@@ -3482,10 +3424,7 @@ export const ListProjectsLocationsServiceConnectionTokensRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceConnectionTokens",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/serviceConnectionTokens" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsServiceConnectionTokensRequest>;
 
@@ -3534,7 +3473,7 @@ export const CreateProjectsLocationsServiceConnectionTokensRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceConnectionTokens",
+      path: "v1/{parent}/serviceConnectionTokens",
       hasBody: true,
     }),
     svc,
@@ -3574,10 +3513,7 @@ export const DeleteProjectsLocationsServiceConnectionTokensRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/serviceConnectionTokens/{serviceConnectionTokensId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsServiceConnectionTokensRequest>;
 
@@ -3621,10 +3557,7 @@ export const ListProjectsLocationsAutomatedDnsRecordsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/automatedDnsRecords",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/automatedDnsRecords" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAutomatedDnsRecordsRequest>;
 
@@ -3660,10 +3593,7 @@ export const GetProjectsLocationsAutomatedDnsRecordsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/automatedDnsRecords/{automatedDnsRecordsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAutomatedDnsRecordsRequest>;
 
@@ -3715,7 +3645,7 @@ export const CreateProjectsLocationsAutomatedDnsRecordsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/automatedDnsRecords",
+      path: "v1/{parent}/automatedDnsRecords",
       hasBody: true,
     }),
     svc,
@@ -3762,10 +3692,7 @@ export const DeleteProjectsLocationsAutomatedDnsRecordsRequest =
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
     deleteMode: Schema.optional(Schema.String).pipe(T.HttpQuery("deleteMode")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/automatedDnsRecords/{automatedDnsRecordsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAutomatedDnsRecordsRequest>;
 
@@ -3816,7 +3743,7 @@ export const ListProjectsLocationsMulticloudDataTransferConfigsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/multicloudDataTransferConfigs",
+      path: "v1/{parent}/multicloudDataTransferConfigs",
     }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsMulticloudDataTransferConfigsRequest>;
@@ -3854,10 +3781,7 @@ export const GetProjectsLocationsMulticloudDataTransferConfigsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/multicloudDataTransferConfigs/{multicloudDataTransferConfigsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMulticloudDataTransferConfigsRequest>;
 
@@ -3903,7 +3827,7 @@ export const CreateProjectsLocationsMulticloudDataTransferConfigsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/multicloudDataTransferConfigs",
+      path: "v1/{parent}/multicloudDataTransferConfigs",
       hasBody: true,
     }),
     svc,
@@ -3947,11 +3871,7 @@ export const PatchProjectsLocationsMulticloudDataTransferConfigsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(MulticloudDataTransferConfig).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/multicloudDataTransferConfigs/{multicloudDataTransferConfigsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsMulticloudDataTransferConfigsRequest>;
 
@@ -3990,10 +3910,7 @@ export const DeleteProjectsLocationsMulticloudDataTransferConfigsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/multicloudDataTransferConfigs/{multicloudDataTransferConfigsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsMulticloudDataTransferConfigsRequest>;
 
@@ -4043,10 +3960,7 @@ export const ListProjectsLocationsMulticloudDataTransferConfigsDestinationsReque
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/multicloudDataTransferConfigs/{multicloudDataTransferConfigsId}/destinations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/destinations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsMulticloudDataTransferConfigsDestinationsRequest>;
 
@@ -4084,10 +3998,7 @@ export const GetProjectsLocationsMulticloudDataTransferConfigsDestinationsReques
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/multicloudDataTransferConfigs/{multicloudDataTransferConfigsId}/destinations/{destinationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMulticloudDataTransferConfigsDestinationsRequest>;
 
@@ -4131,11 +4042,7 @@ export const CreateProjectsLocationsMulticloudDataTransferConfigsDestinationsReq
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Destination).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/multicloudDataTransferConfigs/{multicloudDataTransferConfigsId}/destinations",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/destinations", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsMulticloudDataTransferConfigsDestinationsRequest>;
 
@@ -4179,11 +4086,7 @@ export const PatchProjectsLocationsMulticloudDataTransferConfigsDestinationsRequ
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Destination).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/multicloudDataTransferConfigs/{multicloudDataTransferConfigsId}/destinations/{destinationsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsMulticloudDataTransferConfigsDestinationsRequest>;
 
@@ -4223,10 +4126,7 @@ export const DeleteProjectsLocationsMulticloudDataTransferConfigsDestinationsReq
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/multicloudDataTransferConfigs/{multicloudDataTransferConfigsId}/destinations/{destinationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsMulticloudDataTransferConfigsDestinationsRequest>;
 
@@ -4261,10 +4161,7 @@ export const GetProjectsLocationsMulticloudDataTransferSupportedServicesRequest 
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/multicloudDataTransferSupportedServices/{multicloudDataTransferSupportedServicesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMulticloudDataTransferSupportedServicesRequest>;
 
@@ -4305,7 +4202,7 @@ export const ListProjectsLocationsMulticloudDataTransferSupportedServicesRequest
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/multicloudDataTransferSupportedServices",
+      path: "v1/{parent}/multicloudDataTransferSupportedServices",
     }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsMulticloudDataTransferSupportedServicesRequest>;
@@ -4355,10 +4252,7 @@ export const ListProjectsLocationsGlobalHubsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/hubs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/hubs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGlobalHubsRequest>;
 
@@ -4393,10 +4287,7 @@ export const GetProjectsLocationsGlobalHubsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGlobalHubsRequest>;
 
@@ -4436,11 +4327,7 @@ export const CreateProjectsLocationsGlobalHubsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Hub).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/global/hubs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/hubs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsGlobalHubsRequest>;
 
@@ -4481,11 +4368,7 @@ export const PatchProjectsLocationsGlobalHubsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Hub).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsGlobalHubsRequest>;
 
@@ -4520,10 +4403,7 @@ export const DeleteProjectsLocationsGlobalHubsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsGlobalHubsRequest>;
 
@@ -4575,10 +4455,7 @@ export const ListSpokesProjectsLocationsGlobalHubsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}:listSpokes",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:listSpokes" }),
     svc,
   ) as unknown as Schema.Schema<ListSpokesProjectsLocationsGlobalHubsRequest>;
 
@@ -4629,10 +4506,7 @@ export const QueryStatusProjectsLocationsGlobalHubsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     groupBy: Schema.optional(Schema.String).pipe(T.HttpQuery("groupBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}:queryStatus",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:queryStatus" }),
     svc,
   ) as unknown as Schema.Schema<QueryStatusProjectsLocationsGlobalHubsRequest>;
 
@@ -4671,11 +4545,7 @@ export const RejectSpokeProjectsLocationsGlobalHubsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RejectHubSpokeRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}:rejectSpoke",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:rejectSpoke", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RejectSpokeProjectsLocationsGlobalHubsRequest>;
 
@@ -4710,11 +4580,7 @@ export const AcceptSpokeProjectsLocationsGlobalHubsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(AcceptHubSpokeRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}:acceptSpoke",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:acceptSpoke", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AcceptSpokeProjectsLocationsGlobalHubsRequest>;
 
@@ -4751,7 +4617,7 @@ export const AcceptSpokeUpdateProjectsLocationsGlobalHubsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}:acceptSpokeUpdate",
+      path: "v1/{name}:acceptSpokeUpdate",
       hasBody: true,
     }),
     svc,
@@ -4790,7 +4656,7 @@ export const RejectSpokeUpdateProjectsLocationsGlobalHubsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}:rejectSpokeUpdate",
+      path: "v1/{name}:rejectSpokeUpdate",
       hasBody: true,
     }),
     svc,
@@ -4829,7 +4695,7 @@ export const SetIamPolicyProjectsLocationsGlobalHubsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4867,10 +4733,7 @@ export const GetIamPolicyProjectsLocationsGlobalHubsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsGlobalHubsRequest>;
 
@@ -4906,7 +4769,7 @@ export const TestIamPermissionsProjectsLocationsGlobalHubsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -4940,10 +4803,7 @@ export const GetProjectsLocationsGlobalHubsRouteTablesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}/routeTables/{routeTablesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGlobalHubsRouteTablesRequest>;
 
@@ -4986,10 +4846,7 @@ export const ListProjectsLocationsGlobalHubsRouteTablesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}/routeTables",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/routeTables" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGlobalHubsRouteTablesRequest>;
 
@@ -5025,10 +4882,7 @@ export const GetProjectsLocationsGlobalHubsRouteTablesRoutesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}/routeTables/{routeTablesId}/routes/{routesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGlobalHubsRouteTablesRoutesRequest>;
 
@@ -5072,10 +4926,7 @@ export const ListProjectsLocationsGlobalHubsRouteTablesRoutesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}/routeTables/{routeTablesId}/routes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/routes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGlobalHubsRouteTablesRoutesRequest>;
 
@@ -5112,10 +4963,7 @@ export const GetProjectsLocationsGlobalHubsGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}/groups/{groupsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGlobalHubsGroupsRequest>;
 
@@ -5158,10 +5006,7 @@ export const ListProjectsLocationsGlobalHubsGroupsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}/groups",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/groups" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGlobalHubsGroupsRequest>;
 
@@ -5205,11 +5050,7 @@ export const PatchProjectsLocationsGlobalHubsGroupsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Group).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}/groups/{groupsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsGlobalHubsGroupsRequest>;
 
@@ -5246,7 +5087,7 @@ export const SetIamPolicyProjectsLocationsGlobalHubsGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}/groups/{groupsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -5284,10 +5125,7 @@ export const GetIamPolicyProjectsLocationsGlobalHubsGroupsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}/groups/{groupsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsGlobalHubsGroupsRequest>;
 
@@ -5323,7 +5161,7 @@ export const TestIamPermissionsProjectsLocationsGlobalHubsGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/global/hubs/{hubsId}/groups/{groupsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -5370,10 +5208,7 @@ export const ListProjectsLocationsGlobalPolicyBasedRoutesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/policyBasedRoutes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/policyBasedRoutes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGlobalPolicyBasedRoutesRequest>;
 
@@ -5409,10 +5244,7 @@ export const GetProjectsLocationsGlobalPolicyBasedRoutesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/policyBasedRoutes/{policyBasedRoutesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGlobalPolicyBasedRoutesRequest>;
 
@@ -5457,7 +5289,7 @@ export const CreateProjectsLocationsGlobalPolicyBasedRoutesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/global/policyBasedRoutes",
+      path: "v1/{parent}/policyBasedRoutes",
       hasBody: true,
     }),
     svc,
@@ -5494,10 +5326,7 @@ export const DeleteProjectsLocationsGlobalPolicyBasedRoutesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/global/policyBasedRoutes/{policyBasedRoutesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsGlobalPolicyBasedRoutesRequest>;
 
@@ -5534,7 +5363,7 @@ export const SetIamPolicyProjectsLocationsGlobalPolicyBasedRoutesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/global/policyBasedRoutes/{policyBasedRoutesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -5574,10 +5403,7 @@ export const GetIamPolicyProjectsLocationsGlobalPolicyBasedRoutesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/policyBasedRoutes/{policyBasedRoutesId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsGlobalPolicyBasedRoutesRequest>;
 
@@ -5615,7 +5441,7 @@ export const TestIamPermissionsProjectsLocationsGlobalPolicyBasedRoutesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/global/policyBasedRoutes/{policyBasedRoutesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -5662,10 +5488,7 @@ export const ListProjectsLocationsSpokesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/spokes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/spokes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSpokesRequest>;
 
@@ -5700,10 +5523,7 @@ export const GetProjectsLocationsSpokesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/spokes/{spokesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSpokesRequest>;
 
@@ -5743,11 +5563,7 @@ export const CreateProjectsLocationsSpokesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Spoke).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/spokes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/spokes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsSpokesRequest>;
 
@@ -5787,11 +5603,7 @@ export const PatchProjectsLocationsSpokesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Spoke).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/spokes/{spokesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsSpokesRequest>;
 
@@ -5825,10 +5637,7 @@ export const DeleteProjectsLocationsSpokesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/spokes/{spokesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSpokesRequest>;
 
@@ -5864,7 +5673,7 @@ export const SetIamPolicyProjectsLocationsSpokesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/spokes/{spokesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -5902,10 +5711,7 @@ export const GetIamPolicyProjectsLocationsSpokesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/spokes/{spokesId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsSpokesRequest>;
 
@@ -5941,7 +5747,7 @@ export const TestIamPermissionsProjectsLocationsSpokesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/spokes/{spokesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -5987,10 +5793,7 @@ export const ListProjectsLocationsInternalRangesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/internalRanges",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/internalRanges" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsInternalRangesRequest>;
 
@@ -6026,10 +5829,7 @@ export const GetProjectsLocationsInternalRangesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/internalRanges/{internalRangesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsInternalRangesRequest>;
 
@@ -6073,7 +5873,7 @@ export const CreateProjectsLocationsInternalRangesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/internalRanges",
+      path: "v1/{parent}/internalRanges",
       hasBody: true,
     }),
     svc,
@@ -6116,11 +5916,7 @@ export const PatchProjectsLocationsInternalRangesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(InternalRange).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/internalRanges/{internalRangesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsInternalRangesRequest>;
 
@@ -6155,10 +5951,7 @@ export const DeleteProjectsLocationsInternalRangesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/internalRanges/{internalRangesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsInternalRangesRequest>;
 
@@ -6195,7 +5988,7 @@ export const SetIamPolicyProjectsLocationsInternalRangesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/internalRanges/{internalRangesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -6233,10 +6026,7 @@ export const GetIamPolicyProjectsLocationsInternalRangesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/internalRanges/{internalRangesId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsInternalRangesRequest>;
 
@@ -6272,7 +6062,7 @@ export const TestIamPermissionsProjectsLocationsInternalRangesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/internalRanges/{internalRangesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -6319,10 +6109,7 @@ export const ListProjectsLocationsRegionalEndpointsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/regionalEndpoints",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/regionalEndpoints" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRegionalEndpointsRequest>;
 
@@ -6358,10 +6145,7 @@ export const GetProjectsLocationsRegionalEndpointsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/regionalEndpoints/{regionalEndpointsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRegionalEndpointsRequest>;
 
@@ -6405,7 +6189,7 @@ export const CreateProjectsLocationsRegionalEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/regionalEndpoints",
+      path: "v1/{parent}/regionalEndpoints",
       hasBody: true,
     }),
     svc,
@@ -6442,10 +6226,7 @@ export const DeleteProjectsLocationsRegionalEndpointsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/regionalEndpoints/{regionalEndpointsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsRegionalEndpointsRequest>;
 
@@ -6489,10 +6270,7 @@ export const ListProjectsLocationsRemoteTransportProfilesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/remoteTransportProfiles",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/remoteTransportProfiles" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRemoteTransportProfilesRequest>;
 
@@ -6528,10 +6306,7 @@ export const GetProjectsLocationsRemoteTransportProfilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/remoteTransportProfiles/{remoteTransportProfilesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRemoteTransportProfilesRequest>;
 
@@ -6575,10 +6350,7 @@ export const ListProjectsLocationsTransportsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/transports",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/transports" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTransportsRequest>;
 
@@ -6613,10 +6385,7 @@ export const GetProjectsLocationsTransportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/transports/{transportsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTransportsRequest>;
 
@@ -6658,11 +6427,7 @@ export const CreateProjectsLocationsTransportsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Transport).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/transports",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/transports", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsTransportsRequest>;
 
@@ -6703,11 +6468,7 @@ export const PatchProjectsLocationsTransportsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Transport).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/transports/{transportsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsTransportsRequest>;
 
@@ -6742,10 +6503,7 @@ export const DeleteProjectsLocationsTransportsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/transports/{transportsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTransportsRequest>;
 

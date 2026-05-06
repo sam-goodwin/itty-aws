@@ -53,7 +53,7 @@ export interface Key {
   /** Entities are partitioned into subsets, currently identified by a project ID and namespace ID. Queries are scoped to a single partition. */
   partitionId?: PartitionId;
   /** The entity path. An entity path consists of one or more elements composed of a kind and a string or numerical identifier, which identify entities. The first element identifies a _root entity_, the second element identifies a _child_ of the root entity, the third element identifies a child of the second entity, and so forth. The entities identified by all prefixes of the path are called the element's _ancestors_. An entity path is always fully complete: *all* of the entity's ancestors are required to be in the path along with the entity identifier itself. The only exception is that in some documented cases, the identifier in the last path element (for the entity) itself may be omitted. For example, the last path element of the key of `Mutation.insert` may have no identifier. A path can never be empty, and a path can have at most 100 elements. */
-  path?: Array<PathElement>;
+  path?: ReadonlyArray<PathElement>;
 }
 
 export const Key = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -63,7 +63,7 @@ export const Key = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ArrayValue {
   /** Values in the array. The order of values in an array is preserved as long as all values have identical settings for 'exclude_from_indexes'. */
-  values?: Array<Value>;
+  values?: ReadonlyArray<Value>;
 }
 
 export const ArrayValue: Schema.Schema<ArrayValue> =
@@ -175,7 +175,7 @@ export interface QueryResultBatch {
   /** A cursor that points to the position after the last skipped result. Will be set when `skipped_results` != 0. */
   skippedCursor?: string;
   /** The results for this batch. */
-  entityResults?: Array<EntityResult>;
+  entityResults?: ReadonlyArray<EntityResult>;
   /** A cursor that points to the position after the last result in the batch. */
   endCursor?: string;
   /** The number of results skipped, typically because of an offset. */
@@ -306,7 +306,7 @@ export const Filter: Schema.Schema<Filter> =
 
 export interface CompositeFilter {
   /** The list of filters to combine. Requires: * At least one filter is present. */
-  filters?: Array<Filter>;
+  filters?: ReadonlyArray<Filter>;
   /** The operator for combining multiple filters. */
   op?: "OPERATOR_UNSPECIFIED" | "AND" | "OR" | (string & {});
 }
@@ -386,21 +386,21 @@ export const FindNearest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Query {
   /** The kinds to query (if empty, returns entities of all kinds). Currently at most 1 kind may be specified. */
-  kind?: Array<KindExpression>;
+  kind?: ReadonlyArray<KindExpression>;
   /** The maximum number of results to return. Applies after all other constraints. Optional. Unspecified is interpreted as no limit. Must be >= 0 if specified. */
   limit?: number;
   /** The number of results to skip. Applies before limit, but after all other constraints. Optional. Must be >= 0 if specified. */
   offset?: number;
   /** The projection to return. Defaults to returning all properties. */
-  projection?: Array<Projection>;
+  projection?: ReadonlyArray<Projection>;
   /** An ending point for the query results. Query cursors are returned in query result batches and [can only be used to limit the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets). */
   endCursor?: string;
   /** The properties to make distinct. The query results will contain the first result for each distinct combination of values for the given properties (if empty, all results are returned). Requires: * If `order` is specified, the set of distinct on properties must appear before the non-distinct on properties in `order`. */
-  distinctOn?: Array<PropertyReference>;
+  distinctOn?: ReadonlyArray<PropertyReference>;
   /** A starting point for the query results. Query cursors are returned in query result batches and [can only be used to continue the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets). */
   startCursor?: string;
   /** The order to apply to the query results (if empty, order is unspecified). */
-  order?: Array<PropertyOrder>;
+  order?: ReadonlyArray<PropertyOrder>;
   /** Optional. A potential Nearest Neighbors Search. Applies after all other filters and ordering. Finds the closest vector embeddings to the given query vector. */
   findNearest?: FindNearest;
   /** The filter to apply. */
@@ -440,7 +440,7 @@ export const ExecutionStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PlanSummary {
   /** The indexes selected for the query. For example: [ {"query_scope": "Collection", "properties": "(foo ASC, __name__ ASC)"}, {"query_scope": "Collection", "properties": "(bar ASC, __name__ ASC)"} ] */
-  indexesUsed?: Array<Record<string, unknown>>;
+  indexesUsed?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const PlanSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -478,7 +478,7 @@ export const RunQueryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PropertyMask {
   /** The paths to the properties covered by this mask. A path is a list of property names separated by dots (`.`), for example `foo.bar` means the property `bar` inside the entity property `foo` inside the entity associated with this path. If a property name contains a dot `.` or a backslash `\`, then that name must be escaped. A path must not be empty, and may not reference a value inside an array value. */
-  paths?: Array<string>;
+  paths?: ReadonlyArray<string>;
 }
 
 export const PropertyMask = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -487,7 +487,7 @@ export const PropertyMask = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AllocateIdsRequest {
   /** Required. A list of keys with incomplete key paths for which to allocate IDs. No key may be reserved/read-only. */
-  keys?: Array<Key>;
+  keys?: ReadonlyArray<Key>;
 }
 
 export const AllocateIdsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -624,7 +624,7 @@ export interface GqlQuery {
   /** For each non-reserved named binding site in the query string, there must be a named parameter with that name, but not necessarily the inverse. Key must match regex `A-Za-z_$*`, must not match regex `__.*__`, and must not be `""`. */
   namedBindings?: Record<string, GqlQueryParameter>;
   /** Numbered binding site @1 references the first numbered parameter, effectively using 1-based indexing, rather than the usual 0. For each binding site numbered i in `query_string`, there must be an i-th numbered parameter. The inverse must also be true. */
-  positionalBindings?: Array<GqlQueryParameter>;
+  positionalBindings?: ReadonlyArray<GqlQueryParameter>;
 }
 
 export const GqlQuery = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -662,7 +662,7 @@ export const RunQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AllocateIdsResponse {
   /** The keys specified in the request (in the same order), each with its key path completed with a newly allocated ID. */
-  keys?: Array<Key>;
+  keys?: ReadonlyArray<Key>;
 }
 
 export const AllocateIdsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -710,9 +710,9 @@ export const BeginTransactionResponse =
 
 export interface GoogleDatastoreAdminV1beta1EntityFilter {
   /** An empty list represents all namespaces. This is the preferred usage for projects that don't use namespaces. An empty string element represents the default namespace. This should be used if the project has data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be unique. */
-  namespaceIds?: Array<string>;
+  namespaceIds?: ReadonlyArray<string>;
   /** If empty, then this represents all kinds. */
-  kinds?: Array<string>;
+  kinds?: ReadonlyArray<string>;
 }
 
 export const GoogleDatastoreAdminV1beta1EntityFilter =
@@ -820,7 +820,7 @@ export interface MutationResult {
   /** The version of the entity on the server after processing the mutation. If the mutation doesn't change anything on the server, then the version will be the version of the current entity or, if no entity is present, a version that is strictly greater than the version of any previous entity and less than the version of any possible future entity. */
   version?: string;
   /** The results of applying each PropertyTransform, in the same order of the request. */
-  transformResults?: Array<Value>;
+  transformResults?: ReadonlyArray<Value>;
   /** The automatically allocated key. Set only when the mutation allocated a key. */
   key?: Key;
   /** The create time of the entity. This field will not be set after a 'delete'. */
@@ -882,7 +882,7 @@ export interface Mutation {
   /** The entity to insert. The entity must not already exist. The entity key's final path element may be incomplete. */
   insert?: Entity;
   /** Optional. The transforms to perform on the entity. This field can be set only when the operation is `insert`, `update`, or `upsert`. If present, the transforms are be applied to the entity regardless of the property mask, in order, after the operation. */
-  propertyTransforms?: Array<PropertyTransform>;
+  propertyTransforms?: ReadonlyArray<PropertyTransform>;
   /** The properties to write in this mutation. None of the properties in the mask may have a reserved name, except for `__key__`. This field is ignored for `delete`. If the entity already exists, only properties referenced in the mask are updated, others are left untouched. Properties referenced in the mask but not in the entity are deleted. */
   propertyMask?: PropertyMask;
   /** The strategy to use when a conflict is detected. Defaults to `SERVER_VALUE`. If this is set, then `conflict_detection_strategy` must also be set. */
@@ -928,7 +928,7 @@ export interface AggregationResultBatch {
   /** Read timestamp this batch was returned from. In a single transaction, subsequent query result batches for the same query can have a greater timestamp. Each batch's read timestamp is valid for all preceding batches. */
   readTime?: string;
   /** The aggregation results for this batch. */
-  aggregationResults?: Array<AggregationResult>;
+  aggregationResults?: ReadonlyArray<AggregationResult>;
 }
 
 export const AggregationResultBatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -941,7 +941,7 @@ export const AggregationResultBatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface CommitResponse {
   /** The result of performing the mutations. The i-th mutation result corresponds to the i-th mutation in the request. */
-  mutationResults?: Array<MutationResult>;
+  mutationResults?: ReadonlyArray<MutationResult>;
   /** The number of index entries updated during the commit, or zero if none were updated. */
   indexUpdates?: number;
   /** The transaction commit timestamp. Not set for non-transactional commits. */
@@ -992,7 +992,7 @@ export const Aggregation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AggregationQuery {
   /** Optional. Series of aggregations to apply over the results of the `nested_query`. Requires: * A minimum of one and maximum of five aggregations per query. */
-  aggregations?: Array<Aggregation>;
+  aggregations?: ReadonlyArray<Aggregation>;
   /** Nested query for aggregation */
   nestedQuery?: Query;
 }
@@ -1063,9 +1063,9 @@ export const GoogleDatastoreAdminV1CommonMetadata =
 
 export interface GoogleDatastoreAdminV1EntityFilter {
   /** If empty, then this represents all kinds. */
-  kinds?: Array<string>;
+  kinds?: ReadonlyArray<string>;
   /** An empty list represents all namespaces. This is the preferred usage for projects that don't use namespaces. An empty string element represents the default namespace. This should be used if the project has data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be unique. */
-  namespaceIds?: Array<string>;
+  namespaceIds?: ReadonlyArray<string>;
 }
 
 export const GoogleDatastoreAdminV1EntityFilter =
@@ -1106,7 +1106,7 @@ export interface CommitRequest {
   /** The identifier of the transaction associated with the commit. A transaction identifier is returned by a call to Datastore.BeginTransaction. */
   transaction?: string;
   /** The mutations to perform. When mode is `TRANSACTIONAL`, mutations affecting a single entity are applied in order. The following sequences of mutations affecting a single entity are not permitted in a single `Commit` request: - `insert` followed by `insert` - `update` followed by `insert` - `upsert` followed by `insert` - `delete` followed by `update` When mode is `NON_TRANSACTIONAL`, no two mutations may affect a single entity. */
-  mutations?: Array<Mutation>;
+  mutations?: ReadonlyArray<Mutation>;
 }
 
 export const CommitRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1143,7 +1143,7 @@ export interface ReserveIdsRequest {
   /** The ID of the database against which to make the request. '(default)' is not allowed; please use empty string '' to refer the default database. */
   databaseId?: string;
   /** Required. A list of keys with complete key paths whose numeric IDs should not be auto-allocated. */
-  keys?: Array<Key>;
+  keys?: ReadonlyArray<Key>;
 }
 
 export const ReserveIdsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1179,7 +1179,7 @@ export interface LookupRequest {
   /** The properties to return. Defaults to returning all properties. If this field is set and an entity has a property not referenced in the mask, it will be absent from LookupResponse.found.entity.properties. The entity's key is always returned. */
   propertyMask?: PropertyMask;
   /** Required. Keys of entities to look up. */
-  keys?: Array<Key>;
+  keys?: ReadonlyArray<Key>;
 }
 
 export const LookupRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1254,13 +1254,13 @@ export const GoogleDatastoreAdminV1IndexOperationMetadata =
 
 export interface LookupResponse {
   /** Entities found as `ResultType.FULL` entities. The order of results in this field is undefined and has no relation to the order of the keys in the input. */
-  found?: Array<EntityResult>;
+  found?: ReadonlyArray<EntityResult>;
   /** The time at which these entities were read or found missing. */
   readTime?: string;
   /** Entities not found as `ResultType.KEY_ONLY` entities. The order of results in this field is undefined and has no relation to the order of the keys in the input. */
-  missing?: Array<EntityResult>;
+  missing?: ReadonlyArray<EntityResult>;
   /** A list of keys that were not looked up due to resource constraints. The order of results in this field is undefined and has no relation to the order of the keys in the input. */
-  deferred?: Array<Key>;
+  deferred?: ReadonlyArray<Key>;
 }
 
 export const LookupResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

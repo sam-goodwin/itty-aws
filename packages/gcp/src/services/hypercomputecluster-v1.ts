@@ -75,7 +75,7 @@ export const NewSpotInstancesConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface SlurmPartition {
   /** Required. IDs of the nodesets that make up this partition. Values must match SlurmNodeSet.id. */
-  nodeSetIds?: Array<string>;
+  nodeSetIds?: ReadonlyArray<string>;
   /** Required. ID of the partition, which is how users will identify it. Must conform to [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case, alphanumeric, and at most 63 characters). */
   id?: string;
 }
@@ -125,7 +125,7 @@ export interface SlurmNodeSet {
   /** Required. ID of the compute resource on which this nodeset will run. Must match a key in the cluster's compute_resources. */
   computeId?: string;
   /** Optional. How storage resources should be mounted on each compute node. */
-  storageConfigs?: Array<StorageConfig>;
+  storageConfigs?: ReadonlyArray<StorageConfig>;
 }
 
 export const SlurmNodeSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -152,7 +152,7 @@ export interface SlurmLoginNodes {
   /** Optional. [Startup script](https://cloud.google.com/compute/docs/instances/startup-scripts/linux) to be run on each login node instance. Max 256KB. The script must complete within the system-defined default timeout of 5 minutes. For tasks that require more time, consider running them in the background using methods such as `&` or `nohup`. */
   startupScript?: string;
   /** Optional. How storage resources should be mounted on each login node. */
-  storageConfigs?: Array<StorageConfig>;
+  storageConfigs?: ReadonlyArray<StorageConfig>;
   /** Optional. Whether [OS Login](https://cloud.google.com/compute/docs/oslogin) should be enabled on login node instances. */
   enableOsLogin?: boolean;
   /** Optional. [Labels](https://cloud.google.com/compute/docs/labeling-resources) that should be applied to each login node instance. */
@@ -160,7 +160,7 @@ export interface SlurmLoginNodes {
   /** Optional. Boot disk for the login node. */
   bootDisk?: BootDisk;
   /** Output only. Information about the login node instances that were created in Compute Engine. */
-  instances?: Array<ComputeInstance>;
+  instances?: ReadonlyArray<ComputeInstance>;
   /** Required. Name of the zone in which login nodes should run, e.g., `us-central1-a`. Must be in the same region as the cluster, and must match the zone of any other resources specified in the cluster. */
   zone?: string;
   /** Optional. Whether login node instances should be assigned [external IP addresses](https://cloud.google.com/compute/docs/ip-addresses#externaladdresses). */
@@ -184,17 +184,17 @@ export const SlurmLoginNodes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SlurmOrchestrator {
   /** Optional. Configuration for the Slurm partitions in your cluster. Each partition can contain one or more nodesets, and you can submit separate jobs on each partition. If you don't specify at least one partition in your cluster, you can't submit jobs to the cluster. */
-  partitions?: Array<SlurmPartition>;
+  partitions?: ReadonlyArray<SlurmPartition>;
   /** Optional. Compute resource configuration for the Slurm nodesets in your cluster. If not specified, the cluster won't create any nodes. */
-  nodeSets?: Array<SlurmNodeSet>;
+  nodeSets?: ReadonlyArray<SlurmNodeSet>;
   /** Required. Configuration for login nodes, which allow users to access the cluster over SSH. */
   loginNodes?: SlurmLoginNodes;
   /** Optional. Default partition to use for submitted jobs that do not explicitly specify a partition. Required if and only if there is more than one partition, in which case it must match the id of one of the partitions. */
   defaultPartition?: string;
   /** Optional. Slurm [epilog scripts](https://slurm.schedmd.com/prolog_epilog.html), which will be executed by compute nodes whenever a node finishes running a job. Values must not be empty. */
-  epilogBashScripts?: Array<string>;
+  epilogBashScripts?: ReadonlyArray<string>;
   /** Optional. Slurm [prolog scripts](https://slurm.schedmd.com/prolog_epilog.html), which will be executed by compute nodes before a node begins running a new job. Values must not be empty. */
-  prologBashScripts?: Array<string>;
+  prologBashScripts?: ReadonlyArray<string>;
 }
 
 export const SlurmOrchestrator = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -219,7 +219,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
@@ -255,9 +255,9 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -297,7 +297,7 @@ export interface NewFilestoreConfig {
   /** Required. Immutable. Service tier to use for the instance. */
   tier?: "TIER_UNSPECIFIED" | "ZONAL" | "REGIONAL" | (string & {});
   /** Required. Immutable. File system shares on the instance. Exactly one file share must be specified. */
-  fileShares?: Array<FileShareConfig>;
+  fileShares?: ReadonlyArray<FileShareConfig>;
   /** Optional. Immutable. Description of the instance. Maximum of 2048 characters. */
   description?: string;
   /** Optional. Immutable. Access protocol to use for all file shares in the instance. Defaults to NFS V3 if not set. */
@@ -401,7 +401,7 @@ export const NewNetworkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CreatePartition {
   /** Output only. Name of the partition to create */
-  partitions?: Array<string>;
+  partitions?: ReadonlyArray<string>;
 }
 
 export const CreatePartition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -495,7 +495,7 @@ export const ExistingNetworkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface UpdatePartition {
   /** Output only. Name of the partition to update */
-  partitions?: Array<string>;
+  partitions?: ReadonlyArray<string>;
 }
 
 export const UpdatePartition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -510,7 +510,7 @@ export const CreateOrchestrator = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface DeletePartition {
   /** Output only. Name of the partition to delete */
-  partitions?: Array<string>;
+  partitions?: ReadonlyArray<string>;
 }
 
 export const DeletePartition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -610,7 +610,7 @@ export const CheckClusterHealth = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface DeleteNodeset {
   /** Output only. Name of the nodeset to delete */
-  nodesets?: Array<string>;
+  nodesets?: ReadonlyArray<string>;
 }
 
 export const DeleteNodeset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -625,7 +625,7 @@ export const UpdateLoginNode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface UpdateNodeset {
   /** Output only. Name of the nodeset to update */
-  nodesets?: Array<string>;
+  nodesets?: ReadonlyArray<string>;
 }
 
 export const UpdateNodeset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -667,7 +667,7 @@ export const DeletePrivateServiceAccess =
 
 export interface CreateNodeset {
   /** Output only. Name of the nodeset to create */
-  nodesets?: Array<string>;
+  nodesets?: ReadonlyArray<string>;
 }
 
 export const CreateNodeset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -802,7 +802,7 @@ export const OperationStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface OperationProgress {
   /** Output only. Steps and status of the operation. */
-  steps?: Array<OperationStep>;
+  steps?: ReadonlyArray<OperationStep>;
 }
 
 export const OperationProgress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -946,7 +946,7 @@ export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -958,9 +958,9 @@ export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListClustersResponse {
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** Clusters in the specified location. */
-  clusters?: Array<Cluster>;
+  clusters?: ReadonlyArray<Cluster>;
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is absent, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1004,7 +1004,7 @@ export const ListProjectsLocationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -1039,10 +1039,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -1073,10 +1070,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -1121,10 +1115,7 @@ export const ListProjectsLocationsOperationsRequest =
     ),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -1159,10 +1150,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -1196,11 +1184,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -1243,10 +1227,7 @@ export const ListProjectsLocationsClustersRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clusters",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/clusters" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsClustersRequest>;
 
@@ -1290,11 +1271,7 @@ export const PatchProjectsLocationsClustersRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Cluster).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsClustersRequest>;
 
@@ -1334,11 +1311,7 @@ export const CreateProjectsLocationsClustersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Cluster).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clusters",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/clusters", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsClustersRequest>;
 
@@ -1372,10 +1345,7 @@ export const DeleteProjectsLocationsClustersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsClustersRequest>;
 
@@ -1406,10 +1376,7 @@ export const GetProjectsLocationsClustersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsClustersRequest>;
 
