@@ -25,8 +25,11 @@ import { oauth2clientsoauth2deleteClient } from "../src/operations/oauth2clients
 import { Oauth2clientsoauth2getClientOutput } from "../src/operations/oauth2clientsoauth2getClient.ts";
 import { Oauth2clientsoauth2updateClientOutput } from "../src/operations/oauth2clientsoauth2updateClient.ts";
 import { oauth2introspectToken } from "../src/operations/oauth2introspectToken.ts";
+import { Oauth2introspectTokenOutput } from "../src/operations/oauth2introspectToken.ts";
 import { oauth2requestToken } from "../src/operations/oauth2requestToken.ts";
+import { Oauth2requestTokenOutput } from "../src/operations/oauth2requestToken.ts";
 import { oauth2revokeToken } from "../src/operations/oauth2revokeToken.ts";
+import { Oauth2revokeTokenOutput } from "../src/operations/oauth2revokeToken.ts";
 import { Oauth2userinfoOutput } from "../src/operations/oauth2userinfo.ts";
 import { OrdersexportOutput } from "../src/operations/ordersexport.ts";
 import { organizationscreate } from "../src/operations/organizationscreate.ts";
@@ -535,5 +538,38 @@ describe("generated Polar schema quality", () => {
     expect(decoded.sub_type).toBe("organization");
     expect(decoded.client.client_id).toBe("polar_client_123");
     expect(decoded.organizations?.[0]?.name).toBe("Test Organization");
+  });
+
+  it("types and redacts OAuth token endpoint responses", () => {
+    const token = Schema.decodeUnknownSync(Oauth2requestTokenOutput)({
+      access_token: "access-secret",
+      token_type: "Bearer",
+      expires_in: 3600,
+      refresh_token: "refresh-secret",
+      scope: "openid profile email",
+      id_token: null,
+    });
+    const introspection = Schema.decodeUnknownSync(Oauth2introspectTokenOutput)(
+      {
+        active: true,
+        client_id: "polar_client_123",
+        token_type: "access_token",
+        scope: "openid profile email",
+        sub_type: "organization",
+        sub: "org_123",
+        aud: "polar_client_123",
+        iss: "https://sandbox-api.polar.sh",
+        exp: 1778001328,
+        iat: 1777997728,
+      },
+    );
+    const revoked = Schema.decodeUnknownSync(Oauth2revokeTokenOutput)({});
+
+    expect(Redacted.isRedacted(token.access_token)).toBe(true);
+    expect(token.token_type).toBe("Bearer");
+    expect(token.refresh_token).toBe("refresh-secret");
+    expect(introspection.active).toBe(true);
+    expect(introspection.sub_type).toBe("organization");
+    expect(revoked).toEqual({});
   });
 });
