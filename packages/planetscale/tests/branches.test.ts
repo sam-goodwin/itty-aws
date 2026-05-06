@@ -531,8 +531,12 @@ describe.each([{ kind: "postgresql" }, { kind: "mysql" }] as const)(
         expect(isNotFoundOrForbidden(error)).toBe(true);
       });
 
-      // This test creates an actual branch - it's slow due to provisioning time
-      it("can create and delete a branch", { timeout: 300000 }, async () => {
+      // This test creates an actual branch — it's slow due to provisioning time.
+      // `waitForBranchReady` may poll for up to 10 minutes, plus create + delete +
+      // verify, so the test timeout must exceed the polling window. Postgres
+      // provisioning is consistently slower than mysql, so give it more headroom.
+      const branchTestTimeout = kind === "postgresql" ? 900_000 : 600_000;
+      it("can create and delete a branch", { timeout: branchTestTimeout }, async () => {
         const db = getDb();
         const branchName = `test-${testRunId}`;
 
