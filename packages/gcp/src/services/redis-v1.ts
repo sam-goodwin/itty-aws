@@ -28,7 +28,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -62,11 +62,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -106,7 +106,7 @@ export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -118,7 +118,7 @@ export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GcsBackupSource {
   /** Optional. URIs of the Cloud Storage objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2 */
-  uris?: Array<string>;
+  uris?: ReadonlyArray<string>;
 }
 
 export const GcsBackupSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -320,7 +320,7 @@ export interface Membership {
   /** Output only. The primary cluster that acts as the source of replication for the secondary clusters. */
   primaryCluster?: RemoteCluster;
   /** Output only. The list of secondary clusters replicating from the primary cluster. */
-  secondaryClusters?: Array<RemoteCluster>;
+  secondaryClusters?: ReadonlyArray<RemoteCluster>;
 }
 
 export const Membership = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -339,7 +339,7 @@ export interface CrossClusterReplicationConfig {
   /** Details of the primary cluster that is used as the replication source for this secondary cluster. This field is only set for a secondary cluster. */
   primaryCluster?: RemoteCluster;
   /** List of secondary clusters that are replicating from this primary cluster. This field is only set for a primary cluster. */
-  secondaryClusters?: Array<RemoteCluster>;
+  secondaryClusters?: ReadonlyArray<RemoteCluster>;
   /** Output only. The last time cross cluster replication config was updated. */
   updateTime?: string;
   /** Output only. An output only view of all the member clusters participating in the cross cluster replication. This view will be provided by every member cluster irrespective of its cluster role(primary or secondary). A primary cluster can provide information about all the secondary clusters replicating from it. However, a secondary cluster only knows about the primary cluster from which it is replicating. However, for scenarios, where the primary cluster is unavailable(e.g. regional outage), a GetCluster request can be sent to any other member cluster and this field will list all the member clusters participating in cross cluster replication. */
@@ -401,7 +401,7 @@ export interface ClusterMaintenancePolicy {
   /** Output only. The time when the policy was updated i.e. Maintenance Window or Deny Period was updated. */
   updateTime?: string;
   /** Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_maintenance_window is expected to be one. */
-  weeklyMaintenanceWindow?: Array<ClusterWeeklyMaintenanceWindow>;
+  weeklyMaintenanceWindow?: ReadonlyArray<ClusterWeeklyMaintenanceWindow>;
 }
 
 export const ClusterMaintenancePolicy =
@@ -496,7 +496,7 @@ export const ConnectionDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ClusterEndpoint {
   /** Required. A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster. */
-  connections?: Array<ConnectionDetail>;
+  connections?: ReadonlyArray<ConnectionDetail>;
 }
 
 export const ClusterEndpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -541,7 +541,7 @@ export interface EncryptionInfo {
     | "CUSTOMER_MANAGED_ENCRYPTION"
     | (string & {});
   /** Output only. KMS key versions that are being used to protect the data at-rest. */
-  kmsKeyVersions?: Array<string>;
+  kmsKeyVersions?: ReadonlyArray<string>;
   /** Output only. The state of the primary version of the KMS key perceived by the system. This field is not populated in backups. */
   kmsKeyPrimaryState?:
     | "KMS_KEY_STATE_UNSPECIFIED"
@@ -604,11 +604,11 @@ export interface Cluster {
   /** Optional. Number of shards for the Redis cluster. */
   shardCount?: number;
   /** Optional. Each PscConfig configures the consumer network where IPs will be designated to the cluster for client access through Private Service Connect Automation. Currently, only one PscConfig is supported. */
-  pscConfigs?: Array<PscConfig>;
+  pscConfigs?: ReadonlyArray<PscConfig>;
   /** Output only. Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one discovery endpoint is supported. */
-  discoveryEndpoints?: Array<DiscoveryEndpoint>;
+  discoveryEndpoints?: ReadonlyArray<DiscoveryEndpoint>;
   /** Output only. The list of PSC connections that are auto-created through service connectivity automation. */
-  pscConnections?: Array<PscConnection>;
+  pscConnections?: ReadonlyArray<PscConnection>;
   /** Output only. Additional information about the current state of the cluster. */
   stateInfo?: StateInfo;
   /** Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node. */
@@ -643,9 +643,9 @@ export interface Cluster {
   /** Optional. Output only. Reserved for future use. */
   satisfiesPzi?: boolean;
   /** Output only. Service attachment details to configure Psc connections */
-  pscServiceAttachments?: Array<PscServiceAttachment>;
+  pscServiceAttachments?: ReadonlyArray<PscServiceAttachment>;
   /** Optional. A list of cluster endpoints. */
-  clusterEndpoints?: Array<ClusterEndpoint>;
+  clusterEndpoints?: ReadonlyArray<ClusterEndpoint>;
   /** Optional. Input only. Simulate a maintenance event. */
   simulateMaintenanceEvent?: boolean;
   /** Optional. Output only. The backup collection full resource name. Example: projects/{project}/locations/{location}/backupCollections/{collection} */
@@ -665,7 +665,7 @@ export interface Cluster {
   /** Output only. This field represents the actual maintenance version of the cluster. */
   effectiveMaintenanceVersion?: string;
   /** Output only. This field is used to determine the available maintenance versions for the self service update. */
-  availableMaintenanceVersions?: Array<string>;
+  availableMaintenanceVersions?: ReadonlyArray<string>;
   /** Optional. Immutable. Deprecated, do not use. */
   allowFewerZonesDeployment?: boolean;
   /** Optional. Labels to represent user-provided metadata. */
@@ -737,11 +737,11 @@ export const Cluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListClustersResponse {
   /** A list of Redis clusters in the project in the specified location, or across all locations. If the `location_id` in the parent field of the request is "-", all regions available to the project are queried, and the results aggregated. If in such an aggregated query a location is unavailable, a placeholder Redis entry is included in the response with the `name` field set to a value of the form `projects/{project_id}/locations/{location_id}/clusters/`- and the `status` field set to ERROR and `status_message` field set to "location not available for ListClusters". */
-  clusters?: Array<Cluster>;
+  clusters?: ReadonlyArray<Cluster>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListClustersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -766,7 +766,7 @@ export interface AclPolicy {
   /** Identifier. Full resource path of the ACL policy. */
   name?: string;
   /** Required. The ACL rules within the ACL policy. */
-  rules?: Array<AclRule>;
+  rules?: ReadonlyArray<AclRule>;
   /** Output only. The state of the ACL policy. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -790,11 +790,11 @@ export const AclPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAclPoliciesResponse {
   /** A list of ACL policies in the project in the specified location, or across all locations. If the `location_id` in the parent field of the request is "-", all regions available to the project are queried, and the results aggregated. */
-  aclPolicies?: Array<AclPolicy>;
+  aclPolicies?: ReadonlyArray<AclPolicy>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListAclPoliciesResponse =
@@ -806,7 +806,7 @@ export const ListAclPoliciesResponse =
 
 export interface CertChain {
   /** The certificates that form the CA chain, from leaf to root order. */
-  certificates?: Array<string>;
+  certificates?: ReadonlyArray<string>;
 }
 
 export const CertChain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -815,7 +815,7 @@ export const CertChain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ManagedCertificateAuthority {
   /** The PEM encoded CA certificate chains for redis managed server authentication */
-  caCerts?: Array<CertChain>;
+  caCerts?: ReadonlyArray<CertChain>;
 }
 
 export const ManagedCertificateAuthority =
@@ -836,7 +836,7 @@ export const CertificateAuthority = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RegionalCertChain {
   /** The certificates that form the CA chain, from leaf to root order. */
-  certificates?: Array<string>;
+  certificates?: ReadonlyArray<string>;
 }
 
 export const RegionalCertChain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -845,7 +845,7 @@ export const RegionalCertChain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RegionalManagedCertificateAuthority {
   /** The PEM encoded CA certificate chains for redis managed server authentication */
-  caCerts?: Array<RegionalCertChain>;
+  caCerts?: ReadonlyArray<RegionalCertChain>;
 }
 
 export const RegionalManagedCertificateAuthority =
@@ -918,11 +918,11 @@ export const BackupCollection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListBackupCollectionsResponse {
   /** A list of backupCollections in the project. If the `location_id` in the parent field of the request is "-", all regions available to the project are queried, and the results aggregated. If in such an aggregated query a location is unavailable, a placeholder backupCollection entry is included in the response with the `name` field set to a value of the form `projects/{project_id}/locations/{location_id}/backupCollections/`- and the `status` field set to ERROR and `status_message` field set to "location not available for ListBackupCollections". */
-  backupCollections?: Array<BackupCollection>;
+  backupCollections?: ReadonlyArray<BackupCollection>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListBackupCollectionsResponse =
@@ -963,7 +963,7 @@ export interface Backup {
   /** Output only. redis-7.2, valkey-7.5 */
   engineVersion?: string;
   /** Output only. List of backup files of the backup. */
-  backupFiles?: Array<BackupFile>;
+  backupFiles?: ReadonlyArray<BackupFile>;
   /** Output only. Node type of the cluster. */
   nodeType?:
     | "NODE_TYPE_UNSPECIFIED"
@@ -1019,11 +1019,11 @@ export const Backup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListBackupsResponse {
   /** A list of backups in the project. */
-  backups?: Array<Backup>;
+  backups?: ReadonlyArray<Backup>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Backups that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListBackupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1073,11 +1073,11 @@ export const TokenAuthUser = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTokenAuthUsersResponse {
   /** A list of token auth users in the project. */
-  tokenAuthUsers?: Array<TokenAuthUser>;
+  tokenAuthUsers?: ReadonlyArray<TokenAuthUser>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Unordered list. Token auth users that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListTokenAuthUsersResponse =
@@ -1112,11 +1112,11 @@ export const AuthToken = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAuthTokensResponse {
   /** A list of auth tokens in the project. */
-  authTokens?: Array<AuthToken>;
+  authTokens?: ReadonlyArray<AuthToken>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Unordered list. Auth tokens that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListAuthTokensResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1200,7 +1200,7 @@ export interface MaintenancePolicy {
   /** Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512. */
   description?: string;
   /** Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_window is expected to be one. */
-  weeklyMaintenanceWindow?: Array<WeeklyMaintenanceWindow>;
+  weeklyMaintenanceWindow?: ReadonlyArray<WeeklyMaintenanceWindow>;
 }
 
 export const MaintenancePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1328,7 +1328,7 @@ export interface Instance {
   /** Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the instance. Default value is "false" meaning AUTH is disabled. */
   authEnabled?: boolean;
   /** Output only. List of server CA certificates for the instance. */
-  serverCaCerts?: Array<TlsCertificate>;
+  serverCaCerts?: ReadonlyArray<TlsCertificate>;
   /** Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance. */
   transitEncryptionMode?:
     | "TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"
@@ -1342,7 +1342,7 @@ export interface Instance {
   /** Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default is 1. The valid value for basic tier is 0 and the default is also 0. */
   replicaCount?: number;
   /** Output only. Info per node. */
-  nodes?: Array<NodeInfo>;
+  nodes?: ReadonlyArray<NodeInfo>;
   /** Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write requests must target 'host'. */
   readEndpoint?: string;
   /** Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target 'port'. */
@@ -1358,7 +1358,7 @@ export interface Instance {
   /** Optional. Persistence configuration parameters */
   persistenceConfig?: PersistenceConfig;
   /** Optional. reasons that causes instance in "SUSPENDED" state. */
-  suspensionReasons?: Array<
+  suspensionReasons?: ReadonlyArray<
     | "SUSPENSION_REASON_UNSPECIFIED"
     | "CUSTOMER_MANAGED_KEY_ISSUE"
     | (string & {})
@@ -1366,7 +1366,7 @@ export interface Instance {
   /** Optional. The self service update maintenance version. The version is date based such as "20210712_00_00". */
   maintenanceVersion?: string;
   /** Optional. The available maintenance versions that an instance could update to. */
-  availableMaintenanceVersions?: Array<string>;
+  availableMaintenanceVersions?: ReadonlyArray<string>;
   /** Optional. Output only. Reserved for future use. */
   satisfiesPzs?: boolean;
   /** Optional. Output only. Reserved for future use. */
@@ -1418,11 +1418,11 @@ export const Instance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListInstancesResponse {
   /** A list of Redis instances in the project in the specified location, or across all locations. If the `location_id` in the parent field of the request is "-", all regions available to the project are queried, and the results aggregated. If in such an aggregated query a location is unavailable, a placeholder Redis entry is included in the response with the `name` field set to a value of the form `projects/{project_id}/locations/{location_id}/instances/`- and the `status` field set to ERROR and `status_message` field set to "location not available for ListInstances". */
-  instances?: Array<Instance>;
+  instances?: ReadonlyArray<Instance>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1765,7 +1765,7 @@ export const InternalResourceMetadata =
 
 export interface CustomMetadataData {
   /** Metadata for individual internal resources in an instance. e.g. spanner instance can have multiple databases with unique configuration. */
-  internalResourceMetadata?: Array<InternalResourceMetadata>;
+  internalResourceMetadata?: ReadonlyArray<InternalResourceMetadata>;
 }
 
 export const CustomMetadataData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1932,7 +1932,7 @@ export interface ResourceMaintenanceInfo {
   /** Optional. Maintenance window for the database resource. */
   maintenanceSchedule?: ResourceMaintenanceSchedule;
   /** Optional. List of Deny maintenance period for the database resource. */
-  denyMaintenanceSchedules?: Array<ResourceMaintenanceDenySchedule>;
+  denyMaintenanceSchedules?: ReadonlyArray<ResourceMaintenanceDenySchedule>;
   /** Optional. Current Maintenance version of the database resource. Example: "MYSQL_8_0_41.R20250531.01_15" */
   maintenanceVersion?: string;
   /** Optional. Upcoming maintenance for the database resource. This field is populated once SLM generates and publishes upcoming maintenance window. */
@@ -2045,7 +2045,7 @@ export interface DatabaseResourceMetadata {
   /** Any custom metadata associated with the resource */
   customMetadata?: CustomMetadataData;
   /** Entitlements associated with the resource */
-  entitlements?: Array<Entitlement>;
+  entitlements?: ReadonlyArray<Entitlement>;
   /** User-provided labels associated with the resource */
   userLabelSet?: UserLabels;
   /** Machine configuration for this resource. */
@@ -2078,9 +2078,9 @@ export interface DatabaseResourceMetadata {
   /** Optional. Whether deletion protection is enabled for this resource. */
   isDeletionProtectionEnabled?: boolean;
   /** Optional. List of resource flags for the database resource. */
-  resourceFlags?: Array<ResourceFlags>;
+  resourceFlags?: ReadonlyArray<ResourceFlags>;
   /** Optional. The modes of the database resource. */
-  modes?: Array<
+  modes?: ReadonlyArray<
     | "MODE_UNSPECIFIED"
     | "MODE_NATIVE"
     | "MODE_MONGODB_COMPATIBLE"
@@ -2177,7 +2177,7 @@ export interface DatabaseResourceHealthSignalData {
     | "LOW"
     | (string & {});
   /** Industry standards associated with this signal; if this signal is an issue, that could be a violation of the associated industry standard(s). For example, AUTO_BACKUP_DISABLED signal is associated with CIS GCP 1.1, CIS GCP 1.2, CIS GCP 1.3, NIST 800-53 and ISO-27001 compliance standards. If a database resource does not have automated backup enable, it will violate these following industry standards. */
-  compliance?: Array<Compliance>;
+  compliance?: ReadonlyArray<Compliance>;
   /** Any other additional metadata */
   additionalMetadata?: Record<string, unknown>;
   /** Required. Type of signal, for example, `AVAILABLE_IN_MULTIPLE_ZONES`, `LOGGING_MOST_ERRORS`, etc. */
@@ -2621,7 +2621,7 @@ export interface DatabaseResourceSignalData {
   /** Deprecated: Use signal_metadata_list instead. */
   backupRun?: BackupRun;
   /** This will support array of OneOf signal metadata information for a given signal type. */
-  signalMetadataList?: Array<SignalMetadata>;
+  signalMetadataList?: ReadonlyArray<SignalMetadata>;
   /** Resource location. */
   location?: string;
 }
@@ -2786,7 +2786,7 @@ export const ListProjectsLocationsRequest =
       T.HttpQuery("extraLocationTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -2821,10 +2821,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -2855,10 +2852,7 @@ export const GetSharedRegionalCertificateAuthorityProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/sharedRegionalCertificateAuthority",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSharedRegionalCertificateAuthorityProjectsLocationsRequest>;
 
@@ -2905,10 +2899,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -2943,10 +2934,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -2977,10 +2965,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -3011,11 +2996,7 @@ export const CancelProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -3052,10 +3033,7 @@ export const ListProjectsLocationsClustersRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clusters",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/clusters" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsClustersRequest>;
 
@@ -3090,10 +3068,7 @@ export const GetProjectsLocationsClustersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsClustersRequest>;
 
@@ -3133,11 +3108,7 @@ export const PatchProjectsLocationsClustersRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Cluster).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsClustersRequest>;
 
@@ -3171,10 +3142,7 @@ export const DeleteProjectsLocationsClustersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsClustersRequest>;
 
@@ -3214,11 +3182,7 @@ export const CreateProjectsLocationsClustersRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Cluster).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clusters",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/clusters", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsClustersRequest>;
 
@@ -3249,10 +3213,7 @@ export const GetCertificateAuthorityProjectsLocationsClustersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/certificateAuthority",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCertificateAuthorityProjectsLocationsClustersRequest>;
 
@@ -3292,7 +3253,7 @@ export const RescheduleClusterMaintenanceProjectsLocationsClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}:rescheduleClusterMaintenance",
+      path: "v1/{name}:rescheduleClusterMaintenance",
       hasBody: true,
     }),
     svc,
@@ -3330,11 +3291,7 @@ export const BackupProjectsLocationsClustersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(BackupClusterRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}:backup",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:backup", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<BackupProjectsLocationsClustersRequest>;
 
@@ -3370,7 +3327,7 @@ export const AddTokenAuthUserProjectsLocationsClustersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}:addTokenAuthUser",
+      path: "v1/{cluster}:addTokenAuthUser",
       hasBody: true,
     }),
     svc,
@@ -3415,10 +3372,7 @@ export const ListProjectsLocationsClustersTokenAuthUsersRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/tokenAuthUsers",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/tokenAuthUsers" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsClustersTokenAuthUsersRequest>;
 
@@ -3454,10 +3408,7 @@ export const GetProjectsLocationsClustersTokenAuthUsersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/tokenAuthUsers/{tokenAuthUsersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsClustersTokenAuthUsersRequest>;
 
@@ -3494,10 +3445,7 @@ export const DeleteProjectsLocationsClustersTokenAuthUsersRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/tokenAuthUsers/{tokenAuthUsersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsClustersTokenAuthUsersRequest>;
 
@@ -3533,7 +3481,7 @@ export const AddAuthTokenProjectsLocationsClustersTokenAuthUsersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/tokenAuthUsers/{tokenAuthUsersId}:addAuthToken",
+      path: "v1/{tokenAuthUser}:addAuthToken",
       hasBody: true,
     }),
     svc,
@@ -3580,10 +3528,7 @@ export const ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/tokenAuthUsers/{tokenAuthUsersId}/authTokens",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/authTokens" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest>;
 
@@ -3620,10 +3565,7 @@ export const GetProjectsLocationsClustersTokenAuthUsersAuthTokensRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/tokenAuthUsers/{tokenAuthUsersId}/authTokens/{authTokensId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsClustersTokenAuthUsersAuthTokensRequest>;
 
@@ -3656,10 +3598,7 @@ export const DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/tokenAuthUsers/{tokenAuthUsersId}/authTokens/{authTokensId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensRequest>;
 
@@ -3698,10 +3637,7 @@ export const ListProjectsLocationsAclPoliciesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/aclPolicies",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/aclPolicies" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAclPoliciesRequest>;
 
@@ -3736,10 +3672,7 @@ export const GetProjectsLocationsAclPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/aclPolicies/{aclPoliciesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAclPoliciesRequest>;
 
@@ -3779,11 +3712,7 @@ export const PatchProjectsLocationsAclPoliciesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(AclPolicy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/aclPolicies/{aclPoliciesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAclPoliciesRequest>;
 
@@ -3820,10 +3749,7 @@ export const DeleteProjectsLocationsAclPoliciesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/aclPolicies/{aclPoliciesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAclPoliciesRequest>;
 
@@ -3865,11 +3791,7 @@ export const CreateProjectsLocationsAclPoliciesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(AclPolicy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/aclPolicies",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/aclPolicies", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsAclPoliciesRequest>;
 
@@ -3906,10 +3828,7 @@ export const ListProjectsLocationsBackupCollectionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupCollections",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/backupCollections" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBackupCollectionsRequest>;
 
@@ -3945,10 +3864,7 @@ export const GetProjectsLocationsBackupCollectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupCollections/{backupCollectionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBackupCollectionsRequest>;
 
@@ -3985,10 +3901,7 @@ export const ListProjectsLocationsBackupCollectionsBackupsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupCollections/{backupCollectionsId}/backups",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/backups" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBackupCollectionsBackupsRequest>;
 
@@ -4024,10 +3937,7 @@ export const GetProjectsLocationsBackupCollectionsBackupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupCollections/{backupCollectionsId}/backups/{backupsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBackupCollectionsBackupsRequest>;
 
@@ -4061,10 +3971,7 @@ export const DeleteProjectsLocationsBackupCollectionsBackupsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupCollections/{backupCollectionsId}/backups/{backupsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsBackupCollectionsBackupsRequest>;
 
@@ -4099,11 +4006,7 @@ export const ExportProjectsLocationsBackupCollectionsBackupsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ExportBackupRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/backupCollections/{backupCollectionsId}/backups/{backupsId}:export",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:export", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExportProjectsLocationsBackupCollectionsBackupsRequest>;
 
@@ -4141,10 +4044,7 @@ export const ListProjectsLocationsInstancesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/instances" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsInstancesRequest>;
 
@@ -4179,10 +4079,7 @@ export const GetProjectsLocationsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsInstancesRequest>;
 
@@ -4213,10 +4110,7 @@ export const GetAuthStringProjectsLocationsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}/authString",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/authString" }),
     svc,
   ) as unknown as Schema.Schema<GetAuthStringProjectsLocationsInstancesRequest>;
 
@@ -4254,11 +4148,7 @@ export const CreateProjectsLocationsInstancesRequest =
     instanceId: Schema.optional(Schema.String).pipe(T.HttpQuery("instanceId")),
     body: Schema.optional(Instance).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/instances", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsInstancesRequest>;
 
@@ -4295,11 +4185,7 @@ export const PatchProjectsLocationsInstancesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Instance).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsInstancesRequest>;
 
@@ -4333,11 +4219,7 @@ export const UpgradeProjectsLocationsInstancesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpgradeInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:upgrade",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:upgrade", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpgradeProjectsLocationsInstancesRequest>;
 
@@ -4371,11 +4253,7 @@ export const ImportProjectsLocationsInstancesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ImportInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:import",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:import", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ImportProjectsLocationsInstancesRequest>;
 
@@ -4409,11 +4287,7 @@ export const ExportProjectsLocationsInstancesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ExportInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:export",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:export", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExportProjectsLocationsInstancesRequest>;
 
@@ -4447,11 +4321,7 @@ export const FailoverProjectsLocationsInstancesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(FailoverInstanceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:failover",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:failover", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<FailoverProjectsLocationsInstancesRequest>;
 
@@ -4482,10 +4352,7 @@ export const DeleteProjectsLocationsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsInstancesRequest>;
 
@@ -4521,7 +4388,7 @@ export const RescheduleMaintenanceProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:rescheduleMaintenance",
+      path: "v1/{name}:rescheduleMaintenance",
       hasBody: true,
     }),
     svc,

@@ -53,7 +53,7 @@ export const TranslatedString = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LocalizedString {
   /** Contains the translations for the string. */
-  translatedValues?: Array<TranslatedString>;
+  translatedValues?: ReadonlyArray<TranslatedString>;
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#localizedString"`. */
   kind?: string;
   /** Contains the string to be displayed if no appropriate translation is available. */
@@ -86,7 +86,7 @@ export const LabelValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LabelValueRow {
   /** A list of labels and values. These will be displayed in a singular column, one after the other, not in multiple columns, despite the field name. */
-  columns?: Array<LabelValue>;
+  columns?: ReadonlyArray<LabelValue>;
 }
 
 export const LabelValueRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -95,7 +95,7 @@ export const LabelValueRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InfoModuleData {
   /** A list of collections of labels and values. These will be displayed one after the other in a singular column. */
-  labelValueRows?: Array<LabelValueRow>;
+  labelValueRows?: ReadonlyArray<LabelValueRow>;
   showLastUpdateTime?: boolean;
 }
 
@@ -296,7 +296,7 @@ export const RotatingBarcodeTotpDetailsTotpParameters =
 
 export interface RotatingBarcodeTotpDetails {
   /** The TOTP parameters for each of the {totp_value_*} substitutions. The TotpParameters at index n is used for the {totp_value_n} substitution. */
-  parameters?: Array<RotatingBarcodeTotpDetailsTotpParameters>;
+  parameters?: ReadonlyArray<RotatingBarcodeTotpDetailsTotpParameters>;
   /** The time interval used for the TOTP value generation, in milliseconds. */
   periodMillis?: string;
   /** The TOTP algorithm used to generate the OTP. */
@@ -318,7 +318,7 @@ export interface RotatingBarcodeValues {
   /** Required. The amount of time each barcode is valid for. */
   periodMillis?: string;
   /** Required. The values to encode in the barcode. At least one value is required. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const RotatingBarcodeValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -385,7 +385,7 @@ export const RotatingBarcode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LinksModuleData {
   /** The list of URIs. */
-  uris?: Array<Uri>;
+  uris?: ReadonlyArray<Uri>;
 }
 
 export const LinksModuleData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -584,7 +584,7 @@ export const FieldReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FieldSelector {
   /** If more than one reference is supplied, then the first one that references a non-empty field will be displayed. */
-  fields?: Array<FieldReference>;
+  fields?: ReadonlyArray<FieldReference>;
 }
 
 export const FieldSelector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -665,7 +665,7 @@ export const CardRowTemplateInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CardTemplateOverride {
   /** Template information for rows in the card view. At most three rows are allowed to be specified. */
-  cardRowTemplateInfos?: Array<CardRowTemplateInfo>;
+  cardRowTemplateInfos?: ReadonlyArray<CardRowTemplateInfo>;
 }
 
 export const CardTemplateOverride = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -683,7 +683,7 @@ export const DetailsItemInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DetailsTemplateOverride {
   /** Information for the "nth" item displayed in the details list. */
-  detailsItemInfos?: Array<DetailsItemInfo>;
+  detailsItemInfos?: ReadonlyArray<DetailsItemInfo>;
 }
 
 export const DetailsTemplateOverride =
@@ -849,7 +849,7 @@ export interface EventTicketClass {
   /** The wide logo of the ticket. When provided, this will be used in place of the logo in the top left of the card view. */
   wideLogo?: Image;
   /** Merchant locations. There is a maximum of ten on the class. Any additional MerchantLocations added beyond the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set radius of the point. This field replaces the deprecated LatLongPoints. */
-  merchantLocations?: Array<MerchantLocation>;
+  merchantLocations?: ReadonlyArray<MerchantLocation>;
   /** The ID of the event. This ID should be unique for every event in an account. It is used to group tickets together if the user has saved multiple tickets for the same event. It can be at most 64 characters. If provided, the grouping will be stable. Be wary of unintentional collision to avoid grouping tickets that should not be grouped. If you use only one class per event, you can simply set this to the `classId` (with or without the issuer ID portion). If not provided, the platform will attempt to use other data to group tickets (potentially unstable). */
   eventId?: string;
   /** The review comments set by the platform when a class is marked `approved` or `rejected`. */
@@ -857,7 +857,7 @@ export interface EventTicketClass {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#eventTicketClass"`. */
   kind?: string;
   /** Note: This field is currently not supported to trigger geo notifications. */
-  locations?: Array<LatLongPoint>;
+  locations?: ReadonlyArray<LatLongPoint>;
   /** Deprecated. */
   wordMark?: Image;
   /** Deprecated */
@@ -873,9 +873,9 @@ export interface EventTicketClass {
   /** The label to use for the row value (`eventTicketObject.seatInfo.row`) on the card detail view. Each available option maps to a set of localized strings, so that translations are shown to the user based on their locale. Both `rowLabel` and `customRowLabel` may not be set. If neither is set, the label will default to "Row", localized. If the row field is unset, this label will not be used. */
   rowLabel?: "ROW_LABEL_UNSPECIFIED" | "ROW" | "row" | (string & {});
   /** Image module data. The maximum number of these fields displayed is 1 from object level and 1 for class object level. */
-  imageModulesData?: Array<ImageModuleData>;
+  imageModulesData?: ReadonlyArray<ImageModuleData>;
   /** Identifies which redemption issuers can redeem the pass over Smart Tap. Redemption issuers are identified by their issuer ID. Redemption issuers must have at least one Smart Tap key configured. The `enableSmartTap` and object level `smartTapRedemptionLevel` fields must also be set up correctly in order for a pass to support Smart Tap. */
-  redemptionIssuers?: Array<string>;
+  redemptionIssuers?: ReadonlyArray<string>;
   /** The background color for the card. If not set the dominant color of the hero image is used, and if no hero image is set, the dominant color of the logo is used. The format is #rrggbb where rrggbb is a hex RGB triplet, such as `#ffcc00`. You can also use the shorthand version of the RGB triplet which is #rgb, such as `#fc0`. */
   hexBackgroundColor?: string;
   /** Callback options to be used to call the issuer back for every save/delete of an object for this class by the end-user. All objects of this class are eligible for the callback. */
@@ -889,7 +889,7 @@ export interface EventTicketClass {
   /** Country code used to display the card's country (when the user is not in that country), as well as to display localized content when content is not available in the user's locale. */
   countryCode?: string;
   /** Text module data. If text module data is also defined on the class, both will be displayed. The maximum number of these fields displayed is 10 from the object and 10 from the class. */
-  textModulesData?: Array<TextModuleData>;
+  textModulesData?: ReadonlyArray<TextModuleData>;
   /** A custom label to use for the section value (`eventTicketObject.seatInfo.section`) on the card detail view. This should only be used if the default "Section" label or one of the `sectionLabel` options is not sufficient. Both `sectionLabel` and `customSectionLabel` may not be set. If neither is set, the label will default to "Section", localized. If the section field is unset, this label will not be used. */
   customSectionLabel?: LocalizedString;
   /** Required. The name of the event, such as "LA Dodgers at SF Giants". */
@@ -897,7 +897,7 @@ export interface EventTicketClass {
   /** The date & time information of the event. */
   dateTime?: EventDateTime;
   /** Optional value added module data. Maximum of fifteen on the class. For a pass only fifteen will be displayed, prioritizing those from the object. */
-  valueAddedModuleData?: Array<ValueAddedModuleData>;
+  valueAddedModuleData?: ReadonlyArray<ValueAddedModuleData>;
   /** A custom label to use for the seat value (`eventTicketObject.seatInfo.seat`) on the card detail view. This should only be used if the default "Seat" label or one of the `seatLabel` options is not sufficient. Both `seatLabel` and `customSeatLabel` may not be set. If neither is set, the label will default to "Seat", localized. If the seat field is unset, this label will not be used. */
   customSeatLabel?: LocalizedString;
   /** The logo image of the ticket. This image is displayed in the card detail view of the app. */
@@ -959,7 +959,7 @@ export interface EventTicketClass {
   /** Optional information about the security animation. If this is set a security animation will be rendered on pass details. */
   securityAnimation?: SecurityAnimation;
   /** An array of messages displayed in the app. All users of this object will receive its associated messages. The maximum number of these fields is 10. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
   /** Translated strings for the issuer_name. Recommended maximum length is 20 characters to ensure full string is displayed on smaller screens. */
   localizedIssuerName?: LocalizedString;
 }
@@ -1022,7 +1022,7 @@ export interface PassConstraints {
     | "INELIGIBLE"
     | (string & {});
   /** The NFC constraints for the pass. */
-  nfcConstraint?: Array<
+  nfcConstraint?: ReadonlyArray<
     | "NFC_CONSTRAINT_UNSPECIFIED"
     | "BLOCK_PAYMENT"
     | "BLOCK_CLOSED_LOOP_TRANSIT"
@@ -1118,19 +1118,19 @@ export interface EventTicketObject {
   /** Required. The class associated with this object. The class must be of the same type as this object, must already exist, and must be approved. Class IDs should follow the format issuer ID.identifier where the former is issued by Google and latter is chosen by you. */
   classId?: string;
   /** Merchant locations. There is a maximum of ten on the object. Any additional MerchantLocations added beyond the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set radius of the point. This field replaces the deprecated LatLongPoints. */
-  merchantLocations?: Array<MerchantLocation>;
+  merchantLocations?: ReadonlyArray<MerchantLocation>;
   /** The value that will be transmitted to a Smart Tap certified terminal over NFC for this object. The class level fields `enableSmartTap` and `redemptionIssuers` must also be set up correctly in order for the pass to support Smart Tap. Only ASCII characters are supported. */
   smartTapRedemptionValue?: string;
   /** Seating details for this ticket. */
   seatInfo?: EventSeat;
   /** Image module data. The maximum number of these fields displayed is 1 from object level and 1 for class object level. */
-  imageModulesData?: Array<ImageModuleData>;
+  imageModulesData?: ReadonlyArray<ImageModuleData>;
   /** Deprecated */
   version?: string;
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#eventTicketObject"`. */
   kind?: string;
   /** Note: This field is currently not supported to trigger geo notifications. */
-  locations?: Array<LatLongPoint>;
+  locations?: ReadonlyArray<LatLongPoint>;
   /** Reservation details for this ticket. This is expected to be shared amongst all tickets that were purchased in the same order. */
   reservationInfo?: EventReservationInfo;
   /** Optional banner image displayed on the front of the card. If none is present, hero image of the class, if present, will be displayed. If hero image of the class is also not present, nothing will be displayed. */
@@ -1148,13 +1148,13 @@ export interface EventTicketObject {
   /** Links module data. If links module data is also defined on the class, both will be displayed. */
   linksModuleData?: LinksModuleData;
   /** A list of offer objects linked to this event ticket. The offer objects must already exist. Offer object IDs should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. */
-  linkedOfferIds?: Array<string>;
+  linkedOfferIds?: ReadonlyArray<string>;
   /** Text module data. If text module data is also defined on the class, both will be displayed. The maximum number of these fields displayed is 10 from the object and 10 from the class. */
-  textModulesData?: Array<TextModuleData>;
+  textModulesData?: ReadonlyArray<TextModuleData>;
   /** Restrictions on the object that needs to be verified before the user tries to save the pass. Note that this restrictions will only be applied during save time. If the restrictions changed after a user saves the pass, the new restrictions will not be applied to an already saved pass. */
   saveRestrictions?: SaveRestrictions;
   /** linked_object_ids are a list of other objects such as event ticket, loyalty, offer, generic, giftcard, transit and boarding pass that should be automatically attached to this event ticket object. If a user had saved this event ticket, then these linked_object_ids would be automatically pushed to the user's wallet (unless they turned off the setting to receive such linked passes). Make sure that objects present in linked_object_ids are already inserted - if not, calls would fail. Once linked, the linked objects cannot be unlinked. You cannot link objects belonging to another issuer. There is a limit to the number of objects that can be linked to a single object. After the limit is reached, new linked objects in the call will be ignored silently. Object IDs should follow the format issuer ID. identifier where the former is issued by Google and the latter is chosen by you. */
-  linkedObjectIds?: Array<string>;
+  linkedObjectIds?: ReadonlyArray<string>;
   /** Required. The state of the object. This field is used to determine how an object is displayed in the app. For example, an `inactive` object is moved to the "Expired passes" section. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -1174,7 +1174,7 @@ export interface EventTicketObject {
   /** The time period this object will be `active` and object can be used. An object's state will be changed to `expired` when this time period has passed. */
   validTimeInterval?: TimeInterval;
   /** Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be displayed. */
-  valueAddedModuleData?: Array<ValueAddedModuleData>;
+  valueAddedModuleData?: ReadonlyArray<ValueAddedModuleData>;
   /** A copy of the inherited fields of the parent class. These fields are retrieved during a GET. */
   classReference?: EventTicketClass;
   /** Indicates if the object has users. This field is set by the platform. */
@@ -1188,7 +1188,7 @@ export interface EventTicketObject {
   /** The face value of the ticket, matching what would be printed on a physical version of the ticket. */
   faceValue?: Money;
   /** An array of messages displayed in the app. All users of this object will receive its associated messages. The maximum number of these fields is 10. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
 }
 
 export const EventTicketObject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1261,7 +1261,7 @@ export interface GiftCardClass {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#giftCardClass"`. */
   kind?: string;
   /** Note: This field is currently not supported to trigger geo notifications. */
-  locations?: Array<LatLongPoint>;
+  locations?: ReadonlyArray<LatLongPoint>;
   /** Deprecated. */
   wordMark?: Image;
   /** Deprecated. Use `multipleDevicesAndHoldersAllowedStatus` instead. */
@@ -1271,9 +1271,9 @@ export interface GiftCardClass {
   /** Required. The issuer name. Recommended maximum length is 20 characters to ensure full string is displayed on smaller screens. */
   issuerName?: string;
   /** Image module data. The maximum number of these fields displayed is 1 from object level and 1 for class object level. */
-  imageModulesData?: Array<ImageModuleData>;
+  imageModulesData?: ReadonlyArray<ImageModuleData>;
   /** Identifies which redemption issuers can redeem the pass over Smart Tap. Redemption issuers are identified by their issuer ID. Redemption issuers must have at least one Smart Tap key configured. The `enableSmartTap` and object level `smartTapRedemptionLevel` fields must also be set up correctly in order for a pass to support Smart Tap. */
-  redemptionIssuers?: Array<string>;
+  redemptionIssuers?: ReadonlyArray<string>;
   /** The logo of the gift card program or company. This logo is displayed in both the details and list views of the app. */
   programLogo?: Image;
   /** The label to display for the PIN, such as "4-digit PIN". */
@@ -1314,7 +1314,7 @@ export interface GiftCardClass {
   /** Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is provided for the corresponding object that will be used instead. */
   appLinkData?: AppLinkData;
   /** Merchant locations. There is a maximum of ten on the class. Any additional MerchantLocations added beyond the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set radius of the point. This field replaces the deprecated LatLongPoints. */
-  merchantLocations?: Array<MerchantLocation>;
+  merchantLocations?: ReadonlyArray<MerchantLocation>;
   /** The review comments set by the platform when a class is marked `approved` or `rejected`. */
   review?: Review;
   /** Translated strings for the event_number_label. */
@@ -1330,9 +1330,9 @@ export interface GiftCardClass {
   /** The wide logo of the gift card program or company. When provided, this will be used in place of the program logo in the top left of the card view. */
   wideProgramLogo?: Image;
   /** An array of messages displayed in the app. All users of this object will receive its associated messages. The maximum number of these fields is 10. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
   /** Text module data. If text module data is also defined on the class, both will be displayed. The maximum number of these fields displayed is 10 from the object and 10 from the class. */
-  textModulesData?: Array<TextModuleData>;
+  textModulesData?: ReadonlyArray<TextModuleData>;
   /** Translated strings for the pin_label. */
   localizedPinLabel?: LocalizedString;
   /** Merchant name, such as "Adam's Apparel". The app may display an ellipsis after the first 20 characters to ensure full string is displayed on smaller screens. */
@@ -1340,7 +1340,7 @@ export interface GiftCardClass {
   /** Translated strings for the card_number_label. */
   localizedCardNumberLabel?: LocalizedString;
   /** Optional value added module data. Maximum of fifteen on the class. For a pass only fifteen will be displayed, prioritizing those from the object. */
-  valueAddedModuleData?: Array<ValueAddedModuleData>;
+  valueAddedModuleData?: ReadonlyArray<ValueAddedModuleData>;
   /** Identifies whether this class supports Smart Tap. The `redemptionIssuers` and object level `smartTapRedemptionLevel` fields must also be set up correctly in order for a pass to support Smart Tap. */
   enableSmartTap?: boolean;
   /** Translated strings for the merchant_name. The app may display an ellipsis after the first 20 characters to ensure full string is displayed on smaller screens. */
@@ -1413,7 +1413,7 @@ export interface GiftCardObject {
   /** The barcode type and value. */
   barcode?: Barcode;
   /** An array of messages displayed in the app. All users of this object will receive its associated messages. The maximum number of these fields is 10. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
   /** The card's monetary balance. */
   balance?: Money;
   /** Required. The card's number. */
@@ -1447,11 +1447,11 @@ export interface GiftCardObject {
   /** The date and time when the balance was last updated. Offset is required. If balance is updated and this property is not provided, system will default to the current time. */
   balanceUpdateTime?: DateTime;
   /** Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be displayed. */
-  valueAddedModuleData?: Array<ValueAddedModuleData>;
+  valueAddedModuleData?: ReadonlyArray<ValueAddedModuleData>;
   /** linked_object_ids are a list of other objects such as event ticket, loyalty, offer, generic, giftcard, transit and boarding pass that should be automatically attached to this giftcard object. If a user had saved this gift card, then these linked_object_ids would be automatically pushed to the user's wallet (unless they turned off the setting to receive such linked passes). Make sure that objects present in linked_object_ids are already inserted - if not, calls would fail. Once linked, the linked objects cannot be unlinked. You cannot link objects belonging to another issuer. There is a limit to the number of objects that can be linked to a single object. After the limit is reached, new linked objects in the call will be ignored silently. Object IDs should follow the format issuer ID. identifier where the former is issued by Google and the latter is chosen by you. */
-  linkedObjectIds?: Array<string>;
+  linkedObjectIds?: ReadonlyArray<string>;
   /** Text module data. If text module data is also defined on the class, both will be displayed. The maximum number of these fields displayed is 10 from the object and 10 from the class. */
-  textModulesData?: Array<TextModuleData>;
+  textModulesData?: ReadonlyArray<TextModuleData>;
   /** Restrictions on the object that needs to be verified before the user tries to save the pass. Note that this restrictions will only be applied during save time. If the restrictions changed after a user saves the pass, the new restrictions will not be applied to an already saved pass. */
   saveRestrictions?: SaveRestrictions;
   /** The card's event number, an optional field used by some gift cards. */
@@ -1465,11 +1465,11 @@ export interface GiftCardObject {
   /** Deprecated. Use textModulesData instead. */
   infoModuleData?: InfoModuleData;
   /** Image module data. The maximum number of these fields displayed is 1 from object level and 1 for class object level. */
-  imageModulesData?: Array<ImageModuleData>;
+  imageModulesData?: ReadonlyArray<ImageModuleData>;
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#giftCardObject"`. */
   kind?: string;
   /** Note: This field is currently not supported to trigger geo notifications. */
-  locations?: Array<LatLongPoint>;
+  locations?: ReadonlyArray<LatLongPoint>;
   /** Deprecated */
   version?: string;
   /** Optional banner image displayed on the front of the card. If none is present, hero image of the class, if present, will be displayed. If hero image of the class is also not present, nothing will be displayed. */
@@ -1479,7 +1479,7 @@ export interface GiftCardObject {
   /** The value that will be transmitted to a Smart Tap certified terminal over NFC for this object. The class level fields `enableSmartTap` and `redemptionIssuers` must also be set up correctly in order for the pass to support Smart Tap. Only ASCII characters are supported. */
   smartTapRedemptionValue?: string;
   /** Merchant locations. There is a maximum of ten on the object. Any additional MerchantLocations added beyond the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set radius of the point. This field replaces the deprecated LatLongPoints. */
-  merchantLocations?: Array<MerchantLocation>;
+  merchantLocations?: ReadonlyArray<MerchantLocation>;
   /** Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is provided for the corresponding class only object AppLinkData will be displayed. */
   appLinkData?: AppLinkData;
   /** Whether or not field updates to this object should trigger notifications. When set to NOTIFY, we will attempt to trigger a field update notification to users. These notifications will only be sent to users if the field is part of an allowlist. If set to DO_NOT_NOTIFY or NOTIFICATION_SETTINGS_UNSPECIFIED, no notification will be triggered. This setting is ephemeral and needs to be set with each PATCH or UPDATE request, otherwise a notification will not be triggered. */
@@ -1557,7 +1557,7 @@ export interface OfferClass {
   /** Required. The title of the offer, such as "20% off any t-shirt." Recommended maximum length is 60 characters to ensure full string is displayed on smaller screens. */
   title?: string;
   /** Note: This field is currently not supported to trigger geo notifications. */
-  locations?: Array<LatLongPoint>;
+  locations?: ReadonlyArray<LatLongPoint>;
   /** Deprecated. */
   wordMark?: Image;
   /** Deprecated */
@@ -1585,11 +1585,11 @@ export interface OfferClass {
   /** Required. The issuer name. Recommended maximum length is 20 characters to ensure full string is displayed on smaller screens. */
   issuerName?: string;
   /** Image module data. The maximum number of these fields displayed is 1 from object level and 1 for class object level. */
-  imageModulesData?: Array<ImageModuleData>;
+  imageModulesData?: ReadonlyArray<ImageModuleData>;
   /** Identifies which redemption issuers can redeem the pass over Smart Tap. Redemption issuers are identified by their issuer ID. Redemption issuers must have at least one Smart Tap key configured. The `enableSmartTap` and object level `smartTapRedemptionLevel` fields must also be set up correctly in order for a pass to support Smart Tap. */
-  redemptionIssuers?: Array<string>;
+  redemptionIssuers?: ReadonlyArray<string>;
   /** Merchant locations. There is a maximum of ten on the class. Any additional MerchantLocations added beyond the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set radius of the point. This field replaces the deprecated LatLongPoints. */
-  merchantLocations?: Array<MerchantLocation>;
+  merchantLocations?: ReadonlyArray<MerchantLocation>;
   /** The review comments set by the platform when a class is marked `approved` or `rejected`. */
   review?: Review;
   /** Required. The status of the class. This field can be set to `draft` or The status of the class. This field can be set to `draft` or `underReview` using the insert, patch, or update API calls. Once the review state is changed from `draft` it may not be changed back to `draft`. You should keep this field to `draft` when the class is under development. A `draft` class cannot be used to create any object. You should set this field to `underReview` when you believe the class is ready for use. The platform will automatically set this field to `approved` and it can be immediately used to create or migrate objects. When updating an already `approved` class you should keep setting this field to `underReview`. */
@@ -1624,7 +1624,7 @@ export interface OfferClass {
   /** Optional information about the security animation. If this is set a security animation will be rendered on pass details. */
   securityAnimation?: SecurityAnimation;
   /** An array of messages displayed in the app. All users of this object will receive its associated messages. The maximum number of these fields is 10. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
   /** Translated strings for the fine_print. */
   localizedFinePrint?: LocalizedString;
   /** Translated strings for the issuer_name. Recommended maximum length is 20 characters to ensure full string is displayed on smaller screens. */
@@ -1636,7 +1636,7 @@ export interface OfferClass {
   /** Translated strings for the provider. Recommended maximum length is 12 characters to ensure full string is displayed on smaller screens. */
   localizedProvider?: LocalizedString;
   /** Optional value added module data. Maximum of fifteen on the class. For a pass only fifteen will be displayed, prioritizing those from the object. */
-  valueAddedModuleData?: Array<ValueAddedModuleData>;
+  valueAddedModuleData?: ReadonlyArray<ValueAddedModuleData>;
   /** Required. The offer provider (either the aggregator name or merchant name). Recommended maximum length is 12 characters to ensure full string is displayed on smaller screens. */
   provider?: string;
   /** Identifies whether this class supports Smart Tap. The `redemptionIssuers` and object level `smartTapRedemptionLevel` fields must also be set up correctly in order for a pass to support Smart Tap. */
@@ -1660,7 +1660,7 @@ export interface OfferClass {
     | "UNLOCK_REQUIRED_TO_VIEW"
     | (string & {});
   /** Text module data. If text module data is also defined on the class, both will be displayed. The maximum number of these fields displayed is 10 from the object and 10 from the class. */
-  textModulesData?: Array<TextModuleData>;
+  textModulesData?: ReadonlyArray<TextModuleData>;
 }
 
 export const OfferClass = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1824,7 +1824,7 @@ export const DiscoverableProgramMerchantSigninInfo =
 
 export interface DiscoverableProgramMerchantSignupInfo {
   /** User data that is sent in a POST request to the signup website URL. This information is encoded and then shared so that the merchant's website can prefill fields used to enroll the user for the discoverable program. */
-  signupSharedDatas?: Array<
+  signupSharedDatas?: ReadonlyArray<
     | "SHARED_DATA_TYPE_UNSPECIFIED"
     | "FIRST_NAME"
     | "LAST_NAME"
@@ -1885,7 +1885,7 @@ export interface LoyaltyClass {
   /** The wide logo of the loyalty program or company. When provided, this will be used in place of the program logo in the top left of the card view. */
   wideProgramLogo?: Image;
   /** An array of messages displayed in the app. All users of this object will receive its associated messages. The maximum number of these fields is 10. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
   /** Translated strings for the secondary_rewards_tier_label. */
   localizedSecondaryRewardsTierLabel?: LocalizedString;
   /** Template information about how the class should be displayed. If unset, Google will fallback to a default set of fields to display. */
@@ -1895,7 +1895,7 @@ export interface LoyaltyClass {
   /** Translated strings for the rewards_tier. Recommended maximum length is 7 characters to ensure full string is displayed on smaller screens. */
   localizedRewardsTier?: LocalizedString;
   /** Text module data. If text module data is also defined on the class, both will be displayed. The maximum number of these fields displayed is 10 from the object and 10 from the class. */
-  textModulesData?: Array<TextModuleData>;
+  textModulesData?: ReadonlyArray<TextModuleData>;
   /** View Unlock Requirement options for the loyalty card. */
   viewUnlockRequirement?:
     | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
@@ -1917,11 +1917,11 @@ export interface LoyaltyClass {
   /** Identifies whether this class supports Smart Tap. The `redemptionIssuers` and one of object level `smartTapRedemptionLevel`, barcode.value`, or `accountId` fields must also be set up correctly in order for a pass to support Smart Tap. */
   enableSmartTap?: boolean;
   /** Optional value added module data. Maximum of fifteen on the class. For a pass only fifteen will be displayed, prioritizing those from the object. */
-  valueAddedModuleData?: Array<ValueAddedModuleData>;
+  valueAddedModuleData?: ReadonlyArray<ValueAddedModuleData>;
   /** Image module data. The maximum number of these fields displayed is 1 from object level and 1 for class object level. */
-  imageModulesData?: Array<ImageModuleData>;
+  imageModulesData?: ReadonlyArray<ImageModuleData>;
   /** Identifies which redemption issuers can redeem the pass over Smart Tap. Redemption issuers are identified by their issuer ID. Redemption issuers must have at least one Smart Tap key configured. The `enableSmartTap` and one of object level `smartTapRedemptionValue`, barcode.value`, or `accountId` fields must also be set up correctly in order for a pass to support Smart Tap. */
-  redemptionIssuers?: Array<string>;
+  redemptionIssuers?: ReadonlyArray<string>;
   /** Required. The issuer name. Recommended maximum length is 20 characters to ensure full string is displayed on smaller screens. */
   issuerName?: string;
   /** Required. The program name, such as "Adam's Apparel". The app may display an ellipsis after the first 20 characters to ensure full string is displayed on smaller screens. */
@@ -1943,7 +1943,7 @@ export interface LoyaltyClass {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#loyaltyClass"`. */
   kind?: string;
   /** Note: This field is currently not supported to trigger geo notifications. */
-  locations?: Array<LatLongPoint>;
+  locations?: ReadonlyArray<LatLongPoint>;
   /** Deprecated. */
   wordMark?: Image;
   /** Country code used to display the card's country (when the user is not in that country), as well as to display localized content when content is not available in the user's locale. */
@@ -1990,7 +1990,7 @@ export interface LoyaltyClass {
   /** The review comments set by the platform when a class is marked `approved` or `rejected`. */
   review?: Review;
   /** Merchant locations. There is a maximum of ten on the class. Any additional MerchantLocations added beyond the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set radius of the point. This field replaces the deprecated LatLongPoints. */
-  merchantLocations?: Array<MerchantLocation>;
+  merchantLocations?: ReadonlyArray<MerchantLocation>;
   /** The secondary rewards tier, such as "Gold" or "Platinum." */
   secondaryRewardsTier?: string;
 }
@@ -2167,15 +2167,15 @@ export interface FlightClass {
   /** Required. The issuer name. Recommended maximum length is 20 characters to ensure full string is displayed on smaller screens. */
   issuerName?: string;
   /** Image module data. The maximum number of these fields displayed is 1 from object level and 1 for class object level. */
-  imageModulesData?: Array<ImageModuleData>;
+  imageModulesData?: ReadonlyArray<ImageModuleData>;
   /** Identifies which redemption issuers can redeem the pass over Smart Tap. Redemption issuers are identified by their issuer ID. Redemption issuers must have at least one Smart Tap key configured. The `enableSmartTap` and object level `smartTapRedemptionLevel` fields must also be set up correctly in order for a pass to support Smart Tap. */
-  redemptionIssuers?: Array<string>;
+  redemptionIssuers?: ReadonlyArray<string>;
   /** Deprecated */
   version?: string;
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#flightClass"`. */
   kind?: string;
   /** Note: This field is currently not supported to trigger geo notifications. */
-  locations?: Array<LatLongPoint>;
+  locations?: ReadonlyArray<LatLongPoint>;
   /** Deprecated. */
   wordMark?: Image;
   /** Required. Information about the flight carrier and number. */
@@ -2189,7 +2189,7 @@ export interface FlightClass {
   /** If this field is present, boarding passes served to a user's device will always be in this language. Represents the BCP 47 language tag. Example values are "en-US", "en-GB", "de", or "de-AT". */
   languageOverride?: string;
   /** Merchant locations. There is a maximum of ten on the class. Any additional MerchantLocations added beyond the 10 will be rejected by the validator. These locations will trigger a notification when a user enters within a Google-set radius of the point. This field replaces the deprecated LatLongPoints. */
-  merchantLocations?: Array<MerchantLocation>;
+  merchantLocations?: ReadonlyArray<MerchantLocation>;
   /** Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is provided for the corresponding object that will be used instead. */
   appLinkData?: AppLinkData;
   /** Required. The status of the class. This field can be set to `draft` or `underReview` using the insert, patch, or update API calls. Once the review state is changed from `draft` it may not be changed back to `draft`. You should keep this field to `draft` when the class is under development. A `draft` class cannot be used to create any object. You should set this field to `underReview` when you believe the class is ready for use. The platform will automatically set this field to `approved` and it can be immediately used to create or migrate objects. When updating an already `approved` class you should keep setting this field to `underReview`. */
@@ -2224,7 +2224,7 @@ export interface FlightClass {
   /** Translated strings for the issuer_name. Recommended maximum length is 20 characters to ensure full string is displayed on smaller screens. */
   localizedIssuerName?: LocalizedString;
   /** An array of messages displayed in the app. All users of this object will receive its associated messages. The maximum number of these fields is 10. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
   /** The estimated time the aircraft plans to reach the destination gate (not the runway) or the actual time it reached the gate. This field should be set if at least one of the below is true: - It differs from the scheduled time. Google will use it to calculate the delay. - The aircraft already arrived at the gate. Google will use it to inform the user that the flight has arrived at the gate. This is an ISO 8601 extended format date/time without an offset. Time may be specified up to millisecond precision. eg: `2027-03-05T06:30:00` This should be the local date/time at the airport (not a UTC time). Google will reject the request if UTC offset is provided. Time zones will be calculated by Google based on arrival airport. */
   localEstimatedOrActualArrivalDateTime?: string;
   /** Status of this flight. If unset, Google will compute status based on data from other sources, such as FlightStats, etc. Note: Google-computed status will not be returned in API responses. */
@@ -2270,11 +2270,11 @@ export interface FlightClass {
     | "UNLOCK_REQUIRED_TO_VIEW"
     | (string & {});
   /** Optional value added module data. Maximum of fifteen on the class. For a pass only fifteen will be displayed, prioritizing those from the object. */
-  valueAddedModuleData?: Array<ValueAddedModuleData>;
+  valueAddedModuleData?: ReadonlyArray<ValueAddedModuleData>;
   /** Identifies whether this class supports Smart Tap. The `redemptionIssuers` and object level `smartTapRedemptionLevel` fields must also be set up correctly in order for a pass to support Smart Tap. */
   enableSmartTap?: boolean;
   /** Text module data. If text module data is also defined on the class, both will be displayed. The maximum number of these fields displayed is 10 from the object and 10 from the class. */
-  textModulesData?: Array<TextModuleData>;
+  textModulesData?: ReadonlyArray<TextModuleData>;
 }
 
 export const FlightClass = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2404,7 +2404,7 @@ export interface FlightObject {
   /** Required. The class associated with this object. The class must be of the same type as this object, must already exist, and must be approved. Class IDs should follow the format issuer ID.identifier where the former is issued by Google and latter is chosen by you. */
   classId?: string;
   /** Merchant locations. There is a maximum of ten on the object. Any additional MerchantLocations added beyond the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set radius of the point. This field replaces the deprecated LatLongPoints. */
-  merchantLocations?: Array<MerchantLocation>;
+  merchantLocations?: ReadonlyArray<MerchantLocation>;
   /** The value that will be transmitted to a Smart Tap certified terminal over NFC for this object. The class level fields `enableSmartTap` and `redemptionIssuers` must also be set up correctly in order for the pass to support Smart Tap. Only ASCII characters are supported. */
   smartTapRedemptionValue?: string;
   /** Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is provided for the corresponding class only object AppLinkData will be displayed. */
@@ -2427,13 +2427,13 @@ export interface FlightObject {
   /** Links module data. If links module data is also defined on the class, both will be displayed. */
   linksModuleData?: LinksModuleData;
   /** Image module data. The maximum number of these fields displayed is 1 from object level and 1 for class object level. */
-  imageModulesData?: Array<ImageModuleData>;
+  imageModulesData?: ReadonlyArray<ImageModuleData>;
   /** Deprecated */
   version?: string;
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#flightObject"`. */
   kind?: string;
   /** Note: This field is currently not supported to trigger geo notifications. */
-  locations?: Array<LatLongPoint>;
+  locations?: ReadonlyArray<LatLongPoint>;
   /** Required. Information about flight reservation. */
   reservationInfo?: ReservationInfo;
   /** Optional banner image displayed on the front of the card. If none is present, hero image of the class, if present, will be displayed. If hero image of the class is also not present, nothing will be displayed. */
@@ -2457,17 +2457,17 @@ export interface FlightObject {
   /** The time period this object will be `active` and object can be used. An object's state will be changed to `expired` when this time period has passed. */
   validTimeInterval?: TimeInterval;
   /** Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be displayed. */
-  valueAddedModuleData?: Array<ValueAddedModuleData>;
+  valueAddedModuleData?: ReadonlyArray<ValueAddedModuleData>;
   /** Text module data. If text module data is also defined on the class, both will be displayed. The maximum number of these fields displayed is 10 from the object and 10 from the class. */
-  textModulesData?: Array<TextModuleData>;
+  textModulesData?: ReadonlyArray<TextModuleData>;
   /** Restrictions on the object that needs to be verified before the user tries to save the pass. Note that this restrictions will only be applied during save time. If the restrictions changed after a user saves the pass, the new restrictions will not be applied to an already saved pass. */
   saveRestrictions?: SaveRestrictions;
   /** linked_object_ids are a list of other objects such as event ticket, loyalty, offer, generic, giftcard, transit and boarding pass that should be automatically attached to this flight object. If a user had saved this boarding pass, then these linked_object_ids would be automatically pushed to the user's wallet (unless they turned off the setting to receive such linked passes). Make sure that objects present in linked_object_ids are already inserted - if not, calls would fail. Once linked, the linked objects cannot be unlinked. You cannot link objects belonging to another issuer. There is a limit to the number of objects that can be linked to a single object. After the limit is reached, new linked objects in the call will be ignored silently. Object IDs should follow the format issuer ID. identifier where the former is issued by Google and the latter is chosen by you. */
-  linkedObjectIds?: Array<string>;
+  linkedObjectIds?: ReadonlyArray<string>;
   /** The barcode type and value. */
   barcode?: Barcode;
   /** An array of messages displayed in the app. All users of this object will receive its associated messages. The maximum number of these fields is 10. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
   /** A copy of the inherited fields of the parent class. These fields are retrieved during a GET. */
   classReference?: FlightClass;
   /** Indicates if the object has users. This field is set by the platform. */
@@ -2557,7 +2557,7 @@ export interface TicketLeg {
   /** The platform or gate where the passenger can board the carriage. */
   platform?: string;
   /** The reserved seat for the passenger(s). If only one seat is to be specified then use the `ticketSeat` field instead. Both `ticketSeat` and `ticketSeats` may not be set. */
-  ticketSeats?: Array<TicketSeat>;
+  ticketSeats?: ReadonlyArray<TicketSeat>;
   /** The date/time of arrival. This is an ISO 8601 extended format date/time, with or without an offset. Time may be specified up to nanosecond precision. Offsets may be specified with seconds precision (even though offset seconds is not part of ISO 8601). For example: `1985-04-12T23:20:50.52Z` would be 20 minutes and 50.52 seconds after the 23rd hour of April 12th, 1985 in UTC. `1985-04-12T19:20:50.52-04:00` would be 20 minutes and 50.52 seconds after the 19th hour of April 12th, 1985, 4 hours before UTC (same instant in time as the above example). If the event were in New York, this would be the equivalent of Eastern Daylight Time (EDT). Remember that offset varies in regions that observe Daylight Saving Time (or Summer Time), depending on the time of the year. `1985-04-12T19:20:50.52` would be 20 minutes and 50.52 seconds after the 19th hour of April 12th, 1985 with no offset information. The portion of the date/time without the offset is considered the "local date/time". This should be the local date/time at the destination station. For example, if the event occurs at the 20th hour of June 5th, 2018 at the destination station, the local date/time portion should be `2018-06-05T20:00:00`. If the local date/time at the destination station is 4 hours before UTC, an offset of `-04:00` may be appended. Without offset information, some rich features may not be available. */
   arrivalDateTime?: string;
   /** The name of the transit operator that is operating this leg of a trip. */
@@ -2655,7 +2655,7 @@ export interface TransitClass {
   /** A custom label to use for the seat location value (`transitObject.ticketLeg.ticketSeat.seat`). */
   customSeatLabel?: LocalizedString;
   /** Optional value added module data. Maximum of fifteen on the class. For a pass only fifteen will be displayed, prioritizing those from the object. */
-  valueAddedModuleData?: Array<ValueAddedModuleData>;
+  valueAddedModuleData?: ReadonlyArray<ValueAddedModuleData>;
   /** A custom label to use for the purchase face value (`transitObject.purchaseDetails.ticketCost.faceValue`). */
   customPurchaseFaceValueLabel?: LocalizedString;
   /** Identifies whether multiple users and devices will save the same object referencing this class. */
@@ -2685,7 +2685,7 @@ export interface TransitClass {
   /** A custom label to use for the coach value (`transitObject.ticketLeg.ticketSeat.coach`). */
   customCoachLabel?: LocalizedString;
   /** Text module data. If text module data is also defined on the class, both will be displayed. The maximum number of these fields displayed is 10 from the object and 10 from the class. */
-  textModulesData?: Array<TextModuleData>;
+  textModulesData?: ReadonlyArray<TextModuleData>;
   /** The name of the transit operator. */
   transitOperatorName?: LocalizedString;
   /** A custom label to use for the transit fare name value (`transitObject.ticketLeg.fareName`). */
@@ -2733,11 +2733,11 @@ export interface TransitClass {
   /** A custom label to use for the carriage value (`transitObject.ticketLeg.carriage`). */
   customCarriageLabel?: LocalizedString;
   /** Note: This field is currently not supported to trigger geo notifications. */
-  locations?: Array<LatLongPoint>;
+  locations?: ReadonlyArray<LatLongPoint>;
   /** A custom label to use for the purchase receipt number value (`transitObject.purchaseDetails.purchaseReceiptNumber`). */
   customPurchaseReceiptNumberLabel?: LocalizedString;
   /** Identifies which redemption issuers can redeem the pass over Smart Tap. Redemption issuers are identified by their issuer ID. Redemption issuers must have at least one Smart Tap key configured. The `enableSmartTap` and object level `smartTapRedemptionLevel` fields must also be set up correctly in order for a pass to support Smart Tap. */
-  redemptionIssuers?: Array<string>;
+  redemptionIssuers?: ReadonlyArray<string>;
   /** Required. The issuer name. Recommended maximum length is 20 characters to ensure full string is displayed on smaller screens. */
   issuerName?: string;
   /** Required. The logo image of the ticket. This image is displayed in the card detail view of the app. */
@@ -2759,13 +2759,13 @@ export interface TransitClass {
   /** A custom label to use for the boarding platform value (`transitObject.ticketLeg.platform`). */
   customPlatformLabel?: LocalizedString;
   /** An array of messages displayed in the app. All users of this object will receive its associated messages. The maximum number of these fields is 10. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
   /** Template information about how the class should be displayed. If unset, Google will fallback to a default set of fields to display. */
   classTemplateInfo?: ClassTemplateInfo;
   /** Controls the display of the single-leg itinerary for this class. By default, an itinerary will only display for multi-leg trips. */
   enableSingleLegItinerary?: boolean;
   /** Merchant locations. There is a maximum of ten on the class. Any additional MerchantLocations added beyond the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set radius of the point. This field replaces the deprecated LatLongPoints. */
-  merchantLocations?: Array<MerchantLocation>;
+  merchantLocations?: ReadonlyArray<MerchantLocation>;
   /** Watermark image to display on the user's device. */
   watermark?: Image;
   /** Activation options for an activatable ticket. */
@@ -2798,7 +2798,7 @@ export interface TransitClass {
   /** Deprecated */
   version?: string;
   /** Image module data. The maximum number of these fields displayed is 1 from object level and 1 for class object level. */
-  imageModulesData?: Array<ImageModuleData>;
+  imageModulesData?: ReadonlyArray<ImageModuleData>;
   /** A custom label to use for the transit discount message value (`transitObject.purchaseDetails.ticketCost.discountMessage`). */
   customDiscountMessageLabel?: LocalizedString;
 }
@@ -2884,7 +2884,7 @@ export interface TransitObject {
   /** A custom status to use for the ticket status value when `ticketStatus` does not provide the right option. Both `ticketStatus` and `customTicketStatus` may not be set. */
   customTicketStatus?: LocalizedString;
   /** Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be displayed. */
-  valueAddedModuleData?: Array<ValueAddedModuleData>;
+  valueAddedModuleData?: ReadonlyArray<ValueAddedModuleData>;
   /** The time period this object will be `active` and object can be used. An object's state will be changed to `expired` when this time period has passed. */
   validTimeInterval?: TimeInterval;
   /** Information that controls how passes are grouped together. */
@@ -2908,17 +2908,17 @@ export interface TransitObject {
   /** A single ticket leg contains departure and arrival information along with boarding and seating information. If more than one leg is to be specified then use the `ticketLegs` field instead. Both `ticketLeg` and `ticketLegs` may not be set. */
   ticketLeg?: TicketLeg;
   /** linked_object_ids are a list of other objects such as event ticket, loyalty, offer, generic, giftcard, transit and boarding pass that should be automatically attached to this transit object. If a user had saved this transit card, then these linked_object_ids would be automatically pushed to the user's wallet (unless they turned off the setting to receive such linked passes). Make sure that objects present in linked_object_ids are already inserted - if not, calls would fail. Once linked, the linked objects cannot be unlinked. You cannot link objects belonging to another issuer. There is a limit to the number of objects that can be linked to a single object. After the limit is reached, new linked objects in the call will be ignored silently. Object IDs should follow the format issuer ID. identifier where the former is issued by Google and the latter is chosen by you. */
-  linkedObjectIds?: Array<string>;
+  linkedObjectIds?: ReadonlyArray<string>;
   /** Purchase details for this ticket. */
   purchaseDetails?: PurchaseDetails;
   /** Text module data. If text module data is also defined on the class, both will be displayed. The maximum number of these fields displayed is 10 from the object and 10 from the class. */
-  textModulesData?: Array<TextModuleData>;
+  textModulesData?: ReadonlyArray<TextModuleData>;
   /** Restrictions on the object that needs to be verified before the user tries to save the pass. Note that this restrictions will only be applied during save time. If the restrictions changed after a user saves the pass, the new restrictions will not be applied to an already saved pass. */
   saveRestrictions?: SaveRestrictions;
   /** Information about what kind of restrictions there are on using this ticket. For example, which days of the week it must be used, or which routes are allowed to be taken. */
   ticketRestrictions?: TicketRestrictions;
   /** An array of messages displayed in the app. All users of this object will receive its associated messages. The maximum number of these fields is 10. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
   /** The barcode type and value. */
   barcode?: Barcode;
   /** Required. The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID.identifier where the former is issued by Google and latter is chosen by you. The unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -2950,13 +2950,13 @@ export interface TransitObject {
   /** The value that will be transmitted to a Smart Tap certified terminal over NFC for this object. The class level fields `enableSmartTap` and `redemptionIssuers` must also be set up correctly in order for the pass to support Smart Tap. Only ASCII characters are supported. */
   smartTapRedemptionValue?: string;
   /** Merchant locations. There is a maximum of ten on the object. Any additional MerchantLocations added beyond the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set radius of the point. This field replaces the deprecated LatLongPoints. */
-  merchantLocations?: Array<MerchantLocation>;
+  merchantLocations?: ReadonlyArray<MerchantLocation>;
   /** Required. The class associated with this object. The class must be of the same type as this object, must already exist, and must be approved. Class IDs should follow the format issuer ID.identifier where the former is issued by Google and latter is chosen by you. */
   classId?: string;
   /** The number of the ticket. This is a unique identifier for the ticket in the transit operator's system. */
   ticketNumber?: string;
   /** Each ticket may contain one or more legs. Each leg contains departure and arrival information along with boarding and seating information. If only one leg is to be specified then use the `ticketLeg` field instead. Both `ticketLeg` and `ticketLegs` may not be set. */
-  ticketLegs?: Array<TicketLeg>;
+  ticketLegs?: ReadonlyArray<TicketLeg>;
   /** Whether or not field updates to this object should trigger notifications. When set to NOTIFY, we will attempt to trigger a field update notification to users. These notifications will only be sent to users if the field is part of an allowlist. If set to DO_NOT_NOTIFY or NOTIFICATION_SETTINGS_UNSPECIFIED, no notification will be triggered. This setting is ephemeral and needs to be set with each PATCH or UPDATE request, otherwise a notification will not be triggered. */
   notifyPreference?:
     | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
@@ -2985,11 +2985,11 @@ export interface TransitObject {
   /** Optional banner image displayed on the front of the card. If none is present, hero image of the class, if present, will be displayed. If hero image of the class is also not present, nothing will be displayed. */
   heroImage?: Image;
   /** Note: This field is currently not supported to trigger geo notifications. */
-  locations?: Array<LatLongPoint>;
+  locations?: ReadonlyArray<LatLongPoint>;
   /** Deprecated */
   version?: string;
   /** Image module data. The maximum number of these fields displayed is 1 from object level and 1 for class object level. */
-  imageModulesData?: Array<ImageModuleData>;
+  imageModulesData?: ReadonlyArray<ImageModuleData>;
 }
 
 export const TransitObject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3073,7 +3073,7 @@ export const LoyaltyPoints = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LoyaltyObject {
   /** An array of messages displayed in the app. All users of this object will receive its associated messages. The maximum number of these fields is 10. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
   /** The barcode type and value. */
   barcode?: Barcode;
   /** Required. The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID.identifier where the former is issued by Google and latter is chosen by you. The unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -3089,7 +3089,7 @@ export interface LoyaltyObject {
   /** Pass constraints for the object. Includes limiting NFC and screenshot behaviors. */
   passConstraints?: PassConstraints;
   /** Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be displayed. */
-  valueAddedModuleData?: Array<ValueAddedModuleData>;
+  valueAddedModuleData?: ReadonlyArray<ValueAddedModuleData>;
   /** The time period this object will be `active` and object can be used. An object's state will be changed to `expired` when this time period has passed. */
   validTimeInterval?: TimeInterval;
   /** Information that controls how passes are grouped together. */
@@ -3111,15 +3111,15 @@ export interface LoyaltyObject {
   /** The secondary loyalty reward points label, balance, and type. Shown in addition to the primary loyalty points. */
   secondaryLoyaltyPoints?: LoyaltyPoints;
   /** linked_object_ids are a list of other objects such as event ticket, loyalty, offer, generic, giftcard, transit and boarding pass that should be automatically attached to this loyalty object. If a user had saved this loyalty card, then these linked_object_ids would be automatically pushed to the user's wallet (unless they turned off the setting to receive such linked passes). Make sure that objects present in linked_object_ids are already inserted - if not, calls would fail. Once linked, the linked objects cannot be unlinked. You cannot link objects belonging to another issuer. There is a limit to the number of objects that can be linked to a single object. After the limit is reached, new linked objects in the call will be ignored silently. Object IDs should follow the format issuer ID. identifier where the former is issued by Google and the latter is chosen by you. */
-  linkedObjectIds?: Array<string>;
+  linkedObjectIds?: ReadonlyArray<string>;
   /** Text module data. If text module data is also defined on the class, both will be displayed. The maximum number of these fields displayed is 10 from the object and 10 from the class. */
-  textModulesData?: Array<TextModuleData>;
+  textModulesData?: ReadonlyArray<TextModuleData>;
   /** Restrictions on the object that needs to be verified before the user tries to save the pass. Note that this restrictions will only be applied during save time. If the restrictions changed after a user saves the pass, the new restrictions will not be applied to an already saved pass. */
   saveRestrictions?: SaveRestrictions;
   /** The loyalty account identifier. Recommended maximum length is 20 characters. */
   accountId?: string;
   /** A list of offer objects linked to this loyalty card. The offer objects must already exist. Offer object IDs should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. */
-  linkedOfferIds?: Array<string>;
+  linkedOfferIds?: ReadonlyArray<string>;
   /** Links module data. If links module data is also defined on the class, both will be displayed. */
   linksModuleData?: LinksModuleData;
   /** Deprecated. Use textModulesData instead. */
@@ -3133,15 +3133,15 @@ export interface LoyaltyObject {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#loyaltyObject"`. */
   kind?: string;
   /** Note: This field is currently not supported to trigger geo notifications. */
-  locations?: Array<LatLongPoint>;
+  locations?: ReadonlyArray<LatLongPoint>;
   /** Deprecated */
   version?: string;
   /** Image module data. The maximum number of these fields displayed is 1 from object level and 1 for class object level. */
-  imageModulesData?: Array<ImageModuleData>;
+  imageModulesData?: ReadonlyArray<ImageModuleData>;
   /** The value that will be transmitted to a Smart Tap certified terminal over NFC for this object. The class level fields `enableSmartTap` and `redemptionIssuers` must also be set up correctly in order for the pass to support Smart Tap. Only ASCII characters are supported. If this value is not set but the class level fields `enableSmartTap` and `redemptionIssuers` are set up correctly, the `barcode.value` or the `accountId` fields are used as fallback if present. */
   smartTapRedemptionValue?: string;
   /** Merchant locations. There is a maximum of ten on the object. Any additional MerchantLocations added beyond the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set radius of the point. This field replaces the deprecated LatLongPoints. */
-  merchantLocations?: Array<MerchantLocation>;
+  merchantLocations?: ReadonlyArray<MerchantLocation>;
   /** Required. The class associated with this object. The class must be of the same type as this object, must already exist, and must be approved. Class IDs should follow the format issuer ID.identifier where the former is issued by Google and latter is chosen by you. */
   classId?: string;
   /** Whether or not field updates to this object should trigger notifications. When set to NOTIFY, we will attempt to trigger a field update notification to users. These notifications will only be sent to users if the field is part of an allowlist. If set to DO_NOT_NOTIFY or NOTIFICATION_SETTINGS_UNSPECIFIED, no notification will be triggered. This setting is ephemeral and needs to be set with each PATCH or UPDATE request, otherwise a notification will not be triggered. */
@@ -3199,19 +3199,19 @@ export interface OfferObject {
   /** Links module data. If links module data is also defined on the class, both will be displayed. */
   linksModuleData?: LinksModuleData;
   /** Image module data. The maximum number of these fields displayed is 1 from object level and 1 for class object level. */
-  imageModulesData?: Array<ImageModuleData>;
+  imageModulesData?: ReadonlyArray<ImageModuleData>;
   /** Deprecated */
   version?: string;
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#offerObject"`. */
   kind?: string;
   /** Note: This field is currently not supported to trigger geo notifications. */
-  locations?: Array<LatLongPoint>;
+  locations?: ReadonlyArray<LatLongPoint>;
   /** Optional banner image displayed on the front of the card. If none is present, hero image of the class, if present, will be displayed. If hero image of the class is also not present, nothing will be displayed. */
   heroImage?: Image;
   /** Required. The class associated with this object. The class must be of the same type as this object, must already exist, and must be approved. Class IDs should follow the format issuer ID.identifier where the former is issued by Google and latter is chosen by you. */
   classId?: string;
   /** Merchant locations. There is a maximum of ten on the object. Any additional MerchantLocations added beyond the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set radius of the point. This field replaces the deprecated LatLongPoints. */
-  merchantLocations?: Array<MerchantLocation>;
+  merchantLocations?: ReadonlyArray<MerchantLocation>;
   /** The value that will be transmitted to a Smart Tap certified terminal over NFC for this object. The class level fields `enableSmartTap` and `redemptionIssuers` must also be set up correctly in order for the pass to support Smart Tap. Only ASCII characters are supported. */
   smartTapRedemptionValue?: string;
   /** Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is provided for the corresponding class only object AppLinkData will be displayed. */
@@ -3224,7 +3224,7 @@ export interface OfferObject {
   /** The barcode type and value. */
   barcode?: Barcode;
   /** An array of messages displayed in the app. All users of this object will receive its associated messages. The maximum number of these fields is 10. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
   /** A copy of the inherited fields of the parent class. These fields are retrieved during a GET. */
   classReference?: OfferClass;
   /** Indicates if the object has users. This field is set by the platform. */
@@ -3252,13 +3252,13 @@ export interface OfferObject {
   /** The time period this object will be `active` and object can be used. An object's state will be changed to `expired` when this time period has passed. */
   validTimeInterval?: TimeInterval;
   /** Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be displayed. */
-  valueAddedModuleData?: Array<ValueAddedModuleData>;
+  valueAddedModuleData?: ReadonlyArray<ValueAddedModuleData>;
   /** Text module data. If text module data is also defined on the class, both will be displayed. The maximum number of these fields displayed is 10 from the object and 10 from the class. */
-  textModulesData?: Array<TextModuleData>;
+  textModulesData?: ReadonlyArray<TextModuleData>;
   /** Restrictions on the object that needs to be verified before the user tries to save the pass. Note that this restrictions will only be applied during save time. If the restrictions changed after a user saves the pass, the new restrictions will not be applied to an already saved pass. */
   saveRestrictions?: SaveRestrictions;
   /** linked_object_ids are a list of other objects such as event ticket, loyalty, offer, generic, giftcard, transit and boarding pass that should be automatically attached to this offer object. If a user had saved this offer, then these linked_object_ids would be automatically pushed to the user's wallet (unless they turned off the setting to receive such linked passes). Make sure that objects present in linked_object_ids are already inserted - if not, calls would fail. Once linked, the linked objects cannot be unlinked. You cannot link objects belonging to another issuer. There is a limit to the number of objects that can be linked to a single object. After the limit is reached, new linked objects in the call will be ignored silently. Object IDs should follow the format issuer ID.identifier where the former is issued by Google and the latter is chosen by you. */
-  linkedObjectIds?: Array<string>;
+  linkedObjectIds?: ReadonlyArray<string>;
 }
 
 export const OfferObject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3324,7 +3324,7 @@ export const Notifications = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GenericObject {
   /** An array of messages displayed in the app. All users of this object will receive its associated messages. The maximum number of these fields is 10. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
   /** The barcode type and value. If pass does not have a barcode, we can allow the issuer to set Barcode.alternate_text and display just that. */
   barcode?: Barcode;
   /** Required. The unique identifier for an object. This ID must be unique across all objects from an issuer. This value needs to follow the format `issuerID.identifier` where `issuerID` is issued by Google and `identifier` is chosen by you. The unique identifier can only include alphanumeric characters, `.`, `_`, or `-`. */
@@ -3338,7 +3338,7 @@ export interface GenericObject {
   /** The logo image of the pass. This image is displayed in the card detail view in upper left, and also on the list/thumbnail view. If the logo is not present, the first letter of `cardTitle` would be shown as logo. */
   logo?: Image;
   /** Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be displayed. */
-  valueAddedModuleData?: Array<ValueAddedModuleData>;
+  valueAddedModuleData?: ReadonlyArray<ValueAddedModuleData>;
   /** The time period this object will be considered valid or usable. When the time period is passed, the object will be considered expired, which will affect the rendering on user's devices. */
   validTimeInterval?: TimeInterval;
   /** Information that controls how passes are grouped together. */
@@ -3358,9 +3358,9 @@ export interface GenericObject {
     | "inactive"
     | (string & {});
   /** linked_object_ids are a list of other objects such as event ticket, loyalty, offer, generic, giftcard, transit and boarding pass that should be automatically attached to this generic object. If a user had saved this generic card, then these linked_object_ids would be automatically pushed to the user's wallet (unless they turned off the setting to receive such linked passes). Make sure that objects present in linked_object_ids are already inserted - if not, calls would fail. Once linked, the linked objects cannot be unlinked. You cannot link objects belonging to another issuer. There is a limit to the number of objects that can be linked to a single object. After the limit is reached, new linked objects in the call will be ignored silently. Object IDs should follow the format issuer ID. identifier where the former is issued by Google and the latter is chosen by you. */
-  linkedObjectIds?: Array<string>;
+  linkedObjectIds?: ReadonlyArray<string>;
   /** Text module data. If `textModulesData` is also defined on the class, both will be displayed. The maximum number of these fields displayed is 10 from class and 10 from object. */
-  textModulesData?: Array<TextModuleData>;
+  textModulesData?: ReadonlyArray<TextModuleData>;
   /** Restrictions on the object that needs to be verified before the user tries to save the pass. Note that this restrictions will only be applied during save time. If the restrictions changed after a user saves the pass, the new restrictions will not be applied to an already saved pass. */
   saveRestrictions?: SaveRestrictions;
   /** Links module data. If `linksModuleData` is also defined on the class, both will be displayed. The maximum number of these fields displayed is 10 from class and 10 from object. */
@@ -3372,13 +3372,13 @@ export interface GenericObject {
   /** Banner image displayed on the front of the card if present. The image will be displayed at 100% width. */
   heroImage?: Image;
   /** Image module data. Only one of the image from class and one from object level will be rendered when both set. */
-  imageModulesData?: Array<ImageModuleData>;
+  imageModulesData?: ReadonlyArray<ImageModuleData>;
   /** Required. The header of the pass. This is usually the Business name such as "XXX Gym", "AAA Insurance". This field is required and appears in the header row at the very top of the pass. */
   cardTitle?: LocalizedString;
   /** The value that will be transmitted to a Smart Tap certified terminal over NFC for this object. The class level fields `enableSmartTap` and `redemptionIssuers` must also be set up correctly in order for the pass to support Smart Tap. Only ASCII characters are supported. */
   smartTapRedemptionValue?: string;
   /** Merchant locations. There is a maximum of ten on the object. Any additional MerchantLocations added beyond the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set radius of the point. This field replaces the deprecated LatLongPoints. */
-  merchantLocations?: Array<MerchantLocation>;
+  merchantLocations?: ReadonlyArray<MerchantLocation>;
   /** Required. The class associated with this object. The class must be of the same type as this object, must already exist, and must be approved. Class IDs should follow the format `issuerID.identifier` where `issuerID` is issued by Google and `identifier` is chosen by you. */
   classId?: string;
   /** The wide logo of the pass. When provided, this will be used in place of the logo in the top left of the card view. */
@@ -3447,9 +3447,9 @@ export interface GenericClass {
   /** Available only to Smart Tap enabled partners. Contact support for additional guidance. */
   enableSmartTap?: boolean;
   /** Merchant locations. There is a maximum of ten on the class. Any additional MerchantLocations added beyond the 10 will be rejected. These locations will trigger a notification when a user enters within a Google-set radius of the point. This field replaces the deprecated LatLongPoints. */
-  merchantLocations?: Array<MerchantLocation>;
+  merchantLocations?: ReadonlyArray<MerchantLocation>;
   /** Optional value added module data. Maximum of fifteen on the class. For a pass only fifteen will be displayed, prioritizing those from the object. */
-  valueAddedModuleData?: Array<ValueAddedModuleData>;
+  valueAddedModuleData?: ReadonlyArray<ValueAddedModuleData>;
   /** View Unlock Requirement options for the generic pass. */
   viewUnlockRequirement?:
     | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
@@ -3467,7 +3467,7 @@ export interface GenericClass {
     | "oneUserOneDevice"
     | (string & {});
   /** Text module data. If `textModulesData` is also defined on the object, both will be displayed. The maximum number of these fields displayed is 10 from class and 10 from object. */
-  textModulesData?: Array<TextModuleData>;
+  textModulesData?: ReadonlyArray<TextModuleData>;
   /** Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is provided for the corresponding object that will be used instead. */
   appLinkData?: AppLinkData;
   /** Links module data. If `linksModuleData` is also defined on the object, both will be displayed. The maximum number of these fields displayed is 10 from class and 10 from object. */
@@ -3475,7 +3475,7 @@ export interface GenericClass {
   /** Callback options to be used to call the issuer back for every save/delete of an object for this class by the end-user. All objects of this class are eligible for the callback. */
   callbackOptions?: CallbackOptions;
   /** An array of messages displayed in the app. All users of this object will receive its associated messages. The maximum number of these fields is 10. */
-  messages?: Array<Message>;
+  messages?: ReadonlyArray<Message>;
   /** Template information about how the class should be displayed. If unset, Google will fallback to a default set of fields to display. */
   classTemplateInfo?: ClassTemplateInfo;
   /** Optional information about the security animation. If this is set a security animation will be rendered on pass details. */
@@ -3483,9 +3483,9 @@ export interface GenericClass {
   /** Required. The unique identifier for the class. This ID must be unique across all from an issuer. This value needs to follow the format `issuerID.identifier` where `issuerID` is issued by Google and `identifier` is chosen by you. The unique identifier can only include alphanumeric characters, `.`, `_`, or `-`. */
   id?: string;
   /** Image module data. If `imageModulesData` is also defined on the object, both will be displayed. Only one of the image from class and one from object level will be rendered when both set. */
-  imageModulesData?: Array<ImageModuleData>;
+  imageModulesData?: ReadonlyArray<ImageModuleData>;
   /** Identifies which redemption issuers can redeem the pass over Smart Tap. Redemption issuers are identified by their issuer ID. Redemption issuers must have at least one Smart Tap key configured. The `enableSmartTap` and object level `smartTapRedemptionLevel` fields must also be set up correctly in order for a pass to support Smart Tap. */
-  redemptionIssuers?: Array<string>;
+  redemptionIssuers?: ReadonlyArray<string>;
 }
 
 export const GenericClass = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3508,33 +3508,33 @@ export const GenericClass = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Resources {
   /** A list of loyalty classes. */
-  loyaltyClasses?: Array<LoyaltyClass>;
+  loyaltyClasses?: ReadonlyArray<LoyaltyClass>;
   /** A list of flight classes. */
-  flightClasses?: Array<FlightClass>;
+  flightClasses?: ReadonlyArray<FlightClass>;
   /** A list of flight objects. */
-  flightObjects?: Array<FlightObject>;
+  flightObjects?: ReadonlyArray<FlightObject>;
   /** A list of transit objects. */
-  transitObjects?: Array<TransitObject>;
+  transitObjects?: ReadonlyArray<TransitObject>;
   /** A list of gift card objects. */
-  giftCardObjects?: Array<GiftCardObject>;
+  giftCardObjects?: ReadonlyArray<GiftCardObject>;
   /** A list of event ticket classes. */
-  eventTicketClasses?: Array<EventTicketClass>;
+  eventTicketClasses?: ReadonlyArray<EventTicketClass>;
   /** A list of offer classes. */
-  offerClasses?: Array<OfferClass>;
+  offerClasses?: ReadonlyArray<OfferClass>;
   /** A list of event ticket objects. */
-  eventTicketObjects?: Array<EventTicketObject>;
+  eventTicketObjects?: ReadonlyArray<EventTicketObject>;
   /** A list of gift card classes. */
-  giftCardClasses?: Array<GiftCardClass>;
+  giftCardClasses?: ReadonlyArray<GiftCardClass>;
   /** A list of loyalty objects. */
-  loyaltyObjects?: Array<LoyaltyObject>;
+  loyaltyObjects?: ReadonlyArray<LoyaltyObject>;
   /** A list of offer objects. */
-  offerObjects?: Array<OfferObject>;
+  offerObjects?: ReadonlyArray<OfferObject>;
   /** A list of generic objects. */
-  genericObjects?: Array<GenericObject>;
+  genericObjects?: ReadonlyArray<GenericObject>;
   /** A list of generic classes. */
-  genericClasses?: Array<GenericClass>;
+  genericClasses?: ReadonlyArray<GenericClass>;
   /** A list of transit classes. */
-  transitClasses?: Array<TransitClass>;
+  transitClasses?: ReadonlyArray<TransitClass>;
 }
 
 export const Resources = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3573,7 +3573,7 @@ export interface OfferClassListResponse {
   /** Pagination of the response. */
   pagination?: Pagination;
   /** Resources corresponding to the list request. */
-  resources?: Array<OfferClass>;
+  resources?: ReadonlyArray<OfferClass>;
 }
 
 export const OfferClassListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -3585,7 +3585,7 @@ export const OfferClassListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface GenericObjectListResponse {
   /** Resources corresponding to the list request. */
-  resources?: Array<GenericObject>;
+  resources?: ReadonlyArray<GenericObject>;
   /** Pagination of the response. */
   pagination?: Pagination;
 }
@@ -3612,7 +3612,7 @@ export interface IssuerContactInfo {
   /** The primary contact email address. */
   email?: string;
   /** Email addresses which will receive alerts. */
-  alertsEmails?: Array<string>;
+  alertsEmails?: ReadonlyArray<string>;
   /** The primary contact phone number. */
   phone?: string;
 }
@@ -3640,7 +3640,7 @@ export interface SmartTapMerchantData {
   /** Available only to Smart Tap enabled partners. Contact support for additional guidance. */
   smartTapMerchantId?: string;
   /** Available only to Smart Tap enabled partners. Contact support for additional guidance. */
-  authenticationKeys?: Array<AuthenticationKey>;
+  authenticationKeys?: ReadonlyArray<AuthenticationKey>;
 }
 
 export const SmartTapMerchantData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3674,7 +3674,7 @@ export const Issuer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IssuerListResponse {
   /** Resources corresponding to the list request. */
-  resources?: Array<Issuer>;
+  resources?: ReadonlyArray<Issuer>;
 }
 
 export const IssuerListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3806,7 +3806,7 @@ export interface Media {
   /** Path to the data, set if reference_type is PATH */
   path?: string;
   /** A composite media composed of one or more media objects, set if reference_type is COMPOSITE_MEDIA. The media length field must be set to the sum of the lengths of all composite media objects. Note: All composite media must have length specified. */
-  compositeMedia?: Array<CompositeMedia>;
+  compositeMedia?: ReadonlyArray<CompositeMedia>;
   /** Describes what the field reference contains. */
   referenceType?:
     | "PATH"
@@ -4006,7 +4006,7 @@ export interface EventTicketClassListResponse {
   /** Pagination of the response. */
   pagination?: Pagination;
   /** Resources corresponding to the list request. */
-  resources?: Array<EventTicketClass>;
+  resources?: ReadonlyArray<EventTicketClass>;
 }
 
 export const EventTicketClassListResponse =
@@ -4027,7 +4027,7 @@ export const FlightObjectAddMessageResponse =
 
 export interface EventTicketObjectListResponse {
   /** Resources corresponding to the list request. */
-  resources?: Array<EventTicketObject>;
+  resources?: ReadonlyArray<EventTicketObject>;
   /** Pagination of the response. */
   pagination?: Pagination;
 }
@@ -4040,7 +4040,7 @@ export const EventTicketObjectListResponse =
 
 export interface GenericClassListResponse {
   /** Resources corresponding to the list request. */
-  resources?: Array<GenericClass>;
+  resources?: ReadonlyArray<GenericClass>;
   /** Pagination of the response. */
   pagination?: Pagination;
 }
@@ -4077,7 +4077,7 @@ export interface FlightObjectListResponse {
   /** Pagination of the response. */
   pagination?: Pagination;
   /** Resources corresponding to the list request. */
-  resources?: Array<FlightObject>;
+  resources?: ReadonlyArray<FlightObject>;
 }
 
 export const FlightObjectListResponse =
@@ -4108,7 +4108,7 @@ export const Permission = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Permissions {
   /** The complete list of permissions for the issuer account. */
-  permissions?: Array<Permission>;
+  permissions?: ReadonlyArray<Permission>;
   /** ID of the issuer the list of permissions refer to. */
   issuerId?: string;
 }
@@ -4132,7 +4132,7 @@ export interface GiftCardClassListResponse {
   /** Pagination of the response. */
   pagination?: Pagination;
   /** Resources corresponding to the list request. */
-  resources?: Array<GiftCardClass>;
+  resources?: ReadonlyArray<GiftCardClass>;
 }
 
 export const GiftCardClassListResponse =
@@ -4143,9 +4143,9 @@ export const GiftCardClassListResponse =
 
 export interface ModifyLinkedOfferObjects {
   /** The linked offer object ids to add to the object. */
-  addLinkedOfferObjectIds?: Array<string>;
+  addLinkedOfferObjectIds?: ReadonlyArray<string>;
   /** The linked offer object ids to remove from the object. */
-  removeLinkedOfferObjectIds?: Array<string>;
+  removeLinkedOfferObjectIds?: ReadonlyArray<string>;
 }
 
 export const ModifyLinkedOfferObjects =
@@ -4156,7 +4156,7 @@ export const ModifyLinkedOfferObjects =
 
 export interface OfferObjectListResponse {
   /** Resources corresponding to the list request. */
-  resources?: Array<OfferObject>;
+  resources?: ReadonlyArray<OfferObject>;
   /** Pagination of the response. */
   pagination?: Pagination;
 }
@@ -4214,7 +4214,7 @@ export const GenericObjectAddMessageResponse =
 
 export interface GiftCardObjectListResponse {
   /** Resources corresponding to the list request. */
-  resources?: Array<GiftCardObject>;
+  resources?: ReadonlyArray<GiftCardObject>;
   /** Pagination of the response. */
   pagination?: Pagination;
 }
@@ -4227,7 +4227,7 @@ export const GiftCardObjectListResponse =
 
 export interface TransitObjectListResponse {
   /** Resources corresponding to the list request. */
-  resources?: Array<TransitObject>;
+  resources?: ReadonlyArray<TransitObject>;
   /** Pagination of the response. */
   pagination?: Pagination;
 }
@@ -4242,7 +4242,7 @@ export interface LoyaltyObjectListResponse {
   /** Pagination of the response. */
   pagination?: Pagination;
   /** Resources corresponding to the list request. */
-  resources?: Array<LoyaltyObject>;
+  resources?: ReadonlyArray<LoyaltyObject>;
 }
 
 export const LoyaltyObjectListResponse =
@@ -4275,7 +4275,7 @@ export interface SmartTap {
   /** The unique identifier for a smart tap. This value should follow the format issuer ID.identifier where the former is issued by Google and latter is the Smart Tap id. The Smart Tap id is a Base64 encoded string which represents the id which was generated by the Google Pay app. */
   id?: string;
   /** Communication from merchant to user. */
-  infos?: Array<IssuerToUserInfo>;
+  infos?: ReadonlyArray<IssuerToUserInfo>;
 }
 
 export const SmartTap = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4296,7 +4296,7 @@ export const JwtResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FlightClassListResponse {
   /** Resources corresponding to the list request. */
-  resources?: Array<FlightClass>;
+  resources?: ReadonlyArray<FlightClass>;
   /** Pagination of the response. */
   pagination?: Pagination;
 }
@@ -4319,7 +4319,7 @@ export const ModifyLinkedOfferObjectsRequest =
 
 export interface TransitClassListResponse {
   /** Resources corresponding to the list request. */
-  resources?: Array<TransitClass>;
+  resources?: ReadonlyArray<TransitClass>;
   /** Pagination of the response. */
   pagination?: Pagination;
 }
@@ -4378,7 +4378,7 @@ export interface LoyaltyClassListResponse {
   /** Pagination of the response. */
   pagination?: Pagination;
   /** Resources corresponding to the list request. */
-  resources?: Array<LoyaltyClass>;
+  resources?: ReadonlyArray<LoyaltyClass>;
 }
 
 export const LoyaltyClassListResponse =

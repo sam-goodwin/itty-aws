@@ -72,7 +72,7 @@ export interface CloudExportAdditionalProperties {
   /** Boolean value of the given property. For example for a TV product, "True" or "False" if the screen is UHD. */
   boolValue?: boolean;
   /** Float values of the given property. For example for a TV product 1.2345. Maximum repeatedness of this value is 400. Values are stored in an arbitrary but consistent order. */
-  floatValue?: Array<number>;
+  floatValue?: ReadonlyArray<number>;
   /** Unit of the given property. For example, "Pixels" for a TV product. Maximum string size is 256B. */
   unitCode?: string;
   /** Maximum float value of the given property. For example for a TV product 100.00. */
@@ -80,9 +80,9 @@ export interface CloudExportAdditionalProperties {
   /** Minimum float value of the given property. For example for a TV product 1.00. */
   minValue?: number;
   /** Text value of the given property. For example, "8K(UHD)" could be a text value for a TV product. Maximum repeatedness of this value is 400. Values are stored in an arbitrary but consistent order. Maximum string size is 256 characters. */
-  textValue?: Array<string>;
+  textValue?: ReadonlyArray<string>;
   /** Integer values of the given property. For example, 1080 for a TV product's Screen Resolution. Maximum repeatedness of this value is 400. Values are stored in an arbitrary but consistent order. */
-  intValue?: Array<string>;
+  intValue?: ReadonlyArray<string>;
 }
 
 export const CloudExportAdditionalProperties =
@@ -115,7 +115,7 @@ export interface CustomAttribute {
   /** The name of the attribute. */
   name?: string;
   /** Subattributes within this attribute group. If `group_values` is not empty, `value` must be empty. */
-  groupValues?: Array<CustomAttribute>;
+  groupValues?: ReadonlyArray<CustomAttribute>;
 }
 
 export const CustomAttribute: Schema.Schema<CustomAttribute> =
@@ -432,7 +432,7 @@ export interface Attributes {
   /** Maximal product handling time (in business days). */
   maxHandlingTime?: string;
   /** Advertiser-specified recommendations. For more information, see [Display ads attribute specification](https://support.google.com/merchants/answer/6069387). */
-  displayAdsSimilarIds?: Array<string>;
+  displayAdsSimilarIds?: ReadonlyArray<string>;
   /** The date time when an offer becomes visible in search results across Google’s YouTube surfaces, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. See [Disclosure date](https://support.google.com/merchants/answer/13034208) for more information. */
   disclosureDate?: string;
   /** System in which the size is specified. Recommended for apparel items. For example, "US", "UK", "DE". For more information, see [Size system](https://support.google.com/merchants/answer/6324502). */
@@ -444,11 +444,11 @@ export interface Attributes {
   /** The energy efficiency class as defined in EU directive 2010/30/EU. */
   energyEfficiencyClass?: string;
   /** Categories of the item (formatted as in [product data specification](https://support.google.com/merchants/answer/7052112#product_category)). */
-  productTypes?: Array<string>;
+  productTypes?: ReadonlyArray<string>;
   /** [Custom label 0](https://support.google.com/merchants/answer/6324473) for custom grouping of items in a Shopping campaign. */
   customLabel0?: string;
   /** Additional URLs of images of the item. */
-  additionalImageLinks?: Array<string>;
+  additionalImageLinks?: ReadonlyArray<string>;
   /** Price of the item. */
   price?: Price;
   /** Minimal product handling time (in business days). */
@@ -462,15 +462,15 @@ export interface Attributes {
   /** Set to true if the item is targeted towards adults. */
   adult?: boolean;
   /** A list of loyalty program information that is used to surface loyalty benefits (for example, better pricing, points, etc) to the user of this item. */
-  loyaltyPrograms?: Array<LoyaltyProgram>;
+  loyaltyPrograms?: ReadonlyArray<LoyaltyProgram>;
   /** Number of periods (weeks, months or years) and amount of payment per period for an item with an associated subscription contract. */
   subscriptionCost?: SubscriptionCost;
   /** Title of an item for dynamic remarketing campaigns. */
   displayAdsTitle?: string;
   /** Destinations also known as [Marketing methods](https://support.google.com/merchants/answer/15130232) selections. The list of destinations to exclude for this target (corresponds to unchecked check boxes in Merchant Center). For more information, see [Excluded destination](https://support.google.com/merchants/answer/6324486). Note: We recommend setting destinations on datasources level for most use cases. Use this field within products to only setup exceptions. */
-  excludedDestinations?: Array<string>;
+  excludedDestinations?: ReadonlyArray<string>;
   /** Similar to ads_grouping, but only works on CPC. */
-  adsLabels?: Array<string>;
+  adsLabels?: ReadonlyArray<string>;
   /** [Custom label 2](https://support.google.com/merchants/answer/6324473) for custom grouping of items in a Shopping campaign. */
   customLabel2?: string;
   /** Width of the item for shipping. */
@@ -490,25 +490,25 @@ export interface Attributes {
   /** [Condition](https://support.google.com/merchants/answer/6324469) or state of the item. For example, "new" or "used". */
   condition?: string;
   /** Product Certifications, for example for energy efficiency labeling of products recorded in the [EU EPREL](https://eprel.ec.europa.eu/screen/home) database. See the [Help Center](https://support.google.com/merchants/answer/13528839) article for more information. */
-  certifications?: Array<Certification>;
+  certifications?: ReadonlyArray<Certification>;
   /** The list of sustainability incentive programs. */
-  sustainabilityIncentives?: Array<ProductSustainabilityIncentive>;
+  sustainabilityIncentives?: ReadonlyArray<ProductSustainabilityIncentive>;
   /** [Color](https://support.google.com/merchants/answer/6324487) of the item. For example, "red". */
   color?: string;
   /** Global Trade Item Numbers ([GTIN](https://support.google.com/merchants/answer/188494#gtin)) of the item. You can provide up to 10 GTINs. Deprecated: Use `gtins` instead. */
-  gtin?: Array<string>;
+  gtin?: ReadonlyArray<string>;
   /** The shipping label of the product, used to group product in account-level shipping rules. */
   shippingLabel?: string;
   /** Shared identifier for all variants of the same product. */
   itemGroupId?: string;
   /** Tax information. */
-  taxes?: Array<Tax>;
+  taxes?: ReadonlyArray<Tax>;
   /** Title of the item. */
   title?: string;
   /** URL for the canonical version of your item's landing page. */
   canonicalLink?: string;
   /** A list of Global Trade Item Numbers ([GTIN](https://support.google.com/merchants/answer/188494#gtin)) of the item. You can provide up to 10 GTINs. */
-  gtins?: Array<string>;
+  gtins?: ReadonlyArray<string>;
   /** The day a pre-ordered product becomes available for delivery, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. */
   availabilityDate?: string;
   /** The item's [pattern](https://support.google.com/merchants/answer/6324483). For example, polka dots. */
@@ -518,9 +518,9 @@ export interface Attributes {
   /** Loyalty points that users receive after purchasing the item. Japan only. */
   loyaltyPoints?: LoyaltyPoints;
   /** Bullet points describing the most relevant [product highlights](https://support.google.com/merchants/answer/9216100). */
-  productHighlights?: Array<string>;
+  productHighlights?: ReadonlyArray<string>;
   /** Conditions to be met for a product to have free shipping. */
-  freeShippingThreshold?: Array<FreeShippingThreshold>;
+  freeShippingThreshold?: ReadonlyArray<FreeShippingThreshold>;
   /** Weight of the item for shipping. */
   shippingWeight?: ShippingWeight;
   /** Length of the item for shipping. */
@@ -546,7 +546,7 @@ export interface Attributes {
   /** Structured description, for algorithmically (AI)-generated descriptions. */
   structuredDescription?: ProductStructuredDescription;
   /** Destinations also known as [Marketing methods](https://support.google.com/merchants/answer/15130232) selections. The list of destinations to include for this target (corresponds to checked check boxes in Merchant Center). Default destinations are always included unless provided in `excludedDestinations`. For more information, see [Included destination](https://support.google.com/merchants/answer/7501026). Note: We recommend setting destinations on datasources level for most use cases. Use this field within products to only setup exceptions. */
-  includedDestinations?: Array<string>;
+  includedDestinations?: ReadonlyArray<string>;
   /** Date on which the item should expire, as specified upon insertion, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. The actual expiration date is exposed in `productstatuses` as [googleExpirationDate](https://support.google.com/merchants/answer/6324499) and might be earlier if `expirationDate` is too far in the future. */
   expirationDate?: string;
   /** Cost of goods sold. Used for gross profit reporting. */
@@ -566,7 +566,7 @@ export interface Attributes {
   /** Publication of this item will be temporarily [paused](https://support.google.com/merchants/answer/11909930). */
   pause?: string;
   /** Extra fields to export to the Cloud Retail program. */
-  cloudExportAdditionalProperties?: Array<CloudExportAdditionalProperties>;
+  cloudExportAdditionalProperties?: ReadonlyArray<CloudExportAdditionalProperties>;
   /** The quantity of the product that is available for selling on Google. Supported only for online products. */
   sellOnGoogleQuantity?: string;
   /** The measure and dimension of an item. */
@@ -574,9 +574,9 @@ export interface Attributes {
   /** Description of the item. */
   description?: string;
   /** List of country codes [(ISO 3166-1 alpha-2)](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) to exclude the offer from Shopping Ads destination. Countries from this list are removed from countries configured in data source settings. */
-  shoppingAdsExcludedCountries?: Array<string>;
+  shoppingAdsExcludedCountries?: ReadonlyArray<string>;
   /** The unique ID of a promotion. */
-  promotionIds?: Array<string>;
+  promotionIds?: ReadonlyArray<string>;
   /** The [pickup](https://support.google.com/merchants/answer/14634021) option for the item. */
   pickupMethod?: string;
   /** Set this value to false when the item does not have unique product identifiers appropriate to its category, such as GTIN, MPN, and brand. Defaults to true, if not provided. */
@@ -590,17 +590,17 @@ export interface Attributes {
   /** URL of an image of the item. */
   imageLink?: string;
   /** The cut of the item. It can be used to represent combined size types for apparel items. Maximum two of size types can be provided, see [Size type](https://support.google.com/merchants/answer/6324497). For example, "petite", "plus size". */
-  sizeTypes?: Array<string>;
+  sizeTypes?: ReadonlyArray<string>;
   /** Used to group items in an arbitrary way. Only for CPA, discouraged otherwise. For more information, see [Display ads attribute](https://support.google.com/merchants/answer/6069387). */
   adsGrouping?: string;
   /** Technical specification or additional product details. */
-  productDetails?: Array<ProductDetail>;
+  productDetails?: ReadonlyArray<ProductDetail>;
   /** Date range during which the item is on sale, see [product data specification](https://support.google.com/merchants/answer/7052112#price_and_availability). */
   salePriceEffectiveDate?: Interval;
   /** [Link template](https://support.google.com/merchants/answer/13871172) for business hosted local storefront. */
   linkTemplate?: string;
   /** Additional URLs of lifestyle images of the item, used to explicitly identify images that showcase your item in a real-world context. See the [Help Center article](https://support.google.com/merchants/answer/9103186) for more information. */
-  lifestyleImageLinks?: Array<string>;
+  lifestyleImageLinks?: ReadonlyArray<string>;
   /** The width of the product in the units provided. The value must be between 0 (exclusive) and 3000 (inclusive). */
   productWidth?: ProductDimension;
   /** Height of the item for shipping. */
@@ -608,7 +608,7 @@ export interface Attributes {
   /** [Custom label 1](https://support.google.com/merchants/answer/6324473) for custom grouping of items in a Shopping campaign. */
   customLabel1?: string;
   /** Shipping rules. */
-  shipping?: Array<Shipping>;
+  shipping?: ReadonlyArray<Shipping>;
 }
 
 export const Attributes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -723,7 +723,7 @@ export interface ProductInput {
   /** Required. Immutable. The feed label that lets you categorize and identify your products. The maximum allowed characters are 20, and the supported characters are `A-Z`, `0-9`, hyphen, and underscore. The feed label must not include any spaces. For more information, see [Using feed labels](//support.google.com/merchants/answer/14994087). */
   feedLabel?: string;
   /** Optional. A list of custom (merchant-provided) attributes. It can also be used for submitting any attribute of the data specification in its generic form (for example, `{ "name": "size type", "value": "regular" }`). This is useful for submitting attributes not explicitly exposed by the API. Maximum allowed number of characters for each custom attribute is 10240 (represents sum of characters for name and value). Maximum 2500 custom attributes can be set per product, with total size of 102.4kB. Underscores in custom attribute names are replaced by spaces upon insertion. */
-  customAttributes?: Array<CustomAttribute>;
+  customAttributes?: ReadonlyArray<CustomAttribute>;
   /** Output only. The name of the processed product. Format: `accounts/{account}/products/{product}` */
   product?: string;
   /** Immutable. The [channel](https://support.google.com/merchants/answer/7361332) of the product. */
@@ -777,11 +777,11 @@ export interface DestinationStatus {
     | "YOUTUBE_CHECKOUT"
     | (string & {});
   /** List of country codes (ISO 3166-1 alpha-2) where the offer is approved. */
-  approvedCountries?: Array<string>;
+  approvedCountries?: ReadonlyArray<string>;
   /** List of country codes (ISO 3166-1 alpha-2) where the offer is pending approval. */
-  pendingCountries?: Array<string>;
+  pendingCountries?: ReadonlyArray<string>;
   /** List of country codes (ISO 3166-1 alpha-2) where the offer is disapproved. */
-  disapprovedCountries?: Array<string>;
+  disapprovedCountries?: ReadonlyArray<string>;
 }
 
 export const DestinationStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -828,7 +828,7 @@ export interface ItemLevelIssue {
   /** The attribute's name, if the issue is caused by a single attribute. */
   attribute?: string;
   /** List of country codes (ISO 3166-1 alpha-2) where issue applies to the offer. */
-  applicableCountries?: Array<string>;
+  applicableCountries?: ReadonlyArray<string>;
   /** How this issue affects serving of the offer. */
   severity?:
     | "SEVERITY_UNSPECIFIED"
@@ -858,9 +858,9 @@ export interface ProductStatus {
   /** Date on which the item expires, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. */
   googleExpirationDate?: string;
   /** The intended destinations for the product. */
-  destinationStatuses?: Array<DestinationStatus>;
+  destinationStatuses?: ReadonlyArray<DestinationStatus>;
   /** A list of all issues associated with the product. */
-  itemLevelIssues?: Array<ItemLevelIssue>;
+  itemLevelIssues?: ReadonlyArray<ItemLevelIssue>;
 }
 
 export const ProductStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -910,7 +910,7 @@ export interface Product {
   /** Output only. The feed label lets you categorize and identify your products. The maximum allowed characters is 20 and the supported characters are`A-Z`, `0-9`, hyphen and underscore. The feed label must not include any spaces. For more information, see [Using feed labels](//support.google.com/merchants/answer/14994087) */
   feedLabel?: string;
   /** Output only. A list of custom (merchant-provided) attributes. It can also be used to submit any attribute of the data specification in its generic form (for example, `{ "name": "size type", "value": "regular" }`). This is useful for submitting attributes not explicitly exposed by the API, such as additional attributes used for Buy on Google. */
-  customAttributes?: Array<CustomAttribute>;
+  customAttributes?: ReadonlyArray<CustomAttribute>;
 }
 
 export const Product = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -969,7 +969,7 @@ export const ProductChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListProductsResponse {
   /** The processed products from the specified account. These are your processed products after applying rules and supplemental data sources. */
-  products?: Array<Product>;
+  products?: ReadonlyArray<Product>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -981,7 +981,7 @@ export const ListProductsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ProductStatusChangeMessage {
   /** A message to describe the change that happened to the product */
-  changes?: Array<ProductChange>;
+  changes?: ReadonlyArray<ProductChange>;
   /** The product name. Format: `accounts/{account}/products/{product}` */
   resource?: string;
   /** Optional. The product expiration time. This field will not be set if the notification is sent for a product deletion event. */
@@ -1029,10 +1029,7 @@ export const DeleteAccountsProductInputsRequest =
     dataSource: Schema.optional(Schema.String).pipe(T.HttpQuery("dataSource")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "products/v1beta/accounts/{accountsId}/productInputs/{productInputsId}",
-    }),
+    T.Http({ method: "DELETE", path: "products/v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsProductInputsRequest>;
 
@@ -1072,11 +1069,7 @@ export const PatchAccountsProductInputsRequest =
     dataSource: Schema.optional(Schema.String).pipe(T.HttpQuery("dataSource")),
     body: Schema.optional(ProductInput).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "products/v1beta/accounts/{accountsId}/productInputs/{productInputsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "products/v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsProductInputsRequest>;
 
@@ -1115,7 +1108,7 @@ export const InsertAccountsProductInputsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "products/v1beta/accounts/{accountsId}/productInputs:insert",
+      path: "products/v1beta/{parent}/productInputs:insert",
       hasBody: true,
     }),
     svc,
@@ -1148,10 +1141,7 @@ export const GetAccountsProductsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "products/v1beta/accounts/{accountsId}/products/{productsId}",
-    }),
+    T.Http({ method: "GET", path: "products/v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsProductsRequest>;
 
@@ -1187,10 +1177,7 @@ export const ListAccountsProductsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "products/v1beta/accounts/{accountsId}/products",
-    }),
+    T.Http({ method: "GET", path: "products/v1beta/{parent}/products" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsProductsRequest>;
 

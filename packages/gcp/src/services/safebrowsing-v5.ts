@@ -32,7 +32,7 @@ export interface GoogleSecuritySafebrowsingV5FullHashFullHashDetail {
     | "POTENTIALLY_HARMFUL_APPLICATION"
     | (string & {});
   /** Unordered list. Additional attributes about those full hashes. This may be empty. */
-  attributes?: Array<
+  attributes?: ReadonlyArray<
     "THREAT_ATTRIBUTE_UNSPECIFIED" | "CANARY" | "FRAME_ONLY" | (string & {})
   >;
 }
@@ -49,7 +49,7 @@ export interface GoogleSecuritySafebrowsingV5FullHash {
   /** The matching full hash. This is the SHA256 hash. The length will be exactly 32 bytes. */
   fullHash?: string;
   /** Unordered list. A repeated field identifying the details relevant to this full hash. */
-  fullHashDetails?: Array<GoogleSecuritySafebrowsingV5FullHashFullHashDetail>;
+  fullHashDetails?: ReadonlyArray<GoogleSecuritySafebrowsingV5FullHashFullHashDetail>;
 }
 
 export const GoogleSecuritySafebrowsingV5FullHash =
@@ -62,7 +62,7 @@ export const GoogleSecuritySafebrowsingV5FullHash =
 
 export interface GoogleSecuritySafebrowsingV5SearchHashesResponse {
   /** Unordered list. The unordered list of full hashes found. */
-  fullHashes?: Array<GoogleSecuritySafebrowsingV5FullHash>;
+  fullHashes?: ReadonlyArray<GoogleSecuritySafebrowsingV5FullHash>;
   /** The client-side cache duration. The client MUST add this duration to the current time to determine the expiration time. The expiration time then applies to every hash prefix queried by the client in the request, regardless of how many full hashes are returned in the response. Even if the server returns no full hashes for a particular hash prefix, this fact MUST also be cached by the client. If and only if the field `full_hashes` is empty, the client MAY increase the `cache_duration` to determine a new expiration that is later than that specified by the server. In any case, the increased cache duration must not be longer than 24 hours. Important: the client MUST NOT assume that the server will return the same cache duration for all responses. The server MAY choose different cache durations for different responses depending on the situation. */
   cacheDuration?: string;
 }
@@ -81,7 +81,7 @@ export interface GoogleSecuritySafebrowsingV5ThreatUrl {
   /** The requested URL that was matched by one or more threats. */
   url?: string;
   /** Unordered list. The unordered list of threat that the URL is classified as. */
-  threatTypes?: Array<
+  threatTypes?: ReadonlyArray<
     | "THREAT_TYPE_UNSPECIFIED"
     | "MALWARE"
     | "SOCIAL_ENGINEERING"
@@ -99,7 +99,7 @@ export const GoogleSecuritySafebrowsingV5ThreatUrl =
 
 export interface GoogleSecuritySafebrowsingV5SearchUrlsResponse {
   /** Unordered list. The unordered list of threat matches found. Each entry contains a URL and the threat types that were found matching that URL. The list size can be greater than the number of URLs in the request as the all expressions of the URL would've been considered. */
-  threats?: Array<GoogleSecuritySafebrowsingV5ThreatUrl>;
+  threats?: ReadonlyArray<GoogleSecuritySafebrowsingV5ThreatUrl>;
   /** The client-side cache duration. The client MUST add this duration to the current time to determine the expiration time. The expiration time then applies to every URL queried by the client in the request, regardless of how many URLs are returned in the response. Even if the server returns no matches for a particular URL, this fact MUST also be cached by the client. If and only if the field `threats` is empty, the client MAY increase the `cache_duration` to determine a new expiration that is later than that specified by the server. In any case, the increased cache duration must not be longer than 24 hours. Important: the client MUST NOT assume that the server will return the same cache duration for all responses. The server MAY choose different cache durations for different responses depending on the situation. */
   cacheDuration?: string;
 }
@@ -210,7 +210,7 @@ export const GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit =
 
 export interface GoogleSecuritySafebrowsingV5HashListMetadata {
   /** Unordered list. If not empty, this specifies that the hash list is a kind of threat list, and this enumerates the kind of threats associated with hashes or hash prefixes in this hash list. May be empty if the entry does not represent a threat, i.e. in the case that it represents a likely safe type. */
-  threatTypes?: Array<
+  threatTypes?: ReadonlyArray<
     | "THREAT_TYPE_UNSPECIFIED"
     | "MALWARE"
     | "SOCIAL_ENGINEERING"
@@ -219,7 +219,7 @@ export interface GoogleSecuritySafebrowsingV5HashListMetadata {
     | (string & {})
   >;
   /** Unordered list. If not empty, this specifies that the hash list represents a list of likely safe hashes, and this enumerates the ways they are considered likely safe. This field is mutually exclusive with the threat_types field. */
-  likelySafeTypes?: Array<
+  likelySafeTypes?: ReadonlyArray<
     | "LIKELY_SAFE_TYPE_UNSPECIFIED"
     | "GENERAL_BROWSING"
     | "CSD"
@@ -298,7 +298,7 @@ export const GoogleSecuritySafebrowsingV5HashList =
 
 export interface GoogleSecuritySafebrowsingV5ListHashListsResponse {
   /** The hash lists in an arbitrary order. Only metadata about the hash lists will be included, not the contents. */
-  hashLists?: Array<GoogleSecuritySafebrowsingV5HashList>;
+  hashLists?: ReadonlyArray<GoogleSecuritySafebrowsingV5HashList>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -315,7 +315,7 @@ export const GoogleSecuritySafebrowsingV5ListHashListsResponse =
 
 export interface GoogleSecuritySafebrowsingV5BatchGetHashListsResponse {
   /** The hash lists in the same order given in the request. */
-  hashLists?: Array<GoogleSecuritySafebrowsingV5HashList>;
+  hashLists?: ReadonlyArray<GoogleSecuritySafebrowsingV5HashList>;
 }
 
 export const GoogleSecuritySafebrowsingV5BatchGetHashListsResponse =

@@ -48,7 +48,7 @@ export const BucketizedCount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NumericBucketingResult {
   /** Count within each bucket. Its size is the length of NumericBucketingOption.bucket_bounds plus 1. */
-  counts?: Array<BucketizedCount>;
+  counts?: ReadonlyArray<BucketizedCount>;
   /** Stores the minimum value of the numeric field. Will be populated only if [NumericBucketingOption.requires_min_max] is set to true. */
   minValue?: number;
   /** Stores the maximum value of the numeric field. Is populated only if [NumericBucketingOption.requires_min_max] is set to true. */
@@ -131,11 +131,11 @@ export const HistogramResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface HistogramResults {
   /** Specifies histogram results for custom attributes that match HistogramFacets.custom_attribute_histogram_facets. */
-  customAttributeHistogramResults?: Array<CustomAttributeHistogramResult>;
+  customAttributeHistogramResults?: ReadonlyArray<CustomAttributeHistogramResult>;
   /** Specifies compensation field-based histogram results that match HistogramFacets.compensation_histogram_requests. */
-  compensationHistogramResults?: Array<CompensationHistogramResult>;
+  compensationHistogramResults?: ReadonlyArray<CompensationHistogramResult>;
   /** Specifies histogram results that matches HistogramFacets.simple_histogram_facets. */
-  simpleHistogramResults?: Array<HistogramResult>;
+  simpleHistogramResults?: ReadonlyArray<HistogramResult>;
 }
 
 export const HistogramResults = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -177,7 +177,7 @@ export const CompensationRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CompensationFilter {
   /** Required. Specify desired `base compensation entry's` CompensationInfo.CompensationUnit. */
-  units?: Array<
+  units?: ReadonlyArray<
     | "COMPENSATION_UNIT_UNSPECIFIED"
     | "HOURLY"
     | "DAILY"
@@ -311,19 +311,19 @@ export const CommuteFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface JobQuery {
   /** Optional. This filter specifies the locale of jobs to search against, for example, "en-US". If a value isn't specified, the search results can contain jobs in any locale. Language codes should be in BCP-47 format, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). At most 10 language code filters are allowed. */
-  languageCodes?: Array<string>;
+  languageCodes?: ReadonlyArray<string>;
   /** Optional. This search filter is applied only to Job.compensation_info. For example, if the filter is specified as "Hourly job with per-hour compensation > $15", only jobs meeting these criteria are searched. If a filter isn't defined, all open jobs are searched. */
   compensationFilter?: CompensationFilter;
   /** Optional. This flag controls the spell-check feature. If false, the service attempts to correct a misspelled query, for example, "enginee" is corrected to "engineer". Defaults to false: a spell check is performed. */
   disableSpellCheck?: boolean;
   /** Optional. The location filter specifies geo-regions containing the jobs to search against. See LocationFilter for more information. If a location value isn't specified, jobs fitting the other search criteria are retrieved regardless of where they're located. If multiple values are specified, jobs are retrieved from any of the specified locations. If different values are specified for the LocationFilter.distance_in_miles parameter, the maximum provided distance is used for all locations. At most 5 location filters are allowed. */
-  locationFilters?: Array<LocationFilter>;
+  locationFilters?: ReadonlyArray<LocationFilter>;
   /** Optional. This filter specifies the company entities to search against. If a value isn't specified, jobs are searched for against all companies. If multiple values are specified, jobs are searched against the companies specified. The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-project/companies/foo". At most 20 company filters are allowed. */
-  companyNames?: Array<string>;
+  companyNames?: ReadonlyArray<string>;
   /** The language code of query. For example, "en-US". This field helps to better interpret the query. If a value isn't specified, the query language code is automatically detected, which may not be accurate. Language code should be in BCP-47 format, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). */
   queryLanguageCode?: string;
   /** Optional. This filter specifies the company Company.display_name of the jobs to search against. The company name must match the value exactly. Alternatively, the value being searched for can be wrapped in different match operators. `SUBSTRING_MATCH([value])` The company name must contain a case insensitive substring match of the value. Using this function may increase latency. Sample Value: `SUBSTRING_MATCH(google)` `MULTI_WORD_TOKEN_MATCH([value])` The value will be treated as a multi word token and the company name must contain a case insensitive match of the value. Using this function may increase latency. Sample Value: `MULTI_WORD_TOKEN_MATCH(google)` If a value isn't specified, jobs within the search results are associated with any company. If multiple values are specified, jobs within the search results may be associated with any of the specified companies. At most 20 company display name filters are allowed. */
-  companyDisplayNames?: Array<string>;
+  companyDisplayNames?: ReadonlyArray<string>;
   /** Optional. The query string that matches against the job title, description, and location fields. The maximum number of allowed characters is 255. */
   query?: string;
   /** Optional. Jobs published within a range specified by this filter are searched against. */
@@ -331,7 +331,7 @@ export interface JobQuery {
   /** Optional. Allows filtering jobs by commute time with different travel methods (for example, driving or public transit). Note: This only works with COMMUTE MODE. When specified, [JobQuery.location_filters] is ignored. Currently we don't support sorting by commute time. */
   commuteFilter?: CommuteFilter;
   /** Optional. The category filter specifies the categories of jobs to search against. See Category for more information. If a value is not specified, jobs from any category are searched against. If multiple values are specified, jobs from any of the specified categories are searched against. */
-  jobCategories?: Array<
+  jobCategories?: ReadonlyArray<
     | "JOB_CATEGORY_UNSPECIFIED"
     | "ACCOUNTING_AND_FINANCE"
     | "ADMINISTRATIVE_AND_OFFICE"
@@ -366,7 +366,7 @@ export interface JobQuery {
     | (string & {})
   >;
   /** Optional. The employment type filter specifies the employment type of jobs to search against, such as EmploymentType.FULL_TIME. If a value is not specified, jobs in the search results includes any employment type. If multiple values are specified, jobs in the search results include any of the specified employment types. */
-  employmentTypes?: Array<
+  employmentTypes?: ReadonlyArray<
     | "EMPLOYMENT_TYPE_UNSPECIFIED"
     | "FULL_TIME"
     | "PART_TIME"
@@ -454,7 +454,7 @@ export interface NumericBucketingOption {
   /** Optional. If set to true, the histogram result includes minimum/maximum value of the numeric field. */
   requiresMinMax?: boolean;
   /** Required. Two adjacent values form a histogram bucket. Values should be in ascending order. For example, if [5, 10, 15] are provided, four buckets are created: (-inf, 5), 5, 10), [10, 15), [15, inf). At most 20 [buckets_bound is supported. */
-  bucketBounds?: Array<number>;
+  bucketBounds?: ReadonlyArray<number>;
 }
 
 export const NumericBucketingOption = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -500,11 +500,11 @@ export const CustomAttributeHistogramRequest =
 
 export interface HistogramFacets {
   /** Optional. Specifies compensation field-based histogram requests. Duplicate values of CompensationHistogramRequest.type are not allowed. */
-  compensationHistogramFacets?: Array<CompensationHistogramRequest>;
+  compensationHistogramFacets?: ReadonlyArray<CompensationHistogramRequest>;
   /** Optional. Specifies the custom attributes histogram requests. Duplicate values of CustomAttributeHistogramRequest.key are not allowed. */
-  customAttributeHistogramFacets?: Array<CustomAttributeHistogramRequest>;
+  customAttributeHistogramFacets?: ReadonlyArray<CustomAttributeHistogramRequest>;
   /** Optional. Specifies the simple type of histogram facets, for example, `COMPANY_SIZE`, `EMPLOYMENT_TYPE` etc. */
-  simpleHistogramFacets?: Array<
+  simpleHistogramFacets?: ReadonlyArray<
     | "SEARCH_TYPE_UNSPECIFIED"
     | "COMPANY_ID"
     | "EMPLOYMENT_TYPE"
@@ -656,7 +656,7 @@ export const CompensationEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CompensationInfo {
   /** Optional. Job compensation information. At most one entry can be of type CompensationInfo.CompensationType.BASE, which is referred as ** base compensation entry ** for the job. */
-  entries?: Array<CompensationEntry>;
+  entries?: ReadonlyArray<CompensationEntry>;
   /** Output only. Annualized total compensation range. Computed as all compensation entries' CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization. */
   annualizedTotalCompensationRange?: CompensationRange;
   /** Output only. Annualized base compensation range. Computed as base compensation entry's CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization. */
@@ -671,11 +671,11 @@ export const CompensationInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ApplicationInfo {
   /** Optional but at least one of uris, emails or instruction must be specified. Use this field to specify email address(es) to which resumes or applications can be sent. The maximum number of allowed characters for each entry is 255. */
-  emails?: Array<string>;
+  emails?: ReadonlyArray<string>;
   /** Optional but at least one of uris, emails or instruction must be specified. Use this field to provide instructions, such as "Mail your application to ...", that a candidate can follow to apply for the job. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 3,000. */
   instruction?: string;
   /** Optional but at least one of uris, emails or instruction must be specified. Use this URI field to direct an applicant to a website, for example to link to an online application form. The maximum number of allowed characters for each entry is 2,000. */
-  uris?: Array<string>;
+  uris?: ReadonlyArray<string>;
 }
 
 export const ApplicationInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -692,13 +692,13 @@ export interface PostalAddress {
   /** Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (for example, state or zip code validation in the United States). */
   postalCode?: string;
   /** Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information. */
-  recipients?: Array<string>;
+  recipients?: ReadonlyArray<string>;
   /** Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. For Spain, this is the province and not the autonomous community (for example, "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. For example, in Switzerland, this should be left unpopulated. */
   administrativeArea?: string;
   /** Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See https://cldr.unicode.org/ and https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland. */
   regionCode?: string;
   /** Unstructured address lines describing the lower levels of an address. Because values in `address_lines` do not have type information and may sometimes contain multiple values in a single field (for example, "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country or region of the address. In places where this can vary (for example, Japan), `address_language` is used to make it explicit (for example, "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). In this way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a `region_code` with all remaining information placed in the `address_lines`. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a `region_code` and `address_lines` and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas). */
-  addressLines?: Array<string>;
+  addressLines?: ReadonlyArray<string>;
   /** Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en". */
   languageCode?: string;
   /** Optional. The name of the organization at the address. */
@@ -755,9 +755,9 @@ export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface JobDerivedInfo {
   /** Structured locations of the job, resolved from Job.addresses. locations are exactly matched to Job.addresses in the same order. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** Job categories derived from Job.title and Job.description. */
-  jobCategories?: Array<
+  jobCategories?: ReadonlyArray<
     | "JOB_CATEGORY_UNSPECIFIED"
     | "ACCOUNTING_AND_FINANCE"
     | "ADMINISTRATIVE_AND_OFFICE"
@@ -800,11 +800,11 @@ export const JobDerivedInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CustomAttribute {
   /** Optional but exactly one of string_values or long_values must be specified. This field is used to perform a string match (`CASE_SENSITIVE_MATCH` or `CASE_INSENSITIVE_MATCH`) search. For filterable `string_value`s, a maximum total number of 200 values is allowed, with each `string_value` has a byte size of no more than 500B. For unfilterable `string_values`, the maximum total byte size of unfilterable `string_values` is 50KB. Empty string is not allowed. */
-  stringValues?: Array<string>;
+  stringValues?: ReadonlyArray<string>;
   /** Optional. If the `filterable` flag is true, the custom field values may be used for custom attribute filters JobQuery.custom_attribute_filter. If false, these values may not be used for custom attribute filters. Default is false. */
   filterable?: boolean;
   /** Optional but exactly one of string_values or long_values must be specified. This field is used to perform number range search. (`EQ`, `GT`, `GE`, `LE`, `LT`) over filterable `long_value`. Currently at most 1 long_values is supported. */
-  longValues?: Array<string>;
+  longValues?: ReadonlyArray<string>;
 }
 
 export const CustomAttribute = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -843,7 +843,7 @@ export interface Job {
   /** Optional. The language of the posting. This field is distinct from any requirements for fluency that are associated with the job. Language codes must be in BCP-47 format, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47){: class="external" target="_blank" }. If this field is unspecified and Job.description is present, detected language code based on Job.description is assigned, otherwise defaults to 'en_US'. */
   languageCode?: string;
   /** Optional. The desired education degrees for the job, such as Bachelors, Masters. */
-  degreeTypes?: Array<
+  degreeTypes?: ReadonlyArray<
     | "DEGREE_TYPE_UNSPECIFIED"
     | "PRIMARY_EDUCATION"
     | "LOWER_SECONDARY_EDUCATION"
@@ -856,7 +856,7 @@ export interface Job {
     | (string & {})
   >;
   /** Optional. The employment type(s) of a job, for example, full time or part time. */
-  employmentTypes?: Array<
+  employmentTypes?: ReadonlyArray<
     | "EMPLOYMENT_TYPE_UNSPECIFIED"
     | "FULL_TIME"
     | "PART_TIME"
@@ -880,7 +880,7 @@ export interface Job {
   /** Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000. */
   description?: string;
   /** Optional but strongly recommended for the best service experience. Location(s) where the employer is looking to hire for this job posting. Specifying the full street address(es) of the hiring location enables better API results, especially job searches by commute time. At most 50 locations are allowed for best search performance. If a job has more locations, it is suggested to split it into multiple jobs with unique requisition_ids (e.g. 'ReqA' becomes 'ReqA-1', 'ReqA-2', etc.) as multiple jobs with the same company_name, language_code and requisition_id are not allowed. If the original requisition_id must be preserved, a custom field should be used for storage. It is also suggested to group the locations that close to each other in the same job for better search experience. Jobs with multiple addresses must have their addresses with the same LocationType to allow location filtering to work properly. (For example, a Job with addresses "1600 Amphitheatre Parkway, Mountain View, CA, USA" and "London, UK" may not have location filters applied correctly at search time since the first is a LocationType.STREET_ADDRESS and the second is a LocationType.LOCALITY.) If a job needs to have multiple addresses, it is suggested to split it into multiple jobs with same LocationTypes. The maximum number of allowed characters is 500. */
-  addresses?: Array<string>;
+  addresses?: ReadonlyArray<string>;
   /** Output only. Display name of the company listing the job. */
   companyDisplayName?: string;
   /** Optional. A description of the qualifications required to perform the job. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000. */
@@ -890,7 +890,7 @@ export interface Job {
   /** Output only. The timestamp when this job posting was last updated. */
   postingUpdateTime?: string;
   /** Optional. The benefits included with the job. */
-  jobBenefits?: Array<
+  jobBenefits?: ReadonlyArray<
     | "JOB_BENEFIT_UNSPECIFIED"
     | "CHILD_CARE"
     | "DENTAL"
@@ -1033,7 +1033,7 @@ export const CompletionResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface JobEvent {
   /** Required. The job name(s) associated with this event. For example, if this is an impression event, this field contains the identifiers of all jobs shown to the job seeker. If this was a view event, this field contains the identifier of the viewed job. */
-  jobs?: Array<string>;
+  jobs?: ReadonlyArray<string>;
   /** Required. The type of the event (see JobEventType). */
   type?:
     | "JOB_EVENT_TYPE_UNSPECIFIED"
@@ -1080,7 +1080,7 @@ export interface Company {
   /** Optional. The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com". */
   careerSiteUri?: string;
   /** Optional. This field is deprecated. Please set the searchability of the custom attribute in the Job.custom_attributes going forward. A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used in keyword search. Jobs with `string_values` under these specified field keys are returned if any of the values matches the search keyword. Custom field values with parenthesis, brackets and special symbols won't be properly searchable, and those keyword queries need to be surrounded by quotes. */
-  keywordSearchableJobCustomAttributes?: Array<string>;
+  keywordSearchableJobCustomAttributes?: ReadonlyArray<string>;
   /** Optional. Set to true if it is the hiring agency that post jobs for other employers. Defaults to false if not provided. */
   hiringAgency?: boolean;
   /** Optional. The street address of the company's main headquarters, which may be different from the job location. The service attempts to geolocate the provided address, and populates a more specific location wherever possible in DerivedInfo.headquarters_location. */
@@ -1171,7 +1171,7 @@ export const ResponseMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CompleteQueryResponse {
   /** Results of the matching job/company candidates. */
-  completionResults?: Array<CompletionResult>;
+  completionResults?: ReadonlyArray<CompletionResult>;
   /** Additional information for the API invocation, such as the request tracking id. */
   metadata?: ResponseMetadata;
 }
@@ -1214,7 +1214,7 @@ export interface ListCompaniesResponse {
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
   /** Companies for the current client. */
-  companies?: Array<Company>;
+  companies?: ReadonlyArray<Company>;
 }
 
 export const ListCompaniesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1249,7 +1249,7 @@ export interface ListJobsResponse {
   /** Additional information for the API invocation, such as the request tracking id. */
   metadata?: ResponseMetadata;
   /** The Jobs for a given company. The maximum number of items returned is based on the limit field provided in the request. */
-  jobs?: Array<Job>;
+  jobs?: ReadonlyArray<Job>;
 }
 
 export const ListJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1266,11 +1266,11 @@ export interface SearchJobsResponse {
   /** An estimation of the number of jobs that match the specified query. This number is not guaranteed to be accurate. For accurate results, see SearchJobsResponse.total_size. */
   estimatedTotalSize?: number;
   /** The Job entities that match the specified SearchJobsRequest. */
-  matchingJobs?: Array<MatchingJob>;
+  matchingJobs?: ReadonlyArray<MatchingJob>;
   /** Additional information for the API invocation, such as the request tracking id. */
   metadata?: ResponseMetadata;
   /** The location filters that the service applied to the specified query. If any filters are lat-lng based, the JobLocation.location_type is JobLocation.LocationType#LOCATION_TYPE_UNSPECIFIED. */
-  locationFilters?: Array<Location>;
+  locationFilters?: ReadonlyArray<Location>;
   /** The histogram results that match specified SearchJobsRequest.histogram_facets. */
   histogramResults?: HistogramResults;
   /** The precise result count with limit 100,000. */
@@ -1336,7 +1336,7 @@ export const CompleteProjectsRequest =
     query: Schema.optional(Schema.String).pipe(T.HttpQuery("query")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/projects/{projectsId}:complete" }),
+    T.Http({ method: "GET", path: "v3/{name}:complete" }),
     svc,
   ) as unknown as Schema.Schema<CompleteProjectsRequest>;
 
@@ -1370,11 +1370,7 @@ export const CreateProjectsJobsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CreateJobRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/projects/{projectsId}/jobs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{parent}/jobs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsJobsRequest>;
 
@@ -1404,10 +1400,7 @@ export const DeleteProjectsJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v3/projects/{projectsId}/jobs/{jobsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsJobsRequest>;
 
@@ -1440,11 +1433,7 @@ export const PatchProjectsJobsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpdateJobRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v3/projects/{projectsId}/jobs/{jobsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsJobsRequest>;
 
@@ -1479,7 +1468,7 @@ export const SearchForAlertProjectsJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}/jobs:searchForAlert",
+      path: "v3/{parent}/jobs:searchForAlert",
       hasBody: true,
     }),
     svc,
@@ -1517,7 +1506,7 @@ export const BatchDeleteProjectsJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}/jobs:batchDelete",
+      path: "v3/{parent}/jobs:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -1568,7 +1557,7 @@ export const ListProjectsJobsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/projects/{projectsId}/jobs" }),
+    T.Http({ method: "GET", path: "v3/{parent}/jobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsJobsRequest>;
 
@@ -1604,7 +1593,7 @@ export const GetProjectsJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     name: Schema.String.pipe(T.HttpPath("name")),
   },
 ).pipe(
-  T.Http({ method: "GET", path: "v3/projects/{projectsId}/jobs/{jobsId}" }),
+  T.Http({ method: "GET", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetProjectsJobsRequest>;
 
@@ -1637,11 +1626,7 @@ export const SearchProjectsJobsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(SearchJobsRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/projects/{projectsId}/jobs:search",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{parent}/jobs:search", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SearchProjectsJobsRequest>;
 
@@ -1675,11 +1660,7 @@ export const PatchProjectsCompaniesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpdateCompanyRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v3/projects/{projectsId}/companies/{companiesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsCompaniesRequest>;
 
@@ -1713,11 +1694,7 @@ export const CreateProjectsCompaniesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CreateCompanyRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/projects/{projectsId}/companies",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{parent}/companies", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsCompaniesRequest>;
 
@@ -1748,10 +1725,7 @@ export const DeleteProjectsCompaniesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v3/projects/{projectsId}/companies/{companiesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsCompaniesRequest>;
 
@@ -1793,7 +1767,7 @@ export const ListProjectsCompaniesRequest =
     ),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/projects/{projectsId}/companies" }),
+    T.Http({ method: "GET", path: "v3/{parent}/companies" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsCompaniesRequest>;
 
@@ -1828,10 +1802,7 @@ export const GetProjectsCompaniesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/companies/{companiesId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsCompaniesRequest>;
 
@@ -1864,11 +1835,7 @@ export const CreateProjectsClientEventsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CreateClientEventRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/projects/{projectsId}/clientEvents",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{parent}/clientEvents", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsClientEventsRequest>;
 

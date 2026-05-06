@@ -28,7 +28,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -62,11 +62,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -121,13 +121,13 @@ export interface PatchInstanceFilter {
   /** Target all VM instances in the project. If true, no other criteria is permitted. */
   all?: boolean;
   /** Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances. */
-  groupLabels?: Array<PatchInstanceFilterGroupLabel>;
+  groupLabels?: ReadonlyArray<PatchInstanceFilterGroupLabel>;
   /** Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone. */
-  zones?: Array<string>;
+  zones?: ReadonlyArray<string>;
   /** Targets any of the VM instances specified. Instances are specified by their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`, `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]` */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
   /** Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group VMs when targeting configs, for example prefix="prod-". */
-  instanceNamePrefixes?: Array<string>;
+  instanceNamePrefixes?: ReadonlyArray<string>;
 }
 
 export const PatchInstanceFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -142,9 +142,9 @@ export interface AptSettings {
   /** By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead. */
   type?: "TYPE_UNSPECIFIED" | "DIST" | "UPGRADE" | (string & {});
   /** List of packages to exclude from update. These packages will be excluded */
-  excludes?: Array<string>;
+  excludes?: ReadonlyArray<string>;
   /** An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field cannot be specified with any other patch configuration fields. */
-  exclusivePackages?: Array<string>;
+  exclusivePackages?: ReadonlyArray<string>;
 }
 
 export const AptSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -159,9 +159,9 @@ export interface YumSettings {
   /** Will cause patch to run `yum update-minimal` instead. */
   minimal?: boolean;
   /** List of packages to exclude from update. These packages are excluded by using the yum `--exclude` flag. */
-  excludes?: Array<string>;
+  excludes?: ReadonlyArray<string>;
   /** An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field must not be specified with any other patch configuration fields. */
-  exclusivePackages?: Array<string>;
+  exclusivePackages?: ReadonlyArray<string>;
 }
 
 export const YumSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -183,13 +183,13 @@ export interface ZypperSettings {
   /** Adds the `--with-update` flag, to `zypper patch`. */
   withUpdate?: boolean;
   /** Install only patches with these categories. Common categories include security, recommended, and feature. */
-  categories?: Array<string>;
+  categories?: ReadonlyArray<string>;
   /** Install only patches with these severities. Common severities include critical, important, moderate, and low. */
-  severities?: Array<string>;
+  severities?: ReadonlyArray<string>;
   /** List of patches to exclude from update. */
-  excludes?: Array<string>;
+  excludes?: ReadonlyArray<string>;
   /** An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper patch patch:' command. This field must not be used with any other patch configuration fields. */
-  exclusivePatches?: Array<string>;
+  exclusivePatches?: ReadonlyArray<string>;
 }
 
 export const ZypperSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -203,7 +203,7 @@ export const ZypperSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WindowsUpdateSettings {
   /** Only apply updates of these windows update classifications. If empty, all updates are applied. */
-  classifications?: Array<
+  classifications?: ReadonlyArray<
     | "CLASSIFICATION_UNSPECIFIED"
     | "CRITICAL"
     | "SECURITY"
@@ -217,9 +217,9 @@ export interface WindowsUpdateSettings {
     | (string & {})
   >;
   /** List of KBs to exclude from update. */
-  excludes?: Array<string>;
+  excludes?: ReadonlyArray<string>;
   /** An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations. */
-  exclusivePatches?: Array<string>;
+  exclusivePatches?: ReadonlyArray<string>;
 }
 
 export const WindowsUpdateSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -249,7 +249,7 @@ export interface ExecStepConfig {
   /** A Cloud Storage object containing the executable. */
   gcsObject?: GcsObject;
   /** Defaults to [0]. A list of possible return values that the execution can return to indicate a success. */
-  allowedSuccessCodes?: Array<number>;
+  allowedSuccessCodes?: ReadonlyArray<number>;
   /** The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)). */
   interpreter?:
     | "INTERPRETER_UNSPECIFIED"
@@ -500,7 +500,7 @@ export const CancelPatchJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListPatchJobsResponse {
   /** The list of patch jobs. */
-  patchJobs?: Array<PatchJob>;
+  patchJobs?: ReadonlyArray<PatchJob>;
   /** A pagination token that can be used to get the next page of results. */
   nextPageToken?: string;
 }
@@ -552,7 +552,7 @@ export const PatchJobInstanceDetails =
 
 export interface ListPatchJobInstanceDetailsResponse {
   /** A list of instance status. */
-  patchJobInstanceDetails?: Array<PatchJobInstanceDetails>;
+  patchJobInstanceDetails?: ReadonlyArray<PatchJobInstanceDetails>;
   /** A pagination token that can be used to get the next page of results. */
   nextPageToken?: string;
 }
@@ -740,7 +740,7 @@ export const PatchDeployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListPatchDeploymentsResponse {
   /** The list of patch deployments. */
-  patchDeployments?: Array<PatchDeployment>;
+  patchDeployments?: ReadonlyArray<PatchDeployment>;
   /** A pagination token that can be used to get the next page of patch deployments. */
   nextPageToken?: string;
 }
@@ -895,7 +895,7 @@ export interface OSPolicyResourcePackageResourceMSI {
   /** Required. The MSI package. */
   source?: OSPolicyResourceFile;
   /** Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`. */
-  properties?: Array<string>;
+  properties?: ReadonlyArray<string>;
 }
 
 export const OSPolicyResourcePackageResourceMSI =
@@ -947,7 +947,7 @@ export interface OSPolicyResourceRepositoryResourceAptRepository {
   /** Required. Distribution of this repository. */
   distribution?: string;
   /** Required. List of components for this repository. Must contain at least one item. */
-  components?: Array<string>;
+  components?: ReadonlyArray<string>;
   /** URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`. */
   gpgKey?: string;
 }
@@ -971,7 +971,7 @@ export interface OSPolicyResourceRepositoryResourceYumRepository {
   /** Required. The location of the repository directory. */
   baseUrl?: string;
   /** URIs of GPG keys. */
-  gpgKeys?: Array<string>;
+  gpgKeys?: ReadonlyArray<string>;
 }
 
 export const OSPolicyResourceRepositoryResourceYumRepository =
@@ -992,7 +992,7 @@ export interface OSPolicyResourceRepositoryResourceZypperRepository {
   /** Required. The location of the repository directory. */
   baseUrl?: string;
   /** URIs of GPG keys. */
-  gpgKeys?: Array<string>;
+  gpgKeys?: ReadonlyArray<string>;
 }
 
 export const OSPolicyResourceRepositoryResourceZypperRepository =
@@ -1045,7 +1045,7 @@ export interface OSPolicyResourceExecResourceExec {
   /** An inline script. The size of the script is limited to 32KiB. */
   script?: string;
   /** Optional arguments to pass to the source during execution. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Required. The script interpreter to use. */
   interpreter?:
     | "INTERPRETER_UNSPECIFIED"
@@ -1129,9 +1129,9 @@ export const OSPolicyResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface OSPolicyResourceGroup {
   /** List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally. */
-  inventoryFilters?: Array<OSPolicyInventoryFilter>;
+  inventoryFilters?: ReadonlyArray<OSPolicyInventoryFilter>;
   /** Required. List of resources configured for this resource group. The resources are executed in the exact order specified here. */
-  resources?: Array<OSPolicyResource>;
+  resources?: ReadonlyArray<OSPolicyResource>;
 }
 
 export const OSPolicyResourceGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1147,7 +1147,7 @@ export interface OSPolicy {
   /** Required. Policy mode */
   mode?: "MODE_UNSPECIFIED" | "VALIDATION" | "ENFORCEMENT" | (string & {});
   /** Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match` */
-  resourceGroups?: Array<OSPolicyResourceGroup>;
+  resourceGroups?: ReadonlyArray<OSPolicyResourceGroup>;
   /** This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce. */
   allowNoResourceGroupMatch?: boolean;
 }
@@ -1187,11 +1187,11 @@ export interface OSPolicyAssignmentInstanceFilter {
   /** Target all VMs in the project. If true, no other criteria is permitted. */
   all?: boolean;
   /** List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM. */
-  inclusionLabels?: Array<OSPolicyAssignmentLabelSet>;
+  inclusionLabels?: ReadonlyArray<OSPolicyAssignmentLabelSet>;
   /** List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM. */
-  exclusionLabels?: Array<OSPolicyAssignmentLabelSet>;
+  exclusionLabels?: ReadonlyArray<OSPolicyAssignmentLabelSet>;
   /** List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories. */
-  inventories?: Array<OSPolicyAssignmentInstanceFilterInventory>;
+  inventories?: ReadonlyArray<OSPolicyAssignmentInstanceFilterInventory>;
 }
 
 export const OSPolicyAssignmentInstanceFilter =
@@ -1223,7 +1223,7 @@ export interface OSPolicyAssignment {
   /** OS policy assignment description. Length of the description is limited to 1024 characters. */
   description?: string;
   /** Required. List of OS policies to be applied to the VMs. */
-  osPolicies?: Array<OSPolicy>;
+  osPolicies?: ReadonlyArray<OSPolicy>;
   /** Required. Filter to select VMs. */
   instanceFilter?: OSPolicyAssignmentInstanceFilter;
   /** Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted. */
@@ -1270,7 +1270,7 @@ export const OSPolicyAssignment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOSPolicyAssignmentsResponse {
   /** The list of assignments */
-  osPolicyAssignments?: Array<OSPolicyAssignment>;
+  osPolicyAssignments?: ReadonlyArray<OSPolicyAssignment>;
   /** The pagination token to retrieve the next page of OS policy assignments. */
   nextPageToken?: string;
 }
@@ -1283,7 +1283,7 @@ export const ListOSPolicyAssignmentsResponse =
 
 export interface ListOSPolicyAssignmentRevisionsResponse {
   /** The OS policy assignment revisions */
-  osPolicyAssignments?: Array<OSPolicyAssignment>;
+  osPolicyAssignments?: ReadonlyArray<OSPolicyAssignment>;
   /** The pagination token to retrieve the next page of OS policy assignment revisions. */
   nextPageToken?: string;
 }
@@ -1333,7 +1333,7 @@ export interface OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompl
   /** The ID of the OS policy resource. */
   osPolicyResourceId?: string;
   /** Ordered list of configuration completed by the agent for the OS policy resource. */
-  configSteps?: Array<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep>;
+  configSteps?: ReadonlyArray<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep>;
   /** The compliance state of the resource. */
   complianceState?: "UNKNOWN" | "COMPLIANT" | "NON_COMPLIANT" | (string & {});
   /** A reason for the resource to be in the given compliance state. This field is always populated when `compliance_state` is `UNKNOWN`. The following values are supported when `compliance_state == UNKNOWN` * `execution-errors`: Errors were encountered by the agent while executing the resource and the compliance state couldn't be determined. * `execution-skipped-by-agent`: Resource execution was skipped by the agent because errors were encountered while executing prior resources in the OS policy. * `os-policy-execution-attempt-failed`: The execution of the OS policy containing this resource failed and the compliance state couldn't be determined. * `os-policy-execution-pending`: OS policy that owns this resource was assigned to the given VM, but was not executed yet. */
@@ -1368,7 +1368,7 @@ export interface OSPolicyAssignmentReportOSPolicyCompliance {
   /** The reason for the OS policy to be in an unknown compliance state. This field is always populated when `compliance_state` is `UNKNOWN`. If populated, the field can contain one of the following values: * `vm-not-running`: The VM was not running. * `os-policies-not-supported-by-agent`: The version of the OS Config agent running on the VM does not support running OS policies. * `no-agent-detected`: The OS Config agent is not detected for the VM. * `resource-execution-errors`: The OS Config agent encountered errors while executing one or more resources in the policy. See `os_policy_resource_compliances` for details. * `task-timeout`: The task sent to the agent to apply the policy timed out. * `unexpected-agent-state`: The OS Config agent did not report the final status of the task that attempted to apply the policy. Instead, the agent unexpectedly started working on a different task. This mostly happens when the agent or VM unexpectedly restarts while applying OS policies. * `internal-service-errors`: Internal service errors were encountered while attempting to apply the policy. * `os-policy-execution-pending`: OS policy was assigned to the given VM, but was not executed yet. Typically this is a transient condition that will go away after the next policy execution cycle. */
   complianceStateReason?: string;
   /** Compliance data for each resource within the policy that is applied to the VM. */
-  osPolicyResourceCompliances?: Array<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance>;
+  osPolicyResourceCompliances?: ReadonlyArray<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance>;
 }
 
 export const OSPolicyAssignmentReportOSPolicyCompliance =
@@ -1391,7 +1391,7 @@ export interface OSPolicyAssignmentReport {
   /** Reference to the `OSPolicyAssignment` API resource that the `OSPolicy` belongs to. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id@revision_id}` */
   osPolicyAssignment?: string;
   /** Compliance data for each `OSPolicy` that is applied to the VM. */
-  osPolicyCompliances?: Array<OSPolicyAssignmentReportOSPolicyCompliance>;
+  osPolicyCompliances?: ReadonlyArray<OSPolicyAssignmentReportOSPolicyCompliance>;
   /** Timestamp for when the report was last generated. */
   updateTime?: string;
   /** Unique identifier of the last attempted run to apply the OS policies associated with this assignment on the VM. This ID is logged by the OS Config agent while applying the OS policies associated with this assignment on the VM. NOTE: If the service is unable to successfully connect to the agent for this run, then this id will not be available in the agent logs. */
@@ -1412,7 +1412,7 @@ export const OSPolicyAssignmentReport =
 
 export interface ListOSPolicyAssignmentReportsResponse {
   /** List of OS policy assignment reports. */
-  osPolicyAssignmentReports?: Array<OSPolicyAssignmentReport>;
+  osPolicyAssignmentReports?: ReadonlyArray<OSPolicyAssignmentReport>;
   /** The pagination token to retrieve the next page of OS policy assignment report objects. */
   nextPageToken?: string;
 }
@@ -1510,13 +1510,13 @@ export interface InventoryWindowsUpdatePackage {
   /** The localized description of the update package. */
   description?: string;
   /** The categories that are associated with this update package. */
-  categories?: Array<InventoryWindowsUpdatePackageWindowsUpdateCategory>;
+  categories?: ReadonlyArray<InventoryWindowsUpdatePackageWindowsUpdateCategory>;
   /** A collection of Microsoft Knowledge Base article IDs that are associated with the update package. */
-  kbArticleIds?: Array<string>;
+  kbArticleIds?: ReadonlyArray<string>;
   /** A hyperlink to the language-specific support information for the update. */
   supportUrl?: string;
   /** A collection of URLs that provide more information about the update package. */
-  moreInfoUrls?: Array<string>;
+  moreInfoUrls?: ReadonlyArray<string>;
   /** Gets the identifier of an update package. Stays the same across revisions. */
   updateId?: string;
   /** The revision number of this update package. */
@@ -1681,7 +1681,7 @@ export const Inventory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListInventoriesResponse {
   /** List of inventory objects. */
-  inventories?: Array<Inventory>;
+  inventories?: ReadonlyArray<Inventory>;
   /** The pagination token to retrieve the next page of inventory objects. */
   nextPageToken?: string;
 }
@@ -1796,7 +1796,7 @@ export interface VulnerabilityReportVulnerabilityDetails {
   /** The note or description describing the vulnerability from the distro. */
   description?: string;
   /** Corresponds to the references attached to the `VulnerabilityDetails`. */
-  references?: Array<VulnerabilityReportVulnerabilityDetailsReference>;
+  references?: ReadonlyArray<VulnerabilityReportVulnerabilityDetailsReference>;
 }
 
 export const VulnerabilityReportVulnerabilityDetails =
@@ -1834,15 +1834,15 @@ export interface VulnerabilityReportVulnerability {
   /** Contains metadata as per the upstream feed of the operating system and NVD. */
   details?: VulnerabilityReportVulnerabilityDetails;
   /** Corresponds to the `INSTALLED_PACKAGE` inventory item on the VM. This field displays the inventory items affected by this vulnerability. If the vulnerability report was not updated after the VM inventory update, these values might not display in VM inventory. For some distros, this field may be empty. */
-  installedInventoryItemIds?: Array<string>;
+  installedInventoryItemIds?: ReadonlyArray<string>;
   /** Corresponds to the `AVAILABLE_PACKAGE` inventory item on the VM. If the vulnerability report was not updated after the VM inventory update, these values might not display in VM inventory. If there is no available fix, the field is empty. The `inventory_item` value specifies the latest `SoftwarePackage` available to the VM that fixes the vulnerability. */
-  availableInventoryItemIds?: Array<string>;
+  availableInventoryItemIds?: ReadonlyArray<string>;
   /** The timestamp for when the vulnerability was first detected. */
   createTime?: string;
   /** The timestamp for when the vulnerability was last modified. */
   updateTime?: string;
   /** List of items affected by the vulnerability. */
-  items?: Array<VulnerabilityReportVulnerabilityItem>;
+  items?: ReadonlyArray<VulnerabilityReportVulnerabilityItem>;
 }
 
 export const VulnerabilityReportVulnerability =
@@ -1859,7 +1859,7 @@ export interface VulnerabilityReport {
   /** Output only. The `vulnerabilityReport` API resource name. Format: `projects/{project_number}/locations/{location}/instances/{instance_id}/vulnerabilityReport` */
   name?: string;
   /** Output only. List of vulnerabilities affecting the VM. */
-  vulnerabilities?: Array<VulnerabilityReportVulnerability>;
+  vulnerabilities?: ReadonlyArray<VulnerabilityReportVulnerability>;
   /** Output only. The timestamp for when the last vulnerability report was generated for the VM. */
   updateTime?: string;
   /** Output only. Highest level of severity among all the upgradable vulnerabilities with CVEs attached. */
@@ -1885,7 +1885,7 @@ export const VulnerabilityReport = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListVulnerabilityReportsResponse {
   /** List of vulnerabilityReport objects. */
-  vulnerabilityReports?: Array<VulnerabilityReport>;
+  vulnerabilityReports?: ReadonlyArray<VulnerabilityReport>;
   /** The pagination token to retrieve the next page of vulnerabilityReports object. */
   nextPageToken?: string;
 }
@@ -2162,10 +2162,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -2200,10 +2197,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -2234,10 +2228,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -2271,11 +2262,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -2306,10 +2293,7 @@ export const GetProjectFeatureSettingsProjectsLocationsGlobalRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/global/projectFeatureSettings",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectFeatureSettingsProjectsLocationsGlobalRequest>;
 
@@ -2348,11 +2332,7 @@ export const UpdateProjectFeatureSettingsProjectsLocationsGlobalRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ProjectFeatureSettings).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/global/projectFeatureSettings",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateProjectFeatureSettingsProjectsLocationsGlobalRequest>;
 
@@ -2398,7 +2378,7 @@ export const CreateProjectsLocationsOsPolicyAssignmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/osPolicyAssignments",
+      path: "v1/{parent}/osPolicyAssignments",
       hasBody: true,
     }),
     svc,
@@ -2445,11 +2425,7 @@ export const PatchProjectsLocationsOsPolicyAssignmentsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(OSPolicyAssignment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/osPolicyAssignments/{osPolicyAssignmentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsOsPolicyAssignmentsRequest>;
 
@@ -2480,10 +2456,7 @@ export const GetProjectsLocationsOsPolicyAssignmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/osPolicyAssignments/{osPolicyAssignmentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOsPolicyAssignmentsRequest>;
 
@@ -2521,10 +2494,7 @@ export const ListProjectsLocationsOsPolicyAssignmentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/osPolicyAssignments",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/osPolicyAssignments" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOsPolicyAssignmentsRequest>;
 
@@ -2566,10 +2536,7 @@ export const ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/osPolicyAssignments/{osPolicyAssignmentsId}:listRevisions",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:listRevisions" }),
     svc,
   ) as unknown as Schema.Schema<ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest>;
 
@@ -2609,10 +2576,7 @@ export const DeleteProjectsLocationsOsPolicyAssignmentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/osPolicyAssignments/{osPolicyAssignmentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOsPolicyAssignmentsRequest>;
 
@@ -2643,10 +2607,7 @@ export const GetProjectsLocationsOsPolicyAssignmentsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/osPolicyAssignments/{osPolicyAssignmentsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOsPolicyAssignmentsOperationsRequest>;
 
@@ -2682,11 +2643,7 @@ export const CancelProjectsLocationsOsPolicyAssignmentsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/osPolicyAssignments/{osPolicyAssignmentsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOsPolicyAssignmentsOperationsRequest>;
 
@@ -2719,10 +2676,7 @@ export const GetProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}/osPolicyAssignments/{osPolicyAssignmentsId}/report",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest>;
 
@@ -2764,10 +2718,7 @@ export const ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}/osPolicyAssignments/{osPolicyAssignmentsId}/reports",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/reports" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest>;
 
@@ -2807,10 +2758,7 @@ export const GetProjectsLocationsInstancesInventoriesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}/inventory",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsInstancesInventoriesRequest>;
 
@@ -2853,10 +2801,7 @@ export const ListProjectsLocationsInstancesInventoriesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}/inventories",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/inventories" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsInstancesInventoriesRequest>;
 
@@ -2892,10 +2837,7 @@ export const GetProjectsLocationsInstancesVulnerabilityReportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}/vulnerabilityReport",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsInstancesVulnerabilityReportsRequest>;
 
@@ -2937,10 +2879,7 @@ export const ListProjectsLocationsInstancesVulnerabilityReportsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}/vulnerabilityReports",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/vulnerabilityReports" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsInstancesVulnerabilityReportsRequest>;
 
@@ -2982,7 +2921,7 @@ export const ExecuteProjectsPatchJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/patchJobs:execute",
+      path: "v1/{parent}/patchJobs:execute",
       hasBody: true,
     }),
     svc,
@@ -3015,10 +2954,7 @@ export const GetProjectsPatchJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/patchJobs/{patchJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsPatchJobsRequest>;
 
@@ -3052,11 +2988,7 @@ export const CancelProjectsPatchJobsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelPatchJobRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/patchJobs/{patchJobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsPatchJobsRequest>;
 
@@ -3096,7 +3028,7 @@ export const ListProjectsPatchJobsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/patchJobs" }),
+    T.Http({ method: "GET", path: "v1/{parent}/patchJobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsPatchJobsRequest>;
 
@@ -3140,10 +3072,7 @@ export const ListProjectsPatchJobsInstanceDetailsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/patchJobs/{patchJobsId}/instanceDetails",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/instanceDetails" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsPatchJobsInstanceDetailsRequest>;
 
@@ -3189,7 +3118,7 @@ export const CreateProjectsPatchDeploymentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/patchDeployments",
+      path: "v1/{parent}/patchDeployments",
       hasBody: true,
     }),
     svc,
@@ -3222,10 +3151,7 @@ export const GetProjectsPatchDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/patchDeployments/{patchDeploymentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsPatchDeploymentsRequest>;
 
@@ -3262,10 +3188,7 @@ export const ListProjectsPatchDeploymentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/patchDeployments",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/patchDeployments" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsPatchDeploymentsRequest>;
 
@@ -3300,10 +3223,7 @@ export const DeleteProjectsPatchDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/patchDeployments/{patchDeploymentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsPatchDeploymentsRequest>;
 
@@ -3340,11 +3260,7 @@ export const PatchProjectsPatchDeploymentsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(PatchDeployment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/patchDeployments/{patchDeploymentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsPatchDeploymentsRequest>;
 
@@ -3378,11 +3294,7 @@ export const PauseProjectsPatchDeploymentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(PausePatchDeploymentRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/patchDeployments/{patchDeploymentsId}:pause",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:pause", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PauseProjectsPatchDeploymentsRequest>;
 
@@ -3416,11 +3328,7 @@ export const ResumeProjectsPatchDeploymentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ResumePatchDeploymentRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/patchDeployments/{patchDeploymentsId}:resume",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:resume", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResumeProjectsPatchDeploymentsRequest>;
 

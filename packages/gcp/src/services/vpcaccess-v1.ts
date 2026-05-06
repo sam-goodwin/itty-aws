@@ -40,7 +40,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -120,7 +120,7 @@ export interface Connector {
   /** Minimum throughput of the connector in Mbps. Refers to the expected throughput when using an `e2-micro` machine type. Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by --max-throughput. If both min-throughput and min-instances are provided, min-instances takes precedence over min-throughput. The use of `min-throughput` is discouraged in favor of `min-instances`. */
   minThroughput?: number;
   /** Output only. List of projects using the connector. */
-  connectedProjects?: Array<string>;
+  connectedProjects?: ReadonlyArray<string>;
 }
 
 export const Connector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -141,7 +141,7 @@ export interface ListConnectorsResponse {
   /** Continuation token. */
   nextPageToken?: string;
   /** List of Serverless VPC Access connectors. */
-  connectors?: Array<Connector>;
+  connectors?: ReadonlyArray<Connector>;
 }
 
 export const ListConnectorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -211,7 +211,7 @@ export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -223,11 +223,11 @@ export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -265,7 +265,7 @@ export const ListProjectsLocationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -308,11 +308,7 @@ export const CreateProjectsLocationsConnectorsRequest =
     ),
     body: Schema.optional(Connector).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connectors",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/connectors", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsConnectorsRequest>;
 
@@ -349,10 +345,7 @@ export const ListProjectsLocationsConnectorsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connectors",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/connectors" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConnectorsRequest>;
 
@@ -393,11 +386,7 @@ export const PatchProjectsLocationsConnectorsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Connector).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connectors/{connectorsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsConnectorsRequest>;
 
@@ -428,10 +417,7 @@ export const GetProjectsLocationsConnectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connectors/{connectorsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsConnectorsRequest>;
 
@@ -462,10 +448,7 @@ export const DeleteProjectsLocationsConnectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/connectors/{connectorsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectorsRequest>;
 
@@ -510,10 +493,7 @@ export const ListProjectsLocationsOperationsRequest =
     ),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -548,10 +528,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 

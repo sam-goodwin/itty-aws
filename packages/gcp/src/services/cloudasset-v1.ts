@@ -28,7 +28,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -122,7 +122,7 @@ export interface ExportAssetsRequest {
   /** Timestamp to take an asset snapshot. This can only be set to a timestamp between the current time and the current time minus 35 days (inclusive). If not specified, the current time will be used. Due to delays in resource data collection and indexing, there is a volatile window during which running the same query may get different results. */
   readTime?: string;
   /** A list of asset types to take a snapshot for. For example: "compute.googleapis.com/Disk". Regular expressions are also supported. For example: * "compute.googleapis.com.*" snapshots resources whose asset type starts with "compute.googleapis.com". * ".*Instance" snapshots resources whose asset type ends with "Instance". * ".*Instance.*" snapshots resources whose asset type contains "Instance". See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the regular expression does not match any supported asset type, an INVALID_ARGUMENT error will be returned. If specified, only matching assets will be returned, otherwise, it will snapshot all asset types. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types. */
-  assetTypes?: Array<string>;
+  assetTypes?: ReadonlyArray<string>;
   /** Asset content type. If not specified, no content but the asset name will be returned. */
   contentType?:
     | "CONTENT_TYPE_UNSPECIFIED"
@@ -136,7 +136,7 @@ export interface ExportAssetsRequest {
   /** Required. Output configuration indicating where the results will be output to. */
   outputConfig?: OutputConfig;
   /** A list of relationship types to export, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. * If specified: it snapshots specified relationships. It returns an error if any of the [relationship_types] doesn't belong to the supported relationship types of the [asset_types] or if any of the [asset_types] doesn't belong to the source types of the [relationship_types]. * Otherwise: it snapshots the supported relationships for all [asset_types] or returns an error if any of the [asset_types] has no relationship support. An unspecified asset types field means all supported asset_types. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types. */
-  relationshipTypes?: Array<string>;
+  relationshipTypes?: ReadonlyArray<string>;
 }
 
 export const ExportAssetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -196,7 +196,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
@@ -216,7 +216,7 @@ export interface AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -228,7 +228,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
 export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -240,9 +240,9 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
@@ -256,9 +256,9 @@ export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleCloudOrgpolicyV1ListPolicy {
   /** List of values allowed at this resource. Can only be set if `all_values` is set to `ALL_VALUES_UNSPECIFIED`. */
-  allowedValues?: Array<string>;
+  allowedValues?: ReadonlyArray<string>;
   /** List of values denied at this resource. Can only be set if `all_values` is set to `ALL_VALUES_UNSPECIFIED`. */
-  deniedValues?: Array<string>;
+  deniedValues?: ReadonlyArray<string>;
   /** The policy all_values state. */
   allValues?: "ALL_VALUES_UNSPECIFIED" | "ALLOW" | "DENY" | (string & {});
   /** Optional. The Google Cloud Console will try to default to a configuration that matches the value specified in this `Policy`. If `suggested_value` is not set, it will inherit the value specified higher in the hierarchy, unless `inherit_from_parent` is `false`. */
@@ -329,7 +329,7 @@ export interface GoogleIdentityAccesscontextmanagerV1AccessPolicy {
   /** Required. Human readable title. Does not affect behavior. */
   title?: string;
   /** The scopes of the AccessPolicy. Scopes define which resources a policy can restrict and where its resources can be referenced. For example, policy A with `scopes=["folders/123"]` has the following behavior: - ServicePerimeter can only restrict projects within `folders/123`. - ServicePerimeter within policy A can only reference access levels defined within policy A. - Only one policy can include a given scope; thus, attempting to create a second policy which includes `folders/123` will result in an error. If no scopes are provided, then any resource within the organization can be restricted. Scopes cannot be modified after a policy is created. Policies can only have a single scope. Format: list of `folders/{folder_number}` or `projects/{project_number}` */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
   /** Output only. An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Policies will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format. */
   etag?: string;
 }
@@ -375,7 +375,7 @@ export interface GoogleIdentityAccesscontextmanagerV1DevicePolicy {
   /** Whether or not screenlock is required for the DevicePolicy to be true. Defaults to `false`. */
   requireScreenlock?: boolean;
   /** Allowed encryptions statuses, an empty list allows all statuses. */
-  allowedEncryptionStatuses?: Array<
+  allowedEncryptionStatuses?: ReadonlyArray<
     | "ENCRYPTION_UNSPECIFIED"
     | "ENCRYPTION_UNSUPPORTED"
     | "UNENCRYPTED"
@@ -383,9 +383,9 @@ export interface GoogleIdentityAccesscontextmanagerV1DevicePolicy {
     | (string & {})
   >;
   /** Allowed OS versions, an empty list allows all types and all versions. */
-  osConstraints?: Array<GoogleIdentityAccesscontextmanagerV1OsConstraint>;
+  osConstraints?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1OsConstraint>;
   /** Allowed device management levels, an empty list allows all management levels. */
-  allowedDeviceManagementLevels?: Array<
+  allowedDeviceManagementLevels?: ReadonlyArray<
     "MANAGEMENT_UNSPECIFIED" | "NONE" | "BASIC" | "COMPLETE" | (string & {})
   >;
   /** Whether the device needs to be approved by the customer admin. */
@@ -412,7 +412,7 @@ export interface GoogleIdentityAccesscontextmanagerV1VpcSubNetwork {
   /** Required. Network name. If the network is not part of the organization, the `compute.network.get` permission must be granted to the caller. Format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NETWORK_NAME}` Example: `//compute.googleapis.com/projects/my-project/global/networks/network-1` */
   network?: string;
   /** CIDR block IP subnetwork specification. The IP address must be an IPv4 address and can be a public or private IP address. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. If empty, all IP addresses are allowed. */
-  vpcIpSubnetworks?: Array<string>;
+  vpcIpSubnetworks?: ReadonlyArray<string>;
 }
 
 export const GoogleIdentityAccesscontextmanagerV1VpcSubNetwork =
@@ -439,19 +439,19 @@ export const GoogleIdentityAccesscontextmanagerV1VpcNetworkSource =
 
 export interface GoogleIdentityAccesscontextmanagerV1Condition {
   /** CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly, for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32" is not. The originating IP of a request must be in one of the listed subnets in order for this Condition to be true. If empty, all IP addresses are allowed. */
-  ipSubnetworks?: Array<string>;
+  ipSubnetworks?: ReadonlyArray<string>;
   /** Device specific restrictions, all restrictions must hold for the Condition to be true. If not specified, all devices are allowed. */
   devicePolicy?: GoogleIdentityAccesscontextmanagerV1DevicePolicy;
   /** A list of other access levels defined in the same `Policy`, referenced by resource name. Referencing an `AccessLevel` which does not exist is an error. All access levels listed must be granted for the Condition to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"` */
-  requiredAccessLevels?: Array<string>;
+  requiredAccessLevels?: ReadonlyArray<string>;
   /** Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields. Any non-empty field criteria evaluating to false will result in the Condition to be satisfied. Defaults to false. */
   negate?: boolean;
   /** The request must be made by one of the provided user or service accounts. Groups are not supported. Syntax: `user:{emailid}` `serviceAccount:{emailid}` If not specified, a request may come from any user. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The request must originate from one of the provided countries/regions. Must be valid ISO 3166-1 alpha-2 codes. */
-  regions?: Array<string>;
+  regions?: ReadonlyArray<string>;
   /** The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`. */
-  vpcNetworkSources?: Array<GoogleIdentityAccesscontextmanagerV1VpcNetworkSource>;
+  vpcNetworkSources?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1VpcNetworkSource>;
 }
 
 export const GoogleIdentityAccesscontextmanagerV1Condition =
@@ -471,7 +471,7 @@ export const GoogleIdentityAccesscontextmanagerV1Condition =
 
 export interface GoogleIdentityAccesscontextmanagerV1BasicLevel {
   /** Required. A list of requirements for the `AccessLevel` to be granted. */
-  conditions?: Array<GoogleIdentityAccesscontextmanagerV1Condition>;
+  conditions?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1Condition>;
   /** How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND. */
   combiningFunction?: "AND" | "OR" | (string & {});
 }
@@ -524,7 +524,7 @@ export interface GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices {
   /** Whether to restrict API calls within the Service Perimeter to the list of APIs specified in 'allowed_services'. */
   enableRestriction?: boolean;
   /** The list of APIs usable within the Service Perimeter. Must be empty unless 'enable_restriction' is True. You can specify a list of individual services, as well as include the 'RESTRICTED-SERVICES' value, which automatically includes all of the services protected by the perimeter. */
-  allowedServices?: Array<string>;
+  allowedServices?: ReadonlyArray<string>;
 }
 
 export const GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices =
@@ -552,9 +552,9 @@ export const GoogleIdentityAccesscontextmanagerV1IngressSource =
 
 export interface GoogleIdentityAccesscontextmanagerV1IngressFrom {
   /** Sources that this IngressPolicy authorizes access from. */
-  sources?: Array<GoogleIdentityAccesscontextmanagerV1IngressSource>;
+  sources?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1IngressSource>;
   /** A list of identities that are allowed access through [IngressPolicy]. Identities can be an individual user, service account, Google group, or third-party identity. For the list of supported identity types, see https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities. */
-  identities?: Array<string>;
+  identities?: ReadonlyArray<string>;
   /** Specifies the type of identities that are allowed access from outside the perimeter. If left unspecified, then members of `identities` field will be allowed access. */
   identityType?:
     | "IDENTITY_TYPE_UNSPECIFIED"
@@ -594,7 +594,7 @@ export interface GoogleIdentityAccesscontextmanagerV1ApiOperation {
   /** The name of the API whose methods or permissions the IngressPolicy or EgressPolicy want to allow. A single ApiOperation with `service_name` field set to `*` will allow all methods AND permissions for all services. */
   serviceName?: string;
   /** API methods or permissions to allow. Method or permission must belong to the service specified by `service_name` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `service_name`. */
-  methodSelectors?: Array<GoogleIdentityAccesscontextmanagerV1MethodSelector>;
+  methodSelectors?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1MethodSelector>;
 }
 
 export const GoogleIdentityAccesscontextmanagerV1ApiOperation =
@@ -609,11 +609,11 @@ export const GoogleIdentityAccesscontextmanagerV1ApiOperation =
 
 export interface GoogleIdentityAccesscontextmanagerV1IngressTo {
   /** A list of ApiOperations allowed to be performed by the sources specified in corresponding IngressFrom in this ServicePerimeter. */
-  operations?: Array<GoogleIdentityAccesscontextmanagerV1ApiOperation>;
+  operations?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1ApiOperation>;
   /** A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. If a single `*` is specified, then access to all resources inside the perimeter are allowed. */
-  resources?: Array<string>;
+  resources?: ReadonlyArray<string>;
   /** IAM roles that represent the set of operations that the sources specified in the corresponding IngressFrom are allowed to perform in this ServicePerimeter. */
-  roles?: Array<string>;
+  roles?: ReadonlyArray<string>;
 }
 
 export const GoogleIdentityAccesscontextmanagerV1IngressTo =
@@ -662,7 +662,7 @@ export const GoogleIdentityAccesscontextmanagerV1EgressSource =
 
 export interface GoogleIdentityAccesscontextmanagerV1EgressFrom {
   /** A list of identities that are allowed access through [EgressPolicy]. Identities can be an individual user, service account, Google group, or third-party identity. For the list of supported identity types, see https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities. */
-  identities?: Array<string>;
+  identities?: ReadonlyArray<string>;
   /** Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access. */
   identityType?:
     | "IDENTITY_TYPE_UNSPECIFIED"
@@ -671,7 +671,7 @@ export interface GoogleIdentityAccesscontextmanagerV1EgressFrom {
     | "ANY_SERVICE_ACCOUNT"
     | (string & {});
   /** Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`. */
-  sources?: Array<GoogleIdentityAccesscontextmanagerV1EgressSource>;
+  sources?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1EgressSource>;
   /** Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`. */
   sourceRestriction?:
     | "SOURCE_RESTRICTION_UNSPECIFIED"
@@ -692,13 +692,13 @@ export const GoogleIdentityAccesscontextmanagerV1EgressFrom =
 
 export interface GoogleIdentityAccesscontextmanagerV1EgressTo {
   /** A list of resources, currently only projects in the form `projects/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is specified for `resources`, then this EgressTo rule will authorize access to all resources outside the perimeter. */
-  resources?: Array<string>;
+  resources?: ReadonlyArray<string>;
   /** A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list. */
-  operations?: Array<GoogleIdentityAccesscontextmanagerV1ApiOperation>;
+  operations?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1ApiOperation>;
   /** A list of external resources that are allowed to be accessed. Only AWS and Azure resources are supported. For Amazon S3, the supported formats are s3://BUCKET_NAME, s3a://BUCKET_NAME, and s3n://BUCKET_NAME. For Azure Storage, the supported format is azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed. */
-  externalResources?: Array<string>;
+  externalResources?: ReadonlyArray<string>;
   /** IAM roles that represent the set of operations that the sources specified in the corresponding EgressFrom. are allowed to perform in this ServicePerimeter. */
-  roles?: Array<string>;
+  roles?: ReadonlyArray<string>;
 }
 
 export const GoogleIdentityAccesscontextmanagerV1EgressTo =
@@ -731,17 +731,17 @@ export const GoogleIdentityAccesscontextmanagerV1EgressPolicy =
 
 export interface GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
   /** A list of Google Cloud resources that are inside of the service perimeter. Currently only projects and VPCs are allowed. Project format: `projects/{project_number}` VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`. */
-  resources?: Array<string>;
+  resources?: ReadonlyArray<string>;
   /** A list of `AccessLevel` resource names that allow resources within the `ServicePerimeter` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be empty. */
-  accessLevels?: Array<string>;
+  accessLevels?: ReadonlyArray<string>;
   /** Google Cloud services that are subject to the Service Perimeter restrictions. For example, if `storage.googleapis.com` is specified, access to the storage buckets inside the perimeter must meet the perimeter's access restrictions. */
-  restrictedServices?: Array<string>;
+  restrictedServices?: ReadonlyArray<string>;
   /** Configuration for APIs allowed within Perimeter. */
   vpcAccessibleServices?: GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices;
   /** List of IngressPolicies to apply to the perimeter. A perimeter may have multiple IngressPolicies, each of which is evaluated separately. Access is granted if any Ingress Policy grants it. Must be empty for a perimeter bridge. */
-  ingressPolicies?: Array<GoogleIdentityAccesscontextmanagerV1IngressPolicy>;
+  ingressPolicies?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1IngressPolicy>;
   /** List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge. */
-  egressPolicies?: Array<GoogleIdentityAccesscontextmanagerV1EgressPolicy>;
+  egressPolicies?: ReadonlyArray<GoogleIdentityAccesscontextmanagerV1EgressPolicy>;
 }
 
 export const GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig =
@@ -883,13 +883,13 @@ export interface WindowsUpdatePackage {
   /** The localized description of the update package. */
   description?: string;
   /** The categories that are associated with this update package. */
-  categories?: Array<WindowsUpdateCategory>;
+  categories?: ReadonlyArray<WindowsUpdateCategory>;
   /** A collection of Microsoft Knowledge Base article IDs that are associated with the update package. */
-  kbArticleIds?: Array<string>;
+  kbArticleIds?: ReadonlyArray<string>;
   /** A hyperlink to the language-specific support information for the update. */
   supportUrl?: string;
   /** A collection of URLs that provide more information about the update package. */
-  moreInfoUrls?: Array<string>;
+  moreInfoUrls?: ReadonlyArray<string>;
   /** Gets the identifier of an update package. Stays the same across revisions. */
   updateId?: string;
   /** The revision number of this update package. */
@@ -1073,7 +1073,7 @@ export interface RelatedAsset {
   /** The type of the asset. Example: `compute.googleapis.com/Disk` See [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information. */
   assetType?: string;
   /** The ancestors of an asset in Google Cloud [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), represented as a list of relative resource names. An ancestry path starts with the closest ancestor in the hierarchy and ends at root. Example: `["projects/123456789", "folders/5432", "organizations/1234"]` */
-  ancestors?: Array<string>;
+  ancestors?: ReadonlyArray<string>;
   /** The unique identifier of the relationship type. Example: `INSTANCE_TO_INSTANCEGROUP` */
   relationshipType?: string;
 }
@@ -1089,7 +1089,7 @@ export interface RelatedAssets {
   /** The detailed relationship attributes. */
   relationshipAttributes?: RelationshipAttributes;
   /** The peer resources of the relationship. */
-  assets?: Array<RelatedAsset>;
+  assets?: ReadonlyArray<RelatedAsset>;
 }
 
 export const RelatedAssets = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1121,7 +1121,7 @@ export interface Asset {
   /** A representation of the IAM policy set on a Google Cloud resource. There can be a maximum of one IAM policy set on any given resource. In addition, IAM policies inherit their granted access scope from any policies set on parent resources in the resource hierarchy. Therefore, the effectively policy is the union of both the policy set on this resource and each policy set on all of the resource's ancestry resource levels in the hierarchy. See [this topic](https://cloud.google.com/iam/help/allow-policies/inheritance) for more information. */
   iamPolicy?: Policy;
   /** A representation of an [organization policy](https://cloud.google.com/resource-manager/docs/organization-policy/overview#organization_policy). There can be more than one organization policy with different constraints set on a given resource. */
-  orgPolicy?: Array<GoogleCloudOrgpolicyV1Policy>;
+  orgPolicy?: ReadonlyArray<GoogleCloudOrgpolicyV1Policy>;
   /** Also refer to the [access policy user guide](https://cloud.google.com/access-context-manager/docs/overview#access-policies). */
   accessPolicy?: GoogleIdentityAccesscontextmanagerV1AccessPolicy;
   /** Also refer to the [access level user guide](https://cloud.google.com/access-context-manager/docs/overview#access-levels). */
@@ -1135,9 +1135,9 @@ export interface Asset {
   /** One related asset of the current asset. */
   relatedAsset?: RelatedAsset;
   /** The ancestry path of an asset in Google Cloud [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), represented as a list of relative resource names. An ancestry path starts with the closest ancestor in the hierarchy and ends at root. If the asset is a project, folder, or organization, the ancestry path starts from the asset itself. Example: `["projects/123456789", "folders/5432", "organizations/1234"]` */
-  ancestors?: Array<string>;
+  ancestors?: ReadonlyArray<string>;
   /** The exceptions of a resource. */
-  assetExceptions?: Array<AssetException>;
+  assetExceptions?: ReadonlyArray<AssetException>;
 }
 
 export const Asset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1165,7 +1165,7 @@ export interface ListAssetsResponse {
   /** Time the snapshot was taken. */
   readTime?: string;
   /** Assets. */
-  assets?: Array<Asset>;
+  assets?: ReadonlyArray<Asset>;
   /** Token to retrieve the next page of results. It expires 72 hours after the page token for the first page is generated. Set to empty if there are no remaining results. */
   nextPageToken?: string;
 }
@@ -1217,7 +1217,7 @@ export const TemporalAsset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchGetAssetsHistoryResponse {
   /** A list of assets with valid time windows. */
-  assets?: Array<TemporalAsset>;
+  assets?: ReadonlyArray<TemporalAsset>;
 }
 
 export const BatchGetAssetsHistoryResponse =
@@ -1247,9 +1247,9 @@ export interface Feed {
   /** Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization. */
   name?: string;
   /** A list of the full names of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. For a list of the full names for supported asset types, see [Resource name format](/asset-inventory/docs/resource-name-format). */
-  assetNames?: Array<string>;
+  assetNames?: ReadonlyArray<string>;
   /** A list of types of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `"compute.googleapis.com/Disk"` For a list of all supported asset types, see [Supported asset types](/asset-inventory/docs/supported-asset-types). */
-  assetTypes?: Array<string>;
+  assetTypes?: ReadonlyArray<string>;
   /** Asset content type. If not specified, no content but the asset name and type will be returned. */
   contentType?:
     | "CONTENT_TYPE_UNSPECIFIED"
@@ -1265,7 +1265,7 @@ export interface Feed {
   /** A condition which determines whether an asset update should be published. If specified, an asset will be returned only when the expression evaluates to true. When set, `expression` field in the `Expr` must be a valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name `temporal_asset`. Example: a Feed with expression ("temporal_asset.deleted == true") will only publish Asset deletions. Other fields of `Expr` are optional. See our [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes-with-condition) for detailed instructions. */
   condition?: Expr;
   /** A list of relationship types to output, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. * If specified: it outputs specified relationship updates on the [asset_names] or the [asset_types]. It returns an error if any of the [relationship_types] doesn't belong to the supported relationship types of the [asset_names] or [asset_types], or any of the [asset_names] or the [asset_types] doesn't belong to the source types of the [relationship_types]. * Otherwise: it outputs the supported relationships of the types of [asset_names] and [asset_types] or returns an error if any of the [asset_names] or the [asset_types] has no replationship support. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types. */
-  relationshipTypes?: Array<string>;
+  relationshipTypes?: ReadonlyArray<string>;
 }
 
 export const Feed = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1292,7 +1292,7 @@ export const CreateFeedRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListFeedsResponse {
   /** A list of feeds. */
-  feeds?: Array<Feed>;
+  feeds?: ReadonlyArray<Feed>;
 }
 
 export const ListFeedsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1323,7 +1323,7 @@ export interface VersionedResource {
   /** JSON representation of the resource as defined by the corresponding service providing this resource. Example: If the resource is an instance provided by Compute Engine, this field will contain the JSON representation of the instance as defined by Compute Engine: `https://cloud.google.com/compute/docs/reference/rest/v1/instances`. You can find the resource definition for each supported resource type in this table: `https://cloud.google.com/asset-inventory/docs/supported-asset-types` */
   resource?: Record<string, unknown>;
   /** The exceptions of a resource. */
-  assetExceptions?: Array<AssetException>;
+  assetExceptions?: ReadonlyArray<AssetException>;
 }
 
 export const VersionedResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1336,7 +1336,7 @@ export interface AttachedResource {
   /** The type of this attached resource. Example: `osconfig.googleapis.com/Inventory` You can find the supported attached asset types of each resource in this table: `https://cloud.google.com/asset-inventory/docs/supported-asset-types` */
   assetType?: string;
   /** Versioned resource representations of this attached resource. This is repeated because there could be multiple versions of the attached resource representations during version migration. */
-  versionedResources?: Array<VersionedResource>;
+  versionedResources?: ReadonlyArray<VersionedResource>;
 }
 
 export const AttachedResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1358,7 +1358,7 @@ export const RelatedResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RelatedResources {
   /** The detailed related resources of the primary resource. */
-  relatedResources?: Array<RelatedResource>;
+  relatedResources?: ReadonlyArray<RelatedResource>;
 }
 
 export const RelatedResources = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1387,7 +1387,7 @@ export interface EffectiveTagDetails {
   /** The [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format) of the ancestor from which effective_tags are inherited, according to [tag inheritance](https://cloud.google.com/resource-manager/docs/tags/tags-overview#inheritance). */
   attachedResource?: string;
   /** The effective tags inherited from the attached_resource. Note that tags with the same key but different values may attach to resources at a different hierarchy levels. The lower hierarchy tag value will overwrite the higher hierarchy tag value of the same tag key. In this case, the tag value at the higher hierarchy level will be removed. For more information, see [tag inheritance](https://cloud.google.com/resource-manager/docs/tags/tags-overview#inheritance). */
-  effectiveTags?: Array<Tag>;
+  effectiveTags?: ReadonlyArray<Tag>;
 }
 
 export const EffectiveTagDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1397,7 +1397,7 @@ export const EffectiveTagDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ResourceOwners {
   /** List of resource owners. */
-  resourceOwners?: Array<string>;
+  resourceOwners?: ReadonlyArray<string>;
 }
 
 export const ResourceOwners = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1421,7 +1421,7 @@ export interface ResourceSearchResult {
   /** The project that this resource belongs to, in the form of projects/{PROJECT_NUMBER}. This field is available when the resource belongs to a project. To search against `project`: * Use a field query. Example: `project:12345` * Use a free text query. Example: `12345` * Specify the `scope` field as this project in your search request. */
   project?: string;
   /** The folder(s) that this resource belongs to, in the form of folders/{FOLDER_NUMBER}. This field is available when the resource belongs to one or more folders. To search against `folders`: * Use a field query. Example: `folders:(123 OR 456)` * Use a free text query. Example: `123` * Specify the `scope` field as this folder in your search request. */
-  folders?: Array<string>;
+  folders?: ReadonlyArray<string>;
   /** The organization that this resource belongs to, in the form of organizations/{ORGANIZATION_NUMBER}. This field is available when the resource belongs to an organization. To search against `organization`: * Use a field query. Example: `organization:123` * Use a free text query. Example: `123` * Specify the `scope` field as this organization in your search request. */
   organization?: string;
   /** The display name of this resource. This field is available only when the resource's Protobuf contains it. To search against the `display_name`: * Use a field query. Example: `displayName:"My Instance"` * Use a free text query. Example: `"My Instance"` */
@@ -1433,11 +1433,11 @@ export interface ResourceSearchResult {
   /** User labels associated with this resource. See [Labelling and grouping Google Cloud resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources) for more information. This field is available only when the resource's Protobuf contains it. To search against the `labels`: * Use a field query: - query on any label's key or value. Example: `labels:prod` - query by a given label. Example: `labels.env:prod` - query by a given label's existence. Example: `labels.env:*` * Use a free text query. Example: `prod` */
   labels?: Record<string, string>;
   /** Network tags associated with this resource. Like labels, network tags are a type of annotations used to group Google Cloud resources. See [Labelling Google Cloud resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources) for more information. This field is available only when the resource's Protobuf contains it. To search against the `network_tags`: * Use a field query. Example: `networkTags:internal` * Use a free text query. Example: `internal` */
-  networkTags?: Array<string>;
+  networkTags?: ReadonlyArray<string>;
   /** The Cloud KMS [CryptoKey](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys) name or [CryptoKeyVersion](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions) name. This field only presents for the purpose of backward compatibility. Use the `kms_keys` field to retrieve Cloud KMS key information. This field is available only when the resource's Protobuf contains it and will only be populated for [these resource types](https://cloud.google.com/asset-inventory/docs/legacy-field-names#resource_types_with_the_to_be_deprecated_kmskey_field) for backward compatible purposes. To search against the `kms_key`: * Use a field query. Example: `kmsKey:key` * Use a free text query. Example: `key` */
   kmsKey?: string;
   /** The Cloud KMS [CryptoKey](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys) names or [CryptoKeyVersion](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions) names. This field is available only when the resource's Protobuf contains it. To search against the `kms_keys`: * Use a field query. Example: `kmsKeys:key` * Use a free text query. Example: `key` */
-  kmsKeys?: Array<string>;
+  kmsKeys?: ReadonlyArray<string>;
   /** The create timestamp of this resource, at which the resource was created. The granularity is in seconds. Timestamp.nanos will always be 0. This field is available only when the resource's Protobuf contains it. To search against `create_time`: * Use a field query. - value in seconds since unix epoch. Example: `createTime > 1609459200` - value in date string. Example: `createTime > 2021-01-01` - value in date-time string (must be quoted). Example: `createTime > "2021-01-01T00:00:00"` */
   createTime?: string;
   /** The last update timestamp of this resource, at which the resource was last modified or deleted. The granularity is in seconds. Timestamp.nanos will always be 0. This field is available only when the resource's Protobuf contains it. To search against `update_time`: * Use a field query. - value in seconds since unix epoch. Example: `updateTime < 1609459200` - value in date string. Example: `updateTime < 2021-01-01` - value in date-time string (must be quoted). Example: `updateTime < "2021-01-01T00:00:00"` */
@@ -1449,23 +1449,23 @@ export interface ResourceSearchResult {
   /** The full resource name of this resource's parent, if it has one. To search against the `parent_full_resource_name`: * Use a field query. Example: `parentFullResourceName:"project-name"` * Use a free text query. Example: `project-name` */
   parentFullResourceName?: string;
   /** Versioned resource representations of this resource. This is repeated because there could be multiple versions of resource representations during version migration. This `versioned_resources` field is not searchable. Some attributes of the resource representations are exposed in `additional_attributes` field, so as to allow users to search on them. */
-  versionedResources?: Array<VersionedResource>;
+  versionedResources?: ReadonlyArray<VersionedResource>;
   /** Attached resources of this resource. For example, an OSConfig Inventory is an attached resource of a Compute Instance. This field is repeated because a resource could have multiple attached resources. This `attached_resources` field is not searchable. Some attributes of the attached resources are exposed in `additional_attributes` field, so as to allow users to search on them. */
-  attachedResources?: Array<AttachedResource>;
+  attachedResources?: ReadonlyArray<AttachedResource>;
   /** A map of related resources of this resource, keyed by the relationship type. A relationship type is in the format of {SourceType}_{ACTION}_{DestType}. Example: `DISK_TO_INSTANCE`, `DISK_TO_NETWORK`, `INSTANCE_TO_INSTANCEGROUP`. See [supported relationship types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#supported_relationship_types). */
   relationships?: Record<string, RelatedResources>;
   /** This field is only present for the purpose of backward compatibility. Use the `tags` field instead. TagKey namespaced names, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}. To search against the `tagKeys`: * Use a field query. Example: - `tagKeys:"123456789/env*"` - `tagKeys="123456789/env"` - `tagKeys:"env"` * Use a free text query. Example: - `env` */
-  tagKeys?: Array<string>;
+  tagKeys?: ReadonlyArray<string>;
   /** This field is only present for the purpose of backward compatibility. Use the `tags` field instead. TagValue namespaced names, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}/{TAG_VALUE_SHORT_NAME}. To search against the `tagValues`: * Use a field query. Example: - `tagValues:"env"` - `tagValues:"env/prod"` - `tagValues:"123456789/env/prod*"` - `tagValues="123456789/env/prod"` * Use a free text query. Example: - `prod` */
-  tagValues?: Array<string>;
+  tagValues?: ReadonlyArray<string>;
   /** This field is only present for the purpose of backward compatibility. Use the `tags` field instead. TagValue IDs, in the format of tagValues/{TAG_VALUE_ID}. To search against the `tagValueIds`: * Use a field query. Example: - `tagValueIds="tagValues/456"` * Use a free text query. Example: - `456` */
-  tagValueIds?: Array<string>;
+  tagValueIds?: ReadonlyArray<string>;
   /** The tags directly attached to this resource. To search against the `tags`: * Use a field query. Example: - `tagKeys:"123456789/env*"` - `tagKeys="123456789/env"` - `tagKeys:"env"` - `tagKeyIds="tagKeys/123"` - `tagValues:"env"` - `tagValues:"env/prod"` - `tagValues:"123456789/env/prod*"` - `tagValues="123456789/env/prod"` - `tagValueIds="tagValues/456"` * Use a free text query. Example: - `env/prod` */
-  tags?: Array<Tag>;
+  tags?: ReadonlyArray<Tag>;
   /** The effective tags on this resource. All of the tags that are both attached to and inherited by a resource are collectively called the effective tags. For more information, see [tag inheritance](https://cloud.google.com/resource-manager/docs/tags/tags-overview#inheritance). To search against the `effective_tags`: * Use a field query. Example: - `effectiveTagKeys:"123456789/env*"` - `effectiveTagKeys="123456789/env"` - `effectiveTagKeys:"env"` - `effectiveTagKeyIds="tagKeys/123"` - `effectiveTagValues:"env"` - `effectiveTagValues:"env/prod"` - `effectiveTagValues:"123456789/env/prod*"` - `effectiveTagValues="123456789/env/prod"` - `effectiveTagValueIds="tagValues/456"` */
-  effectiveTags?: Array<EffectiveTagDetails>;
+  effectiveTags?: ReadonlyArray<EffectiveTagDetails>;
   /** Enrichments of the asset. Currently supported enrichment types with SearchAllResources API: * RESOURCE_OWNERS The corresponding read masks in order to get the enrichment: * enrichments.resource_owners The corresponding required permissions: * cloudasset.assets.searchEnrichmentResourceOwners Example query to get resource owner enrichment: ``` scope: "projects/my-project" query: "name: my-project" assetTypes: "cloudresourcemanager.googleapis.com/Project" readMask: { paths: "asset_type" paths: "name" paths: "enrichments.resource_owners" } ``` */
-  enrichments?: Array<AssetEnrichment>;
+  enrichments?: ReadonlyArray<AssetEnrichment>;
   /** The type of this resource's immediate parent, if there is one. To search against the `parent_asset_type`: * Use a field query. Example: `parentAssetType:"cloudresourcemanager.googleapis.com/Project"` * Use a free text query. Example: `cloudresourcemanager.googleapis.com/Project` */
   parentAssetType?: string;
   /** The actual content of Security Command Center security marks associated with the asset. To search against SCC SecurityMarks field: * Use a field query: - query by a given key value pair. Example: `sccSecurityMarks.foo=bar` - query by a given key's existence. Example: `sccSecurityMarks.foo:*` */
@@ -1511,7 +1511,7 @@ export const ResourceSearchResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SearchAllResourcesResponse {
   /** A list of Resources that match the search query. It contains the resource standard metadata information. */
-  results?: Array<ResourceSearchResult>;
+  results?: ReadonlyArray<ResourceSearchResult>;
   /** If there are more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
 }
@@ -1524,7 +1524,7 @@ export const SearchAllResourcesResponse =
 
 export interface Permissions {
   /** A list of permissions. A sample permission string: `compute.disk.get`. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const Permissions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1550,7 +1550,7 @@ export interface IamPolicySearchResult {
   /** The project that the associated Google Cloud resource belongs to, in the form of projects/{PROJECT_NUMBER}. If an IAM policy is set on a resource (like VM instance, Cloud Storage bucket), the project field will indicate the project that contains the resource. If an IAM policy is set on a folder or organization, this field will be empty. To search against the `project`: * specify the `scope` field as this project in your search request. */
   project?: string;
   /** The folder(s) that the IAM policy belongs to, in the form of folders/{FOLDER_NUMBER}. This field is available when the IAM policy belongs to one or more folders. To search against `folders`: * use a field query. Example: `folders:(123 OR 456)` * use a free text query. Example: `123` * specify the `scope` field as this folder in your search request. */
-  folders?: Array<string>;
+  folders?: ReadonlyArray<string>;
   /** The organization that the IAM policy belongs to, in the form of organizations/{ORGANIZATION_NUMBER}. This field is available when the IAM policy belongs to an organization. To search against `organization`: * use a field query. Example: `organization:123` * use a free text query. Example: `123` * specify the `scope` field as this organization in your search request. */
   organization?: string;
   /** The IAM policy directly set on the given resource. Note that the original IAM policy can contain multiple bindings. This only contains the bindings that match the given query. For queries that don't contain a constrain on policies (e.g., an empty query), this contains all the bindings. To search against the `policy` bindings: * use a field query: - query by the policy contained members. Example: `policy:amy@gmail.com` - query by the policy contained roles. Example: `policy:roles/compute.admin` - query by the policy contained roles' included permissions. Example: `policy.role.permissions:compute.instances.create` */
@@ -1571,7 +1571,7 @@ export const IamPolicySearchResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SearchAllIamPoliciesResponse {
   /** A list of IAM policies that match the search query. Related information such as the associated resource is returned along with the policy. */
-  results?: Array<IamPolicySearchResult>;
+  results?: ReadonlyArray<IamPolicySearchResult>;
   /** Set if there are more results than those appearing in this response; to get the next set of results, call this method again, using this value as the `page_token`. */
   nextPageToken?: string;
 }
@@ -1602,9 +1602,9 @@ export const IdentitySelector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AccessSelector {
   /** Optional. The roles to appear in result. */
-  roles?: Array<string>;
+  roles?: ReadonlyArray<string>;
   /** Optional. The permissions to appear in result. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const AccessSelector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1762,11 +1762,11 @@ export const ConditionEvaluation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleCloudAssetV1AccessControlList {
   /** The resources that match one of the following conditions: - The resource_selector, if it is specified in request; - Otherwise, resources reachable from the policy attached resource. */
-  resources?: Array<GoogleCloudAssetV1Resource>;
+  resources?: ReadonlyArray<GoogleCloudAssetV1Resource>;
   /** The accesses that match one of the following conditions: - The access_selector, if it is specified in request; - Otherwise, access specifiers reachable from the policy binding's role. */
-  accesses?: Array<GoogleCloudAssetV1Access>;
+  accesses?: ReadonlyArray<GoogleCloudAssetV1Access>;
   /** Resource edges of the graph starting from the policy attached resource to any descendant resources. The Edge.source_node contains the full resource name of a parent resource and Edge.target_node contains the full resource name of a child resource. This field is present only if the output_resource_edges option is enabled in request. */
-  resourceEdges?: Array<GoogleCloudAssetV1Edge>;
+  resourceEdges?: ReadonlyArray<GoogleCloudAssetV1Edge>;
   /** Condition evaluation for this AccessControlList, if there is a condition defined in the above IAM policy binding. */
   conditionEvaluation?: ConditionEvaluation;
 }
@@ -1794,9 +1794,9 @@ export const GoogleCloudAssetV1Identity =
 
 export interface GoogleCloudAssetV1IdentityList {
   /** Only the identities that match one of the following conditions will be presented: - The identity_selector, if it is specified in request; - Otherwise, identities reachable from the policy binding's members. */
-  identities?: Array<GoogleCloudAssetV1Identity>;
+  identities?: ReadonlyArray<GoogleCloudAssetV1Identity>;
   /** Group identity edges of the graph starting from the binding's group members to any node of the identities. The Edge.source_node contains a group, such as `group:parent@google.com`. The Edge.target_node contains a member of the group, such as `group:child@google.com` or `user:foo@google.com`. This field is present only if the output_group_edges option is enabled in request. */
-  groupEdges?: Array<GoogleCloudAssetV1Edge>;
+  groupEdges?: ReadonlyArray<GoogleCloudAssetV1Edge>;
 }
 
 export const GoogleCloudAssetV1IdentityList =
@@ -1811,7 +1811,7 @@ export interface IamPolicyAnalysisResult {
   /** The IAM policy binding under analysis. */
   iamBinding?: Binding;
   /** The access control lists derived from the iam_binding that match or potentially match resource and access selectors specified in the request. */
-  accessControlLists?: Array<GoogleCloudAssetV1AccessControlList>;
+  accessControlLists?: ReadonlyArray<GoogleCloudAssetV1AccessControlList>;
   /** The identity list derived from members of the iam_binding that match or potentially match identity selector specified in the request. */
   identityList?: GoogleCloudAssetV1IdentityList;
   /** Represents whether all analyses on the iam_binding have successfully finished. */
@@ -1833,11 +1833,11 @@ export interface IamPolicyAnalysis {
   /** The analysis query. */
   analysisQuery?: IamPolicyAnalysisQuery;
   /** A list of IamPolicyAnalysisResult that matches the analysis query, or empty if no result is found. */
-  analysisResults?: Array<IamPolicyAnalysisResult>;
+  analysisResults?: ReadonlyArray<IamPolicyAnalysisResult>;
   /** Represents whether all entries in the analysis_results have been fully explored to answer the query. */
   fullyExplored?: boolean;
   /** A list of non-critical errors happened during the query handling. */
-  nonCriticalErrors?: Array<IamPolicyAnalysisState>;
+  nonCriticalErrors?: ReadonlyArray<IamPolicyAnalysisState>;
 }
 
 export const IamPolicyAnalysis = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1851,7 +1851,7 @@ export interface AnalyzeIamPolicyResponse {
   /** The main analysis that matches the original request. */
   mainAnalysis?: IamPolicyAnalysis;
   /** The service account impersonation analysis if IamPolicyAnalysisQuery.Options.analyze_service_account_impersonation is enabled. */
-  serviceAccountImpersonationAnalysis?: Array<IamPolicyAnalysis>;
+  serviceAccountImpersonationAnalysis?: ReadonlyArray<IamPolicyAnalysis>;
   /** Represents whether all entries in the main_analysis and service_account_impersonation_analysis have been fully explored to answer the query in the request. */
   fullyExplored?: boolean;
 }
@@ -1934,9 +1934,9 @@ export const MoveImpact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MoveAnalysisResult {
   /** Blocking information that would prevent the target resource from moving to the specified destination at runtime. */
-  blockers?: Array<MoveImpact>;
+  blockers?: ReadonlyArray<MoveImpact>;
   /** Warning information indicating that moving the target resource to the specified destination might be unsafe. This can include important policy information and configuration changes, but will not block moves at runtime. */
-  warnings?: Array<MoveImpact>;
+  warnings?: ReadonlyArray<MoveImpact>;
 }
 
 export const MoveAnalysisResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1961,7 +1961,7 @@ export const MoveAnalysis = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AnalyzeMoveResponse {
   /** The list of analyses returned from performing the intended resource move analysis. The analysis is grouped by different Google Cloud services. */
-  moveAnalysis?: Array<MoveAnalysis>;
+  moveAnalysis?: ReadonlyArray<MoveAnalysis>;
 }
 
 export const AnalyzeMoveResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2036,7 +2036,7 @@ export interface TableFieldSchema {
   /** The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE. */
   mode?: string;
   /** Describes the nested schema fields if the type property is set to RECORD. */
-  fields?: Array<TableFieldSchema>;
+  fields?: ReadonlyArray<TableFieldSchema>;
 }
 
 export const TableFieldSchema: Schema.Schema<TableFieldSchema> =
@@ -2053,7 +2053,7 @@ export const TableFieldSchema: Schema.Schema<TableFieldSchema> =
 
 export interface TableSchema {
   /** Describes the fields in a table. */
-  fields?: Array<TableFieldSchema>;
+  fields?: ReadonlyArray<TableFieldSchema>;
 }
 
 export const TableSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2062,7 +2062,7 @@ export const TableSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface QueryResult {
   /** Each row hold a query result in the format of `Struct`. */
-  rows?: Array<Record<string, unknown>>;
+  rows?: ReadonlyArray<Record<string, unknown>>;
   /** Describes the format of the [rows]. */
   schema?: TableSchema;
   /** Token to retrieve the next page of the results. */
@@ -2142,7 +2142,7 @@ export const SavedQuery = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSavedQueriesResponse {
   /** A list of savedQueries. */
-  savedQueries?: Array<SavedQuery>;
+  savedQueries?: ReadonlyArray<SavedQuery>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2169,7 +2169,7 @@ export interface EffectiveIamPolicy {
   /** The [full_resource_name] (https://cloud.google.com/asset-inventory/docs/resource-name-format) for which the policies are computed. This is one of the BatchGetEffectiveIamPoliciesRequest.names the caller provides in the request. */
   fullResourceName?: string;
   /** The effective policies for the full_resource_name. These policies include the policy set on the full_resource_name and those set on its parents and ancestors up to the BatchGetEffectiveIamPoliciesRequest.scope. Note that these policies are not filtered according to the resource type of the full_resource_name. These policies are hierarchically ordered by PolicyInfo.attached_resource starting from full_resource_name itself to its parents and ancestors, such that policies[i]'s PolicyInfo.attached_resource is the child of policies[i+1]'s PolicyInfo.attached_resource, if policies[i+1] exists. */
-  policies?: Array<PolicyInfo>;
+  policies?: ReadonlyArray<PolicyInfo>;
 }
 
 export const EffectiveIamPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2179,7 +2179,7 @@ export const EffectiveIamPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchGetEffectiveIamPoliciesResponse {
   /** The effective policies for a batch of resources. Note that the results order is the same as the order of BatchGetEffectiveIamPoliciesRequest.names. When a resource does not have any effective IAM policies, its corresponding policy_result will contain empty EffectiveIamPolicy.policies. */
-  policyResults?: Array<EffectiveIamPolicy>;
+  policyResults?: ReadonlyArray<EffectiveIamPolicy>;
 }
 
 export const BatchGetEffectiveIamPoliciesResponse =
@@ -2189,9 +2189,9 @@ export const BatchGetEffectiveIamPoliciesResponse =
 
 export interface GoogleCloudAssetV1StringValues {
   /** List of values allowed at this resource. */
-  allowedValues?: Array<string>;
+  allowedValues?: ReadonlyArray<string>;
   /** List of values denied at this resource. */
-  deniedValues?: Array<string>;
+  deniedValues?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAssetV1StringValues =
@@ -2232,7 +2232,7 @@ export interface AnalyzerOrgPolicy {
   /** The [full resource name] (https://cloud.google.com/asset-inventory/docs/resource-name-format) of an organization/folder/project resource where this organization policy applies to. For any user defined org policies, this field has the same value as the [attached_resource] field. Only for default policy, this field has the different value. */
   appliedResource?: string;
   /** List of rules for this organization policy. */
-  rules?: Array<GoogleCloudAssetV1Rule>;
+  rules?: ReadonlyArray<GoogleCloudAssetV1Rule>;
   /** If `inherit_from_parent` is true, Rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the effective root for evaluation. */
   inheritFromParent?: boolean;
   /** Ignores policies set above this resource and restores the default behavior of the constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false. */
@@ -2251,11 +2251,11 @@ export interface OrgPolicyResult {
   /** The consolidated organization policy for the analyzed resource. The consolidated organization policy is computed by merging and evaluating policy_bundle. The evaluation will respect the organization policy [hierarchy rules](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-hierarchy). */
   consolidatedPolicy?: AnalyzerOrgPolicy;
   /** The ordered list of all organization policies from the consolidated_policy.attached_resource. to the scope specified in the request. If the constraint is defined with default policy, it will also appear in the list. */
-  policyBundle?: Array<AnalyzerOrgPolicy>;
+  policyBundle?: ReadonlyArray<AnalyzerOrgPolicy>;
   /** The project that this consolidated policy belongs to, in the format of projects/{PROJECT_NUMBER}. This field is available when the consolidated policy belongs to a project. */
   project?: string;
   /** The folder(s) that this consolidated policy belongs to, in the format of folders/{FOLDER_NUMBER}. This field is available when the consolidated policy belongs (directly or cascadingly) to one or more folders. */
-  folders?: Array<string>;
+  folders?: ReadonlyArray<string>;
   /** The organization that this consolidated policy belongs to, in the format of organizations/{ORGANIZATION_NUMBER}. This field is available when the consolidated policy belongs (directly or cascadingly) to an organization. */
   organization?: string;
 }
@@ -2321,9 +2321,9 @@ export interface GoogleCloudAssetV1CustomConstraint {
   /** Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms" */
   name?: string;
   /** The Resource Instance type on which this policy applies to. Format will be of the form : "/" Example: * `compute.googleapis.com/Instance`. */
-  resourceTypes?: Array<string>;
+  resourceTypes?: ReadonlyArray<string>;
   /** All the operations being applied for this constraint. */
-  methodTypes?: Array<
+  methodTypes?: ReadonlyArray<
     | "METHOD_TYPE_UNSPECIFIED"
     | "CREATE"
     | "UPDATE"
@@ -2368,7 +2368,7 @@ export const AnalyzerOrgPolicyConstraint =
 
 export interface AnalyzeOrgPoliciesResponse {
   /** The organization policies under the AnalyzeOrgPoliciesRequest.scope with the AnalyzeOrgPoliciesRequest.constraint. */
-  orgPolicyResults?: Array<OrgPolicyResult>;
+  orgPolicyResults?: ReadonlyArray<OrgPolicyResult>;
   /** The definition of the constraint in the request. */
   constraint?: AnalyzerOrgPolicyConstraint;
   /** The page token to fetch the next page for AnalyzeOrgPoliciesResponse.org_policy_results. */
@@ -2390,15 +2390,15 @@ export interface GoogleCloudAssetV1GovernedContainer {
   /** The consolidated organization policy for the analyzed resource. The consolidated organization policy is computed by merging and evaluating AnalyzeOrgPolicyGovernedContainersResponse.GovernedContainer.policy_bundle. The evaluation will respect the organization policy [hierarchy rules](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-hierarchy). */
   consolidatedPolicy?: AnalyzerOrgPolicy;
   /** The ordered list of all organization policies from the consolidated_policy.attached_resource. to the scope specified in the request. If the constraint is defined with default policy, it will also appear in the list. */
-  policyBundle?: Array<AnalyzerOrgPolicy>;
+  policyBundle?: ReadonlyArray<AnalyzerOrgPolicy>;
   /** The project that this resource belongs to, in the format of projects/{PROJECT_NUMBER}. This field is available when the resource belongs to a project. */
   project?: string;
   /** The folder(s) that this resource belongs to, in the format of folders/{FOLDER_NUMBER}. This field is available when the resource belongs (directly or cascadingly) to one or more folders. */
-  folders?: Array<string>;
+  folders?: ReadonlyArray<string>;
   /** The organization that this resource belongs to, in the format of organizations/{ORGANIZATION_NUMBER}. This field is available when the resource belongs (directly or cascadingly) to an organization. */
   organization?: string;
   /** The effective tags on this resource. */
-  effectiveTags?: Array<EffectiveTagDetails>;
+  effectiveTags?: ReadonlyArray<EffectiveTagDetails>;
 }
 
 export const GoogleCloudAssetV1GovernedContainer =
@@ -2415,7 +2415,7 @@ export const GoogleCloudAssetV1GovernedContainer =
 
 export interface AnalyzeOrgPolicyGovernedContainersResponse {
   /** The list of the analyzed governed containers. */
-  governedContainers?: Array<GoogleCloudAssetV1GovernedContainer>;
+  governedContainers?: ReadonlyArray<GoogleCloudAssetV1GovernedContainer>;
   /** The definition of the constraint in the request. */
   constraint?: AnalyzerOrgPolicyConstraint;
   /** The page token to fetch the next page for AnalyzeOrgPolicyGovernedContainersResponse.governed_containers. */
@@ -2439,13 +2439,13 @@ export interface GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGoverne
   /** The project that this resource belongs to, in the format of projects/{PROJECT_NUMBER}. This field is available when the resource belongs to a project. */
   project?: string;
   /** The folder(s) that this resource belongs to, in the format of folders/{FOLDER_NUMBER}. This field is available when the resource belongs (directly or cascadingly) to one or more folders. */
-  folders?: Array<string>;
+  folders?: ReadonlyArray<string>;
   /** The organization that this resource belongs to, in the format of organizations/{ORGANIZATION_NUMBER}. This field is available when the resource belongs (directly or cascadingly) to an organization. */
   organization?: string;
   /** The asset type of the AnalyzeOrgPolicyGovernedAssetsResponse.GovernedResource.full_resource_name Example: `cloudresourcemanager.googleapis.com/Project` See [Cloud Asset Inventory Supported Asset Types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for all supported asset types. */
   assetType?: string;
   /** The effective tags on this resource. */
-  effectiveTags?: Array<EffectiveTagDetails>;
+  effectiveTags?: ReadonlyArray<EffectiveTagDetails>;
 }
 
 export const GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource =
@@ -2470,7 +2470,7 @@ export interface GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGoverne
   /** The project that this IAM policy belongs to, in the format of projects/{PROJECT_NUMBER}. This field is available when the IAM policy belongs to a project. */
   project?: string;
   /** The folder(s) that this IAM policy belongs to, in the format of folders/{FOLDER_NUMBER}. This field is available when the IAM policy belongs (directly or cascadingly) to one or more folders. */
-  folders?: Array<string>;
+  folders?: ReadonlyArray<string>;
   /** The organization that this IAM policy belongs to, in the format of organizations/{ORGANIZATION_NUMBER}. This field is available when the IAM policy belongs (directly or cascadingly) to an organization. */
   organization?: string;
   /** The asset type of the AnalyzeOrgPolicyGovernedAssetsResponse.GovernedIamPolicy.attached_resource. Example: `cloudresourcemanager.googleapis.com/Project` See [Cloud Asset Inventory Supported Asset Types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for all supported asset types. */
@@ -2498,7 +2498,7 @@ export interface GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGoverne
   /** The consolidated policy for the analyzed asset. The consolidated policy is computed by merging and evaluating AnalyzeOrgPolicyGovernedAssetsResponse.GovernedAsset.policy_bundle. The evaluation will respect the organization policy [hierarchy rules](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-hierarchy). */
   consolidatedPolicy?: AnalyzerOrgPolicy;
   /** The ordered list of all organization policies from the consolidated_policy.attached_resource to the scope specified in the request. If the constraint is defined with default policy, it will also appear in the list. */
-  policyBundle?: Array<AnalyzerOrgPolicy>;
+  policyBundle?: ReadonlyArray<AnalyzerOrgPolicy>;
 }
 
 export const GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset =
@@ -2518,7 +2518,7 @@ export const GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAss
 
 export interface AnalyzeOrgPolicyGovernedAssetsResponse {
   /** The list of the analyzed governed assets. */
-  governedAssets?: Array<GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset>;
+  governedAssets?: ReadonlyArray<GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset>;
   /** The definition of the constraint in the request. */
   constraint?: AnalyzerOrgPolicyConstraint;
   /** The page token to fetch the next page for AnalyzeOrgPolicyGovernedAssetsResponse.governed_assets. */
@@ -2591,7 +2591,7 @@ export interface GoogleCloudAssetV1p7beta1RelatedAsset {
   /** The type of the asset. Example: `compute.googleapis.com/Disk` See [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information. */
   assetType?: string;
   /** The ancestors of an asset in Google Cloud [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), represented as a list of relative resource names. An ancestry path starts with the closest ancestor in the hierarchy and ends at root. Example: `["projects/123456789", "folders/5432", "organizations/1234"]` */
-  ancestors?: Array<string>;
+  ancestors?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAssetV1p7beta1RelatedAsset =
@@ -2605,7 +2605,7 @@ export interface GoogleCloudAssetV1p7beta1RelatedAssets {
   /** The detailed relation attributes. */
   relationshipAttributes?: GoogleCloudAssetV1p7beta1RelationshipAttributes;
   /** The peer resources of the relationship. */
-  assets?: Array<GoogleCloudAssetV1p7beta1RelatedAsset>;
+  assets?: ReadonlyArray<GoogleCloudAssetV1p7beta1RelatedAsset>;
 }
 
 export const GoogleCloudAssetV1p7beta1RelatedAssets =
@@ -2630,7 +2630,7 @@ export interface GoogleCloudAssetV1p7beta1Asset {
   /** A representation of the IAM policy set on a Google Cloud resource. There can be a maximum of one IAM policy set on any given resource. In addition, IAM policies inherit their granted access scope from any policies set on parent resources in the resource hierarchy. Therefore, the effectively policy is the union of both the policy set on this resource and each policy set on all of the resource's ancestry resource levels in the hierarchy. See [this topic](https://cloud.google.com/iam/help/allow-policies/inheritance) for more information. */
   iamPolicy?: Policy;
   /** A representation of an [organization policy](https://cloud.google.com/resource-manager/docs/organization-policy/overview#organization_policy). There can be more than one organization policy with different constraints set on a given resource. */
-  orgPolicy?: Array<GoogleCloudOrgpolicyV1Policy>;
+  orgPolicy?: ReadonlyArray<GoogleCloudOrgpolicyV1Policy>;
   /** Please also refer to the [access policy user guide](https://cloud.google.com/access-context-manager/docs/overview#access-policies). */
   accessPolicy?: GoogleIdentityAccesscontextmanagerV1AccessPolicy;
   /** Please also refer to the [access level user guide](https://cloud.google.com/access-context-manager/docs/overview#access-levels). */
@@ -2640,7 +2640,7 @@ export interface GoogleCloudAssetV1p7beta1Asset {
   /** The related assets of the asset of one relationship type. One asset only represents one type of relationship. */
   relatedAssets?: GoogleCloudAssetV1p7beta1RelatedAssets;
   /** The ancestry path of an asset in Google Cloud [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), represented as a list of relative resource names. An ancestry path starts with the closest ancestor in the hierarchy and ends at root. If the asset is a project, folder, or organization, the ancestry path starts from the asset itself. Example: `["projects/123456789", "folders/5432", "organizations/1234"]` */
-  ancestors?: Array<string>;
+  ancestors?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAssetV1p7beta1Asset =
@@ -2693,10 +2693,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "v1/{v1Id}/{v1Id1}/operations/{operationsId}/{operationsId1}",
-  }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -2728,11 +2725,7 @@ export const ExportAssetsV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   parent: Schema.String.pipe(T.HttpPath("parent")),
   body: Schema.optional(ExportAssetsRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "POST",
-    path: "v1/{v1Id}/{v1Id1}:exportAssets",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v1/{parent}:exportAssets", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<ExportAssetsV1Request>;
 
@@ -2795,7 +2788,7 @@ export const BatchGetAssetsHistoryV1Request =
       T.HttpQuery("relationshipTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{v1Id}/{v1Id1}:batchGetAssetsHistory" }),
+    T.Http({ method: "GET", path: "v1/{parent}:batchGetAssetsHistory" }),
     svc,
   ) as unknown as Schema.Schema<BatchGetAssetsHistoryV1Request>;
 
@@ -2846,7 +2839,7 @@ export const SearchAllResourcesV1Request =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{v1Id}/{v1Id1}:searchAllResources" }),
+    T.Http({ method: "GET", path: "v1/{scope}:searchAllResources" }),
     svc,
   ) as unknown as Schema.Schema<SearchAllResourcesV1Request>;
 
@@ -2898,7 +2891,7 @@ export const SearchAllIamPoliciesV1Request =
     ),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{v1Id}/{v1Id1}:searchAllIamPolicies" }),
+    T.Http({ method: "GET", path: "v1/{scope}:searchAllIamPolicies" }),
     svc,
   ) as unknown as Schema.Schema<SearchAllIamPoliciesV1Request>;
 
@@ -3000,7 +2993,7 @@ export const AnalyzeIamPolicyV1Request =
       T.HttpQuery("executionTimeout"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{v1Id}/{v1Id1}:analyzeIamPolicy" }),
+    T.Http({ method: "GET", path: "v1/{scope}:analyzeIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<AnalyzeIamPolicyV1Request>;
 
@@ -3038,7 +3031,7 @@ export const AnalyzeIamPolicyLongrunningV1Request =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/{v1Id}/{v1Id1}:analyzeIamPolicyLongrunning",
+      path: "v1/{scope}:analyzeIamPolicyLongrunning",
       hasBody: true,
     }),
     svc,
@@ -3078,7 +3071,7 @@ export const AnalyzeMoveV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{v1Id}/{v1Id1}:analyzeMove" }),
+  T.Http({ method: "GET", path: "v1/{resource}:analyzeMove" }),
   svc,
 ) as unknown as Schema.Schema<AnalyzeMoveV1Request>;
 
@@ -3111,11 +3104,7 @@ export const QueryAssetsV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   parent: Schema.String.pipe(T.HttpPath("parent")),
   body: Schema.optional(QueryAssetsRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "POST",
-    path: "v1/{v1Id}/{v1Id1}:queryAssets",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v1/{parent}:queryAssets", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<QueryAssetsV1Request>;
 
@@ -3158,7 +3147,7 @@ export const AnalyzeOrgPoliciesV1Request =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{v1Id}/{v1Id1}:analyzeOrgPolicies" }),
+    T.Http({ method: "GET", path: "v1/{scope}:analyzeOrgPolicies" }),
     svc,
   ) as unknown as Schema.Schema<AnalyzeOrgPoliciesV1Request>;
 
@@ -3207,7 +3196,7 @@ export const AnalyzeOrgPolicyGovernedContainersV1Request =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/{v1Id}/{v1Id1}:analyzeOrgPolicyGovernedContainers",
+      path: "v1/{scope}:analyzeOrgPolicyGovernedContainers",
     }),
     svc,
   ) as unknown as Schema.Schema<AnalyzeOrgPolicyGovernedContainersV1Request>;
@@ -3258,7 +3247,7 @@ export const AnalyzeOrgPolicyGovernedAssetsV1Request =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/{v1Id}/{v1Id1}:analyzeOrgPolicyGovernedAssets",
+      path: "v1/{scope}:analyzeOrgPolicyGovernedAssets",
     }),
     svc,
   ) as unknown as Schema.Schema<AnalyzeOrgPolicyGovernedAssetsV1Request>;
@@ -3324,7 +3313,7 @@ export const ListAssetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("relationshipTypes"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{v1Id}/{v1Id1}/assets" }),
+  T.Http({ method: "GET", path: "v1/{parent}/assets" }),
   svc,
 ) as unknown as Schema.Schema<ListAssetsRequest>;
 
@@ -3361,7 +3350,7 @@ export const CreateFeedsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   parent: Schema.String.pipe(T.HttpPath("parent")),
   body: Schema.optional(CreateFeedRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "POST", path: "v1/{v1Id}/{v1Id1}/feeds", hasBody: true }),
+  T.Http({ method: "POST", path: "v1/{parent}/feeds", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<CreateFeedsRequest>;
 
@@ -3390,7 +3379,7 @@ export interface GetFeedsRequest {
 export const GetFeedsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{v1Id}/{v1Id1}/feeds/{feedsId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetFeedsRequest>;
 
@@ -3419,7 +3408,7 @@ export interface ListFeedsRequest {
 export const ListFeedsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   parent: Schema.String.pipe(T.HttpPath("parent")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/{v1Id}/{v1Id1}/feeds" }),
+  T.Http({ method: "GET", path: "v1/{parent}/feeds" }),
   svc,
 ) as unknown as Schema.Schema<ListFeedsRequest>;
 
@@ -3452,11 +3441,7 @@ export const PatchFeedsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(UpdateFeedRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "PATCH",
-    path: "v1/{v1Id}/{v1Id1}/feeds/{feedsId}",
-    hasBody: true,
-  }),
+  T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchFeedsRequest>;
 
@@ -3485,7 +3470,7 @@ export interface DeleteFeedsRequest {
 export const DeleteFeedsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v1/{v1Id}/{v1Id1}/feeds/{feedsId}" }),
+  T.Http({ method: "DELETE", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteFeedsRequest>;
 
@@ -3523,11 +3508,7 @@ export const CreateSavedQueriesRequest =
     ),
     body: Schema.optional(SavedQuery).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/{v1Id}/{v1Id1}/savedQueries",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/savedQueries", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateSavedQueriesRequest>;
 
@@ -3559,10 +3540,7 @@ export const GetSavedQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     name: Schema.String.pipe(T.HttpPath("name")),
   },
 ).pipe(
-  T.Http({
-    method: "GET",
-    path: "v1/{v1Id}/{v1Id1}/savedQueries/{savedQueriesId}",
-  }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetSavedQueriesRequest>;
 
@@ -3601,7 +3579,7 @@ export const ListSavedQueriesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/{v1Id}/{v1Id1}/savedQueries" }),
+    T.Http({ method: "GET", path: "v1/{parent}/savedQueries" }),
     svc,
   ) as unknown as Schema.Schema<ListSavedQueriesRequest>;
 
@@ -3642,11 +3620,7 @@ export const PatchSavedQueriesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SavedQuery).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/{v1Id}/{v1Id1}/savedQueries/{savedQueriesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchSavedQueriesRequest>;
 
@@ -3676,10 +3650,7 @@ export const DeleteSavedQueriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/{v1Id}/{v1Id1}/savedQueries/{savedQueriesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteSavedQueriesRequest>;
 
@@ -3714,10 +3685,7 @@ export const BatchGetEffectiveIamPoliciesRequest =
       T.HttpQuery("names"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/{v1Id}/{v1Id1}/effectiveIamPolicies:batchGet",
-    }),
+    T.Http({ method: "GET", path: "v1/{scope}/effectiveIamPolicies:batchGet" }),
     svc,
   ) as unknown as Schema.Schema<BatchGetEffectiveIamPoliciesRequest>;
 

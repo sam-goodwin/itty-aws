@@ -26,13 +26,13 @@ export interface CheckResponse {
   /** Set to true if the assets specified in the request are linked by the relation specified in the request. */
   linked?: boolean;
   /** Statements may specify relation level extensions/payloads to express more details when declaring permissions to grant from the source asset to the target asset. When requested, the API will return relation_extensions specified in any and all statements linking the requested source and target assets by the relation specified in the request. */
-  relationExtensions?: Array<Record<string, unknown>>;
+  relationExtensions?: ReadonlyArray<Record<string, unknown>>;
   /** From serving time, how much longer the response should be considered valid barring further updates. REQUIRED */
   maxAge?: string;
   /** Human-readable message containing information intended to help end users understand, reproduce and debug the result. The message will be in English and we are currently not planning to offer any translations. Please note that no guarantees are made about the contents or format of this string. Any aspect of it may be subject to change without notice. You should not attempt to programmatically parse this data. For programmatic access, use the error_code field below. */
   debugString?: string;
   /** Error codes that describe the result of the Check operation. NOTE: Error codes may be populated even when `linked` is true. The error codes do not necessarily imply that the request failed, but rather, specify any errors encountered in the statements file(s) which may or may not impact whether the server determines the requested source and target to be linked. */
-  errorCode?: Array<
+  errorCode?: ReadonlyArray<
     | "ERROR_CODE_UNSPECIFIED"
     | "ERROR_CODE_INVALID_QUERY"
     | "ERROR_CODE_FETCH_ERROR"
@@ -117,7 +117,7 @@ export const StatementTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BulkCheckRequest {
   /** List of statements to check. For each statement, you can omit a field if the corresponding default_* field below was supplied. Minimum 1 statement; maximum 1,000 statements. Any additional statements will be ignored. */
-  statements?: Array<StatementTemplate>;
+  statements?: ReadonlyArray<StatementTemplate>;
   /** If specified, will be used in any given template statement that doesn’t specify a source. */
   defaultSource?: Asset;
   /** If specified, will be used in any given template statement that doesn’t specify a relation. */
@@ -138,7 +138,7 @@ export const BulkCheckRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BulkCheckResponse {
   /** List of results for each check request. Results are returned in the same order in which they were sent in the request. */
-  checkResults?: Array<CheckResponse>;
+  checkResults?: ReadonlyArray<CheckResponse>;
   /** Error code for the entire request. Present only if the entire request failed. Individual check errors will not trigger the presence of this field. */
   bulkErrorCode?:
     | "ERROR_CODE_UNSPECIFIED"
@@ -182,13 +182,13 @@ export const Statement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListResponse {
   /** A list of all the matching statements that have been found. */
-  statements?: Array<Statement>;
+  statements?: ReadonlyArray<Statement>;
   /** From serving time, how much longer the response should be considered valid barring further updates. REQUIRED */
   maxAge?: string;
   /** Human-readable message containing information intended to help end users understand, reproduce and debug the result. The message will be in English and we are currently not planning to offer any translations. Please note that no guarantees are made about the contents or format of this string. Any aspect of it may be subject to change without notice. You should not attempt to programmatically parse this data. For programmatic access, use the error_code field below. */
   debugString?: string;
   /** Error codes that describe the result of the List operation. */
-  errorCode?: Array<
+  errorCode?: ReadonlyArray<
     | "ERROR_CODE_UNSPECIFIED"
     | "ERROR_CODE_INVALID_QUERY"
     | "ERROR_CODE_FETCH_ERROR"

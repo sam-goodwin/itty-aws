@@ -61,11 +61,11 @@ export interface GoogleAdsSearchads360V0Common__LocationGroupInfo {
     | "MILLI_MILES"
     | (string & {});
   /** FeedItemSets whose FeedItems are targeted. If multiple IDs are specified, then all items that appear in at least one set are targeted. This field cannot be used with geo_target_constants. This is optional and can only be set in CREATE operations. */
-  feedItemSets?: Array<string>;
+  feedItemSets?: ReadonlyArray<string>;
   /** Distance in units specifying the radius around targeted locations. This is required and must be set in CREATE operations. */
   radius?: string;
   /** Geo target constant(s) restricting the scope of the geographic area within the feed. Currently only one geo target constant is allowed. */
-  geoTargetConstants?: Array<string>;
+  geoTargetConstants?: ReadonlyArray<string>;
 }
 
 export const GoogleAdsSearchads360V0Common__LocationGroupInfo =
@@ -368,7 +368,7 @@ export const GoogleAdsSearchads360V0Errors_ErrorLocation_FieldPathElement =
 
 export interface GoogleAdsSearchads360V0Errors__ErrorLocation {
   /** A field path that indicates which field was invalid in the request. */
-  fieldPathElements?: Array<GoogleAdsSearchads360V0Errors_ErrorLocation_FieldPathElement>;
+  fieldPathElements?: ReadonlyArray<GoogleAdsSearchads360V0Errors_ErrorLocation_FieldPathElement>;
 }
 
 export const GoogleAdsSearchads360V0Errors__ErrorLocation =
@@ -567,7 +567,7 @@ export const GoogleAdsSearchads360V0Common__TargetRoas =
 
 export interface GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSetting {
   /** The list of optimization goal types. */
-  optimizationGoalTypes?: Array<
+  optimizationGoalTypes?: ReadonlyArray<
     | "UNSPECIFIED"
     | "UNKNOWN"
     | "CALL_CLICKS"
@@ -686,7 +686,7 @@ export const GoogleAdsSearchads360V0Common__MaximizeConversions =
 
 export interface GoogleAdsSearchads360V0Resources_Campaign_SelectiveOptimization {
   /** The selected set of resource names for conversion actions for optimizing this campaign. */
-  conversionActions?: Array<string>;
+  conversionActions?: ReadonlyArray<string>;
 }
 
 export const GoogleAdsSearchads360V0Resources_Campaign_SelectiveOptimization =
@@ -823,7 +823,7 @@ export interface GoogleAdsSearchads360V0Resources__Campaign {
   /** Represents opting out of URL expansion to more targeted URLs. If opted out (true), only the final URLs in the asset group or URLs specified in the advertiser's Google Merchant Center or business data feeds are targeted. If opted in (false), the entire domain will be targeted. This field can only be set for Performance Max campaigns, where the default value is false. */
   urlExpansionOptOut?: boolean;
   /** Output only. Types of feeds that are attached directly to this campaign. */
-  feedTypes?: Array<
+  feedTypes?: ReadonlyArray<
     | "UNSPECIFIED"
     | "UNKNOWN"
     | "PAGE_FEED"
@@ -865,13 +865,13 @@ export interface GoogleAdsSearchads360V0Resources__Campaign {
     | "SOCIAL"
     | (string & {});
   /** Output only. The resource names of effective labels attached to this campaign. An effective label is a label inherited or directly assigned to this campaign. */
-  effectiveLabels?: Array<string>;
+  effectiveLabels?: ReadonlyArray<string>;
   /** A list that limits how often each user will see this campaign's ads. */
-  frequencyCaps?: Array<GoogleAdsSearchads360V0Common__FrequencyCapEntry>;
+  frequencyCaps?: ReadonlyArray<GoogleAdsSearchads360V0Common__FrequencyCapEntry>;
   /** Standard Target Spend bidding strategy that automatically sets your bids to help get as many clicks as possible within your budget. */
   targetSpend?: GoogleAdsSearchads360V0Common__TargetSpend;
   /** The list of mappings used to substitute custom parameter tags in a `tracking_url_template`, `final_urls`, or `mobile_final_urls`. */
-  urlCustomParameters?: Array<GoogleAdsSearchads360V0Common__CustomParameter>;
+  urlCustomParameters?: ReadonlyArray<GoogleAdsSearchads360V0Common__CustomParameter>;
   /** Output only. The ad serving status of the campaign. */
   servingStatus?:
     | "UNSPECIFIED"
@@ -957,7 +957,7 @@ export interface GoogleAdsSearchads360V0Resources__Campaign {
   /** The last day of the campaign in serving customer's timezone in YYYY-MM-DD format. On create, defaults to 2037-12-30, which means the campaign will run indefinitely. To set an existing campaign to run indefinitely, set this field to 2037-12-30. */
   endDate?: string;
   /** The asset field types that should be excluded from this campaign. Asset links with these field types will not be inherited by this campaign from the upper level. */
-  excludedParentAssetFieldTypes?: Array<
+  excludedParentAssetFieldTypes?: ReadonlyArray<
     | "UNSPECIFIED"
     | "UNKNOWN"
     | "HEADLINE"
@@ -1037,7 +1037,7 @@ export interface GoogleAdsSearchads360V0Resources__Campaign {
   /** Standard Maximize Conversion Value bidding strategy that automatically sets bids to maximize revenue while spending your budget. */
   maximizeConversionValue?: GoogleAdsSearchads360V0Common__MaximizeConversionValue;
   /** Output only. The resource names of labels attached to this campaign. */
-  labels?: Array<string>;
+  labels?: ReadonlyArray<string>;
 }
 
 export const GoogleAdsSearchads360V0Resources__Campaign =
@@ -1562,7 +1562,7 @@ export const GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension =
 
 export interface GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionPath {
   /** Output only. The complete path of dimensions through the listing group filter hierarchy (excluding the root node) to this listing group filter. */
-  dimensions?: Array<GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension>;
+  dimensions?: ReadonlyArray<GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension>;
 }
 
 export const GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionPath =
@@ -1706,7 +1706,7 @@ export interface GoogleAdsSearchads360V0Common__WebpageInfo {
   /** Website criteria coverage percentage. This is the computed percentage of website coverage based on the website target, negative website target and negative keywords in the ad group and campaign. For instance, when coverage returns as 1, it indicates it has 100% coverage. This field is read-only. */
   coveragePercentage?: number;
   /** Conditions, or logical expressions, for webpage targeting. The list of webpage targeting conditions are and-ed together when evaluated for targeting. An empty list of conditions indicates all pages of the campaign's website are targeted. This field is required for CREATE operations and is prohibited on UPDATE operations. */
-  conditions?: Array<GoogleAdsSearchads360V0Common__WebpageConditionInfo>;
+  conditions?: ReadonlyArray<GoogleAdsSearchads360V0Common__WebpageConditionInfo>;
 }
 
 export const GoogleAdsSearchads360V0Common__WebpageInfo =
@@ -1777,7 +1777,7 @@ export const GoogleAdsSearchads360V0Common__AssetUsage =
 
 export interface GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData {
   /** Output only. Served assets. */
-  assetCombinationServedAssets?: Array<GoogleAdsSearchads360V0Common__AssetUsage>;
+  assetCombinationServedAssets?: ReadonlyArray<GoogleAdsSearchads360V0Common__AssetUsage>;
 }
 
 export const GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData =
@@ -1792,7 +1792,7 @@ export const GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData =
 
 export interface GoogleAdsSearchads360V0Resources__AssetGroupTopCombinationView {
   /** Output only. The top combinations of assets that served together. */
-  assetGroupTopCombinations?: Array<GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData>;
+  assetGroupTopCombinations?: ReadonlyArray<GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData>;
   /** Output only. The resource name of the asset group top combination view. AssetGroup Top Combination view resource names have the form: `"customers/{customer_id}/assetGroupTopCombinationViews/{asset_group_id}~{asset_combination_category}" */
   resourceName?: string;
 }
@@ -1846,9 +1846,9 @@ export interface GoogleAdsSearchads360V0Common__SearchAds360ResponsiveSearchAdIn
   /** Text appended to path1 with a delimiter. */
   path2?: string;
   /** List of text assets for headlines. When the ad serves the headlines will be selected from this list. */
-  headlines?: Array<GoogleAdsSearchads360V0Common__AdTextAsset>;
+  headlines?: ReadonlyArray<GoogleAdsSearchads360V0Common__AdTextAsset>;
   /** List of text assets for descriptions. When the ad serves the descriptions will be selected from this list. */
-  descriptions?: Array<GoogleAdsSearchads360V0Common__AdTextAsset>;
+  descriptions?: ReadonlyArray<GoogleAdsSearchads360V0Common__AdTextAsset>;
   /** Text appended to the auto-generated visible URL with a delimiter. */
   path1?: string;
   /** The tracking id of the ad. */
@@ -2162,7 +2162,7 @@ export const GoogleAdsSearchads360V0Common__AdScheduleInfo =
 
 export interface GoogleAdsSearchads360V0Resources__AssetGroup {
   /** A list of final mobile URLs after all cross domain redirects. In performance max, by default, the urls are eligible for expansion unless opted out. */
-  finalMobileUrls?: Array<string>;
+  finalMobileUrls?: ReadonlyArray<string>;
   /** Immutable. The resource name of the asset group. Asset group resource names have the form: `customers/{customer_id}/assetGroups/{asset_group_id}` */
   resourceName?: string;
   /** The status of the asset group. */
@@ -2193,7 +2193,7 @@ export interface GoogleAdsSearchads360V0Resources__AssetGroup {
     | "EXCELLENT"
     | (string & {});
   /** A list of final URLs after all cross domain redirects. In performance max, by default, the urls are eligible for expansion unless opted out. */
-  finalUrls?: Array<string>;
+  finalUrls?: ReadonlyArray<string>;
   /** Required. Name of the asset group. Required. It must have a minimum length of 1 and maximum length of 128. It must be unique under a campaign. */
   name?: string;
 }
@@ -2354,7 +2354,7 @@ export const GoogleAdsSearchads360V0Resources__BiddingStrategy =
 
 export interface GoogleAdsSearchads360V0Services__ListAccessibleCustomersResponse {
   /** Resource name of customers directly accessible by the user authenticating the call. */
-  resourceNames?: Array<string>;
+  resourceNames?: ReadonlyArray<string>;
 }
 
 export const GoogleAdsSearchads360V0Services__ListAccessibleCustomersResponse =
@@ -2595,7 +2595,7 @@ export const GoogleAdsSearchads360V0Common__TargetRestriction =
 
 export interface GoogleAdsSearchads360V0Common__TargetingSetting {
   /** The per-targeting-dimension setting to restrict the reach of your campaign or ad group. */
-  targetRestrictions?: Array<GoogleAdsSearchads360V0Common__TargetRestriction>;
+  targetRestrictions?: ReadonlyArray<GoogleAdsSearchads360V0Common__TargetRestriction>;
 }
 
 export const GoogleAdsSearchads360V0Common__TargetingSetting =
@@ -2703,7 +2703,7 @@ export const GoogleAdsSearchads360V0Resources__Label =
 
 export interface GoogleAdsSearchads360V0Common__UnifiedCalloutAsset {
   /** List of non-overlapping schedules specifying all time intervals for which the asset may serve. There can be a maximum of 6 schedules per day, 42 in total. */
-  adScheduleTargets?: Array<GoogleAdsSearchads360V0Common__AdScheduleInfo>;
+  adScheduleTargets?: ReadonlyArray<GoogleAdsSearchads360V0Common__AdScheduleInfo>;
   /** Start date of when this asset is effective and can begin serving, in yyyy-MM-dd format. */
   startDate?: string;
   /** Whether to show the asset in search user's time zone. Applies to Microsoft Ads. */
@@ -2739,7 +2739,7 @@ export const GoogleAdsSearchads360V0Resources__WebpageView =
 
 export interface GoogleAdsSearchads360V0Common__BusinessProfileLocation {
   /** Advertiser specified label for the location on the Business Profile account. This is synced from the Business Profile account. */
-  labels?: Array<string>;
+  labels?: ReadonlyArray<string>;
   /** Business Profile store code of this location. This is synced from the Business Profile account. */
   storeCode?: string;
   /** Listing ID of this Business Profile location. This is synced from the linked Business Profile account. */
@@ -2837,13 +2837,13 @@ export interface GoogleAdsSearchads360V0Resources__Ad {
   /** Immutable. The name of the ad. This is only used to be able to identify the ad. It does not need to be unique and does not affect the served ad. */
   name?: string;
   /** The list of possible final URLs after all cross-domain redirects for the ad. */
-  finalUrls?: Array<string>;
+  finalUrls?: ReadonlyArray<string>;
   /** Immutable. Details pertaining to an expanded dynamic search ad. */
   expandedDynamicSearchAd?: GoogleAdsSearchads360V0Common__SearchAds360ExpandedDynamicSearchAdInfo;
   /** The list of possible final mobile URLs after all cross-domain redirects for the ad. */
-  finalMobileUrls?: Array<string>;
+  finalMobileUrls?: ReadonlyArray<string>;
   /** A list of final app URLs that will be used on mobile if the user has the specific app installed. */
-  finalAppUrls?: Array<GoogleAdsSearchads360V0Common__FinalAppUrl>;
+  finalAppUrls?: ReadonlyArray<GoogleAdsSearchads360V0Common__FinalAppUrl>;
   /** Immutable. Details pertaining to an expanded text ad. */
   expandedTextAd?: GoogleAdsSearchads360V0Common__SearchAds360ExpandedTextAdInfo;
   /** Output only. The type of ad. */
@@ -3190,7 +3190,7 @@ export interface GoogleAdsSearchads360V0Common__UnifiedLocationAsset {
   /** Place IDs uniquely identify a place in the Google Places database and on Google Maps. This field is unique for a given customer ID and asset type. See https://developers.google.com/places/web-service/place-id to learn more about Place ID. */
   placeId?: string;
   /** The list of business locations for the customer. This will only be returned if the Location Asset is syncing from the Business Profile account. It is possible to have multiple Business Profile listings under the same account that point to the same Place ID. */
-  businessProfileLocations?: Array<GoogleAdsSearchads360V0Common__BusinessProfileLocation>;
+  businessProfileLocations?: ReadonlyArray<GoogleAdsSearchads360V0Common__BusinessProfileLocation>;
   /** The type of location ownership. If the type is BUSINESS_OWNER, it will be served as a location extension. If the type is AFFILIATE, it will be served as an affiliate location. */
   locationOwnershipType?:
     | "UNSPECIFIED"
@@ -3223,7 +3223,7 @@ export const GoogleAdsSearchads360V0Resources__LocationView =
 
 export interface GoogleAdsSearchads360V0Errors__SearchAds360Failure {
   /** The list of errors that occurred. */
-  errors?: Array<GoogleAdsSearchads360V0Errors__SearchAds360Error>;
+  errors?: ReadonlyArray<GoogleAdsSearchads360V0Errors__SearchAds360Error>;
   /** The unique ID of the request that is used for debugging purposes. */
   requestId?: string;
 }
@@ -3354,9 +3354,9 @@ export interface GoogleAdsSearchads360V0Resources__SearchAds360Field {
   /** Output only. The resource name of the artifact. Artifact resource names have the form: `SearchAds360Fields/{name}` */
   resourceName?: string;
   /** Output only. The names of all resources, segments, and metrics that are selectable with the described artifact. */
-  selectableWith?: Array<string>;
+  selectableWith?: ReadonlyArray<string>;
   /** Output only. The names of all resources that are selectable with the described artifact. Fields from these resources do not segment metrics when included in search queries. This field is only set for artifacts whose category is RESOURCE. */
-  attributeResources?: Array<string>;
+  attributeResources?: ReadonlyArray<string>;
   /** Output only. Whether the artifact can be used in a WHERE clause in search queries. */
   filterable?: boolean;
   /** Output only. This field determines the operators that can be used with the artifact in WHERE clauses. */
@@ -3376,11 +3376,11 @@ export interface GoogleAdsSearchads360V0Resources__SearchAds360Field {
     | "UINT64"
     | (string & {});
   /** Output only. This field lists the names of all metrics that are selectable with the described artifact when it is used in the FROM clause. It is only set for artifacts whose category is RESOURCE. */
-  metrics?: Array<string>;
+  metrics?: ReadonlyArray<string>;
   /** Output only. The URL of proto describing the artifact's data type. */
   typeUrl?: string;
   /** Output only. This field lists the names of all artifacts, whether a segment or another resource, that segment metrics when included in search queries and when the described artifact is used in the FROM clause. It is only set for artifacts whose category is RESOURCE. */
-  segments?: Array<string>;
+  segments?: ReadonlyArray<string>;
   /** Output only. The category of the artifact. */
   category?:
     | "UNSPECIFIED"
@@ -3395,7 +3395,7 @@ export interface GoogleAdsSearchads360V0Resources__SearchAds360Field {
   /** Output only. Whether the field artifact is repeated. */
   isRepeated?: boolean;
   /** Output only. Values the artifact can assume if it is a field of type ENUM. This field is only set for artifacts of category SEGMENT or ATTRIBUTE. */
-  enumValues?: Array<string>;
+  enumValues?: ReadonlyArray<string>;
 }
 
 export const GoogleAdsSearchads360V0Resources__SearchAds360Field =
@@ -3455,7 +3455,7 @@ export interface GoogleAdsSearchads360V0Resources__CustomColumn {
   /** Output only. True when the custom column is referring to one or more attributes. */
   referencesAttributes?: boolean;
   /** Output only. The list of the referenced system columns of this custom column. For example, A custom column "sum of impressions and clicks" has referenced system columns of {"metrics.clicks", "metrics.impressions"}. */
-  referencedSystemColumns?: Array<string>;
+  referencedSystemColumns?: ReadonlyArray<string>;
 }
 
 export const GoogleAdsSearchads360V0Resources__CustomColumn =
@@ -3474,7 +3474,7 @@ export const GoogleAdsSearchads360V0Resources__CustomColumn =
 
 export interface GoogleAdsSearchads360V0Services__ListCustomColumnsResponse {
   /** The CustomColumns owned by the provided customer. */
-  customColumns?: Array<GoogleAdsSearchads360V0Resources__CustomColumn>;
+  customColumns?: ReadonlyArray<GoogleAdsSearchads360V0Resources__CustomColumn>;
 }
 
 export const GoogleAdsSearchads360V0Services__ListCustomColumnsResponse =
@@ -3635,7 +3635,7 @@ export interface GoogleAdsSearchads360V0Common__UnifiedCallAsset {
   /** The conversion action to attribute a call conversion to. If not set, the default conversion action is used. This field only has effect if call_conversion_reporting_state is set to USE_RESOURCE_LEVEL_CALL_CONVERSION_ACTION. */
   callConversionAction?: string;
   /** List of non-overlapping schedules specifying all time intervals for which the asset may serve. There can be a maximum of 6 schedules per day, 42 in total. */
-  adScheduleTargets?: Array<GoogleAdsSearchads360V0Common__AdScheduleInfo>;
+  adScheduleTargets?: ReadonlyArray<GoogleAdsSearchads360V0Common__AdScheduleInfo>;
   /** Whether to show the call extension in search user's time zone. Applies to Microsoft Ads. */
   useSearcherTimeZone?: boolean;
   /** Output only. Indicates whether this CallAsset should use its own call conversion setting, follow the account level setting, or disable call conversion. */
@@ -3943,7 +3943,7 @@ export interface GoogleAdsSearchads360V0Common__UnifiedPageFeedAsset {
   /** The webpage that advertisers want to target. */
   pageUrl?: string;
   /** Labels used to group the page urls. */
-  labels?: Array<string>;
+  labels?: ReadonlyArray<string>;
 }
 
 export const GoogleAdsSearchads360V0Common__UnifiedPageFeedAsset =
@@ -3962,7 +3962,7 @@ export interface GoogleAdsSearchads360V0Common__UnifiedSitelinkAsset {
   /** First line of the description for the sitelink. If set, the length should be between 1 and 35, inclusive, and description2 must also be set. */
   description1?: string;
   /** List of non-overlapping schedules specifying all time intervals for which the asset may serve. There can be a maximum of 6 schedules per day, 42 in total. */
-  adScheduleTargets?: Array<GoogleAdsSearchads360V0Common__AdScheduleInfo>;
+  adScheduleTargets?: ReadonlyArray<GoogleAdsSearchads360V0Common__AdScheduleInfo>;
   /** Whether to show the sitelink asset in search user's time zone. Applies to Microsoft Ads. */
   useSearcherTimeZone?: boolean;
   /** Last date of when this asset is effective and still serving, in yyyy-MM-dd format. */
@@ -4065,9 +4065,9 @@ export interface GoogleAdsSearchads360V0Resources__Asset {
   /** Output only. A unified sitelink asset. */
   sitelinkAsset?: GoogleAdsSearchads360V0Common__UnifiedSitelinkAsset;
   /** A list of possible final mobile URLs after all cross domain redirects. */
-  finalMobileUrls?: Array<string>;
+  finalMobileUrls?: ReadonlyArray<string>;
   /** A list of mappings to be used for substituting URL custom parameter tags in the tracking_url_template, final_urls, and/or final_mobile_urls. */
-  urlCustomParameters?: Array<GoogleAdsSearchads360V0Common__CustomParameter>;
+  urlCustomParameters?: ReadonlyArray<GoogleAdsSearchads360V0Common__CustomParameter>;
   /** Output only. A unified location asset. */
   locationAsset?: GoogleAdsSearchads360V0Common__UnifiedLocationAsset;
   /** Output only. The Engine Status for an asset. */
@@ -4083,7 +4083,7 @@ export interface GoogleAdsSearchads360V0Resources__Asset {
   /** Optional name of the asset. */
   name?: string;
   /** A list of possible final URLs after all cross domain redirects. */
-  finalUrls?: Array<string>;
+  finalUrls?: ReadonlyArray<string>;
   /** Output only. An image asset. */
   imageAsset?: GoogleAdsSearchads360V0Common__ImageAsset;
   /** Output only. A text asset. */
@@ -4244,7 +4244,7 @@ export interface GoogleAdsSearchads360V0Resources__ConversionCustomVariable {
     | "FLOODLIGHT"
     | (string & {});
   /** Output only. The IDs of custom columns that use this conversion custom variable. */
-  customColumnIds?: Array<string>;
+  customColumnIds?: ReadonlyArray<string>;
   /** Output only. Cardinality of the conversion custom variable. */
   cardinality?:
     | "UNSPECIFIED"
@@ -4426,7 +4426,7 @@ export interface GoogleAdsSearchads360V0Resources__CustomerClient {
   /** Output only. Currency code (for example, 'USD', 'EUR') for the client. Read only. */
   currencyCode?: string;
   /** Output only. The resource names of the labels owned by the requesting customer that are applied to the client customer. Label resource names have the form: `customers/{customer_id}/labels/{label_id}` */
-  appliedLabels?: Array<string>;
+  appliedLabels?: ReadonlyArray<string>;
 }
 
 export const GoogleAdsSearchads360V0Resources__CustomerClient =
@@ -4502,13 +4502,13 @@ export interface GoogleAdsSearchads360V0Resources__AdGroup {
   /** Output only. The timestamp when this ad_group was created. The timestamp is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss" format. */
   creationTime?: string;
   /** Output only. The resource names of labels attached to this ad group. */
-  labels?: Array<string>;
+  labels?: ReadonlyArray<string>;
   /** The name of the ad group. This field is required and should not be empty when creating new ad groups. It must contain fewer than 255 UTF-8 full-width characters. It must not contain any null (code point 0x0), NL line feed (code point 0xA) or carriage return (code point 0xD) characters. */
   name?: string;
   /** Setting for targeting related features. */
   targetingSetting?: GoogleAdsSearchads360V0Common__TargetingSetting;
   /** Output only. The resource names of effective labels attached to this ad group. An effective label is a label inherited or directly assigned to this ad group. */
-  effectiveLabels?: Array<string>;
+  effectiveLabels?: ReadonlyArray<string>;
   /** The ad rotation mode of the ad group. */
   adRotationMode?:
     | "UNSPECIFIED"
@@ -4595,9 +4595,9 @@ export const GoogleAdsSearchads360V0Common__ListingGroupInfo =
 
 export interface GoogleAdsSearchads360V0Resources__AdGroupCriterion {
   /** The list of mappings used to substitute custom parameter tags in a `tracking_url_template`, `final_urls`, or `mobile_final_urls`. */
-  urlCustomParameters?: Array<GoogleAdsSearchads360V0Common__CustomParameter>;
+  urlCustomParameters?: ReadonlyArray<GoogleAdsSearchads360V0Common__CustomParameter>;
   /** Output only. The resource names of effective labels attached to this ad group criterion. An effective label is a label inherited or directly assigned to this ad group criterion. */
-  effectiveLabels?: Array<string>;
+  effectiveLabels?: ReadonlyArray<string>;
   /** Immutable. Webpage */
   webpage?: GoogleAdsSearchads360V0Common__WebpageInfo;
   /** Output only. The timestamp when this ad group criterion was created. The timestamp is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss" format. */
@@ -4696,13 +4696,13 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupCriterion {
   /** Output only. The ID of the criterion. */
   criterionId?: string;
   /** The list of possible final mobile URLs after all cross-domain redirects. */
-  finalMobileUrls?: Array<string>;
+  finalMobileUrls?: ReadonlyArray<string>;
   /** Immutable. Whether to target (`false`) or exclude (`true`) the criterion. This field is immutable. To switch a criterion from positive to negative, remove then re-add it. */
   negative?: boolean;
   /** Output only. The resource names of labels attached to this ad group criterion. */
-  labels?: Array<string>;
+  labels?: ReadonlyArray<string>;
   /** The list of possible final URLs after all cross-domain redirects for the ad. */
-  finalUrls?: Array<string>;
+  finalUrls?: ReadonlyArray<string>;
   /** Output only. Information regarding the quality of the criterion. */
   qualityInfo?: GoogleAdsSearchads360V0Resources_AdGroupCriterion_QualityInfo;
   /** Immutable. User List. */
@@ -4813,7 +4813,7 @@ export interface GoogleAdsSearchads360V0Common__Metrics {
   /** The number of conversions. This only includes conversion actions which include_in_conversions_metric attribute is set to true. If you use conversion-based bidding, your bid strategies will optimize for these conversions. */
   conversions?: number;
   /** The types of payable and free interactions. */
-  interactionEventTypes?: Array<
+  interactionEventTypes?: ReadonlyArray<
     | "UNSPECIFIED"
     | "UNKNOWN"
     | "CLICK"
@@ -4945,7 +4945,7 @@ export interface GoogleAdsSearchads360V0Common__Metrics {
     | "ABOVE_AVERAGE"
     | (string & {});
   /** The raw event conversion metrics. */
-  rawEventConversionMetrics?: Array<GoogleAdsSearchads360V0Common__Value>;
+  rawEventConversionMetrics?: ReadonlyArray<GoogleAdsSearchads360V0Common__Value>;
   /** The value of all conversions divided by the number of all conversions. When this column is selected with date, the values in date column means the conversion date. Details for the by_conversion_date columns are available at https://support.google.com/sa360/answer/9250611. */
   valuePerAllConversionsByConversionDate?: number;
   /** Average cost-per-thousand impressions (CPM). This metric is a monetary value and returned in the customer's currency by default. See the metrics_currency parameter at https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause */
@@ -4963,7 +4963,7 @@ export interface GoogleAdsSearchads360V0Common__Metrics {
   /** Client account cross-sell gross profit is the profit you made from products sold as a result of advertising a different product, minus cost of goods sold (COGS). How it works: You report conversions with cart data for completed purchases on your website. If the ad that was interacted with before the purchase has an associated product (see Shopping Ads) then this product is considered the advertised product. Any product included in the purchase is a sold product. If these products don't match then this is considered cross-sell. Cross-sell gross profit is the revenue you made from cross-sell attributed to your ads minus the cost of the goods sold. Example: Someone clicked on a Shopping ad for a hat then bought the same hat and a shirt. The shirt is priced $20 and has a cost of goods sold value of $5. The cross-sell gross profit of this order is $15 = $20 - $5. This metric is only available if you report conversions with cart data. This metric is a monetary value and returned in the customer's currency by default. See the metrics_currency parameter at https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause */
   clientAccountCrossSellGrossProfitMicros?: string;
   /** The conversion custom metrics. */
-  conversionCustomMetrics?: Array<GoogleAdsSearchads360V0Common__Value>;
+  conversionCustomMetrics?: ReadonlyArray<GoogleAdsSearchads360V0Common__Value>;
   /** The number of other conversions (for example, posting a review or saving a location for a business) that occurred after people clicked an ad. This metric applies to feed items only. */
   allConversionsFromOtherEngagement?: number;
   /** The number estimating how often your ad wasn't the very first ad among the top ads in the search results due to a low budget. Note: Search budget lost absolute top impression share is reported in the range of 0 to 0.9. Any value above 0.9 is reported as 0.9001. */
@@ -5269,7 +5269,7 @@ export interface GoogleAdsSearchads360V0Common__Segments {
   /** Title of the product. */
   productTitle?: string;
   /** The conversion custom dimensions. */
-  conversionCustomDimensions?: Array<GoogleAdsSearchads360V0Common__Value>;
+  conversionCustomDimensions?: ReadonlyArray<GoogleAdsSearchads360V0Common__Value>;
   /** Conversion action name. */
   conversionActionName?: string;
   /** Month as represented by the date of the first day of a month. Formatted as yyyy-MM-dd. */
@@ -5377,7 +5377,7 @@ export interface GoogleAdsSearchads360V0Common__Segments {
   /** Resource name of the conversion action. */
   conversionAction?: string;
   /** The raw event conversion dimensions. */
-  rawEventConversionDimensions?: Array<GoogleAdsSearchads360V0Common__Value>;
+  rawEventConversionDimensions?: ReadonlyArray<GoogleAdsSearchads360V0Common__Value>;
   /** Type (level 5) of the product sold. */
   productSoldTypeL5?: string;
   /** Type (level 2) of the product. */
@@ -5504,7 +5504,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupAd {
     | "AD_GROUP_AD_AD_GROUP_PAUSED"
     | (string & {});
   /** Output only. The resource names of effective labels attached to this ad. An effective label is a label inherited or directly assigned to this ad. */
-  effectiveLabels?: Array<string>;
+  effectiveLabels?: ReadonlyArray<string>;
   /** Immutable. The ad. */
   ad?: GoogleAdsSearchads360V0Resources__Ad;
   /** Output only. ID of the ad in the external engine account. This field is for Search Ads 360 account only, for example, Yahoo Japan, Microsoft, Baidu etc. For non-Search Ads 360 entity, use "ad_group_ad.ad.id" instead. */
@@ -5512,7 +5512,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupAd {
   /** Output only. The timestamp when this ad_group_ad was created. The datetime is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss.ssssss" format. */
   creationTime?: string;
   /** Output only. The resource names of labels attached to this ad group ad. */
-  labels?: Array<string>;
+  labels?: ReadonlyArray<string>;
   /** Output only. The datetime when this ad group ad was last modified. The datetime is in the customer's time zone and in "yyyy-MM-dd HH:mm:ss.ssssss" format. */
   lastModifiedTime?: string;
 }
@@ -5730,7 +5730,7 @@ export interface GoogleAdsSearchads360V0Services__SearchAds360Row {
   /** The ad group ad label referenced in the query. */
   adGroupAdLabel?: GoogleAdsSearchads360V0Resources__AdGroupAdLabel;
   /** The custom columns. */
-  customColumns?: Array<GoogleAdsSearchads360V0Common__Value>;
+  customColumns?: ReadonlyArray<GoogleAdsSearchads360V0Common__Value>;
 }
 
 export const GoogleAdsSearchads360V0Services__SearchAds360Row =
@@ -5934,25 +5934,25 @@ export const GoogleAdsSearchads360V0Services__CustomColumnHeader =
 
 export interface GoogleAdsSearchads360V0Services__SearchSearchAds360Response {
   /** The list of rows that matched the query. */
-  results?: Array<GoogleAdsSearchads360V0Services__SearchAds360Row>;
+  results?: ReadonlyArray<GoogleAdsSearchads360V0Services__SearchAds360Row>;
   /** The headers of the conversion custom dimensions in the results. */
-  conversionCustomDimensionHeaders?: Array<GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader>;
+  conversionCustomDimensionHeaders?: ReadonlyArray<GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader>;
   /** The headers of the raw event conversion metrics in the results. */
-  rawEventConversionMetricHeaders?: Array<GoogleAdsSearchads360V0Services__RawEventConversionMetricHeader>;
+  rawEventConversionMetricHeaders?: ReadonlyArray<GoogleAdsSearchads360V0Services__RawEventConversionMetricHeader>;
   /** FieldMask that represents what fields were requested by the user. */
   fieldMask?: string;
   /** Total number of results that match the query ignoring the LIMIT clause. */
   totalResultsCount?: string;
   /** The headers of the raw event conversion dimensions in the results. */
-  rawEventConversionDimensionHeaders?: Array<GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeader>;
+  rawEventConversionDimensionHeaders?: ReadonlyArray<GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeader>;
   /** Pagination token used to retrieve the next page of results. Pass the content of this string as the `page_token` attribute of the next request. `next_page_token` is not returned for the last page. */
   nextPageToken?: string;
   /** Summary row that contains summary of metrics in results. Summary of metrics means aggregation of metrics across all results, here aggregation could be sum, average, rate, etc. */
   summaryRow?: GoogleAdsSearchads360V0Services__SearchAds360Row;
   /** The headers of the custom columns in the results. */
-  customColumnHeaders?: Array<GoogleAdsSearchads360V0Services__CustomColumnHeader>;
+  customColumnHeaders?: ReadonlyArray<GoogleAdsSearchads360V0Services__CustomColumnHeader>;
   /** The headers of the conversion custom metrics in the results. */
-  conversionCustomMetricHeaders?: Array<GoogleAdsSearchads360V0Services__ConversionCustomMetricHeader>;
+  conversionCustomMetricHeaders?: ReadonlyArray<GoogleAdsSearchads360V0Services__ConversionCustomMetricHeader>;
 }
 
 export const GoogleAdsSearchads360V0Services__SearchSearchAds360Response =
@@ -5995,7 +5995,7 @@ export const GoogleAdsSearchads360V0Services__SearchSearchAds360Response =
 
 export interface GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsResponse {
   /** The list of fields that matched the query. */
-  results?: Array<GoogleAdsSearchads360V0Resources__SearchAds360Field>;
+  results?: ReadonlyArray<GoogleAdsSearchads360V0Resources__SearchAds360Field>;
   /** Total number of results that match the query ignoring the LIMIT clause. */
   totalResultsCount?: string;
   /** Pagination token used to retrieve the next page of results. Pass the content of this string as the `page_token` attribute of the next request. `next_page_token` is not returned for the last page. */
@@ -6084,10 +6084,7 @@ export const GetSearchAds360FieldsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v0/searchAds360Fields/{searchAds360FieldsId}",
-    }),
+    T.Http({ method: "GET", path: "v0/{resourceName}" }),
     svc,
   ) as unknown as Schema.Schema<GetSearchAds360FieldsRequest>;
 
@@ -6146,7 +6143,7 @@ export const ListCustomersCustomColumnsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     customerId: Schema.String.pipe(T.HttpPath("customerId")),
   }).pipe(
-    T.Http({ method: "GET", path: "v0/customers/{customersId}/customColumns" }),
+    T.Http({ method: "GET", path: "v0/customers/{customerId}/customColumns" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersCustomColumnsRequest>;
 
@@ -6178,10 +6175,7 @@ export const GetCustomersCustomColumnsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v0/customers/{customersId}/customColumns/{customColumnsId}",
-    }),
+    T.Http({ method: "GET", path: "v0/{resourceName}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersCustomColumnsRequest>;
 
@@ -6220,7 +6214,7 @@ export const SearchCustomersSearchAds360Request =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v0/customers/{customersId}/searchAds360:search",
+      path: "v0/customers/{customerId}/searchAds360:search",
       hasBody: true,
     }),
     svc,

@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -59,15 +59,15 @@ export const GoogleTypeExpr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleIamV2betaDenyRule {
   /** The permissions that are explicitly denied by this rule. Each permission uses the format `{service_fqdn}/{resource}.{verb}`, where `{service_fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`. */
-  deniedPermissions?: Array<string>;
+  deniedPermissions?: ReadonlyArray<string>;
   /** The condition that determines whether this deny rule applies to a request. If the condition expression evaluates to `true`, then the deny rule is applied; otherwise, the deny rule is not applied. Each deny rule is evaluated independently. If this deny rule does not apply to a request, other deny rules might still apply. The condition can use CEL functions that evaluate [resource tags](https://cloud.google.com/iam/help/conditions/resource-tags). Other functions and operators are not supported. */
   denialCondition?: GoogleTypeExpr;
   /** The identities that are prevented from using one or more permissions on Google Cloud resources. This field can contain the following values: * `principal://goog/subject/{email_id}`: A specific Google Account. Includes Gmail, Cloud Identity, and Google Workspace user accounts. For example, `principal://goog/subject/alice@example.com`. * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`: A Google Cloud service account. For example, `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`. * `principalSet://goog/group/{group_id}`: A Google group. For example, `principalSet://goog/group/admins@example.com`. * `principalSet://goog/public:all`: A special identifier that represents any principal that is on the internet, even if they do not have a Google Account or are not logged in. * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the principals associated with the specified Google Workspace or Cloud Identity customer ID. For example, `principalSet://goog/cloudIdentityCustomerId/C01Abc35`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `principalSet://cloudresourcemanager.googleapis.com/[projects|folders|organizations]/{project_number|folder_number|org_number}/type/ServiceAccount`: All service accounts grouped under a resource (project, folder, or organization). * `principalSet://cloudresourcemanager.googleapis.com/[projects|folders|organizations]/{project_number|folder_number|org_number}/type/ServiceAgent`: All service agents grouped under a resource (project, folder, or organization). * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific Google Account that was deleted recently. For example, `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If the Google Account is recovered, this identifier reverts to the standard identifier for a Google Account. * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group that was deleted recently. For example, `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`. If the Google group is restored, this identifier reverts to the standard identifier for a Google group. * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`: A Google Cloud service account that was deleted recently. For example, `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`. If the service account is undeleted, this identifier reverts to the standard identifier for a service account. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  deniedPrincipals?: Array<string>;
+  deniedPrincipals?: ReadonlyArray<string>;
   /** The identities that are excluded from the deny rule, even if they are listed in the `denied_principals`. For example, you could add a Google group to the `denied_principals`, then exclude specific users who belong to that group. This field can contain the same values as the `denied_principals` field, excluding `principalSet://goog/public:all`, which represents all users on the internet. */
-  exceptionPrincipals?: Array<string>;
+  exceptionPrincipals?: ReadonlyArray<string>;
   /** Specifies the permissions that this rule excludes from the set of denied permissions given by `denied_permissions`. If a permission appears in `denied_permissions` _and_ in `exception_permissions` then it will _not_ be denied. The excluded permissions can be specified using the same syntax as `denied_permissions`. */
-  exceptionPermissions?: Array<string>;
+  exceptionPermissions?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV2betaDenyRule =
@@ -112,7 +112,7 @@ export interface GoogleIamV2betaPolicy {
   /** Output only. The time when the `Policy` was last updated. */
   updateTime?: string;
   /** A list of rules that specify the behavior of the `Policy`. All of the rules should be of the `kind` specified in the `Policy`. */
-  rules?: Array<GoogleIamV2betaPolicyRule>;
+  rules?: ReadonlyArray<GoogleIamV2betaPolicyRule>;
 }
 
 export const GoogleIamV2betaPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -186,7 +186,7 @@ export const GoogleIamV3alphaOperationMetadata =
 
 export interface GoogleIamV2betaListPoliciesResponse {
   /** Metadata for the policies that are attached to the resource. */
-  policies?: Array<GoogleIamV2betaPolicy>;
+  policies?: ReadonlyArray<GoogleIamV2betaPolicy>;
   /** A page token that you can use in a ListPoliciesRequest to retrieve the next page. If this field is omitted, there are no additional pages. */
   nextPageToken?: string;
 }
@@ -227,9 +227,9 @@ export const GoogleIamV3mainOperationMetadata =
 
 export interface GoogleIamAdminV1AuditDataPermissionDelta {
   /** Added permissions. */
-  addedPermissions?: Array<string>;
+  addedPermissions?: ReadonlyArray<string>;
   /** Removed permissions. */
-  removedPermissions?: Array<string>;
+  removedPermissions?: ReadonlyArray<string>;
 }
 
 export const GoogleIamAdminV1AuditDataPermissionDelta =
@@ -383,7 +383,7 @@ export const GoogleIamV1BindingDelta =
 
 export interface GoogleIamV1PolicyDelta {
   /** The delta for Bindings between two policies. */
-  bindingDeltas?: Array<GoogleIamV1BindingDelta>;
+  bindingDeltas?: ReadonlyArray<GoogleIamV1BindingDelta>;
 }
 
 export const GoogleIamV1PolicyDelta = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -417,10 +417,7 @@ export const DeletePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "v2beta/policies/{policiesId}/{policiesId1}/{policiesId2}",
-  }),
+  T.Http({ method: "DELETE", path: "v2beta/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeletePoliciesRequest>;
 
@@ -450,10 +447,7 @@ export interface GetPoliciesRequest {
 export const GetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "v2beta/policies/{policiesId}/{policiesId1}/{policiesId2}",
-  }),
+  T.Http({ method: "GET", path: "v2beta/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetPoliciesRequest>;
 
@@ -490,11 +484,7 @@ export const CreatePolicyPoliciesRequest =
     policyId: Schema.optional(Schema.String).pipe(T.HttpQuery("policyId")),
     body: Schema.optional(GoogleIamV2betaPolicy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2beta/policies/{policiesId}/{policiesId1}",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2beta/{parent}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreatePolicyPoliciesRequest>;
 
@@ -527,11 +517,7 @@ export const UpdatePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(GoogleIamV2betaPolicy).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "PUT",
-    path: "v2beta/policies/{policiesId}/{policiesId1}/{policiesId2}",
-    hasBody: true,
-  }),
+  T.Http({ method: "PUT", path: "v2beta/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<UpdatePoliciesRequest>;
 
@@ -568,10 +554,7 @@ export const ListPoliciesPoliciesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta/policies/{policiesId}/{policiesId1}",
-    }),
+    T.Http({ method: "GET", path: "v2beta/{parent}" }),
     svc,
   ) as unknown as Schema.Schema<ListPoliciesPoliciesRequest>;
 
@@ -606,10 +589,7 @@ export const GetPoliciesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2beta/policies/{policiesId}/{policiesId1}/{policiesId2}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v2beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPoliciesOperationsRequest>;
 

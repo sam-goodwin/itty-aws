@@ -28,7 +28,7 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -157,7 +157,7 @@ export interface GoogleIamV1Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: GoogleTypeExpr;
 }
@@ -177,7 +177,7 @@ export interface GoogleIamV1AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1AuditLogConfig =
@@ -190,7 +190,7 @@ export interface GoogleIamV1AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<GoogleIamV1AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<GoogleIamV1AuditLogConfig>;
 }
 
 export const GoogleIamV1AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -204,9 +204,9 @@ export interface GoogleIamV1Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<GoogleIamV1Binding>;
+  bindings?: ReadonlyArray<GoogleIamV1Binding>;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<GoogleIamV1AuditConfig>;
+  auditConfigs?: ReadonlyArray<GoogleIamV1AuditConfig>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
@@ -230,7 +230,7 @@ export interface GoogleCloudPolicysimulatorV1ExplainedPolicy {
   /** The full resource name that identifies the resource. For example, `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`. If the user who created the Replay does not have access to the policy, this field is omitted. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. */
   fullResourceName?: string;
   /** Details about how each binding in the policy affects the principal's ability, or inability, to use the permission for the resource. If the user who created the Replay does not have access to the policy, this field is omitted. */
-  bindingExplanations?: Array<GoogleCloudPolicysimulatorV1BindingExplanation>;
+  bindingExplanations?: ReadonlyArray<GoogleCloudPolicysimulatorV1BindingExplanation>;
   /** The IAM policy attached to the resource. If the user who created the Replay does not have access to the policy, this field is empty. */
   policy?: GoogleIamV1Policy;
   /** The relevance of this policy to the overall determination in the TroubleshootIamPolicyResponse. If the user who created the Replay does not have access to the policy, this field is omitted. */
@@ -262,9 +262,9 @@ export interface GoogleCloudPolicysimulatorV1ExplainedAccess {
     | "UNKNOWN_INFO_DENIED"
     | (string & {});
   /** If the AccessState is `UNKNOWN`, this field contains a list of errors explaining why the result is `UNKNOWN`. If the `AccessState` is `GRANTED` or `NOT_GRANTED`, this field is omitted. */
-  errors?: Array<GoogleRpcStatus>;
+  errors?: ReadonlyArray<GoogleRpcStatus>;
   /** If the AccessState is `UNKNOWN`, this field contains the policies that led to that result. If the `AccessState` is `GRANTED` or `NOT_GRANTED`, this field is omitted. */
-  policies?: Array<GoogleCloudPolicysimulatorV1ExplainedPolicy>;
+  policies?: ReadonlyArray<GoogleCloudPolicysimulatorV1ExplainedPolicy>;
 }
 
 export const GoogleCloudPolicysimulatorV1ExplainedAccess =
@@ -359,7 +359,7 @@ export interface GoogleCloudOrgpolicyV2CustomConstraint {
   /** Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 71 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/custom.` is not counted. */
   name?: string;
   /** All the operations being applied for this constraint. */
-  methodTypes?: Array<
+  methodTypes?: ReadonlyArray<
     | "METHOD_TYPE_UNSPECIFIED"
     | "CREATE"
     | "UPDATE"
@@ -373,7 +373,7 @@ export interface GoogleCloudOrgpolicyV2CustomConstraint {
   /** Detailed information about this custom policy constraint. The max length of the description is 2000 characters. */
   description?: string;
   /** Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`. */
-  resourceTypes?: Array<string>;
+  resourceTypes?: ReadonlyArray<string>;
   /** Allow or deny type. */
   actionType?: "ACTION_TYPE_UNSPECIFIED" | "ALLOW" | "DENY" | (string & {});
 }
@@ -410,7 +410,7 @@ export interface GoogleCloudPolicysimulatorV1ResourceContext {
   /** The asset type of the resource as defined by CAIS. Example: `compute.googleapis.com/Firewall` See [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information. */
   assetType?: string;
   /** The ancestry path of the resource in Google Cloud [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy), represented as a list of relative resource names. An ancestry path starts with the closest ancestor in the hierarchy and ends at root. If the resource is a project, folder, or organization, the ancestry path starts from the resource itself. Example: `["projects/123456789", "folders/5432", "organizations/1234"]` */
-  ancestors?: Array<string>;
+  ancestors?: ReadonlyArray<string>;
   /** The full name of the resource. Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1` See [Resource names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information. */
   resource?: string;
 }
@@ -424,7 +424,7 @@ export const GoogleCloudPolicysimulatorV1ResourceContext =
 
 export interface GoogleCloudPolicysimulatorV1ListReplayResultsResponse {
   /** The results of running a Replay. */
-  replayResults?: Array<GoogleCloudPolicysimulatorV1ReplayResult>;
+  replayResults?: ReadonlyArray<GoogleCloudPolicysimulatorV1ReplayResult>;
   /** A token that you can use to retrieve the next page of ReplayResult objects. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -503,9 +503,9 @@ export const GoogleCloudPolicysimulatorV1betaCreateOrgPolicyViolationsPreviewOpe
 
 export interface GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
   /** List of values allowed at this resource. */
-  allowedValues?: Array<string>;
+  allowedValues?: ReadonlyArray<string>;
   /** List of values denied at this resource. */
-  deniedValues?: Array<string>;
+  deniedValues?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues =
@@ -551,7 +551,7 @@ export interface GoogleCloudOrgpolicyV2PolicySpec {
   /** Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy. */
   updateTime?: string;
   /** In policies for boolean constraints, the following requirements apply: - There must be exactly one policy rule where a condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence. */
-  rules?: Array<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>;
+  rules?: ReadonlyArray<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>;
   /** Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies that configure list constraints. */
   inheritFromParent?: boolean;
 }
@@ -619,9 +619,9 @@ export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay =
 
 export interface GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay {
   /** Optional. The OrgPolicy changes to preview violations for. Any existing OrgPolicies with the same name will be overridden in the simulation. That is, violations will be determined as if all policies in the overlay were created or updated. */
-  policies?: Array<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay>;
+  policies?: ReadonlyArray<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay>;
   /** Optional. The OrgPolicy CustomConstraint changes to preview violations for. Any existing CustomConstraints with the same name will be overridden in the simulation. That is, violations will be determined as if all custom constraints in the overlay were instantiated. Only a single custom_constraint is supported in the overlay at a time. For evaluating multiple constraints, multiple `GenerateOrgPolicyViolationsPreview` requests are made, where each request evaluates a single constraint. */
-  customConstraints?: Array<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay>;
+  customConstraints?: ReadonlyArray<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay>;
 }
 
 export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay =
@@ -664,11 +664,11 @@ export const GoogleLongrunningOperation =
 
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleLongrunningListOperationsResponse =
@@ -763,7 +763,7 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview {
   /** Output only. A summary of the state of all resources scanned for compliance with the changed OrgPolicy. */
   resourceCounts?: GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts;
   /** Output only. The names of the constraints against which all `OrgPolicyViolations` were evaluated. If `OrgPolicyOverlay` only contains `PolicyOverlay` then it contains the name of the configured custom constraint, applicable to the specified policies. Otherwise it contains the name of the constraint specified in `CustomConstraintOverlay`. Format: `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` */
-  customConstraints?: Array<string>;
+  customConstraints?: ReadonlyArray<string>;
   /** Output only. Time when this `OrgPolicyViolationsPreview` was created. */
   createTime?: string;
 }
@@ -806,7 +806,7 @@ export interface GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse {
   /** A token that you can use to retrieve the next page of results. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The list of OrgPolicyViolations */
-  orgPolicyViolations?: Array<GoogleCloudPolicysimulatorV1OrgPolicyViolation>;
+  orgPolicyViolations?: ReadonlyArray<GoogleCloudPolicysimulatorV1OrgPolicyViolation>;
 }
 
 export const GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse =
@@ -888,9 +888,9 @@ export const GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay =
 
 export interface GoogleCloudPolicysimulatorV1OrgPolicyOverlay {
   /** Optional. The OrgPolicy changes to preview violations for. Any existing OrgPolicies with the same name will be overridden in the simulation. That is, violations will be determined as if all policies in the overlay were created or updated. */
-  policies?: Array<GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay>;
+  policies?: ReadonlyArray<GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay>;
   /** Optional. The OrgPolicy CustomConstraint changes to preview violations for. Any existing CustomConstraints with the same name will be overridden in the simulation. That is, violations will be determined as if all custom constraints in the overlay were instantiated. Only a single custom_constraint is supported in the overlay at a time. For evaluating multiple constraints, multiple `GenerateOrgPolicyViolationsPreview` requests are made, where each request evaluates a single constraint. */
-  customConstraints?: Array<GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay>;
+  customConstraints?: ReadonlyArray<GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay>;
 }
 
 export const GoogleCloudPolicysimulatorV1OrgPolicyOverlay =
@@ -923,7 +923,7 @@ export interface GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview {
   /** Output only. A summary of the state of all resources scanned for compliance with the changed OrgPolicy. */
   resourceCounts?: GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts;
   /** Output only. The names of the constraints against which all `OrgPolicyViolations` were evaluated. If `OrgPolicyOverlay` only contains `PolicyOverlay` then it contains the name of the configured custom constraint, applicable to the specified policies. Otherwise it contains the name of the constraint specified in `CustomConstraintOverlay`. Format: `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` */
-  customConstraints?: Array<string>;
+  customConstraints?: ReadonlyArray<string>;
   /** Output only. Time when this `OrgPolicyViolationsPreview` was created. */
   createTime?: string;
 }
@@ -945,7 +945,7 @@ export const GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview =
 
 export interface GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse {
   /** The list of OrgPolicyViolationsPreview */
-  orgPolicyViolationsPreviews?: Array<GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview>;
+  orgPolicyViolationsPreviews?: ReadonlyArray<GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview>;
   /** A token that you can use to retrieve the next page of results. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1008,10 +1008,7 @@ export const GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/locations/{locationsId}/orgPolicyViolationsPreviews/{orgPolicyViolationsPreviewsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
 
@@ -1044,10 +1041,7 @@ export const GetFoldersLocationsAccessPolicySimulationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/locations/{locationsId}/accessPolicySimulations/{accessPolicySimulationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersLocationsAccessPolicySimulationsOperationsRequest>;
 
@@ -1080,10 +1074,7 @@ export const GetFoldersLocationsReplaysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/locations/{locationsId}/replays/{replaysId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersLocationsReplaysRequest>;
 
@@ -1120,11 +1111,7 @@ export const CreateFoldersLocationsReplaysRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/folders/{foldersId}/locations/{locationsId}/replays",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/replays", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateFoldersLocationsReplaysRequest>;
 
@@ -1169,10 +1156,7 @@ export const ListFoldersLocationsReplaysOperationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/locations/{locationsId}/replays/{replaysId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersLocationsReplaysOperationsRequest>;
 
@@ -1208,10 +1192,7 @@ export const GetFoldersLocationsReplaysOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/locations/{locationsId}/replays/{replaysId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersLocationsReplaysOperationsRequest>;
 
@@ -1249,10 +1230,7 @@ export const ListFoldersLocationsReplaysResultsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/folders/{foldersId}/locations/{locationsId}/replays/{replaysId}/results",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/results" }),
     svc,
   ) as unknown as Schema.Schema<ListFoldersLocationsReplaysResultsRequest>;
 
@@ -1301,7 +1279,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/operations" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<ListOperationsRequest>;
 
@@ -1335,7 +1313,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/operations/{operationsId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -1366,10 +1344,7 @@ export const GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/orgPolicyViolationsPreviews/{orgPolicyViolationsPreviewsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
 
@@ -1402,10 +1377,7 @@ export const GetProjectsLocationsAccessPolicySimulationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/accessPolicySimulations/{accessPolicySimulationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAccessPolicySimulationsOperationsRequest>;
 
@@ -1438,10 +1410,7 @@ export const GetProjectsLocationsReplaysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/replays/{replaysId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsReplaysRequest>;
 
@@ -1478,11 +1447,7 @@ export const CreateProjectsLocationsReplaysRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/replays",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/replays", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsReplaysRequest>;
 
@@ -1527,10 +1492,7 @@ export const ListProjectsLocationsReplaysOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/replays/{replaysId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsReplaysOperationsRequest>;
 
@@ -1566,10 +1528,7 @@ export const GetProjectsLocationsReplaysOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/replays/{replaysId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsReplaysOperationsRequest>;
 
@@ -1607,10 +1566,7 @@ export const ListProjectsLocationsReplaysResultsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/replays/{replaysId}/results",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/results" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsReplaysResultsRequest>;
 
@@ -1646,10 +1602,7 @@ export const GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/accessPolicySimulations/{accessPolicySimulationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest>;
 
@@ -1694,7 +1647,7 @@ export const CreateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/orgPolicyViolationsPreviews",
+      path: "v1/{parent}/orgPolicyViolationsPreviews",
       hasBody: true,
     }),
     svc,
@@ -1735,10 +1688,7 @@ export const ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/orgPolicyViolationsPreviews",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/orgPolicyViolationsPreviews" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest>;
 
@@ -1775,10 +1725,7 @@ export const GetOrganizationsLocationsOrgPolicyViolationsPreviewsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/orgPolicyViolationsPreviews/{orgPolicyViolationsPreviewsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsOrgPolicyViolationsPreviewsRequest>;
 
@@ -1811,10 +1758,7 @@ export const GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsReque
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/orgPolicyViolationsPreviews/{orgPolicyViolationsPreviewsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest>;
 
@@ -1854,10 +1798,7 @@ export const ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViola
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/orgPolicyViolationsPreviews/{orgPolicyViolationsPreviewsId}/orgPolicyViolations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/orgPolicyViolations" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsRequest>;
 
@@ -1896,10 +1837,7 @@ export const GetOrganizationsLocationsReplaysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/replays/{replaysId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsReplaysRequest>;
 
@@ -1936,11 +1874,7 @@ export const CreateOrganizationsLocationsReplaysRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/replays",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/replays", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateOrganizationsLocationsReplaysRequest>;
 
@@ -1986,10 +1920,7 @@ export const ListOrganizationsLocationsReplaysOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/replays/{replaysId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsReplaysOperationsRequest>;
 
@@ -2025,10 +1956,7 @@ export const GetOrganizationsLocationsReplaysOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/replays/{replaysId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsReplaysOperationsRequest>;
 
@@ -2066,10 +1994,7 @@ export const ListOrganizationsLocationsReplaysResultsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/replays/{replaysId}/results",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/results" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsReplaysResultsRequest>;
 

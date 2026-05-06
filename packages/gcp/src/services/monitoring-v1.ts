@@ -38,7 +38,7 @@ export interface AggregationFunction {
   /** Required. The type of aggregation function, must be one of the following: "none" - no function. "percentile" - APPROX_QUANTILES() - 1 parameter numeric value "average" - AVG() "count" - COUNT() "count-distinct" - COUNT(DISTINCT) "count-distinct-approx" - APPROX_COUNT_DISTINCT() "max" - MAX() "min" - MIN() "sum" - SUM() */
   type?: string;
   /** Optional. Parameters applied to the aggregation function. Only used for functions that require them. */
-  parameters?: Array<Parameter>;
+  parameters?: ReadonlyArray<Parameter>;
 }
 
 export const AggregationFunction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -201,7 +201,7 @@ export interface Aggregation {
     | "REDUCE_PERCENTILE_05"
     | (string & {});
   /** The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored. */
-  groupByFields?: Array<string>;
+  groupByFields?: ReadonlyArray<string>;
 }
 
 export const Aggregation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -333,11 +333,11 @@ export interface PieChartDataSet {
   /** Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals. */
   minAlignmentPeriod?: string;
   /** A measure is a measured value of a property in your data. For example, rainfall in inches, number of units sold, revenue gained, etc. */
-  measures?: Array<Measure>;
+  measures?: ReadonlyArray<Measure>;
   /** Required. The query for the PieChart. See, google.monitoring.dashboard.v1.TimeSeriesQuery. */
   timeSeriesQuery?: TimeSeriesQuery;
   /** A dimension is a structured label, class, or category for a set of measurements in your data. */
-  dimensions?: Array<Dimension>;
+  dimensions?: ReadonlyArray<Dimension>;
 }
 
 export const PieChartDataSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -354,7 +354,7 @@ export interface PieChart {
   /** Optional. Indicates whether or not the pie chart should show slices' labels */
   showLabels?: boolean;
   /** Required. The queries for the chart's data. */
-  dataSets?: Array<PieChartDataSet>;
+  dataSets?: ReadonlyArray<PieChartDataSet>;
 }
 
 export const PieChart = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -538,9 +538,9 @@ export const Breakdown = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TreemapDataSet {
   /** Optional. A collection of measures. A measure is a measured value of a property in your data. For example, rainfall in inches, number of units sold, revenue gained, etc. */
-  measures?: Array<Measure>;
+  measures?: ReadonlyArray<Measure>;
   /** Optional. The collection of breakdowns to be applied to the dataset. A breakdown is a way to slice the data. For example, you can break down the data by region. */
-  breakdowns?: Array<Breakdown>;
+  breakdowns?: ReadonlyArray<Breakdown>;
   /** Required. The query that fetches the relevant data. See google.monitoring.dashboard.v1.TimeSeriesQuery */
   timeSeriesQuery?: TimeSeriesQuery;
 }
@@ -553,9 +553,9 @@ export const TreemapDataSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Treemap {
   /** Required. Ordered labels representing the hierarchical treemap structure. */
-  treemapHierarchy?: Array<string>;
+  treemapHierarchy?: ReadonlyArray<string>;
   /** Required. The collection of datasets used to construct and populate the treemap. For the rendered treemap rectangles: Color is determined by the aggregated value for each grouping. Size is proportional to the count of time series aggregated within that rectangle's segment. */
-  dataSets?: Array<TreemapDataSet>;
+  dataSets?: ReadonlyArray<TreemapDataSet>;
 }
 
 export const Treemap = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -598,7 +598,7 @@ export const Threshold = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DataSet {
   /** Optional. A collection of sort options, affects the order of the data and legend. */
-  sort?: Array<ColumnSortingOptions>;
+  sort?: ReadonlyArray<ColumnSortingOptions>;
   /** Required. Fields for querying time series data from the Stackdriver metrics API. */
   timeSeriesQuery?: TimeSeriesQuery;
   /** A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value. */
@@ -608,9 +608,9 @@ export interface DataSet {
   /** Optional. The target axis to use for plotting the metric. */
   targetAxis?: "TARGET_AXIS_UNSPECIFIED" | "Y1" | "Y2" | (string & {});
   /** Optional. A collection of measures. */
-  measures?: Array<Measure>;
+  measures?: ReadonlyArray<Measure>;
   /** Optional. The collection of breakdowns to be applied to the dataset. */
-  breakdowns?: Array<Breakdown>;
+  breakdowns?: ReadonlyArray<Breakdown>;
   /** How this data should be plotted on the chart. */
   plotType?:
     | "PLOT_TYPE_UNSPECIFIED"
@@ -620,7 +620,7 @@ export interface DataSet {
     | "HEATMAP"
     | (string & {});
   /** Optional. A collection of dimension columns. */
-  dimensions?: Array<Dimension>;
+  dimensions?: ReadonlyArray<Dimension>;
 }
 
 export const DataSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -651,9 +651,9 @@ export interface XyChart {
   /** The properties applied to the y2-axis. */
   y2Axis?: Axis;
   /** Threshold lines drawn horizontally across the chart. */
-  thresholds?: Array<Threshold>;
+  thresholds?: ReadonlyArray<Threshold>;
   /** Required. The data displayed in this chart. */
-  dataSets?: Array<DataSet>;
+  dataSets?: ReadonlyArray<DataSet>;
   /** The properties applied to the x-axis. */
   xAxis?: Axis;
   /** The properties applied to the y-axis. */
@@ -685,11 +685,11 @@ export const CollapsibleGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ErrorReportingPanel {
   /** An identifier of the service, such as the name of the executable, job, or Google App Engine service name. This field is expected to have a low number of values that are relatively stable over time, as opposed to version, which can be changed whenever new code is deployed.Contains the service name for error reports extracted from Google App Engine logs or default if the App Engine default service is used. */
-  services?: Array<string>;
+  services?: ReadonlyArray<string>;
   /** Represents the source code version that the developer provided, which could represent a version label or a Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the version of the app. */
-  versions?: Array<string>;
+  versions?: ReadonlyArray<string>;
   /** The resource name of the Google Cloud Platform project. Written as projects/{projectID} or projects/{projectNumber}, where {projectID} and {projectNumber} can be found in the Google Cloud console (https://support.google.com/cloud/answer/6158840).Examples: projects/my-project-123, projects/5551234. */
-  projectNames?: Array<string>;
+  projectNames?: ReadonlyArray<string>;
 }
 
 export const ErrorReportingPanel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -700,7 +700,7 @@ export const ErrorReportingPanel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TableDisplayOptions {
   /** Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings */
-  shownColumns?: Array<string>;
+  shownColumns?: ReadonlyArray<string>;
 }
 
 export const TableDisplayOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -734,7 +734,7 @@ export interface ColumnSettings {
     | "RIGHT"
     | (string & {});
   /** Optional. The thresholds used to determine how the table cell should be rendered given the time series' current value. */
-  thresholds?: Array<Threshold>;
+  thresholds?: ReadonlyArray<Threshold>;
   /** Required. The id of the column. */
   column?: string;
   /** Required. Whether the column should be visible on page load. */
@@ -753,9 +753,9 @@ export const ColumnSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TimeSeriesTable {
   /** Required. The data displayed in this table. */
-  dataSets?: Array<TableDataSet>;
+  dataSets?: ReadonlyArray<TableDataSet>;
   /** Optional. The list of the persistent column settings for the table. */
-  columnSettings?: Array<ColumnSettings>;
+  columnSettings?: ReadonlyArray<ColumnSettings>;
   /** Optional. Store rendering strategy */
   metricVisualization?:
     | "METRIC_VISUALIZATION_UNSPECIFIED"
@@ -774,7 +774,7 @@ export interface LogsPanel {
   /** A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries. */
   filter?: string;
   /** The names of logging resources to collect logs for. Currently projects and storage views are supported. If empty, the widget will default to the host project. */
-  resourceNames?: Array<string>;
+  resourceNames?: ReadonlyArray<string>;
 }
 
 export const LogsPanel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -796,9 +796,9 @@ export const MonitoredResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IncidentList {
   /** Optional. A list of alert policy names to filter the incident list by. Don't include the project ID prefix in the policy name. For example, use alertPolicies/utilization. */
-  policyNames?: Array<string>;
+  policyNames?: ReadonlyArray<string>;
   /** Optional. The monitored resource for which incidents are listed. The resource doesn't need to be fully specified. That is, you can specify the resource type but not the values of the resource labels. The resource type and labels are used for filtering. */
-  monitoredResources?: Array<MonitoredResource>;
+  monitoredResources?: ReadonlyArray<MonitoredResource>;
 }
 
 export const IncidentList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -840,17 +840,17 @@ export interface Scorecard {
   /** Will cause the scorecard to show a spark chart. */
   sparkChartView?: SparkChartView;
   /** Optional. A dimension is a structured label, class, or category for a set of measurements in your data. */
-  dimensions?: Array<Dimension>;
+  dimensions?: ReadonlyArray<Dimension>;
   /** Required. Fields for querying time series data from the Stackdriver metrics API. */
   timeSeriesQuery?: TimeSeriesQuery;
   /** Will cause the Scorecard to show only the value, with no indicator to its value relative to its thresholds. */
   blankView?: Empty;
   /** Optional. A measure is a measured value of a property in your data. For example, rainfall in inches, number of units sold, revenue gained, etc. */
-  measures?: Array<Measure>;
+  measures?: ReadonlyArray<Measure>;
   /** Optional. The collection of breakdowns to be applied to the dataset. A breakdown is a way to slice the data. For example, you can break down the data by region. */
-  breakdowns?: Array<Breakdown>;
+  breakdowns?: ReadonlyArray<Breakdown>;
   /** The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', } Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state. */
-  thresholds?: Array<Threshold>;
+  thresholds?: ReadonlyArray<Threshold>;
 }
 
 export const Scorecard = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -928,7 +928,7 @@ export interface EventAnnotation {
   /** string filtering the events - event dependant. Example values: "resource.labels.pod_name = 'pod-1'" "protoPayload.authenticationInfo.principalEmail='user@example.com'" */
   filter?: string;
   /** Per annotation level override for the names of logging resources to search for events. Currently only projects are supported. If both this field and the per annotation field is empty, it will default to the host project. Limit: 50 projects. For example: “projects/another-project-id” */
-  resourceNames?: Array<string>;
+  resourceNames?: ReadonlyArray<string>;
   /** Whether or not to show the events on the dashboard by default */
   enabled?: boolean;
   /** The type of event to display. */
@@ -973,9 +973,9 @@ export const EventAnnotation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DashboardAnnotations {
   /** Dashboard level defaults for names of logging resources to search for events. Currently only projects are supported. Each individual EventAnnotation may have its own overrides. If both this field and the per annotation field is empty, then the scoping project is used. Limit: 50 projects. For example: “projects/some-project-id” */
-  defaultResourceNames?: Array<string>;
+  defaultResourceNames?: ReadonlyArray<string>;
   /** List of annotation configurations for this dashboard. Each entry specifies one event type. */
-  eventAnnotations?: Array<EventAnnotation>;
+  eventAnnotations?: ReadonlyArray<EventAnnotation>;
 }
 
 export const DashboardAnnotations = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1004,7 +1004,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1070,7 +1070,7 @@ export interface Column {
   /** The relative weight of this column. The column weight is used to adjust the width of columns on the screen (relative to peers). Greater the weight, greater the width of the column on the screen. If omitted, a value of 1 is used while rendering. */
   weight?: string;
   /** The display widgets arranged vertically in this column. */
-  widgets?: Array<Widget>;
+  widgets?: ReadonlyArray<Widget>;
 }
 
 export const Column = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1082,7 +1082,7 @@ export interface Row {
   /** The relative weight of this row. The row weight is used to adjust the height of rows on the screen (relative to peers). Greater the weight, greater the height of the row on the screen. If omitted, a value of 1 is used while rendering. */
   weight?: string;
   /** The display widgets arranged horizontally in this row. */
-  widgets?: Array<Widget>;
+  widgets?: ReadonlyArray<Widget>;
 }
 
 export const Row = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1113,7 +1113,7 @@ export const QueryRangeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StringArray {
   /** The values of the array */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const StringArray = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1166,7 +1166,7 @@ export interface GridLayout {
   /** The number of columns into which the view's width is divided. If omitted or set to zero, a system default will be used while rendering. */
   columns?: string;
   /** The informational elements that are arranged into the columns row-first. */
-  widgets?: Array<Widget>;
+  widgets?: ReadonlyArray<Widget>;
 }
 
 export const GridLayout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1176,7 +1176,7 @@ export const GridLayout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RowLayout {
   /** The rows of content to display. */
-  rows?: Array<Row>;
+  rows?: ReadonlyArray<Row>;
 }
 
 export const RowLayout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1185,7 +1185,7 @@ export const RowLayout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ColumnLayout {
   /** The columns of content to display. */
-  columns?: Array<Column>;
+  columns?: ReadonlyArray<Column>;
 }
 
 export const ColumnLayout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1196,7 +1196,7 @@ export interface MosaicLayout {
   /** The number of columns in the mosaic grid. The number of columns must be between 1 and 48, inclusive. */
   columns?: number;
   /** The tiles to display. */
-  tiles?: Array<Tile>;
+  tiles?: ReadonlyArray<Tile>;
 }
 
 export const MosaicLayout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1210,7 +1210,7 @@ export interface Dashboard {
   /** Required. The mutable, human-readable name. */
   displayName?: string;
   /** Filters to reduce the amount of data charted based on the filter criteria. */
-  dashboardFilters?: Array<DashboardFilter>;
+  dashboardFilters?: ReadonlyArray<DashboardFilter>;
   /** Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles. */
   gridLayout?: GridLayout;
   /** Labels applied to the dashboard */
@@ -1271,7 +1271,7 @@ export interface Field {
   /** Whether to use alternative packed wire representation. */
   packed?: boolean;
   /** The protocol buffer options. */
-  options?: Array<Option>;
+  options?: ReadonlyArray<Option>;
   /** The field type. */
   kind?:
     | "TYPE_UNKNOWN"
@@ -1324,13 +1324,13 @@ export const Field = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Type {
   /** The protocol buffer options. */
-  options?: Array<Option>;
+  options?: ReadonlyArray<Option>;
   /** The source context. */
   sourceContext?: SourceContext;
   /** The list of fields. */
-  fields?: Array<Field>;
+  fields?: ReadonlyArray<Field>;
   /** The list of types appearing in oneof definitions in this type. */
-  oneofs?: Array<string>;
+  oneofs?: ReadonlyArray<string>;
   /** The source syntax. */
   syntax?:
     | "SYNTAX_PROTO2"
@@ -1370,7 +1370,7 @@ export const QueryInstantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDashboardsResponse {
   /** The list of requested dashboards. */
-  dashboards?: Array<Dashboard>;
+  dashboards?: ReadonlyArray<Dashboard>;
   /** If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as page_token in the next call to this method. */
   nextPageToken?: string;
 }
@@ -1401,7 +1401,7 @@ export interface MetricsScope {
   /** Output only. The time when this Metrics Scope record was last updated. */
   updateTime?: string;
   /** Output only. The list of projects monitored by this Metrics Scope. */
-  monitoredProjects?: Array<MonitoredProject>;
+  monitoredProjects?: ReadonlyArray<MonitoredProject>;
   /** Immutable. The resource name of the Monitoring Metrics Scope. On input, the resource name can be specified with the scoping project ID or number. On output, the resource name is specified with the scoping project number. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER} */
   name?: string;
   /** Output only. The time when this Metrics Scope was created. */
@@ -1444,7 +1444,7 @@ export const QuerySeriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListMetricsScopesByMonitoredProjectResponse {
   /** A set of all metrics scopes that the specified monitored project has been added to. */
-  metricsScopes?: Array<MetricsScope>;
+  metricsScopes?: ReadonlyArray<MetricsScope>;
 }
 
 export const ListMetricsScopesByMonitoredProjectResponse =
@@ -1467,7 +1467,7 @@ export interface HttpBody {
   /** The HTTP request/response body as raw binary. */
   data?: string;
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
-  extensions?: Array<Record<string, unknown>>;
+  extensions?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1490,7 +1490,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/operations/{operationsId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -1520,10 +1520,7 @@ export const GetLocationsGlobalMetricsScopesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/locations/global/metricsScopes/{metricsScopesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetLocationsGlobalMetricsScopesRequest>;
 
@@ -1596,11 +1593,7 @@ export const CreateLocationsGlobalMetricsScopesProjectsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(MonitoredProject).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/locations/global/metricsScopes/{metricsScopesId}/projects",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/projects", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateLocationsGlobalMetricsScopesProjectsRequest>;
 
@@ -1631,10 +1624,7 @@ export const DeleteLocationsGlobalMetricsScopesProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/locations/global/metricsScopes/{metricsScopesId}/projects/{projectsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteLocationsGlobalMetricsScopesProjectsRequest>;
 
@@ -1671,7 +1661,7 @@ export const ListProjectsDashboardsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/dashboards" }),
+    T.Http({ method: "GET", path: "v1/{parent}/dashboards" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDashboardsRequest>;
 
@@ -1706,10 +1696,7 @@ export const GetProjectsDashboardsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/dashboards/{dashboardsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDashboardsRequest>;
 
@@ -1748,11 +1735,7 @@ export const PatchProjectsDashboardsRequest =
     ),
     body: Schema.optional(Dashboard).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/dashboards/{dashboardsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsDashboardsRequest>;
 
@@ -1791,11 +1774,7 @@ export const CreateProjectsDashboardsRequest =
     ),
     body: Schema.optional(Dashboard).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/dashboards",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/dashboards", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsDashboardsRequest>;
 
@@ -1826,10 +1805,7 @@ export const DeleteProjectsDashboardsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/dashboards/{dashboardsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDashboardsRequest>;
 
@@ -1868,7 +1844,7 @@ export const LabelsProjectsLocationPrometheusApiV1Request =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/location/{location}/prometheus/api/v1/labels",
+      path: "v1/{name}/location/{location}/prometheus/api/v1/labels",
       hasBody: true,
     }),
     svc,
@@ -1909,7 +1885,7 @@ export const Query_rangeProjectsLocationPrometheusApiV1Request =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/location/{location}/prometheus/api/v1/query_range",
+      path: "v1/{name}/location/{location}/prometheus/api/v1/query_range",
       hasBody: true,
     }),
     svc,
@@ -1950,7 +1926,7 @@ export const Query_exemplarsProjectsLocationPrometheusApiV1Request =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/location/{location}/prometheus/api/v1/query_exemplars",
+      path: "v1/{name}/location/{location}/prometheus/api/v1/query_exemplars",
       hasBody: true,
     }),
     svc,
@@ -1991,7 +1967,7 @@ export const QueryProjectsLocationPrometheusApiV1Request =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/location/{location}/prometheus/api/v1/query",
+      path: "v1/{name}/location/{location}/prometheus/api/v1/query",
       hasBody: true,
     }),
     svc,
@@ -2032,7 +2008,7 @@ export const SeriesProjectsLocationPrometheusApiV1Request =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/location/{location}/prometheus/api/v1/series",
+      path: "v1/{name}/location/{location}/prometheus/api/v1/series",
       hasBody: true,
     }),
     svc,
@@ -2076,7 +2052,7 @@ export const ListProjectsLocationPrometheusApiV1MetadataRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/location/{location}/prometheus/api/v1/metadata",
+      path: "v1/{name}/location/{location}/prometheus/api/v1/metadata",
     }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationPrometheusApiV1MetadataRequest>;
@@ -2125,7 +2101,7 @@ export const ValuesProjectsLocationPrometheusApiV1LabelRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/location/{location}/prometheus/api/v1/label/{label}/values",
+      path: "v1/{name}/location/{location}/prometheus/api/v1/label/{label}/values",
     }),
     svc,
   ) as unknown as Schema.Schema<ValuesProjectsLocationPrometheusApiV1LabelRequest>;

@@ -28,7 +28,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -62,11 +62,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -152,11 +152,11 @@ export interface ItemAcl {
     | "BOTH_PERMIT"
     | (string & {});
   /** List of principals who are allowed to see the item in search results. Optional if inheriting permissions from another item or if the item is not intended to be visible, such as virtual containers. The maximum number of elements is 1000. */
-  readers?: Array<Principal>;
+  readers?: ReadonlyArray<Principal>;
   /** List of principals who are explicitly denied access to the item in search results. While principals are denied access by default, use denied readers to handle exceptions and override the list allowed readers. The maximum number of elements is 100. */
-  deniedReaders?: Array<Principal>;
+  deniedReaders?: ReadonlyArray<Principal>;
   /** Optional. List of owners for the item. This field has no bearing on document access permissions. It does, however, offer a slight ranking boosts items where the querying user is an owner. The maximum number of elements is 5. */
-  owners?: Array<Principal>;
+  owners?: ReadonlyArray<Principal>;
 }
 
 export const ItemAcl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -194,7 +194,7 @@ export interface ContextAttribute {
   /** The name of the attribute. It should not be empty. The maximum length is 32 characters. The name must start with a letter and can only contain letters (A-Z, a-z) or numbers (0-9). The name will be normalized (lower-cased) before being matched. */
   name?: string;
   /** Text values of the attribute. The maximum number of elements is 10. The maximum length of an element in the array is 32 characters. The value will be normalized (lower-cased) before being matched. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const ContextAttribute = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -216,7 +216,7 @@ export interface ItemMetadata {
   /** The time when the item was last modified in the source repository. */
   updateTime?: string;
   /** A list of interactions for the item. Interactions are used to improve Search quality, but are not exposed to end users. The maximum number of elements is 1000. */
-  interactions?: Array<Interaction>;
+  interactions?: ReadonlyArray<Interaction>;
   /** The BCP-47 language code for the item, such as "en-US" or "sr-Latn". For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. The maximum length is 32 characters. */
   contentLanguage?: string;
   /** The original mime-type of ItemContent.content in the source repository. The maximum length is 256 characters. */
@@ -224,11 +224,11 @@ export interface ItemMetadata {
   /** Additional search quality metadata of the item */
   searchQualityMetadata?: SearchQualityMetadata;
   /** Additional keywords or phrases that should match the item. Used internally for user generated content. The maximum number of elements is 100. The maximum length is 8192 characters. */
-  keywords?: Array<string>;
+  keywords?: ReadonlyArray<string>;
   /** Hashing value provided by the API caller. This can be used with the items.push method to calculate modified state. The maximum length is 2048 characters. */
   hash?: string;
   /** A set of named attributes associated with the item. This can be used for influencing the ranking of the item based on the context in the request. The maximum number of elements is 10. */
-  contextAttributes?: Array<ContextAttribute>;
+  contextAttributes?: ReadonlyArray<ContextAttribute>;
 }
 
 export const ItemMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -248,7 +248,7 @@ export const ItemMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ItemMetadata" });
 
 export interface IntegerValues {
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const IntegerValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -256,7 +256,7 @@ export const IntegerValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "IntegerValues" });
 
 export interface DoubleValues {
-  values?: Array<number>;
+  values?: ReadonlyArray<number>;
 }
 
 export const DoubleValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -264,7 +264,7 @@ export const DoubleValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "DoubleValues" });
 
 export interface TimestampValues {
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const TimestampValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -272,7 +272,7 @@ export const TimestampValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "TimestampValues" });
 
 export interface ObjectValues {
-  values?: Array<StructuredDataObject>;
+  values?: ReadonlyArray<StructuredDataObject>;
 }
 
 export const ObjectValues: Schema.Schema<ObjectValues> =
@@ -286,7 +286,7 @@ export const ObjectValues: Schema.Schema<ObjectValues> =
 
 export interface EnumValues {
   /** The maximum allowable length for string values is 32 characters. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const EnumValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -309,7 +309,7 @@ export const Cloudsearch_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "Cloudsearch_Date" });
 
 export interface DateValues {
-  values?: Array<Cloudsearch_Date>;
+  values?: ReadonlyArray<Cloudsearch_Date>;
 }
 
 export const DateValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -318,7 +318,7 @@ export const DateValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TextValues {
   /** The maximum allowable length for text values is 2048 characters. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const TextValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -327,7 +327,7 @@ export const TextValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface HtmlValues {
   /** The maximum allowable length for html values is 2048 characters. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const HtmlValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -368,7 +368,7 @@ export const NamedProperty: Schema.Schema<NamedProperty> =
 
 export interface StructuredDataObject {
   /** The properties for the object. The maximum number of elements is 1000. */
-  properties?: Array<NamedProperty>;
+  properties?: ReadonlyArray<NamedProperty>;
 }
 
 export const StructuredDataObject: Schema.Schema<StructuredDataObject> =
@@ -442,7 +442,7 @@ export interface ProcessingError {
   /** The description of the error. */
   errorMessage?: string;
   /** In case the item fields are invalid, this field contains the details about the validation errors. */
-  fieldViolations?: Array<FieldViolation>;
+  fieldViolations?: ReadonlyArray<FieldViolation>;
 }
 
 export const ProcessingError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -487,9 +487,9 @@ export interface ItemStatus {
     | "ACCEPTED"
     | (string & {});
   /** Error details in case the item is in ERROR state. */
-  processingErrors?: Array<ProcessingError>;
+  processingErrors?: ReadonlyArray<ProcessingError>;
   /** Repository error reported by connector. */
-  repositoryErrors?: Array<RepositoryError>;
+  repositoryErrors?: ReadonlyArray<RepositoryError>;
 }
 
 export const ItemStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -540,7 +540,7 @@ export const Item = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "Item" });
 
 export interface SearchItemsByViewUrlResponse {
-  items?: Array<Item>;
+  items?: ReadonlyArray<Item>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -598,7 +598,7 @@ export const InitializeCustomerRequest =
   });
 
 export interface ListItemsResponse {
-  items?: Array<Item>;
+  items?: ReadonlyArray<Item>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -655,7 +655,7 @@ export interface PollItemsRequest {
   /** The name of connector making this call. Format: datasources/{source_id}/connectors/{ID} */
   connectorName?: string;
   /** Limit the items polled to the ones with these statuses. */
-  statusCodes?: Array<
+  statusCodes?: ReadonlyArray<
     | "CODE_UNSPECIFIED"
     | "ERROR"
     | "MODIFIED"
@@ -681,7 +681,7 @@ export const PollItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PollItemsResponse {
   /** Set of items from the queue available for connector to process. These items have the following subset of fields populated: version metadata.hash structured_data.hash content.hash payload status queue */
-  items?: Array<Item>;
+  items?: ReadonlyArray<Item>;
 }
 
 export const PollItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -841,7 +841,7 @@ export interface CompositeFilter {
   /** The logic operator of the sub filter. */
   logicOperator?: "AND" | "OR" | "NOT" | (string & {});
   /** Sub filters. */
-  subFilters?: Array<Filter>;
+  subFilters?: ReadonlyArray<Filter>;
 }
 
 export const CompositeFilter: Schema.Schema<CompositeFilter> =
@@ -883,7 +883,7 @@ export interface DataSourceRestriction {
   /** The source of restriction. */
   source?: Source;
   /** Filter options restricting the results. If multiple filters are present, they are grouped by object type before joining. Filters with the same object type are joined conjunctively, then the resulting expressions are joined disjunctively. The maximum number of elements is 20. NOTE: Suggest API supports only few filters at the moment: "objecttype", "type" and "mimetype". For now, schema specific filters cannot be used to filter suggestions. */
-  filterOptions?: Array<FilterOptions>;
+  filterOptions?: ReadonlyArray<FilterOptions>;
 }
 
 export const DataSourceRestriction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -897,7 +897,7 @@ export interface SuggestRequest {
   /** Partial query for which autocomplete suggestions will be shown. For example, if the query is "sea", then the server might return "season", "search", "seagull" and so on. */
   query?: string;
   /** The sources to use for suggestions. If not specified, the data sources are taken from the current search application. NOTE: Suggestions are only supported for the following sources: * Third-party data sources * PredefinedSource.PERSON * PredefinedSource.GOOGLE_DRIVE */
-  dataSourceRestrictions?: Array<DataSourceRestriction>;
+  dataSourceRestrictions?: ReadonlyArray<DataSourceRestriction>;
 }
 
 export const SuggestRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -980,13 +980,13 @@ export interface Person {
   /** Obfuscated ID of a person. */
   obfuscatedId?: string;
   /** The person's name */
-  personNames?: Array<Name>;
+  personNames?: ReadonlyArray<Name>;
   /** The person's email addresses */
-  emailAddresses?: Array<EmailAddress>;
+  emailAddresses?: ReadonlyArray<EmailAddress>;
   /** The person's phone numbers */
-  phoneNumbers?: Array<PhoneNumber>;
+  phoneNumbers?: ReadonlyArray<PhoneNumber>;
   /** A person's read-only photo. A picture shown next to the person's name to help others recognize the person in search results. */
-  photos?: Array<Photo>;
+  photos?: ReadonlyArray<Photo>;
 }
 
 export const Person = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1027,7 +1027,7 @@ export const SuggestResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SuggestResponse {
   /** List of suggestions. */
-  suggestResults?: Array<SuggestResult>;
+  suggestResults?: ReadonlyArray<SuggestResult>;
 }
 
 export const SuggestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1036,7 +1036,7 @@ export const SuggestResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IntegerFacetingOptions {
   /** Buckets for given integer values should be in strictly ascending order. For example, if values supplied are (1,5,10,100), the following facet buckets will be formed {<1, [1,5), [5-10), [10-100), >=100}. */
-  integerBuckets?: Array<string>;
+  integerBuckets?: ReadonlyArray<string>;
 }
 
 export const IntegerFacetingOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1104,14 +1104,14 @@ export interface SearchRequest {
   /** Starting index of the results. */
   start?: number;
   /** The sources to use for querying. If not specified, all data sources from the current search application are used. */
-  dataSourceRestrictions?: Array<DataSourceRestriction>;
-  facetOptions?: Array<FacetOptions>;
+  dataSourceRestrictions?: ReadonlyArray<DataSourceRestriction>;
+  facetOptions?: ReadonlyArray<FacetOptions>;
   /** The options for sorting the search results */
   sortOptions?: SortOptions;
   /** Options to interpret the user query. */
   queryInterpretationOptions?: QueryInterpretationOptions;
   /** Context attributes for the request which will be used to adjust ranking of search results. The maximum number of elements is 10. */
-  contextAttributes?: Array<ContextAttribute>;
+  contextAttributes?: ReadonlyArray<ContextAttribute>;
 }
 
 export const SearchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1166,7 +1166,7 @@ export interface Snippet {
   /** The snippet of the document. May contain escaped HTML character that should be unescaped prior to rendering. */
   snippet?: string;
   /** The matched ranges in the snippet. */
-  matchRanges?: Array<MatchRange>;
+  matchRanges?: ReadonlyArray<MatchRange>;
 }
 
 export const Snippet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1190,7 +1190,7 @@ export const ResultDisplayField = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ResultDisplayField" });
 
 export interface ResultDisplayLine {
-  fields?: Array<ResultDisplayField>;
+  fields?: ReadonlyArray<ResultDisplayField>;
 }
 
 export const ResultDisplayLine = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1201,7 +1201,7 @@ export interface ResultDisplayMetadata {
   /** The display label for the object. */
   objectTypeLabel?: string;
   /** The metalines content to be displayed with the result. */
-  metalines?: Array<ResultDisplayLine>;
+  metalines?: ReadonlyArray<ResultDisplayLine>;
 }
 
 export const ResultDisplayMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1223,7 +1223,7 @@ export interface Metadata {
   /** The last modified date for the object in the search result. If not set in the item, the value returned here is empty. When `updateTime` is used for calculating freshness and is not set, this value defaults to 2 years from the current time. */
   updateTime?: string;
   /** Indexed fields in structured data, returned as a generic named property. */
-  fields?: Array<NamedProperty>;
+  fields?: ReadonlyArray<NamedProperty>;
   /** Options that specify how to display a structured data search result. */
   displayOptions?: ResultDisplayMetadata;
   /** Object type of the search result. */
@@ -1261,7 +1261,7 @@ export interface SearchResult {
   /** Metadata of the search result. */
   metadata?: Metadata;
   /** If source is clustered, provide list of clustered results. There will only be one level of clustered results. If current source is not enabled for clustering, this field will be empty. */
-  clusteredResults?: Array<SearchResult>;
+  clusteredResults?: ReadonlyArray<SearchResult>;
   /** Debugging information about this search result. */
   debugInfo?: ResultDebugInfo;
 }
@@ -1342,7 +1342,7 @@ export interface FacetResult {
   /** The name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions */
   operatorName?: string;
   /** FacetBuckets for values in response containing at least a single result with the corresponding filter. */
-  buckets?: Array<FacetBucket>;
+  buckets?: ReadonlyArray<FacetBucket>;
 }
 
 export const FacetResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1372,7 +1372,7 @@ export const ErrorMessage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ErrorMessage" });
 
 export interface ErrorInfo {
-  errorMessages?: Array<ErrorMessage>;
+  errorMessages?: ReadonlyArray<ErrorMessage>;
 }
 
 export const ErrorInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1399,7 +1399,7 @@ export const SourceResultCount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ResultCounts {
   /** Result count information for each source with results. */
-  sourceResultCounts?: Array<SourceResultCount>;
+  sourceResultCounts?: ReadonlyArray<SourceResultCount>;
 }
 
 export const ResultCounts = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1410,13 +1410,13 @@ export interface SearchResponse {
   /** Query interpretation result for user query. Empty if query interpretation is disabled. */
   queryInterpretation?: QueryInterpretation;
   /** Results from a search query. */
-  results?: Array<SearchResult>;
+  results?: ReadonlyArray<SearchResult>;
   /** Structured results for the user query. These results are not counted against the page_size. */
-  structuredResults?: Array<StructuredResult>;
+  structuredResults?: ReadonlyArray<StructuredResult>;
   /** Suggested spelling for the query. */
-  spellResults?: Array<SpellResult>;
+  spellResults?: ReadonlyArray<SpellResult>;
   /** Repeated facet results. */
-  facetResults?: Array<FacetResult>;
+  facetResults?: ReadonlyArray<FacetResult>;
   /** Whether there are more search results matching the query. */
   hasMoreResults?: boolean;
   /** The estimated result count for this query. */
@@ -1477,7 +1477,7 @@ export interface QueryOperator {
   /** Can get suggestions for this field. */
   isSuggestable?: boolean;
   /** Potential list of values for the opeatror field. This field is only filled when we can safely enumerate all the possible values of this operator. */
-  enumValues?: Array<string>;
+  enumValues?: ReadonlyArray<string>;
   /** The name of the object corresponding to the operator. This field is only filled for schema-specific operators, and is unset for common operators. */
   objectType?: string;
 }
@@ -1505,7 +1505,7 @@ export interface QuerySource {
   /** Display name of the data source. */
   displayName?: string;
   /** List of all operators applicable for this source. */
-  operators?: Array<QueryOperator>;
+  operators?: ReadonlyArray<QueryOperator>;
 }
 
 export const QuerySource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1516,7 +1516,7 @@ export const QuerySource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "QuerySource" });
 
 export interface ListQuerySourcesResponse {
-  sources?: Array<QuerySource>;
+  sources?: ReadonlyArray<QuerySource>;
   nextPageToken?: string;
 }
 
@@ -1629,19 +1629,19 @@ export interface SearchApplication {
   /** Display name of the Search Application. The maximum length is 300 characters. */
   displayName?: string;
   /** Retrictions applied to the configurations. The maximum number of elements is 10. */
-  dataSourceRestrictions?: Array<DataSourceRestriction>;
+  dataSourceRestrictions?: ReadonlyArray<DataSourceRestriction>;
   /** Configuration for a sources specified in data_source_restrictions. */
-  sourceConfig?: Array<SourceConfig>;
+  sourceConfig?: ReadonlyArray<SourceConfig>;
   /** Configuration for ranking results. */
   scoringConfig?: ScoringConfig;
   /** The default options for sorting the search results */
   defaultSortOptions?: SortOptions;
   /** The default fields for returning facet results. The sources specified here also have been included in data_source_restrictions above. */
-  defaultFacetOptions?: Array<FacetOptions>;
+  defaultFacetOptions?: ReadonlyArray<FacetOptions>;
   /** With each result we should return the URI for its thumbnail (when applicable) */
   returnResultThumbnailUrls?: boolean;
   /** Output only. IDs of the Long Running Operations (LROs) currently running for this schema. Output only field. */
-  operationIds?: Array<string>;
+  operationIds?: ReadonlyArray<string>;
   /** Indicates whether audit logging is on/off for requests made for the search application in query APIs. */
   enableAuditLog?: boolean;
   /** The default options for query interpretation */
@@ -1663,7 +1663,7 @@ export const SearchApplication = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "SearchApplication" });
 
 export interface ListSearchApplicationsResponse {
-  searchApplications?: Array<SearchApplication>;
+  searchApplications?: ReadonlyArray<SearchApplication>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -1707,7 +1707,7 @@ export const DisplayedProperty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Metaline {
   /** The list of displayed properties for the metaline. The maximum number of properties is 5. */
-  properties?: Array<DisplayedProperty>;
+  properties?: ReadonlyArray<DisplayedProperty>;
 }
 
 export const Metaline = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1718,7 +1718,7 @@ export interface ObjectDisplayOptions {
   /** The user friendly label to display in the search result to indicate the type of the item. This is OPTIONAL; if not provided, an object label isn't displayed on the context line of the search results. The maximum length is 64 characters. */
   objectDisplayLabel?: string;
   /** Defines the properties that are displayed in the metalines of the search results. The property values are displayed in the order given here. If a property holds multiple values, all of the values are displayed before the next properties. For this reason, it is a good practice to specify singular properties before repeated properties in this list. All of the properties must set is_returnable to true. The maximum number of metalines is 3. */
-  metalines?: Array<Metaline>;
+  metalines?: ReadonlyArray<Metaline>;
 }
 
 export const ObjectDisplayOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1732,7 +1732,7 @@ export interface ObjectOptions {
   /** The options that determine how the object is displayed in the Cloud Search results page. */
   displayOptions?: ObjectDisplayOptions;
   /** Operators that can be used to filter suggestions. For Suggest API, only operators mentioned here will be honored in the FilterOptions. Only TEXT and ENUM operators are supported. NOTE: "objecttype", "type" and "mimetype" are already supported. This property is to configure schema specific operators. Even though this is an array, only one operator can be specified. This is an array for future extensibility. Operators mapping to multiple properties within the same object are not supported. If the operator spans across different object types, this option has to be set once for each object definition. */
-  suggestionFilteringOperators?: Array<string>;
+  suggestionFilteringOperators?: ReadonlyArray<string>;
 }
 
 export const ObjectOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1849,7 +1849,7 @@ export const BooleanPropertyOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ObjectPropertyOptions {
   /** The properties of the sub-object. These properties represent a nested object. For example, if this property represents a postal address, the subobjectProperties might be named *street*, *city*, and *state*. The maximum number of elements is 1000. */
-  subobjectProperties?: Array<PropertyDefinition>;
+  subobjectProperties?: ReadonlyArray<PropertyDefinition>;
 }
 
 export const ObjectPropertyOptions: Schema.Schema<ObjectPropertyOptions> =
@@ -1884,7 +1884,7 @@ export const EnumOperatorOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface EnumPropertyOptions {
   /** The list of possible values for the enumeration property. All EnumValuePairs must provide a string value. If you specify an integer value for one EnumValuePair, then all possible EnumValuePairs must provide an integer value. Both the string value and integer value must be unique over all possible values. Once set, possible values cannot be removed or modified. If you supply an ordered ranking and think you might insert additional enum values in the future, leave gaps in the initial integer values to allow adding a value in between previously registered values. The maximum number of elements is 100. */
-  possibleValues?: Array<EnumValuePair>;
+  possibleValues?: ReadonlyArray<EnumValuePair>;
   /** Used to specify the ordered ranking for the enumeration that determines how the integer values provided in the possible EnumValuePairs are used to rank results. If specified, integer values must be provided for all possible EnumValuePair values given for this property. Can only be used if isRepeatable is false. */
   orderedRanking?: "NO_ORDER" | "ASCENDING" | "DESCENDING" | (string & {});
   /** If set, describes how the enum should be used as a search operator. */
@@ -2045,7 +2045,7 @@ export interface ObjectDefinition {
   /** The optional object-specific options. */
   options?: ObjectOptions;
   /** The property definitions for the object. The maximum number of elements is 1000. */
-  propertyDefinitions?: Array<PropertyDefinition>;
+  propertyDefinitions?: ReadonlyArray<PropertyDefinition>;
 }
 
 export const ObjectDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2056,9 +2056,9 @@ export const ObjectDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Cloudsearch_Schema {
   /** The list of top-level objects for the data source. The maximum number of elements is 10. */
-  objectDefinitions?: Array<ObjectDefinition>;
+  objectDefinitions?: ReadonlyArray<ObjectDefinition>;
   /** IDs of the Long Running Operations (LROs) currently running for this schema. After modifying the schema, wait for operations to complete before indexing additional content. */
-  operationIds?: Array<string>;
+  operationIds?: ReadonlyArray<string>;
 }
 
 export const Cloudsearch_Schema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2089,17 +2089,17 @@ export interface DataSource {
   /** A short name or alias for the source. This value will be used to match the 'source' operator. For example, if the short name is *<value>* then queries like *source:<value>* will only return results for this source. The value must be unique across all datasources. The value must only contain alphanumeric characters (a-zA-Z0-9). The value cannot start with 'google' and cannot be one of the following: mail, gmail, docs, drive, groups, sites, calendar, hangouts, gplus, keep, people, teams. Its maximum length is 32 characters. */
   shortName?: string;
   /** List of service accounts that have indexing access. */
-  indexingServiceAccounts?: Array<string>;
+  indexingServiceAccounts?: ReadonlyArray<string>;
   /** Disable serving any search or assist results. */
   disableServing?: boolean;
   /** If true, sets the datasource to read-only mode. In read-only mode, the Indexing API rejects any requests to index or delete items in this source. Enabling read-only mode does not stop the processing of previously accepted data. */
   disableModifications?: boolean;
   /** This field restricts visibility to items at the datasource level. Items within the datasource are restricted to the union of users and groups included in this field. Note that, this does not ensure access to a specific item, as users need to have ACL permissions on the contained items. This ensures a high level access on the entire datasource, and that the individual items are not shared outside this visibility. */
-  itemsVisibility?: Array<GSuitePrincipal>;
+  itemsVisibility?: ReadonlyArray<GSuitePrincipal>;
   /** Can a user request to get thumbnail URI for Items indexed in this data source. */
   returnThumbnailUrls?: boolean;
   /** IDs of the Long Running Operations (LROs) currently running for this schema. */
-  operationIds?: Array<string>;
+  operationIds?: ReadonlyArray<string>;
 }
 
 export const DataSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2130,7 +2130,7 @@ export const UpdateDataSourceRequest =
   }).annotate({ identifier: "UpdateDataSourceRequest" });
 
 export interface ListDataSourceResponse {
-  sources?: Array<DataSource>;
+  sources?: ReadonlyArray<DataSource>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -2167,7 +2167,7 @@ export interface DataSourceIndexStats {
   /** The date for which index stats were calculated. If the date of request is not the current date then stats calculated on the next day are returned. Stats are calculated close to mid night in this case. If date of request is current date, then real time stats are returned. */
   date?: Cloudsearch_Date;
   /** Number of items aggregrated by status code. */
-  itemCountByStatus?: Array<ItemCountByStatus>;
+  itemCountByStatus?: ReadonlyArray<ItemCountByStatus>;
 }
 
 export const DataSourceIndexStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2177,7 +2177,7 @@ export const DataSourceIndexStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GetDataSourceIndexStatsResponse {
   /** Summary of indexed item counts, one for each day in the requested range. */
-  stats?: Array<DataSourceIndexStats>;
+  stats?: ReadonlyArray<DataSourceIndexStats>;
   /** Average item count for the given date range for which billing is done. */
   averageIndexedItemCount?: string;
 }
@@ -2192,7 +2192,7 @@ export interface CustomerIndexStats {
   /** The date for which statistics were calculated. */
   date?: Cloudsearch_Date;
   /** Number of items aggregrated by status code. */
-  itemCountByStatus?: Array<ItemCountByStatus>;
+  itemCountByStatus?: ReadonlyArray<ItemCountByStatus>;
 }
 
 export const CustomerIndexStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2202,7 +2202,7 @@ export const CustomerIndexStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GetCustomerIndexStatsResponse {
   /** Summary of indexed item counts, one for each day in the requested range. */
-  stats?: Array<CustomerIndexStats>;
+  stats?: ReadonlyArray<CustomerIndexStats>;
   /** Average item count for the given date range for which billing is done. */
   averageIndexedItemCount?: string;
 }
@@ -2227,7 +2227,7 @@ export const QueryCountByStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface SearchApplicationQueryStats {
   /** The date for which query stats were calculated. Stats calculated on the next day close to midnight are returned. */
   date?: Cloudsearch_Date;
-  queryCountByStatus?: Array<QueryCountByStatus>;
+  queryCountByStatus?: ReadonlyArray<QueryCountByStatus>;
 }
 
 export const SearchApplicationQueryStats =
@@ -2238,7 +2238,7 @@ export const SearchApplicationQueryStats =
 
 export interface GetSearchApplicationQueryStatsResponse {
   /** Query stats per date for a search application. */
-  stats?: Array<SearchApplicationQueryStats>;
+  stats?: ReadonlyArray<SearchApplicationQueryStats>;
   /** Total successful query count (status code 200) for the given date range. */
   totalQueryCount?: string;
 }
@@ -2252,7 +2252,7 @@ export const GetSearchApplicationQueryStatsResponse =
 export interface CustomerQueryStats {
   /** The date for which query stats were calculated. Stats calculated on the next day close to midnight are returned. */
   date?: Cloudsearch_Date;
-  queryCountByStatus?: Array<QueryCountByStatus>;
+  queryCountByStatus?: ReadonlyArray<QueryCountByStatus>;
 }
 
 export const CustomerQueryStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2261,7 +2261,7 @@ export const CustomerQueryStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "CustomerQueryStats" });
 
 export interface GetCustomerQueryStatsResponse {
-  stats?: Array<CustomerQueryStats>;
+  stats?: ReadonlyArray<CustomerQueryStats>;
   /** Total successful query count (status code 200) for the given date range. */
   totalQueryCount?: string;
 }
@@ -2292,7 +2292,7 @@ export const SearchApplicationUserStats =
   }).annotate({ identifier: "SearchApplicationUserStats" });
 
 export interface GetSearchApplicationUserStatsResponse {
-  stats?: Array<SearchApplicationUserStats>;
+  stats?: ReadonlyArray<SearchApplicationUserStats>;
 }
 
 export const GetSearchApplicationUserStatsResponse =
@@ -2319,7 +2319,7 @@ export const CustomerUserStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "CustomerUserStats" });
 
 export interface GetCustomerUserStatsResponse {
-  stats?: Array<CustomerUserStats>;
+  stats?: ReadonlyArray<CustomerUserStats>;
 }
 
 export const GetCustomerUserStatsResponse =
@@ -2341,7 +2341,7 @@ export const SearchApplicationSessionStats =
   }).annotate({ identifier: "SearchApplicationSessionStats" });
 
 export interface GetSearchApplicationSessionStatsResponse {
-  stats?: Array<SearchApplicationSessionStats>;
+  stats?: ReadonlyArray<SearchApplicationSessionStats>;
 }
 
 export const GetSearchApplicationSessionStatsResponse =
@@ -2362,7 +2362,7 @@ export const CustomerSessionStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "CustomerSessionStats" });
 
 export interface GetCustomerSessionStatsResponse {
-  stats?: Array<CustomerSessionStats>;
+  stats?: ReadonlyArray<CustomerSessionStats>;
 }
 
 export const GetCustomerSessionStatsResponse =
@@ -2385,7 +2385,7 @@ export const CustomerSearchApplicationStats =
 
 export interface GetCustomerSearchApplicationStatsResponse {
   /** Search application stats by date. */
-  stats?: Array<CustomerSearchApplicationStats>;
+  stats?: ReadonlyArray<CustomerSearchApplicationStats>;
   /** Average search application count for the given date range. */
   averageSearchApplicationCount?: string;
 }
@@ -2416,7 +2416,7 @@ export const UnmappedIdentity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "UnmappedIdentity" });
 
 export interface ListUnmappedIdentitiesResponse {
-  unmappedIdentities?: Array<UnmappedIdentity>;
+  unmappedIdentities?: ReadonlyArray<UnmappedIdentity>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -2428,7 +2428,7 @@ export const ListUnmappedIdentitiesResponse =
   }).annotate({ identifier: "ListUnmappedIdentitiesResponse" });
 
 export interface ListItemNamesForUnmappedIdentityResponse {
-  itemNames?: Array<string>;
+  itemNames?: ReadonlyArray<string>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -2922,7 +2922,7 @@ export interface EnterpriseTopazSidekickAgendaEntry {
   /** Absolute URL for the Hangout meeting. */
   hangoutUrl?: string;
   /** People attending the meeting. */
-  invitee?: Array<EnterpriseTopazSidekickPerson>;
+  invitee?: ReadonlyArray<EnterpriseTopazSidekickPerson>;
   /** URL of the agenda item. */
   agendaItemUrl?: string;
   /** Whether this should be notified to the user. */
@@ -2961,7 +2961,7 @@ export interface EnterpriseTopazSidekickAgendaEntry {
   /** Whether the requester is the owner of the agenda entry. */
   requesterIsOwner?: boolean;
   /** Items related to the current AgendaEntry. E.g., related drive/mail/groups documents. */
-  document?: Array<EnterpriseTopazSidekickCommonDocument>;
+  document?: ReadonlyArray<EnterpriseTopazSidekickCommonDocument>;
   /** Person who created the event. */
   creator?: EnterpriseTopazSidekickPerson;
   /** Last time the event was modified. */
@@ -3012,7 +3012,7 @@ export interface EnterpriseTopazSidekickConflictingEventsCardProto {
   /** The event identified as being the most important. */
   mainEvent?: EnterpriseTopazSidekickAgendaEntry;
   /** All the events that conflict with main_event. */
-  conflictingEvent?: Array<EnterpriseTopazSidekickAgendaEntry>;
+  conflictingEvent?: ReadonlyArray<EnterpriseTopazSidekickAgendaEntry>;
 }
 
 export const EnterpriseTopazSidekickConflictingEventsCardProto =
@@ -3070,15 +3070,15 @@ export interface EnterpriseTopazSidekickFindMeetingTimeCardProto {
   /** Requester. */
   requester?: EnterpriseTopazSidekickPerson;
   /** Invitees to the event. */
-  invitees?: Array<EnterpriseTopazSidekickPerson>;
+  invitees?: ReadonlyArray<EnterpriseTopazSidekickPerson>;
   /** Min and max timestamp used to find a common available timeslot. */
   timeBoundaries?: EnterpriseTopazSidekickTimeSlot;
   /** Slots when all attendees have availability. */
-  commonAvailableTimeSlots?: Array<EnterpriseTopazSidekickTimeSlot>;
+  commonAvailableTimeSlots?: ReadonlyArray<EnterpriseTopazSidekickTimeSlot>;
   /** Timezone ID. */
   timezoneId?: string;
   /** Invitees that have been skipped in the computation, most likely because they are groups. */
-  skippedInvitees?: Array<EnterpriseTopazSidekickPerson>;
+  skippedInvitees?: ReadonlyArray<EnterpriseTopazSidekickPerson>;
   /** Details about the scheduled meeting, if one exists. */
   scheduledMeeting?: EnterpriseTopazSidekickScheduledMeeting;
 }
@@ -3122,7 +3122,9 @@ export interface EnterpriseTopazSidekickMeetingNotesCardRequest {
   /** The error and reason if known error occured. */
   error?: EnterpriseTopazSidekickMeetingNotesCardError;
   /** Who are the meeting notes created for. */
-  canCreateFor?: Array<"UNKNOWN" | "MYSELF" | "ALL_ATTENDEES" | (string & {})>;
+  canCreateFor?: ReadonlyArray<
+    "UNKNOWN" | "MYSELF" | "ALL_ATTENDEES" | (string & {})
+  >;
 }
 
 export const EnterpriseTopazSidekickMeetingNotesCardRequest =
@@ -3155,7 +3157,7 @@ export interface EnterpriseTopazSidekickDocumentGroup {
   /** Document group type */
   groupType?: "UNKNOWN_TYPE" | "ALL" | (string & {});
   /** The list of corresponding documents. */
-  personalizedDocument?: Array<EnterpriseTopazSidekickCommonDocument>;
+  personalizedDocument?: ReadonlyArray<EnterpriseTopazSidekickCommonDocument>;
 }
 
 export const EnterpriseTopazSidekickDocumentGroup =
@@ -3168,7 +3170,7 @@ export const EnterpriseTopazSidekickDocumentGroup =
 
 export interface EnterpriseTopazSidekickPersonalizedDocsCardProto {
   /** Document group. */
-  documentGroup?: Array<EnterpriseTopazSidekickDocumentGroup>;
+  documentGroup?: ReadonlyArray<EnterpriseTopazSidekickDocumentGroup>;
 }
 
 export const EnterpriseTopazSidekickPersonalizedDocsCardProto =
@@ -3184,7 +3186,7 @@ export interface EnterpriseTopazSidekickShareMeetingDocsCardProto {
   /** Event. */
   event?: EnterpriseTopazSidekickAgendaEntry;
   /** Documents to share for the given meeting. */
-  document?: Array<EnterpriseTopazSidekickCommonDocument>;
+  document?: ReadonlyArray<EnterpriseTopazSidekickCommonDocument>;
 }
 
 export const EnterpriseTopazSidekickShareMeetingDocsCardProto =
@@ -3254,7 +3256,7 @@ export const EnterpriseTopazSidekickAgendaGroupCardProtoContext =
 
 export interface EnterpriseTopazSidekickAgendaGroupCardProto {
   currentAgendaItem?: EnterpriseTopazSidekickAgendaItem;
-  agendaItem?: Array<EnterpriseTopazSidekickAgendaItem>;
+  agendaItem?: ReadonlyArray<EnterpriseTopazSidekickAgendaItem>;
   context?: EnterpriseTopazSidekickAgendaGroupCardProtoContext;
 }
 
@@ -3270,7 +3272,7 @@ export const EnterpriseTopazSidekickAgendaGroupCardProto =
   }).annotate({ identifier: "EnterpriseTopazSidekickAgendaGroupCardProto" });
 
 export interface EnterpriseTopazSidekickRecentDocumentsCardProto {
-  document?: Array<EnterpriseTopazSidekickCommonDocument>;
+  document?: ReadonlyArray<EnterpriseTopazSidekickCommonDocument>;
 }
 
 export const EnterpriseTopazSidekickRecentDocumentsCardProto =
@@ -3283,7 +3285,7 @@ export const EnterpriseTopazSidekickRecentDocumentsCardProto =
   });
 
 export interface EnterpriseTopazSidekickGetAndKeepAheadCardProtoDeclinedEvents {
-  events?: Array<EnterpriseTopazSidekickAgendaEntry>;
+  events?: ReadonlyArray<EnterpriseTopazSidekickAgendaEntry>;
 }
 
 export const EnterpriseTopazSidekickGetAndKeepAheadCardProtoDeclinedEvents =
@@ -3322,7 +3324,7 @@ export const EnterpriseTopazSidekickDocumentPerCategoryListDocumentPerCategoryLi
   });
 
 export interface EnterpriseTopazSidekickDocumentPerCategoryList {
-  documents?: Array<EnterpriseTopazSidekickDocumentPerCategoryListDocumentPerCategoryListEntry>;
+  documents?: ReadonlyArray<EnterpriseTopazSidekickDocumentPerCategoryListDocumentPerCategoryListEntry>;
   listType?:
     | "UNKNOWN_LIST_TYPE"
     | "MENTIONS"
@@ -3388,7 +3390,7 @@ export const EnterpriseTopazSidekickGenericAnswerCard =
 
 export interface EnterpriseTopazSidekickPeopleDisambiguationCard {
   /** Candidate persons for the query. */
-  person?: Array<EnterpriseTopazSidekickCommonPerson>;
+  person?: ReadonlyArray<EnterpriseTopazSidekickCommonPerson>;
 }
 
 export const EnterpriseTopazSidekickPeopleDisambiguationCard =
@@ -3400,7 +3402,7 @@ export const EnterpriseTopazSidekickPeopleDisambiguationCard =
 
 export interface EnterpriseTopazSidekickPersonProfileCardRelatedPeople {
   /** Related people. */
-  relatedPerson?: Array<EnterpriseTopazSidekickCommonPerson>;
+  relatedPerson?: ReadonlyArray<EnterpriseTopazSidekickCommonPerson>;
   /** Relation type. */
   relation?: "UNKNOWN" | "MANAGER" | "DIRECT_REPORT" | (string & {});
 }
@@ -3418,7 +3420,7 @@ export const EnterpriseTopazSidekickPersonProfileCardRelatedPeople =
 export interface EnterpriseTopazSidekickPersonProfileCard {
   /** The subject of the card. */
   subject?: EnterpriseTopazSidekickCommonPerson;
-  relatedPeople?: Array<EnterpriseTopazSidekickPersonProfileCardRelatedPeople>;
+  relatedPeople?: ReadonlyArray<EnterpriseTopazSidekickPersonProfileCardRelatedPeople>;
 }
 
 export const EnterpriseTopazSidekickPersonProfileCard =
@@ -3461,7 +3463,7 @@ export interface EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo {
   /** The name that was extracted from the query. This may be in the form of the given name, last name, full name, LDAP, or email address. This name can be considered suitable for displaying to the user and can largely be considered to be normalized (e.g. "Bob's" -> "Bob"). */
   name?: string;
   /** A list of people that also matched the query. This list is not complete. */
-  disambiguation?: Array<EnterpriseTopazSidekickPeopleAnswerDisambiguationInfoDisambiguationPerson>;
+  disambiguation?: ReadonlyArray<EnterpriseTopazSidekickPeopleAnswerDisambiguationInfoDisambiguationPerson>;
 }
 
 export const EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo =
@@ -3504,7 +3506,7 @@ export interface EnterpriseTopazSidekickAnswerAnswerList {
     | "PERSON_PHONE"
     | (string & {});
   /** Answers that have a corresponding label. */
-  labeledAnswer?: Array<EnterpriseTopazSidekickAnswerAnswerListLabeledAnswer>;
+  labeledAnswer?: ReadonlyArray<EnterpriseTopazSidekickAnswerAnswerListLabeledAnswer>;
 }
 
 export const EnterpriseTopazSidekickAnswerAnswerList =
@@ -3528,7 +3530,7 @@ export interface EnterpriseTopazSidekickPeopleAnswerPersonAnswerCard {
   /** The profile of the person that was the subject of the query. */
   subject?: EnterpriseTopazSidekickCommonPerson;
   /** List of answers. */
-  answer?: Array<SafeHtmlProto>;
+  answer?: ReadonlyArray<SafeHtmlProto>;
   /** Disambiguation information. */
   disambiguationInfo?: EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo;
   /** List of answers. */
@@ -3567,7 +3569,7 @@ export interface EnterpriseTopazSidekickPeopleAnswerRelatedPeopleAnswerCard {
   /** The profile of the person that was the subject of the query. */
   subject?: EnterpriseTopazSidekickCommonPerson;
   /** A list of people that are related to the query subject. */
-  relatedPeople?: Array<EnterpriseTopazSidekickCommonPerson>;
+  relatedPeople?: ReadonlyArray<EnterpriseTopazSidekickCommonPerson>;
   /** Defines the type of relation the list of people have with the subject of the card. */
   relationType?:
     | "UNKNOWN"
@@ -3604,7 +3606,7 @@ export interface EnterpriseTopazSidekickAnswerSuggestedQueryCategory {
   /** The query list category. */
   category?: "UNKNOWN" | "CALENDAR" | "DOCUMENT" | "PEOPLE" | (string & {});
   /** List of suggested queries to show the user. */
-  query?: Array<string>;
+  query?: ReadonlyArray<string>;
   /** Whether this category is enabled. */
   isEnabled?: boolean;
 }
@@ -3620,7 +3622,7 @@ export const EnterpriseTopazSidekickAnswerSuggestedQueryCategory =
 
 export interface EnterpriseTopazSidekickAnswerSuggestedQueryAnswerCard {
   /** A list of queries to suggest. */
-  suggestedQueryCategory?: Array<EnterpriseTopazSidekickAnswerSuggestedQueryCategory>;
+  suggestedQueryCategory?: ReadonlyArray<EnterpriseTopazSidekickAnswerSuggestedQueryCategory>;
 }
 
 export const EnterpriseTopazSidekickAnswerSuggestedQueryAnswerCard =
@@ -3634,7 +3636,7 @@ export const EnterpriseTopazSidekickAnswerSuggestedQueryAnswerCard =
 
 export interface Context {
   /** [Required] Type of the card (homepage, Answer or RHS). */
-  type?: Array<
+  type?: ReadonlyArray<
     | "UNKNOWN_CARD_TYPE"
     | "HOMEPAGE_CARD"
     | "ANSWER_CARD"
@@ -3642,7 +3644,7 @@ export interface Context {
     | (string & {})
   >;
   /** [Required only for Answer and RHS cards - will be ignored for Homepage] cards. It's the exact case-insensitive queries that will trigger the Answer or RHS card. */
-  query?: Array<string>;
+  query?: ReadonlyArray<string>;
   /** [Optional] Date (in seconds since epoch) when the card should start being shown. If missing, start_date_sec will be Jan 1st, 1970 UTC. */
   startDateSec?: string;
   /** [Optional] Date (in seconds since epoch) when the card should stop being shown. If missing, end_date_sec will be set to Jan 1st, 2100. */
@@ -3652,13 +3654,13 @@ export interface Context {
   /** [Optional] End time in seconds, within a day, when the card should stop being shown if it's within [start_date_sec, end_date_sec]. If missing, this is set to 86400 (24 hours x 3600 sec/hour), i.e., midnight next day. */
   endDayOffsetSec?: string;
   /** [Optional] Day of week when the card should be shown, where 0 is Monday. */
-  dayOfWeek?: Array<number>;
+  dayOfWeek?: ReadonlyArray<number>;
   /** [Optional] The locales for which the card should be triggered (e.g., en_US and en_CA). If missing, the card is going to show to clients regardless of their locale. */
-  locale?: Array<string>;
+  locale?: ReadonlyArray<string>;
   /** [Optional] Text-free locations where the card should be shown. This is expected to match the user's location in focus. If no location is specified, the card will be shown for any location. */
-  location?: Array<string>;
+  location?: ReadonlyArray<string>;
   /** [Optional] Surface where the card should be shown in. If missing, the card will be shown in any surface. */
-  surface?: Array<
+  surface?: ReadonlyArray<
     | "UNKNOWN_SURFACE"
     | "DESKTOP"
     | "ANDROID"
@@ -3668,7 +3670,7 @@ export interface Context {
     | (string & {})
   >;
   /** [Optional] App where the card should be shown. If missing, the card will be shown in TOPAZ. */
-  app?: Array<"UNKNOWN_APP" | "TOPAZ" | "MOMA" | (string & {})>;
+  app?: ReadonlyArray<"UNKNOWN_APP" | "TOPAZ" | "MOMA" | (string & {})>;
 }
 
 export const Context = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3725,7 +3727,7 @@ export interface Content {
   /** [Optional] Description of the card. */
   description?: SafeHtmlProto;
   /** [Optional] Actions for this card. */
-  actions?: Array<Action>;
+  actions?: ReadonlyArray<Action>;
 }
 
 export const Content = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3820,7 +3822,7 @@ export interface MapInfo {
   /** URL to a view of a map centered on the user's work location in Campus Maps (for google.com) or Google Maps (external). */
   locationUrl?: SafeUrlProto;
   /** MapTiles for the area around a user's work location */
-  mapTile?: Array<MapTile>;
+  mapTile?: ReadonlyArray<MapTile>;
   /** The zoom level of the map. A constant zoom value of 18 is used for now to match the zoom of the map shown on a Moma Teams Profile page */
   zoom?: number;
 }
@@ -3849,8 +3851,8 @@ export interface PersonCore {
   /** Person's cost center as a string, e.g. "926: Googler Apps". */
   costCenter?: string;
   /** E-mail addresses of the person. The primary or preferred email should be first. */
-  emails?: Array<string>;
-  phoneNumbers?: Array<EnterpriseTopazFrontendTeamsPersonCorePhoneNumber>;
+  emails?: ReadonlyArray<string>;
+  phoneNumbers?: ReadonlyArray<EnterpriseTopazFrontendTeamsPersonCorePhoneNumber>;
   /** Detailed desk location within the company. For google.com this is the desk location code (e.g. "DE-MUC-ARP-6T2-6T2C0C") if the person has a desk. */
   location?: string;
   /** Office/building identifier within the company. For google.com this is the office code (e.g. "DE-MUC-ARP"). */
@@ -3870,26 +3872,26 @@ export interface PersonCore {
   /** The URL to start a chat conversation with the profile owner. For google.com this is a Hangouts URL. */
   chatUrl?: SafeUrlProto;
   /** The profile owner's management chain from top to bottom, where managers[0] is the CEO, manager[N-2] is the person's manager's manager and managers[N-1] is the person's direct manager. Note that not all fields of these PersonCores will be set, in particular, relationships will be empty. */
-  managers?: Array<PersonCore>;
+  managers?: ReadonlyArray<PersonCore>;
   /** The profile owner's direct dotted line managers in no particular order. Note that not all fields of these PersonCores will be set, in particular, relationships will be empty. */
-  dottedLineManagers?: Array<PersonCore>;
+  dottedLineManagers?: ReadonlyArray<PersonCore>;
   /** The sum of all profile owner's reports and their own full-time-equivalents in ‰ (e.g. 1800 if one report is working 80% and profile owner 100%). */
   totalFteCount?: string;
   /** Total count of the profile owner's direct reports. */
   totalDirectReportsCount?: number;
   /** A subset of the profile owner's direct reports. The number of entities here may be less than total_direct_reports_count, because typically ProfileResponse does not include all the person's reports, if there are too many to retrieve efficiently. Note that not all fields of these PersonCores will be set, in particular, relationships will be empty. */
-  directReports?: Array<PersonCore>;
+  directReports?: ReadonlyArray<PersonCore>;
   /** Total count of the profile owner's dotted-line reports. */
   totalDlrCount?: number;
   /** A subset of the profile owner's dotted-line reports. The number of entities here may be less than total_dlr_count. Note that not all fields of these PersonCores will be set, in particular, relationships will be empty. */
-  dottedLineReports?: Array<PersonCore>;
+  dottedLineReports?: ReadonlyArray<PersonCore>;
   /** The profile owner's admins in no particular order. Note that not all fields of these PersonCores will be set, in particular, relationships will be empty. */
-  admins?: Array<PersonCore>;
+  admins?: ReadonlyArray<PersonCore>;
   /** People the profile owner is an admin to. Note that not all fields of these PersonCores will be set, in particular, relationships will be empty. */
-  adminTo?: Array<PersonCore>;
+  adminTo?: ReadonlyArray<PersonCore>;
   gmailUrl?: string;
   /** Custom links the profile owner has added. */
-  links?: Array<EnterpriseTopazFrontendTeamsLink>;
+  links?: ReadonlyArray<EnterpriseTopazFrontendTeamsLink>;
   /** Custom mission statement the profile owner has added. */
   mission?: string;
   /** Custom keywords the domain admin has added. */
@@ -3905,7 +3907,7 @@ export interface PersonCore {
     | (string & {});
   waldoComeBackTime?: string;
   /** List of keys to use from the map 'keywords'. */
-  keywordTypes?: Array<string>;
+  keywordTypes?: ReadonlyArray<string>;
 }
 
 export const PersonCore: Schema.Schema<PersonCore> =
@@ -3953,7 +3955,7 @@ export const PersonCore: Schema.Schema<PersonCore> =
   ).annotate({ identifier: "PersonCore" }) as any as Schema.Schema<PersonCore>;
 
 export interface PeoplePromotionCard {
-  people?: Array<PersonCore>;
+  people?: ReadonlyArray<PersonCore>;
 }
 
 export const PeoplePromotionCard = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4116,7 +4118,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/operations/{operationsId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -4160,7 +4162,7 @@ export const ListOperationsLroRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/operations/{operationsId}/lro" }),
+    T.Http({ method: "GET", path: "v1/{name}/lro" }),
     svc,
   ) as unknown as Schema.Schema<ListOperationsLroRequest>;
 
@@ -4205,7 +4207,7 @@ export const CheckAccessDebugDatasourcesItemsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/debug/datasources/{datasourcesId}/items/{itemsId}:checkAccess",
+      path: "v1/debug/{name}:checkAccess",
       hasBody: true,
     }),
     svc,
@@ -4243,7 +4245,7 @@ export const SearchByViewUrlDebugDatasourcesItemsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/debug/datasources/{datasourcesId}/items:searchByViewUrl",
+      path: "v1/debug/{name}/items:searchByViewUrl",
       hasBody: true,
     }),
     svc,
@@ -4288,10 +4290,7 @@ export const ListDebugDatasourcesItemsUnmappedidsRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/debug/datasources/{datasourcesId}/items/{itemsId}/unmappedids",
-    }),
+    T.Http({ method: "GET", path: "v1/debug/{parent}/unmappedids" }),
     svc,
   ) as unknown as Schema.Schema<ListDebugDatasourcesItemsUnmappedidsRequest>;
 
@@ -4350,10 +4349,7 @@ export const ListDebugIdentitysourcesUnmappedidsRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/debug/identitysources/{identitysourcesId}/unmappedids",
-    }),
+    T.Http({ method: "GET", path: "v1/debug/{parent}/unmappedids" }),
     svc,
   ) as unknown as Schema.Schema<ListDebugIdentitysourcesUnmappedidsRequest>;
 
@@ -4410,7 +4406,7 @@ export const ListForunmappedidentityDebugIdentitysourcesItemsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/debug/identitysources/{identitysourcesId}/items:forunmappedidentity",
+      path: "v1/debug/{parent}/items:forunmappedidentity",
     }),
     svc,
   ) as unknown as Schema.Schema<ListForunmappedidentityDebugIdentitysourcesItemsRequest>;
@@ -4557,10 +4553,7 @@ export const GetSettingsSearchapplicationsRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/settings/searchapplications/{searchapplicationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/settings/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSettingsSearchapplicationsRequest>;
 
@@ -4632,11 +4625,7 @@ export const UpdateSettingsSearchapplicationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SearchApplication).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1/settings/searchapplications/{searchapplicationsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1/settings/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSettingsSearchapplicationsRequest>;
 
@@ -4673,11 +4662,7 @@ export const PatchSettingsSearchapplicationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SearchApplication).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/settings/searchapplications/{searchapplicationsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/settings/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchSettingsSearchapplicationsRequest>;
 
@@ -4713,10 +4698,7 @@ export const DeleteSettingsSearchapplicationsRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/settings/searchapplications/{searchapplicationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/settings/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteSettingsSearchapplicationsRequest>;
 
@@ -4750,11 +4732,7 @@ export const ResetSettingsSearchapplicationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ResetSearchApplicationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/settings/searchapplications/{searchapplicationsId}:reset",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/settings/{name}:reset", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResetSettingsSearchapplicationsRequest>;
 
@@ -4821,10 +4799,7 @@ export const DeleteSettingsDatasourcesRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/settings/datasources/{datasourcesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/settings/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteSettingsDatasourcesRequest>;
 
@@ -4860,7 +4835,7 @@ export const GetSettingsDatasourcesRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/settings/datasources/{datasourcesId}" }),
+    T.Http({ method: "GET", path: "v1/settings/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSettingsDatasourcesRequest>;
 
@@ -4894,11 +4869,7 @@ export const UpdateSettingsDatasourcesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpdateDataSourceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1/settings/datasources/{datasourcesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1/settings/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSettingsDatasourcesRequest>;
 
@@ -4940,11 +4911,7 @@ export const PatchSettingsDatasourcesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(DataSource).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/settings/datasources/{datasourcesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/settings/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchSettingsDatasourcesRequest>;
 
@@ -5052,11 +5019,7 @@ export const UpdateSchemaIndexingDatasourcesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UpdateSchemaRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1/indexing/datasources/{datasourcesId}/schema",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1/indexing/{name}/schema", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSchemaIndexingDatasourcesRequest>;
 
@@ -5092,10 +5055,7 @@ export const GetSchemaIndexingDatasourcesRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/indexing/datasources/{datasourcesId}/schema",
-    }),
+    T.Http({ method: "GET", path: "v1/indexing/{name}/schema" }),
     svc,
   ) as unknown as Schema.Schema<GetSchemaIndexingDatasourcesRequest>;
 
@@ -5131,10 +5091,7 @@ export const DeleteSchemaIndexingDatasourcesRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/indexing/datasources/{datasourcesId}/schema",
-    }),
+    T.Http({ method: "DELETE", path: "v1/indexing/{name}/schema" }),
     svc,
   ) as unknown as Schema.Schema<DeleteSchemaIndexingDatasourcesRequest>;
 
@@ -5181,10 +5138,7 @@ export const DeleteIndexingDatasourcesItemsRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/indexing/datasources/{datasourcesId}/items/{itemsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/indexing/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteIndexingDatasourcesItemsRequest>;
 
@@ -5225,10 +5179,7 @@ export const GetIndexingDatasourcesItemsRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/indexing/datasources/{datasourcesId}/items/{itemsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/indexing/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetIndexingDatasourcesItemsRequest>;
 
@@ -5278,10 +5229,7 @@ export const ListIndexingDatasourcesItemsRequest =
       T.HttpQuery("debugOptions.enableDebugging"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/indexing/datasources/{datasourcesId}/items",
-    }),
+    T.Http({ method: "GET", path: "v1/indexing/{name}/items" }),
     svc,
   ) as unknown as Schema.Schema<ListIndexingDatasourcesItemsRequest>;
 
@@ -5320,11 +5268,7 @@ export const IndexIndexingDatasourcesItemsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(IndexItemRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/indexing/datasources/{datasourcesId}/items/{itemsId}:index",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/indexing/{name}:index", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<IndexIndexingDatasourcesItemsRequest>;
 
@@ -5360,7 +5304,7 @@ export const UploadIndexingDatasourcesItemsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/indexing/datasources/{datasourcesId}/items/{itemsId}:upload",
+      path: "v1/indexing/{name}:upload",
       hasBody: true,
     }),
     svc,
@@ -5398,7 +5342,7 @@ export const PollIndexingDatasourcesItemsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/indexing/datasources/{datasourcesId}/items:poll",
+      path: "v1/indexing/{name}/items:poll",
       hasBody: true,
     }),
     svc,
@@ -5434,11 +5378,7 @@ export const PushIndexingDatasourcesItemsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(PushItemRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/indexing/datasources/{datasourcesId}/items/{itemsId}:push",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/indexing/{name}:push", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PushIndexingDatasourcesItemsRequest>;
 
@@ -5474,7 +5414,7 @@ export const UnreserveIndexingDatasourcesItemsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/indexing/datasources/{datasourcesId}/items:unreserve",
+      path: "v1/indexing/{name}/items:unreserve",
       hasBody: true,
     }),
     svc,
@@ -5512,7 +5452,7 @@ export const DeleteQueueItemsIndexingDatasourcesItemsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/indexing/datasources/{datasourcesId}/items:deleteQueueItems",
+      path: "v1/indexing/{name}/items:deleteQueueItems",
       hasBody: true,
     }),
     svc,
@@ -6002,10 +5942,7 @@ export const GetStatsIndexDatasourcesRequest =
       T.HttpQuery("toDate.day"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/stats/index/datasources/{datasourcesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/stats/index/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetStatsIndexDatasourcesRequest>;
 
@@ -6066,10 +6003,7 @@ export const GetStatsQuerySearchapplicationsRequest =
       T.HttpQuery("toDate.day"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/stats/query/searchapplications/{searchapplicationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/stats/query/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetStatsQuerySearchapplicationsRequest>;
 
@@ -6131,10 +6065,7 @@ export const GetStatsUserSearchapplicationsRequest =
       T.HttpQuery("toDate.day"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/stats/user/searchapplications/{searchapplicationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/stats/user/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetStatsUserSearchapplicationsRequest>;
 
@@ -6196,10 +6127,7 @@ export const GetStatsSessionSearchapplicationsRequest =
       T.HttpQuery("toDate.day"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/stats/session/searchapplications/{searchapplicationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/stats/session/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetStatsSessionSearchapplicationsRequest>;
 
@@ -6233,7 +6161,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   resourceName: Schema.String.pipe(T.HttpPath("resourceName")),
   body: Schema.optional(Media).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "POST", path: "v1/media/{mediaId}", hasBody: true }),
+  T.Http({ method: "POST", path: "v1/media/{resourceName}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<UploadMediaRequest>;
 

@@ -78,7 +78,7 @@ export const Participant = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListParticipantsResponse {
   /** List of participants in one page. */
-  participants?: Array<Participant>;
+  participants?: ReadonlyArray<Participant>;
   /** Token to be circulated back for further List call if current List doesn't include all the participants. Unset if all participants are returned. */
   nextPageToken?: string;
   /** Total, exact number of `participants`. By default, this field isn't included in the response. Set the field mask in [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters) to receive this field in the response. */
@@ -183,7 +183,7 @@ export const Transcript = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTranscriptsResponse {
   /** List of transcripts in one page. */
-  transcripts?: Array<Transcript>;
+  transcripts?: ReadonlyArray<Transcript>;
   /** Token to be circulated back for further List call if current List doesn't include all the transcripts. Unset if all transcripts are returned. */
   nextPageToken?: string;
 }
@@ -385,7 +385,7 @@ export const PhoneAccess = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListRecordingsResponse {
   /** List of recordings in one page. */
-  recordings?: Array<Recording>;
+  recordings?: ReadonlyArray<Recording>;
   /** Token to be circulated back for further List call if current List doesn't include all the recordings. Unset if all recordings are returned. */
   nextPageToken?: string;
 }
@@ -430,7 +430,7 @@ export interface Space {
   /** Output only. URI used to join meetings consisting of `https://meet.google.com/` followed by the `meeting_code`. For example, `https://meet.google.com/abc-mnop-xyz`. */
   meetingUri?: string;
   /** Output only. All regional phone access methods for this meeting space. Can be empty. */
-  phoneAccess?: Array<PhoneAccess>;
+  phoneAccess?: ReadonlyArray<PhoneAccess>;
   /** Configuration pertaining to the meeting space. */
   config?: SpaceConfig;
   /** Output only. Type friendly unique string used to join the meeting. Format: `[a-z]+-[a-z]+-[a-z]+`. For example, `abc-mnop-xyz`. The maximum length is 128 characters. Can only be used as an alias of the space name to get the space. */
@@ -438,7 +438,7 @@ export interface Space {
   /** Active conference, if it exists. */
   activeConference?: ActiveConference;
   /** Output only. The SIP based access methods that can be used to join the conference. Can be empty. */
-  gatewaySipAccess?: Array<GatewaySipAccess>;
+  gatewaySipAccess?: ReadonlyArray<GatewaySipAccess>;
 }
 
 export const Space = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -491,7 +491,7 @@ export interface ListParticipantSessionsResponse {
   /** Token to be circulated back for further List call if current List doesn't include all the participants. Unset if all participants are returned. */
   nextPageToken?: string;
   /** List of participants in one page. */
-  participantSessions?: Array<ParticipantSession>;
+  participantSessions?: ReadonlyArray<ParticipantSession>;
 }
 
 export const ListParticipantSessionsResponse =
@@ -504,7 +504,7 @@ export interface ListTranscriptEntriesResponse {
   /** Token to be circulated back for further List call if current List doesn't include all the transcript entries. Unset if all entries are returned. */
   nextPageToken?: string;
   /** List of TranscriptEntries in one page. */
-  transcriptEntries?: Array<TranscriptEntry>;
+  transcriptEntries?: ReadonlyArray<TranscriptEntry>;
 }
 
 export const ListTranscriptEntriesResponse =
@@ -517,7 +517,7 @@ export interface ListConferenceRecordsResponse {
   /** Token to be circulated back for further List call if current List does NOT include all the Conferences. Unset if all conferences have been returned. */
   nextPageToken?: string;
   /** List of conferences in one page. */
-  conferenceRecords?: Array<ConferenceRecord>;
+  conferenceRecords?: ReadonlyArray<ConferenceRecord>;
 }
 
 export const ListConferenceRecordsResponse =
@@ -530,7 +530,7 @@ export interface ListSmartNotesResponse {
   /** Token to be circulated back for further List call if current List doesn't include all the smart notes. Unset if all smart notes are returned. */
   nextPageToken?: string;
   /** List of smart notes in one page. */
-  smartNotes?: Array<SmartNote>;
+  smartNotes?: ReadonlyArray<SmartNote>;
 }
 
 export const ListSmartNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -581,7 +581,7 @@ export interface GetSpacesRequest {
 export const GetSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v2/spaces/{spacesId}" }),
+  T.Http({ method: "GET", path: "v2/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetSpacesRequest>;
 
@@ -616,7 +616,7 @@ export const EndActiveConferenceSpacesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/spaces/{spacesId}:endActiveConference",
+      path: "v2/{name}:endActiveConference",
       hasBody: true,
     }),
     svc,
@@ -654,7 +654,7 @@ export const PatchSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(Space).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PATCH", path: "v2/spaces/{spacesId}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchSpacesRequest>;
 
@@ -684,10 +684,7 @@ export const GetConferenceRecordsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/conferenceRecords/{conferenceRecordsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConferenceRecordsRequest>;
 
@@ -759,10 +756,7 @@ export const GetConferenceRecordsRecordingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/conferenceRecords/{conferenceRecordsId}/recordings/{recordingsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConferenceRecordsRecordingsRequest>;
 
@@ -799,10 +793,7 @@ export const ListConferenceRecordsRecordingsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/conferenceRecords/{conferenceRecordsId}/recordings",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/recordings" }),
     svc,
   ) as unknown as Schema.Schema<ListConferenceRecordsRecordingsRequest>;
 
@@ -837,10 +828,7 @@ export const GetConferenceRecordsParticipantsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/conferenceRecords/{conferenceRecordsId}/participants/{participantsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConferenceRecordsParticipantsRequest>;
 
@@ -880,10 +868,7 @@ export const ListConferenceRecordsParticipantsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/conferenceRecords/{conferenceRecordsId}/participants",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/participants" }),
     svc,
   ) as unknown as Schema.Schema<ListConferenceRecordsParticipantsRequest>;
 
@@ -919,10 +904,7 @@ export const GetConferenceRecordsParticipantsParticipantSessionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/conferenceRecords/{conferenceRecordsId}/participants/{participantsId}/participantSessions/{participantSessionsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConferenceRecordsParticipantsParticipantSessionsRequest>;
 
@@ -964,10 +946,7 @@ export const ListConferenceRecordsParticipantsParticipantSessionsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/conferenceRecords/{conferenceRecordsId}/participants/{participantsId}/participantSessions",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/participantSessions" }),
     svc,
   ) as unknown as Schema.Schema<ListConferenceRecordsParticipantsParticipantSessionsRequest>;
 
@@ -1004,10 +983,7 @@ export const GetConferenceRecordsTranscriptsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/conferenceRecords/{conferenceRecordsId}/transcripts/{transcriptsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConferenceRecordsTranscriptsRequest>;
 
@@ -1044,10 +1020,7 @@ export const ListConferenceRecordsTranscriptsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/conferenceRecords/{conferenceRecordsId}/transcripts",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/transcripts" }),
     svc,
   ) as unknown as Schema.Schema<ListConferenceRecordsTranscriptsRequest>;
 
@@ -1082,10 +1055,7 @@ export const GetConferenceRecordsTranscriptsEntriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/conferenceRecords/{conferenceRecordsId}/transcripts/{transcriptsId}/entries/{entriesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConferenceRecordsTranscriptsEntriesRequest>;
 
@@ -1122,10 +1092,7 @@ export const ListConferenceRecordsTranscriptsEntriesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/conferenceRecords/{conferenceRecordsId}/transcripts/{transcriptsId}/entries",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/entries" }),
     svc,
   ) as unknown as Schema.Schema<ListConferenceRecordsTranscriptsEntriesRequest>;
 
@@ -1161,10 +1128,7 @@ export const GetConferenceRecordsSmartNotesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/conferenceRecords/{conferenceRecordsId}/smartNotes/{smartNotesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetConferenceRecordsSmartNotesRequest>;
 
@@ -1201,10 +1165,7 @@ export const ListConferenceRecordsSmartNotesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/conferenceRecords/{conferenceRecordsId}/smartNotes",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/smartNotes" }),
     svc,
   ) as unknown as Schema.Schema<ListConferenceRecordsSmartNotesRequest>;
 

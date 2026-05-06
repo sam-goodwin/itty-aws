@@ -28,7 +28,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -62,11 +62,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -111,7 +111,7 @@ export interface LayerDetails {
   /** The layer build command that was used to build the layer. This may not be found in all layers depending on how the container image is built. */
   command?: string;
   /** The base images the layer is found within. */
-  baseImages?: Array<BaseImage>;
+  baseImages?: ReadonlyArray<BaseImage>;
 }
 
 export const LayerDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -162,7 +162,7 @@ export interface PackageVersion {
   name?: string;
   version?: string;
   /** The licenses associated with this package. Note that this has to go on the PackageVersion level, because we can have cases with images with the same source having different licences. E.g. in Alpine, musl and musl-utils both have the same origin musl, but have different sets of licenses. */
-  licenses?: Array<string>;
+  licenses?: ReadonlyArray<string>;
 }
 
 export const PackageVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -213,11 +213,11 @@ export interface PackageData {
   /** HashDigest stores the SHA512 hash digest of the jar file if the package is of type Maven. This field will be unset for non Maven packages. */
   hashDigest?: string;
   /** The path to the jar file / go binary file. */
-  fileLocation?: Array<FileLocation>;
+  fileLocation?: ReadonlyArray<FileLocation>;
   /** CVEs that this package is no longer vulnerable to */
-  patchedCve?: Array<string>;
+  patchedCve?: ReadonlyArray<string>;
   /** The dependency chain between this package and the user's artifact. List in order from the customer's package under review first, to the current package last. Inclusive of the original package and the current package. */
-  dependencyChain?: Array<LanguagePackageDependency>;
+  dependencyChain?: ReadonlyArray<LanguagePackageDependency>;
   /** The maintainer of the package. */
   maintainer?: Maintainer;
   /** The architecture of the package. */
@@ -227,9 +227,9 @@ export interface PackageData {
   /** DEPRECATED */
   sourceVersion?: PackageVersion;
   /** A bundle containing the binary and source information. */
-  binarySourceInfo?: Array<BinarySourceInfo>;
+  binarySourceInfo?: ReadonlyArray<BinarySourceInfo>;
   /** The list of licenses found that are related to a given package. Note that licenses may also be stored on the BinarySourceInfo. If there is no BinarySourceInfo (because there's no concept of source vs binary), then it will be stored here, while if there are BinarySourceInfos, it will be stored there, as one source can have multiple binaries with different licenses. */
-  licenses?: Array<string>;
+  licenses?: ReadonlyArray<string>;
   layerDetails?: LayerDetails;
 }
 
@@ -258,7 +258,7 @@ export interface AnalyzePackagesRequestV1 {
   /** Required. The resource URI of the container image being scanned. */
   resourceUri?: string;
   /** The packages to analyze. */
-  packages?: Array<PackageData>;
+  packages?: ReadonlyArray<PackageData>;
   /** [DEPRECATED] Whether to include OSV data in the scan. For backwards compatibility reasons, this field can be neither removed nor renamed. */
   includeOsvData?: boolean;
 }
@@ -409,7 +409,7 @@ export interface GrafeasV1LayerDetails {
   /** The layer build command that was used to build the layer. This may not be found in all layers depending on how the container image is built. */
   command?: string;
   /** The base images the layer is found within. */
-  baseImages?: Array<GrafeasV1BaseImage>;
+  baseImages?: ReadonlyArray<GrafeasV1BaseImage>;
 }
 
 export const GrafeasV1LayerDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -462,7 +462,7 @@ export interface PackageIssue {
     | "CRITICAL"
     | (string & {});
   /** The location at which this package was found. */
-  fileLocation?: Array<GrafeasV1FileLocation>;
+  fileLocation?: ReadonlyArray<GrafeasV1FileLocation>;
 }
 
 export const PackageIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -537,7 +537,7 @@ export interface VexAssessment {
   /** The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc. */
   vulnerabilityId?: string;
   /** Holds a list of references associated with this vulnerability item and assessment. */
-  relatedUris?: Array<RelatedUrl>;
+  relatedUris?: ReadonlyArray<RelatedUrl>;
   /** The VulnerabilityAssessment note from which this VexAssessment was generated. This will be of the form: `projects/[PROJECT_ID]/notes/[NOTE_ID]`. */
   noteName?: string;
   /** Provides the state of this Vulnerability assessment. */
@@ -549,9 +549,9 @@ export interface VexAssessment {
     | "UNDER_INVESTIGATION"
     | (string & {});
   /** Contains information about the impact of this vulnerability, this will change with time. */
-  impacts?: Array<string>;
+  impacts?: ReadonlyArray<string>;
   /** Specifies details on how to handle (and presumably, fix) a vulnerability. */
-  remediations?: Array<Remediation>;
+  remediations?: ReadonlyArray<Remediation>;
   /** Justification provides the justification when the state of the assessment if NOT_AFFECTED. */
   justification?: Justification;
 }
@@ -619,13 +619,13 @@ export interface VulnerabilityOccurrence {
   /** The cvss v3 score for the vulnerability. */
   cvssv3?: CVSS;
   /** Required. The set of affected locations and their fixes (if available) within the associated resource. */
-  packageIssue?: Array<PackageIssue>;
+  packageIssue?: ReadonlyArray<PackageIssue>;
   /** Output only. A one sentence description of this vulnerability. */
   shortDescription?: string;
   /** Output only. A detailed description of this vulnerability. */
   longDescription?: string;
   /** Output only. URLs related to this vulnerability. */
-  relatedUrls?: Array<RelatedUrl>;
+  relatedUrls?: ReadonlyArray<RelatedUrl>;
   /** The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues. */
   effectiveSeverity?:
     | "SEVERITY_UNSPECIFIED"
@@ -675,15 +675,15 @@ export interface Command {
   /** Required. Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`. */
   name?: string;
   /** Environment variables set before running this command. */
-  env?: Array<string>;
+  env?: ReadonlyArray<string>;
   /** Command-line arguments used when executing this command. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Working directory (relative to project source root) used when running this command. */
   dir?: string;
   /** Optional unique identifier for this command, used in wait_for to reference this command as a dependency. */
   id?: string;
   /** The ID(s) of the command(s) that this command depends on. */
-  waitFor?: Array<string>;
+  waitFor?: ReadonlyArray<string>;
 }
 
 export const Command = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -701,7 +701,7 @@ export interface Artifact {
   /** Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`. */
   id?: string;
   /** Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image. */
-  names?: Array<string>;
+  names?: ReadonlyArray<string>;
 }
 
 export const Artifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -724,7 +724,7 @@ export const Hash = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FileHashes {
   /** Required. Collection of file hashes. */
-  fileHash?: Array<Hash>;
+  fileHash?: ReadonlyArray<Hash>;
 }
 
 export const FileHashes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -840,7 +840,7 @@ export interface Source {
   /** If provided, the source code used for the build came from this location. */
   context?: SourceContext;
   /** If provided, some of the source code used for the build may be found in these locations, in the case where the source repository had multiple remotes or submodules. This list will not include the context specified in the context field. */
-  additionalContexts?: Array<SourceContext>;
+  additionalContexts?: ReadonlyArray<SourceContext>;
 }
 
 export const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -856,9 +856,9 @@ export interface BuildProvenance {
   /** ID of the project. */
   projectId?: string;
   /** Commands requested by the build. */
-  commands?: Array<Command>;
+  commands?: ReadonlyArray<Command>;
   /** Output of the build. */
-  builtArtifacts?: Array<Artifact>;
+  builtArtifacts?: ReadonlyArray<Artifact>;
   /** Time at which the build was created. */
   createTime?: string;
   /** Time at which execution of the build was started. */
@@ -911,9 +911,9 @@ export interface Recipe {
   /** String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use. */
   entryPoint?: string;
   /** Collection of all external inputs that influenced the build on top of recipe.definedInMaterial and recipe.entryPoint. For example, if the recipe type were "make", then this might be the flags passed to make aside from the target, which is captured in recipe.entryPoint. Since the arguments field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any". */
-  arguments?: Array<Record<string, unknown>>;
+  arguments?: ReadonlyArray<Record<string, unknown>>;
   /** Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Since the environment field can greatly vary in structure, depending on the builder and recipe type, this is of form "Any". */
-  environment?: Array<Record<string, unknown>>;
+  environment?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Recipe = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -971,7 +971,7 @@ export interface InTotoProvenance {
   recipe?: Recipe;
   metadata?: Metadata;
   /** The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty. */
-  materials?: Array<string>;
+  materials?: ReadonlyArray<string>;
 }
 
 export const InTotoProvenance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1074,7 +1074,7 @@ export interface SlsaProvenance {
   recipe?: SlsaRecipe;
   metadata?: SlsaMetadata;
   /** The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on. This is considered to be incomplete unless metadata.completeness.materials is true. Unset or null is equivalent to empty. */
-  materials?: Array<Material>;
+  materials?: ReadonlyArray<Material>;
 }
 
 export const SlsaProvenance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1170,7 +1170,7 @@ export interface SlsaProvenanceZeroTwo {
   invocation?: GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation;
   buildConfig?: Record<string, unknown>;
   metadata?: GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata;
-  materials?: Array<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial>;
+  materials?: ReadonlyArray<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial>;
 }
 
 export const SlsaProvenanceZeroTwo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1187,7 +1187,7 @@ export const SlsaProvenanceZeroTwo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface InTotoStatement {
   /** Always `https://in-toto.io/Statement/v0.1`. */
   _type?: string;
-  subject?: Array<Subject>;
+  subject?: ReadonlyArray<Subject>;
   /** `https://slsa.dev/provenance/v0.1` for SlsaProvenance. */
   predicateType?: string;
   provenance?: InTotoProvenance;
@@ -1228,7 +1228,7 @@ export interface BuildDefinition {
   buildType?: string;
   externalParameters?: Record<string, unknown>;
   internalParameters?: Record<string, unknown>;
-  resolvedDependencies?: Array<ResourceDescriptor>;
+  resolvedDependencies?: ReadonlyArray<ResourceDescriptor>;
 }
 
 export const BuildDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1245,7 +1245,7 @@ export const BuildDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface ProvenanceBuilder {
   id?: string;
   version?: Record<string, string>;
-  builderDependencies?: Array<ResourceDescriptor>;
+  builderDependencies?: ReadonlyArray<ResourceDescriptor>;
 }
 
 export const ProvenanceBuilder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1269,7 +1269,7 @@ export const BuildMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface RunDetails {
   builder?: ProvenanceBuilder;
   metadata?: BuildMetadata;
-  byproducts?: Array<ResourceDescriptor>;
+  byproducts?: ReadonlyArray<ResourceDescriptor>;
 }
 
 export const RunDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1291,7 +1291,7 @@ export const SlsaProvenanceV1 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface InTotoSlsaProvenanceV1 {
   /** InToto spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement */
   _type?: string;
-  subject?: Array<Subject>;
+  subject?: ReadonlyArray<Subject>;
   predicateType?: string;
   predicate?: SlsaProvenanceV1;
 }
@@ -1330,7 +1330,7 @@ export interface Fingerprint {
   /** Required. The layer ID of the final layer in the Docker image's v1 representation. */
   v1Name?: string;
   /** Required. The ordered list of v2 blobs that represent a given image. */
-  v2Blob?: Array<string>;
+  v2Blob?: ReadonlyArray<string>;
   /** Output only. The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept. */
   v2Name?: string;
 }
@@ -1359,7 +1359,7 @@ export interface ImageOccurrence {
   /** Output only. The number of layers by which this image differs from the associated image basis. */
   distance?: number;
   /** This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer. */
-  layerInfo?: Array<Layer>;
+  layerInfo?: ReadonlyArray<Layer>;
   /** Output only. This contains the base image URL for the derived image occurrence. */
   baseResourceUrl?: string;
 }
@@ -1402,7 +1402,7 @@ export interface PackageOccurrence {
   /** Required. Output only. The name of the installed package. */
   name?: string;
   /** All of the places within the filesystem versions of this package have been found. */
-  location?: Array<Location>;
+  location?: ReadonlyArray<Location>;
   /** Output only. The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.). */
   packageType?: string;
   /** Output only. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages. */
@@ -1437,7 +1437,7 @@ export interface DeploymentOccurrence {
   /** Address of the runtime element hosting this deployment. */
   address?: string;
   /** Output only. Resource URI for the artifact being deployed taken from the deployable field with the same name. */
-  resourceUri?: Array<string>;
+  resourceUri?: ReadonlyArray<string>;
   /** Platform hosting this deployment. */
   platform?: "PLATFORM_UNSPECIFIED" | "GKE" | "FLEX" | "CUSTOM" | (string & {});
 }
@@ -1453,7 +1453,7 @@ export const DeploymentOccurrence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "DeploymentOccurrence" });
 
 export interface AnalysisCompleted {
-  analysisType?: Array<string>;
+  analysisType?: ReadonlyArray<string>;
 }
 
 export const AnalysisCompleted = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1501,7 +1501,7 @@ export interface DiscoveryOccurrence {
     | (string & {});
   analysisCompleted?: AnalysisCompleted;
   /** Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors. */
-  analysisError?: Array<Status>;
+  analysisError?: ReadonlyArray<Status>;
   /** When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API. */
   analysisStatusError?: Status;
   /** The CPE of the resource being scanned. */
@@ -1513,7 +1513,7 @@ export interface DiscoveryOccurrence {
   /** The status of an SBOM generation. */
   sbomStatus?: SBOMStatus;
   /** Files that make up the resource described by the occurrence. */
-  files?: Array<File>;
+  files?: ReadonlyArray<File>;
   /** The last time vulnerability scan results changed. */
   lastVulnerabilityUpdateTime?: string;
 }
@@ -1557,9 +1557,9 @@ export interface AttestationOccurrence {
   /** Required. The serialized payload that is verified by one or more `signatures`. */
   serializedPayload?: string;
   /** One or more signatures over `serialized_payload`. Verifier implementations should consider this attestation message verified if at least one `signature` verifies `serialized_payload`. See `Signature` in common.proto for more details on signature structure and verification. */
-  signatures?: Array<Signature>;
+  signatures?: ReadonlyArray<Signature>;
   /** One or more JWTs encoding a self-contained attestation. Each JWT encodes the payload that it verifies within the JWT itself. Verifier implementation SHOULD ignore the `serialized_payload` field when verifying these JWTs. If only JWTs are present on this AttestationOccurrence, then the `serialized_payload` SHOULD be left empty. Each JWT SHOULD encode a claim specific to the `resource_uri` of this Occurrence, but this is not validated by Grafeas metadata API implementations. The JWT itself is opaque to Grafeas. */
-  jwts?: Array<Jwt>;
+  jwts?: ReadonlyArray<Jwt>;
 }
 
 export const AttestationOccurrence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1576,7 +1576,7 @@ export interface UpgradeDistribution {
   /** The severity as specified by the upstream operating system. */
   severity?: string;
   /** The cve tied to this Upgrade. */
-  cve?: Array<string>;
+  cve?: ReadonlyArray<string>;
 }
 
 export const UpgradeDistribution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1618,9 +1618,9 @@ export interface WindowsUpdate {
   /** The localized description of the update. */
   description?: string;
   /** The list of categories to which the update belongs. */
-  categories?: Array<Category>;
+  categories?: ReadonlyArray<Category>;
   /** The Microsoft Knowledge Base article IDs that are associated with the update. */
-  kbArticleIds?: Array<string>;
+  kbArticleIds?: ReadonlyArray<string>;
   /** The hyperlink to the support information for the update. */
   supportUrl?: string;
   /** The last published timestamp of the update. */
@@ -1686,7 +1686,7 @@ export const ComplianceVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ComplianceVersion" });
 
 export interface ComplianceOccurrence {
-  nonCompliantFiles?: Array<NonCompliantFile>;
+  nonCompliantFiles?: ReadonlyArray<NonCompliantFile>;
   nonComplianceReason?: string;
   /** The OS and config version the benchmark was run on. */
   version?: ComplianceVersion;
@@ -1711,7 +1711,7 @@ export const EnvelopeSignature = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface Envelope {
   payload?: string;
   payloadType?: string;
-  signatures?: Array<EnvelopeSignature>;
+  signatures?: ReadonlyArray<EnvelopeSignature>;
 }
 
 export const Envelope = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1757,7 +1757,7 @@ export interface SbomReferenceIntotoPayload {
   /** URI identifying the type of the Predicate. */
   predicateType?: string;
   /** Set of software artifacts that the attestation applies to. Each element represents a single software artifact. */
-  subject?: Array<Subject>;
+  subject?: ReadonlyArray<Subject>;
   /** Additional parameters of the Predicate. Includes the actual data about the SBOM. */
   predicate?: SbomReferenceIntotoPredicate;
 }
@@ -1776,7 +1776,7 @@ export interface SBOMReferenceOccurrence {
   /** The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is expected to be 'application/vnd.in-toto+json'. */
   payloadType?: string;
   /** The signatures over the payload. */
-  signatures?: Array<EnvelopeSignature>;
+  signatures?: ReadonlyArray<EnvelopeSignature>;
 }
 
 export const SBOMReferenceOccurrence =
@@ -1843,9 +1843,9 @@ export interface SecretOccurrence {
     | "SECRET_KIND_STRIPE_WEBHOOK_SECRET"
     | (string & {});
   /** Optional. Locations where the secret is detected. */
-  locations?: Array<SecretLocation>;
+  locations?: ReadonlyArray<SecretLocation>;
   /** Optional. Status of the secret. */
-  statuses?: Array<SecretStatus>;
+  statuses?: ReadonlyArray<SecretStatus>;
 }
 
 export const SecretOccurrence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1940,7 +1940,7 @@ export const Occurrence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListVulnerabilitiesResponseV1 {
   /** The list of Vulnerability Occurrences resulting from a scan. */
-  occurrences?: Array<Occurrence>;
+  occurrences?: ReadonlyArray<Occurrence>;
   /** A page token that can be used in a subsequent call to ListVulnerabilities to continue retrieving results. */
   nextPageToken?: string;
 }
@@ -2024,10 +2024,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -2062,10 +2059,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -2096,10 +2090,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -2130,11 +2121,7 @@ export const CancelProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -2168,11 +2155,7 @@ export const WaitProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsOperationsRequest>;
 
@@ -2208,7 +2191,7 @@ export const AnalyzePackagesProjectsLocationsScansRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/scans:analyzePackages",
+      path: "v1/{parent}/scans:analyzePackages",
       hasBody: true,
     }),
     svc,
@@ -2247,10 +2230,7 @@ export const ListProjectsLocationsScansVulnerabilitiesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/scans/{scansId}/vulnerabilities",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/vulnerabilities" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsScansVulnerabilitiesRequest>;
 

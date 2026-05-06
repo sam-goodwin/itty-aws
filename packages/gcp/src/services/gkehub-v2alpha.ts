@@ -187,7 +187,7 @@ export const ConfigManagementContainerOverride =
 
 export interface ConfigManagementDeploymentOverride {
   /** Optional. The containers of the deployment resource to be overridden. */
-  containers?: Array<ConfigManagementContainerOverride>;
+  containers?: ReadonlyArray<ConfigManagementContainerOverride>;
   /** Required. The name of the deployment resource to be overridden. */
   deploymentName?: string;
   /** Required. The namespace of the deployment resource to be overridden. */
@@ -217,7 +217,7 @@ export interface ConfigManagementConfigSync {
   /** Optional. The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA. Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring. */
   metricsGcpServiceAccountEmail?: string;
   /** Optional. Configuration for deployment overrides. Applies only to Config Sync deployments with containers that are not a root or namespace reconciler: `reconciler-manager`, `otel-collector`, `resource-group-controller-manager`, `admission-webhook`. To override a root or namespace reconciler, use the rootsync or reposync fields at https://docs.cloud.google.com/kubernetes-engine/config-sync/docs/reference/rootsync-reposync-fields#override-resources instead. */
-  deploymentOverrides?: Array<ConfigManagementDeploymentOverride>;
+  deploymentOverrides?: ReadonlyArray<ConfigManagementDeploymentOverride>;
   /** Optional. Set to true to stop syncing configs for a single cluster. Default to false. */
   stopSyncing?: boolean;
 }
@@ -472,7 +472,7 @@ export interface PolicyControllerPolicyControllerDeploymentConfig {
   /** Container resource requirements. */
   containerResources?: PolicyControllerResourceRequirements;
   /** Pod tolerations of node taints. */
-  podTolerations?: Array<PolicyControllerToleration>;
+  podTolerations?: ReadonlyArray<PolicyControllerToleration>;
   /** Pod affinity configuration. */
   podAffinity?:
     | "AFFINITY_UNSPECIFIED"
@@ -494,7 +494,7 @@ export const PolicyControllerPolicyControllerDeploymentConfig =
 
 export interface PolicyControllerMonitoringConfig {
   /** Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export. */
-  backends?: Array<
+  backends?: ReadonlyArray<
     | "MONITORING_BACKEND_UNSPECIFIED"
     | "PROMETHEUS"
     | "CLOUD_MONITORING"
@@ -509,7 +509,7 @@ export const PolicyControllerMonitoringConfig =
 
 export interface PolicyControllerBundleInstallSpec {
   /** the set of namespaces to be exempted from the bundle */
-  exemptedNamespaces?: Array<string>;
+  exemptedNamespaces?: ReadonlyArray<string>;
 }
 
 export const PolicyControllerBundleInstallSpec =
@@ -569,7 +569,7 @@ export interface PolicyControllerHubConfig {
   /** Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether. */
   auditIntervalSeconds?: string;
   /** The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster. */
-  exemptableNamespaces?: Array<string>;
+  exemptableNamespaces?: ReadonlyArray<string>;
   /** Monitoring specifies the configuration of monitoring. */
   monitoring?: PolicyControllerMonitoringConfig;
   /** The maximum number of audit violations to be stored in a constraint. If not set, the internal default (currently 20) will be used. */
@@ -612,7 +612,7 @@ export const ServiceMeshStatusDetails =
 
 export interface ServiceMeshControlPlaneManagement {
   /** Explanation of state. */
-  details?: Array<ServiceMeshStatusDetails>;
+  details?: ReadonlyArray<ServiceMeshStatusDetails>;
   /** LifecycleState of control plane management. */
   state?:
     | "LIFECYCLE_STATE_UNSPECIFIED"
@@ -655,7 +655,7 @@ export interface ServiceMeshDataPlaneManagement {
     | "DEPROVISIONING"
     | (string & {});
   /** Explanation of the status. */
-  details?: Array<ServiceMeshStatusDetails>;
+  details?: ReadonlyArray<ServiceMeshStatusDetails>;
 }
 
 export const ServiceMeshDataPlaneManagement =
@@ -696,7 +696,7 @@ export interface ServiceMeshAnalysisMessage {
   /** A human readable description of what the error means. It is suitable for non-internationalize display purposes. */
   description?: string;
   /** A list of strings specifying the resource identifiers that were the cause of message generation. A "path" here may be: * MEMBERSHIP_ID if the cause is a specific member cluster * MEMBERSHIP_ID/(NAMESPACE\/)?RESOURCETYPE/NAME if the cause is a resource in a cluster */
-  resourcePaths?: Array<string>;
+  resourcePaths?: ReadonlyArray<string>;
   /** A UI can combine these args with a template (based on message_base.type) to produce an internationalized message. */
   args?: Record<string, unknown>;
   /** Details common to all types of Istio and ServiceMesh analysis messages. */
@@ -797,9 +797,9 @@ export interface ServiceMeshState {
   /** Output only. Status of data plane management. */
   dataPlaneManagement?: ServiceMeshDataPlaneManagement;
   /** Output only. Results of running Service Mesh analyzers. */
-  analysisMessages?: Array<ServiceMeshAnalysisMessage>;
+  analysisMessages?: ReadonlyArray<ServiceMeshAnalysisMessage>;
   /** Output only. List of conditions reported for this membership. */
-  conditions?: Array<ServiceMeshCondition>;
+  conditions?: ReadonlyArray<ServiceMeshCondition>;
 }
 
 export const ServiceMeshState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -849,7 +849,7 @@ export interface IdentityServiceSamlConfig {
   /** Optional. The SAML attribute to read groups from. This value is expected to be a string and will be passed along as-is (with the option of being prefixed by the `group_prefix`). */
   groupsAttribute?: string;
   /** Required. The list of IdP certificates to validate the SAML response against. */
-  identityProviderCertificates?: Array<string>;
+  identityProviderCertificates?: ReadonlyArray<string>;
   /** Optional. Prefix to prepend to user name. */
   userPrefix?: string;
   /** Optional. The mapping of additional user attributes like nickname, birthday and address etc.. `key` is the name of this additional attribute. `value` is a string presenting as CEL(common expression language, go/cel) used for getting the value from the resources. Take nickname as an example, in this case, `key` is "attribute.nickname" and `value` is "assertion.nickname". */
@@ -1067,7 +1067,7 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1179,7 +1179,7 @@ export const ClusterUpgradeIgnoredMembership =
 
 export interface ClusterUpgradeState {
   /** Actual upgrade state against desired. */
-  upgrades?: Array<ClusterUpgradeMembershipGKEUpgradeState>;
+  upgrades?: ReadonlyArray<ClusterUpgradeMembershipGKEUpgradeState>;
   /** Whether this membership is ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel. */
   ignored?: ClusterUpgradeIgnoredMembership;
 }
@@ -1235,7 +1235,7 @@ export const PolicyControllerPolicyContentState =
 
 export interface ConfigManagementPolicyControllerMonitoring {
   /** Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export. */
-  backends?: Array<
+  backends?: ReadonlyArray<
     | "MONITORING_BACKEND_UNSPECIFIED"
     | "PROMETHEUS"
     | "CLOUD_MONITORING"
@@ -1276,7 +1276,7 @@ export const ConfigManagementInstallError =
 
 export interface ConfigManagementOperatorState {
   /** Install errors. */
-  errors?: Array<ConfigManagementInstallError>;
+  errors?: ReadonlyArray<ConfigManagementInstallError>;
   /** The semenatic version number of the operator. */
   version?: string;
   /** The state of the Operator's deployment. */
@@ -1337,7 +1337,7 @@ export interface ConfigManagementSyncError {
   /** A description of the error */
   errorMessage?: string;
   /** A list of config(s) associated with the error, if any */
-  errorResources?: Array<ConfigManagementErrorResource>;
+  errorResources?: ReadonlyArray<ConfigManagementErrorResource>;
 }
 
 export const ConfigManagementSyncError =
@@ -1357,7 +1357,7 @@ export interface ConfigManagementSyncState {
   /** Deprecated: use last_sync_time instead. Timestamp of when ACM last successfully synced the repo. The time format is specified in https://golang.org/pkg/time/#Time.String */
   lastSync?: string;
   /** A list of errors resulting from problematic configs. This list will be truncated after 100 errors, although it is unlikely for that many errors to simultaneously exist. */
-  errors?: Array<ConfigManagementSyncError>;
+  errors?: ReadonlyArray<ConfigManagementSyncError>;
   /** Token indicating the state of the repo. */
   sourceToken?: string;
   /** Token indicating the state of the importer. */
@@ -1505,7 +1505,7 @@ export interface ConfigManagementConfigSyncState {
   /** Output only. The version of ConfigSync deployed. */
   version?: ConfigManagementConfigSyncVersion;
   /** Output only. Errors pertaining to the installation of Config Sync. */
-  errors?: Array<ConfigManagementConfigSyncError>;
+  errors?: ReadonlyArray<ConfigManagementConfigSyncError>;
   /** Output only. The state of the Reposync CRD */
   reposyncCrd?:
     | "CRD_STATE_UNSPECIFIED"
@@ -1580,7 +1580,7 @@ export interface ConfigManagementPolicyController {
   /** Monitoring specifies the configuration of monitoring. */
   monitoring?: ConfigManagementPolicyControllerMonitoring;
   /** The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster. */
-  exemptableNamespaces?: Array<string>;
+  exemptableNamespaces?: ReadonlyArray<string>;
   /** Enable or disable mutation in policy controller. If true, mutation CRDs, webhook and controller deployment will be deployed to the cluster. */
   mutationEnabled?: boolean;
   /** Installs the default template library along with Policy Controller. */
@@ -1797,7 +1797,7 @@ export const AppDevExperienceState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IdentityServiceSpec {
   /** A member may support multiple auth methods. */
-  authMethods?: Array<IdentityServiceAuthMethod>;
+  authMethods?: ReadonlyArray<IdentityServiceAuthMethod>;
   /** Optional. non-protocol-related configuration options. */
   identityServiceOptions?: IdentityServiceIdentityServiceOptions;
 }
@@ -2002,11 +2002,11 @@ export const MembershipFeature = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListMembershipFeaturesResponse {
   /** The list of matching MembershipFeatures. */
-  membershipFeatures?: Array<MembershipFeature>;
+  membershipFeatures?: ReadonlyArray<MembershipFeature>;
   /** A token to request the next page of resources from the `ListMembershipFeatures` method. The value of an empty string means that there are no more resources to return. */
   nextPageToken?: string;
   /** List of locations that could not be reached while fetching this list. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListMembershipFeaturesResponse =
@@ -2020,9 +2020,9 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -2035,7 +2035,7 @@ export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -2099,7 +2099,7 @@ export const ListProjectsLocationsRequest =
       T.HttpQuery("extraLocationTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v2alpha/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v2alpha/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -2134,10 +2134,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2alpha/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v2alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -2182,10 +2179,7 @@ export const ListProjectsLocationsOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2alpha/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v2alpha/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -2220,10 +2214,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v2alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -2257,11 +2248,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2alpha/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -2306,11 +2293,7 @@ export const PatchProjectsLocationsMembershipsFeaturesRequest =
     ),
     body: Schema.optional(MembershipFeature).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}/features/{featuresId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2alpha/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsMembershipsFeaturesRequest>;
 
@@ -2352,7 +2335,7 @@ export const CreateProjectsLocationsMembershipsFeaturesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}/features",
+      path: "v2alpha/{parent}/features",
       hasBody: true,
     }),
     svc,
@@ -2388,10 +2371,7 @@ export const DeleteProjectsLocationsMembershipsFeaturesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}/features/{featuresId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsMembershipsFeaturesRequest>;
 
@@ -2422,10 +2402,7 @@ export const GetProjectsLocationsMembershipsFeaturesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}/features/{featuresId}",
-    }),
+    T.Http({ method: "GET", path: "v2alpha/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMembershipsFeaturesRequest>;
 
@@ -2468,10 +2445,7 @@ export const ListProjectsLocationsMembershipsFeaturesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2alpha/projects/{projectsId}/locations/{locationsId}/memberships/{membershipsId}/features",
-    }),
+    T.Http({ method: "GET", path: "v2alpha/{parent}/features" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsMembershipsFeaturesRequest>;
 

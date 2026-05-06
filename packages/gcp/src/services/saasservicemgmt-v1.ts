@@ -67,7 +67,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -82,7 +82,7 @@ export interface Saas {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/saas/{saas}" */
   name?: string;
   /** Optional. List of locations that the service is available in. Rollout refers to the list to generate a rollout plan. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** Output only. State of the Saas. It is always in ACTIVE state if the application_template is empty. */
   state?:
     | "STATE_TYPE_UNSPECIFIED"
@@ -94,7 +94,7 @@ export interface Saas {
     | "FAILED"
     | (string & {});
   /** Output only. A set of conditions which indicate the various conditions this resource can have. */
-  conditions?: Array<SaasCondition>;
+  conditions?: ReadonlyArray<SaasCondition>;
   /** Output only. If the state is FAILED, the corresponding error code and message. Defaults to code=OK for all other states. */
   error?: Status;
   /** Optional. The labels on the resource, which can be used for categorization. similar to Kubernetes resource labels. */
@@ -127,11 +127,11 @@ export const Saas = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSaasResponse {
   /** The resulting saas. */
-  saas?: Array<Saas>;
+  saas?: ReadonlyArray<Saas>;
   /** If present, the next page token can be provided to a subsequent ListSaas call to list the next page. If empty, there are no more pages. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListSaasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -181,11 +181,11 @@ export const Tenant = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTenantsResponse {
   /** The resulting tenants. */
-  tenants?: Array<Tenant>;
+  tenants?: ReadonlyArray<Tenant>;
   /** If present, the next page token can be provided to a subsequent ListTenants call to list the next page. If empty, there are no more pages. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListTenantsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -254,13 +254,13 @@ export interface UnitKind {
   /** Optional. A reference to the Release object to use as default for creating new units of this UnitKind (optional). If not specified, a new unit must explicitly reference which release to use for its creation. */
   defaultRelease?: string;
   /** Optional. Immutable. List of other unit kinds that this release will depend on. Dependencies will be automatically provisioned if not found. Maximum 10. */
-  dependencies?: Array<Dependency>;
+  dependencies?: ReadonlyArray<Dependency>;
   /** Optional. List of inputVariables for this release that will either be retrieved from a dependency’s outputVariables, or will be passed on to a dependency’s inputVariables. Maximum 100. */
-  inputVariableMappings?: Array<VariableMapping>;
+  inputVariableMappings?: ReadonlyArray<VariableMapping>;
   /** Optional. List of outputVariables for this unit kind will be passed to this unit's outputVariables. Maximum 100. */
-  outputVariableMappings?: Array<VariableMapping>;
+  outputVariableMappings?: ReadonlyArray<VariableMapping>;
   /** Optional. Default revisions of flags for this UnitKind. Newly created units will use the flag default_flag_revisions present at the time of creation. */
-  defaultFlagRevisions?: Array<string>;
+  defaultFlagRevisions?: ReadonlyArray<string>;
   /** Required. Immutable. A reference to the Saas that defines the product (managed service) that the producer wants to manage with App Lifecycle Manager. Part of the App Lifecycle Manager common data model. Immutable once set. */
   saas?: string;
   /** Optional. The labels on the resource, which can be used for categorization. similar to Kubernetes resource labels. */
@@ -295,11 +295,11 @@ export const UnitKind = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListUnitKindsResponse {
   /** The resulting unit kinds. */
-  unitKinds?: Array<UnitKind>;
+  unitKinds?: ReadonlyArray<UnitKind>;
   /** If present, the next page token can be provided to a subsequent ListUnitKinds call to list the next page. If empty, there are no more pages. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListUnitKindsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -393,19 +393,19 @@ export interface Unit {
   /** Optional. Reference to the Saas Tenant resource this unit belongs to. This for example informs the maintenance policies to use for scheduling future updates on a unit. (optional and immutable once created) */
   tenant?: string;
   /** Optional. Output only. List of concurrent UnitOperations that are operating on this Unit. */
-  ongoingOperations?: Array<string>;
+  ongoingOperations?: ReadonlyArray<string>;
   /** Optional. Output only. List of pending (wait to be executed) UnitOperations for this unit. */
-  pendingOperations?: Array<string>;
+  pendingOperations?: ReadonlyArray<string>;
   /** Optional. Output only. List of scheduled UnitOperations for this unit. */
-  scheduledOperations?: Array<string>;
+  scheduledOperations?: ReadonlyArray<string>;
   /** Optional. Output only. List of Units that depend on this unit. Unit can only be deprovisioned if this list is empty. Maximum 1000. */
-  dependents?: Array<UnitDependency>;
+  dependents?: ReadonlyArray<UnitDependency>;
   /** Optional. Output only. Set of dependencies for this unit. Maximum 10. */
-  dependencies?: Array<UnitDependency>;
+  dependencies?: ReadonlyArray<UnitDependency>;
   /** Optional. Output only. Indicates the current input variables deployed by the unit */
-  inputVariables?: Array<UnitVariable>;
+  inputVariables?: ReadonlyArray<UnitVariable>;
   /** Optional. Output only. Set of key/value pairs corresponding to output variables from execution of actuation templates. The variables are declared in actuation configs (e.g in helm chart or terraform) and the values are fetched and returned by the actuation engine upon completion of execution. */
-  outputVariables?: Array<UnitVariable>;
+  outputVariables?: ReadonlyArray<UnitVariable>;
   /** Optional. Captures requested directives for performing future maintenance on the unit. This includes a request for the unit to skip maintenance for a period of time and remain pinned to its current release as well as controls for postponing maintenance scheduled in future. */
   maintenance?: MaintenanceSettings;
   /** Optional. Output only. Current lifecycle state of the resource (e.g. if it's being created or ready to use). */
@@ -419,7 +419,7 @@ export interface Unit {
     | "UNIT_STATE_ERROR"
     | (string & {});
   /** Optional. Output only. A set of conditions which indicate the various conditions this resource can have. */
-  conditions?: Array<UnitCondition>;
+  conditions?: ReadonlyArray<UnitCondition>;
   /** Optional. Immutable. Indicates whether the Unit life cycle is controlled by the user or by the system. Immutable once created. */
   managementMode?:
     | "MANAGEMENT_MODE_UNSPECIFIED"
@@ -436,7 +436,7 @@ export interface Unit {
   /** Optional. Output only. If set, indicates the time when the system will start removing the unit. */
   systemCleanupAt?: string;
   /** Optional. Output only. Flag revisions used by this Unit. */
-  flagRevisions?: Array<string>;
+  flagRevisions?: ReadonlyArray<string>;
   /** Optional. The labels on the resource, which can be used for categorization. similar to Kubernetes resource labels. */
   labels?: Record<string, string>;
   /** Optional. Annotations is an unstructured key-value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/user-guide/annotations */
@@ -486,11 +486,11 @@ export const Unit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListUnitsResponse {
   /** The resulting units. */
-  units?: Array<Unit>;
+  units?: ReadonlyArray<Unit>;
   /** If present, the next page token can be provided to a subsequent ListUnits call to list the next page. If empty, there are no more pages. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListUnitsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -503,7 +503,7 @@ export interface Provision {
   /** Optional. Reference to the Release object to use for the Unit. (optional). */
   release?: string;
   /** Optional. Set of input variables. Maximum 100. (optional) */
-  inputVariables?: Array<UnitVariable>;
+  inputVariables?: ReadonlyArray<UnitVariable>;
 }
 
 export const Provision = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -515,7 +515,7 @@ export interface Upgrade {
   /** Optional. Reference to the Release object to use for the Unit. (optional). */
   release?: string;
   /** Optional. Set of input variables. Maximum 100. (optional) */
-  inputVariables?: Array<UnitVariable>;
+  inputVariables?: ReadonlyArray<UnitVariable>;
 }
 
 export const Upgrade = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -609,7 +609,7 @@ export interface UnitOperation {
     | "UNIT_OPERATION_STATE_CANCELLED"
     | (string & {});
   /** Optional. Output only. A set of conditions which indicate the various conditions this resource can have. */
-  conditions?: Array<UnitOperationCondition>;
+  conditions?: ReadonlyArray<UnitOperationCondition>;
   /** Optional. When to schedule this operation. */
   schedule?: Schedule;
   /** Optional. Output only. The engine state for on-going deployment engine operation(s). This field is opaque for external usage. */
@@ -665,11 +665,11 @@ export const UnitOperation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListUnitOperationsResponse {
   /** The resulting unit operations. */
-  unitOperations?: Array<UnitOperation>;
+  unitOperations?: ReadonlyArray<UnitOperation>;
   /** If present, the next page token can be provided to a subsequent ListUnitOperations call to list the next page. If empty, there are no more pages. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListUnitOperationsResponse =
@@ -696,7 +696,7 @@ export const Blueprint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ReleaseRequirements {
   /** Optional. A list of releases from which a unit can be upgraded to this one (optional). If left empty no constraints will be applied. When provided, unit upgrade requests to this release will check and enforce this constraint. */
-  upgradeableFromReleases?: Array<string>;
+  upgradeableFromReleases?: ReadonlyArray<string>;
 }
 
 export const ReleaseRequirements = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -713,11 +713,11 @@ export interface Release {
   /** Optional. Set of requirements to be fulfilled on the Unit when using this Release. */
   releaseRequirements?: ReleaseRequirements;
   /** Optional. Output only. List of input variables declared on the blueprint and can be present with their values on the unit spec */
-  inputVariables?: Array<UnitVariable>;
+  inputVariables?: ReadonlyArray<UnitVariable>;
   /** Optional. Output only. List of output variables declared on the blueprint and can be present with their values on the unit status */
-  outputVariables?: Array<UnitVariable>;
+  outputVariables?: ReadonlyArray<UnitVariable>;
   /** Optional. Mapping of input variables to default values. Maximum 100 */
-  inputVariableDefaults?: Array<UnitVariable>;
+  inputVariableDefaults?: ReadonlyArray<UnitVariable>;
   /** Optional. The labels on the resource, which can be used for categorization. similar to Kubernetes resource labels. */
   labels?: Record<string, string>;
   /** Optional. Annotations is an unstructured key-value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/user-guide/annotations */
@@ -750,11 +750,11 @@ export const Release = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListReleasesResponse {
   /** The resulting releases. */
-  releases?: Array<Release>;
+  releases?: ReadonlyArray<Release>;
   /** If present, the next page token can be provided to a subsequent ListReleases call to list the next page. If empty, there are no more pages. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListReleasesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -777,7 +777,7 @@ export const Aggregate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RolloutStats {
   /** Optional. Output only. Unordered list. A breakdown of the progress of operations triggered by the rollout. Provides a count of Operations by their state. This can be used to determine the number of units which have been updated, or are scheduled to be updated. There will be at most one entry per group. Possible values for operation groups are: - "SCHEDULED" - "PENDING" - "RUNNING" - "SUCCEEDED" - "FAILED" - "CANCELLED" */
-  operationsByState?: Array<Aggregate>;
+  operationsByState?: ReadonlyArray<Aggregate>;
   /** Optional. Output only. Estimated number of units based. The estimation is computed upon creation of the rollout. */
   estimatedTotalUnitCount?: string;
 }
@@ -903,11 +903,11 @@ export const Rollout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListRolloutsResponse {
   /** The resulting rollouts. */
-  rollouts?: Array<Rollout>;
+  rollouts?: ReadonlyArray<Rollout>;
   /** If present, the next page token can be provided to a subsequent ListRollouts call to list the next page. If empty, there are no more pages. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListRolloutsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -976,11 +976,11 @@ export const RolloutKind = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListRolloutKindsResponse {
   /** The resulting rollout kinds. */
-  rolloutKinds?: Array<RolloutKind>;
+  rolloutKinds?: ReadonlyArray<RolloutKind>;
   /** If present, the next page token can be provided to a subsequent ListRolloutKinds call to list the next page. If empty, there are no more pages. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListRolloutKindsResponse =
@@ -1014,7 +1014,7 @@ export const GoogleCloudLocationLocation =
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<GoogleCloudLocationLocation>;
+  locations?: ReadonlyArray<GoogleCloudLocationLocation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -1051,7 +1051,7 @@ export const ListProjectsLocationsRequest =
       T.HttpQuery("extraLocationTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -1086,10 +1086,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -1132,10 +1129,7 @@ export const ListProjectsLocationsSaasRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/saas",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/saas" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSaasRequest>;
 
@@ -1170,10 +1164,7 @@ export const GetProjectsLocationsSaasRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/saas/{saasId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSaasRequest>;
 
@@ -1218,11 +1209,7 @@ export const CreateProjectsLocationsSaasRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Saas).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/saas",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/saas", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsSaasRequest>;
 
@@ -1267,11 +1254,7 @@ export const PatchProjectsLocationsSaasRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Saas).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/saas/{saasId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsSaasRequest>;
 
@@ -1313,10 +1296,7 @@ export const DeleteProjectsLocationsSaasRequest =
     ),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/saas/{saasId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSaasRequest>;
 
@@ -1359,10 +1339,7 @@ export const ListProjectsLocationsTenantsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tenants",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/tenants" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTenantsRequest>;
 
@@ -1397,10 +1374,7 @@ export const GetProjectsLocationsTenantsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tenants/{tenantsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTenantsRequest>;
 
@@ -1445,11 +1419,7 @@ export const CreateProjectsLocationsTenantsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Tenant).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tenants",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/tenants", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsTenantsRequest>;
 
@@ -1494,11 +1464,7 @@ export const PatchProjectsLocationsTenantsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Tenant).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tenants/{tenantsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsTenantsRequest>;
 
@@ -1540,10 +1506,7 @@ export const DeleteProjectsLocationsTenantsRequest =
     ),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tenants/{tenantsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTenantsRequest>;
 
@@ -1586,10 +1549,7 @@ export const ListProjectsLocationsUnitKindsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/unitKinds",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/unitKinds" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsUnitKindsRequest>;
 
@@ -1624,10 +1584,7 @@ export const GetProjectsLocationsUnitKindsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/unitKinds/{unitKindsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsUnitKindsRequest>;
 
@@ -1672,11 +1629,7 @@ export const CreateProjectsLocationsUnitKindsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(UnitKind).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/unitKinds",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/unitKinds", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsUnitKindsRequest>;
 
@@ -1721,11 +1674,7 @@ export const PatchProjectsLocationsUnitKindsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(UnitKind).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/unitKinds/{unitKindsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsUnitKindsRequest>;
 
@@ -1767,10 +1716,7 @@ export const DeleteProjectsLocationsUnitKindsRequest =
     ),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/unitKinds/{unitKindsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsUnitKindsRequest>;
 
@@ -1813,10 +1759,7 @@ export const ListProjectsLocationsUnitsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/units",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/units" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsUnitsRequest>;
 
@@ -1851,10 +1794,7 @@ export const GetProjectsLocationsUnitsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/units/{unitsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsUnitsRequest>;
 
@@ -1899,11 +1839,7 @@ export const CreateProjectsLocationsUnitsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Unit).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/units",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/units", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsUnitsRequest>;
 
@@ -1948,11 +1884,7 @@ export const PatchProjectsLocationsUnitsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Unit).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/units/{unitsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsUnitsRequest>;
 
@@ -1994,10 +1926,7 @@ export const DeleteProjectsLocationsUnitsRequest =
     ),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/units/{unitsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsUnitsRequest>;
 
@@ -2040,10 +1969,7 @@ export const ListProjectsLocationsUnitOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/unitOperations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/unitOperations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsUnitOperationsRequest>;
 
@@ -2079,10 +2005,7 @@ export const GetProjectsLocationsUnitOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/unitOperations/{unitOperationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsUnitOperationsRequest>;
 
@@ -2131,7 +2054,7 @@ export const CreateProjectsLocationsUnitOperationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/unitOperations",
+      path: "v1/{parent}/unitOperations",
       hasBody: true,
     }),
     svc,
@@ -2178,11 +2101,7 @@ export const PatchProjectsLocationsUnitOperationsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(UnitOperation).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/unitOperations/{unitOperationsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsUnitOperationsRequest>;
 
@@ -2224,10 +2143,7 @@ export const DeleteProjectsLocationsUnitOperationsRequest =
     ),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/unitOperations/{unitOperationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsUnitOperationsRequest>;
 
@@ -2270,10 +2186,7 @@ export const ListProjectsLocationsReleasesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/releases",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/releases" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsReleasesRequest>;
 
@@ -2308,10 +2221,7 @@ export const GetProjectsLocationsReleasesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/releases/{releasesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsReleasesRequest>;
 
@@ -2356,11 +2266,7 @@ export const CreateProjectsLocationsReleasesRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Release).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/releases",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/releases", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsReleasesRequest>;
 
@@ -2405,11 +2311,7 @@ export const PatchProjectsLocationsReleasesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Release).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/releases/{releasesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsReleasesRequest>;
 
@@ -2451,10 +2353,7 @@ export const DeleteProjectsLocationsReleasesRequest =
     ),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/releases/{releasesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsReleasesRequest>;
 
@@ -2497,10 +2396,7 @@ export const ListProjectsLocationsRolloutsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/rollouts",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/rollouts" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRolloutsRequest>;
 
@@ -2535,10 +2431,7 @@ export const GetProjectsLocationsRolloutsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/rollouts/{rolloutsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRolloutsRequest>;
 
@@ -2583,11 +2476,7 @@ export const CreateProjectsLocationsRolloutsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(Rollout).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/rollouts",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/rollouts", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsRolloutsRequest>;
 
@@ -2632,11 +2521,7 @@ export const PatchProjectsLocationsRolloutsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Rollout).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/rollouts/{rolloutsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsRolloutsRequest>;
 
@@ -2678,10 +2563,7 @@ export const DeleteProjectsLocationsRolloutsRequest =
     ),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/rollouts/{rolloutsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsRolloutsRequest>;
 
@@ -2724,10 +2606,7 @@ export const ListProjectsLocationsRolloutKindsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/rolloutKinds",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/rolloutKinds" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRolloutKindsRequest>;
 
@@ -2763,10 +2642,7 @@ export const GetProjectsLocationsRolloutKindsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/rolloutKinds/{rolloutKindsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRolloutKindsRequest>;
 
@@ -2813,11 +2689,7 @@ export const CreateProjectsLocationsRolloutKindsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     body: Schema.optional(RolloutKind).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/rolloutKinds",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/rolloutKinds", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsRolloutKindsRequest>;
 
@@ -2862,11 +2734,7 @@ export const PatchProjectsLocationsRolloutKindsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(RolloutKind).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/rolloutKinds/{rolloutKindsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsRolloutKindsRequest>;
 
@@ -2908,10 +2776,7 @@ export const DeleteProjectsLocationsRolloutKindsRequest =
     ),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/rolloutKinds/{rolloutKindsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsRolloutKindsRequest>;
 

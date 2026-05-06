@@ -28,7 +28,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -53,9 +53,9 @@ export const TensorFlowVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTensorFlowVersionsResponse {
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The listed nodes. */
-  tensorflowVersions?: Array<TensorFlowVersion>;
+  tensorflowVersions?: ReadonlyArray<TensorFlowVersion>;
   /** The next page token or empty if none. */
   nextPageToken?: string;
 }
@@ -185,9 +185,9 @@ export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -233,7 +233,7 @@ export interface Node {
   /** Output only. Immutable. The name of the TPU */
   name?: string;
   /** Output only. The Symptoms that have occurred to the TPU Node. */
-  symptoms?: Array<Symptom>;
+  symptoms?: ReadonlyArray<Symptom>;
   /** Output only. The current state for the TPU Node. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -266,7 +266,7 @@ export interface Node {
   /** The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used. */
   network?: string;
   /** Output only. The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the node reach out to the 0th entry in this map first. */
-  networkEndpoints?: Array<NetworkEndpoint>;
+  networkEndpoints?: ReadonlyArray<NetworkEndpoint>;
   /** The user-supplied description of the TPU. Maximum of 512 characters. */
   description?: string;
   /** Required. The version of Tensorflow running in the Node. */
@@ -312,9 +312,9 @@ export const Node = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListNodesResponse {
   /** The listed nodes. */
-  nodes?: Array<Node>;
+  nodes?: ReadonlyArray<Node>;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The next page token or empty if none. */
   nextPageToken?: string;
 }
@@ -327,7 +327,7 @@ export const ListNodesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -357,11 +357,11 @@ export const AcceleratorType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAcceleratorTypesResponse {
   /** The listed nodes. */
-  acceleratorTypes?: Array<AcceleratorType>;
+  acceleratorTypes?: ReadonlyArray<AcceleratorType>;
   /** The next page token or empty if none. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListAcceleratorTypesResponse =
@@ -404,7 +404,7 @@ export const ListProjectsLocationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -439,10 +439,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -479,10 +476,7 @@ export const ListProjectsLocationsNodesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/nodes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/nodes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsNodesRequest>;
 
@@ -517,10 +511,7 @@ export const DeleteProjectsLocationsNodesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsNodesRequest>;
 
@@ -554,11 +545,7 @@ export const StartProjectsLocationsNodesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(StartNodeRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}:start",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:start", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StartProjectsLocationsNodesRequest>;
 
@@ -589,10 +576,7 @@ export const GetProjectsLocationsNodesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsNodesRequest>;
 
@@ -629,11 +613,7 @@ export const CreateProjectsLocationsNodesRequest =
     nodeId: Schema.optional(Schema.String).pipe(T.HttpQuery("nodeId")),
     body: Schema.optional(Node).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/nodes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/nodes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsNodesRequest>;
 
@@ -667,11 +647,7 @@ export const ReimageProjectsLocationsNodesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ReimageNodeRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}:reimage",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:reimage", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ReimageProjectsLocationsNodesRequest>;
 
@@ -705,11 +681,7 @@ export const StopProjectsLocationsNodesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(StopNodeRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/nodes/{nodesId}:stop",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:stop", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StopProjectsLocationsNodesRequest>;
 
@@ -740,10 +712,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -788,10 +757,7 @@ export const ListProjectsLocationsOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -826,10 +792,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -860,11 +823,7 @@ export const CancelProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -895,10 +854,7 @@ export const GetProjectsLocationsTensorflowVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorflowVersions/{tensorflowVersionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTensorflowVersionsRequest>;
 
@@ -941,10 +897,7 @@ export const ListProjectsLocationsTensorflowVersionsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorflowVersions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/tensorflowVersions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTensorflowVersionsRequest>;
 
@@ -992,10 +945,7 @@ export const ListProjectsLocationsAcceleratorTypesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/acceleratorTypes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/acceleratorTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAcceleratorTypesRequest>;
 
@@ -1031,10 +981,7 @@ export const GetProjectsLocationsAcceleratorTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/acceleratorTypes/{acceleratorTypesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAcceleratorTypesRequest>;
 

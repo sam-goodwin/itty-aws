@@ -167,9 +167,9 @@ export const Reference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface JsonSchema {
   /** Possible values for an enumeration. This works in conjunction with `type` to represent types with a fixed set of legal values */
-  enum?: Array<unknown>;
+  enum?: ReadonlyArray<unknown>;
   /** Whether this property is required. */
-  required?: Array<string>;
+  required?: ReadonlyArray<string>;
   /** A description of this schema. */
   description?: string;
   /** Format of the value as per https://json-schema.org/understanding-json-schema/reference/string.html#format */
@@ -185,7 +185,7 @@ export interface JsonSchema {
   /** The default value of the field or object described by this schema. */
   default?: unknown;
   /** JSON Schema Validation: A Vocabulary for Structural Validation of JSON */
-  type?: Array<string>;
+  type?: ReadonlyArray<string>;
   /** Minimum length of the string field. */
   minLength?: number;
   /** Minimum value of the number field. */
@@ -369,10 +369,10 @@ export interface EntityType {
   /** The name of the entity type. */
   name?: string;
   /** List containing metadata information about each field of the entity type. */
-  fields?: Array<Field>;
+  fields?: ReadonlyArray<Field>;
   /** JsonSchema representation of this entity's schema */
   jsonSchema?: JsonSchema;
-  operations?: Array<
+  operations?: ReadonlyArray<
     | "OPERATION_UNSPECIFIED"
     | "LIST"
     | "GET"
@@ -409,7 +409,7 @@ export const SloEligibility = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ToolSpec {
   /** List of tool definitions. */
-  toolDefinitions?: Array<Record<string, unknown>>;
+  toolDefinitions?: ReadonlyArray<Record<string, unknown>>;
   /** Version of the tool spec. Format: providerId/connectorId/versionId/toolSpecId */
   toolSpecVersion?: string;
 }
@@ -453,7 +453,7 @@ export interface ListEntitiesResponse {
   /** Next page token if more records are available. */
   nextPageToken?: string;
   /** List containing entity rows. */
-  entities?: Array<Entity>;
+  entities?: ReadonlyArray<Entity>;
 }
 
 export const ListEntitiesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -613,7 +613,7 @@ export interface Action {
   /** Name of the action. */
   name?: string;
   /** List containing the metadata of result fields. */
-  resultMetadata?: Array<ResultMetadata>;
+  resultMetadata?: ReadonlyArray<ResultMetadata>;
   /** JsonSchema representation of this actions's input schema */
   inputJsonSchema?: JsonSchema;
   /** Metadata like service latency, etc. */
@@ -625,7 +625,7 @@ export interface Action {
   /** JsonSchema representation of this actions's result schema */
   resultJsonSchema?: JsonSchema;
   /** List containing input parameter metadata. */
-  inputParameters?: Array<InputParameter>;
+  inputParameters?: ReadonlyArray<InputParameter>;
 }
 
 export const Action = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -643,9 +643,9 @@ export const Action = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListActionsResponse {
   /** List of action metadata. */
-  actions?: Array<Action>;
+  actions?: ReadonlyArray<Action>;
   /** List of actions which contain unsupported Datatypes. Check datatype.proto for more information. */
-  unsupportedActionNames?: Array<string>;
+  unsupportedActionNames?: ReadonlyArray<string>;
   /** Metadata like service latency, etc. */
   metadata?: Record<string, Record<string, unknown>>;
   /** Next page token if more actions available. */
@@ -692,7 +692,7 @@ export interface Tool {
   /** Description of the tool. */
   description?: string;
   /** List of tool names that this tool depends on. */
-  dependsOn?: Array<string>;
+  dependsOn?: ReadonlyArray<string>;
   /** Metadata for the tool. */
   _meta?: Record<string, unknown>;
   /** JSON schema for the input parameters of the tool. */
@@ -711,7 +711,7 @@ export const Tool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListToolsResponse {
   /** List of available tools. */
-  tools?: Array<Tool>;
+  tools?: ReadonlyArray<Tool>;
   /** Next page token. */
   nextPageToken?: string;
   /** Metadata like service latency, etc. */
@@ -728,7 +728,7 @@ export const ListToolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ExecuteSqlQueryResponse {
   /** In the case of successful execution of the query the response contains results returned by the external system. For example, the result rows of the query are contained in the 'results' Struct list - "results": [ { "field1": "val1", "field2": "val2",.. },.. ] Each Struct row can contain fields any type of like nested Structs or lists. */
-  results?: Array<Record<string, unknown>>;
+  results?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const ExecuteSqlQueryResponse =
@@ -746,7 +746,7 @@ export interface AuthCodeData {
   /** OAuth authorization code. */
   authCode?: string;
   /** Scopes the connection will request when the user performs the auth code flow. */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
 }
 
 export const AuthCodeData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -834,7 +834,7 @@ export const Schedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WeeklyCycle {
   /** User can specify multiple windows in a week. Minimum of 1 window. */
-  schedule?: Array<Schedule>;
+  schedule?: ReadonlyArray<Schedule>;
 }
 
 export const WeeklyCycle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -878,7 +878,7 @@ export interface UpdatePolicy {
   /** Optional. Maintenance window that is applied to resources covered by this policy. */
   window?: MaintenanceWindow;
   /** Deny Maintenance Period that is applied to resource to indicate when maintenance is forbidden. The protocol supports zero-to-many such periods, but the current SLM Rollout implementation only supports zero-to-one. */
-  denyMaintenancePeriods?: Array<DenyMaintenancePeriod>;
+  denyMaintenancePeriods?: ReadonlyArray<DenyMaintenancePeriod>;
 }
 
 export const UpdatePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -948,7 +948,7 @@ export const NodeSloMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SloMetadata {
   /** Optional. List of nodes. Some producers need to use per-node metadata to calculate SLO. This field allows such producers to publish per-node SLO meta data, which will be consumed by SSA Eligibility Exporter and published in the form of per node metric to Monarch. */
-  nodes?: Array<NodeSloMetadata>;
+  nodes?: ReadonlyArray<NodeSloMetadata>;
   /** Name of the SLO tier the Instance belongs to. This name will be expected to match the tiers specified in the service SLO configuration. Field is mandatory and must not be empty. */
   tier?: string;
   /** Optional. Multiple per-instance SLI eligibilities which apply for individual SLIs. */
@@ -963,7 +963,7 @@ export const SloMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NotificationParameter {
   /** Optional. Array of string values. e.g. instance's replica information. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const NotificationParameter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1026,7 +1026,7 @@ export interface Instance {
   /** Optional. The instance_type of this instance of format: projects/{project_number}/locations/{location_id}/instanceTypes/{instance_type_id}. Instance Type represents a high-level tier or SKU of the service that this instance belong to. When enabled(eg: Maintenance Rollout), Rollout uses 'instance_type' along with 'software_versions' to determine whether instance needs an update or not. */
   instanceType?: string;
   /** Output only. The list of data plane resources provisioned for this instance, e.g. compute VMs. See go/get-instance-metadata. */
-  provisionedResources?: Array<ProvisionedResource>;
+  provisionedResources?: ReadonlyArray<ProvisionedResource>;
 }
 
 export const Instance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1106,7 +1106,7 @@ export const ToolName = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCustomToolNamesResponse {
   /** List of custom tools. */
-  toolNames?: Array<ToolName>;
+  toolNames?: ReadonlyArray<ToolName>;
 }
 
 export const ListCustomToolNamesResponse =
@@ -1167,7 +1167,7 @@ export interface Query {
   /** Sets the limit for the maximum number of rows returned after the query execution. */
   maxRows?: string;
   /** In the struct, the value corresponds to the value of query parameter and date type corresponds to the date type of the query parameter. */
-  queryParameters?: Array<QueryParameter>;
+  queryParameters?: ReadonlyArray<QueryParameter>;
   /** Required. Sql query to execute. */
   query?: string;
 }
@@ -1243,7 +1243,7 @@ export const GenerateCustomToolspecResponse =
 
 export interface ExecuteActionResponse {
   /** In the case of successful invocation of the specified action, the results Struct contains values based on the response of the action invoked. 1. If the action execution produces any entities as a result, they are returned as an array of Structs with the 'key' being the field name and the 'value' being the value of that field in each result row. { 'results': [{'key': 'value'}, ...] } */
-  results?: Array<Record<string, unknown>>;
+  results?: ReadonlyArray<Record<string, unknown>>;
   /** Metadata like service latency, etc. */
   metadata?: Record<string, Record<string, unknown>>;
 }
@@ -1336,7 +1336,7 @@ export interface ListResourcesResponse {
   /** Metadata like service latency, etc. */
   metadata?: Record<string, Record<string, unknown>>;
   /** List of available resources. */
-  resources?: Array<Resource>;
+  resources?: ReadonlyArray<Resource>;
   /** Next page token if more resources available. */
   nextPageToken?: string;
 }
@@ -1353,9 +1353,9 @@ export interface ListEntityTypesResponse {
   /** Next page token if more entity types available. */
   nextPageToken?: string;
   /** List of metadata related to all entity types. */
-  types?: Array<EntityType>;
+  types?: ReadonlyArray<EntityType>;
   /** List of entity type names which contain unsupported Datatypes. Check datatype.proto for more information. */
-  unsupportedTypeNames?: Array<string>;
+  unsupportedTypeNames?: ReadonlyArray<string>;
   /** Metadata like service latency, etc. */
   metadata?: Record<string, Record<string, unknown>>;
 }
@@ -1413,7 +1413,7 @@ export const GetResourceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GenerateCustomToolspecRequest {
   /** list of tools to be generated. */
-  toolNames?: Array<ToolName>;
+  toolNames?: ReadonlyArray<ToolName>;
 }
 
 export const GenerateCustomToolspecRequest =
@@ -1434,10 +1434,7 @@ export const ListCustomToolNamesProjectsLocationsConnectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:listCustomToolNames",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}:listCustomToolNames" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomToolNamesProjectsLocationsConnectionsRequest>;
 
@@ -1474,7 +1471,7 @@ export const RefreshAccessTokenProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:refreshAccessToken",
+      path: "v2/{name}:refreshAccessToken",
       hasBody: true,
     }),
     svc,
@@ -1512,10 +1509,7 @@ export const CheckStatusProjectsLocationsConnectionsRequest =
       T.HttpQuery("executionConfig.headers"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:checkStatus",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}:checkStatus" }),
     svc,
   ) as unknown as Schema.Schema<CheckStatusProjectsLocationsConnectionsRequest>;
 
@@ -1552,7 +1546,7 @@ export const GenerateConnectionToolspecOverrideProjectsLocationsConnectionsReque
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:generateConnectionToolspecOverride",
+      path: "v2/{name}:generateConnectionToolspecOverride",
       hasBody: true,
     }),
     svc,
@@ -1593,7 +1587,7 @@ export const ExecuteSqlQueryProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:executeSqlQuery",
+      path: "v2/{connection}:executeSqlQuery",
       hasBody: true,
     }),
     svc,
@@ -1626,10 +1620,7 @@ export const CheckReadinessProjectsLocationsConnectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:checkReadiness",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}:checkReadiness" }),
     svc,
   ) as unknown as Schema.Schema<CheckReadinessProjectsLocationsConnectionsRequest>;
 
@@ -1665,7 +1656,7 @@ export const ExchangeAuthCodeProjectsLocationsConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}:exchangeAuthCode",
+      path: "v2/{name}:exchangeAuthCode",
       hasBody: true,
     }),
     svc,
@@ -1702,11 +1693,7 @@ export const ToolsProjectsLocationsConnectionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(ListToolsPostRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/tools",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/tools", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ToolsProjectsLocationsConnectionsRequest>;
 
@@ -1755,10 +1742,7 @@ export const ListProjectsLocationsConnectionsActionsRequest =
       T.HttpQuery("executionConfig.headers"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/actions",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/actions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsActionsRequest>;
 
@@ -1806,10 +1790,7 @@ export const GetProjectsLocationsConnectionsActionsRequest =
       T.HttpQuery("executionConfig.headers"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/actions/{actionsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsConnectionsActionsRequest>;
 
@@ -1843,11 +1824,7 @@ export const ExecuteProjectsLocationsConnectionsActionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ExecuteActionRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/actions/{actionsId}:execute",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:execute", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExecuteProjectsLocationsConnectionsActionsRequest>;
 
@@ -1890,10 +1867,7 @@ export const ListProjectsLocationsConnectionsToolsRequest =
       T.HttpQuery("executionConfig.headers"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/tools",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/tools" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsToolsRequest>;
 
@@ -1931,11 +1905,7 @@ export const ExecuteProjectsLocationsConnectionsToolsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ExecuteToolRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/tools/{toolsId}:execute",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:execute", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExecuteProjectsLocationsConnectionsToolsRequest>;
 
@@ -1970,11 +1940,7 @@ export const GetResourcePostProjectsLocationsConnectionsResourcesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GetResourcePostRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/resources/{resourcesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<GetResourcePostProjectsLocationsConnectionsResourcesRequest>;
 
@@ -2018,10 +1984,7 @@ export const ListProjectsLocationsConnectionsResourcesRequest =
       T.HttpQuery("executionConfig.headers"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/resources",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/resources" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsResourcesRequest>;
 
@@ -2062,10 +2025,7 @@ export const GetProjectsLocationsConnectionsResourcesRequest =
       T.HttpQuery("executionConfig.headers"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/resources/{resourcesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsConnectionsResourcesRequest>;
 
@@ -2114,10 +2074,7 @@ export const GetProjectsLocationsConnectionsEntityTypesRequest =
       T.HttpQuery("executionConfig.headers"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/entityTypes/{entityTypesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsConnectionsEntityTypesRequest>;
 
@@ -2166,10 +2123,7 @@ export const ListProjectsLocationsConnectionsEntityTypesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/entityTypes",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/entityTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsEntityTypesRequest>;
 
@@ -2218,7 +2172,7 @@ export const UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypes
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/entityTypes/{entityTypesId}/entities:updateEntitiesWithConditions",
+      path: "v2/{entityType}/entities:updateEntitiesWithConditions",
       hasBody: true,
     }),
     svc,
@@ -2260,10 +2214,7 @@ export const DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest =
       T.HttpQuery("executionConfig.headers"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/entityTypes/{entityTypesId}/entities/{entitiesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
 
@@ -2301,10 +2252,7 @@ export const GetProjectsLocationsConnectionsEntityTypesEntitiesRequest =
       T.HttpQuery("executionConfig.headers"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/entityTypes/{entityTypesId}/entities/{entitiesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
 
@@ -2346,7 +2294,7 @@ export const DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypes
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/entityTypes/{entityTypesId}/entities:deleteEntitiesWithConditions",
+      path: "v2/{entityType}/entities:deleteEntitiesWithConditions",
       hasBody: true,
     }),
     svc,
@@ -2407,10 +2355,7 @@ export const ListProjectsLocationsConnectionsEntityTypesEntitiesRequest =
       T.HttpQuery("executionConfig.headers"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/entityTypes/{entityTypesId}/entities",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/entities" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
 
@@ -2455,11 +2400,7 @@ export const CreateProjectsLocationsConnectionsEntityTypesEntitiesRequest =
     ),
     body: Schema.optional(Entity).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/entityTypes/{entityTypesId}/entities",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/entities", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
 
@@ -2500,11 +2441,7 @@ export const PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest =
     ),
     body: Schema.optional(Entity).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/connections/{connectionsId}/entityTypes/{entityTypesId}/entities/{entitiesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
 

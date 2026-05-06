@@ -28,7 +28,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -62,11 +62,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -97,7 +97,7 @@ export interface AccessPolicy {
   /** Required. Human readable title. Does not affect behavior. */
   title?: string;
   /** The scopes of the AccessPolicy. Scopes define which resources a policy can restrict and where its resources can be referenced. For example, policy A with `scopes=["folders/123"]` has the following behavior: - ServicePerimeter can only restrict projects within `folders/123`. - ServicePerimeter within policy A can only reference access levels defined within policy A. - Only one policy can include a given scope; thus, attempting to create a second policy which includes `folders/123` will result in an error. If no scopes are provided, then any resource within the organization can be restricted. Scopes cannot be modified after a policy is created. Policies can only have a single scope. Format: list of `folders/{folder_number}` or `projects/{project_number}` */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
   /** Output only. An opaque identifier for the current version of the `AccessPolicy`. This will always be a strongly validated etag, meaning that two Access Policies will be identical if and only if their etags are identical. Clients should not expect this to be in any specific format. */
   etag?: string;
 }
@@ -112,7 +112,7 @@ export const AccessPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAccessPoliciesResponse {
   /** List of the AccessPolicy instances. */
-  accessPolicies?: Array<AccessPolicy>;
+  accessPolicies?: ReadonlyArray<AccessPolicy>;
   /** The pagination token to retrieve the next page of results. If the value is empty, no further results remain. */
   nextPageToken?: string;
 }
@@ -150,7 +150,7 @@ export interface DevicePolicy {
   /** Whether or not screenlock is required for the DevicePolicy to be true. Defaults to `false`. */
   requireScreenlock?: boolean;
   /** Allowed encryptions statuses, an empty list allows all statuses. */
-  allowedEncryptionStatuses?: Array<
+  allowedEncryptionStatuses?: ReadonlyArray<
     | "ENCRYPTION_UNSPECIFIED"
     | "ENCRYPTION_UNSUPPORTED"
     | "UNENCRYPTED"
@@ -158,9 +158,9 @@ export interface DevicePolicy {
     | (string & {})
   >;
   /** Allowed OS versions, an empty list allows all types and all versions. */
-  osConstraints?: Array<OsConstraint>;
+  osConstraints?: ReadonlyArray<OsConstraint>;
   /** Allowed device management levels, an empty list allows all management levels. */
-  allowedDeviceManagementLevels?: Array<
+  allowedDeviceManagementLevels?: ReadonlyArray<
     "MANAGEMENT_UNSPECIFIED" | "NONE" | "BASIC" | "COMPLETE" | (string & {})
   >;
   /** Whether the device needs to be approved by the customer admin. */
@@ -182,7 +182,7 @@ export interface VpcSubNetwork {
   /** Required. Network name. If the network is not part of the organization, the `compute.network.get` permission must be granted to the caller. Format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NETWORK_NAME}` Example: `//compute.googleapis.com/projects/my-project/global/networks/network-1` */
   network?: string;
   /** CIDR block IP subnetwork specification. The IP address must be an IPv4 address and can be a public or private IP address. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. If empty, all IP addresses are allowed. */
-  vpcIpSubnetworks?: Array<string>;
+  vpcIpSubnetworks?: ReadonlyArray<string>;
 }
 
 export const VpcSubNetwork = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -201,19 +201,19 @@ export const VpcNetworkSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Condition {
   /** CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly, for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32" is not. The originating IP of a request must be in one of the listed subnets in order for this Condition to be true. If empty, all IP addresses are allowed. */
-  ipSubnetworks?: Array<string>;
+  ipSubnetworks?: ReadonlyArray<string>;
   /** Device specific restrictions, all restrictions must hold for the Condition to be true. If not specified, all devices are allowed. */
   devicePolicy?: DevicePolicy;
   /** A list of other access levels defined in the same `Policy`, referenced by resource name. Referencing an `AccessLevel` which does not exist is an error. All access levels listed must be granted for the Condition to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"` */
-  requiredAccessLevels?: Array<string>;
+  requiredAccessLevels?: ReadonlyArray<string>;
   /** Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields. Any non-empty field criteria evaluating to false will result in the Condition to be satisfied. Defaults to false. */
   negate?: boolean;
   /** The request must be made by one of the provided user or service accounts. Groups are not supported. Syntax: `user:{emailid}` `serviceAccount:{emailid}` If not specified, a request may come from any user. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The request must originate from one of the provided countries/regions. Must be valid ISO 3166-1 alpha-2 codes. */
-  regions?: Array<string>;
+  regions?: ReadonlyArray<string>;
   /** The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`. */
-  vpcNetworkSources?: Array<VpcNetworkSource>;
+  vpcNetworkSources?: ReadonlyArray<VpcNetworkSource>;
 }
 
 export const Condition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -228,7 +228,7 @@ export const Condition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BasicLevel {
   /** Required. A list of requirements for the `AccessLevel` to be granted. */
-  conditions?: Array<Condition>;
+  conditions?: ReadonlyArray<Condition>;
   /** How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND. */
   combiningFunction?: "AND" | "OR" | (string & {});
 }
@@ -288,7 +288,7 @@ export const AccessLevel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAccessLevelsResponse {
   /** List of the Access Level instances. */
-  accessLevels?: Array<AccessLevel>;
+  accessLevels?: ReadonlyArray<AccessLevel>;
   /** The pagination token to retrieve the next page of results. If the value is empty, no further results remain. */
   nextPageToken?: string;
 }
@@ -301,7 +301,7 @@ export const ListAccessLevelsResponse =
 
 export interface ReplaceAccessLevelsRequest {
   /** Required. The desired Access Levels that should replace all existing Access Levels in the Access Policy. */
-  accessLevels?: Array<AccessLevel>;
+  accessLevels?: ReadonlyArray<AccessLevel>;
   /** Optional. The etag for the version of the Access Policy that this replace operation is to be performed on. If, at the time of replace, the etag for the Access Policy stored in Access Context Manager is different from the specified etag, then the replace operation will not be performed and the call will fail. This field is not required. If etag is not provided, the operation will be performed as if a valid etag is provided. */
   etag?: string;
 }
@@ -316,7 +316,7 @@ export interface VpcAccessibleServices {
   /** Whether to restrict API calls within the Service Perimeter to the list of APIs specified in 'allowed_services'. */
   enableRestriction?: boolean;
   /** The list of APIs usable within the Service Perimeter. Must be empty unless 'enable_restriction' is True. You can specify a list of individual services, as well as include the 'RESTRICTED-SERVICES' value, which automatically includes all of the services protected by the perimeter. */
-  allowedServices?: Array<string>;
+  allowedServices?: ReadonlyArray<string>;
 }
 
 export const VpcAccessibleServices = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -338,9 +338,9 @@ export const IngressSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IngressFrom {
   /** Sources that this IngressPolicy authorizes access from. */
-  sources?: Array<IngressSource>;
+  sources?: ReadonlyArray<IngressSource>;
   /** A list of identities that are allowed access through [IngressPolicy]. Identities can be an individual user, service account, Google group, third-party identity, or agent identity. For the list of supported identity types, see https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities. */
-  identities?: Array<string>;
+  identities?: ReadonlyArray<string>;
   /** Specifies the type of identities that are allowed access from outside the perimeter. If left unspecified, then members of `identities` field will be allowed access. */
   identityType?:
     | "IDENTITY_TYPE_UNSPECIFIED"
@@ -372,7 +372,7 @@ export interface ApiOperation {
   /** The name of the API whose methods or permissions the IngressPolicy or EgressPolicy want to allow. A single ApiOperation with `service_name` field set to `*` will allow all methods AND permissions for all services. */
   serviceName?: string;
   /** API methods or permissions to allow. Method or permission must belong to the service specified by `service_name` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `service_name`. */
-  methodSelectors?: Array<MethodSelector>;
+  methodSelectors?: ReadonlyArray<MethodSelector>;
 }
 
 export const ApiOperation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -382,11 +382,11 @@ export const ApiOperation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface IngressTo {
   /** A list of ApiOperations allowed to be performed by the sources specified in corresponding IngressFrom in this ServicePerimeter. */
-  operations?: Array<ApiOperation>;
+  operations?: ReadonlyArray<ApiOperation>;
   /** A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. If a single `*` is specified, then access to all resources inside the perimeter are allowed. */
-  resources?: Array<string>;
+  resources?: ReadonlyArray<string>;
   /** IAM roles that represent the set of operations that the sources specified in the corresponding IngressFrom are allowed to perform in this ServicePerimeter. */
-  roles?: Array<string>;
+  roles?: ReadonlyArray<string>;
 }
 
 export const IngressTo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -424,7 +424,7 @@ export const EgressSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface EgressFrom {
   /** A list of identities that are allowed access through [EgressPolicy]. Identities can be an individual user, service account, Google group, third-party identity, or agent identity. For the list of supported identity types, see https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities. */
-  identities?: Array<string>;
+  identities?: ReadonlyArray<string>;
   /** Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access. */
   identityType?:
     | "IDENTITY_TYPE_UNSPECIFIED"
@@ -433,7 +433,7 @@ export interface EgressFrom {
     | "ANY_SERVICE_ACCOUNT"
     | (string & {});
   /** Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction` must be set to `SOURCE_RESTRICTION_ENABLED`. */
-  sources?: Array<EgressSource>;
+  sources?: ReadonlyArray<EgressSource>;
   /** Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`. */
   sourceRestriction?:
     | "SOURCE_RESTRICTION_UNSPECIFIED"
@@ -451,13 +451,13 @@ export const EgressFrom = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface EgressTo {
   /** A list of resources, currently only projects in the form `projects/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is specified for `resources`, then this EgressTo rule will authorize access to all resources outside the perimeter. */
-  resources?: Array<string>;
+  resources?: ReadonlyArray<string>;
   /** A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list. */
-  operations?: Array<ApiOperation>;
+  operations?: ReadonlyArray<ApiOperation>;
   /** A list of external resources that are allowed to be accessed. Only AWS and Azure resources are supported. For Amazon S3, the supported formats are s3://BUCKET_NAME, s3a://BUCKET_NAME, and s3n://BUCKET_NAME. For Azure Storage, the supported format is azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed. */
-  externalResources?: Array<string>;
+  externalResources?: ReadonlyArray<string>;
   /** IAM roles that represent the set of operations that the sources specified in the corresponding EgressFrom. are allowed to perform in this ServicePerimeter. */
-  roles?: Array<string>;
+  roles?: ReadonlyArray<string>;
 }
 
 export const EgressTo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -484,17 +484,17 @@ export const EgressPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ServicePerimeterConfig {
   /** A list of Google Cloud resources that are inside of the service perimeter. Currently only projects and VPCs are allowed. Project format: `projects/{project_number}` VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`. */
-  resources?: Array<string>;
+  resources?: ReadonlyArray<string>;
   /** A list of `AccessLevel` resource names that allow resources within the `ServicePerimeter` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be empty. */
-  accessLevels?: Array<string>;
+  accessLevels?: ReadonlyArray<string>;
   /** Google Cloud services that are subject to the Service Perimeter restrictions. For example, if `storage.googleapis.com` is specified, access to the storage buckets inside the perimeter must meet the perimeter's access restrictions. */
-  restrictedServices?: Array<string>;
+  restrictedServices?: ReadonlyArray<string>;
   /** Configuration for APIs allowed within Perimeter. */
   vpcAccessibleServices?: VpcAccessibleServices;
   /** List of IngressPolicies to apply to the perimeter. A perimeter may have multiple IngressPolicies, each of which is evaluated separately. Access is granted if any Ingress Policy grants it. Must be empty for a perimeter bridge. */
-  ingressPolicies?: Array<IngressPolicy>;
+  ingressPolicies?: ReadonlyArray<IngressPolicy>;
   /** List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge. */
-  egressPolicies?: Array<EgressPolicy>;
+  egressPolicies?: ReadonlyArray<EgressPolicy>;
 }
 
 export const ServicePerimeterConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -543,7 +543,7 @@ export const ServicePerimeter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListServicePerimetersResponse {
   /** List of the Service Perimeter instances. */
-  servicePerimeters?: Array<ServicePerimeter>;
+  servicePerimeters?: ReadonlyArray<ServicePerimeter>;
   /** The pagination token to retrieve the next page of results. If the value is empty, no further results remain. */
   nextPageToken?: string;
 }
@@ -556,7 +556,7 @@ export const ListServicePerimetersResponse =
 
 export interface ReplaceServicePerimetersRequest {
   /** Required. The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy. */
-  servicePerimeters?: Array<ServicePerimeter>;
+  servicePerimeters?: ReadonlyArray<ServicePerimeter>;
   /** Optional. The etag for the version of the Access Policy that this replace operation is to be performed on. If, at the time of replace, the etag for the Access Policy stored in Access Context Manager is different from the specified etag, then the replace operation will not be performed and the call will fail. This field is not required. If etag is not provided, the operation will be performed as if a valid etag is provided. */
   etag?: string;
 }
@@ -596,7 +596,7 @@ export interface SupportedService {
   /** The name of the supported product, such as 'Cloud Product API'. */
   title?: string;
   /** The list of the supported methods. This field exists only in response to GetSupportedService */
-  supportedMethods?: Array<MethodSelector>;
+  supportedMethods?: ReadonlyArray<MethodSelector>;
   /** True if the service is supported with some limitations. Check [documentation](https://cloud.google.com/vpc-service-controls/docs/supported-products) for details. */
   knownLimitations?: boolean;
   /** The support stage of the service. */
@@ -620,7 +620,7 @@ export const SupportedService = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSupportedServicesResponse {
   /** List of services supported by VPC Service Controls instances. */
-  supportedServices?: Array<SupportedService>;
+  supportedServices?: ReadonlyArray<SupportedService>;
   /** The pagination token to retrieve the next page of results. If the value is empty, no further results remain. */
   nextPageToken?: string;
 }
@@ -689,7 +689,7 @@ export const AccessScope = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AccessSettings {
   /** Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted" */
-  accessLevels?: Array<string>;
+  accessLevels?: ReadonlyArray<string>;
   /** Optional. Session settings applied to user access on a given AccessScope. */
   sessionSettings?: SessionSettings;
 }
@@ -720,15 +720,15 @@ export interface GcpUserAccessBinding {
   /** Optional. Immutable. Google Group id whose users are subject to this binding's restrictions. See "id" in the [Google Workspace Directory API's Group Resource] (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource). If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht" */
   groupKey?: string;
   /** Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted" */
-  accessLevels?: Array<string>;
+  accessLevels?: ReadonlyArray<string>;
   /** Optional. Dry run access level that will be evaluated but will not be enforced. The access denial based on dry run policy will be logged. Only one access level is supported, not multiple. This list must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted" */
-  dryRunAccessLevels?: Array<string>;
+  dryRunAccessLevels?: ReadonlyArray<string>;
   /** Optional. The Google Cloud session length (GCSL) policy for the group key. */
   sessionSettings?: SessionSettings;
   /** Optional. A list of applications that are subject to this binding's restrictions. If the list is empty, the binding restrictions will universally apply to all applications. */
-  restrictedClientApplications?: Array<Application>;
+  restrictedClientApplications?: ReadonlyArray<Application>;
   /** Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications. This field cannot be set if restricted_client_applications is set. */
-  scopedAccessSettings?: Array<ScopedAccessSettings>;
+  scopedAccessSettings?: ReadonlyArray<ScopedAccessSettings>;
 }
 
 export const GcpUserAccessBinding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -743,7 +743,7 @@ export const GcpUserAccessBinding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListGcpUserAccessBindingsResponse {
   /** GcpUserAccessBinding */
-  gcpUserAccessBindings?: Array<GcpUserAccessBinding>;
+  gcpUserAccessBindings?: ReadonlyArray<GcpUserAccessBinding>;
   /** Token to get the next page of items. If blank, there are no more items. */
   nextPageToken?: string;
 }
@@ -758,7 +758,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
@@ -778,7 +778,7 @@ export interface AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -790,7 +790,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
 }
 
 export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -802,9 +802,9 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
@@ -848,7 +848,7 @@ export const GetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -858,7 +858,7 @@ export const TestIamPermissionsRequest =
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -887,7 +887,7 @@ export interface AuthorizedOrgsDesc {
     | "AUTHORIZATION_DIRECTION_FROM"
     | (string & {});
   /** The list of organization ids in this AuthorizedOrgsDesc. Format: `organizations/` Example: `organizations/123456` */
-  orgs?: Array<string>;
+  orgs?: ReadonlyArray<string>;
 }
 
 export const AuthorizedOrgsDesc = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -900,7 +900,7 @@ export const AuthorizedOrgsDesc = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAuthorizedOrgsDescsResponse {
   /** List of all the Authorized Orgs Desc instances. */
-  authorizedOrgsDescs?: Array<AuthorizedOrgsDesc>;
+  authorizedOrgsDescs?: ReadonlyArray<AuthorizedOrgsDesc>;
   /** The pagination token to retrieve the next page of results. If the value is empty, no further results remain. */
   nextPageToken?: string;
 }
@@ -913,7 +913,7 @@ export const ListAuthorizedOrgsDescsResponse =
 
 export interface ListSupportedPermissionsResponse {
   /** List of VPC-SC supported permissions. */
-  supportedPermissions?: Array<string>;
+  supportedPermissions?: ReadonlyArray<string>;
   /** The pagination token to retrieve the next page of results. If the value is empty, no further results remain. */
   nextPageToken?: string;
 }
@@ -926,7 +926,7 @@ export const ListSupportedPermissionsResponse =
 
 export interface ReplaceAccessLevelsResponse {
   /** List of the Access Level instances. */
-  accessLevels?: Array<AccessLevel>;
+  accessLevels?: ReadonlyArray<AccessLevel>;
 }
 
 export const ReplaceAccessLevelsResponse =
@@ -936,7 +936,7 @@ export const ReplaceAccessLevelsResponse =
 
 export interface ReplaceServicePerimetersResponse {
   /** List of the Service Perimeter instances. */
-  servicePerimeters?: Array<ServicePerimeter>;
+  servicePerimeters?: ReadonlyArray<ServicePerimeter>;
 }
 
 export const ReplaceServicePerimetersResponse =
@@ -946,7 +946,7 @@ export const ReplaceServicePerimetersResponse =
 
 export interface CommitServicePerimetersResponse {
   /** List of all the Service Perimeter instances in the Access Policy. */
-  servicePerimeters?: Array<ServicePerimeter>;
+  servicePerimeters?: ReadonlyArray<ServicePerimeter>;
 }
 
 export const CommitServicePerimetersResponse =
@@ -994,7 +994,7 @@ export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("returnPartialSuccess"),
   ),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/operations" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<ListOperationsRequest>;
 
@@ -1028,7 +1028,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/operations/{operationsId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -1058,7 +1058,7 @@ export const DeleteOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/operations/{operationsId}" }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOperationsRequest>;
 
@@ -1091,11 +1091,7 @@ export const CancelOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelOperationsRequest>;
 
@@ -1166,7 +1162,7 @@ export const GetAccessPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/accessPolicies/{accessPoliciesId}" }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccessPoliciesRequest>;
 
@@ -1234,11 +1230,7 @@ export const PatchAccessPoliciesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AccessPolicy).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/accessPolicies/{accessPoliciesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccessPoliciesRequest>;
 
@@ -1269,7 +1261,7 @@ export const DeleteAccessPoliciesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/accessPolicies/{accessPoliciesId}" }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccessPoliciesRequest>;
 
@@ -1305,7 +1297,7 @@ export const SetIamPolicyAccessPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accessPolicies/{accessPoliciesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -1343,7 +1335,7 @@ export const GetIamPolicyAccessPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accessPolicies/{accessPoliciesId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -1381,7 +1373,7 @@ export const TestIamPermissionsAccessPoliciesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accessPolicies/{accessPoliciesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -1430,10 +1422,7 @@ export const ListAccessPoliciesAccessLevelsRequest =
       T.HttpQuery("accessLevelFormat"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accessPolicies/{accessPoliciesId}/accessLevels",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/accessLevels" }),
     svc,
   ) as unknown as Schema.Schema<ListAccessPoliciesAccessLevelsRequest>;
 
@@ -1477,10 +1466,7 @@ export const GetAccessPoliciesAccessLevelsRequest =
       T.HttpQuery("accessLevelFormat"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accessPolicies/{accessPoliciesId}/accessLevels/{accessLevelsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccessPoliciesAccessLevelsRequest>;
 
@@ -1514,11 +1500,7 @@ export const CreateAccessPoliciesAccessLevelsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AccessLevel).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/accessPolicies/{accessPoliciesId}/accessLevels",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/accessLevels", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateAccessPoliciesAccessLevelsRequest>;
 
@@ -1555,11 +1537,7 @@ export const PatchAccessPoliciesAccessLevelsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AccessLevel).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/accessPolicies/{accessPoliciesId}/accessLevels/{accessLevelsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccessPoliciesAccessLevelsRequest>;
 
@@ -1590,10 +1568,7 @@ export const DeleteAccessPoliciesAccessLevelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/accessPolicies/{accessPoliciesId}/accessLevels/{accessLevelsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccessPoliciesAccessLevelsRequest>;
 
@@ -1629,7 +1604,7 @@ export const ReplaceAllAccessPoliciesAccessLevelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accessPolicies/{accessPoliciesId}/accessLevels:replaceAll",
+      path: "v1/{parent}/accessLevels:replaceAll",
       hasBody: true,
     }),
     svc,
@@ -1667,7 +1642,7 @@ export const TestIamPermissionsAccessPoliciesAccessLevelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accessPolicies/{accessPoliciesId}/accessLevels/{accessLevelsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -1707,10 +1682,7 @@ export const ListAccessPoliciesServicePerimetersRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accessPolicies/{accessPoliciesId}/servicePerimeters",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/servicePerimeters" }),
     svc,
   ) as unknown as Schema.Schema<ListAccessPoliciesServicePerimetersRequest>;
 
@@ -1746,10 +1718,7 @@ export const GetAccessPoliciesServicePerimetersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accessPolicies/{accessPoliciesId}/servicePerimeters/{servicePerimetersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccessPoliciesServicePerimetersRequest>;
 
@@ -1785,7 +1754,7 @@ export const CreateAccessPoliciesServicePerimetersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accessPolicies/{accessPoliciesId}/servicePerimeters",
+      path: "v1/{parent}/servicePerimeters",
       hasBody: true,
     }),
     svc,
@@ -1824,11 +1793,7 @@ export const PatchAccessPoliciesServicePerimetersRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ServicePerimeter).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/accessPolicies/{accessPoliciesId}/servicePerimeters/{servicePerimetersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccessPoliciesServicePerimetersRequest>;
 
@@ -1859,10 +1824,7 @@ export const DeleteAccessPoliciesServicePerimetersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/accessPolicies/{accessPoliciesId}/servicePerimeters/{servicePerimetersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccessPoliciesServicePerimetersRequest>;
 
@@ -1898,7 +1860,7 @@ export const ReplaceAllAccessPoliciesServicePerimetersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accessPolicies/{accessPoliciesId}/servicePerimeters:replaceAll",
+      path: "v1/{parent}/servicePerimeters:replaceAll",
       hasBody: true,
     }),
     svc,
@@ -1936,7 +1898,7 @@ export const CommitAccessPoliciesServicePerimetersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accessPolicies/{accessPoliciesId}/servicePerimeters:commit",
+      path: "v1/{parent}/servicePerimeters:commit",
       hasBody: true,
     }),
     svc,
@@ -1974,7 +1936,7 @@ export const TestIamPermissionsAccessPoliciesServicePerimetersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accessPolicies/{accessPoliciesId}/servicePerimeters/{servicePerimetersId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2015,10 +1977,7 @@ export const ListAccessPoliciesAuthorizedOrgsDescsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accessPolicies/{accessPoliciesId}/authorizedOrgsDescs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/authorizedOrgsDescs" }),
     svc,
   ) as unknown as Schema.Schema<ListAccessPoliciesAuthorizedOrgsDescsRequest>;
 
@@ -2054,10 +2013,7 @@ export const GetAccessPoliciesAuthorizedOrgsDescsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/accessPolicies/{accessPoliciesId}/authorizedOrgsDescs/{authorizedOrgsDescsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccessPoliciesAuthorizedOrgsDescsRequest>;
 
@@ -2093,7 +2049,7 @@ export const CreateAccessPoliciesAuthorizedOrgsDescsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/accessPolicies/{accessPoliciesId}/authorizedOrgsDescs",
+      path: "v1/{parent}/authorizedOrgsDescs",
       hasBody: true,
     }),
     svc,
@@ -2132,11 +2088,7 @@ export const PatchAccessPoliciesAuthorizedOrgsDescsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AuthorizedOrgsDesc).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/accessPolicies/{accessPoliciesId}/authorizedOrgsDescs/{authorizedOrgsDescsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccessPoliciesAuthorizedOrgsDescsRequest>;
 
@@ -2167,10 +2119,7 @@ export const DeleteAccessPoliciesAuthorizedOrgsDescsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/accessPolicies/{accessPoliciesId}/authorizedOrgsDescs/{authorizedOrgsDescsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccessPoliciesAuthorizedOrgsDescsRequest>;
 
@@ -2273,10 +2222,7 @@ export const ListOrganizationsGcpUserAccessBindingsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/gcpUserAccessBindings",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/gcpUserAccessBindings" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsGcpUserAccessBindingsRequest>;
 
@@ -2312,10 +2258,7 @@ export const GetOrganizationsGcpUserAccessBindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/gcpUserAccessBindings/{gcpUserAccessBindingsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsGcpUserAccessBindingsRequest>;
 
@@ -2352,7 +2295,7 @@ export const CreateOrganizationsGcpUserAccessBindingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/organizations/{organizationsId}/gcpUserAccessBindings",
+      path: "v1/{parent}/gcpUserAccessBindings",
       hasBody: true,
     }),
     svc,
@@ -2394,11 +2337,7 @@ export const PatchOrganizationsGcpUserAccessBindingsRequest =
     append: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("append")),
     body: Schema.optional(GcpUserAccessBinding).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/organizations/{organizationsId}/gcpUserAccessBindings/{gcpUserAccessBindingsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchOrganizationsGcpUserAccessBindingsRequest>;
 
@@ -2429,10 +2368,7 @@ export const DeleteOrganizationsGcpUserAccessBindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/organizations/{organizationsId}/gcpUserAccessBindings/{gcpUserAccessBindingsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsGcpUserAccessBindingsRequest>;
 
