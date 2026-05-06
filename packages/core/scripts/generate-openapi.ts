@@ -811,7 +811,8 @@ function generateInputSchemaSwagger(
     fields.push(`  ${param.name}: ${baseSchema}.pipe(T.PathParam()),`);
   }
 
-  // Query parameters
+  // Query parameters — explicit T.QueryParam() so they remain query params
+  // for non-GET methods (where unmarked fields default to body).
   for (const param of queryParams) {
     let schema = param.enum
       ? renderEnumLiterals(param.enum, param.type)
@@ -824,7 +825,7 @@ function generateInputSchemaSwagger(
     if (!param.required) {
       schema = `Schema.optional(${schema})`;
     }
-    fields.push(`  ${param.name}: ${schema},`);
+    fields.push(`  ${param.name}: ${schema}.pipe(T.QueryParam()),`);
   }
 
   // Body parameters
@@ -938,7 +939,8 @@ function generateInputSchema3(
     fields.push(`  ${param.name}: ${baseSchema}.pipe(T.PathParam()),`);
   }
 
-  // Query parameters
+  // Query parameters — explicit T.QueryParam() so they remain query params
+  // for non-GET methods (where unmarked fields default to body).
   for (const param of queryParams) {
     if (usedNames.has(param.name)) continue;
     usedNames.add(param.name);
@@ -955,7 +957,7 @@ function generateInputSchema3(
     if (!param.required) {
       schemaStr = `Schema.optional(${schemaStr})`;
     }
-    fields.push(`  ${param.name}: ${schemaStr},`);
+    fields.push(`  ${param.name}: ${schemaStr}.pipe(T.QueryParam()),`);
   }
 
   // Request body — check for JSON, form-urlencoded, or multipart content
