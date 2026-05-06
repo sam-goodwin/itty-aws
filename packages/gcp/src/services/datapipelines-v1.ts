@@ -38,7 +38,7 @@ export interface GoogleCloudDatapipelinesV1RuntimeEnvironment {
   /** The machine type to use for the job. Defaults to the value from the template if not specified. */
   machineType?: string;
   /** Additional experiment flags for the job. */
-  additionalExperiments?: Array<string>;
+  additionalExperiments?: ReadonlyArray<string>;
   /** Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default". */
   network?: string;
   /** Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL. */
@@ -149,7 +149,7 @@ export interface GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment {
   /** The machine type to use for the job. Defaults to the value from the template if not specified. */
   machineType?: string;
   /** Additional experiment flags for the job. */
-  additionalExperiments?: Array<string>;
+  additionalExperiments?: ReadonlyArray<string>;
   /** Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default". */
   network?: string;
   /** Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL. */
@@ -353,7 +353,7 @@ export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface GoogleCloudDatapipelinesV1ListPipelinesResponse {
   /** Results that matched the filter criteria and were accessible to the caller. Results are always in descending order of pipeline creation date. */
-  pipelines?: Array<GoogleCloudDatapipelinesV1Pipeline>;
+  pipelines?: ReadonlyArray<GoogleCloudDatapipelinesV1Pipeline>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -388,7 +388,7 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -486,7 +486,7 @@ export const GoogleCloudDatapipelinesV1RunPipelineResponse =
 
 export interface GoogleCloudDatapipelinesV1ListJobsResponse {
   /** Results that were accessible to the caller. Results are always in descending order of job creation date. */
-  jobs?: Array<GoogleCloudDatapipelinesV1Job>;
+  jobs?: ReadonlyArray<GoogleCloudDatapipelinesV1Job>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -515,11 +515,7 @@ export const CreateProjectsLocationsPipelinesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pipelines",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/pipelines", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsPipelinesRequest>;
 
@@ -559,11 +555,7 @@ export const PatchProjectsLocationsPipelinesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pipelines/{pipelinesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsPipelinesRequest>;
 
@@ -595,10 +587,7 @@ export const DeleteProjectsLocationsPipelinesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pipelines/{pipelinesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsPipelinesRequest>;
 
@@ -638,10 +627,7 @@ export const ListProjectsLocationsPipelinesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pipelines",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/pipelines" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsPipelinesRequest>;
 
@@ -677,10 +663,7 @@ export const GetProjectsLocationsPipelinesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pipelines/{pipelinesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsPipelinesRequest>;
 
@@ -717,11 +700,7 @@ export const StopProjectsLocationsPipelinesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pipelines/{pipelinesId}:stop",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:stop", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StopProjectsLocationsPipelinesRequest>;
 
@@ -758,11 +737,7 @@ export const RunProjectsLocationsPipelinesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pipelines/{pipelinesId}:run",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:run", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RunProjectsLocationsPipelinesRequest>;
 
@@ -800,10 +775,7 @@ export const ListProjectsLocationsPipelinesJobsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pipelines/{pipelinesId}/jobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/jobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsPipelinesJobsRequest>;
 

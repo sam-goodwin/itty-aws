@@ -41,7 +41,7 @@ export interface CreateProfileRequest {
   /** Deployment details. */
   deployment?: Deployment;
   /** One or more profile types that the agent is capable of providing. */
-  profileType?: Array<
+  profileType?: ReadonlyArray<
     | "PROFILE_TYPE_UNSPECIFIED"
     | "CPU"
     | "WALL"
@@ -97,7 +97,7 @@ export const Profile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListProfilesResponse {
   /** List of profiles fetched. */
-  profiles?: Array<Profile>;
+  profiles?: ReadonlyArray<Profile>;
   /** Token to receive the next page of results. This field maybe empty if there are no more profiles to fetch. */
   nextPageToken?: string;
   /** Number of profiles that were skipped in the current page since they were not able to be fetched successfully. This should typically be zero. A non-zero value may indicate a transient failure, in which case if the number is too high for your use case, the call may be retried. */
@@ -126,11 +126,7 @@ export const CreateProjectsProfilesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(CreateProfileRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/profiles",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/profiles", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsProfilesRequest>;
 
@@ -166,7 +162,7 @@ export const CreateOfflineProjectsProfilesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/profiles:createOffline",
+      path: "v2/{parent}/profiles:createOffline",
       hasBody: true,
     }),
     svc,
@@ -205,11 +201,7 @@ export const PatchProjectsProfilesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Profile).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/projects/{projectsId}/profiles/{profilesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsProfilesRequest>;
 
@@ -246,7 +238,7 @@ export const ListProjectsProfilesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/projects/{projectsId}/profiles" }),
+    T.Http({ method: "GET", path: "v2/{parent}/profiles" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsProfilesRequest>;
 

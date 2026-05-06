@@ -226,7 +226,7 @@ export const RefinementEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RefineTextRequest {
   /** Required. The source texts and original translations in the source and target languages. */
-  refinementEntries?: Array<RefinementEntry>;
+  refinementEntries?: ReadonlyArray<RefinementEntry>;
   /** Required. The BCP-47 language code for translation output, for example, "zh-CN". */
   targetLanguageCode?: string;
   /** Required. The BCP-47 language code of the source text in the request, for example, "en-US". */
@@ -261,7 +261,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
@@ -297,11 +297,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -350,9 +350,9 @@ export const Translation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TranslateTextResponse {
   /** Text translation responses if a glossary is provided in the request. This can be the same as `translations` if no terms apply. This field has the same length as `contents`. */
-  glossaryTranslations?: Array<Translation>;
+  glossaryTranslations?: ReadonlyArray<Translation>;
   /** Text translation responses with no glossary applied. This field has the same length as `contents`. */
-  translations?: Array<Translation>;
+  translations?: ReadonlyArray<Translation>;
 }
 
 export const TranslateTextResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -374,7 +374,7 @@ export const GlossaryTerm = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GlossaryTermsSet {
   /** Each term in the set represents a term that can be replaced by the other terms. */
-  terms?: Array<GlossaryTerm>;
+  terms?: ReadonlyArray<GlossaryTerm>;
 }
 
 export const GlossaryTermsSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -415,7 +415,7 @@ export interface ListGlossaryEntriesResponse {
   /** Optional. A token to retrieve a page of results. Pass this value in the [ListGLossaryEntriesRequest.page_token] field in the subsequent calls. */
   nextPageToken?: string;
   /** Optional. The Glossary Entries */
-  glossaryEntries?: Array<GlossaryEntry>;
+  glossaryEntries?: ReadonlyArray<GlossaryEntry>;
 }
 
 export const ListGlossaryEntriesResponse =
@@ -486,7 +486,7 @@ export const ReferenceSentencePair = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ReferenceSentencePairList {
   /** Reference sentence pairs. */
-  referenceSentencePairs?: Array<ReferenceSentencePair>;
+  referenceSentencePairs?: ReadonlyArray<ReferenceSentencePair>;
 }
 
 export const ReferenceSentencePairList =
@@ -498,7 +498,7 @@ export const ReferenceSentencePairList =
 
 export interface ReferenceSentenceConfig {
   /** Reference sentences pair lists. Each list will be used as the references to translate the sentence under "content" field at the corresponding index. Length of the list is required to be equal to the length of "content" field. */
-  referenceSentencePairLists?: Array<ReferenceSentencePairList>;
+  referenceSentencePairLists?: ReadonlyArray<ReferenceSentencePairList>;
   /** Source language code. */
   sourceLanguageCode?: string;
   /** Target language code. */
@@ -533,7 +533,7 @@ export interface AdaptiveMtTranslateRequest {
   /** Required. The resource name for the dataset to use for adaptive MT translation. `projects/{project}/locations/{location-id}/adaptiveMtDatasets/{dataset}` */
   dataset?: string;
   /** Required. The content of the input in string format. */
-  content?: Array<string>;
+  content?: ReadonlyArray<string>;
   /** Configuration for caller provided reference sentences. */
   referenceSentenceConfig?: ReferenceSentenceConfig;
   /** Optional. Glossary to be applied. The glossary must be within the same region (have the same location-id) as the model, otherwise an INVALID_ARGUMENT (400) error is returned. */
@@ -550,7 +550,7 @@ export const AdaptiveMtTranslateRequest =
 
 export interface ListAdaptiveMtFilesResponse {
   /** Output only. The Adaptive MT files. */
-  adaptiveMtFiles?: Array<AdaptiveMtFile>;
+  adaptiveMtFiles?: ReadonlyArray<AdaptiveMtFile>;
   /** Optional. A token to retrieve a page of results. Pass this value in the ListAdaptiveMtFilesRequest.page_token field in the subsequent call to `ListAdaptiveMtFiles` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -584,7 +584,7 @@ export const AdaptiveMtSentence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAdaptiveMtSentencesResponse {
   /** Output only. The list of AdaptiveMtSentences. */
-  adaptiveMtSentences?: Array<AdaptiveMtSentence>;
+  adaptiveMtSentences?: ReadonlyArray<AdaptiveMtSentence>;
   /** Optional. */
   nextPageToken?: string;
 }
@@ -606,13 +606,13 @@ export const OutputConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchTranslateTextRequest {
   /** Required. Input configurations. The total number of files matched should be <= 100. The total content size should be <= 100M Unicode codepoints. The files must use UTF-8 encoding. */
-  inputConfigs?: Array<InputConfig>;
+  inputConfigs?: ReadonlyArray<InputConfig>;
   /** Required. Output configuration. If 2 input configs match to the same file (that is, same input path), we don't generate output for duplicate inputs. */
   outputConfig?: OutputConfig;
   /** Optional. Glossaries to be applied for translation. It's keyed by target language code. */
   glossaries?: Record<string, TranslateTextGlossaryConfig>;
   /** Required. Specify up to 10 language codes here. Supported language codes are listed in [Language Support](https://cloud.google.com/translate/docs/languages). */
-  targetLanguageCodes?: Array<string>;
+  targetLanguageCodes?: ReadonlyArray<string>;
   /** Optional. The models to use for translation. Map's key is target language code. Map's value is model name. Value can be a built-in general model, or an AutoML Translation model. The value format depends on model type: - AutoML Translation models: `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}` - General (built-in) models: `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`, If the map is empty or a specific model is not requested for a language pair, then default google model (nmt) is used. */
   models?: Record<string, string>;
   /** Required. Source language code. Supported language codes are listed in [Language Support](https://cloud.google.com/translate/docs/languages). */
@@ -636,7 +636,7 @@ export const BatchTranslateTextRequest =
 
 export interface RomanizeTextRequest {
   /** Required. The content of the input in string format. */
-  contents?: Array<string>;
+  contents?: ReadonlyArray<string>;
   /** Optional. The ISO-639 language code of the input text if known, for example, "hi" or "zh". Supported language codes are listed in [Language Support](https://cloud.google.com/translate/docs/languages#roman). If the source language isn't specified, the API attempts to identify the source language automatically and returns the source language for each content in the response. */
   sourceLanguageCode?: string;
 }
@@ -648,7 +648,7 @@ export const RomanizeTextRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LanguageCodesSet {
   /** Optional. The ISO-639 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code. */
-  languageCodes?: Array<string>;
+  languageCodes?: ReadonlyArray<string>;
 }
 
 export const LanguageCodesSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -683,7 +683,7 @@ export interface BatchTranslateDocumentRequest {
   /** Optional. If true, only native pdf pages will be translated. */
   pdfNativeOnly?: boolean;
   /** Required. Input configurations. The total number of files matched should be <= 100. The total content size to translate should be <= 100M Unicode codepoints. The files must use UTF-8 encoding. */
-  inputConfigs?: Array<BatchDocumentInputConfig>;
+  inputConfigs?: ReadonlyArray<BatchDocumentInputConfig>;
   /** Required. Output configuration. If 2 input configs match to the same file (that is, same input path), we don't generate output for duplicate inputs. */
   outputConfig?: BatchDocumentOutputConfig;
   /** Optional. Glossaries to be applied. It's keyed by target language code. */
@@ -697,7 +697,7 @@ export interface BatchTranslateDocumentRequest {
   /** Optional. If true, enable auto rotation correction in DVS. */
   enableRotationCorrection?: boolean;
   /** Required. The ISO-639 language code to use for translation of the input document. Specify up to 10 language codes here. Supported language codes are listed in [Language Support](https://cloud.google.com/translate/docs/languages). */
-  targetLanguageCodes?: Array<string>;
+  targetLanguageCodes?: ReadonlyArray<string>;
   /** Optional. The models to use for translation. Map's key is target language code. Map's value is the model name. Value can be a built-in general model, or an AutoML Translation model. The value format depends on model type: - AutoML Translation models: `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}` - General (built-in) models: `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`, If the map is empty or a specific model is not requested for a language pair, then default google model (nmt) is used. */
   models?: Record<string, string>;
 }
@@ -820,7 +820,7 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 
 export interface ListGlossariesResponse {
   /** The list of glossaries for a project. */
-  glossaries?: Array<Glossary>;
+  glossaries?: ReadonlyArray<Glossary>;
   /** A token to retrieve a page of results. Pass this value in the [ListGlossariesRequest.page_token] field in the subsequent call to `ListGlossaries` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -843,9 +843,9 @@ export const AdaptiveMtTranslation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AdaptiveMtTranslateResponse {
   /** Text translation response if a glossary is provided in the request. This could be the same as 'translation' above if no terms apply. */
-  glossaryTranslations?: Array<AdaptiveMtTranslation>;
+  glossaryTranslations?: ReadonlyArray<AdaptiveMtTranslation>;
   /** Output only. The translation. */
-  translations?: Array<AdaptiveMtTranslation>;
+  translations?: ReadonlyArray<AdaptiveMtTranslation>;
   /** Output only. The translation's language code. */
   languageCode?: string;
 }
@@ -859,7 +859,7 @@ export const AdaptiveMtTranslateResponse =
 
 export interface RomanizeTextResponse {
   /** Text romanization responses. This field has the same length as `contents`. */
-  romanizations?: Array<Romanization>;
+  romanizations?: ReadonlyArray<Romanization>;
 }
 
 export const RomanizeTextResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -904,7 +904,7 @@ export const Dataset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDatasetsResponse {
   /** The datasets read. */
-  datasets?: Array<Dataset>;
+  datasets?: ReadonlyArray<Dataset>;
   /** A token to retrieve next page of results. Pass this token to the page_token field in the ListDatasetsRequest to obtain the corresponding page. */
   nextPageToken?: string;
 }
@@ -937,7 +937,7 @@ export const TransliterationConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TranslateTextRequest {
   /** Required. The content of the input in string format. We recommend the total content be less than 30,000 codepoints. The max length of this field is 1024. Use BatchTranslateText for larger text. */
-  contents?: Array<string>;
+  contents?: ReadonlyArray<string>;
   /** Optional. Glossary to be applied. The glossary must be within the same region (have the same location-id) as the model, otherwise an INVALID_ARGUMENT (400) error is returned. */
   glossaryConfig?: TranslateTextGlossaryConfig;
   /** Optional. The ISO-639 language code of the input text if known, for example, "en-US" or "sr-Latn". Supported language codes are listed in [Language Support](https://cloud.google.com/translate/docs/languages). If the source language isn't specified, the API attempts to identify the source language automatically and returns the source language within the response. */
@@ -967,7 +967,7 @@ export const TranslateTextRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DatasetInputConfig {
   /** Files containing the sentence pairs to be imported to the dataset. */
-  inputFiles?: Array<InputFile>;
+  inputFiles?: ReadonlyArray<InputFile>;
 }
 
 export const DatasetInputConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -976,7 +976,7 @@ export const DatasetInputConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAdaptiveMtDatasetsResponse {
   /** Output only. A list of Adaptive MT datasets. */
-  adaptiveMtDatasets?: Array<AdaptiveMtDataset>;
+  adaptiveMtDatasets?: ReadonlyArray<AdaptiveMtDataset>;
   /** Optional. A token to retrieve a page of results. Pass this value in the [ListAdaptiveMtDatasetsRequest.page_token] field in the subsequent call to `ListAdaptiveMtDatasets` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -989,7 +989,7 @@ export const ListAdaptiveMtDatasetsResponse =
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -1001,7 +1001,7 @@ export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DetectLanguageResponse {
   /** The most probable language detected by the Translation API. For each request, the Translation API will always return only one result. */
-  languages?: Array<DetectedLanguage>;
+  languages?: ReadonlyArray<DetectedLanguage>;
 }
 
 export const DetectLanguageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1069,7 +1069,7 @@ export const Model = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SupportedLanguages {
   /** A list of supported language responses. This list contains an entry for each language the Translation API supports. */
-  languages?: Array<SupportedLanguage>;
+  languages?: ReadonlyArray<SupportedLanguage>;
 }
 
 export const SupportedLanguages = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1078,7 +1078,7 @@ export const SupportedLanguages = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListExamplesResponse {
   /** The sentence pairs. */
-  examples?: Array<Example>;
+  examples?: ReadonlyArray<Example>;
   /** A token to retrieve next page of results. Pass this token to the page_token field in the ListExamplesRequest to obtain the corresponding page. */
   nextPageToken?: string;
 }
@@ -1092,7 +1092,7 @@ export interface ListModelsResponse {
   /** A token to retrieve next page of results. Pass this token to the page_token field in the ListModelsRequest to obtain the corresponding page. */
   nextPageToken?: string;
   /** The models read. */
-  models?: Array<Model>;
+  models?: ReadonlyArray<Model>;
 }
 
 export const ListModelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1102,7 +1102,7 @@ export const ListModelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RefineTextResponse {
   /** The refined translations obtained from the original translations. */
-  refinedTranslations?: Array<string>;
+  refinedTranslations?: ReadonlyArray<string>;
 }
 
 export const RefineTextResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1120,7 +1120,7 @@ export const WaitOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DocumentTranslation {
   /** The array of translated documents. It is expected to be size 1 for now. We may produce multiple translated documents in the future for other type of file formats. */
-  byteStreamOutputs?: Array<string>;
+  byteStreamOutputs?: ReadonlyArray<string>;
   /** The detected language for the input document. If the user did not provide the source language for the input document, this field will have the language code automatically detected. If the source language was passed, auto-detection of the language does not occur and this field is empty. */
   detectedLanguageCode?: string;
   /** The translated document's mime type. */
@@ -1185,7 +1185,7 @@ export const TranslateTextProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}:translateText",
+      path: "v3/{parent}:translateText",
       hasBody: true,
     }),
     svc,
@@ -1221,11 +1221,7 @@ export const RomanizeTextProjectsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(RomanizeTextRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/projects/{projectsId}:romanizeText",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{parent}:romanizeText", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RomanizeTextProjectsRequest>;
 
@@ -1261,7 +1257,7 @@ export const DetectLanguageProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}:detectLanguage",
+      path: "v3/{parent}:detectLanguage",
       hasBody: true,
     }),
     svc,
@@ -1302,10 +1298,7 @@ export const GetSupportedLanguagesProjectsRequest =
       T.HttpQuery("displayLanguageCode"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/supportedLanguages",
-    }),
+    T.Http({ method: "GET", path: "v3/{parent}/supportedLanguages" }),
     svc,
   ) as unknown as Schema.Schema<GetSupportedLanguagesProjectsRequest>;
 
@@ -1341,7 +1334,7 @@ export const AdaptiveMtTranslateProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}/locations/{locationsId}:adaptiveMtTranslate",
+      path: "v3/{parent}:adaptiveMtTranslate",
       hasBody: true,
     }),
     svc,
@@ -1375,10 +1368,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -1414,7 +1404,7 @@ export const BatchTranslateTextProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}/locations/{locationsId}:batchTranslateText",
+      path: "v3/{parent}:batchTranslateText",
       hasBody: true,
     }),
     svc,
@@ -1452,7 +1442,7 @@ export const TranslateDocumentProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}/locations/{locationsId}:translateDocument",
+      path: "v3/{parent}:translateDocument",
       hasBody: true,
     }),
     svc,
@@ -1491,7 +1481,7 @@ export const DetectLanguageProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}/locations/{locationsId}:detectLanguage",
+      path: "v3/{parent}:detectLanguage",
       hasBody: true,
     }),
     svc,
@@ -1532,10 +1522,7 @@ export const GetSupportedLanguagesProjectsLocationsRequest =
       T.HttpQuery("displayLanguageCode"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/supportedLanguages",
-    }),
+    T.Http({ method: "GET", path: "v3/{parent}/supportedLanguages" }),
     svc,
   ) as unknown as Schema.Schema<GetSupportedLanguagesProjectsLocationsRequest>;
 
@@ -1571,7 +1558,7 @@ export const BatchTranslateDocumentProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}/locations/{locationsId}:batchTranslateDocument",
+      path: "v3/{parent}:batchTranslateDocument",
       hasBody: true,
     }),
     svc,
@@ -1609,7 +1596,7 @@ export const TranslateTextProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}/locations/{locationsId}:translateText",
+      path: "v3/{parent}:translateText",
       hasBody: true,
     }),
     svc,
@@ -1656,7 +1643,7 @@ export const ListProjectsLocationsRequest =
     ),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v3/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -1694,11 +1681,7 @@ export const RefineTextProjectsLocationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(RefineTextRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/projects/{projectsId}/locations/{locationsId}:refineText",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{parent}:refineText", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RefineTextProjectsLocationsRequest>;
 
@@ -1732,11 +1715,7 @@ export const RomanizeTextProjectsLocationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(RomanizeTextRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/projects/{projectsId}/locations/{locationsId}:romanizeText",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{parent}:romanizeText", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RomanizeTextProjectsLocationsRequest>;
 
@@ -1772,7 +1751,7 @@ export const ImportAdaptiveMtFileProjectsLocationsAdaptiveMtDatasetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/adaptiveMtDatasets/{adaptiveMtDatasetsId}:importAdaptiveMtFile",
+      path: "v3/{parent}:importAdaptiveMtFile",
       hasBody: true,
     }),
     svc,
@@ -1807,10 +1786,7 @@ export const DeleteProjectsLocationsAdaptiveMtDatasetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/adaptiveMtDatasets/{adaptiveMtDatasetsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAdaptiveMtDatasetsRequest>;
 
@@ -1841,10 +1817,7 @@ export const GetProjectsLocationsAdaptiveMtDatasetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/adaptiveMtDatasets/{adaptiveMtDatasetsId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAdaptiveMtDatasetsRequest>;
 
@@ -1880,7 +1853,7 @@ export const CreateProjectsLocationsAdaptiveMtDatasetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/adaptiveMtDatasets",
+      path: "v3/{parent}/adaptiveMtDatasets",
       hasBody: true,
     }),
     svc,
@@ -1923,10 +1896,7 @@ export const ListProjectsLocationsAdaptiveMtDatasetsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/adaptiveMtDatasets",
-    }),
+    T.Http({ method: "GET", path: "v3/{parent}/adaptiveMtDatasets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAdaptiveMtDatasetsRequest>;
 
@@ -1968,10 +1938,7 @@ export const ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/adaptiveMtDatasets/{adaptiveMtDatasetsId}/adaptiveMtFiles",
-    }),
+    T.Http({ method: "GET", path: "v3/{parent}/adaptiveMtFiles" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest>;
 
@@ -2008,10 +1975,7 @@ export const GetProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/adaptiveMtDatasets/{adaptiveMtDatasetsId}/adaptiveMtFiles/{adaptiveMtFilesId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest>;
 
@@ -2044,10 +2008,7 @@ export const DeleteProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/adaptiveMtDatasets/{adaptiveMtDatasetsId}/adaptiveMtFiles/{adaptiveMtFilesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest>;
 
@@ -2085,10 +2046,7 @@ export const ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSen
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/adaptiveMtDatasets/{adaptiveMtDatasetsId}/adaptiveMtFiles/{adaptiveMtFilesId}/adaptiveMtSentences",
-    }),
+    T.Http({ method: "GET", path: "v3/{parent}/adaptiveMtSentences" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesRequest>;
 
@@ -2132,10 +2090,7 @@ export const ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/adaptiveMtDatasets/{adaptiveMtDatasetsId}/adaptiveMtSentences",
-    }),
+    T.Http({ method: "GET", path: "v3/{parent}/adaptiveMtSentences" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesRequest>;
 
@@ -2178,11 +2133,7 @@ export const PatchProjectsLocationsGlossariesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Glossary).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsGlossariesRequest>;
 
@@ -2222,10 +2173,7 @@ export const ListProjectsLocationsGlossariesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/glossaries",
-    }),
+    T.Http({ method: "GET", path: "v3/{parent}/glossaries" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGlossariesRequest>;
 
@@ -2260,10 +2208,7 @@ export const GetProjectsLocationsGlossariesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGlossariesRequest>;
 
@@ -2294,10 +2239,7 @@ export const DeleteProjectsLocationsGlossariesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsGlossariesRequest>;
 
@@ -2331,11 +2273,7 @@ export const CreateProjectsLocationsGlossariesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Glossary).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/glossaries",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{parent}/glossaries", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsGlossariesRequest>;
 
@@ -2369,11 +2307,7 @@ export const PatchProjectsLocationsGlossariesGlossaryEntriesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GlossaryEntry).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}/glossaryEntries/{glossaryEntriesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsGlossariesGlossaryEntriesRequest>;
 
@@ -2412,10 +2346,7 @@ export const ListProjectsLocationsGlossariesGlossaryEntriesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}/glossaryEntries",
-    }),
+    T.Http({ method: "GET", path: "v3/{parent}/glossaryEntries" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsGlossariesGlossaryEntriesRequest>;
 
@@ -2451,10 +2382,7 @@ export const GetProjectsLocationsGlossariesGlossaryEntriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}/glossaryEntries/{glossaryEntriesId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsGlossariesGlossaryEntriesRequest>;
 
@@ -2486,10 +2414,7 @@ export const DeleteProjectsLocationsGlossariesGlossaryEntriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}/glossaryEntries/{glossaryEntriesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsGlossariesGlossaryEntriesRequest>;
 
@@ -2526,7 +2451,7 @@ export const CreateProjectsLocationsGlossariesGlossaryEntriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/glossaries/{glossariesId}/glossaryEntries",
+      path: "v3/{parent}/glossaryEntries",
       hasBody: true,
     }),
     svc,
@@ -2564,11 +2489,7 @@ export const CreateProjectsLocationsDatasetsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Dataset).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/datasets",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{parent}/datasets", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsRequest>;
 
@@ -2602,11 +2523,7 @@ export const ImportDataProjectsLocationsDatasetsRequest =
     dataset: Schema.String.pipe(T.HttpPath("dataset")),
     body: Schema.optional(ImportDataRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}:importData",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{dataset}:importData", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ImportDataProjectsLocationsDatasetsRequest>;
 
@@ -2637,10 +2554,7 @@ export const GetProjectsLocationsDatasetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsRequest>;
 
@@ -2671,10 +2585,7 @@ export const DeleteProjectsLocationsDatasetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsRequest>;
 
@@ -2708,11 +2619,7 @@ export const ExportDataProjectsLocationsDatasetsRequest =
     dataset: Schema.String.pipe(T.HttpPath("dataset")),
     body: Schema.optional(ExportDataRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}:exportData",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{dataset}:exportData", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExportDataProjectsLocationsDatasetsRequest>;
 
@@ -2749,10 +2656,7 @@ export const ListProjectsLocationsDatasetsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/datasets",
-    }),
+    T.Http({ method: "GET", path: "v3/{parent}/datasets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsRequest>;
 
@@ -2796,10 +2700,7 @@ export const ListProjectsLocationsDatasetsExamplesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/examples",
-    }),
+    T.Http({ method: "GET", path: "v3/{parent}/examples" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsExamplesRequest>;
 
@@ -2835,10 +2736,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -2869,10 +2767,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -2906,11 +2801,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -2955,10 +2846,7 @@ export const ListProjectsLocationsOperationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -2996,11 +2884,7 @@ export const WaitProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(WaitOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsOperationsRequest>;
 
@@ -3034,11 +2918,7 @@ export const CreateProjectsLocationsModelsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Model).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/models",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{parent}/models", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsModelsRequest>;
 
@@ -3069,10 +2949,7 @@ export const GetProjectsLocationsModelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/models/{modelsId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsModelsRequest>;
 
@@ -3103,10 +2980,7 @@ export const DeleteProjectsLocationsModelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/models/{modelsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsModelsRequest>;
 
@@ -3146,10 +3020,7 @@ export const ListProjectsLocationsModelsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/projects/{projectsId}/locations/{locationsId}/models",
-    }),
+    T.Http({ method: "GET", path: "v3/{parent}/models" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsModelsRequest>;
 

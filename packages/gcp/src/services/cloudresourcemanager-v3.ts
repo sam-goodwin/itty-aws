@@ -67,7 +67,7 @@ export const TagKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTagKeysResponse {
   /** List of TagKeys that live under the specified parent in the request. */
-  tagKeys?: Array<TagKey>;
+  tagKeys?: ReadonlyArray<TagKey>;
   /** A pagination token returned from a previous call to `ListTagKeys` that indicates from where listing should continue. */
   nextPageToken?: string;
 }
@@ -109,7 +109,7 @@ export const TagValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTagValuesResponse {
   /** A possibly paginated list of TagValues that are direct descendants of the specified parent TagKey. */
-  tagValues?: Array<TagValue>;
+  tagValues?: ReadonlyArray<TagValue>;
   /** A pagination token returned from a previous call to `ListTagValues` that indicates from where listing should continue. */
   nextPageToken?: string;
 }
@@ -151,7 +151,7 @@ export const Organization = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -197,7 +197,7 @@ export interface Project {
   /** Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` */
   projectId?: string;
   /** Output only. If this project is a Management Project, list of capabilities configured on the parent folder. Note, presence of any capability implies that this is a Management Project. Example: `folders/123/capabilities/app-management`. OUTPUT ONLY. */
-  configuredCapabilities?: Array<string>;
+  configuredCapabilities?: ReadonlyArray<string>;
   /** Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`. */
   parent?: string;
   /** Optional. A user-assigned display name of the project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project` */
@@ -253,7 +253,7 @@ export interface ListEffectiveTagsResponse {
   /** Pagination token. If the result set is too large to fit in a single response, this token is returned. It encodes the position of the current result cursor. Feeding this value into a new list request with the `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. Pagination tokens have a limited lifetime. */
   nextPageToken?: string;
   /** A possibly paginated list of effective tags for the specified resource. */
-  effectiveTags?: Array<EffectiveTag>;
+  effectiveTags?: ReadonlyArray<EffectiveTag>;
 }
 
 export const ListEffectiveTagsResponse =
@@ -284,7 +284,7 @@ export interface Lien {
   /** A reference to the resource this Lien is attached to. The server will validate the parent against those for which Liens are supported. Example: `projects/1234` */
   parent?: string;
   /** The types of operations which should be blocked as a result of this Lien. Each value should correspond to an IAM permission. The server will validate the permissions against those for which Liens are supported. An empty list is meaningless and will be rejected. Example: ['resourcemanager.projects.delete'] */
-  restrictions?: Array<string>;
+  restrictions?: ReadonlyArray<string>;
   /** Concise user-visible strings indicating why an action cannot be performed on a resource. Maximum length of 200 characters. Example: 'Holds production API key' */
   reason?: string;
   /** A system-generated unique identifier for this Lien. Example: `liens/1234abcd` */
@@ -306,7 +306,7 @@ export const Lien = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLiensResponse {
   /** A list of Liens. */
-  liens?: Array<Lien>;
+  liens?: ReadonlyArray<Lien>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -342,7 +342,7 @@ export const TagBinding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTagBindingsResponse {
   /** A possibly paginated list of TagBindings for the specified resource. */
-  tagBindings?: Array<TagBinding>;
+  tagBindings?: ReadonlyArray<TagBinding>;
   /** Pagination token. If the result set is too large to fit in a single response, this token is returned. It encodes the position of the current result cursor. Feeding this value into a new list request with the `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. Pagination tokens have a limited lifetime. */
   nextPageToken?: string;
 }
@@ -397,7 +397,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -449,7 +449,7 @@ export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -464,7 +464,7 @@ export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
   /** The log type that this config enables. */
   logType?:
     | "LOG_TYPE_UNSPECIFIED"
@@ -481,7 +481,7 @@ export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
@@ -497,9 +497,9 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
 }
 
 export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -525,7 +525,7 @@ export interface SearchProjectsResponse {
   /** Pagination token. If the result set is too large to fit in a single response, this token is returned. It encodes the position of the current result cursor. Feeding this value into a new list request with the `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. Pagination tokens have a limited lifetime. */
   nextPageToken?: string;
   /** The list of Projects that matched the list filter query. This list can be paginated. */
-  projects?: Array<Project>;
+  projects?: ReadonlyArray<Project>;
 }
 
 export const SearchProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -551,7 +551,7 @@ export interface Folder {
   /** Output only. Timestamp when the folder was requested to be deleted. */
   deleteTime?: string;
   /** Output only. Optional capabilities configured for this folder (via UpdateCapability API). Example: `folders/123/capabilities/app-management`. */
-  configuredCapabilities?: Array<string>;
+  configuredCapabilities?: ReadonlyArray<string>;
   /** Output only. The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder. */
   state?: "STATE_UNSPECIFIED" | "ACTIVE" | "DELETE_REQUESTED" | (string & {});
   /** Output only. A checksum computed by the server based on the current value of the folder resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
@@ -578,7 +578,7 @@ export interface ListFoldersResponse {
   /** A pagination token returned from a previous call to `ListFolders` that indicates from where listing should continue. */
   nextPageToken?: string;
   /** A possibly paginated list of folders that are direct descendants of the specified parent resource. */
-  folders?: Array<Folder>;
+  folders?: ReadonlyArray<Folder>;
 }
 
 export const ListFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -734,7 +734,7 @@ export const CreateTagKeyMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface SearchOrganizationsResponse {
   /** The list of Organizations that matched the search query, possibly paginated. */
-  organizations?: Array<Organization>;
+  organizations?: ReadonlyArray<Organization>;
   /** A pagination token to be used to retrieve the next page of results. If the result is too large to fit within the page size specified in the request, this field will be set with a token that can be used to fetch the next page of results. If this field is empty, it indicates that this response contains the last page of results. */
   nextPageToken?: string;
 }
@@ -792,7 +792,7 @@ export interface ListProjectsResponse {
   /** Pagination token. If the result set is too large to fit in a single response, this token is returned. It encodes the position of the current result cursor. Feeding this value into a new list request with the `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. Pagination tokens have a limited lifetime. */
   nextPageToken?: string;
   /** The list of Projects under the parent. This list can be paginated. */
-  projects?: Array<Project>;
+  projects?: ReadonlyArray<Project>;
 }
 
 export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -851,7 +851,7 @@ export interface ListTagHoldsResponse {
   /** Pagination token. If the result set is too large to fit in a single response, this token is returned. It encodes the position of the current result cursor. Feeding this value into a new list request with the `page_token` parameter gives the next page of the results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. Pagination tokens have a limited lifetime. */
   nextPageToken?: string;
   /** A possibly paginated list of TagHolds. */
-  tagHolds?: Array<TagHold>;
+  tagHolds?: ReadonlyArray<TagHold>;
 }
 
 export const ListTagHoldsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -883,7 +883,7 @@ export const FolderOperation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SearchFoldersResponse {
   /** A possibly paginated folder search results. the specified parent resource. */
-  folders?: Array<Folder>;
+  folders?: ReadonlyArray<Folder>;
   /** A pagination token returned from a previous call to `SearchFolders` that indicates from where searching should continue. */
   nextPageToken?: string;
 }
@@ -931,13 +931,59 @@ export const CreateProjectMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     permissions: Schema.optional(Schema.Array(Schema.String)),
   }).annotate({ identifier: "TestIamPermissionsRequest" });
+
+// ==========================================================================
+// Errors
+// ==========================================================================
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
 
 // ==========================================================================
 // Operations
@@ -980,7 +1026,7 @@ export interface GetLiensRequest {
 export const GetLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v3/liens/{liensId}" }),
+  T.Http({ method: "GET", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetLiensRequest>;
 
@@ -1009,7 +1055,7 @@ export interface DeleteLiensRequest {
 export const DeleteLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v3/liens/{liensId}" }),
+  T.Http({ method: "DELETE", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteLiensRequest>;
 
@@ -1083,11 +1129,7 @@ export const UndeleteFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     body: Schema.optional(UndeleteFolderRequest).pipe(T.HttpBody()),
   },
 ).pipe(
-  T.Http({
-    method: "POST",
-    path: "v3/folders/{foldersId}:undelete",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v3/{name}:undelete", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<UndeleteFoldersRequest>;
 
@@ -1119,11 +1161,7 @@ export const MoveFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(MoveFolderRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "POST",
-    path: "v3/folders/{foldersId}:move",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v3/{name}:move", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<MoveFoldersRequest>;
 
@@ -1158,7 +1196,7 @@ export const GetIamPolicyFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/folders/{foldersId}:getIamPolicy",
+      path: "v3/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -1189,7 +1227,7 @@ export interface GetFoldersRequest {
 export const GetFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v3/folders/{foldersId}" }),
+  T.Http({ method: "GET", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetFoldersRequest>;
 
@@ -1218,7 +1256,7 @@ export interface DeleteFoldersRequest {
 export const DeleteFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v3/folders/{foldersId}" }),
+  T.Http({ method: "DELETE", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteFoldersRequest>;
 
@@ -1253,7 +1291,7 @@ export const PatchFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(Folder).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PATCH", path: "v3/folders/{foldersId}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchFoldersRequest>;
 
@@ -1288,7 +1326,7 @@ export const SetIamPolicyFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/folders/{foldersId}:setIamPolicy",
+      path: "v3/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -1325,7 +1363,7 @@ export const TestIamPermissionsFoldersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/folders/{foldersId}:testIamPermissions",
+      path: "v3/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -1476,11 +1514,7 @@ export const PatchFoldersCapabilitiesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Capability).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v3/folders/{foldersId}/capabilities/{capabilitiesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchFoldersCapabilitiesRequest>;
 
@@ -1511,10 +1545,7 @@ export const GetFoldersCapabilitiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/folders/{foldersId}/capabilities/{capabilitiesId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFoldersCapabilitiesRequest>;
 
@@ -1586,10 +1617,7 @@ export const GetLocationsTagBindingCollectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/locations/{locationsId}/tagBindingCollections/{tagBindingCollectionsId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetLocationsTagBindingCollectionsRequest>;
 
@@ -1626,11 +1654,7 @@ export const PatchLocationsTagBindingCollectionsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(TagBindingCollection).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v3/locations/{locationsId}/tagBindingCollections/{tagBindingCollectionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchLocationsTagBindingCollectionsRequest>;
 
@@ -1661,10 +1685,7 @@ export const GetLocationsEffectiveTagBindingCollectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v3/locations/{locationsId}/effectiveTagBindingCollections/{effectiveTagBindingCollectionsId}",
-    }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetLocationsEffectiveTagBindingCollectionsRequest>;
 
@@ -1695,14 +1716,14 @@ export interface GetProjectsRequest {
 export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v3/projects/{projectsId}" }),
+  T.Http({ method: "GET", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetProjectsRequest>;
 
 export type GetProjectsResponse = Project;
 export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
 
-export type GetProjectsError = DefaultErrors;
+export type GetProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the project identified by the specified `name` (for example, `projects/415104041262`). The caller must have `resourcemanager.projects.get` permission for this project. */
 export const getProjects: API.OperationMethod<
@@ -1713,7 +1734,7 @@ export const getProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsRequest,
   output: GetProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsRequest {
@@ -1724,14 +1745,18 @@ export interface DeleteProjectsRequest {
 export const DeleteProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v3/projects/{projectsId}" }),
+  T.Http({ method: "DELETE", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteProjectsRequest>;
 
 export type DeleteProjectsResponse = Operation;
 export const DeleteProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsError = DefaultErrors;
+export type DeleteProjectsError =
+  | DefaultErrors
+  | BadRequest
+  | Forbidden
+  | NotFound;
 
 /** Marks the project identified by the specified `name` (for example, `projects/415104041262`) for deletion. This method will only affect the project if it has a lifecycle state of ACTIVE. This method changes the Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an unspecified time, at which point the Project is no longer accessible. Until the deletion completes, you can check the lifecycle state checked by retrieving the project with GetProject, and the project remains visible to ListProjects. However, you cannot update the project. After the deletion completes, the project is not retrievable by the GetProject, ListProjects, and SearchProjects methods. The caller must have `resourcemanager.projects.delete` permissions for this project. */
 export const deleteProjects: API.OperationMethod<
@@ -1742,7 +1767,7 @@ export const deleteProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsRequest,
   output: DeleteProjectsResponse,
-  errors: [],
+  errors: [BadRequest, Forbidden, NotFound],
 }));
 
 export interface PatchProjectsRequest {
@@ -1759,14 +1784,18 @@ export const PatchProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(Project).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PATCH", path: "v3/projects/{projectsId}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchProjectsRequest>;
 
 export type PatchProjectsResponse = Operation;
 export const PatchProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsError = DefaultErrors;
+export type PatchProjectsError =
+  | DefaultErrors
+  | BadRequest
+  | Forbidden
+  | NotFound;
 
 /** Updates the `display_name` and labels of the project identified by the specified `name` (for example, `projects/415104041262`). Deleting all labels requires an update mask for labels field. The caller must have `resourcemanager.projects.update` permission for this project. */
 export const patchProjects: API.OperationMethod<
@@ -1777,7 +1806,7 @@ export const patchProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsRequest,
   output: PatchProjectsResponse,
-  errors: [],
+  errors: [BadRequest, Forbidden, NotFound],
 }));
 
 export interface SetIamPolicyProjectsRequest {
@@ -1794,7 +1823,7 @@ export const SetIamPolicyProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}:setIamPolicy",
+      path: "v3/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -1829,11 +1858,7 @@ export const UndeleteProjectsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(UndeleteProjectRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/projects/{projectsId}:undelete",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{name}:undelete", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UndeleteProjectsRequest>;
 
@@ -1865,11 +1890,7 @@ export const MoveProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(MoveProjectRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "POST",
-    path: "v3/projects/{projectsId}:move",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v3/{name}:move", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<MoveProjectsRequest>;
 
@@ -1904,7 +1925,7 @@ export const GetIamPolicyProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}:getIamPolicy",
+      path: "v3/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2024,7 +2045,7 @@ export const TestIamPermissionsProjectsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/projects/{projectsId}:testIamPermissions",
+      path: "v3/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2063,7 +2084,11 @@ export const CreateProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateProjectsResponse = Operation;
 export const CreateProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsError = DefaultErrors;
+export type CreateProjectsError =
+  | DefaultErrors
+  | BadRequest
+  | Forbidden
+  | Conflict;
 
 /** Request that a new project be created. The result is an `Operation` which can be used to track the creation process. This process usually takes a few seconds, but can sometimes take much longer. The tracking `Operation` is automatically deleted after a few hours, so there is no need to call `DeleteOperation`. */
 export const createProjects: API.OperationMethod<
@@ -2074,7 +2099,7 @@ export const createProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsRequest,
   output: CreateProjectsResponse,
-  errors: [],
+  errors: [BadRequest, Forbidden, Conflict],
 }));
 
 export interface SetIamPolicyOrganizationsRequest {
@@ -2091,7 +2116,7 @@ export const SetIamPolicyOrganizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/organizations/{organizationsId}:setIamPolicy",
+      path: "v3/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2124,7 +2149,7 @@ export const GetOrganizationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/organizations/{organizationsId}" }),
+    T.Http({ method: "GET", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsRequest>;
 
@@ -2201,7 +2226,7 @@ export const GetIamPolicyOrganizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/organizations/{organizationsId}:getIamPolicy",
+      path: "v3/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2239,7 +2264,7 @@ export const TestIamPermissionsOrganizationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/organizations/{organizationsId}:testIamPermissions",
+      path: "v3/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2312,7 +2337,7 @@ export const TestIamPermissionsTagKeysRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/tagKeys/{tagKeysId}:testIamPermissions",
+      path: "v3/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2390,7 +2415,7 @@ export const GetIamPolicyTagKeysRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/tagKeys/{tagKeysId}:getIamPolicy",
+      path: "v3/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2462,7 +2487,7 @@ export const PatchTagKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ),
   body: Schema.optional(TagKey).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PATCH", path: "v3/tagKeys/{tagKeysId}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchTagKeysRequest>;
 
@@ -2497,7 +2522,7 @@ export const SetIamPolicyTagKeysRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/tagKeys/{tagKeysId}:setIamPolicy",
+      path: "v3/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2528,7 +2553,7 @@ export interface GetTagKeysRequest {
 export const GetTagKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v3/tagKeys/{tagKeysId}" }),
+  T.Http({ method: "GET", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetTagKeysRequest>;
 
@@ -2565,7 +2590,7 @@ export const DeleteTagKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     T.HttpQuery("validateOnly"),
   ),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v3/tagKeys/{tagKeysId}" }),
+  T.Http({ method: "DELETE", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteTagKeysRequest>;
 
@@ -2594,14 +2619,14 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v3/operations/{operationsId}" }),
+  T.Http({ method: "GET", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | Forbidden | NotFound;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -2612,7 +2637,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [Forbidden, NotFound],
 }));
 
 export interface ListTagValuesRequest {
@@ -2705,7 +2730,7 @@ export const TestIamPermissionsTagValuesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/tagValues/{tagValuesId}:testIamPermissions",
+      path: "v3/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2743,7 +2768,7 @@ export const GetIamPolicyTagValuesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/tagValues/{tagValuesId}:getIamPolicy",
+      path: "v3/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2816,11 +2841,7 @@ export const PatchTagValuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(TagValue).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "PATCH",
-    path: "v3/tagValues/{tagValuesId}",
-    hasBody: true,
-  }),
+  T.Http({ method: "PATCH", path: "v3/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchTagValuesRequest>;
 
@@ -2855,7 +2876,7 @@ export const SetIamPolicyTagValuesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v3/tagValues/{tagValuesId}:setIamPolicy",
+      path: "v3/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2886,7 +2907,7 @@ export interface GetTagValuesRequest {
 export const GetTagValuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v3/tagValues/{tagValuesId}" }),
+  T.Http({ method: "GET", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetTagValuesRequest>;
 
@@ -2925,7 +2946,7 @@ export const DeleteTagValuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     ),
   },
 ).pipe(
-  T.Http({ method: "DELETE", path: "v3/tagValues/{tagValuesId}" }),
+  T.Http({ method: "DELETE", path: "v3/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteTagValuesRequest>;
 
@@ -2960,10 +2981,7 @@ export const DeleteTagValuesTagHoldsRequest =
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v3/tagValues/{tagValuesId}/tagHolds/{tagHoldsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteTagValuesTagHoldsRequest>;
 
@@ -3003,7 +3021,7 @@ export const ListTagValuesTagHoldsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v3/tagValues/{tagValuesId}/tagHolds" }),
+    T.Http({ method: "GET", path: "v3/{parent}/tagHolds" }),
     svc,
   ) as unknown as Schema.Schema<ListTagValuesTagHoldsRequest>;
 
@@ -3046,11 +3064,7 @@ export const CreateTagValuesTagHoldsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(TagHold).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v3/tagValues/{tagValuesId}/tagHolds",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v3/{parent}/tagHolds", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateTagValuesTagHoldsRequest>;
 
@@ -3081,7 +3095,7 @@ export const DeleteTagBindingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v3/tagBindings/{tagBindingsId}" }),
+    T.Http({ method: "DELETE", path: "v3/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteTagBindingsRequest>;
 

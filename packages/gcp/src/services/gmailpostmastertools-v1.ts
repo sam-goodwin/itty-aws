@@ -34,7 +34,7 @@ export interface IpReputation {
     | "BAD"
     | (string & {});
   /** A sample of IPs in this reputation category. */
-  sampleIps?: Array<string>;
+  sampleIps?: ReadonlyArray<string>;
 }
 
 export const IpReputation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -108,7 +108,7 @@ export const Domain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDomainsResponse {
   /** The list of domains. */
-  domains?: Array<Domain>;
+  domains?: ReadonlyArray<Domain>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -124,7 +124,7 @@ export interface TrafficStats {
   /** The resource name of the traffic statistics. Traffic statistic names have the form `domains/{domain}/trafficStats/{date}`, where domain_name is the fully qualified domain name (i.e., mymail.mydomain.com) of the domain this traffic statistics pertains to and date is the date in yyyymmdd format that these statistics corresponds to. For example: domains/mymail.mydomain.com/trafficStats/20160807 */
   name?: string;
   /** Spammy [Feedback loop identifiers] (https://support.google.com/mail/answer/6254652) with their individual spam rates. This metric only pertains to traffic that is authenticated by [DKIM](http://www.dkim.org/). */
-  spammyFeedbackLoops?: Array<FeedbackLoop>;
+  spammyFeedbackLoops?: ReadonlyArray<FeedbackLoop>;
   /** The ratio of outgoing mail (from Gmail) that was accepted over secure transport (TLS). */
   outboundEncryptionRatio?: number;
   /** The ratio of mail that successfully authenticated with SPF vs. all mail that attempted to authenticate with [SPF](http://www.openspf.org/). Spoofed mail is excluded. */
@@ -146,11 +146,11 @@ export interface TrafficStats {
     | "BAD"
     | (string & {});
   /** Delivery errors for the domain. This metric only pertains to traffic that passed [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/). */
-  deliveryErrors?: Array<DeliveryError>;
+  deliveryErrors?: ReadonlyArray<DeliveryError>;
   /** The lower bound of the confidence interval for the user reported spam ratio. If this field is set, then the value of userReportedSpamRatio is set to the midpoint of this interval and is thus inexact. However, the true ratio is guaranteed to be in between this lower bound and the corresponding upper bound 95% of the time. This metric only pertains to emails authenticated by [DKIM](http://www.dkim.org/). */
   userReportedSpamRatioLowerBound?: number;
   /** Reputation information pertaining to the IP addresses of the email servers for the domain. There is exactly one entry for each reputation category except REPUTATION_CATEGORY_UNSPECIFIED. */
-  ipReputations?: Array<IpReputation>;
+  ipReputations?: ReadonlyArray<IpReputation>;
 }
 
 export const TrafficStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -171,7 +171,7 @@ export const TrafficStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListTrafficStatsResponse {
   /** The list of TrafficStats. */
-  trafficStats?: Array<TrafficStats>;
+  trafficStats?: ReadonlyArray<TrafficStats>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -194,7 +194,7 @@ export interface GetDomainsRequest {
 export const GetDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/domains/{domainsId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetDomainsRequest>;
 
@@ -261,10 +261,7 @@ export const GetDomainsTrafficStatsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/domains/{domainsId}/trafficStats/{trafficStatsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDomainsTrafficStatsRequest>;
 
@@ -331,7 +328,7 @@ export const ListDomainsTrafficStatsRequest =
     ),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/domains/{domainsId}/trafficStats" }),
+    T.Http({ method: "GET", path: "v1/{parent}/trafficStats" }),
     svc,
   ) as unknown as Schema.Schema<ListDomainsTrafficStatsRequest>;
 

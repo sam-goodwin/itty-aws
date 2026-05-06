@@ -3,7 +3,8 @@
  */
 export * from "@distilled.cloud/core/traits";
 
-import { makeAnnotation } from "@distilled.cloud/core/traits";
+import { getAnnotation } from "@distilled.cloud/core/traits";
+import * as AST from "effect/SchemaAST";
 
 // =============================================================================
 // GCP-specific Error Matcher Traits
@@ -23,16 +24,17 @@ export interface ErrorMatcher {
 }
 
 /**
- * Apply error matchers to an error class.
- * Mutates the class's schema AST to annotate it with error matchers.
+ * Apply error matchers directly to a class's AST annotations.
+ * Used for TaggedErrorClass where .pipe() on a class returns a schema
+ * (not a class), breaking `extends ... .pipe(...)`.
  */
 export const applyErrorMatchers = (
-  cls: any,
+  cls: { ast: AST.AST },
   matchers: ErrorMatcher[],
 ): void => {
-  const annotation = makeAnnotation(errorMatchersSymbol, matchers);
-  // Apply annotation to the class's AST if possible
-  if (cls && typeof cls === "function" && cls.ast) {
-    annotation(cls.ast);
-  }
+  const annotations = cls.ast.annotations as Record<symbol, unknown>;
+  annotations[errorMatchersSymbol] = matchers;
 };
+
+export const getErrorMatchers = (ast: AST.AST) =>
+  getAnnotation<ErrorMatcher[]>(ast, errorMatchersSymbol);

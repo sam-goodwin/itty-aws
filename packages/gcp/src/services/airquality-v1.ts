@@ -44,7 +44,7 @@ export interface HttpBody {
   /** The HTTP request/response body as raw binary. */
   data?: string;
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
-  extensions?: Array<Record<string, unknown>>;
+  extensions?: ReadonlyArray<Record<string, unknown>>;
   /** The HTTP Content-Type header value specifying the content type of the body. */
   contentType?: string;
 }
@@ -198,7 +198,7 @@ export const AirQualityIndex = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LookupCurrentConditionsResponse {
   /** A list of pollutants affecting the location specified in the request. Note: This field will be returned only for requests that specified one or more of the following extra computations: POLLUTANT_ADDITIONAL_INFO, DOMINANT_POLLUTANT_CONCENTRATION, POLLUTANT_CONCENTRATION. */
-  pollutants?: Array<Pollutant>;
+  pollutants?: ReadonlyArray<Pollutant>;
   /** A rounded down timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. For example: "2014-10-02T15:00:00Z". */
   dateTime?: string;
   /** Health advice and recommended actions related to the reported air quality conditions. Recommendations are tailored differently for populations at risk, groups with greater sensitivities to pollutants, and the general population. */
@@ -206,7 +206,7 @@ export interface LookupCurrentConditionsResponse {
   /** The ISO_3166-1 alpha-2 code of the country/region corresponding to the location provided in the request. This field might be omitted from the response if the location provided in the request resides in a disputed territory. */
   regionCode?: string;
   /** Based on the request parameters, this list will include (up to) two air quality indexes: - Universal AQI. Will be returned if the universalAqi boolean is set to true. - Local AQI. Will be returned if the LOCAL_AQI extra computation is specified. */
-  indexes?: Array<AirQualityIndex>;
+  indexes?: ReadonlyArray<AirQualityIndex>;
 }
 
 export const LookupCurrentConditionsResponse =
@@ -220,11 +220,11 @@ export const LookupCurrentConditionsResponse =
 
 export interface HourInfo {
   /** A list of pollutants affecting the location specified in the request. Note: This field will be returned only for requests that specified one or more of the following extra computations: POLLUTANT_ADDITIONAL_INFO, DOMINANT_POLLUTANT_CONCENTRATION, POLLUTANT_CONCENTRATION. */
-  pollutants?: Array<Pollutant>;
+  pollutants?: ReadonlyArray<Pollutant>;
   /** A rounded down timestamp indicating the time the data refers to in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. For example: "2014-10-02T15:00:00Z". */
   dateTime?: string;
   /** Based on the request parameters, this list will include (up to) two air quality indexes: - Universal AQI. Will be returned if the universalAqi boolean is set to true. - Local AQI. Will be returned if the LOCAL_AQI extra computation is specified. */
-  indexes?: Array<AirQualityIndex>;
+  indexes?: ReadonlyArray<AirQualityIndex>;
   /** Health advice and recommended actions related to the reported air quality conditions. Recommendations are tailored differently for populations at risk, groups with greater sensitivities to pollutants, and the general population. */
   healthRecommendations?: HealthRecommendations;
 }
@@ -238,7 +238,7 @@ export const HourInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LookupHistoryResponse {
   /** Optional. Contains the air quality information for each hour in the requested range. For example, if the request is for 48 hours of history there will be 48 elements of hourly info. */
-  hoursInfo?: Array<HourInfo>;
+  hoursInfo?: ReadonlyArray<HourInfo>;
   /** Optional. The ISO_3166-1 alpha-2 code of the country/region corresponding to the location provided in the request. This field might be omitted from the response if the location provided in the request resides in a disputed territory. */
   regionCode?: string;
   /** Optional. The token to retrieve the next page. */
@@ -253,7 +253,7 @@ export const LookupHistoryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LookupCurrentConditionsRequest {
   /** Optional. Additional features that can be optionally enabled. Specifying extra computations will result in the relevant elements and fields to be returned in the response. */
-  extraComputations?: Array<
+  extraComputations?: ReadonlyArray<
     | "EXTRA_COMPUTATION_UNSPECIFIED"
     | "LOCAL_AQI"
     | "HEALTH_RECOMMENDATIONS"
@@ -274,7 +274,7 @@ export interface LookupCurrentConditionsRequest {
   /** Optional. Allows the client to choose the language for the response. If data cannot be provided for that language the API uses the closest match. Allowed values rely on the IETF standard. Default value is en. */
   languageCode?: string;
   /** Optional. Expresses a 'country/region to AQI' relationship. Pairs a country/region with a desired AQI so that air quality data that is required for that country/region will be displayed according to the chosen AQI. This parameter can be used to specify a non-default AQI for a given country, for example, to get the US EPA index for Canada rather than the default index for Canada. */
-  customLocalAqis?: Array<CustomLocalAqi>;
+  customLocalAqis?: ReadonlyArray<CustomLocalAqi>;
   /** Required. The longitude and latitude from which the API looks for air quality current conditions data. */
   location?: LatLng;
 }
@@ -295,9 +295,9 @@ export interface HourlyForecast {
   /** A rounded down timestamp indicating the time (hour) the data refers to in RFC3339 UTC "Zulu" format. For example: "2014-10-02T15:00:00Z". */
   dateTime?: string;
   /** Based on the request parameters, this list will include (up to) two air quality indexes: - Universal AQI. Will be returned if the `universal_aqi` boolean is set to true. - Local AQI. Will be returned if the LOCAL_AQI extra computation is specified. */
-  indexes?: Array<AirQualityIndex>;
+  indexes?: ReadonlyArray<AirQualityIndex>;
   /** A list of pollutants affecting the location specified in the request. Note: This field will be returned only for requests that specified one or more of the following extra computations: POLLUTANT_ADDITIONAL_INFO, DOMINANT_POLLUTANT_CONCENTRATION, POLLUTANT_CONCENTRATION. */
-  pollutants?: Array<Pollutant>;
+  pollutants?: ReadonlyArray<Pollutant>;
 }
 
 export const HourlyForecast = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -309,7 +309,7 @@ export const HourlyForecast = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LookupForecastResponse {
   /** Optional. Contains the air quality information for each hour in the requested range. For example, if the request is for 48 hours of forecast there will be 48 elements of hourly forecasts. */
-  hourlyForecasts?: Array<HourlyForecast>;
+  hourlyForecasts?: ReadonlyArray<HourlyForecast>;
   /** Optional. The ISO_3166-1 alpha-2 code of the country/region corresponding to the location provided in the request. This field might be omitted from the response if the location provided in the request resides in a disputed territory. */
   regionCode?: string;
   /** Optional. The token to retrieve the next page. */
@@ -341,13 +341,13 @@ export interface LookupForecastRequest {
     | "INDIGO_PERSIAN_LIGHT"
     | (string & {});
   /** Optional. Expresses a 'country/region to AQI' relationship. Pairs a country/region with a desired AQI so that air quality data that is required for that country/region will be displayed according to the chosen AQI. This parameter can be used to specify a non-default AQI for a given country, for example, to get the US EPA index for Canada rather than the default index for Canada. */
-  customLocalAqis?: Array<CustomLocalAqi>;
+  customLocalAqis?: ReadonlyArray<CustomLocalAqi>;
   /** Optional. A page token received from a previous forecast call. It is used to retrieve the subsequent page. */
   pageToken?: string;
   /** Optional. Allows the client to choose the language for the response. If data cannot be provided for that language the API uses the closest match. Allowed values rely on the IETF standard (default = 'en'). */
   languageCode?: string;
   /** Optional. Additional features that can be optionally enabled. Specifying extra computations will result in the relevant elements and fields to be returned in the response. */
-  extraComputations?: Array<
+  extraComputations?: ReadonlyArray<
     | "EXTRA_COMPUTATION_UNSPECIFIED"
     | "LOCAL_AQI"
     | "HEALTH_RECOMMENDATIONS"
@@ -377,13 +377,13 @@ export interface LookupHistoryRequest {
   /** Number from 1 to 720 that indicates the hours range for the request. For example: A value of 48 will yield data from the last 48 hours. */
   hours?: number;
   /** Optional. Expresses a 'country/region to AQI' relationship. Pairs a country/region with a desired AQI so that air quality data that is required for that country/region will be displayed according to the chosen AQI. This parameter can be used to specify a non-default AQI for a given country, for example, to get the US EPA index for Canada rather than the default index for Canada. */
-  customLocalAqis?: Array<CustomLocalAqi>;
+  customLocalAqis?: ReadonlyArray<CustomLocalAqi>;
   /** Optional. A page token received from a previous history call. It is used to retrieve the subsequent page. Note that when providing a value for this parameter all other parameters provided must match the call that provided the page token (the previous call). */
   pageToken?: string;
   /** Optional. Allows the client to choose the language for the response. If data cannot be provided for that language the API uses the closest match. Allowed values rely on the IETF standard. Default value is en. */
   languageCode?: string;
   /** Optional. Additional features that can be optionally enabled. Specifying extra computations will result in the relevant elements and fields to be returned in the response. */
-  extraComputations?: Array<
+  extraComputations?: ReadonlyArray<
     | "EXTRA_COMPUTATION_UNSPECIFIED"
     | "LOCAL_AQI"
     | "HEALTH_RECOMMENDATIONS"

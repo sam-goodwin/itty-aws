@@ -91,7 +91,7 @@ export interface LfpStore {
   /** Optional. Output only. The hint of why the matching has failed. This is only set when matchingState=`STORE_MATCHING_STATE_FAILED`. Possible values are: - "`linked-store-not-found`": There aren't any Google Business Profile stores available for matching. - "`store-match-not-found`": The provided `LfpStore` couldn't be matched to any of the connected Google Business Profile stores. Merchant Center account is connected correctly and stores are available on Google Business Profile, but the `LfpStore` location address does not match with Google Business Profile stores' addresses. Update the `LfpStore` address or Google Business Profile store address to match correctly. - "`store-match-unverified`": The provided `LfpStore` couldn't be matched to any of the connected Google Business Profile stores, as the matched Google Business Profile store is unverified. Go through the Google Business Profile verification process to match correctly. */
   matchingStateHint?: string;
   /** Optional. [Google My Business category id](https://support.google.com/business/answer/7249669). */
-  gcidCategory?: Array<string>;
+  gcidCategory?: ReadonlyArray<string>;
   /** Optional. Output only. The state of matching to a Google Business Profile. See matchingStateHint for further details if no match is found. */
   matchingState?:
     | "STORE_MATCHING_STATE_UNSPECIFIED"
@@ -120,7 +120,7 @@ export const LfpStore = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLfpStoresResponse {
   /** The stores from the specified merchant. */
-  lfpStores?: Array<LfpStore>;
+  lfpStores?: ReadonlyArray<LfpStore>;
   /** A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -190,7 +190,7 @@ export const ProductChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ProductStatusChangeMessage {
   /** A message to describe the change that happened to the product */
-  changes?: Array<ProductChange>;
+  changes?: ReadonlyArray<ProductChange>;
   /** The account that manages the merchant's account. can be the same as merchant id if it is standalone account. Format : `accounts/{service_provider_id}` */
   managingAccount?: string;
   /** The target account that owns the entity that changed. Format : `accounts/{merchant_id}` */
@@ -344,7 +344,7 @@ export const LfpInventory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LfpMerchantState {
   /** Output only. The state per store from the specified merchant. The field will be absent if the merchant has no stores submitted through LFP. */
-  storeStates?: Array<LfpStoreState>;
+  storeStates?: ReadonlyArray<LfpStoreState>;
   /** Identifier. The name of the `LfpMerchantState` resource. Format: `accounts/{account}/lfpMerchantStates/{target_merchant}`. For example, `accounts/123456/lfpMerchantStates/567890`. */
   name?: string;
   /** The inventory statistics for the merchant. The field will be absent if the merchant has no inventory submitted through LFP. */
@@ -352,7 +352,7 @@ export interface LfpMerchantState {
   /** Number of [GBPs](https://www.google.com/business/) this merchant has access to. */
   linkedGbps?: string;
   /** Country-specific settings for the merchant. */
-  countrySettings?: Array<CountrySettings>;
+  countrySettings?: ReadonlyArray<CountrySettings>;
 }
 
 export const LfpMerchantState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -376,10 +376,7 @@ export const DeleteAccountsLfpStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "lfp/v1beta/accounts/{accountsId}/lfpStores/{lfpStoresId}",
-    }),
+    T.Http({ method: "DELETE", path: "lfp/v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsLfpStoresRequest>;
 
@@ -410,10 +407,7 @@ export const GetAccountsLfpStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "lfp/v1beta/accounts/{accountsId}/lfpStores/{lfpStoresId}",
-    }),
+    T.Http({ method: "GET", path: "lfp/v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsLfpStoresRequest>;
 
@@ -449,7 +443,7 @@ export const InsertAccountsLfpStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "lfp/v1beta/accounts/{accountsId}/lfpStores:insert",
+      path: "lfp/v1beta/{parent}/lfpStores:insert",
       hasBody: true,
     }),
     svc,
@@ -493,10 +487,7 @@ export const ListAccountsLfpStoresRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "lfp/v1beta/accounts/{accountsId}/lfpStores",
-    }),
+    T.Http({ method: "GET", path: "lfp/v1beta/{parent}/lfpStores" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsLfpStoresRequest>;
 
@@ -531,10 +522,7 @@ export const GetAccountsLfpMerchantStatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "lfp/v1beta/accounts/{accountsId}/lfpMerchantStates/{lfpMerchantStatesId}",
-    }),
+    T.Http({ method: "GET", path: "lfp/v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsLfpMerchantStatesRequest>;
 
@@ -570,7 +558,7 @@ export const InsertAccountsLfpSalesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "lfp/v1beta/accounts/{accountsId}/lfpSales:insert",
+      path: "lfp/v1beta/{parent}/lfpSales:insert",
       hasBody: true,
     }),
     svc,
@@ -608,7 +596,7 @@ export const InsertAccountsLfpInventoriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "lfp/v1beta/accounts/{accountsId}/lfpInventories:insert",
+      path: "lfp/v1beta/{parent}/lfpInventories:insert",
       hasBody: true,
     }),
     svc,

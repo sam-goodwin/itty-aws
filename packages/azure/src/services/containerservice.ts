@@ -3636,19 +3636,25 @@ export type OperationsListInput = typeof OperationsListInput.Type;
 
 // Output Schema
 export const OperationsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  value: Schema.Array(
-    Schema.Struct({
-      origin: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      display: Schema.optional(
-        Schema.Struct({
-          operation: Schema.optional(Schema.String),
-          resource: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          provider: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
+  value: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        isDataAction: Schema.optional(Schema.Boolean),
+        display: Schema.optional(
+          Schema.Struct({
+            provider: Schema.optional(Schema.String),
+            resource: Schema.optional(Schema.String),
+            operation: Schema.optional(Schema.String),
+            description: Schema.optional(Schema.String),
+          }),
+        ),
+        origin: Schema.optional(
+          Schema.Literals(["user", "system", "user,system"]),
+        ),
+        actionType: Schema.optional(Schema.Literals(["Internal"])),
+      }),
+    ),
   ),
   nextLink: Schema.optional(Schema.String),
 });
@@ -3656,7 +3662,7 @@ export type OperationsListOutput = typeof OperationsListOutput.Type;
 
 // The operation
 /**
- * Gets a list of operations.
+ * List the operations for the provider
  *
  * @param api-version - The API version to use for this operation.
  */

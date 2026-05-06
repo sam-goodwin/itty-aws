@@ -81,7 +81,7 @@ export const GoogleMapsPlacesV1ContextualContentJustificationReviewJustification
 
 export interface GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText {
   /** The list of the ranges of the highlighted text. */
-  highlightedTextRanges?: Array<GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange>;
+  highlightedTextRanges?: ReadonlyArray<GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange>;
   text?: string;
 }
 
@@ -254,7 +254,7 @@ export interface GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattab
   /** Text that may be used as is or formatted with `matches`. */
   text?: string;
   /** A list of string ranges identifying where the input request matched in `text`. The ranges can be used to format specific parts of `text`. The substrings may not be exact matches of `input` if the matching was determined by criteria other than string matching (for example, spell corrections or transliterations). These values are Unicode character offsets of `text`. The ranges are guaranteed to be ordered in increasing offset values. */
-  matches?: Array<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange>;
+  matches?: ReadonlyArray<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange>;
 }
 
 export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText =
@@ -280,7 +280,7 @@ export interface GoogleTypePostalAddress {
   /** Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (for example, "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (Côte d'Ivoire). */
   sortingCode?: string;
   /** Unstructured address lines describing the lower levels of an address. Because values in `address_lines` do not have type information and may sometimes contain multiple values in a single field (for example, "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country or region of the address. In places where this can vary (for example, Japan), `address_language` is used to make it explicit (for example, "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). In this way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a `region_code` with all remaining information placed in the `address_lines`. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a `region_code` and `address_lines` and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas). */
-  addressLines?: Array<string>;
+  addressLines?: ReadonlyArray<string>;
   /** Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See https://cldr.unicode.org/ and https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland. */
   regionCode?: string;
   /** Optional. Sublocality of the address. For example, this can be a neighborhood, borough, or district. */
@@ -290,7 +290,7 @@ export interface GoogleTypePostalAddress {
   /** The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions. */
   revision?: number;
   /** Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information. */
-  recipients?: Array<string>;
+  recipients?: ReadonlyArray<string>;
   /** Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en". */
   languageCode?: string;
 }
@@ -316,7 +316,7 @@ export interface GoogleMapsPlacesV1Photo {
   /** The maximum available height, in pixels. */
   heightPx?: number;
   /** This photo's authors. */
-  authorAttributions?: Array<GoogleMapsPlacesV1AuthorAttribution>;
+  authorAttributions?: ReadonlyArray<GoogleMapsPlacesV1AuthorAttribution>;
   /** A link where users can flag a problem with the photo. */
   flagContentUri?: string;
   /** Identifier. A reference representing this place photo which may be used to look up this place photo again (also called the API "resource" name: `places/{place_id}/photos/{photo}`). */
@@ -339,11 +339,11 @@ export const GoogleMapsPlacesV1Photo =
 
 export interface GoogleMapsPlacesV1ContextualContent {
   /** Information (including references) about photos of this place, contextual to the place query. */
-  photos?: Array<GoogleMapsPlacesV1Photo>;
+  photos?: ReadonlyArray<GoogleMapsPlacesV1Photo>;
   /** Experimental: See https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more details. Justifications for the place. */
-  justifications?: Array<GoogleMapsPlacesV1ContextualContentJustification>;
+  justifications?: ReadonlyArray<GoogleMapsPlacesV1ContextualContentJustification>;
   /** List of reviews about this place, contextual to the place query. */
-  reviews?: Array<GoogleMapsPlacesV1Review>;
+  reviews?: ReadonlyArray<GoogleMapsPlacesV1Review>;
 }
 
 export const GoogleMapsPlacesV1ContextualContent =
@@ -514,7 +514,7 @@ export interface GoogleMapsPlacesV1ContentBlock {
   /** Content related to the topic. */
   content?: GoogleTypeLocalizedText;
   /** The list of resource names of the referenced places. This name can be used in other APIs that accept Place resource names. */
-  referencedPlaces?: Array<string>;
+  referencedPlaces?: ReadonlyArray<string>;
 }
 
 export const GoogleMapsPlacesV1ContentBlock =
@@ -559,7 +559,7 @@ export interface GoogleMapsPlacesV1AddressDescriptorLandmark {
   /** The landmark's display name. */
   displayName?: GoogleTypeLocalizedText;
   /** A set of type tags for this landmark. For a complete list of possible values, see https://developers.google.com/maps/documentation/places/web-service/place-types. */
-  types?: Array<string>;
+  types?: ReadonlyArray<string>;
   /** The landmark's place id. */
   placeId?: string;
   /** The landmark's resource name. */
@@ -617,9 +617,9 @@ export const GoogleMapsPlacesV1AddressDescriptorArea =
 
 export interface GoogleMapsPlacesV1AddressDescriptor {
   /** A ranked list of nearby landmarks. The most recognizable and nearby landmarks are ranked first. */
-  landmarks?: Array<GoogleMapsPlacesV1AddressDescriptorLandmark>;
+  landmarks?: ReadonlyArray<GoogleMapsPlacesV1AddressDescriptorLandmark>;
   /** A ranked list of containing or adjacent areas. The most recognizable and precise areas are ranked first. */
-  areas?: Array<GoogleMapsPlacesV1AddressDescriptorArea>;
+  areas?: ReadonlyArray<GoogleMapsPlacesV1AddressDescriptorArea>;
 }
 
 export const GoogleMapsPlacesV1AddressDescriptor =
@@ -634,7 +634,7 @@ export const GoogleMapsPlacesV1AddressDescriptor =
 
 export interface GoogleMapsPlacesV1RoutingSummary {
   /** The legs of the trip. When you calculate travel duration and distance from a set origin, `legs` contains a single leg containing the duration and distance from the origin to the destination. When you do a search along route, `legs` contains two legs: one from the origin to place, and one from the place to the destination. */
-  legs?: Array<GoogleMapsPlacesV1RoutingSummaryLeg>;
+  legs?: ReadonlyArray<GoogleMapsPlacesV1RoutingSummaryLeg>;
   /** A link to show directions on Google Maps using the waypoints from the given routing summary. The route generated by this link is not guaranteed to be the same as the route used to generate the routing summary. The link uses information provided in the request, from fields including `routingParameters` and `searchAlongRouteParameters` when applicable, to generate the directions link. */
   directionsUri?: string;
 }
@@ -692,9 +692,9 @@ export const GoogleMapsPlacesV1PlaceOpeningHoursPeriod =
 
 export interface GoogleMapsPlacesV1PlaceOpeningHours {
   /** Structured information for special days that fall within the period that the returned opening hours cover. Special days are days that could impact the business hours of a place, e.g. Christmas day. Set for current_opening_hours and current_secondary_opening_hours if there are exceptional hours. */
-  specialDays?: Array<GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay>;
+  specialDays?: ReadonlyArray<GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay>;
   /** Localized strings describing the opening hours of this place, one string for each day of the week. NOTE: The order of the days and the start of the week is determined by the locale (language and region). The ordering of the `periods` array is independent of the ordering of the `weekday_descriptions` array. Do not assume they will begin on the same day. Will be empty if the hours are unknown or could not be converted to localized text. Example: "Sun: 18:00–06:00" */
-  weekdayDescriptions?: Array<string>;
+  weekdayDescriptions?: ReadonlyArray<string>;
   /** The next time the current opening hours period starts up to 7 days in the future. This field is only populated if the opening hours period is not active at the time of serving the request. */
   nextOpenTime?: string;
   /** A type string used to identify the type of secondary hours. */
@@ -719,7 +719,7 @@ export interface GoogleMapsPlacesV1PlaceOpeningHours {
   /** Whether the opening hours period is currently active. For regular opening hours and current opening hours, this field means whether the place is open. For secondary opening hours and current secondary opening hours, this field means whether the secondary hours of this place is active. */
   openNow?: boolean;
   /** The periods that this place is open during the week. The periods are in chronological order, in the place-local timezone. An empty (but not absent) value indicates a place that is never open, e.g. because it is closed temporarily for renovations. The starting day of `periods` is NOT fixed and should not be assumed to be Sunday. The API determines the start day based on a variety of factors. For example, for a 24/7 business, the first period may begin on the day of the request. For other businesses, it might be the first day of the week that they are open. NOTE: The ordering of the `periods` array is independent of the ordering of the `weekday_descriptions` array. Do not assume they will begin on the same day. */
-  periods?: Array<GoogleMapsPlacesV1PlaceOpeningHoursPeriod>;
+  periods?: ReadonlyArray<GoogleMapsPlacesV1PlaceOpeningHoursPeriod>;
 }
 
 export const GoogleMapsPlacesV1PlaceOpeningHours =
@@ -872,7 +872,7 @@ export interface GoogleMapsPlacesV1PlaceAddressComponent {
   /** The full text description or name of the address component. For example, an address component for the country Australia may have a long_name of "Australia". */
   longText?: string;
   /** An array indicating the type(s) of the address component. */
-  types?: Array<string>;
+  types?: ReadonlyArray<string>;
   /** The language used to format this components, in CLDR notation. */
   languageCode?: string;
 }
@@ -1001,7 +1001,7 @@ export const GoogleMapsPlacesV1FuelOptionsFuelPrice =
 
 export interface GoogleMapsPlacesV1FuelOptions {
   /** The last known fuel price for each type of fuel this station has. There is one entry per fuel type this station has. Order is not important. */
-  fuelPrices?: Array<GoogleMapsPlacesV1FuelOptionsFuelPrice>;
+  fuelPrices?: ReadonlyArray<GoogleMapsPlacesV1FuelOptionsFuelPrice>;
 }
 
 export const GoogleMapsPlacesV1FuelOptions =
@@ -1039,7 +1039,7 @@ export const GoogleMapsPlacesV1PlaceSubDestination =
 
 export interface GoogleMapsPlacesV1EVChargeOptions {
   /** A list of EV charging connector aggregations that contain connectors of the same type and same charge rate. */
-  connectorAggregation?: Array<GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation>;
+  connectorAggregation?: ReadonlyArray<GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation>;
   /** Number of connectors at this station. However, because some ports can have multiple connectors but only be able to charge one car at a time (e.g.) the number of connectors may be greater than the total number of cars which can charge simultaneously. */
   connectorCount?: number;
 }
@@ -1090,7 +1090,7 @@ export interface GoogleMapsPlacesV1Place {
   /** Indicates whether the place is a pure service area business. Pure service area business is a business that visits or delivers to customers directly but does not serve customers at their business address. For example, businesses like cleaning services or plumbers. Those businesses may not have a physical address or location on Google Maps. */
   pureServiceAreaBusiness?: boolean;
   /** Information (including references) about photos of this place. A maximum of 10 photos can be returned. */
-  photos?: Array<GoogleMapsPlacesV1Photo>;
+  photos?: ReadonlyArray<GoogleMapsPlacesV1Photo>;
   /** Specifies if the place serves dinner. */
   servesDinner?: boolean;
   /** A viewport suitable for displaying the place on an average-sized map. This viewport should not be used as the physical boundary or the service area of the business. */
@@ -1126,7 +1126,7 @@ export interface GoogleMapsPlacesV1Place {
   /** The position of this place. */
   location?: GoogleTypeLatLng;
   /** A set of type tags for this result. For example, "political" and "locality". For the complete list of possible values, see Table A and Table B at https://developers.google.com/maps/documentation/places/web-service/place-types */
-  types?: Array<string>;
+  types?: ReadonlyArray<string>;
   /** Place is suitable for watching sports. */
   goodForWatchingSports?: boolean;
   /** The address descriptor of the place. Address descriptors include additional information that help describe a location using landmarks and areas. See address descriptor regional coverage in https://developers.google.com/maps/documentation/geocoding/address-descriptors/coverage. */
@@ -1138,13 +1138,13 @@ export interface GoogleMapsPlacesV1Place {
   /** If this Place is permanently closed and has moved to a new Place, this field contains the new Place's resource name, in `places/{place_id}` format. If this Place moved multiple times, this field will represent the first moved place. This field will not be populated if this Place has not moved. */
   movedPlace?: string;
   /** Contains an array of entries for the next seven days including information about secondary hours of a business. Secondary hours are different from a business's main hours. For example, a restaurant can specify drive through hours or delivery hours as its secondary hours. This field populates the type subfield, which draws from a predefined list of opening hours types (such as DRIVE_THROUGH, PICKUP, or TAKEOUT) based on the types of the place. This field includes the special_days subfield of all hours, set for dates that have exceptional hours. */
-  currentSecondaryOpeningHours?: Array<GoogleMapsPlacesV1PlaceOpeningHours>;
+  currentSecondaryOpeningHours?: ReadonlyArray<GoogleMapsPlacesV1PlaceOpeningHours>;
   /** Specifies if the place serves vegetarian food. */
   servesVegetarianFood?: boolean;
   /** Links to trigger different Google Maps actions. */
   googleMapsLinks?: GoogleMapsPlacesV1PlaceGoogleMapsLinks;
   /** Contains an array of entries for information about regular secondary hours of a business. Secondary hours are different from a business's main hours. For example, a restaurant can specify drive through hours or delivery hours as its secondary hours. This field populates the type subfield, which draws from a predefined list of opening hours types (such as DRIVE_THROUGH, PICKUP, or TAKEOUT) based on the types of the place. */
-  regularSecondaryOpeningHours?: Array<GoogleMapsPlacesV1PlaceOpeningHours>;
+  regularSecondaryOpeningHours?: ReadonlyArray<GoogleMapsPlacesV1PlaceOpeningHours>;
   /** Options of parking provided by the place. */
   parkingOptions?: GoogleMapsPlacesV1PlaceParkingOptions;
   /** A human-readable phone number for the place, in international format. */
@@ -1156,7 +1156,7 @@ export interface GoogleMapsPlacesV1Place {
   /** Specifies if the place serves brunch. */
   servesBrunch?: boolean;
   /** Repeated components for each locality level. Note the following facts about the address_components[] array: - The array of address components may contain more components than the formatted_address. - The array does not necessarily include all the political entities that contain an address, apart from those included in the formatted_address. To retrieve all the political entities that contain a specific address, you should use reverse geocoding, passing the latitude/longitude of the address as a parameter to the request. - The format of the response is not guaranteed to remain the same between requests. In particular, the number of address_components varies based on the address requested and can change over time for the same address. A component can change position in the array. The type of the component can change. A particular component may be missing in a later response. */
-  addressComponents?: Array<GoogleMapsPlacesV1PlaceAddressComponent>;
+  addressComponents?: ReadonlyArray<GoogleMapsPlacesV1PlaceAddressComponent>;
   /** Price level of the place. */
   priceLevel?:
     | "PRICE_LEVEL_UNSPECIFIED"
@@ -1171,7 +1171,7 @@ export interface GoogleMapsPlacesV1Place {
   /** A truncated URL to an icon mask. User can access different icon type by appending type suffix to the end (eg, ".svg" or ".png"). */
   iconMaskBaseUri?: string;
   /** A set of data provider that must be shown with this result. */
-  attributions?: Array<GoogleMapsPlacesV1PlaceAttribution>;
+  attributions?: ReadonlyArray<GoogleMapsPlacesV1PlaceAttribution>;
   /** The localized name of the place, suitable as a short human-readable description. For example, "Google Sydney", "Starbucks", "Pyrmont", etc. */
   displayName?: GoogleTypeLocalizedText;
   /** AI-generated summary of the place. */
@@ -1197,7 +1197,7 @@ export interface GoogleMapsPlacesV1Place {
   /** The most recent information about fuel options in a gas station. This information is updated regularly. */
   fuelOptions?: GoogleMapsPlacesV1FuelOptions;
   /** List of reviews about this place, sorted by relevance. A maximum of 5 reviews can be returned. */
-  reviews?: Array<GoogleMapsPlacesV1Review>;
+  reviews?: ReadonlyArray<GoogleMapsPlacesV1Review>;
   /** If this Place is permanently closed and has moved to a new Place, this field contains the new Place's place ID. If this Place moved multiple times, this field will represent the first moved Place. This field will not be populated if this Place has not moved. */
   movedPlaceId?: string;
   /** A URL providing more information about this place. */
@@ -1209,11 +1209,11 @@ export interface GoogleMapsPlacesV1Place {
   /** Place serves coffee. */
   servesCoffee?: boolean;
   /** List of places in which the current place is located. */
-  containingPlaces?: Array<GoogleMapsPlacesV1PlaceContainingPlace>;
+  containingPlaces?: ReadonlyArray<GoogleMapsPlacesV1PlaceContainingPlace>;
   /** Number of minutes this place's timezone is currently offset from UTC. This is expressed in minutes to support timezones that are offset by fractions of an hour, e.g. X hours and 15 minutes. */
   utcOffsetMinutes?: number;
   /** A list of sub-destinations related to the place. */
-  subDestinations?: Array<GoogleMapsPlacesV1PlaceSubDestination>;
+  subDestinations?: ReadonlyArray<GoogleMapsPlacesV1PlaceSubDestination>;
   /** Place has restroom. */
   restroom?: boolean;
   /** Place is good for children. */
@@ -1325,9 +1325,9 @@ export const GoogleMapsPlacesV1Place =
 
 export interface GoogleMapsPlacesV1SearchNearbyResponse {
   /** A list of routing summaries where each entry associates to the corresponding place in the same index in the `places` field. If the routing summary is not available for one of the places, it will contain an empty entry. This list should have as many entries as the list of places if requested. */
-  routingSummaries?: Array<GoogleMapsPlacesV1RoutingSummary>;
+  routingSummaries?: ReadonlyArray<GoogleMapsPlacesV1RoutingSummary>;
   /** A list of places that meets user's requirements like places types, number of places and specific location restriction. */
-  places?: Array<GoogleMapsPlacesV1Place>;
+  places?: ReadonlyArray<GoogleMapsPlacesV1Place>;
 }
 
 export const GoogleMapsPlacesV1SearchNearbyResponse =
@@ -1364,7 +1364,7 @@ export interface GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePred
   /** Contains the human-readable name for the returned result. For establishment results, this is usually the business name and address. `text` is recommended for developers who wish to show a single UI element. Developers who wish to show two separate, but related, UI elements may want to use `structured_format` instead. They are two different ways to represent a Place prediction. Users should not try to parse `structured_format` into `text` or vice versa. This text may be different from the `display_name` returned by GetPlace. May be in mixed languages if the request `input` and `language_code` are in different languages or if the Place does not have a translation from the local language to `language_code`. */
   text?: GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText;
   /** List of types that apply to this Place from Table A or Table B in https://developers.google.com/maps/documentation/places/web-service/place-types. A type is a categorization of a Place. Places with shared types will share similar characteristics. */
-  types?: Array<string>;
+  types?: ReadonlyArray<string>;
   /** The length of the geodesic in meters from `origin` if `origin` is specified. Certain predictions such as routes may not populate this field. */
   distanceMeters?: number;
   /** The resource name of the suggested Place. This name can be used in other APIs that accept Place names. */
@@ -1411,7 +1411,7 @@ export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion =
 
 export interface GoogleMapsPlacesV1AutocompletePlacesResponse {
   /** Contains a list of suggestions, ordered in descending order of relevance. */
-  suggestions?: Array<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion>;
+  suggestions?: ReadonlyArray<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion>;
 }
 
 export const GoogleMapsPlacesV1AutocompletePlacesResponse =
@@ -1467,11 +1467,11 @@ export const GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction =
 
 export interface GoogleMapsPlacesV1SearchTextResponse {
   /** A list of routing summaries where each entry associates to the corresponding place in the same index in the `places` field. If the routing summary is not available for one of the places, it will contain an empty entry. This list will have as many entries as the list of places if requested. */
-  routingSummaries?: Array<GoogleMapsPlacesV1RoutingSummary>;
+  routingSummaries?: ReadonlyArray<GoogleMapsPlacesV1RoutingSummary>;
   /** A list of places that meet the user's text search criteria. */
-  places?: Array<GoogleMapsPlacesV1Place>;
+  places?: ReadonlyArray<GoogleMapsPlacesV1Place>;
   /** Experimental: See https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more details. A list of contextual contents where each entry associates to the corresponding place in the same index in the places field. The contents that are relevant to the `text_query` in the request are preferred. If the contextual content is not available for one of the places, it will return non-contextual content. It will be empty only when the content is unavailable for this place. This list will have as many entries as the list of places if requested. */
-  contextualContents?: Array<GoogleMapsPlacesV1ContextualContent>;
+  contextualContents?: ReadonlyArray<GoogleMapsPlacesV1ContextualContent>;
   /** A link allows the user to search with the same text query as specified in the request on Google Maps. */
   searchUri?: string;
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted or empty, there are no subsequent pages. */
@@ -1495,7 +1495,7 @@ export interface GoogleMapsPlacesV1SearchTextRequestEVOptions {
   /** Optional. Minimum required charging rate in kilowatts. A place with a charging rate less than the specified rate is filtered out. */
   minimumChargingRateKw?: number;
   /** Optional. The list of preferred EV connector types. A place that does not support any of the listed connector types is filtered out. */
-  connectorTypes?: Array<
+  connectorTypes?: ReadonlyArray<
     | "EV_CONNECTOR_TYPE_UNSPECIFIED"
     | "EV_CONNECTOR_TYPE_OTHER"
     | "EV_CONNECTOR_TYPE_J1772"
@@ -1596,7 +1596,7 @@ export interface GoogleMapsPlacesV1SearchTextRequest {
   /** Optional. The maximum number of results per page that can be returned. If the number of available results is larger than `page_size`, a `next_page_token` is returned which can be passed to `page_token` to get the next page of results in subsequent requests. If 0 or no value is provided, a default of 20 is used. The maximum value is 20; values above 20 will be set to 20. Negative values will return an INVALID_ARGUMENT error. If both `max_result_count` and `page_size` are specified, `max_result_count` will be ignored. */
   pageSize?: number;
   /** Used to restrict the search to places that are marked as certain price levels. Users can choose any combinations of price levels. Default to select all price levels. */
-  priceLevels?: Array<
+  priceLevels?: ReadonlyArray<
     | "PRICE_LEVEL_UNSPECIFIED"
     | "PRICE_LEVEL_FREE"
     | "PRICE_LEVEL_INEXPENSIVE"
@@ -1665,7 +1665,7 @@ export const GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction =
 
 export interface GoogleMapsPlacesV1SearchNearbyRequest {
   /** Included Place type (eg, "restaurant" or "gas_station") from https://developers.google.com/maps/documentation/places/web-service/place-types. Up to 50 types from [Table A](https://developers.google.com/maps/documentation/places/web-service/place-types#table-a) may be specified. If there are any conflicting types, i.e. a type appears in both included_types and excluded_types, an INVALID_ARGUMENT error is returned. If a Place type is specified with multiple type restrictions, only places that satisfy all of the restrictions are returned. For example, if we have {included_types = ["restaurant"], excluded_primary_types = ["restaurant"]}, the returned places provide "restaurant" related services but do not operate primarily as "restaurants". */
-  includedTypes?: Array<string>;
+  includedTypes?: ReadonlyArray<string>;
   /** How results will be ranked in the response. */
   rankPreference?:
     | "RANK_PREFERENCE_UNSPECIFIED"
@@ -1677,7 +1677,7 @@ export interface GoogleMapsPlacesV1SearchNearbyRequest {
   /** Place details will be displayed with the preferred language if available. If the language code is unspecified or unrecognized, place details of any language may be returned, with a preference for English if such details exist. Current list of supported languages: https://developers.google.com/maps/faq#languagesupport. */
   languageCode?: string;
   /** Included primary Place type (e.g. "restaurant" or "gas_station") from https://developers.google.com/maps/documentation/places/web-service/place-types. A place can only have a single primary type from the supported types table associated with it. Up to 50 types from [Table A](https://developers.google.com/maps/documentation/places/web-service/place-types#table-a) may be specified. If there are any conflicting primary types, i.e. a type appears in both included_primary_types and excluded_primary_types, an INVALID_ARGUMENT error is returned. If a Place type is specified with multiple type restrictions, only places that satisfy all of the restrictions are returned. For example, if we have {included_types = ["restaurant"], excluded_primary_types = ["restaurant"]}, the returned places provide "restaurant" related services but do not operate primarily as "restaurants". */
-  includedPrimaryTypes?: Array<string>;
+  includedPrimaryTypes?: ReadonlyArray<string>;
   /** Required. The region to search. */
   locationRestriction?: GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction;
   /** Maximum number of results to return. It must be between 1 and 20 (default), inclusively. If the number is unset, it falls back to the upper limit. If the number is set to negative or exceeds the upper limit, an INVALID_ARGUMENT error is returned. */
@@ -1687,9 +1687,9 @@ export interface GoogleMapsPlacesV1SearchNearbyRequest {
   /** The Unicode country/region code (CLDR) of the location where the request is coming from. This parameter is used to display the place details, like region-specific place name, if available. The parameter can affect results based on applicable law. For more information, see https://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html. Note that 3-digit region codes are not currently supported. */
   regionCode?: string;
   /** Excluded primary Place type (e.g. "restaurant" or "gas_station") from https://developers.google.com/maps/documentation/places/web-service/place-types. Up to 50 types from [Table A](https://developers.google.com/maps/documentation/places/web-service/place-types#table-a) may be specified. If there are any conflicting primary types, i.e. a type appears in both included_primary_types and excluded_primary_types, an INVALID_ARGUMENT error is returned. If a Place type is specified with multiple type restrictions, only places that satisfy all of the restrictions are returned. For example, if we have {included_types = ["restaurant"], excluded_primary_types = ["restaurant"]}, the returned places provide "restaurant" related services but do not operate primarily as "restaurants". */
-  excludedPrimaryTypes?: Array<string>;
+  excludedPrimaryTypes?: ReadonlyArray<string>;
   /** Excluded Place type (eg, "restaurant" or "gas_station") from https://developers.google.com/maps/documentation/places/web-service/place-types. Up to 50 types from [Table A](https://developers.google.com/maps/documentation/places/web-service/place-types#table-a) may be specified. If the client provides both included_types (e.g. restaurant) and excluded_types (e.g. cafe), then the response should include places that are restaurant but not cafe. The response includes places that match at least one of the included_types and none of the excluded_types. If there are any conflicting types, i.e. a type appears in both included_types and excluded_types, an INVALID_ARGUMENT error is returned. If a Place type is specified with multiple type restrictions, only places that satisfy all of the restrictions are returned. For example, if we have {included_types = ["restaurant"], excluded_primary_types = ["restaurant"]}, the returned places provide "restaurant" related services but do not operate primarily as "restaurants". */
-  excludedTypes?: Array<string>;
+  excludedTypes?: ReadonlyArray<string>;
 }
 
 export const GoogleMapsPlacesV1SearchNearbyRequest =
@@ -1717,9 +1717,9 @@ export interface GoogleMapsPlacesV1AutocompletePlacesRequest {
   /** Optional. Restrict results to a specified location. At most one of `location_bias` or `location_restriction` should be set. If neither are set, the results will be biased by IP address, meaning the IP address will be mapped to an imprecise location and used as a biasing signal. */
   locationRestriction?: GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction;
   /** Optional. Included primary Place type (for example, "restaurant" or "gas_station") in Place Types (https://developers.google.com/maps/documentation/places/web-service/place-types), or only `(regions)`, or only `(cities)`. A Place is only returned if its primary type is included in this list. Up to 5 values can be specified. If no types are specified, all Place types are returned. */
-  includedPrimaryTypes?: Array<string>;
+  includedPrimaryTypes?: ReadonlyArray<string>;
   /** Optional. Only include results in the specified regions, specified as up to 15 CLDR two-character region codes. An empty set will not restrict the results. If both `location_restriction` and `included_region_codes` are set, the results will be located in the area of intersection. */
-  includedRegionCodes?: Array<string>;
+  includedRegionCodes?: ReadonlyArray<string>;
   /** Optional. If true, the response will include both Place and query predictions. Otherwise the response will only return Place predictions. */
   includeQueryPredictions?: boolean;
   /** Optional. The region code, specified as a CLDR two-character region code. This affects address formatting, result ranking, and may influence what results are returned. This does not restrict results to the specified region. To restrict results to a region, use `region_code_restriction`. */
@@ -1851,7 +1851,7 @@ export const GetPlacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   regionCode: Schema.optional(Schema.String).pipe(T.HttpQuery("regionCode")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/places/{placesId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetPlacesRequest>;
 
@@ -1928,10 +1928,7 @@ export const GetMediaPlacesPhotosRequest =
       T.HttpQuery("maxHeightPx"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/places/{placesId}/photos/{photosId}/media",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetMediaPlacesPhotosRequest>;
 

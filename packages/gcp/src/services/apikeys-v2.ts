@@ -24,7 +24,7 @@ const svc = T.Service({
 
 export interface V2ServerKeyRestrictions {
   /** A list of the caller IP addresses that are allowed to make API calls with this key. */
-  allowedIps?: Array<string>;
+  allowedIps?: ReadonlyArray<string>;
 }
 
 export const V2ServerKeyRestrictions =
@@ -47,7 +47,7 @@ export interface V2ApiTarget {
   /** The service for this restriction. It should be the canonical service name, for example: `translate.googleapis.com`. You can use [`gcloud services list`](https://cloud.google.com/sdk/gcloud/reference/services/list) to get a list of services that are enabled in the project. */
   service?: string;
   /** Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*` */
-  methods?: Array<string>;
+  methods?: ReadonlyArray<string>;
 }
 
 export const V2ApiTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -57,7 +57,7 @@ export const V2ApiTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface V2BrowserKeyRestrictions {
   /** A list of regular expressions for the referrer URLs that are allowed to make API calls with this key. */
-  allowedReferrers?: Array<string>;
+  allowedReferrers?: ReadonlyArray<string>;
 }
 
 export const V2BrowserKeyRestrictions =
@@ -79,7 +79,7 @@ export const V2AndroidApplication = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface V2AndroidKeyRestrictions {
   /** A list of Android applications that are allowed to make API calls with this key. */
-  allowedApplications?: Array<V2AndroidApplication>;
+  allowedApplications?: ReadonlyArray<V2AndroidApplication>;
 }
 
 export const V2AndroidKeyRestrictions =
@@ -89,7 +89,7 @@ export const V2AndroidKeyRestrictions =
 
 export interface V2IosKeyRestrictions {
   /** A list of bundle IDs that are allowed when making API calls with this key. */
-  allowedBundleIds?: Array<string>;
+  allowedBundleIds?: ReadonlyArray<string>;
 }
 
 export const V2IosKeyRestrictions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -100,7 +100,7 @@ export interface V2Restrictions {
   /** The IP addresses of callers that are allowed to use the key. */
   serverKeyRestrictions?: V2ServerKeyRestrictions;
   /** A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed. */
-  apiTargets?: Array<V2ApiTarget>;
+  apiTargets?: ReadonlyArray<V2ApiTarget>;
   /** The HTTP referrers (websites) that are allowed to use the key. */
   browserKeyRestrictions?: V2BrowserKeyRestrictions;
   /** The Android apps that are allowed to use the key. */
@@ -158,7 +158,7 @@ export const V2Key = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface V2ListKeysResponse {
   /** A list of API keys. */
-  keys?: Array<V2Key>;
+  keys?: ReadonlyArray<V2Key>;
   /** The pagination token for the next page of results. */
   nextPageToken?: string;
 }
@@ -172,7 +172,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
@@ -267,10 +267,7 @@ export const GetKeyStringProjectsLocationsKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/keys/{keysId}/keyString",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}/keyString" }),
     svc,
   ) as unknown as Schema.Schema<GetKeyStringProjectsLocationsKeysRequest>;
 
@@ -307,11 +304,7 @@ export const CreateProjectsLocationsKeysRequest =
     keyId: Schema.optional(Schema.String).pipe(T.HttpQuery("keyId")),
     body: Schema.optional(V2Key).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/keys",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/keys", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsKeysRequest>;
 
@@ -342,10 +335,7 @@ export const GetProjectsLocationsKeysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/keys/{keysId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsKeysRequest>;
 
@@ -379,11 +369,7 @@ export const UndeleteProjectsLocationsKeysRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(V2UndeleteKeyRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/keys/{keysId}:undelete",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:undelete", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UndeleteProjectsLocationsKeysRequest>;
 
@@ -425,10 +411,7 @@ export const ListProjectsLocationsKeysRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/keys",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/keys" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsKeysRequest>;
 
@@ -469,11 +452,7 @@ export const PatchProjectsLocationsKeysRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(V2Key).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/keys/{keysId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsKeysRequest>;
 
@@ -507,10 +486,7 @@ export const DeleteProjectsLocationsKeysRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/keys/{keysId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsKeysRequest>;
 
@@ -540,7 +516,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v2/operations/{operationsId}" }),
+  T.Http({ method: "GET", path: "v2/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 

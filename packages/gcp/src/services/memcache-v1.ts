@@ -45,7 +45,7 @@ export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -61,7 +61,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -95,11 +95,11 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -249,7 +249,7 @@ export interface GoogleCloudMemcacheV1MaintenancePolicy {
   /** Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512. */
   description?: string;
   /** Required. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_maintenance_windows is expected to be one. */
-  weeklyMaintenanceWindow?: Array<WeeklyMaintenanceWindow>;
+  weeklyMaintenanceWindow?: ReadonlyArray<WeeklyMaintenanceWindow>;
 }
 
 export const GoogleCloudMemcacheV1MaintenancePolicy =
@@ -287,7 +287,7 @@ export interface Instance {
   /** The full name of the Google Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. If left unspecified, the `default` network will be used. */
   authorizedNetwork?: string;
   /** Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance. */
-  zones?: Array<string>;
+  zones?: ReadonlyArray<string>;
   /** Required. Number of nodes in the Memcached instance. */
   nodeCount?: number;
   /** Required. Configuration for Memcached nodes. */
@@ -301,7 +301,7 @@ export interface Instance {
   /** User defined parameters to apply to the memcached process on each node. */
   parameters?: MemcacheParameters;
   /** Output only. List of Memcached nodes. Refer to Node message for more details. */
-  memcacheNodes?: Array<Node>;
+  memcacheNodes?: ReadonlyArray<Node>;
   /** Output only. The time the instance was created. */
   createTime?: string;
   /** Output only. The time the instance was updated. */
@@ -319,7 +319,7 @@ export interface Instance {
   /** Output only. The full version of memcached server running on this instance. System automatically determines the full memcached version for an instance based on the input MemcacheVersion. The full version format will be "memcached-1.5.16". */
   memcacheFullVersion?: string;
   /** List of messages that describe the current state of the Memcached instance. */
-  instanceMessages?: Array<InstanceMessage>;
+  instanceMessages?: ReadonlyArray<InstanceMessage>;
   /** Output only. Endpoint for the Discovery API. */
   discoveryEndpoint?: string;
   /** The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule. */
@@ -327,7 +327,7 @@ export interface Instance {
   /** Output only. Published maintenance schedule. */
   maintenanceSchedule?: MaintenanceSchedule;
   /** Optional. Contains the id of allocated IP address ranges associated with the private service access connection for example, "test-default" associated with IP range 10.0.0.0/29. */
-  reservedIpRangeId?: Array<string>;
+  reservedIpRangeId?: ReadonlyArray<string>;
   /** Optional. Output only. Reserved for future use. */
   satisfiesPzs?: boolean;
   /** Optional. Output only. Reserved for future use. */
@@ -337,7 +337,7 @@ export interface Instance {
   /** Output only. The effective maintenance version of the instance. */
   effectiveMaintenanceVersion?: string;
   /** Output only. The available maintenance versions that can be applied to the instance. */
-  availableMaintenanceVersions?: Array<string>;
+  availableMaintenanceVersions?: ReadonlyArray<string>;
 }
 
 export const Instance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -369,11 +369,11 @@ export const Instance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListInstancesResponse {
   /** A list of Memcached instances in the project in the specified location, or across all locations. If the `location_id` in the parent field of the request is "-", all regions available to the project are queried, and the results aggregated. */
-  instances?: Array<Instance>;
+  instances?: ReadonlyArray<Instance>;
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -397,7 +397,7 @@ export const UpdateParametersRequest =
 
 export interface ApplyParametersRequest {
   /** Nodes to which the instance-level parameter group is applied. */
-  nodeIds?: Array<string>;
+  nodeIds?: ReadonlyArray<string>;
   /** Whether to apply instance-level parameter group to all nodes. If set to true, users are restricted from specifying individual nodes, and `ApplyParameters` updates all nodes within the instance. */
   applyAll?: boolean;
 }
@@ -664,7 +664,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
   /** Name of the SLO tier the Instance belongs to. This name will be expected to match the tiers specified in the service SLO configuration. Field is mandatory and must not be empty. */
   tier?: string;
   /** Optional. List of nodes. Some producers need to use per-node metadata to calculate SLO. This field allows such producers to publish per-node SLO meta data, which will be consumed by SSA Eligibility Exporter and published in the form of per node metric to Monarch. */
-  nodes?: Array<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>;
+  nodes?: ReadonlyArray<GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>;
   /** Optional. Multiple per-instance SLI eligibilities which apply for individual SLIs. */
   perSliEligibility?: GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility;
 }
@@ -747,7 +747,7 @@ export const Schedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WeeklyCycle {
   /** User can specify multiple windows in a week. Minimum of 1 window. */
-  schedule?: Array<Schedule>;
+  schedule?: ReadonlyArray<Schedule>;
 }
 
 export const WeeklyCycle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -809,7 +809,7 @@ export interface UpdatePolicy {
     | "WEEK5"
     | (string & {});
   /** Deny Maintenance Period that is applied to resource to indicate when maintenance is forbidden. The protocol supports zero-to-many such periods, but the current SLM Rollout implementation only supports zero-to-one. */
-  denyMaintenancePeriods?: Array<DenyMaintenancePeriod>;
+  denyMaintenancePeriods?: ReadonlyArray<DenyMaintenancePeriod>;
 }
 
 export const UpdatePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -868,7 +868,7 @@ export const GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings 
 
 export interface GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter {
   /** Optional. Array of string values. e.g. instance's replica information. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudSaasacceleratorManagementProvidersV1NotificationParameter =
@@ -907,7 +907,7 @@ export interface GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /** Output only. Custom string attributes used primarily to expose producer-specific information in monitoring dashboards. See go/get-instance-metadata. */
   producerMetadata?: Record<string, string>;
   /** Output only. The list of data plane resources provisioned for this instance, e.g. compute VMs. See go/get-instance-metadata. */
-  provisionedResources?: Array<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>;
+  provisionedResources?: ReadonlyArray<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>;
   /** Output only. SLO metadata for instance classification in the Standardized dataplane SLO platform. See go/cloud-ssa-standard-slo for feature description. */
   sloMetadata?: GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata;
   /** The MaintenanceSchedule contains the scheduling information of published maintenance schedule with same key as software_versions. */
@@ -1007,7 +1007,7 @@ export const ListProjectsLocationsRequest =
       T.HttpQuery("extraLocationTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -1042,10 +1042,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -1090,10 +1087,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -1128,10 +1122,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -1162,10 +1153,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -1199,11 +1187,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -1246,10 +1230,7 @@ export const ListProjectsLocationsInstancesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/instances" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsInstancesRequest>;
 
@@ -1284,10 +1265,7 @@ export const GetProjectsLocationsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsInstancesRequest>;
 
@@ -1324,11 +1302,7 @@ export const CreateProjectsLocationsInstancesRequest =
     instanceId: Schema.optional(Schema.String).pipe(T.HttpQuery("instanceId")),
     body: Schema.optional(Instance).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/instances", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsInstancesRequest>;
 
@@ -1365,11 +1339,7 @@ export const PatchProjectsLocationsInstancesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(Instance).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsInstancesRequest>;
 
@@ -1405,7 +1375,7 @@ export const UpdateParametersProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:updateParameters",
+      path: "v1/{name}:updateParameters",
       hasBody: true,
     }),
     svc,
@@ -1438,10 +1408,7 @@ export const DeleteProjectsLocationsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsInstancesRequest>;
 
@@ -1477,7 +1444,7 @@ export const ApplyParametersProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:applyParameters",
+      path: "v1/{name}:applyParameters",
       hasBody: true,
     }),
     svc,
@@ -1515,7 +1482,7 @@ export const RescheduleMaintenanceProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:rescheduleMaintenance",
+      path: "v1/{instance}:rescheduleMaintenance",
       hasBody: true,
     }),
     svc,
@@ -1554,11 +1521,7 @@ export const UpgradeProjectsLocationsInstancesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:upgrade",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:upgrade", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpgradeProjectsLocationsInstancesRequest>;
 
@@ -1592,11 +1555,7 @@ export const SetTagsProjectsLocationsInstancesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SetTagsRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:setTags",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:setTags", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SetTagsProjectsLocationsInstancesRequest>;
 
@@ -1627,10 +1586,7 @@ export const GetTagsProjectsLocationsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:getTags",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:getTags" }),
     svc,
   ) as unknown as Schema.Schema<GetTagsProjectsLocationsInstancesRequest>;
 

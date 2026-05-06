@@ -52,7 +52,7 @@ export const DatedValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TimeSeries {
   /** List of datapoints in the timeseries, where each datapoint is a date-value pair. */
-  datedValues?: Array<DatedValue>;
+  datedValues?: ReadonlyArray<DatedValue>;
 }
 
 export const TimeSeries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -128,7 +128,7 @@ export const DailyMetricTimeSeries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MultiDailyMetricTimeSeries {
   /** List of DailyMetric-TimeSeries pairs. */
-  dailyMetricTimeSeries?: Array<DailyMetricTimeSeries>;
+  dailyMetricTimeSeries?: ReadonlyArray<DailyMetricTimeSeries>;
 }
 
 export const MultiDailyMetricTimeSeries =
@@ -162,7 +162,7 @@ export const SearchKeywordCount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSearchKeywordImpressionsMonthlyResponse {
   /** Search terms which have been used to find a business. */
-  searchKeywordsCounts?: Array<SearchKeywordCount>;
+  searchKeywordsCounts?: ReadonlyArray<SearchKeywordCount>;
   /** A token indicating the last paginated result returned. This can be used by succeeding requests to get the next "page" of keywords. It will only be present when there are more results to be returned. */
   nextPageToken?: string;
 }
@@ -185,7 +185,7 @@ export const GetDailyMetricsTimeSeriesResponse =
 
 export interface FetchMultiDailyMetricsTimeSeriesResponse {
   /** DailyMetrics and their corresponding time series. */
-  multiDailyMetricTimeSeries?: Array<MultiDailyMetricTimeSeries>;
+  multiDailyMetricTimeSeries?: ReadonlyArray<MultiDailyMetricTimeSeries>;
 }
 
 export const FetchMultiDailyMetricsTimeSeriesResponse =
@@ -258,7 +258,7 @@ export const FetchMultiDailyMetricsTimeSeriesLocationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/locations/{locationsId}:fetchMultiDailyMetricsTimeSeries",
+      path: "v1/{location}:fetchMultiDailyMetricsTimeSeries",
     }),
     svc,
   ) as unknown as Schema.Schema<FetchMultiDailyMetricsTimeSeriesLocationsRequest>;
@@ -373,10 +373,7 @@ export const GetDailyMetricsTimeSeriesLocationsRequest =
       T.HttpQuery("dailySubEntityType.timeOfDay.minutes"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/locations/{locationsId}:getDailyMetricsTimeSeries",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:getDailyMetricsTimeSeries" }),
     svc,
   ) as unknown as Schema.Schema<GetDailyMetricsTimeSeriesLocationsRequest>;
 
@@ -446,7 +443,7 @@ export const ListLocationsSearchkeywordsImpressionsMonthlyRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/locations/{locationsId}/searchkeywords/impressions/monthly",
+      path: "v1/{parent}/searchkeywords/impressions/monthly",
     }),
     svc,
   ) as unknown as Schema.Schema<ListLocationsSearchkeywordsImpressionsMonthlyRequest>;

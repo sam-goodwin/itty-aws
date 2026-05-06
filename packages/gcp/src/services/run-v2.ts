@@ -28,7 +28,7 @@ export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -83,7 +83,7 @@ export const GoogleDevtoolsCloudbuildV1Hash =
 
 export interface GoogleDevtoolsCloudbuildV1FileHashes {
   /** Collection of file hashes. */
-  fileHash?: Array<GoogleDevtoolsCloudbuildV1Hash>;
+  fileHash?: ReadonlyArray<GoogleDevtoolsCloudbuildV1Hash>;
 }
 
 export const GoogleDevtoolsCloudbuildV1FileHashes =
@@ -170,7 +170,7 @@ export interface GoogleCloudRunV2SecretVolumeSource {
   /** Required. The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project. */
   secret?: string;
   /** If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path + VolumeMount.sub_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version. */
-  items?: Array<GoogleCloudRunV2VersionToPath>;
+  items?: ReadonlyArray<GoogleCloudRunV2VersionToPath>;
   /** Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set. */
   defaultMode?: number;
 }
@@ -210,9 +210,9 @@ export const GoogleDevtoolsCloudbuildV1InlineSecret =
 
 export interface GoogleDevtoolsCloudbuildV1Secrets {
   /** Secrets in Secret Manager and associated secret environment variable. */
-  secretManager?: Array<GoogleDevtoolsCloudbuildV1SecretManagerSecret>;
+  secretManager?: ReadonlyArray<GoogleDevtoolsCloudbuildV1SecretManagerSecret>;
   /** Secrets encrypted with KMS key and the associated secret environment variable. */
-  inline?: Array<GoogleDevtoolsCloudbuildV1InlineSecret>;
+  inline?: ReadonlyArray<GoogleDevtoolsCloudbuildV1InlineSecret>;
 }
 
 export const GoogleDevtoolsCloudbuildV1Secrets =
@@ -257,7 +257,7 @@ export interface GoogleCloudRunV2HTTPGetAction {
   /** Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort. */
   port?: number;
   /** Optional. Custom headers to set in the request. HTTP allows repeated headers. */
-  httpHeaders?: Array<GoogleCloudRunV2HTTPHeader>;
+  httpHeaders?: ReadonlyArray<GoogleCloudRunV2HTTPHeader>;
 }
 
 export const GoogleCloudRunV2HTTPGetAction =
@@ -611,7 +611,7 @@ export const GoogleCloudRunV2SourceFile =
 
 export interface GoogleCloudRunV2InlinedSource {
   /** Required. Input only. The source code. */
-  sources?: Array<GoogleCloudRunV2SourceFile>;
+  sources?: ReadonlyArray<GoogleCloudRunV2SourceFile>;
 }
 
 export const GoogleCloudRunV2InlinedSource =
@@ -739,9 +739,9 @@ export interface GoogleCloudRunV2Container {
   /** Compute Resource requirements by this container. */
   resources?: GoogleCloudRunV2ResourceRequirements;
   /** Volume to mount into the container's filesystem. */
-  volumeMounts?: Array<GoogleCloudRunV2VolumeMount>;
+  volumeMounts?: ReadonlyArray<GoogleCloudRunV2VolumeMount>;
   /** Names of the containers that must start before this container. */
-  dependsOn?: Array<string>;
+  dependsOn?: ReadonlyArray<string>;
   /** Optional. Location of the source. */
   sourceCode?: GoogleCloudRunV2SourceCode;
   /** Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. */
@@ -749,17 +749,17 @@ export interface GoogleCloudRunV2Container {
   /** Name of the container specified as a DNS_LABEL (RFC 1123). */
   name?: string;
   /** Arguments to the entrypoint. The docker image's CMD is used if this is not provided. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. */
-  command?: Array<string>;
+  command?: ReadonlyArray<string>;
   /** List of environment variables to set in the container. */
-  env?: Array<GoogleCloudRunV2EnvVar>;
+  env?: ReadonlyArray<GoogleCloudRunV2EnvVar>;
   /** Periodic probe of container liveness. Container will be restarted if the probe fails. */
   livenessProbe?: GoogleCloudRunV2Probe;
   /** Readiness probe to be used for health checks. */
   readinessProbe?: GoogleCloudRunV2Probe;
   /** List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on. */
-  ports?: Array<GoogleCloudRunV2ContainerPort>;
+  ports?: ReadonlyArray<GoogleCloudRunV2ContainerPort>;
   /** Required. Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. */
   image?: string;
   /** Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. */
@@ -802,7 +802,7 @@ export const GoogleCloudRunV2ServiceMesh =
 
 export interface GoogleCloudRunV2CloudSqlInstance {
   /** A list of Cloud SQL instance connection names. Cloud Run uses these to establish connections to the specified Cloud SQL instances. While the SQL instance name itself is unique within a project, the full connection name requires the location for proper routing. Format: `{project}:{location}:{instance}` Example: `my-project:us-central1:my-instance` You can find this value on the instance's **Overview** page in the Google Cloud console or by using the following `gcloud` command: ```sh gcloud sql instances describe INSTANCE_NAME \ --format='value(connectionName)' ``` Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. */
-  instances?: Array<string>;
+  instances?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudRunV2CloudSqlInstance =
@@ -828,7 +828,7 @@ export const GoogleCloudRunV2NFSVolumeSource =
 
 export interface GoogleCloudRunV2GCSVolumeSource {
   /** A list of additional flags to pass to the gcsfuse CLI. Options should be specified without the leading "--". */
-  mountOptions?: Array<string>;
+  mountOptions?: ReadonlyArray<string>;
   /** Cloud Storage Bucket name. */
   bucket?: string;
   /** If true, the volume will be mounted as read only for all mounts. */
@@ -892,7 +892,7 @@ export interface GoogleCloudRunV2NetworkInterface {
   /** Optional. The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used. */
   subnetwork?: string;
   /** Optional. Network tags applied to this Cloud Run resource. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** Optional. The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork. */
   network?: string;
 }
@@ -914,7 +914,7 @@ export interface GoogleCloudRunV2VpcAccess {
   /** VPC Access connector name. Format: `projects/{project}/locations/{location}/connectors/{connector}`, where `{project}` can be project id or number. For more information on sending traffic to a VPC network via a connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors. */
   connector?: string;
   /** Optional. Direct VPC egress settings. Currently only single network interface is supported. */
-  networkInterfaces?: Array<GoogleCloudRunV2NetworkInterface>;
+  networkInterfaces?: ReadonlyArray<GoogleCloudRunV2NetworkInterface>;
 }
 
 export const GoogleCloudRunV2VpcAccess =
@@ -942,7 +942,7 @@ export interface GoogleCloudRunV2Revision {
   /** Scaling settings for this revision. */
   scaling?: GoogleCloudRunV2RevisionScaling;
   /** Holds the list which define the units of execution for this Revision. */
-  containers?: Array<GoogleCloudRunV2Container>;
+  containers?: ReadonlyArray<GoogleCloudRunV2Container>;
   /** Output only. The unique name of this Revision. */
   name?: string;
   /** Output only. A number that monotonically increases every time the user modifies the desired state. */
@@ -981,7 +981,7 @@ export interface GoogleCloudRunV2Revision {
   /** Output only. Server assigned unique identifier for the Revision. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted. */
   uid?: string;
   /** A list of Volumes to make available to containers. */
-  volumes?: Array<GoogleCloudRunV2Volume>;
+  volumes?: ReadonlyArray<GoogleCloudRunV2Volume>;
   /** Output only. For a deleted resource, the deletion time. It is only populated as a response to a Delete request. */
   deleteTime?: string;
   /** The node selector for the revision. */
@@ -1015,7 +1015,7 @@ export interface GoogleCloudRunV2Revision {
   /** Output only. Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. */
   annotations?: Record<string, string>;
   /** Output only. The Condition of this Revision, containing its readiness status, and detailed error information in case it did not reach a serving state. */
-  conditions?: Array<GoogleCloudRunV2Condition>;
+  conditions?: ReadonlyArray<GoogleCloudRunV2Condition>;
 }
 
 export const GoogleCloudRunV2Revision =
@@ -1060,7 +1060,7 @@ export const GoogleCloudRunV2Revision =
 
 export interface GoogleCloudRunV2ListRevisionsResponse {
   /** The resulting list of Revisions. */
-  revisions?: Array<GoogleCloudRunV2Revision>;
+  revisions?: ReadonlyArray<GoogleCloudRunV2Revision>;
   /** A token indicating there are more items than page_size. Use it in the next ListRevisions request to continue. */
   nextPageToken?: string;
 }
@@ -1139,7 +1139,7 @@ export const GoogleCloudRunV2ImageExportStatus =
 
 export interface GoogleCloudRunV2ExportStatusResponse {
   /** The status of each image export job. */
-  imageExportStatuses?: Array<GoogleCloudRunV2ImageExportStatus>;
+  imageExportStatuses?: ReadonlyArray<GoogleCloudRunV2ImageExportStatus>;
   /** Output only. The state of the overall export operation. */
   operationState?:
     | "OPERATION_STATE_UNSPECIFIED"
@@ -1161,7 +1161,7 @@ export const GoogleCloudRunV2ExportStatusResponse =
 
 export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1TestIamPermissionsResponse =
@@ -1406,25 +1406,25 @@ export interface GoogleDevtoolsCloudbuildV1Results {
   /** Time to push all non-container artifacts to Cloud Storage. */
   artifactTiming?: GoogleDevtoolsCloudbuildV1TimeSpan;
   /** List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored. Note that the `$BUILDER_OUTPUT` variable is read-only and can't be substituted. */
-  buildStepOutputs?: Array<string>;
+  buildStepOutputs?: ReadonlyArray<string>;
   /** Npm packages uploaded to Artifact Registry at the end of the build. */
-  npmPackages?: Array<GoogleDevtoolsCloudbuildV1UploadedNpmPackage>;
+  npmPackages?: ReadonlyArray<GoogleDevtoolsCloudbuildV1UploadedNpmPackage>;
   /** Path to the artifact manifest for non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage. */
   artifactManifest?: string;
   /** Output only. Generic artifacts uploaded to Artifact Registry at the end of the build. */
-  genericArtifacts?: Array<GoogleDevtoolsCloudbuildV1UploadedGenericArtifact>;
+  genericArtifacts?: ReadonlyArray<GoogleDevtoolsCloudbuildV1UploadedGenericArtifact>;
   /** Number of non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage. */
   numArtifacts?: string;
   /** Container images that were built as a part of the build. */
-  images?: Array<GoogleDevtoolsCloudbuildV1BuiltImage>;
+  images?: ReadonlyArray<GoogleDevtoolsCloudbuildV1BuiltImage>;
   /** Maven artifacts uploaded to Artifact Registry at the end of the build. */
-  mavenArtifacts?: Array<GoogleDevtoolsCloudbuildV1UploadedMavenArtifact>;
+  mavenArtifacts?: ReadonlyArray<GoogleDevtoolsCloudbuildV1UploadedMavenArtifact>;
   /** Python artifacts uploaded to Artifact Registry at the end of the build. */
-  pythonPackages?: Array<GoogleDevtoolsCloudbuildV1UploadedPythonPackage>;
+  pythonPackages?: ReadonlyArray<GoogleDevtoolsCloudbuildV1UploadedPythonPackage>;
   /** List of build step digests, in the order corresponding to build step indices. */
-  buildStepImages?: Array<string>;
+  buildStepImages?: ReadonlyArray<string>;
   /** Optional. Go module artifacts uploaded to Artifact Registry at the end of the build. */
-  goModules?: Array<GoogleDevtoolsCloudbuildV1UploadedGoModule>;
+  goModules?: ReadonlyArray<GoogleDevtoolsCloudbuildV1UploadedGoModule>;
 }
 
 export const GoogleDevtoolsCloudbuildV1Results =
@@ -1468,13 +1468,13 @@ export interface GoogleCloudRunV2TaskTemplate {
     | "EXECUTION_ENVIRONMENT_GEN2"
     | (string & {});
   /** Optional. A list of Volumes to make available to containers. */
-  volumes?: Array<GoogleCloudRunV2Volume>;
+  volumes?: ReadonlyArray<GoogleCloudRunV2Volume>;
   /** A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek */
   encryptionKey?: string;
   /** Optional. The node selector for the task template. */
   nodeSelector?: GoogleCloudRunV2NodeSelector;
   /** Holds the single container that defines the unit of execution for this task. */
-  containers?: Array<GoogleCloudRunV2Container>;
+  containers?: ReadonlyArray<GoogleCloudRunV2Container>;
   /** Optional. Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account. */
   serviceAccount?: string;
 }
@@ -1615,7 +1615,7 @@ export interface GoogleCloudRunV2Job {
   /** Output only. Email address of the last authenticated modifier. */
   lastModifier?: string;
   /** Output only. The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run. */
-  conditions?: Array<GoogleCloudRunV2Condition>;
+  conditions?: ReadonlyArray<GoogleCloudRunV2Condition>;
   /** A unique string used as a suffix for creating a new execution. The Job will become ready when the execution is successfully completed. The sum of job name and token length must be fewer than 63 characters. */
   runExecutionToken?: string;
   /** Output only. Name of the last created execution. */
@@ -1674,7 +1674,7 @@ export const GoogleCloudRunV2CancelExecutionRequest =
 
 export interface GoogleIamV1AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
   /** The log type that this config enables. */
   logType?:
     | "LOG_TYPE_UNSPECIFIED"
@@ -1694,7 +1694,7 @@ export interface GoogleIamV1AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<GoogleIamV1AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<GoogleIamV1AuditLogConfig>;
 }
 
 export const GoogleIamV1AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1706,9 +1706,9 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface GoogleCloudRunV2ContainerOverride {
   /** List of environment variables to set in the container. Will be merged with existing env for override. */
-  env?: Array<GoogleCloudRunV2EnvVar>;
+  env?: ReadonlyArray<GoogleCloudRunV2EnvVar>;
   /** Optional. Arguments to the entrypoint. Will replace existing args for override. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Optional. True if the intention is to clear out existing args list. */
   clearArgs?: boolean;
   /** The name of the container specified as a DNS_LABEL. */
@@ -1731,7 +1731,7 @@ export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface GoogleDevtoolsCloudbuildV1ArtifactObjects {
   /** Path globs used to match files in the build's workspace. */
-  paths?: Array<string>;
+  paths?: ReadonlyArray<string>;
   /** Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix. */
   location?: string;
   /** Output only. Stores timing information for pushing all artifact objects. */
@@ -1759,7 +1759,7 @@ export interface GoogleCloudRunV2Overrides {
   /** Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. Will replace existing timeout_seconds value. */
   timeout?: string;
   /** Per container override specification. */
-  containerOverrides?: Array<GoogleCloudRunV2ContainerOverride>;
+  containerOverrides?: ReadonlyArray<GoogleCloudRunV2ContainerOverride>;
   /** Optional. The desired number of tasks the execution should run. Will replace existing task_count value. */
   taskCount?: number;
 }
@@ -1943,9 +1943,9 @@ export interface GoogleCloudRunV2WorkerPoolRevisionTemplate {
   /** Optional. The node selector for the revision template. */
   nodeSelector?: GoogleCloudRunV2NodeSelector;
   /** Holds list of the containers that defines the unit of execution for this Revision. */
-  containers?: Array<GoogleCloudRunV2Container>;
+  containers?: ReadonlyArray<GoogleCloudRunV2Container>;
   /** Optional. A list of Volumes to make available to containers. */
-  volumes?: Array<GoogleCloudRunV2Volume>;
+  volumes?: ReadonlyArray<GoogleCloudRunV2Volume>;
   /** Optional. Arbitrary identifier for the API client. */
   client?: string;
   /** Optional. Arbitrary version identifier for the API client. */
@@ -1987,7 +1987,7 @@ export const GoogleCloudRunV2WorkerPoolScaling =
 
 export interface GoogleCloudRunV2WorkerPool {
   /** Optional. Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is empty or not provided, defaults to 100% instances assigned to the latest `Ready` Revision. */
-  instanceSplits?: Array<GoogleCloudRunV2InstanceSplit>;
+  instanceSplits?: ReadonlyArray<GoogleCloudRunV2InstanceSplit>;
   /** Output only. Reserved for future use. */
   satisfiesPzs?: boolean;
   /** Optional. Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 WorkerPool. */
@@ -1997,7 +1997,7 @@ export interface GoogleCloudRunV2WorkerPool {
   /** Output only. The creation time. */
   createTime?: string;
   /** Output only. Detailed status information for corresponding instance splits. See comments in `reconciling` for additional information on reconciliation process in Cloud Run. */
-  instanceSplitStatuses?: Array<GoogleCloudRunV2InstanceSplitStatus>;
+  instanceSplitStatuses?: ReadonlyArray<GoogleCloudRunV2InstanceSplitStatus>;
   /** User-provided description of the WorkerPool. This field currently has a 512-character limit. */
   description?: string;
   /** Output only. The deletion time. It is only populated as a response to a Delete request. */
@@ -2005,7 +2005,7 @@ export interface GoogleCloudRunV2WorkerPool {
   /** Output only. Email address of the last authenticated modifier. */
   lastModifier?: string;
   /** Output only. The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the WorkerPool does not reach its Serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run. */
-  conditions?: Array<GoogleCloudRunV2Condition>;
+  conditions?: ReadonlyArray<GoogleCloudRunV2Condition>;
   /** Optional. Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources. All system annotations in v1 now have a corresponding field in v2 WorkerPool. This field follows Kubernetes annotations' namespacing, limits, and rules. */
   annotations?: Record<string, string>;
   /** Output only. The last-modified time. */
@@ -2013,7 +2013,7 @@ export interface GoogleCloudRunV2WorkerPool {
   /** Output only. Indicates whether Cloud Run Threat Detection monitoring is enabled for the parent project of this worker pool. */
   threatDetectionEnabled?: boolean;
   /** Deprecated: Not supported, and ignored by Cloud Run. */
-  customAudiences?: Array<string>;
+  customAudiences?: ReadonlyArray<string>;
   /** Output only. Name of the last created revision. See comments in `reconciling` for additional information on reconciliation process in Cloud Run. */
   latestCreatedRevision?: string;
   /** Optional. Settings for the Binary Authorization feature. */
@@ -2097,7 +2097,7 @@ export const GoogleCloudRunV2WorkerPool =
 
 export interface GoogleCloudRunV2ListWorkerPoolsResponse {
   /** The resulting list of WorkerPools. */
-  workerPools?: Array<GoogleCloudRunV2WorkerPool>;
+  workerPools?: ReadonlyArray<GoogleCloudRunV2WorkerPool>;
   /** A token indicating there are more items than page_size. Use it in the next ListWorkerPools request to continue. */
   nextPageToken?: string;
 }
@@ -2176,7 +2176,7 @@ export interface GoogleDevtoolsCloudbuildV1Oci {
   /** Required. Registry path to upload the container to. e.g. us-east1-docker.pkg.dev/my-project/my-repo/my-image */
   registryPath?: string;
   /** Optional. Tags to apply to the uploaded image. e.g. latest, 1.0.0 */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** Required. Path on the local file system where to find the container to upload. e.g. /workspace/my-image.tar */
   file?: string;
 }
@@ -2190,7 +2190,7 @@ export const GoogleDevtoolsCloudbuildV1Oci =
 
 export interface GoogleDevtoolsCloudbuildV1PythonPackage {
   /** Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file. */
-  paths?: Array<string>;
+  paths?: ReadonlyArray<string>;
   /** Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix. */
   repository?: string;
 }
@@ -2230,19 +2230,19 @@ export interface GoogleDevtoolsCloudbuildV1Artifacts {
   /** A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE. */
   objects?: GoogleDevtoolsCloudbuildV1ArtifactObjects;
   /** Optional. A list of OCI images to be uploaded to Artifact Registry upon successful completion of all build steps. OCI images in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any images fail to be pushed, the build is marked FAILURE. */
-  oci?: Array<GoogleDevtoolsCloudbuildV1Oci>;
+  oci?: ReadonlyArray<GoogleDevtoolsCloudbuildV1Oci>;
   /** Optional. A list of generic artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. If any artifacts fail to be pushed, the build is marked FAILURE. */
-  genericArtifacts?: Array<GoogleDevtoolsCloudbuildV1GenericArtifact>;
+  genericArtifacts?: ReadonlyArray<GoogleDevtoolsCloudbuildV1GenericArtifact>;
   /** A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE. */
-  images?: Array<string>;
+  images?: ReadonlyArray<string>;
   /** A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE. */
-  mavenArtifacts?: Array<GoogleDevtoolsCloudbuildV1MavenArtifact>;
+  mavenArtifacts?: ReadonlyArray<GoogleDevtoolsCloudbuildV1MavenArtifact>;
   /** A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE. */
-  pythonPackages?: Array<GoogleDevtoolsCloudbuildV1PythonPackage>;
+  pythonPackages?: ReadonlyArray<GoogleDevtoolsCloudbuildV1PythonPackage>;
   /** Optional. A list of Go modules to be uploaded to Artifact Registry upon successful completion of all build steps. If any objects fail to be pushed, the build is marked FAILURE. */
-  goModules?: Array<GoogleDevtoolsCloudbuildV1GoModule>;
+  goModules?: ReadonlyArray<GoogleDevtoolsCloudbuildV1GoModule>;
   /** A list of npm packages to be uploaded to Artifact Registry upon successful completion of all build steps. Npm packages in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any packages fail to be pushed, the build is marked FAILURE. */
-  npmPackages?: Array<GoogleDevtoolsCloudbuildV1NpmPackage>;
+  npmPackages?: ReadonlyArray<GoogleDevtoolsCloudbuildV1NpmPackage>;
 }
 
 export const GoogleDevtoolsCloudbuildV1Artifacts =
@@ -2275,15 +2275,15 @@ export interface GoogleDevtoolsCloudbuildV1BuildStep {
   /** Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency. */
   id?: string;
   /** List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect configuration. */
-  volumes?: Array<GoogleDevtoolsCloudbuildV1Volume>;
+  volumes?: ReadonlyArray<GoogleDevtoolsCloudbuildV1Volume>;
   /** A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. */
-  secretEnv?: Array<string>;
+  secretEnv?: ReadonlyArray<string>;
   /** A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args. */
   script?: string;
   /** Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence. */
-  allowExitCodes?: Array<number>;
+  allowExitCodes?: ReadonlyArray<number>;
   /** The ID(s) of the step(s) that this build step depends on. This build step will not start until all the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all previous build steps in the `Build.Steps` list have completed successfully. */
-  waitFor?: Array<string>;
+  waitFor?: ReadonlyArray<string>;
   /** Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution. */
   dir?: string;
   /** Option to include built-in and custom substitutions as env variables for this build step. This option will override the global option in BuildOption. */
@@ -2295,7 +2295,7 @@ export interface GoogleDevtoolsCloudbuildV1BuildStep {
   /** Output only. Stores timing information for pulling this build step's builder image only. */
   pullTiming?: GoogleDevtoolsCloudbuildV1TimeSpan;
   /** A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE". */
-  env?: Array<string>;
+  env?: ReadonlyArray<string>;
   /** Output only. Status of the build step. At this time, build step status is only updated on build completion; step status is not updated in real-time as the build progresses. */
   status?:
     | "STATUS_UNKNOWN"
@@ -2312,7 +2312,7 @@ export interface GoogleDevtoolsCloudbuildV1BuildStep {
   /** Allow this build step to fail without failing the entire build. If false, the entire build will fail if this step fails. Otherwise, the build will succeed, but this step will still have a failure status. Error information will be reported in the failure_detail field. */
   allowFailure?: boolean;
   /** A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out. */
   timeout?: string;
 }
@@ -2362,9 +2362,9 @@ export const GoogleDevtoolsCloudbuildV1FailureInfo =
 
 export interface GoogleDevtoolsCloudbuildV1BuildOptions {
   /** Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration. */
-  volumes?: Array<GoogleDevtoolsCloudbuildV1Volume>;
+  volumes?: ReadonlyArray<GoogleDevtoolsCloudbuildV1Volume>;
   /** A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. These variables will be available to all build steps in this build. */
-  secretEnv?: Array<string>;
+  secretEnv?: ReadonlyArray<string>;
   /** Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration file. */
   dynamicSubstitutions?: boolean;
   /** Compute Engine machine type on which to run the build. */
@@ -2394,7 +2394,7 @@ export interface GoogleDevtoolsCloudbuildV1BuildOptions {
     | "NONE"
     | (string & {});
   /** Requested hash for SourceProvenance. */
-  sourceProvenanceHash?: Array<
+  sourceProvenanceHash?: ReadonlyArray<
     | "NONE"
     | "SHA256"
     | "MD5"
@@ -2416,7 +2416,7 @@ export interface GoogleDevtoolsCloudbuildV1BuildOptions {
     | "STREAM_OFF"
     | (string & {});
   /** A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE". */
-  env?: Array<string>;
+  env?: ReadonlyArray<string>;
   /** Optional. Option to specify how default logs buckets are setup. */
   defaultLogsBucketBehavior?:
     | "DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED"
@@ -2450,7 +2450,7 @@ export const GoogleDevtoolsCloudbuildV1BuildOptions =
 
 export interface GoogleDevtoolsCloudbuildV1Build {
   /** Output only. Non-fatal problems encountered during the execution of the build. */
-  warnings?: Array<GoogleDevtoolsCloudbuildV1Warning>;
+  warnings?: ReadonlyArray<GoogleDevtoolsCloudbuildV1Warning>;
   /** Output only. The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by the service. */
   name?: string;
   /** Output only. URL to logs for this build in Google Cloud Console. */
@@ -2471,7 +2471,7 @@ export interface GoogleDevtoolsCloudbuildV1Build {
     | "EXPIRED"
     | (string & {});
   /** A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`. */
-  images?: Array<string>;
+  images?: ReadonlyArray<string>;
   /** Substitutions data for `Build` resource. */
   substitutions?: Record<string, string>;
   /** TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time. */
@@ -2483,7 +2483,7 @@ export interface GoogleDevtoolsCloudbuildV1Build {
   /** Output only. A permanent fixed identifier for source. */
   sourceProvenance?: GoogleDevtoolsCloudbuildV1SourceProvenance;
   /** Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets */
-  secrets?: Array<GoogleDevtoolsCloudbuildV1Secret>;
+  secrets?: ReadonlyArray<GoogleDevtoolsCloudbuildV1Secret>;
   /** Output only. Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included. */
   timing?: Record<string, GoogleDevtoolsCloudbuildV1TimeSpan>;
   /** Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`. */
@@ -2493,17 +2493,17 @@ export interface GoogleDevtoolsCloudbuildV1Build {
   /** Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically. */
   buildTriggerId?: string;
   /** Tags for annotation of a `Build`. These are not docker tags. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** Artifacts produced by the build that should be uploaded upon successful completion of all build steps. */
   artifacts?: GoogleDevtoolsCloudbuildV1Artifacts;
   /** Optional. Dependencies that the Cloud Build worker will fetch before executing user steps. */
-  dependencies?: Array<GoogleDevtoolsCloudbuildV1Dependency>;
+  dependencies?: ReadonlyArray<GoogleDevtoolsCloudbuildV1Dependency>;
   /** Output only. Results of the build. */
   results?: GoogleDevtoolsCloudbuildV1Results;
   /** Output only. Time at which execution of the build was started. */
   startTime?: string;
   /** Required. The operations to be performed on the workspace. */
-  steps?: Array<GoogleDevtoolsCloudbuildV1BuildStep>;
+  steps?: ReadonlyArray<GoogleDevtoolsCloudbuildV1BuildStep>;
   /** Output only. ID of the project. */
   projectId?: string;
   /** Optional. The location of the source files to build. */
@@ -2581,7 +2581,7 @@ export interface GoogleCloudRunV2MultiRegionSettings {
   /** Optional. System-generated unique id for the multi-region Service. */
   multiRegionId?: string;
   /** Required. List of regions to deploy to, including primary region. */
-  regions?: Array<string>;
+  regions?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudRunV2MultiRegionSettings =
@@ -2622,7 +2622,7 @@ export interface GoogleCloudRunV2Task {
   /** Output only. The unique name of this Task. */
   name?: string;
   /** Holds the single container that defines the unit of execution for this task. */
-  containers?: Array<GoogleCloudRunV2Container>;
+  containers?: ReadonlyArray<GoogleCloudRunV2Container>;
   /** The execution environment being used to host this Task. */
   executionEnvironment?:
     | "EXECUTION_ENVIRONMENT_UNSPECIFIED"
@@ -2632,7 +2632,7 @@ export interface GoogleCloudRunV2Task {
   /** Output only. The generation of this Task. See comments in `Job.reconciling` for additional information on reconciliation process in Cloud Run. */
   observedGeneration?: string;
   /** Output only. The Condition of this Task, containing its readiness status, and detailed error information in case it did not reach the desired state. */
-  conditions?: Array<GoogleCloudRunV2Condition>;
+  conditions?: ReadonlyArray<GoogleCloudRunV2Condition>;
   /** Output only. VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc. */
   vpcAccess?: GoogleCloudRunV2VpcAccess;
   /** Output only. Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. */
@@ -2670,7 +2670,7 @@ export interface GoogleCloudRunV2Task {
   /** Output only. For a deleted resource, the deletion time. It is only populated as a response to a Delete request. */
   deleteTime?: string;
   /** A list of Volumes to make available to containers. */
-  volumes?: Array<GoogleCloudRunV2Volume>;
+  volumes?: ReadonlyArray<GoogleCloudRunV2Volume>;
 }
 
 export const GoogleCloudRunV2Task = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2711,7 +2711,7 @@ export const GoogleCloudRunV2Task = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleCloudRunV2ListTasksResponse {
   /** The resulting list of Tasks. */
-  tasks?: Array<GoogleCloudRunV2Task>;
+  tasks?: ReadonlyArray<GoogleCloudRunV2Task>;
   /** A token indicating there are more items than page_size. Use it in the next ListTasks request to continue. */
   nextPageToken?: string;
 }
@@ -2768,7 +2768,7 @@ export const GoogleTypeExpr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1TestIamPermissionsRequest =
@@ -2884,7 +2884,7 @@ export interface GoogleCloudRunV2RevisionTemplate {
   /** Optional. Scaling settings for this Revision. */
   scaling?: GoogleCloudRunV2RevisionScaling;
   /** Holds the list which define the units of execution for this Revision. */
-  containers?: Array<GoogleCloudRunV2Container>;
+  containers?: ReadonlyArray<GoogleCloudRunV2Container>;
   /** Optional. The sandbox environment to host this Revision. */
   executionEnvironment?:
     | "EXECUTION_ENVIRONMENT_UNSPECIFIED"
@@ -2892,7 +2892,7 @@ export interface GoogleCloudRunV2RevisionTemplate {
     | "EXECUTION_ENVIRONMENT_GEN2"
     | (string & {});
   /** Optional. A list of Volumes to make available to containers. */
-  volumes?: Array<GoogleCloudRunV2Volume>;
+  volumes?: ReadonlyArray<GoogleCloudRunV2Volume>;
   /** Optional. Arbitrary identifier for the API client. */
   client?: string;
   /** Optional. Arbitrary version identifier for the API client. */
@@ -2932,7 +2932,7 @@ export const GoogleCloudRunV2RevisionTemplate =
 
 export interface GoogleCloudRunV2Service {
   /** Output only. The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run. */
-  conditions?: Array<GoogleCloudRunV2Condition>;
+  conditions?: ReadonlyArray<GoogleCloudRunV2Condition>;
   /** Optional. Configuration for building a Cloud Run function. */
   buildConfig?: GoogleCloudRunV2BuildConfig;
   /** Optional. Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. */
@@ -2948,15 +2948,15 @@ export interface GoogleCloudRunV2Service {
   /** Output only. The last-modified time. */
   updateTime?: string;
   /** Optional. Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision. */
-  traffic?: Array<GoogleCloudRunV2TrafficTarget>;
+  traffic?: ReadonlyArray<GoogleCloudRunV2TrafficTarget>;
   /** One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences. */
-  customAudiences?: Array<string>;
+  customAudiences?: ReadonlyArray<string>;
   /** Output only. True if Cloud Run Threat Detection monitoring is enabled for the parent project of this Service. */
   threatDetectionEnabled?: boolean;
   /** Optional. Settings for the Binary Authorization feature. */
   binaryAuthorization?: GoogleCloudRunV2BinaryAuthorization;
   /** Output only. All URLs serving traffic for this Service. */
-  urls?: Array<string>;
+  urls?: ReadonlyArray<string>;
   /** Output only. Name of the last created revision. See comments in `reconciling` for additional information on reconciliation process in Cloud Run. */
   latestCreatedRevision?: string;
   /** Optional. IAP settings on the Service. */
@@ -3017,7 +3017,7 @@ export interface GoogleCloudRunV2Service {
   /** Output only. The generation of this Service currently serving traffic. See comments in `reconciling` for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a `string` instead of an `integer`. */
   observedGeneration?: string;
   /** Output only. Detailed status information for corresponding traffic targets. See comments in `reconciling` for additional information on reconciliation process in Cloud Run. */
-  trafficStatuses?: Array<GoogleCloudRunV2TrafficTargetStatus>;
+  trafficStatuses?: ReadonlyArray<GoogleCloudRunV2TrafficTargetStatus>;
   /** Arbitrary identifier for the API client. */
   client?: string;
   /** Arbitrary version identifier for the API client. */
@@ -3074,7 +3074,7 @@ export interface GoogleIamV1Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3095,7 +3095,7 @@ export const GoogleLongrunningWaitOperationRequest =
 
 export interface GoogleCloudRunV2ListJobsResponse {
   /** The resulting list of Jobs. */
-  jobs?: Array<GoogleCloudRunV2Job>;
+  jobs?: ReadonlyArray<GoogleCloudRunV2Job>;
   /** A token indicating there are more items than page_size. Use it in the next ListJobs request to continue. */
   nextPageToken?: string;
 }
@@ -3108,9 +3108,9 @@ export const GoogleCloudRunV2ListJobsResponse =
 
 export interface GoogleIamV1Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<GoogleIamV1Binding>;
+  bindings?: ReadonlyArray<GoogleIamV1Binding>;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<GoogleIamV1AuditConfig>;
+  auditConfigs?: ReadonlyArray<GoogleIamV1AuditConfig>;
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
@@ -3212,7 +3212,7 @@ export interface GoogleCloudRunV2SubmitBuildRequest {
   /** Optional. The client that initiated the build request. */
   client?: string;
   /** Optional. Additional tags to annotate the build. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudRunV2SubmitBuildRequest =
@@ -3247,11 +3247,11 @@ export const GoogleCloudRunV2SubmitBuildResponse =
 
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleLongrunningListOperationsResponse =
@@ -3291,7 +3291,7 @@ export interface GoogleCloudRunV2Instance {
   /** Optional. A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates. */
   etag?: string;
   /** Required. Holds the single container that defines the unit of execution for this Instance. */
-  containers?: Array<GoogleCloudRunV2Container>;
+  containers?: ReadonlyArray<GoogleCloudRunV2Container>;
   /** The fully qualified name of this Instance. In CreateInstanceRequest, this field is ignored, and instead composed from CreateInstanceRequest.parent and CreateInstanceRequest.instance_id. Format: projects/{project}/locations/{location}/instances/{instance_id} */
   name?: string;
   /** Arbitrary identifier for the API client. */
@@ -3308,7 +3308,7 @@ export interface GoogleCloudRunV2Instance {
   /** Output only. The Condition of this Instance, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run. */
   terminalCondition?: GoogleCloudRunV2Condition;
   /** Output only. Status information for each of the specified containers. The status includes the resolved digest for specified images. */
-  containerStatuses?: Array<GoogleCloudRunV2ContainerStatus>;
+  containerStatuses?: ReadonlyArray<GoogleCloudRunV2ContainerStatus>;
   /** Output only. Email address of the authenticated creator. */
   creator?: string;
   /** The action to take if the encryption key is revoked. */
@@ -3333,13 +3333,13 @@ export interface GoogleCloudRunV2Instance {
   /** User-provided description of the Instance. This field currently has a 512-character limit. */
   description?: string;
   /** A list of Volumes to make available to containers. */
-  volumes?: Array<GoogleCloudRunV2Volume>;
+  volumes?: ReadonlyArray<GoogleCloudRunV2Volume>;
   /** Output only. The deletion time. */
   deleteTime?: string;
   /** Output only. Email address of the last authenticated modifier. */
   lastModifier?: string;
   /** Output only. The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Instance does not reach its Serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run. */
-  conditions?: Array<GoogleCloudRunV2Condition>;
+  conditions?: ReadonlyArray<GoogleCloudRunV2Condition>;
   /** Optional. True if GPU zonal redundancy is disabled on this instance. */
   gpuZonalRedundancyDisabled?: boolean;
   /** Optional. Duration the instance may be active before the system will shut it down. */
@@ -3364,7 +3364,7 @@ export interface GoogleCloudRunV2Instance {
   /** A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek */
   encryptionKey?: string;
   /** Output only. All URLs serving traffic for this Instance. */
-  urls?: Array<string>;
+  urls?: ReadonlyArray<string>;
   /** Settings for the Binary Authorization feature. */
   binaryAuthorization?: GoogleCloudRunV2BinaryAuthorization;
 }
@@ -3417,7 +3417,7 @@ export interface GoogleCloudRunV2ListInstancesResponse {
   /** A token indicating there are more items than page_size. Use it in the next ListInstances request to continue. */
   nextPageToken?: string;
   /** The resulting list of Instances. */
-  instances?: Array<GoogleCloudRunV2Instance>;
+  instances?: ReadonlyArray<GoogleCloudRunV2Instance>;
 }
 
 export const GoogleCloudRunV2ListInstancesResponse =
@@ -3430,9 +3430,9 @@ export interface GoogleCloudRunV2ListServicesResponse {
   /** A token indicating there are more items than page_size. Use it in the next ListServices request to continue. */
   nextPageToken?: string;
   /** The resulting list of Services. */
-  services?: Array<GoogleCloudRunV2Service>;
+  services?: ReadonlyArray<GoogleCloudRunV2Service>;
   /** Output only. For global requests, returns the list of regions that could not be reached within the deadline. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudRunV2ListServicesResponse =
@@ -3505,7 +3505,7 @@ export interface GoogleCloudRunV2Execution {
   /** Output only. The number of tasks which reached phase Failed. */
   failedCount?: number;
   /** Output only. The Condition of this Execution, containing its readiness status, and detailed error information in case it did not reach the desired state. */
-  conditions?: Array<GoogleCloudRunV2Condition>;
+  conditions?: ReadonlyArray<GoogleCloudRunV2Condition>;
   /** Output only. Represents time when the execution was completed. It is not guaranteed to be set in happens-before order across separate operations. */
   completionTime?: string;
   /** Output only. URI where logs for this execution can be found in Cloud Console. */
@@ -3550,7 +3550,7 @@ export const GoogleCloudRunV2Execution =
 
 export interface GoogleCloudRunV2ListExecutionsResponse {
   /** The resulting list of Executions. */
-  executions?: Array<GoogleCloudRunV2Execution>;
+  executions?: ReadonlyArray<GoogleCloudRunV2Execution>;
   /** A token indicating there are more items than page_size. Use it in the next ListExecutions request to continue. */
   nextPageToken?: string;
 }
@@ -3592,11 +3592,7 @@ export const ExportImageProjectsLocationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/{locationsId1}:exportImage",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:exportImage", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExportImageProjectsLocationsRequest>;
 
@@ -3628,10 +3624,7 @@ export const ExportMetadataProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/{locationsId1}:exportMetadata",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}:exportMetadata" }),
     svc,
   ) as unknown as Schema.Schema<ExportMetadataProjectsLocationsRequest>;
 
@@ -3662,10 +3655,7 @@ export const ExportImageMetadataProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/{locationsId1}:exportImageMetadata",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}:exportImageMetadata" }),
     svc,
   ) as unknown as Schema.Schema<ExportImageMetadataProjectsLocationsRequest>;
 
@@ -3697,10 +3687,7 @@ export const ExportProjectMetadataProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}:exportProjectMetadata",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}:exportProjectMetadata" }),
     svc,
   ) as unknown as Schema.Schema<ExportProjectMetadataProjectsLocationsRequest>;
 
@@ -3737,7 +3724,7 @@ export const SetIamPolicyProjectsLocationsServicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:setIamPolicy",
+      path: "v2/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -3778,10 +3765,7 @@ export const DeleteProjectsLocationsServicesRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsServicesRequest>;
 
@@ -3824,10 +3808,7 @@ export const ListProjectsLocationsServicesRequest =
     ),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/services",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/services" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsServicesRequest>;
 
@@ -3870,7 +3851,7 @@ export const TestIamPermissionsProjectsLocationsServicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:testIamPermissions",
+      path: "v2/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -3909,10 +3890,7 @@ export const GetIamPolicyProjectsLocationsServicesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v2/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsServicesRequest>;
 
@@ -3954,11 +3932,7 @@ export const CreateProjectsLocationsServicesRequest =
     ),
     body: Schema.optional(GoogleCloudRunV2Service).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/services",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/services", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsServicesRequest>;
 
@@ -3990,10 +3964,7 @@ export const GetProjectsLocationsServicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsServicesRequest>;
 
@@ -4045,11 +4016,7 @@ export const PatchProjectsLocationsServicesRequest =
     ),
     body: Schema.optional(GoogleCloudRunV2Service).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsServicesRequest>;
 
@@ -4083,10 +4050,7 @@ export const ExportStatusProjectsLocationsServicesRevisionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     operationId: Schema.String.pipe(T.HttpPath("operationId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/revisions/{revisionsId}/{revisionsId1}:exportStatus",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}/{operationId}:exportStatus" }),
     svc,
   ) as unknown as Schema.Schema<ExportStatusProjectsLocationsServicesRevisionsRequest>;
 
@@ -4126,10 +4090,7 @@ export const DeleteProjectsLocationsServicesRevisionsRequest =
     ),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/revisions/{revisionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsServicesRevisionsRequest>;
 
@@ -4161,10 +4122,7 @@ export const GetProjectsLocationsServicesRevisionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/revisions/{revisionsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsServicesRevisionsRequest>;
 
@@ -4207,10 +4165,7 @@ export const ListProjectsLocationsServicesRevisionsRequest =
     ),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/revisions",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/revisions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsServicesRevisionsRequest>;
 
@@ -4254,10 +4209,7 @@ export const DeleteProjectsLocationsJobsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsJobsRequest>;
 
@@ -4291,11 +4243,7 @@ export const RunProjectsLocationsJobsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudRunV2RunJobRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}:run",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:run", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RunProjectsLocationsJobsRequest>;
 
@@ -4339,11 +4287,7 @@ export const PatchProjectsLocationsJobsRequest =
     ),
     body: Schema.optional(GoogleCloudRunV2Job).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsJobsRequest>;
 
@@ -4385,11 +4329,7 @@ export const CreateProjectsLocationsJobsRequest =
     jobId: Schema.optional(Schema.String).pipe(T.HttpQuery("jobId")),
     body: Schema.optional(GoogleCloudRunV2Job).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/jobs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsJobsRequest>;
 
@@ -4431,10 +4371,7 @@ export const ListProjectsLocationsJobsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobs",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/jobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsJobsRequest>;
 
@@ -4477,7 +4414,7 @@ export const TestIamPermissionsProjectsLocationsJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}:testIamPermissions",
+      path: "v2/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -4516,7 +4453,7 @@ export const SetIamPolicyProjectsLocationsJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}:setIamPolicy",
+      path: "v2/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4549,10 +4486,7 @@ export const GetProjectsLocationsJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsJobsRequest>;
 
@@ -4588,10 +4522,7 @@ export const GetIamPolicyProjectsLocationsJobsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v2/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsJobsRequest>;
 
@@ -4625,10 +4556,7 @@ export const ExportStatusProjectsLocationsJobsExecutionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     operationId: Schema.String.pipe(T.HttpPath("operationId")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}/executions/{executionsId}/{executionsId1}:exportStatus",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}/{operationId}:exportStatus" }),
     svc,
   ) as unknown as Schema.Schema<ExportStatusProjectsLocationsJobsExecutionsRequest>;
 
@@ -4660,10 +4588,7 @@ export const GetProjectsLocationsJobsExecutionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}/executions/{executionsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsJobsExecutionsRequest>;
 
@@ -4706,10 +4631,7 @@ export const ListProjectsLocationsJobsExecutionsRequest =
       T.HttpQuery("showDeleted"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}/executions",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/executions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsJobsExecutionsRequest>;
 
@@ -4753,10 +4675,7 @@ export const DeleteProjectsLocationsJobsExecutionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}/executions/{executionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsJobsExecutionsRequest>;
 
@@ -4793,11 +4712,7 @@ export const CancelProjectsLocationsJobsExecutionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}/executions/{executionsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsJobsExecutionsRequest>;
 
@@ -4829,10 +4744,7 @@ export const GetProjectsLocationsJobsExecutionsTasksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}/executions/{executionsId}/tasks/{tasksId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsJobsExecutionsTasksRequest>;
 
@@ -4875,10 +4787,7 @@ export const ListProjectsLocationsJobsExecutionsTasksRequest =
     ),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}/executions/{executionsId}/tasks",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/tasks" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsJobsExecutionsTasksRequest>;
 
@@ -4922,10 +4831,7 @@ export const DeleteProjectsLocationsWorkerPoolsRequest =
     ),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/workerPools/{workerPoolsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsWorkerPoolsRequest>;
 
@@ -4962,7 +4868,7 @@ export const SetIamPolicyProjectsLocationsWorkerPoolsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/workerPools/{workerPoolsId}:setIamPolicy",
+      path: "v2/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -5017,11 +4923,7 @@ export const PatchProjectsLocationsWorkerPoolsRequest =
     ),
     body: Schema.optional(GoogleCloudRunV2WorkerPool).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/workerPools/{workerPoolsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsWorkerPoolsRequest>;
 
@@ -5066,11 +4968,7 @@ export const CreateProjectsLocationsWorkerPoolsRequest =
     ),
     body: Schema.optional(GoogleCloudRunV2WorkerPool).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/workerPools",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/workerPools", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsWorkerPoolsRequest>;
 
@@ -5102,10 +5000,7 @@ export const GetProjectsLocationsWorkerPoolsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/workerPools/{workerPoolsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsWorkerPoolsRequest>;
 
@@ -5142,10 +5037,7 @@ export const GetIamPolicyProjectsLocationsWorkerPoolsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/workerPools/{workerPoolsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v2/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsWorkerPoolsRequest>;
 
@@ -5188,10 +5080,7 @@ export const ListProjectsLocationsWorkerPoolsRequest =
     ),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/workerPools",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/workerPools" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsWorkerPoolsRequest>;
 
@@ -5234,7 +5123,7 @@ export const TestIamPermissionsProjectsLocationsWorkerPoolsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/workerPools/{workerPoolsId}:testIamPermissions",
+      path: "v2/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -5279,10 +5168,7 @@ export const ListProjectsLocationsWorkerPoolsRevisionsRequest =
     ),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/workerPools/{workerPoolsId}/revisions",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/revisions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsWorkerPoolsRevisionsRequest>;
 
@@ -5326,10 +5212,7 @@ export const DeleteProjectsLocationsWorkerPoolsRevisionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/workerPools/{workerPoolsId}/revisions/{revisionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsWorkerPoolsRevisionsRequest>;
 
@@ -5361,10 +5244,7 @@ export const GetProjectsLocationsWorkerPoolsRevisionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/workerPools/{workerPoolsId}/revisions/{revisionsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsWorkerPoolsRevisionsRequest>;
 
@@ -5403,7 +5283,7 @@ export const SubmitProjectsLocationsBuildsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/builds:submit",
+      path: "v2/{parent}/builds:submit",
       hasBody: true,
     }),
     svc,
@@ -5447,11 +5327,7 @@ export const CreateProjectsLocationsInstancesRequest =
     ),
     body: Schema.optional(GoogleCloudRunV2Instance).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/instances", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsInstancesRequest>;
 
@@ -5482,10 +5358,7 @@ export const GetProjectsLocationsInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsInstancesRequest>;
 
@@ -5532,11 +5405,7 @@ export const PatchProjectsLocationsInstancesRequest =
     ),
     body: Schema.optional(GoogleCloudRunV2Instance).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsInstancesRequest>;
 
@@ -5579,10 +5448,7 @@ export const ListProjectsLocationsInstancesRequest =
     ),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/instances" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsInstancesRequest>;
 
@@ -5623,11 +5489,7 @@ export const StartProjectsLocationsInstancesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:start",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:start", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StartProjectsLocationsInstancesRequest>;
 
@@ -5666,10 +5528,7 @@ export const DeleteProjectsLocationsInstancesRequest =
     ),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsInstancesRequest>;
 
@@ -5706,11 +5565,7 @@ export const StopProjectsLocationsInstancesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:stop",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:stop", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StopProjectsLocationsInstancesRequest>;
 
@@ -5755,10 +5610,7 @@ export const ListProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -5794,10 +5646,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -5828,10 +5677,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -5867,11 +5713,7 @@ export const WaitProjectsLocationsOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsOperationsRequest>;
 

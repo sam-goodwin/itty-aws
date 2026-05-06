@@ -37,9 +37,9 @@ export const VideoPlayerSizeTargeting =
 
 export interface TaxonomyTargeting {
   /** Optional. The list of targeted content taxonomy IDs. */
-  targetedTaxonomyIds?: Array<string>;
+  targetedTaxonomyIds?: ReadonlyArray<string>;
   /** Optional. The list of excluded content taxonomy IDs. */
-  excludedTaxonomyIds?: Array<string>;
+  excludedTaxonomyIds?: ReadonlyArray<string>;
 }
 
 export const TaxonomyTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -49,7 +49,7 @@ export const TaxonomyTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StringTargetingDimension {
   /** Required. The values specified. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
   /** Required. How the items in this list should be targeted. */
   selectionType?:
     | "SELECTION_TYPE_UNSPECIFIED"
@@ -88,7 +88,7 @@ export interface VideoPlcmtTargeting {
     | "SELECTION_TYPE_EXCLUDE"
     | (string & {});
   /** Required. The list of targeted video plcmts types. If empty, inventory will be targeted regardless of video plcmt type. */
-  videoPlcmtTypes?: Array<
+  videoPlcmtTypes?: ReadonlyArray<
     | "VIDEO_PLCMT_TYPE_UNSPECIFIED"
     | "INSTREAM"
     | "ACCOMPANYING_CONTENT"
@@ -105,7 +105,7 @@ export const VideoPlcmtTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PackageVideoTargeting {
   /** Optional. The list of targeted video mime types using the IANA published MIME type strings (https://www.iana.org/assignments/media-types/media-types.xhtml). If empty, inventory will be targeted regardless of video mime type. */
-  includedMimeTypes?: Array<
+  includedMimeTypes?: ReadonlyArray<
     | "VIDEO_MIME_TYPE_UNSPECIFIED"
     | "VIDEO_MIME_TYPE_THREEGPP"
     | "VIDEO_MIME_TYPE_APPLICATION_MPEGURL"
@@ -128,7 +128,7 @@ export interface PackageVideoTargeting {
     | "MAXIMUM_VIDEO_AD_DURATION_ONE_HUNDRED_TWENTY_SECONDS"
     | (string & {});
   /** Optional. The list of targeted video playback methods. If empty, inventory will be targeted regardless of video playback method. */
-  includedPlaybackMethods?: Array<
+  includedPlaybackMethods?: ReadonlyArray<
     | "PLAYBACK_METHOD_UNSPECIFIED"
     | "PLAYBACK_METHOD_AUTO_PLAY_SOUND_ON"
     | "PLAYBACK_METHOD_AUTO_PLAY_SOUND_OFF"
@@ -144,7 +144,7 @@ export interface PackageVideoTargeting {
   /** Optional. The targeted video plcmt types. If unset, inventory will be targeted regardless of video plcmt type. */
   plcmtTargeting?: VideoPlcmtTargeting;
   /** Optional. The targeted video ad position types. If empty, inventory will be targeted regardless of video ad position type. */
-  includedPositionTypes?: Array<
+  includedPositionTypes?: ReadonlyArray<
     | "POSITION_TYPE_UNSPECIFIED"
     | "POSITION_TYPE_MIDROLL"
     | "POSITION_TYPE_POSTROLL"
@@ -168,9 +168,9 @@ export const PackageVideoTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CriteriaTargeting {
   /** A list of numeric IDs to be included. */
-  targetedCriteriaIds?: Array<string>;
+  targetedCriteriaIds?: ReadonlyArray<string>;
   /** A list of numeric IDs to be excluded. */
-  excludedCriteriaIds?: Array<string>;
+  excludedCriteriaIds?: ReadonlyArray<string>;
 }
 
 export const CriteriaTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -205,7 +205,7 @@ export interface PackagePlacementTargeting {
   /** Optional. The list of targeted or excluded mobile application IDs that publishers own. Currently, only Android and Apple apps are supported. Android App ID, for example, com.google.android.apps.maps, can be found in Google Play Store URL. iOS App ID (which is a number) can be found at the end of iTunes store URL. First party mobile applications is either included or excluded. */
   mobileAppTargeting?: StringTargetingDimension;
   /** Optional. The list of targeted mobile app categories. */
-  includedMobileAppCategoryTargeting?: Array<string>;
+  includedMobileAppCategoryTargeting?: ReadonlyArray<string>;
 }
 
 export const PackagePlacementTargeting =
@@ -228,9 +228,9 @@ export interface PackageTargeting {
   /** Optional. Video specific targeting criteria. */
   videoTargeting?: PackageVideoTargeting;
   /** Optional. The active data segments to be targeted. If unset, inventory will be targeted regardless of data segments. Format: `curators/{account_id}/dataSegments/{data_segment_id}` */
-  includedDataSegments?: Array<string>;
+  includedDataSegments?: ReadonlyArray<string>;
   /** Optional. The list of included device types to target. If empty, all device types are targeted. */
-  includedDeviceTypes?: Array<
+  includedDeviceTypes?: ReadonlyArray<
     | "DEVICE_TYPE_UNSPECIFIED"
     | "DEVICE_TYPE_PERSONAL_COMPUTER"
     | "DEVICE_TYPE_CONNECTED_TV"
@@ -243,25 +243,25 @@ export interface PackageTargeting {
   /** Optional. The languages to target. If unset, inventory will be targeted regardless of language. See https://developers.google.com/google-ads/api/data/codes-formats#languages for the list of supported language codes. */
   languageTargeting?: StringTargetingDimension;
   /** Optional. The list of ad sizes to target. If unset, inventory will be targeted regardless of ad size. Curated packages supports `PIXEL` and `INTERSTITIAL` ad sizes. */
-  includedAdSizes?: Array<AdSize>;
+  includedAdSizes?: ReadonlyArray<AdSize>;
   /** Optional. The targeted publishers. If unset, inventory will be targeted regardless of publisher. Publishers are identified by their publisher ID from ads.txt / app-ads.txt. See https://iabtechlab.com/ads-txt/ and https://iabtechlab.com/app-ads-txt/ for more details. */
   publisherTargeting?: StringTargetingDimension;
   /** Optional. The list of targeted restricted categories. If empty, inventory will be targeted regardless of restricted categories. */
-  includedRestrictedCategories?: Array<
+  includedRestrictedCategories?: ReadonlyArray<
     | "RESTRICTED_CATEGORY_UNSPECIFIED"
     | "RESTRICTED_CATEGORY_ALCOHOL"
     | "RESTRICTED_CATEGORY_GAMBLING"
     | (string & {})
   >;
   /** Optional. The included list of targeted authorized seller statuses. If empty, inventory will be targeted regardless of seller status. */
-  includedAuthorizedSellerStatuses?: Array<
+  includedAuthorizedSellerStatuses?: ReadonlyArray<
     | "AUTHORIZED_SELLER_STATUS_UNSPECIFIED"
     | "AUTHORIZED_SELLER_STATUS_DIRECT"
     | "AUTHORIZED_SELLER_STATUS_RESELLER"
     | (string & {})
   >;
   /** Optional. The list of targeted open measurement types. If empty, inventory will be targeted regardless of Open Measurement support. */
-  includedOpenMeasurementTypes?: Array<
+  includedOpenMeasurementTypes?: ReadonlyArray<
     | "OPEN_MEASUREMENT_TYPE_UNSPECIFIED"
     | "OPEN_MEASUREMENT_TYPE_OMID_V1"
     | (string & {})
@@ -296,7 +296,7 @@ export interface PackageTargeting {
     | "ACCELERATED_MOBILE_PAGE_TYPE_AMP_STORY"
     | (string & {});
   /** Optional. The targeted native inventory types. If empty, inventory will be targeted regardless of native inventory type. */
-  includedNativeInventoryTypes?: Array<
+  includedNativeInventoryTypes?: ReadonlyArray<
     | "NATIVE_INVENTORY_TYPE_UNSPECIFIED"
     | "NATIVE_INVENTORY_TYPE_NATIVE_ONLY"
     | "NATIVE_INVENTORY_TYPE_NATIVE_OR_BANNER"
@@ -350,7 +350,7 @@ export const Money = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AccessControlSettings {
   /** Required. Immutable. The list of media planners that are explicitly granted access to the curated package. Eligible media planners can be found in the mediaPlanners.list method. Only a single media planner may be allowlisted at this time. Format: `mediaPlanners/{mediaPlannerAccountId}` */
-  allowlistedMediaPlanners?: Array<string>;
+  allowlistedMediaPlanners?: ReadonlyArray<string>;
 }
 
 export const AccessControlSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -399,7 +399,7 @@ export interface MediaPlanner {
   /** Output only. The display name of the media planner. Can be used to filter the response of the mediaPlanners.list method. */
   displayName?: string;
   /** Output only. The ancestor names of the media planner. Format: `mediaPlanners/{mediaPlannerAccountId}` Can be used to filter the response of the mediaPlanners.list method. */
-  ancestorNames?: Array<string>;
+  ancestorNames?: ReadonlyArray<string>;
   /** Identifier. The unique resource name of the media planner. Format: `mediaPlanners/{mediaPlannerAccountId}` Can be used to filter the response of the mediaPlanners.list method. */
   name?: string;
 }
@@ -420,7 +420,7 @@ export const ActivateDataSegmentRequest =
 
 export interface ListCuratedPackagesResponse {
   /** The list of curated packages. */
-  curatedPackages?: Array<CuratedPackage>;
+  curatedPackages?: ReadonlyArray<CuratedPackage>;
   /** A token to retrieve the next page of results. Pass this value in the ListCuratedPackagesRequest.pageToken field in the subsequent call to `ListCuratedPackages` method to retrieve the next page of results. If empty, then there are no more results. */
   nextPageToken?: string;
 }
@@ -468,7 +468,7 @@ export const DataSegment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDataSegmentsResponse {
   /** The list of data segments. */
-  dataSegments?: Array<DataSegment>;
+  dataSegments?: ReadonlyArray<DataSegment>;
   /** Continuation token for fetching the next page of results. Pass this value in the ListDataSegmentsRequest.pageToken field in the subsequent call to the `ListDataSegments` method to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -481,7 +481,7 @@ export const ListDataSegmentsResponse =
 
 export interface ListMediaPlannersResponse {
   /** List of media planners. */
-  mediaPlanners?: Array<MediaPlanner>;
+  mediaPlanners?: ReadonlyArray<MediaPlanner>;
   /** A token which can be passed to a subsequent call to the `ListMediaPlanners` method to retrieve the next page of results in ListMediaPlannersRequest.pageToken. */
   nextPageToken?: string;
 }
@@ -517,7 +517,7 @@ export const CreateCuratorsCuratedPackagesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/curators/{curatorsId}/curatedPackages",
+      path: "v1beta/{parent}/curatedPackages",
       hasBody: true,
     }),
     svc,
@@ -556,11 +556,7 @@ export const PatchCuratorsCuratedPackagesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CuratedPackage).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/curators/{curatorsId}/curatedPackages/{curatedPackagesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchCuratorsCuratedPackagesRequest>;
 
@@ -591,10 +587,7 @@ export const GetCuratorsCuratedPackagesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/curators/{curatorsId}/curatedPackages/{curatedPackagesId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCuratorsCuratedPackagesRequest>;
 
@@ -634,10 +627,7 @@ export const ListCuratorsCuratedPackagesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/curators/{curatorsId}/curatedPackages",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/curatedPackages" }),
     svc,
   ) as unknown as Schema.Schema<ListCuratorsCuratedPackagesRequest>;
 
@@ -675,11 +665,7 @@ export const DeactivateCuratorsCuratedPackagesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DeactivateCuratedPackageRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/curators/{curatorsId}/curatedPackages/{curatedPackagesId}:deactivate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:deactivate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DeactivateCuratorsCuratedPackagesRequest>;
 
@@ -713,11 +699,7 @@ export const ActivateCuratorsCuratedPackagesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ActivateCuratedPackageRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/curators/{curatorsId}/curatedPackages/{curatedPackagesId}:activate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:activate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ActivateCuratorsCuratedPackagesRequest>;
 
@@ -754,10 +736,7 @@ export const ListCuratorsDataSegmentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/curators/{curatorsId}/dataSegments",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/dataSegments" }),
     svc,
   ) as unknown as Schema.Schema<ListCuratorsDataSegmentsRequest>;
 
@@ -795,11 +774,7 @@ export const DeactivateCuratorsDataSegmentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DeactivateDataSegmentRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/curators/{curatorsId}/dataSegments/{dataSegmentsId}:deactivate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:deactivate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DeactivateCuratorsDataSegmentsRequest>;
 
@@ -833,11 +808,7 @@ export const ActivateCuratorsDataSegmentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(ActivateDataSegmentRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta/curators/{curatorsId}/dataSegments/{dataSegmentsId}:activate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta/{name}:activate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ActivateCuratorsDataSegmentsRequest>;
 
@@ -873,7 +844,7 @@ export const CreateCuratorsDataSegmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/curators/{curatorsId}/dataSegments",
+      path: "v1beta/{parent}/dataSegments",
       hasBody: true,
     }),
     svc,
@@ -912,11 +883,7 @@ export const PatchCuratorsDataSegmentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(DataSegment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta/curators/{curatorsId}/dataSegments/{dataSegmentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchCuratorsDataSegmentsRequest>;
 
@@ -947,10 +914,7 @@ export const GetCuratorsDataSegmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/curators/{curatorsId}/dataSegments/{dataSegmentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCuratorsDataSegmentsRequest>;
 

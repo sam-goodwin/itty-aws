@@ -26,7 +26,7 @@ export interface SasPortalStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
@@ -43,11 +43,11 @@ export interface SasPortalDeployment {
   /** Output only. Resource name. */
   name?: string;
   /** Output only. The FCC Registration Numbers (FRNs) copied from its direct parent. */
-  frns?: Array<string>;
+  frns?: ReadonlyArray<string>;
   /** The deployment's display name. */
   displayName?: string;
   /** User ID used by the devices belonging to this deployment. Each deployment should be associated with one unique user ID. */
-  sasUserIds?: Array<string>;
+  sasUserIds?: ReadonlyArray<string>;
 }
 
 export const SasPortalDeployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -59,7 +59,7 @@ export const SasPortalDeployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SasPortalListDeploymentsResponse {
   /** The deployments that match the request. */
-  deployments?: Array<SasPortalDeployment>;
+  deployments?: ReadonlyArray<SasPortalDeployment>;
   /** A pagination token returned from a previous call to ListDeployments that indicates from where listing should continue. If the field is missing or empty, it means there are no more deployments. */
   nextPageToken?: string;
 }
@@ -149,7 +149,7 @@ export interface SasPortalCustomer {
   /** Required. Name of the organization that the customer entity represents. */
   displayName?: string;
   /** User IDs used by the devices belonging to this customer. */
-  sasUserIds?: Array<string>;
+  sasUserIds?: ReadonlyArray<string>;
   /** Output only. Resource name of the customer. */
   name?: string;
 }
@@ -162,7 +162,7 @@ export const SasPortalCustomer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SasPortalListCustomersResponse {
   /** The list of customers that match the request. */
-  customers?: Array<SasPortalCustomer>;
+  customers?: ReadonlyArray<SasPortalCustomer>;
   /** A pagination token returned from a previous call to ListCustomers that indicates from where listing should continue. If the field is missing or empty, it means there are no more customers. */
   nextPageToken?: string;
 }
@@ -210,7 +210,7 @@ export const SasPortalDeploymentAssociation =
 
 export interface SasPortalMigrateOrganizationResponse {
   /** Optional. A list of deployment association that were created for the migration, or current associations if they already exist. */
-  deploymentAssociation?: Array<SasPortalDeploymentAssociation>;
+  deploymentAssociation?: ReadonlyArray<SasPortalDeploymentAssociation>;
 }
 
 export const SasPortalMigrateOrganizationResponse =
@@ -331,7 +331,7 @@ export interface SasPortalDeviceConfig {
   /** Information about this device's air interface. */
   airInterface?: SasPortalDeviceAirInterface;
   /** Measurement reporting capabilities of the device. */
-  measurementCapabilities?: Array<
+  measurementCapabilities?: ReadonlyArray<
     | "MEASUREMENT_CAPABILITY_UNSPECIFIED"
     | "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITH_GRANT"
     | "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITHOUT_GRANT"
@@ -373,9 +373,9 @@ export interface SasPortalDeviceGrant {
     | "CHANNEL_TYPE_PAL"
     | (string & {});
   /** If the grant is suspended, the reason(s) for suspension. */
-  suspensionReason?: Array<string>;
+  suspensionReason?: ReadonlyArray<string>;
   /** The DPA move lists on which this grant appears. */
-  moveList?: Array<SasPortalDpaMoveList>;
+  moveList?: ReadonlyArray<SasPortalDpaMoveList>;
   /** Grant Id. */
   grantId?: string;
   /** The transmission frequency range. */
@@ -450,13 +450,13 @@ export interface SasPortalDevice {
   /** Output only. Current configuration of the device as registered to the SAS. */
   activeConfig?: SasPortalDeviceConfig;
   /** Output only. Grants held by the device. */
-  grants?: Array<SasPortalDeviceGrant>;
+  grants?: ReadonlyArray<SasPortalDeviceGrant>;
   /** Device parameters that can be overridden by both SAS Portal and SAS registration requests. */
   deviceMetadata?: SasPortalDeviceMetadata;
   /** Output only. Current channels with scores. */
-  currentChannels?: Array<SasPortalChannelWithScore>;
+  currentChannels?: ReadonlyArray<SasPortalChannelWithScore>;
   /** Only ranges that are within the allowlists are available for new grants. */
-  grantRangeAllowlists?: Array<SasPortalFrequencyRange>;
+  grantRangeAllowlists?: ReadonlyArray<SasPortalFrequencyRange>;
   /** Configuration of the device, as specified via SAS Portal API. */
   preloadedConfig?: SasPortalDeviceConfig;
 }
@@ -504,7 +504,7 @@ export const SasPortalProvisionDeploymentResponse =
 
 export interface SasPortalListDevicesResponse {
   /** The devices that match the request. */
-  devices?: Array<SasPortalDevice>;
+  devices?: ReadonlyArray<SasPortalDevice>;
   /** A pagination token returned from a previous call to ListDevices that indicates from where listing should continue. If the field is missing or empty, it means there is no more devices. */
   nextPageToken?: string;
 }
@@ -578,7 +578,7 @@ export interface SasPortalAssignment {
   /** Required. Role that is assigned to `members`. */
   role?: string;
   /** The identities the role is assigned to. It can have the following values: * `{user_email}`: An email address that represents a specific Google account. For example: `alice@gmail.com`. * `{group_email}`: An email address that represents a Google group. For example, `viewers@gmail.com`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
 }
 
 export const SasPortalAssignment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -588,7 +588,7 @@ export const SasPortalAssignment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SasPortalPolicy {
   /** List of assignments */
-  assignments?: Array<SasPortalAssignment>;
+  assignments?: ReadonlyArray<SasPortalAssignment>;
   /** The etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the etag in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An etag is returned in the response to GetPolicy, and systems are expected to put that etag in the request to SetPolicy to ensure that their change will be applied to the same version of the policy. If no etag is provided in the call to GetPolicy, then the existing policy is overwritten blindly. */
   etag?: string;
 }
@@ -664,7 +664,7 @@ export const SasPortalGcpProjectDeployment =
 
 export interface SasPortalListGcpProjectDeploymentsResponse {
   /** Optional. Deployments associated with the GCP project */
-  deployments?: Array<SasPortalGcpProjectDeployment>;
+  deployments?: ReadonlyArray<SasPortalGcpProjectDeployment>;
 }
 
 export const SasPortalListGcpProjectDeploymentsResponse =
@@ -674,7 +674,7 @@ export const SasPortalListGcpProjectDeploymentsResponse =
 
 export interface SasPortalListLegacyOrganizationsResponse {
   /** Optional. Legacy SAS organizations. */
-  organizations?: Array<SasPortalOrganization>;
+  organizations?: ReadonlyArray<SasPortalOrganization>;
 }
 
 export const SasPortalListLegacyOrganizationsResponse =
@@ -703,7 +703,7 @@ export interface SasPortalTestPermissionsRequest {
   /** Required. The resource for which the permissions are being requested. */
   resource?: string;
   /** The set of permissions to check for the `resource`. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const SasPortalTestPermissionsRequest =
@@ -718,7 +718,7 @@ export interface SasPortalNode {
   /** The node's display name. */
   displayName?: string;
   /** User ids used by the devices belonging to this node. */
-  sasUserIds?: Array<string>;
+  sasUserIds?: ReadonlyArray<string>;
 }
 
 export const SasPortalNode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -729,7 +729,7 @@ export const SasPortalNode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SasPortalListNodesResponse {
   /** The nodes that match the request. */
-  nodes?: Array<SasPortalNode>;
+  nodes?: ReadonlyArray<SasPortalNode>;
   /** A pagination token returned from a previous call to ListNodes that indicates from where listing should continue. If the field is missing or empty, it means there is no more nodes. */
   nextPageToken?: string;
 }
@@ -763,7 +763,7 @@ export const SasPortalOperation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SasPortalTestPermissionsResponse {
   /** A set of permissions that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const SasPortalTestPermissionsResponse =
@@ -816,7 +816,7 @@ export interface GetDeploymentsRequest {
 export const GetDeploymentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1alpha1/deployments/{deploymentsId}" }),
+  T.Http({ method: "GET", path: "v1alpha1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetDeploymentsRequest>;
 
@@ -847,10 +847,7 @@ export const DeleteDeploymentsDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha1/deployments/{deploymentsId}/devices/{devicesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteDeploymentsDevicesRequest>;
 
@@ -884,11 +881,7 @@ export const MoveDeploymentsDevicesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SasPortalMoveDeviceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/deployments/{deploymentsId}/devices/{devicesId}:move",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha1/{name}:move", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MoveDeploymentsDevicesRequest>;
 
@@ -919,10 +912,7 @@ export const GetDeploymentsDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/deployments/{deploymentsId}/devices/{devicesId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDeploymentsDevicesRequest>;
 
@@ -959,11 +949,7 @@ export const PatchDeploymentsDevicesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SasPortalDevice).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha1/deployments/{deploymentsId}/devices/{devicesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchDeploymentsDevicesRequest>;
 
@@ -1001,7 +987,7 @@ export const UpdateSignedDeploymentsDevicesRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v1alpha1/deployments/{deploymentsId}/devices/{devicesId}:updateSigned",
+      path: "v1alpha1/{name}:updateSigned",
       hasBody: true,
     }),
     svc,
@@ -1039,7 +1025,7 @@ export const SignDeviceDeploymentsDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/deployments/{deploymentsId}/devices/{devicesId}:signDevice",
+      path: "v1alpha1/{name}:signDevice",
       hasBody: true,
     }),
     svc,
@@ -1197,7 +1183,7 @@ export interface GetCustomersRequest {
 export const GetCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1alpha1/customers/{customersId}" }),
+  T.Http({ method: "GET", path: "v1alpha1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetCustomersRequest>;
 
@@ -1402,11 +1388,7 @@ export const PatchCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
   body: Schema.optional(SasPortalCustomer).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "PATCH",
-    path: "v1alpha1/customers/{customersId}",
-    hasBody: true,
-  }),
+  T.Http({ method: "PATCH", path: "v1alpha1/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchCustomersRequest>;
 
@@ -1442,7 +1424,7 @@ export const CreateCustomersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/customers/{customersId}/devices",
+      path: "v1alpha1/{parent}/devices",
       hasBody: true,
     }),
     svc,
@@ -1482,7 +1464,7 @@ export const CreateSignedCustomersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/customers/{customersId}/devices:createSigned",
+      path: "v1alpha1/{parent}/devices:createSigned",
       hasBody: true,
     }),
     svc,
@@ -1522,7 +1504,7 @@ export const UpdateSignedCustomersDevicesRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v1alpha1/customers/{customersId}/devices/{devicesId}:updateSigned",
+      path: "v1alpha1/{name}:updateSigned",
       hasBody: true,
     }),
     svc,
@@ -1560,7 +1542,7 @@ export const SignDeviceCustomersDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/customers/{customersId}/devices/{devicesId}:signDevice",
+      path: "v1alpha1/{name}:signDevice",
       hasBody: true,
     }),
     svc,
@@ -1593,10 +1575,7 @@ export const GetCustomersDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/customers/{customersId}/devices/{devicesId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersDevicesRequest>;
 
@@ -1630,11 +1609,7 @@ export const MoveCustomersDevicesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SasPortalMoveDeviceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/customers/{customersId}/devices/{devicesId}:move",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha1/{name}:move", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MoveCustomersDevicesRequest>;
 
@@ -1671,11 +1646,7 @@ export const PatchCustomersDevicesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SasPortalDevice).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha1/customers/{customersId}/devices/{devicesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchCustomersDevicesRequest>;
 
@@ -1706,10 +1677,7 @@ export const DeleteCustomersDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha1/customers/{customersId}/devices/{devicesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteCustomersDevicesRequest>;
 
@@ -1749,7 +1717,7 @@ export const ListCustomersDevicesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/customers/{customersId}/devices" }),
+    T.Http({ method: "GET", path: "v1alpha1/{parent}/devices" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersDevicesRequest>;
 
@@ -1787,11 +1755,7 @@ export const CreateCustomersNodesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(SasPortalNode).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/customers/{customersId}/nodes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha1/{parent}/nodes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateCustomersNodesRequest>;
 
@@ -1828,11 +1792,7 @@ export const PatchCustomersNodesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SasPortalNode).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha1/customers/{customersId}/nodes/{nodesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchCustomersNodesRequest>;
 
@@ -1863,10 +1823,7 @@ export const GetCustomersNodesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/customers/{customersId}/nodes/{nodesId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersNodesRequest>;
 
@@ -1897,10 +1854,7 @@ export const DeleteCustomersNodesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha1/customers/{customersId}/nodes/{nodesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteCustomersNodesRequest>;
 
@@ -1940,7 +1894,7 @@ export const ListCustomersNodesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/customers/{customersId}/nodes" }),
+    T.Http({ method: "GET", path: "v1alpha1/{parent}/nodes" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersNodesRequest>;
 
@@ -1978,11 +1932,7 @@ export const MoveCustomersNodesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SasPortalMoveNodeRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/customers/{customersId}/nodes/{nodesId}:move",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha1/{name}:move", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MoveCustomersNodesRequest>;
 
@@ -2022,10 +1972,7 @@ export const ListCustomersNodesDevicesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/customers/{customersId}/nodes/{nodesId}/devices",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{parent}/devices" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersNodesDevicesRequest>;
 
@@ -2067,7 +2014,7 @@ export const CreateSignedCustomersNodesDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/customers/{customersId}/nodes/{nodesId}/devices:createSigned",
+      path: "v1alpha1/{parent}/devices:createSigned",
       hasBody: true,
     }),
     svc,
@@ -2105,7 +2052,7 @@ export const CreateCustomersNodesDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/customers/{customersId}/nodes/{nodesId}/devices",
+      path: "v1alpha1/{parent}/devices",
       hasBody: true,
     }),
     svc,
@@ -2141,11 +2088,7 @@ export const CreateCustomersNodesNodesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(SasPortalNode).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/customers/{customersId}/nodes/{nodesId}/nodes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha1/{parent}/nodes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateCustomersNodesNodesRequest>;
 
@@ -2185,10 +2128,7 @@ export const ListCustomersNodesNodesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/customers/{customersId}/nodes/{nodesId}/nodes",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{parent}/nodes" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersNodesNodesRequest>;
 
@@ -2228,7 +2168,7 @@ export const CreateCustomersNodesDeploymentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/customers/{customersId}/nodes/{nodesId}/deployments",
+      path: "v1alpha1/{parent}/deployments",
       hasBody: true,
     }),
     svc,
@@ -2270,10 +2210,7 @@ export const ListCustomersNodesDeploymentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/customers/{customersId}/nodes/{nodesId}/deployments",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{parent}/deployments" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersNodesDeploymentsRequest>;
 
@@ -2309,10 +2246,7 @@ export const GetCustomersDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/customers/{customersId}/deployments/{deploymentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomersDeploymentsRequest>;
 
@@ -2343,10 +2277,7 @@ export const DeleteCustomersDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha1/customers/{customersId}/deployments/{deploymentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteCustomersDeploymentsRequest>;
 
@@ -2386,10 +2317,7 @@ export const ListCustomersDeploymentsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/customers/{customersId}/deployments",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{parent}/deployments" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersDeploymentsRequest>;
 
@@ -2427,11 +2355,7 @@ export const MoveCustomersDeploymentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SasPortalMoveDeploymentRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/customers/{customersId}/deployments/{deploymentsId}:move",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha1/{name}:move", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MoveCustomersDeploymentsRequest>;
 
@@ -2467,7 +2391,7 @@ export const CreateCustomersDeploymentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/customers/{customersId}/deployments",
+      path: "v1alpha1/{parent}/deployments",
       hasBody: true,
     }),
     svc,
@@ -2506,11 +2430,7 @@ export const PatchCustomersDeploymentsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SasPortalDeployment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha1/customers/{customersId}/deployments/{deploymentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchCustomersDeploymentsRequest>;
 
@@ -2548,7 +2468,7 @@ export const CreateSignedCustomersDeploymentsDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/customers/{customersId}/deployments/{deploymentsId}/devices:createSigned",
+      path: "v1alpha1/{parent}/devices:createSigned",
       hasBody: true,
     }),
     svc,
@@ -2586,7 +2506,7 @@ export const CreateCustomersDeploymentsDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/customers/{customersId}/deployments/{deploymentsId}/devices",
+      path: "v1alpha1/{parent}/devices",
       hasBody: true,
     }),
     svc,
@@ -2628,10 +2548,7 @@ export const ListCustomersDeploymentsDevicesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/customers/{customersId}/deployments/{deploymentsId}/devices",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{parent}/devices" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomersDeploymentsDevicesRequest>;
 
@@ -2666,7 +2583,7 @@ export interface GetNodesRequest {
 export const GetNodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1alpha1/nodes/{nodesId}" }),
+  T.Http({ method: "GET", path: "v1alpha1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetNodesRequest>;
 
@@ -2702,11 +2619,7 @@ export const PatchNodesDevicesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SasPortalDevice).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha1/nodes/{nodesId}/devices/{devicesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchNodesDevicesRequest>;
 
@@ -2737,10 +2650,7 @@ export const DeleteNodesDevicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha1/nodes/{nodesId}/devices/{devicesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteNodesDevicesRequest>;
 
@@ -2780,7 +2690,7 @@ export const ListNodesDevicesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/nodes/{nodesId}/devices" }),
+    T.Http({ method: "GET", path: "v1alpha1/{parent}/devices" }),
     svc,
   ) as unknown as Schema.Schema<ListNodesDevicesRequest>;
 
@@ -2822,7 +2732,7 @@ export const CreateSignedNodesDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/nodes/{nodesId}/devices:createSigned",
+      path: "v1alpha1/{parent}/devices:createSigned",
       hasBody: true,
     }),
     svc,
@@ -2862,7 +2772,7 @@ export const UpdateSignedNodesDevicesRequest =
   }).pipe(
     T.Http({
       method: "PATCH",
-      path: "v1alpha1/nodes/{nodesId}/devices/{devicesId}:updateSigned",
+      path: "v1alpha1/{name}:updateSigned",
       hasBody: true,
     }),
     svc,
@@ -2900,7 +2810,7 @@ export const SignDeviceNodesDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/nodes/{nodesId}/devices/{devicesId}:signDevice",
+      path: "v1alpha1/{name}:signDevice",
       hasBody: true,
     }),
     svc,
@@ -2938,7 +2848,7 @@ export const CreateNodesDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/nodes/{nodesId}/devices",
+      path: "v1alpha1/{parent}/devices",
       hasBody: true,
     }),
     svc,
@@ -2974,11 +2884,7 @@ export const MoveNodesDevicesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SasPortalMoveDeviceRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/nodes/{nodesId}/devices/{devicesId}:move",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha1/{name}:move", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MoveNodesDevicesRequest>;
 
@@ -3010,10 +2916,7 @@ export const GetNodesDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     name: Schema.String.pipe(T.HttpPath("name")),
   },
 ).pipe(
-  T.Http({
-    method: "GET",
-    path: "v1alpha1/nodes/{nodesId}/devices/{devicesId}",
-  }),
+  T.Http({ method: "GET", path: "v1alpha1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetNodesDevicesRequest>;
 
@@ -3050,11 +2953,7 @@ export const PatchNodesDeploymentsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(SasPortalDeployment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1alpha1/nodes/{nodesId}/deployments/{deploymentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1alpha1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchNodesDeploymentsRequest>;
 
@@ -3085,10 +2984,7 @@ export const DeleteNodesDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha1/nodes/{nodesId}/deployments/{deploymentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteNodesDeploymentsRequest>;
 
@@ -3128,7 +3024,7 @@ export const ListNodesDeploymentsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1alpha1/nodes/{nodesId}/deployments" }),
+    T.Http({ method: "GET", path: "v1alpha1/{parent}/deployments" }),
     svc,
   ) as unknown as Schema.Schema<ListNodesDeploymentsRequest>;
 
@@ -3166,11 +3062,7 @@ export const MoveNodesDeploymentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(SasPortalMoveDeploymentRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/nodes/{nodesId}/deployments/{deploymentsId}:move",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha1/{name}:move", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<MoveNodesDeploymentsRequest>;
 
@@ -3201,10 +3093,7 @@ export const GetNodesDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/nodes/{nodesId}/deployments/{deploymentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetNodesDeploymentsRequest>;
 
@@ -3244,10 +3133,7 @@ export const ListNodesDeploymentsDevicesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/nodes/{nodesId}/deployments/{deploymentsId}/devices",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{parent}/devices" }),
     svc,
   ) as unknown as Schema.Schema<ListNodesDeploymentsDevicesRequest>;
 
@@ -3287,7 +3173,7 @@ export const CreateNodesDeploymentsDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/nodes/{nodesId}/deployments/{deploymentsId}/devices",
+      path: "v1alpha1/{parent}/devices",
       hasBody: true,
     }),
     svc,
@@ -3327,7 +3213,7 @@ export const CreateSignedNodesDeploymentsDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/nodes/{nodesId}/deployments/{deploymentsId}/devices:createSigned",
+      path: "v1alpha1/{parent}/devices:createSigned",
       hasBody: true,
     }),
     svc,
@@ -3360,10 +3246,7 @@ export const DeleteNodesNodesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}",
-    }),
+    T.Http({ method: "DELETE", path: "v1alpha1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteNodesNodesRequest>;
 
@@ -3402,7 +3285,7 @@ export const ListNodesNodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1alpha1/nodes/{nodesId}/nodes" }),
+  T.Http({ method: "GET", path: "v1alpha1/{parent}/nodes" }),
   svc,
 ) as unknown as Schema.Schema<ListNodesNodesRequest>;
 
@@ -3439,11 +3322,7 @@ export const MoveNodesNodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(SasPortalMoveNodeRequest).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({
-    method: "POST",
-    path: "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}:move",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v1alpha1/{name}:move", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<MoveNodesNodesRequest>;
 
@@ -3473,7 +3352,7 @@ export interface GetNodesNodesRequest {
 export const GetNodesNodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}" }),
+  T.Http({ method: "GET", path: "v1alpha1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetNodesNodesRequest>;
 
@@ -3510,11 +3389,7 @@ export const PatchNodesNodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     body: Schema.optional(SasPortalNode).pipe(T.HttpBody()),
   },
 ).pipe(
-  T.Http({
-    method: "PATCH",
-    path: "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}",
-    hasBody: true,
-  }),
+  T.Http({ method: "PATCH", path: "v1alpha1/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchNodesNodesRequest>;
 
@@ -3548,11 +3423,7 @@ export const CreateNodesNodesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(SasPortalNode).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/nodes/{nodesId}/nodes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha1/{parent}/nodes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateNodesNodesRequest>;
 
@@ -3588,7 +3459,7 @@ export const CreateNodesNodesDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}/devices",
+      path: "v1alpha1/{parent}/devices",
       hasBody: true,
     }),
     svc,
@@ -3628,7 +3499,7 @@ export const CreateSignedNodesNodesDevicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}/devices:createSigned",
+      path: "v1alpha1/{parent}/devices:createSigned",
       hasBody: true,
     }),
     svc,
@@ -3670,10 +3541,7 @@ export const ListNodesNodesDevicesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}/devices",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{parent}/devices" }),
     svc,
   ) as unknown as Schema.Schema<ListNodesNodesDevicesRequest>;
 
@@ -3713,7 +3581,7 @@ export const CreateNodesNodesDeploymentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}/deployments",
+      path: "v1alpha1/{parent}/deployments",
       hasBody: true,
     }),
     svc,
@@ -3755,10 +3623,7 @@ export const ListNodesNodesDeploymentsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}/deployments",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{parent}/deployments" }),
     svc,
   ) as unknown as Schema.Schema<ListNodesNodesDeploymentsRequest>;
 
@@ -3797,11 +3662,7 @@ export const CreateNodesNodesNodesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(SasPortalNode).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}/nodes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1alpha1/{parent}/nodes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateNodesNodesNodesRequest>;
 
@@ -3841,10 +3702,7 @@ export const ListNodesNodesNodesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1alpha1/nodes/{nodesId}/nodes/{nodesId1}/nodes",
-    }),
+    T.Http({ method: "GET", path: "v1alpha1/{parent}/nodes" }),
     svc,
   ) as unknown as Schema.Schema<ListNodesNodesNodesRequest>;
 

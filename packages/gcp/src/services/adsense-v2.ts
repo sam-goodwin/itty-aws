@@ -61,7 +61,7 @@ export const CustomChannel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListCustomChannelsResponse {
   /** The custom channels returned in this list response. */
-  customChannels?: Array<CustomChannel>;
+  customChannels?: ReadonlyArray<CustomChannel>;
   /** Continuation token used to page through alerts. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
@@ -99,7 +99,7 @@ export interface ListAdClientsResponse {
   /** Continuation token used to page through ad clients. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
   /** The ad clients returned in this list response. */
-  adClients?: Array<AdClient>;
+  adClients?: ReadonlyArray<AdClient>;
 }
 
 export const ListAdClientsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -170,7 +170,7 @@ export interface PolicyIssue {
   /** Optional. The date (in the America/Los_Angeles timezone) when the entity will have ad serving demand restricted or ad serving disabled. This is present only for issues with a `WARNED` enforcement action. See https://support.google.com/adsense/answer/11066888. */
   warningEscalationDate?: Adsense_Date;
   /** Required. Unordered list. The policy topics that this entity was found to violate over the past seven days. */
-  policyTopics?: Array<PolicyTopic>;
+  policyTopics?: ReadonlyArray<PolicyTopic>;
   /** Required. Type of the entity indicating if the entity is a site, site-section, or page. */
   entityType?:
     | "ENTITY_TYPE_UNSPECIFIED"
@@ -185,7 +185,7 @@ export interface PolicyIssue {
   /** Required. Hostname/domain of the entity (for example "foo.com" or "www.foo.com"). This _should_ be a bare domain/host name without any protocol. This will be present for all policy issues. */
   site?: string;
   /** Optional. List of ad clients associated with the policy issue (either as the primary ad client or an associated host/secondary ad client). In the latter case, this will be an ad client that is not owned by the current account. */
-  adClients?: Array<string>;
+  adClients?: ReadonlyArray<string>;
   /** Optional. URI of the page having policy violations (for example "foo.com/bar" or "www.foo.com/bar"). This will be present if the `entity_type` is `PAGE` and will be absent for other entity types. */
   uri?: string;
 }
@@ -217,7 +217,7 @@ export interface HttpBody {
   /** The HTTP request/response body as raw binary. */
   data?: string;
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
-  extensions?: Array<Record<string, unknown>>;
+  extensions?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -244,7 +244,7 @@ export interface Account {
   /** Output only. Creation time of the account. */
   createTime?: string;
   /** Output only. Outstanding tasks that need to be completed as part of the sign-up process for a new account. e.g. "billing-profile-creation", "phone-pin-verification". */
-  pendingTasks?: Array<string>;
+  pendingTasks?: ReadonlyArray<string>;
   /** Output only. Whether this account is premium. Premium accounts have access to additional spam-related metrics. */
   premium?: boolean;
   /** Output only. State of the account. */
@@ -274,7 +274,7 @@ export const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAccountsResponse {
   /** The accounts returned in this list response. */
-  accounts?: Array<Account>;
+  accounts?: ReadonlyArray<Account>;
   /** Continuation token used to page through accounts. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
@@ -307,7 +307,7 @@ export const AdUnit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAdUnitsResponse {
   /** The ad units returned in the list response. */
-  adUnits?: Array<AdUnit>;
+  adUnits?: ReadonlyArray<AdUnit>;
   /** Continuation token used to page through ad units. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
@@ -336,7 +336,7 @@ export interface ListUrlChannelsResponse {
   /** Continuation token used to page through url channels. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
   /** The url channels returned in this list response. */
-  urlChannels?: Array<UrlChannel>;
+  urlChannels?: ReadonlyArray<UrlChannel>;
 }
 
 export const ListUrlChannelsResponse =
@@ -356,7 +356,7 @@ export const Cell = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Row {
   /** Cells in the row. */
-  cells?: Array<Cell>;
+  cells?: ReadonlyArray<Cell>;
 }
 
 export const Row = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -388,7 +388,7 @@ export const Alert = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAlertsResponse {
   /** The alerts returned in this list response. */
-  alerts?: Array<Alert>;
+  alerts?: ReadonlyArray<Alert>;
 }
 
 export const ListAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -449,7 +449,7 @@ export interface ListLinkedCustomChannelsResponse {
   /** Continuation token used to page through alerts. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
   /** The custom channels returned in this list response. */
-  customChannels?: Array<CustomChannel>;
+  customChannels?: ReadonlyArray<CustomChannel>;
 }
 
 export const ListLinkedCustomChannelsResponse =
@@ -472,7 +472,7 @@ export const SavedReport = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSavedReportsResponse {
   /** The reports returned in this list response. */
-  savedReports?: Array<SavedReport>;
+  savedReports?: ReadonlyArray<SavedReport>;
   /** Continuation token used to page through reports. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
@@ -502,9 +502,9 @@ export interface ReportResult {
   /** The averages of the report. This is the same length as any other row in the report; cells corresponding to dimension columns are empty. */
   averages?: Row;
   /** Any warnings associated with generation of the report. These warnings are always returned in English. */
-  warnings?: Array<string>;
+  warnings?: ReadonlyArray<string>;
   /** The header information; one for each dimension in the request, followed by one for each metric in the request. */
-  headers?: Array<Header>;
+  headers?: ReadonlyArray<Header>;
   /** The total number of rows matched by the report request. */
   totalMatchedRows?: string;
   /** Required. Start date of the range (inclusive). */
@@ -514,7 +514,7 @@ export interface ReportResult {
   /** The totals of the report. This is the same length as any other row in the report; cells corresponding to dimension columns are empty. */
   totals?: Row;
   /** The output rows of the report. Each row is a list of cells; one for each dimension in the request, followed by one for each metric in the request. */
-  rows?: Array<Row>;
+  rows?: ReadonlyArray<Row>;
 }
 
 export const ReportResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -530,7 +530,7 @@ export const ReportResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListPolicyIssuesResponse {
   /** The policy issues returned in the list response. */
-  policyIssues?: Array<PolicyIssue>;
+  policyIssues?: ReadonlyArray<PolicyIssue>;
   /** Continuation token used to page through policy issues. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
@@ -545,7 +545,7 @@ export interface ListChildAccountsResponse {
   /** Continuation token used to page through accounts. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
   /** The accounts returned in this list response. */
-  accounts?: Array<Account>;
+  accounts?: ReadonlyArray<Account>;
 }
 
 export const ListChildAccountsResponse =
@@ -556,7 +556,7 @@ export const ListChildAccountsResponse =
 
 export interface ListPaymentsResponse {
   /** The payments returned in this list response. */
-  payments?: Array<Payment>;
+  payments?: ReadonlyArray<Payment>;
 }
 
 export const ListPaymentsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -565,7 +565,7 @@ export const ListPaymentsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLinkedAdUnitsResponse {
   /** The ad units returned in the list response. */
-  adUnits?: Array<AdUnit>;
+  adUnits?: ReadonlyArray<AdUnit>;
   /** Continuation token used to page through ad units. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
@@ -578,7 +578,7 @@ export const ListLinkedAdUnitsResponse =
 
 export interface ListSitesResponse {
   /** The sites returned in this list response. */
-  sites?: Array<Site>;
+  sites?: ReadonlyArray<Site>;
   /** Continuation token used to page through sites. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
@@ -627,7 +627,7 @@ export interface GetAccountsRequest {
 export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v2/accounts/{accountsId}" }),
+  T.Http({ method: "GET", path: "v2/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetAccountsRequest>;
 
@@ -663,10 +663,7 @@ export const ListChildAccountsAccountsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/accounts/{accountsId}:listChildAccounts",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}:listChildAccounts" }),
     svc,
   ) as unknown as Schema.Schema<ListChildAccountsAccountsRequest>;
 
@@ -738,10 +735,7 @@ export const GetAdBlockingRecoveryTagAccountsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/accounts/{accountsId}/adBlockingRecoveryTag",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}/adBlockingRecoveryTag" }),
     svc,
   ) as unknown as Schema.Schema<GetAdBlockingRecoveryTagAccountsRequest>;
 
@@ -772,10 +766,7 @@ export const GetAccountsPolicyIssuesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/accounts/{accountsId}/policyIssues/{policyIssuesId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsPolicyIssuesRequest>;
 
@@ -812,7 +803,7 @@ export const ListAccountsPolicyIssuesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/accounts/{accountsId}/policyIssues" }),
+    T.Http({ method: "GET", path: "v2/{parent}/policyIssues" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsPolicyIssuesRequest>;
 
@@ -847,7 +838,7 @@ export const ListAccountsPaymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/accounts/{accountsId}/payments" }),
+    T.Http({ method: "GET", path: "v2/{parent}/payments" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsPaymentsRequest>;
 
@@ -878,7 +869,7 @@ export const GetAccountsSitesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/accounts/{accountsId}/sites/{sitesId}" }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsSitesRequest>;
 
@@ -914,7 +905,7 @@ export const ListAccountsSitesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/accounts/{accountsId}/sites" }),
+    T.Http({ method: "GET", path: "v2/{parent}/sites" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsSitesRequest>;
 
@@ -949,10 +940,7 @@ export const GetSavedAccountsReportsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/accounts/{accountsId}/reports/{reportsId}/saved",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}/saved" }),
     svc,
   ) as unknown as Schema.Schema<GetSavedAccountsReportsRequest>;
 
@@ -1163,10 +1151,7 @@ export const GenerateCsvAccountsReportsRequest =
       T.HttpQuery("reportingTimeZone"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/accounts/{accountsId}/reports:generateCsv",
-    }),
+    T.Http({ method: "GET", path: "v2/{account}/reports:generateCsv" }),
     svc,
   ) as unknown as Schema.Schema<GenerateCsvAccountsReportsRequest>;
 
@@ -1377,10 +1362,7 @@ export const GenerateAccountsReportsRequest =
       T.HttpQuery("reportingTimeZone"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/accounts/{accountsId}/reports:generate",
-    }),
+    T.Http({ method: "GET", path: "v2/{account}/reports:generate" }),
     svc,
   ) as unknown as Schema.Schema<GenerateAccountsReportsRequest>;
 
@@ -1472,10 +1454,7 @@ export const GenerateCsvAccountsReportsSavedRequest =
       T.HttpQuery("startDate.month"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/accounts/{accountsId}/reports/{reportsId}/saved:generateCsv",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}/saved:generateCsv" }),
     svc,
   ) as unknown as Schema.Schema<GenerateCsvAccountsReportsSavedRequest>;
 
@@ -1512,7 +1491,7 @@ export const ListAccountsReportsSavedRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/accounts/{accountsId}/reports/saved" }),
+    T.Http({ method: "GET", path: "v2/{parent}/reports/saved" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsReportsSavedRequest>;
 
@@ -1608,10 +1587,7 @@ export const GenerateAccountsReportsSavedRequest =
       T.HttpQuery("startDate.month"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/accounts/{accountsId}/reports/{reportsId}/saved:generate",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}/saved:generate" }),
     svc,
   ) as unknown as Schema.Schema<GenerateAccountsReportsSavedRequest>;
 
@@ -1648,7 +1624,7 @@ export const ListAccountsAdclientsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/accounts/{accountsId}/adclients" }),
+    T.Http({ method: "GET", path: "v2/{parent}/adclients" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAdclientsRequest>;
 
@@ -1683,10 +1659,7 @@ export const GetAdcodeAccountsAdclientsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/accounts/{accountsId}/adclients/{adclientsId}/adcode",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}/adcode" }),
     svc,
   ) as unknown as Schema.Schema<GetAdcodeAccountsAdclientsRequest>;
 
@@ -1717,10 +1690,7 @@ export const GetAccountsAdclientsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/accounts/{accountsId}/adclients/{adclientsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsAdclientsRequest>;
 
@@ -1757,10 +1727,7 @@ export const ListAccountsAdclientsAdunitsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/accounts/{accountsId}/adclients/{adclientsId}/adunits",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/adunits" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAdclientsAdunitsRequest>;
 
@@ -1798,11 +1765,7 @@ export const CreateAccountsAdclientsAdunitsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(AdUnit).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v2/accounts/{accountsId}/adclients/{adclientsId}/adunits",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v2/{parent}/adunits", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateAccountsAdclientsAdunitsRequest>;
 
@@ -1839,10 +1802,7 @@ export const ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/accounts/{accountsId}/adclients/{adclientsId}/adunits/{adunitsId}:listLinkedCustomChannels",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}:listLinkedCustomChannels" }),
     svc,
   ) as unknown as Schema.Schema<ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest>;
 
@@ -1879,10 +1839,7 @@ export const GetAccountsAdclientsAdunitsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/accounts/{accountsId}/adclients/{adclientsId}/adunits/{adunitsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsAdclientsAdunitsRequest>;
 
@@ -1919,11 +1876,7 @@ export const PatchAccountsAdclientsAdunitsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(AdUnit).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/accounts/{accountsId}/adclients/{adclientsId}/adunits/{adunitsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsAdclientsAdunitsRequest>;
 
@@ -1954,10 +1907,7 @@ export const GetAdcodeAccountsAdclientsAdunitsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/accounts/{accountsId}/adclients/{adclientsId}/adunits/{adunitsId}/adcode",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}/adcode" }),
     svc,
   ) as unknown as Schema.Schema<GetAdcodeAccountsAdclientsAdunitsRequest>;
 
@@ -1988,10 +1938,7 @@ export const GetAccountsAdclientsUrlchannelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/accounts/{accountsId}/adclients/{adclientsId}/urlchannels/{urlchannelsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsAdclientsUrlchannelsRequest>;
 
@@ -2028,10 +1975,7 @@ export const ListAccountsAdclientsUrlchannelsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/accounts/{accountsId}/adclients/{adclientsId}/urlchannels",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/urlchannels" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAdclientsUrlchannelsRequest>;
 
@@ -2066,10 +2010,7 @@ export const GetAccountsAdclientsCustomchannelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/accounts/{accountsId}/adclients/{adclientsId}/customchannels/{customchannelsId}",
-    }),
+    T.Http({ method: "GET", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsAdclientsCustomchannelsRequest>;
 
@@ -2106,10 +2047,7 @@ export const ListAccountsAdclientsCustomchannelsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/accounts/{accountsId}/adclients/{adclientsId}/customchannels",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}/customchannels" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAdclientsCustomchannelsRequest>;
 
@@ -2150,7 +2088,7 @@ export const CreateAccountsAdclientsCustomchannelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2/accounts/{accountsId}/adclients/{adclientsId}/customchannels",
+      path: "v2/{parent}/customchannels",
       hasBody: true,
     }),
     svc,
@@ -2189,10 +2127,7 @@ export const ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v2/accounts/{accountsId}/adclients/{adclientsId}/customchannels/{customchannelsId}:listLinkedAdUnits",
-    }),
+    T.Http({ method: "GET", path: "v2/{parent}:listLinkedAdUnits" }),
     svc,
   ) as unknown as Schema.Schema<ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest>;
 
@@ -2235,11 +2170,7 @@ export const PatchAccountsAdclientsCustomchannelsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(CustomChannel).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v2/accounts/{accountsId}/adclients/{adclientsId}/customchannels/{customchannelsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v2/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchAccountsAdclientsCustomchannelsRequest>;
 
@@ -2270,10 +2201,7 @@ export const DeleteAccountsAdclientsCustomchannelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v2/accounts/{accountsId}/adclients/{adclientsId}/customchannels/{customchannelsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v2/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsAdclientsCustomchannelsRequest>;
 
@@ -2309,7 +2237,7 @@ export const ListAccountsAlertsRequest =
       T.HttpQuery("languageCode"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v2/accounts/{accountsId}/alerts" }),
+    T.Http({ method: "GET", path: "v2/{parent}/alerts" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAlertsRequest>;
 

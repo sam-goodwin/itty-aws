@@ -24,13 +24,13 @@ const svc = T.Service({
 
 export interface TrackDefinition {
   /** Optional. A list of languages spoken in the input asset, represented by a BCP 47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. */
-  languages?: Array<string>;
+  languages?: ReadonlyArray<string>;
   /** The input track. */
   inputTrack?: number;
   /** Optional. Whether to automatically detect the languages present in the track. If true, the system will attempt to identify all the languages present in the track and populate the languages field. */
   detectLanguages?: boolean;
   /** Output only. A list of languages detected in the input asset, represented by a BCP 47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. This field is only populated if the detect_languages field is set to true. */
-  detectedLanguages?: Array<string>;
+  detectedLanguages?: ReadonlyArray<string>;
 }
 
 export const TrackDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -42,7 +42,7 @@ export const TrackDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InputAttributes {
   /** Optional. A list of track definitions for the input asset. */
-  trackDefinitions?: Array<TrackDefinition>;
+  trackDefinitions?: ReadonlyArray<TrackDefinition>;
 }
 
 export const InputAttributes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -409,7 +409,7 @@ export interface TextStream {
   /** The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files. */
   languageCode?: string;
   /** The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs. */
-  mapping?: Array<TextMapping>;
+  mapping?: ReadonlyArray<TextMapping>;
   /** The name for this particular text stream that will be added to the HLS/DASH manifest. Not supported in MP4 files. */
   displayName?: string;
 }
@@ -449,9 +449,9 @@ export interface AudioStream {
   /** The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files. */
   languageCode?: string;
   /** A list of channel names specifying layout of the audio channels. This only affects the metadata embedded in the container headers, if supported by the specified format. The default is `["fl", "fr"]`. Supported channel names: - `fl` - Front left channel - `fr` - Front right channel - `sl` - Side left channel - `sr` - Side right channel - `fc` - Front center channel - `lfe` - Low frequency */
-  channelLayout?: Array<string>;
+  channelLayout?: ReadonlyArray<string>;
   /** The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs. */
-  mapping?: Array<AudioMapping>;
+  mapping?: ReadonlyArray<AudioMapping>;
   /** Number of audio channels. Must be between 1 and 6. The default is 2. */
   channelCount?: number;
   /** Required. Audio bitrate in bits per second. Must be between 1 and 10,000,000. */
@@ -508,7 +508,7 @@ export const DashConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Manifest {
   /** Required. List of user supplied MuxStream.key values that should appear in this manifest. When Manifest.type is `HLS`, a media manifest with name MuxStream.key and `.m3u8` extension is generated for each element in this list. */
-  muxStreams?: Array<string>;
+  muxStreams?: ReadonlyArray<string>;
   /** Required. Type of the manifest. */
   type?: "MANIFEST_TYPE_UNSPECIFIED" | "HLS" | "DASH" | (string & {});
   /** The name of the generated file. The default is `manifest` with the extension suffix corresponding to the Manifest.type. */
@@ -576,7 +576,7 @@ export interface EditAtom {
   /** A unique key for this atom. Must be specified when using advanced mapping. */
   key?: string;
   /** List of Input.key values identifying files that should be used in this atom. The listed `inputs` must have the same timeline. */
-  inputs?: Array<string>;
+  inputs?: ReadonlyArray<string>;
   /** Start time in seconds for the atom, relative to the input file timeline. The default is `0s`. */
   startTimeOffset?: string;
   /** End time in seconds for the atom, relative to the input file timeline. When `end_time_offset` is not specified, the `inputs` are used until the end of the atom. */
@@ -894,7 +894,7 @@ export interface Overlay {
   /** Image overlay. */
   image?: Image;
   /** List of animations. The list should be chronological, without any time overlap. */
-  animations?: Array<Animation>;
+  animations?: ReadonlyArray<Animation>;
 }
 
 export const Overlay = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -931,7 +931,7 @@ export interface MuxStream {
   /** The name of the generated file. The default is MuxStream.key with the extension suffix corresponding to the MuxStream.container. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`. */
   fileName?: string;
   /** List of ElementaryStream.key values multiplexed in this stream. */
-  elementaryStreams?: Array<string>;
+  elementaryStreams?: ReadonlyArray<string>;
   /** Segment settings for `ts`, `fmp4` and `vtt`. */
   segmentSettings?: SegmentSettings;
   /** A unique key for this multiplexed stream. */
@@ -952,25 +952,25 @@ export const MuxStream = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface JobConfig {
   /** List of elementary streams. */
-  elementaryStreams?: Array<ElementaryStream>;
+  elementaryStreams?: ReadonlyArray<ElementaryStream>;
   /** List of output manifests. */
-  manifests?: Array<Manifest>;
+  manifests?: ReadonlyArray<Manifest>;
   /** Destination on Pub/Sub. */
   pubsubDestination?: PubsubDestination;
   /** List of output sprite sheets. Spritesheets require at least one VideoStream in the Jobconfig. */
-  spriteSheets?: Array<SpriteSheet>;
+  spriteSheets?: ReadonlyArray<SpriteSheet>;
   /** List of edit atoms. Defines the ultimate timeline of the resulting file or manifest. */
-  editList?: Array<EditAtom>;
+  editList?: ReadonlyArray<EditAtom>;
   /** List of encryption configurations for the content. Each configuration has an ID. Specify this ID in the MuxStream.encryption_id field to indicate the configuration to use for that `MuxStream` output. */
-  encryptions?: Array<Encryption>;
+  encryptions?: ReadonlyArray<Encryption>;
   /** List of input assets stored in Cloud Storage. */
-  inputs?: Array<Input>;
+  inputs?: ReadonlyArray<Input>;
   /** List of ad breaks. Specifies where to insert ad break tags in the output manifests. */
-  adBreaks?: Array<AdBreak>;
+  adBreaks?: ReadonlyArray<AdBreak>;
   /** List of overlays on the output video, in descending Z-order. */
-  overlays?: Array<Overlay>;
+  overlays?: ReadonlyArray<Overlay>;
   /** List of multiplexing settings for output streams. */
-  muxStreams?: Array<MuxStream>;
+  muxStreams?: ReadonlyArray<MuxStream>;
   /** Output configuration. */
   output?: Output;
 }
@@ -993,7 +993,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
@@ -1091,11 +1091,11 @@ export const JobTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListJobTemplatesResponse {
   /** List of job templates in the specified region. */
-  jobTemplates?: Array<JobTemplate>;
+  jobTemplates?: ReadonlyArray<JobTemplate>;
   /** The pagination token. */
   nextPageToken?: string;
   /** List of regions that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListJobTemplatesResponse =
@@ -1113,9 +1113,9 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 
 export interface ListJobsResponse {
   /** List of regions that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** List of jobs in the specified region. */
-  jobs?: Array<Job>;
+  jobs?: ReadonlyArray<Job>;
   /** The pagination token. */
   nextPageToken?: string;
 }
@@ -1151,10 +1151,7 @@ export const ListProjectsLocationsJobTemplatesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobTemplates",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/jobTemplates" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsJobTemplatesRequest>;
 
@@ -1198,11 +1195,7 @@ export const CreateProjectsLocationsJobTemplatesRequest =
     ),
     body: Schema.optional(JobTemplate).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobTemplates",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/jobTemplates", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsJobTemplatesRequest>;
 
@@ -1233,10 +1226,7 @@ export const GetProjectsLocationsJobTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobTemplates/{jobTemplatesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsJobTemplatesRequest>;
 
@@ -1272,10 +1262,7 @@ export const DeleteProjectsLocationsJobTemplatesRequest =
       T.HttpQuery("allowMissing"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobTemplates/{jobTemplatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsJobTemplatesRequest>;
 
@@ -1311,10 +1298,7 @@ export const DeleteProjectsLocationsJobsRequest =
       T.HttpQuery("allowMissing"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsJobsRequest>;
 
@@ -1348,11 +1332,7 @@ export const CreateProjectsLocationsJobsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Job).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/jobs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsJobsRequest>;
 
@@ -1383,10 +1363,7 @@ export const GetProjectsLocationsJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsJobsRequest>;
 
@@ -1428,10 +1405,7 @@ export const ListProjectsLocationsJobsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/jobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsJobsRequest>;
 

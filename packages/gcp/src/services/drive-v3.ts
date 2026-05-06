@@ -48,9 +48,9 @@ export const User = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface About {
   /** The currently supported folder colors as RGB hex strings. */
-  folderColorPalette?: Array<string>;
+  folderColorPalette?: ReadonlyArray<string>;
   /** A map of source MIME type to possible targets for all supported imports. */
-  importFormats?: Record<string, Array<string>>;
+  importFormats?: Record<string, ReadonlyArray<string>>;
   /** Deprecated: Use `canCreateDrives` instead. */
   canCreateTeamDrives?: boolean;
   /** The user's storage quota limits and usage. For users that are part of an organization with pooled storage, information about the limit and usage across all services is for the organization, rather than the individual user. All fields are measured in bytes. */
@@ -63,7 +63,7 @@ export interface About {
   /** The authenticated user. */
   user?: User;
   /** A list of themes that are supported for shared drives. */
-  driveThemes?: Array<{
+  driveThemes?: ReadonlyArray<{
     id?: string;
     backgroundImageLink?: string;
     colorRgb?: string;
@@ -75,13 +75,13 @@ export interface About {
   /** The maximum upload size in bytes. */
   maxUploadSize?: string;
   /** Deprecated: Use `driveThemes` instead. */
-  teamDriveThemes?: Array<{
+  teamDriveThemes?: ReadonlyArray<{
     id?: string;
     backgroundImageLink?: string;
     colorRgb?: string;
   }>;
   /** A map of source MIME type to possible targets for all supported exports. */
-  exportFormats?: Record<string, Array<string>>;
+  exportFormats?: Record<string, ReadonlyArray<string>>;
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#about"`. */
   kind?: string;
   /** Whether the user can create shared drives. */
@@ -154,7 +154,7 @@ export interface App {
   /** The ID of the product listing for this app. */
   productId?: string;
   /** The list of primary file extensions. */
-  primaryFileExtensions?: Array<string>;
+  primaryFileExtensions?: ReadonlyArray<string>;
   /** Whether this app supports importing from Google Docs. */
   supportsImport?: boolean;
   /** Whether this app supports creating objects. */
@@ -162,17 +162,17 @@ export interface App {
   /** Whether the app is authorized to access data on the user's Drive. */
   authorized?: boolean;
   /** The list of primary MIME types. */
-  primaryMimeTypes?: Array<string>;
+  primaryMimeTypes?: ReadonlyArray<string>;
   /** The template URL for opening files with this app. The template contains {ids} or {exportIds} to be replaced by the actual file IDs. For more information, see Open Files for the full documentation. */
   openUrlTemplate?: string;
   /** A short description of the app. */
   shortDescription?: string;
   /** The list of secondary MIME types. */
-  secondaryMimeTypes?: Array<string>;
+  secondaryMimeTypes?: ReadonlyArray<string>;
   /** Whether the app is selected as the default handler for the types it supports. */
   useByDefault?: boolean;
   /** The various icons for the app. */
-  icons?: Array<AppIcons>;
+  icons?: ReadonlyArray<AppIcons>;
   /** Whether the app has Drive-wide scope. An app with Drive-wide scope can access all files in the user's Drive. */
   hasDriveWideScope?: boolean;
   /** The URL to create a file with this app. */
@@ -180,7 +180,7 @@ export interface App {
   /** A long description of the app. */
   longDescription?: string;
   /** The list of secondary file extensions. */
-  secondaryFileExtensions?: Array<string>;
+  secondaryFileExtensions?: ReadonlyArray<string>;
   /** A link to the product listing for this app. */
   productUrl?: string;
   /** The type of object this app creates such as a Chart. If empty, the app name should be used instead. */
@@ -226,13 +226,13 @@ export const App = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AppList {
   /** The list of app IDs that the user has specified to use by default. The list is in reverse-priority order (lowest to highest). */
-  defaultAppIds?: Array<string>;
+  defaultAppIds?: ReadonlyArray<string>;
   /** A link back to this list. */
   selfLink?: string;
   /** Output only. Identifies what kind of resource this is. Value: the fixed string "drive#appList". */
   kind?: string;
   /** The list of apps. */
-  items?: Array<App>;
+  items?: ReadonlyArray<App>;
 }
 
 export const AppList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -378,17 +378,17 @@ export interface LabelField {
   /** This is always drive#labelField. */
   kind?: string;
   /** Only present if valueType is dateString. RFC 3339 formatted date: YYYY-MM-DD. */
-  dateString?: Array<string>;
+  dateString?: ReadonlyArray<string>;
   /** Only present if `valueType` is `text`. */
-  text?: Array<string>;
+  text?: ReadonlyArray<string>;
   /** Only present if `valueType` is `selection` */
-  selection?: Array<string>;
+  selection?: ReadonlyArray<string>;
   /** Only present if `valueType` is `user`. */
-  user?: Array<User>;
+  user?: ReadonlyArray<User>;
   /** The identifier of this label field. */
   id?: string;
   /** Only present if `valueType` is `integer`. */
-  integer?: Array<string>;
+  integer?: ReadonlyArray<string>;
   /** The field type. While new values may be supported in the future, the following are currently allowed: * `dateString` * `integer` * `selection` * `text` * `user` */
   valueType?: string;
 }
@@ -424,7 +424,7 @@ export const Label = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ModifyLabelsResponse {
   /** The list of labels which were added or updated by the request. */
-  modifiedLabels?: Array<Label>;
+  modifiedLabels?: ReadonlyArray<Label>;
   /** This is always `"drive#modifyLabelsResponse"`. */
   kind?: string;
 }
@@ -483,7 +483,7 @@ export interface Reply {
   /** Output only. Whether the reply has been deleted. A deleted reply has no content. */
   deleted?: boolean;
   /** Output only. A list of email addresses for users mentioned in this comment. If no users are mentioned, the list is empty. */
-  mentionedEmailAddresses?: Array<string>;
+  mentionedEmailAddresses?: ReadonlyArray<string>;
 }
 
 export const Reply = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -504,7 +504,7 @@ export interface ReplyList {
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#replyList"`. */
   kind?: string;
   /** The list of replies. If `nextPageToken` is populated, then this list may be incomplete and an additional page of results should be fetched. */
-  replies?: Array<Reply>;
+  replies?: ReadonlyArray<Reply>;
   /** The page token for the next page of replies. This will be absent if the end of the replies list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results. The page token is typically valid for several hours. However, if new items are added or removed, your expected results might differ. */
   nextPageToken?: string;
 }
@@ -517,19 +517,19 @@ export const ReplyList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LabelFieldModification {
   /** Replaces the value of an `integer` field with these new values. */
-  setIntegerValues?: Array<string>;
+  setIntegerValues?: ReadonlyArray<string>;
   /** This is always `"drive#labelFieldModification"`. */
   kind?: string;
   /** Replaces the value of a dateString Field with these new values. The string must be in the RFC 3339 full-date format: YYYY-MM-DD. */
-  setDateValues?: Array<string>;
+  setDateValues?: ReadonlyArray<string>;
   /** Replaces a `selection` field with these new values. */
-  setSelectionValues?: Array<string>;
+  setSelectionValues?: ReadonlyArray<string>;
   /** Sets the value of a `text` field. */
-  setTextValues?: Array<string>;
+  setTextValues?: ReadonlyArray<string>;
   /** The ID of the field to be modified. */
   fieldId?: string;
   /** Replaces a `user` field with these new values. The values must be a valid email addresses. */
-  setUserValues?: Array<string>;
+  setUserValues?: ReadonlyArray<string>;
   /** Unsets the values for this field. */
   unsetValues?: boolean;
 }
@@ -549,7 +549,7 @@ export const LabelFieldModification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface LabelModification {
   /** The list of modifications to this label's fields. */
-  fieldModifications?: Array<LabelFieldModification>;
+  fieldModifications?: ReadonlyArray<LabelFieldModification>;
   /** If true, the label will be removed from the file. */
   removeLabel?: boolean;
   /** The ID of the label to modify. */
@@ -567,7 +567,7 @@ export const LabelModification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ModifyLabelsRequest {
   /** The list of modifications to apply to the labels on the file. */
-  labelModifications?: Array<LabelModification>;
+  labelModifications?: ReadonlyArray<LabelModification>;
   /** This is always `"drive#modifyLabelsRequest"`. */
   kind?: string;
 }
@@ -631,7 +631,7 @@ export interface RevisionList {
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#revisionList"`. */
   kind?: string;
   /** The list of revisions. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched. */
-  revisions?: Array<Revision>;
+  revisions?: ReadonlyArray<Revision>;
 }
 
 export const RevisionList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -660,11 +660,11 @@ export interface Comment {
   /** Output only. Whether the comment has been deleted. A deleted comment has no content. */
   deleted?: boolean;
   /** Output only. A list of email addresses for users mentioned in this comment. If no users are mentioned, the list is empty. */
-  mentionedEmailAddresses?: Array<string>;
+  mentionedEmailAddresses?: ReadonlyArray<string>;
   /** Output only. The email address of the user assigned to this comment. If no user is assigned, the field is unset. */
   assigneeEmailAddress?: string;
   /** Output only. The full list of replies to the comment in chronological order. */
-  replies?: Array<Reply>;
+  replies?: ReadonlyArray<Reply>;
   /** The plain text content of the comment. This field is used for setting the content, while `htmlContent` should be displayed. */
   content?: string;
   /** Output only. The author of the comment. The author's email address and permission ID will not be populated. */
@@ -699,7 +699,7 @@ export interface CommentList {
   /** The page token for the next page of comments. This will be absent if the end of the comments list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results. The page token is typically valid for several hours. However, if new items are added or removed, your expected results might differ. */
   nextPageToken?: string;
   /** The list of comments. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched. */
-  comments?: Array<Comment>;
+  comments?: ReadonlyArray<Comment>;
 }
 
 export const CommentList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -724,7 +724,7 @@ export const DownloadRestrictionsMetadata =
 
 export interface TeamDriveList {
   /** The list of Team Drives. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched. */
-  teamDrives?: Array<TeamDrive>;
+  teamDrives?: ReadonlyArray<TeamDrive>;
   /** The page token for the next page of Team Drives. This will be absent if the end of the Team Drives list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results. The page token is typically valid for several hours. However, if new items are added or removed, your expected results might differ. */
   nextPageToken?: string;
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#teamDriveList"`. */
@@ -741,7 +741,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
@@ -785,7 +785,7 @@ export interface GeneratedIds {
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#generatedIds"`. */
   kind?: string;
   /** The IDs generated for the requesting user in the specified space. */
-  ids?: Array<string>;
+  ids?: ReadonlyArray<string>;
   /** The type of file that can be created with these IDs. */
   space?: string;
 }
@@ -933,7 +933,7 @@ export interface Permission {
   /** The email address of the user or group to which this permission refers. */
   emailAddress?: string;
   /** Output only. Deprecated: Output only. Use `permissionDetails` instead. */
-  teamDrivePermissionDetails?: Array<{
+  teamDrivePermissionDetails?: ReadonlyArray<{
     role?: string;
     teamDrivePermissionType?: string;
     inheritedFrom?: string;
@@ -946,7 +946,7 @@ export interface Permission {
   /** Indicates the view for this permission. Only populated for permissions that belong to a view. The only supported values are `published` and `metadata`: * `published`: The permission's role is `publishedReader`. * `metadata`: The item is only visible to the `metadata` view because the item has limited access and the scope has at least read access to the parent. The `metadata` view is only supported on folders. For more information, see [Views](https://developers.google.com/workspace/drive/api/guides/ref-roles#views). */
   view?: string;
   /** Output only. Details of whether the permissions on this item are inherited or are directly on this item. */
-  permissionDetails?: Array<{
+  permissionDetails?: ReadonlyArray<{
     inheritedFrom?: string;
     inherited?: boolean;
     permissionType?: string;
@@ -1040,16 +1040,16 @@ export interface File {
     height?: number;
   };
   /** The ID of the parent folder containing the file. A file can only have one parent folder; specifying multiple parents isn't supported. If not specified as part of a create request, the file is placed directly in the user's My Drive folder. If not specified as part of a copy request, the file inherits any discoverable parent of the source file. Update requests must use the `addParents` and `removeParents` parameters to modify the parents list. */
-  parents?: Array<string>;
+  parents?: ReadonlyArray<string>;
   /** Output only. The full list of permissions for the file. This is only available if the requesting user can share the file. Not populated for items in shared drives. */
-  permissions?: Array<Permission>;
+  permissions?: ReadonlyArray<Permission>;
   /** Contains details about the link URLs that clients are using to refer to this item. */
   linkShareMetadata?: {
     securityUpdateEligible?: boolean;
     securityUpdateEnabled?: boolean;
   };
   /** Output only. List of permission IDs for users with access to this file. */
-  permissionIds?: Array<string>;
+  permissionIds?: ReadonlyArray<string>;
   /** Output only. A link for downloading the content of the file in a browser. This is only available for files with binary content in Google Drive. */
   webContentLink?: string;
   /** Output only. Additional metadata about image media, if available. */
@@ -1083,7 +1083,7 @@ export interface File {
     targetMimeType?: string;
   };
   /** Output only. The owner of this file. Only certain legacy files may have more than one owner. This field isn't populated for items in shared drives. */
-  owners?: Array<User>;
+  owners?: ReadonlyArray<User>;
   /** Deprecated: Output only. Use `driveId` instead. */
   teamDriveId?: string;
   /** A short description of the file. */
@@ -1162,7 +1162,7 @@ export interface File {
   /** A collection of arbitrary key-value pairs which are visible to all apps. Entries with null values are cleared in update and copy requests. */
   properties?: Record<string, string>;
   /** Restrictions for accessing the content of the file. Only populated if such a restriction exists. */
-  contentRestrictions?: Array<ContentRestriction>;
+  contentRestrictions?: ReadonlyArray<ContentRestriction>;
   /** Client Side Encryption related details. Contains details about the encryption state of the file and details regarding the encryption mechanism that clients need to use when decrypting the contents of this item. This will only be present on files and not on folders or shortcuts. */
   clientEncryptionDetails?: ClientEncryptionDetails;
   /** Output only. The ID of the file's head revision. This is currently only available for files with binary content in Google Drive. */
@@ -1212,9 +1212,9 @@ export interface File {
   /** Output only. A monotonically increasing version number for the file. This reflects every change made to the file on the server, even those not visible to the user. */
   version?: string;
   /** Output only. An overview of the labels on the file. */
-  labelInfo?: { labels?: Array<Label> };
+  labelInfo?: { labels?: ReadonlyArray<Label> };
   /** Output only. The list of spaces which contain the file. The currently supported values are `drive`, `appDataFolder`, and `photos`. */
-  spaces?: Array<string>;
+  spaces?: ReadonlyArray<string>;
   /** The original filename of the uploaded content if available, or else the original value of the `name` field. This is only available for files with binary content in Google Drive. */
   originalFilename?: string;
   /** Additional information about the content of the file. These fields are never populated in responses. */
@@ -1441,7 +1441,7 @@ export const Change = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ChangeList {
   /** The list of changes. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched. */
-  changes?: Array<Change>;
+  changes?: ReadonlyArray<Change>;
   /** The starting page token for future changes. This will be present only if the end of the current changes list has been reached. The page token doesn't expire. */
   newStartPageToken?: string;
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#changeList"`. */
@@ -1481,7 +1481,7 @@ export interface Approval {
   /** The user that requested the Approval. */
   initiator?: User;
   /** The responses made on the Approval by reviewers. */
-  reviewerResponses?: Array<ReviewerResponse>;
+  reviewerResponses?: ReadonlyArray<ReviewerResponse>;
   /** The Approval ID. */
   approvalId?: string;
   /** Output only. The time the approval was created. */
@@ -1523,7 +1523,7 @@ export interface ApprovalList {
   /** This is always drive#approvalList */
   kind?: string;
   /** The list of Approvals. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched. */
-  items?: Array<Approval>;
+  items?: ReadonlyArray<Approval>;
   /** The page token for the next page of Approvals. This will be absent if the end of the Approvals list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results. */
   nextPageToken?: string;
 }
@@ -1561,7 +1561,7 @@ export interface AccessProposal {
   /** The file ID that the proposal for access is on. */
   fileId?: string;
   /** A wrapper for the role and view of an access proposal. For more information, see [Roles and permissions](https://developers.google.com/workspace/drive/api/guides/ref-roles). */
-  rolesAndViews?: Array<AccessProposalRoleAndView>;
+  rolesAndViews?: ReadonlyArray<AccessProposalRoleAndView>;
 }
 
 export const AccessProposal = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1576,7 +1576,7 @@ export const AccessProposal = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAccessProposalsResponse {
   /** The list of access proposals. This field is only populated in Drive API v3. */
-  accessProposals?: Array<AccessProposal>;
+  accessProposals?: ReadonlyArray<AccessProposal>;
   /** The continuation token for the next page of results. This will be absent if the end of the results list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results. */
   nextPageToken?: string;
 }
@@ -1610,7 +1610,7 @@ export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DriveList {
   /** The list of shared drives. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched. */
-  drives?: Array<Drive>;
+  drives?: ReadonlyArray<Drive>;
   /** The page token for the next page of shared drives. This will be absent if the end of the list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results. The page token is typically valid for several hours. However, if new items are added or removed, your expected results might differ. */
   nextPageToken?: string;
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#driveList"`. */
@@ -1625,7 +1625,7 @@ export const DriveList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PermissionList {
   /** The list of permissions. If `nextPageToken` is populated, then this list may be incomplete and an additional page of results should be fetched. */
-  permissions?: Array<Permission>;
+  permissions?: ReadonlyArray<Permission>;
   /** The page token for the next page of permissions. This field will be absent if the end of the permissions list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results. The page token is typically valid for several hours. However, if new items are added or removed, your expected results might differ. */
   nextPageToken?: string;
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#permissionList"`. */
@@ -1640,7 +1640,7 @@ export const PermissionList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LabelList {
   /** The list of labels. */
-  labels?: Array<Label>;
+  labels?: ReadonlyArray<Label>;
   /** The page token for the next page of labels. This field will be absent if the end of the list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results. The page token is typically valid for several hours. However, if new items are added or removed, your expected results might differ. */
   nextPageToken?: string;
   /** This is always `"drive#labelList"`. */
@@ -1659,7 +1659,7 @@ export interface ResolveAccessProposalRequest {
   /** Required. The action to take on the access proposal. */
   action?: "ACTION_UNSPECIFIED" | "ACCEPT" | "DENY" | (string & {});
   /** Optional. The roles that the approver has allowed, if any. For more information, see [Roles and permissions](https://developers.google.com/workspace/drive/api/guides/ref-roles). Note: This field is required for the `ACCEPT` action. */
-  role?: Array<string>;
+  role?: ReadonlyArray<string>;
   /** Optional. Whether to send an email to the requester when the access proposal is denied or accepted. */
   sendNotification?: boolean;
 }
@@ -1680,7 +1680,7 @@ export interface FileList {
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#fileList"`. */
   kind?: string;
   /** The list of files. If `nextPageToken` is populated, then this list may be incomplete and an additional page of results should be fetched. */
-  files?: Array<File>;
+  files?: ReadonlyArray<File>;
 }
 
 export const FileList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
