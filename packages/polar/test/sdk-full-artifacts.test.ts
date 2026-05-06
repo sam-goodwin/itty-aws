@@ -68,4 +68,33 @@ describe("Polar SDK full artifacts", () => {
     expect(nukeWorkflow).toContain("POLAR_ACCESS_TOKEN");
     expect(nukeWorkflow).toContain("POLAR_SERVER: sandbox");
   });
+
+  it("keeps the Polar CI job wired to sandbox credentials", async () => {
+    const testWorkflow = await readFile(
+      join(repoRoot, ".github/workflows/test.yml"),
+      "utf8",
+    );
+
+    expect(testWorkflow).toContain("ci-polar:");
+    expect(testWorkflow).toContain("working-directory: packages/polar");
+    expect(testWorkflow).toContain("POLAR_ACCESS_TOKEN");
+    expect(testWorkflow).toContain("POLAR_ORGANIZATION_ID");
+    expect(testWorkflow).toContain("POLAR_SERVER: sandbox");
+  });
+
+  it("keeps Polar registered in package preview and release workflows", async () => {
+    const prPackageWorkflow = await readFile(
+      join(repoRoot, ".github/workflows/pr-package.yml"),
+      "utf8",
+    );
+    const releaseWorkflow = await readFile(
+      join(repoRoot, ".github/workflows/release.yml"),
+      "utf8",
+    );
+
+    expect(prPackageWorkflow).toContain('"polar"');
+    expect(prPackageWorkflow).toContain("polar:");
+    expect(releaseWorkflow).toContain("packages/polar/package.json");
+    expect(releaseWorkflow).toContain("- polar");
+  });
 });
