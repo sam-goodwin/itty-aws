@@ -37,6 +37,24 @@ export const applyErrorMatchers = (
 export const getErrorMatchers = (ast: AST.AST) =>
   getAnnotation<ErrorMatcher[]>(ast, errorMatchersSymbol);
 
+/** Symbol for operations scoped by either a Cloudflare account or zone. */
+export const accountOrZoneScopeSymbol = Symbol.for(
+  "@distilled.cloud/cf/account-or-zone-scope",
+);
+
+export interface AccountOrZoneScopeTrait {
+  accountIdParam?: string;
+  zoneIdParam?: string;
+  scopePathParam?: string;
+  scopeIdPathParam?: string;
+}
+
+export const AccountOrZoneScope = (trait: AccountOrZoneScopeTrait = {}) =>
+  makeAnnotation(accountOrZoneScopeSymbol, trait);
+
+export const getAccountOrZoneScope = (ast: AST.AST) =>
+  getAnnotation<AccountOrZoneScopeTrait>(ast, accountOrZoneScopeSymbol);
+
 /** Symbol for content type override (e.g., multipart) */
 export const contentTypeSymbol = Symbol.for("@distilled.cloud/cf/content-type");
 

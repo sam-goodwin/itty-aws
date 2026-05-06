@@ -177,6 +177,7 @@ export interface ClientConfig<Creds> {
    */
   transformRequestParts?: (input: {
     input: Record<string, unknown>;
+    inputSchema: Schema.Top;
     method: string;
     pathTemplate: string;
     parts: Traits.RequestParts;
@@ -472,6 +473,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
           if (config.transformRequestParts) {
             parts = config.transformRequestParts({
               input: input as Record<string, unknown>,
+              inputSchema,
               method,
               pathTemplate: httpTrait.path,
               parts,

@@ -24,6 +24,7 @@ export interface GetPhasRequest {
 export const GetPhasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rulesetPhase: Schema.String.pipe(T.HttpPath("rulesetPhase")),
 }).pipe(
+  T.AccountOrZoneScope(),
   T.Http({
     method: "GET",
     path: "/{accountOrZone}/{accountOrZoneId}/rulesets/phases/{rulesetPhase}/entrypoint",
@@ -5849,6 +5850,7 @@ export const PutPhasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
 }).pipe(
+  T.AccountOrZoneScope(),
   T.Http({
     method: "PUT",
     path: "/{accountOrZone}/{accountOrZoneId}/rulesets/phases/{rulesetPhase}/entrypoint",
@@ -9351,6 +9353,7 @@ export const GetPhasVersionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rulesetVersion: Schema.String.pipe(T.HttpPath("rulesetVersion")),
   rulesetPhase: Schema.String.pipe(T.HttpPath("rulesetPhase")),
 }).pipe(
+  T.AccountOrZoneScope(),
   T.Http({
     method: "GET",
     path: "/{accountOrZone}/{accountOrZoneId}/rulesets/phases/{rulesetPhase}/entrypoint/versions/{rulesetVersion}",
@@ -12902,6 +12905,7 @@ export const ListPhasVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     rulesetPhase: Schema.String.pipe(T.HttpPath("rulesetPhase")),
   }).pipe(
+    T.AccountOrZoneScope(),
     T.Http({
       method: "GET",
       path: "/{accountOrZone}/{accountOrZoneId}/rulesets/phases/{rulesetPhase}/entrypoint/versions",
@@ -13152,6 +13156,7 @@ export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ratelimit: "ratelimit",
     ref: "ref",
   }),
+  T.AccountOrZoneScope(),
   T.Http({
     method: "POST",
     path: "/{accountOrZone}/{accountOrZoneId}/rulesets/{rulesetId}/rules",
@@ -16782,6 +16787,7 @@ export const PatchRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ratelimit: "ratelimit",
     ref: "ref",
   }),
+  T.AccountOrZoneScope(),
   T.Http({
     method: "PATCH",
     path: "/{accountOrZone}/{accountOrZoneId}/rulesets/{rulesetId}/rules/{ruleId}",
@@ -20282,6 +20288,7 @@ export const DeleteRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
 }).pipe(
+  T.AccountOrZoneScope(),
   T.Http({
     method: "DELETE",
     path: "/{accountOrZone}/{accountOrZoneId}/rulesets/{rulesetId}/rules/{ruleId}",
@@ -23784,6 +23791,7 @@ export interface GetRulesetRequest {
 export const GetRulesetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
 }).pipe(
+  T.AccountOrZoneScope(),
   T.Http({
     method: "GET",
     path: "/{accountOrZone}/{accountOrZoneId}/rulesets/{rulesetId}",
@@ -27280,6 +27288,7 @@ export interface ListRulesetsRequest {}
 export const ListRulesetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {},
 ).pipe(
+  T.AccountOrZoneScope(),
   T.Http({
     method: "GET",
     path: "/{accountOrZone}/{accountOrZoneId}/rulesets",
@@ -29794,6 +29803,7 @@ export const CreateRulesetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
 }).pipe(
+  T.AccountOrZoneScope(),
   T.Http({
     method: "POST",
     path: "/{accountOrZone}/{accountOrZoneId}/rulesets",
@@ -35676,6 +35686,7 @@ export const UpdateRulesetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
 }).pipe(
+  T.AccountOrZoneScope(),
   T.Http({
     method: "PUT",
     path: "/{accountOrZone}/{accountOrZoneId}/rulesets/{rulesetId}",
@@ -39174,6 +39185,7 @@ export interface DeleteRulesetRequest {
 export const DeleteRulesetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
 }).pipe(
+  T.AccountOrZoneScope(),
   T.Http({
     method: "DELETE",
     path: "/{accountOrZone}/{accountOrZoneId}/rulesets/{rulesetId}",
@@ -39211,6 +39223,7 @@ export const GetVersionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
   rulesetVersion: Schema.String.pipe(T.HttpPath("rulesetVersion")),
 }).pipe(
+  T.AccountOrZoneScope(),
   T.Http({
     method: "GET",
     path: "/{accountOrZone}/{accountOrZoneId}/rulesets/{rulesetId}/versions/{rulesetVersion}",
@@ -42709,6 +42722,7 @@ export interface ListVersionsRequest {
 export const ListVersionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
 }).pipe(
+  T.AccountOrZoneScope(),
   T.Http({
     method: "GET",
     path: "/{accountOrZone}/{accountOrZoneId}/rulesets/{rulesetId}/versions",
@@ -42824,6 +42838,7 @@ export const DeleteVersionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
   rulesetVersion: Schema.String.pipe(T.HttpPath("rulesetVersion")),
 }).pipe(
+  T.AccountOrZoneScope(),
   T.Http({
     method: "DELETE",
     path: "/{accountOrZone}/{accountOrZoneId}/rulesets/{rulesetId}/versions/{rulesetVersion}",

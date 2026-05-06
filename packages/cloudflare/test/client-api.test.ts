@@ -152,6 +152,7 @@ describe("client api", () => {
 
     const transformed = transformCloudflareRequestParts({
       input,
+      inputSchema: PutPhasRequest,
       pathTemplate: httpTrait!.path,
       parts,
     });

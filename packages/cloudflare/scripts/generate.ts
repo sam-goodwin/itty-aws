@@ -537,6 +537,10 @@ const ACCOUNT_OR_ZONE_SCOPE_PATH_PARAMS = new Set([
   "accountOrZoneId",
 ]);
 
+const isAccountOrZoneScoped = (op: ParsedOperation): boolean =>
+  op.urlPathParams.includes("accountOrZone") &&
+  op.urlPathParams.includes("accountOrZoneId");
+
 const withMissingUrlPathParams = (op: ParsedOperation): ParamInfo[] => {
   const existing = new Set(op.pathParams.map((param) => param.name));
   const missing = op.urlPathParams.filter(
@@ -1442,6 +1446,9 @@ function generateOperationSchemaAst(
       .join(", ");
     pipes.push(`Schema.encodeKeys({ ${encodeKeysEntries} })`);
   }
+  if (isAccountOrZoneScoped(op)) {
+    pipes.push("T.AccountOrZoneScope()");
+  }
   // Add contentType: "multipart" when operation has file uploads or uses multipartFormRequestOptions
   const hasFiles = operationHasFiles(op);
   const isMultipart = hasFiles || op.isMultipart;
@@ -1780,6 +1787,9 @@ function generateOperationSchema(
       .map(([k, v]) => `${quotePropKey(k)}: "${v}"`)
       .join(", ");
     pipes.push(`Schema.encodeKeys({ ${encodeKeysEntries} })`);
+  }
+  if (isAccountOrZoneScoped(op)) {
+    pipes.push("T.AccountOrZoneScope()");
   }
   const hasFiles = operationHasFiles(op);
   const isMultipart = hasFiles || op.isMultipart;

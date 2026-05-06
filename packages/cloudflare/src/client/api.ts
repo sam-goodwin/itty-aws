@@ -38,7 +38,12 @@ import {
 } from "../errors.ts";
 import { Credentials, formatHeaders } from "../credentials.ts";
 import { Retry } from "../retry.ts";
-import { type ErrorMatcher, getErrorMatchers } from "../traits.ts";
+import {
+  type AccountOrZoneScopeTrait,
+  type ErrorMatcher,
+  getAccountOrZoneScope,
+  getErrorMatchers,
+} from "../traits.ts";
 
 // ============================================================================
 // Global Cloudflare error codes
@@ -403,40 +408,22 @@ const ASSET_UPLOAD_PATH = "/accounts/{account_id}/workers/assets/upload";
 
 export const transformCloudflareRequestParts = ({
   input,
+  inputSchema,
   pathTemplate,
   parts,
 }: {
   input?: Record<string, unknown>;
+  inputSchema?: Schema.Top;
   pathTemplate: string;
   parts: RequestParts;
 }): RequestParts => {
   let next = parts;
+  const accountOrZoneScope = inputSchema
+    ? getAccountOrZoneScope(inputSchema.ast)
+    : undefined;
 
-  if (
-    pathTemplate.includes("/{accountOrZone}/{accountOrZoneId}/") &&
-    next.path.includes("{accountOrZone}") &&
-    next.path.includes("{accountOrZoneId}")
-  ) {
-    const accountId = input?.accountId;
-    const zoneId = input?.zoneId;
-    const hasAccountId = accountId !== undefined && accountId !== null;
-    const hasZoneId = zoneId !== undefined && zoneId !== null;
-
-    if (hasAccountId === hasZoneId) {
-      throw new Error(
-        "Cloudflare account-or-zone scoped requests require exactly one of accountId or zoneId",
-      );
-    }
-
-    next = {
-      ...next,
-      path: next.path
-        .replace("{accountOrZone}", hasAccountId ? "accounts" : "zones")
-        .replace(
-          "{accountOrZoneId}",
-          encodeURIComponent(String(hasAccountId ? accountId : zoneId)),
-        ),
-    };
+  if (accountOrZoneScope) {
+    next = applyAccountOrZoneScope(next, input, accountOrZoneScope);
   }
 
   if (pathTemplate !== ASSET_UPLOAD_PATH) {
@@ -457,14 +444,50 @@ export const transformCloudflareRequestParts = ({
   };
 };
 
+const applyAccountOrZoneScope = (
+  parts: RequestParts,
+  input: Record<string, unknown> | undefined,
+  scope: AccountOrZoneScopeTrait,
+): RequestParts => {
+  const accountIdParam = scope.accountIdParam ?? "accountId";
+  const zoneIdParam = scope.zoneIdParam ?? "zoneId";
+  const scopePathParam = scope.scopePathParam ?? "accountOrZone";
+  const scopeIdPathParam = scope.scopeIdPathParam ?? "accountOrZoneId";
+  const accountId = input?.[accountIdParam];
+  const zoneId = input?.[zoneIdParam];
+  const hasAccountId = accountId !== undefined && accountId !== null;
+  const hasZoneId = zoneId !== undefined && zoneId !== null;
+
+  if (hasAccountId === hasZoneId) {
+    throw new Error(
+      "Cloudflare account-or-zone scoped requests require exactly one of accountId or zoneId",
+    );
+  }
+
+  return {
+    ...parts,
+    path: parts.path
+      .replace(`{${scopePathParam}}`, hasAccountId ? "accounts" : "zones")
+      .replace(
+        `{${scopeIdPathParam}}`,
+        encodeURIComponent(String(hasAccountId ? accountId : zoneId)),
+      ),
+  };
+};
+
 const _API = makeAPI<Credentials>({
   credentials: Credentials as any,
   getBaseUrl: (creds: any) => creds.apiBaseUrl,
   getAuthHeaders: formatHeaders as any,
   matchError,
   ParseError: CloudflareDecodeError as any,
-  transformRequestParts: ({ input, pathTemplate, parts }) =>
-    transformCloudflareRequestParts({ input, pathTemplate, parts }),
+  transformRequestParts: ({ input, inputSchema, pathTemplate, parts }) =>
+    transformCloudflareRequestParts({
+      input,
+      inputSchema,
+      pathTemplate,
+      parts,
+    }),
   retry: Retry as any,
 });
 
