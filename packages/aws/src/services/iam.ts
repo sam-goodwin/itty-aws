@@ -7310,17 +7310,17 @@ export class ConcurrentModificationException extends S.TaggedErrorClass<Concurre
   "ConcurrentModificationException",
   { message: S.optional(S.String) },
   T.AwsQueryError({ code: "ConcurrentModification", httpResponseCode: 409 }),
-).pipe(C.withConflictError) {}
+).pipe(C.withConflictError, C.withRetryableError) {}
 export class NoSuchEntityException extends S.TaggedErrorClass<NoSuchEntityException>()(
   "NoSuchEntityException",
   { message: S.optional(S.String) },
   T.AwsQueryError({ code: "NoSuchEntity", httpResponseCode: 404 }),
-).pipe(C.withBadRequestError) {}
+).pipe(C.withBadRequestError, C.withNotFoundError) {}
 export class ServiceFailureException extends S.TaggedErrorClass<ServiceFailureException>()(
   "ServiceFailureException",
   { message: S.optional(S.String) },
   T.AwsQueryError({ code: "ServiceFailure", httpResponseCode: 500 }),
-).pipe(C.withServerError) {}
+).pipe(C.withServerError, C.withRetryableError) {}
 export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
   "InvalidInputException",
   { message: S.optional(S.String) },
@@ -7330,7 +7330,7 @@ export class LimitExceededException extends S.TaggedErrorClass<LimitExceededExce
   "LimitExceededException",
   { message: S.optional(S.String) },
   T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 409 }),
-).pipe(C.withConflictError) {}
+).pipe(C.withConflictError, C.withQuotaError) {}
 export class EntityAlreadyExistsException extends S.TaggedErrorClass<EntityAlreadyExistsException>()(
   "EntityAlreadyExistsException",
   { message: S.optional(S.String) },
@@ -7353,7 +7353,7 @@ export class EntityTemporarilyUnmodifiableException extends S.TaggedErrorClass<E
     code: "EntityTemporarilyUnmodifiable",
     httpResponseCode: 409,
   }),
-).pipe(C.withConflictError) {}
+).pipe(C.withConflictError, C.withRetryableError) {}
 export class InvalidUserTypeException extends S.TaggedErrorClass<InvalidUserTypeException>()(
   "InvalidUserTypeException",
   { message: S.optional(S.String) },
@@ -7456,7 +7456,7 @@ export class UnrecognizedPublicKeyEncodingException extends S.TaggedErrorClass<U
 export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceeded>()(
   "RequestLimitExceeded",
   {},
-).pipe(C.withThrottlingError) {}
+).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class InvalidInput extends S.TaggedErrorClass<InvalidInput>()(
   "InvalidInput",
   {},
