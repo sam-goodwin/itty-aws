@@ -42,13 +42,13 @@ export const GoogleTypeExpr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleIamV2DenyRule {
   /** The identities that are prevented from using one or more permissions on Google Cloud resources. This field can contain the following values: * `principal://goog/subject/{email_id}`: A specific Google Account. Includes Gmail, Cloud Identity, and Google Workspace user accounts. For example, `principal://goog/subject/alice@example.com`. * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`: A Google Cloud service account. For example, `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`. * `principalSet://goog/group/{group_id}`: A Google group. For example, `principalSet://goog/group/admins@example.com`. * `principalSet://goog/public:all`: A special identifier that represents any principal that is on the internet, even if they do not have a Google Account or are not logged in. * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the principals associated with the specified Google Workspace or Cloud Identity customer ID. For example, `principalSet://goog/cloudIdentityCustomerId/C01Abc35`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `principalSet://cloudresourcemanager.googleapis.com/[projects|folders|organizations]/{project_number|folder_number|org_number}/type/ServiceAccount`: All service accounts grouped under a resource (project, folder, or organization). * `principalSet://cloudresourcemanager.googleapis.com/[projects|folders|organizations]/{project_number|folder_number|org_number}/type/ServiceAgent`: All service agents grouped under a resource (project, folder, or organization). * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific Google Account that was deleted recently. For example, `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If the Google Account is recovered, this identifier reverts to the standard identifier for a Google Account. * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group that was deleted recently. For example, `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`. If the Google group is restored, this identifier reverts to the standard identifier for a Google group. * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`: A Google Cloud service account that was deleted recently. For example, `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`. If the service account is undeleted, this identifier reverts to the standard identifier for a service account. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  deniedPrincipals?: Array<string>;
+  deniedPrincipals?: ReadonlyArray<string>;
   /** The identities that are excluded from the deny rule, even if they are listed in the `denied_principals`. For example, you could add a Google group to the `denied_principals`, then exclude specific users who belong to that group. This field can contain the same values as the `denied_principals` field, excluding `principalSet://goog/public:all`, which represents all users on the internet. */
-  exceptionPrincipals?: Array<string>;
+  exceptionPrincipals?: ReadonlyArray<string>;
   /** The permissions that are explicitly denied by this rule. Each permission uses the format `{service_fqdn}/{resource}.{verb}`, where `{service_fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`. */
-  deniedPermissions?: Array<string>;
+  deniedPermissions?: ReadonlyArray<string>;
   /** Specifies the permissions that this rule excludes from the set of denied permissions given by `denied_permissions`. If a permission appears in `denied_permissions` _and_ in `exception_permissions` then it will _not_ be denied. The excluded permissions can be specified using the same syntax as `denied_permissions`. */
-  exceptionPermissions?: Array<string>;
+  exceptionPermissions?: ReadonlyArray<string>;
   /** The condition that determines whether this deny rule applies to a request. If the condition expression evaluates to `true`, then the deny rule is applied; otherwise, the deny rule is not applied. Each deny rule is evaluated independently. If this deny rule does not apply to a request, other deny rules might still apply. The condition can use CEL functions that evaluate [resource tags](https://cloud.google.com/iam/help/conditions/resource-tags). Other functions and operators are not supported. */
   denialCondition?: GoogleTypeExpr;
 }
@@ -89,7 +89,7 @@ export const GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanationAnnotate
 
 export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -112,7 +112,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3ConditionExplanationEvaluat
   /** Value of this expression. */
   value?: unknown;
   /** Any errors that prevented complete evaluation of the condition expression. */
-  errors?: Array<GoogleRpcStatus>;
+  errors?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudPolicytroubleshooterIamV3ConditionExplanationEvaluationState =
@@ -130,9 +130,9 @@ export interface GoogleCloudPolicytroubleshooterIamV3ConditionExplanation {
   /** Value of the condition. */
   value?: unknown;
   /** Any errors that prevented complete evaluation of the condition expression. */
-  errors?: Array<GoogleRpcStatus>;
+  errors?: ReadonlyArray<GoogleRpcStatus>;
   /** The value of each statement of the condition expression. The value can be `true`, `false`, or `null`. The value is `null` if the statement can't be evaluated. */
-  evaluationStates?: Array<GoogleCloudPolicytroubleshooterIamV3ConditionExplanationEvaluationState>;
+  evaluationStates?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3ConditionExplanationEvaluationState>;
 }
 
 export const GoogleCloudPolicytroubleshooterIamV3ConditionExplanation =
@@ -217,7 +217,7 @@ export const GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanation =
 
 export interface GoogleIamV1AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
   /** The log type that this config enables. */
   logType?:
     | "LOG_TYPE_UNSPECIFIED"
@@ -237,7 +237,7 @@ export interface GoogleIamV1AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<GoogleIamV1AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<GoogleIamV1AuditLogConfig>;
 }
 
 export const GoogleIamV1AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -253,7 +253,7 @@ export interface GoogleIamV1Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: GoogleTypeExpr;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -264,9 +264,9 @@ export const GoogleIamV1Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleIamV1Policy {
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<GoogleIamV1AuditConfig>;
+  auditConfigs?: ReadonlyArray<GoogleIamV1AuditConfig>;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<GoogleIamV1Binding>;
+  bindings?: ReadonlyArray<GoogleIamV1Binding>;
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
@@ -292,7 +292,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3ExplainedAllowPolicy {
   /** The full resource name that identifies the resource. For example, `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`. If the sender of the request does not have access to the policy, this field is omitted. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. */
   fullResourceName?: string;
   /** Details about how each role binding in the policy affects the principal's ability, or inability, to use the permission for the resource. The order of the role bindings matches the role binding order in the policy. If the sender of the request does not have access to the policy, this field is omitted. */
-  bindingExplanations?: Array<GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanation>;
+  bindingExplanations?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3AllowBindingExplanation>;
   /** The IAM allow policy attached to the resource. If the sender of the request does not have access to the policy, this field is empty. */
   policy?: GoogleIamV1Policy;
   /** The relevance of this policy to the overall access state in the TroubleshootIamPolicyResponse. If the sender of the request does not have access to the policy, this field is omitted. */
@@ -324,7 +324,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3AllowPolicyExplanation {
     | "HEURISTIC_RELEVANCE_HIGH"
     | (string & {});
   /** List of IAM allow policies that were evaluated to check the principal's permissions, with annotations to indicate how each policy contributed to the final result. The list of policies includes the policy for the resource itself, as well as allow policies that are inherited from higher levels of the resource hierarchy, including the organization, the folder, and the project. To learn more about the resource hierarchy, see https://cloud.google.com/iam/help/resource-hierarchy. */
-  explainedPolicies?: Array<GoogleCloudPolicytroubleshooterIamV3ExplainedAllowPolicy>;
+  explainedPolicies?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3ExplainedAllowPolicy>;
   /** Indicates whether the principal has the specified permission for the specified resource, based on evaluating all applicable IAM allow policies. */
   allowAccessState?:
     | "ALLOW_ACCESS_STATE_UNSPECIFIED"
@@ -515,7 +515,7 @@ export interface GoogleIamV2Policy {
   /** Output only. The time when the `Policy` was created. */
   createTime?: string;
   /** A list of rules that specify the behavior of the `Policy`. All of the rules should be of the `kind` specified in the `Policy`. */
-  rules?: Array<GoogleIamV2PolicyRule>;
+  rules?: ReadonlyArray<GoogleIamV2PolicyRule>;
   /** Immutable. The globally unique ID of the `Policy`. Assigned automatically when the `Policy` is created. */
   uid?: string;
   /** Output only. The kind of the `Policy`. Always contains the value `DenyPolicy`. */
@@ -543,7 +543,7 @@ export const GoogleIamV2Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleCloudPolicytroubleshooterIamV3ExplainedDenyPolicy {
   /** Details about how each rule in the policy affects the principal's inability to use the permission for the resource. The order of the deny rule matches the order of the rules in the deny policy. If the sender of the request does not have access to the policy, this field is omitted. */
-  ruleExplanations?: Array<GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanation>;
+  ruleExplanations?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3DenyRuleExplanation>;
   /** The IAM deny policy attached to the resource. If the sender of the request does not have access to the policy, this field is omitted. */
   policy?: GoogleIamV2Policy;
   /** Required. Indicates whether _this policy_ denies the specified permission to the specified principal for the specified resource. This field does _not_ indicate whether the principal actually has the permission for the resource. There might be another policy that overrides this policy. To determine whether the principal actually has the permission, use the `overall_access_state` field in the TroubleshootIamPolicyResponse. */
@@ -592,7 +592,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3ExplainedDenyResource {
     | "HEURISTIC_RELEVANCE_HIGH"
     | (string & {});
   /** List of IAM deny policies that were evaluated to check the principal's denied permissions, with annotations to indicate how each policy contributed to the final result. */
-  explainedPolicies?: Array<GoogleCloudPolicytroubleshooterIamV3ExplainedDenyPolicy>;
+  explainedPolicies?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3ExplainedDenyPolicy>;
 }
 
 export const GoogleCloudPolicytroubleshooterIamV3ExplainedDenyResource =
@@ -609,7 +609,7 @@ export const GoogleCloudPolicytroubleshooterIamV3ExplainedDenyResource =
 
 export interface GoogleCloudPolicytroubleshooterIamV3DenyPolicyExplanation {
   /** List of resources with IAM deny policies that were evaluated to check the principal's denied permissions, with annotations to indicate how each policy contributed to the final result. The list of resources includes the policy for the resource itself, as well as policies that are inherited from higher levels of the resource hierarchy, including the organization, the folder, and the project. The order of the resources starts from the resource and climbs up the resource hierarchy. To learn more about the resource hierarchy, see https://cloud.google.com/iam/help/resource-hierarchy. */
-  explainedResources?: Array<GoogleCloudPolicytroubleshooterIamV3ExplainedDenyResource>;
+  explainedResources?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3ExplainedDenyResource>;
   /** Indicates whether the principal is denied the specified permission for the specified resource, based on evaluating all applicable IAM deny policies. */
   denyAccessState?:
     | "DENY_ACCESS_STATE_UNSPECIFIED"
@@ -717,7 +717,7 @@ export interface GoogleCloudPolicytroubleshooterIamV3ConditionContext {
   /** Represents a target resource that is involved with a network activity. If multiple resources are involved with an activity, this must be the primary one. */
   resource?: GoogleCloudPolicytroubleshooterIamV3ConditionContextResource;
   /** Output only. The effective tags on the resource. The effective tags are fetched during troubleshooting. */
-  effectiveTags?: Array<GoogleCloudPolicytroubleshooterIamV3ConditionContextEffectiveTag>;
+  effectiveTags?: ReadonlyArray<GoogleCloudPolicytroubleshooterIamV3ConditionContextEffectiveTag>;
   /** Represents a network request, such as an HTTP request. */
   request?: GoogleCloudPolicytroubleshooterIamV3ConditionContextRequest;
   /** The destination of a network activity, such as accepting a TCP connection. In a multi-hop network activity, the destination represents the receiver of the last hop. */

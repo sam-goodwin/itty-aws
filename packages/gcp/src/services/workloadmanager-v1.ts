@@ -174,7 +174,7 @@ export interface LocationDetails {
   /** Required. subnet_name */
   subnetName?: string;
   /** Optional. network tags */
-  customTags?: Array<string>;
+  customTags?: ReadonlyArray<string>;
   internetAccess?:
     | "INTERNETACCESS_UNSPECIFIED"
     | "ALLOW_EXTERNAL_IP"
@@ -215,7 +215,7 @@ export interface AppDetails {
   /** Optional. instance id for ascs */
   ascsInstanceId?: string;
   /** Optional. Customized vm names */
-  appVmNames?: Array<string>;
+  appVmNames?: ReadonlyArray<string>;
   /** Optional. ASCS vm name */
   ascsVm?: string;
   /** Optional. Storage location */
@@ -358,7 +358,7 @@ export const IAMPermission = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ServiceStates {
   /** Optional. Output only. The IAM permissions for the service. */
-  iamPermissions?: Array<IAMPermission>;
+  iamPermissions?: ReadonlyArray<IAMPermission>;
   /** Output only. The overall state of the service. */
   state?:
     | "STATE_UNSPECIFIED"
@@ -401,7 +401,7 @@ export const AgentStates = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SapInstanceProperties {
   /** Optional. SAP Instance numbers. They are from '00' to '99'. */
-  numbers?: Array<string>;
+  numbers?: ReadonlyArray<string>;
   /** Optional. Sap Instance Agent status. */
   agentStates?: AgentStates;
 }
@@ -417,7 +417,7 @@ export interface InstanceProperties {
   /** Optional. Instance machine type. */
   machineType?: string;
   /** Optional. Instance roles. */
-  roles?: Array<
+  roles?: ReadonlyArray<
     | "INSTANCE_ROLE_UNSPECIFIED"
     | "INSTANCE_ROLE_ASCS"
     | "INSTANCE_ROLE_ERS"
@@ -508,7 +508,7 @@ export interface ComponentHealth {
     | "TYPE_SPECIAL"
     | (string & {});
   /** Sub component health. */
-  subComponentsHealth?: Array<ComponentHealth>;
+  subComponentsHealth?: ReadonlyArray<ComponentHealth>;
   /** Output only. The health state of the component. */
   state?:
     | "HEALTH_STATE_UNSPECIFIED"
@@ -520,7 +520,7 @@ export interface ComponentHealth {
   /** The component of a workload. */
   component?: string;
   /** The detailed health checks of the component. */
-  componentHealthChecks?: Array<HealthCheck>;
+  componentHealthChecks?: ReadonlyArray<HealthCheck>;
 }
 
 export const ComponentHealth: Schema.Schema<ComponentHealth> =
@@ -588,7 +588,7 @@ export interface SapDiscoveryResourceInstancePropertiesDiskMount {
   /** Optional. Filesystem mount point. */
   mountPoint?: string;
   /** Optional. Names of the disks providing this mount point. */
-  diskNames?: Array<string>;
+  diskNames?: ReadonlyArray<string>;
   /** Optional. Name of the disk. */
   name?: string;
 }
@@ -665,13 +665,13 @@ export const SapDiscoveryResourceInstancePropertiesKernelVersion =
 
 export interface SapDiscoveryResourceInstanceProperties {
   /** Optional. Disk mounts on the instance. */
-  diskMounts?: Array<SapDiscoveryResourceInstancePropertiesDiskMount>;
+  diskMounts?: ReadonlyArray<SapDiscoveryResourceInstancePropertiesDiskMount>;
   /** Optional. Instance is part of a DR site. */
   isDrSite?: boolean;
   /** Optional. A list of instance URIs that are part of a cluster with this one. */
-  clusterInstances?: Array<string>;
+  clusterInstances?: ReadonlyArray<string>;
   /** Optional. App server instances on the host */
-  appInstances?: Array<SapDiscoveryResourceInstancePropertiesAppInstance>;
+  appInstances?: ReadonlyArray<SapDiscoveryResourceInstancePropertiesAppInstance>;
   /** Optional. A virtual hostname of the instance if it has one. */
   virtualHostname?: string;
   /** Optional. The VM's instance number. */
@@ -747,7 +747,7 @@ export interface SapDiscoveryResource {
   /** Optional. A set of properties only applying to instance type resources. */
   instanceProperties?: SapDiscoveryResourceInstanceProperties;
   /** Optional. A list of resource URIs related to this resource. */
-  relatedResources?: Array<string>;
+  relatedResources?: ReadonlyArray<string>;
 }
 
 export const SapDiscoveryResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -763,15 +763,15 @@ export interface SapDiscoveryComponent {
   /** Optional. The component is a SAP application. */
   applicationProperties?: SapDiscoveryComponentApplicationProperties;
   /** Optional. A list of replication sites used in Disaster Recovery (DR) configurations. */
-  replicationSites?: Array<SapDiscoveryComponentReplicationSite>;
+  replicationSites?: ReadonlyArray<SapDiscoveryComponentReplicationSite>;
   /** Required. Pantheon Project in which the resources reside. */
   hostProject?: string;
   /** Optional. A list of host URIs that are part of the HA configuration if present. An empty list indicates the component is not configured for HA. */
-  haHosts?: Array<string>;
+  haHosts?: ReadonlyArray<string>;
   /** Optional. The SAP identifier, used by the SAP software and helps differentiate systems for customers. */
   sid?: string;
   /** Optional. The resources in a component. */
-  resources?: Array<SapDiscoveryResource>;
+  resources?: ReadonlyArray<SapDiscoveryResource>;
   /** Optional. The detected topology of the component. */
   topologyType?:
     | "TOPOLOGY_TYPE_UNSPECIFIED"
@@ -904,7 +904,7 @@ export interface Rule {
   /** The severity of the rule. */
   severity?: string;
   /** List of user-defined tags. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
 }
 
 export const Rule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1004,7 +1004,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1029,7 +1029,7 @@ export const BigQueryDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GceInstanceFilter {
   /** If non-empty, only Compute Engine instances associated with at least one of the provided service accounts will be included in the evaluation. */
-  serviceAccounts?: Array<string>;
+  serviceAccounts?: ReadonlyArray<string>;
 }
 
 export const GceInstanceFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1038,9 +1038,9 @@ export const GceInstanceFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ResourceFilter {
   /** The pattern to filter resources by their id For example, a pattern of ".*prod-cluster.*" will match all resources that contain "prod-cluster" in their ID. */
-  resourceIdPatterns?: Array<string>;
+  resourceIdPatterns?: ReadonlyArray<string>;
   /** The scopes of evaluation resource. Format: * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}` */
-  scopes?: Array<string>;
+  scopes?: ReadonlyArray<string>;
   /** Labels to filter resources by. Each key-value pair in the map must exist on the resource for it to be included (e.g. VM instance labels). For example, specifying `{ "env": "prod", "database": "nosql" }` will only include resources that have labels `env=prod` and `database=nosql`. */
   inclusionLabels?: Record<string, string>;
   /** Filter compute engine resources. */
@@ -1086,7 +1086,7 @@ export interface Evaluation {
   /** Resource filter for an evaluation defining the scope of resources to be evaluated. */
   resourceFilter?: ResourceFilter;
   /** The names of the rules used for this evaluation. */
-  ruleNames?: Array<string>;
+  ruleNames?: ReadonlyArray<string>;
   /** Description of the Evaluation. */
   description?: string;
   /** Evaluation type. */
@@ -1122,9 +1122,9 @@ export interface ListEvaluationsResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
   /** The list of evaluations. */
-  evaluations?: Array<Evaluation>;
+  evaluations?: ReadonlyArray<Evaluation>;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListEvaluationsResponse =
@@ -1138,7 +1138,7 @@ export interface SapComponent {
   /** Output only. sid is the sap component identificator */
   sid?: string;
   /** List of host URIs that are part of the HA configuration if present. An empty list indicates the component is not configured for HA. */
-  haHosts?: Array<string>;
+  haHosts?: ReadonlyArray<string>;
   /** Output only. All instance properties. */
   databaseProperties?: DatabaseProperties;
   /** The detected topology of the component. */
@@ -1148,7 +1148,7 @@ export interface SapComponent {
     | "TOPOLOGY_SCALE_OUT"
     | (string & {});
   /** Output only. resources in the component */
-  resources?: Array<CloudResource>;
+  resources?: ReadonlyArray<CloudResource>;
 }
 
 export const SapComponent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1161,7 +1161,7 @@ export const SapComponent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SapWorkload {
   /** Output only. The products on this workload. */
-  products?: Array<Product>;
+  products?: ReadonlyArray<Product>;
   /** Output only. The architecture. */
   architecture?:
     | "ARCHITECTURE_UNSPECIFIED"
@@ -1211,9 +1211,9 @@ export const WorkloadProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDiscoveredProfilesResponse {
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** Output only. The list of workload profiles */
-  workloadProfiles?: Array<WorkloadProfile>;
+  workloadProfiles?: ReadonlyArray<WorkloadProfile>;
   /** Output only. A token identifying a page of results the server should return */
   nextPageToken?: string;
 }
@@ -1278,11 +1278,11 @@ export const Summary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Execution {
   /** Optional. External data sources. */
-  externalDataSources?: Array<ExternalDataSources>;
+  externalDataSources?: ReadonlyArray<ExternalDataSources>;
   /** Labels as key value pairs. */
   labels?: Record<string, string>;
   /** Output only. Additional information generated by the execution. */
-  notices?: Array<Notice>;
+  notices?: ReadonlyArray<Notice>;
   /** The name of execution resource. The format is projects/{project}/locations/{location}/evaluations/{evaluation}/executions/{execution}. */
   name?: string;
   /** Type which represents whether the execution executed directly by user or scheduled according to the `Evaluation.schedule` field. */
@@ -1301,7 +1301,7 @@ export interface Execution {
     | "FAILED"
     | (string & {});
   /** Output only. Execution result summary per rule. */
-  ruleResults?: Array<RuleExecutionResult>;
+  ruleResults?: ReadonlyArray<RuleExecutionResult>;
   /** Optional. Engine. */
   engine?: "ENGINE_UNSPECIFIED" | "ENGINE_SCANNER" | "V2" | (string & {});
   /** Output only. [Output only] Result summary for the execution. */
@@ -1330,9 +1330,9 @@ export interface ListExecutionsResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
   /** The list of Execution. */
-  executions?: Array<Execution>;
+  executions?: ReadonlyArray<Execution>;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListExecutionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1386,9 +1386,9 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<Operation>;
+  operations?: ReadonlyArray<Operation>;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1431,7 +1431,7 @@ export const AgentStatusIAMPermission =
 
 export interface AgentStatusServiceStatus {
   /** Output only. The configuration values for the service. */
-  configValues?: Array<AgentStatusConfigValue>;
+  configValues?: ReadonlyArray<AgentStatusConfigValue>;
   /** Output only. The name of the service. */
   name?: string;
   /** Output only. Whether the service is fully functional (all checks passed). */
@@ -1453,7 +1453,7 @@ export interface AgentStatusServiceStatus {
   /** Output only. The message to display when the service state is unspecified. */
   unspecifiedStateMessage?: string;
   /** Output only. The permissions required for the service. */
-  iamPermissions?: Array<AgentStatusIAMPermission>;
+  iamPermissions?: ReadonlyArray<AgentStatusIAMPermission>;
 }
 
 export const AgentStatusServiceStatus =
@@ -1478,7 +1478,7 @@ export interface AgentStatus {
     | "ERROR_STATE"
     | (string & {});
   /** Output only. Optional references to public documentation. */
-  references?: Array<AgentStatusReference>;
+  references?: ReadonlyArray<AgentStatusReference>;
   /** Output only. Whether the agent service is running in systemd. */
   systemdServiceRunning?:
     | "UNSPECIFIED_STATE"
@@ -1513,7 +1513,7 @@ export interface AgentStatus {
   /** Output only. The URI of the instance. Format: projects//zones//instances/ */
   instanceUri?: string;
   /** Output only. The services (process metrics, host metrics, etc.). */
-  services?: Array<AgentStatusServiceStatus>;
+  services?: ReadonlyArray<AgentStatusServiceStatus>;
 }
 
 export const AgentStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1737,7 +1737,7 @@ export interface SqlserverValidationValidationDetail {
     | "DB_BACKUP_POLICY"
     | (string & {});
   /** Required. Details wraps map that represents collected data names and values. */
-  details?: Array<SqlserverValidationDetails>;
+  details?: ReadonlyArray<SqlserverValidationDetails>;
 }
 
 export const SqlserverValidationValidationDetail =
@@ -1752,7 +1752,7 @@ export interface SqlserverValidation {
   /** Required. The project_id of the cloud project that the Insight data comes from. */
   projectId?: string;
   /** Optional. A list of SqlServer validation metrics data. */
-  validationDetails?: Array<SqlserverValidationValidationDetail>;
+  validationDetails?: ReadonlyArray<SqlserverValidationValidationDetail>;
   /** Required. The instance_name of the instance that the Insight data comes from. According to https://linter.aip.dev/122/name-suffix: field names should not use the _name suffix unless the field would be ambiguous without it. */
   instance?: string;
 }
@@ -1818,7 +1818,7 @@ export interface WorkloadProfileHealth {
     | "UNSUPPORTED"
     | (string & {});
   /** The detailed condition reports of each component. */
-  componentsHealth?: Array<ComponentHealth>;
+  componentsHealth?: ReadonlyArray<ComponentHealth>;
 }
 
 export const WorkloadProfileHealth = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1843,7 +1843,7 @@ export interface ActuationOutput {
   /** Output only. error message return from ansible. */
   ansibleError?: string;
   /** Output only. failed task name return from ansible. */
-  ansibleFailedTask?: Array<string>;
+  ansibleFailedTask?: ReadonlyArray<string>;
   /** Output only. Code describing any errors that may have occurred. If not specified, there is no error in actuation. */
   errorCode?:
     | "ERROR_CODE_UNSPECIFIED"
@@ -1879,7 +1879,7 @@ export const ActuationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Actuation {
   /** Output only. [Output only] Deployment output */
-  deploymentOutput?: Array<DeploymentOutput>;
+  deploymentOutput?: ReadonlyArray<DeploymentOutput>;
   /** Output only. [Output only] Actuation state */
   state?:
     | "STATE_UNSPECIFIED"
@@ -1911,9 +1911,9 @@ export const Actuation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListActuationsResponse {
   /** Unordered list. Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The list of Actuation */
-  actuations?: Array<Actuation>;
+  actuations?: ReadonlyArray<Actuation>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -1990,9 +1990,9 @@ export const Deployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListDeploymentsResponse {
   /** The list of Deployment */
-  deployments?: Array<Deployment>;
+  deployments?: ReadonlyArray<Deployment>;
   /** Unordered list. Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
@@ -2027,7 +2027,7 @@ export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -2043,7 +2043,7 @@ export interface SapValidation {
   /** Required. The project_id of the cloud project that the Insight data comes from. */
   projectId?: string;
   /** Optional. A list of SAP validation metrics data. */
-  validationDetails?: Array<SapValidationValidationDetail>;
+  validationDetails?: ReadonlyArray<SapValidationValidationDetail>;
 }
 
 export const SapValidation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2062,7 +2062,7 @@ export interface ViolationDetails {
   /** Details of the violation. */
   observed?: Record<string, string>;
   /** Output only. The rule output of the violation. */
-  ruleOutput?: Array<RuleOutput>;
+  ruleOutput?: ReadonlyArray<RuleOutput>;
 }
 
 export const ViolationDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2119,7 +2119,7 @@ export interface ExecutionResult {
   /** The resource that violates the rule. */
   resource?: Resource;
   /** The commands to remediate the violation. */
-  commands?: Array<Command>;
+  commands?: ReadonlyArray<Command>;
   /** The severity of violation. */
   severity?: string;
   /** Execution result type of the scanned resource. */
@@ -2143,7 +2143,7 @@ export const ExecutionResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListExecutionResultsResponse {
   /** The versions from the specified publisher. */
-  executionResults?: Array<ExecutionResult>;
+  executionResults?: ReadonlyArray<ExecutionResult>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2156,7 +2156,7 @@ export const ListExecutionResultsResponse =
 
 export interface ListRulesResponse {
   /** All rules in response. */
-  rules?: Array<Rule>;
+  rules?: ReadonlyArray<Rule>;
 }
 
 export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2233,9 +2233,9 @@ export const SapDiscoveryWorkloadPropertiesSoftwareComponentProperties =
 
 export interface SapDiscoveryWorkloadProperties {
   /** Optional. List of SAP Products and their versions running on the system. */
-  productVersions?: Array<SapDiscoveryWorkloadPropertiesProductVersion>;
+  productVersions?: ReadonlyArray<SapDiscoveryWorkloadPropertiesProductVersion>;
   /** Optional. A list of SAP software components and their versions running on the system. */
-  softwareComponentVersions?: Array<SapDiscoveryWorkloadPropertiesSoftwareComponentProperties>;
+  softwareComponentVersions?: ReadonlyArray<SapDiscoveryWorkloadPropertiesSoftwareComponentProperties>;
 }
 
 export const SapDiscoveryWorkloadProperties =
@@ -2326,7 +2326,7 @@ export interface ListScannedResourcesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** All scanned resources in response. */
-  scannedResources?: Array<ScannedResource>;
+  scannedResources?: ReadonlyArray<ScannedResource>;
 }
 
 export const ListScannedResourcesResponse =
@@ -2363,10 +2363,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -2411,7 +2408,7 @@ export const ListProjectsLocationsRequest =
       T.HttpQuery("extraLocationTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -2446,10 +2443,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -2480,10 +2474,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -2517,11 +2508,7 @@ export const CancelProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(CancelOperationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -2566,10 +2553,7 @@ export const ListProjectsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -2609,7 +2593,7 @@ export const WriteInsightProjectsLocationsInsightsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/insights:writeInsight",
+      path: "v1/{location}/insights:writeInsight",
       hasBody: true,
     }),
     svc,
@@ -2646,10 +2630,7 @@ export const DeleteProjectsLocationsInsightsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/insights/{insightsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsInsightsRequest>;
 
@@ -2692,10 +2673,7 @@ export const ListProjectsLocationsDeploymentsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deployments",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/deployments" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDeploymentsRequest>;
 
@@ -2730,10 +2708,7 @@ export const GetProjectsLocationsDeploymentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deployments/{deploymentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDeploymentsRequest>;
 
@@ -2775,11 +2750,7 @@ export const CreateProjectsLocationsDeploymentsRequest =
     ),
     body: Schema.optional(Deployment).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deployments",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/deployments", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDeploymentsRequest>;
 
@@ -2813,10 +2784,7 @@ export const DeleteProjectsLocationsDeploymentsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deployments/{deploymentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDeploymentsRequest>;
 
@@ -2847,10 +2815,7 @@ export const GetProjectsLocationsDeploymentsActuationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deployments/{deploymentsId}/actuations/{actuationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDeploymentsActuationsRequest>;
 
@@ -2887,11 +2852,7 @@ export const CreateProjectsLocationsDeploymentsActuationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Actuation).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deployments/{deploymentsId}/actuations",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/actuations", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDeploymentsActuationsRequest>;
 
@@ -2922,10 +2883,7 @@ export const DeleteProjectsLocationsDeploymentsActuationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deployments/{deploymentsId}/actuations/{actuationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDeploymentsActuationsRequest>;
 
@@ -2968,10 +2926,7 @@ export const ListProjectsLocationsDeploymentsActuationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deployments/{deploymentsId}/actuations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/actuations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDeploymentsActuationsRequest>;
 
@@ -3007,10 +2962,7 @@ export const GetProjectsLocationsDiscoveredprofilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/discoveredprofiles/{discoveredprofilesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDiscoveredprofilesRequest>;
 
@@ -3050,10 +3002,7 @@ export const ListProjectsLocationsDiscoveredprofilesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/discoveredprofiles",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/discoveredprofiles" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDiscoveredprofilesRequest>;
 
@@ -3089,10 +3038,7 @@ export const GetProjectsLocationsDiscoveredprofilesHealthRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/discoveredprofiles/{discoveredprofilesId}/health/{healthId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDiscoveredprofilesHealthRequest>;
 
@@ -3133,11 +3079,7 @@ export const PatchProjectsLocationsEvaluationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(Evaluation).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluations/{evaluationsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsEvaluationsRequest>;
 
@@ -3180,10 +3122,7 @@ export const ListProjectsLocationsEvaluationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/evaluations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEvaluationsRequest>;
 
@@ -3218,10 +3157,7 @@ export const GetProjectsLocationsEvaluationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluations/{evaluationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsEvaluationsRequest>;
 
@@ -3263,11 +3199,7 @@ export const CreateProjectsLocationsEvaluationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(Evaluation).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluations",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/evaluations", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsEvaluationsRequest>;
 
@@ -3304,10 +3236,7 @@ export const DeleteProjectsLocationsEvaluationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluations/{evaluationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsEvaluationsRequest>;
 
@@ -3338,10 +3267,7 @@ export const GetProjectsLocationsEvaluationsExecutionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluations/{evaluationsId}/executions/{executionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsEvaluationsExecutionsRequest>;
 
@@ -3375,10 +3301,7 @@ export const DeleteProjectsLocationsEvaluationsExecutionsRequest =
     requestId: Schema.optional(Schema.String).pipe(T.HttpQuery("requestId")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluations/{evaluationsId}/executions/{executionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsEvaluationsExecutionsRequest>;
 
@@ -3421,10 +3344,7 @@ export const ListProjectsLocationsEvaluationsExecutionsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluations/{evaluationsId}/executions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/executions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEvaluationsExecutionsRequest>;
 
@@ -3463,11 +3383,7 @@ export const RunProjectsLocationsEvaluationsExecutionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(RunEvaluationRequest).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluations/{evaluationsId}/executions:run",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}/executions:run", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RunProjectsLocationsEvaluationsExecutionsRequest>;
 
@@ -3507,10 +3423,7 @@ export const ListProjectsLocationsEvaluationsExecutionsResultsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluations/{evaluationsId}/executions/{executionsId}/results",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/results" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEvaluationsExecutionsResultsRequest>;
 
@@ -3562,10 +3475,7 @@ export const ListProjectsLocationsEvaluationsExecutionsScannedResourcesRequest =
     rule: Schema.optional(Schema.String).pipe(T.HttpQuery("rule")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluations/{evaluationsId}/executions/{executionsId}/scannedResources",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/scannedResources" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEvaluationsExecutionsScannedResourcesRequest>;
 
@@ -3626,10 +3536,7 @@ export const ListProjectsLocationsRulesRequest =
     ),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/rules",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/rules" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRulesRequest>;
 

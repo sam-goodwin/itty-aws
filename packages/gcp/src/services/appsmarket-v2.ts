@@ -77,7 +77,7 @@ export interface CustomerLicense {
   /** The ID of the application corresponding to this license query. */
   applicationId?: string;
   /** (Deprecated) */
-  editions?: Array<Editions>;
+  editions?: ReadonlyArray<Editions>;
   /** The domain name of the customer. */
   customerId?: string;
 }

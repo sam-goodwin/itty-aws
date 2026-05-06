@@ -144,7 +144,7 @@ export interface AggregateProductStatus {
     | "YOUTUBE_CHECKOUT"
     | (string & {});
   /** The product issues that affect the given reporting context and country. */
-  itemLevelIssues?: Array<ItemLevelIssue>;
+  itemLevelIssues?: ReadonlyArray<ItemLevelIssue>;
   /** The country of the aggregate product statuses. Represented as a [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml). */
   country?: string;
 }
@@ -163,7 +163,7 @@ export interface AdditionalContent {
   /** Title of the additional content; */
   title?: string;
   /** Long text organized into paragraphs. */
-  paragraphs?: Array<string>;
+  paragraphs?: ReadonlyArray<string>;
 }
 
 export const AdditionalContent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -201,7 +201,7 @@ export const CheckboxInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ChoiceInput {
   /** A list of choices. Only one option can be selected. */
-  options?: Array<ChoiceInputOption>;
+  options?: ReadonlyArray<ChoiceInputOption>;
 }
 
 export const ChoiceInput: Schema.Schema<ChoiceInput> =
@@ -307,7 +307,7 @@ export const InputValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ActionInput {
   /** Required. Values for input fields. */
-  inputValues?: Array<InputValue>;
+  inputValues?: ReadonlyArray<InputValue>;
   /** Required. Id of the selected action flow. */
   actionFlowId?: string;
 }
@@ -331,7 +331,7 @@ export interface ActionFlow {
   /** Label for the button to trigger the action from the action dialog. For example: "Request review" */
   dialogButtonLabel?: string;
   /** A list of input fields. */
-  inputs?: Array<InputField>;
+  inputs?: ReadonlyArray<InputField>;
 }
 
 export const ActionFlow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -397,9 +397,9 @@ export const Region = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Breakdown {
   /** Lists of regions. Should be rendered as a title for this group of details. The full list should be shown to the business. If the list is too long, it is recommended to make it expandable. */
-  regions?: Array<Region>;
+  regions?: ReadonlyArray<Region>;
   /** Human readable, localized description of issue's effect on different targets. Should be rendered as a list. For example: * "Products not showing in ads" * "Products not showing organically" */
-  details?: Array<string>;
+  details?: ReadonlyArray<string>;
 }
 
 export const Breakdown = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -418,7 +418,7 @@ export interface Impact {
     | "INFO"
     | (string & {});
   /** Detailed impact breakdown. Explains the types of restriction the issue has in different shopping destinations and territory. If present, it should be rendered to the business. Can be shown as a mouse over dropdown or a dialog. Each breakdown item represents a group of regions with the same impact details. */
-  breakdowns?: Array<Breakdown>;
+  breakdowns?: ReadonlyArray<Breakdown>;
 }
 
 export const Impact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -431,7 +431,7 @@ export interface BuiltInUserInputAction {
   /** Contains the action's context that must be included as part of the TriggerActionPayload.action_context in TriggerActionRequest.payload to call the `triggeraction` method. The content should be treated as opaque and must not be modified. */
   actionContext?: string;
   /** Actions may provide multiple different flows. Business selects one that fits best to their intent. Selecting the flow is the first step in user's interaction with the action. It affects what input fields will be available and required and also how the request will be processed. */
-  flows?: Array<ActionFlow>;
+  flows?: ReadonlyArray<ActionFlow>;
 }
 
 export const BuiltInUserInputAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -516,7 +516,7 @@ export interface Action {
   /** Label of the action button. */
   buttonLabel?: string;
   /** List of reasons why the action is not available. The list of reasons is empty if the action is available. If there is only one reason, it can be displayed next to the disabled button. If there are more reasons, all of them should be displayed, for example in a pop-up dialog. */
-  reasons?: Array<Reason>;
+  reasons?: ReadonlyArray<Reason>;
 }
 
 export const Action: Schema.Schema<Action> =
@@ -539,7 +539,7 @@ export interface RenderedIssue {
   /** Clarifies the severity of the issue. The summarizing message, if present, should be shown right under the title for each issue. It helps business to quickly understand the impact of the issue. The detailed breakdown helps the business to fully understand the impact of the issue. It can be rendered as dialog that opens when the business mouse over the summarized impact statement. Issues with different severity can be styled differently. They may use a different color or icon to signal the difference between `ERROR`, `WARNING` and `INFO`. */
   impact?: Impact;
   /** A list of actionable steps that can be executed to solve the issue. An example is requesting a re-review or providing arguments when business disagrees with the issue. Actions that are supported in (your) third-party application can be rendered as buttons and should be available to the business when they expand the issue. */
-  actions?: Array<Action>;
+  actions?: ReadonlyArray<Action>;
   /** Title of the issue. */
   title?: string;
 }
@@ -554,7 +554,7 @@ export const RenderedIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RenderProductIssuesResponse {
   /** List of issues for a given product. This list can be shown with compressed, expandable items. In the compressed form, the title and impact should be shown for each issue. Once the issue is expanded, the detailed content and available actions should be rendered. */
-  renderedIssues?: Array<RenderedIssue>;
+  renderedIssues?: ReadonlyArray<RenderedIssue>;
 }
 
 export const RenderProductIssuesResponse =
@@ -566,7 +566,7 @@ export interface ListAggregateProductStatusesResponse {
   /** A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The `AggregateProductStatuses` resources for the given account. */
-  aggregateProductStatuses?: Array<AggregateProductStatus>;
+  aggregateProductStatuses?: ReadonlyArray<AggregateProductStatus>;
 }
 
 export const ListAggregateProductStatusesResponse =
@@ -579,7 +579,7 @@ export const ListAggregateProductStatusesResponse =
 
 export interface RenderAccountIssuesResponse {
   /** List of account issues for a given account. This list can be shown with compressed, expandable items. In the compressed form, the title and impact should be shown for each issue. Once the issue is expanded, the detailed content and available actions should be rendered. */
-  renderedIssues?: Array<RenderedIssue>;
+  renderedIssues?: ReadonlyArray<RenderedIssue>;
 }
 
 export const RenderAccountIssuesResponse =
@@ -610,7 +610,7 @@ export const TriggerActionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ProductStatusChangeMessage {
   /** A message to describe the change that happened to the product */
-  changes?: Array<ProductChange>;
+  changes?: ReadonlyArray<ProductChange>;
   /** The product id. */
   resourceId?: string;
   /** The target account that owns the entity that changed. Format : `accounts/{merchant_id}` */
@@ -686,7 +686,7 @@ export const ListAccountsAggregateProductStatusesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "issueresolution/v1beta/accounts/{accountsId}/aggregateProductStatuses",
+      path: "issueresolution/v1beta/{parent}/aggregateProductStatuses",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsAggregateProductStatusesRequest>;
@@ -736,7 +736,7 @@ export const RenderaccountissuesIssueresolutionRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "issueresolution/v1beta/accounts/{accountsId}:renderaccountissues",
+      path: "issueresolution/v1beta/{name}:renderaccountissues",
       hasBody: true,
     }),
     svc,
@@ -783,7 +783,7 @@ export const RenderproductissuesIssueresolutionRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "issueresolution/v1beta/accounts/{accountsId}/products/{productsId}:renderproductissues",
+      path: "issueresolution/v1beta/{name}:renderproductissues",
       hasBody: true,
     }),
     svc,
@@ -827,7 +827,7 @@ export const TriggeractionIssueresolutionRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "issueresolution/v1beta/accounts/{accountsId}:triggeraction",
+      path: "issueresolution/v1beta/{name}:triggeraction",
       hasBody: true,
     }),
     svc,

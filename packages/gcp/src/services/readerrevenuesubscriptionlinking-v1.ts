@@ -71,7 +71,7 @@ export interface ReaderEntitlements {
   /** Output only. The resource name of the singleton. */
   name?: string;
   /** All of the entitlements for a publication reader. */
-  entitlements?: Array<Entitlement>;
+  entitlements?: ReadonlyArray<Entitlement>;
 }
 
 export const ReaderEntitlements = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -92,10 +92,7 @@ export const GetEntitlementsPublicationsReadersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/publications/{publicationsId}/readers/{readersId}/entitlements",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEntitlementsPublicationsReadersRequest>;
 
@@ -132,11 +129,7 @@ export const UpdateEntitlementsPublicationsReadersRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(ReaderEntitlements).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/publications/{publicationsId}/readers/{readersId}/entitlements",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateEntitlementsPublicationsReadersRequest>;
 
@@ -167,10 +160,7 @@ export const GetPublicationsReadersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/publications/{publicationsId}/readers/{readersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPublicationsReadersRequest>;
 
@@ -204,10 +194,7 @@ export const DeletePublicationsReadersRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/publications/{publicationsId}/readers/{readersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePublicationsReadersRequest>;
 

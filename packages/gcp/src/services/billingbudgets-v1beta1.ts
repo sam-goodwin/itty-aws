@@ -52,11 +52,11 @@ export const GoogleCloudBillingBudgetsV1beta1CustomPeriod =
 
 export interface GoogleCloudBillingBudgetsV1beta1Filter {
   /** Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on. */
-  projects?: Array<string>;
+  projects?: ReadonlyArray<string>;
   /** Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects. */
-  resourceAncestors?: Array<string>;
+  resourceAncestors?: ReadonlyArray<string>;
   /** Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See [a list of acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type). If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS, this field must be empty. */
-  creditTypes?: Array<string>;
+  creditTypes?: ReadonlyArray<string>;
   /** Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`. */
   creditTypesTreatment?:
     | "CREDIT_TYPES_TREATMENT_UNSPECIFIED"
@@ -65,11 +65,11 @@ export interface GoogleCloudBillingBudgetsV1beta1Filter {
     | "INCLUDE_SPECIFIED_CREDITS"
     | (string & {});
   /** Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report will include usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api. */
-  services?: Array<string>;
+  services?: ReadonlyArray<string>;
   /** Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying that usage from only this set of subaccounts should be included in the budget. If a subaccount is set to the name of the parent account, usage from the parent account will be included. If omitted, the report will include usage from the parent account and all subaccounts, if they exist. */
-  subaccounts?: Array<string>;
+  subaccounts?: ReadonlyArray<string>;
   /** Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. If omitted, the report will include all labeled and unlabeled usage. An object containing a single `"key": value` pair. Example: `{ "name": "wrench" }`. _Currently, multiple entries or multiple values per entry are not allowed._ */
-  labels?: Record<string, Array<unknown>>;
+  labels?: Record<string, ReadonlyArray<unknown>>;
   /** Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when the current calendar month is July, August, September, so on. */
   calendarPeriod?:
     | "CALENDAR_PERIOD_UNSPECIFIED"
@@ -156,7 +156,7 @@ export interface GoogleCloudBillingBudgetsV1beta1AllUpdatesRule {
   /** Optional. Required when AllUpdatesRule.pubsub_topic is set. The schema version of the notification sent to AllUpdatesRule.pubsub_topic. Only "1.0" is accepted. It represents the JSON schema as defined in https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format. */
   schemaVersion?: string;
   /** Optional. Targets to send notifications to when a threshold is exceeded. This is in addition to default recipients who have billing account IAM roles. The value is the full REST resource name of a monitoring notification channel with the form `projects/{project_id}/notificationChannels/{channel_id}`. A maximum of 5 channels are allowed. See https://cloud.google.com/billing/docs/how-to/budgets-notification-recipients for more details. */
-  monitoringNotificationChannels?: Array<string>;
+  monitoringNotificationChannels?: ReadonlyArray<string>;
   /** Optional. When set to true, disables default notifications sent when a threshold is exceeded. Default notifications are sent to those with Billing Account Administrator and Billing Account User IAM roles for the target account. */
   disableDefaultIamRecipients?: boolean;
   /** Optional. When set to true, and when the budget has a single project configured, notifications will be sent to project level recipients of that project. This field will be ignored if the budget has multiple or no project configured. Currently, project level recipients are the users with `Owner` role on a cloud project. */
@@ -184,7 +184,7 @@ export interface GoogleCloudBillingBudgetsV1beta1Budget {
   /** Required. Budgeted amount. */
   amount?: GoogleCloudBillingBudgetsV1beta1BudgetAmount;
   /** Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications. */
-  thresholdRules?: Array<GoogleCloudBillingBudgetsV1beta1ThresholdRule>;
+  thresholdRules?: ReadonlyArray<GoogleCloudBillingBudgetsV1beta1ThresholdRule>;
   /** Optional. Rules to apply to notifications sent based on budget spend and thresholds. */
   allUpdatesRule?: GoogleCloudBillingBudgetsV1beta1AllUpdatesRule;
   /** Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes. */
@@ -241,7 +241,7 @@ export const GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest =
 
 export interface GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse {
   /** List of the budgets owned by the requested billing account. */
-  budgets?: Array<GoogleCloudBillingBudgetsV1beta1Budget>;
+  budgets?: ReadonlyArray<GoogleCloudBillingBudgetsV1beta1Budget>;
   /** If not empty, indicates that there may be more budgets that match the request; this value should be passed in a new `ListBudgetsRequest`. */
   nextPageToken?: string;
 }
@@ -280,11 +280,7 @@ export const CreateBillingAccountsBudgetsRequest =
       GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/billingAccounts/{billingAccountsId}/budgets",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{parent}/budgets", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateBillingAccountsBudgetsRequest>;
 
@@ -321,11 +317,7 @@ export const PatchBillingAccountsBudgetsRequest =
       GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/billingAccounts/{billingAccountsId}/budgets/{budgetsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchBillingAccountsBudgetsRequest>;
 
@@ -357,10 +349,7 @@ export const GetBillingAccountsBudgetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/billingAccounts/{billingAccountsId}/budgets/{budgetsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBillingAccountsBudgetsRequest>;
 
@@ -401,10 +390,7 @@ export const ListBillingAccountsBudgetsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/billingAccounts/{billingAccountsId}/budgets",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/budgets" }),
     svc,
   ) as unknown as Schema.Schema<ListBillingAccountsBudgetsRequest>;
 
@@ -440,10 +426,7 @@ export const DeleteBillingAccountsBudgetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/billingAccounts/{billingAccountsId}/budgets/{budgetsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteBillingAccountsBudgetsRequest>;
 

@@ -2681,31 +2681,31 @@ export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedExcept
 export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
   "InvalidArgumentException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
   "LimitExceededException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withQuotaError, C.withRetryableError) {}
 export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
   "ResourceInUseException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withConflictError, C.withRetryableError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withNotFoundError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class ExpiredIteratorException extends S.TaggedErrorClass<ExpiredIteratorException>()(
   "ExpiredIteratorException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
   "InternalFailureException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withServerError, C.withRetryableError) {}
 export class KMSAccessDeniedException extends S.TaggedErrorClass<KMSAccessDeniedException>()(
   "KMSAccessDeniedException",
   { message: S.optional(S.String) },
@@ -2713,31 +2713,31 @@ export class KMSAccessDeniedException extends S.TaggedErrorClass<KMSAccessDenied
 export class KMSDisabledException extends S.TaggedErrorClass<KMSDisabledException>()(
   "KMSDisabledException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class KMSInvalidStateException extends S.TaggedErrorClass<KMSInvalidStateException>()(
   "KMSInvalidStateException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class KMSNotFoundException extends S.TaggedErrorClass<KMSNotFoundException>()(
   "KMSNotFoundException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class KMSOptInRequired extends S.TaggedErrorClass<KMSOptInRequired>()(
   "KMSOptInRequired",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 export class KMSThrottlingException extends S.TaggedErrorClass<KMSThrottlingException>()(
   "KMSThrottlingException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ProvisionedThroughputExceededException extends S.TaggedErrorClass<ProvisionedThroughputExceededException>()(
   "ProvisionedThroughputExceededException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ExpiredNextTokenException extends S.TaggedErrorClass<ExpiredNextTokenException>()(
   "ExpiredNextTokenException",
   { message: S.optional(S.String) },
-) {}
+).pipe(C.withBadRequestError) {}
 
 //# Operations
 export type AddTagsToStreamError =

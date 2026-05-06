@@ -51,7 +51,7 @@ export interface AppState {
   /** The package name of the app. This field will always be present. */
   packageName?: string;
   /** List of keyed app states. This field will always be present. */
-  keyedAppState?: Array<KeyedAppState>;
+  keyedAppState?: ReadonlyArray<KeyedAppState>;
 }
 
 export const AppState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -63,7 +63,7 @@ export interface DeviceReport {
   /** The timestamp of the last report update in milliseconds since epoch. This field will always be present. */
   lastUpdatedTimestampMillis?: string;
   /** List of app states set by managed apps on the device. App states are defined by the app's developers. This field will always be present. */
-  appState?: Array<AppState>;
+  appState?: ReadonlyArray<AppState>;
 }
 
 export const DeviceReport = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -119,7 +119,7 @@ export interface AutoInstallPolicy {
     | "forceAutoInstall"
     | (string & {});
   /** The constraints for auto-installing the app. You can specify a maximum of one constraint. */
-  autoInstallConstraint?: Array<AutoInstallConstraint>;
+  autoInstallConstraint?: ReadonlyArray<AutoInstallConstraint>;
   /** The priority of the install, as an unsigned integer. A lower number means higher priority. */
   autoInstallPriority?: number;
   /** The minimum version of the app. If a lower version of the app is installed, then the app will be auto-updated according to the auto-install constraints, instead of waiting for the regular auto-update. You can set a minimum version code for at most 20 apps per device. */
@@ -149,7 +149,7 @@ export interface ConfigurationVariables {
   /** The ID of the managed configurations settings. */
   mcmId?: string;
   /** The variable set that is attributed to the user. */
-  variableSet?: Array<VariableSet>;
+  variableSet?: ReadonlyArray<VariableSet>;
 }
 
 export const ConfigurationVariables = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -161,7 +161,7 @@ export const ConfigurationVariables = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ManagedPropertyBundle {
   /** The list of managed properties. */
-  managedProperty?: Array<ManagedProperty>;
+  managedProperty?: ReadonlyArray<ManagedProperty>;
 }
 
 export const ManagedPropertyBundle: Schema.Schema<ManagedPropertyBundle> =
@@ -181,11 +181,11 @@ export interface ManagedProperty {
   /** The bundle of managed properties - this will only be present if type of the property is bundle. */
   valueBundle?: ManagedPropertyBundle;
   /** The list of bundles of properties - this will only be present if type of the property is bundle_array. */
-  valueBundleArray?: Array<ManagedPropertyBundle>;
+  valueBundleArray?: ReadonlyArray<ManagedPropertyBundle>;
   /** The unique key that identifies the property. */
   key?: string;
   /** The list of string values - this will only be present if type of the property is multiselect. */
-  valueStringArray?: Array<string>;
+  valueStringArray?: ReadonlyArray<string>;
   /** The integer value - this will only be present if type of the property is integer. */
   valueInteger?: number;
 }
@@ -213,7 +213,7 @@ export interface ManagedConfiguration {
   /** Deprecated. */
   kind?: string;
   /** The set of managed properties for this configuration. */
-  managedProperty?: Array<ManagedProperty>;
+  managedProperty?: ReadonlyArray<ManagedProperty>;
 }
 
 export const ManagedConfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -237,7 +237,7 @@ export interface ProductPolicy {
   /** The ID of the product. For example, "app:com.google.android.gm". */
   productId?: string;
   /** Grants the device visibility to the specified product release track(s), identified by trackIds. The list of release tracks of a product can be obtained by calling Products.Get. */
-  trackIds?: Array<string>;
+  trackIds?: ReadonlyArray<string>;
   /** The auto-update mode for the product. When autoUpdateMode is used, it always takes precedence over the user's choice. So when a user makes changes to the device settings manually, these changes are ignored. */
   autoUpdateMode?:
     | "autoUpdateModeUnspecified"
@@ -250,9 +250,9 @@ export interface ProductPolicy {
   /** The managed configuration for the product. */
   managedConfiguration?: ManagedConfiguration;
   /** An authentication URL configuration for the authenticator app of an identity provider. This helps to launch the identity provider's authenticator app during the authentication happening in a private app using Android WebView. Authenticator app should already be the default handler for the authentication url on the device. */
-  enterpriseAuthenticationAppLinkConfigs?: Array<EnterpriseAuthenticationAppLinkConfig>;
+  enterpriseAuthenticationAppLinkConfigs?: ReadonlyArray<EnterpriseAuthenticationAppLinkConfig>;
   /** Deprecated. Use trackIds instead. */
-  tracks?: Array<
+  tracks?: ReadonlyArray<
     "appTrackUnspecified" | "production" | "beta" | "alpha" | (string & {})
   >;
 }
@@ -295,7 +295,7 @@ export interface Policy {
   /** An identifier for the policy that will be passed with the app install feedback sent from the Play Store. */
   policyId?: string;
   /** The list of product policies. The productAvailabilityPolicy needs to be set to WHITELIST or ALL for the product policies to be applied. */
-  productPolicy?: Array<ProductPolicy>;
+  productPolicy?: ReadonlyArray<ProductPolicy>;
 }
 
 export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -353,7 +353,7 @@ export const Device = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DevicesListResponse {
   /** A managed device. */
-  device?: Array<Device>;
+  device?: ReadonlyArray<Device>;
 }
 
 export const DevicesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -408,7 +408,7 @@ export const GroupLicense = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GroupLicensesListResponse {
   /** A group license for a product approved for use in the enterprise. */
-  groupLicense?: Array<GroupLicense>;
+  groupLicense?: ReadonlyArray<GroupLicense>;
 }
 
 export const GroupLicensesListResponse =
@@ -458,7 +458,7 @@ export const ManagedConfigurationsSettings =
 
 export interface ManagedConfigurationsSettingsListResponse {
   /** A managed configurations settings for an app that may be assigned to a group of users in an enterprise. */
-  managedConfigurationsSettings?: Array<ManagedConfigurationsSettings>;
+  managedConfigurationsSettings?: ReadonlyArray<ManagedConfigurationsSettings>;
 }
 
 export const ManagedConfigurationsSettingsListResponse =
@@ -538,7 +538,7 @@ export const AdministratorWebTokenSpecPrivateApps =
 
 export interface ManagedConfigurationsForUserListResponse {
   /** A managed configuration for an app for a specific user. */
-  managedConfigurationForUser?: Array<ManagedConfiguration>;
+  managedConfigurationForUser?: ReadonlyArray<ManagedConfiguration>;
 }
 
 export const ManagedConfigurationsForUserListResponse =
@@ -550,7 +550,7 @@ export const ManagedConfigurationsForUserListResponse =
 
 export interface ServiceAccountKeysListResponse {
   /** The service account credentials. */
-  serviceAccountKey?: Array<ServiceAccountKey>;
+  serviceAccountKey?: ReadonlyArray<ServiceAccountKey>;
 }
 
 export const ServiceAccountKeysListResponse =
@@ -571,9 +571,9 @@ export interface StoreCluster {
   /** Unique ID of this cluster. Assigned by the server. Immutable once assigned. */
   id?: string;
   /** Ordered list of localized strings giving the name of this page. The text displayed is the one that best matches the user locale, or the first entry if there is no good match. There needs to be at least one entry. */
-  name?: Array<LocalizedText>;
+  name?: ReadonlyArray<LocalizedText>;
   /** List of products in the order they are displayed in the cluster. There should not be duplicates within a cluster. */
-  productId?: Array<string>;
+  productId?: ReadonlyArray<string>;
   /** String (US-ASCII only) used to determine order of this cluster within the parent page's elements. Page elements are sorted in lexicographic order of this field. Duplicated values are allowed, but ordering between elements with duplicate order is undefined. The value of this field is never visible to a user, it is used solely for the purpose of defining an ordering. Maximum length is 256 characters. */
   orderInPage?: string;
 }
@@ -587,7 +587,7 @@ export const StoreCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StoreLayoutClustersListResponse {
   /** A store cluster of an enterprise. */
-  cluster?: Array<StoreCluster>;
+  cluster?: ReadonlyArray<StoreCluster>;
 }
 
 export const StoreLayoutClustersListResponse =
@@ -643,11 +643,11 @@ export const AppUpdateEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StorePage {
   /** Ordered list of localized strings giving the name of this page. The text displayed is the one that best matches the user locale, or the first entry if there is no good match. There needs to be at least one entry. */
-  name?: Array<LocalizedText>;
+  name?: ReadonlyArray<LocalizedText>;
   /** Unique ID of this page. Assigned by the server. Immutable once assigned. */
   id?: string;
   /** Ordered list of pages a user should be able to reach from this page. The list can't include this page. It is recommended that the basic pages are created first, before adding the links between pages. The API doesn't verify that the pages exist or the pages are reachable. */
-  link?: Array<string>;
+  link?: ReadonlyArray<string>;
 }
 
 export const StorePage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -732,7 +732,7 @@ export const AdministratorWebTokenSpecPlaySearch =
 
 export interface ManagedConfigurationsForDeviceListResponse {
   /** A managed configuration for an app on a specific device. */
-  managedConfigurationForDevice?: Array<ManagedConfiguration>;
+  managedConfigurationForDevice?: ReadonlyArray<ManagedConfiguration>;
 }
 
 export const ManagedConfigurationsForDeviceListResponse =
@@ -744,7 +744,7 @@ export const ManagedConfigurationsForDeviceListResponse =
 
 export interface StoreLayoutPagesListResponse {
   /** A store page of an enterprise. */
-  page?: Array<StorePage>;
+  page?: ReadonlyArray<StorePage>;
 }
 
 export const StoreLayoutPagesListResponse =
@@ -766,7 +766,7 @@ export const Entitlement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface EntitlementsListResponse {
   /** An entitlement of a user to a product (e.g. an app). For example, a free app that they have installed, or a paid app that they have been allocated a license to. */
-  entitlement?: Array<Entitlement>;
+  entitlement?: ReadonlyArray<Entitlement>;
 }
 
 export const EntitlementsListResponse =
@@ -778,9 +778,9 @@ export interface ProductVisibility {
   /** The product ID to make visible to the user. Required for each item in the productVisibility list. */
   productId?: string;
   /** Grants the user visibility to the specified product track(s), identified by trackIds. */
-  trackIds?: Array<string>;
+  trackIds?: ReadonlyArray<string>;
   /** Deprecated. Use trackIds instead. */
-  tracks?: Array<
+  tracks?: ReadonlyArray<
     "appTrackUnspecified" | "production" | "beta" | "alpha" | (string & {})
   >;
 }
@@ -839,7 +839,7 @@ export interface ProductPermissions {
   /** The ID of the app that the permissions relate to, e.g. "app:com.google.android.gm". */
   productId?: string;
   /** The permissions required by the app. */
-  permission?: Array<ProductPermission>;
+  permission?: ReadonlyArray<ProductPermission>;
 }
 
 export const ProductPermissions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -911,7 +911,7 @@ export interface Enterprise {
   /** The name of the enterprise, for example, "Example, Inc". */
   name?: string;
   /** Admins of the enterprise. This is only supported for enterprises created via the EMM-initiated flow. */
-  administrator?: Array<Administrator>;
+  administrator?: ReadonlyArray<Administrator>;
 }
 
 export const Enterprise = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -926,7 +926,7 @@ export const Enterprise = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface EnterprisesListResponse {
   /** An enterprise. */
-  enterprise?: Array<Enterprise>;
+  enterprise?: ReadonlyArray<Enterprise>;
 }
 
 export const EnterprisesListResponse =
@@ -1027,9 +1027,9 @@ export const ProductApprovalEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface NewPermissionsEvent {
   /** The set of permissions that the enterprise admin has already approved for this application. Use Permissions.Get on the EMM API to retrieve details about these permissions. */
-  approvedPermissions?: Array<string>;
+  approvedPermissions?: ReadonlyArray<string>;
   /** The set of permissions that the app is currently requesting. Use Permissions.Get on the EMM API to retrieve details about these permissions. */
-  requestedPermissions?: Array<string>;
+  requestedPermissions?: ReadonlyArray<string>;
   /** The id of the product (e.g. "app:com.google.android.gm") for which new permissions were added. This field will always be present. */
   productId?: string;
 }
@@ -1126,7 +1126,7 @@ export interface AppRestrictionsSchemaRestrictionRestrictionValue {
   /** The string value - this will be present for types string, choice and hidden. */
   valueString?: string;
   /** The list of string values - this will only be present if type is multiselect. */
-  valueMultiselect?: Array<string>;
+  valueMultiselect?: ReadonlyArray<string>;
   /** The boolean value - this will only be present if type is bool. */
   valueBool?: boolean;
 }
@@ -1155,7 +1155,7 @@ export interface AppRestrictionsSchemaRestriction {
     | "bundleArray"
     | (string & {});
   /** For choice or multiselect restrictions, the list of possible entries' human-readable names. */
-  entry?: Array<string>;
+  entry?: ReadonlyArray<string>;
   /** The unique key that the product uses to identify the restriction, e.g. "com.google.android.gm.fieldname". */
   key?: string;
   /** The name of the restriction. */
@@ -1165,9 +1165,9 @@ export interface AppRestrictionsSchemaRestriction {
   /** A longer description of the restriction, giving more detail of what it affects. */
   description?: string;
   /** For choice or multiselect restrictions, the list of possible entries' machine-readable values. These values should be used in the configuration, either as a single string value for a choice restriction or in a stringArray for a multiselect restriction. */
-  entryValue?: Array<string>;
+  entryValue?: ReadonlyArray<string>;
   /** For bundle or bundleArray restrictions, the list of nested restrictions. A bundle restriction is always nested within a bundleArray restriction, and a bundleArray restriction is at most two levels deep. */
-  nestedRestriction?: Array<AppRestrictionsSchemaRestriction>;
+  nestedRestriction?: ReadonlyArray<AppRestrictionsSchemaRestriction>;
 }
 
 export const AppRestrictionsSchemaRestriction: Schema.Schema<AppRestrictionsSchemaRestriction> =
@@ -1194,7 +1194,7 @@ export interface AppRestrictionsSchema {
   /** Deprecated. */
   kind?: string;
   /** The set of restrictions that make up this schema. */
-  restrictions?: Array<AppRestrictionsSchemaRestriction>;
+  restrictions?: ReadonlyArray<AppRestrictionsSchemaRestriction>;
 }
 
 export const AppRestrictionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1219,7 +1219,7 @@ export interface AppVersion {
   /** Unique increasing identifier for the app version. */
   versionCode?: number;
   /** Track ids that the app version is published in. Replaces the track field (deprecated), but doesn't include the production track (see isProduction instead). */
-  trackId?: Array<string>;
+  trackId?: ReadonlyArray<string>;
 }
 
 export const AppVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1251,13 +1251,13 @@ export interface Product {
   /** A link to the managed Google Play details page for the product, for use by an Enterprise admin. */
   workDetailsUrl?: string;
   /** The countries which this app is available in. */
-  availableCountries?: Array<string>;
+  availableCountries?: ReadonlyArray<string>;
   /** A link to the (consumer) Google Play details page for the product. */
   detailsUrl?: string;
   /** Deprecated. */
   requiresContainerApp?: boolean;
   /** Noteworthy features (if any) of this product. */
-  features?: Array<"featureUnknown" | "vpnApp" | (string & {})>;
+  features?: ReadonlyArray<"featureUnknown" | "vpnApp" | (string & {})>;
   /** How and to whom the package is made available. The value publicGoogleHosted means that the package is available through the Play store and not restricted to a specific enterprise. The value privateGoogleHosted means that the package is a private app (restricted to an enterprise) but hosted by Google. The value privateSelfHosted means that the package is a private app (restricted to an enterprise) and is privately hosted. */
   distributionChannel?:
     | "publicGoogleHosted"
@@ -1278,11 +1278,11 @@ export interface Product {
   /** The app category (e.g. RACING, SOCIAL, etc.) */
   category?: string;
   /** App versions currently available for this product. */
-  appVersion?: Array<AppVersion>;
+  appVersion?: ReadonlyArray<AppVersion>;
   /** The certificate used to sign this product. */
   signingCertificate?: ProductSigningCertificate;
   /** A list of screenshot links representing the app. */
-  screenshotUrls?: Array<string>;
+  screenshotUrls?: ReadonlyArray<string>;
   /** The content rating for this app. */
   contentRating?:
     | "ratingUnknown"
@@ -1300,11 +1300,11 @@ export interface Product {
   /** The name of the author of the product (for example, the app developer). */
   authorName?: string;
   /** Deprecated, use appTracks instead. */
-  availableTracks?: Array<
+  availableTracks?: ReadonlyArray<
     "appTrackUnspecified" | "production" | "beta" | "alpha" | (string & {})
   >;
   /** The tracks visible to the enterprise. */
-  appTracks?: Array<TrackInfo>;
+  appTracks?: ReadonlyArray<TrackInfo>;
   /** A link to a smaller image that can be used as an icon for the product. This image is suitable for use at up to 128px x 128px. */
   smallIconUrl?: string;
   /** The minimum Android SDK necessary to run the app. */
@@ -1312,7 +1312,7 @@ export interface Product {
   /** The name of the product. */
   title?: string;
   /** A list of permissions required by the app. */
-  permissions?: Array<ProductPermission>;
+  permissions?: ReadonlyArray<ProductPermission>;
 }
 
 export const Product = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1346,7 +1346,7 @@ export const Product = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface UsersListResponse {
   /** A user of an enterprise. */
-  user?: Array<User>;
+  user?: ReadonlyArray<User>;
 }
 
 export const UsersListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1396,7 +1396,7 @@ export const EnrollmentToken = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GroupLicenseUsersListResponse {
   /** A user of an enterprise. */
-  user?: Array<User>;
+  user?: ReadonlyArray<User>;
 }
 
 export const GroupLicenseUsersListResponse =
@@ -1406,7 +1406,7 @@ export const GroupLicenseUsersListResponse =
 
 export interface ProductSet {
   /** The list of product IDs making up the set of products. */
-  productId?: Array<string>;
+  productId?: ReadonlyArray<string>;
   /** The interpretation of this product set. "unknown" should never be sent and is ignored if received. "whitelist" means that the user is entitled to access the product set. "includeAll" means that all products are accessible, including products that are approved, products with revoked approval, and products that have never been approved. "allApproved" means that the user is entitled to access all products that are approved for the enterprise. If the value is "allApproved" or "includeAll", the productId field is ignored. If no value is provided, it is interpreted as "whitelist" for backwards compatibility. Further "allApproved" or "includeAll" does not enable automatic visibility of "alpha" or "beta" tracks for Android app. Use ProductVisibility to enable "alpha" or "beta" tracks per user. */
   productSetBehavior?:
     | "unknown"
@@ -1415,7 +1415,7 @@ export interface ProductSet {
     | "allApproved"
     | (string & {});
   /** Additional list of product IDs making up the product set. Unlike the productID array, in this list It's possible to specify which tracks (alpha, beta, production) of a product are visible to the user. See ProductVisibility and its fields for more information. Specifying the same product ID both here and in the productId array is not allowed and it will result in an error. */
-  productVisibility?: Array<ProductVisibility>;
+  productVisibility?: ReadonlyArray<ProductVisibility>;
 }
 
 export const ProductSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1426,7 +1426,7 @@ export const ProductSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface InstallsListResponse {
   /** An installation of an app for a user on a specific device. The existence of an install implies that the user must have an entitlement to the app. */
-  install?: Array<Install>;
+  install?: ReadonlyArray<Install>;
 }
 
 export const InstallsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1439,7 +1439,7 @@ export interface ProductsListResponse {
   /** General pagination information. */
   pageInfo?: PageInfo;
   /** Information about a product (e.g. an app) in the Google Play store, for display to an enterprise admin. */
-  product?: Array<Product>;
+  product?: ReadonlyArray<Product>;
 }
 
 export const ProductsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1452,7 +1452,7 @@ export interface NotificationSet {
   /** The notification set ID, required to mark the notification as received with the Enterprises.AcknowledgeNotification API. This will be omitted if no notifications are present. */
   notificationSetId?: string;
   /** The notifications received, or empty if no notifications are present. */
-  notification?: Array<Notification>;
+  notification?: ReadonlyArray<Notification>;
 }
 
 export const NotificationSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1464,7 +1464,7 @@ export interface WebApp {
   /** The ID of the application. A string of the form "app:<package name>" where the package name always starts with the prefix "com.google.enterprise.webapp." followed by a random id. */
   webAppId?: string;
   /** A list of icons representing this website. If absent, a default icon (for create) or the current icon (for update) will be used. */
-  icons?: Array<WebAppIcon>;
+  icons?: ReadonlyArray<WebAppIcon>;
   /** A flag whether the app has been published to the Play store yet. */
   isPublished?: boolean;
   /** The start URL, i.e. the URL that should load when the user opens the application. */
@@ -1521,7 +1521,7 @@ export const Permission = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WebAppsListResponse {
   /** The manifest describing a web app. */
-  webApp?: Array<WebApp>;
+  webApp?: ReadonlyArray<WebApp>;
 }
 
 export const WebAppsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1544,7 +1544,9 @@ export interface AdministratorWebTokenSpec {
   /** Options for displaying the Web Apps page. */
   webApps?: AdministratorWebTokenSpecWebApps;
   /** Deprecated. Use PlaySearch.approveApps. */
-  permission?: Array<"unknown" | "approveApps" | "manageMcm" | (string & {})>;
+  permission?: ReadonlyArray<
+    "unknown" | "approveApps" | "manageMcm" | (string & {})
+  >;
 }
 
 export const AdministratorWebTokenSpec =

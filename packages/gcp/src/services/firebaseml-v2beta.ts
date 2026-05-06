@@ -122,7 +122,7 @@ export interface GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedba
     | "JAILBREAK"
     | (string & {});
   /** Output only. A list of safety ratings for the prompt. There is one rating per category. */
-  safetyRatings?: Array<GoogleCloudAiplatformV1beta1SafetyRating>;
+  safetyRatings?: ReadonlyArray<GoogleCloudAiplatformV1beta1SafetyRating>;
 }
 
 export const GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback =
@@ -188,7 +188,7 @@ export const GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesRev
 
 export interface GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSources {
   /** Snippets of reviews that were used to generate the answer. */
-  reviewSnippets?: Array<GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet>;
+  reviewSnippets?: ReadonlyArray<GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet>;
 }
 
 export const GoogleCloudAiplatformV1beta1GroundingChunkMapsPlaceAnswerSources =
@@ -386,13 +386,13 @@ export const GoogleCloudAiplatformV1beta1Segment =
 
 export interface GoogleCloudAiplatformV1beta1GroundingSupport {
   /** A list of indices into the `grounding_chunks` field of the `GroundingMetadata` message. These indices specify which grounding chunks support the claim made in the content segment. For example, if this field has the values `[1, 3]`, it means that `grounding_chunks[1]` and `grounding_chunks[3]` are the sources for the claim in the content segment. */
-  groundingChunkIndices?: Array<number>;
+  groundingChunkIndices?: ReadonlyArray<number>;
   /** The content segment that this support message applies to. */
   segment?: GoogleCloudAiplatformV1beta1Segment;
   /** The confidence scores for the support references. This list is parallel to the `grounding_chunk_indices` list. A score is a value between 0.0 and 1.0, with a higher score indicating a higher confidence that the reference supports the claim. For Gemini 2.0 and before, this list has the same size as `grounding_chunk_indices`. For Gemini 2.5 and later, this list is empty and should be ignored. */
-  confidenceScores?: Array<number>;
+  confidenceScores?: ReadonlyArray<number>;
   /** Indices into the `rendered_parts` field of the `GroundingMetadata` message. These indices specify which rendered parts are associated with this support message. */
-  renderedParts?: Array<number>;
+  renderedParts?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudAiplatformV1beta1GroundingSupport =
@@ -415,17 +415,17 @@ export const GoogleCloudAiplatformV1beta1RetrievalMetadata =
 
 export interface GoogleCloudAiplatformV1beta1GroundingMetadata {
   /** Optional. The image search queries that were used to generate the content. This field is populated only when the grounding source is Google Search with the Image Search search_type enabled. */
-  imageSearchQueries?: Array<string>;
+  imageSearchQueries?: ReadonlyArray<string>;
   /** A list of supporting references retrieved from the grounding source. This field is populated when the grounding source is Google Search, Vertex AI Search, or Google Maps. */
-  groundingChunks?: Array<GoogleCloudAiplatformV1beta1GroundingChunk>;
+  groundingChunks?: ReadonlyArray<GoogleCloudAiplatformV1beta1GroundingChunk>;
   /** Optional. Output only. A list of URIs that can be used to flag a place or review for inappropriate content. This field is populated only when the grounding source is Google Maps. */
-  sourceFlaggingUris?: Array<GoogleCloudAiplatformV1beta1GroundingMetadataSourceFlaggingUri>;
+  sourceFlaggingUris?: ReadonlyArray<GoogleCloudAiplatformV1beta1GroundingMetadataSourceFlaggingUri>;
   /** Optional. The web search queries that were used to generate the content. This field is populated only when the grounding source is Google Search. */
-  webSearchQueries?: Array<string>;
+  webSearchQueries?: ReadonlyArray<string>;
   /** Optional. The queries that were executed by the retrieval tools. This field is populated only when the grounding source is a retrieval tool, such as Vertex AI Search. */
-  retrievalQueries?: Array<string>;
+  retrievalQueries?: ReadonlyArray<string>;
   /** Optional. A list of grounding supports that connect the generated content to the grounding chunks. This field is populated when the grounding source is Google Search or Vertex AI Search. */
-  groundingSupports?: Array<GoogleCloudAiplatformV1beta1GroundingSupport>;
+  groundingSupports?: ReadonlyArray<GoogleCloudAiplatformV1beta1GroundingSupport>;
   /** Optional. A web search entry point that can be used to display search results. This field is populated only when the grounding source is Google Search. */
   searchEntryPoint?: GoogleCloudAiplatformV1beta1SearchEntryPoint;
   /** Optional. Output only. Metadata related to the retrieval grounding source. */
@@ -479,7 +479,7 @@ export const GoogleCloudAiplatformV1beta1LogprobsResultCandidate =
 
 export interface GoogleCloudAiplatformV1beta1LogprobsResultTopCandidates {
   /** The list of candidate tokens, sorted by log probability in descending order. */
-  candidates?: Array<GoogleCloudAiplatformV1beta1LogprobsResultCandidate>;
+  candidates?: ReadonlyArray<GoogleCloudAiplatformV1beta1LogprobsResultCandidate>;
 }
 
 export const GoogleCloudAiplatformV1beta1LogprobsResultTopCandidates =
@@ -540,7 +540,7 @@ export interface GoogleCloudAiplatformV1beta1FunctionCall {
   /** Optional. The function parameters and values in JSON object format. See FunctionDeclaration.parameters for parameter details. */
   args?: Record<string, unknown>;
   /** Optional. The partial argument value of the function call. If provided, represents the arguments/fields that are streamed incrementally. */
-  partialArgs?: Array<GoogleCloudAiplatformV1beta1PartialArg>;
+  partialArgs?: ReadonlyArray<GoogleCloudAiplatformV1beta1PartialArg>;
   /** Optional. Whether this is the last part of the FunctionCall. If true, another partial message for the current FunctionCall is expected to follow. */
   willContinue?: boolean;
   /** Optional. The unique id of the function call. If populated, the client to execute the `function_call` and return the response with the matching `id`. */
@@ -594,7 +594,7 @@ export const GoogleCloudAiplatformV1beta1RagRetrievalConfigRanking =
 
 export interface GoogleCloudAiplatformV1beta1VertexRagStoreRagResource {
   /** Optional. rag_file_id. The files should be in the same rag_corpus set in rag_corpus field. */
-  ragFileIds?: Array<string>;
+  ragFileIds?: ReadonlyArray<string>;
   /** Optional. RagCorpora resource name. Format: `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}` */
   ragCorpus?: string;
 }
@@ -664,9 +664,9 @@ export const GoogleCloudAiplatformV1beta1RagRetrievalConfig =
 
 export interface GoogleCloudAiplatformV1beta1VertexRagStore {
   /** Optional. Deprecated. Please use rag_resources instead. */
-  ragCorpora?: Array<string>;
+  ragCorpora?: ReadonlyArray<string>;
   /** Optional. The representation of the rag source. It can be used to specify corpus only or ragfiles. Currently only support one corpus or multiple files from one corpus. In the future we may open up multiple corpora support. */
-  ragResources?: Array<GoogleCloudAiplatformV1beta1VertexRagStoreRagResource>;
+  ragResources?: ReadonlyArray<GoogleCloudAiplatformV1beta1VertexRagStoreRagResource>;
   /** Optional. Currently only supported for Gemini Multimodal Live API. In Gemini Multimodal Live API, if `store_context` bool is specified, Gemini will leverage it to automatically memorize the interactions between the client and Gemini, and retrieve context when needed to augment the response generation for users' ongoing and future interactions. */
   storeContext?: boolean;
   /** Optional. Number of top k results to return from the selected corpora. */
@@ -927,7 +927,7 @@ export interface GoogleCloudAiplatformV1beta1VertexAISearch {
   /** Optional. Number of search results to return per query. The default value is 10. The maximumm allowed value is 10. */
   maxResults?: number;
   /** Specifications that define the specific DataStores to be searched, along with configurations for those data stores. This is only considered for Engines with multiple data stores. It should only be set if engine is used. */
-  dataStoreSpecs?: Array<GoogleCloudAiplatformV1beta1VertexAISearchDataStoreSpec>;
+  dataStoreSpecs?: ReadonlyArray<GoogleCloudAiplatformV1beta1VertexAISearchDataStoreSpec>;
 }
 
 export const GoogleCloudAiplatformV1beta1VertexAISearch =
@@ -1102,7 +1102,7 @@ export interface GoogleCloudAiplatformV1beta1FunctionResponse {
   /** Required. The function response in JSON object format. Use "output" key to specify function output and "error" key to specify error details (if any). If "output" and "error" keys are not specified, then whole "response" is treated as function output. */
   response?: Record<string, unknown>;
   /** Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types. */
-  parts?: Array<GoogleCloudAiplatformV1beta1FunctionResponsePart>;
+  parts?: ReadonlyArray<GoogleCloudAiplatformV1beta1FunctionResponsePart>;
 }
 
 export const GoogleCloudAiplatformV1beta1FunctionResponse =
@@ -1218,7 +1218,7 @@ export interface GoogleCloudAiplatformV1beta1Content {
   /** Optional. The producer of the content. Must be either 'user' or 'model'. If not set, the service will default to 'user'. */
   role?: string;
   /** Required. A list of Part objects that make up a single message. Parts of a message can have different MIME types. A Content message must have at least one Part. */
-  parts?: Array<GoogleCloudAiplatformV1beta1Part>;
+  parts?: ReadonlyArray<GoogleCloudAiplatformV1beta1Part>;
 }
 
 export const GoogleCloudAiplatformV1beta1Content =
@@ -1296,7 +1296,7 @@ export interface GoogleCloudAiplatformV1beta1Schema {
   /** Optional. If type is `STRING`, `pattern` specifies a regular expression that the string must match. */
   pattern?: string;
   /** Optional. If type is `OBJECT`, `required` lists the names of properties that must be present. */
-  required?: Array<string>;
+  required?: ReadonlyArray<string>;
   /** Optional. If type is `STRING`, `max_length` specifies the maximum length of the string. */
   maxLength?: string;
   /** Optional. If type is `OBJECT`, `properties` is a map of property names to schema definitions for each property of the object. */
@@ -1318,7 +1318,7 @@ export interface GoogleCloudAiplatformV1beta1Schema {
   /** Optional. If type is `ARRAY`, `items` specifies the schema of elements in the array. */
   items?: GoogleCloudAiplatformV1beta1Schema;
   /** Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`. */
-  anyOf?: Array<GoogleCloudAiplatformV1beta1Schema>;
+  anyOf?: ReadonlyArray<GoogleCloudAiplatformV1beta1Schema>;
   /** Optional. If type is `ARRAY`, `min_items` specifies the minimum number of items in an array. */
   minItems?: string;
   /** Optional. If type is `ARRAY`, `max_items` specifies the maximum number of items in an array. */
@@ -1326,9 +1326,9 @@ export interface GoogleCloudAiplatformV1beta1Schema {
   /** Optional. If type is `INTEGER` or `NUMBER`, `maximum` specifies the maximum allowed value. */
   maximum?: number;
   /** Optional. Possible values of the field. This field can be used to restrict a value to a fixed set of values. To mark a field as an enum, set `format` to `enum` and provide the list of possible values in `enum`. For example: 1. To define directions: `{type:STRING, format:enum, enum:["EAST", "NORTH", "SOUTH", "WEST"]}` 2. To define apartment numbers: `{type:INTEGER, format:enum, enum:["101", "201", "301"]}` */
-  enum?: Array<string>;
+  enum?: ReadonlyArray<string>;
   /** Optional. Order of properties displayed or used where order matters. This is not a standard field in OpenAPI specification, but can be used to control the order of properties. */
-  propertyOrdering?: Array<string>;
+  propertyOrdering?: ReadonlyArray<string>;
   /** Optional. If type is `STRING`, `min_length` specifies the minimum length of the string. */
   minLength?: string;
   /** Optional. Default value to use if the field is not specified. */
@@ -1435,7 +1435,7 @@ export const GoogleCloudAiplatformV1beta1SpeakerVoiceConfig =
 
 export interface GoogleCloudAiplatformV1beta1MultiSpeakerVoiceConfig {
   /** Required. A list of configurations for the voices of the speakers. Exactly two speaker voice configurations must be provided. */
-  speakerVoiceConfigs?: Array<GoogleCloudAiplatformV1beta1SpeakerVoiceConfig>;
+  speakerVoiceConfigs?: ReadonlyArray<GoogleCloudAiplatformV1beta1SpeakerVoiceConfig>;
 }
 
 export const GoogleCloudAiplatformV1beta1MultiSpeakerVoiceConfig =
@@ -1570,7 +1570,7 @@ export interface GoogleCloudAiplatformV1beta1GenerationConfig {
   /** Optional. If enabled, audio timestamps will be included in the request to the model. This can be useful for synchronizing audio with other modalities in the response. */
   audioTimestamp?: boolean;
   /** Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image. */
-  responseModalities?: Array<
+  responseModalities?: ReadonlyArray<
     | "MODALITY_UNSPECIFIED"
     | "TEXT"
     | "IMAGE"
@@ -1601,7 +1601,7 @@ export interface GoogleCloudAiplatformV1beta1GenerationConfig {
   /** Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include 'text/plain' (default) and 'application/json'. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined. */
   responseMimeType?: string;
   /** Optional. A list of character sequences that will stop the model from generating further tokens. If a stop sequence is generated, the output will end at that point. This is useful for controlling the length and structure of the output. For example, you can use ["\n", "###"] to stop generation at a new line or a specific marker. */
-  stopSequences?: Array<string>;
+  stopSequences?: ReadonlyArray<string>;
   /** Optional. The token resolution at which input media content is sampled. This is used to control the trade-off between the quality of the response and the number of tokens used to represent the media. A higher resolution allows the model to perceive more detail, which can lead to a more nuanced response, but it will also use more tokens. This does not affect the image dimensions sent to the model. */
   mediaResolution?:
     | "MEDIA_RESOLUTION_UNSPECIFIED"
@@ -1657,7 +1657,7 @@ export const GoogleCloudAiplatformV1beta1ToolCodeExecution =
 
 export interface GoogleCloudAiplatformV1beta1EnterpriseWebSearch {
   /** Optional. List of domains to be excluded from the search results. The default limit is 2000 domains. */
-  excludeDomains?: Array<string>;
+  excludeDomains?: ReadonlyArray<string>;
   /** Optional. Sites with confidence level chosen & above this value will be blocked from the search results. */
   blockingConfidence?:
     | "PHISH_BLOCK_THRESHOLD_UNSPECIFIED"
@@ -1714,7 +1714,7 @@ export interface GoogleCloudAiplatformV1beta1ToolComputerUse {
     | "ENVIRONMENT_BROWSER"
     | (string & {});
   /** Optional. By default, [predefined functions](https://cloud.google.com/vertex-ai/generative-ai/docs/computer-use#supported-actions) are included in the final model call. Some of them can be explicitly excluded from being automatically included. This can serve two purposes: 1. Using a more restricted / different action space. 2. Improving the definitions / instructions of predefined functions. */
-  excludedPredefinedFunctions?: Array<string>;
+  excludedPredefinedFunctions?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1beta1ToolComputerUse =
@@ -1795,7 +1795,7 @@ export const GoogleCloudAiplatformV1beta1ToolGoogleSearchSearchTypes =
 
 export interface GoogleCloudAiplatformV1beta1ToolGoogleSearch {
   /** Optional. List of domains to be excluded from the search results. The default limit is 2000 domains. Example: ["amazon.com", "facebook.com"]. */
-  excludeDomains?: Array<string>;
+  excludeDomains?: ReadonlyArray<string>;
   /** Optional. Sites with confidence level chosen & above this value will be blocked from the search results. */
   blockingConfidence?:
     | "PHISH_BLOCK_THRESHOLD_UNSPECIFIED"
@@ -1835,7 +1835,7 @@ export interface GoogleCloudAiplatformV1beta1Tool {
   /** Optional. If specified, Vertex AI will use Parallel.ai to search for information to answer user queries. The search results will be grounded on Parallel.ai and presented to the model for response generation */
   parallelAiSearch?: GoogleCloudAiplatformV1beta1ToolParallelAiSearch;
   /** Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided. */
-  functionDeclarations?: Array<GoogleCloudAiplatformV1beta1FunctionDeclaration>;
+  functionDeclarations?: ReadonlyArray<GoogleCloudAiplatformV1beta1FunctionDeclaration>;
   /** Optional. Tool to support URL context retrieval. */
   urlContext?: GoogleCloudAiplatformV1beta1UrlContext;
   /** Optional. GoogleSearch tool type. Tool to support Google Search in Model. Powered by Google. */
@@ -1868,17 +1868,17 @@ export const GoogleCloudAiplatformV1beta1Tool =
 
 export interface GoogleCloudAiplatformV1beta1CountTokensRequest {
   /** Optional. Input content. */
-  contents?: Array<GoogleCloudAiplatformV1beta1Content>;
+  contents?: ReadonlyArray<GoogleCloudAiplatformV1beta1Content>;
   /** Optional. Generation config that the model will use to generate the response. */
   generationConfig?: GoogleCloudAiplatformV1beta1GenerationConfig;
   /** Optional. The name of the publisher model requested to serve the prediction. Format: `projects/{project}/locations/{location}/publishers/* /models/*` */
   model?: string;
   /** Optional. The instances that are the input to token counting call. Schema is identical to the prediction schema of the underlying model. */
-  instances?: Array<unknown>;
+  instances?: ReadonlyArray<unknown>;
   /** Optional. The user provided system instructions for the model. Note: only text should be used in parts and content in each part will be in a separate paragraph. */
   systemInstruction?: GoogleCloudAiplatformV1beta1Content;
   /** Optional. A list of `Tools` the model may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the model. */
-  tools?: Array<GoogleCloudAiplatformV1beta1Tool>;
+  tools?: ReadonlyArray<GoogleCloudAiplatformV1beta1Tool>;
 }
 
 export const GoogleCloudAiplatformV1beta1CountTokensRequest =
@@ -1954,7 +1954,7 @@ export const GoogleCloudAiplatformV1beta1Citation =
 
 export interface GoogleCloudAiplatformV1beta1CitationMetadata {
   /** Output only. A list of citations for the content. */
-  citations?: Array<GoogleCloudAiplatformV1beta1Citation>;
+  citations?: ReadonlyArray<GoogleCloudAiplatformV1beta1Citation>;
 }
 
 export const GoogleCloudAiplatformV1beta1CitationMetadata =
@@ -1983,7 +1983,7 @@ export const GoogleCloudAiplatformV1beta1UrlMetadata =
 
 export interface GoogleCloudAiplatformV1beta1UrlContextMetadata {
   /** Output only. A list of URL metadata, with one entry for each URL retrieved by the tool. */
-  urlMetadata?: Array<GoogleCloudAiplatformV1beta1UrlMetadata>;
+  urlMetadata?: ReadonlyArray<GoogleCloudAiplatformV1beta1UrlMetadata>;
 }
 
 export const GoogleCloudAiplatformV1beta1UrlContextMetadata =
@@ -1995,9 +1995,9 @@ export const GoogleCloudAiplatformV1beta1UrlContextMetadata =
 
 export interface GoogleCloudAiplatformV1beta1LogprobsResult {
   /** A list of the top candidate tokens at each decoding step. The length of this list is equal to the total number of decoding steps. */
-  topCandidates?: Array<GoogleCloudAiplatformV1beta1LogprobsResultTopCandidates>;
+  topCandidates?: ReadonlyArray<GoogleCloudAiplatformV1beta1LogprobsResultTopCandidates>;
   /** A list of the chosen candidate tokens at each decoding step. The length of this list is equal to the total number of decoding steps. Note that the chosen candidate might not be in `top_candidates`. */
-  chosenCandidates?: Array<GoogleCloudAiplatformV1beta1LogprobsResultCandidate>;
+  chosenCandidates?: ReadonlyArray<GoogleCloudAiplatformV1beta1LogprobsResultCandidate>;
 }
 
 export const GoogleCloudAiplatformV1beta1LogprobsResult =
@@ -2048,7 +2048,7 @@ export interface GoogleCloudAiplatformV1beta1Candidate {
     | "NO_IMAGE"
     | (string & {});
   /** Output only. A list of ratings for the safety of a response candidate. There is at most one rating per category. */
-  safetyRatings?: Array<GoogleCloudAiplatformV1beta1SafetyRating>;
+  safetyRatings?: ReadonlyArray<GoogleCloudAiplatformV1beta1SafetyRating>;
 }
 
 export const GoogleCloudAiplatformV1beta1Candidate =
@@ -2083,7 +2083,7 @@ export interface GoogleCloudAiplatformV1beta1FunctionCallingConfig {
     | "VALIDATED"
     | (string & {});
   /** Optional. Function names to call. Only set when the Mode is ANY. Function names should match FunctionDeclaration.name. With mode set to ANY, model will predict a function call from the set of function names provided. */
-  allowedFunctionNames?: Array<string>;
+  allowedFunctionNames?: ReadonlyArray<string>;
   /** Optional. When set to true, arguments of a single function call will be streamed out in multiple parts/contents/responses. Partial parameter results will be returned in the `FunctionCall.partial_args` field. */
   streamFunctionCallArguments?: boolean;
 }
@@ -2119,9 +2119,9 @@ export const GoogleCloudAiplatformV1beta1ModalityTokenCount =
 
 export interface GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata {
   /** Output only. A detailed breakdown of the token count for each modality in the prompt. */
-  promptTokensDetails?: Array<GoogleCloudAiplatformV1beta1ModalityTokenCount>;
+  promptTokensDetails?: ReadonlyArray<GoogleCloudAiplatformV1beta1ModalityTokenCount>;
   /** Output only. A detailed breakdown by modality of the token counts from the results of tool executions, which are provided back to the model as input. */
-  toolUsePromptTokensDetails?: Array<GoogleCloudAiplatformV1beta1ModalityTokenCount>;
+  toolUsePromptTokensDetails?: ReadonlyArray<GoogleCloudAiplatformV1beta1ModalityTokenCount>;
   /** The total number of tokens in the prompt. This includes any text, images, or other media provided in the request. When `cached_content` is set, this also includes the number of tokens in the cached content. */
   promptTokenCount?: number;
   /** Output only. The number of tokens that were part of the model's generated "thoughts" output, if applicable. */
@@ -2139,13 +2139,13 @@ export interface GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadat
   /** The total number of tokens in the generated candidates. */
   candidatesTokenCount?: number;
   /** Output only. A detailed breakdown of the token count for each modality in the generated candidates. */
-  candidatesTokensDetails?: Array<GoogleCloudAiplatformV1beta1ModalityTokenCount>;
+  candidatesTokensDetails?: ReadonlyArray<GoogleCloudAiplatformV1beta1ModalityTokenCount>;
   /** Output only. The number of tokens in the cached content that was used for this request. */
   cachedContentTokenCount?: number;
   /** The total number of tokens for the entire request. This is the sum of `prompt_token_count`, `candidates_token_count`, `tool_use_prompt_token_count`, and `thoughts_token_count`. */
   totalTokenCount?: number;
   /** Output only. A detailed breakdown of the token count for each modality in the cached content. */
-  cacheTokensDetails?: Array<GoogleCloudAiplatformV1beta1ModalityTokenCount>;
+  cacheTokensDetails?: ReadonlyArray<GoogleCloudAiplatformV1beta1ModalityTokenCount>;
 }
 
 export const GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata =
@@ -2180,7 +2180,7 @@ export interface GoogleCloudAiplatformV1beta1CountTokensResponse {
   /** The total number of billable characters counted across all instances from the request. */
   totalBillableCharacters?: number;
   /** Output only. List of modalities that were processed in the request input. */
-  promptTokensDetails?: Array<GoogleCloudAiplatformV1beta1ModalityTokenCount>;
+  promptTokensDetails?: ReadonlyArray<GoogleCloudAiplatformV1beta1ModalityTokenCount>;
 }
 
 export const GoogleCloudAiplatformV1beta1CountTokensResponse =
@@ -2252,17 +2252,17 @@ export const GoogleCloudAiplatformV1beta1ToolConfig =
 
 export interface GoogleCloudAiplatformV1beta1GenerateContentRequest {
   /** Required. The content of the current conversation with the model. For single-turn queries, this is a single instance. For multi-turn queries, this is a repeated field that contains conversation history + latest request. */
-  contents?: Array<GoogleCloudAiplatformV1beta1Content>;
+  contents?: ReadonlyArray<GoogleCloudAiplatformV1beta1Content>;
   /** Optional. Settings for prompt and response sanitization using the Model Armor service. If supplied, safety_settings must not be supplied. */
   modelArmorConfig?: GoogleCloudAiplatformV1beta1ModelArmorConfig;
   /** Optional. Generation config. */
   generationConfig?: GoogleCloudAiplatformV1beta1GenerationConfig;
   /** Optional. Per request settings for blocking unsafe content. Enforced on GenerateContentResponse.candidates. */
-  safetySettings?: Array<GoogleCloudAiplatformV1beta1SafetySetting>;
+  safetySettings?: ReadonlyArray<GoogleCloudAiplatformV1beta1SafetySetting>;
   /** Optional. The user provided system instructions for the model. Note: only text should be used in parts and content in each part will be in a separate paragraph. */
   systemInstruction?: GoogleCloudAiplatformV1beta1Content;
   /** Optional. A list of `Tools` the model may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the model. */
-  tools?: Array<GoogleCloudAiplatformV1beta1Tool>;
+  tools?: ReadonlyArray<GoogleCloudAiplatformV1beta1Tool>;
   /** Optional. The labels with user-defined metadata for the request. It is used for billing and reporting only. Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter. */
   labels?: Record<string, string>;
   /** Optional. The name of the cached content used as context to serve the prediction. Note: only used in explicit caching, where users can have control over caching (e.g. what content to cache) and enjoy guaranteed cost savings. Format: `projects/{project}/locations/{location}/cachedContents/{cachedContent}` */
@@ -2304,7 +2304,7 @@ export interface GoogleCloudAiplatformV1beta1GenerateContentResponse {
   /** Usage metadata about the response(s). */
   usageMetadata?: GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata;
   /** Output only. Generated candidates. */
-  candidates?: Array<GoogleCloudAiplatformV1beta1Candidate>;
+  candidates?: ReadonlyArray<GoogleCloudAiplatformV1beta1Candidate>;
   /** Output only. Timestamp when the request is made to the server. */
   createTime?: string;
 }
@@ -2347,7 +2347,7 @@ export const GenerateContentProjectsLocationsPublishersModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta/projects/{projectsId}/locations/{locationsId}/publishers/{publishersId}/models/{modelsId}:generateContent",
+      path: "v2beta/{model}:generateContent",
       hasBody: true,
     }),
     svc,
@@ -2389,7 +2389,7 @@ export const StreamGenerateContentProjectsLocationsPublishersModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta/projects/{projectsId}/locations/{locationsId}/publishers/{publishersId}/models/{modelsId}:streamGenerateContent",
+      path: "v2beta/{model}:streamGenerateContent",
       hasBody: true,
     }),
     svc,
@@ -2431,7 +2431,7 @@ export const CountTokensProjectsLocationsPublishersModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v2beta/projects/{projectsId}/locations/{locationsId}/publishers/{publishersId}/models/{modelsId}:countTokens",
+      path: "v2beta/{endpoint}:countTokens",
       hasBody: true,
     }),
     svc,

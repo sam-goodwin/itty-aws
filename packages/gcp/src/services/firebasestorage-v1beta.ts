@@ -35,7 +35,7 @@ export interface ListBucketsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The list of linked buckets. */
-  buckets?: Array<Bucket>;
+  buckets?: ReadonlyArray<Bucket>;
 }
 
 export const ListBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -92,10 +92,7 @@ export const DeleteDefaultBucketProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta/projects/{projectsId}/defaultBucket",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteDefaultBucketProjectsRequest>;
 
@@ -126,10 +123,7 @@ export const GetDefaultBucketProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/defaultBucket",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDefaultBucketProjectsRequest>;
 
@@ -160,10 +154,7 @@ export const GetProjectsBucketsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta/projects/{projectsId}/buckets/{bucketsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsBucketsRequest>;
 
@@ -199,7 +190,7 @@ export const ListProjectsBucketsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta/projects/{projectsId}/buckets" }),
+    T.Http({ method: "GET", path: "v1beta/{parent}/buckets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsBucketsRequest>;
 
@@ -239,7 +230,7 @@ export const AddFirebaseProjectsBucketsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/buckets/{bucketsId}:addFirebase",
+      path: "v1beta/{bucket}:addFirebase",
       hasBody: true,
     }),
     svc,
@@ -277,7 +268,7 @@ export const RemoveFirebaseProjectsBucketsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/buckets/{bucketsId}:removeFirebase",
+      path: "v1beta/{bucket}:removeFirebase",
       hasBody: true,
     }),
     svc,
@@ -315,7 +306,7 @@ export const CreateProjectsDefaultBucketRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta/projects/{projectsId}/defaultBucket",
+      path: "v1beta/{parent}/defaultBucket",
       hasBody: true,
     }),
     svc,

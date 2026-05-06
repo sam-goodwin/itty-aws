@@ -44,7 +44,7 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo {
   /** The timestamp to collect the info. It is suggested to be set by the topmost level resource only. */
   time?: string;
   /** List of Info for the sub level resources. */
-  sub?: Array<GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo>;
+  sub?: ReadonlyArray<GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo>;
   /** Required. Unique Id for the resource. */
   id?: string;
   /** Overall health status. Overall status is derived based on the status of each sub level resources. */
@@ -150,7 +150,7 @@ export const GoogleCloudBeyondcorpAppconnectorsV1AppConnector =
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway {
   /** Output only. List of IP addresses assigned to the Cloud NAT. */
-  assignedIps?: Array<string>;
+  assignedIps?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway =
@@ -187,7 +187,7 @@ export const GoogleTypeExpr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleIamV1Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: GoogleTypeExpr;
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -209,7 +209,7 @@ export interface GoogleIamV1AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1AuditLogConfig =
@@ -222,7 +222,7 @@ export interface GoogleIamV1AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<GoogleIamV1AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<GoogleIamV1AuditLogConfig>;
 }
 
 export const GoogleIamV1AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -234,13 +234,13 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface GoogleIamV1Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<GoogleIamV1Binding>;
+  bindings?: ReadonlyArray<GoogleIamV1Binding>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<GoogleIamV1AuditConfig>;
+  auditConfigs?: ReadonlyArray<GoogleIamV1AuditConfig>;
 }
 
 export const GoogleIamV1Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -403,7 +403,7 @@ export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders =
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig {
   /** Optional. List of the allowed client header names. */
-  allowedClientHeaders?: Array<string>;
+  allowedClientHeaders?: ReadonlyArray<string>;
   /** Optional. Custom resource specific headers along with the values. The names should conform to RFC 9110: >Field names can contain alphanumeric characters, hyphens, and periods, can contain only ASCII-printable characters and tabs, and must start with a letter. */
   metadataHeaders?: Record<string, string>;
   /** Optional. Client IP configuration. The client IP address is included if true. */
@@ -521,9 +521,9 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse {
   /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** A list of BeyondCorp AppConnectors in the project. */
-  appConnectors?: Array<GoogleCloudBeyondcorpAppconnectorsV1AppConnector>;
+  appConnectors?: ReadonlyArray<GoogleCloudBeyondcorpAppconnectorsV1AppConnector>;
   /** A list of locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse =
@@ -579,7 +579,7 @@ export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoi
 
 export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
   /** Optional. List of [google.cloud.beyondcorp.v1main.Connector.name] that are authorized to be associated with this AppConnection. */
-  connectors?: Array<string>;
+  connectors?: ReadonlyArray<string>;
   /** Optional. An arbitrary user-provided name for the AppConnection. Cannot exceed 64 characters. */
   displayName?: string;
   /** Optional. Resource labels to represent user provided metadata. */
@@ -638,9 +638,9 @@ export const GoogleCloudBeyondcorpAppconnectionsV1AppConnection =
 
 export interface GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse {
   /** A list of locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of BeyondCorp AppConnections in the project. */
-  appConnections?: Array<GoogleCloudBeyondcorpAppconnectionsV1AppConnection>;
+  appConnections?: ReadonlyArray<GoogleCloudBeyondcorpAppconnectionsV1AppConnection>;
   /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -820,7 +820,7 @@ export const GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint =
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal {
   /** Required. List of the endpoints to forward traffic to. */
-  endpoints?: Array<GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint>;
+  endpoints?: ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint>;
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal =
@@ -835,7 +835,7 @@ export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal 
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy {
   /** Required. List of the regions where the application sends traffic. */
-  regions?: Array<string>;
+  regions?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy =
@@ -878,7 +878,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher {
   /** Required. Hostname of the application. */
   hostname?: string;
   /** Required. The ports of the application. */
-  ports?: Array<number>;
+  ports?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher =
@@ -891,13 +891,13 @@ export const GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher =
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1Application {
   /** Optional. Which upstream resources to forward traffic to. */
-  upstreams?: Array<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream>;
+  upstreams?: ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream>;
   /** Identifier. Name of the resource. */
   name?: string;
   /** Output only. Timestamp when the resource was created. */
   createTime?: string;
   /** Optional. An array of conditions to match the application's network endpoint. Each element in the array is an EndpointMatcher object, which defines a specific combination of a hostname pattern and one or more ports. The application is considered matched if at least one of the EndpointMatcher conditions in this array is met (the conditions are combined using OR logic). Each EndpointMatcher must contain a hostname pattern, such as "example.com", and one or more port numbers specified as a string, such as "443". Hostname and port number examples: "*.example.com", "443" "example.com" and "22" "example.com" and "22,33" */
-  endpointMatchers?: Array<GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher>;
+  endpointMatchers?: ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher>;
   /** Output only. Timestamp when the resource was last modified. */
   updateTime?: string;
   /** Optional. An arbitrary user-provided name for the application resource. Cannot exceed 64 characters. */
@@ -931,9 +931,9 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse
   /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** A list of BeyondCorp Application in the project. */
-  applications?: Array<GoogleCloudBeyondcorpSecuritygatewaysV1Application>;
+  applications?: ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1Application>;
   /** A list of locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse =
@@ -1027,7 +1027,7 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsRespo
   /** A BeyondCorp AppConnection in the project. */
   appConnection?: GoogleCloudBeyondcorpAppconnectionsV1AppConnection;
   /** If type=GCP_REGIONAL_MIG, contains most recent VM instances, like `https://www.googleapis.com/compute/v1/projects/{project_id}/zones/{zone_id}/instances/{instance_id}`. */
-  recentMigVms?: Array<string>;
+  recentMigVms?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails =
@@ -1043,9 +1043,9 @@ export const GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseA
 
 export interface GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse {
   /** A list of locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of BeyondCorp AppConnections with details in the project. */
-  appConnectionDetails?: Array<GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails>;
+  appConnectionDetails?: ReadonlyArray<GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails>;
   /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -1066,7 +1066,7 @@ export const GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse 
 
 export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -1105,9 +1105,9 @@ export const GoogleLongrunningOperation =
 
 export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -1191,7 +1191,7 @@ export interface CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig 
   /** application_name represents the given name of the application the connection is connecting with. */
   applicationName?: string;
   /** gateway lists all instances running a gateway in GCP. They all connect to a connector on the host. */
-  gateway?: Array<CloudSecurityZerotrustApplinkAppConnectorProtoGateway>;
+  gateway?: ReadonlyArray<CloudSecurityZerotrustApplinkAppConnectorProtoGateway>;
   /** tunnels_per_gateway reflects the number of tunnels between a connector and a gateway. */
   tunnelsPerGateway?: number;
   /** user_port specifies the reserved port on gateways for user connections. */
@@ -1380,7 +1380,7 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
   /** Output only. Timestamp when the resource was created. */
   createTime?: string;
   /** Output only. IP addresses that will be used for establishing connection to the endpoints. */
-  externalIps?: Array<string>;
+  externalIps?: ReadonlyArray<string>;
   /** Output only. Service account used for operations that involve resources in consumer projects. */
   delegatingServiceAccount?: string;
 }
@@ -1443,7 +1443,7 @@ export const GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationMetad
 
 export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1TestIamPermissionsResponse =
@@ -1453,9 +1453,9 @@ export const GoogleIamV1TestIamPermissionsResponse =
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse {
   /** A list of BeyondCorp SecurityGateway in the project. */
-  securityGateways?: Array<GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway>;
+  securityGateways?: ReadonlyArray<GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway>;
   /** A list of locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -1543,7 +1543,7 @@ export const GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMeta
 
 export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1TestIamPermissionsRequest =
@@ -1596,7 +1596,7 @@ export const AllocatedConnection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AppGateway {
   /** Output only. A list of connections allocated for the Gateway */
-  allocatedConnections?: Array<AllocatedConnection>;
+  allocatedConnections?: ReadonlyArray<AllocatedConnection>;
   /** Optional. An arbitrary user-provided name for the AppGateway. Cannot exceed 64 characters. */
   displayName?: string;
   /** Required. Unique resource name of the AppGateway. The name is ignored when creating an AppGateway. */
@@ -1650,9 +1650,9 @@ export interface ListAppGatewaysResponse {
   /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
   /** A list of BeyondCorp AppGateways in the project. */
-  appGateways?: Array<AppGateway>;
+  appGateways?: ReadonlyArray<AppGateway>;
   /** A list of locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListAppGatewaysResponse =
@@ -1694,7 +1694,7 @@ export const GoogleCloudBeyondcorpConnectorsV1alphaRemoteAgentDetails =
 
 export interface GoogleCloudLocationListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<GoogleCloudLocationLocation>;
+  locations?: ReadonlyArray<GoogleCloudLocationLocation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -1739,7 +1739,7 @@ export const ListProjectsLocationsRequest =
       T.HttpQuery("extraLocationTypes"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -1775,10 +1775,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -1809,10 +1806,7 @@ export const GetProjectsLocationsAppConnectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appConnectors/{appConnectorsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAppConnectorsRequest>;
 
@@ -1844,10 +1838,7 @@ export const ResolveInstanceConfigProjectsLocationsAppConnectorsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     appConnector: Schema.String.pipe(T.HttpPath("appConnector")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appConnectors/{appConnectorsId}:resolveInstanceConfig",
-    }),
+    T.Http({ method: "GET", path: "v1/{appConnector}:resolveInstanceConfig" }),
     svc,
   ) as unknown as Schema.Schema<ResolveInstanceConfigProjectsLocationsAppConnectorsRequest>;
 
@@ -1892,10 +1883,7 @@ export const ListProjectsLocationsAppConnectorsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appConnectors",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/appConnectors" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAppConnectorsRequest>;
 
@@ -1938,7 +1926,7 @@ export const ReportStatusProjectsLocationsAppConnectorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appConnectors/{appConnectorsId}:reportStatus",
+      path: "v1/{appConnector}:reportStatus",
       hasBody: true,
     }),
     svc,
@@ -1988,11 +1976,7 @@ export const PatchProjectsLocationsAppConnectorsRequest =
       GoogleCloudBeyondcorpAppconnectorsV1AppConnector,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appConnectors/{appConnectorsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAppConnectorsRequest>;
 
@@ -2029,7 +2013,7 @@ export const SetIamPolicyProjectsLocationsAppConnectorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appConnectors/{appConnectorsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2071,10 +2055,7 @@ export const DeleteProjectsLocationsAppConnectorsRequest =
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appConnectors/{appConnectorsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAppConnectorsRequest>;
 
@@ -2113,7 +2094,7 @@ export const TestIamPermissionsProjectsLocationsAppConnectorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appConnectors/{appConnectorsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2168,7 +2149,7 @@ export const CreateProjectsLocationsAppConnectorsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appConnectors",
+      path: "v1/{parent}/appConnectors",
       hasBody: true,
     }),
     svc,
@@ -2207,10 +2188,7 @@ export const GetIamPolicyProjectsLocationsAppConnectorsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appConnectors/{appConnectorsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsAppConnectorsRequest>;
 
@@ -2254,10 +2232,7 @@ export const ListProjectsLocationsSecurityGatewaysRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/securityGateways",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/securityGateways" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSecurityGatewaysRequest>;
 
@@ -2300,7 +2275,7 @@ export const TestIamPermissionsProjectsLocationsSecurityGatewaysRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/securityGateways/{securityGatewaysId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2343,10 +2318,7 @@ export const DeleteProjectsLocationsSecurityGatewaysRequest =
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/securityGateways/{securityGatewaysId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSecurityGatewaysRequest>;
 
@@ -2378,10 +2350,7 @@ export const GetProjectsLocationsSecurityGatewaysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/securityGateways/{securityGatewaysId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSecurityGatewaysRequest>;
 
@@ -2418,10 +2387,7 @@ export const GetIamPolicyProjectsLocationsSecurityGatewaysRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/securityGateways/{securityGatewaysId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsSecurityGatewaysRequest>;
 
@@ -2468,7 +2434,7 @@ export const CreateProjectsLocationsSecurityGatewaysRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/securityGateways",
+      path: "v1/{parent}/securityGateways",
       hasBody: true,
     }),
     svc,
@@ -2513,11 +2479,7 @@ export const PatchProjectsLocationsSecurityGatewaysRequest =
       GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/securityGateways/{securityGatewaysId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsSecurityGatewaysRequest>;
 
@@ -2554,7 +2516,7 @@ export const SetIamPolicyProjectsLocationsSecurityGatewaysRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/securityGateways/{securityGatewaysId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2593,10 +2555,7 @@ export const GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/securityGateways/{securityGatewaysId}/applications/{applicationsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest>;
 
@@ -2642,11 +2601,7 @@ export const CreateProjectsLocationsSecurityGatewaysApplicationsRequest =
       GoogleCloudBeyondcorpSecuritygatewaysV1Application,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/securityGateways/{securityGatewaysId}/applications",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/applications", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsSecurityGatewaysApplicationsRequest>;
 
@@ -2690,11 +2645,7 @@ export const PatchProjectsLocationsSecurityGatewaysApplicationsRequest =
       GoogleCloudBeyondcorpSecuritygatewaysV1Application,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/securityGateways/{securityGatewaysId}/applications/{applicationsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsSecurityGatewaysApplicationsRequest>;
 
@@ -2732,7 +2683,7 @@ export const SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/securityGateways/{securityGatewaysId}/applications/{applicationsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2779,10 +2730,7 @@ export const ListProjectsLocationsSecurityGatewaysApplicationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/securityGateways/{securityGatewaysId}/applications",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/applications" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSecurityGatewaysApplicationsRequest>;
 
@@ -2826,7 +2774,7 @@ export const TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsRequ
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/securityGateways/{securityGatewaysId}/applications/{applicationsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2862,10 +2810,7 @@ export const GetProjectsLocationsSecurityGatewaysApplicationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/securityGateways/{securityGatewaysId}/applications/{applicationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSecurityGatewaysApplicationsRequest>;
 
@@ -2906,10 +2851,7 @@ export const DeleteProjectsLocationsSecurityGatewaysApplicationsRequest =
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/securityGateways/{securityGatewaysId}/applications/{applicationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSecurityGatewaysApplicationsRequest>;
 
@@ -2956,10 +2898,7 @@ export const ListProjectsLocationsOperationsRequest =
     ),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -3000,11 +2939,7 @@ export const CancelProjectsLocationsOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -3035,10 +2970,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -3069,10 +3001,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -3115,10 +3044,7 @@ export const ListProjectsLocationsAppGatewaysRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appGateways",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/appGateways" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAppGatewaysRequest>;
 
@@ -3160,7 +3086,7 @@ export const TestIamPermissionsProjectsLocationsAppGatewaysRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appGateways/{appGatewaysId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -3202,10 +3128,7 @@ export const DeleteProjectsLocationsAppGatewaysRequest =
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appGateways/{appGatewaysId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAppGatewaysRequest>;
 
@@ -3237,10 +3160,7 @@ export const GetProjectsLocationsAppGatewaysRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appGateways/{appGatewaysId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAppGatewaysRequest>;
 
@@ -3276,10 +3196,7 @@ export const GetIamPolicyProjectsLocationsAppGatewaysRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appGateways/{appGatewaysId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsAppGatewaysRequest>;
 
@@ -3327,11 +3244,7 @@ export const CreateProjectsLocationsAppGatewaysRequest =
     ),
     body: Schema.optional(AppGateway).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appGateways",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/appGateways", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsAppGatewaysRequest>;
 
@@ -3368,7 +3281,7 @@ export const SetIamPolicyProjectsLocationsAppGatewaysRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appGateways/{appGatewaysId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -3423,11 +3336,7 @@ export const PatchProjectsLocationsAppConnectionsRequest =
       GoogleCloudBeyondcorpAppconnectionsV1AppConnection,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appConnections/{appConnectionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAppConnectionsRequest>;
 
@@ -3464,7 +3373,7 @@ export const SetIamPolicyProjectsLocationsAppConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appConnections/{appConnectionsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -3498,10 +3407,7 @@ export const GetProjectsLocationsAppConnectionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appConnections/{appConnectionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAppConnectionsRequest>;
 
@@ -3545,10 +3451,7 @@ export const ListProjectsLocationsAppConnectionsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appConnections",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/appConnections" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAppConnectionsRequest>;
 
@@ -3595,10 +3498,7 @@ export const ResolveProjectsLocationsAppConnectionsRequest =
     ),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appConnections:resolve",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/appConnections:resolve" }),
     svc,
   ) as unknown as Schema.Schema<ResolveProjectsLocationsAppConnectionsRequest>;
 
@@ -3654,7 +3554,7 @@ export const CreateProjectsLocationsAppConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appConnections",
+      path: "v1/{parent}/appConnections",
       hasBody: true,
     }),
     svc,
@@ -3693,10 +3593,7 @@ export const GetIamPolicyProjectsLocationsAppConnectionsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appConnections/{appConnectionsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsAppConnectionsRequest>;
 
@@ -3736,10 +3633,7 @@ export const DeleteProjectsLocationsAppConnectionsRequest =
       T.HttpQuery("validateOnly"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appConnections/{appConnectionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAppConnectionsRequest>;
 
@@ -3778,7 +3672,7 @@ export const TestIamPermissionsProjectsLocationsAppConnectionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/appConnections/{appConnectionsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -3813,10 +3707,7 @@ export const GetOrganizationsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetOrganizationsLocationsOperationsRequest>;
 
@@ -3848,10 +3739,7 @@ export const DeleteOrganizationsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOrganizationsLocationsOperationsRequest>;
 
@@ -3896,10 +3784,7 @@ export const ListOrganizationsLocationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListOrganizationsLocationsOperationsRequest>;
 
@@ -3940,11 +3825,7 @@ export const CancelOrganizationsLocationsOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/organizations/{organizationsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelOrganizationsLocationsOperationsRequest>;
 

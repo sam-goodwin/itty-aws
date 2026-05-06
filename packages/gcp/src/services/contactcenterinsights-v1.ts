@@ -47,7 +47,7 @@ export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationCon
 
 export interface GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList {
   /** List of QaScorecardRevisions. */
-  qaScorecardRevisions?: Array<string>;
+  qaScorecardRevisions?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList =
@@ -74,7 +74,7 @@ export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig =
 
 export interface GoogleCloudContactcenterinsightsV1AnnotatorSelector {
   /** The issue model to run. If not provided, the most recently deployed topic model will be used. The provided issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator is set to true. If more than one issue model is provided, only the first provided issue model will be used for inference. */
-  issueModels?: Array<string>;
+  issueModels?: ReadonlyArray<string>;
   /** Whether to run the summarization annotator. */
   runSummarizationAnnotator?: boolean;
   /** Whether to run the silence annotator. */
@@ -88,7 +88,7 @@ export interface GoogleCloudContactcenterinsightsV1AnnotatorSelector {
   /** Whether to run the interruption annotator. */
   runInterruptionAnnotator?: boolean;
   /** The list of phrase matchers to run. If not provided, all active phrase matchers will be used. If inactive phrase matchers are provided, they will not be used. Phrase matchers will be run only if run_phrase_matcher_annotator is set to true. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher} */
-  phraseMatchers?: Array<string>;
+  phraseMatchers?: ReadonlyArray<string>;
   /** Whether to run the sentiment annotator. */
   runSentimentAnnotator?: boolean;
   /** Whether to run the issue model annotator. A model should have already been deployed for this to take effect. */
@@ -332,7 +332,7 @@ export interface GoogleCloudContactcenterinsightsV1IssueModelResult {
   /** Issue model that generates the result. Format: projects/{project}/locations/{location}/issueModels/{issue_model} */
   issueModel?: string;
   /** All the matched issues. */
-  issues?: Array<GoogleCloudContactcenterinsightsV1IssueAssignment>;
+  issues?: ReadonlyArray<GoogleCloudContactcenterinsightsV1IssueAssignment>;
 }
 
 export const GoogleCloudContactcenterinsightsV1IssueModelResult =
@@ -459,7 +459,7 @@ export interface GoogleCloudContactcenterinsightsV1QaAnswer {
   /** The QaQuestion answered by this answer. */
   qaQuestion?: string;
   /** User-defined list of arbitrary tags. Matches the value from QaScorecard.ScorecardQuestion.tags. Used for grouping/organization and for weighting the score of each answer. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** The answer value from this source. This field is populated by default, unless the question has a selection strategy configured to return multiple answer values, in which case `answer_values` will be populated instead. */
   answerValue?: GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue;
   /** Question text. E.g., "Did the agent greet the customer?" */
@@ -467,7 +467,7 @@ export interface GoogleCloudContactcenterinsightsV1QaAnswer {
   /** The conversation the answer applies to. */
   conversation?: string;
   /** Lists all answer sources containing one or more answer values of a specific source type, e.g., all system-generated answer sources, or all manual edit answer sources. */
-  answerSources?: Array<GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource>;
+  answerSources?: ReadonlyArray<GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource>;
 }
 
 export const GoogleCloudContactcenterinsightsV1QaAnswer =
@@ -520,7 +520,7 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource 
   /** The maximum potential overall score of the scorecard. Any questions answered using `na_value` are excluded from this calculation. */
   potentialScore?: number;
   /** Collection of tags and their scores. */
-  qaTagResults?: Array<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>;
+  qaTagResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>;
 }
 
 export const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource =
@@ -541,7 +541,7 @@ export const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource =
 
 export interface GoogleCloudContactcenterinsightsV1QaScorecardResult {
   /** Set of QaAnswers represented in the result. */
-  qaAnswers?: Array<GoogleCloudContactcenterinsightsV1QaAnswer>;
+  qaAnswers?: ReadonlyArray<GoogleCloudContactcenterinsightsV1QaAnswer>;
   /** The QaScorecardRevision scored by this result. */
   qaScorecardRevision?: string;
   /** ID of the agent that handled the conversation. */
@@ -553,11 +553,11 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecardResult {
   /** The overall numerical score of the result, incorporating any manual edits if they exist. */
   score?: number;
   /** List of all individual score sets. */
-  scoreSources?: Array<GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource>;
+  scoreSources?: ReadonlyArray<GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource>;
   /** The maximum potential overall score of the scorecard. Any questions answered using `na_value` are excluded from this calculation. */
   potentialScore?: number;
   /** Collection of tags and their scores. */
-  qaTagResults?: Array<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>;
+  qaTagResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>;
   /** Identifier. The name of the scorecard result. Format: projects/{project}/locations/{location}/qaScorecardResults/{qa_scorecard_result} */
   name?: string;
   /** The conversation scored by this result. */
@@ -606,7 +606,7 @@ export const GoogleCloudContactcenterinsightsV1Intent =
 
 export interface GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata {
   /** A list of call annotations that apply to this call. */
-  annotations?: Array<GoogleCloudContactcenterinsightsV1CallAnnotation>;
+  annotations?: ReadonlyArray<GoogleCloudContactcenterinsightsV1CallAnnotation>;
   /** Overall conversation-level silence during the call. */
   silence?: GoogleCloudContactcenterinsightsV1ConversationLevelSilence;
   /** All the matched phrase matchers in the call. */
@@ -619,9 +619,9 @@ export interface GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMet
   /** All the entities in the call. */
   entities?: Record<string, GoogleCloudContactcenterinsightsV1Entity>;
   /** Overall conversation-level sentiment for each channel of the call. */
-  sentiments?: Array<GoogleCloudContactcenterinsightsV1ConversationLevelSentiment>;
+  sentiments?: ReadonlyArray<GoogleCloudContactcenterinsightsV1ConversationLevelSentiment>;
   /** Results of scoring QaScorecards. */
-  qaScorecardResults?: Array<GoogleCloudContactcenterinsightsV1QaScorecardResult>;
+  qaScorecardResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1QaScorecardResult>;
   /** All the matched intents in the call. */
   intents?: Record<string, GoogleCloudContactcenterinsightsV1Intent>;
 }
@@ -711,7 +711,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo {
   /** Output only. The full conversation correlation id this conversation is a segment of. */
   fullConversationCorrelationId?: string;
   /** Output only. The correlation types of this conversation. A single conversation can have multiple correlation types. For example a conversation that only has a single segment is both a SEGMENT and a FULL_CONVERSATION. */
-  correlationTypes?: Array<
+  correlationTypes?: ReadonlyArray<
     | "CORRELATION_TYPE_UNSPECIFIED"
     | "SEGMENT"
     | "PARTIAL"
@@ -827,7 +827,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** For conversations derived from multi-channel audio, this is the channel number corresponding to the audio from that channel. For audioChannelCount = N, its output values can range from '1' to 'N'. A channel tag of 0 indicates that the audio is mono. */
   channelTag?: number;
   /** A list of the word-specific information for each word in the segment. */
-  words?: Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo>;
+  words?: ReadonlyArray<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo>;
   /** Turn level audio for this transcript segment. */
   turnLevelAudio?: GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio;
   /** The language code of this segment as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US". */
@@ -863,7 +863,7 @@ export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptS
 
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscript {
   /** A list of sequential transcript segments that comprise the conversation. */
-  transcriptSegments?: Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment>;
+  transcriptSegments?: ReadonlyArray<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment>;
 }
 
 export const GoogleCloudContactcenterinsightsV1ConversationTranscript =
@@ -913,7 +913,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationDataSource {
   /** The source when the conversation comes from Dialogflow. */
   dialogflowSource?: GoogleCloudContactcenterinsightsV1DialogflowSource;
   /** Cloud Storage URIs that points to files that contain the conversation audio for each turn. Assume the order of the URIs is the same as the order of the transcript turns. */
-  turnLevelAudios?: Array<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio>;
+  turnLevelAudios?: ReadonlyArray<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio>;
 }
 
 export const GoogleCloudContactcenterinsightsV1ConversationDataSource =
@@ -1211,7 +1211,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAg
   /** The agent's version display name. Only applicable to automated agents. */
   versionDisplayName?: string;
   /** User-specified strings representing the agent's teams. */
-  teams?: Array<string>;
+  teams?: ReadonlyArray<string>;
   /** A user-specified string representing the agent's team. Deprecated in favor of the `teams` field. */
   team?: string;
   /** The agent's deployment display name. Only applicable to automated agents. */
@@ -1282,13 +1282,13 @@ export interface GoogleCloudContactcenterinsightsV1ConversationQualityMetadata {
   /** An arbitrary integer value indicating the customer's satisfaction rating. */
   customerSatisfactionRating?: number;
   /** Information about agents involved in the call. */
-  agentInfo?: Array<GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo>;
+  agentInfo?: ReadonlyArray<GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo>;
   /** The amount of time the customer waited to connect with an agent. */
   waitDuration?: string;
   /** An arbitrary string value specifying the menu path the customer took. */
   menuPath?: string;
   /** Input only. The feedback labels associated with the conversation. */
-  feedbackLabels?: Array<GoogleCloudContactcenterinsightsV1FeedbackLabel>;
+  feedbackLabels?: ReadonlyArray<GoogleCloudContactcenterinsightsV1FeedbackLabel>;
 }
 
 export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadata =
@@ -1344,7 +1344,7 @@ export interface GoogleCloudContactcenterinsightsV1Conversation {
   /** Obfuscated user ID which the customer sent to us. */
   obfuscatedUserId?: string;
   /** Output only. The annotations that were generated during the customer and agent interaction. */
-  runtimeAnnotations?: Array<GoogleCloudContactcenterinsightsV1RuntimeAnnotation>;
+  runtimeAnnotations?: ReadonlyArray<GoogleCloudContactcenterinsightsV1RuntimeAnnotation>;
   /** Output only. The most recent time at which the conversation was updated. */
   updateTime?: string;
   /** Call-specific metadata. */
@@ -1420,7 +1420,7 @@ export const GoogleCloudContactcenterinsightsV1Conversation =
 
 export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations {
   /** Optional. The conversations. */
-  conversations?: Array<GoogleCloudContactcenterinsightsV1Conversation>;
+  conversations?: ReadonlyArray<GoogleCloudContactcenterinsightsV1Conversation>;
 }
 
 export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations =
@@ -1456,7 +1456,7 @@ export const GoogleCloudContactcenterinsightsV1CorrelationRule =
 
 export interface GoogleCloudContactcenterinsightsV1CorrelationTypeConfig {
   /** A list of correlation rules to be evaluated for correlation. */
-  correlationRules?: Array<GoogleCloudContactcenterinsightsV1CorrelationRule>;
+  correlationRules?: ReadonlyArray<GoogleCloudContactcenterinsightsV1CorrelationRule>;
 }
 
 export const GoogleCloudContactcenterinsightsV1CorrelationTypeConfig =
@@ -1803,7 +1803,7 @@ export interface GoogleCloudContactcenterinsightsV1Issue {
   /** Output only. The most recent time that this issue was updated. */
   updateTime?: string;
   /** Output only. Resource names of the sample representative utterances that match to this issue. */
-  sampleUtterances?: Array<string>;
+  sampleUtterances?: ReadonlyArray<string>;
   /** Representative description of the issue. */
   displayDescription?: string;
   /** The representative name for the issue. */
@@ -1857,7 +1857,7 @@ export const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesI
 
 export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries {
   /** An ordered list of intervals from earliest to latest, where each interval represents the number of conversations that transpired during the time window. */
-  points?: Array<GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval>;
+  points?: ReadonlyArray<GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval>;
   /** The duration of each interval. */
   intervalDuration?: string;
 }
@@ -1898,7 +1898,7 @@ export interface GoogleCloudContactcenterinsightsV1mainIssue {
   /** Output only. The most recent time that this issue was updated. */
   updateTime?: string;
   /** Output only. Resource names of the sample representative utterances that match to this issue. */
-  sampleUtterances?: Array<string>;
+  sampleUtterances?: ReadonlyArray<string>;
   /** Representative description of the issue. */
   displayDescription?: string;
 }
@@ -2197,7 +2197,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationTranscriptTra
   /** For conversations derived from multi-channel audio, this is the channel number corresponding to the audio from that channel. For audioChannelCount = N, its output values can range from '1' to 'N'. A channel tag of 0 indicates that the audio is mono. */
   channelTag?: number;
   /** A list of the word-specific information for each word in the segment. */
-  words?: Array<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo>;
+  words?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo>;
   /** Turn level audio for this transcript segment. */
   turnLevelAudio?: GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio;
   /** CCAI metadata relating to the current transcript segment. */
@@ -2245,7 +2245,7 @@ export const GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscr
 
 export interface GoogleCloudContactcenterinsightsV1mainConversationTranscript {
   /** A list of sequential transcript segments that comprise the conversation. */
-  transcriptSegments?: Array<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment>;
+  transcriptSegments?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment>;
 }
 
 export const GoogleCloudContactcenterinsightsV1mainConversationTranscript =
@@ -2274,7 +2274,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsS
 
 export interface GoogleCloudContactcenterinsightsV1SignedAudioUris {
   /** The signed URI for the audio corresponding to each turn in the conversation. */
-  signedTurnLevelAudios?: Array<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio>;
+  signedTurnLevelAudios?: ReadonlyArray<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio>;
   /** The signed URI for the audio from the Dialogflow conversation source. */
   signedDialogflowAudioUri?: string;
   /** The signed URI for the audio from the Cloud Storage conversation source. */
@@ -2296,7 +2296,7 @@ export const GoogleCloudContactcenterinsightsV1SignedAudioUris =
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag {
   /** Optional. The list of Scorecard Question IDs that the tag applies to. Each QaQuestionId is represented as a full resource name containing the Question ID. Lastly, Since a tag may not necessarily be referenced by any Scorecard Questions, we treat this field as optional. */
-  qaQuestionIds?: Array<string>;
+  qaQuestionIds?: ReadonlyArray<string>;
   /** Required. A user-specified display name for the tag. */
   displayName?: string;
   /** Identifier. Resource name for the QaQuestionTag Format projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag} In the above format, the last segment, i.e., qa_question_tag, is a server-generated ID corresponding to the tag resource. */
@@ -2454,7 +2454,7 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2469,7 +2469,7 @@ export interface GoogleCloudContactcenterinsightsV1mainExportInsightsDataMetadat
   /** The original request for export. */
   request?: GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest;
   /** Partial errors during export operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. The time the operation was created. */
   createTime?: string;
   /** The number of conversations that were exported successfully. */
@@ -2497,7 +2497,7 @@ export const GoogleCloudContactcenterinsightsV1mainExportInsightsDataMetadata =
 
 export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsMetadata {
   /** The error message when the generative insights request fails. */
-  errorMessages?: Array<GoogleRpcStatus>;
+  errorMessages?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsMetadata =
@@ -2608,7 +2608,7 @@ export interface GoogleCloudContactcenterinsightsV1AutoLabelingRule {
   /** The description of the rule. */
   description?: string;
   /** Conditions to apply for auto-labeling the label_key. Representing sequential block of if .. else if .. else statements. The value of the first matching condition will be used. */
-  conditions?: Array<GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition>;
+  conditions?: ReadonlyArray<GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition>;
   /** The type of the label key. */
   labelKeyType?:
     | "LABEL_KEY_TYPE_UNSPECIFIED"
@@ -2645,7 +2645,7 @@ export const GoogleCloudContactcenterinsightsV1AutoLabelingRule =
 
 export interface GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse {
   /** The auto labeling rules. */
-  autoLabelingRules?: Array<GoogleCloudContactcenterinsightsV1AutoLabelingRule>;
+  autoLabelingRules?: ReadonlyArray<GoogleCloudContactcenterinsightsV1AutoLabelingRule>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -2746,7 +2746,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationCorrelationRe
   /** The conversation resource name. */
   conversation?: string;
   /** The results for each correlation rule. */
-  ruleResults?: Array<GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult>;
+  ruleResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult>;
 }
 
 export const GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult =
@@ -2812,7 +2812,7 @@ export const GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata =
 
 export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessageTextOutput {
   /** The parts of the message. */
-  text?: Array<string>;
+  text?: ReadonlyArray<string>;
   /** The type of the text message. */
   textType?:
     | "TYPE_UNSPECIFIED"
@@ -2861,7 +2861,7 @@ export const GoogleCloudContactcenterinsightsV1mainPhraseMatchData =
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput {
   /** The parts of the message. */
-  texts?: Array<string>;
+  texts?: ReadonlyArray<string>;
   /** The type of the text message. */
   type?:
     | "TYPE_UNSPECIFIED"
@@ -3061,7 +3061,7 @@ export interface GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse {
   /** The next page token. */
   nextPageToken?: string;
   /** The feedback labels that match the request. */
-  feedbackLabels?: Array<GoogleCloudContactcenterinsightsV1FeedbackLabel>;
+  feedbackLabels?: ReadonlyArray<GoogleCloudContactcenterinsightsV1FeedbackLabel>;
 }
 
 export const GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse =
@@ -3377,9 +3377,9 @@ export interface GoogleCloudContactcenterinsightsV1mainQaAnswer {
   /** The conversation the answer applies to. */
   conversation?: string;
   /** Lists all answer sources containing one or more answer values of a specific source type, e.g., all system-generated answer sources, or all manual edit answer sources. */
-  answerSources?: Array<GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource>;
+  answerSources?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource>;
   /** User-defined list of arbitrary tags. Matches the value from QaScorecard.ScorecardQuestion.tags. Used for grouping/organization and for weighting the score of each answer. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** The QaQuestion answered by this answer. */
   qaQuestion?: string;
   /** Question text. E.g., "Did the agent greet the customer?" */
@@ -3433,7 +3433,7 @@ export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversation
 
 export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessages {
   /** A message from the system in response to the user. */
-  systemMessages?: Array<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessage>;
+  systemMessages?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessage>;
 }
 
 export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessages =
@@ -3658,7 +3658,7 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata {
   /** Error status of the tuning operation for the question. Will only be set if the tuning operation failed. */
   tuningError?: string;
   /** A list of any applicable data validation warnings about the question's feedback labels. */
-  datasetValidationWarnings?: Array<
+  datasetValidationWarnings?: ReadonlyArray<
     | "DATASET_VALIDATION_WARNING_UNSPECIFIED"
     | "TOO_MANY_INVALID_FEEDBACK_LABELS"
     | "INSUFFICIENT_FEEDBACK_LABELS"
@@ -3728,7 +3728,7 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestion {
   /** Identifier. The resource name of the question. Format: projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}/revisions/{revision}/qaQuestions/{qa_question} */
   name?: string;
   /** Questions are tagged for categorization and scoring. Tags can either be: - Default Tags: These are predefined categories. They are identified by their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER"). - Custom Tags: These are user-defined categories. They are identified by their full resource name (e.g., projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}). Both default and custom tags are used to group questions and to influence the scoring of each question. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** Short, descriptive string, used in the UI where it's not practical to display the full question body. E.g., "Greeting". */
   abbreviation?: string;
   /** Question text. E.g., "Did the agent greet the customer?" */
@@ -3736,7 +3736,7 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestion {
   /** Metadata about the tuning operation for the question.This field will only be populated if and only if the question is part of a scorecard revision that has been tuned. */
   tuningMetadata?: GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata;
   /** A list of valid answers to the question, which the LLM must choose from. */
-  answerChoices?: Array<GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice>;
+  answerChoices?: ReadonlyArray<GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice>;
 }
 
 export const GoogleCloudContactcenterinsightsV1QaQuestion =
@@ -3826,7 +3826,7 @@ export const GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest =
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput {
   /** The parts of the message. */
-  text?: Array<string>;
+  text?: ReadonlyArray<string>;
   /** The type of the text message. */
   textType?:
     | "TYPE_UNSPECIFIED"
@@ -3876,7 +3876,7 @@ export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTran
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessages {
   /** A message from the system in response to the user. */
-  systemMessages?: Array<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessage>;
+  systemMessages?: ReadonlyArray<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessage>;
 }
 
 export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessages =
@@ -3951,7 +3951,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResu
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult {
   /** The results for each correlation rule. */
-  ruleResults?: Array<GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult>;
+  ruleResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult>;
   /** The conversation resource name. */
   conversation?: string;
 }
@@ -4105,7 +4105,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataMetad
   /** The original request for export. */
   request?: GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequest;
   /** Partial errors during export operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. The time the operation was created. */
   createTime?: string;
   /** The number of conversations that were exported successfully. */
@@ -4164,7 +4164,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest =
 
 export interface GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList {
   /** List of QaScorecardRevisions. */
-  qaScorecardRevisions?: Array<string>;
+  qaScorecardRevisions?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList =
@@ -4253,7 +4253,7 @@ export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversa
   /** Output only. The update time of the conversation. */
   updateTime?: string;
   /** Ordered list of messages, including user inputs and system responses. */
-  messages?: Array<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessage>;
+  messages?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessage>;
 }
 
 export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscript =
@@ -4287,7 +4287,7 @@ export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightsRespons
     | "PROGRESS"
     | (string & {});
   /** The text output from the LLM. */
-  text?: Array<string>;
+  text?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponseTextOutput =
@@ -4313,7 +4313,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequ
   /** Optional. The Cloud Storage path to the conversation metadata. Note that: [1] Metadata files are expected to be in JSON format. [2] Metadata and source files (transcripts or audio) must be in separate buckets / folders. [3] A source file and its corresponding metadata file must share the same name to be properly ingested, E.g. `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/conversation1.json`. */
   metadataBucketUri?: string;
   /** Optional. Custom keys to extract as conversation labels from metadata files in `metadata_bucket_uri`. Keys not included in this field will be ignored. Note that there is a limit of 100 labels per conversation. */
-  customMetadataKeys?: Array<string>;
+  customMetadataKeys?: ReadonlyArray<string>;
   /** Optional. The Cloud Storage path to the conversation audio file. Note that: [1] Audio files will be transcribed if not already. [2] Audio files and transcript files must be in separate buckets / folders. [3] A source file and its corresponding audio file must share the same name to be properly ingested, E.g. `gs://bucket/transcript/conversation1.json` and `gs://bucket/audio/conversation1.mp3`. */
   audioBucketUri?: string;
 }
@@ -4440,9 +4440,9 @@ export interface GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMeta
   /** The number of conversations sampled. */
   sampledConversationsCount?: number;
   /** Partial errors during test correlation config operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** A list of errors that occurred during correlation, one for each conversation that failed. */
-  conversationCorrelationErrors?: Array<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError>;
+  conversationCorrelationErrors?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError>;
   /** The number of conversations correlated. */
   correlatedConversationsCount?: number;
 }
@@ -4570,7 +4570,7 @@ export const GoogleCloudContactcenterinsightsV1mainDimensionQaScorecardDimension
 
 export interface GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfigScorecardList {
   /** List of QaScorecardRevisions. */
-  qaScorecardRevisions?: Array<string>;
+  qaScorecardRevisions?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfigScorecardList =
@@ -4626,7 +4626,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversati
 
 export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput {
   /** The parts of the message. */
-  text?: Array<string>;
+  text?: ReadonlyArray<string>;
   /** The type of the text message. */
   textType?:
     | "TYPE_UNSPECIFIED"
@@ -4676,7 +4676,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversati
 
 export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessages {
   /** A message from the system in response to the user. */
-  systemMessages?: Array<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessage>;
+  systemMessages?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessage>;
 }
 
 export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessages =
@@ -4725,7 +4725,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConver
   /** Output only. The update time of the conversation. */
   updateTime?: string;
   /** Ordered list of messages, including user inputs and system responses. */
-  messages?: Array<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessage>;
+  messages?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessage>;
 }
 
 export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscript =
@@ -4839,7 +4839,7 @@ export interface GoogleCloudContactcenterinsightsV1mainSampleConversationsMetada
   /** Output only. The time the operation was created. */
   createTime?: string;
   /** Output only. Partial errors during sample conversations operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. Statistics for SampleConversations operation. */
   sampleConversationsStats?: GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadataSampleConversationsStats;
 }
@@ -4911,7 +4911,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpe
   /** Output only. The time the operation was created. */
   createTime?: string;
   /** Partial errors during initializing operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecMetadata =
@@ -5015,7 +5015,7 @@ export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversati
 
 export interface GoogleCloudContactcenterinsightsV1QaQuestionTag {
   /** Optional. The list of Scorecard Question IDs that the tag applies to. Each QaQuestionId is represented as a full resource name containing the Question ID. Lastly, Since a tag may not necessarily be referenced by any Scorecard Questions, we treat this field as optional. */
-  qaQuestionIds?: Array<string>;
+  qaQuestionIds?: ReadonlyArray<string>;
   /** Required. A user-specified display name for the tag. */
   displayName?: string;
   /** Identifier. Resource name for the QaQuestionTag Format projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag} In the above format, the last segment, i.e., qa_question_tag, is a server-generated ID corresponding to the tag resource. */
@@ -5039,7 +5039,7 @@ export const GoogleCloudContactcenterinsightsV1QaQuestionTag =
 
 export interface GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse {
   /** The parent resource of the questions. */
-  qaQuestionTags?: Array<GoogleCloudContactcenterinsightsV1QaQuestionTag>;
+  qaQuestionTags?: ReadonlyArray<GoogleCloudContactcenterinsightsV1QaQuestionTag>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -5074,9 +5074,9 @@ export interface GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMe
   /** The number of conversations correlated. */
   correlatedConversationsCount?: number;
   /** A list of errors that occurred during correlation, one for each conversation that failed. */
-  conversationCorrelationErrors?: Array<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError>;
+  conversationCorrelationErrors?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError>;
   /** Partial errors during test correlation config operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** The number of conversations sampled. */
   sampledConversationsCount?: number;
   /** The number of conversations that failed correlation. */
@@ -5142,9 +5142,9 @@ export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadata
   /** The number of conversations sampled. */
   sampledConversationsCount?: number;
   /** Partial errors during test correlation config operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** A list of errors that occurred during correlation, one for each conversation that failed. */
-  conversationCorrelationErrors?: Array<GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError>;
+  conversationCorrelationErrors?: ReadonlyArray<GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError>;
   /** The number of conversations correlated. */
   correlatedConversationsCount?: number;
 }
@@ -5234,7 +5234,7 @@ export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcs
   /** Optional. The Cloud Storage path to the conversation metadata. Note that: [1] Metadata files are expected to be in JSON format. [2] Metadata and source files (transcripts or audio) must be in separate buckets / folders. [3] A source file and its corresponding metadata file must share the same name to be properly ingested, E.g. `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/conversation1.json`. */
   metadataBucketUri?: string;
   /** Optional. Custom keys to extract as conversation labels from metadata files in `metadata_bucket_uri`. Keys not included in this field will be ignored. Note that there is a limit of 100 labels per conversation. */
-  customMetadataKeys?: Array<string>;
+  customMetadataKeys?: ReadonlyArray<string>;
   /** Optional. The Cloud Storage path to the conversation transcripts. Note that: [1] Transcript files are expected to be in JSON format. [2] Transcript, audio, metadata files must be in separate buckets / folders. [3] A source file and its corresponding metadata file must share the same name to be properly ingested, E.g. `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/conversation1.json`. */
   transcriptBucketUri?: string;
 }
@@ -5339,7 +5339,7 @@ export const GoogleCloudContactcenterinsightsV1IngestConversationsRequest =
 
 export interface GoogleCloudContactcenterinsightsV1IngestConversationsMetadata {
   /** Output only. Partial errors during ingest operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. The time the operation was created. */
   createTime?: string;
   /** Output only. The time the operation finished running. */
@@ -5347,7 +5347,7 @@ export interface GoogleCloudContactcenterinsightsV1IngestConversationsMetadata {
   /** Output only. Statistics for IngestConversations operation. */
   ingestConversationsStats?: GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIngestConversationsStats;
   /** Output only. Stores the conversation resources produced by ingest sampling operations. */
-  sampledConversations?: Array<string>;
+  sampledConversations?: ReadonlyArray<string>;
   /** Output only. The original request for ingest. */
   request?: GoogleCloudContactcenterinsightsV1IngestConversationsRequest;
 }
@@ -5389,7 +5389,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultR
 
 export interface GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecMetadata {
   /** Partial errors during initializing operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. The time the operation was created. */
   createTime?: string;
   /** Output only. The time the operation finished running. */
@@ -5466,7 +5466,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConver
   /** The update time of the conversation. */
   updateTime?: string;
   /** Ordered list of messages, including user inputs and system responses. */
-  messages?: Array<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage>;
+  messages?: ReadonlyArray<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage>;
 }
 
 export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation =
@@ -5505,7 +5505,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsights {
   /** Chart spec for the chart. */
   chartSpec?: Record<string, unknown>;
   /** Output only. The chart conversations used to generate the chart. */
-  chartConversations?: Array<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation>;
+  chartConversations?: ReadonlyArray<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation>;
   /** The chart checkpoint used to generate the chart. */
   chartCheckpoint?: GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint;
   /** Optional. For charts with comparison, this key will determine the metric that will be compared between the current and another dataset. */
@@ -5651,7 +5651,7 @@ export const GoogleCloudContactcenterinsightsV1Chart =
 
 export interface GoogleCloudContactcenterinsightsV1ListChartsResponse {
   /** The charts under the parent. */
-  charts?: Array<GoogleCloudContactcenterinsightsV1Chart>;
+  charts?: ReadonlyArray<GoogleCloudContactcenterinsightsV1Chart>;
   /** The value returned by the last `ListChartsResponse`. This value indicates that this is a continuation of a prior `ListCharts` call and that the system should return the next page of data. */
   nextPageToken?: string;
 }
@@ -5743,9 +5743,9 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QaAnswer {
   /** The QaQuestion answered by this answer. */
   qaQuestion?: string;
   /** User-defined list of arbitrary tags. Matches the value from QaScorecard.ScorecardQuestion.tags. Used for grouping/organization and for weighting the score of each answer. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** Lists all answer sources containing one or more answer values of a specific source type, e.g., all system-generated answer sources, or all manual edit answer sources. */
-  answerSources?: Array<GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource>;
+  answerSources?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource>;
   /** The conversation the answer applies to. */
   conversation?: string;
 }
@@ -5770,7 +5770,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1QaAnswer =
 
 export interface GoogleCloudContactcenterinsightsV1ListAnalysesResponse {
   /** The analyses that match the request. */
-  analyses?: Array<GoogleCloudContactcenterinsightsV1Analysis>;
+  analyses?: ReadonlyArray<GoogleCloudContactcenterinsightsV1Analysis>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -5910,7 +5910,7 @@ export interface GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The assessment rules that match the request. */
-  assessmentRules?: Array<GoogleCloudContactcenterinsightsV1AssessmentRule>;
+  assessmentRules?: ReadonlyArray<GoogleCloudContactcenterinsightsV1AssessmentRule>;
 }
 
 export const GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse =
@@ -5967,7 +5967,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSou
   /** The maximum potential overall score of the scorecard. Any questions answered using `na_value` are excluded from this calculation. */
   potentialScore?: number;
   /** Collection of tags and their scores. */
-  qaTagResults?: Array<GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult>;
+  qaTagResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult>;
   /** The overall numerical score of the result. */
   score?: number;
   /** What created the score. */
@@ -5998,7 +5998,7 @@ export const GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSource 
 
 export interface GoogleCloudContactcenterinsightsV1mainQaScorecardResult {
   /** List of all individual score sets. */
-  scoreSources?: Array<GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSource>;
+  scoreSources?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSource>;
   /** Output only. The timestamp that the revision was created. */
   createTime?: string;
   /** The normalized score, which is the score divided by the potential score. Any manual edits are included if they exist. */
@@ -6006,7 +6006,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQaScorecardResult {
   /** The overall numerical score of the result, incorporating any manual edits if they exist. */
   score?: number;
   /** Set of QaAnswers represented in the result. */
-  qaAnswers?: Array<GoogleCloudContactcenterinsightsV1mainQaAnswer>;
+  qaAnswers?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainQaAnswer>;
   /** The QaScorecardRevision scored by this result. */
   qaScorecardRevision?: string;
   /** ID of the agent that handled the conversation. */
@@ -6018,7 +6018,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQaScorecardResult {
   /** The maximum potential overall score of the scorecard. Any questions answered using `na_value` are excluded from this calculation. */
   potentialScore?: number;
   /** Collection of tags and their scores. */
-  qaTagResults?: Array<GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult>;
+  qaTagResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult>;
 }
 
 export const GoogleCloudContactcenterinsightsV1mainQaScorecardResult =
@@ -6264,7 +6264,7 @@ export interface GoogleCloudContactcenterinsightsV1mainIssueModelResult {
   /** Issue model that generates the result. Format: projects/{project}/locations/{location}/issueModels/{issue_model} */
   issueModel?: string;
   /** All the matched issues. */
-  issues?: Array<GoogleCloudContactcenterinsightsV1mainIssueAssignment>;
+  issues?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainIssueAssignment>;
 }
 
 export const GoogleCloudContactcenterinsightsV1mainIssueModelResult =
@@ -6279,9 +6279,9 @@ export const GoogleCloudContactcenterinsightsV1mainIssueModelResult =
 
 export interface GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysisMetadata {
   /** Overall conversation-level sentiment for each channel of the call. */
-  sentiments?: Array<GoogleCloudContactcenterinsightsV1mainConversationLevelSentiment>;
+  sentiments?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainConversationLevelSentiment>;
   /** Results of scoring QaScorecards. */
-  qaScorecardResults?: Array<GoogleCloudContactcenterinsightsV1mainQaScorecardResult>;
+  qaScorecardResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainQaScorecardResult>;
   /** All the entities in the call. */
   entities?: Record<string, GoogleCloudContactcenterinsightsV1mainEntity>;
   /** All the matched intents in the call. */
@@ -6292,7 +6292,7 @@ export interface GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysi
     GoogleCloudContactcenterinsightsV1mainPhraseMatchData
   >;
   /** A list of call annotations that apply to this call. */
-  annotations?: Array<GoogleCloudContactcenterinsightsV1mainCallAnnotation>;
+  annotations?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainCallAnnotation>;
   /** Overall conversation-level silence during the call. */
   silence?: GoogleCloudContactcenterinsightsV1mainConversationLevelSilence;
   /** Overall conversation-level issue modeling result. */
@@ -6360,7 +6360,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationDataSource {
   /** The source when the conversation comes from Dialogflow. */
   dialogflowSource?: GoogleCloudContactcenterinsightsV1mainDialogflowSource;
   /** Cloud Storage URIs that points to files that contain the conversation audio for each turn. Assume the order of the URIs is the same as the order of the transcript turns. */
-  turnLevelAudios?: Array<GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio>;
+  turnLevelAudios?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio>;
   /** A Cloud Storage location specification for the audio and transcript. */
   gcsSource?: GoogleCloudContactcenterinsightsV1mainGcsSource;
   /** Cloud Storage URI that points to a file that contains the conversation metadata. */
@@ -6479,7 +6479,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptT
   /** The sentiment for this transcript segment. */
   sentiment?: GoogleCloudContactcenterinsightsV1alpha1SentimentData;
   /** A list of the word-specific information for each word in the segment. */
-  words?: Array<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentWordInfo>;
+  words?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentWordInfo>;
   /** For conversations derived from multi-channel audio, this is the channel number corresponding to the audio from that channel. For audioChannelCount = N, its output values can range from '1' to 'N'. A channel tag of 0 indicates that the audio is mono. */
   channelTag?: number;
   /** Turn level audio for this transcript segment. */
@@ -6543,7 +6543,7 @@ export const GoogleCloudContactcenterinsightsV1AuthorizedView =
 
 export interface GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse {
   /** The AuthorizedViews under the parent. */
-  authorizedViews?: Array<GoogleCloudContactcenterinsightsV1AuthorizedView>;
+  authorizedViews?: ReadonlyArray<GoogleCloudContactcenterinsightsV1AuthorizedView>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -6710,7 +6710,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice
   /** The average latency of conversational agents' audio in audio out latency per interaction. This is computed as the average of the all the interactions' audio in audio out latencies in a conversation and averaged across conversations. */
   conversationalAgentsAverageAudioInAudioOutLatency?: number;
   /** Average QA normalized score for all the tags. */
-  qaTagScores?: Array<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore>;
+  qaTagScores?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore>;
   /** Count of summarization suggestions results. */
   summarizationSuggestionResultCount?: number;
   /** Count of Ai Coach Suggestion that has been used by agents. */
@@ -7339,7 +7339,7 @@ export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceData
 
 export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTimeSeries {
   /** The data points that make up the time series . */
-  dataPoints?: Array<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint>;
+  dataPoints?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint>;
 }
 
 export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTimeSeries =
@@ -7356,7 +7356,7 @@ export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTime
 
 export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice {
   /** A unique combination of dimensions that this slice represents. */
-  dimensions?: Array<GoogleCloudContactcenterinsightsV1mainDimension>;
+  dimensions?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainDimension>;
   /** The total metric value. The interval of this data point is [starting create time, ending create time) from the request. */
   total?: GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint;
   /** A time series of metric values. This is only populated if the request specifies a time granularity other than NONE. */
@@ -7441,7 +7441,7 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabel
   /** A sheets document destination. */
   sheetsDestination?: GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestSheetsDestination;
   /** Optional. If set, a template for labeling conversations and scorecard questions will be created from the conversation_filter and the questions under the scorecard(s). The feedback label `filter` will be ignored. */
-  templateQaScorecardId?: Array<string>;
+  templateQaScorecardId?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequest =
@@ -7495,7 +7495,7 @@ export const GoogleCloudContactcenterinsightsV1ExportIssueModelRequest =
 
 export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1TestIamPermissionsResponse =
@@ -7638,7 +7638,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSli
   /** Count of summarization suggestions results. */
   summarizationSuggestionResultCount?: number;
   /** Average QA normalized score for all the tags. */
-  qaTagScores?: Array<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore>;
+  qaTagScores?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore>;
   /** Count of Ai Coach Suggestion that has been used by agents. */
   aiCoachSuggestionAgentUsageCount?: number;
   /** The average latency of conversational agents' LLM call latency per interaction. This is computed as the average of the all the interactions LLM call latencies in a conversation and averaged across conversations. */
@@ -7785,7 +7785,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationCorrelationIn
   /** Output only. The full conversation correlation id this conversation is a segment of. */
   fullConversationCorrelationId?: string;
   /** Output only. The correlation types of this conversation. A single conversation can have multiple correlation types. For example a conversation that only has a single segment is both a SEGMENT and a FULL_CONVERSATION. */
-  correlationTypes?: Array<
+  correlationTypes?: ReadonlyArray<
     | "CORRELATION_TYPE_UNSPECIFIED"
     | "SEGMENT"
     | "PARTIAL"
@@ -7853,7 +7853,7 @@ export interface GoogleCloudContactcenterinsightsV1mainAnnotatorSelector {
   /** Whether to run the silence annotator. */
   runSilenceAnnotator?: boolean;
   /** The issue model to run. If not provided, the most recently deployed topic model will be used. The provided issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator is set to true. If more than one issue model is provided, only the first provided issue model will be used for inference. */
-  issueModels?: Array<string>;
+  issueModels?: ReadonlyArray<string>;
   /** Whether to run the summarization annotator. */
   runSummarizationAnnotator?: boolean;
   /** Whether to run the intent annotator. */
@@ -7871,7 +7871,7 @@ export interface GoogleCloudContactcenterinsightsV1mainAnnotatorSelector {
   /** Whether to run the interruption annotator. */
   runInterruptionAnnotator?: boolean;
   /** The list of phrase matchers to run. If not provided, all active phrase matchers will be used. If inactive phrase matchers are provided, they will not be used. Phrase matchers will be run only if run_phrase_matcher_annotator is set to true. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher} */
-  phraseMatchers?: Array<string>;
+  phraseMatchers?: ReadonlyArray<string>;
   /** Whether to run the QA annotator. */
   runQaAnnotator?: boolean;
   /** Whether to run the active phrase matcher annotator(s). */
@@ -7970,7 +7970,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationQualityMetada
   /** The agent's deployment display name. Only applicable to automated agents. */
   deploymentDisplayName?: string;
   /** User-specified strings representing the agent's teams. */
-  teams?: Array<string>;
+  teams?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo =
@@ -8025,9 +8025,9 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationQualityMetada
   /** An arbitrary integer value indicating the customer's satisfaction rating. */
   customerSatisfactionRating?: number;
   /** Information about agents involved in the call. */
-  agentInfo?: Array<GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo>;
+  agentInfo?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo>;
   /** Input only. The feedback labels associated with the conversation. */
-  feedbackLabels?: Array<GoogleCloudContactcenterinsightsV1mainFeedbackLabel>;
+  feedbackLabels?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainFeedbackLabel>;
   /** The amount of time the customer waited to connect with an agent. */
   waitDuration?: string;
   /** An arbitrary string value specifying the menu path the customer took. */
@@ -8322,7 +8322,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConversation {
   /** Output only. The most recent time at which the conversation was updated. */
   updateTime?: string;
   /** Output only. The annotations that were generated during the customer and agent interaction. */
-  runtimeAnnotations?: Array<GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation>;
+  runtimeAnnotations?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation>;
 }
 
 export const GoogleCloudContactcenterinsightsV1mainConversation =
@@ -8410,7 +8410,7 @@ export interface GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The AuthorizedViews under the parent. */
-  authorizedViews?: Array<GoogleCloudContactcenterinsightsV1AuthorizedView>;
+  authorizedViews?: ReadonlyArray<GoogleCloudContactcenterinsightsV1AuthorizedView>;
 }
 
 export const GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse =
@@ -8460,7 +8460,7 @@ export interface GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The QaScorecards under the parent. */
-  qaScorecards?: Array<GoogleCloudContactcenterinsightsV1QaScorecard>;
+  qaScorecards?: ReadonlyArray<GoogleCloudContactcenterinsightsV1QaScorecard>;
 }
 
 export const GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse =
@@ -8497,7 +8497,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequ
 
 export interface GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsMetadata {
   /** Partial errors during bulk delete conversations operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** The time the operation was created. */
   createTime?: string;
   /** The time the operation finished running. */
@@ -8569,7 +8569,7 @@ export const GoogleCloudContactcenterinsightsV1AuthorizedViewSet =
 
 export interface GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse {
   /** The AuthorizedViewSets under the parent. */
-  authorizedViewSets?: Array<GoogleCloudContactcenterinsightsV1AuthorizedViewSet>;
+  authorizedViewSets?: ReadonlyArray<GoogleCloudContactcenterinsightsV1AuthorizedViewSet>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -8668,7 +8668,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMeta
   /** The agent's deployment display name. Only applicable to automated agents. */
   deploymentDisplayName?: string;
   /** User-specified strings representing the agent's teams. */
-  teams?: Array<string>;
+  teams?: ReadonlyArray<string>;
   /** The agent's name. */
   displayName?: string;
   /** A user-specified string representing the agent. */
@@ -8696,7 +8696,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata {
   /** Input only. The feedback labels associated with the conversation. */
-  feedbackLabels?: Array<GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel>;
+  feedbackLabels?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel>;
   /** The amount of time the customer waited to connect with an agent. */
   waitDuration?: string;
   /** An arbitrary string value specifying the menu path the customer took. */
@@ -8704,7 +8704,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMeta
   /** An arbitrary integer value indicating the customer's satisfaction rating. */
   customerSatisfactionRating?: number;
   /** Information about agents involved in the call. */
-  agentInfo?: Array<GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo>;
+  agentInfo?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo>;
 }
 
 export const GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata =
@@ -8750,7 +8750,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IssueModelResult {
   /** Issue model that generates the result. Format: projects/{project}/locations/{location}/issueModels/{issue_model} */
   issueModel?: string;
   /** All the matched issues. */
-  issues?: Array<GoogleCloudContactcenterinsightsV1alpha1IssueAssignment>;
+  issues?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1IssueAssignment>;
 }
 
 export const GoogleCloudContactcenterinsightsV1alpha1IssueModelResult =
@@ -8833,7 +8833,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreS
   /** The maximum potential overall score of the scorecard. Any questions answered using `na_value` are excluded from this calculation. */
   potentialScore?: number;
   /** Collection of tags and their scores. */
-  qaTagResults?: Array<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult>;
+  qaTagResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult>;
 }
 
 export const GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreSource =
@@ -8864,15 +8864,15 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult {
   /** ID of the agent that handled the conversation. */
   agentId?: string;
   /** Set of QaAnswers represented in the result. */
-  qaAnswers?: Array<GoogleCloudContactcenterinsightsV1alpha1QaAnswer>;
+  qaAnswers?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1QaAnswer>;
   /** List of all individual score sets. */
-  scoreSources?: Array<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreSource>;
+  scoreSources?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreSource>;
   /** Identifier. The name of the scorecard result. Format: projects/{project}/locations/{location}/qaScorecardResults/{qa_scorecard_result} */
   name?: string;
   /** The maximum potential overall score of the scorecard. Any questions answered using `na_value` are excluded from this calculation. */
   potentialScore?: number;
   /** Collection of tags and their scores. */
-  qaTagResults?: Array<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult>;
+  qaTagResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult>;
   /** The conversation scored by this result. */
   conversation?: string;
 }
@@ -8951,15 +8951,15 @@ export interface GoogleCloudContactcenterinsightsV1alpha1AnalysisResultCallAnaly
     GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData
   >;
   /** A list of call annotations that apply to this call. */
-  annotations?: Array<GoogleCloudContactcenterinsightsV1alpha1CallAnnotation>;
+  annotations?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1CallAnnotation>;
   /** Overall conversation-level silence during the call. */
   silence?: GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence;
   /** All the matched intents in the call. */
   intents?: Record<string, GoogleCloudContactcenterinsightsV1alpha1Intent>;
   /** Overall conversation-level sentiment for each channel of the call. */
-  sentiments?: Array<GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment>;
+  sentiments?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment>;
   /** Results of scoring QaScorecards. */
-  qaScorecardResults?: Array<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult>;
+  qaScorecardResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult>;
   /** All the entities in the call. */
   entities?: Record<string, GoogleCloudContactcenterinsightsV1alpha1Entity>;
 }
@@ -9151,7 +9151,7 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceData
   /** The average latency of conversational agents' audio in audio out latency per interaction. This is computed as the average of the all the interactions' audio in audio out latencies in a conversation and averaged across conversations. */
   conversationalAgentsAverageAudioInAudioOutLatency?: number;
   /** Average QA normalized score for all the tags. */
-  qaTagScores?: Array<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore>;
+  qaTagScores?: ReadonlyArray<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore>;
   /** Count of summarization suggestions results. */
   summarizationSuggestionResultCount?: number;
   /** Count of Ai Coach Suggestion that has been used by agents. */
@@ -9291,7 +9291,7 @@ export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoin
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConversationTranscript {
   /** A list of sequential transcript segments that comprise the conversation. */
-  transcriptSegments?: Array<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegment>;
+  transcriptSegments?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegment>;
 }
 
 export const GoogleCloudContactcenterinsightsV1alpha1ConversationTranscript =
@@ -9358,7 +9358,7 @@ export interface GoogleCloudContactcenterinsightsV1SampleConversationsMetadata {
   /** Output only. The time the operation was created. */
   createTime?: string;
   /** Output only. Partial errors during sample conversations operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. Statistics for SampleConversations operation. */
   sampleConversationsStats?: GoogleCloudContactcenterinsightsV1SampleConversationsMetadataSampleConversationsStats;
   /** Output only. The time the operation finished running. */
@@ -9397,7 +9397,7 @@ export const GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagRequest =
 
 export interface GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse {
   /** The feedback labels that match the request. */
-  feedbackLabels?: Array<GoogleCloudContactcenterinsightsV1FeedbackLabel>;
+  feedbackLabels?: ReadonlyArray<GoogleCloudContactcenterinsightsV1FeedbackLabel>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -9650,7 +9650,7 @@ export interface GoogleIamV1AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1AuditLogConfig =
@@ -9661,7 +9661,7 @@ export const GoogleIamV1AuditLogConfig =
 
 export interface GoogleIamV1AuditConfig {
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<GoogleIamV1AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<GoogleIamV1AuditLogConfig>;
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
@@ -9717,7 +9717,7 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup {
     | "ANY_OF"
     | (string & {});
   /** A list of phrase match rules that are included in this group. */
-  phraseMatchRules?: Array<GoogleCloudContactcenterinsightsV1PhraseMatchRule>;
+  phraseMatchRules?: ReadonlyArray<GoogleCloudContactcenterinsightsV1PhraseMatchRule>;
 }
 
 export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup =
@@ -9740,7 +9740,7 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatcher {
   /** Output only. The most recent time at which the activation status was updated. */
   activationUpdateTime?: string;
   /** A list of phase match rule groups that are included in this matcher. */
-  phraseMatchRuleGroups?: Array<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup>;
+  phraseMatchRuleGroups?: ReadonlyArray<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup>;
   /** The customized version tag to use for the phrase matcher. If not specified, it will default to `revision_id`. */
   versionTag?: string;
   /** Required. The type of this phrase matcher. */
@@ -9829,7 +9829,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData =
 
 export interface GoogleCloudContactcenterinsightsV1mainListFeedbackLabelsResponse {
   /** The feedback labels that match the request. */
-  feedbackLabels?: Array<GoogleCloudContactcenterinsightsV1mainFeedbackLabel>;
+  feedbackLabels?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainFeedbackLabel>;
   /** The next page token. */
   nextPageToken?: string;
 }
@@ -9899,7 +9899,7 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsM
   /** The time the operation finished running. */
   endTime?: string;
   /** Output only. Partial errors during bulk analyze operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** The time the operation was created. */
   createTime?: string;
   /** Total number of analyses requested. Computed by the number of conversations returned by `filter` multiplied by `analysis_percentage` in the request. */
@@ -9929,7 +9929,7 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabel
   /** The number of objects processed during the download operation. */
   processedObjectCount?: number;
   /** Output only. Full name of the files written to Cloud storage. */
-  fileNames?: Array<string>;
+  fileNames?: ReadonlyArray<string>;
   /** The number of new feedback labels downloaded during this operation. Different from "processed" because some labels might not be downloaded because an error. */
   successfulDownloadCount?: number;
 }
@@ -9953,7 +9953,7 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabel
   /** Output only. Statistics for BulkDownloadFeedbackLabels operation. */
   downloadStats?: GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadataDownloadStats;
   /** Partial errors during ingest operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. The time the operation finished running. */
   endTime?: string;
 }
@@ -10035,7 +10035,7 @@ export const GoogleCloudContactcenterinsightsV1Note =
 
 export interface GoogleCloudContactcenterinsightsV1ListNotesResponse {
   /** The notes that match the request. */
-  notes?: Array<GoogleCloudContactcenterinsightsV1Note>;
+  notes?: ReadonlyArray<GoogleCloudContactcenterinsightsV1Note>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -10153,7 +10153,7 @@ export interface GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResul
   /** The second conversation resource name. */
   conversationB?: string;
   /** The results for each applicable constraint rule. */
-  ruleConstraintResults?: Array<GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult>;
+  ruleConstraintResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult>;
 }
 
 export const GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult =
@@ -10172,9 +10172,9 @@ export const GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult =
 
 export interface GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults {
   /** A list of join key correlation results for each conversation tested. */
-  joinKeyResults?: Array<GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult>;
+  joinKeyResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult>;
   /** A list of constraint evaluation results for each pair of conversations. */
-  constraintResults?: Array<GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult>;
+  constraintResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult>;
 }
 
 export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults =
@@ -10206,7 +10206,7 @@ export interface GoogleCloudContactcenterinsightsV1Container {
   /** The width of the container in grid units. */
   width?: number;
   /** Widgets in the Container. */
-  widgets?: Array<GoogleCloudContactcenterinsightsV1Widget>;
+  widgets?: ReadonlyArray<GoogleCloudContactcenterinsightsV1Widget>;
   /** Container description */
   description?: string;
   /** Output only. Unique ID for the container. */
@@ -10279,7 +10279,7 @@ export const GoogleCloudContactcenterinsightsV1mainExportIssueModelMetadata =
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceTimeSeries {
   /** The data points that make up the time series . */
-  dataPoints?: Array<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint>;
+  dataPoints?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint>;
 }
 
 export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceTimeSeries =
@@ -10355,7 +10355,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMeta
   /** Output only. The time the operation was created. */
   createTime?: string;
   /** Output only. Partial errors during sample conversations operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. Statistics for SampleConversations operation. */
   sampleConversationsStats?: GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadataSampleConversationsStats;
 }
@@ -10417,7 +10417,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMet
   /** The number of objects processed during the download operation. */
   processedObjectCount?: number;
   /** Output only. Full name of the files written to Cloud storage. */
-  fileNames?: Array<string>;
+  fileNames?: ReadonlyArray<string>;
   /** Total number of files written to the provided Cloud Storage bucket. */
   totalFilesWritten?: number;
 }
@@ -10489,7 +10489,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsReq
   /** A sheets document destination. */
   sheetsDestination?: GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination;
   /** Optional. If set, a template for labeling conversations and scorecard questions will be created from the conversation_filter and the questions under the scorecard(s). The feedback label `filter` will be ignored. */
-  templateQaScorecardId?: Array<string>;
+  templateQaScorecardId?: ReadonlyArray<string>;
   /** Required. The parent resource for new feedback labels. */
   parent?: string;
   /** A cloud storage bucket destination. */
@@ -10521,7 +10521,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMet
   /** Output only. The time the operation finished running. */
   endTime?: string;
   /** Partial errors during ingest operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. The time the operation was created. */
   createTime?: string;
   /** Output only. Statistics for BulkDownloadFeedbackLabels operation. */
@@ -10570,7 +10570,7 @@ export const GoogleCloudContactcenterinsightsV1View =
 
 export interface GoogleCloudContactcenterinsightsV1ListIssuesResponse {
   /** The issues that match the request. */
-  issues?: Array<GoogleCloudContactcenterinsightsV1Issue>;
+  issues?: ReadonlyArray<GoogleCloudContactcenterinsightsV1Issue>;
 }
 
 export const GoogleCloudContactcenterinsightsV1ListIssuesResponse =
@@ -10656,7 +10656,7 @@ export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataMetadata {
   /** The number of conversations that failed to be exported. */
   failedExportCount?: number;
   /** Partial errors during export operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. The time the operation was created. */
   createTime?: string;
   /** The number of conversations that were exported successfully. */
@@ -10712,7 +10712,7 @@ export const GoogleCloudContactcenterinsightsV1AnalysisRule =
 
 export interface GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse {
   /** The analysis_rule that match the request. */
-  analysisRules?: Array<GoogleCloudContactcenterinsightsV1AnalysisRule>;
+  analysisRules?: ReadonlyArray<GoogleCloudContactcenterinsightsV1AnalysisRule>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -10731,7 +10731,7 @@ export interface GoogleCloudContactcenterinsightsV1ListViewsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The views that match the request. */
-  views?: Array<GoogleCloudContactcenterinsightsV1View>;
+  views?: ReadonlyArray<GoogleCloudContactcenterinsightsV1View>;
 }
 
 export const GoogleCloudContactcenterinsightsV1ListViewsResponse =
@@ -10746,7 +10746,7 @@ export const GoogleCloudContactcenterinsightsV1ListViewsResponse =
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponseTextOutput {
   /** The text output from the LLM. */
-  text?: Array<string>;
+  text?: ReadonlyArray<string>;
   /** The type of text output. */
   textType?:
     | "TYPE_UNSPECIFIED"
@@ -10767,7 +10767,7 @@ export const GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerat
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice {
   /** A unique combination of dimensions that this slice represents. */
-  dimensions?: Array<GoogleCloudContactcenterinsightsV1alpha1Dimension>;
+  dimensions?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1Dimension>;
   /** The total metric value. The interval of this data point is [starting create time, ending create time) from the request. */
   total?: GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint;
   /** A time series of metric values. This is only populated if the request specifies a time granularity other than NONE. */
@@ -10794,7 +10794,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponse {
   /** The macro average slice contains aggregated averages across all selected dimensions. i.e. if group_by agent and scorecard_id is specified, this field will contain the average across all agents and all scorecards. This field is only populated if the request specifies a Dimension. */
   macroAverageSlice?: GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice;
   /** A slice contains a total and (if the request specified a time granularity) a time series of metric values. Each slice contains a unique combination of the cardinality of dimensions from the request. */
-  slices?: Array<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice>;
+  slices?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice>;
   /** Required. The location of the data. "projects/{project}/locations/{location}" */
   location?: string;
   /** The metrics last update time. */
@@ -10838,7 +10838,7 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightConversation
   /** Output only. The update time of the conversation. */
   updateTime?: string;
   /** Ordered list of messages, including user inputs and system responses. */
-  messages?: Array<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessage>;
+  messages?: ReadonlyArray<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessage>;
   /** Output only. The create time of the conversation. */
   createTime?: string;
   /** The conversation id of the chart. */
@@ -10915,7 +10915,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMeta
   /** Output only. The original request for ingest. */
   request?: GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest;
   /** Output only. Partial errors during ingest operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. The time the operation was created. */
   createTime?: string;
   /** Output only. The time the operation finished running. */
@@ -10923,7 +10923,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMeta
   /** Output only. Statistics for IngestConversations operation. */
   ingestConversationsStats?: GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadataIngestConversationsStats;
   /** Output only. Stores the conversation resources produced by ingest sampling operations. */
-  sampledConversations?: Array<string>;
+  sampledConversations?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadata =
@@ -10959,7 +10959,7 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecardRevision {
   /** Output only. The timestamp that the revision was created. */
   createTime?: string;
   /** Output only. Alternative IDs for this revision of the scorecard, e.g., `latest`. */
-  alternateIds?: Array<string>;
+  alternateIds?: ReadonlyArray<string>;
   /** The snapshot of the scorecard at the time of this revision's creation. */
   snapshot?: GoogleCloudContactcenterinsightsV1QaScorecard;
 }
@@ -10979,7 +10979,7 @@ export interface GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsRespo
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The QaScorecards under the parent. */
-  qaScorecardRevisions?: Array<GoogleCloudContactcenterinsightsV1QaScorecardRevision>;
+  qaScorecardRevisions?: ReadonlyArray<GoogleCloudContactcenterinsightsV1QaScorecardRevision>;
 }
 
 export const GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse =
@@ -11135,7 +11135,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationRes
   /** The second conversation resource name. */
   conversationB?: string;
   /** The results for each applicable constraint rule. */
-  ruleConstraintResults?: Array<GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult>;
+  ruleConstraintResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult>;
   /** The first conversation resource name. */
   conversationA?: string;
 }
@@ -11156,9 +11156,9 @@ export const GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult 
 
 export interface GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults {
   /** A list of join key correlation results for each conversation tested. */
-  joinKeyResults?: Array<GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult>;
+  joinKeyResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult>;
   /** A list of constraint evaluation results for each pair of conversations. */
-  constraintResults?: Array<GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult>;
+  constraintResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult>;
 }
 
 export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults =
@@ -11182,7 +11182,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigRe
   /** Results for the DETAILED_SYNC execution mode. */
   detailedResults?: GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults;
   /** Partial errors during test correlation config operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponse =
@@ -11211,7 +11211,7 @@ export const GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewRespo
 
 export interface GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsMetadata {
   /** Partial errors during deletion operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. The original request for delete. */
   request?: GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRequest;
 }
@@ -11233,7 +11233,7 @@ export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponse {
   /** The metrics last update time. */
   updateTime?: string;
   /** A slice contains a total and (if the request specified a time granularity) a time series of metric values. Each slice contains a unique combination of the cardinality of dimensions from the request. */
-  slices?: Array<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice>;
+  slices?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice>;
   /** The macro average slice contains aggregated averages across all selected dimensions. i.e. if group_by agent and scorecard_id is specified, this field will contain the average across all agents and all scorecards. This field is only populated if the request specifies a Dimension. */
   macroAverageSlice?: GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice;
 }
@@ -11360,7 +11360,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector {
   /** Whether to run the interruption annotator. */
   runInterruptionAnnotator?: boolean;
   /** The list of phrase matchers to run. If not provided, all active phrase matchers will be used. If inactive phrase matchers are provided, they will not be used. Phrase matchers will be run only if run_phrase_matcher_annotator is set to true. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher} */
-  phraseMatchers?: Array<string>;
+  phraseMatchers?: ReadonlyArray<string>;
   /** Whether to run the sentiment annotator. */
   runSentimentAnnotator?: boolean;
   /** Whether to run the issue model annotator. A model should have already been deployed for this to take effect. */
@@ -11374,7 +11374,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector {
   /** Whether to run the entity annotator. */
   runEntityAnnotator?: boolean;
   /** The issue model to run. If not provided, the most recently deployed topic model will be used. The provided issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator is set to true. If more than one issue model is provided, only the first provided issue model will be used for inference. */
-  issueModels?: Array<string>;
+  issueModels?: ReadonlyArray<string>;
   /** Whether to run the summarization annotator. */
   runSummarizationAnnotator?: boolean;
 }
@@ -11435,7 +11435,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelation
   /** Output only. The full conversation correlation id this conversation is a segment of. */
   fullConversationCorrelationId?: string;
   /** Output only. The correlation types of this conversation. A single conversation can have multiple correlation types. For example a conversation that only has a single segment is both a SEGMENT and a FULL_CONVERSATION. */
-  correlationTypes?: Array<
+  correlationTypes?: ReadonlyArray<
     | "CORRELATION_TYPE_UNSPECIFIED"
     | "SEGMENT"
     | "PARTIAL"
@@ -11474,7 +11474,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1GcsSource =
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource {
   /** Cloud Storage URIs that points to files that contain the conversation audio for each turn. Assume the order of the URIs is the same as the order of the transcript turns. */
-  turnLevelAudios?: Array<GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio>;
+  turnLevelAudios?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio>;
   /** The source when the conversation comes from Dialogflow. */
   dialogflowSource?: GoogleCloudContactcenterinsightsV1alpha1DialogflowSource;
   /** Cloud Storage URI that points to a file that contains the conversation metadata. */
@@ -11676,7 +11676,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1Conversation {
     GoogleCloudContactcenterinsightsV1alpha1DialogflowIntent
   >;
   /** Output only. The annotations that were generated during the customer and agent interaction. */
-  runtimeAnnotations?: Array<GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation>;
+  runtimeAnnotations?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation>;
   /** Output only. The most recent time at which the conversation was updated. */
   updateTime?: string;
   /** Call-specific metadata. */
@@ -11772,7 +11772,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1UploadConversationRequest =
 
 export interface GoogleCloudContactcenterinsightsV1mainQaQuestionTag {
   /** Optional. The list of Scorecard Question IDs that the tag applies to. Each QaQuestionId is represented as a full resource name containing the Question ID. Lastly, Since a tag may not necessarily be referenced by any Scorecard Questions, we treat this field as optional. */
-  qaQuestionIds?: Array<string>;
+  qaQuestionIds?: ReadonlyArray<string>;
   /** Identifier. Resource name for the QaQuestionTag Format projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag} In the above format, the last segment, i.e., qa_question_tag, is a server-generated ID corresponding to the tag resource. */
   name?: string;
   /** Output only. The time at which the question tag was created. */
@@ -11984,7 +11984,7 @@ export const GoogleCloudContactcenterinsightsV1Dimension =
 
 export interface GoogleCloudContactcenterinsightsV1QueryMetricsRequest {
   /** The dimensions that determine the grouping key for the query. Defaults to no dimension if this field is unspecified. If a dimension is specified, its key must also be specified. Each dimension's key must be unique. If a time granularity is also specified, metric values in the dimension will be bucketed by this granularity. Up to one dimension is supported for now. */
-  dimensions?: Array<GoogleCloudContactcenterinsightsV1Dimension>;
+  dimensions?: ReadonlyArray<GoogleCloudContactcenterinsightsV1Dimension>;
   /** Measures to return. Defaults to all measures if this field is unspecified. A valid mask should traverse from the `measure` field from the response. For example, a path from a measure mask to get the conversation count is "conversation_measure.count". */
   measureMask?: string;
   /** Required. Filter to select a subset of conversations to compute the metrics. Must specify a window of the conversation create time to compute the metrics. The returned metrics will be from the range [DATE(starting create time), DATE(ending create time)). */
@@ -12111,7 +12111,7 @@ export const GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest =
 
 export interface GoogleCloudContactcenterinsightsV1ListConversationsResponse {
   /** The conversations that match the request. */
-  conversations?: Array<GoogleCloudContactcenterinsightsV1Conversation>;
+  conversations?: ReadonlyArray<GoogleCloudContactcenterinsightsV1Conversation>;
   /** A token which can be sent as `page_token` to retrieve the next page. If this field is set, it means there is another page available. If it is not set, it means no other pages are available. */
   nextPageToken?: string;
 }
@@ -12159,7 +12159,7 @@ export const GoogleCloudContactcenterinsightsV1ImportIssueModelResponse =
 
 export interface GoogleCloudContactcenterinsightsV1ListAssessmentsResponse {
   /** The assessments that match the request. */
-  assessments?: Array<GoogleCloudContactcenterinsightsV1Assessment>;
+  assessments?: ReadonlyArray<GoogleCloudContactcenterinsightsV1Assessment>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -12221,7 +12221,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1UploadConversationMetadata 
 
 export interface GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse {
   /** The QaQuestions under the parent. */
-  qaQuestions?: Array<GoogleCloudContactcenterinsightsV1QaQuestion>;
+  qaQuestions?: ReadonlyArray<GoogleCloudContactcenterinsightsV1QaQuestion>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -12248,7 +12248,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsMetad
   /** The time the operation finished running. */
   endTime?: string;
   /** Output only. Partial errors during bulk analyze operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** The time the operation was created. */
   createTime?: string;
   /** Total number of analyses requested. Computed by the number of conversations returned by `filter` multiplied by `analysis_percentage` in the request. */
@@ -12347,7 +12347,7 @@ export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGen
 
 export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponse {
   /** The full list of generative responses. Each response is ordered by time. */
-  generativeResponses?: Array<GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponse>;
+  generativeResponses?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponse>;
   /** The transcript of the generative insights conversation. */
   transcript?: GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscript;
 }
@@ -12419,7 +12419,7 @@ export const GoogleCloudContactcenterinsightsV1mainSampleConversationsResponse =
 
 export interface GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse {
   /** The phrase matchers that match the request. */
-  phraseMatchers?: Array<GoogleCloudContactcenterinsightsV1PhraseMatcher>;
+  phraseMatchers?: ReadonlyArray<GoogleCloudContactcenterinsightsV1PhraseMatcher>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -12467,7 +12467,7 @@ export const GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest =
 
 export interface GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecMetadata {
   /** Partial errors during initializing operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. The time the operation was created. */
   createTime?: string;
   /** Output only. The time the operation finished running. */
@@ -12506,7 +12506,7 @@ export interface GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult {
   /** The second conversation resource name. */
   conversationB?: string;
   /** The results for each applicable constraint rule. */
-  ruleConstraintResults?: Array<GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult>;
+  ruleConstraintResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult>;
   /** The first conversation resource name. */
   conversationA?: string;
 }
@@ -12528,7 +12528,7 @@ export interface GoogleCloudContactcenterinsightsV1ConversationCorrelationResult
   /** The conversation resource name. */
   conversation?: string;
   /** The results for each correlation rule. */
-  ruleResults?: Array<GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult>;
+  ruleResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult>;
 }
 
 export const GoogleCloudContactcenterinsightsV1ConversationCorrelationResult =
@@ -12546,9 +12546,9 @@ export const GoogleCloudContactcenterinsightsV1ConversationCorrelationResult =
 
 export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults {
   /** A list of constraint evaluation results for each pair of conversations. */
-  constraintResults?: Array<GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult>;
+  constraintResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult>;
   /** A list of join key correlation results for each conversation tested. */
-  joinKeyResults?: Array<GoogleCloudContactcenterinsightsV1ConversationCorrelationResult>;
+  joinKeyResults?: ReadonlyArray<GoogleCloudContactcenterinsightsV1ConversationCorrelationResult>;
 }
 
 export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults =
@@ -12572,7 +12572,7 @@ export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponse
   /** Results for the DETAILED_SYNC execution mode. */
   detailedResults?: GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults;
   /** Partial errors during test correlation config operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponse =
@@ -12590,7 +12590,7 @@ export interface GoogleCloudContactcenterinsightsV1BulkDeleteConversationsMetada
   /** The time the operation was created. */
   createTime?: string;
   /** Partial errors during bulk delete conversations operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** The original request for bulk delete. */
   request?: GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest;
   /** The time the operation finished running. */
@@ -12647,7 +12647,7 @@ export interface GoogleCloudContactcenterinsightsV1mainIngestConversationsReques
   /** Optional. The Cloud Storage path to the conversation metadata. Note that: [1] Metadata files are expected to be in JSON format. [2] Metadata and source files (transcripts or audio) must be in separate buckets / folders. [3] A source file and its corresponding metadata file must share the same name to be properly ingested, E.g. `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/conversation1.json`. */
   metadataBucketUri?: string;
   /** Optional. Custom keys to extract as conversation labels from metadata files in `metadata_bucket_uri`. Keys not included in this field will be ignored. Note that there is a limit of 100 labels per conversation. */
-  customMetadataKeys?: Array<string>;
+  customMetadataKeys?: ReadonlyArray<string>;
   /** Optional. The Cloud Storage path to the conversation audio file. Note that: [1] Audio files will be transcribed if not already. [2] Audio files and transcript files must be in separate buckets / folders. [3] A source file and its corresponding audio file must share the same name to be properly ingested, E.g. `gs://bucket/transcript/conversation1.json` and `gs://bucket/audio/conversation1.mp3`. */
   audioBucketUri?: string;
 }
@@ -12749,11 +12749,11 @@ export interface GoogleCloudContactcenterinsightsV1mainIngestConversationsMetada
   /** Output only. Statistics for IngestConversations operation. */
   ingestConversationsStats?: GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadataIngestConversationsStats;
   /** Output only. Stores the conversation resources produced by ingest sampling operations. */
-  sampledConversations?: Array<string>;
+  sampledConversations?: ReadonlyArray<string>;
   /** Output only. The time the operation was created. */
   createTime?: string;
   /** Output only. Partial errors during ingest operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadata =
@@ -12810,7 +12810,7 @@ export const GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse =
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsResponse {
   /** The full list of generative responses. Each response is ordered by time. */
-  generativeResponses?: Array<GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponse>;
+  generativeResponses?: ReadonlyArray<GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponse>;
   /** The transcript of the generative insights conversation. */
   transcript?: GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscript;
 }
@@ -12855,9 +12855,9 @@ export interface GoogleLongrunningListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
 }
 
 export const GoogleLongrunningListOperationsResponse =
@@ -12871,7 +12871,7 @@ export interface GoogleIamV1Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: GoogleTypeExpr;
 }
@@ -12901,7 +12901,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1Issue {
   /** Output only. The most recent time that this issue was updated. */
   updateTime?: string;
   /** Output only. Resource names of the sample representative utterances that match to this issue. */
-  sampleUtterances?: Array<string>;
+  sampleUtterances?: ReadonlyArray<string>;
   /** Representative description of the issue. */
   displayDescription?: string;
   /** The representative name for the issue. */
@@ -12963,7 +12963,7 @@ export const GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMeta
 
 export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeries {
   /** The data points that make up the time series . */
-  dataPoints?: Array<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint>;
+  dataPoints?: ReadonlyArray<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint>;
 }
 
 export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeries =
@@ -12980,7 +12980,7 @@ export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeri
 
 export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice {
   /** A unique combination of dimensions that this slice represents. */
-  dimensions?: Array<GoogleCloudContactcenterinsightsV1Dimension>;
+  dimensions?: ReadonlyArray<GoogleCloudContactcenterinsightsV1Dimension>;
   /** The total metric value. The interval of this data point is [starting create time, ending create time) from the request. */
   total?: GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint;
   /** A time series of metric values. This is only populated if the request specifies a time granularity other than NONE. */
@@ -13004,7 +13004,7 @@ export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice =
 
 export interface GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsMetadata {
   /** Partial errors during deletion operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. The original request for delete. */
   request?: GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest;
 }
@@ -13024,7 +13024,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabel
   /** Output only. The original request for delete. */
   request?: GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest;
   /** Partial errors during deletion operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsMetadata =
@@ -13083,7 +13083,7 @@ export const GoogleCloudContactcenterinsightsV1Dashboard =
 
 export interface GoogleCloudContactcenterinsightsV1ListDashboardsResponse {
   /** The dashboards under the parent. */
-  dashboards?: Array<GoogleCloudContactcenterinsightsV1Dashboard>;
+  dashboards?: ReadonlyArray<GoogleCloudContactcenterinsightsV1Dashboard>;
   /** The value returned by the last `ListDashboardsResponse`. This value indicates that this is a continuation of a prior `ListDashboards` call and that the system should return the next page of data. */
   nextPageToken?: string;
 }
@@ -13136,7 +13136,7 @@ export const GoogleCloudContactcenterinsightsV1mainDeleteIssueModelRequest =
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsMetadata {
   /** The error message when the generative insights request fails. */
-  errorMessages?: Array<GoogleRpcStatus>;
+  errorMessages?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudContactcenterinsightsV1GenerativeInsightsMetadata =
@@ -13211,7 +13211,7 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsMe
   /** The original request for bulk delete. */
   request?: GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRequest;
   /** Partial errors during bulk delete conversations operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** The time the operation was created. */
   createTime?: string;
 }
@@ -13238,7 +13238,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsRespo
     | "PROGRESS"
     | (string & {});
   /** The text output from the LLM. */
-  text?: Array<string>;
+  text?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponseTextOutput =
@@ -13351,7 +13351,7 @@ export const GoogleCloudContactcenterinsightsV1IngestConversationsResponse =
 
 export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightsMetadata {
   /** The error message when the generative insights request fails. */
-  errorMessages?: Array<GoogleRpcStatus>;
+  errorMessages?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightsMetadata =
@@ -13366,11 +13366,11 @@ export interface GoogleIamV1Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<GoogleIamV1AuditConfig>;
+  auditConfigs?: ReadonlyArray<GoogleIamV1AuditConfig>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<GoogleIamV1Binding>;
+  bindings?: ReadonlyArray<GoogleIamV1Binding>;
 }
 
 export const GoogleIamV1Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -13384,7 +13384,7 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ListAllFeedbackLabelsRe
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The feedback labels that match the request. */
-  feedbackLabels?: Array<GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel>;
+  feedbackLabels?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel>;
 }
 
 export const GoogleCloudContactcenterinsightsV1alpha1ListAllFeedbackLabelsResponse =
@@ -13415,7 +13415,7 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponse {
   /** The macro average slice contains aggregated averages across all selected dimensions. i.e. if group_by agent and scorecard_id is specified, this field will contain the average across all agents and all scorecards. This field is only populated if the request specifies a Dimension. */
   macroAverageSlice?: GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice;
   /** A slice contains a total and (if the request specified a time granularity) a time series of metric values. Each slice contains a unique combination of the cardinality of dimensions from the request. */
-  slices?: Array<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice>;
+  slices?: ReadonlyArray<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice>;
   /** Required. The location of the data. "projects/{project}/locations/{location}" */
   location?: string;
   /** The metrics last update time. */
@@ -13479,7 +13479,7 @@ export const GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewMetad
 
 export interface GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsMetadata {
   /** Output only. Partial errors during bulk analyze operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
   /** The time the operation was created. */
   createTime?: string;
   /** Total number of analyses requested. Computed by the number of conversations returned by `filter` multiplied by `analysis_percentage` in the request. */
@@ -13646,7 +13646,7 @@ export const GoogleCloudContactcenterinsightsV1CalculateStatsResponse =
 
 export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1TestIamPermissionsRequest =
@@ -13765,7 +13765,7 @@ export const GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecRespo
 
 export interface GoogleCloudContactcenterinsightsV1ListDatasetsResponse {
   /** The datasets that match the request. */
-  datasets?: Array<GoogleCloudContactcenterinsightsV1Dataset>;
+  datasets?: ReadonlyArray<GoogleCloudContactcenterinsightsV1Dataset>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -13811,7 +13811,7 @@ export const GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRespo
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ListFeedbackLabelsResponse {
   /** The feedback labels that match the request. */
-  feedbackLabels?: Array<GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel>;
+  feedbackLabels?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel>;
   /** The next page token. */
   nextPageToken?: string;
 }
@@ -13860,7 +13860,7 @@ export interface GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResp
   /** Results for the DETAILED_SYNC execution mode. */
   detailedResults?: GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults;
   /** Partial errors during test correlation config operation that might cause the operation output to be incomplete. */
-  partialErrors?: Array<GoogleRpcStatus>;
+  partialErrors?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponse =
@@ -13878,7 +13878,7 @@ export interface GoogleCloudContactcenterinsightsV1mainListAllFeedbackLabelsResp
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The feedback labels that match the request. */
-  feedbackLabels?: Array<GoogleCloudContactcenterinsightsV1mainFeedbackLabel>;
+  feedbackLabels?: ReadonlyArray<GoogleCloudContactcenterinsightsV1mainFeedbackLabel>;
 }
 
 export const GoogleCloudContactcenterinsightsV1mainListAllFeedbackLabelsResponse =
@@ -13894,7 +13894,7 @@ export const GoogleCloudContactcenterinsightsV1mainListAllFeedbackLabelsResponse
 
 export interface GoogleCloudContactcenterinsightsV1ListIssueModelsResponse {
   /** The issue models that match the request. */
-  issueModels?: Array<GoogleCloudContactcenterinsightsV1IssueModel>;
+  issueModels?: ReadonlyArray<GoogleCloudContactcenterinsightsV1IssueModel>;
 }
 
 export const GoogleCloudContactcenterinsightsV1ListIssueModelsResponse =
@@ -13924,7 +13924,7 @@ export const GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsResponse 
 
 export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponse {
   /** The full list of generative responses. Each response is ordered by time. */
-  generativeResponses?: Array<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponse>;
+  generativeResponses?: ReadonlyArray<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponse>;
   /** The transcript of the generative insights conversation. */
   transcript?: GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscript;
 }
@@ -13993,7 +13993,7 @@ export const TestCorrelationConfigProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:testCorrelationConfig",
+      path: "v1/{location}:testCorrelationConfig",
       hasBody: true,
     }),
     svc,
@@ -14027,10 +14027,7 @@ export const GetCorrelationConfigProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/correlationConfig",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCorrelationConfigProjectsLocationsRequest>;
 
@@ -14070,11 +14067,7 @@ export const UpdateCorrelationConfigProjectsLocationsRequest =
       GoogleCloudContactcenterinsightsV1CorrelationConfig,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/correlationConfig",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateCorrelationConfigProjectsLocationsRequest>;
 
@@ -14113,7 +14106,7 @@ export const GenerativeInsightsProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:generativeInsights",
+      path: "v1/{location}:generativeInsights",
       hasBody: true,
     }),
     svc,
@@ -14147,10 +14140,7 @@ export const GetEncryptionSpecProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/encryptionSpec",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEncryptionSpecProjectsLocationsRequest>;
 
@@ -14189,7 +14179,7 @@ export const BulkDeleteFeedbackLabelsProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:bulkDeleteFeedbackLabels",
+      path: "v1/{parent}:bulkDeleteFeedbackLabels",
       hasBody: true,
     }),
     svc,
@@ -14232,10 +14222,7 @@ export const ListAllFeedbackLabelsProjectsLocationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:listAllFeedbackLabels",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}:listAllFeedbackLabels" }),
     svc,
   ) as unknown as Schema.Schema<ListAllFeedbackLabelsProjectsLocationsRequest>;
 
@@ -14278,7 +14265,7 @@ export const BulkUploadFeedbackLabelsProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:bulkUploadFeedbackLabels",
+      path: "v1/{parent}:bulkUploadFeedbackLabels",
       hasBody: true,
     }),
     svc,
@@ -14319,7 +14306,7 @@ export const BulkDownloadFeedbackLabelsProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:bulkDownloadFeedbackLabels",
+      path: "v1/{parent}:bulkDownloadFeedbackLabels",
       hasBody: true,
     }),
     svc,
@@ -14353,10 +14340,7 @@ export const GetSettingsProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/settings",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSettingsProjectsLocationsRequest>;
 
@@ -14395,7 +14379,7 @@ export const QueryMetricsProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:queryMetrics",
+      path: "v1/{location}:queryMetrics",
       hasBody: true,
     }),
     svc,
@@ -14435,7 +14419,7 @@ export const QueryPerformanceOverviewProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:queryPerformanceOverview",
+      path: "v1/{parent}:queryPerformanceOverview",
       hasBody: true,
     }),
     svc,
@@ -14477,11 +14461,7 @@ export const UpdateSettingsProjectsLocationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/settings",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateSettingsProjectsLocationsRequest>;
 
@@ -14519,10 +14499,7 @@ export const ListProjectsLocationsAutoLabelingRulesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autoLabelingRules",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/autoLabelingRules" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAutoLabelingRulesRequest>;
 
@@ -14566,11 +14543,7 @@ export const PatchProjectsLocationsAutoLabelingRulesRequest =
       GoogleCloudContactcenterinsightsV1AutoLabelingRule,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autoLabelingRules/{autoLabelingRulesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAutoLabelingRulesRequest>;
 
@@ -14602,10 +14575,7 @@ export const DeleteProjectsLocationsAutoLabelingRulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autoLabelingRules/{autoLabelingRulesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAutoLabelingRulesRequest>;
 
@@ -14649,7 +14619,7 @@ export const CreateProjectsLocationsAutoLabelingRulesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autoLabelingRules",
+      path: "v1/{parent}/autoLabelingRules",
       hasBody: true,
     }),
     svc,
@@ -14683,10 +14653,7 @@ export const GetProjectsLocationsAutoLabelingRulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autoLabelingRules/{autoLabelingRulesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAutoLabelingRulesRequest>;
 
@@ -14725,7 +14692,7 @@ export const TestProjectsLocationsAutoLabelingRulesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/autoLabelingRules:test",
+      path: "v1/{parent}/autoLabelingRules:test",
       hasBody: true,
     }),
     svc,
@@ -14765,10 +14732,7 @@ export const ListProjectsLocationsAssessmentRulesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/assessmentRules",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/assessmentRules" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAssessmentRulesRequest>;
 
@@ -14816,7 +14780,7 @@ export const CreateProjectsLocationsAssessmentRulesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/assessmentRules",
+      path: "v1/{parent}/assessmentRules",
       hasBody: true,
     }),
     svc,
@@ -14858,11 +14822,7 @@ export const PatchProjectsLocationsAssessmentRulesRequest =
       GoogleCloudContactcenterinsightsV1AssessmentRule,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/assessmentRules/{assessmentRulesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAssessmentRulesRequest>;
 
@@ -14894,10 +14854,7 @@ export const DeleteProjectsLocationsAssessmentRulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/assessmentRules/{assessmentRulesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAssessmentRulesRequest>;
 
@@ -14929,10 +14886,7 @@ export const GetProjectsLocationsAssessmentRulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/assessmentRules/{assessmentRulesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAssessmentRulesRequest>;
 
@@ -14964,10 +14918,7 @@ export const GetProjectsLocationsDashboardsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dashboards/{dashboardsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDashboardsRequest>;
 
@@ -15007,11 +14958,7 @@ export const PatchProjectsLocationsDashboardsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dashboards/{dashboardsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDashboardsRequest>;
 
@@ -15043,10 +14990,7 @@ export const DeleteProjectsLocationsDashboardsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dashboards/{dashboardsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDashboardsRequest>;
 
@@ -15087,11 +15031,7 @@ export const CreateProjectsLocationsDashboardsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dashboards",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/dashboards", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDashboardsRequest>;
 
@@ -15135,10 +15075,7 @@ export const ListProjectsLocationsDashboardsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dashboards",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dashboards" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDashboardsRequest>;
 
@@ -15174,10 +15111,7 @@ export const GetProjectsLocationsDashboardsChartsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dashboards/{dashboardsId}/charts/{chartsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDashboardsChartsRequest>;
 
@@ -15217,11 +15151,7 @@ export const PatchProjectsLocationsDashboardsChartsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dashboards/{dashboardsId}/charts/{chartsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDashboardsChartsRequest>;
 
@@ -15253,10 +15183,7 @@ export const DeleteProjectsLocationsDashboardsChartsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dashboards/{dashboardsId}/charts/{chartsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDashboardsChartsRequest>;
 
@@ -15296,11 +15223,7 @@ export const CreateProjectsLocationsDashboardsChartsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dashboards/{dashboardsId}/charts",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/charts", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDashboardsChartsRequest>;
 
@@ -15332,10 +15255,7 @@ export const ListProjectsLocationsDashboardsChartsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dashboards/{dashboardsId}/charts",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/charts" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDashboardsChartsRequest>;
 
@@ -15382,10 +15302,7 @@ export const ListProjectsLocationsConversationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/conversations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConversationsRequest>;
 
@@ -15428,7 +15345,7 @@ export const BulkAnalyzeProjectsLocationsConversationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations:bulkAnalyze",
+      path: "v1/{parent}/conversations:bulkAnalyze",
       hasBody: true,
     }),
     svc,
@@ -15474,7 +15391,7 @@ export const CreateProjectsLocationsConversationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations",
+      path: "v1/{parent}/conversations",
       hasBody: true,
     }),
     svc,
@@ -15529,11 +15446,7 @@ export const PatchProjectsLocationsConversationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsConversationsRequest>;
 
@@ -15565,10 +15478,7 @@ export const GenerateSignedAudioProjectsLocationsConversationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}:generateSignedAudio",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:generateSignedAudio" }),
     svc,
   ) as unknown as Schema.Schema<GenerateSignedAudioProjectsLocationsConversationsRequest>;
 
@@ -15604,10 +15514,7 @@ export const DeleteProjectsLocationsConversationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsConversationsRequest>;
 
@@ -15641,10 +15548,7 @@ export const GetProjectsLocationsConversationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsConversationsRequest>;
 
@@ -15683,7 +15587,7 @@ export const IngestProjectsLocationsConversationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations:ingest",
+      path: "v1/{parent}/conversations:ingest",
       hasBody: true,
     }),
     svc,
@@ -15724,7 +15628,7 @@ export const UploadProjectsLocationsConversationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations:upload",
+      path: "v1/{parent}/conversations:upload",
       hasBody: true,
     }),
     svc,
@@ -15765,7 +15669,7 @@ export const SampleProjectsLocationsConversationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations:sample",
+      path: "v1/{parent}/conversations:sample",
       hasBody: true,
     }),
     svc,
@@ -15804,7 +15708,7 @@ export const CalculateStatsProjectsLocationsConversationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations:calculateStats",
+      path: "v1/{location}/conversations:calculateStats",
     }),
     svc,
   ) as unknown as Schema.Schema<CalculateStatsProjectsLocationsConversationsRequest>;
@@ -15844,7 +15748,7 @@ export const BulkDeleteProjectsLocationsConversationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations:bulkDelete",
+      path: "v1/{parent}/conversations:bulkDelete",
       hasBody: true,
     }),
     svc,
@@ -15878,10 +15782,7 @@ export const GetProjectsLocationsConversationsFeedbackLabelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/feedbackLabels/{feedbackLabelsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsConversationsFeedbackLabelsRequest>;
 
@@ -15923,10 +15824,7 @@ export const ListProjectsLocationsConversationsFeedbackLabelsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/feedbackLabels",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/feedbackLabels" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConversationsFeedbackLabelsRequest>;
 
@@ -15975,7 +15873,7 @@ export const CreateProjectsLocationsConversationsFeedbackLabelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/feedbackLabels",
+      path: "v1/{parent}/feedbackLabels",
       hasBody: true,
     }),
     svc,
@@ -16018,11 +15916,7 @@ export const PatchProjectsLocationsConversationsFeedbackLabelsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/feedbackLabels/{feedbackLabelsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsConversationsFeedbackLabelsRequest>;
 
@@ -16055,10 +15949,7 @@ export const DeleteProjectsLocationsConversationsFeedbackLabelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/feedbackLabels/{feedbackLabelsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsConversationsFeedbackLabelsRequest>;
 
@@ -16094,10 +15985,7 @@ export const DeleteProjectsLocationsConversationsAssessmentsRequest =
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/assessments/{assessmentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsConversationsAssessmentsRequest>;
 
@@ -16135,11 +16023,7 @@ export const CreateProjectsLocationsConversationsAssessmentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/assessments",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/assessments", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsConversationsAssessmentsRequest>;
 
@@ -16181,10 +16065,7 @@ export const ListProjectsLocationsConversationsAssessmentsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/assessments",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/assessments" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConversationsAssessmentsRequest>;
 
@@ -16225,11 +16106,7 @@ export const PublishProjectsLocationsConversationsAssessmentsRequest =
       GoogleCloudContactcenterinsightsV1PublishAssessmentRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/assessments/{assessmentsId}:publish",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:publish", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PublishProjectsLocationsConversationsAssessmentsRequest>;
 
@@ -16267,11 +16144,7 @@ export const AppealProjectsLocationsConversationsAssessmentsRequest =
       GoogleCloudContactcenterinsightsV1AppealAssessmentRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/assessments/{assessmentsId}:appeal",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:appeal", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AppealProjectsLocationsConversationsAssessmentsRequest>;
 
@@ -16304,10 +16177,7 @@ export const GetProjectsLocationsConversationsAssessmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/assessments/{assessmentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsConversationsAssessmentsRequest>;
 
@@ -16344,11 +16214,7 @@ export const FinalizeProjectsLocationsConversationsAssessmentsRequest =
       GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/assessments/{assessmentsId}:finalize",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:finalize", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<FinalizeProjectsLocationsConversationsAssessmentsRequest>;
 
@@ -16387,10 +16253,7 @@ export const ListProjectsLocationsConversationsAssessmentsNotesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/assessments/{assessmentsId}/notes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/notes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConversationsAssessmentsNotesRequest>;
 
@@ -16435,11 +16298,7 @@ export const PatchProjectsLocationsConversationsAssessmentsNotesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/assessments/{assessmentsId}/notes/{notesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsConversationsAssessmentsNotesRequest>;
 
@@ -16472,10 +16331,7 @@ export const DeleteProjectsLocationsConversationsAssessmentsNotesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/assessments/{assessmentsId}/notes/{notesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsConversationsAssessmentsNotesRequest>;
 
@@ -16513,11 +16369,7 @@ export const CreateProjectsLocationsConversationsAssessmentsNotesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/assessments/{assessmentsId}/notes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/notes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsConversationsAssessmentsNotesRequest>;
 
@@ -16550,10 +16402,7 @@ export const GetProjectsLocationsConversationsAnalysesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/analyses/{analysesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsConversationsAnalysesRequest>;
 
@@ -16594,10 +16443,7 @@ export const ListProjectsLocationsConversationsAnalysesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/analyses",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/analyses" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConversationsAnalysesRequest>;
 
@@ -16633,10 +16479,7 @@ export const DeleteProjectsLocationsConversationsAnalysesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/analyses/{analysesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsConversationsAnalysesRequest>;
 
@@ -16673,11 +16516,7 @@ export const CreateProjectsLocationsConversationsAnalysesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/analyses",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/analyses", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsConversationsAnalysesRequest>;
 
@@ -16716,7 +16555,7 @@ export const BulkAnalyzeProjectsLocationsConversationsSegmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/conversations/{conversationsId}/segments:bulkAnalyze",
+      path: "v1/{parent}/segments:bulkAnalyze",
       hasBody: true,
     }),
     svc,
@@ -16751,10 +16590,7 @@ export const GetProjectsLocationsQaQuestionTagsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaQuestionTags/{qaQuestionTagsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsQaQuestionTagsRequest>;
 
@@ -16798,7 +16634,7 @@ export const CreateProjectsLocationsQaQuestionTagsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaQuestionTags",
+      path: "v1/{parent}/qaQuestionTags",
       hasBody: true,
     }),
     svc,
@@ -16840,11 +16676,7 @@ export const PatchProjectsLocationsQaQuestionTagsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaQuestionTags/{qaQuestionTagsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsQaQuestionTagsRequest>;
 
@@ -16876,10 +16708,7 @@ export const DeleteProjectsLocationsQaQuestionTagsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaQuestionTags/{qaQuestionTagsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsQaQuestionTagsRequest>;
 
@@ -16914,10 +16743,7 @@ export const ListProjectsLocationsQaQuestionTagsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaQuestionTags",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/qaQuestionTags" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsQaQuestionTagsRequest>;
 
@@ -16956,7 +16782,7 @@ export const CreateProjectsLocationsPhraseMatchersRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/phraseMatchers",
+      path: "v1/{parent}/phraseMatchers",
       hasBody: true,
     }),
     svc,
@@ -16990,10 +16816,7 @@ export const DeleteProjectsLocationsPhraseMatchersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/phraseMatchers/{phraseMatchersId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsPhraseMatchersRequest>;
 
@@ -17032,11 +16855,7 @@ export const PatchProjectsLocationsPhraseMatchersRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/phraseMatchers/{phraseMatchersId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsPhraseMatchersRequest>;
 
@@ -17077,10 +16896,7 @@ export const ListProjectsLocationsPhraseMatchersRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/phraseMatchers",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/phraseMatchers" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsPhraseMatchersRequest>;
 
@@ -17116,10 +16932,7 @@ export const GetProjectsLocationsPhraseMatchersRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/phraseMatchers/{phraseMatchersId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsPhraseMatchersRequest>;
 
@@ -17166,10 +16979,7 @@ export const ListProjectsLocationsQaScorecardsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaScorecards",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/qaScorecards" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsQaScorecardsRequest>;
 
@@ -17215,11 +17025,7 @@ export const CreateProjectsLocationsQaScorecardsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaScorecards",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/qaScorecards", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsQaScorecardsRequest>;
 
@@ -17259,11 +17065,7 @@ export const PatchProjectsLocationsQaScorecardsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaScorecards/{qaScorecardsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsQaScorecardsRequest>;
 
@@ -17298,10 +17100,7 @@ export const DeleteProjectsLocationsQaScorecardsRequest =
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaScorecards/{qaScorecardsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsQaScorecardsRequest>;
 
@@ -17332,10 +17131,7 @@ export const GetProjectsLocationsQaScorecardsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaScorecards/{qaScorecardsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsQaScorecardsRequest>;
 
@@ -17367,10 +17163,7 @@ export const GetProjectsLocationsQaScorecardsRevisionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaScorecards/{qaScorecardsId}/revisions/{revisionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsQaScorecardsRevisionsRequest>;
 
@@ -17407,11 +17200,7 @@ export const UndeployProjectsLocationsQaScorecardsRevisionsRequest =
       GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaScorecards/{qaScorecardsId}/revisions/{revisionsId}:undeploy",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:undeploy", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UndeployProjectsLocationsQaScorecardsRevisionsRequest>;
 
@@ -17450,7 +17239,7 @@ export const TuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisionsReques
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaScorecards/{qaScorecardsId}/revisions/{revisionsId}:tuneQaScorecardRevision",
+      path: "v1/{parent}:tuneQaScorecardRevision",
       hasBody: true,
     }),
     svc,
@@ -17503,10 +17292,7 @@ export const ListProjectsLocationsQaScorecardsRevisionsRequest =
     ),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaScorecards/{qaScorecardsId}/revisions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/revisions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsQaScorecardsRevisionsRequest>;
 
@@ -17552,11 +17338,7 @@ export const CreateProjectsLocationsQaScorecardsRevisionsRequest =
       GoogleCloudContactcenterinsightsV1QaScorecardRevision,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaScorecards/{qaScorecardsId}/revisions",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/revisions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsQaScorecardsRevisionsRequest>;
 
@@ -17593,11 +17375,7 @@ export const DeployProjectsLocationsQaScorecardsRevisionsRequest =
       GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaScorecards/{qaScorecardsId}/revisions/{revisionsId}:deploy",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:deploy", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DeployProjectsLocationsQaScorecardsRevisionsRequest>;
 
@@ -17632,10 +17410,7 @@ export const DeleteProjectsLocationsQaScorecardsRevisionsRequest =
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaScorecards/{qaScorecardsId}/revisions/{revisionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsQaScorecardsRevisionsRequest>;
 
@@ -17667,10 +17442,7 @@ export const GetProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaScorecards/{qaScorecardsId}/revisions/{revisionsId}/qaQuestions/{qaQuestionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
 
@@ -17713,11 +17485,7 @@ export const CreateProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaScorecards/{qaScorecardsId}/revisions/{revisionsId}/qaQuestions",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/qaQuestions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
 
@@ -17758,11 +17526,7 @@ export const PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaScorecards/{qaScorecardsId}/revisions/{revisionsId}/qaQuestions/{qaQuestionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
 
@@ -17795,10 +17559,7 @@ export const DeleteProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaScorecards/{qaScorecardsId}/revisions/{revisionsId}/qaQuestions/{qaQuestionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
 
@@ -17837,10 +17598,7 @@ export const ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/qaScorecards/{qaScorecardsId}/revisions/{revisionsId}/qaQuestions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/qaQuestions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
 
@@ -17889,7 +17647,7 @@ export const CreateProjectsLocationsAuthorizedViewSetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets",
+      path: "v1/{parent}/authorizedViewSets",
       hasBody: true,
     }),
     svc,
@@ -17931,11 +17689,7 @@ export const PatchProjectsLocationsAuthorizedViewSetsRequest =
       GoogleCloudContactcenterinsightsV1AuthorizedViewSet,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAuthorizedViewSetsRequest>;
 
@@ -17970,10 +17724,7 @@ export const DeleteProjectsLocationsAuthorizedViewSetsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAuthorizedViewSetsRequest>;
 
@@ -18017,10 +17768,7 @@ export const ListProjectsLocationsAuthorizedViewSetsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/authorizedViewSets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAuthorizedViewSetsRequest>;
 
@@ -18056,10 +17804,7 @@ export const GetProjectsLocationsAuthorizedViewSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAuthorizedViewSetsRequest>;
 
@@ -18098,7 +17843,7 @@ export const TestIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedView
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -18147,10 +17892,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/authorizedViews" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
@@ -18194,7 +17936,7 @@ export const QueryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViewsReque
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}:queryMetrics",
+      path: "v1/{location}:queryMetrics",
       hasBody: true,
     }),
     svc,
@@ -18242,10 +17984,7 @@ export const SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews:search",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/authorizedViews:search" }),
     svc,
   ) as unknown as Schema.Schema<SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
@@ -18290,11 +18029,7 @@ export const PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
       GoogleCloudContactcenterinsightsV1AuthorizedView,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
@@ -18327,10 +18062,7 @@ export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
@@ -18375,7 +18107,7 @@ export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews",
+      path: "v1/{parent}/authorizedViews",
       hasBody: true,
     }),
     svc,
@@ -18417,7 +18149,7 @@ export const GenerativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedView
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}:generativeInsights",
+      path: "v1/{location}:generativeInsights",
       hasBody: true,
     }),
     svc,
@@ -18454,10 +18186,7 @@ export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
@@ -18495,10 +18224,7 @@ export const GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsReque
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
@@ -18537,7 +18263,7 @@ export const SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsReque
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -18580,7 +18306,7 @@ export const QueryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthoriz
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}:queryPerformanceOverview",
+      path: "v1/{parent}:queryPerformanceOverview",
       hasBody: true,
     }),
     svc,
@@ -18617,11 +18343,7 @@ export const CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsR
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest>;
 
@@ -18670,10 +18392,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsReq
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest>;
 
@@ -18712,10 +18431,7 @@ export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequ
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest>;
 
@@ -18749,10 +18465,7 @@ export const GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedVie
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/conversations/{conversationsId}:generateSignedAudio",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:generateSignedAudio" }),
     svc,
   ) as unknown as Schema.Schema<GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
 
@@ -18790,10 +18503,7 @@ export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/conversations/{conversationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
 
@@ -18843,10 +18553,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/conversations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/conversations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
 
@@ -18888,10 +18595,7 @@ export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsR
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/conversations/{conversationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
 
@@ -18931,7 +18635,7 @@ export const CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsCon
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/conversations:calculateStats",
+      path: "v1/{location}/conversations:calculateStats",
     }),
     svc,
   ) as unknown as Schema.Schema<CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
@@ -18972,11 +18676,7 @@ export const PublishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversati
       GoogleCloudContactcenterinsightsV1PublishAssessmentRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/conversations/{conversationsId}/assessments/{assessmentsId}:publish",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:publish", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PublishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
 
@@ -19016,11 +18716,7 @@ export const AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
       GoogleCloudContactcenterinsightsV1AppealAssessmentRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/conversations/{conversationsId}/assessments/{assessmentsId}:appeal",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:appeal", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
 
@@ -19055,10 +18751,7 @@ export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsA
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/conversations/{conversationsId}/assessments/{assessmentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
 
@@ -19098,11 +18791,7 @@ export const FinalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversat
       GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/conversations/{conversationsId}/assessments/{assessmentsId}:finalize",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:finalize", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<FinalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
 
@@ -19140,10 +18829,7 @@ export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/conversations/{conversationsId}/assessments/{assessmentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
 
@@ -19183,11 +18869,7 @@ export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/conversations/{conversationsId}/assessments",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/assessments", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
 
@@ -19231,10 +18913,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/conversations/{conversationsId}/assessments",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/assessments" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
 
@@ -19279,10 +18958,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/conversations/{conversationsId}/assessments/{assessmentsId}/notes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/notes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest>;
 
@@ -19329,11 +19005,7 @@ export const PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversation
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/conversations/{conversationsId}/assessments/{assessmentsId}/notes/{notesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest>;
 
@@ -19368,10 +19040,7 @@ export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/conversations/{conversationsId}/assessments/{assessmentsId}/notes/{notesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest>;
 
@@ -19411,11 +19080,7 @@ export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/conversations/{conversationsId}/assessments/{assessmentsId}/notes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/notes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest>;
 
@@ -19450,10 +19115,7 @@ export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsF
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/conversations/{conversationsId}/feedbackLabels/{feedbackLabelsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>;
 
@@ -19500,7 +19162,7 @@ export const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/conversations/{conversationsId}/feedbackLabels",
+      path: "v1/{parent}/feedbackLabels",
       hasBody: true,
     }),
     svc,
@@ -19545,11 +19207,7 @@ export const PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversation
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/conversations/{conversationsId}/feedbackLabels/{feedbackLabelsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>;
 
@@ -19584,10 +19242,7 @@ export const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/conversations/{conversationsId}/feedbackLabels/{feedbackLabelsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>;
 
@@ -19631,10 +19286,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizedViewSets/{authorizedViewSetsId}/authorizedViews/{authorizedViewsId}/conversations/{conversationsId}/feedbackLabels",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/feedbackLabels" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>;
 
@@ -19680,7 +19332,7 @@ export const ExportProjectsLocationsInsightsdataRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/insightsdata:export",
+      path: "v1/{parent}/insightsdata:export",
       hasBody: true,
     }),
     svc,
@@ -19714,10 +19366,7 @@ export const GetProjectsLocationsDatasetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsRequest>;
 
@@ -19756,7 +19405,7 @@ export const BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}:bulkDeleteFeedbackLabels",
+      path: "v1/{parent}:bulkDeleteFeedbackLabels",
       hasBody: true,
     }),
     svc,
@@ -19800,10 +19449,7 @@ export const ListProjectsLocationsDatasetsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/datasets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsRequest>;
 
@@ -19848,10 +19494,7 @@ export const ListAllFeedbackLabelsProjectsLocationsDatasetsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}:listAllFeedbackLabels",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}:listAllFeedbackLabels" }),
     svc,
   ) as unknown as Schema.Schema<ListAllFeedbackLabelsProjectsLocationsDatasetsRequest>;
 
@@ -19895,11 +19538,7 @@ export const PatchProjectsLocationsDatasetsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsRequest>;
 
@@ -19931,10 +19570,7 @@ export const DeleteProjectsLocationsDatasetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsRequest>;
 
@@ -19974,11 +19610,7 @@ export const CreateProjectsLocationsDatasetsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/datasets", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsRequest>;
 
@@ -20017,7 +19649,7 @@ export const BulkUploadFeedbackLabelsProjectsLocationsDatasetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}:bulkUploadFeedbackLabels",
+      path: "v1/{parent}:bulkUploadFeedbackLabels",
       hasBody: true,
     }),
     svc,
@@ -20059,7 +19691,7 @@ export const BulkDownloadFeedbackLabelsProjectsLocationsDatasetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}:bulkDownloadFeedbackLabels",
+      path: "v1/{parent}:bulkDownloadFeedbackLabels",
       hasBody: true,
     }),
     svc,
@@ -20109,10 +19741,7 @@ export const ListProjectsLocationsDatasetsConversationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/conversations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/conversations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsConversationsRequest>;
 
@@ -20155,7 +19784,7 @@ export const IngestProjectsLocationsDatasetsConversationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/conversations:ingest",
+      path: "v1/{parent}/conversations:ingest",
       hasBody: true,
     }),
     svc,
@@ -20189,10 +19818,7 @@ export const GenerateSignedAudioProjectsLocationsDatasetsConversationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/conversations/{conversationsId}:generateSignedAudio",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:generateSignedAudio" }),
     svc,
   ) as unknown as Schema.Schema<GenerateSignedAudioProjectsLocationsDatasetsConversationsRequest>;
 
@@ -20228,10 +19854,7 @@ export const DeleteProjectsLocationsDatasetsConversationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/conversations/{conversationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsConversationsRequest>;
 
@@ -20266,10 +19889,7 @@ export const GetProjectsLocationsDatasetsConversationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/conversations/{conversationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsConversationsRequest>;
 
@@ -20308,7 +19928,7 @@ export const SampleProjectsLocationsDatasetsConversationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/conversations:sample",
+      path: "v1/{parent}/conversations:sample",
       hasBody: true,
     }),
     svc,
@@ -20349,7 +19969,7 @@ export const CalculateStatsProjectsLocationsDatasetsConversationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/conversations:calculateStats",
+      path: "v1/{location}/conversations:calculateStats",
       hasBody: true,
     }),
     svc,
@@ -20391,7 +20011,7 @@ export const BulkDeleteProjectsLocationsDatasetsConversationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/conversations:bulkDelete",
+      path: "v1/{parent}/conversations:bulkDelete",
       hasBody: true,
     }),
     svc,
@@ -20435,10 +20055,7 @@ export const ListProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/conversations/{conversationsId}/feedbackLabels",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/feedbackLabels" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
 
@@ -20483,11 +20100,7 @@ export const PatchProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/conversations/{conversationsId}/feedbackLabels/{feedbackLabelsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
 
@@ -20520,10 +20133,7 @@ export const DeleteProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/conversations/{conversationsId}/feedbackLabels/{feedbackLabelsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
 
@@ -20568,7 +20178,7 @@ export const CreateProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/conversations/{conversationsId}/feedbackLabels",
+      path: "v1/{parent}/feedbackLabels",
       hasBody: true,
     }),
     svc,
@@ -20603,10 +20213,7 @@ export const GetProjectsLocationsDatasetsConversationsFeedbackLabelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/conversations/{conversationsId}/feedbackLabels/{feedbackLabelsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
 
@@ -20646,7 +20253,7 @@ export const ExportProjectsLocationsDatasetsInsightsdataRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/insightsdata:export",
+      path: "v1/{parent}/insightsdata:export",
       hasBody: true,
     }),
     svc,
@@ -20688,11 +20295,7 @@ export const PatchProjectsLocationsIssueModelsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/issueModels/{issueModelsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsIssueModelsRequest>;
 
@@ -20724,10 +20327,7 @@ export const DeleteProjectsLocationsIssueModelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/issueModels/{issueModelsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsIssueModelsRequest>;
 
@@ -20764,11 +20364,7 @@ export const DeployProjectsLocationsIssueModelsRequest =
       GoogleCloudContactcenterinsightsV1DeployIssueModelRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/issueModels/{issueModelsId}:deploy",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:deploy", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DeployProjectsLocationsIssueModelsRequest>;
 
@@ -20805,11 +20401,7 @@ export const CreateProjectsLocationsIssueModelsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/issueModels",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/issueModels", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsIssueModelsRequest>;
 
@@ -20841,10 +20433,7 @@ export const ListProjectsLocationsIssueModelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/issueModels",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/issueModels" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsIssueModelsRequest>;
 
@@ -20881,11 +20470,7 @@ export const UndeployProjectsLocationsIssueModelsRequest =
       GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/issueModels/{issueModelsId}:undeploy",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:undeploy", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UndeployProjectsLocationsIssueModelsRequest>;
 
@@ -20917,10 +20502,7 @@ export const CalculateIssueModelStatsProjectsLocationsIssueModelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     issueModel: Schema.String.pipe(T.HttpPath("issueModel")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/issueModels/{issueModelsId}:calculateIssueModelStats",
-    }),
+    T.Http({ method: "GET", path: "v1/{issueModel}:calculateIssueModelStats" }),
     svc,
   ) as unknown as Schema.Schema<CalculateIssueModelStatsProjectsLocationsIssueModelsRequest>;
 
@@ -20953,10 +20535,7 @@ export const GetProjectsLocationsIssueModelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/issueModels/{issueModelsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsIssueModelsRequest>;
 
@@ -20993,11 +20572,7 @@ export const ExportProjectsLocationsIssueModelsRequest =
       GoogleCloudContactcenterinsightsV1ExportIssueModelRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/issueModels/{issueModelsId}:export",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:export", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExportProjectsLocationsIssueModelsRequest>;
 
@@ -21036,7 +20611,7 @@ export const ImportProjectsLocationsIssueModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/issueModels:import",
+      path: "v1/{parent}/issueModels:import",
       hasBody: true,
     }),
     svc,
@@ -21070,10 +20645,7 @@ export const ListProjectsLocationsIssueModelsIssuesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/issueModels/{issueModelsId}/issues",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/issues" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsIssueModelsIssuesRequest>;
 
@@ -21113,11 +20685,7 @@ export const PatchProjectsLocationsIssueModelsIssuesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/issueModels/{issueModelsId}/issues/{issuesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsIssueModelsIssuesRequest>;
 
@@ -21149,10 +20717,7 @@ export const DeleteProjectsLocationsIssueModelsIssuesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/issueModels/{issueModelsId}/issues/{issuesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsIssueModelsIssuesRequest>;
 
@@ -21189,11 +20754,7 @@ export const CreateProjectsLocationsIssueModelsIssuesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/issueModels/{issueModelsId}/issues",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/issues", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsIssueModelsIssuesRequest>;
 
@@ -21225,10 +20786,7 @@ export const GetProjectsLocationsIssueModelsIssuesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/issueModels/{issueModelsId}/issues/{issuesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsIssueModelsIssuesRequest>;
 
@@ -21260,11 +20818,7 @@ export const CancelProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -21309,10 +20863,7 @@ export const ListProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -21348,10 +20899,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -21387,11 +20935,7 @@ export const InitializeProjectsLocationsEncryptionSpecRequest =
       GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/encryptionSpec:initialize",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:initialize", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<InitializeProjectsLocationsEncryptionSpecRequest>;
 
@@ -21423,10 +20967,7 @@ export const GetProjectsLocationsViewsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/views/{viewsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsViewsRequest>;
 
@@ -21464,10 +21005,7 @@ export const ListProjectsLocationsViewsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/views",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/views" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsViewsRequest>;
 
@@ -21511,11 +21049,7 @@ export const PatchProjectsLocationsViewsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/views/{viewsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsViewsRequest>;
 
@@ -21547,10 +21081,7 @@ export const DeleteProjectsLocationsViewsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/views/{viewsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsViewsRequest>;
 
@@ -21586,11 +21117,7 @@ export const CreateProjectsLocationsViewsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/views",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/views", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsViewsRequest>;
 
@@ -21622,10 +21149,7 @@ export const GetProjectsLocationsAnalysisRulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/analysisRules/{analysisRulesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsAnalysisRulesRequest>;
 
@@ -21665,11 +21189,7 @@ export const PatchProjectsLocationsAnalysisRulesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/analysisRules/{analysisRulesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsAnalysisRulesRequest>;
 
@@ -21701,10 +21221,7 @@ export const DeleteProjectsLocationsAnalysisRulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/analysisRules/{analysisRulesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsAnalysisRulesRequest>;
 
@@ -21742,7 +21259,7 @@ export const CreateProjectsLocationsAnalysisRulesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/analysisRules",
+      path: "v1/{parent}/analysisRules",
       hasBody: true,
     }),
     svc,
@@ -21782,10 +21299,7 @@ export const ListProjectsLocationsAnalysisRulesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/analysisRules",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/analysisRules" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAnalysisRulesRequest>;
 

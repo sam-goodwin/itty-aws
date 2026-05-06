@@ -26,7 +26,7 @@ export interface Promotion {
   /** The title of the promotion, in HTML. */
   htmlTitle?: string;
   /** An array of block objects for this promotion. */
-  bodyLines?: Array<{
+  bodyLines?: ReadonlyArray<{
     link?: string;
     htmlTitle?: string;
     title?: string;
@@ -96,7 +96,7 @@ export interface Result {
   /** A unique identifier for the type of current object. For this API, it is `customsearch#result.` */
   kind?: string;
   /** Encapsulates all information about refinement labels. */
-  labels?: Array<{
+  labels?: ReadonlyArray<{
     displayName?: string;
     name?: string;
     label_with_op?: string;
@@ -152,7 +152,7 @@ export interface Search {
   kind?: string;
   /** Query metadata for the previous, current, and next pages of results. */
   queries?: {
-    request?: Array<{
+    request?: ReadonlyArray<{
       imgSize?: string;
       totalResults?: string;
       exactTerms?: string;
@@ -190,7 +190,7 @@ export interface Search {
       startIndex?: number;
       searchTerms?: string;
     }>;
-    nextPage?: Array<{
+    nextPage?: ReadonlyArray<{
       startPage?: number;
       hl?: string;
       language?: string;
@@ -228,7 +228,7 @@ export interface Search {
       siteSearchFilter?: string;
       safe?: string;
     }>;
-    previousPage?: Array<{
+    previousPage?: ReadonlyArray<{
       startPage?: number;
       hl?: string;
       language?: string;
@@ -275,13 +275,13 @@ export interface Search {
     formattedTotalResults?: string;
   };
   /** The current set of custom search results. */
-  items?: Array<Result>;
+  items?: ReadonlyArray<Result>;
   /** OpenSearch template and URL. */
   url?: { type?: string; template?: string };
   /** Spell correction information for a query. */
   spelling?: { correctedQuery?: string; htmlCorrectedQuery?: string };
   /** The set of [promotions](https://developers.google.com/custom-search/docs/promotions). Present only if the custom search engine's configuration files define any promotions for the given query. */
-  promotions?: Array<Promotion>;
+  promotions?: ReadonlyArray<Promotion>;
   /** Metadata and refinements associated with the given search engine, including: * The name of the search engine that was used for the query. * A set of [facet objects](https://developers.google.com/custom-search/docs/refinements#create) (refinements) you can use for refining a search. */
   context?: Record<string, unknown>;
 }

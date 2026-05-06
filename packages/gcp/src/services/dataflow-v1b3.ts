@@ -144,7 +144,7 @@ export interface Source {
   /** The source to read from, plus its parameters. */
   spec?: Record<string, unknown>;
   /** While splitting, sources may specify the produced bundles as differences against another source, in order to save backend-side memory and allow bigger jobs. For details, see SourceSplitRequest. To support this use case, the full set of parameters of the source is logically obtained by taking the latest explicitly specified value of each parameter in the order: base_specs (later items win), spec (overrides anything in base_specs). */
-  baseSpecs?: Array<Record<string, unknown>>;
+  baseSpecs?: ReadonlyArray<Record<string, unknown>>;
   /** The codec to use to decode data read from the source. */
   codec?: Record<string, unknown>;
 }
@@ -161,7 +161,7 @@ export const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SideInputInfo {
   /** The source(s) to read element(s) from to get the value of this side input. If more than one source, then the elements are taken from the sources, in the specified order if order matters. At least one source is required. */
-  sources?: Array<Source>;
+  sources?: ReadonlyArray<Source>;
   /** How to interpret the source element(s) as a side input value. */
   kind?: Record<string, unknown>;
   /** The id of the tag the user code will access this side input by; this should correspond to the tag of some MultiOutputInfo. */
@@ -186,7 +186,7 @@ export interface PartialGroupByKeyInstruction {
   /** If this instruction includes a combining function this is the name of the intermediate store between the GBK and the CombineValues. */
   originalCombineValuesInputStoreName?: string;
   /** Zero or more side inputs. */
-  sideInputs?: Array<SideInputInfo>;
+  sideInputs?: ReadonlyArray<SideInputInfo>;
 }
 
 export const PartialGroupByKeyInstruction =
@@ -246,7 +246,7 @@ export interface StructuredMessage {
   /** Human-readable version of message. */
   messageText?: string;
   /** The structured data associated with this message. */
-  parameters?: Array<Parameter>;
+  parameters?: ReadonlyArray<Parameter>;
 }
 
 export const StructuredMessage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -287,11 +287,11 @@ export const AutoscalingEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListJobMessagesResponse {
   /** Messages in ascending timestamp order. */
-  jobMessages?: Array<JobMessage>;
+  jobMessages?: ReadonlyArray<JobMessage>;
   /** The token to obtain the next page of results if there are more. */
   nextPageToken?: string;
   /** Autoscaling events in ascending timestamp order. */
-  autoscalingEvents?: Array<AutoscalingEvent>;
+  autoscalingEvents?: ReadonlyArray<AutoscalingEvent>;
 }
 
 export const ListJobMessagesResponse =
@@ -416,7 +416,7 @@ export interface Snapshot {
   /** Cloud region where this snapshot lives in, e.g., "us-central1". */
   region?: string;
   /** Pub/Sub snapshot metadata. */
-  pubsubMetadata?: Array<PubsubSnapshotMetadata>;
+  pubsubMetadata?: ReadonlyArray<PubsubSnapshotMetadata>;
   /** User specified description of the snapshot. Maybe empty. */
   description?: string;
   /** The job this snapshot was created from. */
@@ -438,7 +438,7 @@ export const Snapshot = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListSnapshotsResponse {
   /** Returned snapshots. */
-  snapshots?: Array<Snapshot>;
+  snapshots?: ReadonlyArray<Snapshot>;
 }
 
 export const ListSnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -499,7 +499,7 @@ export const SourceFork = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface JobExecutionStageInfo {
   /** The steps associated with the execution stage. Note that stages may have several steps, and that a given step might be run by more than one stage. */
-  stepName?: Array<string>;
+  stepName?: ReadonlyArray<string>;
 }
 
 export const JobExecutionStageInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -628,11 +628,11 @@ export interface TransformSummary {
     | "SHUFFLE_KIND"
     | (string & {});
   /** Transform-specific display data. */
-  displayData?: Array<DisplayData>;
+  displayData?: ReadonlyArray<DisplayData>;
   /** User names for all collection inputs to this transform. */
-  inputCollectionName?: Array<string>;
+  inputCollectionName?: ReadonlyArray<string>;
   /** User names for all collection outputs to this transform. */
-  outputCollectionName?: Array<string>;
+  outputCollectionName?: ReadonlyArray<string>;
   /** SDK generated id of this transform instance. */
   id?: string;
 }
@@ -683,11 +683,11 @@ export interface ExecutionStageSummary {
   /** Dataflow service generated id for this stage. */
   id?: string;
   /** Collections produced and consumed by component transforms of this stage. */
-  componentSource?: Array<ComponentSource>;
+  componentSource?: ReadonlyArray<ComponentSource>;
   /** Output sources for this stage. */
-  outputSource?: Array<StageSource>;
+  outputSource?: ReadonlyArray<StageSource>;
   /** Other stages that must complete before this stage can run. */
-  prerequisiteStage?: Array<string>;
+  prerequisiteStage?: ReadonlyArray<string>;
   /** Dataflow service generated name for this stage. */
   name?: string;
   /** Type of transform this stage is executing. */
@@ -703,9 +703,9 @@ export interface ExecutionStageSummary {
     | "SHUFFLE_KIND"
     | (string & {});
   /** Input sources for this stage. */
-  inputSource?: Array<StageSource>;
+  inputSource?: ReadonlyArray<StageSource>;
   /** Transforms that comprise this execution stage. */
-  componentTransform?: Array<ComponentTransform>;
+  componentTransform?: ReadonlyArray<ComponentTransform>;
 }
 
 export const ExecutionStageSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -723,11 +723,11 @@ export interface PipelineDescription {
   /** A hash value of the submitted pipeline portable graph step names if exists. */
   stepNamesHash?: string;
   /** Description of each transform in the pipeline and collections between them. */
-  originalPipelineTransform?: Array<TransformSummary>;
+  originalPipelineTransform?: ReadonlyArray<TransformSummary>;
   /** Description of each stage of execution of the pipeline. */
-  executionPipelineStage?: Array<ExecutionStageSummary>;
+  executionPipelineStage?: ReadonlyArray<ExecutionStageSummary>;
   /** Pipeline level display data. */
-  displayData?: Array<DisplayData>;
+  displayData?: ReadonlyArray<DisplayData>;
 }
 
 export const PipelineDescription = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -770,7 +770,7 @@ export const ExecutionStageState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ServiceResources {
   /** Output only. List of Cloud Zones being used by the Dataflow Service for this job. Example: us-central1-c */
-  zones?: Array<string>;
+  zones?: ReadonlyArray<string>;
 }
 
 export const ServiceResources = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -779,7 +779,7 @@ export const ServiceResources = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DataSamplingConfig {
   /** List of given sampling behaviors to enable. For example, specifying behaviors = [ALWAYS_ON] samples in-flight elements but does not sample exceptions. Can be used to specify multiple behaviors like, behaviors = [ALWAYS_ON, EXCEPTIONS] for specifying periodic sampling and exception sampling. If DISABLED is in the list, then sampling will be disabled and ignore the other given behaviors. Ordering does not matter. */
-  behaviors?: Array<
+  behaviors?: ReadonlyArray<
     | "DATA_SAMPLING_BEHAVIOR_UNSPECIFIED"
     | "DISABLED"
     | "ALWAYS_ON"
@@ -808,7 +808,7 @@ export interface SdkHarnessContainerImage {
   /** Environment ID for the Beam runner API proto Environment that corresponds to the current SDK Harness. */
   environmentId?: string;
   /** The set of capabilities enumerated in the above Environment proto. See also [beam_runner_api.proto](https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/org/apache/beam/model/pipeline/v1/beam_runner_api.proto) */
-  capabilities?: Array<string>;
+  capabilities?: ReadonlyArray<string>;
   /** If true, recommends the Dataflow service to use only one core per SDK container instance with this image. If false (or unset) recommends using more than one core per SDK container instance with this image for efficiency. Note that Dataflow service may choose to override this property if needed. */
   useSingleCorePerContainer?: boolean;
   /** A docker container image that resides in Google Container Registry. */
@@ -877,7 +877,7 @@ export interface TaskRunnerSettings {
   /** Whether to continue taskrunner if an exception is hit. */
   continueOnException?: boolean;
   /** The OAuth2 scopes to be requested by the taskrunner in order to access the Cloud Dataflow API. */
-  oauthScopes?: Array<string>;
+  oauthScopes?: ReadonlyArray<string>;
   /** The UNIX group ID on the worker VM to use for tasks launched by taskrunner; e.g. "wheel". */
   taskGroup?: string;
   /** Whether to send taskrunner log info to Google Compute Engine VM serial console. */
@@ -974,7 +974,7 @@ export interface WorkerPool {
     | "TEARDOWN_NEVER"
     | (string & {});
   /** Set of SDK harness containers needed to execute this pipeline. This will only be set in the Fn API path. For non-cross-language pipelines this should have only one entry. Cross-language pipelines will have two or more entries. */
-  sdkHarnessContainerImages?: Array<SdkHarnessContainerImage>;
+  sdkHarnessContainerImages?: ReadonlyArray<SdkHarnessContainerImage>;
   /** Settings passed through to Google Compute Engine workers when using the standard Dataflow task runner. Users should ignore this field. */
   taskrunnerSettings?: TaskRunnerSettings;
   /** Settings for autoscaling of this WorkerPool. */
@@ -988,7 +988,7 @@ export interface WorkerPool {
   /** Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead. */
   workerHarnessContainerImage?: string;
   /** Packages to be installed on workers. */
-  packages?: Array<Package>;
+  packages?: ReadonlyArray<Package>;
   /** Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default. */
   zone?: string;
   /** The default package set to install. This allows the service to select a default set of packages which are useful to worker harnesses written in a particular language. */
@@ -999,7 +999,7 @@ export interface WorkerPool {
     | "DEFAULT_PACKAGE_SET_PYTHON"
     | (string & {});
   /** Data disks that are used by a VM in this workflow. */
-  dataDisks?: Array<Disk>;
+  dataDisks?: ReadonlyArray<Disk>;
   /** The number of threads per worker harness. If empty or unspecified, the service will choose a number of threads (according to the number of cores on the selected machine type for batch, or 1 by convention for streaming). */
   numThreadsPerWorker?: number;
   /** Number of Google Compute Engine workers in this pool needed to execute the job. If zero or unspecified, the service will attempt to choose a reasonable default. */
@@ -1069,9 +1069,9 @@ export interface Environment {
     | "FLEXRS_COST_OPTIMIZED"
     | (string & {});
   /** The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options. */
-  experiments?: Array<string>;
+  experiments?: ReadonlyArray<string>;
   /** Optional. The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on). */
-  serviceOptions?: Array<string>;
+  serviceOptions?: ReadonlyArray<string>;
   /** Optional. Identity to run virtual machines as. Defaults to the default account. */
   serviceAccountEmail?: string;
   /** Output only. Whether the job uses the Streaming Engine resource-based billing model. */
@@ -1095,7 +1095,7 @@ export interface Environment {
   /** The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object} */
   tempStoragePrefix?: string;
   /** The worker pools. At least one "harness" worker pool must be specified in order for the job to have workers. */
-  workerPools?: Array<WorkerPool>;
+  workerPools?: ReadonlyArray<WorkerPool>;
   /** Experimental settings. */
   internalExperiments?: Record<string, unknown>;
   /** Optional. A description of the process that generated the request. */
@@ -1168,7 +1168,7 @@ export const SdkBug = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SdkVersion {
   /** Output only. Known bugs found in this SDK version. */
-  bugs?: Array<SdkBug>;
+  bugs?: ReadonlyArray<SdkBug>;
   /** A readable string describing the version of the SDK. */
   versionDisplayName?: string;
   /** The support status for this SDK version. */
@@ -1261,21 +1261,21 @@ export const BigQueryIODetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface JobMetadata {
   /** Identification of a Datastore source used in the Dataflow job. */
-  datastoreDetails?: Array<DatastoreIODetails>;
+  datastoreDetails?: ReadonlyArray<DatastoreIODetails>;
   /** The SDK version used to run the job. */
   sdkVersion?: SdkVersion;
   /** Identification of a Cloud Bigtable source used in the Dataflow job. */
-  bigTableDetails?: Array<BigTableIODetails>;
+  bigTableDetails?: ReadonlyArray<BigTableIODetails>;
   /** List of display properties to help UI filter jobs. */
   userDisplayProperties?: Record<string, string>;
   /** Identification of a Spanner source used in the Dataflow job. */
-  spannerDetails?: Array<SpannerIODetails>;
+  spannerDetails?: ReadonlyArray<SpannerIODetails>;
   /** Identification of a Pub/Sub source used in the Dataflow job. */
-  pubsubDetails?: Array<PubSubIODetails>;
+  pubsubDetails?: ReadonlyArray<PubSubIODetails>;
   /** Identification of a File source used in the Dataflow job. */
-  fileDetails?: Array<FileIODetails>;
+  fileDetails?: ReadonlyArray<FileIODetails>;
   /** Identification of a BigQuery source used in the Dataflow job. */
-  bigqueryDetails?: Array<BigQueryIODetails>;
+  bigqueryDetails?: ReadonlyArray<BigQueryIODetails>;
 }
 
 export const JobMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1343,7 +1343,7 @@ export interface Job {
   /** Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL. */
   pipelineDescription?: PipelineDescription;
   /** This field may be mutated by the Cloud Dataflow service; callers cannot mutate it. */
-  stageStates?: Array<ExecutionStageState>;
+  stageStates?: ReadonlyArray<ExecutionStageState>;
   /** The ID of the Google Cloud project that the job belongs to. */
   projectId?: string;
   /** Output only. Indicates whether the job can be paused. */
@@ -1393,9 +1393,9 @@ export interface Job {
   /** The timestamp when the job was initially created. Immutable and set by the Cloud Dataflow service. */
   createTime?: string;
   /** Exactly one of step or steps_location should be specified. The top-level steps that constitute the entire job. Only retrieved with JOB_VIEW_ALL. */
-  steps?: Array<Step>;
+  steps?: ReadonlyArray<Step>;
   /** A set of files the system should be aware of that are used for temporary storage. These temporary files will be removed on job completion. No duplicates are allowed. No file patterns are supported. The supported files are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object} */
-  tempFiles?: Array<string>;
+  tempFiles?: ReadonlyArray<string>;
   /** Deprecated. */
   executionInfo?: JobExecutionInfo;
   /** Optional. The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job. */
@@ -1472,7 +1472,7 @@ export interface ProgressTimeseries {
   /** The current progress of the component, in the range [0,1]. */
   currentProgress?: number;
   /** History of progress for the component. Points are sorted by time. */
-  dataPoints?: Array<Point>;
+  dataPoints?: ReadonlyArray<Point>;
 }
 
 export const ProgressTimeseries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1560,7 +1560,7 @@ export interface WorkItemDetails {
   /** Information about straggler detections for this work item. */
   stragglerInfo?: StragglerInfo;
   /** Metrics for this work item. */
-  metrics?: Array<MetricUpdate>;
+  metrics?: ReadonlyArray<MetricUpdate>;
   /** State of this work item. */
   state?:
     | "EXECUTION_STATE_UNKNOWN"
@@ -1591,7 +1591,7 @@ export const WorkItemDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WorkerDetails {
   /** Work items processed by this worker, sorted by time. */
-  workItems?: Array<WorkItemDetails>;
+  workItems?: ReadonlyArray<WorkItemDetails>;
   /** Name of this worker */
   workerName?: string;
 }
@@ -1611,7 +1611,7 @@ export interface RuntimeEnvironment {
   /** Optional. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000. The default value is 1. */
   maxWorkers?: number;
   /** Optional. Additional pipeline option flags for the job. */
-  additionalPipelineOptions?: Array<string>;
+  additionalPipelineOptions?: ReadonlyArray<string>;
   /** Optional. The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence. */
   zone?: string;
   /** Optional. Whether to bypass the safety checks for the job's temporary directory. Use with caution. */
@@ -1627,7 +1627,7 @@ export interface RuntimeEnvironment {
   /** Optional. Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/ */
   kmsKeyName?: string;
   /** Optional. Additional experiment flags for the job, specified with the `--experiments` option. */
-  additionalExperiments?: Array<string>;
+  additionalExperiments?: ReadonlyArray<string>;
   /** Optional. Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default". */
   network?: string;
   /** Optional. Configuration for VM IPs. */
@@ -1759,7 +1759,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
@@ -1829,7 +1829,7 @@ export interface WorkItemServiceState {
   /** New recommended reporting interval. */
   reportStatusInterval?: string;
   /** The short ids that workers should use in subsequent metric updates. Workers should strive to use short ids whenever possible, but it is ok to request the short_id again if a worker lost track of it (e.g. if the worker is recovering from a crash). NOTE: it is possible that the response may have short ids for a subset of the metrics. */
-  metricShortId?: Array<MetricShortId>;
+  metricShortId?: ReadonlyArray<MetricShortId>;
   /** The progress point in the WorkItem where the Dataflow service suggests that the worker truncate the task. */
   splitRequest?: ApproximateSplitRequest;
   /** DEPRECATED in favor of split_request. */
@@ -1853,7 +1853,7 @@ export const WorkItemServiceState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ReportWorkItemStatusResponse {
   /** A set of messages indicating the service-side state for each WorkItem whose status was reported, in the same order as the WorkItemStatus messages in the ReportWorkItemStatusRequest which resulting in this response. */
-  workItemServiceStates?: Array<WorkItemServiceState>;
+  workItemServiceStates?: ReadonlyArray<WorkItemServiceState>;
   /** Untranslated bag-of-bytes WorkProgressUpdateResponse for UnifiedWorker. */
   unifiedWorkerResponse?: Record<string, unknown>;
 }
@@ -1953,7 +1953,7 @@ export interface FlexTemplateRuntimeEnvironment {
     | "FLEXRS_COST_OPTIMIZED"
     | (string & {});
   /** Optional. Additional pipeline option flags for the job. */
-  additionalPipelineOptions?: Array<string>;
+  additionalPipelineOptions?: ReadonlyArray<string>;
   /** If true serial port logging will be enabled for the launcher VM. */
   enableLauncherVmSerialPortLogging?: boolean;
   /** The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence. */
@@ -1965,7 +1965,7 @@ export interface FlexTemplateRuntimeEnvironment {
   /** Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/ */
   kmsKeyName?: string;
   /** Additional experiment flags for the job. */
-  additionalExperiments?: Array<string>;
+  additionalExperiments?: ReadonlyArray<string>;
   /** Whether to enable Streaming Engine for the job. */
   enableStreamingEngine?: boolean;
   /** Configuration for VM IPs. */
@@ -2133,13 +2133,13 @@ export interface ComputationTopology {
   /** The ID of the computation. */
   computationId?: string;
   /** The state family values. */
-  stateFamilies?: Array<StateFamilyConfig>;
+  stateFamilies?: ReadonlyArray<StateFamilyConfig>;
   /** The inputs to the computation. */
-  inputs?: Array<StreamLocation>;
+  inputs?: ReadonlyArray<StreamLocation>;
   /** The outputs from the computation. */
-  outputs?: Array<StreamLocation>;
+  outputs?: ReadonlyArray<StreamLocation>;
   /** The key ranges processed by the computation. */
-  keyRanges?: Array<KeyRangeLocation>;
+  keyRanges?: ReadonlyArray<KeyRangeLocation>;
 }
 
 export const ComputationTopology = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2153,7 +2153,7 @@ export const ComputationTopology = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DataDiskAssignment {
   /** Mounted data disks. The order is important a data disk's 0-based index in this list defines which persistent directory the disk is mounted to, for example the list of { "myproject-1014-104817-4c2-harness-0-disk-0" }, { "myproject-1014-104817-4c2-harness-0-disk-1" }. */
-  dataDisks?: Array<string>;
+  dataDisks?: ReadonlyArray<string>;
   /** VM instance name the data disks mounted to, for example "myproject-1014-104817-4c2-harness-0". */
   vmInstance?: string;
 }
@@ -2169,9 +2169,9 @@ export interface TopologyConfig {
   /** The size (in bits) of keys that will be assigned to source messages. */
   forwardingKeyBits?: number;
   /** The computations associated with a streaming Dataflow job. */
-  computations?: Array<ComputationTopology>;
+  computations?: ReadonlyArray<ComputationTopology>;
   /** The disks assigned to a streaming Dataflow job. */
-  dataDiskAssignments?: Array<DataDiskAssignment>;
+  dataDiskAssignments?: ReadonlyArray<DataDiskAssignment>;
   /** Version number for persistent state. */
   persistentStateVersion?: number;
 }
@@ -2287,7 +2287,7 @@ export interface StreamingComputationRanges {
   /** The ID of the computation. */
   computationId?: string;
   /** Data disk assignments for ranges from this computation. */
-  rangeAssignments?: Array<KeyRangeDataDiskAssignment>;
+  rangeAssignments?: ReadonlyArray<KeyRangeDataDiskAssignment>;
 }
 
 export const StreamingComputationRanges =
@@ -2307,7 +2307,7 @@ export const MountedDataDisk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StreamingComputationTask {
   /** Contains ranges of a streaming computation this task should apply to. */
-  computationRanges?: Array<StreamingComputationRanges>;
+  computationRanges?: ReadonlyArray<StreamingComputationRanges>;
   /** A type of streaming computation task. */
   taskType?:
     | "STREAMING_COMPUTATION_TASK_UNKNOWN"
@@ -2315,7 +2315,7 @@ export interface StreamingComputationTask {
     | "STREAMING_COMPUTATION_TASK_START"
     | (string & {});
   /** Describes the set of data disks this task should apply to. */
-  dataDisks?: Array<MountedDataDisk>;
+  dataDisks?: ReadonlyArray<MountedDataDisk>;
 }
 
 export const StreamingComputationTask =
@@ -2362,13 +2362,13 @@ export const MultiOutputInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ParDoInstruction {
   /** Zero or more side inputs. */
-  sideInputs?: Array<SideInputInfo>;
+  sideInputs?: ReadonlyArray<SideInputInfo>;
   /** The number of outputs. */
   numOutputs?: number;
   /** The user function to invoke. */
   userFn?: Record<string, unknown>;
   /** Information about each of the outputs, if user_fn is a MultiDoFn. */
-  multiOutputInfos?: Array<MultiOutputInfo>;
+  multiOutputInfos?: ReadonlyArray<MultiOutputInfo>;
   /** The input. */
   input?: InstructionInput;
 }
@@ -2407,7 +2407,7 @@ export const WriteInstruction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FlattenInstruction {
   /** Describes the inputs to the flatten instruction. */
-  inputs?: Array<InstructionInput>;
+  inputs?: ReadonlyArray<InstructionInput>;
 }
 
 export const FlattenInstruction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2425,7 +2425,7 @@ export const ReadInstruction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ParallelInstruction {
   /** Describes the outputs of the instruction. */
-  outputs?: Array<InstructionOutput>;
+  outputs?: ReadonlyArray<InstructionOutput>;
   /** Additional information for ParDo instructions. */
   parDo?: ParDoInstruction;
   /** Additional information for Write instructions. */
@@ -2462,7 +2462,7 @@ export interface StreamingComputationConfig {
   /** Stage name of this computation. */
   stageName?: string;
   /** Instructions that comprise the computation. */
-  instructions?: Array<ParallelInstruction>;
+  instructions?: ReadonlyArray<ParallelInstruction>;
   /** System defined name for this computation. */
   systemName?: string;
   /** Map from user name of stateful transforms in this stage to their state family. */
@@ -2529,7 +2529,7 @@ export interface StreamingConfigTask {
   /** Binary encoded proto to control runtime behavior of the java runner v1 user worker. */
   userWorkerRunnerV1Settings?: string;
   /** Set of computation configuration information. */
-  streamingComputationConfigs?: Array<StreamingComputationConfig>;
+  streamingComputationConfigs?: ReadonlyArray<StreamingComputationConfig>;
   /** Maximum size for work item commit supported windmill storage layer. */
   maxWorkItemCommitBytes?: string;
   /** Operational limits for the streaming job. Can be used by the worker to validate outputs sent to the backend. */
@@ -2568,13 +2568,13 @@ export const SeqMapTaskOutputInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SeqMapTask {
   /** Information about each of the inputs. */
-  inputs?: Array<SideInputInfo>;
+  inputs?: ReadonlyArray<SideInputInfo>;
   /** System-defined name of the SeqDo operation. Unique across the workflow. */
   systemName?: string;
   /** The user-provided name of the SeqDo operation. */
   name?: string;
   /** Information about each of the outputs. */
-  outputInfos?: Array<SeqMapTaskOutputInfo>;
+  outputInfos?: ReadonlyArray<SeqMapTaskOutputInfo>;
   /** System-defined name of the stage containing the SeqDo operation. Unique across the workflow. */
   stageName?: string;
   /** The user function to invoke. */
@@ -2592,7 +2592,7 @@ export const SeqMapTask = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MapTask {
   /** The instructions in the MapTask. */
-  instructions?: Array<ParallelInstruction>;
+  instructions?: ReadonlyArray<ParallelInstruction>;
   /** System-defined name of this MapTask. Unique across the workflow. */
   systemName?: string;
   /** System-defined name of the stage containing this MapTask. Unique across the workflow. */
@@ -2630,7 +2630,7 @@ export interface WorkItem {
   /** Additional information for source operation WorkItems. */
   sourceOperationTask?: SourceOperationRequest;
   /** Any required packages that need to be fetched in order to execute this WorkItem. */
-  packages?: Array<Package>;
+  packages?: ReadonlyArray<Package>;
   /** Additional information for StreamingComputationTask WorkItems. */
   streamingComputationTask?: StreamingComputationTask;
   /** Additional information for StreamingConfigTask WorkItems. */
@@ -2673,7 +2673,7 @@ export const FloatingPointMean = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface LeaseWorkItemRequest {
   /** Filter for WorkItem type. */
-  workItemTypes?: Array<string>;
+  workItemTypes?: ReadonlyArray<string>;
   /** Optional. The project number of the project this worker belongs to. */
   projectNumber?: string;
   /** Identifies the worker leasing work -- typically the ID of the virtual machine running the worker. */
@@ -2681,7 +2681,7 @@ export interface LeaseWorkItemRequest {
   /** Untranslated bag-of-bytes WorkRequest from UnifiedWorker. */
   unifiedWorkerRequest?: Record<string, unknown>;
   /** Worker capabilities. WorkItems might be limited to workers with specific capabilities. */
-  workerCapabilities?: Array<string>;
+  workerCapabilities?: ReadonlyArray<string>;
   /** The current timestamp at the worker. */
   currentWorkerTime?: string;
   /** The initial lease period. */
@@ -2801,7 +2801,7 @@ export const WorkerMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SendWorkerMessagesResponse {
   /** The servers response to the worker messages. */
-  workerMessageResponses?: Array<WorkerMessageResponse>;
+  workerMessageResponses?: ReadonlyArray<WorkerMessageResponse>;
 }
 
 export const SendWorkerMessagesResponse =
@@ -2831,9 +2831,9 @@ export interface SourceSplitResponse {
     | "SOURCE_SPLIT_OUTCOME_SPLITTING_HAPPENED"
     | (string & {});
   /** If outcome is SPLITTING_HAPPENED, then this is a list of bundles into which the source was split. Otherwise this field is ignored. This list can be empty, which means the source represents an empty input. */
-  bundles?: Array<DerivedSource>;
+  bundles?: ReadonlyArray<DerivedSource>;
   /** DEPRECATED in favor of bundles. */
-  shards?: Array<SourceSplitShard>;
+  shards?: ReadonlyArray<SourceSplitShard>;
 }
 
 export const SourceSplitResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2927,7 +2927,7 @@ export interface DataflowHistogramValue {
   /** Describes the bucket boundaries used in the histogram. */
   bucketOptions?: BucketOptions;
   /** Optional. The number of values in each bucket of the histogram, as described in `bucket_options`. `bucket_counts` should contain N values, where N is the number of buckets specified in `bucket_options`. If `bucket_counts` has fewer than N values, the remaining values are assumed to be 0. */
-  bucketCounts?: Array<string>;
+  bucketCounts?: ReadonlyArray<string>;
   /** Number of values recorded in this histogram. */
   count?: string;
   /** Statistics on the values recorded in the histogram that fall out of the bucket boundaries. */
@@ -2970,7 +2970,7 @@ export interface PerStepNamespaceMetrics {
   /** The original system name of the unfused step that these metrics are reported from. */
   originalStep?: string;
   /** Optional. Metrics that are recorded for this namespace and unfused step. */
-  metricValues?: Array<MetricValue>;
+  metricValues?: ReadonlyArray<MetricValue>;
 }
 
 export const PerStepNamespaceMetrics =
@@ -2982,7 +2982,7 @@ export const PerStepNamespaceMetrics =
 
 export interface PerWorkerMetrics {
   /** Optional. Metrics for a particular unfused step and namespace. */
-  perStepNamespaceMetrics?: Array<PerStepNamespaceMetrics>;
+  perStepNamespaceMetrics?: ReadonlyArray<PerStepNamespaceMetrics>;
 }
 
 export const PerWorkerMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2995,7 +2995,7 @@ export interface WorkerHealthReport {
   /** Whether the VM is in a permanently broken state. Broken VMs should be abandoned or deleted ASAP to avoid assigning or completing any work. */
   vmIsBroken?: boolean;
   /** The pods running on the worker. See: http://kubernetes.io/v1.1/docs/api-reference/v1/definitions.html#_v1_pod This field is used by the worker to send the status of the indvidual containers running on each worker. */
-  pods?: Array<Record<string, unknown>>;
+  pods?: ReadonlyArray<Record<string, unknown>>;
   /** The interval at which the worker is sending health reports. The default value of 0 should be interpreted as the field is not being explicitly set by the worker. */
   reportInterval?: string;
   /** Whether the VM is currently healthy. */
@@ -3070,13 +3070,13 @@ export const MemInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ResourceUtilizationReport {
   /** CPU utilization samples. */
-  cpuTime?: Array<CPUTime>;
+  cpuTime?: ReadonlyArray<CPUTime>;
   /** Per container information. Key: container name. */
   containers?: Record<string, ResourceUtilizationReport>;
   /** Optional. GPU usage samples. */
-  gpuUsage?: Array<GPUUsage>;
+  gpuUsage?: ReadonlyArray<GPUUsage>;
   /** Memory utilization samples. */
-  memoryInfo?: Array<MemInfo>;
+  memoryInfo?: ReadonlyArray<MemInfo>;
 }
 
 export const ResourceUtilizationReport: Schema.Schema<ResourceUtilizationReport> =
@@ -3269,7 +3269,7 @@ export const SendDebugCaptureRequest =
 
 export interface StageExecutionDetails {
   /** Workers that have done work on the stage. */
-  workers?: Array<WorkerDetails>;
+  workers?: ReadonlyArray<WorkerDetails>;
   /** If present, this response does not contain all requested tasks. To obtain the next page of results, repeat the request with page_token set to this value. */
   nextPageToken?: string;
 }
@@ -3294,7 +3294,7 @@ export const CounterStructuredNameAndMetadata =
 
 export interface IntegerList {
   /** Elements of the list. */
-  elements?: Array<SplitInt64>;
+  elements?: ReadonlyArray<SplitInt64>;
 }
 
 export const IntegerList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3303,7 +3303,7 @@ export const IntegerList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Histogram {
   /** Counts of values in each bucket. For efficiency, prefix and trailing buckets with count = 0 are elided. Buckets can store the full range of values of an unsigned long, with ULLONG_MAX falling into the 59th bucket with range [1e19, 2e19). */
-  bucketCounts?: Array<string>;
+  bucketCounts?: ReadonlyArray<string>;
   /** Starting index of first stored bucket. The non-inclusive upper-bound of the ith bucket is given by: pow(10,(i-first_bucket_offset)/3) * (1,2,5)[(i-first_bucket_offset)%3] */
   firstBucketOffset?: number;
 }
@@ -3362,7 +3362,7 @@ export const NameAndKind = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface StringList {
   /** Elements of the list. */
-  elements?: Array<string>;
+  elements?: ReadonlyArray<string>;
 }
 
 export const StringList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3392,7 +3392,7 @@ export interface BoundedTrie {
   /** A compact representation of all the elements in this trie. */
   root?: BoundedTrieNode;
   /** A more efficient representation for metrics consisting of a single value. */
-  singleton?: Array<string>;
+  singleton?: ReadonlyArray<string>;
 }
 
 export const BoundedTrie = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3403,7 +3403,7 @@ export const BoundedTrie = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface FloatingPointList {
   /** Elements of the list. */
-  elements?: Array<number>;
+  elements?: ReadonlyArray<number>;
 }
 
 export const FloatingPointList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3513,15 +3513,15 @@ export interface WorkItemStatus {
   /** True if the WorkItem was completed (successfully or unsuccessfully). */
   completed?: boolean;
   /** DEPRECATED in favor of counter_updates. */
-  metricUpdates?: Array<MetricUpdate>;
+  metricUpdates?: ReadonlyArray<MetricUpdate>;
   /** Identifies the WorkItem. */
   workItemId?: string;
   /** The report index. When a WorkItem is leased, the lease will contain an initial report index. When a WorkItem's status is reported to the system, the report should be sent with that report index, and the response will contain the index the worker should use for the next report. Reports received with unexpected index values will be rejected by the service. In order to preserve idempotency, the worker should not alter the contents of a report, even if the worker must submit the same report multiple times before getting back a response. The worker should not submit a subsequent report until the response for the previous report had been received from the service. */
   reportIndex?: string;
   /** Specifies errors which occurred during processing. If errors are provided, and completed = true, then the WorkItem is considered to have failed. */
-  errors?: Array<Status>;
+  errors?: ReadonlyArray<Status>;
   /** Worker output counters for this WorkItem. */
-  counterUpdates?: Array<CounterUpdate>;
+  counterUpdates?: ReadonlyArray<CounterUpdate>;
   /** DEPRECATED in favor of reported_progress. */
   progress?: ApproximateProgress;
   /** Amount of time the worker requests for its lease. */
@@ -3613,9 +3613,9 @@ export interface ParameterMetadata {
     | "KAFKA_WRITE_TOPIC"
     | (string & {});
   /** Optional. The options shown when ENUM ParameterType is specified. */
-  enumOptions?: Array<ParameterMetadataEnumOption>;
+  enumOptions?: ReadonlyArray<ParameterMetadataEnumOption>;
   /** Optional. The value(s) of the 'parent_name' parameter which will trigger this parameter to be shown. If left empty, ANY non-empty value in parent_name will trigger this parameter to be shown. Only considered when this parameter is conditional (when 'parent_name' has been provided). */
-  parentTriggerValues?: Array<string>;
+  parentTriggerValues?: ReadonlyArray<string>;
   /** Optional. Additional metadata for describing this parameter. */
   customMetadata?: Record<string, string>;
   /** Required. The help text to display for the parameter. */
@@ -3627,7 +3627,7 @@ export interface ParameterMetadata {
   /** Optional. Whether the parameter should be hidden in the UI. */
   hiddenUi?: boolean;
   /** Optional. Regexes that the parameter must match. */
-  regexes?: Array<string>;
+  regexes?: ReadonlyArray<string>;
   /** Optional. Specifies a group name for this parameter to be rendered under. Group header text will be rendered exactly as specified in this field. Only considered when parent_name is NOT provided. */
   groupName?: string;
   /** Optional. Whether the parameter is optional. Defaults to false. */
@@ -3658,7 +3658,7 @@ export interface TemplateMetadata {
   /** Optional. For future use. */
   yamlDefinition?: string;
   /** The parameters for the template. */
-  parameters?: Array<ParameterMetadata>;
+  parameters?: ReadonlyArray<ParameterMetadata>;
   /** Optional. Indicates if the streaming template supports at least once mode. */
   supportsAtLeastOnce?: boolean;
   /** Optional. Indicates if the streaming template supports exactly once mode. */
@@ -3812,11 +3812,11 @@ export const FailedLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListJobsResponse {
   /** A subset of the requested job information. */
-  jobs?: Array<Job>;
+  jobs?: ReadonlyArray<Job>;
   /** Set if there may be more results than fit in this response. */
   nextPageToken?: string;
   /** Zero or more messages describing the [regional endpoints] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that failed to respond. */
-  failedLocation?: Array<FailedLocation>;
+  failedLocation?: ReadonlyArray<FailedLocation>;
 }
 
 export const ListJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3831,7 +3831,7 @@ export interface StragglerSummary {
   /** Aggregated counts of straggler causes, keyed by the string representation of the StragglerCause enum. */
   stragglerCauseCount?: Record<string, string>;
   /** The most recent stragglers. */
-  recentStragglers?: Array<Straggler>;
+  recentStragglers?: ReadonlyArray<Straggler>;
 }
 
 export const StragglerSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3846,7 +3846,7 @@ export interface StageSummary {
   /** Straggler summary for this stage. */
   stragglerSummary?: StragglerSummary;
   /** Metrics for this stage. */
-  metrics?: Array<MetricUpdate>;
+  metrics?: ReadonlyArray<MetricUpdate>;
   /** ID of this stage */
   stageId?: string;
   /** Progress for this stage. Only applicable to Batch jobs. */
@@ -3880,7 +3880,7 @@ export interface Sdk {
   /** The SDK harness id. */
   sdkId?: string;
   /** The stacktraces for the processes running on the SDK harness. */
-  stacks?: Array<Stack>;
+  stacks?: ReadonlyArray<Stack>;
 }
 
 export const Sdk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3890,7 +3890,7 @@ export const Sdk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GetWorkerStacktracesResponse {
   /** Repeated as unified worker may have multiple SDK processes. */
-  sdks?: Array<Sdk>;
+  sdks?: ReadonlyArray<Sdk>;
 }
 
 export const GetWorkerStacktracesResponse =
@@ -3923,7 +3923,7 @@ export interface ReportWorkItemStatusRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the WorkItem's job. */
   location?: string;
   /** The order is unimportant, except that the order of the WorkItemServiceState messages in the ReportWorkItemStatusResponse corresponds to the order of WorkItemStatus messages here. */
-  workItemStatuses?: Array<WorkItemStatus>;
+  workItemStatuses?: ReadonlyArray<WorkItemStatus>;
   /** The current timestamp at the worker. */
   currentWorkerTime?: string;
 }
@@ -3942,7 +3942,7 @@ export const ReportWorkItemStatusRequest =
 
 export interface RuntimeMetadata {
   /** The parameters for the template. */
-  parameters?: Array<ParameterMetadata>;
+  parameters?: ReadonlyArray<ParameterMetadata>;
   /** SDK Info for the template. */
   sdkInfo?: SDKInfo;
 }
@@ -3974,7 +3974,7 @@ export interface JobMetrics {
   /** Timestamp as of which metric values are current. */
   metricTime?: string;
   /** All metrics for this job. */
-  metrics?: Array<MetricUpdate>;
+  metrics?: ReadonlyArray<MetricUpdate>;
 }
 
 export const JobMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3984,7 +3984,7 @@ export const JobMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface JobExecutionDetails {
   /** The stages of the job execution. */
-  stages?: Array<StageSummary>;
+  stages?: ReadonlyArray<StageSummary>;
   /** If present, this response does not contain all requested tasks. To obtain the next page of results, repeat the request with page_token set to this value. */
   nextPageToken?: string;
 }
@@ -4016,7 +4016,7 @@ export interface SendWorkerMessagesRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job. */
   location?: string;
   /** The WorkerMessages to send. */
-  workerMessages?: Array<WorkerMessage>;
+  workerMessages?: ReadonlyArray<WorkerMessage>;
 }
 
 export const SendWorkerMessagesRequest =
@@ -4038,7 +4038,7 @@ export const LaunchTemplateResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface LeaseWorkItemResponse {
   /** A list of the leased WorkItems. */
-  workItems?: Array<WorkItem>;
+  workItems?: ReadonlyArray<WorkItem>;
   /** Untranslated bag-of-bytes WorkResponse for UnifiedWorker. */
   unifiedWorkerResponse?: Record<string, unknown>;
 }

@@ -60,7 +60,7 @@ export const GoogleCloudAiplatformV1SchemaAnnotationSpecColor =
 
 export interface GoogleCloudAiplatformV1SchemaImageSegmentationAnnotationMaskAnnotation {
   /** The mapping between color and AnnotationSpec for this Annotation. */
-  annotationSpecColors?: Array<GoogleCloudAiplatformV1SchemaAnnotationSpecColor>;
+  annotationSpecColors?: ReadonlyArray<GoogleCloudAiplatformV1SchemaAnnotationSpecColor>;
   /** Google Cloud Storage URI that points to the mask image. The image must be in PNG format. It must have the same size as the DataItem's image. Each pixel in the image mask represents the AnnotationSpec which the pixel in the image DataItem belong to. Each color is mapped to one AnnotationSpec based on annotation_spec_colors. */
   maskGcsUri?: string;
 }
@@ -160,7 +160,7 @@ export const GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue =
 
 export interface GoogleCloudAiplatformV1TrajectoryPrecisionResults {
   /** Output only. TrajectoryPrecision metric values. */
-  trajectoryPrecisionMetricValues?: Array<GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue>;
+  trajectoryPrecisionMetricValues?: ReadonlyArray<GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue>;
 }
 
 export const GoogleCloudAiplatformV1TrajectoryPrecisionResults =
@@ -197,7 +197,7 @@ export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
@@ -214,7 +214,7 @@ export interface GoogleCloudAiplatformV1GenericOperationMetadata {
   /** Output only. Time when the operation was created. */
   createTime?: string;
   /** Output only. Partial failures encountered. E.g. single files that couldn't be read. This field should never exceed 20 entries. Status details field will contain standard Google Cloud error details. */
-  partialFailures?: Array<GoogleRpcStatus>;
+  partialFailures?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. Time when the operation was updated for the last time. If the operation has finished (successfully or not), this is the finish time. */
   updateTime?: string;
 }
@@ -258,13 +258,13 @@ export interface GoogleCloudAiplatformV1SpecialistPool {
   /** Output only. The number of managers in this SpecialistPool. */
   specialistManagersCount?: number;
   /** The email addresses of workers in the SpecialistPool. */
-  specialistWorkerEmails?: Array<string>;
+  specialistWorkerEmails?: ReadonlyArray<string>;
   /** Output only. The resource name of the pending data labeling jobs. */
-  pendingDataLabelingJobs?: Array<string>;
+  pendingDataLabelingJobs?: ReadonlyArray<string>;
   /** Required. The resource name of the SpecialistPool. */
   name?: string;
   /** The email addresses of the managers in the SpecialistPool. */
-  specialistManagerEmails?: Array<string>;
+  specialistManagerEmails?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1SpecialistPool =
@@ -279,7 +279,7 @@ export const GoogleCloudAiplatformV1SpecialistPool =
 
 export interface GoogleCloudAiplatformV1ListSpecialistPoolsResponse {
   /** A list of SpecialistPools that matches the specified filter in the request. */
-  specialistPools?: Array<GoogleCloudAiplatformV1SpecialistPool>;
+  specialistPools?: ReadonlyArray<GoogleCloudAiplatformV1SpecialistPool>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -429,7 +429,7 @@ export interface GoogleCloudAiplatformV1Dataset {
   /** Output only. The resource name of the Artifact that was created in MetadataStore when creating the Dataset. The Artifact resource name pattern is `projects/{project}/locations/{location}/metadataStores/{metadata_store}/artifacts/{artifact}`. */
   metadataArtifact?: string;
   /** All SavedQueries belong to the Dataset will be returned in List/Get Dataset response. The annotation_specs field will not be populated except for UI cases which will only use annotation_spec_count. In CreateDataset request, a SavedQuery is created together if this field is set, up to one SavedQuery can be set in CreateDatasetRequest. The SavedQuery should not contain any AnnotationSpec. */
-  savedQueries?: Array<GoogleCloudAiplatformV1SavedQuery>;
+  savedQueries?: ReadonlyArray<GoogleCloudAiplatformV1SavedQuery>;
   /** Required. Points to a YAML file stored on Google Cloud Storage describing additional information about the Dataset. The schema is defined as an OpenAPI 3.0.2 Schema Object. The schema files that can be used here are found in gs://google-cloud-aiplatform/schema/dataset/metadata/. */
   metadataSchemaUri?: string;
 }
@@ -458,7 +458,7 @@ export const GoogleCloudAiplatformV1Dataset =
 
 export interface GoogleCloudAiplatformV1ListDatasetsResponse {
   /** A list of Datasets that matches the specified filter in the request. */
-  datasets?: Array<GoogleCloudAiplatformV1Dataset>;
+  datasets?: ReadonlyArray<GoogleCloudAiplatformV1Dataset>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -478,7 +478,7 @@ export const GoogleCloudAiplatformV1GenerateFetchAccessTokenRequest =
 
 export interface GoogleCloudAiplatformV1ModelExportFormat {
   /** Output only. The content of this Model that may be exported. */
-  exportableContents?: Array<
+  exportableContents?: ReadonlyArray<
     "EXPORTABLE_CONTENT_UNSPECIFIED" | "ARTIFACT" | "IMAGE" | (string & {})
   >;
   /** Output only. The ID of the export format. The possible format IDs are: * `tflite` Used for Android mobile devices. * `edgetpu-tflite` Used for [Edge TPU](https://cloud.google.com/edge-tpu/) devices. * `tf-saved-model` A tensorflow model in SavedModel format. * `tf-js` A [TensorFlow.js](https://www.tensorflow.org/js) model that can be used in the browser and in Node.js using JavaScript. * `core-ml` Used for iOS mobile devices. * `custom-trained` A Model that was uploaded or trained by custom code. * `genie` A tuned Model Garden model. */
@@ -616,7 +616,7 @@ export const GoogleCloudAiplatformV1Presets =
 
 export interface GoogleCloudAiplatformV1GcsSource {
   /** Required. Google Cloud Storage URI(-s) to the input file(s). May contain wildcards. For more information on wildcards, see https://cloud.google.com/storage/docs/wildcards. */
-  uris?: Array<string>;
+  uris?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1GcsSource =
@@ -699,7 +699,7 @@ export const GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature =
 
 export interface GoogleCloudAiplatformV1FeatureNoiseSigma {
   /** Noise sigma per feature. No noise is added to features that are not set. */
-  noiseSigma?: Array<GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature>;
+  noiseSigma?: ReadonlyArray<GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature>;
 }
 
 export const GoogleCloudAiplatformV1FeatureNoiseSigma =
@@ -773,7 +773,7 @@ export interface GoogleCloudAiplatformV1ExplanationParameters {
   /** If populated, returns attributions for top K indices of outputs (defaults to 1). Only applies to Models that predicts more than one outputs (e,g, multi-class Models). When set to -1, returns explanations for all outputs. */
   topK?: number;
   /** If populated, only returns attributions that have output_index contained in output_indices. It must be an ndarray of integers, with the same shape of the output it's explaining. If not populated, returns attributions for top_k indices of outputs. If neither top_k nor output_indices is populated, returns the argmax index of the outputs. Only applicable to Models that predict multiple outputs (e,g, multi-class Models that predict multiple classes). */
-  outputIndices?: Array<unknown>;
+  outputIndices?: ReadonlyArray<unknown>;
   /** An attribution method that approximates Shapley values for features that contribute to the label being predicted. A sampling strategy is used to approximate the value rather than considering all subsets of features. Refer to this paper for model details: https://arxiv.org/abs/1306.4265. */
   sampledShapleyAttribution?: GoogleCloudAiplatformV1SampledShapleyAttribution;
   /** An attribution method that computes Aumann-Shapley values taking advantage of the model's fully differentiable structure. Refer to this paper for more details: https://arxiv.org/abs/1703.01365 */
@@ -869,11 +869,11 @@ export interface GoogleCloudAiplatformV1ExplanationMetadataInputMetadata {
   /** Specifies the index of the values of the input tensor. Required when the input tensor is a sparse representation. Refer to Tensorflow documentation for more details: https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor. */
   indicesTensorName?: string;
   /** A list of baselines for the encoded tensor. The shape of each baseline should match the shape of the encoded tensor. If a scalar is provided, Vertex AI broadcasts to the same shape as the encoded tensor. */
-  encodedBaselines?: Array<unknown>;
+  encodedBaselines?: ReadonlyArray<unknown>;
   /** Name of the input tensor for this feature. Required and is only applicable to Vertex AI-provided images for Tensorflow. */
   inputTensorName?: string;
   /** Baseline inputs for this feature. If no baseline is specified, Vertex AI chooses the baseline for this feature. If multiple baselines are specified, Vertex AI returns the average attributions across them in Attribution.feature_attributions. For Vertex AI-provided Tensorflow images (both 1.x and 2.x), the shape of each baseline must match the shape of the input tensor. If a scalar is provided, we broadcast to the same shape as the input tensor. For custom images, the element of the baselines must be in the same format as the feature's input in the instance[]. The schema of any single instance may be specified via Endpoint's DeployedModels' Model's PredictSchemata's instance_schema_uri. */
-  inputBaselines?: Array<unknown>;
+  inputBaselines?: ReadonlyArray<unknown>;
   /** Defines how the feature is encoded into the input tensor. Defaults to IDENTITY. */
   encoding?:
     | "ENCODING_UNSPECIFIED"
@@ -893,7 +893,7 @@ export interface GoogleCloudAiplatformV1ExplanationMetadataInputMetadata {
   /** Encoded tensor is a transformation of the input tensor. Must be provided if choosing Integrated Gradients attribution or XRAI attribution and the input tensor is not differentiable. An encoded tensor is generated if the input tensor is encoded by a lookup table. */
   encodedTensorName?: string;
   /** A list of feature names for each index in the input tensor. Required when the input InputMetadata.encoding is BAG_OF_FEATURES, BAG_OF_FEATURES_SPARSE, INDICATOR. */
-  indexFeatureMapping?: Array<string>;
+  indexFeatureMapping?: ReadonlyArray<string>;
   /** Modality of the feature. Valid values are: numeric, image. Defaults to numeric. */
   modality?: string;
   /** Visualization configurations for image explanation. */
@@ -1022,7 +1022,7 @@ export interface GoogleCloudAiplatformV1ProbeHttpGetAction {
   /** Host name to connect to, defaults to the model serving container's IP. You probably want to set "Host" in httpHeaders instead. */
   host?: string;
   /** Custom headers to set in the request. HTTP allows repeated headers. */
-  httpHeaders?: Array<GoogleCloudAiplatformV1ProbeHttpHeader>;
+  httpHeaders?: ReadonlyArray<GoogleCloudAiplatformV1ProbeHttpHeader>;
   /** Scheme to use for connecting to the host. Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS". */
   scheme?: string;
 }
@@ -1040,7 +1040,7 @@ export const GoogleCloudAiplatformV1ProbeHttpGetAction =
 
 export interface GoogleCloudAiplatformV1ProbeExecAction {
   /** Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. */
-  command?: Array<string>;
+  command?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1ProbeExecAction =
@@ -1126,25 +1126,25 @@ export interface GoogleCloudAiplatformV1ModelContainerSpec {
   /** Immutable. Invoke route prefix for the custom container. "/*" is the only supported value right now. By setting this field, any non-root route on this model will be accessible with invoke http call eg: "/invoke/foo/bar", however the [PredictionService.Invoke] RPC is not supported yet. Only one of `predict_route` or `invoke_route_prefix` can be set, and we default to using `predict_route` if this field is not set. If this field is set, the Model can only be deployed to dedicated endpoint. */
   invokeRoutePrefix?: string;
   /** Immutable. Specifies the command that runs when the container starts. This overrides the container's [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint). Specify this field as an array of executable and arguments, similar to a Docker `ENTRYPOINT`'s "exec" form, not its "shell" form. If you do not specify this field, then the container's `ENTRYPOINT` runs, in conjunction with the args field or the container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd), if either exists. If this field is not specified and the container does not have an `ENTRYPOINT`, then refer to the Docker documentation about [how `CMD` and `ENTRYPOINT` interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact). If you specify this field, then you can also specify the `args` field to provide additional arguments for this command. However, if you specify this field, then the container's `CMD` is ignored. See the [Kubernetes documentation about how the `command` and `args` fields interact with a container's `ENTRYPOINT` and `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes). In this field, you can reference [environment variables set by Vertex AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables) and environment variables set in the env field. You cannot reference environment variables set in the Docker image. In order for environment variables to be expanded, reference them by using the following syntax: $( VARIABLE_NAME) Note that this differs from Bash variable expansion, which does not use parentheses. If a variable cannot be resolved, the reference in the input string is used unchanged. To avoid variable expansion, you can escape this syntax with `$$`; for example: $$(VARIABLE_NAME) This field corresponds to the `command` field of the Kubernetes Containers [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core). */
-  command?: Array<string>;
+  command?: ReadonlyArray<string>;
   /** Immutable. The amount of the VM memory to reserve as the shared memory for the model in megabytes. */
   sharedMemorySizeMb?: string;
   /** Immutable. List of ports to expose from the container. Vertex AI sends any prediction requests that it receives to the first port on this list. Vertex AI also sends [liveness and health checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#liveness) to this port. If you do not specify this field, it defaults to following value: ```json [ { "containerPort": 8080 } ] ``` Vertex AI does not use ports other than the first one listed. This field corresponds to the `ports` field of the Kubernetes Containers [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core). */
-  ports?: Array<GoogleCloudAiplatformV1Port>;
+  ports?: ReadonlyArray<GoogleCloudAiplatformV1Port>;
   /** Immutable. HTTP path on the container to send prediction requests to. Vertex AI forwards requests sent using projects.locations.endpoints.predict to this path on the container's IP address and port. Vertex AI then returns the container's response in the API response. For example, if you set this field to `/foo`, then when Vertex AI receives a prediction request, it forwards the request body in a POST request to the `/foo` path on the port of your container specified by the first value of this `ModelContainerSpec`'s ports field. If you don't specify this field, it defaults to the following value when you deploy this Model to an Endpoint: /v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict The placeholders in this value are replaced as follows: * ENDPOINT: The last segment (following `endpoints/`)of the Endpoint.name][] field of the Endpoint where this Model has been deployed. (Vertex AI makes this value available to your container code as the [`AIP_ENDPOINT_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).) * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`. (Vertex AI makes this value available to your container code as the [`AIP_DEPLOYED_MODEL_ID` environment variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).) */
   predictRoute?: string;
   /** Required. Immutable. URI of the Docker image to be used as the custom container for serving predictions. This URI must identify an image in Artifact Registry or Container Registry. Learn more about the [container publishing requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#publishing), including permissions requirements for the Vertex AI Service Agent. The container image is ingested upon ModelService.UploadModel, stored internally, and this original path is afterwards not used. To learn about the requirements for the Docker image itself, see [Custom container requirements](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#). You can use the URI to one of Vertex AI's [pre-built container images for prediction](https://cloud.google.com/vertex-ai/docs/predictions/pre-built-containers) in this field. */
   imageUri?: string;
   /** Immutable. List of ports to expose from the container. Vertex AI sends gRPC prediction requests that it receives to the first port on this list. Vertex AI also sends liveness and health checks to this port. If you do not specify this field, gRPC requests to the container will be disabled. Vertex AI does not use ports other than the first one listed. This field corresponds to the `ports` field of the Kubernetes Containers v1 core API. */
-  grpcPorts?: Array<GoogleCloudAiplatformV1Port>;
+  grpcPorts?: ReadonlyArray<GoogleCloudAiplatformV1Port>;
   /** Immutable. Specifies arguments for the command that runs when the container starts. This overrides the container's [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd). Specify this field as an array of executable and arguments, similar to a Docker `CMD`'s "default parameters" form. If you don't specify this field but do specify the command field, then the command from the `command` field runs without any additional arguments. See the [Kubernetes documentation about how the `command` and `args` fields interact with a container's `ENTRYPOINT` and `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes). If you don't specify this field and don't specify the `command` field, then the container's [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#cmd) and `CMD` determine what runs based on their default behavior. See the Docker documentation about [how `CMD` and `ENTRYPOINT` interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact). In this field, you can reference [environment variables set by Vertex AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables) and environment variables set in the env field. You cannot reference environment variables set in the Docker image. In order for environment variables to be expanded, reference them by using the following syntax: $( VARIABLE_NAME) Note that this differs from Bash variable expansion, which does not use parentheses. If a variable cannot be resolved, the reference in the input string is used unchanged. To avoid variable expansion, you can escape this syntax with `$$`; for example: $$(VARIABLE_NAME) This field corresponds to the `args` field of the Kubernetes Containers [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core). */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Immutable. Specification for Kubernetes readiness probe. */
   healthProbe?: GoogleCloudAiplatformV1Probe;
   /** Immutable. Specification for Kubernetes startup probe. */
   startupProbe?: GoogleCloudAiplatformV1Probe;
   /** Immutable. List of environment variables to set in the container. After the container starts running, code running in the container can read these environment variables. Additionally, the command and args fields can reference these variables. Later entries in this list can also reference earlier entries. For example, the following example sets the variable `VAR_2` to have the value `foo bar`: ```json [ { "name": "VAR_1", "value": "foo" }, { "name": "VAR_2", "value": "$(VAR_1) bar" } ] ``` If you switch the order of the variables in the example, then the expansion does not occur. This field corresponds to the `env` field of the Kubernetes Containers [v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core). */
-  env?: Array<GoogleCloudAiplatformV1EnvVar>;
+  env?: ReadonlyArray<GoogleCloudAiplatformV1EnvVar>;
   /** Immutable. Deployment timeout. Limit for deployment timeout is 2 hours. */
   deploymentTimeout?: string;
 }
@@ -1212,7 +1212,7 @@ export interface GoogleCloudAiplatformV1Model {
   /** Output only. Timestamp when this version was created. */
   versionCreateTime?: string;
   /** Output only. The formats in which this Model may be exported. If empty, this Model is not available for export. */
-  supportedExportFormats?: Array<GoogleCloudAiplatformV1ModelExportFormat>;
+  supportedExportFormats?: ReadonlyArray<GoogleCloudAiplatformV1ModelExportFormat>;
   /** Output only. Timestamp when this Model was uploaded into Vertex AI. */
   createTime?: string;
   /** The schemata that describe formats of the Model's predictions and explanations as given and returned via PredictionService.Predict and PredictionService.Explain. */
@@ -1220,17 +1220,17 @@ export interface GoogleCloudAiplatformV1Model {
   /** Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not required for AutoML Models. */
   artifactUri?: string;
   /** Optional. Output only. The checkpoints of the model. */
-  checkpoints?: Array<GoogleCloudAiplatformV1Checkpoint>;
+  checkpoints?: ReadonlyArray<GoogleCloudAiplatformV1Checkpoint>;
   /** Output only. The pointers to DeployedModels created from this Model. Note that Model could have been deployed to Endpoints in different Locations. */
-  deployedModels?: Array<GoogleCloudAiplatformV1DeployedModelRef>;
+  deployedModels?: ReadonlyArray<GoogleCloudAiplatformV1DeployedModelRef>;
   /** Output only. Immutable. The version ID of the model. A new version is committed when a new model version is uploaded or trained under an existing model id. It is an auto-incrementing decimal number in string representation. */
   versionId?: string;
   /** User provided version aliases so that a model version can be referenced via alias (i.e. `projects/{project}/locations/{location}/models/{model_id}@{version_alias}` instead of auto-generated version id (i.e. `projects/{project}/locations/{location}/models/{model_id}@{version_id})`. The format is a-z{0,126}[a-z0-9] to distinguish from version_id. A default version alias will be created for the first version of the model, and there must be exactly one default version alias for a model. */
-  versionAliases?: Array<string>;
+  versionAliases?: ReadonlyArray<string>;
   /** Immutable. An additional information about the Model; the schema of the metadata can be found in metadata_schema. Unset if the Model does not have any additional information. */
   metadata?: unknown;
   /** Output only. When this Model is deployed, its prediction resources are described by the `prediction_resources` field of the Endpoint.deployed_models object. Because not all Models support all resource configuration types, the configuration types this Model supports are listed here. If no configuration types are listed, the Model cannot be deployed to an Endpoint and does not support online predictions (PredictionService.Predict or PredictionService.Explain). Such a Model can serve predictions by using a BatchPredictionJob, if it has at least one entry each in supported_input_storage_formats and supported_output_storage_formats. */
-  supportedDeploymentResourcesTypes?: Array<
+  supportedDeploymentResourcesTypes?: ReadonlyArray<
     | "DEPLOYMENT_RESOURCES_TYPE_UNSPECIFIED"
     | "DEDICATED_RESOURCES"
     | "AUTOMATIC_RESOURCES"
@@ -1270,13 +1270,13 @@ export interface GoogleCloudAiplatformV1Model {
   /** Optional. This field is populated if the model is produced by a pipeline job. */
   pipelineJob?: string;
   /** Output only. The formats this Model supports in BatchPredictionJob.output_config. If both PredictSchemata.instance_schema_uri and PredictSchemata.prediction_schema_uri exist, the predictions are returned together with their instances. In other words, the prediction has the original instance data first, followed by the actual prediction content (as per the schema). The possible formats are: * `jsonl` The JSON Lines format, where each prediction is a single line. Uses GcsDestination. * `csv` The CSV format, where each prediction is a single comma-separated line. The first line in the file is the header, containing comma-separated field names. Uses GcsDestination. * `bigquery` Each prediction is a single row in a BigQuery table, uses BigQueryDestination . If this Model doesn't support any of these formats it means it cannot be used with a BatchPredictionJob. However, if it has supported_deployment_resources_types, it could serve online predictions by using PredictionService.Predict or PredictionService.Explain. */
-  supportedOutputStorageFormats?: Array<string>;
+  supportedOutputStorageFormats?: ReadonlyArray<string>;
   /** Input only. The specification of the container that is to be used when deploying this Model. The specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored internally by Vertex AI. Not required for AutoML Models. */
   containerSpec?: GoogleCloudAiplatformV1ModelContainerSpec;
   /** Output only. Timestamp when this version was most recently updated. */
   versionUpdateTime?: string;
   /** Output only. The formats this Model supports in BatchPredictionJob.input_config. If PredictSchemata.instance_schema_uri exists, the instances should be given as per that schema. The possible formats are: * `jsonl` The JSON Lines format, where each instance is a single line. Uses GcsSource. * `csv` The CSV format, where each instance is a single comma-separated line. The first line in the file is the header, containing comma-separated field names. Uses GcsSource. * `tf-record` The TFRecord format, where each instance is a single record in tfrecord syntax. Uses GcsSource. * `tf-record-gzip` Similar to `tf-record`, but the file is gzipped. Uses GcsSource. * `bigquery` Each instance is a single row in BigQuery. Uses BigQuerySource. * `file-list` Each line of the file is the location of an instance to process, uses `gcs_source` field of the InputConfig object. If this Model doesn't support any of these formats it means it cannot be used with a BatchPredictionJob. However, if it has supported_deployment_resources_types, it could serve online predictions by using PredictionService.Predict or PredictionService.Explain. */
-  supportedInputStorageFormats?: Array<string>;
+  supportedInputStorageFormats?: ReadonlyArray<string>;
   /** Output only. The resource name of the TrainingPipeline that uploaded this Model, if any. */
   trainingPipeline?: string;
   /** Output only. Timestamp when this Model was most recently updated. */
@@ -1340,7 +1340,7 @@ export const GoogleCloudAiplatformV1Model =
 
 export interface GoogleCloudAiplatformV1ListModelsResponse {
   /** List of Models in the requested page. */
-  models?: Array<GoogleCloudAiplatformV1Model>;
+  models?: ReadonlyArray<GoogleCloudAiplatformV1Model>;
   /** A token to retrieve next page of results. Pass to ListModelsRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -1355,9 +1355,9 @@ export interface GoogleCloudAiplatformV1NearestNeighborQueryStringFilter {
   /** Required. Column names in BigQuery that used as filters. */
   name?: string;
   /** Optional. The allowed tokens. */
-  allowTokens?: Array<string>;
+  allowTokens?: ReadonlyArray<string>;
   /** Optional. The denied tokens. */
-  denyTokens?: Array<string>;
+  denyTokens?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1NearestNeighborQueryStringFilter =
@@ -1418,7 +1418,7 @@ export const GoogleCloudAiplatformV1NearestNeighborQueryNumericFilter =
 
 export interface GoogleCloudAiplatformV1NearestNeighborQueryEmbedding {
   /** Optional. Individual value in the embedding. */
-  value?: Array<number>;
+  value?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudAiplatformV1NearestNeighborQueryEmbedding =
@@ -1432,7 +1432,7 @@ export interface GoogleCloudAiplatformV1NearestNeighborQuery {
   /** Optional. The number of similar entities to be retrieved from feature view for each query. */
   neighborCount?: number;
   /** Optional. The list of string filters. */
-  stringFilters?: Array<GoogleCloudAiplatformV1NearestNeighborQueryStringFilter>;
+  stringFilters?: ReadonlyArray<GoogleCloudAiplatformV1NearestNeighborQueryStringFilter>;
   /** Optional. Parameters that can be set to tune query on the fly. */
   parameters?: GoogleCloudAiplatformV1NearestNeighborQueryParameters;
   /** Optional. Crowding is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than sper_crowding_attribute_neighbor_count of the k neighbors returned have the same value of crowding_attribute. It's used for improving result diversity. */
@@ -1440,7 +1440,7 @@ export interface GoogleCloudAiplatformV1NearestNeighborQuery {
   /** Optional. The entity id whose similar entities should be searched for. If embedding is set, search will use embedding instead of entity_id. */
   entityId?: string;
   /** Optional. The list of numeric filters. */
-  numericFilters?: Array<GoogleCloudAiplatformV1NearestNeighborQueryNumericFilter>;
+  numericFilters?: ReadonlyArray<GoogleCloudAiplatformV1NearestNeighborQueryNumericFilter>;
   /** Optional. The embedding vector that be used for similar search. */
   embedding?: GoogleCloudAiplatformV1NearestNeighborQueryEmbedding;
 }
@@ -1493,7 +1493,7 @@ export interface GoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelin
   /** Required. Full resource name of data labeling Dataset. Format: `projects/{project}/datasets/{dataset}`. */
   dataset?: string;
   /** Optional. Configs for migrating AnnotatedDataset in datalabeling.googleapis.com to Vertex AI's SavedQuery. The specified AnnotatedDatasets have to belong to the datalabeling Dataset. */
-  migrateDataLabelingAnnotatedDatasetConfigs?: Array<GoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDatasetConfigMigrateDataLabelingAnnotatedDatasetConfig>;
+  migrateDataLabelingAnnotatedDatasetConfigs?: ReadonlyArray<GoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDatasetConfigMigrateDataLabelingAnnotatedDatasetConfig>;
   /** Optional. Display name of the Dataset in Vertex AI. System will pick a display name if unspecified. */
   datasetDisplayName?: string;
 }
@@ -1616,7 +1616,7 @@ export interface GoogleCloudAiplatformV1BatchMigrateResourcesOperationMetadata {
   /** The common part of the operation metadata. */
   genericMetadata?: GoogleCloudAiplatformV1GenericOperationMetadata;
   /** Partial results that reflect the latest migration operation progress. */
-  partialResults?: Array<GoogleCloudAiplatformV1BatchMigrateResourcesOperationMetadataPartialResult>;
+  partialResults?: ReadonlyArray<GoogleCloudAiplatformV1BatchMigrateResourcesOperationMetadataPartialResult>;
 }
 
 export const GoogleCloudAiplatformV1BatchMigrateResourcesOperationMetadata =
@@ -1679,7 +1679,7 @@ export interface GoogleCloudAiplatformV1PscInterfaceConfig {
   /** Optional. The name of the Compute Engine [network attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to attach to the resource within the region and user project. To specify this field, you must have already [created a network attachment] (https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments). This field is only used for resources using PSC-I. */
   networkAttachment?: string;
   /** Optional. DNS peering configurations. When specified, Vertex AI will attempt to configure DNS peering zones in the tenant project VPC to resolve the specified domains using the target network's Cloud DNS. The user must grant the dns.peer role to the Vertex AI Service Agent on the target project. */
-  dnsPeeringConfigs?: Array<GoogleCloudAiplatformV1DnsPeeringConfig>;
+  dnsPeeringConfigs?: ReadonlyArray<GoogleCloudAiplatformV1DnsPeeringConfig>;
 }
 
 export const GoogleCloudAiplatformV1PscInterfaceConfig =
@@ -1728,9 +1728,9 @@ export interface GoogleCloudAiplatformV1ReasoningEngineSpecDeploymentSpec {
   /** Optional. Resource limits for each container. Only 'cpu' and 'memory' keys are supported. Defaults to {"cpu": "4", "memory": "4Gi"}. * The only supported values for CPU are '1', '2', '4', '6' and '8'. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * The only supported values for memory are '1Gi', '2Gi', ... '32 Gi'. * For required cpu on different memory values, go to https://cloud.google.com/run/docs/configuring/memory-limits */
   resourceLimits?: Record<string, string>;
   /** Optional. Environment variables to be set with the Reasoning Engine deployment. The environment variables can be updated through the UpdateReasoningEngine API. */
-  env?: Array<GoogleCloudAiplatformV1EnvVar>;
+  env?: ReadonlyArray<GoogleCloudAiplatformV1EnvVar>;
   /** Optional. Environment variables where the value is a secret in Cloud Secret Manager. To use this feature, add 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) to AI Platform Reasoning Engine Service Agent. */
-  secretEnv?: Array<GoogleCloudAiplatformV1SecretEnvVar>;
+  secretEnv?: ReadonlyArray<GoogleCloudAiplatformV1SecretEnvVar>;
   /** Optional. Concurrency for each container and agent server. Recommended value: 2 * cpu + 1. Defaults to 9. */
   containerConcurrency?: number;
 }
@@ -1999,7 +1999,7 @@ export interface GoogleCloudAiplatformV1Schema {
   /** Optional. If type is `OBJECT`, `min_properties` specifies the minimum number of properties that can be provided. */
   minProperties?: string;
   /** Optional. If type is `OBJECT`, `required` lists the names of properties that must be present. */
-  required?: Array<string>;
+  required?: ReadonlyArray<string>;
   /** Optional. Describes the data. The model uses this field to understand the purpose of the schema and how to use it. It is a best practice to provide a clear and descriptive explanation for the schema and its properties here, rather than in the prompt. */
   description?: string;
   /** Optional. Allows referencing another schema definition to use in place of this schema. The value must be a valid reference to a schema in `defs`. For example, the following schema defines a reference to a schema node named "Pet": type: object properties: pet: ref: #/defs/Pet defs: Pet: type: object properties: name: type: string The value of the "pet" property is a reference to the schema node named "Pet". See details in https://json-schema.org/understanding-json-schema/structuring */
@@ -2032,9 +2032,9 @@ export interface GoogleCloudAiplatformV1Schema {
   /** Optional. Example of an instance of this schema. */
   example?: unknown;
   /** Optional. Order of properties displayed or used where order matters. This is not a standard field in OpenAPI specification, but can be used to control the order of properties. */
-  propertyOrdering?: Array<string>;
+  propertyOrdering?: ReadonlyArray<string>;
   /** Optional. Possible values of the field. This field can be used to restrict a value to a fixed set of values. To mark a field as an enum, set `format` to `enum` and provide the list of possible values in `enum`. For example: 1. To define directions: `{type:STRING, format:enum, enum:["EAST", "NORTH", "SOUTH", "WEST"]}` 2. To define apartment numbers: `{type:INTEGER, format:enum, enum:["101", "201", "301"]}` */
-  enum?: Array<string>;
+  enum?: ReadonlyArray<string>;
   /** Optional. If type is `OBJECT`, `properties` is a map of property names to schema definitions for each property of the object. */
   properties?: Record<string, GoogleCloudAiplatformV1Schema>;
   /** Optional. The format of the data. For `NUMBER` type, format can be `float` or `double`. For `INTEGER` type, format can be `int32` or `int64`. For `STRING` type, format can be `email`, `byte`, `date`, `date-time`, `password`, and other formats to further refine the data type. */
@@ -2042,7 +2042,7 @@ export interface GoogleCloudAiplatformV1Schema {
   /** Optional. If type is `STRING`, `max_length` specifies the maximum length of the string. */
   maxLength?: string;
   /** Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`. */
-  anyOf?: Array<GoogleCloudAiplatformV1Schema>;
+  anyOf?: ReadonlyArray<GoogleCloudAiplatformV1Schema>;
   /** Optional. Title for the schema. */
   title?: string;
   /** Optional. If type is `STRING`, `pattern` specifies a regular expression that the string must match. */
@@ -2197,7 +2197,7 @@ export const GoogleCloudAiplatformV1SpeakerVoiceConfig =
 
 export interface GoogleCloudAiplatformV1MultiSpeakerVoiceConfig {
   /** Required. A list of configurations for the voices of the speakers. Exactly two speaker voice configurations must be provided. */
-  speakerVoiceConfigs?: Array<GoogleCloudAiplatformV1SpeakerVoiceConfig>;
+  speakerVoiceConfigs?: ReadonlyArray<GoogleCloudAiplatformV1SpeakerVoiceConfig>;
 }
 
 export const GoogleCloudAiplatformV1MultiSpeakerVoiceConfig =
@@ -2227,7 +2227,7 @@ export const GoogleCloudAiplatformV1SpeechConfig =
 
 export interface GoogleCloudAiplatformV1GenerationConfig {
   /** Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image. */
-  responseModalities?: Array<
+  responseModalities?: ReadonlyArray<
     "MODALITY_UNSPECIFIED" | "TEXT" | "IMAGE" | "AUDIO" | (string & {})
   >;
   /** Optional. Config for image generation features. */
@@ -2239,7 +2239,7 @@ export interface GoogleCloudAiplatformV1GenerationConfig {
   /** Optional. Specifies the top-k sampling threshold. The model considers only the top k most probable tokens for the next token. This can be useful for generating more coherent and less random text. For example, a `top_k` of 40 means the model will choose the next word from the 40 most likely words. */
   topK?: number;
   /** Optional. A list of character sequences that will stop the model from generating further tokens. If a stop sequence is generated, the output will end at that point. This is useful for controlling the length and structure of the output. For example, you can use ["\n", "###"] to stop generation at a new line or a specific marker. */
-  stopSequences?: Array<string>;
+  stopSequences?: ReadonlyArray<string>;
   /** Optional. Controls the randomness of the output. A higher temperature results in more creative and diverse responses, while a lower temperature makes the output more predictable and focused. The valid range is (0.0, 2.0]. */
   temperature?: number;
   /** Optional. The number of top log probabilities to return for each token. This can be used to see which other tokens were considered likely candidates for a given position. A higher value will return more options, but it will also increase the size of the response. */
@@ -2334,7 +2334,7 @@ export interface GoogleCloudAiplatformV1RubricGenerationSpec {
   /** Configuration for the model used in rubric generation. Configs including sampling count and base model can be specified here. Flipping is not supported for rubric generation. */
   modelConfig?: GoogleCloudAiplatformV1AutoraterConfig;
   /** Optional. An optional, pre-defined list of allowed types for generated rubrics. If this field is provided, it implies `include_rubric_type` should be true, and the generated rubric types should be chosen from this ontology. */
-  rubricTypeOntology?: Array<string>;
+  rubricTypeOntology?: ReadonlyArray<string>;
   /** The type of rubric content to be generated. */
   rubricContentType?:
     | "RUBRIC_CONTENT_TYPE_UNSPECIFIED"
@@ -2433,7 +2433,7 @@ export interface GoogleCloudAiplatformV1Metric {
   /** Spec for bleu metric. */
   bleuSpec?: GoogleCloudAiplatformV1BleuSpec;
   /** Optional. The aggregation metrics to use. */
-  aggregationMetrics?: Array<
+  aggregationMetrics?: ReadonlyArray<
     | "AGGREGATION_METRIC_UNSPECIFIED"
     | "AVERAGE"
     | "MODE"
@@ -2537,7 +2537,7 @@ export const GoogleCloudAiplatformV1DestinationFeatureSetting =
 
 export interface GoogleCloudAiplatformV1IdMatcher {
   /** Required. The following are accepted as `ids`: * A single-element list containing only `*`, which selects all Features in the target EntityType, or * A list containing only Feature IDs, which selects only Features with those IDs in the target EntityType. */
-  ids?: Array<string>;
+  ids?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1IdMatcher =
@@ -2559,7 +2559,7 @@ export interface GoogleCloudAiplatformV1BatchReadFeatureValuesRequestEntityTypeS
   /** Required. ID of the EntityType to select Features. The EntityType id is the entity_type_id specified during EntityType creation. */
   entityTypeId?: string;
   /** Per-Feature settings for the batch read. */
-  settings?: Array<GoogleCloudAiplatformV1DestinationFeatureSetting>;
+  settings?: ReadonlyArray<GoogleCloudAiplatformV1DestinationFeatureSetting>;
   /** Required. Selectors choosing which Feature values to read from the EntityType. */
   featureSelector?: GoogleCloudAiplatformV1FeatureSelector;
 }
@@ -2633,7 +2633,7 @@ export const GoogleCloudAiplatformV1ToolCall =
 
 export interface GoogleCloudAiplatformV1Trajectory {
   /** Required. Tool calls in the trajectory. */
-  toolCalls?: Array<GoogleCloudAiplatformV1ToolCall>;
+  toolCalls?: ReadonlyArray<GoogleCloudAiplatformV1ToolCall>;
 }
 
 export const GoogleCloudAiplatformV1Trajectory =
@@ -2657,7 +2657,7 @@ export interface GoogleCloudAiplatformV1TrajectorySingleToolUseInput {
   /** Required. Spec for TrajectorySingleToolUse metric. */
   metricSpec?: GoogleCloudAiplatformV1TrajectorySingleToolUseSpec;
   /** Required. Repeated TrajectorySingleToolUse instance. */
-  instances?: Array<GoogleCloudAiplatformV1TrajectorySingleToolUseInstance>;
+  instances?: ReadonlyArray<GoogleCloudAiplatformV1TrajectorySingleToolUseInstance>;
 }
 
 export const GoogleCloudAiplatformV1TrajectorySingleToolUseInput =
@@ -2733,7 +2733,7 @@ export interface GoogleCloudAiplatformV1FunctionCall {
   /** Optional. The function parameters and values in JSON object format. See FunctionDeclaration.parameters for parameter details. */
   args?: Record<string, unknown>;
   /** Optional. The partial argument value of the function call. If provided, represents the arguments/fields that are streamed incrementally. */
-  partialArgs?: Array<GoogleCloudAiplatformV1PartialArg>;
+  partialArgs?: ReadonlyArray<GoogleCloudAiplatformV1PartialArg>;
 }
 
 export const GoogleCloudAiplatformV1FunctionCall =
@@ -2804,7 +2804,7 @@ export interface GoogleCloudAiplatformV1FunctionResponse {
     | "INTERRUPT"
     | (string & {});
   /** Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types. */
-  parts?: Array<GoogleCloudAiplatformV1FunctionResponsePart>;
+  parts?: ReadonlyArray<GoogleCloudAiplatformV1FunctionResponsePart>;
   /** Required. The function response in JSON object format. Use "output" key to specify function output and "error" key to specify error details (if any). If "output" and "error" keys are not specified, then whole "response" is treated as function output. */
   response?: Record<string, unknown>;
 }
@@ -2944,7 +2944,7 @@ export const GoogleCloudAiplatformV1Part =
 
 export interface GoogleCloudAiplatformV1SchemaPromptSpecPartList {
   /** A list of elements that can be part of a prompt. */
-  parts?: Array<GoogleCloudAiplatformV1Part>;
+  parts?: ReadonlyArray<GoogleCloudAiplatformV1Part>;
 }
 
 export const GoogleCloudAiplatformV1SchemaPromptSpecPartList =
@@ -3021,7 +3021,7 @@ export interface GoogleCloudAiplatformV1ReservationAffinity {
   /** Optional. Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name` as the key and specify the name of your reservation as its value. */
   key?: string;
   /** Optional. Corresponds to the label values of a reservation resource. This must be the full resource name of the reservation or reservation block. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1ReservationAffinity =
@@ -3080,7 +3080,7 @@ export const GoogleCloudAiplatformV1MachineSpec =
 
 export interface GoogleCloudAiplatformV1DedicatedResources {
   /** Immutable. The metric specifications that overrides a resource utilization metric (CPU utilization, accelerator's duty cycle, and so on) target value (default to 60 if not set). At most one entry is allowed per metric. If machine_spec.accelerator_count is above 0, the autoscaling will be based on both CPU utilization and accelerator's duty cycle metrics and scale up when either metrics exceeds its target value while scale down if both metrics are under their target value. The default target value is 60 for both metrics. If machine_spec.accelerator_count is 0, the autoscaling will be based on CPU utilization metric only with default target value 60 if not explicitly set. For example, in the case of Online Prediction, if you want to override target CPU utilization to 80, you should set autoscaling_metric_specs.metric_name to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and autoscaling_metric_specs.target to `80`. */
-  autoscalingMetricSpecs?: Array<GoogleCloudAiplatformV1AutoscalingMetricSpec>;
+  autoscalingMetricSpecs?: ReadonlyArray<GoogleCloudAiplatformV1AutoscalingMetricSpec>;
   /** Optional. If true, schedule the deployment workload on [spot VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms). */
   spot?: boolean;
   /** Required. Immutable. The minimum number of machine replicas that will be always deployed on. This value must be greater than or equal to 1. If traffic increases, it may dynamically be deployed onto more replicas, and as traffic decreases, some of these extra replicas may be freed. */
@@ -3107,12 +3107,12 @@ export const GoogleCloudAiplatformV1DedicatedResources =
 
 export interface CloudAiLargeModelsVisionNamedBoundingBox {
   y2?: number;
-  scores?: Array<number>;
-  entities?: Array<string>;
+  scores?: ReadonlyArray<number>;
+  entities?: ReadonlyArray<string>;
   y1?: number;
   x1?: number;
   x2?: number;
-  classes?: Array<string>;
+  classes?: ReadonlyArray<string>;
 }
 
 export const CloudAiLargeModelsVisionNamedBoundingBox =
@@ -3130,7 +3130,7 @@ export interface CloudAiLargeModelsVisionSemanticFilterResponse {
   /** This response is added when semantic filter config is turned on in EditConfig. It reports if this image is passed semantic filter response. If passed_semantic_filter is false, the bounding box information will be populated for user to check what caused the semantic filter to fail. */
   passedSemanticFilter?: boolean;
   /** Class labels of the bounding boxes that failed the semantic filtering. Bounding box coordinates. */
-  namedBoundingBoxes?: Array<CloudAiLargeModelsVisionNamedBoundingBox>;
+  namedBoundingBoxes?: ReadonlyArray<CloudAiLargeModelsVisionNamedBoundingBox>;
 }
 
 export const CloudAiLargeModelsVisionSemanticFilterResponse =
@@ -3192,7 +3192,7 @@ export interface CloudAiLargeModelsVisionRaiInfoDetectedLabels {
   /** The RAI category for the deteceted labels. */
   raiCategory?: string;
   /** The list of detected entities for the rai signal. */
-  entities?: Array<CloudAiLargeModelsVisionRaiInfoDetectedLabelsEntity>;
+  entities?: ReadonlyArray<CloudAiLargeModelsVisionRaiInfoDetectedLabelsEntity>;
 }
 
 export const CloudAiLargeModelsVisionRaiInfoDetectedLabels =
@@ -3205,13 +3205,13 @@ export const CloudAiLargeModelsVisionRaiInfoDetectedLabels =
 
 export interface CloudAiLargeModelsVisionRaiInfo {
   /** The list of detected labels for different rai categories. */
-  detectedLabels?: Array<CloudAiLargeModelsVisionRaiInfoDetectedLabels>;
+  detectedLabels?: ReadonlyArray<CloudAiLargeModelsVisionRaiInfoDetectedLabels>;
   /** List of rai categories' information to return */
-  raiCategories?: Array<string>;
+  raiCategories?: ReadonlyArray<string>;
   /** List of rai scores mapping to the rai categories. Rounded to 1 decimal place. */
-  scores?: Array<number>;
+  scores?: ReadonlyArray<number>;
   /** List of blocked entities from the blocklist if it is detected. */
-  blockedEntities?: Array<string>;
+  blockedEntities?: ReadonlyArray<string>;
   /** The model name used to indexing into the RaiFilterConfig map. Would either be one of imagegeneration@002-006, imagen-3.0-... api endpoint names, or internal names used for mapping to different filter configs (genselfie, ai_watermark) than its api endpoint. */
   modelName?: string;
 }
@@ -3325,7 +3325,7 @@ export interface CloudAiLargeModelsVisionPromptInputs {
   /** Single negative prompt for what not to generate. */
   negativePrompt?: string;
   /** 2s, 256 tokens per chunk, 4 total chunks. Required. */
-  promptChunks?: Array<string>;
+  promptChunks?: ReadonlyArray<string>;
   /** Description of audio content in the video, without speech. */
   audioPrompt?: string;
   /** Spoken transcript of the video for characters. */
@@ -3405,7 +3405,7 @@ export interface CloudAiLargeModelsVisionGenerateVideoExperiments {
   /** Model names, as defined in: xyz */
   modelName?: string;
   /** Conditioning frames for veo experimental models ONLY, not to be confused with keyframes (ID:31) in GenerateVideoRequest. */
-  conditioningFrames?: Array<CloudAiLargeModelsVisionGenerateVideoExperimentsConditioningFrame>;
+  conditioningFrames?: ReadonlyArray<CloudAiLargeModelsVisionGenerateVideoExperimentsConditioningFrame>;
   /** GCS URI of the grayscale video mask for Differential Diffusion. Maps to sdedit_video_tmax_scale_map */
   videoTransformMaskGcsUri?: string;
   /** Human pose parameters for Pose Control */
@@ -3456,11 +3456,11 @@ export interface CloudAiLargeModelsVisionGenerateVideoResponse {
   /** Returns if any videos were filtered due to RAI policies. */
   raiMediaFilteredCount?: number;
   /** The generates samples. */
-  generatedSamples?: Array<CloudAiLargeModelsVisionMedia>;
+  generatedSamples?: ReadonlyArray<CloudAiLargeModelsVisionMedia>;
   /** List of videos, used to align naming with the external response. */
-  videos?: Array<CloudAiLargeModelsVisionGenerateVideoResponseVideo>;
+  videos?: ReadonlyArray<CloudAiLargeModelsVisionGenerateVideoResponseVideo>;
   /** Returns rai failure reasons if any. */
-  raiMediaFilteredReasons?: Array<string>;
+  raiMediaFilteredReasons?: ReadonlyArray<string>;
 }
 
 export const CloudAiLargeModelsVisionGenerateVideoResponse =
@@ -3690,7 +3690,7 @@ export const GoogleCloudAiplatformV1SandboxEnvironmentTemplateResourceRequiremen
 
 export interface GoogleCloudAiplatformV1SandboxEnvironmentTemplateCustomContainerEnvironment {
   /** Ports to expose from the container. */
-  ports?: Array<GoogleCloudAiplatformV1SandboxEnvironmentTemplateNetworkPort>;
+  ports?: ReadonlyArray<GoogleCloudAiplatformV1SandboxEnvironmentTemplateNetworkPort>;
   /** The specification of the custom container environment. */
   customContainerSpec?: GoogleCloudAiplatformV1SandboxEnvironmentTemplateCustomContainerSpec;
   /** Resource requests and limits for the container. */
@@ -3738,7 +3738,7 @@ export interface GoogleCloudAiplatformV1GenerateMemoriesRequestDirectMemoriesSou
   /** Required. The fact to consolidate with existing memories. */
   fact?: string;
   /** Optional. The topics that the consolidated memories should be associated with. */
-  topics?: Array<GoogleCloudAiplatformV1MemoryTopicId>;
+  topics?: ReadonlyArray<GoogleCloudAiplatformV1MemoryTopicId>;
 }
 
 export const GoogleCloudAiplatformV1GenerateMemoriesRequestDirectMemoriesSourceDirectMemory =
@@ -3752,7 +3752,7 @@ export const GoogleCloudAiplatformV1GenerateMemoriesRequestDirectMemoriesSourceD
 
 export interface GoogleCloudAiplatformV1GenerateMemoriesRequestDirectMemoriesSource {
   /** Required. The direct memories to upload to Memory Bank. At most 5 direct memories are allowed per request. */
-  directMemories?: Array<GoogleCloudAiplatformV1GenerateMemoriesRequestDirectMemoriesSourceDirectMemory>;
+  directMemories?: ReadonlyArray<GoogleCloudAiplatformV1GenerateMemoriesRequestDirectMemoriesSourceDirectMemory>;
 }
 
 export const GoogleCloudAiplatformV1GenerateMemoriesRequestDirectMemoriesSource =
@@ -3880,7 +3880,7 @@ export const GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue =
 
 export interface GoogleCloudAiplatformV1ToolParameterKeyMatchResults {
   /** Output only. Tool parameter key match metric values. */
-  toolParameterKeyMatchMetricValues?: Array<GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue>;
+  toolParameterKeyMatchMetricValues?: ReadonlyArray<GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue>;
 }
 
 export const GoogleCloudAiplatformV1ToolParameterKeyMatchResults =
@@ -3959,7 +3959,7 @@ export interface GoogleCloudAiplatformV1FeatureViewIndexConfig {
   /** Optional. Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search. */
   bruteForceConfig?: GoogleCloudAiplatformV1FeatureViewIndexConfigBruteForceConfig;
   /** Optional. Columns of features that're used to filter vector search results. */
-  filterColumns?: Array<string>;
+  filterColumns?: ReadonlyArray<string>;
   /** Optional. The number of dimensions of the input embedding. */
   embeddingDimension?: number;
   /** Optional. Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396 */
@@ -4006,27 +4006,27 @@ export const GoogleCloudAiplatformV1FetchPredictOperationRequest =
 
 export interface GoogleCloudAiplatformV1Tensor {
   /** STRING */
-  stringVal?: Array<string>;
+  stringVal?: ReadonlyArray<string>;
   /** UINT64 */
-  uint64Val?: Array<string>;
+  uint64Val?: ReadonlyArray<string>;
   /** INT_8 INT_16 INT_32 */
-  intVal?: Array<number>;
+  intVal?: ReadonlyArray<number>;
   /** INT64 */
-  int64Val?: Array<string>;
+  int64Val?: ReadonlyArray<string>;
   /** FLOAT */
-  floatVal?: Array<number>;
+  floatVal?: ReadonlyArray<number>;
   /** Type specific representations that make it easy to create tensor protos in all languages. Only the representation corresponding to "dtype" can be set. The values hold the flattened representation of the tensor in row major order. BOOL */
-  boolVal?: Array<boolean>;
+  boolVal?: ReadonlyArray<boolean>;
   /** Serialized raw tensor content. */
   tensorVal?: string;
   /** Shape of the tensor. */
-  shape?: Array<string>;
+  shape?: ReadonlyArray<string>;
   /** STRING */
-  bytesVal?: Array<string>;
+  bytesVal?: ReadonlyArray<string>;
   /** DOUBLE */
-  doubleVal?: Array<number>;
+  doubleVal?: ReadonlyArray<number>;
   /** A list of tensor values. */
-  listVal?: Array<GoogleCloudAiplatformV1Tensor>;
+  listVal?: ReadonlyArray<GoogleCloudAiplatformV1Tensor>;
   /** A map of string to tensor. */
   structVal?: Record<string, GoogleCloudAiplatformV1Tensor>;
   /** The data type of tensor. */
@@ -4046,7 +4046,7 @@ export interface GoogleCloudAiplatformV1Tensor {
     | "UINT64"
     | (string & {});
   /** UINT8 UINT16 UINT32 */
-  uintVal?: Array<number>;
+  uintVal?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudAiplatformV1Tensor: Schema.Schema<GoogleCloudAiplatformV1Tensor> =
@@ -4075,7 +4075,7 @@ export const GoogleCloudAiplatformV1Tensor: Schema.Schema<GoogleCloudAiplatformV
 
 export interface GoogleCloudAiplatformV1StreamingPredictRequest {
   /** The prediction input. */
-  inputs?: Array<GoogleCloudAiplatformV1Tensor>;
+  inputs?: ReadonlyArray<GoogleCloudAiplatformV1Tensor>;
   /** The parameters that govern the prediction. */
   parameters?: GoogleCloudAiplatformV1Tensor;
 }
@@ -4132,7 +4132,7 @@ export const GoogleCloudAiplatformV1Event =
 
 export interface GoogleCloudAiplatformV1AddExecutionEventsRequest {
   /** The Events to create and add. */
-  events?: Array<GoogleCloudAiplatformV1Event>;
+  events?: ReadonlyArray<GoogleCloudAiplatformV1Event>;
 }
 
 export const GoogleCloudAiplatformV1AddExecutionEventsRequest =
@@ -4198,7 +4198,7 @@ export const GoogleCloudAiplatformV1TensorboardBlob =
 
 export interface GoogleCloudAiplatformV1TensorboardBlobSequence {
   /** List of blobs contained within the sequence. */
-  values?: Array<GoogleCloudAiplatformV1TensorboardBlob>;
+  values?: ReadonlyArray<GoogleCloudAiplatformV1TensorboardBlob>;
 }
 
 export const GoogleCloudAiplatformV1TensorboardBlobSequence =
@@ -4232,7 +4232,7 @@ export const GoogleCloudAiplatformV1TimeSeriesDataPoint =
 
 export interface GoogleCloudAiplatformV1TimeSeriesData {
   /** Required. Data points in this time series. */
-  values?: Array<GoogleCloudAiplatformV1TimeSeriesDataPoint>;
+  values?: ReadonlyArray<GoogleCloudAiplatformV1TimeSeriesDataPoint>;
   /** Required. Immutable. The value type of this time series. All the values in this time series data must match this value type. */
   valueType?:
     | "VALUE_TYPE_UNSPECIFIED"
@@ -4255,7 +4255,7 @@ export const GoogleCloudAiplatformV1TimeSeriesData =
 
 export interface GoogleCloudAiplatformV1BatchReadTensorboardTimeSeriesDataResponse {
   /** The returned time series data. */
-  timeSeriesData?: Array<GoogleCloudAiplatformV1TimeSeriesData>;
+  timeSeriesData?: ReadonlyArray<GoogleCloudAiplatformV1TimeSeriesData>;
 }
 
 export const GoogleCloudAiplatformV1BatchReadTensorboardTimeSeriesDataResponse =
@@ -4270,9 +4270,9 @@ export const GoogleCloudAiplatformV1BatchReadTensorboardTimeSeriesDataResponse =
 
 export interface GoogleCloudAiplatformV1IndexDatapointSparseEmbedding {
   /** Required. The list of indexes for the embedding values of the sparse vector. */
-  dimensions?: Array<string>;
+  dimensions?: ReadonlyArray<string>;
   /** Required. The list of embedding values of the sparse vector. */
-  values?: Array<number>;
+  values?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudAiplatformV1IndexDatapointSparseEmbedding =
@@ -4318,7 +4318,7 @@ export interface GoogleCloudAiplatformV1SchemaModelevaluationMetricsBoundingBoxM
   /** The mean average precision, most often close to `auPrc`. */
   meanAveragePrecision?: number;
   /** Metrics for each label-match confidence_threshold from 0.05,0.10,...,0.95,0.96,0.97,0.98,0.99. Precision-recall curve is derived from them. */
-  confidenceMetrics?: Array<GoogleCloudAiplatformV1SchemaModelevaluationMetricsBoundingBoxMetricsConfidenceMetrics>;
+  confidenceMetrics?: ReadonlyArray<GoogleCloudAiplatformV1SchemaModelevaluationMetricsBoundingBoxMetricsConfidenceMetrics>;
 }
 
 export const GoogleCloudAiplatformV1SchemaModelevaluationMetricsBoundingBoxMetrics =
@@ -4388,7 +4388,7 @@ export const GoogleCloudAiplatformV1Metadata =
 
 export interface GoogleCloudAiplatformV1ExplanationMetadataOverrideInputMetadataOverride {
   /** Baseline inputs for this feature. This overrides the `input_baseline` field of the ExplanationMetadata.InputMetadata object of the corresponding feature's input metadata. If it's not specified, the original baselines are not overridden. */
-  inputBaselines?: Array<unknown>;
+  inputBaselines?: ReadonlyArray<unknown>;
 }
 
 export const GoogleCloudAiplatformV1ExplanationMetadataOverrideInputMetadataOverride =
@@ -4421,11 +4421,11 @@ export const GoogleCloudAiplatformV1ExplanationMetadataOverride =
 
 export interface GoogleCloudAiplatformV1ExamplesRestrictionsNamespace {
   /** The list of allowed tags. */
-  allow?: Array<string>;
+  allow?: ReadonlyArray<string>;
   /** The namespace name. */
   namespaceName?: string;
   /** The list of deny tags. */
-  deny?: Array<string>;
+  deny?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1ExamplesRestrictionsNamespace =
@@ -4449,7 +4449,7 @@ export interface GoogleCloudAiplatformV1ExamplesOverride {
   /** If true, return the embeddings instead of neighbors. */
   returnEmbeddings?: boolean;
   /** Restrict the resulting nearest neighbors to respect these constraints. */
-  restrictions?: Array<GoogleCloudAiplatformV1ExamplesRestrictionsNamespace>;
+  restrictions?: ReadonlyArray<GoogleCloudAiplatformV1ExamplesRestrictionsNamespace>;
   /** The number of neighbors to return. */
   neighborCount?: number;
 }
@@ -4506,7 +4506,7 @@ export const GoogleCloudAiplatformV1CreateRegistryFeatureOperationMetadata =
 
 export interface GoogleCloudAiplatformV1Content {
   /** Required. A list of Part objects that make up a single message. Parts of a message can have different MIME types. A Content message must have at least one Part. */
-  parts?: Array<GoogleCloudAiplatformV1Part>;
+  parts?: ReadonlyArray<GoogleCloudAiplatformV1Part>;
   /** Optional. The producer of the content. Must be either 'user' or 'model'. If not set, the service will default to 'user'. */
   role?: string;
 }
@@ -4519,7 +4519,7 @@ export const GoogleCloudAiplatformV1Content =
 
 export interface GoogleCloudAiplatformV1ContentMapContents {
   /** Optional. Repeated contents. */
-  contents?: Array<GoogleCloudAiplatformV1Content>;
+  contents?: ReadonlyArray<GoogleCloudAiplatformV1Content>;
 }
 
 export const GoogleCloudAiplatformV1ContentMapContents =
@@ -4672,11 +4672,11 @@ export interface GoogleCloudAiplatformV1PrivateServiceConnectConfig {
   /** Output only. The name of the generated service attachment resource. This is only populated if the endpoint is deployed with PrivateServiceConnect. */
   serviceAttachment?: string;
   /** Optional. List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only. */
-  pscAutomationConfigs?: Array<GoogleCloudAiplatformV1PSCAutomationConfig>;
+  pscAutomationConfigs?: ReadonlyArray<GoogleCloudAiplatformV1PSCAutomationConfig>;
   /** Required. If true, expose the IndexEndpoint via private service connect. */
   enablePrivateServiceConnect?: boolean;
   /** A list of Projects from which the forwarding rule will target the service attachment. */
-  projectAllowlist?: Array<string>;
+  projectAllowlist?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1PrivateServiceConnectConfig =
@@ -4763,7 +4763,7 @@ export const GoogleCloudAiplatformV1FeatureOnlineStore =
 
 export interface GoogleCloudAiplatformV1ExportTensorboardTimeSeriesDataResponse {
   /** The returned time series data points. */
-  timeSeriesDataPoints?: Array<GoogleCloudAiplatformV1TimeSeriesDataPoint>;
+  timeSeriesDataPoints?: ReadonlyArray<GoogleCloudAiplatformV1TimeSeriesDataPoint>;
   /** A token, which can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -4838,7 +4838,7 @@ export const GoogleCloudAiplatformV1Rubric =
 
 export interface GoogleCloudAiplatformV1EvaluationRunMetricRubricBasedMetricSpecRepeatedRubrics {
   /** The list of rubrics. */
-  rubrics?: Array<GoogleCloudAiplatformV1Rubric>;
+  rubrics?: ReadonlyArray<GoogleCloudAiplatformV1Rubric>;
 }
 
 export const GoogleCloudAiplatformV1EvaluationRunMetricRubricBasedMetricSpecRepeatedRubrics =
@@ -4897,7 +4897,7 @@ export interface GoogleCloudAiplatformV1VertexRagStoreRagResource {
   /** Optional. RagCorpora resource name. Format: `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}` */
   ragCorpus?: string;
   /** Optional. rag_file_id. The files should be in the same rag_corpus set in rag_corpus field. */
-  ragFileIds?: Array<string>;
+  ragFileIds?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1VertexRagStoreRagResource =
@@ -4912,7 +4912,7 @@ export interface GoogleCloudAiplatformV1VertexRagStore {
   /** Optional. The retrieval config for the Rag query. */
   ragRetrievalConfig?: GoogleCloudAiplatformV1RagRetrievalConfig;
   /** Optional. The representation of the rag source. It can be used to specify corpus only or ragfiles. Currently only support one corpus or multiple files from one corpus. In the future we may open up multiple corpora support. */
-  ragResources?: Array<GoogleCloudAiplatformV1VertexRagStoreRagResource>;
+  ragResources?: ReadonlyArray<GoogleCloudAiplatformV1VertexRagStoreRagResource>;
   /** Optional. Number of top k results to return from the selected corpora. */
   similarityTopK?: number;
   /** Optional. Only return results with vector distance smaller than the threshold. */
@@ -5125,7 +5125,7 @@ export interface GoogleCloudAiplatformV1VertexAISearch {
   /** Optional. Fully-qualified Vertex AI Search engine resource ID. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` */
   engine?: string;
   /** Specifications that define the specific DataStores to be searched, along with configurations for those data stores. This is only considered for Engines with multiple data stores. It should only be set if engine is used. */
-  dataStoreSpecs?: Array<GoogleCloudAiplatformV1VertexAISearchDataStoreSpec>;
+  dataStoreSpecs?: ReadonlyArray<GoogleCloudAiplatformV1VertexAISearchDataStoreSpec>;
   /** Optional. Number of search results to return per query. The default value is 10. The maximumm allowed value is 10. */
   maxResults?: number;
   /** Optional. Filter strings to be passed to the search API. */
@@ -5209,7 +5209,7 @@ export interface GoogleCloudAiplatformV1ToolComputerUse {
     | "ENVIRONMENT_BROWSER"
     | (string & {});
   /** Optional. By default, [predefined functions](https://cloud.google.com/vertex-ai/generative-ai/docs/computer-use#supported-actions) are included in the final model call. Some of them can be explicitly excluded from being automatically included. This can serve two purposes: 1. Using a more restricted / different action space. 2. Improving the definitions / instructions of predefined functions. */
-  excludedPredefinedFunctions?: Array<string>;
+  excludedPredefinedFunctions?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1ToolComputerUse =
@@ -5220,7 +5220,7 @@ export const GoogleCloudAiplatformV1ToolComputerUse =
 
 export interface GoogleCloudAiplatformV1EnterpriseWebSearch {
   /** Optional. List of domains to be excluded from the search results. The default limit is 2000 domains. */
-  excludeDomains?: Array<string>;
+  excludeDomains?: ReadonlyArray<string>;
   /** Optional. Sites with confidence level chosen & above this value will be blocked from the search results. */
   blockingConfidence?:
     | "PHISH_BLOCK_THRESHOLD_UNSPECIFIED"
@@ -5274,7 +5274,7 @@ export const GoogleCloudAiplatformV1ToolGoogleSearchSearchTypes =
 
 export interface GoogleCloudAiplatformV1ToolGoogleSearch {
   /** Optional. List of domains to be excluded from the search results. The default limit is 2000 domains. Example: ["amazon.com", "facebook.com"]. */
-  excludeDomains?: Array<string>;
+  excludeDomains?: ReadonlyArray<string>;
   /** Optional. Sites with confidence level chosen & above this value will be blocked from the search results. */
   blockingConfidence?:
     | "PHISH_BLOCK_THRESHOLD_UNSPECIFIED"
@@ -5346,7 +5346,7 @@ export interface GoogleCloudAiplatformV1Tool {
   /** Optional. GoogleSearch tool type. Tool to support Google Search in Model. Powered by Google. */
   googleSearch?: GoogleCloudAiplatformV1ToolGoogleSearch;
   /** Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided. */
-  functionDeclarations?: Array<GoogleCloudAiplatformV1FunctionDeclaration>;
+  functionDeclarations?: ReadonlyArray<GoogleCloudAiplatformV1FunctionDeclaration>;
   /** Optional. CodeExecution tool type. Enables the model to execute code as part of generation. */
   codeExecution?: GoogleCloudAiplatformV1ToolCodeExecution;
   /** Optional. Tool to support URL context retrieval. */
@@ -5377,7 +5377,7 @@ export const GoogleCloudAiplatformV1Tool =
 
 export interface GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentConfigTools {
   /** Optional. List of tools: each tool can have multiple function declarations. */
-  tool?: Array<GoogleCloudAiplatformV1Tool>;
+  tool?: ReadonlyArray<GoogleCloudAiplatformV1Tool>;
 }
 
 export const GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentConfigTools =
@@ -5390,7 +5390,7 @@ export const GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentConfigTools
 
 export interface GoogleCloudAiplatformV1EvaluationInstanceInstanceDataContents {
   /** Optional. Repeated contents. */
-  contents?: Array<GoogleCloudAiplatformV1Content>;
+  contents?: ReadonlyArray<GoogleCloudAiplatformV1Content>;
 }
 
 export const GoogleCloudAiplatformV1EvaluationInstanceInstanceDataContents =
@@ -5427,7 +5427,7 @@ export interface GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentConfig 
   /** List of tools. */
   tools?: GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentConfigTools;
   /** Optional. The list of valid agent IDs (names) that this agent can delegate to. This defines the directed edges in the agent system graph topology. */
-  subAgents?: Array<string>;
+  subAgents?: ReadonlyArray<string>;
   /** Optional. Contains instructions from the developer for the agent. Can be static or a dynamic prompt template used with the `AgentEvent.state_delta` field. */
   developerInstruction?: GoogleCloudAiplatformV1EvaluationInstanceInstanceData;
   /** Optional. A high-level description of the agent's role and responsibilities. Critical for evaluating if the agent is routing tasks correctly. */
@@ -5520,7 +5520,7 @@ export interface GoogleCloudAiplatformV1StudySpecParameterSpecDiscreteValueSpec 
   /** A default value for a `DISCRETE` parameter that is assumed to be a relatively good starting point. Unset value signals that there is no offered starting point. It automatically rounds to the nearest feasible discrete point. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline. */
   defaultValue?: number;
   /** Required. A list of possible values. The list should be in increasing order and at least 1e-10 apart. For instance, this parameter might have possible settings of 1.5, 2.5, and 4.0. This list should not contain more than 1,000 values. */
-  values?: Array<number>;
+  values?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudAiplatformV1StudySpecParameterSpecDiscreteValueSpec =
@@ -5534,7 +5534,7 @@ export const GoogleCloudAiplatformV1StudySpecParameterSpecDiscreteValueSpec =
 
 export interface GoogleCloudAiplatformV1StudySpecParameterSpecCategoricalValueSpec {
   /** Required. The list of possible categories. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
   /** A default value for a `CATEGORICAL` parameter that is assumed to be a relatively good starting point. Unset value signals that there is no offered starting point. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline. */
   defaultValue?: string;
 }
@@ -5550,7 +5550,7 @@ export const GoogleCloudAiplatformV1StudySpecParameterSpecCategoricalValueSpec =
 
 export interface GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecDiscreteValueCondition {
   /** Required. Matches values of the parent parameter of 'DISCRETE' type. All values must exist in `discrete_value_spec` of parent parameter. The Epsilon of the value matching is 1e-10. */
-  values?: Array<number>;
+  values?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecDiscreteValueCondition =
@@ -5563,7 +5563,7 @@ export const GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSp
 
 export interface GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition {
   /** Required. Matches values of the parent parameter of 'CATEGORICAL' type. All values must exist in `categorical_value_spec` of parent parameter. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition =
@@ -5576,7 +5576,7 @@ export const GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSp
 
 export interface GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecIntValueCondition {
   /** Required. Matches values of the parent parameter of 'INTEGER' type. All values must lie in `integer_value_spec` of parent parameter. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecIntValueCondition =
@@ -5661,7 +5661,7 @@ export interface GoogleCloudAiplatformV1StudySpecParameterSpec {
   /** The value spec for a 'CATEGORICAL' parameter. */
   categoricalValueSpec?: GoogleCloudAiplatformV1StudySpecParameterSpecCategoricalValueSpec;
   /** A conditional parameter node is active if the parameter's value matches the conditional node's parent_value_condition. If two items in conditional_parameter_specs have the same name, they must have disjoint parent_value_condition. */
-  conditionalParameterSpecs?: Array<GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpec>;
+  conditionalParameterSpecs?: ReadonlyArray<GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpec>;
   /** The value spec for a 'DOUBLE' parameter. */
   doubleValueSpec?: GoogleCloudAiplatformV1StudySpecParameterSpecDoubleValueSpec;
   /** Required. The ID of the parameter. Must not contain whitespaces and must be unique amongst all ParameterSpecs. */
@@ -5762,7 +5762,7 @@ export interface GoogleCloudAiplatformV1StudySpec {
     | "RANDOM_SEARCH"
     | (string & {});
   /** Required. The set of parameters to tune. */
-  parameters?: Array<GoogleCloudAiplatformV1StudySpecParameterSpec>;
+  parameters?: ReadonlyArray<GoogleCloudAiplatformV1StudySpecParameterSpec>;
   /** Describe which measurement selection type will be used */
   measurementSelectionType?:
     | "MEASUREMENT_SELECTION_TYPE_UNSPECIFIED"
@@ -5770,7 +5770,7 @@ export interface GoogleCloudAiplatformV1StudySpec {
     | "BEST_MEASUREMENT"
     | (string & {});
   /** Required. Metric specs for the Study. */
-  metrics?: Array<GoogleCloudAiplatformV1StudySpecMetricSpec>;
+  metrics?: ReadonlyArray<GoogleCloudAiplatformV1StudySpecMetricSpec>;
   /** The observation noise level of the study. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline. */
   observationNoise?:
     | "OBSERVATION_NOISE_UNSPECIFIED"
@@ -6007,7 +6007,7 @@ export interface GoogleCloudAiplatformV1NotebookReservationAffinity {
     | "RESERVATION_SPECIFIC"
     | (string & {});
   /** Optional. Corresponds to the label values of a reservation resource. This must be the full path name of Reservation. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1NotebookReservationAffinity =
@@ -6083,7 +6083,7 @@ export interface GoogleCloudAiplatformV1NotebookSoftwareConfig {
   /** Optional. Google-managed NotebookRuntime colab image. */
   colabImage?: GoogleCloudAiplatformV1ColabImage;
   /** Optional. Environment variables to be passed to the container. Maximum limit is 100. */
-  env?: Array<GoogleCloudAiplatformV1EnvVar>;
+  env?: ReadonlyArray<GoogleCloudAiplatformV1EnvVar>;
   /** Optional. Post startup script config. */
   postStartupScriptConfig?: GoogleCloudAiplatformV1PostStartupScriptConfig;
 }
@@ -6141,7 +6141,7 @@ export interface GoogleCloudAiplatformV1NotebookRuntimeTemplate {
   /** Optional. Immutable. Runtime Shielded VM spec. */
   shieldedVmConfig?: GoogleCloudAiplatformV1ShieldedVmConfig;
   /** Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/vpc/docs/add-remove-network-tags)). */
-  networkTags?: Array<string>;
+  networkTags?: ReadonlyArray<string>;
   /** Customer-managed encryption key spec for the notebook runtime. */
   encryptionSpec?: GoogleCloudAiplatformV1EncryptionSpec;
   /** Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens. */
@@ -6220,7 +6220,7 @@ export const GoogleCloudAiplatformV1CreateFeaturestoreOperationMetadata =
 
 export interface GoogleCloudAiplatformV1BatchImportModelEvaluationSlicesResponse {
   /** Output only. List of imported ModelEvaluationSlice.name. */
-  importedModelEvaluationSlices?: Array<string>;
+  importedModelEvaluationSlices?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1BatchImportModelEvaluationSlicesResponse =
@@ -6299,7 +6299,7 @@ export const GoogleCloudAiplatformV1RagQuery =
 
 export interface GoogleCloudAiplatformV1RawOutput {
   /** Output only. Raw output string. */
-  rawOutput?: Array<string>;
+  rawOutput?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1RawOutput =
@@ -6360,7 +6360,7 @@ export interface GoogleCloudAiplatformV1ToolCallValidInput {
   /** Required. Spec for tool call valid metric. */
   metricSpec?: GoogleCloudAiplatformV1ToolCallValidSpec;
   /** Required. Repeated tool call valid instances. */
-  instances?: Array<GoogleCloudAiplatformV1ToolCallValidInstance>;
+  instances?: ReadonlyArray<GoogleCloudAiplatformV1ToolCallValidInstance>;
 }
 
 export const GoogleCloudAiplatformV1ToolCallValidInput =
@@ -6373,7 +6373,7 @@ export const GoogleCloudAiplatformV1ToolCallValidInput =
 
 export interface GoogleCloudAiplatformV1EmbedContentResponseEmbedding {
   /** Embedding vector values. */
-  values?: Array<number>;
+  values?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudAiplatformV1EmbedContentResponseEmbedding =
@@ -6395,7 +6395,7 @@ export const GoogleCloudAiplatformV1FeatureValueMetadata =
 
 export interface GoogleCloudAiplatformV1BoolArray {
   /** A list of bool values. */
-  values?: Array<boolean>;
+  values?: ReadonlyArray<boolean>;
 }
 
 export const GoogleCloudAiplatformV1BoolArray =
@@ -6405,7 +6405,7 @@ export const GoogleCloudAiplatformV1BoolArray =
 
 export interface GoogleCloudAiplatformV1StringArray {
   /** A list of string values. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1StringArray =
@@ -6415,7 +6415,7 @@ export const GoogleCloudAiplatformV1StringArray =
 
 export interface GoogleCloudAiplatformV1DoubleArray {
   /** A list of double values. */
-  values?: Array<number>;
+  values?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudAiplatformV1DoubleArray =
@@ -6425,7 +6425,7 @@ export const GoogleCloudAiplatformV1DoubleArray =
 
 export interface GoogleCloudAiplatformV1Int64Array {
   /** A list of int64 values. */
-  values?: Array<string>;
+  values?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1Int64Array =
@@ -6496,7 +6496,7 @@ export const GoogleCloudAiplatformV1StructFieldValue: Schema.Schema<GoogleCloudA
 
 export interface GoogleCloudAiplatformV1StructValue {
   /** A list of field values. */
-  values?: Array<GoogleCloudAiplatformV1StructFieldValue>;
+  values?: ReadonlyArray<GoogleCloudAiplatformV1StructFieldValue>;
 }
 
 export const GoogleCloudAiplatformV1StructValue: Schema.Schema<GoogleCloudAiplatformV1StructValue> =
@@ -6527,7 +6527,7 @@ export interface GoogleCloudAiplatformV1ExactMatchInput {
   /** Required. Spec for exact match metric. */
   metricSpec?: GoogleCloudAiplatformV1ExactMatchSpec;
   /** Required. Repeated exact match instances. */
-  instances?: Array<GoogleCloudAiplatformV1ExactMatchInstance>;
+  instances?: ReadonlyArray<GoogleCloudAiplatformV1ExactMatchInstance>;
 }
 
 export const GoogleCloudAiplatformV1ExactMatchInput =
@@ -6607,7 +6607,7 @@ export interface GoogleCloudAiplatformV1NearestNeighborSearchOperationMetadataCo
   /** Cloud Storage URI pointing to the original file in user's bucket. */
   sourceGcsUri?: string;
   /** The detail information of the partial failures encountered for those invalid records that couldn't be parsed. Up to 50 partial errors will be reported. */
-  partialErrors?: Array<GoogleCloudAiplatformV1NearestNeighborSearchOperationMetadataRecordError>;
+  partialErrors?: ReadonlyArray<GoogleCloudAiplatformV1NearestNeighborSearchOperationMetadataRecordError>;
   /** Number of records in this file we skipped due to validate errors. */
   invalidRecordCount?: string;
 }
@@ -6631,7 +6631,7 @@ export const GoogleCloudAiplatformV1NearestNeighborSearchOperationMetadataConten
 
 export interface GoogleCloudAiplatformV1NearestNeighborSearchOperationMetadata {
   /** The validation stats of the content (per file) to be inserted or updated on the Matching Engine Index resource. Populated if contentsDeltaUri is provided as part of Index.metadata. Please note that, currently for those files that are broken or has unsupported file format, we will not have the stats for those files. */
-  contentValidationStats?: Array<GoogleCloudAiplatformV1NearestNeighborSearchOperationMetadataContentValidationStats>;
+  contentValidationStats?: ReadonlyArray<GoogleCloudAiplatformV1NearestNeighborSearchOperationMetadataContentValidationStats>;
   /** The ingested data size in bytes. */
   dataBytesCount?: string;
 }
@@ -6816,7 +6816,7 @@ export const GoogleCloudAiplatformV1ToolNameMatchMetricValue =
 
 export interface GoogleCloudAiplatformV1ToolNameMatchResults {
   /** Output only. Tool name match metric values. */
-  toolNameMatchMetricValues?: Array<GoogleCloudAiplatformV1ToolNameMatchMetricValue>;
+  toolNameMatchMetricValues?: ReadonlyArray<GoogleCloudAiplatformV1ToolNameMatchMetricValue>;
 }
 
 export const GoogleCloudAiplatformV1ToolNameMatchResults =
@@ -7106,7 +7106,7 @@ export interface GoogleCloudAiplatformV1Context {
   /** Output only. Timestamp when this Context was created. */
   createTime?: string;
   /** Output only. A list of resource names of Contexts that are parents of this Context. A Context may have at most 10 parent_contexts. */
-  parentContexts?: Array<string>;
+  parentContexts?: ReadonlyArray<string>;
   /** The title of the schema describing the metadata. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store. */
   schemaTitle?: string;
   /** Output only. Timestamp when this Context was last updated. */
@@ -7221,7 +7221,7 @@ export const GoogleCloudAiplatformV1Artifact =
 
 export interface GoogleCloudAiplatformV1PipelineTaskDetailArtifactList {
   /** Output only. A list of artifact metadata. */
-  artifacts?: Array<GoogleCloudAiplatformV1Artifact>;
+  artifacts?: ReadonlyArray<GoogleCloudAiplatformV1Artifact>;
 }
 
 export const GoogleCloudAiplatformV1PipelineTaskDetailArtifactList =
@@ -7237,9 +7237,9 @@ export interface GoogleCloudAiplatformV1PipelineTaskExecutorDetailContainerDetai
   /** Output only. The name of the CustomJob for the pre-caching-check container execution. This job will be available if the PipelineJob.pipeline_spec specifies the `pre_caching_check` hook in the lifecycle events. */
   preCachingCheckJob?: string;
   /** Output only. The names of the previously failed CustomJob for the pre-caching-check container executions. This job will be available if the PipelineJob.pipeline_spec specifies the `pre_caching_check` hook in the lifecycle events. The list includes the all attempts in chronological order. */
-  failedPreCachingCheckJobs?: Array<string>;
+  failedPreCachingCheckJobs?: ReadonlyArray<string>;
   /** Output only. The names of the previously failed CustomJob for the main container executions. The list includes the all attempts in chronological order. */
-  failedMainJobs?: Array<string>;
+  failedMainJobs?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1PipelineTaskExecutorDetailContainerDetail =
@@ -7257,7 +7257,7 @@ export interface GoogleCloudAiplatformV1PipelineTaskExecutorDetailCustomJobDetai
   /** Output only. The name of the CustomJob. */
   job?: string;
   /** Output only. The names of the previously failed CustomJob. The list includes the all attempts in chronological order. */
-  failedJobs?: Array<string>;
+  failedJobs?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1PipelineTaskExecutorDetailCustomJobDetail =
@@ -7362,7 +7362,7 @@ export interface GoogleCloudAiplatformV1PipelineTaskDetail {
   /** Output only. The unique name of a task. This field is used by rerun pipeline job. Console UI and Vertex AI SDK will support triggering pipeline job reruns. The name is constructed by concatenating all the parent tasks name with the task name. For example, if a task named "child_task" has a parent task named "parent_task_1" and parent task 1 has a parent task named "parent_task_2", the task unique name will be "parent_task_2.parent_task_1.child_task". */
   taskUniqueName?: string;
   /** Output only. A list of task status. This field keeps a record of task status evolving over time. */
-  pipelineTaskStatus?: Array<GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatus>;
+  pipelineTaskStatus?: ReadonlyArray<GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatus>;
 }
 
 export const GoogleCloudAiplatformV1PipelineTaskDetail =
@@ -7401,7 +7401,7 @@ export interface GoogleCloudAiplatformV1PipelineJobDetail {
   /** Output only. The context of the current pipeline run. */
   pipelineRunContext?: GoogleCloudAiplatformV1Context;
   /** Output only. The runtime details of the tasks under the pipeline. */
-  taskDetails?: Array<GoogleCloudAiplatformV1PipelineTaskDetail>;
+  taskDetails?: ReadonlyArray<GoogleCloudAiplatformV1PipelineTaskDetail>;
   /** Output only. The context of the pipeline. */
   pipelineContext?: GoogleCloudAiplatformV1Context;
 }
@@ -7421,7 +7421,7 @@ export interface GoogleCloudAiplatformV1PipelineJob {
   /** Optional. Whether to do component level validations before job creation. */
   preflightValidations?: boolean;
   /** A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range']. */
-  reservedIpRanges?: Array<string>;
+  reservedIpRanges?: ReadonlyArray<string>;
   /** Output only. Pipeline creation time. */
   createTime?: string;
   /** The labels with user-defined metadata to organize PipelineJob. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. Note there is some reserved label key for Vertex AI Pipelines. - `vertex-ai-pipelines-run-billing-id`, user set value will get overrided. */
@@ -7699,7 +7699,7 @@ export interface GoogleCloudAiplatformV1MemoryRevision {
   /** Output only. Represents the labels of the Memory Revision. These labels are applied to the MemoryRevision when it is created based on `GenerateMemoriesRequest.revision_labels`. */
   labels?: Record<string, string>;
   /** Output only. Represents the extracted memories from the source content before consolidation when the memory was updated via GenerateMemories. This information was used to modify an existing Memory via Consolidation. */
-  extractedMemories?: Array<GoogleCloudAiplatformV1IntermediateExtractedMemory>;
+  extractedMemories?: ReadonlyArray<GoogleCloudAiplatformV1IntermediateExtractedMemory>;
 }
 
 export const GoogleCloudAiplatformV1MemoryRevision =
@@ -7721,7 +7721,7 @@ export interface GoogleCloudAiplatformV1ListMemoryRevisionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The list of Memory Revisions in the request page. */
-  memoryRevisions?: Array<GoogleCloudAiplatformV1MemoryRevision>;
+  memoryRevisions?: ReadonlyArray<GoogleCloudAiplatformV1MemoryRevision>;
 }
 
 export const GoogleCloudAiplatformV1ListMemoryRevisionsResponse =
@@ -7756,7 +7756,7 @@ export interface GoogleCloudAiplatformV1NotebookRuntime {
   /** The description of the NotebookRuntime. */
   description?: string;
   /** Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/vpc/docs/add-remove-network-tags)). */
-  networkTags?: Array<string>;
+  networkTags?: ReadonlyArray<string>;
   /** Output only. Customer-managed encryption key spec for the notebook runtime. */
   encryptionSpec?: GoogleCloudAiplatformV1EncryptionSpec;
   /** Output only. Network spec of the notebook runtime. */
@@ -7866,7 +7866,7 @@ export const GoogleCloudAiplatformV1NotebookRuntime =
 
 export interface GoogleCloudAiplatformV1ListNotebookRuntimesResponse {
   /** List of NotebookRuntimes in the requested page. */
-  notebookRuntimes?: Array<GoogleCloudAiplatformV1NotebookRuntime>;
+  notebookRuntimes?: ReadonlyArray<GoogleCloudAiplatformV1NotebookRuntime>;
   /** A token to retrieve next page of results. Pass to ListNotebookRuntimesRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -7960,7 +7960,7 @@ export interface GoogleCloudAiplatformV1Attribution {
   /** Output only. Attributions of each explained feature. Features are extracted from the prediction instances according to explanation metadata for inputs. The value is a struct, whose keys are the name of the feature. The values are how much the feature in the instance contributed to the predicted result. The format of the value is determined by the feature's input format: * If the feature is a scalar value, the attribution value is a floating number. * If the feature is an array of scalar values, the attribution value is an array. * If the feature is a struct, the attribution value is a struct. The keys in the attribution value struct are the same as the keys in the feature struct. The formats of the values in the attribution struct are determined by the formats of the values in the feature struct. The ExplanationMetadata.feature_attributions_schema_uri field, pointed to by the ExplanationSpec field of the Endpoint.deployed_models object, points to the schema file that describes the features and their attribution values (if it is populated). */
   featureAttributions?: unknown;
   /** Output only. The index that locates the explained prediction output. If the prediction output is a scalar value, output_index is not populated. If the prediction output has multiple dimensions, the length of the output_index list is the same as the number of dimensions of the output. The i-th element in output_index is the element index of the i-th dimension of the output vector. Indices start from 0. */
-  outputIndex?: Array<number>;
+  outputIndex?: ReadonlyArray<number>;
   /** Output only. Model predicted output on the corresponding explanation instance. The field name of the output is determined by the key in ExplanationMetadata.outputs. If the Model predicted output has multiple dimensions, this is the value in the output located by output_index. */
   instanceOutputValue?: number;
   /** Output only. Name of the explain output. Specified as the key in ExplanationMetadata.outputs. */
@@ -8038,9 +8038,9 @@ export const GoogleCloudAiplatformV1Neighbor =
 
 export interface GoogleCloudAiplatformV1Explanation {
   /** Output only. Feature attributions grouped by predicted outputs. For Models that predict only one output, such as regression Models that predict only one score, there is only one attibution that explains the predicted output. For Models that predict multiple outputs, such as multiclass Models that predict multiple classes, each element explains one specific item. Attribution.output_index can be used to identify which output this attribution is explaining. By default, we provide Shapley values for the predicted class. However, you can configure the explanation request to generate Shapley values for any other classes too. For example, if a model predicts a probability of `0.4` for approving a loan application, the model's decision is to reject the application since `p(reject) = 0.6 > p(approve) = 0.4`, and the default Shapley values would be computed for rejection decision and not approval, even though the latter might be the positive class. If users set ExplanationParameters.top_k, the attributions are sorted by instance_output_value in descending order. If ExplanationParameters.output_indices is specified, the attributions are stored by Attribution.output_index in the same order as they appear in the output_indices. */
-  attributions?: Array<GoogleCloudAiplatformV1Attribution>;
+  attributions?: ReadonlyArray<GoogleCloudAiplatformV1Attribution>;
   /** Output only. List of the nearest neighbors for example-based explanations. For models deployed with the examples explanations feature enabled, the attributions field is empty and instead the neighbors field is populated. */
-  neighbors?: Array<GoogleCloudAiplatformV1Neighbor>;
+  neighbors?: ReadonlyArray<GoogleCloudAiplatformV1Neighbor>;
 }
 
 export const GoogleCloudAiplatformV1Explanation =
@@ -8073,7 +8073,7 @@ export interface GoogleCloudAiplatformV1IndexPrivateEndpoints {
   /** Output only. The ip address used to send match gRPC requests. */
   matchGrpcAddress?: string;
   /** Output only. PscAutomatedEndpoints is populated if private service connect is enabled if PscAutomatedConfig is set. */
-  pscAutomatedEndpoints?: Array<GoogleCloudAiplatformV1PscAutomatedEndpoints>;
+  pscAutomatedEndpoints?: ReadonlyArray<GoogleCloudAiplatformV1PscAutomatedEndpoints>;
 }
 
 export const GoogleCloudAiplatformV1IndexPrivateEndpoints =
@@ -8087,9 +8087,9 @@ export const GoogleCloudAiplatformV1IndexPrivateEndpoints =
 
 export interface GoogleCloudAiplatformV1DeployedIndexAuthConfigAuthProvider {
   /** The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3). that are allowed to access. A JWT containing any of these audiences will be accepted. */
-  audiences?: Array<string>;
+  audiences?: ReadonlyArray<string>;
   /** A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: `service-account-name@project-id.iam.gserviceaccount.com` */
-  allowedIssuers?: Array<string>;
+  allowedIssuers?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1DeployedIndexAuthConfigAuthProvider =
@@ -8126,13 +8126,13 @@ export interface GoogleCloudAiplatformV1DeployedIndex {
   /** Optional. The deployment group can be no longer than 64 characters (eg: 'test', 'prod'). If not set, we will use the 'default' deployment group. Creating `deployment_groups` with `reserved_ip_ranges` is a recommended practice when the peered network has multiple peering ranges. This creates your deployments from predictable IP spaces for easier traffic administration. Also, one deployment_group (except 'default') can only be used with the same reserved_ip_ranges which means if the deployment_group has been used with reserved_ip_ranges: [a, b, c], using it with [a, b] or [d, e] is disallowed. Note: we only support up to 5 deployment groups(not including 'default'). */
   deploymentGroup?: string;
   /** Optional. If set for PSC deployed index, PSC connection will be automatically created after deployment is done and the endpoint information is populated in private_endpoints.psc_automated_endpoints. */
-  pscAutomationConfigs?: Array<GoogleCloudAiplatformV1PSCAutomationConfig>;
+  pscAutomationConfigs?: ReadonlyArray<GoogleCloudAiplatformV1PSCAutomationConfig>;
   /** Output only. Timestamp when the DeployedIndex was created. */
   createTime?: string;
   /** Output only. Provides paths for users to send requests directly to the deployed index services running on Cloud via private services access. This field is populated if network is configured. */
   privateEndpoints?: GoogleCloudAiplatformV1IndexPrivateEndpoints;
   /** Optional. A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex. If set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any ip ranges under the provided VPC network. The value should be the name of the address (https://cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: ['vertex-ai-ip-range']. For more information about subnets and network IP ranges, please see https://cloud.google.com/vpc/docs/subnets#manually_created_subnet_ip_ranges. */
-  reservedIpRanges?: Array<string>;
+  reservedIpRanges?: ReadonlyArray<string>;
   /** The display name of the DeployedIndex. If not provided upon creation, the Index's display_name is used. */
   displayName?: string;
   /** Optional. If set, the authentication is enabled for the private endpoint. */
@@ -8214,7 +8214,7 @@ export const GoogleCloudAiplatformV1RougeMetricValue =
 
 export interface GoogleCloudAiplatformV1RougeResults {
   /** Output only. Rouge metric values. */
-  rougeMetricValues?: Array<GoogleCloudAiplatformV1RougeMetricValue>;
+  rougeMetricValues?: ReadonlyArray<GoogleCloudAiplatformV1RougeMetricValue>;
 }
 
 export const GoogleCloudAiplatformV1RougeResults =
@@ -8226,9 +8226,9 @@ export const GoogleCloudAiplatformV1RougeResults =
 
 export interface GoogleCloudAiplatformV1IndexDatapointRestriction {
   /** The attributes to allow in this namespace. e.g.: 'red' */
-  allowList?: Array<string>;
+  allowList?: ReadonlyArray<string>;
   /** The attributes to deny in this namespace. e.g.: 'blue' */
-  denyList?: Array<string>;
+  denyList?: ReadonlyArray<string>;
   /** The namespace of this restriction. e.g.: color. */
   namespace?: string;
 }
@@ -8395,7 +8395,7 @@ export interface GoogleCloudAiplatformV1MigratableResourceDataLabelingDataset {
   /** Full resource name of data labeling Dataset. Format: `projects/{project}/datasets/{dataset}`. */
   dataset?: string;
   /** The migratable AnnotatedDataset in datalabeling.googleapis.com belongs to the data labeling Dataset. */
-  dataLabelingAnnotatedDatasets?: Array<GoogleCloudAiplatformV1MigratableResourceDataLabelingDatasetDataLabelingAnnotatedDataset>;
+  dataLabelingAnnotatedDatasets?: ReadonlyArray<GoogleCloudAiplatformV1MigratableResourceDataLabelingDatasetDataLabelingAnnotatedDataset>;
   /** The Dataset's display name in datalabeling.googleapis.com. */
   datasetDisplayName?: string;
 }
@@ -8468,7 +8468,7 @@ export const GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemorie
 
 export interface GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSource {
   /** Optional. Represents the input conversation events for the example. */
-  events?: Array<GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSourceEvent>;
+  events?: ReadonlyArray<GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSourceEvent>;
 }
 
 export const GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSource =
@@ -8569,7 +8569,7 @@ export interface GoogleCloudAiplatformV1AsyncRetrieveContextsRequest {
   /** Required. Single RAG retrieve query. */
   query?: GoogleCloudAiplatformV1RagQuery;
   /** Optional. The tools to use for AskContexts. */
-  tools?: Array<GoogleCloudAiplatformV1Tool>;
+  tools?: ReadonlyArray<GoogleCloudAiplatformV1Tool>;
 }
 
 export const GoogleCloudAiplatformV1AsyncRetrieveContextsRequest =
@@ -8582,7 +8582,7 @@ export const GoogleCloudAiplatformV1AsyncRetrieveContextsRequest =
 
 export interface GoogleCloudAiplatformV1SchemaTablesDatasetMetadataGcsSource {
   /** Cloud Storage URI of one or more files. Only CSV files are supported. The first line of the CSV file is used as the header. If there are multiple files, the header is the first line of the lexicographically first file, the other files must either contain the exact same header or omit the header. */
-  uri?: Array<string>;
+  uri?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1SchemaTablesDatasetMetadataGcsSource =
@@ -8644,7 +8644,7 @@ export interface GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMem
   /** Required. Represents the fact to generate a memory from. */
   fact?: string;
   /** Optional. Represents the list of topics that the memory should be associated with. For example, use `custom_memory_topic_label = "jargon"` if the extracted memory is an example of memory extraction for the custom topic `jargon`. */
-  topics?: Array<GoogleCloudAiplatformV1MemoryTopicId>;
+  topics?: ReadonlyArray<GoogleCloudAiplatformV1MemoryTopicId>;
 }
 
 export const GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleGeneratedMemory =
@@ -8660,7 +8660,7 @@ export interface GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMem
   /** A conversation source for the example. */
   conversationSource?: GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSource;
   /** Optional. Represents the memories that are expected to be generated from the input conversation. An empty list indicates that no memories are expected to be generated for the input conversation. */
-  generatedMemories?: Array<GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleGeneratedMemory>;
+  generatedMemories?: ReadonlyArray<GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleGeneratedMemory>;
 }
 
 export const GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExample =
@@ -8735,7 +8735,7 @@ export const GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopic =
 
 export interface GoogleCloudAiplatformV1MemoryBankCustomizationConfig {
   /** Optional. Represents the scope keys (i.e. 'user_id') for which to use this config. A request's scope must include all of the provided keys for the config to be used (order does not matter). If empty, then the config will be used for all requests that do not have a more specific config. Only one default config is allowed per Memory Bank. */
-  scopeKeys?: Array<string>;
+  scopeKeys?: ReadonlyArray<string>;
   /** Optional. Indicates whether the memories will be generated in the third person (i.e. "The user generates memories with Memory Bank."). By default, the memories will be generated in the first person (i.e. "I generate memories with Memory Bank.") */
   enableThirdPersonMemories?: boolean;
   /** Optional. Represents configuration for customizing how memories are consolidated together. */
@@ -8743,9 +8743,9 @@ export interface GoogleCloudAiplatformV1MemoryBankCustomizationConfig {
   /** Optional. Indicates whether natural language memory generation should be disabled for all requests. By default, natural language memory generation is enabled. Set this to `true` when you only want to generate structured memories. */
   disableNaturalLanguageMemories?: boolean;
   /** Optional. Provides examples of how to generate memories for a particular scope. */
-  generateMemoriesExamples?: Array<GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExample>;
+  generateMemoriesExamples?: ReadonlyArray<GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExample>;
   /** Optional. Represents topics of information that should be extracted from conversations and stored as memories. If not set, then Memory Bank's default topics will be used. */
-  memoryTopics?: Array<GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopic>;
+  memoryTopics?: ReadonlyArray<GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopic>;
 }
 
 export const GoogleCloudAiplatformV1MemoryBankCustomizationConfig =
@@ -8876,7 +8876,7 @@ export const GoogleCloudAiplatformV1ReasoningEngineContextSpecMemoryBankConfigSi
 
 export interface GoogleCloudAiplatformV1ReasoningEngineContextSpecMemoryBankConfig {
   /** Optional. Configuration for how to customize Memory Bank behavior for a particular scope. */
-  customizationConfigs?: Array<GoogleCloudAiplatformV1MemoryBankCustomizationConfig>;
+  customizationConfigs?: ReadonlyArray<GoogleCloudAiplatformV1MemoryBankCustomizationConfig>;
   /** If true, no memory revisions will be created for any requests to the Memory Bank. */
   disableMemoryRevisions?: boolean;
   /** Optional. Configuration for how to generate memories for the Memory Bank. */
@@ -8944,7 +8944,7 @@ export interface GoogleCloudAiplatformV1SupervisedTuningDatasetDistribution {
   /** Output only. The arithmetic mean of the values in the population. */
   mean?: number;
   /** Output only. Defines the histogram bucket. */
-  buckets?: Array<GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucket>;
+  buckets?: ReadonlyArray<GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucket>;
   /** Output only. The 5th percentile of the values in the population. */
   p5?: number;
   /** Output only. The minimum of the population values. */
@@ -8988,11 +8988,11 @@ export interface GoogleCloudAiplatformV1SupervisedTuningDataStats {
   /** Output only. The number of examples in the dataset that have been dropped. An example can be dropped for reasons including: too many tokens, contains an invalid image, contains too many images, etc. */
   totalTruncatedExampleCount?: string;
   /** Output only. A partial sample of the indices (starting from 1) of the dropped examples. */
-  truncatedExampleIndices?: Array<string>;
+  truncatedExampleIndices?: ReadonlyArray<string>;
   /** Output only. Dataset distributions for the user output tokens. */
   userOutputTokenDistribution?: GoogleCloudAiplatformV1SupervisedTuningDatasetDistribution;
   /** Output only. For each index in `truncated_example_indices`, the user-facing reason why the example was dropped. */
-  droppedExampleReasons?: Array<string>;
+  droppedExampleReasons?: ReadonlyArray<string>;
   /** Output only. Dataset distributions for the messages per example. */
   userMessagePerExampleDistribution?: GoogleCloudAiplatformV1SupervisedTuningDatasetDistribution;
   /** Output only. Number of tuning characters in the tuning dataset. */
@@ -9002,7 +9002,7 @@ export interface GoogleCloudAiplatformV1SupervisedTuningDataStats {
   /** Output only. Dataset distributions for the user input tokens. */
   userInputTokenDistribution?: GoogleCloudAiplatformV1SupervisedTuningDatasetDistribution;
   /** Output only. Sample user messages in the training dataset uri. */
-  userDatasetExamples?: Array<GoogleCloudAiplatformV1Content>;
+  userDatasetExamples?: ReadonlyArray<GoogleCloudAiplatformV1Content>;
   /** Output only. Number of billable characters in the tuning dataset. */
   totalBillableCharacterCount?: string;
 }
@@ -9083,7 +9083,7 @@ export interface GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnom
   /** The feature display name. If specified, only return the stats belonging to this feature. Format: ModelMonitoringStatsAnomalies.FeatureHistoricStatsAnomalies.feature_display_name, example: "user_destination". */
   featureDisplayName?: string;
   /** Required. Objectives of the stats to retrieve. */
-  objectives?: Array<GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRequestStatsAnomaliesObjective>;
+  objectives?: ReadonlyArray<GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRequestStatsAnomaliesObjective>;
   /** The earliest timestamp of stats being generated. If not set, indicates fetching stats till the earliest possible one. */
   startTime?: string;
   /** The standard list page size. */
@@ -9166,9 +9166,9 @@ export const GoogleCloudAiplatformV1Fact =
 
 export interface GoogleCloudAiplatformV1AugmentPromptResponse {
   /** Augmented prompt, only text format is supported for now. */
-  augmentedPrompt?: Array<GoogleCloudAiplatformV1Content>;
+  augmentedPrompt?: ReadonlyArray<GoogleCloudAiplatformV1Content>;
   /** Retrieved facts from RAG data sources. */
-  facts?: Array<GoogleCloudAiplatformV1Fact>;
+  facts?: ReadonlyArray<GoogleCloudAiplatformV1Fact>;
 }
 
 export const GoogleCloudAiplatformV1AugmentPromptResponse =
@@ -9197,9 +9197,9 @@ export const GoogleCloudAiplatformV1SchemaModelevaluationMetricsConfusionMatrixA
 
 export interface GoogleCloudAiplatformV1SchemaModelevaluationMetricsConfusionMatrix {
   /** AnnotationSpecs used in the confusion matrix. For AutoML Text Extraction, a special negative AnnotationSpec with empty `id` and `displayName` of "NULL" will be added as the last element. */
-  annotationSpecs?: Array<GoogleCloudAiplatformV1SchemaModelevaluationMetricsConfusionMatrixAnnotationSpecRef>;
+  annotationSpecs?: ReadonlyArray<GoogleCloudAiplatformV1SchemaModelevaluationMetricsConfusionMatrixAnnotationSpecRef>;
   /** Rows in the confusion matrix. The number of rows is equal to the size of `annotationSpecs`. `rowsi` is the number of DataItems that have ground truth of the `annotationSpecs[i]` and are predicted as `annotationSpecs[j]` by the Model being evaluated. For Text Extraction, when `annotationSpecs[i]` is the last element in `annotationSpecs`, i.e. the special negative AnnotationSpec, `rowsi` is the number of predicted entities of `annoatationSpec[j]` that are not labeled as any of the ground truth AnnotationSpec. When annotationSpecs[j] is the special negative AnnotationSpec, `rowsi` is the number of entities have ground truth of `annotationSpec[i]` that are not predicted as an entity by the Model. The value of the last cell, i.e. `rowi` where i == j and `annotationSpec[i]` is the special negative AnnotationSpec, is always 0. */
-  rows?: Array<Array<unknown>>;
+  rows?: ReadonlyArray<ReadonlyArray<unknown>>;
 }
 
 export const GoogleCloudAiplatformV1SchemaModelevaluationMetricsConfusionMatrix =
@@ -9247,7 +9247,7 @@ export const GoogleCloudAiplatformV1SchemaModelevaluationMetricsImageSegmentatio
 
 export interface GoogleCloudAiplatformV1SchemaModelevaluationMetricsImageSegmentationEvaluationMetrics {
   /** Metrics for each confidenceThreshold in 0.00,0.05,0.10,...,0.95,0.96,0.97,0.98,0.99 Precision-recall curve can be derived from it. */
-  confidenceMetricsEntries?: Array<GoogleCloudAiplatformV1SchemaModelevaluationMetricsImageSegmentationEvaluationMetricsConfidenceMetricsEntry>;
+  confidenceMetricsEntries?: ReadonlyArray<GoogleCloudAiplatformV1SchemaModelevaluationMetricsImageSegmentationEvaluationMetricsConfidenceMetricsEntry>;
 }
 
 export const GoogleCloudAiplatformV1SchemaModelevaluationMetricsImageSegmentationEvaluationMetrics =
@@ -9411,9 +9411,9 @@ export interface GoogleCloudAiplatformV1PersistentResource {
   /** Output only. Reserved for future use. */
   satisfiesPzi?: boolean;
   /** Required. The spec of the pools of different resources. */
-  resourcePools?: Array<GoogleCloudAiplatformV1ResourcePool>;
+  resourcePools?: ReadonlyArray<GoogleCloudAiplatformV1ResourcePool>;
   /** Optional. A list of names for the reserved IP ranges under the VPC network that can be used for this persistent resource. If set, we will deploy the persistent resource within the provided IP ranges. Otherwise, the persistent resource is deployed to any IP ranges under the provided VPC network. Example: ['vertex-ai-ip-range']. */
-  reservedIpRanges?: Array<string>;
+  reservedIpRanges?: ReadonlyArray<string>;
   /** Output only. Only populated when persistent resource's state is `STOPPING` or `ERROR`. */
   error?: GoogleRpcStatus;
   /** Output only. Time when the PersistentResource was most recently updated. */
@@ -9472,7 +9472,7 @@ export const GoogleCloudAiplatformV1PersistentResource =
   }).annotate({ identifier: "GoogleCloudAiplatformV1PersistentResource" });
 
 export interface GoogleCloudAiplatformV1ListPersistentResourcesResponse {
-  persistentResources?: Array<GoogleCloudAiplatformV1PersistentResource>;
+  persistentResources?: ReadonlyArray<GoogleCloudAiplatformV1PersistentResource>;
   /** A token to retrieve next page of results. Pass to ListPersistentResourcesRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -9541,7 +9541,7 @@ export const GoogleCloudAiplatformV1LogprobsResultCandidate =
 
 export interface GoogleCloudAiplatformV1LogprobsResultTopCandidates {
   /** The list of candidate tokens, sorted by log probability in descending order. */
-  candidates?: Array<GoogleCloudAiplatformV1LogprobsResultCandidate>;
+  candidates?: ReadonlyArray<GoogleCloudAiplatformV1LogprobsResultCandidate>;
 }
 
 export const GoogleCloudAiplatformV1LogprobsResultTopCandidates =
@@ -9555,9 +9555,9 @@ export const GoogleCloudAiplatformV1LogprobsResultTopCandidates =
 
 export interface GoogleCloudAiplatformV1LogprobsResult {
   /** A list of the chosen candidate tokens at each decoding step. The length of this list is equal to the total number of decoding steps. Note that the chosen candidate might not be in `top_candidates`. */
-  chosenCandidates?: Array<GoogleCloudAiplatformV1LogprobsResultCandidate>;
+  chosenCandidates?: ReadonlyArray<GoogleCloudAiplatformV1LogprobsResultCandidate>;
   /** A list of the top candidate tokens at each decoding step. The length of this list is equal to the total number of decoding steps. */
-  topCandidates?: Array<GoogleCloudAiplatformV1LogprobsResultTopCandidates>;
+  topCandidates?: ReadonlyArray<GoogleCloudAiplatformV1LogprobsResultTopCandidates>;
 }
 
 export const GoogleCloudAiplatformV1LogprobsResult =
@@ -9591,13 +9591,13 @@ export const GoogleCloudAiplatformV1Segment =
 
 export interface GoogleCloudAiplatformV1GroundingSupport {
   /** The confidence scores for the support references. This list is parallel to the `grounding_chunk_indices` list. A score is a value between 0.0 and 1.0, with a higher score indicating a higher confidence that the reference supports the claim. For Gemini 2.0 and before, this list has the same size as `grounding_chunk_indices`. For Gemini 2.5 and later, this list is empty and should be ignored. */
-  confidenceScores?: Array<number>;
+  confidenceScores?: ReadonlyArray<number>;
   /** A list of indices into the `grounding_chunks` field of the `GroundingMetadata` message. These indices specify which grounding chunks support the claim made in the content segment. For example, if this field has the values `[1, 3]`, it means that `grounding_chunks[1]` and `grounding_chunks[3]` are the sources for the claim in the content segment. */
-  groundingChunkIndices?: Array<number>;
+  groundingChunkIndices?: ReadonlyArray<number>;
   /** The content segment that this support message applies to. */
   segment?: GoogleCloudAiplatformV1Segment;
   /** Indices into the `rendered_parts` field of the `GroundingMetadata` message. These indices specify which rendered parts are associated with this support message. */
-  renderedParts?: Array<number>;
+  renderedParts?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudAiplatformV1GroundingSupport =
@@ -9710,7 +9710,7 @@ export const GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSourcesReviewSn
 
 export interface GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSources {
   /** Snippets of reviews that were used to generate the answer. */
-  reviewSnippets?: Array<GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet>;
+  reviewSnippets?: ReadonlyArray<GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet>;
 }
 
 export const GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSources =
@@ -9806,19 +9806,19 @@ export const GoogleCloudAiplatformV1SearchEntryPoint =
 
 export interface GoogleCloudAiplatformV1GroundingMetadata {
   /** Optional. A list of grounding supports that connect the generated content to the grounding chunks. This field is populated when the grounding source is Google Search or Vertex AI Search. */
-  groundingSupports?: Array<GoogleCloudAiplatformV1GroundingSupport>;
+  groundingSupports?: ReadonlyArray<GoogleCloudAiplatformV1GroundingSupport>;
   /** Optional. Output only. Metadata related to the retrieval grounding source. */
   retrievalMetadata?: GoogleCloudAiplatformV1RetrievalMetadata;
   /** Optional. The web search queries that were used to generate the content. This field is populated only when the grounding source is Google Search. */
-  webSearchQueries?: Array<string>;
+  webSearchQueries?: ReadonlyArray<string>;
   /** Optional. Output only. A token that can be used to render a Google Maps widget with the contextual data. This field is populated only when the grounding source is Google Maps. */
   googleMapsWidgetContextToken?: string;
   /** Optional. Output only. A list of URIs that can be used to flag a place or review for inappropriate content. This field is populated only when the grounding source is Google Maps. */
-  sourceFlaggingUris?: Array<GoogleCloudAiplatformV1GroundingMetadataSourceFlaggingUri>;
+  sourceFlaggingUris?: ReadonlyArray<GoogleCloudAiplatformV1GroundingMetadataSourceFlaggingUri>;
   /** A list of supporting references retrieved from the grounding source. This field is populated when the grounding source is Google Search, Vertex AI Search, or Google Maps. */
-  groundingChunks?: Array<GoogleCloudAiplatformV1GroundingChunk>;
+  groundingChunks?: ReadonlyArray<GoogleCloudAiplatformV1GroundingChunk>;
   /** Optional. The image search queries that were used to generate the content. This field is populated only when the grounding source is Google Search with the Image Search search_type enabled. */
-  imageSearchQueries?: Array<string>;
+  imageSearchQueries?: ReadonlyArray<string>;
   /** Optional. A web search entry point that can be used to display search results. This field is populated only when the grounding source is Google Search. */
   searchEntryPoint?: GoogleCloudAiplatformV1SearchEntryPoint;
 }
@@ -9862,7 +9862,7 @@ export const GoogleCloudAiplatformV1UrlMetadata =
 
 export interface GoogleCloudAiplatformV1UrlContextMetadata {
   /** Output only. A list of URL metadata, with one entry for each URL retrieved by the tool. */
-  urlMetadata?: Array<GoogleCloudAiplatformV1UrlMetadata>;
+  urlMetadata?: ReadonlyArray<GoogleCloudAiplatformV1UrlMetadata>;
 }
 
 export const GoogleCloudAiplatformV1UrlContextMetadata =
@@ -9914,7 +9914,7 @@ export const GoogleCloudAiplatformV1Citation =
 
 export interface GoogleCloudAiplatformV1CitationMetadata {
   /** Output only. A list of citations for the content. */
-  citations?: Array<GoogleCloudAiplatformV1Citation>;
+  citations?: ReadonlyArray<GoogleCloudAiplatformV1Citation>;
 }
 
 export const GoogleCloudAiplatformV1CitationMetadata =
@@ -10019,7 +10019,7 @@ export interface GoogleCloudAiplatformV1Candidate {
   /** Output only. A collection of citations that apply to the generated content. */
   citationMetadata?: GoogleCloudAiplatformV1CitationMetadata;
   /** Output only. A list of ratings for the safety of a response candidate. There is at most one rating per category. */
-  safetyRatings?: Array<GoogleCloudAiplatformV1SafetyRating>;
+  safetyRatings?: ReadonlyArray<GoogleCloudAiplatformV1SafetyRating>;
 }
 
 export const GoogleCloudAiplatformV1Candidate =
@@ -10044,7 +10044,7 @@ export const GoogleCloudAiplatformV1Candidate =
 
 export interface GoogleCloudAiplatformV1GenerateContentResponsePromptFeedback {
   /** Output only. A list of safety ratings for the prompt. There is one rating per category. */
-  safetyRatings?: Array<GoogleCloudAiplatformV1SafetyRating>;
+  safetyRatings?: ReadonlyArray<GoogleCloudAiplatformV1SafetyRating>;
   /** Output only. The reason why the prompt was blocked. */
   blockReason?:
     | "BLOCKED_REASON_UNSPECIFIED"
@@ -10101,7 +10101,7 @@ export interface GoogleCloudAiplatformV1GenerateContentResponseUsageMetadata {
     | "PROVISIONED_THROUGHPUT"
     | (string & {});
   /** Output only. A detailed breakdown of the token count for each modality in the generated candidates. */
-  candidatesTokensDetails?: Array<GoogleCloudAiplatformV1ModalityTokenCount>;
+  candidatesTokensDetails?: ReadonlyArray<GoogleCloudAiplatformV1ModalityTokenCount>;
   /** Output only. The number of tokens in the results from tool executions, which are provided back to the model as input, if applicable. */
   toolUsePromptTokenCount?: number;
   /** The total number of tokens in the prompt. This includes any text, images, or other media provided in the request. When `cached_content` is set, this also includes the number of tokens in the cached content. */
@@ -10111,13 +10111,13 @@ export interface GoogleCloudAiplatformV1GenerateContentResponseUsageMetadata {
   /** Output only. The number of tokens in the cached content that was used for this request. */
   cachedContentTokenCount?: number;
   /** Output only. A detailed breakdown of the token count for each modality in the prompt. */
-  promptTokensDetails?: Array<GoogleCloudAiplatformV1ModalityTokenCount>;
+  promptTokensDetails?: ReadonlyArray<GoogleCloudAiplatformV1ModalityTokenCount>;
   /** Output only. A detailed breakdown by modality of the token counts from the results of tool executions, which are provided back to the model as input. */
-  toolUsePromptTokensDetails?: Array<GoogleCloudAiplatformV1ModalityTokenCount>;
+  toolUsePromptTokensDetails?: ReadonlyArray<GoogleCloudAiplatformV1ModalityTokenCount>;
   /** Output only. The number of tokens that were part of the model's generated "thoughts" output, if applicable. */
   thoughtsTokenCount?: number;
   /** Output only. A detailed breakdown of the token count for each modality in the cached content. */
-  cacheTokensDetails?: Array<GoogleCloudAiplatformV1ModalityTokenCount>;
+  cacheTokensDetails?: ReadonlyArray<GoogleCloudAiplatformV1ModalityTokenCount>;
   /** The total number of tokens in the generated candidates. */
   candidatesTokenCount?: number;
 }
@@ -10151,7 +10151,7 @@ export interface GoogleCloudAiplatformV1GenerateContentResponse {
   /** Output only. Timestamp when the request is made to the server. */
   createTime?: string;
   /** Output only. Generated candidates. */
-  candidates?: Array<GoogleCloudAiplatformV1Candidate>;
+  candidates?: ReadonlyArray<GoogleCloudAiplatformV1Candidate>;
   /** Output only. Content filter results for a prompt sent in the request. Note: Sent only in the first stream chunk. Only happens when no candidates were generated due to content violations. */
   promptFeedback?: GoogleCloudAiplatformV1GenerateContentResponsePromptFeedback;
   /** Usage metadata about the response(s). */
@@ -10252,7 +10252,7 @@ export interface GoogleApiHttpBody {
   /** The HTTP request/response body as raw binary. */
   data?: string;
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
-  extensions?: Array<Record<string, unknown>>;
+  extensions?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const GoogleApiHttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -10409,7 +10409,7 @@ export interface GoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesFeatureHist
   /** Stats calculated for the Training Dataset. */
   trainingStats?: GoogleCloudAiplatformV1FeatureStatsAnomaly;
   /** A list of historical stats generated by different time window's Prediction Dataset. */
-  predictionStats?: Array<GoogleCloudAiplatformV1FeatureStatsAnomaly>;
+  predictionStats?: ReadonlyArray<GoogleCloudAiplatformV1FeatureStatsAnomaly>;
 }
 
 export const GoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies =
@@ -10439,7 +10439,7 @@ export const GoogleCloudAiplatformV1ToolCallValidMetricValue =
 
 export interface GoogleCloudAiplatformV1ToolCallValidResults {
   /** Output only. Tool call valid metric values. */
-  toolCallValidMetricValues?: Array<GoogleCloudAiplatformV1ToolCallValidMetricValue>;
+  toolCallValidMetricValues?: ReadonlyArray<GoogleCloudAiplatformV1ToolCallValidMetricValue>;
 }
 
 export const GoogleCloudAiplatformV1ToolCallValidResults =
@@ -10778,7 +10778,7 @@ export interface GoogleCloudAiplatformV1Endpoint {
   /** Output only. Timestamp when this Endpoint was created. */
   createTime?: string;
   /** Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. */
-  deployedModels?: Array<GoogleCloudAiplatformV1DeployedModel>;
+  deployedModels?: ReadonlyArray<GoogleCloudAiplatformV1DeployedModel>;
   /** Output only. Reserved for future use. */
   satisfiesPzs?: boolean;
   /** Output only. DNS of the dedicated endpoint. Will only be populated if dedicated_endpoint_enabled is true. Depending on the features enabled, uid might be a random number or a string. For example, if fast_tryout is enabled, uid will be fasttryout. Format: `https://{endpoint_id}.{region}-{uid}.prediction.vertexai.goog`. */
@@ -10999,7 +10999,7 @@ export interface GoogleCloudAiplatformV1RougeInput {
   /** Required. Spec for rouge score metric. */
   metricSpec?: GoogleCloudAiplatformV1RougeSpec;
   /** Required. Repeated rouge instances. */
-  instances?: Array<GoogleCloudAiplatformV1RougeInstance>;
+  instances?: ReadonlyArray<GoogleCloudAiplatformV1RougeInstance>;
 }
 
 export const GoogleCloudAiplatformV1RougeInput =
@@ -11085,7 +11085,7 @@ export const GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue =
 
 export interface GoogleCloudAiplatformV1TrajectoryExactMatchResults {
   /** Output only. TrajectoryExactMatch metric values. */
-  trajectoryExactMatchMetricValues?: Array<GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue>;
+  trajectoryExactMatchMetricValues?: ReadonlyArray<GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue>;
 }
 
 export const GoogleCloudAiplatformV1TrajectoryExactMatchResults =
@@ -11121,7 +11121,7 @@ export const GoogleCloudAiplatformV1SchemaPredictInstanceVideoObjectTrackingPred
 
 export interface GoogleCloudAiplatformV1FunctionCallingConfig {
   /** Optional. Function names to call. Only set when the Mode is ANY. Function names should match FunctionDeclaration.name. With mode set to ANY, model will predict a function call from the set of function names provided. */
-  allowedFunctionNames?: Array<string>;
+  allowedFunctionNames?: ReadonlyArray<string>;
   /** Optional. Function calling mode. */
   mode?:
     | "MODE_UNSPECIFIED"
@@ -11183,11 +11183,11 @@ export const GoogleCloudAiplatformV1ToolConfig =
 
 export interface GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage {
   /** A list of `Tools` the model may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the model. */
-  tools?: Array<GoogleCloudAiplatformV1Tool>;
+  tools?: ReadonlyArray<GoogleCloudAiplatformV1Tool>;
   /** The model name. */
   model?: string;
   /** The content of the current conversation with the model. For single-turn queries, this is a single instance. For multi-turn queries, this is a repeated field that contains conversation history + latest request. */
-  contents?: Array<GoogleCloudAiplatformV1Content>;
+  contents?: ReadonlyArray<GoogleCloudAiplatformV1Content>;
   /** The user provided system instructions for the model. Note: only text should be used in parts and content in each part will be in a separate paragraph. */
   systemInstruction?: GoogleCloudAiplatformV1Content;
   /** Generation config. */
@@ -11195,7 +11195,7 @@ export interface GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage {
   /** Tool config. This config is shared for all tools provided in the request. */
   toolConfig?: GoogleCloudAiplatformV1ToolConfig;
   /** Per request settings for blocking unsafe content. Enforced on GenerateContentResponse.candidates. */
-  safetySettings?: Array<GoogleCloudAiplatformV1SafetySetting>;
+  safetySettings?: ReadonlyArray<GoogleCloudAiplatformV1SafetySetting>;
 }
 
 export const GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage =
@@ -11230,7 +11230,7 @@ export const GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePair =
 
 export interface GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePairList {
   /** Reference sentence pairs. */
-  referenceSentencePairs?: Array<GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePair>;
+  referenceSentencePairs?: ReadonlyArray<GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePair>;
 }
 
 export const GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePairList =
@@ -11299,9 +11299,9 @@ export const GoogleCloudAiplatformV1SchemaPromptSpecTranslationSentenceFileInput
 
 export interface GoogleCloudAiplatformV1SchemaPromptSpecTranslationExample {
   /** The reference sentences from inline text. */
-  referenceSentencePairLists?: Array<GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePairList>;
+  referenceSentencePairLists?: ReadonlyArray<GoogleCloudAiplatformV1SchemaPromptSpecReferenceSentencePairList>;
   /** The reference sentences from file. */
-  referenceSentencesFileInputs?: Array<GoogleCloudAiplatformV1SchemaPromptSpecTranslationSentenceFileInput>;
+  referenceSentencesFileInputs?: ReadonlyArray<GoogleCloudAiplatformV1SchemaPromptSpecTranslationSentenceFileInput>;
 }
 
 export const GoogleCloudAiplatformV1SchemaPromptSpecTranslationExample =
@@ -11416,7 +11416,7 @@ export interface GoogleCloudAiplatformV1DatasetDistribution {
   /** Output only. The arithmetic mean of the values in the population. */
   mean?: number;
   /** Output only. Defines the histogram bucket. */
-  buckets?: Array<GoogleCloudAiplatformV1DatasetDistributionDistributionBucket>;
+  buckets?: ReadonlyArray<GoogleCloudAiplatformV1DatasetDistributionDistributionBucket>;
   /** Output only. The minimum of the population values. */
   min?: number;
 }
@@ -11439,9 +11439,9 @@ export const GoogleCloudAiplatformV1DatasetDistribution =
 
 export interface GoogleCloudAiplatformV1GeminiPreferenceExample {
   /** Multi-turn contents that represents the Prompt. */
-  contents?: Array<GoogleCloudAiplatformV1Content>;
+  contents?: ReadonlyArray<GoogleCloudAiplatformV1Content>;
   /** List of completions for a given prompt. */
-  completions?: Array<GoogleCloudAiplatformV1GeminiPreferenceExampleCompletion>;
+  completions?: ReadonlyArray<GoogleCloudAiplatformV1GeminiPreferenceExampleCompletion>;
 }
 
 export const GoogleCloudAiplatformV1GeminiPreferenceExample =
@@ -11456,7 +11456,7 @@ export interface GoogleCloudAiplatformV1PreferenceOptimizationDataStats {
   /** Output only. Number of tuning steps for this Tuning Job. */
   tuningStepCount?: string;
   /** Output only. A partial sample of the indices (starting from 1) of the dropped examples. */
-  droppedExampleIndices?: Array<string>;
+  droppedExampleIndices?: ReadonlyArray<string>;
   /** Output only. Number of examples in the tuning dataset. */
   tuningDatasetExampleCount?: string;
   /** Output only. Dataset distributions for the user output tokens. */
@@ -11464,7 +11464,7 @@ export interface GoogleCloudAiplatformV1PreferenceOptimizationDataStats {
   /** Output only. Dataset distributions for scores. */
   scoresDistribution?: GoogleCloudAiplatformV1DatasetDistribution;
   /** Output only. For each index in `dropped_example_indices`, the user-facing reason why the example was dropped. */
-  droppedExampleReasons?: Array<string>;
+  droppedExampleReasons?: ReadonlyArray<string>;
   /** Output only. Dataset distributions for scores variance per example. */
   scoreVariancePerExampleDistribution?: GoogleCloudAiplatformV1DatasetDistribution;
   /** Output only. Number of billable tokens in the tuning dataset. */
@@ -11472,7 +11472,7 @@ export interface GoogleCloudAiplatformV1PreferenceOptimizationDataStats {
   /** Output only. Dataset distributions for the user input tokens. */
   userInputTokenDistribution?: GoogleCloudAiplatformV1DatasetDistribution;
   /** Output only. Sample user examples in the training dataset. */
-  userDatasetExamples?: Array<GoogleCloudAiplatformV1GeminiPreferenceExample>;
+  userDatasetExamples?: ReadonlyArray<GoogleCloudAiplatformV1GeminiPreferenceExample>;
 }
 
 export const GoogleCloudAiplatformV1PreferenceOptimizationDataStats =
@@ -11563,7 +11563,7 @@ export interface GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataAge
   /** Optional. The change in the session state caused by this event. This is a key-value map of fields that were modified or added by the event. */
   stateDelta?: Record<string, unknown>;
   /** Optional. The list of tools that were active/available to the agent at the time of this event. This overrides the `AgentConfig.tools` if set. */
-  activeTools?: Array<GoogleCloudAiplatformV1Tool>;
+  activeTools?: ReadonlyArray<GoogleCloudAiplatformV1Tool>;
   /** Required. The content of the event (e.g., text response, tool call, tool response). */
   content?: GoogleCloudAiplatformV1Content;
   /** Optional. The timestamp when the event occurred. */
@@ -11590,7 +11590,7 @@ export interface GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataCon
   /** Required. The 0-based index of the turn in the conversation sequence. */
   turnIndex?: number;
   /** Optional. The list of events that occurred during this turn. */
-  events?: Array<GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataAgentEvent>;
+  events?: ReadonlyArray<GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataAgentEvent>;
 }
 
 export const GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataConversationTurn =
@@ -11680,7 +11680,7 @@ export const GoogleCloudAiplatformV1ExportFeatureValuesRequestFullExport =
 
 export interface GoogleCloudAiplatformV1ExportFeatureValuesRequest {
   /** Per-Feature export settings. */
-  settings?: Array<GoogleCloudAiplatformV1DestinationFeatureSetting>;
+  settings?: ReadonlyArray<GoogleCloudAiplatformV1DestinationFeatureSetting>;
   /** Required. Specifies destination location and format. */
   destination?: GoogleCloudAiplatformV1FeatureValueDestination;
   /** Exports the latest Feature values of all entities of the EntityType within a time range. */
@@ -11848,7 +11848,7 @@ export interface GoogleCloudAiplatformV1BleuInput {
   /** Required. Spec for bleu score metric. */
   metricSpec?: GoogleCloudAiplatformV1BleuSpec;
   /** Required. Repeated bleu instances. */
-  instances?: Array<GoogleCloudAiplatformV1BleuInstance>;
+  instances?: ReadonlyArray<GoogleCloudAiplatformV1BleuInstance>;
 }
 
 export const GoogleCloudAiplatformV1BleuInput =
@@ -11919,7 +11919,7 @@ export const GoogleCloudAiplatformV1ImportFeatureValuesRequestFeatureSpec =
 
 export interface GoogleCloudAiplatformV1Measurement {
   /** Output only. A list of metrics got by evaluating the objective functions using suggested Parameter values. */
-  metrics?: Array<GoogleCloudAiplatformV1MeasurementMetric>;
+  metrics?: ReadonlyArray<GoogleCloudAiplatformV1MeasurementMetric>;
   /** Output only. Time that the Trial has been running at the point of this Measurement. */
   elapsedDuration?: string;
   /** Output only. The number of steps the machine learning model has been trained for. Must be non-negative. */
@@ -12013,7 +12013,7 @@ export interface GoogleCloudAiplatformV1FeatureGroupBigQuery {
   /** Optional. If set, all feature values will be fetched from a single row per unique entityId including nulls. If not set, will collapse all rows for each unique entityId into a singe row with any non-null values if present, if no non-null values are present will sync null. ex: If source has schema `(entity_id, feature_timestamp, f0, f1)` and the following rows: `(e1, 2020-01-01T10:00:00.123Z, 10, 15)` `(e1, 2020-02-01T10:00:00.123Z, 20, null)` If dense is set, `(e1, 20, null)` is synced to online stores. If dense is not set, `(e1, 20, 15)` is synced to online stores. */
   dense?: boolean;
   /** Optional. Columns to construct entity_id / row keys. If not provided defaults to `entity_id`. */
-  entityIdColumns?: Array<string>;
+  entityIdColumns?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1FeatureGroupBigQuery =
@@ -12069,7 +12069,7 @@ export const GoogleCloudAiplatformV1MemoryFilter =
 
 export interface GoogleCloudAiplatformV1MemoryConjunctionFilter {
   /** Represents filters that will be combined using AND logic. */
-  filters?: Array<GoogleCloudAiplatformV1MemoryFilter>;
+  filters?: ReadonlyArray<GoogleCloudAiplatformV1MemoryFilter>;
 }
 
 export const GoogleCloudAiplatformV1MemoryConjunctionFilter =
@@ -12087,9 +12087,9 @@ export interface GoogleCloudAiplatformV1RetrieveMemoriesRequest {
   /** Optional. The standard list filter that will be applied to the retrieved memories. More detail in [AIP-160](https://google.aip.dev/160). Supported fields: * `fact` * `create_time` * `update_time` * `topics` (i.e. `topics.custom_memory_topic_label: "example topic" OR topics.managed_memory_topic: USER_PREFERENCES`) */
   filter?: string;
   /** Optional. Metadata filters that will be applied to the retrieved memories' `metadata` using OR logic. Filters are defined using disjunctive normal form (OR of ANDs). For example: `filter_groups: [{filters: [{key: "author", value: {string_value: "agent 123"}, op: EQUAL}]}, {filters: [{key: "label", value: {string_value: "travel"}, op: EQUAL}, {key: "author", value: {string_value: "agent 321"}, op: EQUAL}]}]` would be equivalent to the logical expression: `(metadata.author = "agent 123" OR (metadata.label = "travel" AND metadata.author = "agent 321"))`. */
-  filterGroups?: Array<GoogleCloudAiplatformV1MemoryConjunctionFilter>;
+  filterGroups?: ReadonlyArray<GoogleCloudAiplatformV1MemoryConjunctionFilter>;
   /** Optional. Specifies the types of memories to retrieve. If this field is empty or not provided, the request will default to retrieving only memories of type `NATURAL_LANGUAGE_COLLECTION`. If populated, the request will retrieve memories matching any of the specified `MemoryType` values. */
-  memoryTypes?: Array<
+  memoryTypes?: ReadonlyArray<
     | "MEMORY_TYPE_UNSPECIFIED"
     | "NATURAL_LANGUAGE_COLLECTION"
     | "STRUCTURED_PROFILE"
@@ -12268,7 +12268,7 @@ export interface GoogleCloudAiplatformV1SchemaModelevaluationMetricsClassificati
   /** The Log Loss metric. */
   logLoss?: number;
   /** Metrics for each `confidenceThreshold` in 0.00,0.05,0.10,...,0.95,0.96,0.97,0.98,0.99 and `positionThreshold` = INT32_MAX_VALUE. ROC and precision-recall curves, and other aggregated metrics are derived from them. The confidence metrics entries may also be supplied for additional values of `positionThreshold`, but from these no aggregated metrics are computed. */
-  confidenceMetrics?: Array<GoogleCloudAiplatformV1SchemaModelevaluationMetricsClassificationEvaluationMetricsConfidenceMetrics>;
+  confidenceMetrics?: ReadonlyArray<GoogleCloudAiplatformV1SchemaModelevaluationMetricsClassificationEvaluationMetricsConfidenceMetrics>;
 }
 
 export const GoogleCloudAiplatformV1SchemaModelevaluationMetricsClassificationEvaluationMetrics =
@@ -12331,7 +12331,7 @@ export const GoogleCloudAiplatformV1SamplingStrategy =
 
 export interface GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig {
   /** The email addresses to send the alert. */
-  userEmails?: Array<string>;
+  userEmails?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig =
@@ -12348,7 +12348,7 @@ export interface GoogleCloudAiplatformV1ModelMonitoringAlertConfig {
   /** Dump the anomalies to Cloud Logging. The anomalies will be put to json payload encoded from proto ModelMonitoringStatsAnomalies. This can be further synced to Pub/Sub or any other services supported by Cloud Logging. */
   enableLogging?: boolean;
   /** Resource names of the NotificationChannels to send alert. Must be of the format `projects//notificationChannels/` */
-  notificationChannels?: Array<string>;
+  notificationChannels?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1ModelMonitoringAlertConfig =
@@ -12539,13 +12539,13 @@ export interface GoogleCloudAiplatformV1ModelDeploymentMonitoringJob {
   /** Alert config for model monitoring. */
   modelMonitoringAlertConfig?: GoogleCloudAiplatformV1ModelMonitoringAlertConfig;
   /** Output only. The created bigquery tables for the job under customer project. Customer could do their own query & analysis. There could be 4 log tables in maximum: 1. Training data logging predict request/response 2. Serving data logging predict request/response */
-  bigqueryTables?: Array<GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTable>;
+  bigqueryTables?: ReadonlyArray<GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTable>;
   /** Customer-managed encryption key spec for a ModelDeploymentMonitoringJob. If set, this ModelDeploymentMonitoringJob and all sub-resources of this ModelDeploymentMonitoringJob will be secured by this key. */
   encryptionSpec?: GoogleCloudAiplatformV1EncryptionSpec;
   /** Output only. Timestamp when this ModelDeploymentMonitoringJob was updated most recently. */
   updateTime?: string;
   /** Required. The config for monitoring objectives. This is a per DeployedModel config. Each DeployedModel needs to be configured separately. */
-  modelDeploymentMonitoringObjectiveConfigs?: Array<GoogleCloudAiplatformV1ModelDeploymentMonitoringObjectiveConfig>;
+  modelDeploymentMonitoringObjectiveConfigs?: ReadonlyArray<GoogleCloudAiplatformV1ModelDeploymentMonitoringObjectiveConfig>;
   /** YAML schema file uri describing the format of a single instance, which are given to format this Endpoint's prediction (and explanation). If not set, we will generate predict schema from collected predict requests. */
   predictInstanceSchemaUri?: string;
   /** Required. Endpoint resource name. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` */
@@ -12626,7 +12626,7 @@ export const GoogleCloudAiplatformV1ModelDeploymentMonitoringJob =
 
 export interface GoogleCloudAiplatformV1ListModelDeploymentMonitoringJobsResponse {
   /** A list of ModelDeploymentMonitoringJobs that matches the specified filter in the request. */
-  modelDeploymentMonitoringJobs?: Array<GoogleCloudAiplatformV1ModelDeploymentMonitoringJob>;
+  modelDeploymentMonitoringJobs?: ReadonlyArray<GoogleCloudAiplatformV1ModelDeploymentMonitoringJob>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -12771,7 +12771,7 @@ export interface GoogleCloudAiplatformV1Feature {
   /** Output only. Only applicable for Vertex AI Feature Store (Legacy). Timestamp when this EntityType was most recently updated. */
   updateTime?: string;
   /** Output only. Only applicable for Vertex AI Feature Store (Legacy). The list of historical stats and anomalies with specified objectives. */
-  monitoringStatsAnomalies?: Array<GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly>;
+  monitoringStatsAnomalies?: ReadonlyArray<GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly>;
   /** Description of the Feature. */
   description?: string;
   /** Entity responsible for maintaining this feature. Can be comma separated list of email addresses or URIs. */
@@ -12817,7 +12817,7 @@ export const GoogleCloudAiplatformV1CreateFeatureRequest =
 
 export interface GoogleCloudAiplatformV1FeatureViewDataKeyCompositeKey {
   /** Parts to construct Entity ID. Should match with the same ID columns as defined in FeatureView in the same order. */
-  parts?: Array<string>;
+  parts?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1FeatureViewDataKeyCompositeKey =
@@ -12862,7 +12862,7 @@ export interface GoogleCloudAiplatformV1FeatureViewDirectWriteResponse {
   /** Response status for the keys listed in FeatureViewDirectWriteResponse.write_responses. The error only applies to the listed data keys - the stream will remain open for further FeatureOnlineStoreService.FeatureViewDirectWriteRequest requests. Partial failures (e.g. if the first 10 keys of a request fail, but the rest succeed) from a single request may result in multiple responses - there will be one response for the successful request keys and one response for the failing request keys. */
   status?: GoogleRpcStatus;
   /** Details about write for each key. If status is not OK, WriteResponse.data_key will have the key with error, but WriteResponse.online_store_write_time will not be present. */
-  writeResponses?: Array<GoogleCloudAiplatformV1FeatureViewDirectWriteResponseWriteResponse>;
+  writeResponses?: ReadonlyArray<GoogleCloudAiplatformV1FeatureViewDirectWriteResponseWriteResponse>;
 }
 
 export const GoogleCloudAiplatformV1FeatureViewDirectWriteResponse =
@@ -12894,7 +12894,7 @@ export const GoogleCloudAiplatformV1RagEngineConfig =
 
 export interface GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse {
   /** The created TensorboardTimeSeries. */
-  tensorboardTimeSeries?: Array<GoogleCloudAiplatformV1TensorboardTimeSeries>;
+  tensorboardTimeSeries?: ReadonlyArray<GoogleCloudAiplatformV1TensorboardTimeSeries>;
 }
 
 export const GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesResponse =
@@ -13010,7 +13010,7 @@ export const GoogleCloudAiplatformV1AggregationResult =
 
 export interface GoogleCloudAiplatformV1AggregationOutput {
   /** One AggregationResult per metric. */
-  aggregationResults?: Array<GoogleCloudAiplatformV1AggregationResult>;
+  aggregationResults?: ReadonlyArray<GoogleCloudAiplatformV1AggregationResult>;
   /** The dataset used for evaluation & aggregation. */
   dataset?: GoogleCloudAiplatformV1EvaluationDataset;
 }
@@ -13210,7 +13210,7 @@ export interface GoogleCloudAiplatformV1TrajectoryExactMatchInput {
   /** Required. Spec for TrajectoryExactMatch metric. */
   metricSpec?: GoogleCloudAiplatformV1TrajectoryExactMatchSpec;
   /** Required. Repeated TrajectoryExactMatch instance. */
-  instances?: Array<GoogleCloudAiplatformV1TrajectoryExactMatchInstance>;
+  instances?: ReadonlyArray<GoogleCloudAiplatformV1TrajectoryExactMatchInstance>;
 }
 
 export const GoogleCloudAiplatformV1TrajectoryExactMatchInput =
@@ -13337,7 +13337,7 @@ export interface GoogleCloudAiplatformV1RubricGroup {
   /** Human-readable name for the group. This should be unique within a given context if used for display or selection. Example: "Instruction Following V1", "Content Quality - Summarization Task". */
   displayName?: string;
   /** Rubrics that are part of this group. */
-  rubrics?: Array<GoogleCloudAiplatformV1Rubric>;
+  rubrics?: ReadonlyArray<GoogleCloudAiplatformV1Rubric>;
 }
 
 export const GoogleCloudAiplatformV1RubricGroup =
@@ -13369,7 +13369,7 @@ export const GoogleCloudAiplatformV1EvaluationInstanceMapInstance =
 
 export interface GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataTools {
   /** Optional. List of tools: each tool can have multiple function declarations. */
-  tool?: Array<GoogleCloudAiplatformV1Tool>;
+  tool?: ReadonlyArray<GoogleCloudAiplatformV1Tool>;
 }
 
 export const GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataTools =
@@ -13382,7 +13382,7 @@ export const GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataTools =
 
 export interface GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataEvents {
   /** Optional. A list of events. */
-  event?: Array<GoogleCloudAiplatformV1Content>;
+  event?: ReadonlyArray<GoogleCloudAiplatformV1Content>;
 }
 
 export const GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataEvents =
@@ -13399,7 +13399,7 @@ export interface GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentData {
   /** List of tools. */
   tools?: GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataTools;
   /** Optional. The chronological list of conversation turns. Each turn represents a logical execution cycle (e.g., User Input -> Agent Response). */
-  turns?: Array<GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataConversationTurn>;
+  turns?: ReadonlyArray<GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataConversationTurn>;
   /** A list of events. */
   events?: GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataEvents;
   /** Optional. Deprecated: Use `agent_eval_data` instead. Agent configuration. */
@@ -13506,7 +13506,7 @@ export interface GoogleCloudAiplatformV1ToolParameterKeyMatchInput {
   /** Required. Spec for tool parameter key match metric. */
   metricSpec?: GoogleCloudAiplatformV1ToolParameterKeyMatchSpec;
   /** Required. Repeated tool parameter key match instances. */
-  instances?: Array<GoogleCloudAiplatformV1ToolParameterKeyMatchInstance>;
+  instances?: ReadonlyArray<GoogleCloudAiplatformV1ToolParameterKeyMatchInstance>;
 }
 
 export const GoogleCloudAiplatformV1ToolParameterKeyMatchInput =
@@ -13547,7 +13547,7 @@ export interface GoogleCloudAiplatformV1TrajectoryRecallInput {
   /** Required. Spec for TrajectoryRecall metric. */
   metricSpec?: GoogleCloudAiplatformV1TrajectoryRecallSpec;
   /** Required. Repeated TrajectoryRecall instance. */
-  instances?: Array<GoogleCloudAiplatformV1TrajectoryRecallInstance>;
+  instances?: ReadonlyArray<GoogleCloudAiplatformV1TrajectoryRecallInstance>;
 }
 
 export const GoogleCloudAiplatformV1TrajectoryRecallInput =
@@ -13577,7 +13577,7 @@ export interface GoogleCloudAiplatformV1ToolParameterKVMatchInput {
   /** Required. Spec for tool parameter key value match metric. */
   metricSpec?: GoogleCloudAiplatformV1ToolParameterKVMatchSpec;
   /** Required. Repeated tool parameter key value match instances. */
-  instances?: Array<GoogleCloudAiplatformV1ToolParameterKVMatchInstance>;
+  instances?: ReadonlyArray<GoogleCloudAiplatformV1ToolParameterKVMatchInstance>;
 }
 
 export const GoogleCloudAiplatformV1ToolParameterKVMatchInput =
@@ -13673,7 +13673,7 @@ export interface GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput {
   /** Required. Spec for TrajectoryAnyOrderMatch metric. */
   metricSpec?: GoogleCloudAiplatformV1TrajectoryAnyOrderMatchSpec;
   /** Required. Repeated TrajectoryAnyOrderMatch instance. */
-  instances?: Array<GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstance>;
+  instances?: ReadonlyArray<GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstance>;
 }
 
 export const GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInput =
@@ -13714,7 +13714,7 @@ export interface GoogleCloudAiplatformV1TrajectoryInOrderMatchInput {
   /** Required. Spec for TrajectoryInOrderMatch metric. */
   metricSpec?: GoogleCloudAiplatformV1TrajectoryInOrderMatchSpec;
   /** Required. Repeated TrajectoryInOrderMatch instance. */
-  instances?: Array<GoogleCloudAiplatformV1TrajectoryInOrderMatchInstance>;
+  instances?: ReadonlyArray<GoogleCloudAiplatformV1TrajectoryInOrderMatchInstance>;
 }
 
 export const GoogleCloudAiplatformV1TrajectoryInOrderMatchInput =
@@ -14202,7 +14202,7 @@ export interface GoogleCloudAiplatformV1ToolNameMatchInput {
   /** Required. Spec for tool name match metric. */
   metricSpec?: GoogleCloudAiplatformV1ToolNameMatchSpec;
   /** Required. Repeated tool name match instances. */
-  instances?: Array<GoogleCloudAiplatformV1ToolNameMatchInstance>;
+  instances?: ReadonlyArray<GoogleCloudAiplatformV1ToolNameMatchInstance>;
 }
 
 export const GoogleCloudAiplatformV1ToolNameMatchInput =
@@ -14239,7 +14239,7 @@ export interface GoogleCloudAiplatformV1TrajectoryPrecisionInput {
   /** Required. Spec for TrajectoryPrecision metric. */
   metricSpec?: GoogleCloudAiplatformV1TrajectoryPrecisionSpec;
   /** Required. Repeated TrajectoryPrecision instance. */
-  instances?: Array<GoogleCloudAiplatformV1TrajectoryPrecisionInstance>;
+  instances?: ReadonlyArray<GoogleCloudAiplatformV1TrajectoryPrecisionInstance>;
 }
 
 export const GoogleCloudAiplatformV1TrajectoryPrecisionInput =
@@ -14254,7 +14254,7 @@ export const GoogleCloudAiplatformV1TrajectoryPrecisionInput =
 
 export interface GoogleCloudAiplatformV1EvaluateInstancesRequest {
   /** Optional. The metrics (either inline or registered) used for evaluation. Currently, we only support evaluating a single metric. If multiple metrics are provided, only the first one will be evaluated. */
-  metricSources?: Array<GoogleCloudAiplatformV1MetricSource>;
+  metricSources?: ReadonlyArray<GoogleCloudAiplatformV1MetricSource>;
   /** Input for pairwise metric. */
   pairwiseMetricInput?: GoogleCloudAiplatformV1PairwiseMetricInput;
   /** LLM-based metric instance. General text generation metrics, applicable to other categories. Input for fluency metric. */
@@ -14264,7 +14264,7 @@ export interface GoogleCloudAiplatformV1EvaluateInstancesRequest {
   /** Input for pairwise question answering quality metric. */
   pairwiseQuestionAnsweringQualityInput?: GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityInput;
   /** The metrics used for evaluation. Currently, we only support evaluating a single metric. If multiple metrics are provided, only the first one will be evaluated. */
-  metrics?: Array<GoogleCloudAiplatformV1Metric>;
+  metrics?: ReadonlyArray<GoogleCloudAiplatformV1Metric>;
   /** Input for question answering quality metric. */
   questionAnsweringQualityInput?: GoogleCloudAiplatformV1QuestionAnsweringQualityInput;
   /** Rubric Based Instruction Following metric. */
@@ -14478,15 +14478,15 @@ export const GoogleCloudAiplatformV1IndexDatapointNumericRestriction =
 
 export interface GoogleCloudAiplatformV1IndexDatapoint {
   /** Optional. List of Restrict of the datapoint, used to perform "restricted searches" where boolean rule are used to filter the subset of the database eligible for matching. This uses categorical tokens. See: https://cloud.google.com/vertex-ai/docs/matching-engine/filtering */
-  restricts?: Array<GoogleCloudAiplatformV1IndexDatapointRestriction>;
+  restricts?: ReadonlyArray<GoogleCloudAiplatformV1IndexDatapointRestriction>;
   /** Optional. CrowdingTag of the datapoint, the number of neighbors to return in each crowding can be configured during query. */
   crowdingTag?: GoogleCloudAiplatformV1IndexDatapointCrowdingTag;
   /** Required. Feature embedding vector for dense index. An array of numbers with the length of [NearestNeighborSearchConfig.dimensions]. */
-  featureVector?: Array<number>;
+  featureVector?: ReadonlyArray<number>;
   /** Required. Unique identifier of the datapoint. */
   datapointId?: string;
   /** Optional. List of Restrict of the datapoint, used to perform "restricted searches" where boolean rule are used to filter the subset of the database eligible for matching. This uses numeric comparisons. */
-  numericRestricts?: Array<GoogleCloudAiplatformV1IndexDatapointNumericRestriction>;
+  numericRestricts?: ReadonlyArray<GoogleCloudAiplatformV1IndexDatapointNumericRestriction>;
   /** Optional. The key-value map of additional metadata for the datapoint. */
   embeddingMetadata?: Record<string, unknown>;
   /** Optional. Feature embedding vector for sparse index. */
@@ -14572,7 +14572,7 @@ export interface GoogleCloudAiplatformV1IndexEndpoint {
   /** Output only. Timestamp when this IndexEndpoint was created. */
   createTime?: string;
   /** Output only. The indexes deployed in this endpoint. */
-  deployedIndexes?: Array<GoogleCloudAiplatformV1DeployedIndex>;
+  deployedIndexes?: ReadonlyArray<GoogleCloudAiplatformV1DeployedIndex>;
   /** Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens. */
   etag?: string;
   /** Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the IndexEndpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. network and private_service_connect_config are mutually exclusive. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in '12345', and {network} is network name. */
@@ -14621,7 +14621,7 @@ export const GoogleCloudAiplatformV1IndexEndpoint =
 
 export interface GoogleCloudAiplatformV1ListIndexEndpointsResponse {
   /** List of IndexEndpoints in the requested page. */
-  indexEndpoints?: Array<GoogleCloudAiplatformV1IndexEndpoint>;
+  indexEndpoints?: ReadonlyArray<GoogleCloudAiplatformV1IndexEndpoint>;
   /** A token to retrieve next page of results. Pass to ListIndexEndpointsRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -14640,7 +14640,7 @@ export interface GoogleCloudAiplatformV1ListContextsResponse {
   /** A token, which can be sent as ListContextsRequest.page_token to retrieve the next page. If this field is not populated, there are no subsequent pages. */
   nextPageToken?: string;
   /** The Contexts retrieved from the MetadataStore. */
-  contexts?: Array<GoogleCloudAiplatformV1Context>;
+  contexts?: ReadonlyArray<GoogleCloudAiplatformV1Context>;
 }
 
 export const GoogleCloudAiplatformV1ListContextsResponse =
@@ -14718,7 +14718,7 @@ export const GoogleCloudAiplatformV1SchemaTextExtractionAnnotation =
 
 export interface GoogleCloudAiplatformV1SchemaModelevaluationMetricsImageObjectDetectionEvaluationMetrics {
   /** The bounding boxes match metrics for each intersection-over-union threshold 0.05,0.10,...,0.95,0.96,0.97,0.98,0.99 and each label confidence threshold 0.05,0.10,...,0.95,0.96,0.97,0.98,0.99 pair. */
-  boundingBoxMetrics?: Array<GoogleCloudAiplatformV1SchemaModelevaluationMetricsBoundingBoxMetrics>;
+  boundingBoxMetrics?: ReadonlyArray<GoogleCloudAiplatformV1SchemaModelevaluationMetricsBoundingBoxMetrics>;
   /** The total number of bounding boxes (i.e. summed over all images) the ground truth used to create this evaluation had. */
   evaluatedBoundingBoxCount?: number;
   /** The single metric for bounding boxes evaluation: the `meanAveragePrecision` averaged over all `boundingBoxMetricsEntries`. */
@@ -14743,7 +14743,7 @@ export interface GoogleCloudAiplatformV1UsageMetadata {
   /** The total number of tokens in the prompt. This includes any text, images, or other media provided in the request. When `cached_content` is set, this also includes the number of tokens in the cached content. */
   promptTokenCount?: number;
   /** Output only. A detailed breakdown of the token count for each modality in the generated candidates. */
-  candidatesTokensDetails?: Array<GoogleCloudAiplatformV1ModalityTokenCount>;
+  candidatesTokensDetails?: ReadonlyArray<GoogleCloudAiplatformV1ModalityTokenCount>;
   /** Output only. The traffic type for this request. */
   trafficType?:
     | "TRAFFIC_TYPE_UNSPECIFIED"
@@ -14759,15 +14759,15 @@ export interface GoogleCloudAiplatformV1UsageMetadata {
   /** Output only. The number of tokens that were part of the model's generated "thoughts" output, if applicable. */
   thoughtsTokenCount?: number;
   /** Output only. A detailed breakdown of the token count for each modality in the cached content. */
-  cacheTokensDetails?: Array<GoogleCloudAiplatformV1ModalityTokenCount>;
+  cacheTokensDetails?: ReadonlyArray<GoogleCloudAiplatformV1ModalityTokenCount>;
   /** The total number of tokens for the entire request. This is the sum of `prompt_token_count`, `candidates_token_count`, `tool_use_prompt_token_count`, and `thoughts_token_count`. */
   totalTokenCount?: number;
   /** Output only. The number of tokens in the cached content that was used for this request. */
   cachedContentTokenCount?: number;
   /** Output only. A detailed breakdown of the token count for each modality in the prompt. */
-  promptTokensDetails?: Array<GoogleCloudAiplatformV1ModalityTokenCount>;
+  promptTokensDetails?: ReadonlyArray<GoogleCloudAiplatformV1ModalityTokenCount>;
   /** Output only. A detailed breakdown by modality of the token counts from the results of tool executions, which are provided back to the model as input. */
-  toolUsePromptTokensDetails?: Array<GoogleCloudAiplatformV1ModalityTokenCount>;
+  toolUsePromptTokensDetails?: ReadonlyArray<GoogleCloudAiplatformV1ModalityTokenCount>;
 }
 
 export const GoogleCloudAiplatformV1UsageMetadata =
@@ -14924,9 +14924,9 @@ export interface GoogleCloudAiplatformV1EvaluationConfig {
   /** Optional. Configuration options for inference generation and outputs. If not set, default generation parameters are used. */
   inferenceGenerationConfig?: GoogleCloudAiplatformV1GenerationConfig;
   /** Optional. Specifications for custom dataset-level aggregations. */
-  datasetCustomMetrics?: Array<GoogleCloudAiplatformV1DatasetCustomMetric>;
+  datasetCustomMetrics?: ReadonlyArray<GoogleCloudAiplatformV1DatasetCustomMetric>;
   /** Required. The metrics used for evaluation. */
-  metrics?: Array<GoogleCloudAiplatformV1Metric>;
+  metrics?: ReadonlyArray<GoogleCloudAiplatformV1Metric>;
   /** Required. Config for evaluation output. */
   outputConfig?: GoogleCloudAiplatformV1OutputConfig;
 }
@@ -15052,7 +15052,7 @@ export interface GoogleCloudAiplatformV1Claim {
   /** Index in the input text where the claim ends (exclusive). */
   endIndex?: number;
   /** Indexes of the facts supporting this claim. */
-  factIndexes?: Array<number>;
+  factIndexes?: ReadonlyArray<number>;
   /** Index in the input text where the claim starts (inclusive). */
   startIndex?: number;
   /** Confidence score of this corroboration. */
@@ -15071,7 +15071,7 @@ export interface GoogleCloudAiplatformV1CorroborateContentResponse {
   /** Confidence score of corroborating content. Value is [0,1] with 1 is the most confidence. */
   corroborationScore?: number;
   /** Claims that are extracted from the input content and facts that support the claims. */
-  claims?: Array<GoogleCloudAiplatformV1Claim>;
+  claims?: ReadonlyArray<GoogleCloudAiplatformV1Claim>;
 }
 
 export const GoogleCloudAiplatformV1CorroborateContentResponse =
@@ -15084,13 +15084,13 @@ export const GoogleCloudAiplatformV1CorroborateContentResponse =
 
 export interface GoogleCloudAiplatformV1CountTokensRequest {
   /** Optional. A list of `Tools` the model may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the model. */
-  tools?: Array<GoogleCloudAiplatformV1Tool>;
+  tools?: ReadonlyArray<GoogleCloudAiplatformV1Tool>;
   /** Optional. The name of the publisher model requested to serve the prediction. Format: `projects/{project}/locations/{location}/publishers/* /models/*` */
   model?: string;
   /** Optional. The instances that are the input to token counting call. Schema is identical to the prediction schema of the underlying model. */
-  instances?: Array<unknown>;
+  instances?: ReadonlyArray<unknown>;
   /** Optional. Input content. */
-  contents?: Array<GoogleCloudAiplatformV1Content>;
+  contents?: ReadonlyArray<GoogleCloudAiplatformV1Content>;
   /** Optional. The user provided system instructions for the model. Note: only text should be used in parts and content in each part will be in a separate paragraph. */
   systemInstruction?: GoogleCloudAiplatformV1Content;
   /** Optional. Generation config that the model will use to generate the response. */
@@ -15129,7 +15129,7 @@ export interface GoogleCloudAiplatformV1MetricResult {
   /** Output only. The score for the metric. Please refer to each metric's documentation for the meaning of the score. */
   score?: number;
   /** Output only. For rubric-based metrics, the verdicts for each rubric. */
-  rubricVerdicts?: Array<GoogleCloudAiplatformV1RubricVerdict>;
+  rubricVerdicts?: ReadonlyArray<GoogleCloudAiplatformV1RubricVerdict>;
   /** Output only. The explanation for the metric result. */
   explanation?: string;
 }
@@ -15185,7 +15185,7 @@ export const GoogleCloudAiplatformV1SlackSourceSlackChannelsSlackChannel =
 
 export interface GoogleCloudAiplatformV1SlackSourceSlackChannels {
   /** Required. The Slack channel IDs. */
-  channels?: Array<GoogleCloudAiplatformV1SlackSourceSlackChannelsSlackChannel>;
+  channels?: ReadonlyArray<GoogleCloudAiplatformV1SlackSourceSlackChannelsSlackChannel>;
   /** Required. The SecretManager secret version resource name (e.g. projects/{project}/secrets/{secret}/versions/{version}) storing the Slack channel access token that has access to the slack channel IDs. See: https://api.slack.com/tutorials/tracks/getting-a-token. */
   apiKeyConfig?: GoogleCloudAiplatformV1ApiAuthApiKeyConfig;
 }
@@ -15204,7 +15204,7 @@ export interface GoogleCloudAiplatformV1PurgeContextsResponse {
   /** The number of Contexts that this request deleted (or, if `force` is false, the number of Contexts that will be deleted). This can be an estimate. */
   purgeCount?: string;
   /** A sample of the Context names that will be deleted. Only populated if `force` is set to false. The maximum number of samples is 100 (it is possible to return fewer). */
-  purgeSample?: Array<string>;
+  purgeSample?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1PurgeContextsResponse =
@@ -15253,7 +15253,7 @@ export const GoogleCloudAiplatformV1DeployIndexRequest =
 
 export interface GoogleCloudAiplatformV1ModelExplanation {
   /** Output only. Aggregated attributions explaining the Model's prediction outputs over the set of instances. The attributions are grouped by outputs. For Models that predict only one output, such as regression Models that predict only one score, there is only one attibution that explains the predicted output. For Models that predict multiple outputs, such as multiclass Models that predict multiple classes, each element explains one specific item. Attribution.output_index can be used to identify which output this attribution is explaining. The baselineOutputValue, instanceOutputValue and featureAttributions fields are averaged over the test data. NOTE: Currently AutoML tabular classification Models produce only one attribution, which averages attributions over all the classes it predicts. Attribution.approximation_error is not populated. */
-  meanAttributions?: Array<GoogleCloudAiplatformV1Attribution>;
+  meanAttributions?: ReadonlyArray<GoogleCloudAiplatformV1Attribution>;
 }
 
 export const GoogleCloudAiplatformV1ModelExplanation =
@@ -15287,7 +15287,7 @@ export const GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue =
 
 export interface GoogleCloudAiplatformV1TrajectoryAnyOrderMatchResults {
   /** Output only. TrajectoryAnyOrderMatch metric values. */
-  trajectoryAnyOrderMatchMetricValues?: Array<GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue>;
+  trajectoryAnyOrderMatchMetricValues?: ReadonlyArray<GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue>;
 }
 
 export const GoogleCloudAiplatformV1TrajectoryAnyOrderMatchResults =
@@ -15388,7 +15388,7 @@ export const GoogleCloudAiplatformV1TunedModelCheckpoint =
 
 export interface GoogleCloudAiplatformV1TunedModel {
   /** Output only. The checkpoints associated with this TunedModel. This field is only populated for tuning jobs that enable intermediate checkpoints. */
-  checkpoints?: Array<GoogleCloudAiplatformV1TunedModelCheckpoint>;
+  checkpoints?: ReadonlyArray<GoogleCloudAiplatformV1TunedModelCheckpoint>;
   /** Output only. A resource name of an Endpoint. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}`. */
   endpoint?: string;
   /** Output only. The resource name of the TunedModel. Format: `projects/{project}/locations/{location}/models/{model}@{version_id}` When tuning from a base model, the version ID will be 1. For continuous tuning, if the provided tuned_model_display_name is set and different from parent model's display name, the tuned model will have a new parent model with version 1. Otherwise the version id will be incremented by 1 from the last version ID in the parent model. E.g., `projects/{project}/locations/{location}/models/{model}@{last_version_id + 1}` */
@@ -15410,7 +15410,7 @@ export interface GoogleCloudAiplatformV1TuningJob {
   /** Tuning Spec for Preference Optimization. */
   preferenceOptimizationSpec?: GoogleCloudAiplatformV1PreferenceOptimizationSpec;
   /** Output only. Evaluation runs for the Tuning Job. */
-  evaluateDatasetRuns?: Array<GoogleCloudAiplatformV1EvaluateDatasetRun>;
+  evaluateDatasetRuns?: ReadonlyArray<GoogleCloudAiplatformV1EvaluateDatasetRun>;
   /** Output only. The detailed state of the job. */
   state?:
     | "JOB_STATE_UNSPECIFIED"
@@ -15599,13 +15599,13 @@ export const GoogleCloudAiplatformV1CreateDatasetVersionOperationMetadata =
   });
 
 export interface GoogleCloudAiplatformV1SchemaPredictPredictionTftFeatureImportance {
-  contextColumns?: Array<string>;
-  attributeWeights?: Array<number>;
+  contextColumns?: ReadonlyArray<string>;
+  attributeWeights?: ReadonlyArray<number>;
   /** TFT feature importance values. Each pair for {context/horizon/attribute} should have the same shape since the weight corresponds to the column names. */
-  contextWeights?: Array<number>;
-  attributeColumns?: Array<string>;
-  horizonWeights?: Array<number>;
-  horizonColumns?: Array<string>;
+  contextWeights?: ReadonlyArray<number>;
+  attributeColumns?: ReadonlyArray<string>;
+  horizonWeights?: ReadonlyArray<number>;
+  horizonColumns?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1SchemaPredictPredictionTftFeatureImportance =
@@ -15623,13 +15623,13 @@ export const GoogleCloudAiplatformV1SchemaPredictPredictionTftFeatureImportance 
 
 export interface GoogleCloudAiplatformV1SchemaPredictPredictionTimeSeriesForecastingPredictionResult {
   /** Quantile values. */
-  quantileValues?: Array<number>;
+  quantileValues?: ReadonlyArray<number>;
   /** Only use these if TFt is enabled. */
   tftFeatureImportance?: GoogleCloudAiplatformV1SchemaPredictPredictionTftFeatureImportance;
   /** The regression value. */
   value?: number;
   /** Quantile predictions, in 1-1 correspondence with quantile_values. */
-  quantilePredictions?: Array<number>;
+  quantilePredictions?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudAiplatformV1SchemaPredictPredictionTimeSeriesForecastingPredictionResult =
@@ -15647,7 +15647,7 @@ export const GoogleCloudAiplatformV1SchemaPredictPredictionTimeSeriesForecasting
 
 export interface GoogleCloudAiplatformV1BatchCreateTensorboardRunsResponse {
   /** The created TensorboardRuns. */
-  tensorboardRuns?: Array<GoogleCloudAiplatformV1TensorboardRun>;
+  tensorboardRuns?: ReadonlyArray<GoogleCloudAiplatformV1TensorboardRun>;
 }
 
 export const GoogleCloudAiplatformV1BatchCreateTensorboardRunsResponse =
@@ -15661,15 +15661,15 @@ export const GoogleCloudAiplatformV1BatchCreateTensorboardRunsResponse =
 
 export interface GoogleCloudAiplatformV1PythonPackageSpec {
   /** Command line arguments to be passed to the Python task. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Required. The Python module name to run after installing the packages. */
   pythonModule?: string;
   /** Required. The URI of a container image in Artifact Registry that will run the provided Python package. Vertex AI provides a wide range of executor images with pre-installed packages to meet users' various use cases. See the list of [pre-built containers for training](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers). You must use an image from this list. */
   executorImageUri?: string;
   /** Required. The Google Cloud Storage location of the Python package files which are the training program and its dependent packages. The maximum number of package URIs is 100. */
-  packageUris?: Array<string>;
+  packageUris?: ReadonlyArray<string>;
   /** Environment variables to be passed to the python module. Maximum limit is 100. */
-  env?: Array<GoogleCloudAiplatformV1EnvVar>;
+  env?: ReadonlyArray<GoogleCloudAiplatformV1EnvVar>;
 }
 
 export const GoogleCloudAiplatformV1PythonPackageSpec =
@@ -15699,11 +15699,11 @@ export const GoogleCloudAiplatformV1NfsMount =
 
 export interface GoogleCloudAiplatformV1ContainerSpec {
   /** The command to be invoked when the container is started. It overrides the entrypoint instruction in Dockerfile when provided. */
-  command?: Array<string>;
+  command?: ReadonlyArray<string>;
   /** Environment variables to be passed to the container. Maximum limit is 100. */
-  env?: Array<GoogleCloudAiplatformV1EnvVar>;
+  env?: ReadonlyArray<GoogleCloudAiplatformV1EnvVar>;
   /** The arguments to be passed when starting the container. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Required. The URI of a container image in the Container Registry that is to be run on each worker replica. */
   imageUri?: string;
 }
@@ -15722,13 +15722,13 @@ export interface GoogleCloudAiplatformV1WorkerPoolSpec {
   /** The Python packaged task. */
   pythonPackageSpec?: GoogleCloudAiplatformV1PythonPackageSpec;
   /** Optional. List of NFS mount spec. */
-  nfsMounts?: Array<GoogleCloudAiplatformV1NfsMount>;
+  nfsMounts?: ReadonlyArray<GoogleCloudAiplatformV1NfsMount>;
   /** Optional. The number of worker replicas to use for this worker pool. */
   replicaCount?: string;
   /** The custom container task. */
   containerSpec?: GoogleCloudAiplatformV1ContainerSpec;
   /** Optional. List of Lustre mounts. */
-  lustreMounts?: Array<GoogleCloudAiplatformV1LustreMount>;
+  lustreMounts?: ReadonlyArray<GoogleCloudAiplatformV1LustreMount>;
   /** Disk spec. */
   diskSpec?: GoogleCloudAiplatformV1DiskSpec;
 }
@@ -15779,7 +15779,7 @@ export const GoogleCloudAiplatformV1Scheduling =
 
 export interface GoogleCloudAiplatformV1CustomJobSpec {
   /** Required. The spec of the worker pools including machine type and Docker image. All worker pools except the first one are optional and can be skipped by providing an empty value. */
-  workerPoolSpecs?: Array<GoogleCloudAiplatformV1WorkerPoolSpec>;
+  workerPoolSpecs?: ReadonlyArray<GoogleCloudAiplatformV1WorkerPoolSpec>;
   /** The ID of the location to store protected artifacts. e.g. us-central1. Populate only when the location is different than CustomJob location. List of supported locations: https://cloud.google.com/vertex-ai/docs/general/locations */
   protectedArtifactLocationId?: string;
   /** Scheduling options for a CustomJob. */
@@ -15799,13 +15799,13 @@ export interface GoogleCloudAiplatformV1CustomJobSpec {
   /** Optional. The ID of the PersistentResource in the same Project and Location which to run If this is specified, the job will be run on existing machines held by the PersistentResource instead of on-demand short-live machines. The network and CMEK configs on the job should be consistent with those on the PersistentResource, otherwise, the job will be rejected. */
   persistentResourceId?: string;
   /** Optional. A list of names for the reserved ip ranges under the VPC network that can be used for this job. If set, we will deploy the job within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range']. */
-  reservedIpRanges?: Array<string>;
+  reservedIpRanges?: ReadonlyArray<string>;
   /** The Cloud Storage location to store the output of this CustomJob or HyperparameterTuningJob. For HyperparameterTuningJob, the baseOutputDirectory of each child CustomJob backing a Trial is set to a subdirectory of name id under its parent HyperparameterTuningJob's baseOutputDirectory. The following Vertex AI environment variables will be passed to containers or python modules when this field is set: For CustomJob: * AIP_MODEL_DIR = `/model/` * AIP_CHECKPOINT_DIR = `/checkpoints/` * AIP_TENSORBOARD_LOG_DIR = `/logs/` For CustomJob backing a Trial of HyperparameterTuningJob: * AIP_MODEL_DIR = `//model/` * AIP_CHECKPOINT_DIR = `//checkpoints/` * AIP_TENSORBOARD_LOG_DIR = `//logs/` */
   baseOutputDirectory?: GoogleCloudAiplatformV1GcsDestination;
   /** Specifies the service account for workload run-as account. Users submitting jobs must have act-as permission on this run-as account. If unspecified, the [Vertex AI Custom Code Service Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents) for the CustomJob's project is used. */
   serviceAccount?: string;
   /** Optional. The name of the Model resources for which to generate a mapping to artifact URIs. Applicable only to some of the Google-provided custom jobs. Format: `projects/{project}/locations/{location}/models/{model}` In order to retrieve a specific version of the model, also provide the version ID or version alias. Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden` If no version ID or alias is specified, the "default" version will be returned. The "default" version alias is created for the first version of the model, and can be moved to other versions later on. There will be exactly one default version. */
-  models?: Array<string>;
+  models?: ReadonlyArray<string>;
   /** Optional. The Experiment Run associated with this job. Format: `projects/{project}/locations/{location}/metadataStores/{metadataStores}/contexts/{experiment-name}-{experiment-run-name}` */
   experimentRun?: string;
 }
@@ -15933,7 +15933,7 @@ export interface GoogleCloudAiplatformV1EvaluationRequest {
   /** Optional. Named groups of rubrics associated with this prompt. The key is a user-defined name for the rubric group. */
   rubrics?: Record<string, GoogleCloudAiplatformV1RubricGroup>;
   /** Optional. Responses from model under test and other baseline models for comparison. */
-  candidateResponses?: Array<GoogleCloudAiplatformV1CandidateResponse>;
+  candidateResponses?: ReadonlyArray<GoogleCloudAiplatformV1CandidateResponse>;
 }
 
 export const GoogleCloudAiplatformV1EvaluationRequest =
@@ -15954,7 +15954,7 @@ export interface GoogleCloudAiplatformV1CandidateResult {
   /** Optional. Additional results for the metric. */
   additionalResults?: unknown;
   /** Optional. The rubric verdicts for the metric. */
-  rubricVerdicts?: Array<GoogleCloudAiplatformV1RubricVerdict>;
+  rubricVerdicts?: ReadonlyArray<GoogleCloudAiplatformV1RubricVerdict>;
   /** Required. The candidate that is being evaluated. The value is the same as the candidate name in the EvaluationRequest. */
   candidate?: string;
   /** Optional. The explanation for the metric. */
@@ -15987,7 +15987,7 @@ export interface GoogleCloudAiplatformV1EvaluationResult {
   /** Optional. Metadata about the evaluation result. */
   metadata?: unknown;
   /** Optional. The results for the metric. */
-  candidateResults?: Array<GoogleCloudAiplatformV1CandidateResult>;
+  candidateResults?: ReadonlyArray<GoogleCloudAiplatformV1CandidateResult>;
 }
 
 export const GoogleCloudAiplatformV1EvaluationResult =
@@ -16049,7 +16049,7 @@ export const GoogleCloudAiplatformV1EvaluationItem =
 
 export interface GoogleCloudAiplatformV1ListEvaluationItemsResponse {
   /** List of EvaluationItems in the requested page. */
-  evaluationItems?: Array<GoogleCloudAiplatformV1EvaluationItem>;
+  evaluationItems?: ReadonlyArray<GoogleCloudAiplatformV1EvaluationItem>;
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -16095,11 +16095,11 @@ export const GoogleCloudAiplatformV1DeployModelOperationMetadata =
 
 export interface GoogleCloudAiplatformV1ComputeTokensRequest {
   /** Optional. The instances that are the input to token computing API call. Schema is identical to the prediction schema of the text model, even for the non-text models, like chat models, or Codey models. */
-  instances?: Array<unknown>;
+  instances?: ReadonlyArray<unknown>;
   /** Optional. The name of the publisher model requested to serve the prediction. Format: projects/{project}/locations/{location}/publishers/* /models/* */
   model?: string;
   /** Optional. Input content. */
-  contents?: Array<GoogleCloudAiplatformV1Content>;
+  contents?: ReadonlyArray<GoogleCloudAiplatformV1Content>;
 }
 
 export const GoogleCloudAiplatformV1ComputeTokensRequest =
@@ -16161,7 +16161,7 @@ export interface GoogleCloudAiplatformV1WriteTensorboardRunDataRequest {
   /** Required. The resource name of the TensorboardRun to write data to. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}` */
   tensorboardRun?: string;
   /** Required. The TensorboardTimeSeries data to write. Values with in a time series are indexed by their step value. Repeated writes to the same step will overwrite the existing value for that step. The upper limit of data points per write request is 5000. */
-  timeSeriesData?: Array<GoogleCloudAiplatformV1TimeSeriesData>;
+  timeSeriesData?: ReadonlyArray<GoogleCloudAiplatformV1TimeSeriesData>;
 }
 
 export const GoogleCloudAiplatformV1WriteTensorboardRunDataRequest =
@@ -16176,7 +16176,7 @@ export const GoogleCloudAiplatformV1WriteTensorboardRunDataRequest =
 
 export interface GoogleCloudAiplatformV1WriteTensorboardExperimentDataRequest {
   /** Required. Requests containing per-run TensorboardTimeSeries data to write. */
-  writeRunDataRequests?: Array<GoogleCloudAiplatformV1WriteTensorboardRunDataRequest>;
+  writeRunDataRequests?: ReadonlyArray<GoogleCloudAiplatformV1WriteTensorboardRunDataRequest>;
 }
 
 export const GoogleCloudAiplatformV1WriteTensorboardExperimentDataRequest =
@@ -16319,7 +16319,7 @@ export interface GoogleCloudAiplatformV1AugmentPromptRequest {
   /** Optional. Retrieves contexts from the Vertex RagStore. */
   vertexRagStore?: GoogleCloudAiplatformV1VertexRagStore;
   /** Optional. Input content to augment, only text format is supported for now. */
-  contents?: Array<GoogleCloudAiplatformV1Content>;
+  contents?: ReadonlyArray<GoogleCloudAiplatformV1Content>;
   /** Optional. Metadata of the backend deployed model. */
   model?: GoogleCloudAiplatformV1AugmentPromptRequestModel;
 }
@@ -16457,7 +16457,7 @@ export interface GoogleCloudAiplatformV1SchemaTrainingjobDefinitionHierarchyConf
   /** The weight of the loss for predictions aggregated over time series in the same group. */
   groupTotalWeight?: number;
   /** A list of time series attribute column names that define the time series hierarchy. Only one level of hierarchy is supported, ex. 'region' for a hierarchy of stores or 'department' for a hierarchy of products. If multiple columns are specified, time series will be grouped by their combined values, ex. ('blue', 'large') for 'color' and 'size', up to 5 columns are accepted. If no group columns are specified, all time series are considered to be part of the same group. */
-  groupColumns?: Array<string>;
+  groupColumns?: ReadonlyArray<string>;
   /** The weight of the loss for predictions aggregated over both the horizon and time series in the same hierarchy group. */
   groupTemporalTotalWeight?: number;
 }
@@ -16475,7 +16475,7 @@ export const GoogleCloudAiplatformV1SchemaTrainingjobDefinitionHierarchyConfig =
 
 export interface GoogleCloudAiplatformV1SchemaTrainingjobDefinitionAutoMlForecastingInputs {
   /** Each transformation will apply transform function to given input column. And the result will be used for training. When creating transformation for BigQuery Struct column, the column should be flattened using "." as the delimiter. */
-  transformations?: Array<GoogleCloudAiplatformV1SchemaTrainingjobDefinitionAutoMlForecastingInputsTransformation>;
+  transformations?: ReadonlyArray<GoogleCloudAiplatformV1SchemaTrainingjobDefinitionAutoMlForecastingInputsTransformation>;
   /** Config containing strategy for generating sliding windows. */
   windowConfig?: GoogleCloudAiplatformV1SchemaTrainingjobDefinitionWindowConfig;
   /** Configuration that defines the hierarchical relationship of time series and parameters for hierarchical forecasting strategies. */
@@ -16487,9 +16487,9 @@ export interface GoogleCloudAiplatformV1SchemaTrainingjobDefinitionAutoMlForecas
   /** Expected difference in time granularity between rows in the data. */
   dataGranularity?: GoogleCloudAiplatformV1SchemaTrainingjobDefinitionAutoMlForecastingInputsGranularity;
   /** Names of columns that are available and provided when a forecast is requested. These columns contain information for the given entity (identified by the time_series_identifier_column column) that is known at forecast. For example, predicted weather for a specific day. */
-  availableAtForecastColumns?: Array<string>;
+  availableAtForecastColumns?: ReadonlyArray<string>;
   /** Quantiles to use for minimize-quantile-loss `optimization_objective`, or for probabilistic inference. Up to 5 quantiles are allowed of values between 0 and 1, exclusive. Required if the value of optimization_objective is minimize-quantile-loss. Represents the percent quantiles to use for that objective. Quantiles must be unique. */
-  quantiles?: Array<number>;
+  quantiles?: ReadonlyArray<number>;
   /** The name of the column that identifies time order in the time series. This column must be available at forecast. */
   timeColumn?: string;
   /** Column name that should be used as the weight column. Higher values in this column give more importance to the row during model training. The column must have numeric values between 0 and 10000 inclusively; 0 means the row is ignored for training. If weight column field is not set, then all rows are assumed to have equal weight of 1. */
@@ -16497,17 +16497,17 @@ export interface GoogleCloudAiplatformV1SchemaTrainingjobDefinitionAutoMlForecas
   /** Validation options for the data validation component. The available options are: * "fail-pipeline" - default, will validate against the validation and fail the pipeline if it fails. * "ignore-validation" - ignore the results of the validation and continue */
   validationOptions?: string;
   /** Additional experiment flags for the time series forcasting training. */
-  additionalExperiments?: Array<string>;
+  additionalExperiments?: ReadonlyArray<string>;
   /** Names of columns that are unavailable when a forecast is requested. This column contains information for the given entity (identified by the time_series_identifier_column) that is unknown before the forecast For example, actual weather on a given day. */
-  unavailableAtForecastColumns?: Array<string>;
+  unavailableAtForecastColumns?: ReadonlyArray<string>;
   /** Column names that should be used as attribute columns. The value of these columns does not vary as a function of time. For example, store ID or item color. */
-  timeSeriesAttributeColumns?: Array<string>;
+  timeSeriesAttributeColumns?: ReadonlyArray<string>;
   /** Objective function the model is optimizing towards. The training process creates a model that optimizes the value of the objective function over the validation set. The supported optimization objectives: * "minimize-rmse" (default) - Minimize root-mean-squared error (RMSE). * "minimize-mae" - Minimize mean-absolute error (MAE). * "minimize-rmsle" - Minimize root-mean-squared log error (RMSLE). * "minimize-rmspe" - Minimize root-mean-squared percentage error (RMSPE). * "minimize-wape-mae" - Minimize the combination of weighted absolute percentage error (WAPE) and mean-absolute-error (MAE). * "minimize-quantile-loss" - Minimize the quantile loss at the quantiles defined in `quantiles`. * "minimize-mape" - Minimize the mean absolute percentage error. */
   optimizationObjective?: string;
   /** The amount of time into the future for which forecasted values for the target are returned. Expressed in number of units defined by the `data_granularity` field. */
   forecastHorizon?: string;
   /** The geographical region based on which the holiday effect is applied in modeling by adding holiday categorical array feature that include all holidays matching the date. This option only allowed when data_granularity is day. By default, holiday effect modeling is disabled. To turn it on, specify the holiday region using this option. */
-  holidayRegions?: Array<string>;
+  holidayRegions?: ReadonlyArray<string>;
   /** The name of the column that identifies the time series. */
   timeSeriesIdentifierColumn?: string;
   /** The name of the column that the Model is to predict values for. This column must be unavailable at forecast. */
@@ -16582,7 +16582,7 @@ export interface GoogleCloudAiplatformV1ListArtifactsResponse {
   /** A token, which can be sent as ListArtifactsRequest.page_token to retrieve the next page. If this field is not populated, there are no subsequent pages. */
   nextPageToken?: string;
   /** The Artifacts retrieved from the MetadataStore. */
-  artifacts?: Array<GoogleCloudAiplatformV1Artifact>;
+  artifacts?: ReadonlyArray<GoogleCloudAiplatformV1Artifact>;
 }
 
 export const GoogleCloudAiplatformV1ListArtifactsResponse =
@@ -16615,7 +16615,7 @@ export interface GoogleIamV1Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -16626,7 +16626,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleIamV1Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<GoogleIamV1Binding>;
+  bindings?: ReadonlyArray<GoogleIamV1Binding>;
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
@@ -16730,7 +16730,7 @@ export const GoogleCloudAiplatformV1GenerateVideoResponseVideo =
 
 export interface GoogleCloudAiplatformV1ListPipelineJobsResponse {
   /** List of PipelineJobs in the requested page. */
-  pipelineJobs?: Array<GoogleCloudAiplatformV1PipelineJob>;
+  pipelineJobs?: ReadonlyArray<GoogleCloudAiplatformV1PipelineJob>;
   /** A token to retrieve the next page of results. Pass to ListPipelineJobsRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -16747,7 +16747,7 @@ export const GoogleCloudAiplatformV1ListPipelineJobsResponse =
 
 export interface GoogleCloudAiplatformV1SchemaTimeSeriesDatasetMetadataGcsSource {
   /** Cloud Storage URI of one or more files. Only CSV files are supported. The first line of the CSV file is used as the header. If there are multiple files, the header is the first line of the lexicographically first file, the other files must either contain the exact same header or omit the header. */
-  uri?: Array<string>;
+  uri?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1SchemaTimeSeriesDatasetMetadataGcsSource =
@@ -16766,7 +16766,7 @@ export interface GoogleCloudAiplatformV1EvaluateDatasetRequest {
   /** Required. Config for evaluation output. */
   outputConfig?: GoogleCloudAiplatformV1OutputConfig;
   /** Required. The metrics used for evaluation. */
-  metrics?: Array<GoogleCloudAiplatformV1Metric>;
+  metrics?: ReadonlyArray<GoogleCloudAiplatformV1Metric>;
   /** Optional. Autorater config used for evaluation. Currently only publisher Gemini models are supported. Format: `projects/{PROJECT}/locations/{LOCATION}/publishers/google/models/{MODEL}.` */
   autoraterConfig?: GoogleCloudAiplatformV1AutoraterConfig;
 }
@@ -16842,7 +16842,7 @@ export const GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceRe
 
 export interface GoogleCloudAiplatformV1PublisherModelCallToActionOpenNotebooks {
   /** Required. Regional resource references to notebooks. */
-  notebooks?: Array<GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences>;
+  notebooks?: ReadonlyArray<GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences>;
 }
 
 export const GoogleCloudAiplatformV1PublisherModelCallToActionOpenNotebooks =
@@ -16929,7 +16929,7 @@ export interface GoogleCloudAiplatformV1SchemaModelevaluationMetricsVideoActionM
   /** This VideoActionMetrics is calculated based on this prediction window length. If the predicted action's timestamp is inside the time window whose center is the ground truth action's timestamp with this specific length, the prediction result is treated as a true positive. */
   precisionWindowLength?: string;
   /** Metrics for each label-match confidence_threshold from 0.05,0.10,...,0.95,0.96,0.97,0.98,0.99. */
-  confidenceMetrics?: Array<GoogleCloudAiplatformV1SchemaModelevaluationMetricsVideoActionMetricsConfidenceMetrics>;
+  confidenceMetrics?: ReadonlyArray<GoogleCloudAiplatformV1SchemaModelevaluationMetricsVideoActionMetricsConfidenceMetrics>;
 }
 
 export const GoogleCloudAiplatformV1SchemaModelevaluationMetricsVideoActionMetrics =
@@ -16974,7 +16974,7 @@ export interface GoogleCloudAiplatformV1ErrorAnalysisAnnotation {
   /** The outlier score of this annotated item. Usually defined as the min of all distances from attributed items. */
   outlierScore?: number;
   /** Attributed items for a given annotation, typically representing neighbors from the training sets constrained by the query type. */
-  attributedItems?: Array<GoogleCloudAiplatformV1ErrorAnalysisAnnotationAttributedItem>;
+  attributedItems?: ReadonlyArray<GoogleCloudAiplatformV1ErrorAnalysisAnnotationAttributedItem>;
 }
 
 export const GoogleCloudAiplatformV1ErrorAnalysisAnnotation =
@@ -17006,15 +17006,15 @@ export const GoogleCloudAiplatformV1EvaluatedAnnotationExplanation =
 
 export interface GoogleCloudAiplatformV1EvaluatedAnnotation {
   /** Output only. The ground truth Annotations, i.e. the Annotations that exist in the test data the Model is evaluated on. For true positive, there is one and only one ground truth annotation, which matches the only prediction in predictions. For false positive, there are zero or more ground truth annotations that are similar to the only prediction in predictions, but not enough for a match. For false negative, there is one and only one ground truth annotation, which doesn't match any predictions created by the model. The schema of the ground truth is stored in ModelEvaluation.annotation_schema_uri */
-  groundTruths?: Array<unknown>;
+  groundTruths?: ReadonlyArray<unknown>;
   /** Output only. The model predicted annotations. For true positive, there is one and only one prediction, which matches the only one ground truth annotation in ground_truths. For false positive, there is one and only one prediction, which doesn't match any ground truth annotation of the corresponding data_item_view_id. For false negative, there are zero or more predictions which are similar to the only ground truth annotation in ground_truths but not enough for a match. The schema of the prediction is stored in ModelEvaluation.annotation_schema_uri */
-  predictions?: Array<unknown>;
+  predictions?: ReadonlyArray<unknown>;
   /** Annotations of model error analysis results. */
-  errorAnalysisAnnotations?: Array<GoogleCloudAiplatformV1ErrorAnalysisAnnotation>;
+  errorAnalysisAnnotations?: ReadonlyArray<GoogleCloudAiplatformV1ErrorAnalysisAnnotation>;
   /** Output only. The data item payload that the Model predicted this EvaluatedAnnotation on. */
   dataItemPayload?: unknown;
   /** Explanations of predictions. Each element of the explanations indicates the explanation for one explanation Method. The attributions list in the EvaluatedAnnotationExplanation.explanation object corresponds to the predictions list. For example, the second element in the attributions list explains the second element in the predictions list. */
-  explanations?: Array<GoogleCloudAiplatformV1EvaluatedAnnotationExplanation>;
+  explanations?: ReadonlyArray<GoogleCloudAiplatformV1EvaluatedAnnotationExplanation>;
   /** Output only. ID of the EvaluatedDataItemView under the same ancestor ModelEvaluation. The EvaluatedDataItemView consists of all ground truths and predictions on data_item_payload. */
   evaluatedDataItemViewId?: string;
   /** Output only. Type of the EvaluatedAnnotation. */
@@ -17043,7 +17043,7 @@ export const GoogleCloudAiplatformV1EvaluatedAnnotation =
 
 export interface GoogleCloudAiplatformV1SharePointSources {
   /** The SharePoint sources. */
-  sharePointSources?: Array<GoogleCloudAiplatformV1SharePointSourcesSharePointSource>;
+  sharePointSources?: ReadonlyArray<GoogleCloudAiplatformV1SharePointSourcesSharePointSource>;
 }
 
 export const GoogleCloudAiplatformV1SharePointSources =
@@ -17055,7 +17055,7 @@ export const GoogleCloudAiplatformV1SharePointSources =
 
 export interface GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest {
   /** Required. The request message specifying the TensorboardTimeSeries to create. A maximum of 1000 TensorboardTimeSeries can be created in a batch. */
-  requests?: Array<GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequest>;
+  requests?: ReadonlyArray<GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequest>;
 }
 
 export const GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest =
@@ -17090,7 +17090,7 @@ export interface GoogleCloudAiplatformV1FindNeighborsResponseNearestNeighbors {
   /** The ID of the query datapoint. */
   id?: string;
   /** All its neighbors. */
-  neighbors?: Array<GoogleCloudAiplatformV1FindNeighborsResponseNeighbor>;
+  neighbors?: ReadonlyArray<GoogleCloudAiplatformV1FindNeighborsResponseNeighbor>;
 }
 
 export const GoogleCloudAiplatformV1FindNeighborsResponseNearestNeighbors =
@@ -17128,7 +17128,7 @@ export const GoogleCloudAiplatformV1WriteTensorboardExperimentDataResponse =
 
 export interface GoogleCloudAiplatformV1PublisherModelCallToActionOpenFineTuningPipelines {
   /** Required. Regional resource references to fine tuning pipelines. */
-  fineTuningPipelines?: Array<GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences>;
+  fineTuningPipelines?: ReadonlyArray<GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences>;
 }
 
 export const GoogleCloudAiplatformV1PublisherModelCallToActionOpenFineTuningPipelines =
@@ -17145,7 +17145,7 @@ export const GoogleCloudAiplatformV1PublisherModelCallToActionOpenFineTuningPipe
 
 export interface GoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex {
   /** Optional. One click deployment configurations. */
-  multiDeployVertex?: Array<GoogleCloudAiplatformV1PublisherModelCallToActionDeploy>;
+  multiDeployVertex?: ReadonlyArray<GoogleCloudAiplatformV1PublisherModelCallToActionDeploy>;
 }
 
 export const GoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex =
@@ -17161,7 +17161,7 @@ export interface GoogleCloudAiplatformV1PublisherModelCallToActionViewRestApi {
   /** Required. The title of the view rest API. */
   title?: string;
   /** Required. */
-  documentations?: Array<GoogleCloudAiplatformV1PublisherModelDocumentation>;
+  documentations?: ReadonlyArray<GoogleCloudAiplatformV1PublisherModelDocumentation>;
 }
 
 export const GoogleCloudAiplatformV1PublisherModelCallToActionViewRestApi =
@@ -17176,7 +17176,7 @@ export const GoogleCloudAiplatformV1PublisherModelCallToActionViewRestApi =
 
 export interface GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke {
   /** Optional. GKE deployment configuration in yaml format. */
-  gkeYamlConfigs?: Array<string>;
+  gkeYamlConfigs?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke =
@@ -17343,7 +17343,7 @@ export interface GoogleCloudAiplatformV1DataLabelingJob {
   /** The labels with user-defined metadata to organize your DataLabelingJobs. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable. Following system labels exist for each DataLabelingJob: * "aiplatform.googleapis.com/schema": output only, its value is the inputs_schema's title. */
   labels?: Record<string, string>;
   /** The SpecialistPools' resource names associated with this job. */
-  specialistPools?: Array<string>;
+  specialistPools?: ReadonlyArray<string>;
   /** Required. Points to a YAML file stored on Google Cloud Storage describing the config for a specific type of DataLabelingJob. The schema files that can be used here are found in the https://storage.googleapis.com/google-cloud-aiplatform bucket in the /schema/datalabelingjob/inputs/ folder. */
   inputsSchemaUri?: string;
   /** Parameters that configure the active learning pipeline. Active learning will label the data incrementally via several iterations. For every iteration, it will select a batch of data based on the sampling strategy. */
@@ -17355,7 +17355,7 @@ export interface GoogleCloudAiplatformV1DataLabelingJob {
   /** Required. Number of labelers to work on each DataItem. */
   labelerCount?: number;
   /** Required. Dataset resource names. Right now we only support labeling from a single Dataset. Format: `projects/{project}/locations/{location}/datasets/{dataset}` */
-  datasets?: Array<string>;
+  datasets?: ReadonlyArray<string>;
   /** Output only. Timestamp when this DataLabelingJob was updated most recently. */
   updateTime?: string;
   /** Output only. DataLabelingJob errors. It is only populated when job's state is `JOB_STATE_FAILED` or `JOB_STATE_CANCELLED`. */
@@ -17419,7 +17419,7 @@ export interface GoogleCloudAiplatformV1ListDataLabelingJobsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of DataLabelingJobs that matches the specified filter in the request. */
-  dataLabelingJobs?: Array<GoogleCloudAiplatformV1DataLabelingJob>;
+  dataLabelingJobs?: ReadonlyArray<GoogleCloudAiplatformV1DataLabelingJob>;
 }
 
 export const GoogleCloudAiplatformV1ListDataLabelingJobsResponse =
@@ -17477,7 +17477,7 @@ export const GoogleCloudAiplatformV1RagContextsContext =
 
 export interface GoogleCloudAiplatformV1ExportDataResponse {
   /** All of the files that are exported in this export operation. For custom code training export, only three (training, validation and test) Cloud Storage paths in wildcard format are populated (for example, gs://.../training-*). */
-  exportedFiles?: Array<string>;
+  exportedFiles?: ReadonlyArray<string>;
   /** Only present for custom code training export use case. Records data stats, i.e., train/validation/test item/annotation counts calculated during the export operation. */
   dataStats?: GoogleCloudAiplatformV1ModelDataStats;
 }
@@ -17517,7 +17517,7 @@ export interface GoogleCloudAiplatformV1SchemaModelevaluationMetricsTrackMetrics
   /** The mean mismatch rate over all confidence thresholds. */
   meanMismatchRate?: number;
   /** Metrics for each label-match `confidenceThreshold` from 0.05,0.10,...,0.95,0.96,0.97,0.98,0.99. Precision-recall curve is derived from them. */
-  confidenceMetrics?: Array<GoogleCloudAiplatformV1SchemaModelevaluationMetricsTrackMetricsConfidenceMetrics>;
+  confidenceMetrics?: ReadonlyArray<GoogleCloudAiplatformV1SchemaModelevaluationMetricsTrackMetricsConfidenceMetrics>;
   /** The mean average precision over all confidence thresholds. */
   meanTrackingAveragePrecision?: number;
   /** The intersection-over-union threshold value between bounding boxes across frames used to compute this metric entry. */
@@ -17550,7 +17550,7 @@ export interface GoogleCloudAiplatformV1SchemaModelevaluationMetricsVideoObjectT
   /** UNIMPLEMENTED. The total number of bounding boxes (i.e. summed over all frames) the ground truth used to create this evaluation had. */
   evaluatedBoundingBoxCount?: number;
   /** UNIMPLEMENTED. The tracks match metrics for each intersection-over-union threshold 0.05,0.10,...,0.95,0.96,0.97,0.98,0.99 and each label confidence threshold 0.05,0.10,...,0.95,0.96,0.97,0.98,0.99 pair. */
-  trackMetrics?: Array<GoogleCloudAiplatformV1SchemaModelevaluationMetricsTrackMetrics>;
+  trackMetrics?: ReadonlyArray<GoogleCloudAiplatformV1SchemaModelevaluationMetricsTrackMetrics>;
   /** UNIMPLEMENTED. The total number of tracks (i.e. as seen across all frames) the ground truth used to create this evaluation had. */
   evaluatedTrackCount?: number;
   /** The single metric for bounding boxes evaluation: the `meanAveragePrecision` averaged over all `boundingBoxMetrics`. */
@@ -17560,7 +17560,7 @@ export interface GoogleCloudAiplatformV1SchemaModelevaluationMetricsVideoObjectT
   /** UNIMPLEMENTED. The number of video frames used to create this evaluation. */
   evaluatedFrameCount?: number;
   /** The bounding boxes match metrics for each intersection-over-union threshold 0.05,0.10,...,0.95,0.96,0.97,0.98,0.99 and each label confidence threshold 0.05,0.10,...,0.95,0.96,0.97,0.98,0.99 pair. */
-  boundingBoxMetrics?: Array<GoogleCloudAiplatformV1SchemaModelevaluationMetricsBoundingBoxMetrics>;
+  boundingBoxMetrics?: ReadonlyArray<GoogleCloudAiplatformV1SchemaModelevaluationMetricsBoundingBoxMetrics>;
 }
 
 export const GoogleCloudAiplatformV1SchemaModelevaluationMetricsVideoObjectTrackingMetrics =
@@ -17698,7 +17698,7 @@ export const GoogleCloudAiplatformV1DataItem =
 
 export interface GoogleCloudAiplatformV1DataItemView {
   /** The Annotations on the DataItem. If too many Annotations should be returned for the DataItem, this field will be truncated per annotations_limit in request. If it was, then the has_truncated_annotations will be set to true. */
-  annotations?: Array<GoogleCloudAiplatformV1Annotation>;
+  annotations?: ReadonlyArray<GoogleCloudAiplatformV1Annotation>;
   /** True if and only if the Annotations field has been truncated. It happens if more Annotations for this DataItem met the request's annotation_filter than are allowed to be returned by annotations_limit. Note that if Annotations field is not being returned due to field mask, then this field will not be set to true no matter how many Annotations are there. */
   hasTruncatedAnnotations?: boolean;
   /** The DataItem. */
@@ -17716,7 +17716,7 @@ export const GoogleCloudAiplatformV1DataItemView =
 
 export interface GoogleCloudAiplatformV1SearchDataItemsResponse {
   /** The DataItemViews read. */
-  dataItemViews?: Array<GoogleCloudAiplatformV1DataItemView>;
+  dataItemViews?: ReadonlyArray<GoogleCloudAiplatformV1DataItemView>;
   /** A token to retrieve next page of results. Pass to SearchDataItemsRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -17816,7 +17816,7 @@ export interface GoogleCloudAiplatformV1ListFeatureOnlineStoresResponse {
   /** A token, which can be sent as ListFeatureOnlineStoresRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** The FeatureOnlineStores matching the request. */
-  featureOnlineStores?: Array<GoogleCloudAiplatformV1FeatureOnlineStore>;
+  featureOnlineStores?: ReadonlyArray<GoogleCloudAiplatformV1FeatureOnlineStore>;
 }
 
 export const GoogleCloudAiplatformV1ListFeatureOnlineStoresResponse =
@@ -17869,7 +17869,7 @@ export interface GoogleCloudAiplatformV1SchemaPromptSpecAppBuilderData {
   /** Serialized state of the code repository. This string will typically contain a JSON representation of the UI's CodeRepositoryService state (files, folders, content, and any metadata). The UI is responsible for serialization and deserialization. */
   codeRepositoryState?: string;
   /** Linked resources attached to the application by the user. */
-  linkedResources?: Array<GoogleCloudAiplatformV1SchemaPromptSpecAppBuilderDataLinkedResource>;
+  linkedResources?: ReadonlyArray<GoogleCloudAiplatformV1SchemaPromptSpecAppBuilderDataLinkedResource>;
 }
 
 export const GoogleCloudAiplatformV1SchemaPromptSpecAppBuilderData =
@@ -18076,7 +18076,7 @@ export const GoogleCloudAiplatformV1FeatureGroup =
 
 export interface GoogleCloudAiplatformV1ListFeatureGroupsResponse {
   /** The FeatureGroups matching the request. */
-  featureGroups?: Array<GoogleCloudAiplatformV1FeatureGroup>;
+  featureGroups?: ReadonlyArray<GoogleCloudAiplatformV1FeatureGroup>;
   /** A token, which can be sent as ListFeatureGroupsRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -18129,7 +18129,7 @@ export interface GoogleCloudAiplatformV1Memory {
   /** Optional. Represents the description of the Memory. */
   description?: string;
   /** Optional. Represents the Topics of the Memory. */
-  topics?: Array<GoogleCloudAiplatformV1MemoryTopicId>;
+  topics?: ReadonlyArray<GoogleCloudAiplatformV1MemoryTopicId>;
   /** Optional. Represents user-provided metadata for the Memory. This information was provided when creating, updating, or generating the Memory. It was not generated by Memory Bank. */
   metadata?: Record<string, GoogleCloudAiplatformV1MemoryMetadataValue>;
 }
@@ -18175,7 +18175,7 @@ export const GoogleCloudAiplatformV1RetrieveMemoriesResponseRetrievedMemory =
 
 export interface GoogleCloudAiplatformV1RetrieveMemoriesResponse {
   /** The retrieved memories. */
-  retrievedMemories?: Array<GoogleCloudAiplatformV1RetrieveMemoriesResponseRetrievedMemory>;
+  retrievedMemories?: ReadonlyArray<GoogleCloudAiplatformV1RetrieveMemoriesResponseRetrievedMemory>;
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. This token is not set if similarity search was used for retrieval. */
   nextPageToken?: string;
 }
@@ -18210,7 +18210,7 @@ export const GoogleCloudAiplatformV1TunedModelRef =
 
 export interface GoogleCloudAiplatformV1SchemaPromptSpecInteractionData {
   /** Optional. Lists interaction IDs associated with the prompt. This maps 1:1 to PromptMessage.contents. If InteractionData is present, every prompt message has an interaction ID. */
-  interactionIds?: Array<string>;
+  interactionIds?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1SchemaPromptSpecInteractionData =
@@ -18228,15 +18228,15 @@ export interface GoogleCloudAiplatformV1SchemaPromptSpecStructuredPrompt {
   /** Data for interaction use case. */
   interactionData?: GoogleCloudAiplatformV1SchemaPromptSpecInteractionData;
   /** Preamble: The input test data for prediction. Each PartList in this field represents one text-only input set for a single model request. */
-  predictionInputs?: Array<GoogleCloudAiplatformV1SchemaPromptSpecPartList>;
+  predictionInputs?: ReadonlyArray<GoogleCloudAiplatformV1SchemaPromptSpecPartList>;
   /** Preamble: The output prefixes before each example output. */
-  outputPrefixes?: Array<string>;
+  outputPrefixes?: ReadonlyArray<string>;
   /** Preamble: The input prefixes before each example input. */
-  inputPrefixes?: Array<string>;
+  inputPrefixes?: ReadonlyArray<string>;
   /** The prompt message. */
   promptMessage?: GoogleCloudAiplatformV1SchemaPromptSpecPromptMessage;
   /** Preamble: A set of examples for expected model response. */
-  examples?: Array<GoogleCloudAiplatformV1SchemaPromptSpecPartList>;
+  examples?: ReadonlyArray<GoogleCloudAiplatformV1SchemaPromptSpecPartList>;
   /** Preamble: For infill prompt, the suffix after expected model response. */
   infillSuffix?: string;
   /** Preamble: For infill prompt, the prefix before expected model response. */
@@ -18299,7 +18299,7 @@ export interface GoogleCloudAiplatformV1SchemaPromptApiSchema {
   /** The prompt variation that stores preambles in separate fields. */
   structuredPrompt?: GoogleCloudAiplatformV1SchemaPromptSpecStructuredPrompt;
   /** A list of execution instances for constructing a ready-to-use prompt. */
-  executions?: Array<GoogleCloudAiplatformV1SchemaPromptInstancePromptExecution>;
+  executions?: ReadonlyArray<GoogleCloudAiplatformV1SchemaPromptInstancePromptExecution>;
 }
 
 export const GoogleCloudAiplatformV1SchemaPromptApiSchema =
@@ -18372,7 +18372,7 @@ export const GoogleCloudAiplatformV1DeployResponse =
 
 export interface GoogleCloudAiplatformV1SlackSource {
   /** Required. The Slack channels. */
-  channels?: Array<GoogleCloudAiplatformV1SlackSourceSlackChannels>;
+  channels?: ReadonlyArray<GoogleCloudAiplatformV1SlackSourceSlackChannels>;
 }
 
 export const GoogleCloudAiplatformV1SlackSource =
@@ -18403,7 +18403,7 @@ export const GoogleCloudAiplatformV1GoogleDriveSourceResourceId =
 
 export interface GoogleCloudAiplatformV1GoogleDriveSource {
   /** Required. Google Drive resource IDs. */
-  resourceIds?: Array<GoogleCloudAiplatformV1GoogleDriveSourceResourceId>;
+  resourceIds?: ReadonlyArray<GoogleCloudAiplatformV1GoogleDriveSourceResourceId>;
 }
 
 export const GoogleCloudAiplatformV1GoogleDriveSource =
@@ -18415,11 +18415,11 @@ export const GoogleCloudAiplatformV1GoogleDriveSource =
 
 export interface GoogleCloudAiplatformV1JiraSourceJiraQueries {
   /** A list of Jira projects to import in their entirety. */
-  projects?: Array<string>;
+  projects?: ReadonlyArray<string>;
   /** Required. The SecretManager secret version resource name (e.g. projects/{project}/secrets/{secret}/versions/{version}) storing the Jira API key. See [Manage API tokens for your Atlassian account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/). */
   apiKeyConfig?: GoogleCloudAiplatformV1ApiAuthApiKeyConfig;
   /** A list of custom Jira queries to import. For information about JQL (Jira Query Language), see https://support.atlassian.com/jira-service-management-cloud/docs/use-advanced-search-with-jira-query-language-jql/ */
-  customQueries?: Array<string>;
+  customQueries?: ReadonlyArray<string>;
   /** Required. The Jira email address. */
   email?: string;
   /** Required. The Jira server URI. */
@@ -18437,7 +18437,7 @@ export const GoogleCloudAiplatformV1JiraSourceJiraQueries =
 
 export interface GoogleCloudAiplatformV1JiraSource {
   /** Required. The Jira queries. */
-  jiraQueries?: Array<GoogleCloudAiplatformV1JiraSourceJiraQueries>;
+  jiraQueries?: ReadonlyArray<GoogleCloudAiplatformV1JiraSourceJiraQueries>;
 }
 
 export const GoogleCloudAiplatformV1JiraSource =
@@ -18617,7 +18617,7 @@ export const GoogleCloudAiplatformV1ReasoningEngineSpecSourceCodeSpecImageSpec =
 
 export interface GoogleCloudAiplatformV1SchemaModelevaluationMetricsVideoActionRecognitionMetrics {
   /** The metric entries for precision window lengths: 1s,2s,3s. */
-  videoActionMetrics?: Array<GoogleCloudAiplatformV1SchemaModelevaluationMetricsVideoActionMetrics>;
+  videoActionMetrics?: ReadonlyArray<GoogleCloudAiplatformV1SchemaModelevaluationMetricsVideoActionMetrics>;
   /** The number of ground truth actions used to create this evaluation. */
   evaluatedActionCount?: number;
 }
@@ -18747,9 +18747,9 @@ export const GoogleCloudAiplatformV1SchemaTrainingjobDefinitionTftForecastingInp
 
 export interface GoogleCloudAiplatformV1SchemaTrainingjobDefinitionTftForecastingInputs {
   /** Names of columns that are available and provided when a forecast is requested. These columns contain information for the given entity (identified by the time_series_identifier_column column) that is known at forecast. For example, predicted weather for a specific day. */
-  availableAtForecastColumns?: Array<string>;
+  availableAtForecastColumns?: ReadonlyArray<string>;
   /** Quantiles to use for minimize-quantile-loss `optimization_objective`. Up to 5 quantiles are allowed of values between 0 and 1, exclusive. Required if the value of optimization_objective is minimize-quantile-loss. Represents the percent quantiles to use for that objective. Quantiles must be unique. */
-  quantiles?: Array<number>;
+  quantiles?: ReadonlyArray<number>;
   /** The name of the column that identifies time order in the time series. This column must be available at forecast. */
   timeColumn?: string;
   /** Expected difference in time granularity between rows in the data. */
@@ -18761,7 +18761,7 @@ export interface GoogleCloudAiplatformV1SchemaTrainingjobDefinitionTftForecastin
   /** The amount of time into the past training and prediction data is used for model training and prediction respectively. Expressed in number of units defined by the `data_granularity` field. */
   contextWindow?: string;
   /** Each transformation will apply transform function to given input column. And the result will be used for training. When creating transformation for BigQuery Struct column, the column should be flattened using "." as the delimiter. */
-  transformations?: Array<GoogleCloudAiplatformV1SchemaTrainingjobDefinitionTftForecastingInputsTransformation>;
+  transformations?: ReadonlyArray<GoogleCloudAiplatformV1SchemaTrainingjobDefinitionTftForecastingInputsTransformation>;
   /** Config containing strategy for generating sliding windows. */
   windowConfig?: GoogleCloudAiplatformV1SchemaTrainingjobDefinitionWindowConfig;
   /** The name of the column that identifies the time series. */
@@ -18775,17 +18775,17 @@ export interface GoogleCloudAiplatformV1SchemaTrainingjobDefinitionTftForecastin
   /** The amount of time into the future for which forecasted values for the target are returned. Expressed in number of units defined by the `data_granularity` field. */
   forecastHorizon?: string;
   /** The geographical region based on which the holiday effect is applied in modeling by adding holiday categorical array feature that include all holidays matching the date. This option only allowed when data_granularity is day. By default, holiday effect modeling is disabled. To turn it on, specify the holiday region using this option. */
-  holidayRegions?: Array<string>;
+  holidayRegions?: ReadonlyArray<string>;
   /** Column names that should be used as attribute columns. The value of these columns does not vary as a function of time. For example, store ID or item color. */
-  timeSeriesAttributeColumns?: Array<string>;
+  timeSeriesAttributeColumns?: ReadonlyArray<string>;
   /** Names of columns that are unavailable when a forecast is requested. This column contains information for the given entity (identified by the time_series_identifier_column) that is unknown before the forecast For example, actual weather on a given day. */
-  unavailableAtForecastColumns?: Array<string>;
+  unavailableAtForecastColumns?: ReadonlyArray<string>;
   /** Column name that should be used as the weight column. Higher values in this column give more importance to the row during model training. The column must have numeric values between 0 and 10000 inclusively; 0 means the row is ignored for training. If weight column field is not set, then all rows are assumed to have equal weight of 1. This column must be available at forecast. */
   weightColumn?: string;
   /** Validation options for the data validation component. The available options are: * "fail-pipeline" - default, will validate against the validation and fail the pipeline if it fails. * "ignore-validation" - ignore the results of the validation and continue */
   validationOptions?: string;
   /** Additional experiment flags for the time series forcasting training. */
-  additionalExperiments?: Array<string>;
+  additionalExperiments?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1SchemaTrainingjobDefinitionTftForecastingInputs =
@@ -18829,7 +18829,7 @@ export const GoogleCloudAiplatformV1SchemaTrainingjobDefinitionTftForecastingInp
 
 export interface GoogleCloudAiplatformV1ListExecutionsResponse {
   /** The Executions retrieved from the MetadataStore. */
-  executions?: Array<GoogleCloudAiplatformV1Execution>;
+  executions?: ReadonlyArray<GoogleCloudAiplatformV1Execution>;
   /** A token, which can be sent as ListExecutionsRequest.page_token to retrieve the next page. If this field is not populated, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -18890,7 +18890,7 @@ export const GoogleCloudAiplatformV1ReadTensorboardUsageResponsePerUserUsageData
 
 export interface GoogleCloudAiplatformV1ReadTensorboardUsageResponsePerMonthUsageData {
   /** Usage data for each user in the given month. */
-  userUsageData?: Array<GoogleCloudAiplatformV1ReadTensorboardUsageResponsePerUserUsageData>;
+  userUsageData?: ReadonlyArray<GoogleCloudAiplatformV1ReadTensorboardUsageResponsePerUserUsageData>;
 }
 
 export const GoogleCloudAiplatformV1ReadTensorboardUsageResponsePerMonthUsageData =
@@ -18962,9 +18962,9 @@ export interface GoogleCloudAiplatformV1BatchReadFeatureValuesRequest {
   /** Each read instance consists of exactly one read timestamp and one or more entity IDs identifying entities of the corresponding EntityTypes whose Features are requested. Each output instance contains Feature values of requested entities concatenated together as of the read time. An example read instance may be `foo_entity_id, bar_entity_id, 2020-01-01T10:00:00.123Z`. An example output instance may be `foo_entity_id, bar_entity_id, 2020-01-01T10:00:00.123Z, foo_entity_feature1_value, bar_entity_feature2_value`. Timestamp in each read instance must be millisecond-aligned. `csv_read_instances` are read instances stored in a plain-text CSV file. The header should be: [ENTITY_TYPE_ID1], [ENTITY_TYPE_ID2], ..., timestamp The columns can be in any order. Values in the timestamp column must use the RFC 3339 format, e.g. `2012-07-30T10:43:17.123Z`. */
   csvReadInstances?: GoogleCloudAiplatformV1CsvSource;
   /** When not empty, the specified fields in the *_read_instances source will be joined as-is in the output, in addition to those fields from the Featurestore Entity. For BigQuery source, the type of the pass-through values will be automatically inferred. For CSV source, the pass-through values will be passed as opaque bytes. */
-  passThroughFields?: Array<GoogleCloudAiplatformV1BatchReadFeatureValuesRequestPassThroughField>;
+  passThroughFields?: ReadonlyArray<GoogleCloudAiplatformV1BatchReadFeatureValuesRequestPassThroughField>;
   /** Required. Specifies EntityType grouping Features to read values of and settings. */
-  entityTypeSpecs?: Array<GoogleCloudAiplatformV1BatchReadFeatureValuesRequestEntityTypeSpec>;
+  entityTypeSpecs?: ReadonlyArray<GoogleCloudAiplatformV1BatchReadFeatureValuesRequestEntityTypeSpec>;
   /** Optional. Excludes Feature values with feature generation timestamp before this timestamp. If not set, retrieve oldest values kept in Feature Store. Timestamp, if present, must not have higher than millisecond precision. */
   startTime?: string;
   /** Required. Specifies output location and format. */
@@ -19016,13 +19016,13 @@ export const GoogleCloudAiplatformV1CompletionStats =
 
 export interface GoogleCloudAiplatformV1BatchPredictionJobInstanceConfig {
   /** Fields that will be excluded in the prediction instance that is sent to the Model. Excluded will be attached to the batch prediction output if key_field is not specified. When excluded_fields is populated, included_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord. */
-  excludedFields?: Array<string>;
+  excludedFields?: ReadonlyArray<string>;
   /** The format of the instance that the Model accepts. Vertex AI will convert compatible batch prediction input instance formats to the specified format. Supported values are: * `object`: Each input is converted to JSON object format. * For `bigquery`, each row is converted to an object. * For `jsonl`, each line of the JSONL input must be an object. * Does not apply to `csv`, `file-list`, `tf-record`, or `tf-record-gzip`. * `array`: Each input is converted to JSON array format. * For `bigquery`, each row is converted to an array. The order of columns is determined by the BigQuery column order, unless included_fields is populated. included_fields must be populated for specifying field orders. * For `jsonl`, if each line of the JSONL input is an object, included_fields must be populated for specifying field orders. * Does not apply to `csv`, `file-list`, `tf-record`, or `tf-record-gzip`. If not specified, Vertex AI converts the batch prediction input as follows: * For `bigquery` and `csv`, the behavior is the same as `array`. The order of columns is the same as defined in the file or table, unless included_fields is populated. * For `jsonl`, the prediction instance format is determined by each line of the input. * For `tf-record`/`tf-record-gzip`, each record will be converted to an object in the format of `{"b64": }`, where `` is the Base64-encoded string of the content of the record. * For `file-list`, each file in the list will be converted to an object in the format of `{"b64": }`, where `` is the Base64-encoded string of the content of the file. */
   instanceType?: string;
   /** The name of the field that is considered as a key. The values identified by the key field is not included in the transformed instances that is sent to the Model. This is similar to specifying this name of the field in excluded_fields. In addition, the batch prediction output will not include the instances. Instead the output will only include the value of the key field, in a field named `key` in the output: * For `jsonl` output format, the output will have a `key` field instead of the `instance` field. * For `csv`/`bigquery` output format, the output will have have a `key` column instead of the instance feature columns. The input must be JSONL with objects at each line, CSV, BigQuery or TfRecord. */
   keyField?: string;
   /** Fields that will be included in the prediction instance that is sent to the Model. If instance_type is `array`, the order of field names in included_fields also determines the order of the values in the array. When included_fields is populated, excluded_fields must be empty. The input must be JSONL with objects at each line, BigQuery or TfRecord. */
-  includedFields?: Array<string>;
+  includedFields?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1BatchPredictionJobInstanceConfig =
@@ -19171,7 +19171,7 @@ export interface GoogleCloudAiplatformV1BatchPredictionJob {
   /** Generate explanation with the batch prediction results. When set to `true`, the batch prediction output changes based on the `predictions_format` field of the BatchPredictionJob.output_config object: * `bigquery`: output includes a column named `explanation`. The value is a struct that conforms to the Explanation object. * `jsonl`: The JSON objects on each line include an additional entry keyed `explanation`. The value of the entry is a JSON object that conforms to the Explanation object. * `csv`: Generating explanations for CSV format is not supported. If this field is set to true, either the Model.explanation_spec or explanation_spec must be populated. */
   generateExplanation?: boolean;
   /** Output only. Partial failures encountered. For example, single files that can't be read. This field never exceeds 20 entries. Status details fields contain standard Google Cloud error details. */
-  partialFailures?: Array<GoogleRpcStatus>;
+  partialFailures?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. Time when the BatchPredictionJob was most recently updated. */
   updateTime?: string;
   /** Output only. The version ID of the Model that produces the predictions via this job. */
@@ -19403,7 +19403,7 @@ export interface GoogleCloudAiplatformV1ReasoningEngineSpec {
   /** Optional. User provided package spec of the ReasoningEngine. Ignored when users directly specify a deployment image through `deployment_spec.first_party_image_override`, but keeping the field_behavior to avoid introducing breaking changes. The `deployment_source` field should not be set if `package_spec` is specified. */
   packageSpec?: GoogleCloudAiplatformV1ReasoningEngineSpecPackageSpec;
   /** Optional. Declarations for object class methods in OpenAPI specification format. */
-  classMethods?: Array<Record<string, unknown>>;
+  classMethods?: ReadonlyArray<Record<string, unknown>>;
   /** Optional. The OSS agent framework used to develop the agent. Currently supported values: "google-adk", "langchain", "langgraph", "ag2", "llama-index", "custom". */
   agentFramework?: string;
   /** Optional. The identity type to use for the Reasoning Engine. If not specified, the `service_account` field will be used if set, otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used. */
@@ -19441,9 +19441,9 @@ export interface GoogleCloudAiplatformV1SchemaPredictPredictionTabularRegression
   /** The lower bound of the prediction interval. */
   lowerBound?: number;
   /** Quantile predictions, in 1-1 correspondence with quantile_values. */
-  quantilePredictions?: Array<number>;
+  quantilePredictions?: ReadonlyArray<number>;
   /** Quantile values. */
-  quantileValues?: Array<number>;
+  quantileValues?: ReadonlyArray<number>;
   /** The regression value. */
   value?: number;
   /** The upper bound of the prediction interval. */
@@ -19614,7 +19614,7 @@ export const GoogleCloudAiplatformV1ModelEvaluationSlice =
 
 export interface GoogleCloudAiplatformV1BatchImportModelEvaluationSlicesRequest {
   /** Required. Model evaluation slice resource to be imported. */
-  modelEvaluationSlices?: Array<GoogleCloudAiplatformV1ModelEvaluationSlice>;
+  modelEvaluationSlices?: ReadonlyArray<GoogleCloudAiplatformV1ModelEvaluationSlice>;
 }
 
 export const GoogleCloudAiplatformV1BatchImportModelEvaluationSlicesRequest =
@@ -19629,7 +19629,7 @@ export const GoogleCloudAiplatformV1BatchImportModelEvaluationSlicesRequest =
 
 export interface GoogleCloudAiplatformV1RemoveDatapointsRequest {
   /** A list of datapoint ids to be deleted. */
-  datapointIds?: Array<string>;
+  datapointIds?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1RemoveDatapointsRequest =
@@ -19639,7 +19639,7 @@ export const GoogleCloudAiplatformV1RemoveDatapointsRequest =
 
 export interface GoogleCloudAiplatformV1BatchCreateFeaturesResponse {
   /** The Features created. */
-  features?: Array<GoogleCloudAiplatformV1Feature>;
+  features?: ReadonlyArray<GoogleCloudAiplatformV1Feature>;
 }
 
 export const GoogleCloudAiplatformV1BatchCreateFeaturesResponse =
@@ -19651,7 +19651,7 @@ export const GoogleCloudAiplatformV1BatchCreateFeaturesResponse =
 
 export interface GoogleCloudAiplatformV1AddContextChildrenRequest {
   /** The resource names of the child Contexts. */
-  childContexts?: Array<string>;
+  childContexts?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1AddContextChildrenRequest =
@@ -19738,7 +19738,7 @@ export const GoogleCloudAiplatformV1CustomJob =
 
 export interface GoogleCloudAiplatformV1ListBatchPredictionJobsResponse {
   /** List of BatchPredictionJobs in the requested page. */
-  batchPredictionJobs?: Array<GoogleCloudAiplatformV1BatchPredictionJob>;
+  batchPredictionJobs?: ReadonlyArray<GoogleCloudAiplatformV1BatchPredictionJob>;
   /** A token to retrieve the next page of results. Pass to ListBatchPredictionJobsRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -19800,7 +19800,7 @@ export const GoogleCloudAiplatformV1Chunk =
 
 export interface GoogleCloudAiplatformV1ExecuteCodeResponse {
   /** The outputs from the sandbox environment. */
-  outputs?: Array<GoogleCloudAiplatformV1Chunk>;
+  outputs?: ReadonlyArray<GoogleCloudAiplatformV1Chunk>;
 }
 
 export const GoogleCloudAiplatformV1ExecuteCodeResponse =
@@ -19810,7 +19810,7 @@ export const GoogleCloudAiplatformV1ExecuteCodeResponse =
 
 export interface GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairList {
   /** List of feature names and values. */
-  features?: Array<GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair>;
+  features?: ReadonlyArray<GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair>;
 }
 
 export const GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairList =
@@ -19882,9 +19882,9 @@ export const GoogleLongrunningOperation =
 
 export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -19900,7 +19900,7 @@ export interface GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureG
   /** Required. Identifier of the feature group. */
   featureGroupId?: string;
   /** Required. Identifiers of features under the feature group. */
-  featureIds?: Array<string>;
+  featureIds?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup =
@@ -20089,7 +20089,7 @@ export const GoogleCloudAiplatformV1SchemaVisualInspectionMaskSavedQueryMetadata
 
 export interface GoogleCloudAiplatformV1ListEndpointsResponse {
   /** List of Endpoints in the requested page. */
-  endpoints?: Array<GoogleCloudAiplatformV1Endpoint>;
+  endpoints?: ReadonlyArray<GoogleCloudAiplatformV1Endpoint>;
   /** A token to retrieve the next page of results. Pass to ListEndpointsRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -20116,7 +20116,7 @@ export const GoogleCloudAiplatformV1CreateFeatureGroupOperationMetadata =
 
 export interface GoogleCloudAiplatformV1ListModelVersionsResponse {
   /** List of Model versions in the requested page. In the returned Model name field, version ID instead of regvision tag will be included. */
-  models?: Array<GoogleCloudAiplatformV1Model>;
+  models?: ReadonlyArray<GoogleCloudAiplatformV1Model>;
   /** A token to retrieve the next page of results. Pass to ListModelVersionsRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -20139,7 +20139,7 @@ export const GoogleCloudAiplatformV1PauseModelDeploymentMonitoringJobRequest =
 
 export interface GoogleCloudAiplatformV1ListMemoriesResponse {
   /** List of Memories in the requested page. */
-  memories?: Array<GoogleCloudAiplatformV1Memory>;
+  memories?: ReadonlyArray<GoogleCloudAiplatformV1Memory>;
   /** A token to retrieve the next page of results. Pass to ListMemoriesRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -20262,7 +20262,7 @@ export const GoogleCloudAiplatformV1GenerateMemoriesRequestDirectContentsSourceE
 
 export interface GoogleCloudAiplatformV1GenerateMemoriesRequestDirectContentsSource {
   /** Required. The source content (i.e. chat history) to generate memories from. */
-  events?: Array<GoogleCloudAiplatformV1GenerateMemoriesRequestDirectContentsSourceEvent>;
+  events?: ReadonlyArray<GoogleCloudAiplatformV1GenerateMemoriesRequestDirectContentsSourceEvent>;
 }
 
 export const GoogleCloudAiplatformV1GenerateMemoriesRequestDirectContentsSource =
@@ -20314,7 +20314,7 @@ export interface GoogleCloudAiplatformV1GenerateMemoriesRequest {
   /** Defines a direct source of memories that should be uploaded to Memory Bank. This is similar to `CreateMemory`, but it allows for consolidation between these new memories and existing memories for the same scope. */
   directMemoriesSource?: GoogleCloudAiplatformV1GenerateMemoriesRequestDirectMemoriesSource;
   /** Optional. Restricts memory generation to a subset of memory topics. */
-  allowedTopics?: Array<GoogleCloudAiplatformV1MemoryTopicId>;
+  allowedTopics?: ReadonlyArray<GoogleCloudAiplatformV1MemoryTopicId>;
   /** Defines a Vertex Session as the source content from which to generate memories. */
   vertexSessionSource?: GoogleCloudAiplatformV1GenerateMemoriesRequestVertexSessionSource;
   /** Optional. Timestamp of when the revision is considered expired. If not set, the memory revision will be kept until manually deleted. */
@@ -20380,13 +20380,13 @@ export interface GoogleCloudAiplatformV1Trial {
     | "INFEASIBLE"
     | (string & {});
   /** Output only. A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_duration). These are used for early stopping computations. */
-  measurements?: Array<GoogleCloudAiplatformV1Measurement>;
+  measurements?: ReadonlyArray<GoogleCloudAiplatformV1Measurement>;
   /** Output only. The final measurement containing the objective value. */
   finalMeasurement?: GoogleCloudAiplatformV1Measurement;
   /** Output only. A human readable string describing why the Trial is infeasible. This is set only if Trial state is `INFEASIBLE`. */
   infeasibleReason?: string;
   /** Output only. The parameters of the Trial. */
-  parameters?: Array<GoogleCloudAiplatformV1TrialParameter>;
+  parameters?: ReadonlyArray<GoogleCloudAiplatformV1TrialParameter>;
   /** Output only. The CustomJob name linked to the Trial. It's set for a HyperparameterTuningJob's Trial. */
   customJob?: string;
   /** Output only. The identifier of the client that originally requested this Trial. Each client is identified by a unique client_id. When a client asks for a suggestion, Vertex AI Vizier will assign it a Trial. The client should evaluate the Trial, complete it, and report back to Vertex AI Vizier. If suggestion is asked again by same client_id before the Trial is completed, the same Trial will be returned. Multiple clients with different client_ids can ask for suggestions simultaneously, each of them will get their own Trial. */
@@ -20470,7 +20470,7 @@ export interface GoogleCloudAiplatformV1HyperparameterTuningJob {
   /** Required. The desired number of Trials to run in parallel. */
   parallelTrialCount?: number;
   /** Output only. Trials of the HyperparameterTuningJob. */
-  trials?: Array<GoogleCloudAiplatformV1Trial>;
+  trials?: ReadonlyArray<GoogleCloudAiplatformV1Trial>;
   /** Required. The desired total number of Trials. */
   maxTrialCount?: number;
 }
@@ -20499,7 +20499,7 @@ export const GoogleCloudAiplatformV1HyperparameterTuningJob =
 
 export interface GoogleCloudAiplatformV1ListHyperparameterTuningJobsResponse {
   /** List of HyperparameterTuningJobs in the requested page. HyperparameterTuningJob.trials of the jobs will be not be returned. */
-  hyperparameterTuningJobs?: Array<GoogleCloudAiplatformV1HyperparameterTuningJob>;
+  hyperparameterTuningJobs?: ReadonlyArray<GoogleCloudAiplatformV1HyperparameterTuningJob>;
   /** A token to retrieve the next page of results. Pass to ListHyperparameterTuningJobsRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -20573,7 +20573,7 @@ export const GoogleCloudAiplatformV1EntityType =
 
 export interface GoogleCloudAiplatformV1SchemaModelevaluationMetricsTextExtractionEvaluationMetrics {
   /** Metrics that have confidence thresholds. Precision-recall curve can be derived from them. */
-  confidenceMetrics?: Array<GoogleCloudAiplatformV1SchemaModelevaluationMetricsTextExtractionEvaluationMetricsConfidenceMetrics>;
+  confidenceMetrics?: ReadonlyArray<GoogleCloudAiplatformV1SchemaModelevaluationMetricsTextExtractionEvaluationMetricsConfidenceMetrics>;
   /** Confusion matrix of the evaluation. Only set for Models where number of AnnotationSpecs is no more than 10. Only set for ModelEvaluations, not for ModelEvaluationSlices. */
   confusionMatrix?: GoogleCloudAiplatformV1SchemaModelevaluationMetricsConfusionMatrix;
 }
@@ -20613,7 +20613,7 @@ export const GoogleCloudAiplatformV1CreatePersistentResourceOperationMetadata =
 
 export interface GoogleCloudAiplatformV1ToolParameterKVMatchResults {
   /** Output only. Tool parameter key value match metric values. */
-  toolParameterKvMatchMetricValues?: Array<GoogleCloudAiplatformV1ToolParameterKVMatchMetricValue>;
+  toolParameterKvMatchMetricValues?: ReadonlyArray<GoogleCloudAiplatformV1ToolParameterKVMatchMetricValue>;
 }
 
 export const GoogleCloudAiplatformV1ToolParameterKVMatchResults =
@@ -20642,7 +20642,7 @@ export interface GoogleCloudAiplatformV1RubricBasedInstructionFollowingResult {
   /** Output only. Overall score for the instruction following. */
   score?: number;
   /** Output only. List of per rubric critique results. */
-  rubricCritiqueResults?: Array<GoogleCloudAiplatformV1RubricCritiqueResult>;
+  rubricCritiqueResults?: ReadonlyArray<GoogleCloudAiplatformV1RubricCritiqueResult>;
 }
 
 export const GoogleCloudAiplatformV1RubricBasedInstructionFollowingResult =
@@ -20713,7 +20713,7 @@ export const GoogleCloudAiplatformV1TrajectoryRecallMetricValue =
 
 export interface GoogleCloudAiplatformV1TrajectoryRecallResults {
   /** Output only. TrajectoryRecall metric values. */
-  trajectoryRecallMetricValues?: Array<GoogleCloudAiplatformV1TrajectoryRecallMetricValue>;
+  trajectoryRecallMetricValues?: ReadonlyArray<GoogleCloudAiplatformV1TrajectoryRecallMetricValue>;
 }
 
 export const GoogleCloudAiplatformV1TrajectoryRecallResults =
@@ -20741,7 +20741,7 @@ export const GoogleCloudAiplatformV1GroundednessResult =
 
 export interface GoogleCloudAiplatformV1TrajectorySingleToolUseResults {
   /** Output only. TrajectorySingleToolUse metric values. */
-  trajectorySingleToolUseMetricValues?: Array<GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue>;
+  trajectorySingleToolUseMetricValues?: ReadonlyArray<GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue>;
 }
 
 export const GoogleCloudAiplatformV1TrajectorySingleToolUseResults =
@@ -20755,7 +20755,7 @@ export const GoogleCloudAiplatformV1TrajectorySingleToolUseResults =
 
 export interface GoogleCloudAiplatformV1ExactMatchResults {
   /** Output only. Exact match metric values. */
-  exactMatchMetricValues?: Array<GoogleCloudAiplatformV1ExactMatchMetricValue>;
+  exactMatchMetricValues?: ReadonlyArray<GoogleCloudAiplatformV1ExactMatchMetricValue>;
 }
 
 export const GoogleCloudAiplatformV1ExactMatchResults =
@@ -20795,7 +20795,7 @@ export const GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue =
 
 export interface GoogleCloudAiplatformV1TrajectoryInOrderMatchResults {
   /** Output only. TrajectoryInOrderMatch metric values. */
-  trajectoryInOrderMatchMetricValues?: Array<GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue>;
+  trajectoryInOrderMatchMetricValues?: ReadonlyArray<GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue>;
 }
 
 export const GoogleCloudAiplatformV1TrajectoryInOrderMatchResults =
@@ -20866,7 +20866,7 @@ export const GoogleCloudAiplatformV1FulfillmentResult =
 
 export interface GoogleCloudAiplatformV1BleuResults {
   /** Output only. Bleu metric values. */
-  bleuMetricValues?: Array<GoogleCloudAiplatformV1BleuMetricValue>;
+  bleuMetricValues?: ReadonlyArray<GoogleCloudAiplatformV1BleuMetricValue>;
 }
 
 export const GoogleCloudAiplatformV1BleuResults =
@@ -20900,7 +20900,7 @@ export interface GoogleCloudAiplatformV1EvaluateInstancesResponse {
   /** Results for tool parameter key match metric. */
   toolParameterKeyMatchResults?: GoogleCloudAiplatformV1ToolParameterKeyMatchResults;
   /** Metric results for each instance. The order of the metric results is guaranteed to be the same as the order of the instances in the request. */
-  metricResults?: Array<GoogleCloudAiplatformV1MetricResult>;
+  metricResults?: ReadonlyArray<GoogleCloudAiplatformV1MetricResult>;
   /** Auto metric evaluation results. Results for exact match metric. */
   exactMatchResults?: GoogleCloudAiplatformV1ExactMatchResults;
   /** Result for safety metric. */
@@ -21057,7 +21057,7 @@ export interface GoogleCloudAiplatformV1PurgeMemoriesRequest {
   /** Required. The standard list filter to determine which memories to purge. More detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
   /** Optional. Metadata filters that will be applied to the memories to be purged. Filters are defined using disjunctive normal form (OR of ANDs). For example: `filter_groups: [{filters: [{key: "author", value: {string_value: "agent 123"}, op: EQUAL}]}, {filters: [{key: "label", value: {string_value: "travel"}, op: EQUAL}, {key: "author", value: {string_value: "agent 321"}, op: EQUAL}]}]` would be equivalent to the logical expression: `(metadata.author = "agent 123" OR (metadata.label = "travel" AND metadata.author = "agent 321"))`. */
-  filterGroups?: Array<GoogleCloudAiplatformV1MemoryConjunctionFilter>;
+  filterGroups?: ReadonlyArray<GoogleCloudAiplatformV1MemoryConjunctionFilter>;
 }
 
 export const GoogleCloudAiplatformV1PurgeMemoriesRequest =
@@ -21132,11 +21132,11 @@ export interface GoogleCloudAiplatformV1CachedContent {
   /** Output only. Metadata on the usage of the cached content. */
   usageMetadata?: GoogleCloudAiplatformV1CachedContentUsageMetadata;
   /** Optional. Input only. Immutable. The content to cache */
-  contents?: Array<GoogleCloudAiplatformV1Content>;
+  contents?: ReadonlyArray<GoogleCloudAiplatformV1Content>;
   /** Output only. When the cache entry was last updated in UTC time. */
   updateTime?: string;
   /** Optional. Input only. Immutable. A list of `Tools` the model may use to generate the next response */
-  tools?: Array<GoogleCloudAiplatformV1Tool>;
+  tools?: ReadonlyArray<GoogleCloudAiplatformV1Tool>;
   /** Timestamp of when this resource is considered expired. This is *always* provided on output, regardless of what was sent on input. */
   expireTime?: string;
   /** Input only. The TTL for this resource. The expiration time is computed: now + TTL. */
@@ -21174,7 +21174,7 @@ export const GoogleCloudAiplatformV1CachedContent =
 
 export interface GoogleCloudAiplatformV1ListCachedContentsResponse {
   /** List of cached contents. */
-  cachedContents?: Array<GoogleCloudAiplatformV1CachedContent>;
+  cachedContents?: ReadonlyArray<GoogleCloudAiplatformV1CachedContent>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -21193,7 +21193,7 @@ export interface GoogleCloudAiplatformV1PurgeArtifactsResponse {
   /** The number of Artifacts that this request deleted (or, if `force` is false, the number of Artifacts that will be deleted). This can be an estimate. */
   purgeCount?: string;
   /** A sample of the Artifact names that will be deleted. Only populated if `force` is set to false. The maximum number of samples is 100 (it is possible to return fewer). */
-  purgeSample?: Array<string>;
+  purgeSample?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1PurgeArtifactsResponse =
@@ -21217,7 +21217,7 @@ export const GoogleCloudAiplatformV1CopyModelResponse =
 
 export interface GoogleCloudAiplatformV1ListDataItemsResponse {
   /** A list of DataItems that matches the specified filter in the request. */
-  dataItems?: Array<GoogleCloudAiplatformV1DataItem>;
+  dataItems?: ReadonlyArray<GoogleCloudAiplatformV1DataItem>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -21239,7 +21239,7 @@ export interface GoogleCloudAiplatformV1PredictResponse {
   /** Output only. The version ID of the Model which is deployed as the DeployedModel that this prediction hits. */
   modelVersionId?: string;
   /** The predictions that are the output of the predictions call. The schema of any single prediction may be specified via Endpoint's DeployedModels' Model's PredictSchemata's prediction_schema_uri. */
-  predictions?: Array<unknown>;
+  predictions?: ReadonlyArray<unknown>;
   /** Output only. The resource name of the Model which is deployed as the DeployedModel that this prediction hits. */
   model?: string;
   /** Output only. Request-level metadata returned by the model. The metadata type will be dependent upon the model implementation. */
@@ -21287,7 +21287,7 @@ export const GoogleCloudAiplatformV1FeatureViewSyncConfig =
 
 export interface GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource {
   /** Required. List of features that need to be synced to Online Store. */
-  featureGroups?: Array<GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup>;
+  featureGroups?: ReadonlyArray<GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup>;
   /** Optional. The project number of the parent project of the Feature Groups. */
   projectNumber?: string;
 }
@@ -21333,7 +21333,7 @@ export const GoogleCloudAiplatformV1FeatureViewBigtableMetadata =
 
 export interface GoogleCloudAiplatformV1FeatureViewBigQuerySource {
   /** Required. Columns to construct entity_id / row keys. */
-  entityIdColumns?: Array<string>;
+  entityIdColumns?: ReadonlyArray<string>;
   /** Required. The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig. */
   uri?: string;
 }
@@ -21417,7 +21417,7 @@ export const GoogleCloudAiplatformV1FeatureView =
 
 export interface GoogleCloudAiplatformV1ListFeatureViewsResponse {
   /** The FeatureViews matching the request. */
-  featureViews?: Array<GoogleCloudAiplatformV1FeatureView>;
+  featureViews?: ReadonlyArray<GoogleCloudAiplatformV1FeatureView>;
   /** A token, which can be sent as ListFeatureViewsRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -21447,7 +21447,7 @@ export const GoogleCloudAiplatformV1Transcription =
 
 export interface GoogleCloudAiplatformV1EventMetadata {
   /** Optional. Set of ids of the long running function calls. Agent client will know from this field about which function call is long running. Only valid for function call event. */
-  longRunningToolIds?: Array<string>;
+  longRunningToolIds?: ReadonlyArray<string>;
   /** The custom metadata of the LlmResponse. */
   customMetadata?: Record<string, unknown>;
   /** Optional. Audio transcription of user input. */
@@ -21518,7 +21518,7 @@ export const GoogleCloudAiplatformV1SchemaTrainingjobDefinitionAutoMlVideoAction
 
 export interface GoogleCloudAiplatformV1ListFeaturesResponse {
   /** The Features matching the request. */
-  features?: Array<GoogleCloudAiplatformV1Feature>;
+  features?: ReadonlyArray<GoogleCloudAiplatformV1Feature>;
   /** A token, which can be sent as ListFeaturesRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -21606,7 +21606,7 @@ export const GoogleCloudAiplatformV1SandboxEnvironmentTemplate =
 
 export interface GoogleCloudAiplatformV1RagContexts {
   /** All its contexts. */
-  contexts?: Array<GoogleCloudAiplatformV1RagContextsContext>;
+  contexts?: ReadonlyArray<GoogleCloudAiplatformV1RagContextsContext>;
 }
 
 export const GoogleCloudAiplatformV1RagContexts =
@@ -21630,7 +21630,7 @@ export const GoogleCloudAiplatformV1RetrieveContextsResponse =
 
 export interface GoogleCloudAiplatformV1SchemaTrainingjobDefinitionSeq2SeqPlusForecastingInputs {
   /** Each transformation will apply transform function to given input column. And the result will be used for training. When creating transformation for BigQuery Struct column, the column should be flattened using "." as the delimiter. */
-  transformations?: Array<GoogleCloudAiplatformV1SchemaTrainingjobDefinitionSeq2SeqPlusForecastingInputsTransformation>;
+  transformations?: ReadonlyArray<GoogleCloudAiplatformV1SchemaTrainingjobDefinitionSeq2SeqPlusForecastingInputsTransformation>;
   /** Config containing strategy for generating sliding windows. */
   windowConfig?: GoogleCloudAiplatformV1SchemaTrainingjobDefinitionWindowConfig;
   /** Configuration that defines the hierarchical relationship of time series and parameters for hierarchical forecasting strategies. */
@@ -21642,9 +21642,9 @@ export interface GoogleCloudAiplatformV1SchemaTrainingjobDefinitionSeq2SeqPlusFo
   /** Expected difference in time granularity between rows in the data. */
   dataGranularity?: GoogleCloudAiplatformV1SchemaTrainingjobDefinitionSeq2SeqPlusForecastingInputsGranularity;
   /** Names of columns that are available and provided when a forecast is requested. These columns contain information for the given entity (identified by the time_series_identifier_column column) that is known at forecast. For example, predicted weather for a specific day. */
-  availableAtForecastColumns?: Array<string>;
+  availableAtForecastColumns?: ReadonlyArray<string>;
   /** Quantiles to use for minimize-quantile-loss `optimization_objective`. Up to 5 quantiles are allowed of values between 0 and 1, exclusive. Required if the value of optimization_objective is minimize-quantile-loss. Represents the percent quantiles to use for that objective. Quantiles must be unique. */
-  quantiles?: Array<number>;
+  quantiles?: ReadonlyArray<number>;
   /** The name of the column that identifies time order in the time series. This column must be available at forecast. */
   timeColumn?: string;
   /** Column name that should be used as the weight column. Higher values in this column give more importance to the row during model training. The column must have numeric values between 0 and 10000 inclusively; 0 means the row is ignored for training. If weight column field is not set, then all rows are assumed to have equal weight of 1. This column must be available at forecast. */
@@ -21652,17 +21652,17 @@ export interface GoogleCloudAiplatformV1SchemaTrainingjobDefinitionSeq2SeqPlusFo
   /** Validation options for the data validation component. The available options are: * "fail-pipeline" - default, will validate against the validation and fail the pipeline if it fails. * "ignore-validation" - ignore the results of the validation and continue */
   validationOptions?: string;
   /** Additional experiment flags for the time series forcasting training. */
-  additionalExperiments?: Array<string>;
+  additionalExperiments?: ReadonlyArray<string>;
   /** Names of columns that are unavailable when a forecast is requested. This column contains information for the given entity (identified by the time_series_identifier_column) that is unknown before the forecast For example, actual weather on a given day. */
-  unavailableAtForecastColumns?: Array<string>;
+  unavailableAtForecastColumns?: ReadonlyArray<string>;
   /** Column names that should be used as attribute columns. The value of these columns does not vary as a function of time. For example, store ID or item color. */
-  timeSeriesAttributeColumns?: Array<string>;
+  timeSeriesAttributeColumns?: ReadonlyArray<string>;
   /** Objective function the model is optimizing towards. The training process creates a model that optimizes the value of the objective function over the validation set. The supported optimization objectives: * "minimize-rmse" (default) - Minimize root-mean-squared error (RMSE). * "minimize-mae" - Minimize mean-absolute error (MAE). * "minimize-rmsle" - Minimize root-mean-squared log error (RMSLE). * "minimize-rmspe" - Minimize root-mean-squared percentage error (RMSPE). * "minimize-wape-mae" - Minimize the combination of weighted absolute percentage error (WAPE) and mean-absolute-error (MAE). * "minimize-quantile-loss" - Minimize the quantile loss at the quantiles defined in `quantiles`. * "minimize-mape" - Minimize the mean absolute percentage error. */
   optimizationObjective?: string;
   /** The amount of time into the future for which forecasted values for the target are returned. Expressed in number of units defined by the `data_granularity` field. */
   forecastHorizon?: string;
   /** The geographical region based on which the holiday effect is applied in modeling by adding holiday categorical array feature that include all holidays matching the date. This option only allowed when data_granularity is day. By default, holiday effect modeling is disabled. To turn it on, specify the holiday region using this option. */
-  holidayRegions?: Array<string>;
+  holidayRegions?: ReadonlyArray<string>;
   /** The name of the column that identifies the time series. */
   timeSeriesIdentifierColumn?: string;
   /** The name of the column that the Model is to predict values for. This column must be unavailable at forecast. */
@@ -21750,7 +21750,7 @@ export interface GoogleCloudAiplatformV1CountTokensResponse {
   /** The total number of tokens counted across all instances from the request. */
   totalTokens?: number;
   /** Output only. List of modalities that were processed in the request input. */
-  promptTokensDetails?: Array<GoogleCloudAiplatformV1ModalityTokenCount>;
+  promptTokensDetails?: ReadonlyArray<GoogleCloudAiplatformV1ModalityTokenCount>;
   /** The total number of billable characters counted across all instances from the request. */
   totalBillableCharacters?: number;
 }
@@ -21770,7 +21770,7 @@ export interface GoogleCloudAiplatformV1CorroborateContentRequest {
   /** Optional. Input content to corroborate, only text format is supported for now. */
   content?: GoogleCloudAiplatformV1Content;
   /** Optional. Facts used to generate the text can also be used to corroborate the text. */
-  facts?: Array<GoogleCloudAiplatformV1Fact>;
+  facts?: ReadonlyArray<GoogleCloudAiplatformV1Fact>;
 }
 
 export const GoogleCloudAiplatformV1CorroborateContentRequest =
@@ -21856,7 +21856,7 @@ export interface GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRag
   /** Optional. RagCorpora resource name. Format: `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}` */
   ragCorpus?: string;
   /** Optional. rag_file_id. The files should be in the same rag_corpus set in rag_corpus field. */
-  ragFileIds?: Array<string>;
+  ragFileIds?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResource =
@@ -22024,13 +22024,13 @@ export const GoogleCloudAiplatformV1SchemaTrainingjobDefinitionAutoMlTextExtract
 
 export interface GoogleCloudAiplatformV1SchemaPredictPredictionImageObjectDetectionPredictionResult {
   /** The display names of the AnnotationSpecs that had been identified, order matches the IDs. */
-  displayNames?: Array<string>;
+  displayNames?: ReadonlyArray<string>;
   /** The resource IDs of the AnnotationSpecs that had been identified, ordered by the confidence score descendingly. */
-  ids?: Array<string>;
+  ids?: ReadonlyArray<string>;
   /** The Model's confidences in correctness of the predicted IDs, higher value means higher confidence. Order matches the Ids. */
-  confidences?: Array<number>;
+  confidences?: ReadonlyArray<number>;
   /** Bounding boxes, i.e. the rectangles over the image, that pinpoint the found AnnotationSpecs. Given in order that matches the IDs. Each bounding box is an array of 4 numbers `xMin`, `xMax`, `yMin`, and `yMax`, which represent the extremal coordinates of the box. They are relative to the image size, and the point 0,0 is in the top left of the image. */
-  bboxes?: Array<Array<unknown>>;
+  bboxes?: ReadonlyArray<ReadonlyArray<unknown>>;
 }
 
 export const GoogleCloudAiplatformV1SchemaPredictPredictionImageObjectDetectionPredictionResult =
@@ -22057,7 +22057,7 @@ export interface GoogleCloudAiplatformV1SuggestTrialsResponse {
   /** The time at which the operation was started. */
   startTime?: string;
   /** A list of Trials. */
-  trials?: Array<GoogleCloudAiplatformV1Trial>;
+  trials?: ReadonlyArray<GoogleCloudAiplatformV1Trial>;
 }
 
 export const GoogleCloudAiplatformV1SuggestTrialsResponse =
@@ -22088,7 +22088,7 @@ export const GoogleCloudAiplatformV1EvaluationRunEvaluationConfigOutputConfig =
 
 export interface GoogleCloudAiplatformV1ListTensorboardRunsResponse {
   /** The TensorboardRuns mathching the request. */
-  tensorboardRuns?: Array<GoogleCloudAiplatformV1TensorboardRun>;
+  tensorboardRuns?: ReadonlyArray<GoogleCloudAiplatformV1TensorboardRun>;
   /** A token, which can be sent as ListTensorboardRunsRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -22105,7 +22105,7 @@ export const GoogleCloudAiplatformV1ListTensorboardRunsResponse =
 
 export interface GoogleCloudAiplatformV1GenerateContentRequest {
   /** Required. The content of the current conversation with the model. For single-turn queries, this is a single instance. For multi-turn queries, this is a repeated field that contains conversation history + latest request. */
-  contents?: Array<GoogleCloudAiplatformV1Content>;
+  contents?: ReadonlyArray<GoogleCloudAiplatformV1Content>;
   /** Optional. The user provided system instructions for the model. Note: only text should be used in parts and content in each part will be in a separate paragraph. */
   systemInstruction?: GoogleCloudAiplatformV1Content;
   /** Optional. Settings for prompt and response sanitization using the Model Armor service. If supplied, safety_settings must not be supplied. */
@@ -22113,11 +22113,11 @@ export interface GoogleCloudAiplatformV1GenerateContentRequest {
   /** Optional. Tool config. This config is shared for all tools provided in the request. */
   toolConfig?: GoogleCloudAiplatformV1ToolConfig;
   /** Optional. Per request settings for blocking unsafe content. Enforced on GenerateContentResponse.candidates. */
-  safetySettings?: Array<GoogleCloudAiplatformV1SafetySetting>;
+  safetySettings?: ReadonlyArray<GoogleCloudAiplatformV1SafetySetting>;
   /** Optional. The name of the cached content used as context to serve the prediction. Note: only used in explicit caching, where users can have control over caching (e.g. what content to cache) and enjoy guaranteed cost savings. Format: `projects/{project}/locations/{location}/cachedContents/{cachedContent}` */
   cachedContent?: string;
   /** Optional. A list of `Tools` the model may use to generate the next response. A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the model. */
-  tools?: Array<GoogleCloudAiplatformV1Tool>;
+  tools?: ReadonlyArray<GoogleCloudAiplatformV1Tool>;
   /** Optional. Generation config. */
   generationConfig?: GoogleCloudAiplatformV1GenerationConfig;
   /** Optional. The labels with user-defined metadata for the request. It is used for billing and reporting only. Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter. */
@@ -22156,9 +22156,9 @@ export const GoogleCloudAiplatformV1ReadFeatureValuesRequest =
 
 export interface GoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutput {
   /** Output only. List of NasTrials that were started as part of search stage. */
-  searchTrials?: Array<GoogleCloudAiplatformV1NasTrial>;
+  searchTrials?: ReadonlyArray<GoogleCloudAiplatformV1NasTrial>;
   /** Output only. List of NasTrials that were started as part of train stage. */
-  trainTrials?: Array<GoogleCloudAiplatformV1NasTrial>;
+  trainTrials?: ReadonlyArray<GoogleCloudAiplatformV1NasTrial>;
 }
 
 export const GoogleCloudAiplatformV1NasJobOutputMultiTrialJobOutput =
@@ -22185,7 +22185,7 @@ export const GoogleCloudAiplatformV1NasJobOutput =
 
 export interface GoogleCloudAiplatformV1ListEntityTypesResponse {
   /** The EntityTypes matching the request. */
-  entityTypes?: Array<GoogleCloudAiplatformV1EntityType>;
+  entityTypes?: ReadonlyArray<GoogleCloudAiplatformV1EntityType>;
   /** A token, which can be sent as ListEntityTypesRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -22242,7 +22242,7 @@ export const GoogleCloudAiplatformV1FetchFeatureValuesRequest =
 
 export interface GoogleCloudAiplatformV1ListDatasetVersionsResponse {
   /** A list of DatasetVersions that matches the specified filter in the request. */
-  datasetVersions?: Array<GoogleCloudAiplatformV1DatasetVersion>;
+  datasetVersions?: ReadonlyArray<GoogleCloudAiplatformV1DatasetVersion>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -22584,7 +22584,7 @@ export const GoogleCloudAiplatformV1EvaluationRunEvaluationConfigAutoraterConfig
 
 export interface GoogleCloudAiplatformV1EvaluationRunMetricRubricGenerationSpec {
   /** Optional. An optional, pre-defined list of allowed types for generated rubrics. If this field is provided, it implies `include_rubric_type` should be true, and the generated rubric types should be chosen from this ontology. */
-  rubricTypeOntology?: Array<string>;
+  rubricTypeOntology?: ReadonlyArray<string>;
   /** Optional. The type of rubric content to be generated. */
   rubricContentType?:
     | "RUBRIC_CONTENT_TYPE_UNSPECIFIED"
@@ -22762,15 +22762,15 @@ export const GoogleCloudAiplatformV1EvaluationRubricConfig =
 
 export interface GoogleCloudAiplatformV1EvaluationRunEvaluationConfig {
   /** Required. The metrics to be calculated in the evaluation run. */
-  metrics?: Array<GoogleCloudAiplatformV1EvaluationRunMetric>;
+  metrics?: ReadonlyArray<GoogleCloudAiplatformV1EvaluationRunMetric>;
   /** The prompt template used for inference. The values for variables in the prompt template are defined in EvaluationItem.EvaluationPrompt.PromptTemplateData.values. */
   promptTemplate?: GoogleCloudAiplatformV1EvaluationRunEvaluationConfigPromptTemplate;
   /** Optional. The rubric configs for the evaluation run. They are used to generate rubrics which can be used by rubric-based metrics. Multiple rubric configs can be specified for rubric generation but only one rubric config can be used for a rubric-based metric. If more than one rubric config is provided, the evaluation metric must specify a rubric group key. Note that if a generation spec is specified on both a rubric config and an evaluation metric, the rubrics generated for the metric will be used for evaluation. */
-  rubricConfigs?: Array<GoogleCloudAiplatformV1EvaluationRubricConfig>;
+  rubricConfigs?: ReadonlyArray<GoogleCloudAiplatformV1EvaluationRubricConfig>;
   /** Optional. The autorater config for the evaluation run. */
   autoraterConfig?: GoogleCloudAiplatformV1EvaluationRunEvaluationConfigAutoraterConfig;
   /** Optional. Specifications for custom dataset-level aggregations. */
-  datasetCustomMetrics?: Array<GoogleCloudAiplatformV1DatasetCustomMetric>;
+  datasetCustomMetrics?: ReadonlyArray<GoogleCloudAiplatformV1DatasetCustomMetric>;
   /** Optional. The output config for the evaluation run. */
   outputConfig?: GoogleCloudAiplatformV1EvaluationRunEvaluationConfigOutputConfig;
 }
@@ -22869,7 +22869,7 @@ export const GoogleCloudAiplatformV1EvaluationRun =
 
 export interface GoogleCloudAiplatformV1ListEvaluationRunsResponse {
   /** List of EvaluationRuns in the requested page. */
-  evaluationRuns?: Array<GoogleCloudAiplatformV1EvaluationRun>;
+  evaluationRuns?: ReadonlyArray<GoogleCloudAiplatformV1EvaluationRun>;
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -22886,7 +22886,7 @@ export const GoogleCloudAiplatformV1ListEvaluationRunsResponse =
 
 export interface GoogleCloudAiplatformV1FindNeighborsResponse {
   /** The nearest neighbors of the query datapoints. */
-  nearestNeighbors?: Array<GoogleCloudAiplatformV1FindNeighborsResponseNearestNeighbors>;
+  nearestNeighbors?: ReadonlyArray<GoogleCloudAiplatformV1FindNeighborsResponseNearestNeighbors>;
 }
 
 export const GoogleCloudAiplatformV1FindNeighborsResponse =
@@ -22959,7 +22959,7 @@ export const GoogleCloudAiplatformV1Featurestore =
 
 export interface GoogleCloudAiplatformV1ListFeaturestoresResponse {
   /** The Featurestores matching the request. */
-  featurestores?: Array<GoogleCloudAiplatformV1Featurestore>;
+  featurestores?: ReadonlyArray<GoogleCloudAiplatformV1Featurestore>;
   /** A token, which can be sent as ListFeaturestoresRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -23025,7 +23025,7 @@ export const GoogleCloudAiplatformV1ImportRagFilesRequest =
 
 export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const GoogleIamV1TestIamPermissionsResponse =
@@ -23035,9 +23035,9 @@ export const GoogleIamV1TestIamPermissionsResponse =
 
 export interface GoogleCloudAiplatformV1ImportFeatureValuesOperationMetadata {
   /** List of ImportFeatureValues operations running under a single EntityType that are blocking this operation. */
-  blockingOperationIds?: Array<string>;
+  blockingOperationIds?: ReadonlyArray<string>;
   /** The source URI from where Feature values are imported. */
-  sourceUris?: Array<string>;
+  sourceUris?: ReadonlyArray<string>;
   /** The number rows that weren't ingested due to having timestamps outside the retention boundary. */
   timestampOutsideRetentionRowsCount?: string;
   /** Number of entities that have been imported by the operation. */
@@ -23088,9 +23088,9 @@ export const GoogleCloudAiplatformV1ImportFeatureValuesResponse =
 
 export interface GoogleCloudAiplatformV1TokensInfo {
   /** A list of tokens from the input. */
-  tokens?: Array<string>;
+  tokens?: ReadonlyArray<string>;
   /** A list of token ids from the input. */
-  tokenIds?: Array<string>;
+  tokenIds?: ReadonlyArray<string>;
   /** Optional. Optional fields for the role from the corresponding Content. */
   role?: string;
 }
@@ -23104,7 +23104,7 @@ export const GoogleCloudAiplatformV1TokensInfo =
 
 export interface GoogleCloudAiplatformV1ComputeTokensResponse {
   /** Lists of tokens info from the input. A ComputeTokensRequest could have multiple instances with a prompt in each instance. We also need to return lists of tokens info for the request with multiple instances. */
-  tokensInfo?: Array<GoogleCloudAiplatformV1TokensInfo>;
+  tokensInfo?: ReadonlyArray<GoogleCloudAiplatformV1TokensInfo>;
 }
 
 export const GoogleCloudAiplatformV1ComputeTokensResponse =
@@ -23146,7 +23146,7 @@ export const GoogleCloudAiplatformV1ReadFeatureValuesResponseFeatureDescriptor =
 
 export interface GoogleCloudAiplatformV1ReadFeatureValuesResponseHeader {
   /** List of Feature metadata corresponding to each piece of ReadFeatureValuesResponse.EntityView.data. */
-  featureDescriptors?: Array<GoogleCloudAiplatformV1ReadFeatureValuesResponseFeatureDescriptor>;
+  featureDescriptors?: ReadonlyArray<GoogleCloudAiplatformV1ReadFeatureValuesResponseFeatureDescriptor>;
   /** The resource name of the EntityType from the ReadFeatureValuesRequest. Value format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entityType}`. */
   entityType?: string;
 }
@@ -23165,7 +23165,7 @@ export const GoogleCloudAiplatformV1ReadFeatureValuesResponseHeader =
 
 export interface GoogleCloudAiplatformV1FeatureValueList {
   /** A list of feature values. All of them should be the same data type. */
-  values?: Array<GoogleCloudAiplatformV1FeatureValue>;
+  values?: ReadonlyArray<GoogleCloudAiplatformV1FeatureValue>;
 }
 
 export const GoogleCloudAiplatformV1FeatureValueList =
@@ -23191,7 +23191,7 @@ export const GoogleCloudAiplatformV1ReadFeatureValuesResponseEntityViewData =
 
 export interface GoogleCloudAiplatformV1ReadFeatureValuesResponseEntityView {
   /** Each piece of data holds the k requested values for one requested Feature. If no values for the requested Feature exist, the corresponding cell will be empty. This has the same size and is in the same order as the features from the header ReadFeatureValuesResponse.header. */
-  data?: Array<GoogleCloudAiplatformV1ReadFeatureValuesResponseEntityViewData>;
+  data?: ReadonlyArray<GoogleCloudAiplatformV1ReadFeatureValuesResponseEntityViewData>;
   /** ID of the requested entity. */
   entityId?: string;
 }
@@ -23236,11 +23236,11 @@ export const GoogleCloudAiplatformV1CancelCustomJobRequest =
 
 export interface GoogleCloudAiplatformV1SchemaPredictPredictionClassificationPredictionResult {
   /** The resource IDs of the AnnotationSpecs that had been identified. */
-  ids?: Array<string>;
+  ids?: ReadonlyArray<string>;
   /** The Model's confidences in correctness of the predicted IDs, higher value means higher confidence. Order matches the Ids. */
-  confidences?: Array<number>;
+  confidences?: ReadonlyArray<number>;
   /** The display names of the AnnotationSpecs that had been identified, order matches the IDs. */
-  displayNames?: Array<string>;
+  displayNames?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1SchemaPredictPredictionClassificationPredictionResult =
@@ -23263,7 +23263,7 @@ export const GoogleCloudAiplatformV1AddContextArtifactsAndExecutionsResponse =
 
 export interface GoogleCloudAiplatformV1ListEventsResponse {
   /** A list of events matching the request. Ordered by timestamp in ascending order. */
-  sessionEvents?: Array<GoogleCloudAiplatformV1SessionEvent>;
+  sessionEvents?: ReadonlyArray<GoogleCloudAiplatformV1SessionEvent>;
   /** A token, which can be sent as ListEventsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -23349,7 +23349,7 @@ export interface GoogleCloudAiplatformV1ListNotebookExecutionJobsResponse {
   /** A token to retrieve next page of results. Pass to ListNotebookExecutionJobsRequest.page_token to obtain that page. */
   nextPageToken?: string;
   /** List of NotebookExecutionJobs in the requested page. */
-  notebookExecutionJobs?: Array<GoogleCloudAiplatformV1NotebookExecutionJob>;
+  notebookExecutionJobs?: ReadonlyArray<GoogleCloudAiplatformV1NotebookExecutionJob>;
 }
 
 export const GoogleCloudAiplatformV1ListNotebookExecutionJobsResponse =
@@ -23525,7 +23525,7 @@ export const GoogleCloudAiplatformV1NasJob =
 
 export interface GoogleCloudAiplatformV1ListNasJobsResponse {
   /** List of NasJobs in the requested page. NasJob.nas_job_output of the jobs will not be returned. */
-  nasJobs?: Array<GoogleCloudAiplatformV1NasJob>;
+  nasJobs?: ReadonlyArray<GoogleCloudAiplatformV1NasJob>;
   /** A token to retrieve the next page of results. Pass to ListNasJobsRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -23540,11 +23540,11 @@ export interface GoogleCloudAiplatformV1GenerateVideoResponse {
   /** Returns if any videos were filtered due to RAI policies. */
   raiMediaFilteredCount?: number;
   /** The cloud storage uris of the generated videos. */
-  generatedSamples?: Array<string>;
+  generatedSamples?: ReadonlyArray<string>;
   /** List of video bytes or Cloud Storage URIs of the generated videos. */
-  videos?: Array<GoogleCloudAiplatformV1GenerateVideoResponseVideo>;
+  videos?: ReadonlyArray<GoogleCloudAiplatformV1GenerateVideoResponseVideo>;
   /** Returns rai failure reasons if any. */
-  raiMediaFilteredReasons?: Array<string>;
+  raiMediaFilteredReasons?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1GenerateVideoResponse =
@@ -23573,15 +23573,15 @@ export const GoogleCloudAiplatformV1CreateTensorboardOperationMetadata =
 
 export interface GoogleCloudAiplatformV1SchemaPredictPredictionTextExtractionPredictionResult {
   /** The end offsets, inclusive, of the text segment in which the AnnotationSpec has been identified. Expressed as a zero-based number of characters as measured from the start of the text snippet. */
-  textSegmentEndOffsets?: Array<string>;
+  textSegmentEndOffsets?: ReadonlyArray<string>;
   /** The start offsets, inclusive, of the text segment in which the AnnotationSpec has been identified. Expressed as a zero-based number of characters as measured from the start of the text snippet. */
-  textSegmentStartOffsets?: Array<string>;
+  textSegmentStartOffsets?: ReadonlyArray<string>;
   /** The Model's confidences in correctness of the predicted IDs, higher value means higher confidence. Order matches the Ids. */
-  confidences?: Array<number>;
+  confidences?: ReadonlyArray<number>;
   /** The display names of the AnnotationSpecs that had been identified, order matches the IDs. */
-  displayNames?: Array<string>;
+  displayNames?: ReadonlyArray<string>;
   /** The resource IDs of the AnnotationSpecs that had been identified, ordered by the confidence score descendingly. */
-  ids?: Array<string>;
+  ids?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1SchemaPredictPredictionTextExtractionPredictionResult =
@@ -23616,7 +23616,7 @@ export interface GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndF
   /** The data key. */
   dataKey?: GoogleCloudAiplatformV1FeatureViewDataKey;
   /** List of features to write. */
-  features?: Array<GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValuesFeature>;
+  features?: ReadonlyArray<GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValuesFeature>;
 }
 
 export const GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValues =
@@ -23634,7 +23634,7 @@ export const GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatu
 
 export interface GoogleCloudAiplatformV1FeatureViewDirectWriteRequest {
   /** Required. The data keys and associated feature values. */
-  dataKeyAndFeatureValues?: Array<GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValues>;
+  dataKeyAndFeatureValues?: ReadonlyArray<GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValues>;
 }
 
 export const GoogleCloudAiplatformV1FeatureViewDirectWriteRequest =
@@ -23650,7 +23650,7 @@ export const GoogleCloudAiplatformV1FeatureViewDirectWriteRequest =
 
 export interface GoogleCloudAiplatformV1ExecuteCodeRequest {
   /** Required. The inputs used for the stateless code execution. */
-  inputs?: Array<GoogleCloudAiplatformV1Chunk>;
+  inputs?: ReadonlyArray<GoogleCloudAiplatformV1Chunk>;
 }
 
 export const GoogleCloudAiplatformV1ExecuteCodeRequest =
@@ -23662,7 +23662,7 @@ export interface GoogleCloudAiplatformV1ListAnnotationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** A list of Annotations that matches the specified filter in the request. */
-  annotations?: Array<GoogleCloudAiplatformV1Annotation>;
+  annotations?: ReadonlyArray<GoogleCloudAiplatformV1Annotation>;
 }
 
 export const GoogleCloudAiplatformV1ListAnnotationsResponse =
@@ -23675,7 +23675,7 @@ export const GoogleCloudAiplatformV1ListAnnotationsResponse =
 
 export interface GoogleCloudAiplatformV1ListRagFilesResponse {
   /** List of RagFiles in the requested page. */
-  ragFiles?: Array<GoogleCloudAiplatformV1RagFile>;
+  ragFiles?: ReadonlyArray<GoogleCloudAiplatformV1RagFile>;
   /** A token to retrieve the next page of results. Pass to ListRagFilesRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -23688,7 +23688,7 @@ export const GoogleCloudAiplatformV1ListRagFilesResponse =
 
 export interface GoogleCloudAiplatformV1ListSavedQueriesResponse {
   /** A list of SavedQueries that match the specified filter in the request. */
-  savedQueries?: Array<GoogleCloudAiplatformV1SavedQuery>;
+  savedQueries?: ReadonlyArray<GoogleCloudAiplatformV1SavedQuery>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -23734,7 +23734,7 @@ export const GoogleCloudAiplatformV1UndeployIndexResponse =
 
 export interface GoogleCloudAiplatformV1ListSchedulesResponse {
   /** List of Schedules in the requested page. */
-  schedules?: Array<GoogleCloudAiplatformV1Schedule>;
+  schedules?: ReadonlyArray<GoogleCloudAiplatformV1Schedule>;
   /** A token to retrieve the next page of results. Pass to ListSchedulesRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -23779,7 +23779,7 @@ export const GoogleCloudAiplatformV1CreateEntityTypeOperationMetadata =
 
 export interface GoogleCloudAiplatformV1SyntheticExample {
   /** Required. A list of fields that constitute an example. */
-  fields?: Array<GoogleCloudAiplatformV1SyntheticField>;
+  fields?: ReadonlyArray<GoogleCloudAiplatformV1SyntheticField>;
 }
 
 export const GoogleCloudAiplatformV1SyntheticExample =
@@ -23791,7 +23791,7 @@ export const GoogleCloudAiplatformV1SyntheticExample =
 
 export interface GoogleCloudAiplatformV1GenerateSyntheticDataResponse {
   /** A list of generated synthetic examples, each containing a complete synthetic data instance generated based on your request. */
-  syntheticExamples?: Array<GoogleCloudAiplatformV1SyntheticExample>;
+  syntheticExamples?: ReadonlyArray<GoogleCloudAiplatformV1SyntheticExample>;
 }
 
 export const GoogleCloudAiplatformV1GenerateSyntheticDataResponse =
@@ -23821,7 +23821,7 @@ export const GoogleCloudAiplatformV1SchemaTrainingjobDefinitionHyperparameterTun
 
 export interface GoogleCloudAiplatformV1MergeVersionAliasesRequest {
   /** Required. The set of version aliases to merge. The alias should be at most 128 characters, and match `a-z{0,126}[a-z-0-9]`. Add the `-` prefix to an alias means removing that alias from the version. `-` is NOT counted in the 128 characters. Example: `-golden` means removing the `golden` alias from the version. There is NO ordering in aliases, which means 1) The aliases returned from GetModel API might not have the exactly same order from this MergeVersionAliases API. 2) Adding and deleting the same alias in the request is not recommended, and the 2 operations will be cancelled out. */
-  versionAliases?: Array<string>;
+  versionAliases?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1MergeVersionAliasesRequest =
@@ -23866,7 +23866,7 @@ export interface GoogleCloudAiplatformV1PredictLongRunningRequest {
   /** Optional. The parameters that govern the prediction. The schema of the parameters may be specified via Endpoint's DeployedModels' Model's PredictSchemata's parameters_schema_uri. */
   parameters?: unknown;
   /** Required. The instances that are the input to the prediction call. A DeployedModel may have an upper limit on the number of instances it supports per request, and when it is exceeded the prediction call errors in case of AutoML Models, or, in case of customer created Models, the behaviour is as documented by that Model. The schema of any single instance may be specified via Endpoint's DeployedModels' Model's PredictSchemata's instance_schema_uri. */
-  instances?: Array<unknown>;
+  instances?: ReadonlyArray<unknown>;
   /** Optional. The labels with user-defined metadata for the request. It is used for billing and reporting only. Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter. */
   labels?: Record<string, string>;
 }
@@ -23882,7 +23882,7 @@ export const GoogleCloudAiplatformV1PredictLongRunningRequest =
 
 export interface GoogleCloudAiplatformV1ListTensorboardTimeSeriesResponse {
   /** The TensorboardTimeSeries mathching the request. */
-  tensorboardTimeSeries?: Array<GoogleCloudAiplatformV1TensorboardTimeSeries>;
+  tensorboardTimeSeries?: ReadonlyArray<GoogleCloudAiplatformV1TensorboardTimeSeries>;
   /** A token, which can be sent as ListTensorboardTimeSeriesRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -23899,7 +23899,7 @@ export const GoogleCloudAiplatformV1ListTensorboardTimeSeriesResponse =
 
 export interface GoogleCloudAiplatformV1ListTensorboardsResponse {
   /** The Tensorboards mathching the request. */
-  tensorboards?: Array<GoogleCloudAiplatformV1Tensorboard>;
+  tensorboards?: ReadonlyArray<GoogleCloudAiplatformV1Tensorboard>;
   /** A token, which can be sent as ListTensorboardsRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -23945,7 +23945,7 @@ export interface GoogleCloudAiplatformV1UpsertDatapointsRequest {
   /** Optional. Update mask is used to specify the fields to be overwritten in the datapoints by the update. The fields specified in the update_mask are relative to each IndexDatapoint inside datapoints, not the full request. Updatable fields: * Use `all_restricts` to update both restricts and numeric_restricts. */
   updateMask?: string;
   /** A list of datapoints to be created/updated. */
-  datapoints?: Array<GoogleCloudAiplatformV1IndexDatapoint>;
+  datapoints?: ReadonlyArray<GoogleCloudAiplatformV1IndexDatapoint>;
 }
 
 export const GoogleCloudAiplatformV1UpsertDatapointsRequest =
@@ -23960,13 +23960,13 @@ export interface GoogleCloudAiplatformV1QueryDeployedModelsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
   /** References to the DeployedModels that share the specified deploymentResourcePool. */
-  deployedModelRefs?: Array<GoogleCloudAiplatformV1DeployedModelRef>;
+  deployedModelRefs?: ReadonlyArray<GoogleCloudAiplatformV1DeployedModelRef>;
   /** The total number of DeployedModels on this DeploymentResourcePool. */
   totalDeployedModelCount?: number;
   /** The total number of Endpoints that have DeployedModels on this DeploymentResourcePool. */
   totalEndpointCount?: number;
   /** DEPRECATED Use deployed_model_refs instead. */
-  deployedModels?: Array<GoogleCloudAiplatformV1DeployedModel>;
+  deployedModels?: ReadonlyArray<GoogleCloudAiplatformV1DeployedModel>;
 }
 
 export const GoogleCloudAiplatformV1QueryDeployedModelsResponse =
@@ -23986,7 +23986,7 @@ export const GoogleCloudAiplatformV1QueryDeployedModelsResponse =
 
 export interface GoogleCloudAiplatformV1ListMetadataStoresResponse {
   /** The MetadataStores found for the Location. */
-  metadataStores?: Array<GoogleCloudAiplatformV1MetadataStore>;
+  metadataStores?: ReadonlyArray<GoogleCloudAiplatformV1MetadataStore>;
   /** A token, which can be sent as ListMetadataStoresRequest.page_token to retrieve the next page. If this field is not populated, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -24053,7 +24053,7 @@ export interface GoogleCloudAiplatformV1Index {
   /** Immutable. Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information. The schema is defined as an OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject). Note: The URI given on output will be immutable and probably different, including the URI scheme, than the one given on input. The output URI will point to a location where the user only has a read access. */
   metadataSchemaUri?: string;
   /** Output only. The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first. */
-  deployedIndexes?: Array<GoogleCloudAiplatformV1DeployedIndexRef>;
+  deployedIndexes?: ReadonlyArray<GoogleCloudAiplatformV1DeployedIndexRef>;
   /** Output only. Stats of the index resource. */
   indexStats?: GoogleCloudAiplatformV1IndexStats;
   /** An additional information about the Index; the schema of the metadata can be found in metadata_schema. */
@@ -24095,7 +24095,7 @@ export const GoogleCloudAiplatformV1Index =
 
 export interface GoogleCloudAiplatformV1ListIndexesResponse {
   /** List of indexes in the requested page. */
-  indexes?: Array<GoogleCloudAiplatformV1Index>;
+  indexes?: ReadonlyArray<GoogleCloudAiplatformV1Index>;
   /** A token to retrieve next page of results. Pass to ListIndexesRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -24110,7 +24110,7 @@ export interface GoogleCloudAiplatformV1FindNeighborsRequest {
   /** The ID of the DeployedIndex that will serve the request. This request is sent to a specific IndexEndpoint, as per the IndexEndpoint.network. That IndexEndpoint also has IndexEndpoint.deployed_indexes, and each such index has a DeployedIndex.id field. The value of the field below must equal one of the DeployedIndex.id fields of the IndexEndpoint that is being called for this request. */
   deployedIndexId?: string;
   /** The list of queries. */
-  queries?: Array<GoogleCloudAiplatformV1FindNeighborsRequestQuery>;
+  queries?: ReadonlyArray<GoogleCloudAiplatformV1FindNeighborsRequestQuery>;
   /** If set to true, the full datapoints (including all vector values and restricts) of the nearest neighbors are returned. Note that returning full datapoint will significantly increase the latency and cost of the query. */
   returnFullDatapoint?: boolean;
 }
@@ -24128,7 +24128,7 @@ export interface GoogleCloudAiplatformV1TrialContext {
   /** A human-readable field which can store a description of this context. This will become part of the resulting Trial's description field. */
   description?: string;
   /** If/when a Trial is generated or selected from this Context, its Parameters will match any parameters specified here. (I.e. if this context specifies parameter name:'a' int_value:3, then a resulting Trial will have int_value:3 for its parameter named 'a'.) Note that we first attempt to match existing REQUESTED Trials with contexts, and if there are no matches, we generate suggestions in the subspace defined by the parameters specified here. NOTE: a Context without any Parameters matches the entire feasible search space. */
-  parameters?: Array<GoogleCloudAiplatformV1TrialParameter>;
+  parameters?: ReadonlyArray<GoogleCloudAiplatformV1TrialParameter>;
 }
 
 export const GoogleCloudAiplatformV1TrialContext =
@@ -24228,7 +24228,7 @@ export const GoogleCloudAiplatformV1MigrateResourceResponse =
 
 export interface GoogleCloudAiplatformV1BatchMigrateResourcesResponse {
   /** Successfully migrated resources. */
-  migrateResourceResponses?: Array<GoogleCloudAiplatformV1MigrateResourceResponse>;
+  migrateResourceResponses?: ReadonlyArray<GoogleCloudAiplatformV1MigrateResourceResponse>;
 }
 
 export const GoogleCloudAiplatformV1BatchMigrateResourcesResponse =
@@ -24264,7 +24264,7 @@ export const GoogleCloudAiplatformV1SchemaPredictInstanceVideoClassificationPred
 
 export interface GoogleCloudAiplatformV1ListMetadataSchemasResponse {
   /** The MetadataSchemas found for the MetadataStore. */
-  metadataSchemas?: Array<GoogleCloudAiplatformV1MetadataSchema>;
+  metadataSchemas?: ReadonlyArray<GoogleCloudAiplatformV1MetadataSchema>;
   /** A token, which can be sent as ListMetadataSchemasRequest.page_token to retrieve the next page. If this field is not populated, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -24318,7 +24318,7 @@ export const GoogleCloudAiplatformV1EmbedContentRequest =
 
 export interface GoogleCloudAiplatformV1ReadTensorboardBlobDataResponse {
   /** Blob messages containing blob bytes. */
-  blobs?: Array<GoogleCloudAiplatformV1TensorboardBlob>;
+  blobs?: ReadonlyArray<GoogleCloudAiplatformV1TensorboardBlob>;
 }
 
 export const GoogleCloudAiplatformV1ReadTensorboardBlobDataResponse =
@@ -24403,9 +24403,9 @@ export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface GoogleCloudAiplatformV1ExplainResponse {
   /** The predictions that are the output of the predictions call. Same as PredictResponse.predictions. */
-  predictions?: Array<unknown>;
+  predictions?: ReadonlyArray<unknown>;
   /** The explanations of the Model's PredictResponse.predictions. It has the same number of elements as instances to be explained. */
-  explanations?: Array<GoogleCloudAiplatformV1Explanation>;
+  explanations?: ReadonlyArray<GoogleCloudAiplatformV1Explanation>;
   /** ID of the Endpoint's DeployedModel that served this explanation. */
   deployedModelId?: string;
 }
@@ -24459,7 +24459,7 @@ export const GoogleCloudAiplatformV1SchemaPredictPredictionVideoObjectTrackingPr
 
 export interface GoogleCloudAiplatformV1GenerateInstanceRubricsResponse {
   /** Output only. A list of generated rubrics. */
-  generatedRubrics?: Array<GoogleCloudAiplatformV1Rubric>;
+  generatedRubrics?: ReadonlyArray<GoogleCloudAiplatformV1Rubric>;
 }
 
 export const GoogleCloudAiplatformV1GenerateInstanceRubricsResponse =
@@ -24512,7 +24512,7 @@ export const GoogleCloudAiplatformV1ReasoningEngine =
 
 export interface GoogleCloudAiplatformV1ListReasoningEnginesResponse {
   /** List of ReasoningEngines in the requested page. */
-  reasoningEngines?: Array<GoogleCloudAiplatformV1ReasoningEngine>;
+  reasoningEngines?: ReadonlyArray<GoogleCloudAiplatformV1ReasoningEngine>;
   /** A token to retrieve the next page of results. Pass to ListReasoningEnginesRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -24559,7 +24559,7 @@ export const GoogleCloudAiplatformV1SchemaTrainingjobDefinitionCustomTask =
 
 export interface GoogleCloudAiplatformV1SearchFeaturesResponse {
   /** The Features matching the request. Fields returned: * `name` * `description` * `labels` * `create_time` * `update_time` */
-  features?: Array<GoogleCloudAiplatformV1Feature>;
+  features?: ReadonlyArray<GoogleCloudAiplatformV1Feature>;
   /** A token, which can be sent as SearchFeaturesRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -24572,7 +24572,7 @@ export const GoogleCloudAiplatformV1SearchFeaturesResponse =
 
 export interface GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStore {
   /** Optional. The representation of the rag source. It can be used to specify corpus only or ragfiles. Currently only support one corpus or multiple files from one corpus. In the future we may open up multiple corpora support. */
-  ragResources?: Array<GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResource>;
+  ragResources?: ReadonlyArray<GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResource>;
   /** Optional. Only return contexts with vector distance smaller than the threshold. */
   vectorDistanceThreshold?: number;
 }
@@ -24623,7 +24623,7 @@ export const GoogleCloudAiplatformV1WriteFeatureValuesPayload =
 
 export interface GoogleCloudAiplatformV1ListNotebookRuntimeTemplatesResponse {
   /** List of NotebookRuntimeTemplates in the requested page. */
-  notebookRuntimeTemplates?: Array<GoogleCloudAiplatformV1NotebookRuntimeTemplate>;
+  notebookRuntimeTemplates?: ReadonlyArray<GoogleCloudAiplatformV1NotebookRuntimeTemplate>;
   /** A token to retrieve next page of results. Pass to ListNotebookRuntimeTemplatesRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -24690,7 +24690,7 @@ export const GoogleCloudAiplatformV1SchemaPredictionResult =
 
 export interface GoogleCloudAiplatformV1BatchCreateFeaturesRequest {
   /** Required. The request message specifying the Features to create. All Features must be created under the same parent EntityType / FeatureGroup. The `parent` field in each child request message can be omitted. If `parent` is set in a child request, then the value must match the `parent` value in this request message. */
-  requests?: Array<GoogleCloudAiplatformV1CreateFeatureRequest>;
+  requests?: ReadonlyArray<GoogleCloudAiplatformV1CreateFeatureRequest>;
 }
 
 export const GoogleCloudAiplatformV1BatchCreateFeaturesRequest =
@@ -24802,7 +24802,7 @@ export const GoogleCloudAiplatformV1Session =
 
 export interface GoogleCloudAiplatformV1ListSessionsResponse {
   /** A list of sessions matching the request. */
-  sessions?: Array<GoogleCloudAiplatformV1Session>;
+  sessions?: ReadonlyArray<GoogleCloudAiplatformV1Session>;
   /** A token, which can be sent as ListSessionsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -24827,7 +24827,7 @@ export const GoogleCloudAiplatformV1ReadTensorboardSizeResponse =
 
 export interface GoogleCloudAiplatformV1ReadIndexDatapointsResponse {
   /** The result list of datapoints. */
-  datapoints?: Array<GoogleCloudAiplatformV1IndexDatapoint>;
+  datapoints?: ReadonlyArray<GoogleCloudAiplatformV1IndexDatapoint>;
 }
 
 export const GoogleCloudAiplatformV1ReadIndexDatapointsResponse =
@@ -24898,11 +24898,11 @@ export const GoogleCloudAiplatformV1ExportTensorboardTimeSeriesDataRequest =
 
 export interface GoogleCloudAiplatformV1LineageSubgraph {
   /** The Artifact nodes in the subgraph. */
-  artifacts?: Array<GoogleCloudAiplatformV1Artifact>;
+  artifacts?: ReadonlyArray<GoogleCloudAiplatformV1Artifact>;
   /** The Execution nodes in the subgraph. */
-  executions?: Array<GoogleCloudAiplatformV1Execution>;
+  executions?: ReadonlyArray<GoogleCloudAiplatformV1Execution>;
   /** The Event edges between Artifacts and Executions in the subgraph. */
-  events?: Array<GoogleCloudAiplatformV1Event>;
+  events?: ReadonlyArray<GoogleCloudAiplatformV1Event>;
 }
 
 export const GoogleCloudAiplatformV1LineageSubgraph =
@@ -24921,7 +24921,7 @@ export const GoogleCloudAiplatformV1AppendEventResponse =
 
 export interface GoogleCloudAiplatformV1WriteFeatureValuesRequest {
   /** Required. The entities to be written. Up to 100,000 feature values can be written across all `payloads`. */
-  payloads?: Array<GoogleCloudAiplatformV1WriteFeatureValuesPayload>;
+  payloads?: ReadonlyArray<GoogleCloudAiplatformV1WriteFeatureValuesPayload>;
 }
 
 export const GoogleCloudAiplatformV1WriteFeatureValuesRequest =
@@ -24935,7 +24935,7 @@ export const GoogleCloudAiplatformV1WriteFeatureValuesRequest =
 
 export interface GoogleCloudAiplatformV1ModelMonitoringStatsAnomalies {
   /** A list of historical Stats and Anomalies generated for all Features. */
-  featureStats?: Array<GoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies>;
+  featureStats?: ReadonlyArray<GoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies>;
   /** Model Monitoring Objective those stats and anomalies belonging to. */
   objective?:
     | "MODEL_DEPLOYMENT_MONITORING_OBJECTIVE_TYPE_UNSPECIFIED"
@@ -24966,7 +24966,7 @@ export const GoogleCloudAiplatformV1ModelMonitoringStatsAnomalies =
 
 export interface GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesResponse {
   /** Stats retrieved for requested objectives. There are at most 1000 ModelMonitoringStatsAnomalies.FeatureHistoricStatsAnomalies.prediction_stats in the response. */
-  monitoringStats?: Array<GoogleCloudAiplatformV1ModelMonitoringStatsAnomalies>;
+  monitoringStats?: ReadonlyArray<GoogleCloudAiplatformV1ModelMonitoringStatsAnomalies>;
   /** The page token that can be used by the next JobService.SearchModelDeploymentMonitoringStatsAnomalies call. */
   nextPageToken?: string;
 }
@@ -25066,7 +25066,7 @@ export const GoogleCloudAiplatformV1SchemaPredictPredictionVideoClassificationPr
 
 export interface GoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse {
   /** The DeploymentResourcePools from the specified location. */
-  deploymentResourcePools?: Array<GoogleCloudAiplatformV1DeploymentResourcePool>;
+  deploymentResourcePools?: ReadonlyArray<GoogleCloudAiplatformV1DeploymentResourcePool>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -25091,7 +25091,7 @@ export interface GoogleCloudAiplatformV1SchemaPredictPredictionVideoObjectTracki
   /** The Model's confidence in correction of this prediction, higher value means higher confidence. */
   confidence?: number;
   /** All of the frames of the video in which a single object instance has been detected. The bounding boxes in the frames identify the same object. */
-  frames?: Array<GoogleCloudAiplatformV1SchemaPredictPredictionVideoObjectTrackingPredictionResultFrame>;
+  frames?: ReadonlyArray<GoogleCloudAiplatformV1SchemaPredictPredictionVideoObjectTrackingPredictionResultFrame>;
   /** The beginning, inclusive, of the video's time segment in which the object instance has been detected. Expressed as a number of seconds as measured from the start of the video, with fractions up to a microsecond precision, and with "s" appended at the end. */
   timeSegmentStart?: string;
 }
@@ -25145,7 +25145,7 @@ export interface GoogleCloudAiplatformV1AskContextsRequest {
   /** Required. Single RAG retrieve query. */
   query?: GoogleCloudAiplatformV1RagQuery;
   /** Optional. The tools to use for AskContexts. */
-  tools?: Array<GoogleCloudAiplatformV1Tool>;
+  tools?: ReadonlyArray<GoogleCloudAiplatformV1Tool>;
 }
 
 export const GoogleCloudAiplatformV1AskContextsRequest =
@@ -25156,7 +25156,7 @@ export const GoogleCloudAiplatformV1AskContextsRequest =
 
 export interface GoogleCloudAiplatformV1ListTrainingPipelinesResponse {
   /** List of TrainingPipelines in the requested page. */
-  trainingPipelines?: Array<GoogleCloudAiplatformV1TrainingPipeline>;
+  trainingPipelines?: ReadonlyArray<GoogleCloudAiplatformV1TrainingPipeline>;
   /** A token to retrieve the next page of results. Pass to ListTrainingPipelinesRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -25240,7 +25240,7 @@ export interface GoogleCloudAiplatformV1ImportFeatureValuesRequest {
   /** Source column that holds entity IDs. If not provided, entity IDs are extracted from the column named entity_id. */
   entityIdField?: string;
   /** Required. Specifications defining which Feature values to import from the entity. The request fails if no feature_specs are provided, and having multiple feature_specs for one Feature is not allowed. */
-  featureSpecs?: Array<GoogleCloudAiplatformV1ImportFeatureValuesRequestFeatureSpec>;
+  featureSpecs?: ReadonlyArray<GoogleCloudAiplatformV1ImportFeatureValuesRequestFeatureSpec>;
   bigquerySource?: GoogleCloudAiplatformV1BigQuerySource;
   /** Specifies the number of workers that are used to write data to the Featurestore. Consider the online serving capacity that you require to achieve the desired import throughput without interfering with online serving. The value must be positive, and less than or equal to 100. If not set, defaults to using 1 worker. The low count ensures minimal impact on online serving performance. */
   workerCount?: number;
@@ -25285,7 +25285,7 @@ export const GoogleCloudAiplatformV1WriteFeatureValuesResponse =
 
 export interface GoogleCloudAiplatformV1ListModelVersionCheckpointsResponse {
   /** List of Model Version checkpoints. */
-  checkpoints?: Array<GoogleCloudAiplatformV1ModelVersionCheckpoint>;
+  checkpoints?: ReadonlyArray<GoogleCloudAiplatformV1ModelVersionCheckpoint>;
   /** A token to retrieve the next page of results. Pass to ListModelVersionCheckpointsRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -25339,7 +25339,7 @@ export const GoogleCloudAiplatformV1AssignNotebookRuntimeOperationMetadata =
 
 export interface GoogleCloudAiplatformV1StreamingPredictResponse {
   /** The prediction output. */
-  outputs?: Array<GoogleCloudAiplatformV1Tensor>;
+  outputs?: ReadonlyArray<GoogleCloudAiplatformV1Tensor>;
   /** The parameters that govern the prediction. */
   parameters?: GoogleCloudAiplatformV1Tensor;
 }
@@ -25369,7 +25369,7 @@ export const GoogleCloudAiplatformV1CreateFeatureOnlineStoreOperationMetadata =
 
 export interface GoogleCloudAiplatformV1ExecuteSandboxEnvironmentResponse {
   /** The outputs from the sandbox environment. */
-  outputs?: Array<GoogleCloudAiplatformV1Chunk>;
+  outputs?: ReadonlyArray<GoogleCloudAiplatformV1Chunk>;
 }
 
 export const GoogleCloudAiplatformV1ExecuteSandboxEnvironmentResponse =
@@ -25420,7 +25420,7 @@ export interface GoogleCloudAiplatformV1SchemaModelevaluationMetricsForecastingE
   /** Root Mean Square Percentage Error. Square root of MSPE. Undefined/imaginary when MSPE is negative. */
   rootMeanSquaredPercentageError?: number;
   /** The quantile metrics entries for each quantile. */
-  quantileMetrics?: Array<GoogleCloudAiplatformV1SchemaModelevaluationMetricsForecastingEvaluationMetricsQuantileMetricsEntry>;
+  quantileMetrics?: ReadonlyArray<GoogleCloudAiplatformV1SchemaModelevaluationMetricsForecastingEvaluationMetricsQuantileMetricsEntry>;
   /** Coefficient of determination as Pearson correlation coefficient. Undefined when ground truth or predictions are constant or near constant. */
   rSquared?: number;
   /** Mean Absolute Error (MAE). */
@@ -25471,7 +25471,7 @@ export const GoogleCloudAiplatformV1SchemaTextSentimentAnnotation =
 
 export interface GoogleCloudAiplatformV1ListSandboxEnvironmentTemplatesResponse {
   /** The SandboxEnvironmentTemplates matching the request. */
-  sandboxEnvironmentTemplates?: Array<GoogleCloudAiplatformV1SandboxEnvironmentTemplate>;
+  sandboxEnvironmentTemplates?: ReadonlyArray<GoogleCloudAiplatformV1SandboxEnvironmentTemplate>;
   /** A token, which can be sent as ListSandboxEnvironmentTemplatesRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -25501,9 +25501,9 @@ export interface GoogleCloudAiplatformV1SchemaTrainingjobDefinitionAutoMlTablesI
   /** Required when optimization_objective is "maximize-precision-at-recall". Must be between 0 and 1, inclusive. */
   optimizationObjectiveRecallValue?: number;
   /** Each transformation will apply transform function to given input column. And the result will be used for training. When creating transformation for BigQuery Struct column, the column should be flattened using "." as the delimiter. */
-  transformations?: Array<GoogleCloudAiplatformV1SchemaTrainingjobDefinitionAutoMlTablesInputsTransformation>;
+  transformations?: ReadonlyArray<GoogleCloudAiplatformV1SchemaTrainingjobDefinitionAutoMlTablesInputsTransformation>;
   /** Additional experiment flags for the Tables training pipeline. */
-  additionalExperiments?: Array<string>;
+  additionalExperiments?: ReadonlyArray<string>;
   /** Required when optimization_objective is "maximize-recall-at-precision". Must be between 0 and 1, inclusive. */
   optimizationObjectivePrecisionValue?: number;
   /** Use the entire training budget. This disables the early stopping feature. By default, the early stopping feature is enabled, which means that AutoML Tables might stop training before the entire training budget has been used. */
@@ -25616,7 +25616,7 @@ export const GoogleCloudAiplatformV1SchemaModelevaluationMetricsGeneralTextGener
 
 export interface GoogleCloudAiplatformV1ListOptimalTrialsResponse {
   /** The pareto-optimal Trials for multiple objective Study or the optimal trial for single objective Study. The definition of pareto-optimal can be checked in wiki page. https://en.wikipedia.org/wiki/Pareto_efficiency */
-  optimalTrials?: Array<GoogleCloudAiplatformV1Trial>;
+  optimalTrials?: ReadonlyArray<GoogleCloudAiplatformV1Trial>;
 }
 
 export const GoogleCloudAiplatformV1ListOptimalTrialsResponse =
@@ -25665,7 +25665,7 @@ export interface GoogleCloudAiplatformV1SchemaImageSegmentationAnnotationPolygon
   /** The display name of the AnnotationSpec that this Annotation pertains to. */
   displayName?: string;
   /** The vertexes are connected one by one and the last vertex is connected to the first one to represent a polygon. */
-  vertexes?: Array<GoogleCloudAiplatformV1SchemaVertex>;
+  vertexes?: ReadonlyArray<GoogleCloudAiplatformV1SchemaVertex>;
 }
 
 export const GoogleCloudAiplatformV1SchemaImageSegmentationAnnotationPolygonAnnotation =
@@ -25812,7 +25812,7 @@ export const GoogleCloudAiplatformV1RagCorpus =
 
 export interface GoogleCloudAiplatformV1ListRagCorporaResponse {
   /** List of RagCorpora in the requested page. */
-  ragCorpora?: Array<GoogleCloudAiplatformV1RagCorpus>;
+  ragCorpora?: ReadonlyArray<GoogleCloudAiplatformV1RagCorpus>;
   /** A token to retrieve the next page of results. Pass to ListRagCorporaRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -25825,7 +25825,7 @@ export const GoogleCloudAiplatformV1ListRagCorporaResponse =
 
 export interface GoogleCloudAiplatformV1ListTuningJobsResponse {
   /** The tuning jobs that match the request. */
-  tuningJobs?: Array<GoogleCloudAiplatformV1TuningJob>;
+  tuningJobs?: ReadonlyArray<GoogleCloudAiplatformV1TuningJob>;
   /** A token to retrieve the next page of results. Pass this token in a subsequent [GenAiTuningService.ListTuningJobs] call to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -25846,7 +25846,7 @@ export const GoogleCloudAiplatformV1ResumeModelDeploymentMonitoringJobRequest =
 
 export interface GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfig {
   /** The sources for the grounding checking. */
-  sources?: Array<GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfigSourceEntry>;
+  sources?: ReadonlyArray<GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfigSourceEntry>;
   /** If set, skip finding claim attributions (i.e not generate grounding citation). */
   disableAttribution?: boolean;
 }
@@ -25865,7 +25865,7 @@ export const GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfig =
 
 export interface GoogleCloudAiplatformV1SchemaTextPromptDatasetMetadata {
   /** Customized stop sequences. */
-  stopSequences?: Array<string>;
+  stopSequences?: ReadonlyArray<string>;
   /** Temperature value used for sampling set when the dataset was saved. This value is used to tune the degree of randomness. */
   temperature?: number;
   /** Whether or not the user has enabled logit probabilities in the model parameters. */
@@ -26042,7 +26042,7 @@ export const GoogleCloudAiplatformV1AddTrialMeasurementRequest =
 
 export interface GoogleCloudAiplatformV1ListTrialsResponse {
   /** The Trials associated with the Study. */
-  trials?: Array<GoogleCloudAiplatformV1Trial>;
+  trials?: ReadonlyArray<GoogleCloudAiplatformV1Trial>;
   /** Pass this token as the `page_token` field of the request for a subsequent call. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -26119,7 +26119,7 @@ export const GoogleCloudAiplatformV1SchemaPredictInstanceImageObjectDetectionPre
 
 export interface GoogleCloudAiplatformV1ListStudiesResponse {
   /** The studies associated with the project. */
-  studies?: Array<GoogleCloudAiplatformV1Study>;
+  studies?: ReadonlyArray<GoogleCloudAiplatformV1Study>;
   /** Passes this token as the `page_token` field of the request for a subsequent call. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -26219,7 +26219,7 @@ export const GoogleCloudAiplatformV1SchemaPredictParamsVideoClassificationPredic
 
 export interface GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest {
   /** Required. The names of the PipelineJobs to delete. A maximum of 32 PipelineJobs can be deleted in a batch. Format: `projects/{project}/locations/{location}/pipelineJobs/{pipelineJob}` */
-  names?: Array<string>;
+  names?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest =
@@ -26241,11 +26241,11 @@ export interface GoogleCloudAiplatformV1ModelEvaluation {
   /** The display name of the ModelEvaluation. */
   displayName?: string;
   /** Describes the values of ExplanationSpec that are used for explaining the predicted values on the evaluated data. */
-  explanationSpecs?: Array<GoogleCloudAiplatformV1ModelEvaluationModelEvaluationExplanationSpec>;
+  explanationSpecs?: ReadonlyArray<GoogleCloudAiplatformV1ModelEvaluationModelEvaluationExplanationSpec>;
   /** Output only. The resource name of the ModelEvaluation. */
   name?: string;
   /** All possible dimensions of ModelEvaluationSlices. The dimensions can be used as the filter of the ModelService.ListModelEvaluationSlices request, in the form of `slice.dimension = `. */
-  sliceDimensions?: Array<string>;
+  sliceDimensions?: ReadonlyArray<string>;
   /** Aggregated explanation metrics for the Model's prediction output over the data this ModelEvaluation uses. This field is populated only if the Model is evaluated with explanations, and only for AutoML tabular Models. */
   modelExplanation?: GoogleCloudAiplatformV1ModelExplanation;
   /** Points to a YAML file stored on Google Cloud Storage describing EvaluatedDataItemView.predictions, EvaluatedDataItemView.ground_truths, EvaluatedAnnotation.predictions, and EvaluatedAnnotation.ground_truths. The schema is defined as an OpenAPI 3.0.2 [Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject). This field is not populated if there are neither EvaluatedDataItemViews nor EvaluatedAnnotations under this ModelEvaluation. */
@@ -26287,7 +26287,7 @@ export const GoogleCloudAiplatformV1ImportModelEvaluationRequest =
 
 export interface GoogleCloudAiplatformV1BatchCreateTensorboardRunsRequest {
   /** Required. The request message specifying the TensorboardRuns to create. A maximum of 1000 TensorboardRuns can be created in a batch. */
-  requests?: Array<GoogleCloudAiplatformV1CreateTensorboardRunRequest>;
+  requests?: ReadonlyArray<GoogleCloudAiplatformV1CreateTensorboardRunRequest>;
 }
 
 export const GoogleCloudAiplatformV1BatchCreateTensorboardRunsRequest =
@@ -26301,7 +26301,7 @@ export const GoogleCloudAiplatformV1BatchCreateTensorboardRunsRequest =
 
 export interface GoogleCloudAiplatformV1RemoveContextChildrenRequest {
   /** The resource names of the child Contexts. */
-  childContexts?: Array<string>;
+  childContexts?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1RemoveContextChildrenRequest =
@@ -26325,7 +26325,7 @@ export const GoogleCloudAiplatformV1ReadTensorboardTimeSeriesDataResponse =
 
 export interface GoogleCloudAiplatformV1ListSandboxEnvironmentsResponse {
   /** The SandboxEnvironments matching the request. */
-  sandboxEnvironments?: Array<GoogleCloudAiplatformV1SandboxEnvironment>;
+  sandboxEnvironments?: ReadonlyArray<GoogleCloudAiplatformV1SandboxEnvironment>;
   /** A token, which can be sent as ListSandboxEnvironmentsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -26342,7 +26342,7 @@ export const GoogleCloudAiplatformV1ListSandboxEnvironmentsResponse =
 
 export interface GoogleCloudAiplatformV1SearchMigratableResourcesResponse {
   /** All migratable resources that can be migrated to the location specified in the request. */
-  migratableResources?: Array<GoogleCloudAiplatformV1MigratableResource>;
+  migratableResources?: ReadonlyArray<GoogleCloudAiplatformV1MigratableResource>;
   /** The standard next-page token. The migratable_resources may not fill page_size in SearchMigratableResourcesRequest even when there are subsequent pages. */
   nextPageToken?: string;
 }
@@ -26381,7 +26381,7 @@ export const GoogleCloudLocationLocation =
 
 export interface GoogleCloudAiplatformV1PredictRequest {
   /** Required. The instances that are the input to the prediction call. A DeployedModel may have an upper limit on the number of instances it supports per request, and when it is exceeded the prediction call errors in case of AutoML Models, or, in case of customer created Models, the behaviour is as documented by that Model. The schema of any single instance may be specified via Endpoint's DeployedModels' Model's PredictSchemata's instance_schema_uri. */
-  instances?: Array<unknown>;
+  instances?: ReadonlyArray<unknown>;
   /** The parameters that govern the prediction. The schema of the parameters may be specified via Endpoint's DeployedModels' Model's PredictSchemata's parameters_schema_uri. */
   parameters?: unknown;
   /** Optional. The user labels for Imagen billing usage only. Only Imagen supports labels. For other use cases, it will be ignored. */
@@ -26428,7 +26428,7 @@ export const GoogleCloudAiplatformV1SchemaPredictParamsImageSegmentationPredicti
 
 export interface GoogleCloudAiplatformV1DirectPredictResponse {
   /** The prediction output. */
-  outputs?: Array<GoogleCloudAiplatformV1Tensor>;
+  outputs?: ReadonlyArray<GoogleCloudAiplatformV1Tensor>;
   /** The parameters that govern the prediction. */
   parameters?: GoogleCloudAiplatformV1Tensor;
 }
@@ -26512,7 +26512,7 @@ export const GoogleCloudAiplatformV1SchemaModelevaluationMetricsPairwiseTextGene
 
 export interface GoogleCloudAiplatformV1ListSandboxEnvironmentSnapshotsResponse {
   /** The SandboxEnvironmentSnapshots matching the request. */
-  sandboxEnvironmentSnapshots?: Array<GoogleCloudAiplatformV1SandboxEnvironmentSnapshot>;
+  sandboxEnvironmentSnapshots?: ReadonlyArray<GoogleCloudAiplatformV1SandboxEnvironmentSnapshot>;
   /** A token, which can be sent as ListSandboxEnvironmentSnapshotsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -26530,7 +26530,7 @@ export const GoogleCloudAiplatformV1ListSandboxEnvironmentSnapshotsResponse =
 
 export interface GoogleCloudAiplatformV1ImportDataRequest {
   /** Required. The desired input locations. The contents of all input locations will be imported in one batch. */
-  importConfigs?: Array<GoogleCloudAiplatformV1ImportDataConfig>;
+  importConfigs?: ReadonlyArray<GoogleCloudAiplatformV1ImportDataConfig>;
 }
 
 export const GoogleCloudAiplatformV1ImportDataRequest =
@@ -26556,7 +26556,7 @@ export const GoogleCloudAiplatformV1CreateFeatureViewOperationMetadata =
 
 export interface GoogleCloudAiplatformV1BatchMigrateResourcesRequest {
   /** Required. The request messages specifying the resources to migrate. They must be in the same location as the destination. Up to 50 resources can be migrated in one batch. */
-  migrateResourceRequests?: Array<GoogleCloudAiplatformV1MigrateResourceRequest>;
+  migrateResourceRequests?: ReadonlyArray<GoogleCloudAiplatformV1MigrateResourceRequest>;
 }
 
 export const GoogleCloudAiplatformV1BatchMigrateResourcesRequest =
@@ -26627,7 +26627,7 @@ export const GoogleCloudAiplatformV1CacheConfig =
 
 export interface GoogleCloudAiplatformV1ListModelEvaluationsResponse {
   /** List of ModelEvaluations in the requested page. */
-  modelEvaluations?: Array<GoogleCloudAiplatformV1ModelEvaluation>;
+  modelEvaluations?: ReadonlyArray<GoogleCloudAiplatformV1ModelEvaluation>;
   /** A token to retrieve next page of results. Pass to ListModelEvaluationsRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -26651,7 +26651,7 @@ export const GoogleCloudAiplatformV1RebootPersistentResourceRequest =
 
 export interface GoogleCloudAiplatformV1NearestNeighbors {
   /** All its neighbors. */
-  neighbors?: Array<GoogleCloudAiplatformV1NearestNeighborsNeighbor>;
+  neighbors?: ReadonlyArray<GoogleCloudAiplatformV1NearestNeighborsNeighbor>;
 }
 
 export const GoogleCloudAiplatformV1NearestNeighbors =
@@ -26705,7 +26705,7 @@ export interface GoogleCloudAiplatformV1ExplainRequest {
   /** If specified, this ExplainRequest will be served by the chosen DeployedModel, overriding Endpoint.traffic_split. */
   deployedModelId?: string;
   /** Required. The instances that are the input to the explanation call. A DeployedModel may have an upper limit on the number of instances it supports per request, and when it is exceeded the explanation call errors in case of AutoML Models, or, in case of customer created Models, the behaviour is as documented by that Model. The schema of any single instance may be specified via Endpoint's DeployedModels' Model's PredictSchemata's instance_schema_uri. */
-  instances?: Array<unknown>;
+  instances?: ReadonlyArray<unknown>;
   /** If specified, overrides the explanation_spec of the DeployedModel. Can be used for explaining prediction results with different configurations, such as: - Explaining top-5 predictions results as opposed to top-1; - Increasing path count or step count of the attribution methods to reduce approximate errors; - Using different baselines for explaining the prediction results. */
   explanationSpecOverride?: GoogleCloudAiplatformV1ExplanationSpecOverride;
 }
@@ -26724,11 +26724,11 @@ export interface GoogleCloudAiplatformV1GenerateSyntheticDataRequest {
   /** Required. The number of synthetic examples to generate. For this stateless API, you can generate up to 50 examples in a single request. */
   count?: number;
   /** Required. Defines the schema of each synthetic example to be generated, defined by a list of fields. */
-  outputFieldSpecs?: Array<GoogleCloudAiplatformV1OutputFieldSpec>;
+  outputFieldSpecs?: ReadonlyArray<GoogleCloudAiplatformV1OutputFieldSpec>;
   /** Generates synthetic data based on a high-level description of the task or data you want. */
   taskDescription?: GoogleCloudAiplatformV1TaskDescriptionStrategy;
   /** Optional. A list of few-shot examples that help the model understand the desired style, tone, and format of the generated synthetic data. Providing these few-shot examples can significantly improve the quality and relevance of the output. */
-  examples?: Array<GoogleCloudAiplatformV1SyntheticExample>;
+  examples?: ReadonlyArray<GoogleCloudAiplatformV1SyntheticExample>;
 }
 
 export const GoogleCloudAiplatformV1GenerateSyntheticDataRequest =
@@ -26802,7 +26802,7 @@ export const GoogleCloudAiplatformV1TensorboardExperiment =
 
 export interface GoogleCloudAiplatformV1ListTensorboardExperimentsResponse {
   /** The TensorboardExperiments mathching the request. */
-  tensorboardExperiments?: Array<GoogleCloudAiplatformV1TensorboardExperiment>;
+  tensorboardExperiments?: ReadonlyArray<GoogleCloudAiplatformV1TensorboardExperiment>;
   /** A token, which can be sent as ListTensorboardExperimentsRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -26821,7 +26821,7 @@ export interface GoogleCloudAiplatformV1ListCustomJobsResponse {
   /** A token to retrieve the next page of results. Pass to ListCustomJobsRequest.page_token to obtain that page. */
   nextPageToken?: string;
   /** List of CustomJobs in the requested page. */
-  customJobs?: Array<GoogleCloudAiplatformV1CustomJob>;
+  customJobs?: ReadonlyArray<GoogleCloudAiplatformV1CustomJob>;
 }
 
 export const GoogleCloudAiplatformV1ListCustomJobsResponse =
@@ -26834,7 +26834,7 @@ export interface GoogleCloudAiplatformV1ListModelEvaluationSlicesResponse {
   /** A token to retrieve next page of results. Pass to ListModelEvaluationSlicesRequest.page_token to obtain that page. */
   nextPageToken?: string;
   /** List of ModelEvaluations in the requested page. */
-  modelEvaluationSlices?: Array<GoogleCloudAiplatformV1ModelEvaluationSlice>;
+  modelEvaluationSlices?: ReadonlyArray<GoogleCloudAiplatformV1ModelEvaluationSlice>;
 }
 
 export const GoogleCloudAiplatformV1ListModelEvaluationSlicesResponse =
@@ -26849,9 +26849,9 @@ export const GoogleCloudAiplatformV1ListModelEvaluationSlicesResponse =
 
 export interface GoogleCloudAiplatformV1SchemaPredictPredictionTabularClassificationPredictionResult {
   /** The name of the classes being classified, contains all possible values of the target column. */
-  classes?: Array<string>;
+  classes?: ReadonlyArray<string>;
   /** The model's confidence in each class being correct, higher value means higher confidence. The N-th score corresponds to the N-th class in classes. */
-  scores?: Array<number>;
+  scores?: ReadonlyArray<number>;
 }
 
 export const GoogleCloudAiplatformV1SchemaPredictPredictionTabularClassificationPredictionResult =
@@ -26867,7 +26867,7 @@ export interface GoogleCloudAiplatformV1ReadIndexDatapointsRequest {
   /** The ID of the DeployedIndex that will serve the request. */
   deployedIndexId?: string;
   /** IDs of the datapoints to be searched for. */
-  ids?: Array<string>;
+  ids?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1ReadIndexDatapointsRequest =
@@ -26880,9 +26880,9 @@ export const GoogleCloudAiplatformV1ReadIndexDatapointsRequest =
 
 export interface GoogleCloudAiplatformV1AddContextArtifactsAndExecutionsRequest {
   /** The resource names of the Artifacts to attribute to the Context. Format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}/artifacts/{artifact}` */
-  artifacts?: Array<string>;
+  artifacts?: ReadonlyArray<string>;
   /** The resource names of the Executions to associate with the Context. Format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}/executions/{execution}` */
-  executions?: Array<string>;
+  executions?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1AddContextArtifactsAndExecutionsRequest =
@@ -26911,7 +26911,7 @@ export const GoogleCloudAiplatformV1SearchNearestEntitiesRequest =
 
 export interface GoogleCloudAiplatformV1BatchImportEvaluatedAnnotationsRequest {
   /** Required. Evaluated annotations resource to be imported. */
-  evaluatedAnnotations?: Array<GoogleCloudAiplatformV1EvaluatedAnnotation>;
+  evaluatedAnnotations?: ReadonlyArray<GoogleCloudAiplatformV1EvaluatedAnnotation>;
 }
 
 export const GoogleCloudAiplatformV1BatchImportEvaluatedAnnotationsRequest =
@@ -26932,7 +26932,7 @@ export const GoogleCloudAiplatformV1CancelTrainingPipelineRequest =
 
 export interface GoogleCloudAiplatformV1SuggestTrialsRequest {
   /** Optional. This allows you to specify the "context" for a Trial; a context is a slice (a subspace) of the search space. Typical uses for contexts: 1) You are using Vizier to tune a server for best performance, but there's a strong weekly cycle. The context specifies the day-of-week. This allows Tuesday to generalize from Wednesday without assuming that everything is identical. 2) Imagine you're optimizing some medical treatment for people. As they walk in the door, you know certain facts about them (e.g. sex, weight, height, blood-pressure). Put that information in the context, and Vizier will adapt its suggestions to the patient. 3) You want to do a fair A/B test efficiently. Specify the "A" and "B" conditions as contexts, and Vizier will generalize between "A" and "B" conditions. If they are similar, this will allow Vizier to converge to the optimum faster than if "A" and "B" were separate Studies. NOTE: You can also enter contexts as REQUESTED Trials, e.g. via the CreateTrial() RPC; that's the asynchronous option where you don't need a close association between contexts and suggestions. NOTE: All the Parameters you set in a context MUST be defined in the Study. NOTE: You must supply 0 or $suggestion_count contexts. If you don't supply any contexts, Vizier will make suggestions from the full search space specified in the StudySpec; if you supply a full set of context, each suggestion will match the corresponding context. NOTE: A Context with no features set matches anything, and allows suggestions from the full search space. NOTE: Contexts MUST lie within the search space specified in the StudySpec. It's an error if they don't. NOTE: Contexts preferentially match ACTIVE then REQUESTED trials before new suggestions are generated. NOTE: Generation of suggestions involves a match between a Context and (optionally) a REQUESTED trial; if that match is not fully specified, a suggestion will be geneated in the merged subspace. */
-  contexts?: Array<GoogleCloudAiplatformV1TrialContext>;
+  contexts?: ReadonlyArray<GoogleCloudAiplatformV1TrialContext>;
   /** Required. The number of suggestions requested. It must be positive. */
   suggestionCount?: number;
   /** Required. The identifier of the client that is requesting the suggestion. If multiple SuggestTrialsRequests have the same `client_id`, the service will return the identical suggested Trial if the Trial is pending, and provide a new Trial if the last suggested Trial was completed. */
@@ -27002,7 +27002,7 @@ export interface GoogleCloudAiplatformV1SchemaImageSegmentationAnnotationPolylin
   /** The display name of the AnnotationSpec that this Annotation pertains to. */
   displayName?: string;
   /** The vertexes are connected one by one and the last vertex in not connected to the first one. */
-  vertexes?: Array<GoogleCloudAiplatformV1SchemaVertex>;
+  vertexes?: ReadonlyArray<GoogleCloudAiplatformV1SchemaVertex>;
 }
 
 export const GoogleCloudAiplatformV1SchemaImageSegmentationAnnotationPolylineAnnotation =
@@ -27051,7 +27051,7 @@ export interface GoogleCloudAiplatformV1EvaluationSet {
   /** Output only. Timestamp when this item was last updated. */
   updateTime?: string;
   /** Required. The EvaluationItems that are part of this dataset. */
-  evaluationItems?: Array<string>;
+  evaluationItems?: ReadonlyArray<string>;
   /** Output only. Timestamp when this item was created. */
   createTime?: string;
 }
@@ -27127,7 +27127,7 @@ export const GoogleCloudAiplatformV1SchemaPredictPredictionVideoActionRecognitio
 
 export interface GoogleCloudAiplatformV1GenerateInstanceRubricsRequest {
   /** Required. The prompt to generate rubrics from. For single-turn queries, this is a single instance. For multi-turn queries, this is a repeated field that contains conversation history + latest request. */
-  contents?: Array<GoogleCloudAiplatformV1Content>;
+  contents?: ReadonlyArray<GoogleCloudAiplatformV1Content>;
   /** Optional. Specification for using the rubric generation configs of a pre-defined metric, e.g. "generic_quality_v1" and "instruction_following_v1". Some of the configs may be only used in rubric generation and not supporting evaluation, e.g. "fully_customized_generic_quality_v1". If this field is set, the `rubric_generation_spec` field will be ignored. */
   predefinedRubricGenerationSpec?: GoogleCloudAiplatformV1PredefinedMetricSpec;
   /** Required. The resource name of the Location to generate rubrics from. Format: `projects/{project}/locations/{location}` */
@@ -27173,7 +27173,7 @@ export const GoogleCloudAiplatformV1UploadRagFileResponse =
 
 export interface GoogleCloudAiplatformV1ListEvaluationSetsResponse {
   /** List of EvaluationSets in the requested page. */
-  evaluationSets?: Array<GoogleCloudAiplatformV1EvaluationSet>;
+  evaluationSets?: ReadonlyArray<GoogleCloudAiplatformV1EvaluationSet>;
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
@@ -27224,7 +27224,7 @@ export const GoogleCloudAiplatformV1CreateDeploymentResourcePoolRequest =
 
 export interface GoogleCloudAiplatformV1ListFeatureViewSyncsResponse {
   /** The FeatureViewSyncs matching the request. */
-  featureViewSyncs?: Array<GoogleCloudAiplatformV1FeatureViewSync>;
+  featureViewSyncs?: ReadonlyArray<GoogleCloudAiplatformV1FeatureViewSync>;
   /** A token, which can be sent as ListFeatureViewSyncsRequest.page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -27241,7 +27241,7 @@ export const GoogleCloudAiplatformV1ListFeatureViewSyncsResponse =
 
 export interface GoogleCloudAiplatformV1BatchCancelPipelineJobsRequest {
   /** Required. The names of the PipelineJobs to cancel. A maximum of 32 PipelineJobs can be cancelled in a batch. Format: `projects/{project}/locations/{location}/pipelineJobs/{pipelineJob}` */
-  names?: Array<string>;
+  names?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1BatchCancelPipelineJobsRequest =
@@ -27290,7 +27290,7 @@ export interface GoogleCloudAiplatformV1PurgeExecutionsResponse {
   /** The number of Executions that this request deleted (or, if `force` is false, the number of Executions that will be deleted). This can be an estimate. */
   purgeCount?: string;
   /** A sample of the Execution names that will be deleted. Only populated if `force` is set to false. The maximum number of samples is 100 (it is possible to return fewer). */
-  purgeSample?: Array<string>;
+  purgeSample?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1PurgeExecutionsResponse =
@@ -27370,7 +27370,7 @@ export interface GoogleCloudAiplatformV1PublisherModel {
     | "GA"
     | (string & {});
   /** Optional. Additional information about the model's Frameworks. */
-  frameworks?: Array<string>;
+  frameworks?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudAiplatformV1PublisherModel =
@@ -27390,7 +27390,7 @@ export const GoogleCloudAiplatformV1PublisherModel =
 
 export interface GoogleCloudAiplatformV1ExecuteSandboxEnvironmentRequest {
   /** Required. The inputs to the sandbox environment. */
-  inputs?: Array<GoogleCloudAiplatformV1Chunk>;
+  inputs?: ReadonlyArray<GoogleCloudAiplatformV1Chunk>;
 }
 
 export const GoogleCloudAiplatformV1ExecuteSandboxEnvironmentRequest =
@@ -27414,7 +27414,7 @@ export const GoogleCloudAiplatformV1SchemaTextSentimentSavedQueryMetadata =
 
 export interface GoogleCloudAiplatformV1DirectPredictRequest {
   /** The prediction input. */
-  inputs?: Array<GoogleCloudAiplatformV1Tensor>;
+  inputs?: ReadonlyArray<GoogleCloudAiplatformV1Tensor>;
   /** The parameters that govern the prediction. */
   parameters?: GoogleCloudAiplatformV1Tensor;
 }
@@ -27467,7 +27467,7 @@ export const GoogleCloudAiplatformV1SchemaImageDatasetMetadata =
 
 export interface GoogleCloudAiplatformV1ListNasTrialDetailsResponse {
   /** List of top NasTrials in the requested page. */
-  nasTrialDetails?: Array<GoogleCloudAiplatformV1NasTrialDetail>;
+  nasTrialDetails?: ReadonlyArray<GoogleCloudAiplatformV1NasTrialDetail>;
   /** A token to retrieve the next page of results. Pass to ListNasTrialDetailsRequest.page_token to obtain that page. */
   nextPageToken?: string;
 }
@@ -27494,7 +27494,7 @@ export const GoogleCloudAiplatformV1DeployIndexResponse =
 
 export interface GoogleCloudAiplatformV1StreamingReadFeatureValuesRequest {
   /** Required. IDs of entities to read Feature values of. The maximum number of IDs is 100. For example, for a machine learning model predicting user clicks on a website, an entity ID could be `user_123`. */
-  entityIds?: Array<string>;
+  entityIds?: ReadonlyArray<string>;
   /** Required. Selector choosing Features of the target EntityType. Feature IDs will be deduplicated. */
   featureSelector?: GoogleCloudAiplatformV1FeatureSelector;
 }
@@ -27509,7 +27509,7 @@ export const GoogleCloudAiplatformV1StreamingReadFeatureValuesRequest =
 
 export interface GoogleCloudLocationListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<GoogleCloudLocationLocation>;
+  locations?: ReadonlyArray<GoogleCloudLocationLocation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -27553,11 +27553,7 @@ export const PatchReasoningEnginesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/reasoningEngines/{reasoningEnginesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchReasoningEnginesRequest>;
 
@@ -27593,11 +27589,7 @@ export const ExecuteCodeReasoningEnginesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/reasoningEngines/{reasoningEnginesId}:executeCode",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:executeCode", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExecuteCodeReasoningEnginesRequest>;
 
@@ -27665,7 +27657,7 @@ export const GetReasoningEnginesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/reasoningEngines/{reasoningEnginesId}" }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetReasoningEnginesRequest>;
 
@@ -27702,11 +27694,7 @@ export const QueryReasoningEnginesRequest =
       GoogleCloudAiplatformV1QueryReasoningEngineRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/reasoningEngines/{reasoningEnginesId}:query",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:query", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<QueryReasoningEnginesRequest>;
 
@@ -27788,11 +27776,7 @@ export const StreamQueryReasoningEnginesRequest =
       GoogleCloudAiplatformV1StreamQueryReasoningEngineRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/reasoningEngines/{reasoningEnginesId}:streamQuery",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:streamQuery", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StreamQueryReasoningEnginesRequest>;
 
@@ -27826,10 +27810,7 @@ export const DeleteReasoningEnginesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/reasoningEngines/{reasoningEnginesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteReasoningEnginesRequest>;
 
@@ -27860,10 +27841,7 @@ export const GetReasoningEnginesMemoriesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/memories/{memoriesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetReasoningEnginesMemoriesOperationsRequest>;
 
@@ -27898,11 +27876,7 @@ export const WaitReasoningEnginesMemoriesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/memories/{memoriesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitReasoningEnginesMemoriesOperationsRequest>;
 
@@ -27934,10 +27908,7 @@ export const DeleteReasoningEnginesMemoriesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/memories/{memoriesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteReasoningEnginesMemoriesOperationsRequest>;
 
@@ -27969,11 +27940,7 @@ export const CancelReasoningEnginesMemoriesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/memories/{memoriesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelReasoningEnginesMemoriesOperationsRequest>;
 
@@ -28019,10 +27986,7 @@ export const ListReasoningEnginesMemoriesOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/memories/{memoriesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListReasoningEnginesMemoriesOperationsRequest>;
 
@@ -28065,7 +28029,7 @@ export const CreateReasoningEnginesSandboxEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments",
+      path: "v1/{parent}/sandboxEnvironments",
       hasBody: true,
     }),
     svc,
@@ -28099,10 +28063,7 @@ export const GetReasoningEnginesSandboxEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments/{sandboxEnvironmentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetReasoningEnginesSandboxEnvironmentsRequest>;
 
@@ -28139,11 +28100,7 @@ export const ExecuteReasoningEnginesSandboxEnvironmentsRequest =
       GoogleCloudAiplatformV1ExecuteSandboxEnvironmentRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments/{sandboxEnvironmentsId}:execute",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:execute", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExecuteReasoningEnginesSandboxEnvironmentsRequest>;
 
@@ -28184,10 +28141,7 @@ export const ListReasoningEnginesSandboxEnvironmentsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sandboxEnvironments" }),
     svc,
   ) as unknown as Schema.Schema<ListReasoningEnginesSandboxEnvironmentsRequest>;
 
@@ -28228,11 +28182,7 @@ export const SnapshotReasoningEnginesSandboxEnvironmentsRequest =
       GoogleCloudAiplatformV1SandboxEnvironmentSnapshot,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments/{sandboxEnvironmentsId}:snapshot",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:snapshot", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SnapshotReasoningEnginesSandboxEnvironmentsRequest>;
 
@@ -28264,10 +28214,7 @@ export const DeleteReasoningEnginesSandboxEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments/{sandboxEnvironmentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteReasoningEnginesSandboxEnvironmentsRequest>;
 
@@ -28299,10 +28246,7 @@ export const GetReasoningEnginesSandboxEnvironmentsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments/{sandboxEnvironmentsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetReasoningEnginesSandboxEnvironmentsOperationsRequest>;
 
@@ -28335,10 +28279,7 @@ export const DeleteReasoningEnginesSandboxEnvironmentsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments/{sandboxEnvironmentsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteReasoningEnginesSandboxEnvironmentsOperationsRequest>;
 
@@ -28371,11 +28312,7 @@ export const CancelReasoningEnginesSandboxEnvironmentsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments/{sandboxEnvironmentsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelReasoningEnginesSandboxEnvironmentsOperationsRequest>;
 
@@ -28411,11 +28348,7 @@ export const WaitReasoningEnginesSandboxEnvironmentsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments/{sandboxEnvironmentsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitReasoningEnginesSandboxEnvironmentsOperationsRequest>;
 
@@ -28448,10 +28381,7 @@ export const GetReasoningEnginesSandboxEnvironmentSnapshotsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentSnapshots/{sandboxEnvironmentSnapshotsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetReasoningEnginesSandboxEnvironmentSnapshotsRequest>;
 
@@ -28483,10 +28413,7 @@ export const DeleteReasoningEnginesSandboxEnvironmentSnapshotsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentSnapshots/{sandboxEnvironmentSnapshotsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteReasoningEnginesSandboxEnvironmentSnapshotsRequest>;
 
@@ -28528,10 +28455,7 @@ export const ListReasoningEnginesSandboxEnvironmentSnapshotsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentSnapshots",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sandboxEnvironmentSnapshots" }),
     svc,
   ) as unknown as Schema.Schema<ListReasoningEnginesSandboxEnvironmentSnapshotsRequest>;
 
@@ -28568,10 +28492,7 @@ export const GetReasoningEnginesSandboxEnvironmentSnapshotsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentSnapshots/{sandboxEnvironmentSnapshotsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetReasoningEnginesSandboxEnvironmentSnapshotsOperationsRequest>;
 
@@ -28604,10 +28525,7 @@ export const DeleteReasoningEnginesSandboxEnvironmentSnapshotsOperationsRequest 
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentSnapshots/{sandboxEnvironmentSnapshotsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteReasoningEnginesSandboxEnvironmentSnapshotsOperationsRequest>;
 
@@ -28640,11 +28558,7 @@ export const CancelReasoningEnginesSandboxEnvironmentSnapshotsOperationsRequest 
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentSnapshots/{sandboxEnvironmentSnapshotsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelReasoningEnginesSandboxEnvironmentSnapshotsOperationsRequest>;
 
@@ -28680,11 +28594,7 @@ export const WaitReasoningEnginesSandboxEnvironmentSnapshotsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentSnapshots/{sandboxEnvironmentSnapshotsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitReasoningEnginesSandboxEnvironmentSnapshotsOperationsRequest>;
 
@@ -28717,10 +28627,7 @@ export const GetReasoningEnginesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetReasoningEnginesOperationsRequest>;
 
@@ -28754,11 +28661,7 @@ export const WaitReasoningEnginesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitReasoningEnginesOperationsRequest>;
 
@@ -28803,10 +28706,7 @@ export const ListReasoningEnginesOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListReasoningEnginesOperationsRequest>;
 
@@ -28842,10 +28742,7 @@ export const DeleteReasoningEnginesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteReasoningEnginesOperationsRequest>;
 
@@ -28876,11 +28773,7 @@ export const CancelReasoningEnginesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelReasoningEnginesOperationsRequest>;
 
@@ -28925,10 +28818,7 @@ export const ListReasoningEnginesSessionsOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sessions/{sessionsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListReasoningEnginesSessionsOperationsRequest>;
 
@@ -28964,10 +28854,7 @@ export const DeleteReasoningEnginesSessionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sessions/{sessionsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteReasoningEnginesSessionsOperationsRequest>;
 
@@ -28999,11 +28886,7 @@ export const CancelReasoningEnginesSessionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sessions/{sessionsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelReasoningEnginesSessionsOperationsRequest>;
 
@@ -29035,10 +28918,7 @@ export const GetReasoningEnginesSessionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sessions/{sessionsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetReasoningEnginesSessionsOperationsRequest>;
 
@@ -29073,11 +28953,7 @@ export const WaitReasoningEnginesSessionsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sessions/{sessionsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitReasoningEnginesSessionsOperationsRequest>;
 
@@ -29114,11 +28990,7 @@ export const StreamQueryReasoningEnginesRuntimeRevisionsRequest =
       GoogleCloudAiplatformV1StreamQueryReasoningEngineRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/runtimeRevisions/{runtimeRevisionsId}:streamQuery",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:streamQuery", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StreamQueryReasoningEnginesRuntimeRevisionsRequest>;
 
@@ -29155,11 +29027,7 @@ export const QueryReasoningEnginesRuntimeRevisionsRequest =
       GoogleCloudAiplatformV1QueryReasoningEngineRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/runtimeRevisions/{runtimeRevisionsId}:query",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:query", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<QueryReasoningEnginesRuntimeRevisionsRequest>;
 
@@ -29200,10 +29068,7 @@ export const ListReasoningEnginesSandboxEnvironmentTemplatesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentTemplates",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sandboxEnvironmentTemplates" }),
     svc,
   ) as unknown as Schema.Schema<ListReasoningEnginesSandboxEnvironmentTemplatesRequest>;
 
@@ -29247,7 +29112,7 @@ export const CreateReasoningEnginesSandboxEnvironmentTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentTemplates",
+      path: "v1/{parent}/sandboxEnvironmentTemplates",
       hasBody: true,
     }),
     svc,
@@ -29282,10 +29147,7 @@ export const GetReasoningEnginesSandboxEnvironmentTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentTemplates/{sandboxEnvironmentTemplatesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetReasoningEnginesSandboxEnvironmentTemplatesRequest>;
 
@@ -29317,10 +29179,7 @@ export const DeleteReasoningEnginesSandboxEnvironmentTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentTemplates/{sandboxEnvironmentTemplatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteReasoningEnginesSandboxEnvironmentTemplatesRequest>;
 
@@ -29353,10 +29212,7 @@ export const GetReasoningEnginesSandboxEnvironmentTemplatesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentTemplates/{sandboxEnvironmentTemplatesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetReasoningEnginesSandboxEnvironmentTemplatesOperationsRequest>;
 
@@ -29389,10 +29245,7 @@ export const DeleteReasoningEnginesSandboxEnvironmentTemplatesOperationsRequest 
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentTemplates/{sandboxEnvironmentTemplatesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteReasoningEnginesSandboxEnvironmentTemplatesOperationsRequest>;
 
@@ -29425,11 +29278,7 @@ export const CancelReasoningEnginesSandboxEnvironmentTemplatesOperationsRequest 
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentTemplates/{sandboxEnvironmentTemplatesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelReasoningEnginesSandboxEnvironmentTemplatesOperationsRequest>;
 
@@ -29465,11 +29314,7 @@ export const WaitReasoningEnginesSandboxEnvironmentTemplatesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentTemplates/{sandboxEnvironmentTemplatesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitReasoningEnginesSandboxEnvironmentTemplatesOperationsRequest>;
 
@@ -29502,10 +29347,7 @@ export const DeletePersistentResourcesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/persistentResources/{persistentResourcesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePersistentResourcesOperationsRequest>;
 
@@ -29536,11 +29378,7 @@ export const CancelPersistentResourcesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/persistentResources/{persistentResourcesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelPersistentResourcesOperationsRequest>;
 
@@ -29585,10 +29423,7 @@ export const ListPersistentResourcesOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/persistentResources/{persistentResourcesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListPersistentResourcesOperationsRequest>;
 
@@ -29624,10 +29459,7 @@ export const GetPersistentResourcesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/persistentResources/{persistentResourcesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPersistentResourcesOperationsRequest>;
 
@@ -29662,11 +29494,7 @@ export const WaitPersistentResourcesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/persistentResources/{persistentResourcesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitPersistentResourcesOperationsRequest>;
 
@@ -29746,7 +29574,7 @@ export interface DeleteDatasetsRequest {
 export const DeleteDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "DELETE", path: "v1/datasets/{datasetsId}" }),
+  T.Http({ method: "DELETE", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<DeleteDatasetsRequest>;
 
@@ -29782,7 +29610,7 @@ export const PatchDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   body: Schema.optional(GoogleCloudAiplatformV1Dataset).pipe(T.HttpBody()),
 }).pipe(
-  T.Http({ method: "PATCH", path: "v1/datasets/{datasetsId}", hasBody: true }),
+  T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<PatchDatasetsRequest>;
 
@@ -29815,7 +29643,7 @@ export const GetDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/datasets/{datasetsId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetDatasetsRequest>;
 
@@ -29879,10 +29707,7 @@ export const DeleteDatasetsDatasetVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/datasets/{datasetsId}/datasetVersions/{datasetVersionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteDatasetsDatasetVersionsRequest>;
 
@@ -29928,7 +29753,7 @@ export const ListDatasetsDatasetVersionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/datasets/{datasetsId}/datasetVersions" }),
+    T.Http({ method: "GET", path: "v1/{parent}/datasetVersions" }),
     svc,
   ) as unknown as Schema.Schema<ListDatasetsDatasetVersionsRequest>;
 
@@ -29967,10 +29792,7 @@ export const GetDatasetsDatasetVersionsRequest =
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/datasets/{datasetsId}/datasetVersions/{datasetVersionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDatasetsDatasetVersionsRequest>;
 
@@ -30009,7 +29831,7 @@ export const CreateDatasetsDatasetVersionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/datasets/{datasetsId}/datasetVersions",
+      path: "v1/{parent}/datasetVersions",
       hasBody: true,
     }),
     svc,
@@ -30050,11 +29872,7 @@ export const PatchDatasetsDatasetVersionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/datasets/{datasetsId}/datasetVersions/{datasetVersionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchDatasetsDatasetVersionsRequest>;
 
@@ -30086,10 +29904,7 @@ export const RestoreDatasetsDatasetVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/datasets/{datasetsId}/datasetVersions/{datasetVersionsId}:restore",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:restore" }),
     svc,
   ) as unknown as Schema.Schema<RestoreDatasetsDatasetVersionsRequest>;
 
@@ -30120,10 +29935,7 @@ export const GetDatasetsDataItemsAnnotationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/datasets/{datasetsId}/dataItems/{dataItemsId}/annotations/{annotationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDatasetsDataItemsAnnotationsOperationsRequest>;
 
@@ -30158,11 +29970,7 @@ export const WaitDatasetsDataItemsAnnotationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/datasets/{datasetsId}/dataItems/{dataItemsId}/annotations/{annotationsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitDatasetsDataItemsAnnotationsOperationsRequest>;
 
@@ -30194,10 +30002,7 @@ export const DeleteDatasetsDataItemsAnnotationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/datasets/{datasetsId}/dataItems/{dataItemsId}/annotations/{annotationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteDatasetsDataItemsAnnotationsOperationsRequest>;
 
@@ -30229,11 +30034,7 @@ export const CancelDatasetsDataItemsAnnotationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/datasets/{datasetsId}/dataItems/{dataItemsId}/annotations/{annotationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelDatasetsDataItemsAnnotationsOperationsRequest>;
 
@@ -30279,10 +30080,7 @@ export const ListDatasetsDataItemsAnnotationsOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/datasets/{datasetsId}/dataItems/{dataItemsId}/annotations/{annotationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListDatasetsDataItemsAnnotationsOperationsRequest>;
 
@@ -30332,10 +30130,7 @@ export const ListDatasetsDataItemsOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/datasets/{datasetsId}/dataItems/{dataItemsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListDatasetsDataItemsOperationsRequest>;
 
@@ -30371,10 +30166,7 @@ export const DeleteDatasetsDataItemsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/datasets/{datasetsId}/dataItems/{dataItemsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteDatasetsDataItemsOperationsRequest>;
 
@@ -30405,11 +30197,7 @@ export const CancelDatasetsDataItemsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/datasets/{datasetsId}/dataItems/{dataItemsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelDatasetsDataItemsOperationsRequest>;
 
@@ -30440,10 +30228,7 @@ export const GetDatasetsDataItemsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/datasets/{datasetsId}/dataItems/{dataItemsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDatasetsDataItemsOperationsRequest>;
 
@@ -30477,11 +30262,7 @@ export const WaitDatasetsDataItemsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/datasets/{datasetsId}/dataItems/{dataItemsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitDatasetsDataItemsOperationsRequest>;
 
@@ -30513,10 +30294,7 @@ export const GetDatasetsSavedQueriesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/datasets/{datasetsId}/savedQueries/{savedQueriesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDatasetsSavedQueriesOperationsRequest>;
 
@@ -30551,11 +30329,7 @@ export const WaitDatasetsSavedQueriesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/datasets/{datasetsId}/savedQueries/{savedQueriesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitDatasetsSavedQueriesOperationsRequest>;
 
@@ -30601,10 +30375,7 @@ export const ListDatasetsSavedQueriesOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/datasets/{datasetsId}/savedQueries/{savedQueriesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListDatasetsSavedQueriesOperationsRequest>;
 
@@ -30640,10 +30411,7 @@ export const DeleteDatasetsSavedQueriesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/datasets/{datasetsId}/savedQueries/{savedQueriesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteDatasetsSavedQueriesOperationsRequest>;
 
@@ -30674,11 +30442,7 @@ export const CancelDatasetsSavedQueriesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/datasets/{datasetsId}/savedQueries/{savedQueriesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelDatasetsSavedQueriesOperationsRequest>;
 
@@ -30709,10 +30473,7 @@ export const GetDatasetsAnnotationSpecsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/datasets/{datasetsId}/annotationSpecs/{annotationSpecsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDatasetsAnnotationSpecsOperationsRequest>;
 
@@ -30747,11 +30508,7 @@ export const WaitDatasetsAnnotationSpecsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/datasets/{datasetsId}/annotationSpecs/{annotationSpecsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitDatasetsAnnotationSpecsOperationsRequest>;
 
@@ -30783,10 +30540,7 @@ export const DeleteDatasetsAnnotationSpecsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/datasets/{datasetsId}/annotationSpecs/{annotationSpecsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteDatasetsAnnotationSpecsOperationsRequest>;
 
@@ -30818,11 +30572,7 @@ export const CancelDatasetsAnnotationSpecsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/datasets/{datasetsId}/annotationSpecs/{annotationSpecsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelDatasetsAnnotationSpecsOperationsRequest>;
 
@@ -30868,10 +30618,7 @@ export const ListDatasetsAnnotationSpecsOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/datasets/{datasetsId}/annotationSpecs/{annotationSpecsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListDatasetsAnnotationSpecsOperationsRequest>;
 
@@ -30907,10 +30654,7 @@ export const GetDatasetsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/datasets/{datasetsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDatasetsOperationsRequest>;
 
@@ -30944,11 +30688,7 @@ export const WaitDatasetsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/datasets/{datasetsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitDatasetsOperationsRequest>;
 
@@ -30979,10 +30719,7 @@ export const DeleteDatasetsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/datasets/{datasetsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteDatasetsOperationsRequest>;
 
@@ -31013,11 +30750,7 @@ export const CancelDatasetsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/datasets/{datasetsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelDatasetsOperationsRequest>;
 
@@ -31062,7 +30795,7 @@ export const ListDatasetsOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/datasets/{datasetsId}/operations" }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListDatasetsOperationsRequest>;
 
@@ -31112,10 +30845,7 @@ export const ListPipelineJobsOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/pipelineJobs/{pipelineJobsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListPipelineJobsOperationsRequest>;
 
@@ -31151,10 +30881,7 @@ export const DeletePipelineJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/pipelineJobs/{pipelineJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeletePipelineJobsOperationsRequest>;
 
@@ -31185,11 +30912,7 @@ export const CancelPipelineJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/pipelineJobs/{pipelineJobsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelPipelineJobsOperationsRequest>;
 
@@ -31220,10 +30943,7 @@ export const GetPipelineJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/pipelineJobs/{pipelineJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPipelineJobsOperationsRequest>;
 
@@ -31257,11 +30977,7 @@ export const WaitPipelineJobsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/pipelineJobs/{pipelineJobsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitPipelineJobsOperationsRequest>;
 
@@ -31292,10 +31008,7 @@ export const GetHyperparameterTuningJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/hyperparameterTuningJobs/{hyperparameterTuningJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetHyperparameterTuningJobsOperationsRequest>;
 
@@ -31330,11 +31043,7 @@ export const WaitHyperparameterTuningJobsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/hyperparameterTuningJobs/{hyperparameterTuningJobsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitHyperparameterTuningJobsOperationsRequest>;
 
@@ -31380,10 +31089,7 @@ export const ListHyperparameterTuningJobsOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/hyperparameterTuningJobs/{hyperparameterTuningJobsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListHyperparameterTuningJobsOperationsRequest>;
 
@@ -31419,10 +31125,7 @@ export const DeleteHyperparameterTuningJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/hyperparameterTuningJobs/{hyperparameterTuningJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteHyperparameterTuningJobsOperationsRequest>;
 
@@ -31454,11 +31157,7 @@ export const CancelHyperparameterTuningJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/hyperparameterTuningJobs/{hyperparameterTuningJobsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelHyperparameterTuningJobsOperationsRequest>;
 
@@ -31490,10 +31189,7 @@ export const GetTuningJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/tuningJobs/{tuningJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetTuningJobsOperationsRequest>;
 
@@ -31524,10 +31220,7 @@ export const DeleteTuningJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/tuningJobs/{tuningJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteTuningJobsOperationsRequest>;
 
@@ -31558,11 +31251,7 @@ export const CancelTuningJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/tuningJobs/{tuningJobsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelTuningJobsOperationsRequest>;
 
@@ -31607,7 +31296,7 @@ export const ListTuningJobsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/tuningJobs/{tuningJobsId}/operations" }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListTuningJobsOperationsRequest>;
 
@@ -31643,10 +31332,7 @@ export const DeleteMetadataStoresContextsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/metadataStores/{metadataStoresId}/contexts/{contextsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteMetadataStoresContextsOperationsRequest>;
 
@@ -31678,11 +31364,7 @@ export const CancelMetadataStoresContextsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/metadataStores/{metadataStoresId}/contexts/{contextsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelMetadataStoresContextsOperationsRequest>;
 
@@ -31728,10 +31410,7 @@ export const ListMetadataStoresContextsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/metadataStores/{metadataStoresId}/contexts/{contextsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListMetadataStoresContextsOperationsRequest>;
 
@@ -31767,10 +31446,7 @@ export const GetMetadataStoresContextsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/metadataStores/{metadataStoresId}/contexts/{contextsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetMetadataStoresContextsOperationsRequest>;
 
@@ -31805,11 +31481,7 @@ export const WaitMetadataStoresContextsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/metadataStores/{metadataStoresId}/contexts/{contextsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitMetadataStoresContextsOperationsRequest>;
 
@@ -31841,10 +31513,7 @@ export const GetMetadataStoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/metadataStores/{metadataStoresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetMetadataStoresOperationsRequest>;
 
@@ -31878,11 +31547,7 @@ export const WaitMetadataStoresOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/metadataStores/{metadataStoresId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitMetadataStoresOperationsRequest>;
 
@@ -31927,10 +31592,7 @@ export const ListMetadataStoresOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/metadataStores/{metadataStoresId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListMetadataStoresOperationsRequest>;
 
@@ -31966,10 +31628,7 @@ export const DeleteMetadataStoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/metadataStores/{metadataStoresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteMetadataStoresOperationsRequest>;
 
@@ -32000,11 +31659,7 @@ export const CancelMetadataStoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/metadataStores/{metadataStoresId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelMetadataStoresOperationsRequest>;
 
@@ -32035,10 +31690,7 @@ export const GetMetadataStoresExecutionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/metadataStores/{metadataStoresId}/executions/{executionsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetMetadataStoresExecutionsOperationsRequest>;
 
@@ -32073,11 +31725,7 @@ export const WaitMetadataStoresExecutionsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/metadataStores/{metadataStoresId}/executions/{executionsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitMetadataStoresExecutionsOperationsRequest>;
 
@@ -32123,10 +31771,7 @@ export const ListMetadataStoresExecutionsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/metadataStores/{metadataStoresId}/executions/{executionsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListMetadataStoresExecutionsOperationsRequest>;
 
@@ -32162,10 +31807,7 @@ export const DeleteMetadataStoresExecutionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/metadataStores/{metadataStoresId}/executions/{executionsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteMetadataStoresExecutionsOperationsRequest>;
 
@@ -32197,11 +31839,7 @@ export const CancelMetadataStoresExecutionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/metadataStores/{metadataStoresId}/executions/{executionsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelMetadataStoresExecutionsOperationsRequest>;
 
@@ -32233,10 +31871,7 @@ export const GetMetadataStoresArtifactsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/metadataStores/{metadataStoresId}/artifacts/{artifactsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetMetadataStoresArtifactsOperationsRequest>;
 
@@ -32271,11 +31906,7 @@ export const WaitMetadataStoresArtifactsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/metadataStores/{metadataStoresId}/artifacts/{artifactsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitMetadataStoresArtifactsOperationsRequest>;
 
@@ -32307,10 +31938,7 @@ export const DeleteMetadataStoresArtifactsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/metadataStores/{metadataStoresId}/artifacts/{artifactsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteMetadataStoresArtifactsOperationsRequest>;
 
@@ -32342,11 +31970,7 @@ export const CancelMetadataStoresArtifactsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/metadataStores/{metadataStoresId}/artifacts/{artifactsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelMetadataStoresArtifactsOperationsRequest>;
 
@@ -32392,10 +32016,7 @@ export const ListMetadataStoresArtifactsOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/metadataStores/{metadataStoresId}/artifacts/{artifactsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListMetadataStoresArtifactsOperationsRequest>;
 
@@ -32445,10 +32066,7 @@ export const ListModelDeploymentMonitoringJobsOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/modelDeploymentMonitoringJobs/{modelDeploymentMonitoringJobsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListModelDeploymentMonitoringJobsOperationsRequest>;
 
@@ -32484,10 +32102,7 @@ export const DeleteModelDeploymentMonitoringJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/modelDeploymentMonitoringJobs/{modelDeploymentMonitoringJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteModelDeploymentMonitoringJobsOperationsRequest>;
 
@@ -32519,11 +32134,7 @@ export const CancelModelDeploymentMonitoringJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/modelDeploymentMonitoringJobs/{modelDeploymentMonitoringJobsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelModelDeploymentMonitoringJobsOperationsRequest>;
 
@@ -32555,10 +32166,7 @@ export const GetModelDeploymentMonitoringJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/modelDeploymentMonitoringJobs/{modelDeploymentMonitoringJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetModelDeploymentMonitoringJobsOperationsRequest>;
 
@@ -32593,11 +32201,7 @@ export const WaitModelDeploymentMonitoringJobsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/modelDeploymentMonitoringJobs/{modelDeploymentMonitoringJobsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitModelDeploymentMonitoringJobsOperationsRequest>;
 
@@ -32629,10 +32233,7 @@ export const GetSchedulesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/schedules/{schedulesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSchedulesOperationsRequest>;
 
@@ -32666,11 +32267,7 @@ export const WaitSchedulesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/schedules/{schedulesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitSchedulesOperationsRequest>;
 
@@ -32715,7 +32312,7 @@ export const ListSchedulesOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/schedules/{schedulesId}/operations" }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListSchedulesOperationsRequest>;
 
@@ -32751,10 +32348,7 @@ export const DeleteSchedulesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/schedules/{schedulesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteSchedulesOperationsRequest>;
 
@@ -32785,11 +32379,7 @@ export const CancelSchedulesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/schedules/{schedulesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelSchedulesOperationsRequest>;
 
@@ -32820,10 +32410,7 @@ export const GetFeatureGroupsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/featureGroups/{featureGroupsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFeatureGroupsOperationsRequest>;
 
@@ -32854,10 +32441,7 @@ export const DeleteFeatureGroupsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/featureGroups/{featureGroupsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteFeatureGroupsOperationsRequest>;
 
@@ -32891,11 +32475,7 @@ export const WaitFeatureGroupsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/featureGroups/{featureGroupsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitFeatureGroupsOperationsRequest>;
 
@@ -32940,10 +32520,7 @@ export const ListWaitFeatureGroupsOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/featureGroups/{featureGroupsId}/operations/{operationsId}:wait",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:wait" }),
     svc,
   ) as unknown as Schema.Schema<ListWaitFeatureGroupsOperationsRequest>;
 
@@ -32979,10 +32556,7 @@ export const GetFeatureGroupsFeaturesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/featureGroups/{featureGroupsId}/features/{featuresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFeatureGroupsFeaturesOperationsRequest>;
 
@@ -33014,10 +32588,7 @@ export const DeleteFeatureGroupsFeaturesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/featureGroups/{featureGroupsId}/features/{featuresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteFeatureGroupsFeaturesOperationsRequest>;
 
@@ -33051,11 +32622,7 @@ export const WaitFeatureGroupsFeaturesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/featureGroups/{featureGroupsId}/features/{featuresId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitFeatureGroupsFeaturesOperationsRequest>;
 
@@ -33101,10 +32668,7 @@ export const ListWaitFeatureGroupsFeaturesOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/featureGroups/{featureGroupsId}/features/{featuresId}/operations/{operationsId}:wait",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:wait" }),
     svc,
   ) as unknown as Schema.Schema<ListWaitFeatureGroupsFeaturesOperationsRequest>;
 
@@ -33146,7 +32710,7 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).pipe(
   T.Http({
     method: "POST",
-    path: "v1/projects/{projectsId}/locations/{locationsId}/ragCorpora/{ragCorporaId}/ragFiles:upload",
+    path: "v1/{parent}/ragFiles:upload",
     hasBody: true,
   }),
   svc,
@@ -33179,10 +32743,7 @@ export const GetTensorboardsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/tensorboards/{tensorboardsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetTensorboardsOperationsRequest>;
 
@@ -33216,11 +32777,7 @@ export const WaitTensorboardsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/tensorboards/{tensorboardsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitTensorboardsOperationsRequest>;
 
@@ -33251,10 +32808,7 @@ export const DeleteTensorboardsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/tensorboards/{tensorboardsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteTensorboardsOperationsRequest>;
 
@@ -33285,11 +32839,7 @@ export const CancelTensorboardsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/tensorboards/{tensorboardsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelTensorboardsOperationsRequest>;
 
@@ -33334,10 +32884,7 @@ export const ListTensorboardsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/tensorboards/{tensorboardsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListTensorboardsOperationsRequest>;
 
@@ -33373,10 +32920,7 @@ export const DeleteTensorboardsExperimentsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/tensorboards/{tensorboardsId}/experiments/{experimentsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteTensorboardsExperimentsOperationsRequest>;
 
@@ -33408,11 +32952,7 @@ export const CancelTensorboardsExperimentsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/tensorboards/{tensorboardsId}/experiments/{experimentsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelTensorboardsExperimentsOperationsRequest>;
 
@@ -33458,10 +32998,7 @@ export const ListTensorboardsExperimentsOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/tensorboards/{tensorboardsId}/experiments/{experimentsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListTensorboardsExperimentsOperationsRequest>;
 
@@ -33497,10 +33034,7 @@ export const GetTensorboardsExperimentsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/tensorboards/{tensorboardsId}/experiments/{experimentsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetTensorboardsExperimentsOperationsRequest>;
 
@@ -33535,11 +33069,7 @@ export const WaitTensorboardsExperimentsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/tensorboards/{tensorboardsId}/experiments/{experimentsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitTensorboardsExperimentsOperationsRequest>;
 
@@ -33571,10 +33101,7 @@ export const GetTensorboardsExperimentsRunsTimeSeriesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/timeSeries/{timeSeriesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetTensorboardsExperimentsRunsTimeSeriesOperationsRequest>;
 
@@ -33610,11 +33137,7 @@ export const WaitTensorboardsExperimentsRunsTimeSeriesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/timeSeries/{timeSeriesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitTensorboardsExperimentsRunsTimeSeriesOperationsRequest>;
 
@@ -33661,10 +33184,7 @@ export const ListTensorboardsExperimentsRunsTimeSeriesOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/timeSeries/{timeSeriesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListTensorboardsExperimentsRunsTimeSeriesOperationsRequest>;
 
@@ -33701,10 +33221,7 @@ export const DeleteTensorboardsExperimentsRunsTimeSeriesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/timeSeries/{timeSeriesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteTensorboardsExperimentsRunsTimeSeriesOperationsRequest>;
 
@@ -33737,11 +33254,7 @@ export const CancelTensorboardsExperimentsRunsTimeSeriesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/timeSeries/{timeSeriesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelTensorboardsExperimentsRunsTimeSeriesOperationsRequest>;
 
@@ -33774,10 +33287,7 @@ export const DeleteTensorboardsExperimentsRunsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteTensorboardsExperimentsRunsOperationsRequest>;
 
@@ -33809,11 +33319,7 @@ export const CancelTensorboardsExperimentsRunsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelTensorboardsExperimentsRunsOperationsRequest>;
 
@@ -33859,10 +33365,7 @@ export const ListTensorboardsExperimentsRunsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListTensorboardsExperimentsRunsOperationsRequest>;
 
@@ -33898,10 +33401,7 @@ export const GetTensorboardsExperimentsRunsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetTensorboardsExperimentsRunsOperationsRequest>;
 
@@ -33936,11 +33436,7 @@ export const WaitTensorboardsExperimentsRunsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitTensorboardsExperimentsRunsOperationsRequest>;
 
@@ -33977,11 +33473,7 @@ export const PredictEndpointsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/endpoints/{endpointsId}:predict",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{endpoint}:predict", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PredictEndpointsRequest>;
 
@@ -34018,7 +33510,7 @@ export const FetchPredictOperationEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/endpoints/{endpointsId}:fetchPredictOperation",
+      path: "v1/{endpoint}:fetchPredictOperation",
       hasBody: true,
     }),
     svc,
@@ -34058,7 +33550,7 @@ export const CountTokensEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/endpoints/{endpointsId}:countTokens",
+      path: "v1/{endpoint}:countTokens",
       hasBody: true,
     }),
     svc,
@@ -34099,7 +33591,7 @@ export const ComputeTokensEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/endpoints/{endpointsId}:computeTokens",
+      path: "v1/{endpoint}:computeTokens",
       hasBody: true,
     }),
     svc,
@@ -34140,7 +33632,7 @@ export const PredictLongRunningEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/endpoints/{endpointsId}:predictLongRunning",
+      path: "v1/{endpoint}:predictLongRunning",
       hasBody: true,
     }),
     svc,
@@ -34179,7 +33671,7 @@ export const GenerateContentEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/endpoints/{endpointsId}:generateContent",
+      path: "v1/{model}:generateContent",
       hasBody: true,
     }),
     svc,
@@ -34220,7 +33712,7 @@ export const StreamGenerateContentEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/endpoints/{endpointsId}:streamGenerateContent",
+      path: "v1/{model}:streamGenerateContent",
       hasBody: true,
     }),
     svc,
@@ -34254,10 +33746,7 @@ export const GetEndpointsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/endpoints/{endpointsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetEndpointsOperationsRequest>;
 
@@ -34291,11 +33780,7 @@ export const WaitEndpointsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/endpoints/{endpointsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitEndpointsOperationsRequest>;
 
@@ -34340,7 +33825,7 @@ export const ListEndpointsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/endpoints/{endpointsId}/operations" }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListEndpointsOperationsRequest>;
 
@@ -34376,10 +33861,7 @@ export const DeleteEndpointsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/endpoints/{endpointsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteEndpointsOperationsRequest>;
 
@@ -34410,11 +33892,7 @@ export const CancelEndpointsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/endpoints/{endpointsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelEndpointsOperationsRequest>;
 
@@ -34450,7 +33928,7 @@ export const CompletionsEndpointsChatRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/endpoints/{endpointsId}/chat/completions",
+      path: "v1/{endpoint}/chat/completions",
       hasBody: true,
     }),
     svc,
@@ -34602,7 +34080,7 @@ export const ListRagEngineConfigOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/ragEngineConfig/operations" }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListRagEngineConfigOperationsRequest>;
 
@@ -34638,10 +34116,7 @@ export const DeleteRagEngineConfigOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/ragEngineConfig/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteRagEngineConfigOperationsRequest>;
 
@@ -34672,11 +34147,7 @@ export const CancelRagEngineConfigOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/ragEngineConfig/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelRagEngineConfigOperationsRequest>;
 
@@ -34707,10 +34178,7 @@ export const GetRagEngineConfigOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/ragEngineConfig/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetRagEngineConfigOperationsRequest>;
 
@@ -34744,11 +34212,7 @@ export const WaitRagEngineConfigOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/ragEngineConfig/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitRagEngineConfigOperationsRequest>;
 
@@ -34779,10 +34243,7 @@ export const DeleteSpecialistPoolsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/specialistPools/{specialistPoolsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteSpecialistPoolsOperationsRequest>;
 
@@ -34813,11 +34274,7 @@ export const CancelSpecialistPoolsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/specialistPools/{specialistPoolsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelSpecialistPoolsOperationsRequest>;
 
@@ -34862,10 +34319,7 @@ export const ListSpecialistPoolsOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/specialistPools/{specialistPoolsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListSpecialistPoolsOperationsRequest>;
 
@@ -34901,10 +34355,7 @@ export const GetSpecialistPoolsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/specialistPools/{specialistPoolsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetSpecialistPoolsOperationsRequest>;
 
@@ -34938,11 +34389,7 @@ export const WaitSpecialistPoolsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/specialistPools/{specialistPoolsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitSpecialistPoolsOperationsRequest>;
 
@@ -34973,10 +34420,7 @@ export const GetIndexEndpointsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/indexEndpoints/{indexEndpointsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetIndexEndpointsOperationsRequest>;
 
@@ -35010,11 +34454,7 @@ export const WaitIndexEndpointsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/indexEndpoints/{indexEndpointsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitIndexEndpointsOperationsRequest>;
 
@@ -35059,10 +34499,7 @@ export const ListIndexEndpointsOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/indexEndpoints/{indexEndpointsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListIndexEndpointsOperationsRequest>;
 
@@ -35098,10 +34535,7 @@ export const DeleteIndexEndpointsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/indexEndpoints/{indexEndpointsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteIndexEndpointsOperationsRequest>;
 
@@ -35132,11 +34566,7 @@ export const CancelIndexEndpointsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/indexEndpoints/{indexEndpointsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelIndexEndpointsOperationsRequest>;
 
@@ -35172,11 +34602,7 @@ export const UpdateCacheConfigProjectsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/cacheConfig",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateCacheConfigProjectsRequest>;
 
@@ -35207,7 +34633,7 @@ export const GetCacheConfigProjectsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/cacheConfig" }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCacheConfigProjectsRequest>;
 
@@ -35238,10 +34664,7 @@ export const GetProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRequest>;
 
@@ -35279,7 +34702,7 @@ export const GenerateSyntheticDataProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:generateSyntheticData",
+      path: "v1/{location}:generateSyntheticData",
       hasBody: true,
     }),
     svc,
@@ -35327,7 +34750,7 @@ export const ListProjectsLocationsRequest =
     ),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -35363,10 +34786,7 @@ export const GetRagEngineConfigProjectsLocationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragEngineConfig",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetRagEngineConfigProjectsLocationsRequest>;
 
@@ -35405,7 +34825,7 @@ export const GenerateInstanceRubricsProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:generateInstanceRubrics",
+      path: "v1/{location}:generateInstanceRubrics",
       hasBody: true,
     }),
     svc,
@@ -35446,7 +34866,7 @@ export const AugmentPromptProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:augmentPrompt",
+      path: "v1/{parent}:augmentPrompt",
       hasBody: true,
     }),
     svc,
@@ -35487,7 +34907,7 @@ export const EvaluateInstancesProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:evaluateInstances",
+      path: "v1/{location}:evaluateInstances",
       hasBody: true,
     }),
     svc,
@@ -35528,7 +34948,7 @@ export const RetrieveContextsProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:retrieveContexts",
+      path: "v1/{parent}:retrieveContexts",
       hasBody: true,
     }),
     svc,
@@ -35567,11 +34987,7 @@ export const AskContextsProjectsLocationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:askContexts",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}:askContexts", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AskContextsProjectsLocationsRequest>;
 
@@ -35610,7 +35026,7 @@ export const AsyncRetrieveContextsProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:asyncRetrieveContexts",
+      path: "v1/{parent}:asyncRetrieveContexts",
       hasBody: true,
     }),
     svc,
@@ -35649,11 +35065,7 @@ export const DeployProjectsLocationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:deploy",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{destination}:deploy", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<DeployProjectsLocationsRequest>;
 
@@ -35691,7 +35103,7 @@ export const CorroborateContentProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:corroborateContent",
+      path: "v1/{parent}:corroborateContent",
       hasBody: true,
     }),
     svc,
@@ -35730,11 +35142,7 @@ export const UpdateRagEngineConfigProjectsLocationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragEngineConfig",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateRagEngineConfigProjectsLocationsRequest>;
 
@@ -35773,7 +35181,7 @@ export const EvaluateDatasetProjectsLocationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}:evaluateDataset",
+      path: "v1/{location}:evaluateDataset",
       hasBody: true,
     }),
     svc,
@@ -35810,11 +35218,7 @@ export const PatchProjectsLocationsRagCorporaRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudAiplatformV1RagCorpus).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragCorpora/{ragCorporaId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsRagCorporaRequest>;
 
@@ -35846,10 +35250,7 @@ export const GetProjectsLocationsRagCorporaRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragCorpora/{ragCorporaId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRagCorporaRequest>;
 
@@ -35884,11 +35285,7 @@ export const CreateProjectsLocationsRagCorporaRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudAiplatformV1RagCorpus).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragCorpora",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/ragCorpora", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsRagCorporaRequest>;
 
@@ -35926,10 +35323,7 @@ export const ListProjectsLocationsRagCorporaRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragCorpora",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/ragCorpora" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRagCorporaRequest>;
 
@@ -35968,10 +35362,7 @@ export const DeleteProjectsLocationsRagCorporaRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragCorpora/{ragCorporaId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsRagCorporaRequest>;
 
@@ -36003,10 +35394,7 @@ export const GetProjectsLocationsRagCorporaOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragCorpora/{ragCorporaId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRagCorporaOperationsRequest>;
 
@@ -36041,11 +35429,7 @@ export const WaitProjectsLocationsRagCorporaOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragCorpora/{ragCorporaId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsRagCorporaOperationsRequest>;
 
@@ -36091,10 +35475,7 @@ export const ListProjectsLocationsRagCorporaOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragCorpora/{ragCorporaId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRagCorporaOperationsRequest>;
 
@@ -36130,10 +35511,7 @@ export const DeleteProjectsLocationsRagCorporaOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragCorpora/{ragCorporaId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsRagCorporaOperationsRequest>;
 
@@ -36165,11 +35543,7 @@ export const CancelProjectsLocationsRagCorporaOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragCorpora/{ragCorporaId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsRagCorporaOperationsRequest>;
 
@@ -36208,7 +35582,7 @@ export const ImportProjectsLocationsRagCorporaRagFilesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragCorpora/{ragCorporaId}/ragFiles:import",
+      path: "v1/{parent}/ragFiles:import",
       hasBody: true,
     }),
     svc,
@@ -36242,10 +35616,7 @@ export const GetProjectsLocationsRagCorporaRagFilesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragCorpora/{ragCorporaId}/ragFiles/{ragFilesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRagCorporaRagFilesRequest>;
 
@@ -36282,10 +35653,7 @@ export const DeleteProjectsLocationsRagCorporaRagFilesRequest =
       T.HttpQuery("forceDelete"),
     ),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragCorpora/{ragCorporaId}/ragFiles/{ragFilesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsRagCorporaRagFilesRequest>;
 
@@ -36323,10 +35691,7 @@ export const ListProjectsLocationsRagCorporaRagFilesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragCorpora/{ragCorporaId}/ragFiles",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/ragFiles" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRagCorporaRagFilesRequest>;
 
@@ -36362,10 +35727,7 @@ export const DeleteProjectsLocationsRagCorporaRagFilesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragCorpora/{ragCorporaId}/ragFiles/{ragFilesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsRagCorporaRagFilesOperationsRequest>;
 
@@ -36398,11 +35760,7 @@ export const CancelProjectsLocationsRagCorporaRagFilesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragCorpora/{ragCorporaId}/ragFiles/{ragFilesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsRagCorporaRagFilesOperationsRequest>;
 
@@ -36449,10 +35807,7 @@ export const ListProjectsLocationsRagCorporaRagFilesOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragCorpora/{ragCorporaId}/ragFiles/{ragFilesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRagCorporaRagFilesOperationsRequest>;
 
@@ -36489,10 +35844,7 @@ export const GetProjectsLocationsRagCorporaRagFilesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragCorpora/{ragCorporaId}/ragFiles/{ragFilesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRagCorporaRagFilesOperationsRequest>;
 
@@ -36528,11 +35880,7 @@ export const WaitProjectsLocationsRagCorporaRagFilesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragCorpora/{ragCorporaId}/ragFiles/{ragFilesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsRagCorporaRagFilesOperationsRequest>;
 
@@ -36568,11 +35916,7 @@ export const CreateProjectsLocationsCustomJobsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudAiplatformV1CustomJob).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/customJobs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/customJobs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsCustomJobsRequest>;
 
@@ -36604,10 +35948,7 @@ export const GetProjectsLocationsCustomJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/customJobs/{customJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCustomJobsRequest>;
 
@@ -36651,10 +35992,7 @@ export const ListProjectsLocationsCustomJobsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/customJobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/customJobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCustomJobsRequest>;
 
@@ -36690,10 +36028,7 @@ export const DeleteProjectsLocationsCustomJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/customJobs/{customJobsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCustomJobsRequest>;
 
@@ -36730,11 +36065,7 @@ export const CancelProjectsLocationsCustomJobsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/customJobs/{customJobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsCustomJobsRequest>;
 
@@ -36765,10 +36096,7 @@ export const GetProjectsLocationsCustomJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/customJobs/{customJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCustomJobsOperationsRequest>;
 
@@ -36803,11 +36131,7 @@ export const WaitProjectsLocationsCustomJobsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/customJobs/{customJobsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsCustomJobsOperationsRequest>;
 
@@ -36853,10 +36177,7 @@ export const ListProjectsLocationsCustomJobsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/customJobs/{customJobsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCustomJobsOperationsRequest>;
 
@@ -36892,10 +36213,7 @@ export const DeleteProjectsLocationsCustomJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/customJobs/{customJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCustomJobsOperationsRequest>;
 
@@ -36927,11 +36245,7 @@ export const CancelProjectsLocationsCustomJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/customJobs/{customJobsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsCustomJobsOperationsRequest>;
 
@@ -36963,10 +36277,7 @@ export const GetProjectsLocationsEvaluationRunsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluationRuns/{evaluationRunsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsEvaluationRunsRequest>;
 
@@ -37005,7 +36316,7 @@ export const CreateProjectsLocationsEvaluationRunsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluationRuns",
+      path: "v1/{parent}/evaluationRuns",
       hasBody: true,
     }),
     svc,
@@ -37051,10 +36362,7 @@ export const ListProjectsLocationsEvaluationRunsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluationRuns",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/evaluationRuns" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEvaluationRunsRequest>;
 
@@ -37090,10 +36398,7 @@ export const DeleteProjectsLocationsEvaluationRunsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluationRuns/{evaluationRunsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsEvaluationRunsRequest>;
 
@@ -37130,11 +36435,7 @@ export const CancelProjectsLocationsEvaluationRunsRequest =
       GoogleCloudAiplatformV1CancelEvaluationRunRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluationRuns/{evaluationRunsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsEvaluationRunsRequest>;
 
@@ -37172,7 +36473,7 @@ export const AssignProjectsLocationsNotebookRuntimesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimes:assign",
+      path: "v1/{parent}/notebookRuntimes:assign",
       hasBody: true,
     }),
     svc,
@@ -37206,10 +36507,7 @@ export const GetProjectsLocationsNotebookRuntimesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimes/{notebookRuntimesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsNotebookRuntimesRequest>;
 
@@ -37246,11 +36544,7 @@ export const StartProjectsLocationsNotebookRuntimesRequest =
       GoogleCloudAiplatformV1StartNotebookRuntimeRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimes/{notebookRuntimesId}:start",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:start", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StartProjectsLocationsNotebookRuntimesRequest>;
 
@@ -37297,10 +36591,7 @@ export const ListProjectsLocationsNotebookRuntimesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/notebookRuntimes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsNotebookRuntimesRequest>;
 
@@ -37341,11 +36632,7 @@ export const StopProjectsLocationsNotebookRuntimesRequest =
       GoogleCloudAiplatformV1StopNotebookRuntimeRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimes/{notebookRuntimesId}:stop",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:stop", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StopProjectsLocationsNotebookRuntimesRequest>;
 
@@ -37382,11 +36669,7 @@ export const UpgradeProjectsLocationsNotebookRuntimesRequest =
       GoogleCloudAiplatformV1UpgradeNotebookRuntimeRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimes/{notebookRuntimesId}:upgrade",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:upgrade", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpgradeProjectsLocationsNotebookRuntimesRequest>;
 
@@ -37418,10 +36701,7 @@ export const DeleteProjectsLocationsNotebookRuntimesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimes/{notebookRuntimesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsNotebookRuntimesRequest>;
 
@@ -37453,10 +36733,7 @@ export const GetProjectsLocationsNotebookRuntimesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimes/{notebookRuntimesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsNotebookRuntimesOperationsRequest>;
 
@@ -37491,11 +36768,7 @@ export const WaitProjectsLocationsNotebookRuntimesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimes/{notebookRuntimesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsNotebookRuntimesOperationsRequest>;
 
@@ -37528,10 +36801,7 @@ export const DeleteProjectsLocationsNotebookRuntimesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimes/{notebookRuntimesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsNotebookRuntimesOperationsRequest>;
 
@@ -37564,11 +36834,7 @@ export const CancelProjectsLocationsNotebookRuntimesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimes/{notebookRuntimesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsNotebookRuntimesOperationsRequest>;
 
@@ -37615,10 +36881,7 @@ export const ListProjectsLocationsNotebookRuntimesOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimes/{notebookRuntimesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsNotebookRuntimesOperationsRequest>;
 
@@ -37662,7 +36925,7 @@ export const TestIamPermissionsProjectsLocationsFeatureOnlineStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -37705,11 +36968,7 @@ export const PatchProjectsLocationsFeatureOnlineStoresRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsFeatureOnlineStoresRequest>;
 
@@ -37746,7 +37005,7 @@ export const SetIamPolicyProjectsLocationsFeatureOnlineStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -37793,7 +37052,7 @@ export const CreateProjectsLocationsFeatureOnlineStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores",
+      path: "v1/{parent}/featureOnlineStores",
       hasBody: true,
     }),
     svc,
@@ -37827,10 +37086,7 @@ export const GetProjectsLocationsFeatureOnlineStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsFeatureOnlineStoresRequest>;
 
@@ -37869,7 +37125,7 @@ export const GetIamPolicyProjectsLocationsFeatureOnlineStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -37916,10 +37172,7 @@ export const ListProjectsLocationsFeatureOnlineStoresRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/featureOnlineStores" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsFeatureOnlineStoresRequest>;
 
@@ -37958,10 +37211,7 @@ export const DeleteProjectsLocationsFeatureOnlineStoresRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsFeatureOnlineStoresRequest>;
 
@@ -38000,7 +37250,7 @@ export const SearchNearestEntitiesProjectsLocationsFeatureOnlineStoresFeatureVie
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/featureViews/{featureViewsId}:searchNearestEntities",
+      path: "v1/{featureView}:searchNearestEntities",
       hasBody: true,
     }),
     svc,
@@ -38052,11 +37302,7 @@ export const CreateProjectsLocationsFeatureOnlineStoresFeatureViewsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/featureViews",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/featureViews", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsFeatureOnlineStoresFeatureViewsRequest>;
 
@@ -38096,7 +37342,7 @@ export const GetIamPolicyProjectsLocationsFeatureOnlineStoresFeatureViewsRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/featureViews/{featureViewsId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -38143,10 +37389,7 @@ export const ListProjectsLocationsFeatureOnlineStoresFeatureViewsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/featureViews",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/featureViews" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsFeatureOnlineStoresFeatureViewsRequest>;
 
@@ -38183,10 +37426,7 @@ export const DeleteProjectsLocationsFeatureOnlineStoresFeatureViewsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/featureViews/{featureViewsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsFeatureOnlineStoresFeatureViewsRequest>;
 
@@ -38226,7 +37466,7 @@ export const TestIamPermissionsProjectsLocationsFeatureOnlineStoresFeatureViewsR
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/featureViews/{featureViewsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -38270,7 +37510,7 @@ export const FetchFeatureValuesProjectsLocationsFeatureOnlineStoresFeatureViewsR
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/featureViews/{featureViewsId}:fetchFeatureValues",
+      path: "v1/{featureView}:fetchFeatureValues",
       hasBody: true,
     }),
     svc,
@@ -38312,11 +37552,7 @@ export const SyncProjectsLocationsFeatureOnlineStoresFeatureViewsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/featureViews/{featureViewsId}:sync",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{featureView}:sync", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SyncProjectsLocationsFeatureOnlineStoresFeatureViewsRequest>;
 
@@ -38349,10 +37585,7 @@ export const GetProjectsLocationsFeatureOnlineStoresFeatureViewsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/featureViews/{featureViewsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsFeatureOnlineStoresFeatureViewsRequest>;
 
@@ -38392,7 +37625,7 @@ export const GenerateFetchAccessTokenProjectsLocationsFeatureOnlineStoresFeature
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/featureViews/{featureViewsId}:generateFetchAccessToken",
+      path: "v1/{featureView}:generateFetchAccessToken",
       hasBody: true,
     }),
     svc,
@@ -38434,7 +37667,7 @@ export const SetIamPolicyProjectsLocationsFeatureOnlineStoresFeatureViewsRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/featureViews/{featureViewsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -38476,7 +37709,7 @@ export const DirectWriteProjectsLocationsFeatureOnlineStoresFeatureViewsRequest 
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/featureViews/{featureViewsId}:directWrite",
+      path: "v1/{featureView}:directWrite",
       hasBody: true,
     }),
     svc,
@@ -38519,11 +37752,7 @@ export const PatchProjectsLocationsFeatureOnlineStoresFeatureViewsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/featureViews/{featureViewsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsFeatureOnlineStoresFeatureViewsRequest>;
 
@@ -38570,10 +37799,7 @@ export const ListWaitProjectsLocationsFeatureOnlineStoresFeatureViewsOperationsR
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/featureViews/{featureViewsId}/operations/{operationsId}:wait",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:wait" }),
     svc,
   ) as unknown as Schema.Schema<ListWaitProjectsLocationsFeatureOnlineStoresFeatureViewsOperationsRequest>;
 
@@ -38612,10 +37838,7 @@ export const GetProjectsLocationsFeatureOnlineStoresFeatureViewsOperationsReques
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/featureViews/{featureViewsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsFeatureOnlineStoresFeatureViewsOperationsRequest>;
 
@@ -38648,10 +37871,7 @@ export const DeleteProjectsLocationsFeatureOnlineStoresFeatureViewsOperationsReq
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/featureViews/{featureViewsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsFeatureOnlineStoresFeatureViewsOperationsRequest>;
 
@@ -38689,11 +37909,7 @@ export const WaitProjectsLocationsFeatureOnlineStoresFeatureViewsOperationsReque
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/featureViews/{featureViewsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsFeatureOnlineStoresFeatureViewsOperationsRequest>;
 
@@ -38739,10 +37955,7 @@ export const ListProjectsLocationsFeatureOnlineStoresFeatureViewsFeatureViewSync
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/featureViews/{featureViewsId}/featureViewSyncs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/featureViewSyncs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsFeatureOnlineStoresFeatureViewsFeatureViewSyncsRequest>;
 
@@ -38781,10 +37994,7 @@ export const GetProjectsLocationsFeatureOnlineStoresFeatureViewsFeatureViewSyncs
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/featureViews/{featureViewsId}/featureViewSyncs/{featureViewSyncsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsFeatureOnlineStoresFeatureViewsFeatureViewSyncsRequest>;
 
@@ -38833,10 +38043,7 @@ export const ListWaitProjectsLocationsFeatureOnlineStoresOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/operations/{operationsId}:wait",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:wait" }),
     svc,
   ) as unknown as Schema.Schema<ListWaitProjectsLocationsFeatureOnlineStoresOperationsRequest>;
 
@@ -38873,10 +38080,7 @@ export const GetProjectsLocationsFeatureOnlineStoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsFeatureOnlineStoresOperationsRequest>;
 
@@ -38909,10 +38113,7 @@ export const DeleteProjectsLocationsFeatureOnlineStoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsFeatureOnlineStoresOperationsRequest>;
 
@@ -38948,11 +38149,7 @@ export const WaitProjectsLocationsFeatureOnlineStoresOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureOnlineStores/{featureOnlineStoresId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsFeatureOnlineStoresOperationsRequest>;
 
@@ -38992,7 +38189,7 @@ export const CreateProjectsLocationsCachedContentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cachedContents",
+      path: "v1/{parent}/cachedContents",
       hasBody: true,
     }),
     svc,
@@ -39026,10 +38223,7 @@ export const GetProjectsLocationsCachedContentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cachedContents/{cachedContentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsCachedContentsRequest>;
 
@@ -39069,11 +38263,7 @@ export const PatchProjectsLocationsCachedContentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cachedContents/{cachedContentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsCachedContentsRequest>;
 
@@ -39105,10 +38295,7 @@ export const DeleteProjectsLocationsCachedContentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cachedContents/{cachedContentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsCachedContentsRequest>;
 
@@ -39145,10 +38332,7 @@ export const ListProjectsLocationsCachedContentsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/cachedContents",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/cachedContents" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsCachedContentsRequest>;
 
@@ -39190,10 +38374,7 @@ export const ListProjectsLocationsDeploymentResourcePoolsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentResourcePools",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/deploymentResourcePools" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDeploymentResourcePoolsRequest>;
 
@@ -39229,10 +38410,7 @@ export const DeleteProjectsLocationsDeploymentResourcePoolsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentResourcePools/{deploymentResourcePoolsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDeploymentResourcePoolsRequest>;
 
@@ -39272,11 +38450,7 @@ export const PatchProjectsLocationsDeploymentResourcePoolsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentResourcePools/{deploymentResourcePoolsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDeploymentResourcePoolsRequest>;
 
@@ -39308,10 +38482,7 @@ export const GetProjectsLocationsDeploymentResourcePoolsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentResourcePools/{deploymentResourcePoolsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDeploymentResourcePoolsRequest>;
 
@@ -39353,7 +38524,7 @@ export const QueryDeployedModelsProjectsLocationsDeploymentResourcePoolsRequest 
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentResourcePools/{deploymentResourcePoolsId}:queryDeployedModels",
+      path: "v1/{deploymentResourcePool}:queryDeployedModels",
     }),
     svc,
   ) as unknown as Schema.Schema<QueryDeployedModelsProjectsLocationsDeploymentResourcePoolsRequest>;
@@ -39398,7 +38569,7 @@ export const CreateProjectsLocationsDeploymentResourcePoolsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentResourcePools",
+      path: "v1/{parent}/deploymentResourcePools",
       hasBody: true,
     }),
     svc,
@@ -39432,10 +38603,7 @@ export const GetProjectsLocationsDeploymentResourcePoolsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentResourcePools/{deploymentResourcePoolsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDeploymentResourcePoolsOperationsRequest>;
 
@@ -39471,11 +38639,7 @@ export const WaitProjectsLocationsDeploymentResourcePoolsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentResourcePools/{deploymentResourcePoolsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsDeploymentResourcePoolsOperationsRequest>;
 
@@ -39508,10 +38672,7 @@ export const DeleteProjectsLocationsDeploymentResourcePoolsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentResourcePools/{deploymentResourcePoolsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDeploymentResourcePoolsOperationsRequest>;
 
@@ -39544,11 +38705,7 @@ export const CancelProjectsLocationsDeploymentResourcePoolsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentResourcePools/{deploymentResourcePoolsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsDeploymentResourcePoolsOperationsRequest>;
 
@@ -39595,10 +38752,7 @@ export const ListProjectsLocationsDeploymentResourcePoolsOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/deploymentResourcePools/{deploymentResourcePoolsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDeploymentResourcePoolsOperationsRequest>;
 
@@ -39642,7 +38796,7 @@ export const GenerateContentProjectsLocationsPublishersModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/publishers/{publishersId}/models/{modelsId}:generateContent",
+      path: "v1/{model}:generateContent",
       hasBody: true,
     }),
     svc,
@@ -39684,7 +38838,7 @@ export const StreamGenerateContentProjectsLocationsPublishersModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/publishers/{publishersId}/models/{modelsId}:streamGenerateContent",
+      path: "v1/{model}:streamGenerateContent",
       hasBody: true,
     }),
     svc,
@@ -39726,7 +38880,7 @@ export const ServerStreamingPredictProjectsLocationsPublishersModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/publishers/{publishersId}/models/{modelsId}:serverStreamingPredict",
+      path: "v1/{endpoint}:serverStreamingPredict",
       hasBody: true,
     }),
     svc,
@@ -39768,7 +38922,7 @@ export const PredictLongRunningProjectsLocationsPublishersModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/publishers/{publishersId}/models/{modelsId}:predictLongRunning",
+      path: "v1/{endpoint}:predictLongRunning",
       hasBody: true,
     }),
     svc,
@@ -39809,7 +38963,7 @@ export const CountTokensProjectsLocationsPublishersModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/publishers/{publishersId}/models/{modelsId}:countTokens",
+      path: "v1/{endpoint}:countTokens",
       hasBody: true,
     }),
     svc,
@@ -39850,7 +39004,7 @@ export const ComputeTokensProjectsLocationsPublishersModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/publishers/{publishersId}/models/{modelsId}:computeTokens",
+      path: "v1/{endpoint}:computeTokens",
       hasBody: true,
     }),
     svc,
@@ -39889,11 +39043,7 @@ export const PredictProjectsLocationsPublishersModelsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/publishers/{publishersId}/models/{modelsId}:predict",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{endpoint}:predict", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PredictProjectsLocationsPublishersModelsRequest>;
 
@@ -39931,7 +39081,7 @@ export const StreamRawPredictProjectsLocationsPublishersModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/publishers/{publishersId}/models/{modelsId}:streamRawPredict",
+      path: "v1/{endpoint}:streamRawPredict",
       hasBody: true,
     }),
     svc,
@@ -39971,11 +39121,7 @@ export const EmbedContentProjectsLocationsPublishersModelsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/publishers/{publishersId}/models/{modelsId}:embedContent",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{model}:embedContent", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<EmbedContentProjectsLocationsPublishersModelsRequest>;
 
@@ -40012,11 +39158,7 @@ export const RawPredictProjectsLocationsPublishersModelsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/publishers/{publishersId}/models/{modelsId}:rawPredict",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{endpoint}:rawPredict", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RawPredictProjectsLocationsPublishersModelsRequest>;
 
@@ -40055,7 +39197,7 @@ export const FetchPredictOperationProjectsLocationsPublishersModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/publishers/{publishersId}/models/{modelsId}:fetchPredictOperation",
+      path: "v1/{endpoint}:fetchPredictOperation",
       hasBody: true,
     }),
     svc,
@@ -40099,7 +39241,7 @@ export const InvokeProjectsLocationsPublishersModelsInvokeRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/publishers/{publishersId}/models/{modelsId}/invoke/{invokeId}",
+      path: "v1/{endpoint}/invoke/{invokeId}",
       hasBody: true,
     }),
     svc,
@@ -40140,7 +39282,7 @@ export const CreateProjectsLocationsDataLabelingJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataLabelingJobs",
+      path: "v1/{parent}/dataLabelingJobs",
       hasBody: true,
     }),
     svc,
@@ -40174,10 +39316,7 @@ export const GetProjectsLocationsDataLabelingJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataLabelingJobs/{dataLabelingJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataLabelingJobsRequest>;
 
@@ -40224,10 +39363,7 @@ export const ListProjectsLocationsDataLabelingJobsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataLabelingJobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dataLabelingJobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataLabelingJobsRequest>;
 
@@ -40263,10 +39399,7 @@ export const DeleteProjectsLocationsDataLabelingJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataLabelingJobs/{dataLabelingJobsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataLabelingJobsRequest>;
 
@@ -40303,11 +39436,7 @@ export const CancelProjectsLocationsDataLabelingJobsRequest =
       GoogleCloudAiplatformV1CancelDataLabelingJobRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataLabelingJobs/{dataLabelingJobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsDataLabelingJobsRequest>;
 
@@ -40339,10 +39468,7 @@ export const GetProjectsLocationsDataLabelingJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataLabelingJobs/{dataLabelingJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDataLabelingJobsOperationsRequest>;
 
@@ -40377,11 +39503,7 @@ export const WaitProjectsLocationsDataLabelingJobsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataLabelingJobs/{dataLabelingJobsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsDataLabelingJobsOperationsRequest>;
 
@@ -40414,10 +39536,7 @@ export const DeleteProjectsLocationsDataLabelingJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataLabelingJobs/{dataLabelingJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDataLabelingJobsOperationsRequest>;
 
@@ -40450,11 +39569,7 @@ export const CancelProjectsLocationsDataLabelingJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataLabelingJobs/{dataLabelingJobsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsDataLabelingJobsOperationsRequest>;
 
@@ -40501,10 +39616,7 @@ export const ListProjectsLocationsDataLabelingJobsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/dataLabelingJobs/{dataLabelingJobsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDataLabelingJobsOperationsRequest>;
 
@@ -40541,10 +39653,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -40575,11 +39684,7 @@ export const CancelProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsOperationsRequest>;
 
@@ -40624,10 +39729,7 @@ export const ListProjectsLocationsOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -40663,10 +39765,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -40700,11 +39799,7 @@ export const WaitProjectsLocationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsOperationsRequest>;
 
@@ -40743,7 +39838,7 @@ export const SearchProjectsLocationsMigratableResourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/migratableResources:search",
+      path: "v1/{parent}/migratableResources:search",
       hasBody: true,
     }),
     svc,
@@ -40784,7 +39879,7 @@ export const BatchMigrateProjectsLocationsMigratableResourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/migratableResources:batchMigrate",
+      path: "v1/{parent}/migratableResources:batchMigrate",
       hasBody: true,
     }),
     svc,
@@ -40833,10 +39928,7 @@ export const ListProjectsLocationsMigratableResourcesOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/migratableResources/{migratableResourcesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsMigratableResourcesOperationsRequest>;
 
@@ -40873,10 +39965,7 @@ export const DeleteProjectsLocationsMigratableResourcesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/migratableResources/{migratableResourcesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsMigratableResourcesOperationsRequest>;
 
@@ -40909,11 +39998,7 @@ export const CancelProjectsLocationsMigratableResourcesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/migratableResources/{migratableResourcesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsMigratableResourcesOperationsRequest>;
 
@@ -40946,10 +40031,7 @@ export const GetProjectsLocationsMigratableResourcesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/migratableResources/{migratableResourcesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMigratableResourcesOperationsRequest>;
 
@@ -40985,11 +40067,7 @@ export const WaitProjectsLocationsMigratableResourcesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/migratableResources/{migratableResourcesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsMigratableResourcesOperationsRequest>;
 
@@ -41034,7 +40112,7 @@ export const CreateProjectsLocationsFeaturestoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores",
+      path: "v1/{parent}/featurestores",
       hasBody: true,
     }),
     svc,
@@ -41073,7 +40151,7 @@ export const SetIamPolicyProjectsLocationsFeaturestoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -41107,10 +40185,7 @@ export const GetProjectsLocationsFeaturestoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsFeaturestoresRequest>;
 
@@ -41149,7 +40224,7 @@ export const BatchReadFeatureValuesProjectsLocationsFeaturestoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}:batchReadFeatureValues",
+      path: "v1/{featurestore}:batchReadFeatureValues",
       hasBody: true,
     }),
     svc,
@@ -41195,7 +40270,7 @@ export const SearchFeaturesProjectsLocationsFeaturestoresRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores:searchFeatures",
+      path: "v1/{location}/featurestores:searchFeatures",
     }),
     svc,
   ) as unknown as Schema.Schema<SearchFeaturesProjectsLocationsFeaturestoresRequest>;
@@ -41239,7 +40314,7 @@ export const TestIamPermissionsProjectsLocationsFeaturestoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -41282,11 +40357,7 @@ export const PatchProjectsLocationsFeaturestoresRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsFeaturestoresRequest>;
 
@@ -41321,10 +40392,7 @@ export const DeleteProjectsLocationsFeaturestoresRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsFeaturestoresRequest>;
 
@@ -41363,7 +40431,7 @@ export const GetIamPolicyProjectsLocationsFeaturestoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -41412,10 +40480,7 @@ export const ListProjectsLocationsFeaturestoresRequest =
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/featurestores" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsFeaturestoresRequest>;
 
@@ -41457,11 +40522,7 @@ export const PatchProjectsLocationsFeaturestoresEntityTypesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudAiplatformV1EntityType).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsFeaturestoresEntityTypesRequest>;
 
@@ -41500,7 +40561,7 @@ export const ImportFeatureValuesProjectsLocationsFeaturestoresEntityTypesRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}:importFeatureValues",
+      path: "v1/{entityType}:importFeatureValues",
       hasBody: true,
     }),
     svc,
@@ -41542,7 +40603,7 @@ export const ReadFeatureValuesProjectsLocationsFeaturestoresEntityTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}:readFeatureValues",
+      path: "v1/{entityType}:readFeatureValues",
       hasBody: true,
     }),
     svc,
@@ -41584,7 +40645,7 @@ export const ExportFeatureValuesProjectsLocationsFeaturestoresEntityTypesRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}:exportFeatureValues",
+      path: "v1/{entityType}:exportFeatureValues",
       hasBody: true,
     }),
     svc,
@@ -41626,7 +40687,7 @@ export const DeleteFeatureValuesProjectsLocationsFeaturestoresEntityTypesRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}:deleteFeatureValues",
+      path: "v1/{entityType}:deleteFeatureValues",
       hasBody: true,
     }),
     svc,
@@ -41666,7 +40727,7 @@ export const SetIamPolicyProjectsLocationsFeaturestoresEntityTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -41708,7 +40769,7 @@ export const StreamingReadFeatureValuesProjectsLocationsFeaturestoresEntityTypes
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}:streamingReadFeatureValues",
+      path: "v1/{entityType}:streamingReadFeatureValues",
       hasBody: true,
     }),
     svc,
@@ -41752,7 +40813,7 @@ export const TestIamPermissionsProjectsLocationsFeaturestoresEntityTypesRequest 
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -41787,10 +40848,7 @@ export const GetProjectsLocationsFeaturestoresEntityTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsFeaturestoresEntityTypesRequest>;
 
@@ -41829,7 +40887,7 @@ export const WriteFeatureValuesProjectsLocationsFeaturestoresEntityTypesRequest 
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}:writeFeatureValues",
+      path: "v1/{entityType}:writeFeatureValues",
       hasBody: true,
     }),
     svc,
@@ -41871,7 +40929,7 @@ export const GetIamPolicyProjectsLocationsFeaturestoresEntityTypesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -41921,10 +40979,7 @@ export const ListProjectsLocationsFeaturestoresEntityTypesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/entityTypes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsFeaturestoresEntityTypesRequest>;
 
@@ -41963,10 +41018,7 @@ export const DeleteProjectsLocationsFeaturestoresEntityTypesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsFeaturestoresEntityTypesRequest>;
 
@@ -42007,11 +41059,7 @@ export const CreateProjectsLocationsFeaturestoresEntityTypesRequest =
     ),
     body: Schema.optional(GoogleCloudAiplatformV1EntityType).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/entityTypes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsFeaturestoresEntityTypesRequest>;
 
@@ -42050,11 +41098,7 @@ export const PatchProjectsLocationsFeaturestoresEntityTypesFeaturesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudAiplatformV1Feature).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/features/{featuresId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsFeaturestoresEntityTypesFeaturesRequest>;
 
@@ -42093,11 +41137,7 @@ export const CreateProjectsLocationsFeaturestoresEntityTypesFeaturesRequest =
     featureId: Schema.optional(Schema.String).pipe(T.HttpQuery("featureId")),
     body: Schema.optional(GoogleCloudAiplatformV1Feature).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/features",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/features", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsFeaturestoresEntityTypesFeaturesRequest>;
 
@@ -42137,7 +41177,7 @@ export const BatchCreateProjectsLocationsFeaturestoresEntityTypesFeaturesRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/features:batchCreate",
+      path: "v1/{parent}/features:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -42172,10 +41212,7 @@ export const GetProjectsLocationsFeaturestoresEntityTypesFeaturesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/features/{featuresId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsFeaturestoresEntityTypesFeaturesRequest>;
 
@@ -42228,10 +41265,7 @@ export const ListProjectsLocationsFeaturestoresEntityTypesFeaturesRequest =
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/features",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/features" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsFeaturestoresEntityTypesFeaturesRequest>;
 
@@ -42268,10 +41302,7 @@ export const DeleteProjectsLocationsFeaturestoresEntityTypesFeaturesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/features/{featuresId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsFeaturestoresEntityTypesFeaturesRequest>;
 
@@ -42304,10 +41335,7 @@ export const GetProjectsLocationsFeaturestoresEntityTypesFeaturesOperationsReque
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/features/{featuresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsFeaturestoresEntityTypesFeaturesOperationsRequest>;
 
@@ -42344,11 +41372,7 @@ export const WaitProjectsLocationsFeaturestoresEntityTypesFeaturesOperationsRequ
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/features/{featuresId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsFeaturestoresEntityTypesFeaturesOperationsRequest>;
 
@@ -42382,10 +41406,7 @@ export const DeleteProjectsLocationsFeaturestoresEntityTypesFeaturesOperationsRe
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/features/{featuresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsFeaturestoresEntityTypesFeaturesOperationsRequest>;
 
@@ -42420,11 +41441,7 @@ export const CancelProjectsLocationsFeaturestoresEntityTypesFeaturesOperationsRe
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/features/{featuresId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsFeaturestoresEntityTypesFeaturesOperationsRequest>;
 
@@ -42473,10 +41490,7 @@ export const ListProjectsLocationsFeaturestoresEntityTypesFeaturesOperationsRequ
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/features/{featuresId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsFeaturestoresEntityTypesFeaturesOperationsRequest>;
 
@@ -42514,10 +41528,7 @@ export const DeleteProjectsLocationsFeaturestoresEntityTypesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsFeaturestoresEntityTypesOperationsRequest>;
 
@@ -42550,11 +41561,7 @@ export const CancelProjectsLocationsFeaturestoresEntityTypesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsFeaturestoresEntityTypesOperationsRequest>;
 
@@ -42601,10 +41608,7 @@ export const ListProjectsLocationsFeaturestoresEntityTypesOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsFeaturestoresEntityTypesOperationsRequest>;
 
@@ -42641,10 +41645,7 @@ export const GetProjectsLocationsFeaturestoresEntityTypesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsFeaturestoresEntityTypesOperationsRequest>;
 
@@ -42680,11 +41681,7 @@ export const WaitProjectsLocationsFeaturestoresEntityTypesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsFeaturestoresEntityTypesOperationsRequest>;
 
@@ -42717,10 +41714,7 @@ export const GetProjectsLocationsFeaturestoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsFeaturestoresOperationsRequest>;
 
@@ -42755,11 +41749,7 @@ export const WaitProjectsLocationsFeaturestoresOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsFeaturestoresOperationsRequest>;
 
@@ -42805,10 +41795,7 @@ export const ListProjectsLocationsFeaturestoresOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsFeaturestoresOperationsRequest>;
 
@@ -42844,10 +41831,7 @@ export const DeleteProjectsLocationsFeaturestoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsFeaturestoresOperationsRequest>;
 
@@ -42879,11 +41863,7 @@ export const CancelProjectsLocationsFeaturestoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featurestores/{featurestoresId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsFeaturestoresOperationsRequest>;
 
@@ -42927,10 +41907,7 @@ export const ListProjectsLocationsTrainingPipelinesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/trainingPipelines",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/trainingPipelines" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTrainingPipelinesRequest>;
 
@@ -42966,10 +41943,7 @@ export const DeleteProjectsLocationsTrainingPipelinesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/trainingPipelines/{trainingPipelinesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTrainingPipelinesRequest>;
 
@@ -43006,11 +41980,7 @@ export const CancelProjectsLocationsTrainingPipelinesRequest =
       GoogleCloudAiplatformV1CancelTrainingPipelineRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/trainingPipelines/{trainingPipelinesId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsTrainingPipelinesRequest>;
 
@@ -43049,7 +42019,7 @@ export const CreateProjectsLocationsTrainingPipelinesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/trainingPipelines",
+      path: "v1/{parent}/trainingPipelines",
       hasBody: true,
     }),
     svc,
@@ -43083,10 +42053,7 @@ export const GetProjectsLocationsTrainingPipelinesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/trainingPipelines/{trainingPipelinesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTrainingPipelinesRequest>;
 
@@ -43132,10 +42099,7 @@ export const ListProjectsLocationsTrainingPipelinesOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/trainingPipelines/{trainingPipelinesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTrainingPipelinesOperationsRequest>;
 
@@ -43172,10 +42136,7 @@ export const DeleteProjectsLocationsTrainingPipelinesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/trainingPipelines/{trainingPipelinesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTrainingPipelinesOperationsRequest>;
 
@@ -43208,11 +42169,7 @@ export const CancelProjectsLocationsTrainingPipelinesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/trainingPipelines/{trainingPipelinesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsTrainingPipelinesOperationsRequest>;
 
@@ -43245,10 +42202,7 @@ export const GetProjectsLocationsTrainingPipelinesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/trainingPipelines/{trainingPipelinesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTrainingPipelinesOperationsRequest>;
 
@@ -43284,11 +42238,7 @@ export const WaitProjectsLocationsTrainingPipelinesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/trainingPipelines/{trainingPipelinesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsTrainingPipelinesOperationsRequest>;
 
@@ -43321,10 +42271,7 @@ export const GetProjectsLocationsEvaluationSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluationSets/{evaluationSetsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsEvaluationSetsRequest>;
 
@@ -43363,7 +42310,7 @@ export const CreateProjectsLocationsEvaluationSetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluationSets",
+      path: "v1/{parent}/evaluationSets",
       hasBody: true,
     }),
     svc,
@@ -43405,11 +42352,7 @@ export const PatchProjectsLocationsEvaluationSetsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluationSets/{evaluationSetsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsEvaluationSetsRequest>;
 
@@ -43441,10 +42384,7 @@ export const DeleteProjectsLocationsEvaluationSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluationSets/{evaluationSetsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsEvaluationSetsRequest>;
 
@@ -43488,10 +42428,7 @@ export const ListProjectsLocationsEvaluationSetsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluationSets",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/evaluationSets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEvaluationSetsRequest>;
 
@@ -43527,10 +42464,7 @@ export const DeleteProjectsLocationsBatchPredictionJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batchPredictionJobs/{batchPredictionJobsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsBatchPredictionJobsRequest>;
 
@@ -43567,11 +42501,7 @@ export const CancelProjectsLocationsBatchPredictionJobsRequest =
       GoogleCloudAiplatformV1CancelBatchPredictionJobRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batchPredictionJobs/{batchPredictionJobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsBatchPredictionJobsRequest>;
 
@@ -43615,10 +42545,7 @@ export const ListProjectsLocationsBatchPredictionJobsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batchPredictionJobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/batchPredictionJobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsBatchPredictionJobsRequest>;
 
@@ -43661,7 +42588,7 @@ export const CreateProjectsLocationsBatchPredictionJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batchPredictionJobs",
+      path: "v1/{parent}/batchPredictionJobs",
       hasBody: true,
     }),
     svc,
@@ -43695,10 +42622,7 @@ export const GetProjectsLocationsBatchPredictionJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/batchPredictionJobs/{batchPredictionJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsBatchPredictionJobsRequest>;
 
@@ -43737,7 +42661,7 @@ export const GetIamPolicyProjectsLocationsNotebookRuntimeTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimeTemplates/{notebookRuntimeTemplatesId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -43787,10 +42711,7 @@ export const ListProjectsLocationsNotebookRuntimeTemplatesRequest =
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimeTemplates",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/notebookRuntimeTemplates" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsNotebookRuntimeTemplatesRequest>;
 
@@ -43826,10 +42747,7 @@ export const DeleteProjectsLocationsNotebookRuntimeTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimeTemplates/{notebookRuntimeTemplatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsNotebookRuntimeTemplatesRequest>;
 
@@ -43869,7 +42787,7 @@ export const TestIamPermissionsProjectsLocationsNotebookRuntimeTemplatesRequest 
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimeTemplates/{notebookRuntimeTemplatesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -43912,11 +42830,7 @@ export const PatchProjectsLocationsNotebookRuntimeTemplatesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimeTemplates/{notebookRuntimeTemplatesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsNotebookRuntimeTemplatesRequest>;
 
@@ -43953,7 +42867,7 @@ export const SetIamPolicyProjectsLocationsNotebookRuntimeTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimeTemplates/{notebookRuntimeTemplatesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -44000,7 +42914,7 @@ export const CreateProjectsLocationsNotebookRuntimeTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimeTemplates",
+      path: "v1/{parent}/notebookRuntimeTemplates",
       hasBody: true,
     }),
     svc,
@@ -44035,10 +42949,7 @@ export const GetProjectsLocationsNotebookRuntimeTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimeTemplates/{notebookRuntimeTemplatesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsNotebookRuntimeTemplatesRequest>;
 
@@ -44084,10 +42995,7 @@ export const ListProjectsLocationsNotebookRuntimeTemplatesOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimeTemplates/{notebookRuntimeTemplatesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsNotebookRuntimeTemplatesOperationsRequest>;
 
@@ -44124,10 +43032,7 @@ export const DeleteProjectsLocationsNotebookRuntimeTemplatesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimeTemplates/{notebookRuntimeTemplatesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsNotebookRuntimeTemplatesOperationsRequest>;
 
@@ -44160,11 +43065,7 @@ export const CancelProjectsLocationsNotebookRuntimeTemplatesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimeTemplates/{notebookRuntimeTemplatesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsNotebookRuntimeTemplatesOperationsRequest>;
 
@@ -44197,10 +43098,7 @@ export const GetProjectsLocationsNotebookRuntimeTemplatesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimeTemplates/{notebookRuntimeTemplatesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsNotebookRuntimeTemplatesOperationsRequest>;
 
@@ -44236,11 +43134,7 @@ export const WaitProjectsLocationsNotebookRuntimeTemplatesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookRuntimeTemplates/{notebookRuntimeTemplatesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsNotebookRuntimeTemplatesOperationsRequest>;
 
@@ -44285,10 +43179,7 @@ export const ListProjectsLocationsIndexesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/indexes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsIndexesRequest>;
 
@@ -44324,10 +43215,7 @@ export const DeleteProjectsLocationsIndexesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexes/{indexesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsIndexesRequest>;
 
@@ -44365,7 +43253,7 @@ export const UpsertDatapointsProjectsLocationsIndexesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexes/{indexesId}:upsertDatapoints",
+      path: "v1/{index}:upsertDatapoints",
       hasBody: true,
     }),
     svc,
@@ -44405,11 +43293,7 @@ export const PatchProjectsLocationsIndexesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudAiplatformV1Index).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexes/{indexesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsIndexesRequest>;
 
@@ -44447,7 +43331,7 @@ export const RemoveDatapointsProjectsLocationsIndexesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexes/{indexesId}:removeDatapoints",
+      path: "v1/{index}:removeDatapoints",
       hasBody: true,
     }),
     svc,
@@ -44484,11 +43368,7 @@ export const CreateProjectsLocationsIndexesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudAiplatformV1Index).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexes",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/indexes", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsIndexesRequest>;
 
@@ -44519,10 +43399,7 @@ export const GetProjectsLocationsIndexesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexes/{indexesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsIndexesRequest>;
 
@@ -44553,10 +43430,7 @@ export const GetProjectsLocationsIndexesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexes/{indexesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsIndexesOperationsRequest>;
 
@@ -44591,11 +43465,7 @@ export const WaitProjectsLocationsIndexesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexes/{indexesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsIndexesOperationsRequest>;
 
@@ -44641,10 +43511,7 @@ export const ListProjectsLocationsIndexesOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexes/{indexesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsIndexesOperationsRequest>;
 
@@ -44680,10 +43547,7 @@ export const DeleteProjectsLocationsIndexesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexes/{indexesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsIndexesOperationsRequest>;
 
@@ -44715,11 +43579,7 @@ export const CancelProjectsLocationsIndexesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexes/{indexesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsIndexesOperationsRequest>;
 
@@ -44763,7 +43623,7 @@ export const CreateProjectsLocationsNotebookExecutionJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookExecutionJobs",
+      path: "v1/{parent}/notebookExecutionJobs",
       hasBody: true,
     }),
     svc,
@@ -44804,10 +43664,7 @@ export const GetProjectsLocationsNotebookExecutionJobsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookExecutionJobs/{notebookExecutionJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsNotebookExecutionJobsRequest>;
 
@@ -44839,10 +43696,7 @@ export const DeleteProjectsLocationsNotebookExecutionJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookExecutionJobs/{notebookExecutionJobsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsNotebookExecutionJobsRequest>;
 
@@ -44893,10 +43747,7 @@ export const ListProjectsLocationsNotebookExecutionJobsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookExecutionJobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/notebookExecutionJobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsNotebookExecutionJobsRequest>;
 
@@ -44946,10 +43797,7 @@ export const ListProjectsLocationsNotebookExecutionJobsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookExecutionJobs/{notebookExecutionJobsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsNotebookExecutionJobsOperationsRequest>;
 
@@ -44986,10 +43834,7 @@ export const DeleteProjectsLocationsNotebookExecutionJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookExecutionJobs/{notebookExecutionJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsNotebookExecutionJobsOperationsRequest>;
 
@@ -45022,11 +43867,7 @@ export const CancelProjectsLocationsNotebookExecutionJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookExecutionJobs/{notebookExecutionJobsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsNotebookExecutionJobsOperationsRequest>;
 
@@ -45059,10 +43900,7 @@ export const GetProjectsLocationsNotebookExecutionJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookExecutionJobs/{notebookExecutionJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsNotebookExecutionJobsOperationsRequest>;
 
@@ -45098,11 +43936,7 @@ export const WaitProjectsLocationsNotebookExecutionJobsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/notebookExecutionJobs/{notebookExecutionJobsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsNotebookExecutionJobsOperationsRequest>;
 
@@ -45138,11 +43972,7 @@ export const CreateProjectsLocationsStudiesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudAiplatformV1Study).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/studies", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsStudiesRequest>;
 
@@ -45174,10 +44004,7 @@ export const GetProjectsLocationsStudiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsStudiesRequest>;
 
@@ -45215,7 +44042,7 @@ export const LookupProjectsLocationsStudiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies:lookup",
+      path: "v1/{parent}/studies:lookup",
       hasBody: true,
     }),
     svc,
@@ -45249,10 +44076,7 @@ export const DeleteProjectsLocationsStudiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsStudiesRequest>;
 
@@ -45289,10 +44113,7 @@ export const ListProjectsLocationsStudiesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/studies" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsStudiesRequest>;
 
@@ -45328,10 +44149,7 @@ export const DeleteProjectsLocationsStudiesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsStudiesOperationsRequest>;
 
@@ -45363,11 +44181,7 @@ export const CancelProjectsLocationsStudiesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsStudiesOperationsRequest>;
 
@@ -45413,10 +44227,7 @@ export const ListProjectsLocationsStudiesOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsStudiesOperationsRequest>;
 
@@ -45452,10 +44263,7 @@ export const GetProjectsLocationsStudiesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsStudiesOperationsRequest>;
 
@@ -45490,11 +44298,7 @@ export const WaitProjectsLocationsStudiesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsStudiesOperationsRequest>;
 
@@ -45526,10 +44330,7 @@ export const DeleteProjectsLocationsStudiesTrialsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsStudiesTrialsRequest>;
 
@@ -45566,10 +44367,7 @@ export const ListProjectsLocationsStudiesTrialsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/trials" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsStudiesTrialsRequest>;
 
@@ -45605,10 +44403,7 @@ export const GetProjectsLocationsStudiesTrialsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsStudiesTrialsRequest>;
 
@@ -45647,7 +44442,7 @@ export const SuggestProjectsLocationsStudiesTrialsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials:suggest",
+      path: "v1/{parent}/trials:suggest",
       hasBody: true,
     }),
     svc,
@@ -45688,7 +44483,7 @@ export const ListOptimalTrialsProjectsLocationsStudiesTrialsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials:listOptimalTrials",
+      path: "v1/{parent}/trials:listOptimalTrials",
       hasBody: true,
     }),
     svc,
@@ -45730,7 +44525,7 @@ export const AddTrialMeasurementProjectsLocationsStudiesTrialsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}:addTrialMeasurement",
+      path: "v1/{trialName}:addTrialMeasurement",
       hasBody: true,
     }),
     svc,
@@ -45770,11 +44565,7 @@ export const StopProjectsLocationsStudiesTrialsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}:stop",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:stop", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StopProjectsLocationsStudiesTrialsRequest>;
 
@@ -45809,11 +44600,7 @@ export const CreateProjectsLocationsStudiesTrialsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudAiplatformV1Trial).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/trials", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsStudiesTrialsRequest>;
 
@@ -45852,7 +44639,7 @@ export const CheckTrialEarlyStoppingStateProjectsLocationsStudiesTrialsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}:checkTrialEarlyStoppingState",
+      path: "v1/{trialName}:checkTrialEarlyStoppingState",
       hasBody: true,
     }),
     svc,
@@ -45892,11 +44679,7 @@ export const CompleteProjectsLocationsStudiesTrialsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}:complete",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:complete", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CompleteProjectsLocationsStudiesTrialsRequest>;
 
@@ -45928,10 +44711,7 @@ export const GetProjectsLocationsStudiesTrialsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsStudiesTrialsOperationsRequest>;
 
@@ -45966,11 +44746,7 @@ export const WaitProjectsLocationsStudiesTrialsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsStudiesTrialsOperationsRequest>;
 
@@ -46002,10 +44778,7 @@ export const DeleteProjectsLocationsStudiesTrialsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsStudiesTrialsOperationsRequest>;
 
@@ -46037,11 +44810,7 @@ export const CancelProjectsLocationsStudiesTrialsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsStudiesTrialsOperationsRequest>;
 
@@ -46087,10 +44856,7 @@ export const ListProjectsLocationsStudiesTrialsOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/studies/{studiesId}/trials/{trialsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsStudiesTrialsOperationsRequest>;
 
@@ -46131,11 +44897,7 @@ export const CopyProjectsLocationsModelsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models:copy",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/models:copy", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CopyProjectsLocationsModelsRequest>;
 
@@ -46172,11 +44934,7 @@ export const PatchProjectsLocationsModelsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudAiplatformV1Model).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsModelsRequest>;
 
@@ -46214,7 +44972,7 @@ export const UpdateExplanationDatasetProjectsLocationsModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}:updateExplanationDataset",
+      path: "v1/{model}:updateExplanationDataset",
       hasBody: true,
     }),
     svc,
@@ -46254,7 +45012,7 @@ export const SetIamPolicyProjectsLocationsModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -46294,7 +45052,7 @@ export const MergeVersionAliasesProjectsLocationsModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}:mergeVersionAliases",
+      path: "v1/{name}:mergeVersionAliases",
       hasBody: true,
     }),
     svc,
@@ -46334,10 +45092,7 @@ export const ListCheckpointsProjectsLocationsModelsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}:listCheckpoints",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:listCheckpoints" }),
     svc,
   ) as unknown as Schema.Schema<ListCheckpointsProjectsLocationsModelsRequest>;
 
@@ -46388,10 +45143,7 @@ export const ListVersionsProjectsLocationsModelsRequest =
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}:listVersions",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:listVersions" }),
     svc,
   ) as unknown as Schema.Schema<ListVersionsProjectsLocationsModelsRequest>;
 
@@ -46434,7 +45186,7 @@ export const TestIamPermissionsProjectsLocationsModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -46468,10 +45220,7 @@ export const GetProjectsLocationsModelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsModelsRequest>;
 
@@ -46507,11 +45256,7 @@ export const ExportProjectsLocationsModelsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}:export",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:export", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExportProjectsLocationsModelsRequest>;
 
@@ -46549,7 +45294,7 @@ export const GetIamPolicyProjectsLocationsModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -46597,10 +45342,7 @@ export const ListProjectsLocationsModelsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/models" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsModelsRequest>;
 
@@ -46636,10 +45378,7 @@ export const DeleteProjectsLocationsModelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsModelsRequest>;
 
@@ -46670,10 +45409,7 @@ export const DeleteVersionProjectsLocationsModelsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}:deleteVersion",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}:deleteVersion" }),
     svc,
   ) as unknown as Schema.Schema<DeleteVersionProjectsLocationsModelsRequest>;
 
@@ -46712,7 +45448,7 @@ export const UploadProjectsLocationsModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models:upload",
+      path: "v1/{parent}/models:upload",
       hasBody: true,
     }),
     svc,
@@ -46745,10 +45481,7 @@ export const GetProjectsLocationsModelsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsModelsOperationsRequest>;
 
@@ -46783,11 +45516,7 @@ export const WaitProjectsLocationsModelsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsModelsOperationsRequest>;
 
@@ -46833,10 +45562,7 @@ export const ListProjectsLocationsModelsOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsModelsOperationsRequest>;
 
@@ -46872,10 +45598,7 @@ export const DeleteProjectsLocationsModelsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsModelsOperationsRequest>;
 
@@ -46907,11 +45630,7 @@ export const CancelProjectsLocationsModelsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsModelsOperationsRequest>;
 
@@ -46955,10 +45674,7 @@ export const ListProjectsLocationsModelsEvaluationsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}/evaluations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/evaluations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsModelsEvaluationsRequest>;
 
@@ -47001,7 +45717,7 @@ export const ImportProjectsLocationsModelsEvaluationsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}/evaluations:import",
+      path: "v1/{parent}/evaluations:import",
       hasBody: true,
     }),
     svc,
@@ -47035,10 +45751,7 @@ export const GetProjectsLocationsModelsEvaluationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}/evaluations/{evaluationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsModelsEvaluationsRequest>;
 
@@ -47084,10 +45797,7 @@ export const ListProjectsLocationsModelsEvaluationsOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}/evaluations/{evaluationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsModelsEvaluationsOperationsRequest>;
 
@@ -47124,10 +45834,7 @@ export const DeleteProjectsLocationsModelsEvaluationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}/evaluations/{evaluationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsModelsEvaluationsOperationsRequest>;
 
@@ -47160,11 +45867,7 @@ export const CancelProjectsLocationsModelsEvaluationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}/evaluations/{evaluationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsModelsEvaluationsOperationsRequest>;
 
@@ -47197,10 +45900,7 @@ export const GetProjectsLocationsModelsEvaluationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}/evaluations/{evaluationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsModelsEvaluationsOperationsRequest>;
 
@@ -47236,11 +45936,7 @@ export const WaitProjectsLocationsModelsEvaluationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}/evaluations/{evaluationsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsModelsEvaluationsOperationsRequest>;
 
@@ -47278,11 +45974,7 @@ export const BatchImportProjectsLocationsModelsEvaluationsSlicesRequest =
       GoogleCloudAiplatformV1BatchImportEvaluatedAnnotationsRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}/evaluations/{evaluationsId}/slices/{slicesId}:batchImport",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}:batchImport", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<BatchImportProjectsLocationsModelsEvaluationsSlicesRequest>;
 
@@ -47327,10 +46019,7 @@ export const ListProjectsLocationsModelsEvaluationsSlicesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}/evaluations/{evaluationsId}/slices",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/slices" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsModelsEvaluationsSlicesRequest>;
 
@@ -47366,10 +46055,7 @@ export const GetProjectsLocationsModelsEvaluationsSlicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/models/{modelsId}/evaluations/{evaluationsId}/slices/{slicesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsModelsEvaluationsSlicesRequest>;
 
@@ -47408,7 +46094,7 @@ export const CreateProjectsLocationsIndexEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexEndpoints",
+      path: "v1/{parent}/indexEndpoints",
       hasBody: true,
     }),
     svc,
@@ -47449,7 +46135,7 @@ export const DeployIndexProjectsLocationsIndexEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexEndpoints/{indexEndpointsId}:deployIndex",
+      path: "v1/{indexEndpoint}:deployIndex",
       hasBody: true,
     }),
     svc,
@@ -47490,7 +46176,7 @@ export const ReadIndexDatapointsProjectsLocationsIndexEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexEndpoints/{indexEndpointsId}:readIndexDatapoints",
+      path: "v1/{indexEndpoint}:readIndexDatapoints",
       hasBody: true,
     }),
     svc,
@@ -47533,11 +46219,7 @@ export const PatchProjectsLocationsIndexEndpointsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexEndpoints/{indexEndpointsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsIndexEndpointsRequest>;
 
@@ -47576,7 +46258,7 @@ export const FindNeighborsProjectsLocationsIndexEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexEndpoints/{indexEndpointsId}:findNeighbors",
+      path: "v1/{indexEndpoint}:findNeighbors",
       hasBody: true,
     }),
     svc,
@@ -47610,10 +46292,7 @@ export const GetProjectsLocationsIndexEndpointsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexEndpoints/{indexEndpointsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsIndexEndpointsRequest>;
 
@@ -47657,10 +46336,7 @@ export const ListProjectsLocationsIndexEndpointsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexEndpoints",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/indexEndpoints" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsIndexEndpointsRequest>;
 
@@ -47703,7 +46379,7 @@ export const UndeployIndexProjectsLocationsIndexEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexEndpoints/{indexEndpointsId}:undeployIndex",
+      path: "v1/{indexEndpoint}:undeployIndex",
       hasBody: true,
     }),
     svc,
@@ -47744,7 +46420,7 @@ export const MutateDeployedIndexProjectsLocationsIndexEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexEndpoints/{indexEndpointsId}:mutateDeployedIndex",
+      path: "v1/{indexEndpoint}:mutateDeployedIndex",
       hasBody: true,
     }),
     svc,
@@ -47779,10 +46455,7 @@ export const DeleteProjectsLocationsIndexEndpointsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexEndpoints/{indexEndpointsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsIndexEndpointsRequest>;
 
@@ -47814,10 +46487,7 @@ export const GetProjectsLocationsIndexEndpointsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexEndpoints/{indexEndpointsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsIndexEndpointsOperationsRequest>;
 
@@ -47852,11 +46522,7 @@ export const WaitProjectsLocationsIndexEndpointsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexEndpoints/{indexEndpointsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsIndexEndpointsOperationsRequest>;
 
@@ -47902,10 +46568,7 @@ export const ListProjectsLocationsIndexEndpointsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexEndpoints/{indexEndpointsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsIndexEndpointsOperationsRequest>;
 
@@ -47941,10 +46604,7 @@ export const DeleteProjectsLocationsIndexEndpointsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexEndpoints/{indexEndpointsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsIndexEndpointsOperationsRequest>;
 
@@ -47977,11 +46637,7 @@ export const CancelProjectsLocationsIndexEndpointsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/indexEndpoints/{indexEndpointsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsIndexEndpointsOperationsRequest>;
 
@@ -48014,10 +46670,7 @@ export const GetProjectsLocationsRagEngineConfigOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragEngineConfig/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRagEngineConfigOperationsRequest>;
 
@@ -48052,11 +46705,7 @@ export const WaitProjectsLocationsRagEngineConfigOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragEngineConfig/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsRagEngineConfigOperationsRequest>;
 
@@ -48088,10 +46737,7 @@ export const DeleteProjectsLocationsRagEngineConfigOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragEngineConfig/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsRagEngineConfigOperationsRequest>;
 
@@ -48124,11 +46770,7 @@ export const CancelProjectsLocationsRagEngineConfigOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragEngineConfig/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsRagEngineConfigOperationsRequest>;
 
@@ -48175,10 +46817,7 @@ export const ListProjectsLocationsRagEngineConfigOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/ragEngineConfig/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRagEngineConfigOperationsRequest>;
 
@@ -48221,7 +46860,7 @@ export const CreateProjectsLocationsSpecialistPoolsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/specialistPools",
+      path: "v1/{parent}/specialistPools",
       hasBody: true,
     }),
     svc,
@@ -48255,10 +46894,7 @@ export const GetProjectsLocationsSpecialistPoolsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/specialistPools/{specialistPoolsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSpecialistPoolsRequest>;
 
@@ -48298,11 +46934,7 @@ export const PatchProjectsLocationsSpecialistPoolsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/specialistPools/{specialistPoolsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsSpecialistPoolsRequest>;
 
@@ -48337,10 +46969,7 @@ export const DeleteProjectsLocationsSpecialistPoolsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/specialistPools/{specialistPoolsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSpecialistPoolsRequest>;
 
@@ -48381,10 +47010,7 @@ export const ListProjectsLocationsSpecialistPoolsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/specialistPools",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/specialistPools" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSpecialistPoolsRequest>;
 
@@ -48420,10 +47046,7 @@ export const GetProjectsLocationsSpecialistPoolsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/specialistPools/{specialistPoolsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSpecialistPoolsOperationsRequest>;
 
@@ -48458,11 +47081,7 @@ export const WaitProjectsLocationsSpecialistPoolsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/specialistPools/{specialistPoolsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsSpecialistPoolsOperationsRequest>;
 
@@ -48494,10 +47113,7 @@ export const DeleteProjectsLocationsSpecialistPoolsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/specialistPools/{specialistPoolsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSpecialistPoolsOperationsRequest>;
 
@@ -48530,11 +47146,7 @@ export const CancelProjectsLocationsSpecialistPoolsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/specialistPools/{specialistPoolsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsSpecialistPoolsOperationsRequest>;
 
@@ -48581,10 +47193,7 @@ export const ListProjectsLocationsSpecialistPoolsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/specialistPools/{specialistPoolsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSpecialistPoolsOperationsRequest>;
 
@@ -48626,11 +47235,7 @@ export const CreateProjectsLocationsEndpointsRequest =
     endpointId: Schema.optional(Schema.String).pipe(T.HttpQuery("endpointId")),
     body: Schema.optional(GoogleCloudAiplatformV1Endpoint).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/endpoints", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsEndpointsRequest>;
 
@@ -48669,7 +47274,7 @@ export const UndeployModelProjectsLocationsEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}:undeployModel",
+      path: "v1/{endpoint}:undeployModel",
       hasBody: true,
     }),
     svc,
@@ -48710,7 +47315,7 @@ export const MutateDeployedModelProjectsLocationsEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}:mutateDeployedModel",
+      path: "v1/{endpoint}:mutateDeployedModel",
       hasBody: true,
     }),
     svc,
@@ -48751,7 +47356,7 @@ export const StreamRawPredictProjectsLocationsEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}:streamRawPredict",
+      path: "v1/{endpoint}:streamRawPredict",
       hasBody: true,
     }),
     svc,
@@ -48792,7 +47397,7 @@ export const ComputeTokensProjectsLocationsEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}:computeTokens",
+      path: "v1/{endpoint}:computeTokens",
       hasBody: true,
     }),
     svc,
@@ -48826,10 +47431,7 @@ export const GetProjectsLocationsEndpointsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsEndpointsRequest>;
 
@@ -48879,10 +47481,7 @@ export const ListProjectsLocationsEndpointsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/endpoints" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEndpointsRequest>;
 
@@ -48923,11 +47522,7 @@ export const UpdateProjectsLocationsEndpointsRequest =
       GoogleCloudAiplatformV1UpdateEndpointLongRunningRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}:update",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:update", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<UpdateProjectsLocationsEndpointsRequest>;
 
@@ -48966,7 +47561,7 @@ export const ServerStreamingPredictProjectsLocationsEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}:serverStreamingPredict",
+      path: "v1/{endpoint}:serverStreamingPredict",
       hasBody: true,
     }),
     svc,
@@ -49001,10 +47596,7 @@ export const DeleteProjectsLocationsEndpointsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsEndpointsRequest>;
 
@@ -49043,7 +47635,7 @@ export const DeployModelProjectsLocationsEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}:deployModel",
+      path: "v1/{endpoint}:deployModel",
       hasBody: true,
     }),
     svc,
@@ -49084,7 +47676,7 @@ export const DirectRawPredictProjectsLocationsEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}:directRawPredict",
+      path: "v1/{endpoint}:directRawPredict",
       hasBody: true,
     }),
     svc,
@@ -49123,11 +47715,7 @@ export const RawPredictProjectsLocationsEndpointsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}:rawPredict",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{endpoint}:rawPredict", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RawPredictProjectsLocationsEndpointsRequest>;
 
@@ -49165,7 +47753,7 @@ export const FetchPredictOperationProjectsLocationsEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}:fetchPredictOperation",
+      path: "v1/{endpoint}:fetchPredictOperation",
       hasBody: true,
     }),
     svc,
@@ -49207,7 +47795,7 @@ export const DirectPredictProjectsLocationsEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}:directPredict",
+      path: "v1/{endpoint}:directPredict",
       hasBody: true,
     }),
     svc,
@@ -49247,11 +47835,7 @@ export const PatchProjectsLocationsEndpointsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudAiplatformV1Endpoint).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsEndpointsRequest>;
 
@@ -49290,7 +47874,7 @@ export const CountTokensProjectsLocationsEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}:countTokens",
+      path: "v1/{endpoint}:countTokens",
       hasBody: true,
     }),
     svc,
@@ -49329,11 +47913,7 @@ export const PredictProjectsLocationsEndpointsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}:predict",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{endpoint}:predict", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PredictProjectsLocationsEndpointsRequest>;
 
@@ -49369,11 +47949,7 @@ export const ExplainProjectsLocationsEndpointsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}:explain",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{endpoint}:explain", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExplainProjectsLocationsEndpointsRequest>;
 
@@ -49412,7 +47988,7 @@ export const GenerateContentProjectsLocationsEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}:generateContent",
+      path: "v1/{model}:generateContent",
       hasBody: true,
     }),
     svc,
@@ -49453,7 +48029,7 @@ export const StreamGenerateContentProjectsLocationsEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}:streamGenerateContent",
+      path: "v1/{model}:streamGenerateContent",
       hasBody: true,
     }),
     svc,
@@ -49495,7 +48071,7 @@ export const PredictLongRunningProjectsLocationsEndpointsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}:predictLongRunning",
+      path: "v1/{endpoint}:predictLongRunning",
       hasBody: true,
     }),
     svc,
@@ -49537,7 +48113,7 @@ export const InvokeProjectsLocationsEndpointsInvokeRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}/invoke/{invokeId}",
+      path: "v1/{endpoint}/invoke/{invokeId}",
       hasBody: true,
     }),
     svc,
@@ -49582,7 +48158,7 @@ export const InvokeProjectsLocationsEndpointsDeployedModelsInvokeRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}/deployedModels/{deployedModelId}/invoke/{invokeId}",
+      path: "v1/{endpoint}/deployedModels/{deployedModelId}/invoke/{invokeId}",
       hasBody: true,
     }),
     svc,
@@ -49627,7 +48203,7 @@ export const InferenceProjectsLocationsEndpointsGoogleScienceRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/google/science/inference",
+      path: "v1/{endpoint}/science/inference",
       hasBody: true,
     }),
     svc,
@@ -49676,10 +48252,7 @@ export const ListProjectsLocationsEndpointsOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEndpointsOperationsRequest>;
 
@@ -49715,10 +48288,7 @@ export const DeleteProjectsLocationsEndpointsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsEndpointsOperationsRequest>;
 
@@ -49750,11 +48320,7 @@ export const CancelProjectsLocationsEndpointsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsEndpointsOperationsRequest>;
 
@@ -49786,10 +48352,7 @@ export const GetProjectsLocationsEndpointsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsEndpointsOperationsRequest>;
 
@@ -49824,11 +48387,7 @@ export const WaitProjectsLocationsEndpointsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsEndpointsOperationsRequest>;
 
@@ -49868,11 +48427,7 @@ export const EmbeddingsProjectsLocationsEndpointsOpenapiRequest =
     ),
     body: Schema.optional(GoogleApiHttpBody).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/openapi/embeddings",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{endpoint}/embeddings", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<EmbeddingsProjectsLocationsEndpointsOpenapiRequest>;
 
@@ -49914,7 +48469,7 @@ export const CompletionsProjectsLocationsEndpointsOpenapiRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/openapi/completions",
+      path: "v1/{endpoint}/completions",
       hasBody: true,
     }),
     svc,
@@ -49956,11 +48511,7 @@ export const ResponsesProjectsLocationsEndpointsOpenapiRequest =
     endpoint: Schema.String.pipe(T.HttpPath("endpoint")),
     body: Schema.optional(GoogleApiHttpBody).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/openapi/responses",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{endpoint}/responses", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResponsesProjectsLocationsEndpointsOpenapiRequest>;
 
@@ -49997,7 +48548,7 @@ export const CompletionsProjectsLocationsEndpointsChatRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/endpoints/{endpointsId}/chat/completions",
+      path: "v1/{endpoint}/chat/completions",
       hasBody: true,
     }),
     svc,
@@ -50038,7 +48589,7 @@ export const CreateProjectsLocationsEvaluationItemsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluationItems",
+      path: "v1/{parent}/evaluationItems",
       hasBody: true,
     }),
     svc,
@@ -50072,10 +48623,7 @@ export const GetProjectsLocationsEvaluationItemsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluationItems/{evaluationItemsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsEvaluationItemsRequest>;
 
@@ -50107,10 +48655,7 @@ export const DeleteProjectsLocationsEvaluationItemsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluationItems/{evaluationItemsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsEvaluationItemsRequest>;
 
@@ -50154,10 +48699,7 @@ export const ListProjectsLocationsEvaluationItemsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/evaluationItems",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/evaluationItems" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEvaluationItemsRequest>;
 
@@ -50193,10 +48735,7 @@ export const DeleteProjectsLocationsTensorboardsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTensorboardsRequest>;
 
@@ -50233,10 +48772,7 @@ export const BatchReadProjectsLocationsTensorboardsRequest =
     ),
     tensorboard: Schema.String.pipe(T.HttpPath("tensorboard")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}:batchRead",
-    }),
+    T.Http({ method: "GET", path: "v1/{tensorboard}:batchRead" }),
     svc,
   ) as unknown as Schema.Schema<BatchReadProjectsLocationsTensorboardsRequest>;
 
@@ -50268,10 +48804,7 @@ export const ReadUsageProjectsLocationsTensorboardsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tensorboard: Schema.String.pipe(T.HttpPath("tensorboard")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}:readUsage",
-    }),
+    T.Http({ method: "GET", path: "v1/{tensorboard}:readUsage" }),
     svc,
   ) as unknown as Schema.Schema<ReadUsageProjectsLocationsTensorboardsRequest>;
 
@@ -50318,10 +48851,7 @@ export const ListProjectsLocationsTensorboardsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/tensorboards" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTensorboardsRequest>;
 
@@ -50357,10 +48887,7 @@ export const GetProjectsLocationsTensorboardsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTensorboardsRequest>;
 
@@ -50392,10 +48919,7 @@ export const ReadSizeProjectsLocationsTensorboardsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tensorboard: Schema.String.pipe(T.HttpPath("tensorboard")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}:readSize",
-    }),
+    T.Http({ method: "GET", path: "v1/{tensorboard}:readSize" }),
     svc,
   ) as unknown as Schema.Schema<ReadSizeProjectsLocationsTensorboardsRequest>;
 
@@ -50432,11 +48956,7 @@ export const CreateProjectsLocationsTensorboardsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/tensorboards", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsTensorboardsRequest>;
 
@@ -50476,11 +48996,7 @@ export const PatchProjectsLocationsTensorboardsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsTensorboardsRequest>;
 
@@ -50512,10 +49028,7 @@ export const GetProjectsLocationsTensorboardsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTensorboardsOperationsRequest>;
 
@@ -50550,11 +49063,7 @@ export const WaitProjectsLocationsTensorboardsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsTensorboardsOperationsRequest>;
 
@@ -50600,10 +49109,7 @@ export const ListProjectsLocationsTensorboardsOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTensorboardsOperationsRequest>;
 
@@ -50639,10 +49145,7 @@ export const DeleteProjectsLocationsTensorboardsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTensorboardsOperationsRequest>;
 
@@ -50674,11 +49177,7 @@ export const CancelProjectsLocationsTensorboardsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsTensorboardsOperationsRequest>;
 
@@ -50710,10 +49209,7 @@ export const DeleteProjectsLocationsTensorboardsExperimentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTensorboardsExperimentsRequest>;
 
@@ -50760,10 +49256,7 @@ export const ListProjectsLocationsTensorboardsExperimentsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/experiments" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTensorboardsExperimentsRequest>;
 
@@ -50808,7 +49301,7 @@ export const WriteProjectsLocationsTensorboardsExperimentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}:write",
+      path: "v1/{tensorboardExperiment}:write",
       hasBody: true,
     }),
     svc,
@@ -50852,11 +49345,7 @@ export const CreateProjectsLocationsTensorboardsExperimentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/experiments", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsTensorboardsExperimentsRequest>;
 
@@ -50893,11 +49382,7 @@ export const BatchCreateProjectsLocationsTensorboardsExperimentsRequest =
       GoogleCloudAiplatformV1BatchCreateTensorboardTimeSeriesRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}:batchCreate",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}:batchCreate", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<BatchCreateProjectsLocationsTensorboardsExperimentsRequest>;
 
@@ -50930,10 +49415,7 @@ export const GetProjectsLocationsTensorboardsExperimentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTensorboardsExperimentsRequest>;
 
@@ -50973,11 +49455,7 @@ export const PatchProjectsLocationsTensorboardsExperimentsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsTensorboardsExperimentsRequest>;
 
@@ -51023,10 +49501,7 @@ export const ListProjectsLocationsTensorboardsExperimentsOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTensorboardsExperimentsOperationsRequest>;
 
@@ -51063,10 +49538,7 @@ export const DeleteProjectsLocationsTensorboardsExperimentsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTensorboardsExperimentsOperationsRequest>;
 
@@ -51099,11 +49571,7 @@ export const CancelProjectsLocationsTensorboardsExperimentsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsTensorboardsExperimentsOperationsRequest>;
 
@@ -51136,10 +49604,7 @@ export const GetProjectsLocationsTensorboardsExperimentsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTensorboardsExperimentsOperationsRequest>;
 
@@ -51175,11 +49640,7 @@ export const WaitProjectsLocationsTensorboardsExperimentsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsTensorboardsExperimentsOperationsRequest>;
 
@@ -51212,10 +49673,7 @@ export const DeleteProjectsLocationsTensorboardsExperimentsRunsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTensorboardsExperimentsRunsRequest>;
 
@@ -51263,10 +49721,7 @@ export const ListProjectsLocationsTensorboardsExperimentsRunsRequest =
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/runs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTensorboardsExperimentsRunsRequest>;
 
@@ -51310,7 +49765,7 @@ export const WriteProjectsLocationsTensorboardsExperimentsRunsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}:write",
+      path: "v1/{tensorboardRun}:write",
       hasBody: true,
     }),
     svc,
@@ -51345,10 +49800,7 @@ export const GetProjectsLocationsTensorboardsExperimentsRunsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTensorboardsExperimentsRunsRequest>;
 
@@ -51391,11 +49843,7 @@ export const CreateProjectsLocationsTensorboardsExperimentsRunsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/runs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsTensorboardsExperimentsRunsRequest>;
 
@@ -51435,7 +49883,7 @@ export const BatchCreateProjectsLocationsTensorboardsExperimentsRunsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs:batchCreate",
+      path: "v1/{parent}/runs:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -51478,11 +49926,7 @@ export const PatchProjectsLocationsTensorboardsExperimentsRunsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsTensorboardsExperimentsRunsRequest>;
 
@@ -51515,10 +49959,7 @@ export const DeleteProjectsLocationsTensorboardsExperimentsRunsTimeSeriesRequest
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/timeSeries/{timeSeriesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTensorboardsExperimentsRunsTimeSeriesRequest>;
 
@@ -51556,10 +49997,7 @@ export const ReadBlobDataProjectsLocationsTensorboardsExperimentsRunsTimeSeriesR
       T.HttpQuery("blobIds"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/timeSeries/{timeSeriesId}:readBlobData",
-    }),
+    T.Http({ method: "GET", path: "v1/{timeSeries}:readBlobData" }),
     svc,
   ) as unknown as Schema.Schema<ReadBlobDataProjectsLocationsTensorboardsExperimentsRunsTimeSeriesRequest>;
 
@@ -51604,10 +50042,7 @@ export const ReadProjectsLocationsTensorboardsExperimentsRunsTimeSeriesRequest =
     ),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/timeSeries/{timeSeriesId}:read",
-    }),
+    T.Http({ method: "GET", path: "v1/{tensorboardTimeSeries}:read" }),
     svc,
   ) as unknown as Schema.Schema<ReadProjectsLocationsTensorboardsExperimentsRunsTimeSeriesRequest>;
 
@@ -51655,10 +50090,7 @@ export const ListProjectsLocationsTensorboardsExperimentsRunsTimeSeriesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/timeSeries",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/timeSeries" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTensorboardsExperimentsRunsTimeSeriesRequest>;
 
@@ -51695,10 +50127,7 @@ export const GetProjectsLocationsTensorboardsExperimentsRunsTimeSeriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/timeSeries/{timeSeriesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTensorboardsExperimentsRunsTimeSeriesRequest>;
 
@@ -51741,11 +50170,7 @@ export const CreateProjectsLocationsTensorboardsExperimentsRunsTimeSeriesRequest
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/timeSeries",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/timeSeries", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsTensorboardsExperimentsRunsTimeSeriesRequest>;
 
@@ -51787,7 +50212,7 @@ export const ExportTensorboardTimeSeriesProjectsLocationsTensorboardsExperiments
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/timeSeries/{timeSeriesId}:exportTensorboardTimeSeries",
+      path: "v1/{tensorboardTimeSeries}:exportTensorboardTimeSeries",
       hasBody: true,
     }),
     svc,
@@ -51832,11 +50257,7 @@ export const PatchProjectsLocationsTensorboardsExperimentsRunsTimeSeriesRequest 
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/timeSeries/{timeSeriesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsTensorboardsExperimentsRunsTimeSeriesRequest>;
 
@@ -51869,10 +50290,7 @@ export const GetProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperations
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/timeSeries/{timeSeriesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperationsRequest>;
 
@@ -51910,11 +50328,7 @@ export const WaitProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperation
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/timeSeries/{timeSeriesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperationsRequest>;
 
@@ -51963,10 +50377,7 @@ export const ListProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperation
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/timeSeries/{timeSeriesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperationsRequest>;
 
@@ -52005,10 +50416,7 @@ export const DeleteProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperati
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/timeSeries/{timeSeriesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperationsRequest>;
 
@@ -52043,11 +50451,7 @@ export const CancelProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperati
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/timeSeries/{timeSeriesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsTensorboardsExperimentsRunsTimeSeriesOperationsRequest>;
 
@@ -52096,10 +50500,7 @@ export const ListProjectsLocationsTensorboardsExperimentsRunsOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTensorboardsExperimentsRunsOperationsRequest>;
 
@@ -52136,10 +50537,7 @@ export const DeleteProjectsLocationsTensorboardsExperimentsRunsOperationsRequest
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTensorboardsExperimentsRunsOperationsRequest>;
 
@@ -52172,11 +50570,7 @@ export const CancelProjectsLocationsTensorboardsExperimentsRunsOperationsRequest
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsTensorboardsExperimentsRunsOperationsRequest>;
 
@@ -52209,10 +50603,7 @@ export const GetProjectsLocationsTensorboardsExperimentsRunsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTensorboardsExperimentsRunsOperationsRequest>;
 
@@ -52248,11 +50639,7 @@ export const WaitProjectsLocationsTensorboardsExperimentsRunsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tensorboards/{tensorboardsId}/experiments/{experimentsId}/runs/{runsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsTensorboardsExperimentsRunsOperationsRequest>;
 
@@ -52288,10 +50675,7 @@ export const DeleteProjectsLocationsFeatureGroupsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsFeatureGroupsRequest>;
 
@@ -52330,7 +50714,7 @@ export const GetIamPolicyProjectsLocationsFeatureGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -52376,10 +50760,7 @@ export const ListProjectsLocationsFeatureGroupsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/featureGroups" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsFeatureGroupsRequest>;
 
@@ -52415,10 +50796,7 @@ export const GetProjectsLocationsFeatureGroupsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsFeatureGroupsRequest>;
 
@@ -52462,7 +50840,7 @@ export const CreateProjectsLocationsFeatureGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups",
+      path: "v1/{parent}/featureGroups",
       hasBody: true,
     }),
     svc,
@@ -52501,7 +50879,7 @@ export const SetIamPolicyProjectsLocationsFeatureGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -52542,7 +50920,7 @@ export const TestIamPermissionsProjectsLocationsFeatureGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -52585,11 +50963,7 @@ export const PatchProjectsLocationsFeatureGroupsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsFeatureGroupsRequest>;
 
@@ -52621,10 +50995,7 @@ export const GetProjectsLocationsFeatureGroupsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsFeatureGroupsOperationsRequest>;
 
@@ -52656,10 +51027,7 @@ export const DeleteProjectsLocationsFeatureGroupsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsFeatureGroupsOperationsRequest>;
 
@@ -52694,11 +51062,7 @@ export const WaitProjectsLocationsFeatureGroupsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsFeatureGroupsOperationsRequest>;
 
@@ -52744,10 +51108,7 @@ export const ListWaitProjectsLocationsFeatureGroupsOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}/operations/{operationsId}:wait",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:wait" }),
     svc,
   ) as unknown as Schema.Schema<ListWaitProjectsLocationsFeatureGroupsOperationsRequest>;
 
@@ -52790,11 +51151,7 @@ export const PatchProjectsLocationsFeatureGroupsFeaturesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudAiplatformV1Feature).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}/features/{featuresId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsFeatureGroupsFeaturesRequest>;
 
@@ -52826,10 +51183,7 @@ export const GetProjectsLocationsFeatureGroupsFeaturesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}/features/{featuresId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsFeatureGroupsFeaturesRequest>;
 
@@ -52867,11 +51221,7 @@ export const CreateProjectsLocationsFeatureGroupsFeaturesRequest =
     featureId: Schema.optional(Schema.String).pipe(T.HttpQuery("featureId")),
     body: Schema.optional(GoogleCloudAiplatformV1Feature).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}/features",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/features", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsFeatureGroupsFeaturesRequest>;
 
@@ -52910,7 +51260,7 @@ export const BatchCreateProjectsLocationsFeatureGroupsFeaturesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}/features:batchCreate",
+      path: "v1/{parent}/features:batchCreate",
       hasBody: true,
     }),
     svc,
@@ -52965,10 +51315,7 @@ export const ListProjectsLocationsFeatureGroupsFeaturesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}/features",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/features" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsFeatureGroupsFeaturesRequest>;
 
@@ -53004,10 +51351,7 @@ export const DeleteProjectsLocationsFeatureGroupsFeaturesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}/features/{featuresId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsFeatureGroupsFeaturesRequest>;
 
@@ -53053,10 +51397,7 @@ export const ListWaitProjectsLocationsFeatureGroupsFeaturesOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}/features/{featuresId}/operations/{operationsId}:wait",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:wait" }),
     svc,
   ) as unknown as Schema.Schema<ListWaitProjectsLocationsFeatureGroupsFeaturesOperationsRequest>;
 
@@ -53093,10 +51434,7 @@ export const GetProjectsLocationsFeatureGroupsFeaturesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}/features/{featuresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsFeatureGroupsFeaturesOperationsRequest>;
 
@@ -53129,10 +51467,7 @@ export const DeleteProjectsLocationsFeatureGroupsFeaturesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}/features/{featuresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsFeatureGroupsFeaturesOperationsRequest>;
 
@@ -53168,11 +51503,7 @@ export const WaitProjectsLocationsFeatureGroupsFeaturesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/featureGroups/{featureGroupsId}/features/{featuresId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsFeatureGroupsFeaturesOperationsRequest>;
 
@@ -53208,11 +51539,7 @@ export const CreateProjectsLocationsTuningJobsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudAiplatformV1TuningJob).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tuningJobs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/tuningJobs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsTuningJobsRequest>;
 
@@ -53244,10 +51571,7 @@ export const GetProjectsLocationsTuningJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tuningJobs/{tuningJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTuningJobsRequest>;
 
@@ -53286,7 +51610,7 @@ export const RebaseTunedModelProjectsLocationsTuningJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tuningJobs:rebaseTunedModel",
+      path: "v1/{parent}/tuningJobs:rebaseTunedModel",
       hasBody: true,
     }),
     svc,
@@ -53329,10 +51653,7 @@ export const ListProjectsLocationsTuningJobsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tuningJobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/tuningJobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTuningJobsRequest>;
 
@@ -53373,11 +51694,7 @@ export const CancelProjectsLocationsTuningJobsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tuningJobs/{tuningJobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsTuningJobsRequest>;
 
@@ -53422,10 +51739,7 @@ export const ListProjectsLocationsTuningJobsOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tuningJobs/{tuningJobsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTuningJobsOperationsRequest>;
 
@@ -53461,10 +51775,7 @@ export const GetProjectsLocationsTuningJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tuningJobs/{tuningJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTuningJobsOperationsRequest>;
 
@@ -53496,10 +51807,7 @@ export const DeleteProjectsLocationsTuningJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tuningJobs/{tuningJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTuningJobsOperationsRequest>;
 
@@ -53531,11 +51839,7 @@ export const CancelProjectsLocationsTuningJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/tuningJobs/{tuningJobsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsTuningJobsOperationsRequest>;
 
@@ -53574,7 +51878,7 @@ export const CreateProjectsLocationsHyperparameterTuningJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/hyperparameterTuningJobs",
+      path: "v1/{parent}/hyperparameterTuningJobs",
       hasBody: true,
     }),
     svc,
@@ -53609,10 +51913,7 @@ export const GetProjectsLocationsHyperparameterTuningJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/hyperparameterTuningJobs/{hyperparameterTuningJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsHyperparameterTuningJobsRequest>;
 
@@ -53656,10 +51957,7 @@ export const ListProjectsLocationsHyperparameterTuningJobsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/hyperparameterTuningJobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/hyperparameterTuningJobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsHyperparameterTuningJobsRequest>;
 
@@ -53695,10 +51993,7 @@ export const DeleteProjectsLocationsHyperparameterTuningJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/hyperparameterTuningJobs/{hyperparameterTuningJobsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsHyperparameterTuningJobsRequest>;
 
@@ -53736,11 +52031,7 @@ export const CancelProjectsLocationsHyperparameterTuningJobsRequest =
       GoogleCloudAiplatformV1CancelHyperparameterTuningJobRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/hyperparameterTuningJobs/{hyperparameterTuningJobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsHyperparameterTuningJobsRequest>;
 
@@ -53773,10 +52064,7 @@ export const DeleteProjectsLocationsHyperparameterTuningJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/hyperparameterTuningJobs/{hyperparameterTuningJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsHyperparameterTuningJobsOperationsRequest>;
 
@@ -53809,11 +52097,7 @@ export const CancelProjectsLocationsHyperparameterTuningJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/hyperparameterTuningJobs/{hyperparameterTuningJobsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsHyperparameterTuningJobsOperationsRequest>;
 
@@ -53860,10 +52144,7 @@ export const ListProjectsLocationsHyperparameterTuningJobsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/hyperparameterTuningJobs/{hyperparameterTuningJobsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsHyperparameterTuningJobsOperationsRequest>;
 
@@ -53900,10 +52181,7 @@ export const GetProjectsLocationsHyperparameterTuningJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/hyperparameterTuningJobs/{hyperparameterTuningJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsHyperparameterTuningJobsOperationsRequest>;
 
@@ -53939,11 +52217,7 @@ export const WaitProjectsLocationsHyperparameterTuningJobsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/hyperparameterTuningJobs/{hyperparameterTuningJobsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsHyperparameterTuningJobsOperationsRequest>;
 
@@ -53981,11 +52255,7 @@ export const PauseProjectsLocationsModelDeploymentMonitoringJobsRequest =
       GoogleCloudAiplatformV1PauseModelDeploymentMonitoringJobRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/modelDeploymentMonitoringJobs/{modelDeploymentMonitoringJobsId}:pause",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:pause", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PauseProjectsLocationsModelDeploymentMonitoringJobsRequest>;
 
@@ -54023,11 +52293,7 @@ export const ResumeProjectsLocationsModelDeploymentMonitoringJobsRequest =
       GoogleCloudAiplatformV1ResumeModelDeploymentMonitoringJobRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/modelDeploymentMonitoringJobs/{modelDeploymentMonitoringJobsId}:resume",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:resume", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResumeProjectsLocationsModelDeploymentMonitoringJobsRequest>;
 
@@ -54068,11 +52334,7 @@ export const PatchProjectsLocationsModelDeploymentMonitoringJobsRequest =
       GoogleCloudAiplatformV1ModelDeploymentMonitoringJob,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/modelDeploymentMonitoringJobs/{modelDeploymentMonitoringJobsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsModelDeploymentMonitoringJobsRequest>;
 
@@ -54105,10 +52367,7 @@ export const GetProjectsLocationsModelDeploymentMonitoringJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/modelDeploymentMonitoringJobs/{modelDeploymentMonitoringJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsModelDeploymentMonitoringJobsRequest>;
 
@@ -54148,7 +52407,7 @@ export const CreateProjectsLocationsModelDeploymentMonitoringJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/modelDeploymentMonitoringJobs",
+      path: "v1/{parent}/modelDeploymentMonitoringJobs",
       hasBody: true,
     }),
     svc,
@@ -54197,7 +52456,7 @@ export const ListProjectsLocationsModelDeploymentMonitoringJobsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/modelDeploymentMonitoringJobs",
+      path: "v1/{parent}/modelDeploymentMonitoringJobs",
     }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsModelDeploymentMonitoringJobsRequest>;
@@ -54244,7 +52503,7 @@ export const SearchModelDeploymentMonitoringStatsAnomaliesProjectsLocationsModel
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/modelDeploymentMonitoringJobs/{modelDeploymentMonitoringJobsId}:searchModelDeploymentMonitoringStatsAnomalies",
+      path: "v1/{modelDeploymentMonitoringJob}:searchModelDeploymentMonitoringStatsAnomalies",
       hasBody: true,
     }),
     svc,
@@ -54281,10 +52540,7 @@ export const DeleteProjectsLocationsModelDeploymentMonitoringJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/modelDeploymentMonitoringJobs/{modelDeploymentMonitoringJobsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsModelDeploymentMonitoringJobsRequest>;
 
@@ -54317,10 +52573,7 @@ export const GetProjectsLocationsModelDeploymentMonitoringJobsOperationsRequest 
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/modelDeploymentMonitoringJobs/{modelDeploymentMonitoringJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsModelDeploymentMonitoringJobsOperationsRequest>;
 
@@ -54356,11 +52609,7 @@ export const WaitProjectsLocationsModelDeploymentMonitoringJobsOperationsRequest
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/modelDeploymentMonitoringJobs/{modelDeploymentMonitoringJobsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsModelDeploymentMonitoringJobsOperationsRequest>;
 
@@ -54393,10 +52642,7 @@ export const DeleteProjectsLocationsModelDeploymentMonitoringJobsOperationsReque
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/modelDeploymentMonitoringJobs/{modelDeploymentMonitoringJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsModelDeploymentMonitoringJobsOperationsRequest>;
 
@@ -54430,11 +52676,7 @@ export const CancelProjectsLocationsModelDeploymentMonitoringJobsOperationsReque
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/modelDeploymentMonitoringJobs/{modelDeploymentMonitoringJobsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsModelDeploymentMonitoringJobsOperationsRequest>;
 
@@ -54482,10 +52724,7 @@ export const ListProjectsLocationsModelDeploymentMonitoringJobsOperationsRequest
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/modelDeploymentMonitoringJobs/{modelDeploymentMonitoringJobsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsModelDeploymentMonitoringJobsOperationsRequest>;
 
@@ -54528,10 +52767,7 @@ export const ListProjectsLocationsMetadataStoresRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/metadataStores" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsMetadataStoresRequest>;
 
@@ -54567,10 +52803,7 @@ export const GetProjectsLocationsMetadataStoresRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMetadataStoresRequest>;
 
@@ -54605,10 +52838,7 @@ export const DeleteProjectsLocationsMetadataStoresRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsMetadataStoresRequest>;
 
@@ -54652,7 +52882,7 @@ export const CreateProjectsLocationsMetadataStoresRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores",
+      path: "v1/{parent}/metadataStores",
       hasBody: true,
     }),
     svc,
@@ -54692,11 +52922,7 @@ export const CreateProjectsLocationsMetadataStoresContextsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudAiplatformV1Context).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/contexts",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/contexts", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsMetadataStoresContextsRequest>;
 
@@ -54728,10 +52954,7 @@ export const QueryContextLineageSubgraphProjectsLocationsMetadataStoresContextsR
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     context: Schema.String.pipe(T.HttpPath("context")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/contexts/{contextsId}:queryContextLineageSubgraph",
-    }),
+    T.Http({ method: "GET", path: "v1/{context}:queryContextLineageSubgraph" }),
     svc,
   ) as unknown as Schema.Schema<QueryContextLineageSubgraphProjectsLocationsMetadataStoresContextsRequest>;
 
@@ -54773,7 +52996,7 @@ export const AddContextArtifactsAndExecutionsProjectsLocationsMetadataStoresCont
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/contexts/{contextsId}:addContextArtifactsAndExecutions",
+      path: "v1/{context}:addContextArtifactsAndExecutions",
       hasBody: true,
     }),
     svc,
@@ -54817,7 +53040,7 @@ export const PurgeProjectsLocationsMetadataStoresContextsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/contexts:purge",
+      path: "v1/{parent}/contexts:purge",
       hasBody: true,
     }),
     svc,
@@ -54851,10 +53074,7 @@ export const GetProjectsLocationsMetadataStoresContextsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/contexts/{contextsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMetadataStoresContextsRequest>;
 
@@ -54893,7 +53113,7 @@ export const AddContextChildrenProjectsLocationsMetadataStoresContextsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/contexts/{contextsId}:addContextChildren",
+      path: "v1/{context}:addContextChildren",
       hasBody: true,
     }),
     svc,
@@ -54939,11 +53159,7 @@ export const PatchProjectsLocationsMetadataStoresContextsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudAiplatformV1Context).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/contexts/{contextsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsMetadataStoresContextsRequest>;
 
@@ -54982,7 +53198,7 @@ export const RemoveContextChildrenProjectsLocationsMetadataStoresContextsRequest
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/contexts/{contextsId}:removeContextChildren",
+      path: "v1/{context}:removeContextChildren",
       hasBody: true,
     }),
     svc,
@@ -55023,10 +53239,7 @@ export const DeleteProjectsLocationsMetadataStoresContextsRequest =
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/contexts/{contextsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsMetadataStoresContextsRequest>;
 
@@ -55070,10 +53283,7 @@ export const ListProjectsLocationsMetadataStoresContextsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/contexts",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/contexts" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsMetadataStoresContextsRequest>;
 
@@ -55123,10 +53333,7 @@ export const ListProjectsLocationsMetadataStoresContextsOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/contexts/{contextsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsMetadataStoresContextsOperationsRequest>;
 
@@ -55163,10 +53370,7 @@ export const DeleteProjectsLocationsMetadataStoresContextsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/contexts/{contextsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsMetadataStoresContextsOperationsRequest>;
 
@@ -55199,11 +53403,7 @@ export const CancelProjectsLocationsMetadataStoresContextsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/contexts/{contextsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsMetadataStoresContextsOperationsRequest>;
 
@@ -55236,10 +53436,7 @@ export const GetProjectsLocationsMetadataStoresContextsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/contexts/{contextsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMetadataStoresContextsOperationsRequest>;
 
@@ -55275,11 +53472,7 @@ export const WaitProjectsLocationsMetadataStoresContextsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/contexts/{contextsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsMetadataStoresContextsOperationsRequest>;
 
@@ -55326,10 +53519,7 @@ export const ListProjectsLocationsMetadataStoresOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsMetadataStoresOperationsRequest>;
 
@@ -55365,10 +53555,7 @@ export const DeleteProjectsLocationsMetadataStoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsMetadataStoresOperationsRequest>;
 
@@ -55401,11 +53588,7 @@ export const CancelProjectsLocationsMetadataStoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsMetadataStoresOperationsRequest>;
 
@@ -55438,10 +53621,7 @@ export const GetProjectsLocationsMetadataStoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMetadataStoresOperationsRequest>;
 
@@ -55476,11 +53656,7 @@ export const WaitProjectsLocationsMetadataStoresOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsMetadataStoresOperationsRequest>;
 
@@ -55523,11 +53699,7 @@ export const PatchProjectsLocationsMetadataStoresExecutionsRequest =
     ),
     body: Schema.optional(GoogleCloudAiplatformV1Execution).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/executions/{executionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsMetadataStoresExecutionsRequest>;
 
@@ -55559,10 +53731,7 @@ export const GetProjectsLocationsMetadataStoresExecutionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/executions/{executionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMetadataStoresExecutionsRequest>;
 
@@ -55602,11 +53771,7 @@ export const CreateProjectsLocationsMetadataStoresExecutionsRequest =
     ),
     body: Schema.optional(GoogleCloudAiplatformV1Execution).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/executions",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/executions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsMetadataStoresExecutionsRequest>;
 
@@ -55646,7 +53811,7 @@ export const AddExecutionEventsProjectsLocationsMetadataStoresExecutionsRequest 
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/executions/{executionsId}:addExecutionEvents",
+      path: "v1/{execution}:addExecutionEvents",
       hasBody: true,
     }),
     svc,
@@ -55693,10 +53858,7 @@ export const ListProjectsLocationsMetadataStoresExecutionsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/executions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/executions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsMetadataStoresExecutionsRequest>;
 
@@ -55735,10 +53897,7 @@ export const DeleteProjectsLocationsMetadataStoresExecutionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/executions/{executionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsMetadataStoresExecutionsRequest>;
 
@@ -55778,7 +53937,7 @@ export const PurgeProjectsLocationsMetadataStoresExecutionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/executions:purge",
+      path: "v1/{parent}/executions:purge",
       hasBody: true,
     }),
     svc,
@@ -55814,7 +53973,7 @@ export const QueryExecutionInputsAndOutputsProjectsLocationsMetadataStoresExecut
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/executions/{executionsId}:queryExecutionInputsAndOutputs",
+      path: "v1/{execution}:queryExecutionInputsAndOutputs",
     }),
     svc,
   ) as unknown as Schema.Schema<QueryExecutionInputsAndOutputsProjectsLocationsMetadataStoresExecutionsRequest>;
@@ -55850,10 +54009,7 @@ export const DeleteProjectsLocationsMetadataStoresExecutionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/executions/{executionsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsMetadataStoresExecutionsOperationsRequest>;
 
@@ -55886,11 +54042,7 @@ export const CancelProjectsLocationsMetadataStoresExecutionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/executions/{executionsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsMetadataStoresExecutionsOperationsRequest>;
 
@@ -55937,10 +54089,7 @@ export const ListProjectsLocationsMetadataStoresExecutionsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/executions/{executionsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsMetadataStoresExecutionsOperationsRequest>;
 
@@ -55977,10 +54126,7 @@ export const GetProjectsLocationsMetadataStoresExecutionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/executions/{executionsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMetadataStoresExecutionsOperationsRequest>;
 
@@ -56016,11 +54162,7 @@ export const WaitProjectsLocationsMetadataStoresExecutionsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/executions/{executionsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsMetadataStoresExecutionsOperationsRequest>;
 
@@ -56062,10 +54204,7 @@ export const ListProjectsLocationsMetadataStoresMetadataSchemasRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/metadataSchemas",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/metadataSchemas" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsMetadataStoresMetadataSchemasRequest>;
 
@@ -56102,10 +54241,7 @@ export const GetProjectsLocationsMetadataStoresMetadataSchemasRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/metadataSchemas/{metadataSchemasId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMetadataStoresMetadataSchemasRequest>;
 
@@ -56150,7 +54286,7 @@ export const CreateProjectsLocationsMetadataStoresMetadataSchemasRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/metadataSchemas",
+      path: "v1/{parent}/metadataSchemas",
       hasBody: true,
     }),
     svc,
@@ -56192,7 +54328,7 @@ export const PurgeProjectsLocationsMetadataStoresArtifactsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/artifacts:purge",
+      path: "v1/{parent}/artifacts:purge",
       hasBody: true,
     }),
     svc,
@@ -56229,10 +54365,7 @@ export const DeleteProjectsLocationsMetadataStoresArtifactsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     etag: Schema.optional(Schema.String).pipe(T.HttpQuery("etag")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/artifacts/{artifactsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsMetadataStoresArtifactsRequest>;
 
@@ -56276,10 +54409,7 @@ export const ListProjectsLocationsMetadataStoresArtifactsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/artifacts",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/artifacts" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsMetadataStoresArtifactsRequest>;
 
@@ -56321,11 +54451,7 @@ export const CreateProjectsLocationsMetadataStoresArtifactsRequest =
     artifactId: Schema.optional(Schema.String).pipe(T.HttpQuery("artifactId")),
     body: Schema.optional(GoogleCloudAiplatformV1Artifact).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/artifacts",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/artifacts", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsMetadataStoresArtifactsRequest>;
 
@@ -56357,10 +54483,7 @@ export const GetProjectsLocationsMetadataStoresArtifactsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/artifacts/{artifactsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMetadataStoresArtifactsRequest>;
 
@@ -56403,11 +54526,7 @@ export const PatchProjectsLocationsMetadataStoresArtifactsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudAiplatformV1Artifact).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/artifacts/{artifactsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsMetadataStoresArtifactsRequest>;
 
@@ -56447,7 +54566,7 @@ export const QueryArtifactLineageSubgraphProjectsLocationsMetadataStoresArtifact
   }).pipe(
     T.Http({
       method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/artifacts/{artifactsId}:queryArtifactLineageSubgraph",
+      path: "v1/{artifact}:queryArtifactLineageSubgraph",
     }),
     svc,
   ) as unknown as Schema.Schema<QueryArtifactLineageSubgraphProjectsLocationsMetadataStoresArtifactsRequest>;
@@ -56483,10 +54602,7 @@ export const GetProjectsLocationsMetadataStoresArtifactsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/artifacts/{artifactsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsMetadataStoresArtifactsOperationsRequest>;
 
@@ -56522,11 +54638,7 @@ export const WaitProjectsLocationsMetadataStoresArtifactsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/artifacts/{artifactsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsMetadataStoresArtifactsOperationsRequest>;
 
@@ -56559,10 +54671,7 @@ export const DeleteProjectsLocationsMetadataStoresArtifactsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/artifacts/{artifactsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsMetadataStoresArtifactsOperationsRequest>;
 
@@ -56595,11 +54704,7 @@ export const CancelProjectsLocationsMetadataStoresArtifactsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/artifacts/{artifactsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsMetadataStoresArtifactsOperationsRequest>;
 
@@ -56646,10 +54751,7 @@ export const ListProjectsLocationsMetadataStoresArtifactsOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/metadataStores/{metadataStoresId}/artifacts/{artifactsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsMetadataStoresArtifactsOperationsRequest>;
 
@@ -56691,11 +54793,7 @@ export const PauseProjectsLocationsSchedulesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/schedules/{schedulesId}:pause",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:pause", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PauseProjectsLocationsSchedulesRequest>;
 
@@ -56731,11 +54829,7 @@ export const ResumeProjectsLocationsSchedulesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/schedules/{schedulesId}:resume",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:resume", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResumeProjectsLocationsSchedulesRequest>;
 
@@ -56772,11 +54866,7 @@ export const PatchProjectsLocationsSchedulesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudAiplatformV1Schedule).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/schedules/{schedulesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsSchedulesRequest>;
 
@@ -56808,10 +54898,7 @@ export const GetProjectsLocationsSchedulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/schedules/{schedulesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSchedulesRequest>;
 
@@ -56846,11 +54933,7 @@ export const CreateProjectsLocationsSchedulesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudAiplatformV1Schedule).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/schedules",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/schedules", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsSchedulesRequest>;
 
@@ -56894,10 +54977,7 @@ export const ListProjectsLocationsSchedulesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/schedules",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/schedules" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSchedulesRequest>;
 
@@ -56933,10 +55013,7 @@ export const DeleteProjectsLocationsSchedulesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/schedules/{schedulesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSchedulesRequest>;
 
@@ -56968,10 +55045,7 @@ export const GetProjectsLocationsSchedulesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/schedules/{schedulesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsSchedulesOperationsRequest>;
 
@@ -57006,11 +55080,7 @@ export const WaitProjectsLocationsSchedulesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/schedules/{schedulesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsSchedulesOperationsRequest>;
 
@@ -57042,10 +55112,7 @@ export const DeleteProjectsLocationsSchedulesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/schedules/{schedulesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsSchedulesOperationsRequest>;
 
@@ -57077,11 +55144,7 @@ export const CancelProjectsLocationsSchedulesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/schedules/{schedulesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsSchedulesOperationsRequest>;
 
@@ -57127,10 +55190,7 @@ export const ListProjectsLocationsSchedulesOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/schedules/{schedulesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsSchedulesOperationsRequest>;
 
@@ -57181,10 +55241,7 @@ export const ListProjectsLocationsPipelineJobsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pipelineJobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/pipelineJobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsPipelineJobsRequest>;
 
@@ -57227,7 +55284,7 @@ export const BatchDeleteProjectsLocationsPipelineJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pipelineJobs:batchDelete",
+      path: "v1/{parent}/pipelineJobs:batchDelete",
       hasBody: true,
     }),
     svc,
@@ -57261,10 +55318,7 @@ export const DeleteProjectsLocationsPipelineJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pipelineJobs/{pipelineJobsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsPipelineJobsRequest>;
 
@@ -57301,11 +55355,7 @@ export const CancelProjectsLocationsPipelineJobsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pipelineJobs/{pipelineJobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsPipelineJobsRequest>;
 
@@ -57343,7 +55393,7 @@ export const BatchCancelProjectsLocationsPipelineJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pipelineJobs:batchCancel",
+      path: "v1/{parent}/pipelineJobs:batchCancel",
       hasBody: true,
     }),
     svc,
@@ -57387,11 +55437,7 @@ export const CreateProjectsLocationsPipelineJobsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pipelineJobs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/pipelineJobs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsPipelineJobsRequest>;
 
@@ -57423,10 +55469,7 @@ export const GetProjectsLocationsPipelineJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pipelineJobs/{pipelineJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsPipelineJobsRequest>;
 
@@ -57472,10 +55515,7 @@ export const ListProjectsLocationsPipelineJobsOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pipelineJobs/{pipelineJobsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsPipelineJobsOperationsRequest>;
 
@@ -57511,10 +55551,7 @@ export const DeleteProjectsLocationsPipelineJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pipelineJobs/{pipelineJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsPipelineJobsOperationsRequest>;
 
@@ -57546,11 +55583,7 @@ export const CancelProjectsLocationsPipelineJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pipelineJobs/{pipelineJobsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsPipelineJobsOperationsRequest>;
 
@@ -57582,10 +55615,7 @@ export const GetProjectsLocationsPipelineJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pipelineJobs/{pipelineJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsPipelineJobsOperationsRequest>;
 
@@ -57620,11 +55650,7 @@ export const WaitProjectsLocationsPipelineJobsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/pipelineJobs/{pipelineJobsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsPipelineJobsOperationsRequest>;
 
@@ -57663,7 +55689,7 @@ export const GetIamPolicyProjectsLocationsDatasetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -57711,10 +55737,7 @@ export const ListProjectsLocationsDatasetsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/datasets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsRequest>;
 
@@ -57755,11 +55778,7 @@ export const ExportProjectsLocationsDatasetsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}:export",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:export", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExportProjectsLocationsDatasetsRequest>;
 
@@ -57846,10 +55865,7 @@ export const SearchDataItemsProjectsLocationsDatasetsRequest =
     ),
     dataset: Schema.String.pipe(T.HttpPath("dataset")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}:searchDataItems",
-    }),
+    T.Http({ method: "GET", path: "v1/{dataset}:searchDataItems" }),
     svc,
   ) as unknown as Schema.Schema<SearchDataItemsProjectsLocationsDatasetsRequest>;
 
@@ -57885,10 +55901,7 @@ export const DeleteProjectsLocationsDatasetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsRequest>;
 
@@ -57927,7 +55940,7 @@ export const TestIamPermissionsProjectsLocationsDatasetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -57967,11 +55980,7 @@ export const PatchProjectsLocationsDatasetsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     body: Schema.optional(GoogleCloudAiplatformV1Dataset).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsRequest>;
 
@@ -58006,10 +56015,7 @@ export const GetProjectsLocationsDatasetsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsRequest>;
 
@@ -58046,11 +56052,7 @@ export const ImportProjectsLocationsDatasetsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}:import",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:import", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ImportProjectsLocationsDatasetsRequest>;
 
@@ -58087,7 +56089,7 @@ export const SetIamPolicyProjectsLocationsDatasetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -58123,11 +56125,7 @@ export const CreateProjectsLocationsDatasetsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudAiplatformV1Dataset).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/datasets", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsDatasetsRequest>;
 
@@ -58174,10 +56172,7 @@ export const ListProjectsLocationsDatasetsDataItemsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dataItems",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/dataItems" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsDataItemsRequest>;
 
@@ -58213,10 +56208,7 @@ export const GetProjectsLocationsDatasetsDataItemsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dataItems/{dataItemsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsDataItemsOperationsRequest>;
 
@@ -58252,11 +56244,7 @@ export const WaitProjectsLocationsDatasetsDataItemsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dataItems/{dataItemsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsDatasetsDataItemsOperationsRequest>;
 
@@ -58303,10 +56291,7 @@ export const ListProjectsLocationsDatasetsDataItemsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dataItems/{dataItemsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsDataItemsOperationsRequest>;
 
@@ -58343,10 +56328,7 @@ export const DeleteProjectsLocationsDatasetsDataItemsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dataItems/{dataItemsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsDataItemsOperationsRequest>;
 
@@ -58379,11 +56361,7 @@ export const CancelProjectsLocationsDatasetsDataItemsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dataItems/{dataItemsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsDatasetsDataItemsOperationsRequest>;
 
@@ -58431,10 +56409,7 @@ export const ListProjectsLocationsDatasetsDataItemsAnnotationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dataItems/{dataItemsId}/annotations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/annotations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsDataItemsAnnotationsRequest>;
 
@@ -58471,10 +56446,7 @@ export const GetProjectsLocationsDatasetsDataItemsAnnotationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dataItems/{dataItemsId}/annotations/{annotationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsDataItemsAnnotationsOperationsRequest>;
 
@@ -58510,11 +56482,7 @@ export const WaitProjectsLocationsDatasetsDataItemsAnnotationsOperationsRequest 
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dataItems/{dataItemsId}/annotations/{annotationsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsDatasetsDataItemsAnnotationsOperationsRequest>;
 
@@ -58547,10 +56515,7 @@ export const DeleteProjectsLocationsDatasetsDataItemsAnnotationsOperationsReques
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dataItems/{dataItemsId}/annotations/{annotationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsDataItemsAnnotationsOperationsRequest>;
 
@@ -58583,11 +56548,7 @@ export const CancelProjectsLocationsDatasetsDataItemsAnnotationsOperationsReques
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dataItems/{dataItemsId}/annotations/{annotationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsDatasetsDataItemsAnnotationsOperationsRequest>;
 
@@ -58634,10 +56595,7 @@ export const ListProjectsLocationsDatasetsDataItemsAnnotationsOperationsRequest 
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/dataItems/{dataItemsId}/annotations/{annotationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsDataItemsAnnotationsOperationsRequest>;
 
@@ -58677,10 +56635,7 @@ export const GetProjectsLocationsDatasetsDatasetVersionsRequest =
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/datasetVersions/{datasetVersionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsDatasetVersionsRequest>;
 
@@ -58719,7 +56674,7 @@ export const CreateProjectsLocationsDatasetsDatasetVersionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/datasetVersions",
+      path: "v1/{parent}/datasetVersions",
       hasBody: true,
     }),
     svc,
@@ -58761,11 +56716,7 @@ export const PatchProjectsLocationsDatasetsDatasetVersionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/datasetVersions/{datasetVersionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsDatasetsDatasetVersionsRequest>;
 
@@ -58797,10 +56748,7 @@ export const RestoreProjectsLocationsDatasetsDatasetVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/datasetVersions/{datasetVersionsId}:restore",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:restore" }),
     svc,
   ) as unknown as Schema.Schema<RestoreProjectsLocationsDatasetsDatasetVersionsRequest>;
 
@@ -58833,10 +56781,7 @@ export const DeleteProjectsLocationsDatasetsDatasetVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/datasetVersions/{datasetVersionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsDatasetVersionsRequest>;
 
@@ -58883,10 +56828,7 @@ export const ListProjectsLocationsDatasetsDatasetVersionsRequest =
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/datasetVersions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/datasetVersions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsDatasetVersionsRequest>;
 
@@ -58922,10 +56864,7 @@ export const DeleteProjectsLocationsDatasetsSavedQueriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/savedQueries/{savedQueriesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsSavedQueriesRequest>;
 
@@ -58972,10 +56911,7 @@ export const ListProjectsLocationsDatasetsSavedQueriesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/savedQueries",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/savedQueries" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsSavedQueriesRequest>;
 
@@ -59011,10 +56947,7 @@ export const DeleteProjectsLocationsDatasetsSavedQueriesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/savedQueries/{savedQueriesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsSavedQueriesOperationsRequest>;
 
@@ -59047,11 +56980,7 @@ export const CancelProjectsLocationsDatasetsSavedQueriesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/savedQueries/{savedQueriesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsDatasetsSavedQueriesOperationsRequest>;
 
@@ -59098,10 +57027,7 @@ export const ListProjectsLocationsDatasetsSavedQueriesOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/savedQueries/{savedQueriesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsSavedQueriesOperationsRequest>;
 
@@ -59138,10 +57064,7 @@ export const GetProjectsLocationsDatasetsSavedQueriesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/savedQueries/{savedQueriesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsSavedQueriesOperationsRequest>;
 
@@ -59177,11 +57100,7 @@ export const WaitProjectsLocationsDatasetsSavedQueriesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/savedQueries/{savedQueriesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsDatasetsSavedQueriesOperationsRequest>;
 
@@ -59217,10 +57136,7 @@ export const GetProjectsLocationsDatasetsAnnotationSpecsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/annotationSpecs/{annotationSpecsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsAnnotationSpecsRequest>;
 
@@ -59266,10 +57182,7 @@ export const ListProjectsLocationsDatasetsAnnotationSpecsOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/annotationSpecs/{annotationSpecsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsAnnotationSpecsOperationsRequest>;
 
@@ -59306,10 +57219,7 @@ export const DeleteProjectsLocationsDatasetsAnnotationSpecsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/annotationSpecs/{annotationSpecsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsAnnotationSpecsOperationsRequest>;
 
@@ -59342,11 +57252,7 @@ export const CancelProjectsLocationsDatasetsAnnotationSpecsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/annotationSpecs/{annotationSpecsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsDatasetsAnnotationSpecsOperationsRequest>;
 
@@ -59379,10 +57285,7 @@ export const GetProjectsLocationsDatasetsAnnotationSpecsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/annotationSpecs/{annotationSpecsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsAnnotationSpecsOperationsRequest>;
 
@@ -59418,11 +57321,7 @@ export const WaitProjectsLocationsDatasetsAnnotationSpecsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/annotationSpecs/{annotationSpecsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsDatasetsAnnotationSpecsOperationsRequest>;
 
@@ -59455,10 +57354,7 @@ export const GetProjectsLocationsDatasetsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDatasetsOperationsRequest>;
 
@@ -59493,11 +57389,7 @@ export const WaitProjectsLocationsDatasetsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsDatasetsOperationsRequest>;
 
@@ -59543,10 +57435,7 @@ export const ListProjectsLocationsDatasetsOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDatasetsOperationsRequest>;
 
@@ -59582,10 +57471,7 @@ export const DeleteProjectsLocationsDatasetsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDatasetsOperationsRequest>;
 
@@ -59617,11 +57503,7 @@ export const CancelProjectsLocationsDatasetsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/datasets/{datasetsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsDatasetsOperationsRequest>;
 
@@ -59653,10 +57535,7 @@ export const GetProjectsLocationsPersistentResourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/persistentResources/{persistentResourcesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsPersistentResourcesRequest>;
 
@@ -59693,11 +57572,7 @@ export const RebootProjectsLocationsPersistentResourcesRequest =
       GoogleCloudAiplatformV1RebootPersistentResourceRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/persistentResources/{persistentResourcesId}:reboot",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:reboot", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RebootProjectsLocationsPersistentResourcesRequest>;
 
@@ -59741,7 +57616,7 @@ export const CreateProjectsLocationsPersistentResourcesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/persistentResources",
+      path: "v1/{parent}/persistentResources",
       hasBody: true,
     }),
     svc,
@@ -59783,11 +57658,7 @@ export const PatchProjectsLocationsPersistentResourcesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/persistentResources/{persistentResourcesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsPersistentResourcesRequest>;
 
@@ -59819,10 +57690,7 @@ export const DeleteProjectsLocationsPersistentResourcesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/persistentResources/{persistentResourcesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsPersistentResourcesRequest>;
 
@@ -59860,10 +57728,7 @@ export const ListProjectsLocationsPersistentResourcesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/persistentResources",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/persistentResources" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsPersistentResourcesRequest>;
 
@@ -59899,10 +57764,7 @@ export const DeleteProjectsLocationsPersistentResourcesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/persistentResources/{persistentResourcesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsPersistentResourcesOperationsRequest>;
 
@@ -59935,11 +57797,7 @@ export const CancelProjectsLocationsPersistentResourcesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/persistentResources/{persistentResourcesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsPersistentResourcesOperationsRequest>;
 
@@ -59986,10 +57844,7 @@ export const ListProjectsLocationsPersistentResourcesOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/persistentResources/{persistentResourcesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsPersistentResourcesOperationsRequest>;
 
@@ -60026,10 +57881,7 @@ export const GetProjectsLocationsPersistentResourcesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/persistentResources/{persistentResourcesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsPersistentResourcesOperationsRequest>;
 
@@ -60065,11 +57917,7 @@ export const WaitProjectsLocationsPersistentResourcesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/persistentResources/{persistentResourcesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsPersistentResourcesOperationsRequest>;
 
@@ -60102,10 +57950,7 @@ export const GetProjectsLocationsNasJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/nasJobs/{nasJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsNasJobsRequest>;
 
@@ -60139,11 +57984,7 @@ export const CreateProjectsLocationsNasJobsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudAiplatformV1NasJob).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/nasJobs",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/nasJobs", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsNasJobsRequest>;
 
@@ -60175,10 +58016,7 @@ export const DeleteProjectsLocationsNasJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/nasJobs/{nasJobsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsNasJobsRequest>;
 
@@ -60214,11 +58052,7 @@ export const CancelProjectsLocationsNasJobsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/nasJobs/{nasJobsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsNasJobsRequest>;
 
@@ -60261,10 +58095,7 @@ export const ListProjectsLocationsNasJobsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/nasJobs",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/nasJobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsNasJobsRequest>;
 
@@ -60306,10 +58137,7 @@ export const ListProjectsLocationsNasJobsNasTrialDetailsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/nasJobs/{nasJobsId}/nasTrialDetails",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/nasTrialDetails" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsNasJobsNasTrialDetailsRequest>;
 
@@ -60345,10 +58173,7 @@ export const GetProjectsLocationsNasJobsNasTrialDetailsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/nasJobs/{nasJobsId}/nasTrialDetails/{nasTrialDetailsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsNasJobsNasTrialDetailsRequest>;
 
@@ -60385,11 +58210,7 @@ export const ExecuteCodeProjectsLocationsReasoningEnginesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}:executeCode",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:executeCode", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExecuteCodeProjectsLocationsReasoningEnginesRequest>;
 
@@ -60428,7 +58249,7 @@ export const TestIamPermissionsProjectsLocationsReasoningEnginesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -60471,11 +58292,7 @@ export const PatchProjectsLocationsReasoningEnginesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsReasoningEnginesRequest>;
 
@@ -60507,10 +58324,7 @@ export const GetProjectsLocationsReasoningEnginesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsReasoningEnginesRequest>;
 
@@ -60549,7 +58363,7 @@ export const GetIamPolicyProjectsLocationsReasoningEnginesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}:getIamPolicy",
+      path: "v1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -60592,10 +58406,7 @@ export const ListProjectsLocationsReasoningEnginesRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/reasoningEngines" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsReasoningEnginesRequest>;
 
@@ -60636,11 +58447,7 @@ export const StreamQueryProjectsLocationsReasoningEnginesRequest =
       GoogleCloudAiplatformV1StreamQueryReasoningEngineRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}:streamQuery",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:streamQuery", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StreamQueryProjectsLocationsReasoningEnginesRequest>;
 
@@ -60675,10 +58482,7 @@ export const DeleteProjectsLocationsReasoningEnginesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsReasoningEnginesRequest>;
 
@@ -60715,7 +58519,7 @@ export const SetIamPolicyProjectsLocationsReasoningEnginesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -60756,7 +58560,7 @@ export const CreateProjectsLocationsReasoningEnginesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines",
+      path: "v1/{parent}/reasoningEngines",
       hasBody: true,
     }),
     svc,
@@ -60795,11 +58599,7 @@ export const QueryProjectsLocationsReasoningEnginesRequest =
       GoogleCloudAiplatformV1QueryReasoningEngineRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}:query",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:query", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<QueryProjectsLocationsReasoningEnginesRequest>;
 
@@ -60838,7 +58638,7 @@ export const PurgeProjectsLocationsReasoningEnginesMemoriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/memories:purge",
+      path: "v1/{parent}/memories:purge",
       hasBody: true,
     }),
     svc,
@@ -60877,11 +58677,7 @@ export const RollbackProjectsLocationsReasoningEnginesMemoriesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/memories/{memoriesId}:rollback",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:rollback", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RollbackProjectsLocationsReasoningEnginesMemoriesRequest>;
 
@@ -60921,7 +58717,7 @@ export const RetrieveProjectsLocationsReasoningEnginesMemoriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/memories:retrieve",
+      path: "v1/{parent}/memories:retrieve",
       hasBody: true,
     }),
     svc,
@@ -60962,11 +58758,7 @@ export const CreateProjectsLocationsReasoningEnginesMemoriesRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudAiplatformV1Memory).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/memories",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/memories", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsReasoningEnginesMemoriesRequest>;
 
@@ -60999,10 +58791,7 @@ export const DeleteProjectsLocationsReasoningEnginesMemoriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/memories/{memoriesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsReasoningEnginesMemoriesRequest>;
 
@@ -61047,10 +58836,7 @@ export const ListProjectsLocationsReasoningEnginesMemoriesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/memories",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/memories" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsReasoningEnginesMemoriesRequest>;
 
@@ -61086,10 +58872,7 @@ export const GetProjectsLocationsReasoningEnginesMemoriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/memories/{memoriesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsReasoningEnginesMemoriesRequest>;
 
@@ -61128,7 +58911,7 @@ export const GenerateProjectsLocationsReasoningEnginesMemoriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/memories:generate",
+      path: "v1/{parent}/memories:generate",
       hasBody: true,
     }),
     svc,
@@ -61169,11 +58952,7 @@ export const PatchProjectsLocationsReasoningEnginesMemoriesRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudAiplatformV1Memory).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/memories/{memoriesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsReasoningEnginesMemoriesRequest>;
 
@@ -61205,10 +58984,7 @@ export const DeleteProjectsLocationsReasoningEnginesMemoriesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/memories/{memoriesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsReasoningEnginesMemoriesOperationsRequest>;
 
@@ -61241,11 +59017,7 @@ export const CancelProjectsLocationsReasoningEnginesMemoriesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/memories/{memoriesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsReasoningEnginesMemoriesOperationsRequest>;
 
@@ -61292,10 +59064,7 @@ export const ListProjectsLocationsReasoningEnginesMemoriesOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/memories/{memoriesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsReasoningEnginesMemoriesOperationsRequest>;
 
@@ -61332,10 +59101,7 @@ export const GetProjectsLocationsReasoningEnginesMemoriesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/memories/{memoriesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsReasoningEnginesMemoriesOperationsRequest>;
 
@@ -61371,11 +59137,7 @@ export const WaitProjectsLocationsReasoningEnginesMemoriesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/memories/{memoriesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsReasoningEnginesMemoriesOperationsRequest>;
 
@@ -61417,10 +59179,7 @@ export const ListProjectsLocationsReasoningEnginesMemoriesRevisionsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/memories/{memoriesId}/revisions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/revisions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsReasoningEnginesMemoriesRevisionsRequest>;
 
@@ -61457,10 +59216,7 @@ export const GetProjectsLocationsReasoningEnginesMemoriesRevisionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/memories/{memoriesId}/revisions/{revisionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsReasoningEnginesMemoriesRevisionsRequest>;
 
@@ -61493,10 +59249,7 @@ export const DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments/{sandboxEnvironmentsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentsRequest>;
 
@@ -61534,11 +59287,7 @@ export const ExecuteProjectsLocationsReasoningEnginesSandboxEnvironmentsRequest 
       GoogleCloudAiplatformV1ExecuteSandboxEnvironmentRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments/{sandboxEnvironmentsId}:execute",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:execute", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ExecuteProjectsLocationsReasoningEnginesSandboxEnvironmentsRequest>;
 
@@ -61580,10 +59329,7 @@ export const ListProjectsLocationsReasoningEnginesSandboxEnvironmentsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sandboxEnvironments" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsReasoningEnginesSandboxEnvironmentsRequest>;
 
@@ -61625,11 +59371,7 @@ export const SnapshotProjectsLocationsReasoningEnginesSandboxEnvironmentsRequest
       GoogleCloudAiplatformV1SandboxEnvironmentSnapshot,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments/{sandboxEnvironmentsId}:snapshot",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:snapshot", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<SnapshotProjectsLocationsReasoningEnginesSandboxEnvironmentsRequest>;
 
@@ -61669,7 +59411,7 @@ export const CreateProjectsLocationsReasoningEnginesSandboxEnvironmentsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments",
+      path: "v1/{parent}/sandboxEnvironments",
       hasBody: true,
     }),
     svc,
@@ -61704,10 +59446,7 @@ export const GetProjectsLocationsReasoningEnginesSandboxEnvironmentsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments/{sandboxEnvironmentsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsReasoningEnginesSandboxEnvironmentsRequest>;
 
@@ -61740,10 +59479,7 @@ export const GetProjectsLocationsReasoningEnginesSandboxEnvironmentsOperationsRe
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments/{sandboxEnvironmentsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsReasoningEnginesSandboxEnvironmentsOperationsRequest>;
 
@@ -61778,10 +59514,7 @@ export const DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentsOperation
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments/{sandboxEnvironmentsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentsOperationsRequest>;
 
@@ -61816,11 +59549,7 @@ export const CancelProjectsLocationsReasoningEnginesSandboxEnvironmentsOperation
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments/{sandboxEnvironmentsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsReasoningEnginesSandboxEnvironmentsOperationsRequest>;
 
@@ -61858,11 +59587,7 @@ export const WaitProjectsLocationsReasoningEnginesSandboxEnvironmentsOperationsR
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironments/{sandboxEnvironmentsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsReasoningEnginesSandboxEnvironmentsOperationsRequest>;
 
@@ -61897,10 +59622,7 @@ export const GetProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsRequ
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentSnapshots/{sandboxEnvironmentSnapshotsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsRequest>;
 
@@ -61934,10 +59656,7 @@ export const DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsR
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentSnapshots/{sandboxEnvironmentSnapshotsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsRequest>;
 
@@ -61981,10 +59700,7 @@ export const ListProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsReq
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentSnapshots",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sandboxEnvironmentSnapshots" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsRequest>;
 
@@ -62023,10 +59739,7 @@ export const GetProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsOper
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentSnapshots/{sandboxEnvironmentSnapshotsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsOperationsRequest>;
 
@@ -62061,10 +59774,7 @@ export const DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsO
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentSnapshots/{sandboxEnvironmentSnapshotsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsOperationsRequest>;
 
@@ -62099,11 +59809,7 @@ export const CancelProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsO
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentSnapshots/{sandboxEnvironmentSnapshotsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsOperationsRequest>;
 
@@ -62141,11 +59847,7 @@ export const WaitProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsOpe
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentSnapshots/{sandboxEnvironmentSnapshotsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsOperationsRequest>;
 
@@ -62194,10 +59896,7 @@ export const ListProjectsLocationsReasoningEnginesOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsReasoningEnginesOperationsRequest>;
 
@@ -62234,10 +59933,7 @@ export const DeleteProjectsLocationsReasoningEnginesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsReasoningEnginesOperationsRequest>;
 
@@ -62270,11 +59966,7 @@ export const CancelProjectsLocationsReasoningEnginesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsReasoningEnginesOperationsRequest>;
 
@@ -62307,10 +59999,7 @@ export const GetProjectsLocationsReasoningEnginesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsReasoningEnginesOperationsRequest>;
 
@@ -62345,11 +60034,7 @@ export const WaitProjectsLocationsReasoningEnginesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsReasoningEnginesOperationsRequest>;
 
@@ -62387,11 +60072,7 @@ export const QueryProjectsLocationsReasoningEnginesRuntimeRevisionsRequest =
       GoogleCloudAiplatformV1QueryReasoningEngineRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/runtimeRevisions/{runtimeRevisionsId}:query",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:query", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<QueryProjectsLocationsReasoningEnginesRuntimeRevisionsRequest>;
 
@@ -62429,11 +60110,7 @@ export const StreamQueryProjectsLocationsReasoningEnginesRuntimeRevisionsRequest
       GoogleCloudAiplatformV1StreamQueryReasoningEngineRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/runtimeRevisions/{runtimeRevisionsId}:streamQuery",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:streamQuery", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<StreamQueryProjectsLocationsReasoningEnginesRuntimeRevisionsRequest>;
 
@@ -62473,7 +60150,7 @@ export const CreateProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesR
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentTemplates",
+      path: "v1/{parent}/sandboxEnvironmentTemplates",
       hasBody: true,
     }),
     svc,
@@ -62510,10 +60187,7 @@ export const GetProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesRequ
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentTemplates/{sandboxEnvironmentTemplatesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesRequest>;
 
@@ -62547,10 +60221,7 @@ export const DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesR
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentTemplates/{sandboxEnvironmentTemplatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesRequest>;
 
@@ -62594,10 +60265,7 @@ export const ListProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesReq
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentTemplates",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sandboxEnvironmentTemplates" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesRequest>;
 
@@ -62636,10 +60304,7 @@ export const GetProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesOper
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentTemplates/{sandboxEnvironmentTemplatesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesOperationsRequest>;
 
@@ -62674,10 +60339,7 @@ export const DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesO
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentTemplates/{sandboxEnvironmentTemplatesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesOperationsRequest>;
 
@@ -62712,11 +60374,7 @@ export const CancelProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesO
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentTemplates/{sandboxEnvironmentTemplatesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesOperationsRequest>;
 
@@ -62754,11 +60412,7 @@ export const WaitProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesOpe
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sandboxEnvironmentTemplates/{sandboxEnvironmentTemplatesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesOperationsRequest>;
 
@@ -62793,10 +60447,7 @@ export const GetProjectsLocationsReasoningEnginesSessionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sessions/{sessionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsReasoningEnginesSessionsRequest>;
 
@@ -62833,11 +60484,7 @@ export const AppendEventProjectsLocationsReasoningEnginesSessionsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sessions/{sessionsId}:appendEvent",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:appendEvent", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<AppendEventProjectsLocationsReasoningEnginesSessionsRequest>;
 
@@ -62876,11 +60523,7 @@ export const CreateProjectsLocationsReasoningEnginesSessionsRequest =
     sessionId: Schema.optional(Schema.String).pipe(T.HttpQuery("sessionId")),
     body: Schema.optional(GoogleCloudAiplatformV1Session).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sessions",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/sessions", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsReasoningEnginesSessionsRequest>;
 
@@ -62919,11 +60562,7 @@ export const PatchProjectsLocationsReasoningEnginesSessionsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudAiplatformV1Session).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sessions/{sessionsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsReasoningEnginesSessionsRequest>;
 
@@ -62955,10 +60594,7 @@ export const DeleteProjectsLocationsReasoningEnginesSessionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sessions/{sessionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsReasoningEnginesSessionsRequest>;
 
@@ -63003,10 +60639,7 @@ export const ListProjectsLocationsReasoningEnginesSessionsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sessions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/sessions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsReasoningEnginesSessionsRequest>;
 
@@ -63042,10 +60675,7 @@ export const GetProjectsLocationsReasoningEnginesSessionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sessions/{sessionsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsReasoningEnginesSessionsOperationsRequest>;
 
@@ -63081,11 +60711,7 @@ export const WaitProjectsLocationsReasoningEnginesSessionsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sessions/{sessionsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsReasoningEnginesSessionsOperationsRequest>;
 
@@ -63118,10 +60744,7 @@ export const DeleteProjectsLocationsReasoningEnginesSessionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sessions/{sessionsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsReasoningEnginesSessionsOperationsRequest>;
 
@@ -63154,11 +60777,7 @@ export const CancelProjectsLocationsReasoningEnginesSessionsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sessions/{sessionsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsLocationsReasoningEnginesSessionsOperationsRequest>;
 
@@ -63205,10 +60824,7 @@ export const ListProjectsLocationsReasoningEnginesSessionsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sessions/{sessionsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsReasoningEnginesSessionsOperationsRequest>;
 
@@ -63257,10 +60873,7 @@ export const ListProjectsLocationsReasoningEnginesSessionsEventsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/reasoningEngines/{reasoningEnginesId}/sessions/{sessionsId}/events",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/events" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsReasoningEnginesSessionsEventsRequest>;
 
@@ -63311,7 +60924,7 @@ export const ListStudiesOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/studies/{studiesId}/operations" }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListStudiesOperationsRequest>;
 
@@ -63347,10 +60960,7 @@ export const DeleteStudiesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/studies/{studiesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteStudiesOperationsRequest>;
 
@@ -63381,11 +60991,7 @@ export const CancelStudiesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/studies/{studiesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelStudiesOperationsRequest>;
 
@@ -63416,10 +61022,7 @@ export const GetStudiesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/studies/{studiesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetStudiesOperationsRequest>;
 
@@ -63453,11 +61056,7 @@ export const WaitStudiesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/studies/{studiesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitStudiesOperationsRequest>;
 
@@ -63502,10 +61101,7 @@ export const ListStudiesTrialsOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/studies/{studiesId}/trials/{trialsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListStudiesTrialsOperationsRequest>;
 
@@ -63541,10 +61137,7 @@ export const DeleteStudiesTrialsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/studies/{studiesId}/trials/{trialsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteStudiesTrialsOperationsRequest>;
 
@@ -63575,11 +61168,7 @@ export const CancelStudiesTrialsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/studies/{studiesId}/trials/{trialsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelStudiesTrialsOperationsRequest>;
 
@@ -63610,10 +61199,7 @@ export const GetStudiesTrialsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/studies/{studiesId}/trials/{trialsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetStudiesTrialsOperationsRequest>;
 
@@ -63647,11 +61233,7 @@ export const WaitStudiesTrialsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/studies/{studiesId}/trials/{trialsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitStudiesTrialsOperationsRequest>;
 
@@ -63682,10 +61264,7 @@ export const DeleteModelsEvaluationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/models/{modelsId}/evaluations/{evaluationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteModelsEvaluationsOperationsRequest>;
 
@@ -63716,11 +61295,7 @@ export const CancelModelsEvaluationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/models/{modelsId}/evaluations/{evaluationsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelModelsEvaluationsOperationsRequest>;
 
@@ -63765,10 +61340,7 @@ export const ListModelsEvaluationsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/models/{modelsId}/evaluations/{evaluationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListModelsEvaluationsOperationsRequest>;
 
@@ -63804,10 +61376,7 @@ export const GetModelsEvaluationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/models/{modelsId}/evaluations/{evaluationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetModelsEvaluationsOperationsRequest>;
 
@@ -63841,11 +61410,7 @@ export const WaitModelsEvaluationsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/models/{modelsId}/evaluations/{evaluationsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitModelsEvaluationsOperationsRequest>;
 
@@ -63891,7 +61456,7 @@ export const ListModelsOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/models/{modelsId}/operations" }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListModelsOperationsRequest>;
 
@@ -63927,10 +61492,7 @@ export const DeleteModelsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/models/{modelsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteModelsOperationsRequest>;
 
@@ -63961,11 +61523,7 @@ export const CancelModelsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/models/{modelsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelModelsOperationsRequest>;
 
@@ -63996,10 +61554,7 @@ export const GetModelsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/models/{modelsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetModelsOperationsRequest>;
 
@@ -64033,11 +61588,7 @@ export const WaitModelsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/models/{modelsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitModelsOperationsRequest>;
 
@@ -64068,10 +61619,7 @@ export const GetNotebookRuntimeTemplatesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/notebookRuntimeTemplates/{notebookRuntimeTemplatesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetNotebookRuntimeTemplatesOperationsRequest>;
 
@@ -64106,11 +61654,7 @@ export const WaitNotebookRuntimeTemplatesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/notebookRuntimeTemplates/{notebookRuntimeTemplatesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitNotebookRuntimeTemplatesOperationsRequest>;
 
@@ -64142,10 +61686,7 @@ export const DeleteNotebookRuntimeTemplatesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/notebookRuntimeTemplates/{notebookRuntimeTemplatesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteNotebookRuntimeTemplatesOperationsRequest>;
 
@@ -64177,11 +61718,7 @@ export const CancelNotebookRuntimeTemplatesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/notebookRuntimeTemplates/{notebookRuntimeTemplatesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelNotebookRuntimeTemplatesOperationsRequest>;
 
@@ -64227,10 +61764,7 @@ export const ListNotebookRuntimeTemplatesOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/notebookRuntimeTemplates/{notebookRuntimeTemplatesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListNotebookRuntimeTemplatesOperationsRequest>;
 
@@ -64266,10 +61800,7 @@ export const GetIndexesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/indexes/{indexesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetIndexesOperationsRequest>;
 
@@ -64303,11 +61834,7 @@ export const WaitIndexesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/indexes/{indexesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitIndexesOperationsRequest>;
 
@@ -64352,7 +61879,7 @@ export const ListIndexesOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/indexes/{indexesId}/operations" }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListIndexesOperationsRequest>;
 
@@ -64388,10 +61915,7 @@ export const DeleteIndexesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/indexes/{indexesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteIndexesOperationsRequest>;
 
@@ -64422,11 +61946,7 @@ export const CancelIndexesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/indexes/{indexesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelIndexesOperationsRequest>;
 
@@ -64457,10 +61977,7 @@ export const DeleteNotebookExecutionJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/notebookExecutionJobs/{notebookExecutionJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteNotebookExecutionJobsOperationsRequest>;
 
@@ -64491,11 +62008,7 @@ export const CancelNotebookExecutionJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/notebookExecutionJobs/{notebookExecutionJobsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelNotebookExecutionJobsOperationsRequest>;
 
@@ -64540,10 +62053,7 @@ export const ListNotebookExecutionJobsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/notebookExecutionJobs/{notebookExecutionJobsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListNotebookExecutionJobsOperationsRequest>;
 
@@ -64579,10 +62089,7 @@ export const GetNotebookExecutionJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/notebookExecutionJobs/{notebookExecutionJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetNotebookExecutionJobsOperationsRequest>;
 
@@ -64617,11 +62124,7 @@ export const WaitNotebookExecutionJobsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/notebookExecutionJobs/{notebookExecutionJobsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitNotebookExecutionJobsOperationsRequest>;
 
@@ -64653,10 +62156,7 @@ export const GetFeaturestoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/featurestores/{featurestoresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFeaturestoresOperationsRequest>;
 
@@ -64690,11 +62190,7 @@ export const WaitFeaturestoresOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/featurestores/{featurestoresId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitFeaturestoresOperationsRequest>;
 
@@ -64739,10 +62235,7 @@ export const ListFeaturestoresOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/featurestores/{featurestoresId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListFeaturestoresOperationsRequest>;
 
@@ -64778,10 +62271,7 @@ export const DeleteFeaturestoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/featurestores/{featurestoresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteFeaturestoresOperationsRequest>;
 
@@ -64812,11 +62302,7 @@ export const CancelFeaturestoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/featurestores/{featurestoresId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelFeaturestoresOperationsRequest>;
 
@@ -64847,10 +62333,7 @@ export const GetFeaturestoresEntityTypesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFeaturestoresEntityTypesOperationsRequest>;
 
@@ -64885,11 +62368,7 @@ export const WaitFeaturestoresEntityTypesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitFeaturestoresEntityTypesOperationsRequest>;
 
@@ -64935,10 +62414,7 @@ export const ListFeaturestoresEntityTypesOperationsRequest =
     ),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListFeaturestoresEntityTypesOperationsRequest>;
 
@@ -64974,10 +62450,7 @@ export const DeleteFeaturestoresEntityTypesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteFeaturestoresEntityTypesOperationsRequest>;
 
@@ -65009,11 +62482,7 @@ export const CancelFeaturestoresEntityTypesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelFeaturestoresEntityTypesOperationsRequest>;
 
@@ -65059,10 +62528,7 @@ export const ListFeaturestoresEntityTypesFeaturesOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/features/{featuresId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListFeaturestoresEntityTypesFeaturesOperationsRequest>;
 
@@ -65098,10 +62564,7 @@ export const DeleteFeaturestoresEntityTypesFeaturesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/features/{featuresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteFeaturestoresEntityTypesFeaturesOperationsRequest>;
 
@@ -65134,11 +62597,7 @@ export const CancelFeaturestoresEntityTypesFeaturesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/features/{featuresId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelFeaturestoresEntityTypesFeaturesOperationsRequest>;
 
@@ -65171,10 +62630,7 @@ export const GetFeaturestoresEntityTypesFeaturesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/features/{featuresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFeaturestoresEntityTypesFeaturesOperationsRequest>;
 
@@ -65209,11 +62665,7 @@ export const WaitFeaturestoresEntityTypesFeaturesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/featurestores/{featurestoresId}/entityTypes/{entityTypesId}/features/{featuresId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitFeaturestoresEntityTypesFeaturesOperationsRequest>;
 
@@ -65245,10 +62697,7 @@ export const DeleteTrainingPipelinesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/trainingPipelines/{trainingPipelinesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteTrainingPipelinesOperationsRequest>;
 
@@ -65279,11 +62728,7 @@ export const CancelTrainingPipelinesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/trainingPipelines/{trainingPipelinesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelTrainingPipelinesOperationsRequest>;
 
@@ -65328,10 +62773,7 @@ export const ListTrainingPipelinesOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/trainingPipelines/{trainingPipelinesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListTrainingPipelinesOperationsRequest>;
 
@@ -65367,10 +62809,7 @@ export const GetTrainingPipelinesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/trainingPipelines/{trainingPipelinesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetTrainingPipelinesOperationsRequest>;
 
@@ -65404,11 +62843,7 @@ export const WaitTrainingPipelinesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/trainingPipelines/{trainingPipelinesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitTrainingPipelinesOperationsRequest>;
 
@@ -65477,10 +62912,7 @@ export const GetBatchPredictionJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/batchPredictionJobs/{batchPredictionJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetBatchPredictionJobsRequest>;
 
@@ -65608,7 +63040,7 @@ export const DeleteOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({ method: "DELETE", path: "v1/operations/{operationsId}" }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteOperationsRequest>;
 
@@ -65639,11 +63071,7 @@ export const CancelOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelOperationsRequest>;
 
@@ -65673,7 +63101,7 @@ export interface GetOperationsRequest {
 export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
 }).pipe(
-  T.Http({ method: "GET", path: "v1/operations/{operationsId}" }),
+  T.Http({ method: "GET", path: "v1/{name}" }),
   svc,
 ) as unknown as Schema.Schema<GetOperationsRequest>;
 
@@ -65706,11 +63134,7 @@ export const WaitOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String.pipe(T.HttpPath("name")),
   timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
 }).pipe(
-  T.Http({
-    method: "POST",
-    path: "v1/operations/{operationsId}:wait",
-    hasBody: true,
-  }),
+  T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
   svc,
 ) as unknown as Schema.Schema<WaitOperationsRequest>;
 
@@ -65755,10 +63179,7 @@ export const ListMigratableResourcesOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/migratableResources/{migratableResourcesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListMigratableResourcesOperationsRequest>;
 
@@ -65794,10 +63215,7 @@ export const DeleteMigratableResourcesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/migratableResources/{migratableResourcesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteMigratableResourcesOperationsRequest>;
 
@@ -65828,11 +63246,7 @@ export const CancelMigratableResourcesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/migratableResources/{migratableResourcesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelMigratableResourcesOperationsRequest>;
 
@@ -65863,10 +63277,7 @@ export const GetMigratableResourcesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/migratableResources/{migratableResourcesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetMigratableResourcesOperationsRequest>;
 
@@ -65901,11 +63312,7 @@ export const WaitMigratableResourcesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/migratableResources/{migratableResourcesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitMigratableResourcesOperationsRequest>;
 
@@ -65951,10 +63358,7 @@ export const ListDataLabelingJobsOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/dataLabelingJobs/{dataLabelingJobsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListDataLabelingJobsOperationsRequest>;
 
@@ -65990,10 +63394,7 @@ export const DeleteDataLabelingJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/dataLabelingJobs/{dataLabelingJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteDataLabelingJobsOperationsRequest>;
 
@@ -66024,11 +63425,7 @@ export const CancelDataLabelingJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/dataLabelingJobs/{dataLabelingJobsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelDataLabelingJobsOperationsRequest>;
 
@@ -66059,10 +63456,7 @@ export const GetDataLabelingJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/dataLabelingJobs/{dataLabelingJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDataLabelingJobsOperationsRequest>;
 
@@ -66096,11 +63490,7 @@ export const WaitDataLabelingJobsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/dataLabelingJobs/{dataLabelingJobsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitDataLabelingJobsOperationsRequest>;
 
@@ -66131,10 +63521,7 @@ export const GetDeploymentResourcePoolsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/deploymentResourcePools/{deploymentResourcePoolsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetDeploymentResourcePoolsOperationsRequest>;
 
@@ -66169,11 +63556,7 @@ export const WaitDeploymentResourcePoolsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/deploymentResourcePools/{deploymentResourcePoolsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitDeploymentResourcePoolsOperationsRequest>;
 
@@ -66219,10 +63602,7 @@ export const ListDeploymentResourcePoolsOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/deploymentResourcePools/{deploymentResourcePoolsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListDeploymentResourcePoolsOperationsRequest>;
 
@@ -66258,10 +63638,7 @@ export const DeleteDeploymentResourcePoolsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/deploymentResourcePools/{deploymentResourcePoolsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteDeploymentResourcePoolsOperationsRequest>;
 
@@ -66293,11 +63670,7 @@ export const CancelDeploymentResourcePoolsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/deploymentResourcePools/{deploymentResourcePoolsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelDeploymentResourcePoolsOperationsRequest>;
 
@@ -66334,11 +63707,7 @@ export const PredictPublishersModelsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/publishers/{publishersId}/models/{modelsId}:predict",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{endpoint}:predict", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PredictPublishersModelsRequest>;
 
@@ -66376,7 +63745,7 @@ export const FetchPredictOperationPublishersModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/publishers/{publishersId}/models/{modelsId}:fetchPredictOperation",
+      path: "v1/{endpoint}:fetchPredictOperation",
       hasBody: true,
     }),
     svc,
@@ -66433,10 +63802,7 @@ export const GetPublishersModelsRequest =
     ),
     view: Schema.optional(Schema.String).pipe(T.HttpQuery("view")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/publishers/{publishersId}/models/{modelsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetPublishersModelsRequest>;
 
@@ -66474,7 +63840,7 @@ export const CountTokensPublishersModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/publishers/{publishersId}/models/{modelsId}:countTokens",
+      path: "v1/{endpoint}:countTokens",
       hasBody: true,
     }),
     svc,
@@ -66515,7 +63881,7 @@ export const ComputeTokensPublishersModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/publishers/{publishersId}/models/{modelsId}:computeTokens",
+      path: "v1/{endpoint}:computeTokens",
       hasBody: true,
     }),
     svc,
@@ -66556,7 +63922,7 @@ export const PredictLongRunningPublishersModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/publishers/{publishersId}/models/{modelsId}:predictLongRunning",
+      path: "v1/{endpoint}:predictLongRunning",
       hasBody: true,
     }),
     svc,
@@ -66596,7 +63962,7 @@ export const GenerateContentPublishersModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/publishers/{publishersId}/models/{modelsId}:generateContent",
+      path: "v1/{model}:generateContent",
       hasBody: true,
     }),
     svc,
@@ -66637,7 +64003,7 @@ export const StreamGenerateContentPublishersModelsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/publishers/{publishersId}/models/{modelsId}:streamGenerateContent",
+      path: "v1/{model}:streamGenerateContent",
       hasBody: true,
     }),
     svc,
@@ -66685,10 +64051,7 @@ export const ListWaitFeatureOnlineStoresOperationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/featureOnlineStores/{featureOnlineStoresId}/operations/{operationsId}:wait",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:wait" }),
     svc,
   ) as unknown as Schema.Schema<ListWaitFeatureOnlineStoresOperationsRequest>;
 
@@ -66724,10 +64087,7 @@ export const GetFeatureOnlineStoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/featureOnlineStores/{featureOnlineStoresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFeatureOnlineStoresOperationsRequest>;
 
@@ -66759,10 +64119,7 @@ export const DeleteFeatureOnlineStoresOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/featureOnlineStores/{featureOnlineStoresId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteFeatureOnlineStoresOperationsRequest>;
 
@@ -66796,11 +64153,7 @@ export const WaitFeatureOnlineStoresOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/featureOnlineStores/{featureOnlineStoresId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitFeatureOnlineStoresOperationsRequest>;
 
@@ -66832,10 +64185,7 @@ export const GetFeatureOnlineStoresFeatureViewsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/featureOnlineStores/{featureOnlineStoresId}/featureViews/{featureViewsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetFeatureOnlineStoresFeatureViewsOperationsRequest>;
 
@@ -66867,10 +64217,7 @@ export const DeleteFeatureOnlineStoresFeatureViewsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/featureOnlineStores/{featureOnlineStoresId}/featureViews/{featureViewsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteFeatureOnlineStoresFeatureViewsOperationsRequest>;
 
@@ -66906,11 +64253,7 @@ export const WaitFeatureOnlineStoresFeatureViewsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/featureOnlineStores/{featureOnlineStoresId}/featureViews/{featureViewsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitFeatureOnlineStoresFeatureViewsOperationsRequest>;
 
@@ -66956,10 +64299,7 @@ export const ListWaitFeatureOnlineStoresFeatureViewsOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/featureOnlineStores/{featureOnlineStoresId}/featureViews/{featureViewsId}/operations/{operationsId}:wait",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}:wait" }),
     svc,
   ) as unknown as Schema.Schema<ListWaitFeatureOnlineStoresFeatureViewsOperationsRequest>;
 
@@ -67010,10 +64350,7 @@ export const ListNotebookRuntimesOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/notebookRuntimes/{notebookRuntimesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListNotebookRuntimesOperationsRequest>;
 
@@ -67049,10 +64386,7 @@ export const DeleteNotebookRuntimesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/notebookRuntimes/{notebookRuntimesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteNotebookRuntimesOperationsRequest>;
 
@@ -67083,11 +64417,7 @@ export const CancelNotebookRuntimesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/notebookRuntimes/{notebookRuntimesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelNotebookRuntimesOperationsRequest>;
 
@@ -67118,10 +64448,7 @@ export const GetNotebookRuntimesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/notebookRuntimes/{notebookRuntimesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetNotebookRuntimesOperationsRequest>;
 
@@ -67155,11 +64482,7 @@ export const WaitNotebookRuntimesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/notebookRuntimes/{notebookRuntimesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitNotebookRuntimesOperationsRequest>;
 
@@ -67204,7 +64527,7 @@ export const ListRagCorporaOperationsRequest =
       T.HttpQuery("returnPartialSuccess"),
     ),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/ragCorpora/{ragCorporaId}/operations" }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListRagCorporaOperationsRequest>;
 
@@ -67240,10 +64563,7 @@ export const DeleteRagCorporaOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/ragCorpora/{ragCorporaId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteRagCorporaOperationsRequest>;
 
@@ -67274,11 +64594,7 @@ export const CancelRagCorporaOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/ragCorpora/{ragCorporaId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelRagCorporaOperationsRequest>;
 
@@ -67309,10 +64625,7 @@ export const GetRagCorporaOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/ragCorpora/{ragCorporaId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetRagCorporaOperationsRequest>;
 
@@ -67346,11 +64659,7 @@ export const WaitRagCorporaOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/ragCorpora/{ragCorporaId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitRagCorporaOperationsRequest>;
 
@@ -67395,10 +64704,7 @@ export const ListRagCorporaRagFilesOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/ragCorpora/{ragCorporaId}/ragFiles/{ragFilesId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListRagCorporaRagFilesOperationsRequest>;
 
@@ -67434,10 +64740,7 @@ export const DeleteRagCorporaRagFilesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/ragCorpora/{ragCorporaId}/ragFiles/{ragFilesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteRagCorporaRagFilesOperationsRequest>;
 
@@ -67468,11 +64771,7 @@ export const CancelRagCorporaRagFilesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/ragCorpora/{ragCorporaId}/ragFiles/{ragFilesId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelRagCorporaRagFilesOperationsRequest>;
 
@@ -67503,10 +64802,7 @@ export const GetRagCorporaRagFilesOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/ragCorpora/{ragCorporaId}/ragFiles/{ragFilesId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetRagCorporaRagFilesOperationsRequest>;
 
@@ -67541,11 +64837,7 @@ export const WaitRagCorporaRagFilesOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/ragCorpora/{ragCorporaId}/ragFiles/{ragFilesId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitRagCorporaRagFilesOperationsRequest>;
 
@@ -67577,10 +64869,7 @@ export const GetCustomJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/customJobs/{customJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetCustomJobsOperationsRequest>;
 
@@ -67614,11 +64903,7 @@ export const WaitCustomJobsOperationsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     timeout: Schema.optional(Schema.String).pipe(T.HttpQuery("timeout")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/customJobs/{customJobsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitCustomJobsOperationsRequest>;
 
@@ -67649,10 +64934,7 @@ export const DeleteCustomJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/customJobs/{customJobsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteCustomJobsOperationsRequest>;
 
@@ -67683,11 +64965,7 @@ export const CancelCustomJobsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/customJobs/{customJobsId}/operations/{operationsId}:cancel",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:cancel", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CancelCustomJobsOperationsRequest>;
 
@@ -67732,7 +65010,7 @@ export const ListCustomJobsOperationsRequest =
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/customJobs/{customJobsId}/operations" }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListCustomJobsOperationsRequest>;
 

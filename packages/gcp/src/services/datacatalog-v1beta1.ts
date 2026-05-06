@@ -24,13 +24,13 @@ const svc = T.Service({
 
 export interface GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope {
   /** The list of organization IDs to search within. To find your organization ID, follow instructions in https://cloud.google.com/resource-manager/docs/creating-managing-organization. */
-  includeOrgIds?: Array<string>;
+  includeOrgIds?: ReadonlyArray<string>;
   /** The list of project IDs to search within. To learn more about the distinction between project names/IDs/numbers, go to https://cloud.google.com/docs/overview/#projects. */
-  includeProjectIds?: Array<string>;
+  includeProjectIds?: ReadonlyArray<string>;
   /** If `true`, include Google Cloud public datasets in the search results. Info on Google Cloud public datasets is available at https://cloud.google.com/public-datasets/. By default, Google Cloud public datasets are excluded. */
   includeGcpPublicDatasets?: boolean;
   /** Optional. The list of locations to search within. 1. If empty, search will be performed in all locations; 2. If any of the locations are NOT in the valid locations list, error will be returned; 3. Otherwise, search only the given locations for matching results. Typical usage is to leave this field empty. When a location is unreachable as returned in the `SearchCatalogResponse.unreachable` field, users can repeat the search request with this parameter set to get additional information on the error. Valid locations: * asia-east1 * asia-east2 * asia-northeast1 * asia-northeast2 * asia-northeast3 * asia-south1 * asia-southeast1 * australia-southeast1 * eu * europe-north1 * europe-west1 * europe-west2 * europe-west3 * europe-west4 * europe-west6 * global * northamerica-northeast1 * southamerica-east1 * us * us-central1 * us-east1 * us-east4 * us-west1 * us-west2 */
-  restrictedLocations?: Array<string>;
+  restrictedLocations?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope =
@@ -100,13 +100,13 @@ export const GoogleCloudDatacatalogV1beta1SearchCatalogResult =
 
 export interface GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
   /** Search results. */
-  results?: Array<GoogleCloudDatacatalogV1beta1SearchCatalogResult>;
+  results?: ReadonlyArray<GoogleCloudDatacatalogV1beta1SearchCatalogResult>;
   /** The approximate total number of entries matched by the query. */
   totalSize?: number;
   /** The token that can be used to retrieve the next page of results. */
   nextPageToken?: string;
   /** Unreachable locations. Search result does not include data from those locations. Users can get additional information on the error by repeating the search request with a more restrictive parameter -- setting the value for `SearchDataCatalogRequest.scope.restricted_locations`. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDatacatalogV1beta1SearchCatalogResponse =
@@ -166,7 +166,7 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 
 export interface GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse {
   /** EntryGroup details. */
-  entryGroups?: Array<GoogleCloudDatacatalogV1beta1EntryGroup>;
+  entryGroups?: ReadonlyArray<GoogleCloudDatacatalogV1beta1EntryGroup>;
   /** Token to retrieve the next page of results. It is set to empty if no items remain in results. */
   nextPageToken?: string;
 }
@@ -201,9 +201,9 @@ export const GoogleCloudDatacatalogV1beta1GcsFileSpec =
 
 export interface GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
   /** Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/wildcards) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/* /b`: matches all files in `bucket_name` that match `a/* /b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g` */
-  filePatterns?: Array<string>;
+  filePatterns?: ReadonlyArray<string>;
   /** Output only. Sample files contained in this fileset, not all files contained in this fileset are represented here. */
-  sampleGcsFileSpecs?: Array<GoogleCloudDatacatalogV1beta1GcsFileSpec>;
+  sampleGcsFileSpecs?: ReadonlyArray<GoogleCloudDatacatalogV1beta1GcsFileSpec>;
 }
 
 export const GoogleCloudDatacatalogV1beta1GcsFilesetSpec =
@@ -283,7 +283,7 @@ export interface GoogleCloudDatacatalogV1beta1ColumnSchema {
   /** Optional. A column's mode indicates whether the values in this column are required, nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are supported. Default mode is `NULLABLE`. */
   mode?: string;
   /** Optional. Schema of sub-columns. A column can have zero or more sub-columns. */
-  subcolumns?: Array<GoogleCloudDatacatalogV1beta1ColumnSchema>;
+  subcolumns?: ReadonlyArray<GoogleCloudDatacatalogV1beta1ColumnSchema>;
 }
 
 export const GoogleCloudDatacatalogV1beta1ColumnSchema: Schema.Schema<GoogleCloudDatacatalogV1beta1ColumnSchema> =
@@ -303,7 +303,7 @@ export const GoogleCloudDatacatalogV1beta1ColumnSchema: Schema.Schema<GoogleClou
 
 export interface GoogleCloudDatacatalogV1beta1Schema {
   /** Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be specified. */
-  columns?: Array<GoogleCloudDatacatalogV1beta1ColumnSchema>;
+  columns?: ReadonlyArray<GoogleCloudDatacatalogV1beta1ColumnSchema>;
 }
 
 export const GoogleCloudDatacatalogV1beta1Schema =
@@ -419,7 +419,7 @@ export const GoogleCloudDatacatalogV1beta1Entry =
 
 export interface GoogleCloudDatacatalogV1beta1ListEntriesResponse {
   /** Entry details. */
-  entries?: Array<GoogleCloudDatacatalogV1beta1Entry>;
+  entries?: ReadonlyArray<GoogleCloudDatacatalogV1beta1Entry>;
   /** Token to retrieve the next page of results. It is set to empty if no items remain in results. */
   nextPageToken?: string;
 }
@@ -445,7 +445,7 @@ export const GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue =
   });
 
 export interface GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
-  allowedValues?: Array<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>;
+  allowedValues?: ReadonlyArray<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>;
 }
 
 export const GoogleCloudDatacatalogV1beta1FieldTypeEnumType =
@@ -615,7 +615,7 @@ export const GoogleCloudDatacatalogV1beta1Tag =
 
 export interface GoogleCloudDatacatalogV1beta1ListTagsResponse {
   /** Tag details. */
-  tags?: Array<GoogleCloudDatacatalogV1beta1Tag>;
+  tags?: ReadonlyArray<GoogleCloudDatacatalogV1beta1Tag>;
   /** Token to retrieve the next page of results. It is set to empty if no items remain in results. */
   nextPageToken?: string;
 }
@@ -648,7 +648,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
@@ -663,7 +663,7 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
@@ -703,7 +703,7 @@ export const GetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -713,7 +713,7 @@ export const TestIamPermissionsRequest =
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -750,7 +750,7 @@ export interface GoogleCloudDatacatalogV1beta1Taxonomy {
   /** Output only. Timestamps about this taxonomy. Only create_time and update_time are used. */
   taxonomyTimestamps?: GoogleCloudDatacatalogV1beta1SystemTimestamps;
   /** Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list. */
-  activatedPolicyTypes?: Array<
+  activatedPolicyTypes?: ReadonlyArray<
     "POLICY_TYPE_UNSPECIFIED" | "FINE_GRAINED_ACCESS_CONTROL" | (string & {})
   >;
   /** Output only. Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy is created by a Google Cloud service. Currently only 'DATAPLEX' is supported. */
@@ -772,7 +772,7 @@ export const GoogleCloudDatacatalogV1beta1Taxonomy =
 
 export interface GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse {
   /** Taxonomies that the project contains. */
-  taxonomies?: Array<GoogleCloudDatacatalogV1beta1Taxonomy>;
+  taxonomies?: ReadonlyArray<GoogleCloudDatacatalogV1beta1Taxonomy>;
   /** Token used to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -797,7 +797,7 @@ export interface GoogleCloudDatacatalogV1beta1PolicyTag {
   /** Resource name of this policy tag's parent policy tag (e.g. for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag). If empty, it means this policy tag is a top level policy tag (e.g. this field is empty for the "Geolocation" policy tag in the example above). If not set, defaults to an empty string. */
   parentPolicyTag?: string;
   /** Output only. Resource names of child policy tags of this policy tag. */
-  childPolicyTags?: Array<string>;
+  childPolicyTags?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDatacatalogV1beta1PolicyTag =
@@ -811,7 +811,7 @@ export const GoogleCloudDatacatalogV1beta1PolicyTag =
 
 export interface GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse {
   /** The policy tags that are in the requested taxonomy. */
-  policyTags?: Array<GoogleCloudDatacatalogV1beta1PolicyTag>;
+  policyTags?: ReadonlyArray<GoogleCloudDatacatalogV1beta1PolicyTag>;
   /** Token used to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
@@ -834,7 +834,7 @@ export interface GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
   /** Description of the serialized policy tag. The length of the description is limited to 2000 bytes when encoded in UTF-8. If not set, defaults to an empty description. */
   description?: string;
   /** Children of the policy tag if any. */
-  childPolicyTags?: Array<GoogleCloudDatacatalogV1beta1SerializedPolicyTag>;
+  childPolicyTags?: ReadonlyArray<GoogleCloudDatacatalogV1beta1SerializedPolicyTag>;
 }
 
 export const GoogleCloudDatacatalogV1beta1SerializedPolicyTag: Schema.Schema<GoogleCloudDatacatalogV1beta1SerializedPolicyTag> =
@@ -857,9 +857,9 @@ export interface GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
   /** Description of the serialized taxonomy. The length of the description is limited to 2000 bytes when encoded in UTF-8. If not set, defaults to an empty description. */
   description?: string;
   /** Top level policy tags associated with the taxonomy if any. */
-  policyTags?: Array<GoogleCloudDatacatalogV1beta1SerializedPolicyTag>;
+  policyTags?: ReadonlyArray<GoogleCloudDatacatalogV1beta1SerializedPolicyTag>;
   /** A list of policy types that are activated for a taxonomy. */
-  activatedPolicyTypes?: Array<
+  activatedPolicyTypes?: ReadonlyArray<
     "POLICY_TYPE_UNSPECIFIED" | "FINE_GRAINED_ACCESS_CONTROL" | (string & {})
   >;
 }
@@ -878,7 +878,7 @@ export const GoogleCloudDatacatalogV1beta1SerializedTaxonomy =
 
 export interface GoogleCloudDatacatalogV1beta1InlineSource {
   /** Required. Taxonomies to be imported. */
-  taxonomies?: Array<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>;
+  taxonomies?: ReadonlyArray<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>;
 }
 
 export const GoogleCloudDatacatalogV1beta1InlineSource =
@@ -902,7 +902,7 @@ export const GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest =
 
 export interface GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse {
   /** Taxonomies that were imported. */
-  taxonomies?: Array<GoogleCloudDatacatalogV1beta1Taxonomy>;
+  taxonomies?: ReadonlyArray<GoogleCloudDatacatalogV1beta1Taxonomy>;
 }
 
 export const GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse =
@@ -916,7 +916,7 @@ export const GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse =
 
 export interface GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse {
   /** List of taxonomies and policy tags in a tree structure. */
-  taxonomies?: Array<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>;
+  taxonomies?: ReadonlyArray<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>;
 }
 
 export const GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse =
@@ -934,7 +934,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -989,7 +989,7 @@ export interface GoogleCloudDatacatalogV1ImportEntriesMetadata {
     | "IMPORT_OBSOLETE"
     | (string & {});
   /** Partial errors that are encountered during the ImportEntries operation. There is no guarantee that all the encountered errors are reported. However, if no errors are reported, it means that no errors were encountered. */
-  errors?: Array<Status>;
+  errors?: ReadonlyArray<Status>;
 }
 
 export const GoogleCloudDatacatalogV1ImportEntriesMetadata =
@@ -1098,9 +1098,9 @@ export const GoogleCloudDatacatalogV1GcsFileSpec =
 
 export interface GoogleCloudDatacatalogV1GcsFilesetSpec {
   /** Required. Patterns to identify a set of files in Google Cloud Storage. For more information, see [Wildcard Names] (https://cloud.google.com/storage/docs/wildcards). Note: Currently, bucket wildcards are not supported. Examples of valid `file_patterns`: * `gs://bucket_name/dir/*`: matches all files in `bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` and all subdirectories * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/* /b`: matches all files in `bucket_name` that match the `a/* /b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to match complex sets of files, for example: `gs://bucket_name/[a-m]??.j*g` */
-  filePatterns?: Array<string>;
+  filePatterns?: ReadonlyArray<string>;
   /** Output only. Sample files contained in this fileset, not all files contained in this fileset are represented here. */
-  sampleGcsFileSpecs?: Array<GoogleCloudDatacatalogV1GcsFileSpec>;
+  sampleGcsFileSpecs?: ReadonlyArray<GoogleCloudDatacatalogV1GcsFileSpec>;
 }
 
 export const GoogleCloudDatacatalogV1GcsFilesetSpec =
@@ -1310,7 +1310,7 @@ export const GoogleCloudDatacatalogV1DataplexSpec =
 
 export interface GoogleCloudDatacatalogV1DataplexTableSpec {
   /** List of external tables registered by Dataplex Universal Catalog in other systems based on the same underlying data. External tables allow to query this data in those systems. */
-  externalTables?: Array<GoogleCloudDatacatalogV1DataplexExternalTable>;
+  externalTables?: ReadonlyArray<GoogleCloudDatacatalogV1DataplexExternalTable>;
   /** Common Dataplex Universal Catalog fields. */
   dataplexSpec?: GoogleCloudDatacatalogV1DataplexSpec;
   /** Indicates if the table schema is managed by the user or not. */
@@ -1434,7 +1434,7 @@ export const GoogleCloudDatacatalogV1RoutineSpecArgument =
 
 export interface GoogleCloudDatacatalogV1BigQueryRoutineSpec {
   /** Paths of the imported libraries. */
-  importedLibraries?: Array<string>;
+  importedLibraries?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDatacatalogV1BigQueryRoutineSpec =
@@ -1452,7 +1452,7 @@ export interface GoogleCloudDatacatalogV1RoutineSpec {
   /** The language the routine is written in. The exact value depends on the source system. For BigQuery routines, possible values are: * `SQL` * `JAVASCRIPT` */
   language?: string;
   /** Arguments of the routine. */
-  routineArguments?: Array<GoogleCloudDatacatalogV1RoutineSpecArgument>;
+  routineArguments?: ReadonlyArray<GoogleCloudDatacatalogV1RoutineSpecArgument>;
   /** Return type of the argument. The exact value depends on the source system and the language. */
   returnType?: string;
   /** The body of the routine. */
@@ -1560,7 +1560,7 @@ export const GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClust
 
 export interface GoogleCloudDatacatalogV1CloudBigtableInstanceSpec {
   /** The list of clusters for the Instance. */
-  cloudBigtableClusterSpecs?: Array<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>;
+  cloudBigtableClusterSpecs?: ReadonlyArray<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>;
 }
 
 export const GoogleCloudDatacatalogV1CloudBigtableInstanceSpec =
@@ -1612,7 +1612,7 @@ export interface GoogleCloudDatacatalogV1VertexModelSpec {
   /** The version ID of the model. */
   versionId?: string;
   /** User provided version aliases so that a model version can be referenced via alias */
-  versionAliases?: Array<string>;
+  versionAliases?: ReadonlyArray<string>;
   /** The description of this version. */
   versionDescription?: string;
   /** Source of a Vertex model. */
@@ -1675,7 +1675,7 @@ export interface GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndPrope
   /** Required. The name of the label. */
   label?: string;
   /** Optional. The properties associated with the label. */
-  properties?: Array<GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty>;
+  properties?: ReadonlyArray<GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty>;
 }
 
 export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties =
@@ -1693,9 +1693,9 @@ export interface GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeRefe
   /** Required. The reference to the source/destination node of the edge. This name must be a valid `alias` of a node element in the same graph. Example, `Person` node can be a source node name of an edge element `Person_to_Address`. */
   nodeAlias?: string;
   /** Required. The referencing columns in the edge table. The size of `edge_table_columns` must be equal to the size of `node_table_columns`. */
-  edgeTableColumns?: Array<string>;
+  edgeTableColumns?: ReadonlyArray<string>;
   /** Required. The referenced columns of the source node table. */
-  nodeTableColumns?: Array<string>;
+  nodeTableColumns?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference =
@@ -1718,9 +1718,9 @@ export interface GoogleCloudDatacatalogV1GraphSpecGraphElementTable {
   /** Required. The input source of the graph element. */
   inputSource?: "INPUT_SOURCE_UNSPECIFIED" | "TABLE" | "VIEW" | (string & {});
   /** Required. The name of the keys of the elements in the table. */
-  elementKeys?: Array<string>;
+  elementKeys?: ReadonlyArray<string>;
   /** Required. The labels and their properties for the graph element. */
-  labelAndProperties?: Array<GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties>;
+  labelAndProperties?: ReadonlyArray<GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties>;
   /** Optional. If set, this is the input column for dynamic label in schemaless data model. */
   dynamicLabelColumn?: string;
   /** Optional. If set, this is the input column for dynamic properties in schemaless data model. */
@@ -1759,9 +1759,9 @@ export interface GoogleCloudDatacatalogV1GraphSpec {
   /** Output only. Fully qualified graph name. e.g. `named_catalog.MyGraph` */
   name?: string;
   /** Required. Node tables of the graph. */
-  nodeTables?: Array<GoogleCloudDatacatalogV1GraphSpecGraphElementTable>;
+  nodeTables?: ReadonlyArray<GoogleCloudDatacatalogV1GraphSpecGraphElementTable>;
   /** Optional. Edge tables of the graph. */
-  edgeTables?: Array<GoogleCloudDatacatalogV1GraphSpecGraphElementTable>;
+  edgeTables?: ReadonlyArray<GoogleCloudDatacatalogV1GraphSpecGraphElementTable>;
 }
 
 export const GoogleCloudDatacatalogV1GraphSpec =
@@ -1777,7 +1777,7 @@ export const GoogleCloudDatacatalogV1GraphSpec =
 
 export interface GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey {
   /** Output only. Column names of the primary key. */
-  columns?: Array<string>;
+  columns?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey =
@@ -1809,7 +1809,7 @@ export interface GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey {
   /** Output only. The table name this foreign key referenced to. Format: `projects/{PROJECT_ID}/locations/{LOCATION}/entryGroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}` */
   entry?: string;
   /** Output only. The ordered list of column mappings for this foreign key. */
-  columnMappings?: Array<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping>;
+  columnMappings?: ReadonlyArray<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping>;
 }
 
 export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey =
@@ -1829,7 +1829,7 @@ export interface GoogleCloudDatacatalogV1SpannerTableSpec {
   /** Output only. The primary key of the table. */
   primaryKey?: GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey;
   /** Output only. The foreign keys of the table. */
-  foreignKeys?: Array<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey>;
+  foreignKeys?: ReadonlyArray<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey>;
 }
 
 export const GoogleCloudDatacatalogV1SpannerTableSpec =
@@ -1867,7 +1867,7 @@ export const GoogleCloudDatacatalogV1ContactsPerson =
 
 export interface GoogleCloudDatacatalogV1Contacts {
   /** The list of contact people for the entry. */
-  people?: Array<GoogleCloudDatacatalogV1ContactsPerson>;
+  people?: ReadonlyArray<GoogleCloudDatacatalogV1ContactsPerson>;
 }
 
 export const GoogleCloudDatacatalogV1Contacts =
@@ -1943,7 +1943,7 @@ export interface GoogleCloudDatacatalogV1ColumnSchema {
     | "INDEXING_TYPE_PRIMARY_KEY"
     | (string & {});
   /** Optional. Schema of sub-columns. A column can have zero or more sub-columns. */
-  subcolumns?: Array<GoogleCloudDatacatalogV1ColumnSchema>;
+  subcolumns?: ReadonlyArray<GoogleCloudDatacatalogV1ColumnSchema>;
   /** Looker specific column info of this column. */
   lookerColumnSpec?: GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec;
   /** Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: * DATE * DATETIME * TIMESTAMP */
@@ -1979,7 +1979,7 @@ export const GoogleCloudDatacatalogV1ColumnSchema: Schema.Schema<GoogleCloudData
 
 export interface GoogleCloudDatacatalogV1Schema {
   /** The unified GoogleSQL-like schema of columns. The overall maximum number of columns and nested columns is 10,000. The maximum nested depth is 15 levels. */
-  columns?: Array<GoogleCloudDatacatalogV1ColumnSchema>;
+  columns?: ReadonlyArray<GoogleCloudDatacatalogV1ColumnSchema>;
 }
 
 export const GoogleCloudDatacatalogV1Schema =
@@ -2046,7 +2046,7 @@ export const GoogleCloudDatacatalogV1UsageSignal =
 
 export interface GoogleCloudDatacatalogV1StorageProperties {
   /** Patterns to identify a set of files for this fileset. Examples of a valid `file_pattern`: * `gs://bucket_name/dir/*`: matches all files in the `bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in the `bucket_name/dir` and all subdirectories recursively * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/* /b`: matches all files in `bucket_name` that match the `a/* /b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` */
-  filePattern?: Array<string>;
+  filePattern?: ReadonlyArray<string>;
   /** File type in MIME format, for example, `text/plain`. */
   fileType?: string;
 }
@@ -2322,9 +2322,9 @@ export interface GoogleCloudDatacatalogV1TaggedEntry {
   /** Non-encrypted Data Catalog v1 Entry. */
   v1Entry?: GoogleCloudDatacatalogV1Entry;
   /** Optional. Tags that should be ingested into the Data Catalog. Caller should populate template name, column and fields. */
-  presentTags?: Array<GoogleCloudDatacatalogV1Tag>;
+  presentTags?: ReadonlyArray<GoogleCloudDatacatalogV1Tag>;
   /** Optional. Tags that should be deleted from the Data Catalog. Caller should populate template name and column only. */
-  absentTags?: Array<GoogleCloudDatacatalogV1Tag>;
+  absentTags?: ReadonlyArray<GoogleCloudDatacatalogV1Tag>;
 }
 
 export const GoogleCloudDatacatalogV1TaggedEntry =
@@ -2402,7 +2402,7 @@ export const CreateProjectsLocationsEntryGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups",
+      path: "v1beta1/{parent}/entryGroups",
       hasBody: true,
     }),
     svc,
@@ -2444,11 +2444,7 @@ export const PatchProjectsLocationsEntryGroupsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsEntryGroupsRequest>;
 
@@ -2483,10 +2479,7 @@ export const GetProjectsLocationsEntryGroupsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsEntryGroupsRequest>;
 
@@ -2521,10 +2514,7 @@ export const DeleteProjectsLocationsEntryGroupsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsEntryGroupsRequest>;
 
@@ -2561,10 +2551,7 @@ export const ListProjectsLocationsEntryGroupsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/entryGroups" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEntryGroupsRequest>;
 
@@ -2605,7 +2592,7 @@ export const SetIamPolicyProjectsLocationsEntryGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}:setIamPolicy",
+      path: "v1beta1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2643,7 +2630,7 @@ export const GetIamPolicyProjectsLocationsEntryGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}:getIamPolicy",
+      path: "v1beta1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2681,7 +2668,7 @@ export const TestIamPermissionsProjectsLocationsEntryGroupsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}:testIamPermissions",
+      path: "v1beta1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -2723,11 +2710,7 @@ export const CreateProjectsLocationsEntryGroupsEntriesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entries",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{parent}/entries", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsEntryGroupsEntriesRequest>;
 
@@ -2767,11 +2750,7 @@ export const PatchProjectsLocationsEntryGroupsEntriesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entries/{entriesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsEntryGroupsEntriesRequest>;
 
@@ -2803,10 +2782,7 @@ export const DeleteProjectsLocationsEntryGroupsEntriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entries/{entriesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsEntryGroupsEntriesRequest>;
 
@@ -2837,10 +2813,7 @@ export const GetProjectsLocationsEntryGroupsEntriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entries/{entriesId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsEntryGroupsEntriesRequest>;
 
@@ -2881,10 +2854,7 @@ export const ListProjectsLocationsEntryGroupsEntriesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     readMask: Schema.optional(Schema.String).pipe(T.HttpQuery("readMask")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entries",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/entries" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEntryGroupsEntriesRequest>;
 
@@ -2925,7 +2895,7 @@ export const GetIamPolicyProjectsLocationsEntryGroupsEntriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entries/{entriesId}:getIamPolicy",
+      path: "v1beta1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -2964,7 +2934,7 @@ export const TestIamPermissionsProjectsLocationsEntryGroupsEntriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entries/{entriesId}:testIamPermissions",
+      path: "v1beta1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -3002,11 +2972,7 @@ export const CreateProjectsLocationsEntryGroupsEntriesTagsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudDatacatalogV1beta1Tag).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entries/{entriesId}/tags",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{parent}/tags", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsEntryGroupsEntriesTagsRequest>;
 
@@ -3044,11 +3010,7 @@ export const PatchProjectsLocationsEntryGroupsEntriesTagsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudDatacatalogV1beta1Tag).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entries/{entriesId}/tags/{tagsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsEntryGroupsEntriesTagsRequest>;
 
@@ -3080,10 +3042,7 @@ export const DeleteProjectsLocationsEntryGroupsEntriesTagsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entries/{entriesId}/tags/{tagsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsEntryGroupsEntriesTagsRequest>;
 
@@ -3120,10 +3079,7 @@ export const ListProjectsLocationsEntryGroupsEntriesTagsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entries/{entriesId}/tags",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/tags" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEntryGroupsEntriesTagsRequest>;
 
@@ -3162,11 +3118,7 @@ export const CreateProjectsLocationsEntryGroupsTagsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     body: Schema.optional(GoogleCloudDatacatalogV1beta1Tag).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/tags",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{parent}/tags", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsEntryGroupsTagsRequest>;
 
@@ -3204,11 +3156,7 @@ export const PatchProjectsLocationsEntryGroupsTagsRequest =
     updateMask: Schema.optional(Schema.String).pipe(T.HttpQuery("updateMask")),
     body: Schema.optional(GoogleCloudDatacatalogV1beta1Tag).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/tags/{tagsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsEntryGroupsTagsRequest>;
 
@@ -3240,10 +3188,7 @@ export const DeleteProjectsLocationsEntryGroupsTagsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/tags/{tagsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsEntryGroupsTagsRequest>;
 
@@ -3280,10 +3225,7 @@ export const ListProjectsLocationsEntryGroupsTagsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/tags",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/tags" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsEntryGroupsTagsRequest>;
 
@@ -3331,7 +3273,7 @@ export const CreateProjectsLocationsTagTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/tagTemplates",
+      path: "v1beta1/{parent}/tagTemplates",
       hasBody: true,
     }),
     svc,
@@ -3365,10 +3307,7 @@ export const GetProjectsLocationsTagTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/tagTemplates/{tagTemplatesId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTagTemplatesRequest>;
 
@@ -3408,11 +3347,7 @@ export const PatchProjectsLocationsTagTemplatesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/tagTemplates/{tagTemplatesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsTagTemplatesRequest>;
 
@@ -3447,10 +3382,7 @@ export const DeleteProjectsLocationsTagTemplatesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/tagTemplates/{tagTemplatesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTagTemplatesRequest>;
 
@@ -3486,7 +3418,7 @@ export const SetIamPolicyProjectsLocationsTagTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/tagTemplates/{tagTemplatesId}:setIamPolicy",
+      path: "v1beta1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -3524,7 +3456,7 @@ export const GetIamPolicyProjectsLocationsTagTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/tagTemplates/{tagTemplatesId}:getIamPolicy",
+      path: "v1beta1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -3562,7 +3494,7 @@ export const TestIamPermissionsProjectsLocationsTagTemplatesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/tagTemplates/{tagTemplatesId}:testIamPermissions",
+      path: "v1beta1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -3607,11 +3539,7 @@ export const CreateProjectsLocationsTagTemplatesFieldsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/tagTemplates/{tagTemplatesId}/fields",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{parent}/fields", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsTagTemplatesFieldsRequest>;
 
@@ -3651,11 +3579,7 @@ export const PatchProjectsLocationsTagTemplatesFieldsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/tagTemplates/{tagTemplatesId}/fields/{fieldsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsTagTemplatesFieldsRequest>;
 
@@ -3692,11 +3616,7 @@ export const RenameProjectsLocationsTagTemplatesFieldsRequest =
       GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/tagTemplates/{tagTemplatesId}/fields/{fieldsId}:rename",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:rename", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RenameProjectsLocationsTagTemplatesFieldsRequest>;
 
@@ -3731,10 +3651,7 @@ export const DeleteProjectsLocationsTagTemplatesFieldsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/tagTemplates/{tagTemplatesId}/fields/{fieldsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTagTemplatesFieldsRequest>;
 
@@ -3770,11 +3687,7 @@ export const RenameProjectsLocationsTagTemplatesFieldsEnumValuesRequest =
       GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/tagTemplates/{tagTemplatesId}/fields/{fieldsId}/enumValues/{enumValuesId}:rename",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:rename", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<RenameProjectsLocationsTagTemplatesFieldsEnumValuesRequest>;
 
@@ -3814,7 +3727,7 @@ export const CreateProjectsLocationsTaxonomiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/taxonomies",
+      path: "v1beta1/{parent}/taxonomies",
       hasBody: true,
     }),
     svc,
@@ -3848,10 +3761,7 @@ export const DeleteProjectsLocationsTaxonomiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/taxonomies/{taxonomiesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTaxonomiesRequest>;
 
@@ -3890,11 +3800,7 @@ export const PatchProjectsLocationsTaxonomiesRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/taxonomies/{taxonomiesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsTaxonomiesRequest>;
 
@@ -3935,10 +3841,7 @@ export const ListProjectsLocationsTaxonomiesRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/taxonomies",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/taxonomies" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTaxonomiesRequest>;
 
@@ -3974,10 +3877,7 @@ export const GetProjectsLocationsTaxonomiesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/taxonomies/{taxonomiesId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTaxonomiesRequest>;
 
@@ -4014,7 +3914,7 @@ export const GetIamPolicyProjectsLocationsTaxonomiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/taxonomies/{taxonomiesId}:getIamPolicy",
+      path: "v1beta1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4052,7 +3952,7 @@ export const SetIamPolicyProjectsLocationsTaxonomiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/taxonomies/{taxonomiesId}:setIamPolicy",
+      path: "v1beta1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4090,7 +3990,7 @@ export const TestIamPermissionsProjectsLocationsTaxonomiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/taxonomies/{taxonomiesId}:testIamPermissions",
+      path: "v1beta1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -4131,7 +4031,7 @@ export const ImportProjectsLocationsTaxonomiesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/taxonomies:import",
+      path: "v1beta1/{parent}/taxonomies:import",
       hasBody: true,
     }),
     svc,
@@ -4175,10 +4075,7 @@ export const ExportProjectsLocationsTaxonomiesRequest =
       T.HttpQuery("serializedTaxonomies"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/taxonomies:export",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/taxonomies:export" }),
     svc,
   ) as unknown as Schema.Schema<ExportProjectsLocationsTaxonomiesRequest>;
 
@@ -4217,7 +4114,7 @@ export const CreateProjectsLocationsTaxonomiesPolicyTagsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/taxonomies/{taxonomiesId}/policyTags",
+      path: "v1beta1/{parent}/policyTags",
       hasBody: true,
     }),
     svc,
@@ -4251,10 +4148,7 @@ export const DeleteProjectsLocationsTaxonomiesPolicyTagsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/taxonomies/{taxonomiesId}/policyTags/{policyTagsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsTaxonomiesPolicyTagsRequest>;
 
@@ -4293,11 +4187,7 @@ export const PatchProjectsLocationsTaxonomiesPolicyTagsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/taxonomies/{taxonomiesId}/policyTags/{policyTagsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsLocationsTaxonomiesPolicyTagsRequest>;
 
@@ -4335,10 +4225,7 @@ export const ListProjectsLocationsTaxonomiesPolicyTagsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/taxonomies/{taxonomiesId}/policyTags",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/policyTags" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsTaxonomiesPolicyTagsRequest>;
 
@@ -4374,10 +4261,7 @@ export const GetProjectsLocationsTaxonomiesPolicyTagsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/taxonomies/{taxonomiesId}/policyTags/{policyTagsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsTaxonomiesPolicyTagsRequest>;
 
@@ -4414,7 +4298,7 @@ export const GetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/taxonomies/{taxonomiesId}/policyTags/{policyTagsId}:getIamPolicy",
+      path: "v1beta1/{resource}:getIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4453,7 +4337,7 @@ export const SetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/taxonomies/{taxonomiesId}/policyTags/{policyTagsId}:setIamPolicy",
+      path: "v1beta1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4492,7 +4376,7 @@ export const TestIamPermissionsProjectsLocationsTaxonomiesPolicyTagsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/locations/{locationsId}/taxonomies/{taxonomiesId}/policyTags/{policyTagsId}:testIamPermissions",
+      path: "v1beta1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,

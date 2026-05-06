@@ -88,11 +88,11 @@ export interface AndroidNotification {
   /** The key to the body string in the app's string resources to use to localize the body text to the user's current localization. See [String Resources](https://goo.gl/NdFZGI) for more information. */
   bodyLocKey?: string;
   /** Variable string values to be used in place of the format specifiers in body_loc_key to use to localize the body text to the user's current localization. See [Formatting and Styling](https://goo.gl/MalYE3) for more information. */
-  bodyLocArgs?: Array<string>;
+  bodyLocArgs?: ReadonlyArray<string>;
   /** The key to the title string in the app's string resources to use to localize the title text to the user's current localization. See [String Resources](https://goo.gl/NdFZGI) for more information. */
   titleLocKey?: string;
   /** Variable string values to be used in place of the format specifiers in title_loc_key to use to localize the title text to the user's current localization. See [Formatting and Styling](https://goo.gl/MalYE3) for more information. */
-  titleLocArgs?: Array<string>;
+  titleLocArgs?: ReadonlyArray<string>;
   /** The [notification's channel id](https://developer.android.com/guide/topics/ui/notifiers/notifications#ManageChannels) (new in Android O). The app must create a channel with this channel ID before any notification with this channel ID is received. If you don't send this channel ID in the request, or if the channel ID provided has not yet been created by the app, FCM uses the channel ID specified in the app manifest. */
   channelId?: string;
   /** Sets the "ticker" text, which is sent to accessibility services. Prior to API level 21 (`Lollipop`), sets the text that is displayed in the status bar when the notification first arrives. */
@@ -119,7 +119,7 @@ export interface AndroidNotification {
   /** If set to true, use the Android framework's default LED light settings for the notification. Default values are specified in [config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml). If `default_light_settings` is set to true and `light_settings` is also set, the user-specified `light_settings` is used instead of the default value. */
   defaultLightSettings?: boolean;
   /** Set the vibration pattern to use. Pass in an array of [protobuf.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration) to turn on or off the vibrator. The first value indicates the `Duration` to wait before turning the vibrator on. The next value indicates the `Duration` to keep the vibrator on. Subsequent values alternate between `Duration` to turn the vibrator off and to turn the vibrator on. If `vibrate_timings` is set and `default_vibrate_timings` is set to `true`, the default value is used instead of the user-specified `vibrate_timings`. */
-  vibrateTimings?: Array<string>;
+  vibrateTimings?: ReadonlyArray<string>;
   /** Set the [Notification.visibility](https://developer.android.com/reference/android/app/Notification.html#visibility) of the notification. */
   visibility?:
     | "VISIBILITY_UNSPECIFIED"
@@ -351,7 +351,7 @@ export const SendProjectsMessagesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/messages:send",
+      path: "v1/{parent}/messages:send",
       hasBody: true,
     }),
     svc,

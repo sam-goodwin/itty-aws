@@ -169,9 +169,9 @@ export interface ProductReviewStatus {
   /** Output only. Date on which the item has been last updated, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. */
   lastUpdateTime?: string;
   /** Output only. The intended destinations for the product review. */
-  destinationStatuses?: Array<ProductReviewDestinationStatus>;
+  destinationStatuses?: ReadonlyArray<ProductReviewDestinationStatus>;
   /** Output only. A list of all issues associated with the product review. */
-  itemLevelIssues?: Array<ProductReviewItemLevelIssue>;
+  itemLevelIssues?: ReadonlyArray<ProductReviewItemLevelIssue>;
   /** Output only. Date on which the item has been created, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. */
   createTime?: string;
 }
@@ -199,13 +199,13 @@ export const ReviewLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ProductReviewAttributes {
   /** Optional. Contains ASINs (Amazon Standard Identification Numbers) associated with a product. */
-  asins?: Array<string>;
+  asins?: ReadonlyArray<string>;
   /** Optional. Indicates whether the review is incentivized. */
   isIncentivizedReview?: boolean;
   /** Optional. Contains the advantages based on the opinion of the reviewer. Omit boilerplate text like "pro:" unless it was written by the reviewer. */
-  pros?: Array<string>;
+  pros?: ReadonlyArray<string>;
   /** Optional. Contains MPNs (manufacturer part numbers) associated with a product. */
-  mpns?: Array<string>;
+  mpns?: ReadonlyArray<string>;
   /** Optional. A link to the company favicon of the publisher. The image dimensions should be favicon size: 16x16 pixels. The image format should be GIF, JPG or PNG. */
   publisherFavicon?: string;
   /** Optional. Contains the ratings associated with the review. The minimum possible number for the rating. This should be the worst possible rating and should not be a value for no rating. */
@@ -213,7 +213,7 @@ export interface ProductReviewAttributes {
   /** Optional. Indicates whether the reviewer's purchase is verified. */
   isVerifiedPurchase?: boolean;
   /** Optional. The URI of the product. This URI can have the same value as the `review_link` element, if the review URI and the product URI are the same. */
-  productLinks?: Array<string>;
+  productLinks?: ReadonlyArray<string>;
   /** Optional. The language of the review defined by BCP-47 language code. */
   reviewLanguage?: string;
   /** Optional. The name of the reviewer of the product review. */
@@ -221,7 +221,7 @@ export interface ProductReviewAttributes {
   /** Optional. The country of the review defined by ISO 3166-1 Alpha-2 Country Code. */
   reviewCountry?: string;
   /** Optional. Contains brand names associated with a product. */
-  brands?: Array<string>;
+  brands?: ReadonlyArray<string>;
   /** Optional. The author of the product review. A permanent, unique identifier for the author of the review in the publisher's system. */
   reviewerId?: string;
   /** Optional. The name of the publisher of the product reviews. The information about the publisher, which may be a retailer, manufacturer, reviews service company, or any entity that publishes product reviews. */
@@ -233,7 +233,7 @@ export interface ProductReviewAttributes {
   /** Optional. Indicates whether the review is marked as spam in the publisher's system. */
   isSpam?: boolean;
   /** Optional. A URI to an image of the reviewed product created by the review author. The URI does not have to end with an image file extension. */
-  reviewerImageLinks?: Array<string>;
+  reviewerImageLinks?: ReadonlyArray<string>;
   /** Optional. Set to true if the reviewer should remain anonymous. */
   reviewerIsAnonymous?: boolean;
   /** Optional. The method used to collect the review. */
@@ -243,19 +243,19 @@ export interface ProductReviewAttributes {
     | "POST_FULFILLMENT"
     | (string & {});
   /** Optional. Contains GTINs (global trade item numbers) associated with a product. Sub-types of GTINs (e.g. UPC, EAN, ISBN, JAN) are supported. */
-  gtins?: Array<string>;
+  gtins?: ReadonlyArray<string>;
   /** Optional. The name of the aggregator of the product reviews. A publisher may use a reviews aggregator to manage reviews and provide the feeds. This element indicates the use of an aggregator and contains information about the aggregator. */
   aggregatorName?: string;
   /** Optional. Contains SKUs (stock keeping units) associated with a product. Often this matches the product Offer Id in the product feed. */
-  skus?: Array<string>;
+  skus?: ReadonlyArray<string>;
   /** Optional. Contains the disadvantages based on the opinion of the reviewer. Omit boilerplate text like "con:" unless it was written by the reviewer. */
-  cons?: Array<string>;
+  cons?: ReadonlyArray<string>;
   /** Optional. The name of the subclient of the product reviews. The subclient is an identifier of the product review source. It should be equivalent to the directory provided in the file data source path. */
   subclientName?: string;
   /** Optional. A permanent, unique identifier for the transaction associated with the review in the publisher's system. This ID can be used to indicate that multiple reviews are associated with the same transaction. */
   transactionId?: string;
   /** Optional. Descriptive name of a product. */
-  productNames?: Array<string>;
+  productNames?: ReadonlyArray<string>;
   /** Optional. The maximum possible number for the rating. The value of the max rating must be greater than the value of the min attribute. */
   maxRating?: string;
   /** Optional. The reviewer's overall rating of the product. */
@@ -303,7 +303,7 @@ export const ProductReviewAttributes =
 
 export interface CustomAttribute {
   /** Subattributes within this attribute group. If `group_values` is not empty, `value` must be empty. */
-  groupValues?: Array<CustomAttribute>;
+  groupValues?: ReadonlyArray<CustomAttribute>;
   /** The value of the attribute. If `value` is not empty, `group_values` must be empty. */
   value?: string;
   /** The name of the attribute. */
@@ -331,7 +331,7 @@ export interface ProductReview {
   /** Required. The permanent, unique identifier for the product review in the publisher’s system. */
   productReviewId?: string;
   /** Optional. A list of custom (merchant-provided) attributes. */
-  customAttributes?: Array<CustomAttribute>;
+  customAttributes?: ReadonlyArray<CustomAttribute>;
   /** Output only. The primary data source of the product review. */
   dataSource?: string;
 }
@@ -347,7 +347,7 @@ export const ProductReview = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListProductReviewsResponse {
   /** The product review. */
-  productReviews?: Array<ProductReview>;
+  productReviews?: ReadonlyArray<ProductReview>;
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -453,9 +453,9 @@ export interface MerchantReviewStatus {
   /** Output only. Date on which the item has been last updated, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. */
   lastUpdateTime?: string;
   /** Output only. The intended destinations for the merchant review. */
-  destinationStatuses?: Array<MerchantReviewDestinationStatus>;
+  destinationStatuses?: ReadonlyArray<MerchantReviewDestinationStatus>;
   /** Output only. A list of all issues associated with the merchant review. */
-  itemLevelIssues?: Array<MerchantReviewItemLevelIssue>;
+  itemLevelIssues?: ReadonlyArray<MerchantReviewItemLevelIssue>;
   /** Output only. Date on which the item has been created, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. */
   createTime?: string;
 }
@@ -479,7 +479,7 @@ export interface MerchantReview {
   /** Identifier. The name of the merchant review. Format: `"{merchantreview.name=accounts/{account}/merchantReviews/{merchantReview}}"` */
   name?: string;
   /** Optional. A list of custom (merchant-provided) attributes. It can also be used for submitting any attribute of the data specification in its generic form (for example, `{ "name": "size type", "value": "regular" }`). This is useful for submitting attributes not explicitly exposed by the API, such as experimental attributes. Maximum allowed number of characters for each custom attribute is 10240 (represents sum of characters for name and value). Maximum 2500 custom attributes can be set per product, with total size of 102.4kB. Underscores in custom attribute names are replaced by spaces upon insertion. */
-  customAttributes?: Array<CustomAttribute>;
+  customAttributes?: ReadonlyArray<CustomAttribute>;
   /** Output only. The primary data source of the merchant review. */
   dataSource?: string;
 }
@@ -497,7 +497,7 @@ export interface ListMerchantReviewsResponse {
   /** The token to retrieve the next page of results. */
   nextPageToken?: string;
   /** The merchant review. */
-  merchantReviews?: Array<MerchantReview>;
+  merchantReviews?: ReadonlyArray<MerchantReview>;
 }
 
 export const ListMerchantReviewsResponse =
@@ -561,7 +561,7 @@ export interface ProductStatusChangeMessage {
   /** The attribute in the resource that changed, in this case it will be always `Status`. */
   attribute?: "ATTRIBUTE_UNSPECIFIED" | "STATUS" | (string & {});
   /** A message to describe the change that happened to the product */
-  changes?: Array<ProductChange>;
+  changes?: ReadonlyArray<ProductChange>;
   /** Optional. The product expiration time. This field will not be set if the notification is sent for a product deletion event. */
   expirationTime?: string;
   /** The resource that changed, in this case it will always be `Product`. */
@@ -598,10 +598,7 @@ export const GetAccountsMerchantReviewsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "reviews/v1beta/accounts/{accountsId}/merchantReviews/{merchantReviewsId}",
-    }),
+    T.Http({ method: "GET", path: "reviews/v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsMerchantReviewsRequest>;
 
@@ -632,10 +629,7 @@ export const DeleteAccountsMerchantReviewsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "reviews/v1beta/accounts/{accountsId}/merchantReviews/{merchantReviewsId}",
-    }),
+    T.Http({ method: "DELETE", path: "reviews/v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsMerchantReviewsRequest>;
 
@@ -672,10 +666,7 @@ export const ListAccountsMerchantReviewsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "reviews/v1beta/accounts/{accountsId}/merchantReviews",
-    }),
+    T.Http({ method: "GET", path: "reviews/v1beta/{parent}/merchantReviews" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsMerchantReviewsRequest>;
 
@@ -718,7 +709,7 @@ export const InsertAccountsMerchantReviewsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "reviews/v1beta/accounts/{accountsId}/merchantReviews:insert",
+      path: "reviews/v1beta/{parent}/merchantReviews:insert",
       hasBody: true,
     }),
     svc,
@@ -759,7 +750,7 @@ export const InsertAccountsProductReviewsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "reviews/v1beta/accounts/{accountsId}/productReviews:insert",
+      path: "reviews/v1beta/{parent}/productReviews:insert",
       hasBody: true,
     }),
     svc,
@@ -798,10 +789,7 @@ export const ListAccountsProductReviewsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     parent: Schema.String.pipe(T.HttpPath("parent")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "reviews/v1beta/accounts/{accountsId}/productReviews",
-    }),
+    T.Http({ method: "GET", path: "reviews/v1beta/{parent}/productReviews" }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsProductReviewsRequest>;
 
@@ -836,10 +824,7 @@ export const GetAccountsProductReviewsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "reviews/v1beta/accounts/{accountsId}/productReviews/{productReviewsId}",
-    }),
+    T.Http({ method: "GET", path: "reviews/v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetAccountsProductReviewsRequest>;
 
@@ -870,10 +855,7 @@ export const DeleteAccountsProductReviewsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "reviews/v1beta/accounts/{accountsId}/productReviews/{productReviewsId}",
-    }),
+    T.Http({ method: "DELETE", path: "reviews/v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsProductReviewsRequest>;
 

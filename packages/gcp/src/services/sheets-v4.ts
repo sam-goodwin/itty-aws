@@ -186,7 +186,7 @@ export const GridRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ChartSourceRange {
   /** The ranges of data for a series or domain. Exactly one dimension must have a length of 1, and all sources in the list must have the same dimension with length 1. The domain (if it exists) & all series must have the same number of source ranges. If using more than one source range, then the source range at a given offset must be in order and contiguous across the domain and series. For example, these are valid configurations: domain sources: A1:A5 series1 sources: B1:B5 series2 sources: D6:D10 domain sources: A1:A5, C10:C12 series1 sources: B1:B5, D10:D12 series2 sources: C1:C5, E10:E12 */
-  sources?: Array<GridRange>;
+  sources?: ReadonlyArray<GridRange>;
 }
 
 export const ChartSourceRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -551,7 +551,7 @@ export interface DataSourceSheetProperties {
   /** ID of the DataSource the sheet is connected to. */
   dataSourceId?: string;
   /** The columns displayed on the sheet, corresponding to the values in RowData. */
-  columns?: Array<DataSourceColumn>;
+  columns?: ReadonlyArray<DataSourceColumn>;
 }
 
 export const DataSourceSheetProperties =
@@ -658,7 +658,7 @@ export interface BatchClearValuesResponse {
   /** The spreadsheet the updates were applied to. */
   spreadsheetId?: string;
   /** The ranges that were cleared, in A1 notation. If the requests are for an unbounded range or a range larger than the bounds of the sheet, this is the actual ranges that were cleared, bounded to the sheet's limits. */
-  clearedRanges?: Array<string>;
+  clearedRanges?: ReadonlyArray<string>;
 }
 
 export const BatchClearValuesResponse =
@@ -689,7 +689,7 @@ export interface DataSourceRefreshWeeklySchedule {
   /** The start time of a time interval in which a data source refresh is scheduled. Only `hours` part is used. The time interval size defaults to that in the Sheets editor. */
   startTime?: TimeOfDay;
   /** Days of the week to refresh. At least one day must be specified. */
-  daysOfWeek?: Array<
+  daysOfWeek?: ReadonlyArray<
     | "DAY_OF_WEEK_UNSPECIFIED"
     | "MONDAY"
     | "TUESDAY"
@@ -766,7 +766,7 @@ export interface BooleanCondition {
     | "FILTER_EXPRESSION"
     | (string & {});
   /** The values of the condition. The number of supported values depends on the condition type. Some support zero values, others one or two values, and ConditionType.ONE_OF_LIST supports an arbitrary number of values. */
-  values?: Array<ConditionValue>;
+  values?: ReadonlyArray<ConditionValue>;
 }
 
 export const BooleanCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -776,7 +776,7 @@ export const BooleanCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PivotFilterCriteria {
   /** Values that should be included. Values not listed here are excluded. */
-  visibleValues?: Array<string>;
+  visibleValues?: ReadonlyArray<string>;
   /** A condition that must be true for values to be shown. (`visibleValues` does not override this -- even if a value is listed there, it is still hidden if it does not meet the condition.) Condition values that refer to ranges in A1-notation are evaluated relative to the pivot table sheet. References are treated absolutely, so are not filled down the pivot table. For example, a condition value of `=A1` on "Pivot Table 1" is treated as `'Pivot Table 1'!$A$1`. The source data of the pivot table can be referenced by column header name. For example, if the source data has columns named "Revenue" and "Cost" and a condition is applied to the "Revenue" column with type `NUMBER_GREATER` and value `=Cost`, then only columns where "Revenue" > "Cost" are included. */
   condition?: BooleanCondition;
   /** Whether values are visible by default. If true, the visible_values are ignored, all values that meet condition (if specified) are shown. If false, values that are both in visible_values and meet condition are shown. */
@@ -823,7 +823,7 @@ export interface FilterCriteria {
   /** The background fill color to filter by; only cells with this fill color are shown. This field is mutually exclusive with visible_foreground_color, and must be set to an RGB-type color. If visible_background_color is also set, this field takes precedence. */
   visibleBackgroundColorStyle?: ColorStyle;
   /** Values that should be hidden. */
-  hiddenValues?: Array<string>;
+  hiddenValues?: ReadonlyArray<string>;
   /** A condition that must be `true` for values to be shown. (This does not override hidden_values -- if a value is listed there, it will still be hidden.) */
   condition?: BooleanCondition;
   /** The background fill color to filter by; only cells with this fill color are shown. Mutually exclusive with visible_foreground_color. Deprecated: Use visible_background_color_style. */
@@ -987,15 +987,15 @@ export const SortSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DataSourceTable {
   /** Columns selected for the data source table. The column_selection_type must be SELECTED. */
-  columns?: Array<DataSourceColumnReference>;
+  columns?: ReadonlyArray<DataSourceColumnReference>;
   /** Filter specifications in the data source table. */
-  filterSpecs?: Array<FilterSpec>;
+  filterSpecs?: ReadonlyArray<FilterSpec>;
   /** The limit of rows to return. If not set, a default limit is applied. Please refer to the Sheets editor for the default and max limit. */
   rowLimit?: number;
   /** The ID of the data source the data source table is associated with. */
   dataSourceId?: string;
   /** Sort specifications in the data source table. The result of the data source table is sorted based on the sort specifications in order. */
-  sortSpecs?: Array<SortSpec>;
+  sortSpecs?: ReadonlyArray<SortSpec>;
   /** The type to select columns for the data source table. Defaults to SELECTED. */
   columnSelectionType?:
     | "DATA_SOURCE_TABLE_COLUMN_SELECTION_TYPE_UNSPECIFIED"
@@ -1226,7 +1226,7 @@ export interface ManualRuleGroup {
   /** The group name, which must be a string. Each group in a given ManualRule must have a unique group name. */
   groupName?: ExtendedValue;
   /** The items in the source data that should be placed into this group. Each item may be a string, number, or boolean. Items may appear in at most one group within a given ManualRule. Items that do not appear in any group will appear on their own. */
-  items?: Array<ExtendedValue>;
+  items?: ReadonlyArray<ExtendedValue>;
 }
 
 export const ManualRuleGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1236,7 +1236,7 @@ export const ManualRuleGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ManualRule {
   /** The list of group names and the corresponding items from the source data that map to each group name. */
-  groups?: Array<ManualRuleGroup>;
+  groups?: ReadonlyArray<ManualRuleGroup>;
 }
 
 export const ManualRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1301,7 +1301,7 @@ export const PivotGroupRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PivotGroupSortValueBucket {
   /** Determines the bucket from which values are chosen to sort. For example, in a pivot table with one row group & two column groups, the row group can list up to two values. The first value corresponds to a value within the first column group, and the second value corresponds to a value in the second column group. If no values are listed, this would indicate that the row should be sorted according to the "Grand Total" over the column groups. If a single value is listed, this would correspond to using the "Total" of that bucket. */
-  buckets?: Array<ExtendedValue>;
+  buckets?: ReadonlyArray<ExtendedValue>;
   /** The offset in the PivotTable.values list which the values in this grouping should be sorted by. */
   valuesIndex?: number;
 }
@@ -1326,7 +1326,7 @@ export const PivotGroupLimit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface PivotGroup {
   /** Metadata about values in the grouping. */
-  valueMetadata?: Array<PivotGroupValueMetadata>;
+  valueMetadata?: ReadonlyArray<PivotGroupValueMetadata>;
   /** The column offset of the source range that this grouping is based on. For example, if the source was `C10:E15`, a `sourceColumnOffset` of `0` means this group refers to column `C`, whereas the offset `1` would refer to column `D`. */
   sourceColumnOffset?: number;
   /** The labels to use for the row/column groups which can be customized. For example, in the following pivot table, the row label is `Region` (which could be renamed to `State`) and the column label is `Product` (which could be renamed `Item`). Pivot tables created before December 2017 do not have header labels. If you'd like to add header labels to an existing pivot table, please delete the existing pivot table and then create a new pivot table with same parameters. +--------------+---------+-------+ | SUM of Units | Product | | | Region | Pen | Paper | +--------------+---------+-------+ | New York | 345 | 98 | | Oregon | 234 | 123 | | Tennessee | 531 | 415 | +--------------+---------+-------+ | Grand Total | 1110 | 636 | +--------------+---------+-------+ */
@@ -1418,17 +1418,17 @@ export interface PivotTable {
   /** Whether values should be listed horizontally (as columns) or vertically (as rows). */
   valueLayout?: "HORIZONTAL" | "VERTICAL" | (string & {});
   /** The filters applied to the source columns before aggregating data for the pivot table. Both criteria and filter_specs are populated in responses. If both fields are specified in an update request, this field takes precedence. */
-  filterSpecs?: Array<PivotFilterSpec>;
+  filterSpecs?: ReadonlyArray<PivotFilterSpec>;
   /** Each row grouping in the pivot table. */
-  rows?: Array<PivotGroup>;
+  rows?: ReadonlyArray<PivotGroup>;
   /** A list of values to include in the pivot table. */
-  values?: Array<PivotValue>;
+  values?: ReadonlyArray<PivotValue>;
   /** The range the pivot table is reading data from. */
   source?: GridRange;
   /** Output only. The data execution status for data source pivot tables. */
   dataExecutionStatus?: DataExecutionStatus;
   /** Each column grouping in the pivot table. */
-  columns?: Array<PivotGroup>;
+  columns?: ReadonlyArray<PivotGroup>;
 }
 
 export const PivotTable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1479,7 +1479,7 @@ export interface CellData {
   /** The effective format being used by the cell. This includes the results of applying any conditional formatting and, if the cell contains a formula, the computed number format. If the effective format is the default format, effective format will not be written. This field is read-only. */
   effectiveFormat?: CellFormat;
   /** Runs of rich text applied to subsections of the cell. Runs are only valid on user entered strings, not formulas, bools, or numbers. Properties of a run start at a specific index in the text and continue until the next run. Runs will inherit the properties of the cell unless explicitly changed. When writing, the new runs will overwrite any prior runs. When writing a new user_entered_value, previous runs are erased. */
-  textFormatRuns?: Array<TextFormatRun>;
+  textFormatRuns?: ReadonlyArray<TextFormatRun>;
   /** A data validation rule on the cell, if any. When writing, the new data validation rule will overwrite any prior rule. */
   dataValidation?: DataValidationRule;
   /** A pivot table anchored at this cell. The size of pivot table itself is computed dynamically based on its data, grouping, filters, values, etc. Only the top-left cell of the pivot table contains the pivot table definition. The other cells will contain the calculated values of the results of the pivot in their effective_value fields. */
@@ -1489,7 +1489,7 @@ export interface CellData {
   /** Output only. Information about a data source formula on the cell. The field is set if user_entered_value is a formula referencing some DATA_SOURCE sheet, e.g. `=SUM(DataSheet!Column)`. */
   dataSourceFormula?: DataSourceFormula;
   /** Optional. Runs of chips applied to subsections of the cell. Properties of a run start at a specific index in the text and continue until the next run. When reading, all chipped and non-chipped runs are included. Non-chipped runs will have an empty Chip. When writing, only runs with chips are included. Runs containing chips are of length 1 and are represented in the user-entered text by an “@” placeholder symbol. New runs will overwrite any prior runs. Writing a new user_entered_value will erase previous runs. */
-  chipRuns?: Array<ChipRun>;
+  chipRuns?: ReadonlyArray<ChipRun>;
   /** The value the user entered in the cell. e.g., `1234`, `'Hello'`, or `=NOW()` Note: Dates, Times and DateTimes are represented as doubles in serial number format. */
   userEnteredValue?: ExtendedValue;
   /** The format the user entered for the cell. When writing, the new format will be merged with the existing format. */
@@ -1514,7 +1514,7 @@ export const CellData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RowData {
   /** The values in the row, one per column. */
-  values?: Array<CellData>;
+  values?: ReadonlyArray<CellData>;
 }
 
 export const RowData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1594,7 +1594,7 @@ export const LookerDataSourceSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DataSourceSpec {
   /** The parameters of the data source, used when querying the data source. */
-  parameters?: Array<DataSourceParameter>;
+  parameters?: ReadonlyArray<DataSourceParameter>;
   /** A BigQueryDataSourceSpec. */
   bigQuery?: BigQueryDataSourceSpec;
   /** A LookerDatasourceSpec. */
@@ -1615,7 +1615,7 @@ export interface DataSource {
   /** The spreadsheet-scoped unique ID that identifies the data source. Example: 1080547365. */
   dataSourceId?: string;
   /** All calculated columns in the data source. */
-  calculatedColumns?: Array<DataSourceColumn>;
+  calculatedColumns?: ReadonlyArray<DataSourceColumn>;
 }
 
 export const DataSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1642,7 +1642,7 @@ export const DimensionGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AddDimensionGroupResponse {
   /** All groups of a dimension after adding a group to that dimension. */
-  dimensionGroups?: Array<DimensionGroup>;
+  dimensionGroups?: ReadonlyArray<DimensionGroup>;
 }
 
 export const AddDimensionGroupResponse =
@@ -1709,7 +1709,7 @@ export const DataFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SearchDeveloperMetadataRequest {
   /** The data filters describing the criteria used to determine which DeveloperMetadata entries to return. DeveloperMetadata matching any of the specified filters are included in the response. */
-  dataFilters?: Array<DataFilter>;
+  dataFilters?: ReadonlyArray<DataFilter>;
 }
 
 export const SearchDeveloperMetadataRequest =
@@ -1790,7 +1790,7 @@ export interface DeleteDuplicatesRequest {
   /** The range to remove duplicates rows from. */
   range?: GridRange;
   /** The columns in the range to analyze for duplicate values. If no columns are selected then all columns are analyzed for duplicates. */
-  comparisonColumns?: Array<DimensionRange>;
+  comparisonColumns?: ReadonlyArray<DimensionRange>;
 }
 
 export const DeleteDuplicatesRequest =
@@ -1825,7 +1825,7 @@ export interface DataSourceSheetDimensionRange {
   /** The ID of the data source sheet the range is on. */
   sheetId?: number;
   /** The columns on the data source sheet. */
-  columnReferences?: Array<DataSourceColumnReference>;
+  columnReferences?: ReadonlyArray<DataSourceColumnReference>;
 }
 
 export const DataSourceSheetDimensionRange =
@@ -1844,7 +1844,7 @@ export interface DimensionProperties {
   /** True if this dimension is explicitly hidden. */
   hiddenByUser?: boolean;
   /** The developer metadata associated with a single row or column. */
-  developerMetadata?: Array<DeveloperMetadata>;
+  developerMetadata?: ReadonlyArray<DeveloperMetadata>;
 }
 
 export const DimensionProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2036,7 +2036,7 @@ export interface Table {
   /** The table range. */
   range?: GridRange;
   /** The table column properties. */
-  columnProperties?: Array<TableColumnProperties>;
+  columnProperties?: ReadonlyArray<TableColumnProperties>;
   /** The id of the table. */
   tableId?: string;
 }
@@ -2138,7 +2138,7 @@ export interface ConditionalFormatRule {
   /** The formatting will vary based on the gradients in the rule. */
   gradientRule?: GradientRule;
   /** The ranges that are formatted if the condition is true. All the ranges must be on the same grid. */
-  ranges?: Array<GridRange>;
+  ranges?: ReadonlyArray<GridRange>;
   /** The formatting is either "on" or "off" according to the rule. */
   booleanRule?: BooleanRule;
 }
@@ -2164,7 +2164,7 @@ export const AddConditionalFormatRuleRequest =
 
 export interface AppendCellsRequest {
   /** The data to append. */
-  rows?: Array<RowData>;
+  rows?: ReadonlyArray<RowData>;
   /** The sheet ID to append the data to. */
   sheetId?: number;
   /** The fields of CellData that should be updated. At least one field must be specified. The root is the CellData; 'row.values.' should not be specified. A single `"*"` can be used as short-hand for listing every field. */
@@ -2214,7 +2214,7 @@ export const AddDataSourceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface SortRangeRequest {
   /** The sort order per column. Later specifications are used when values are equal in the earlier specifications. */
-  sortSpecs?: Array<SortSpec>;
+  sortSpecs?: ReadonlyArray<SortSpec>;
   /** The range to sort. */
   range?: GridRange;
 }
@@ -2237,13 +2237,13 @@ export interface BasicFilter {
   /** The table this filter is backed by, if any. When writing, only one of range or table_id may be set. */
   tableId?: string;
   /** The sort order per column. Later specifications are used when values are equal in the earlier specifications. */
-  sortSpecs?: Array<SortSpec>;
+  sortSpecs?: ReadonlyArray<SortSpec>;
   /** The criteria for showing/hiding values per column. The map's key is the column index, and the value is the criteria for that column. This field is deprecated in favor of filter_specs. */
   criteria?: Record<string, FilterCriteria>;
   /** The range the filter covers. */
   range?: GridRange;
   /** The filter criteria per column. Both criteria and filter_specs are populated in responses. If both fields are specified in an update request, this field takes precedence. */
-  filterSpecs?: Array<FilterSpec>;
+  filterSpecs?: ReadonlyArray<FilterSpec>;
 }
 
 export const BasicFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2287,7 +2287,7 @@ export interface UpdateDeveloperMetadataRequest {
   /** The fields that should be updated. At least one field must be specified. The root `developerMetadata` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. */
   fields?: string;
   /** The filters matching the developer metadata entries to update. */
-  dataFilters?: Array<DataFilter>;
+  dataFilters?: ReadonlyArray<DataFilter>;
   /** The value that all metadata matched by the data filters will be updated to. */
   developerMetadata?: DeveloperMetadata;
 }
@@ -2345,7 +2345,7 @@ export const WaterfallChartColumnStyle =
 
 export interface WaterfallChartSeries {
   /** Custom subtotal columns appearing in this series. The order in which subtotals are defined is not significant. Only one subtotal may be defined for each data point. */
-  customSubtotals?: Array<WaterfallChartCustomSubtotal>;
+  customSubtotals?: ReadonlyArray<WaterfallChartCustomSubtotal>;
   /** The data being visualized in this series. */
   data?: ChartData;
   /** Styles for all columns in this series with negative values. */
@@ -2412,7 +2412,7 @@ export interface WaterfallChartSpec {
     | "SEQUENTIAL"
     | (string & {});
   /** The data this waterfall chart is visualizing. */
-  series?: Array<WaterfallChartSeries>;
+  series?: ReadonlyArray<WaterfallChartSeries>;
   /** Controls whether to display additional data labels on stacked charts which sum the total value of all stacked values at each value along the domain axis. stacked_type must be STACKED and neither CUSTOM nor placement can be set on the total_data_label. */
   totalDataLabel?: DataLabel;
   /** The domain data (horizontal axis) for the waterfall chart. */
@@ -2555,7 +2555,7 @@ export interface BasicChartSeries {
     | "STEPPED_AREA"
     | (string & {});
   /** Style override settings for series data points. */
-  styleOverrides?: Array<BasicSeriesDataPointStyleOverride>;
+  styleOverrides?: ReadonlyArray<BasicSeriesDataPointStyleOverride>;
 }
 
 export const BasicChartSeries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2597,13 +2597,13 @@ export interface BasicChartSpec {
     | "STEPPED_AREA"
     | (string & {});
   /** The axis on the chart. */
-  axis?: Array<BasicChartAxis>;
+  axis?: ReadonlyArray<BasicChartAxis>;
   /** The number of rows or columns in the data that are "headers". If not set, Google Sheets will guess how many rows are headers based on the data. (Note that BasicChartAxis.title may override the axis title inferred from the header values.) */
   headerCount?: number;
   /** True to make the chart 3D. Applies to Bar and Column charts. */
   threeDimensional?: boolean;
   /** The data this chart is visualizing. */
-  series?: Array<BasicChartSeries>;
+  series?: ReadonlyArray<BasicChartSeries>;
   /** Controls whether to display additional data labels on stacked charts which sum the total value of all stacked values at each value along the domain axis. These data labels can only be set when chart_type is one of AREA, BAR, COLUMN, COMBO or STEPPED_AREA and stacked_type is either STACKED or PERCENT_STACKED. In addition, for COMBO, this will only be supported if there is only one type of stackable series type or one type has more series than the others and each of the other types have no more than one series. For example, if a chart has two stacked bar series and one area series, the total data labels will be supported. If it has three bar series and two area series, total data labels are not allowed. Neither CUSTOM nor placement can be set on the total_data_label. */
   totalDataLabel?: DataLabel;
   /** The position of the chart legend. */
@@ -2616,7 +2616,7 @@ export interface BasicChartSpec {
     | "NO_LEGEND"
     | (string & {});
   /** The domain of data this is charting. Only a single domain is supported. */
-  domains?: Array<BasicChartDomain>;
+  domains?: ReadonlyArray<BasicChartDomain>;
   /** If some values in a series are missing, gaps may appear in the chart (e.g, segments of lines in a line chart will be missing). To eliminate these gaps set this to true. Applies to Line, Area, and Combo charts. */
   interpolateNulls?: boolean;
   /** The stacked type for charts that support vertical stacking. Applies to Area, Bar, Column, Combo, and Stepped Area charts. */
@@ -2680,7 +2680,7 @@ export interface HistogramChartSpec {
     | "INSIDE_LEGEND"
     | (string & {});
   /** The series for a histogram may be either a single series of values to be bucketed or multiple series, each of the same length, containing the name of the series followed by the values to be bucketed for that series. */
-  series?: Array<HistogramSeries>;
+  series?: ReadonlyArray<HistogramSeries>;
   /** Whether horizontal divider lines should be displayed between items in each column. */
   showItemDividers?: boolean;
   /** By default the bucket size (the range of values stacked in a single column) is chosen automatically, but it may be overridden here. E.g., A bucket size of 1.5 results in buckets from 0 - 1.5, 1.5 - 3.0, etc. Cannot be negative. This field is optional. */
@@ -2823,7 +2823,7 @@ export interface CandlestickChartSpec {
   /** The domain data (horizontal axis) for the candlestick chart. String data will be treated as discrete labels, other data will be treated as continuous values. */
   domain?: CandlestickDomain;
   /** The Candlestick chart data. Only one CandlestickData is supported. */
-  data?: Array<CandlestickData>;
+  data?: ReadonlyArray<CandlestickData>;
 }
 
 export const CandlestickChartSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2965,7 +2965,7 @@ export interface ChartSpec {
   /** A candlestick chart specification. */
   candlestickChart?: CandlestickChartSpec;
   /** The filters applied to the source data of the chart. Only supported for data source charts. */
-  filterSpecs?: Array<FilterSpec>;
+  filterSpecs?: ReadonlyArray<FilterSpec>;
   /** The title of the chart. */
   title?: string;
   /** If present, the field contains data source chart specific properties. */
@@ -2973,7 +2973,7 @@ export interface ChartSpec {
   /** True to make a chart fill the entire space in which it's rendered with minimum padding. False to use the default padding. (Not applicable to Geo and Org charts.) */
   maximized?: boolean;
   /** The order to sort the chart data by. Only a single sort spec is supported. Only supported for data source charts. */
-  sortSpecs?: Array<SortSpec>;
+  sortSpecs?: ReadonlyArray<SortSpec>;
   /** A pie chart specification. */
   pieChart?: PieChartSpec;
   /** A scorecard chart specification. */
@@ -3073,9 +3073,9 @@ export const TextToColumnsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Editors {
   /** The email addresses of users with edit access to the protected range. */
-  users?: Array<string>;
+  users?: ReadonlyArray<string>;
   /** The email addresses of groups with edit access to the protected range. */
-  groups?: Array<string>;
+  groups?: ReadonlyArray<string>;
   /** True if anyone in the document's domain has edit access to the protected range. Domain protection is only supported on documents within a domain. */
   domainUsersCanEdit?: boolean;
 }
@@ -3096,7 +3096,7 @@ export interface ProtectedRange {
   /** True if this protected range will show a warning when editing. Warning-based protection means that every user can edit data in the protected range, except editing will prompt a warning asking the user to confirm the edit. When writing: if this field is true, then editors are ignored. Additionally, if this field is changed from true to false and the `editors` field is not set (nor included in the field mask), then the editors will be set to all the editors in the document. */
   warningOnly?: boolean;
   /** The list of unprotected ranges within a protected sheet. Unprotected ranges are only supported on protected sheets. */
-  unprotectedRanges?: Array<GridRange>;
+  unprotectedRanges?: ReadonlyArray<GridRange>;
   /** The ID of the protected range. This field is read-only. */
   protectedRangeId?: number;
   /** The range that is being protected. The range may be fully unbounded, in which case this is considered a protected sheet. When writing, only one of range or named_range_id or table_id may be set. */
@@ -3248,7 +3248,7 @@ export interface FilterView {
   /** The table this filter view is backed by, if any. When writing, only one of range, named_range_id, or table_id may be set. */
   tableId?: string;
   /** The sort order per column. Later specifications are used when values are equal in the earlier specifications. */
-  sortSpecs?: Array<SortSpec>;
+  sortSpecs?: ReadonlyArray<SortSpec>;
   /** The criteria for showing/hiding values per column. The map's key is the column index, and the value is the criteria for that column. This field is deprecated in favor of filter_specs. */
   criteria?: Record<string, FilterCriteria>;
   /** The name of the filter view. */
@@ -3256,7 +3256,7 @@ export interface FilterView {
   /** The range this filter view covers. When writing, only one of range, named_range_id, or table_id may be set. */
   range?: GridRange;
   /** The filter criteria for showing or hiding values per column. Both criteria and filter_specs are populated in responses. If both fields are specified in an update request, this field takes precedence. */
-  filterSpecs?: Array<FilterSpec>;
+  filterSpecs?: ReadonlyArray<FilterSpec>;
   /** The ID of the filter view. */
   filterViewId?: number;
 }
@@ -3357,7 +3357,7 @@ export interface SpreadsheetTheme {
   /** Name of the primary font family. */
   primaryFontFamily?: string;
   /** The spreadsheet theme color pairs. To update you must provide all theme color pairs. */
-  themeColors?: Array<ThemeColorPair>;
+  themeColors?: ReadonlyArray<ThemeColorPair>;
 }
 
 export const SpreadsheetTheme = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3471,7 +3471,7 @@ export const DataSourceObjectReference =
 
 export interface DataSourceObjectReferences {
   /** The references. */
-  references?: Array<DataSourceObjectReference>;
+  references?: ReadonlyArray<DataSourceObjectReference>;
 }
 
 export const DataSourceObjectReferences =
@@ -3661,7 +3661,7 @@ export interface UpdateCellsRequest {
   /** The coordinate to start writing data at. Any number of rows and columns (including a different number of columns per row) may be written. */
   start?: GridCoordinate;
   /** The data to write. */
-  rows?: Array<RowData>;
+  rows?: ReadonlyArray<RowData>;
   /** The range to write data to. If the data in rows does not cover the entire requested range, the fields matching those set in fields will be cleared. */
   range?: GridRange;
   /** The fields of CellData that should be updated. At least one field must be specified. The root is the CellData; 'row.values.' should not be specified. A single `"*"` can be used as short-hand for listing every field. */
@@ -4131,9 +4131,9 @@ export interface BatchUpdateSpreadsheetRequest {
   /** Determines if the update response should include the spreadsheet resource. */
   includeSpreadsheetInResponse?: boolean;
   /** A list of updates to apply to the spreadsheet. Requests will be applied in the order they are specified. If any request is not valid, no requests will be applied. */
-  requests?: Array<Request>;
+  requests?: ReadonlyArray<Request>;
   /** Limits the ranges included in the response spreadsheet. Meaningful only if include_spreadsheet_in_response is 'true'. */
-  responseRanges?: Array<string>;
+  responseRanges?: ReadonlyArray<string>;
   /** True if grid data should be returned. Meaningful only if include_spreadsheet_in_response is 'true'. This parameter is ignored if a field mask was set in the request. */
   responseIncludeGridData?: boolean;
 }
@@ -4162,7 +4162,7 @@ export interface ValueRange {
   /** The major dimension of the values. For output, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`. For input, with `range=A1:B2,majorDimension=ROWS` then `[[1,2],[3,4]]` will set `A1=1,B1=2,A2=3,B2=4`. With `range=A1:B2,majorDimension=COLUMNS` then `[[1,2],[3,4]]` will set `A1=1,B1=3,A2=2,B2=4`. When writing, if this field is not set, it defaults to ROWS. */
   majorDimension?: "DIMENSION_UNSPECIFIED" | "ROWS" | "COLUMNS" | (string & {});
   /** The data that was read or to be written. This is an array of arrays, the outer array representing all the data and each inner array representing a major dimension. Each item in the inner array corresponds with one cell. For output, empty trailing rows and columns will not be included. For input, supported value types are: bool, string, and double. Null values will be skipped. To set a cell to an empty value, set the string value to an empty string. */
-  values?: Array<Array<unknown>>;
+  values?: ReadonlyArray<ReadonlyArray<unknown>>;
 }
 
 export const ValueRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4175,7 +4175,7 @@ export interface BatchUpdateValuesRequest {
   /** Determines if the update response should include the values of the cells that were updated. By default, responses do not include the updated values. The `updatedData` field within each of the BatchUpdateValuesResponse.responses contains the updated values. If the range to write was larger than the range actually written, the response includes all values in the requested range (excluding trailing empty rows and columns). */
   includeValuesInResponse?: boolean;
   /** The new values to apply to the spreadsheet. */
-  data?: Array<ValueRange>;
+  data?: ReadonlyArray<ValueRange>;
   /** Determines how dates, times, and durations in the response should be rendered. This is ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER. */
   responseDateTimeRenderOption?:
     | "SERIAL_NUMBER"
@@ -4206,7 +4206,7 @@ export const BatchUpdateValuesRequest =
 
 export interface BatchClearValuesRequest {
   /** The ranges to clear, in [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell). */
-  ranges?: Array<string>;
+  ranges?: ReadonlyArray<string>;
 }
 
 export const BatchClearValuesRequest =
@@ -4266,7 +4266,7 @@ export interface DataSourceRefreshMonthlySchedule {
   /** The start time of a time interval in which a data source refresh is scheduled. Only `hours` part is used. The time interval size defaults to that in the Sheets editor. */
   startTime?: TimeOfDay;
   /** Days of the month to refresh. Only 1-28 are supported, mapping to the 1st to the 28th day. At least one day must be specified. */
-  daysOfMonth?: Array<number>;
+  daysOfMonth?: ReadonlyArray<number>;
 }
 
 export const DataSourceRefreshMonthlySchedule =
@@ -4319,7 +4319,7 @@ export interface MatchedDeveloperMetadata {
   /** The developer metadata matching the specified filters. */
   developerMetadata?: DeveloperMetadata;
   /** All filters matching the returned developer metadata. */
-  dataFilters?: Array<DataFilter>;
+  dataFilters?: ReadonlyArray<DataFilter>;
 }
 
 export const MatchedDeveloperMetadata =
@@ -4357,7 +4357,7 @@ export const FindReplaceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface MatchedValueRange {
   /** The DataFilters from the request that matched the range of values. */
-  dataFilters?: Array<DataFilter>;
+  dataFilters?: ReadonlyArray<DataFilter>;
   /** The values matched by the DataFilter. */
   valueRange?: ValueRange;
 }
@@ -4371,7 +4371,7 @@ export interface BatchGetValuesByDataFilterResponse {
   /** The ID of the spreadsheet the data was retrieved from. */
   spreadsheetId?: string;
   /** The requested values with the list of data filters that matched them. */
-  valueRanges?: Array<MatchedValueRange>;
+  valueRanges?: ReadonlyArray<MatchedValueRange>;
 }
 
 export const BatchGetValuesByDataFilterResponse =
@@ -4382,7 +4382,7 @@ export const BatchGetValuesByDataFilterResponse =
 
 export interface BatchClearValuesByDataFilterRequest {
   /** The DataFilters used to determine which ranges to clear. */
-  dataFilters?: Array<DataFilter>;
+  dataFilters?: ReadonlyArray<DataFilter>;
 }
 
 export const BatchClearValuesByDataFilterRequest =
@@ -4429,11 +4429,11 @@ export interface GridData {
   /** The first column this GridData refers to, zero-based. */
   startColumn?: number;
   /** Metadata about the requested rows in the grid, starting with the row in start_row. */
-  rowMetadata?: Array<DimensionProperties>;
+  rowMetadata?: ReadonlyArray<DimensionProperties>;
   /** Metadata about the requested columns in the grid, starting with the column in start_column. */
-  columnMetadata?: Array<DimensionProperties>;
+  columnMetadata?: ReadonlyArray<DimensionProperties>;
   /** The data in the grid, one entry per row, starting with the row in startRow. The values in RowData will correspond to columns starting at start_column. */
-  rowData?: Array<RowData>;
+  rowData?: ReadonlyArray<RowData>;
 }
 
 export const GridData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4446,31 +4446,31 @@ export const GridData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Sheet {
   /** The ranges that are merged together. */
-  merges?: Array<GridRange>;
+  merges?: ReadonlyArray<GridRange>;
   /** The banded (alternating colors) ranges on this sheet. */
-  bandedRanges?: Array<BandedRange>;
+  bandedRanges?: ReadonlyArray<BandedRange>;
   /** The specifications of every chart on this sheet. */
-  charts?: Array<EmbeddedChart>;
+  charts?: ReadonlyArray<EmbeddedChart>;
   /** The developer metadata associated with a sheet. */
-  developerMetadata?: Array<DeveloperMetadata>;
+  developerMetadata?: ReadonlyArray<DeveloperMetadata>;
   /** All column groups on this sheet, ordered by increasing range start index, then by group depth. */
-  columnGroups?: Array<DimensionGroup>;
+  columnGroups?: ReadonlyArray<DimensionGroup>;
   /** All row groups on this sheet, ordered by increasing range start index, then by group depth. */
-  rowGroups?: Array<DimensionGroup>;
+  rowGroups?: ReadonlyArray<DimensionGroup>;
   /** The conditional format rules in this sheet. */
-  conditionalFormats?: Array<ConditionalFormatRule>;
+  conditionalFormats?: ReadonlyArray<ConditionalFormatRule>;
   /** The protected ranges in this sheet. */
-  protectedRanges?: Array<ProtectedRange>;
+  protectedRanges?: ReadonlyArray<ProtectedRange>;
   /** Data in the grid, if this is a grid sheet. The number of GridData objects returned is dependent on the number of ranges requested on this sheet. For example, if this is representing `Sheet1`, and the spreadsheet was requested with ranges `Sheet1!A1:C10` and `Sheet1!D15:E20`, then the first GridData will have a startRow/startColumn of `0`, while the second one will have `startRow 14` (zero-based row 15), and `startColumn 3` (zero-based column D). For a DATA_SOURCE sheet, you can not request a specific range, the GridData contains all the values. */
-  data?: Array<GridData>;
+  data?: ReadonlyArray<GridData>;
   /** The filter views in this sheet. */
-  filterViews?: Array<FilterView>;
+  filterViews?: ReadonlyArray<FilterView>;
   /** The slicers on this sheet. */
-  slicers?: Array<Slicer>;
+  slicers?: ReadonlyArray<Slicer>;
   /** The filter on this sheet, if any. */
   basicFilter?: BasicFilter;
   /** The tables on this sheet. */
-  tables?: Array<Table>;
+  tables?: ReadonlyArray<Table>;
   /** The properties of the sheet. */
   properties?: SheetProperties;
 }
@@ -4494,7 +4494,7 @@ export const Sheet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface UpdateDeveloperMetadataResponse {
   /** The updated developer metadata. */
-  developerMetadata?: Array<DeveloperMetadata>;
+  developerMetadata?: ReadonlyArray<DeveloperMetadata>;
 }
 
 export const UpdateDeveloperMetadataResponse =
@@ -4541,7 +4541,7 @@ export const CancelDataSourceRefreshStatus =
 
 export interface CancelDataSourceRefreshResponse {
   /** The cancellation statuses of refreshes of all data source objects specified in the request. If is_all is specified, the field contains only those in failure status. Refreshing and canceling refresh the same data source object is also not allowed in the same `batchUpdate`. */
-  statuses?: Array<CancelDataSourceRefreshStatus>;
+  statuses?: ReadonlyArray<CancelDataSourceRefreshStatus>;
 }
 
 export const CancelDataSourceRefreshResponse =
@@ -4551,7 +4551,7 @@ export const CancelDataSourceRefreshResponse =
 
 export interface DeleteDeveloperMetadataResponse {
   /** The metadata that was deleted. */
-  deletedDeveloperMetadata?: Array<DeveloperMetadata>;
+  deletedDeveloperMetadata?: ReadonlyArray<DeveloperMetadata>;
 }
 
 export const DeleteDeveloperMetadataResponse =
@@ -4602,7 +4602,7 @@ export const AddTableResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DeleteDimensionGroupResponse {
   /** All groups of a dimension after deleting a group from that dimension. */
-  dimensionGroups?: Array<DimensionGroup>;
+  dimensionGroups?: ReadonlyArray<DimensionGroup>;
 }
 
 export const DeleteDimensionGroupResponse =
@@ -4656,7 +4656,7 @@ export const RefreshDataSourceObjectExecutionStatus =
 
 export interface RefreshDataSourceResponse {
   /** All the refresh status for the data source object references specified in the request. If is_all is specified, the field contains only those in failure status. */
-  statuses?: Array<RefreshDataSourceObjectExecutionStatus>;
+  statuses?: ReadonlyArray<RefreshDataSourceObjectExecutionStatus>;
 }
 
 export const RefreshDataSourceResponse =
@@ -4806,19 +4806,19 @@ export interface Spreadsheet {
   /** Overall properties of a spreadsheet. */
   properties?: SpreadsheetProperties;
   /** Output only. A list of data source refresh schedules. */
-  dataSourceSchedules?: Array<DataSourceRefreshSchedule>;
+  dataSourceSchedules?: ReadonlyArray<DataSourceRefreshSchedule>;
   /** The sheets that are part of a spreadsheet. */
-  sheets?: Array<Sheet>;
+  sheets?: ReadonlyArray<Sheet>;
   /** The ID of the spreadsheet. This field is read-only. */
   spreadsheetId?: string;
   /** The url of the spreadsheet. This field is read-only. */
   spreadsheetUrl?: string;
   /** The named ranges defined in a spreadsheet. */
-  namedRanges?: Array<NamedRange>;
+  namedRanges?: ReadonlyArray<NamedRange>;
   /** The developer metadata associated with a spreadsheet. */
-  developerMetadata?: Array<DeveloperMetadata>;
+  developerMetadata?: ReadonlyArray<DeveloperMetadata>;
   /** A list of external data sources connected with the spreadsheet. */
-  dataSources?: Array<DataSource>;
+  dataSources?: ReadonlyArray<DataSource>;
 }
 
 export const Spreadsheet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4834,7 +4834,7 @@ export const Spreadsheet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchUpdateSpreadsheetResponse {
   /** The reply of the updates. This maps 1:1 with the updates, although replies to some requests may be empty. */
-  replies?: Array<Response>;
+  replies?: ReadonlyArray<Response>;
   /** The spreadsheet the updates were applied to. */
   spreadsheetId?: string;
   /** The spreadsheet after updates were applied. This is only set if BatchUpdateSpreadsheetRequest.include_spreadsheet_in_response is `true`. */
@@ -4854,7 +4854,7 @@ export interface DataFilterValueRange {
   /** The data filter describing the location of the values in the spreadsheet. */
   dataFilter?: DataFilter;
   /** The data to be written. If the provided values exceed any of the ranges matched by the data filter then the request fails. If the provided values are less than the matched ranges only the specified values are written, existing values in the matched ranges remain unaffected. */
-  values?: Array<Array<unknown>>;
+  values?: ReadonlyArray<ReadonlyArray<unknown>>;
 }
 
 export const DataFilterValueRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -4865,7 +4865,7 @@ export const DataFilterValueRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface BatchUpdateValuesByDataFilterRequest {
   /** The new values to apply to the spreadsheet. If more than one range is matched by the specified DataFilter the specified values are applied to all of those ranges. */
-  data?: Array<DataFilterValueRange>;
+  data?: ReadonlyArray<DataFilterValueRange>;
   /** Determines how dates, times, and durations in the response should be rendered. This is ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER. */
   responseDateTimeRenderOption?:
     | "SERIAL_NUMBER"
@@ -4908,7 +4908,7 @@ export const CopySheetToAnotherSpreadsheetRequest =
 
 export interface BatchGetValuesResponse {
   /** The requested values. The order of the ValueRanges is the same as the order of the requested ranges. */
-  valueRanges?: Array<ValueRange>;
+  valueRanges?: ReadonlyArray<ValueRange>;
   /** The ID of the spreadsheet the data was retrieved from. */
   spreadsheetId?: string;
 }
@@ -4953,7 +4953,7 @@ export interface BatchUpdateValuesByDataFilterResponse {
   /** The total number of cells updated. */
   totalUpdatedCells?: number;
   /** The response for each range updated. */
-  responses?: Array<UpdateValuesByDataFilterResponse>;
+  responses?: ReadonlyArray<UpdateValuesByDataFilterResponse>;
   /** The total number of sheets where at least one cell in the sheet was updated. */
   totalUpdatedSheets?: number;
   /** The total number of columns where at least one cell in the column was updated. */
@@ -4972,7 +4972,7 @@ export const BatchUpdateValuesByDataFilterResponse =
 
 export interface GetSpreadsheetByDataFilterRequest {
   /** The DataFilters used to select which ranges to retrieve from the spreadsheet. */
-  dataFilters?: Array<DataFilter>;
+  dataFilters?: ReadonlyArray<DataFilter>;
   /** True if grid data should be returned. This parameter is ignored if a field mask was set in the request. */
   includeGridData?: boolean;
   /** True if tables should be excluded in the banded ranges. False if not set. */
@@ -4998,7 +4998,7 @@ export interface BatchGetValuesByDataFilterRequest {
   /** How dates, times, and durations should be represented in the output. This is ignored if value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER. */
   dateTimeRenderOption?: "SERIAL_NUMBER" | "FORMATTED_STRING" | (string & {});
   /** The data filters used to match the ranges of values to retrieve. Ranges that match any of the specified data filters are included in the response. */
-  dataFilters?: Array<DataFilter>;
+  dataFilters?: ReadonlyArray<DataFilter>;
 }
 
 export const BatchGetValuesByDataFilterRequest =
@@ -5011,7 +5011,7 @@ export const BatchGetValuesByDataFilterRequest =
 
 export interface SearchDeveloperMetadataResponse {
   /** The metadata matching the criteria of the search request. */
-  matchedDeveloperMetadata?: Array<MatchedDeveloperMetadata>;
+  matchedDeveloperMetadata?: ReadonlyArray<MatchedDeveloperMetadata>;
 }
 
 export const SearchDeveloperMetadataResponse =
@@ -5025,7 +5025,7 @@ export interface BatchClearValuesByDataFilterResponse {
   /** The spreadsheet the updates were applied to. */
   spreadsheetId?: string;
   /** The ranges that were cleared, in [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell). If the requests are for an unbounded range or a range larger than the bounds of the sheet, this is the actual ranges that were cleared, bounded to the sheet's limits. */
-  clearedRanges?: Array<string>;
+  clearedRanges?: ReadonlyArray<string>;
 }
 
 export const BatchClearValuesByDataFilterResponse =
@@ -5053,7 +5053,7 @@ export interface BatchUpdateValuesResponse {
   /** The total number of sheets where at least one cell in the sheet was updated. */
   totalUpdatedSheets?: number;
   /** One UpdateValuesResponse per requested range, in the same order as the requests appeared. */
-  responses?: Array<UpdateValuesResponse>;
+  responses?: ReadonlyArray<UpdateValuesResponse>;
   /** The total number of rows where at least one cell in the row was updated. */
   totalUpdatedRows?: number;
   /** The total number of cells updated. */

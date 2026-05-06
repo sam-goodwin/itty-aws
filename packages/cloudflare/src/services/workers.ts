@@ -6611,6 +6611,12 @@ export interface PutScriptRequest {
       | { name: string; part: string; type: "wasm_module" }
       | { name: string; type: "worker_loader" }
       | { name: string; type: "artifacts"; namespace: string }
+      | {
+          name: string;
+          type: "ratelimit";
+          namespaceId: string;
+          simple: { limit: number; period: number };
+        }
     )[];
     bodyPart?: string;
     compatibilityDate?: string;
@@ -6659,6 +6665,12 @@ export interface PutScriptRequest {
         headSamplingRate?: number | null;
         persist?: boolean;
       } | null;
+      traces?: {
+        enabled: boolean;
+        headSamplingRate?: number;
+        destinations?: string[];
+        persist?: boolean;
+      };
     };
     placement?:
       | { mode: "smart" }
@@ -6759,6 +6771,22 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               secretName: "secret_name",
               storeId: "store_id",
               type: "type",
+            }),
+          ),
+          Schema.Struct({
+            name: Schema.String,
+            type: Schema.Literal("ratelimit"),
+            namespaceId: Schema.String,
+            simple: Schema.Struct({
+              limit: Schema.Number,
+              period: Schema.Number,
+            }),
+          }).pipe(
+            Schema.encodeKeys({
+              name: "name",
+              type: "type",
+              namespaceId: "namespace_id",
+              simple: "simple",
             }),
           ),
           Schema.Struct({
@@ -7120,11 +7148,27 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Null,
           ]),
         ),
+        traces: Schema.optional(
+          Schema.Struct({
+            enabled: Schema.Boolean,
+            headSamplingRate: Schema.optional(Schema.Number),
+            destinations: Schema.optional(Schema.Array(Schema.String)),
+            persist: Schema.optional(Schema.Boolean),
+          }).pipe(
+            Schema.encodeKeys({
+              enabled: "enabled",
+              headSamplingRate: "head_sampling_rate",
+              destinations: "destinations",
+              persist: "persist",
+            }),
+          ),
+        ),
       }).pipe(
         Schema.encodeKeys({
           enabled: "enabled",
           headSamplingRate: "head_sampling_rate",
           logs: "logs",
+          traces: "traces",
         }),
       ),
     ),
@@ -7238,6 +7282,12 @@ export interface PutScriptResponse {
       invocationLogs: boolean;
       destinations?: string[] | null;
       headSamplingRate?: number | null;
+      persist?: boolean | null;
+    } | null;
+    traces?: {
+      enabled: boolean;
+      headSamplingRate?: number | null;
+      destinations?: string[] | null;
       persist?: boolean | null;
     } | null;
   } | null;
@@ -7371,11 +7421,36 @@ export const PutScriptResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Null,
           ]),
         ),
+        traces: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              enabled: Schema.Boolean,
+              headSamplingRate: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              destinations: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              persist: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                enabled: "enabled",
+                headSamplingRate: "head_sampling_rate",
+                destinations: "destinations",
+                persist: "persist",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
       }).pipe(
         Schema.encodeKeys({
           enabled: "enabled",
           headSamplingRate: "head_sampling_rate",
           logs: "logs",
+          traces: "traces",
         }),
       ),
       Schema.Null,
@@ -9662,6 +9737,12 @@ export interface GetScriptScriptAndVersionSettingResponse {
       headSamplingRate?: number | null;
       persist?: boolean | null;
     } | null;
+    traces?: {
+      enabled: boolean;
+      headSamplingRate?: number | null;
+      destinations?: string[] | null;
+      persist?: boolean | null;
+    } | null;
   } | null;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify either mode for Smart Placement, or one of region/hostname/host for targeted place */
   placement?: unknown | null;
@@ -10024,11 +10105,36 @@ export const GetScriptScriptAndVersionSettingResponse =
               Schema.Null,
             ]),
           ),
+          traces: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                enabled: Schema.Boolean,
+                headSamplingRate: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                destinations: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                persist: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  enabled: "enabled",
+                  headSamplingRate: "head_sampling_rate",
+                  destinations: "destinations",
+                  persist: "persist",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             enabled: "enabled",
             headSamplingRate: "head_sampling_rate",
             logs: "logs",
+            traces: "traces",
           }),
         ),
         Schema.Null,
@@ -11624,6 +11730,12 @@ export interface GetScriptSettingResponse {
       headSamplingRate?: number | null;
       persist?: boolean | null;
     } | null;
+    traces?: {
+      enabled: boolean;
+      headSamplingRate?: number | null;
+      destinations?: string[] | null;
+      persist?: boolean | null;
+    } | null;
   } | null;
   /** Tags associated with the Worker. */
   tags?: string[] | null;
@@ -11673,11 +11785,36 @@ export const GetScriptSettingResponse =
               Schema.Null,
             ]),
           ),
+          traces: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                enabled: Schema.Boolean,
+                headSamplingRate: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                destinations: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                persist: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  enabled: "enabled",
+                  headSamplingRate: "head_sampling_rate",
+                  destinations: "destinations",
+                  persist: "persist",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             enabled: "enabled",
             headSamplingRate: "head_sampling_rate",
             logs: "logs",
+            traces: "traces",
           }),
         ),
         Schema.Null,
@@ -11745,6 +11882,12 @@ export interface PatchScriptSettingRequest {
       headSamplingRate?: number | null;
       persist?: boolean;
     } | null;
+    traces?: {
+      enabled: boolean;
+      headSamplingRate?: number;
+      destinations?: string[];
+      persist?: boolean;
+    };
   } | null;
   /** Body param: Tags associated with the Worker. */
   tags?: string[] | null;
@@ -11788,11 +11931,27 @@ export const PatchScriptSettingRequest =
               Schema.Null,
             ]),
           ),
+          traces: Schema.optional(
+            Schema.Struct({
+              enabled: Schema.Boolean,
+              headSamplingRate: Schema.optional(Schema.Number),
+              destinations: Schema.optional(Schema.Array(Schema.String)),
+              persist: Schema.optional(Schema.Boolean),
+            }).pipe(
+              Schema.encodeKeys({
+                enabled: "enabled",
+                headSamplingRate: "head_sampling_rate",
+                destinations: "destinations",
+                persist: "persist",
+              }),
+            ),
+          ),
         }).pipe(
           Schema.encodeKeys({
             enabled: "enabled",
             headSamplingRate: "head_sampling_rate",
             logs: "logs",
+            traces: "traces",
           }),
         ),
         Schema.Null,
@@ -11838,6 +11997,12 @@ export interface PatchScriptSettingResponse {
       invocationLogs: boolean;
       destinations?: string[] | null;
       headSamplingRate?: number | null;
+      persist?: boolean | null;
+    } | null;
+    traces?: {
+      enabled: boolean;
+      headSamplingRate?: number | null;
+      destinations?: string[] | null;
       persist?: boolean | null;
     } | null;
   } | null;
@@ -11889,11 +12054,36 @@ export const PatchScriptSettingResponse =
               Schema.Null,
             ]),
           ),
+          traces: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                enabled: Schema.Boolean,
+                headSamplingRate: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                destinations: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                persist: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  enabled: "enabled",
+                  headSamplingRate: "head_sampling_rate",
+                  destinations: "destinations",
+                  persist: "persist",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
         }).pipe(
           Schema.encodeKeys({
             enabled: "enabled",
             headSamplingRate: "head_sampling_rate",
             logs: "logs",
+            traces: "traces",
           }),
         ),
         Schema.Null,

@@ -28,7 +28,7 @@ export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -63,7 +63,7 @@ export const GoogleLongrunningOperation =
 
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -185,9 +185,9 @@ export interface GoogleCloudDatalabelingV1beta1Dataset {
   /** Output only. Time the dataset is created. */
   createTime?: string;
   /** Output only. This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset. */
-  inputConfigs?: Array<GoogleCloudDatalabelingV1beta1InputConfig>;
+  inputConfigs?: ReadonlyArray<GoogleCloudDatalabelingV1beta1InputConfig>;
   /** Output only. The names of any related resources that are blocking changes to the dataset. */
-  blockingResources?: Array<string>;
+  blockingResources?: ReadonlyArray<string>;
   /** Output only. The number of data items in the dataset. */
   dataItemCount?: string;
   /** Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated. */
@@ -222,7 +222,7 @@ export const GoogleCloudDatalabelingV1beta1CreateDatasetRequest =
 
 export interface GoogleCloudDatalabelingV1beta1ListDatasetsResponse {
   /** The list of datasets to return. */
-  datasets?: Array<GoogleCloudDatalabelingV1beta1Dataset>;
+  datasets?: ReadonlyArray<GoogleCloudDatalabelingV1beta1Dataset>;
   /** A token to retrieve next page of results. */
   nextPageToken?: string;
 }
@@ -363,7 +363,7 @@ export interface GoogleCloudDatalabelingV1beta1VideoPayload {
   /** Video uri from the user bucket. */
   videoUri?: string;
   /** The list of video thumbnails. */
-  videoThumbnails?: Array<GoogleCloudDatalabelingV1beta1VideoThumbnail>;
+  videoThumbnails?: ReadonlyArray<GoogleCloudDatalabelingV1beta1VideoThumbnail>;
   /** FPS of the video. */
   frameRate?: number;
   /** Signed uri of the video file in the service bucket. */
@@ -402,7 +402,7 @@ export const GoogleCloudDatalabelingV1beta1DataItem =
 
 export interface GoogleCloudDatalabelingV1beta1ListDataItemsResponse {
   /** The list of data items to return. */
-  dataItems?: Array<GoogleCloudDatalabelingV1beta1DataItem>;
+  dataItems?: ReadonlyArray<GoogleCloudDatalabelingV1beta1DataItem>;
   /** A token to retrieve next page of results. */
   nextPageToken?: string;
 }
@@ -510,7 +510,7 @@ export const GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig =
 
 export interface GoogleCloudDatalabelingV1beta1VideoClassificationConfig {
   /** Required. The list of annotation spec set configs. Since watching a video clip takes much longer time than an image, we support label with multiple AnnotationSpecSet at the same time. Labels in each AnnotationSpecSet will be shown in a group to contributors. Contributors can select one or more (depending on whether to allow multi label) from each group. */
-  annotationSpecSetConfigs?: Array<GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig>;
+  annotationSpecSetConfigs?: ReadonlyArray<GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig>;
   /** Optional. Option to apply shot detection on the video. */
   applyShotDetection?: boolean;
 }
@@ -560,7 +560,7 @@ export const GoogleCloudDatalabelingV1beta1ObjectTrackingConfig =
 
 export interface GoogleCloudDatalabelingV1beta1EventConfig {
   /** Required. The list of annotation spec set resource name. Similar to video classification, we support selecting event from multiple AnnotationSpecSet at the same time. */
-  annotationSpecSets?: Array<string>;
+  annotationSpecSets?: ReadonlyArray<string>;
   /** Videos will be cut to smaller clips to make it easier for labelers to work on. Users can configure is field in seconds, if not set, default value is 60s. */
   clipLength?: number;
   /** The overlap length between different video clips. Users can configure is field in seconds, if not set, default value is 1s. */
@@ -632,7 +632,7 @@ export interface GoogleCloudDatalabelingV1beta1HumanAnnotationConfig {
   /** Optional. Maximum duration for contributors to answer a question. Maximum is 3600 seconds. Default is 3600 seconds. */
   questionDuration?: string;
   /** Optional. If you want your own labeling contributors to manage and work on this labeling request, you can set these contributors here. We will give them access to the question types in crowdcompute. Note that these emails must be registered in crowdcompute worker UI: https://crowd-compute.appspot.com/ */
-  contributorEmails?: Array<string>;
+  contributorEmails?: ReadonlyArray<string>;
   /** Email of the user who started the labeling task and should be notified by email. If empty no notification will be sent. */
   userEmailAddress?: string;
 }
@@ -754,7 +754,7 @@ export interface GoogleCloudDatalabelingV1beta1AnnotatedDataset {
   /** Output only. Additional information about AnnotatedDataset. */
   metadata?: GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata;
   /** Output only. The names of any related resources that are blocking changes to the annotated dataset. */
-  blockingResources?: Array<string>;
+  blockingResources?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDatalabelingV1beta1AnnotatedDataset =
@@ -776,7 +776,7 @@ export const GoogleCloudDatalabelingV1beta1AnnotatedDataset =
 
 export interface GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse {
   /** The list of annotated datasets to return. */
-  annotatedDatasets?: Array<GoogleCloudDatalabelingV1beta1AnnotatedDataset>;
+  annotatedDatasets?: ReadonlyArray<GoogleCloudDatalabelingV1beta1AnnotatedDataset>;
   /** A token to retrieve next page of results. */
   nextPageToken?: string;
 }
@@ -951,7 +951,7 @@ export const GoogleCloudDatalabelingV1beta1Vertex =
 
 export interface GoogleCloudDatalabelingV1beta1BoundingPoly {
   /** The bounding polygon vertices. */
-  vertices?: Array<GoogleCloudDatalabelingV1beta1Vertex>;
+  vertices?: ReadonlyArray<GoogleCloudDatalabelingV1beta1Vertex>;
 }
 
 export const GoogleCloudDatalabelingV1beta1BoundingPoly =
@@ -976,7 +976,7 @@ export const GoogleCloudDatalabelingV1beta1NormalizedVertex =
 
 export interface GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly {
   /** The bounding polygon normalized vertices. */
-  normalizedVertices?: Array<GoogleCloudDatalabelingV1beta1NormalizedVertex>;
+  normalizedVertices?: ReadonlyArray<GoogleCloudDatalabelingV1beta1NormalizedVertex>;
 }
 
 export const GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly =
@@ -1010,7 +1010,7 @@ export const GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation =
 
 export interface GoogleCloudDatalabelingV1beta1Polyline {
   /** The polyline vertices. */
-  vertices?: Array<GoogleCloudDatalabelingV1beta1Vertex>;
+  vertices?: ReadonlyArray<GoogleCloudDatalabelingV1beta1Vertex>;
 }
 
 export const GoogleCloudDatalabelingV1beta1Polyline =
@@ -1022,7 +1022,7 @@ export const GoogleCloudDatalabelingV1beta1Polyline =
 
 export interface GoogleCloudDatalabelingV1beta1NormalizedPolyline {
   /** The normalized polyline vertices. */
-  normalizedVertices?: Array<GoogleCloudDatalabelingV1beta1NormalizedVertex>;
+  normalizedVertices?: ReadonlyArray<GoogleCloudDatalabelingV1beta1NormalizedVertex>;
 }
 
 export const GoogleCloudDatalabelingV1beta1NormalizedPolyline =
@@ -1182,7 +1182,7 @@ export interface GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation {
   /** The time segment of the video to which object tracking applies. */
   timeSegment?: GoogleCloudDatalabelingV1beta1TimeSegment;
   /** The list of frames where this object track appears. */
-  objectTrackingFrames?: Array<GoogleCloudDatalabelingV1beta1ObjectTrackingFrame>;
+  objectTrackingFrames?: ReadonlyArray<GoogleCloudDatalabelingV1beta1ObjectTrackingFrame>;
 }
 
 export const GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation =
@@ -1275,7 +1275,7 @@ export interface GoogleCloudDatalabelingV1beta1OperatorMetadata {
   /** The total number of contributors that choose this label. */
   labelVotes?: number;
   /** Comments from contributors. */
-  comments?: Array<string>;
+  comments?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDatalabelingV1beta1OperatorMetadata =
@@ -1343,7 +1343,7 @@ export interface GoogleCloudDatalabelingV1beta1Example {
   /** Output only. Name of the example, in format of: projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/ {annotated_dataset_id}/examples/{example_id} */
   name?: string;
   /** Output only. Annotations for the piece of data in Example. One piece of data can have multiple annotations. */
-  annotations?: Array<GoogleCloudDatalabelingV1beta1Annotation>;
+  annotations?: ReadonlyArray<GoogleCloudDatalabelingV1beta1Annotation>;
 }
 
 export const GoogleCloudDatalabelingV1beta1Example =
@@ -1359,7 +1359,7 @@ export const GoogleCloudDatalabelingV1beta1Example =
 
 export interface GoogleCloudDatalabelingV1beta1ListExamplesResponse {
   /** The list of examples to return. */
-  examples?: Array<GoogleCloudDatalabelingV1beta1Example>;
+  examples?: ReadonlyArray<GoogleCloudDatalabelingV1beta1Example>;
   /** A token to retrieve next page of results. */
   nextPageToken?: string;
 }
@@ -1382,9 +1382,9 @@ export interface GoogleCloudDatalabelingV1beta1AnnotationSpecSet {
   /** Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long. */
   description?: string;
   /** Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task. */
-  annotationSpecs?: Array<GoogleCloudDatalabelingV1beta1AnnotationSpec>;
+  annotationSpecs?: ReadonlyArray<GoogleCloudDatalabelingV1beta1AnnotationSpec>;
   /** Output only. The names of any related resources that are blocking changes to the annotation spec set. */
-  blockingResources?: Array<string>;
+  blockingResources?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDatalabelingV1beta1AnnotationSpecSet =
@@ -1416,7 +1416,7 @@ export const GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest =
 
 export interface GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse {
   /** The list of annotation spec sets. */
-  annotationSpecSets?: Array<GoogleCloudDatalabelingV1beta1AnnotationSpecSet>;
+  annotationSpecSets?: ReadonlyArray<GoogleCloudDatalabelingV1beta1AnnotationSpecSet>;
   /** A token to retrieve next page of results. */
   nextPageToken?: string;
 }
@@ -1475,7 +1475,7 @@ export interface GoogleCloudDatalabelingV1beta1Instruction {
   /** Instruction from a PDF document. The PDF should be in a Cloud Storage bucket. */
   pdfInstruction?: GoogleCloudDatalabelingV1beta1PdfInstruction;
   /** Output only. The names of any related resources that are blocking changes to the instruction. */
-  blockingResources?: Array<string>;
+  blockingResources?: ReadonlyArray<string>;
 }
 
 export const GoogleCloudDatalabelingV1beta1Instruction =
@@ -1509,7 +1509,7 @@ export const GoogleCloudDatalabelingV1beta1CreateInstructionRequest =
 
 export interface GoogleCloudDatalabelingV1beta1ListInstructionsResponse {
   /** The list of Instructions to return. */
-  instructions?: Array<GoogleCloudDatalabelingV1beta1Instruction>;
+  instructions?: ReadonlyArray<GoogleCloudDatalabelingV1beta1Instruction>;
   /** A token to retrieve next page of results. */
   nextPageToken?: string;
 }
@@ -1593,7 +1593,7 @@ export interface GoogleCloudDatalabelingV1beta1PrCurve {
   /** Area under the precision-recall curve. Not to be confused with area under a receiver operating characteristic (ROC) curve. */
   areaUnderCurve?: number;
   /** Entries that make up the precision-recall graph. Each entry is a "point" on the graph drawn for a different `confidence_threshold`. */
-  confidenceMetricsEntries?: Array<GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry>;
+  confidenceMetricsEntries?: ReadonlyArray<GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry>;
   /** Mean average prcision of this curve. */
   meanAveragePrecision?: number;
 }
@@ -1631,7 +1631,7 @@ export interface GoogleCloudDatalabelingV1beta1Row {
   /** The annotation spec of the ground truth label for this row. */
   annotationSpec?: GoogleCloudDatalabelingV1beta1AnnotationSpec;
   /** A list of the confusion matrix entries. One entry for each possible predicted label. */
-  entries?: Array<GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry>;
+  entries?: ReadonlyArray<GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry>;
 }
 
 export const GoogleCloudDatalabelingV1beta1Row =
@@ -1645,7 +1645,7 @@ export const GoogleCloudDatalabelingV1beta1Row =
   }).annotate({ identifier: "GoogleCloudDatalabelingV1beta1Row" });
 
 export interface GoogleCloudDatalabelingV1beta1ConfusionMatrix {
-  row?: Array<GoogleCloudDatalabelingV1beta1Row>;
+  row?: ReadonlyArray<GoogleCloudDatalabelingV1beta1Row>;
 }
 
 export const GoogleCloudDatalabelingV1beta1ConfusionMatrix =
@@ -1746,7 +1746,7 @@ export const GoogleCloudDatalabelingV1beta1Evaluation =
 
 export interface GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse {
   /** The list of evaluations matching the search. */
-  evaluations?: Array<GoogleCloudDatalabelingV1beta1Evaluation>;
+  evaluations?: ReadonlyArray<GoogleCloudDatalabelingV1beta1Evaluation>;
   /** A token to retrieve next page of results. */
   nextPageToken?: string;
 }
@@ -1780,7 +1780,7 @@ export interface GoogleCloudDatalabelingV1beta1ExampleComparison {
   /** The ground truth output for the input. */
   groundTruthExample?: GoogleCloudDatalabelingV1beta1Example;
   /** Predictions by the model for the input. */
-  modelCreatedExamples?: Array<GoogleCloudDatalabelingV1beta1Example>;
+  modelCreatedExamples?: ReadonlyArray<GoogleCloudDatalabelingV1beta1Example>;
 }
 
 export const GoogleCloudDatalabelingV1beta1ExampleComparison =
@@ -1795,7 +1795,7 @@ export const GoogleCloudDatalabelingV1beta1ExampleComparison =
 
 export interface GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse {
   /** A list of example comparisons matching the search criteria. */
-  exampleComparisons?: Array<GoogleCloudDatalabelingV1beta1ExampleComparison>;
+  exampleComparisons?: ReadonlyArray<GoogleCloudDatalabelingV1beta1ExampleComparison>;
   /** A token to retrieve next page of results. */
   nextPageToken?: string;
 }
@@ -1882,7 +1882,7 @@ export const GoogleCloudDatalabelingV1beta1EvaluationJobConfig =
 export interface GoogleCloudDatalabelingV1beta1Attempt {
   attemptTime?: string;
   /** Details of errors that occurred. */
-  partialFailures?: Array<GoogleRpcStatus>;
+  partialFailures?: ReadonlyArray<GoogleRpcStatus>;
 }
 
 export const GoogleCloudDatalabelingV1beta1Attempt =
@@ -1915,7 +1915,7 @@ export interface GoogleCloudDatalabelingV1beta1EvaluationJob {
   /** Required. Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`. */
   labelMissingGroundTruth?: boolean;
   /** Output only. Every time the evaluation job runs and an error occurs, the failed attempt is appended to this array. */
-  attempts?: Array<GoogleCloudDatalabelingV1beta1Attempt>;
+  attempts?: ReadonlyArray<GoogleCloudDatalabelingV1beta1Attempt>;
   /** Output only. Timestamp of when this evaluation job was created. */
   createTime?: string;
 }
@@ -1966,7 +1966,7 @@ export const GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest =
 
 export interface GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse {
   /** The list of evaluation jobs to return. */
-  evaluationJobs?: Array<GoogleCloudDatalabelingV1beta1EvaluationJob>;
+  evaluationJobs?: ReadonlyArray<GoogleCloudDatalabelingV1beta1EvaluationJob>;
   /** A token to retrieve next page of results. */
   nextPageToken?: string;
 }
@@ -2022,7 +2022,7 @@ export const GoogleCloudDatalabelingV1beta1FeedbackThread =
 
 export interface GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse {
   /** The list of feedback threads to return. */
-  feedbackThreads?: Array<GoogleCloudDatalabelingV1beta1FeedbackThread>;
+  feedbackThreads?: ReadonlyArray<GoogleCloudDatalabelingV1beta1FeedbackThread>;
   /** A token to retrieve next page of results. */
   nextPageToken?: string;
 }
@@ -2080,7 +2080,7 @@ export const GoogleCloudDatalabelingV1beta1FeedbackMessage =
 
 export interface GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse {
   /** The list of feedback messages to return. */
-  feedbackMessages?: Array<GoogleCloudDatalabelingV1beta1FeedbackMessage>;
+  feedbackMessages?: ReadonlyArray<GoogleCloudDatalabelingV1beta1FeedbackMessage>;
   /** A token to retrieve next page of results. */
   nextPageToken?: string;
 }
@@ -2196,7 +2196,7 @@ export interface GoogleCloudDatalabelingV1alpha1ImportDataOperationMetadata {
   /** Output only. The name of imported dataset. "projects/* /datasets/*" */
   dataset?: string;
   /** Output only. Partial failures encountered. E.g. single files that couldn't be read. Status details field will contain standard GCP error details. */
-  partialFailures?: Array<GoogleRpcStatus>;
+  partialFailures?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. Timestamp when import dataset request was created. */
   createTime?: string;
 }
@@ -2216,7 +2216,7 @@ export interface GoogleCloudDatalabelingV1alpha1ExportDataOperationMetadata {
   /** Output only. The name of annotated dataset in format "projects/* /datasets/* /annotatedDatasets/*". */
   annotatedDataset?: string;
   /** Output only. Partial failures encountered. E.g. single files that couldn't be read. Status details field will contain standard GCP error details. */
-  partialFailures?: Array<GoogleRpcStatus>;
+  partialFailures?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. Timestamp when export dataset request was created. */
   createTime?: string;
 }
@@ -2235,7 +2235,7 @@ export interface GoogleCloudDatalabelingV1alpha1CreateInstructionMetadata {
   /** The name of the created Instruction. projects/{project_id}/instructions/{instruction_id} */
   instruction?: string;
   /** Partial failures encountered. E.g. single files that couldn't be read. Status details field will contain standard GCP error details. */
-  partialFailures?: Array<GoogleRpcStatus>;
+  partialFailures?: ReadonlyArray<GoogleRpcStatus>;
   /** Timestamp when create instruction request was created. */
   createTime?: string;
 }
@@ -2265,7 +2265,7 @@ export interface GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig {
   /** Optional. Maximum duration for contributors to answer a question. Maximum is 3600 seconds. Default is 3600 seconds. */
   questionDuration?: string;
   /** Optional. If you want your own labeling contributors to manage and work on this labeling request, you can set these contributors here. We will give them access to the question types in crowdcompute. Note that these emails must be registered in crowdcompute worker UI: https://crowd-compute.appspot.com/ */
-  contributorEmails?: Array<string>;
+  contributorEmails?: ReadonlyArray<string>;
   /** Email of the user who started the labeling task and should be notified by email. If empty no notification will be sent. */
   userEmailAddress?: string;
 }
@@ -2495,7 +2495,7 @@ export interface GoogleCloudDatalabelingV1alpha1LabelOperationMetadata {
   /** Output only. Progress of label operation. Range: [0, 100]. */
   progressPercent?: number;
   /** Output only. Partial failures encountered. E.g. single files that couldn't be read. Status details field will contain standard GCP error details. */
-  partialFailures?: Array<GoogleRpcStatus>;
+  partialFailures?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. Timestamp when labeling request was created. */
   createTime?: string;
   /** Output only. The name of annotated dataset in format "projects/* /datasets/* /annotatedDatasets/*". */
@@ -2598,7 +2598,7 @@ export interface GoogleCloudDatalabelingV1beta1ImportDataOperationMetadata {
   /** Output only. The name of imported dataset. "projects/* /datasets/*" */
   dataset?: string;
   /** Output only. Partial failures encountered. E.g. single files that couldn't be read. Status details field will contain standard GCP error details. */
-  partialFailures?: Array<GoogleRpcStatus>;
+  partialFailures?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. Timestamp when import dataset request was created. */
   createTime?: string;
 }
@@ -2618,7 +2618,7 @@ export interface GoogleCloudDatalabelingV1beta1ExportDataOperationMetadata {
   /** Output only. The name of annotated dataset in format "projects/* /datasets/* /annotatedDatasets/*". */
   annotatedDataset?: string;
   /** Output only. Partial failures encountered. E.g. single files that couldn't be read. Status details field will contain standard GCP error details. */
-  partialFailures?: Array<GoogleRpcStatus>;
+  partialFailures?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. Timestamp when export dataset request was created. */
   createTime?: string;
 }
@@ -2637,7 +2637,7 @@ export interface GoogleCloudDatalabelingV1beta1CreateInstructionMetadata {
   /** The name of the created Instruction. projects/{project_id}/instructions/{instruction_id} */
   instruction?: string;
   /** Partial failures encountered. E.g. single files that couldn't be read. Status details field will contain standard GCP error details. */
-  partialFailures?: Array<GoogleRpcStatus>;
+  partialFailures?: ReadonlyArray<GoogleRpcStatus>;
   /** Timestamp when create instruction request was created. */
   createTime?: string;
 }
@@ -2861,7 +2861,7 @@ export interface GoogleCloudDatalabelingV1beta1LabelOperationMetadata {
   /** Output only. Progress of label operation. Range: [0, 100]. */
   progressPercent?: number;
   /** Output only. Partial failures encountered. E.g. single files that couldn't be read. Status details field will contain standard GCP error details. */
-  partialFailures?: Array<GoogleRpcStatus>;
+  partialFailures?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. Timestamp when labeling request was created. */
   createTime?: string;
   /** Output only. The name of annotated dataset in format "projects/* /datasets/* /annotatedDatasets/*". */
@@ -3020,7 +3020,7 @@ export interface GoogleCloudDatalabelingV1p1alpha1ImportDataOperationMetadata {
   /** Output only. The name of imported dataset. "projects/* /datasets/*" */
   dataset?: string;
   /** Output only. Partial failures encountered. E.g. single files that couldn't be read. Status details field will contain standard GCP error details. */
-  partialFailures?: Array<GoogleRpcStatus>;
+  partialFailures?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. Timestamp when import dataset request was created. */
   createTime?: string;
 }
@@ -3040,7 +3040,7 @@ export interface GoogleCloudDatalabelingV1p1alpha1ExportDataOperationMetadata {
   /** Output only. The name of annotated dataset in format "projects/* /datasets/* /annotatedDatasets/*". */
   annotatedDataset?: string;
   /** Output only. Partial failures encountered. E.g. single files that couldn't be read. Status details field will contain standard GCP error details. */
-  partialFailures?: Array<GoogleRpcStatus>;
+  partialFailures?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. Timestamp when export dataset request was created. */
   createTime?: string;
 }
@@ -3059,7 +3059,7 @@ export interface GoogleCloudDatalabelingV1p1alpha1CreateInstructionMetadata {
   /** The name of the created Instruction. projects/{project_id}/instructions/{instruction_id} */
   instruction?: string;
   /** Partial failures encountered. E.g. single files that couldn't be read. Status details field will contain standard GCP error details. */
-  partialFailures?: Array<GoogleRpcStatus>;
+  partialFailures?: ReadonlyArray<GoogleRpcStatus>;
   /** Timestamp when create instruction request was created. */
   createTime?: string;
 }
@@ -3089,7 +3089,7 @@ export interface GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig {
   /** Optional. Maximum duration for contributors to answer a question. Maximum is 3600 seconds. Default is 3600 seconds. */
   questionDuration?: string;
   /** Optional. If you want your own labeling contributors to manage and work on this labeling request, you can set these contributors here. We will give them access to the question types in crowdcompute. Note that these emails must be registered in crowdcompute worker UI: https://crowd-compute.appspot.com/ */
-  contributorEmails?: Array<string>;
+  contributorEmails?: ReadonlyArray<string>;
   /** Email of the user who started the labeling task and should be notified by email. If empty no notification will be sent. */
   userEmailAddress?: string;
 }
@@ -3319,7 +3319,7 @@ export interface GoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata {
   /** Output only. Progress of label operation. Range: [0, 100]. */
   progressPercent?: number;
   /** Output only. Partial failures encountered. E.g. single files that couldn't be read. Status details field will contain standard GCP error details. */
-  partialFailures?: Array<GoogleRpcStatus>;
+  partialFailures?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. Timestamp when labeling request was created. */
   createTime?: string;
   /** Output only. The name of annotated dataset in format "projects/* /datasets/* /annotatedDatasets/*". */
@@ -3494,7 +3494,7 @@ export interface GoogleCloudDatalabelingV1p2alpha1ImportDataOperationMetadata {
   /** Output only. The name of imported dataset. "projects/* /datasets/*" */
   dataset?: string;
   /** Output only. Partial failures encountered. E.g. single files that couldn't be read. Status details field will contain standard GCP error details. */
-  partialFailures?: Array<GoogleRpcStatus>;
+  partialFailures?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. Timestamp when import dataset request was created. */
   createTime?: string;
 }
@@ -3514,7 +3514,7 @@ export interface GoogleCloudDatalabelingV1p2alpha1ExportDataOperationMetadata {
   /** Output only. The name of annotated dataset in format "projects/* /datasets/* /annotatedDatasets/*". */
   annotatedDataset?: string;
   /** Output only. Partial failures encountered. E.g. single files that couldn't be read. Status details field will contain standard GCP error details. */
-  partialFailures?: Array<GoogleRpcStatus>;
+  partialFailures?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. Timestamp when export dataset request was created. */
   createTime?: string;
 }
@@ -3533,7 +3533,7 @@ export interface GoogleCloudDatalabelingV1p2alpha1CreateInstructionMetadata {
   /** The name of the created Instruction. projects/{project_id}/instructions/{instruction_id} */
   instruction?: string;
   /** Partial failures encountered. E.g. single files that couldn't be read. Status details field will contain standard GCP error details. */
-  partialFailures?: Array<GoogleRpcStatus>;
+  partialFailures?: ReadonlyArray<GoogleRpcStatus>;
   /** Timestamp when create instruction request was created. */
   createTime?: string;
 }
@@ -3563,7 +3563,7 @@ export interface GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig {
   /** Optional. Maximum duration for contributors to answer a question. Maximum is 3600 seconds. Default is 3600 seconds. */
   questionDuration?: string;
   /** Optional. If you want your own labeling contributors to manage and work on this labeling request, you can set these contributors here. We will give them access to the question types in crowdcompute. Note that these emails must be registered in crowdcompute worker UI: https://crowd-compute.appspot.com/ */
-  contributorEmails?: Array<string>;
+  contributorEmails?: ReadonlyArray<string>;
   /** Email of the user who started the labeling task and should be notified by email. If empty no notification will be sent. */
   userEmailAddress?: string;
 }
@@ -3793,7 +3793,7 @@ export interface GoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata {
   /** Output only. Progress of label operation. Range: [0, 100]. */
   progressPercent?: number;
   /** Output only. Partial failures encountered. E.g. single files that couldn't be read. Status details field will contain standard GCP error details. */
-  partialFailures?: Array<GoogleRpcStatus>;
+  partialFailures?: ReadonlyArray<GoogleRpcStatus>;
   /** Output only. Timestamp when labeling request was created. */
   createTime?: string;
   /** Output only. The name of annotated dataset in format "projects/* /datasets/* /annotatedDatasets/*". */
@@ -3869,7 +3869,7 @@ export const ListProjectsOperationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/projects/{projectsId}/operations" }),
+    T.Http({ method: "GET", path: "v1beta1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsOperationsRequest>;
 
@@ -3905,10 +3905,7 @@ export const GetProjectsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsOperationsRequest>;
 
@@ -3939,10 +3936,7 @@ export const DeleteProjectsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsOperationsRequest>;
 
@@ -3973,10 +3967,7 @@ export const CancelProjectsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/operations/{operationsId}:cancel",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}:cancel" }),
     svc,
   ) as unknown as Schema.Schema<CancelProjectsOperationsRequest>;
 
@@ -4014,7 +4005,7 @@ export const CreateProjectsDatasetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/datasets",
+      path: "v1beta1/{parent}/datasets",
       hasBody: true,
     }),
     svc,
@@ -4048,10 +4039,7 @@ export const GetProjectsDatasetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatasetsRequest>;
 
@@ -4091,7 +4079,7 @@ export const ListProjectsDatasetsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1beta1/projects/{projectsId}/datasets" }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/datasets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatasetsRequest>;
 
@@ -4127,10 +4115,7 @@ export const DeleteProjectsDatasetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDatasetsRequest>;
 
@@ -4168,7 +4153,7 @@ export const ImportDataProjectsDatasetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}:importData",
+      path: "v1beta1/{name}:importData",
       hasBody: true,
     }),
     svc,
@@ -4208,7 +4193,7 @@ export const ExportDataProjectsDatasetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}:exportData",
+      path: "v1beta1/{name}:exportData",
       hasBody: true,
     }),
     svc,
@@ -4241,10 +4226,7 @@ export const GetProjectsDatasetsDataItemsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}/dataItems/{dataItemsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatasetsDataItemsRequest>;
 
@@ -4285,10 +4267,7 @@ export const ListProjectsDatasetsDataItemsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}/dataItems",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/dataItems" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatasetsDataItemsRequest>;
 
@@ -4324,10 +4303,7 @@ export const GetProjectsDatasetsAnnotatedDatasetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatasetsAnnotatedDatasetsRequest>;
 
@@ -4368,10 +4344,7 @@ export const ListProjectsDatasetsAnnotatedDatasetsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/annotatedDatasets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatasetsAnnotatedDatasetsRequest>;
 
@@ -4407,10 +4380,7 @@ export const DeleteProjectsDatasetsAnnotatedDatasetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDatasetsAnnotatedDatasetsRequest>;
 
@@ -4442,10 +4412,7 @@ export const GetProjectsDatasetsAnnotatedDatasetsDataItemsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/dataItems/{dataItemsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatasetsAnnotatedDatasetsDataItemsRequest>;
 
@@ -4486,10 +4453,7 @@ export const ListProjectsDatasetsAnnotatedDatasetsDataItemsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/dataItems",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/dataItems" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatasetsAnnotatedDatasetsDataItemsRequest>;
 
@@ -4528,10 +4492,7 @@ export const GetProjectsDatasetsAnnotatedDatasetsExamplesRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/examples/{examplesId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatasetsAnnotatedDatasetsExamplesRequest>;
 
@@ -4572,10 +4533,7 @@ export const ListProjectsDatasetsAnnotatedDatasetsExamplesRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/examples",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/examples" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatasetsAnnotatedDatasetsExamplesRequest>;
 
@@ -4611,10 +4569,7 @@ export const GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/feedbackThreads/{feedbackThreadsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest>;
 
@@ -4653,10 +4608,7 @@ export const ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/feedbackThreads",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/feedbackThreads" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest>;
 
@@ -4693,10 +4645,7 @@ export const DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/feedbackThreads/{feedbackThreadsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest>;
 
@@ -4736,7 +4685,7 @@ export const CreateProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessa
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/feedbackThreads/{feedbackThreadsId}/feedbackMessages",
+      path: "v1beta1/{parent}/feedbackMessages",
       hasBody: true,
     }),
     svc,
@@ -4773,10 +4722,7 @@ export const GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessages
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/feedbackThreads/{feedbackThreadsId}/feedbackMessages/{feedbackMessagesId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest>;
 
@@ -4817,10 +4763,7 @@ export const ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessage
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/feedbackThreads/{feedbackThreadsId}/feedbackMessages",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/feedbackMessages" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest>;
 
@@ -4859,10 +4802,7 @@ export const DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessa
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}/annotatedDatasets/{annotatedDatasetsId}/feedbackThreads/{feedbackThreadsId}/feedbackMessages/{feedbackMessagesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest>;
 
@@ -4904,7 +4844,7 @@ export const LabelProjectsDatasetsImageRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}/image:label",
+      path: "v1beta1/{parent}/image:label",
       hasBody: true,
     }),
     svc,
@@ -4944,7 +4884,7 @@ export const LabelProjectsDatasetsVideoRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}/video:label",
+      path: "v1beta1/{parent}/video:label",
       hasBody: true,
     }),
     svc,
@@ -4984,7 +4924,7 @@ export const LabelProjectsDatasetsTextRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}/text:label",
+      path: "v1beta1/{parent}/text:label",
       hasBody: true,
     }),
     svc,
@@ -5017,10 +4957,7 @@ export const GetProjectsDatasetsEvaluationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}/evaluations/{evaluationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsDatasetsEvaluationsRequest>;
 
@@ -5059,7 +4996,7 @@ export const SearchProjectsDatasetsEvaluationsExampleComparisonsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/datasets/{datasetsId}/evaluations/{evaluationsId}/exampleComparisons:search",
+      path: "v1beta1/{parent}/exampleComparisons:search",
       hasBody: true,
     }),
     svc,
@@ -5101,7 +5038,7 @@ export const CreateProjectsAnnotationSpecSetsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/annotationSpecSets",
+      path: "v1beta1/{parent}/annotationSpecSets",
       hasBody: true,
     }),
     svc,
@@ -5135,10 +5072,7 @@ export const GetProjectsAnnotationSpecSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/annotationSpecSets/{annotationSpecSetsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsAnnotationSpecSetsRequest>;
 
@@ -5179,10 +5113,7 @@ export const ListProjectsAnnotationSpecSetsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/annotationSpecSets",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/annotationSpecSets" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAnnotationSpecSetsRequest>;
 
@@ -5218,10 +5149,7 @@ export const DeleteProjectsAnnotationSpecSetsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/annotationSpecSets/{annotationSpecSetsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsAnnotationSpecSetsRequest>;
 
@@ -5259,7 +5187,7 @@ export const CreateProjectsInstructionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/instructions",
+      path: "v1beta1/{parent}/instructions",
       hasBody: true,
     }),
     svc,
@@ -5292,10 +5220,7 @@ export const GetProjectsInstructionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/instructions/{instructionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsInstructionsRequest>;
 
@@ -5336,10 +5261,7 @@ export const ListProjectsInstructionsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/instructions",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/instructions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsInstructionsRequest>;
 
@@ -5375,10 +5297,7 @@ export const DeleteProjectsInstructionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/instructions/{instructionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsInstructionsRequest>;
 
@@ -5418,10 +5337,7 @@ export const SearchProjectsEvaluationsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/evaluations:search",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/evaluations:search" }),
     svc,
   ) as unknown as Schema.Schema<SearchProjectsEvaluationsRequest>;
 
@@ -5464,7 +5380,7 @@ export const CreateProjectsEvaluationJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1beta1/projects/{projectsId}/evaluationJobs",
+      path: "v1beta1/{parent}/evaluationJobs",
       hasBody: true,
     }),
     svc,
@@ -5506,11 +5422,7 @@ export const PatchProjectsEvaluationJobsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "v1beta1/projects/{projectsId}/evaluationJobs/{evaluationJobsId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PATCH", path: "v1beta1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PatchProjectsEvaluationJobsRequest>;
 
@@ -5542,10 +5454,7 @@ export const GetProjectsEvaluationJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/evaluationJobs/{evaluationJobsId}",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsEvaluationJobsRequest>;
 
@@ -5582,11 +5491,7 @@ export const PauseProjectsEvaluationJobsRequest =
       GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/evaluationJobs/{evaluationJobsId}:pause",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:pause", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<PauseProjectsEvaluationJobsRequest>;
 
@@ -5622,11 +5527,7 @@ export const ResumeProjectsEvaluationJobsRequest =
       GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest,
     ).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1beta1/projects/{projectsId}/evaluationJobs/{evaluationJobsId}:resume",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1beta1/{name}:resume", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ResumeProjectsEvaluationJobsRequest>;
 
@@ -5657,10 +5558,7 @@ export const DeleteProjectsEvaluationJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1beta1/projects/{projectsId}/evaluationJobs/{evaluationJobsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1beta1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsEvaluationJobsRequest>;
 
@@ -5700,10 +5598,7 @@ export const ListProjectsEvaluationJobsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1beta1/projects/{projectsId}/evaluationJobs",
-    }),
+    T.Http({ method: "GET", path: "v1beta1/{parent}/evaluationJobs" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsEvaluationJobsRequest>;
 

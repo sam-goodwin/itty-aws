@@ -48,7 +48,7 @@ export const Interval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface CustomAttribute {
   /** Subattributes within this attribute group. If `group_values` is not empty, `value` must be empty. */
-  groupValues?: Array<CustomAttribute>;
+  groupValues?: ReadonlyArray<CustomAttribute>;
   /** The name of the attribute. */
   name?: string;
   /** The value of the attribute. If `value` is not empty, `group_values` must be empty. */
@@ -90,7 +90,7 @@ export interface LocalInventory {
   /** Supported pickup method for this product. Unless the value is `"not supported"`, this field must be submitted together with `pickupSla`. For accepted attribute values, see the [local product inventory data specification](https://support.google.com/merchants/answer/3061342) */
   pickupMethod?: string;
   /** A list of custom (merchant-provided) attributes. You can also use `CustomAttribute` to submit any attribute of the data specification in its generic form. */
-  customAttributes?: Array<CustomAttribute>;
+  customAttributes?: ReadonlyArray<CustomAttribute>;
   /** Relative time period from the order date for an order for this product, from this store, to be ready for pickup. Must be submitted with `pickupMethod`. For accepted attribute values, see the [local product inventory data specification](https://support.google.com/merchants/answer/3061342) */
   pickupSla?: string;
 }
@@ -113,7 +113,7 @@ export const LocalInventory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListLocalInventoriesResponse {
   /** The `LocalInventory` resources for the given product from the specified account. */
-  localInventories?: Array<LocalInventory>;
+  localInventories?: ReadonlyArray<LocalInventory>;
   /** A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -175,7 +175,7 @@ export interface RegionalInventory {
   /** Optional. Price of the product in this region. */
   price?: Price;
   /** A list of custom (merchant-provided) attributes. You can also use `CustomAttribute` to submit any attribute of the data specification in its generic form. */
-  customAttributes?: Array<CustomAttribute>;
+  customAttributes?: ReadonlyArray<CustomAttribute>;
   /** Output only. The unpadded base64url encoded name of the `RegionalInventory` resource. Format: `accounts/{account}/products/{product}/regionalInventories/{region}` where the `{product}` segment is the unpadded base64url encoded value of the identifier of the form `content_language~feed_label~offer_id`. Example: `accounts/123/products/ZW5-VVN-c2t1LzEyMw/regionalInventories/region123` for the decoded product ID `en~US~sku/123` and `region` "region123". Can be used directly as input to the API methods that require the product identifier within the regional inventory name to be encoded if it contains special characters, for example [`GetRegionalInventory`](https://developers.google.com/merchant/api/reference/rest/inventories_v1beta/accounts.products.regionalInventories/get). */
   base64EncodedName?: string;
   /** Optional. The `TimePeriod` of the sale price in this region. */
@@ -214,7 +214,7 @@ export interface ProductStatusChangeMessage {
   /** The target account that owns the entity that changed. Format : `accounts/{merchant_id}` */
   account?: string;
   /** A message to describe the change that happened to the product */
-  changes?: Array<ProductChange>;
+  changes?: ReadonlyArray<ProductChange>;
 }
 
 export const ProductStatusChangeMessage =
@@ -238,7 +238,7 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 
 export interface ListRegionalInventoriesResponse {
   /** The `RegionalInventory` resources for the given product from the specified account. */
-  regionalInventories?: Array<RegionalInventory>;
+  regionalInventories?: ReadonlyArray<RegionalInventory>;
   /** A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
@@ -267,7 +267,7 @@ export const InsertAccountsProductsLocalInventoriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "inventories/v1beta/accounts/{accountsId}/products/{productsId}/localInventories:insert",
+      path: "inventories/v1beta/{parent}/localInventories:insert",
       hasBody: true,
     }),
     svc,
@@ -308,7 +308,7 @@ export const ListAccountsProductsLocalInventoriesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "inventories/v1beta/accounts/{accountsId}/products/{productsId}/localInventories",
+      path: "inventories/v1beta/{parent}/localInventories",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsProductsLocalInventoriesRequest>;
@@ -345,10 +345,7 @@ export const DeleteAccountsProductsLocalInventoriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "inventories/v1beta/accounts/{accountsId}/products/{productsId}/localInventories/{localInventoriesId}",
-    }),
+    T.Http({ method: "DELETE", path: "inventories/v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsProductsLocalInventoriesRequest>;
 
@@ -384,7 +381,7 @@ export const InsertAccountsProductsRegionalInventoriesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "inventories/v1beta/accounts/{accountsId}/products/{productsId}/regionalInventories:insert",
+      path: "inventories/v1beta/{parent}/regionalInventories:insert",
       hasBody: true,
     }),
     svc,
@@ -426,7 +423,7 @@ export const ListAccountsProductsRegionalInventoriesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "inventories/v1beta/accounts/{accountsId}/products/{productsId}/regionalInventories",
+      path: "inventories/v1beta/{parent}/regionalInventories",
     }),
     svc,
   ) as unknown as Schema.Schema<ListAccountsProductsRegionalInventoriesRequest>;
@@ -463,10 +460,7 @@ export const DeleteAccountsProductsRegionalInventoriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "inventories/v1beta/accounts/{accountsId}/products/{productsId}/regionalInventories/{regionalInventoriesId}",
-    }),
+    T.Http({ method: "DELETE", path: "inventories/v1beta/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteAccountsProductsRegionalInventoriesRequest>;
 

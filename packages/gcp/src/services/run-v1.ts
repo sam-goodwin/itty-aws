@@ -144,11 +144,11 @@ export interface ContainerOverride {
   /** The name of the container specified as a DNS_LABEL. */
   name?: string;
   /** Arguments to the entrypoint. The specified arguments replace and override any existing entrypoint arguments. Must be empty if `clear_args` is set to true. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Optional. Set to True to clear all existing arguments. */
   clearArgs?: boolean;
   /** List of environment variables to set in the container. All specified environment variables are merged with existing environment variables. When the specified environment variables exist, these values override any existing values. */
-  env?: Array<EnvVar>;
+  env?: ReadonlyArray<EnvVar>;
 }
 
 export const ContainerOverride = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -160,7 +160,7 @@ export const ContainerOverride = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Overrides {
   /** Per container override specification. */
-  containerOverrides?: Array<ContainerOverride>;
+  containerOverrides?: ReadonlyArray<ContainerOverride>;
   /** The desired number of tasks the execution should run. Will replace existing task_count value. */
   taskCount?: number;
   /** Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. Will replace existing timeout_seconds value. */
@@ -223,7 +223,7 @@ export const GoogleDevtoolsCloudbuildV1SecretManagerSecret =
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsRequest =
@@ -239,7 +239,7 @@ export const CancelExecutionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ExecAction {
   /** Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. */
-  command?: Array<string>;
+  command?: ReadonlyArray<string>;
 }
 
 export const ExecAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -268,7 +268,7 @@ export interface HTTPGetAction {
   /** Not supported by Cloud Run. */
   host?: string;
   /** Custom headers to set in the request. HTTP allows repeated headers. */
-  httpHeaders?: Array<HTTPHeader>;
+  httpHeaders?: ReadonlyArray<HTTPHeader>;
 }
 
 export const HTTPGetAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -441,25 +441,25 @@ export interface Container {
   /** Periodic probe of container liveness. Container will be restarted if the probe fails. */
   livenessProbe?: Probe;
   /** List of environment variables to set in the container. EnvVar with duplicate names are generally allowed; if referencing a secret, the name must be unique for the container. For non-secret EnvVar names, the Container will only get the last-declared one. */
-  env?: Array<EnvVar>;
+  env?: ReadonlyArray<EnvVar>;
   /** List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on. */
-  ports?: Array<ContainerPort>;
+  ports?: ReadonlyArray<ContainerPort>;
   /** Name of the container specified as a DNS_LABEL (RFC 1123). */
   name?: string;
   /** Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem. */
-  volumeMounts?: Array<VolumeMount>;
+  volumeMounts?: ReadonlyArray<VolumeMount>;
   /** Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log. */
   terminationMessagePath?: string;
   /** Not supported by Cloud Run. */
-  envFrom?: Array<EnvFromSource>;
+  envFrom?: ReadonlyArray<EnvFromSource>;
   /** Required. Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. */
   image?: string;
   /** Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a default startup probe with TCP socket action is used. */
   startupProbe?: Probe;
   /** Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references are not supported in Cloud Run. */
-  command?: Array<string>;
+  command?: ReadonlyArray<string>;
   /** Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Compute Resources required by this container. */
   resources?: ResourceRequirements;
   /** Readiness probe to be used for health checks. */
@@ -557,7 +557,7 @@ export interface ConfigMapVolumeSource {
   /** Name of the config. */
   name?: string;
   /** (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional. */
-  items?: Array<KeyToPath>;
+  items?: ReadonlyArray<KeyToPath>;
   /** (Optional) Specify whether the Secret or its keys must be defined. */
   optional?: boolean;
 }
@@ -573,7 +573,7 @@ export interface SecretVolumeSource {
   /** Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0444. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. */
   defaultMode?: number;
   /** A list of secret versions to mount in the volume. If no items are specified, the volume will expose a file with the same name as the secret name. The contents of the file will be the data in the latest version of the secret. If items are specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify both a key and a path. */
-  items?: Array<KeyToPath>;
+  items?: ReadonlyArray<KeyToPath>;
   /** Not supported by Cloud Run. */
   optional?: boolean;
   /** The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use. */
@@ -614,11 +614,11 @@ export interface TaskSpec {
   /** Optional. The Node Selector configuration. Map of selector key to a value which matches a node. */
   nodeSelector?: Record<string, string>;
   /** Optional. List of containers belonging to the task. We disallow a number of fields on this Container. */
-  containers?: Array<Container>;
+  containers?: ReadonlyArray<Container>;
   /** Optional. Number of retries allowed per task, before marking this job failed. Defaults to 3. */
   maxRetries?: number;
   /** Optional. List of volumes that can be mounted by containers belonging to the task. */
-  volumes?: Array<Volume>;
+  volumes?: ReadonlyArray<Volume>;
   /** Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account. */
   serviceAccountName?: string;
   /** Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds. */
@@ -725,13 +725,13 @@ export interface RouteStatus {
   /** URL holds the url that will distribute traffic over the provided traffic targets. It generally has the form: `https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app` */
   url?: string;
   /** Conditions communicates information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. */
-  conditions?: Array<GoogleCloudRunV1Condition>;
+  conditions?: ReadonlyArray<GoogleCloudRunV1Condition>;
   /** ObservedGeneration is the 'Generation' of the Route that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False. Note that providing a TrafficTarget that has latest_revision=True will result in a Route that does not increment either its metadata.generation or its observedGeneration, as new "latest ready" revisions from the Configuration are processed without an update to the Route's spec. */
   observedGeneration?: number;
   /** Similar to url, information on where the service is available on HTTP. */
   address?: Addressable;
   /** Traffic holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that was last observed. */
-  traffic?: Array<TrafficTarget>;
+  traffic?: ReadonlyArray<TrafficTarget>;
 }
 
 export const RouteStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -744,7 +744,7 @@ export const RouteStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface RouteSpec {
   /** Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations. Cloud Run currently supports a single configurationName. */
-  traffic?: Array<TrafficTarget>;
+  traffic?: ReadonlyArray<TrafficTarget>;
 }
 
 export const RouteSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -785,7 +785,7 @@ export interface ObjectMeta {
   /** URL representing this object. */
   selfLink?: string;
   /** Not supported by Cloud Run */
-  ownerReferences?: Array<OwnerReference>;
+  ownerReferences?: ReadonlyArray<OwnerReference>;
   /** UTC timestamp representing the server time when this object was created. */
   creationTimestamp?: string;
   /** Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. */
@@ -803,7 +803,7 @@ export interface ObjectMeta {
   /** Not supported by Cloud Run */
   deletionGracePeriodSeconds?: number;
   /** Not supported by Cloud Run */
-  finalizers?: Array<string>;
+  finalizers?: ReadonlyArray<string>;
   /** Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. */
   resourceVersion?: string;
 }
@@ -864,11 +864,11 @@ export const ListMeta = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListRoutesResponse {
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The API version for this call such as "serving.knative.dev/v1". */
   apiVersion?: string;
   /** List of Routes. */
-  items?: Array<Route>;
+  items?: ReadonlyArray<Route>;
   /** The kind of this resource, in this case always "RouteList". */
   kind?: string;
   /** Metadata associated with this Route list. */
@@ -922,7 +922,7 @@ export const GoogleDevtoolsCloudbuildV1GoModule =
 
 export interface JobStatus {
   /** Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Job-specific conditions include: * `Ready`: `True` when the job is ready to be executed. */
-  conditions?: Array<GoogleCloudRunV1Condition>;
+  conditions?: ReadonlyArray<GoogleCloudRunV1Condition>;
   /** Number of executions created for this job. */
   executionCount?: number;
   /** A pointer to the most recently created execution for this job. This is set regardless of the eventual state of the execution. */
@@ -960,7 +960,7 @@ export const GoogleDevtoolsCloudbuildV1Hash =
 
 export interface GoogleDevtoolsCloudbuildV1FileHashes {
   /** Collection of file hashes. */
-  fileHash?: Array<GoogleDevtoolsCloudbuildV1Hash>;
+  fileHash?: ReadonlyArray<GoogleDevtoolsCloudbuildV1Hash>;
 }
 
 export const GoogleDevtoolsCloudbuildV1FileHashes =
@@ -1009,7 +1009,7 @@ export const GoogleDevtoolsCloudbuildV1UploadedGenericArtifact =
 
 export interface ExecutionStatus {
   /** Optional. Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Execution-specific conditions include: * `ResourcesAvailable`: `True` when underlying resources have been provisioned. * `Started`: `True` when the execution has started to execute. * `Completed`: `True` when the execution has succeeded. `False` when the execution has failed. */
-  conditions?: Array<GoogleCloudRunV1Condition>;
+  conditions?: ReadonlyArray<GoogleCloudRunV1Condition>;
   /** Optional. The number of tasks which reached phase Succeeded. */
   succeededCount?: number;
   /** Optional. The number of actively running tasks. */
@@ -1068,13 +1068,13 @@ export interface ListExecutionsResponse {
   /** The API version for this call such as "run.googleapis.com/v1". */
   apiVersion?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The kind of this resource, in this case "ExecutionsList". */
   kind?: string;
   /** Metadata associated with this executions list. */
   metadata?: ListMeta;
   /** List of Executions. */
-  items?: Array<Execution>;
+  items?: ReadonlyArray<Execution>;
 }
 
 export const ListExecutionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -1154,13 +1154,13 @@ export const GoogleDevtoolsCloudbuildV1UploadedMavenArtifact =
 
 export interface InstanceSpec {
   /** Optional. List of containers belonging to the Instance. We disallow a number of fields on this Container. */
-  containers?: Array<Container>;
+  containers?: ReadonlyArray<Container>;
   /** Optional. The Node Selector configuration. Map of selector key to a value which matches a node. */
   nodeSelector?: Record<string, string>;
   /** Optional. Duration the instance may be active before the system will shut it down. */
   timeout?: string;
   /** Optional. List of volumes that can be mounted by containers belonging to the Instance. */
-  volumes?: Array<Volume>;
+  volumes?: ReadonlyArray<Volume>;
   /** Optional. Email address of the IAM service account associated with the Instance. The service account represents the identity of the running container, and determines what permissions the Instance has. If not provided, the Instance will use the project's default service account. */
   serviceAccountName?: string;
 }
@@ -1188,15 +1188,15 @@ export const GoogleDevtoolsCloudbuildV1Volume =
 
 export interface GoogleDevtoolsCloudbuildV1BuildStep {
   /** Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence. */
-  allowExitCodes?: Array<number>;
+  allowExitCodes?: ReadonlyArray<number>;
   /** Option to include built-in and custom substitutions as env variables for this build step. This option will override the global option in BuildOption. */
   automapSubstitutions?: boolean;
   /** A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. */
-  secretEnv?: Array<string>;
+  secretEnv?: ReadonlyArray<string>;
   /** Output only. Stores timing information for pulling this build step's builder image only. */
   pullTiming?: GoogleDevtoolsCloudbuildV1TimeSpan;
   /** The ID(s) of the step(s) that this build step depends on. This build step will not start until all the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all previous build steps in the `Build.Steps` list have completed successfully. */
-  waitFor?: Array<string>;
+  waitFor?: ReadonlyArray<string>;
   /** Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out. */
   timeout?: string;
   /** Output only. Status of the build step. At this time, build step status is only updated on build completion; step status is not updated in real-time as the build progresses. */
@@ -1215,7 +1215,7 @@ export interface GoogleDevtoolsCloudbuildV1BuildStep {
   /** Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step. */
   name?: string;
   /** A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE". */
-  env?: Array<string>;
+  env?: ReadonlyArray<string>;
   /** Allow this build step to fail without failing the entire build. If false, the entire build will fail if this step fails. Otherwise, the build will succeed, but this step will still have a failure status. Error information will be reported in the failure_detail field. */
   allowFailure?: boolean;
   /** Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution. */
@@ -1225,11 +1225,11 @@ export interface GoogleDevtoolsCloudbuildV1BuildStep {
   /** Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency. */
   id?: string;
   /** A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments. */
-  args?: Array<string>;
+  args?: ReadonlyArray<string>;
   /** Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used. */
   entrypoint?: string;
   /** List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect configuration. */
-  volumes?: Array<GoogleDevtoolsCloudbuildV1Volume>;
+  volumes?: ReadonlyArray<GoogleDevtoolsCloudbuildV1Volume>;
   /** Output only. Stores timing information for executing this build step. */
   timing?: GoogleDevtoolsCloudbuildV1TimeSpan;
   /** A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args. */
@@ -1349,7 +1349,7 @@ export interface GoogleDevtoolsCloudbuildV1ArtifactObjects {
   /** Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix. */
   location?: string;
   /** Path globs used to match files in the build's workspace. */
-  paths?: Array<string>;
+  paths?: ReadonlyArray<string>;
   /** Output only. Stores timing information for pushing all artifact objects. */
   timing?: GoogleDevtoolsCloudbuildV1TimeSpan;
 }
@@ -1384,7 +1384,7 @@ export interface StatusDetails {
   /** The kind attribute of the resource associated with the status StatusReason. On some operations may differ from the requested resource Kind. */
   kind?: string;
   /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
-  causes?: Array<StatusCause>;
+  causes?: ReadonlyArray<StatusCause>;
   /** If specified, the time in seconds before the operation should be retried. Some errors may indicate the client must take an alternate action - for those errors this field may indicate how long to wait before taking the alternate action. */
   retryAfterSeconds?: number;
   /** UID of the resource. (when there is a single resource which can be described). */
@@ -1477,7 +1477,7 @@ export interface ConfigurationStatus {
   /** LatestCreatedRevisionName is the last revision that was created from this Configuration. It might not be ready yet, so for the latest ready revision, use LatestReadyRevisionName. */
   latestCreatedRevisionName?: string;
   /** Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. */
-  conditions?: Array<GoogleCloudRunV1Condition>;
+  conditions?: ReadonlyArray<GoogleCloudRunV1Condition>;
   /** ObservedGeneration is the 'Generation' of the Configuration that was last processed by the controller. The observed generation is updated even if the controller failed to process the spec and create the Revision. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation, and the Ready condition's status is True or False. */
   observedGeneration?: number;
   /** LatestReadyRevisionName holds the name of the latest Revision stamped out from this Configuration that has had its "Ready" condition become "True". */
@@ -1497,18 +1497,18 @@ export interface RevisionSpec {
   /** Not supported by Cloud Run. */
   enableServiceLinks?: boolean;
   /** Not supported by Cloud Run. */
-  imagePullSecrets?: Array<LocalObjectReference>;
+  imagePullSecrets?: ReadonlyArray<LocalObjectReference>;
   /** Optional. TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour). */
   timeoutSeconds?: number;
   /** Optional. Runtime. Leave unset for default. */
   runtimeClassName?: string;
   /** Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account. */
   serviceAccountName?: string;
-  volumes?: Array<Volume>;
+  volumes?: ReadonlyArray<Volume>;
   /** Optional. The Node Selector configuration. Map of selector key to a value which matches a node. */
   nodeSelector?: Record<string, string>;
   /** Required. Containers holds the list which define the units of execution for this Revision. */
-  containers?: Array<Container>;
+  containers?: ReadonlyArray<Container>;
 }
 
 export const RevisionSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1571,11 +1571,11 @@ export interface ListConfigurationsResponse {
   /** Metadata associated with this Configuration list. */
   metadata?: ListMeta;
   /** List of Configurations. */
-  items?: Array<Configuration>;
+  items?: ReadonlyArray<Configuration>;
   /** The API version for this call such as "serving.knative.dev/v1". */
   apiVersion?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListConfigurationsResponse =
@@ -1608,9 +1608,9 @@ export interface DomainMappingStatus {
   /** Optional. Not supported by Cloud Run. */
   url?: string;
   /** Array of observed DomainMappingConditions, indicating the current state of the DomainMapping. */
-  conditions?: Array<GoogleCloudRunV1Condition>;
+  conditions?: ReadonlyArray<GoogleCloudRunV1Condition>;
   /** The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping. */
-  resourceRecords?: Array<ResourceRecord>;
+  resourceRecords?: ReadonlyArray<ResourceRecord>;
   /** The name of the route that the mapping currently points to. */
   mappedRouteName?: string;
 }
@@ -1643,7 +1643,7 @@ export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
-  members?: Array<string>;
+  members?: ReadonlyArray<string>;
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -1665,7 +1665,7 @@ export interface AuditLogConfig {
     | "DATA_READ"
     | (string & {});
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
-  exemptedMembers?: Array<string>;
+  exemptedMembers?: ReadonlyArray<string>;
 }
 
 export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1675,7 +1675,7 @@ export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
-  auditLogConfigs?: Array<AuditLogConfig>;
+  auditLogConfigs?: ReadonlyArray<AuditLogConfig>;
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
@@ -1691,9 +1691,9 @@ export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
-  bindings?: Array<Binding>;
+  bindings?: ReadonlyArray<Binding>;
   /** Specifies cloud audit logging configuration for this policy. */
-  auditConfigs?: Array<AuditConfig>;
+  auditConfigs?: ReadonlyArray<AuditConfig>;
 }
 
 export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1711,7 +1711,7 @@ export interface RevisionStatus {
   /** Not currently used by Cloud Run. */
   serviceName?: string;
   /** Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. As a Revision is being prepared, it will incrementally update conditions. Revision-specific conditions include: * `ResourcesAvailable`: `True` when underlying resources have been provisioned. * `ContainerHealthy`: `True` when the Revision readiness check completes. * `Active`: `True` when the Revision may receive traffic. */
-  conditions?: Array<GoogleCloudRunV1Condition>;
+  conditions?: ReadonlyArray<GoogleCloudRunV1Condition>;
   /** ObservedGeneration is the 'Generation' of the Revision that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation, and the Ready condition's status is True or False. */
   observedGeneration?: number;
   /** Output only. The configured number of instances running this revision. For Cloud Run, this only includes instances provisioned using the minScale annotation. It does not include instances created by autoscaling. */
@@ -1783,7 +1783,7 @@ export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: Array<Record<string, unknown>>;
+  details?: ReadonlyArray<Record<string, unknown>>;
 }
 
 export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1811,7 +1811,7 @@ export const TaskAttemptResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WorkerPoolSpec {
   /** Specifies how to distribute instances over a collection of Revisions. */
-  instanceSplits?: Array<InstanceSplit>;
+  instanceSplits?: ReadonlyArray<InstanceSplit>;
   /** Holds the latest specification for the Revision to be stamped out. */
   template?: RevisionTemplate;
 }
@@ -1823,9 +1823,9 @@ export const WorkerPoolSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface WorkerPoolStatus {
   /** Holds the configured workload distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed. */
-  instanceSplits?: Array<InstanceSplit>;
+  instanceSplits?: ReadonlyArray<InstanceSplit>;
   /** Conditions communicate information about ongoing/complete reconciliation processes that bring the `spec` inline with the observed state of the world. * `Ready`: `True` when all underlying resources are ready. */
-  conditions?: Array<GoogleCloudRunV1Condition>;
+  conditions?: ReadonlyArray<GoogleCloudRunV1Condition>;
   /** Name of the last revision that was created from this WorkerPool's template. It might not be ready yet, for that use LatestReadyRevisionName. */
   latestCreatedRevisionName?: string;
   /** Returns the generation last seen by the system. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False. */
@@ -1888,7 +1888,7 @@ export interface ServiceSpec {
   /** Holds the latest specification for the Revision to be stamped out. */
   template?: RevisionTemplate;
   /** Specifies how to distribute traffic over a collection of Knative Revisions and Configurations to the Service's main URL. */
-  traffic?: Array<TrafficTarget>;
+  traffic?: ReadonlyArray<TrafficTarget>;
 }
 
 export const ServiceSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1906,11 +1906,11 @@ export interface ServiceStatus {
   /** URL that will distribute traffic over the provided traffic targets. It generally has the form `https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app` */
   url?: string;
   /** Conditions communicate information about ongoing/complete reconciliation processes that bring the `spec` inline with the observed state of the world. Service-specific conditions include: * `ConfigurationsReady`: `True` when the underlying Configuration is ready. * `RoutesReady`: `True` when the underlying Route is ready. * `Ready`: `True` when all underlying resources are ready. */
-  conditions?: Array<GoogleCloudRunV1Condition>;
+  conditions?: ReadonlyArray<GoogleCloudRunV1Condition>;
   /** Name of the last revision that was created from this Service's Configuration. It might not be ready yet, for that use LatestReadyRevisionName. */
   latestCreatedRevisionName?: string;
   /** Holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed. */
-  traffic?: Array<TrafficTarget>;
+  traffic?: ReadonlyArray<TrafficTarget>;
 }
 
 export const ServiceStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1946,13 +1946,13 @@ export const Service = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListServicesResponse {
   /** List of Services. */
-  items?: Array<Service>;
+  items?: ReadonlyArray<Service>;
   /** The kind of this resource; returns "ServiceList". */
   kind?: string;
   /** Metadata associated with this Service list. */
   metadata?: ListMeta;
   /** For calls against the global endpoint, returns the list of Cloud locations that could not be reached. For regional calls, this field is not used. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The API version for this call; returns "serving.knative.dev/v1". */
   apiVersion?: string;
 }
@@ -1967,7 +1967,7 @@ export const ListServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GoogleDevtoolsCloudbuildV1Oci {
   /** Optional. Tags to apply to the uploaded image. e.g. latest, 1.0.0 */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** Required. Path on the local file system where to find the container to upload. e.g. /workspace/my-image.tar */
   file?: string;
   /** Required. Registry path to upload the container to. e.g. us-east1-docker.pkg.dev/my-project/my-repo/my-image */
@@ -2006,13 +2006,13 @@ export interface ListDomainMappingsResponse {
   /** The API version for this call such as "domains.cloudrun.com/v1". */
   apiVersion?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The kind of this resource, in this case "DomainMappingList". */
   kind?: string;
   /** Metadata associated with this DomainMapping list. */
   metadata?: ListMeta;
   /** List of DomainMappings. */
-  items?: Array<DomainMapping>;
+  items?: ReadonlyArray<DomainMapping>;
 }
 
 export const ListDomainMappingsResponse =
@@ -2030,9 +2030,9 @@ export interface InstanceStatus {
   /** Optional. URI where logs for this execution can be found in Cloud Console. */
   logUri?: string;
   /** Output only. Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Instance-specific conditions include: * `Ready`: `True` when the Instance is ready to be executed. */
-  conditions?: Array<GoogleCloudRunV1Condition>;
+  conditions?: ReadonlyArray<GoogleCloudRunV1Condition>;
   /** Output only. All URLs serving traffic for this Instance. */
-  urls?: Array<string>;
+  urls?: ReadonlyArray<string>;
 }
 
 export const InstanceStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2069,11 +2069,11 @@ export interface ListInstancesResponse {
   /** Metadata associated with this Instances list. */
   metadata?: ListMeta;
   /** List of Instances. */
-  items?: Array<Instance>;
+  items?: ReadonlyArray<Instance>;
   /** The API version for this call such as "run.googleapis.com/v1". */
   apiVersion?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2119,7 +2119,7 @@ export const GoogleDevtoolsCloudbuildV1StorageSource =
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
-  locations?: Array<Location>;
+  locations?: ReadonlyArray<Location>;
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
@@ -2190,27 +2190,27 @@ export const GoogleDevtoolsCloudbuildV1UploadedPythonPackage =
 
 export interface GoogleDevtoolsCloudbuildV1Results {
   /** Output only. Generic artifacts uploaded to Artifact Registry at the end of the build. */
-  genericArtifacts?: Array<GoogleDevtoolsCloudbuildV1UploadedGenericArtifact>;
+  genericArtifacts?: ReadonlyArray<GoogleDevtoolsCloudbuildV1UploadedGenericArtifact>;
   /** Optional. Go module artifacts uploaded to Artifact Registry at the end of the build. */
-  goModules?: Array<GoogleDevtoolsCloudbuildV1UploadedGoModule>;
+  goModules?: ReadonlyArray<GoogleDevtoolsCloudbuildV1UploadedGoModule>;
   /** Container images that were built as a part of the build. */
-  images?: Array<GoogleDevtoolsCloudbuildV1BuiltImage>;
+  images?: ReadonlyArray<GoogleDevtoolsCloudbuildV1BuiltImage>;
   /** List of build step digests, in the order corresponding to build step indices. */
-  buildStepImages?: Array<string>;
+  buildStepImages?: ReadonlyArray<string>;
   /** Path to the artifact manifest for non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage. */
   artifactManifest?: string;
   /** Maven artifacts uploaded to Artifact Registry at the end of the build. */
-  mavenArtifacts?: Array<GoogleDevtoolsCloudbuildV1UploadedMavenArtifact>;
+  mavenArtifacts?: ReadonlyArray<GoogleDevtoolsCloudbuildV1UploadedMavenArtifact>;
   /** Npm packages uploaded to Artifact Registry at the end of the build. */
-  npmPackages?: Array<GoogleDevtoolsCloudbuildV1UploadedNpmPackage>;
+  npmPackages?: ReadonlyArray<GoogleDevtoolsCloudbuildV1UploadedNpmPackage>;
   /** List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored. Note that the `$BUILDER_OUTPUT` variable is read-only and can't be substituted. */
-  buildStepOutputs?: Array<string>;
+  buildStepOutputs?: ReadonlyArray<string>;
   /** Time to push all non-container artifacts to Cloud Storage. */
   artifactTiming?: GoogleDevtoolsCloudbuildV1TimeSpan;
   /** Number of non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to Cloud Storage. */
   numArtifacts?: string;
   /** Python artifacts uploaded to Artifact Registry at the end of the build. */
-  pythonPackages?: Array<GoogleDevtoolsCloudbuildV1UploadedPythonPackage>;
+  pythonPackages?: ReadonlyArray<GoogleDevtoolsCloudbuildV1UploadedPythonPackage>;
 }
 
 export const GoogleDevtoolsCloudbuildV1Results =
@@ -2320,11 +2320,11 @@ export const GoogleDevtoolsCloudbuildV1NpmPackage =
 
 export interface ListWorkerPoolsResponse {
   /** For calls against the global endpoint, returns the list of Cloud locations that could not be reached. For regional calls, this field is not used. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The API version for this call; returns "run.googleapis.com/v1". */
   apiVersion?: string;
   /** List of WorkerPools. */
-  items?: Array<WorkerPool>;
+  items?: ReadonlyArray<WorkerPool>;
   /** The kind of this resource; returns "WorkerPoolList". */
   kind?: string;
   /** Metadata associated with this WorkerPool list. */
@@ -2423,9 +2423,9 @@ export const GoogleDevtoolsCloudbuildV1Warning =
 
 export interface GoogleDevtoolsCloudbuildV1Secrets {
   /** Secrets in Secret Manager and associated secret environment variable. */
-  secretManager?: Array<GoogleDevtoolsCloudbuildV1SecretManagerSecret>;
+  secretManager?: ReadonlyArray<GoogleDevtoolsCloudbuildV1SecretManagerSecret>;
   /** Secrets encrypted with KMS key and the associated secret environment variable. */
-  inline?: Array<GoogleDevtoolsCloudbuildV1InlineSecret>;
+  inline?: ReadonlyArray<GoogleDevtoolsCloudbuildV1InlineSecret>;
 }
 
 export const GoogleDevtoolsCloudbuildV1Secrets =
@@ -2440,7 +2440,7 @@ export const GoogleDevtoolsCloudbuildV1Secrets =
 
 export interface GoogleDevtoolsCloudbuildV1BuildOptions {
   /** A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE". */
-  env?: Array<string>;
+  env?: ReadonlyArray<string>;
   /** Optional. Option to specify whether structured logging is enabled. If true, JSON-formatted logs are parsed as structured logs. */
   enableStructuredLogging?: boolean;
   /** Optional. Option to specify how default logs buckets are setup. */
@@ -2456,7 +2456,7 @@ export interface GoogleDevtoolsCloudbuildV1BuildOptions {
   /** Option to include built-in and custom substitutions as env variables for all build steps. */
   automapSubstitutions?: boolean;
   /** A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. These variables will be available to all build steps in this build. */
-  secretEnv?: Array<string>;
+  secretEnv?: ReadonlyArray<string>;
   /** Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file. */
   substitutionOption?: "MUST_MATCH" | "ALLOW_LOOSE" | (string & {});
   /** Compute Engine machine type on which to run the build. */
@@ -2473,7 +2473,7 @@ export interface GoogleDevtoolsCloudbuildV1BuildOptions {
   /** This field deprecated; please use `pool.name` instead. */
   workerPool?: string;
   /** Requested hash for SourceProvenance. */
-  sourceProvenanceHash?: Array<
+  sourceProvenanceHash?: ReadonlyArray<
     | "NONE"
     | "SHA256"
     | "MD5"
@@ -2483,7 +2483,7 @@ export interface GoogleDevtoolsCloudbuildV1BuildOptions {
     | (string & {})
   >;
   /** Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration. */
-  volumes?: Array<GoogleDevtoolsCloudbuildV1Volume>;
+  volumes?: ReadonlyArray<GoogleDevtoolsCloudbuildV1Volume>;
   /** Option to specify the logging mode, which determines if and where build logs are stored. */
   logging?:
     | "LOGGING_UNSPECIFIED"
@@ -2561,7 +2561,7 @@ export interface GoogleDevtoolsCloudbuildV1PythonPackage {
   /** Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix. */
   repository?: string;
   /** Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file. */
-  paths?: Array<string>;
+  paths?: ReadonlyArray<string>;
 }
 
 export const GoogleDevtoolsCloudbuildV1PythonPackage =
@@ -2587,19 +2587,19 @@ export interface GoogleDevtoolsCloudbuildV1Artifacts {
   /** A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE. */
   objects?: GoogleDevtoolsCloudbuildV1ArtifactObjects;
   /** Optional. A list of Go modules to be uploaded to Artifact Registry upon successful completion of all build steps. If any objects fail to be pushed, the build is marked FAILURE. */
-  goModules?: Array<GoogleDevtoolsCloudbuildV1GoModule>;
+  goModules?: ReadonlyArray<GoogleDevtoolsCloudbuildV1GoModule>;
   /** A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps. The build service account credentials will be used to perform the upload. If any objects fail to be pushed, the build is marked FAILURE. */
-  pythonPackages?: Array<GoogleDevtoolsCloudbuildV1PythonPackage>;
+  pythonPackages?: ReadonlyArray<GoogleDevtoolsCloudbuildV1PythonPackage>;
   /** A list of images to be pushed upon the successful completion of all build steps. The images will be pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE. */
-  images?: Array<string>;
+  images?: ReadonlyArray<string>;
   /** Optional. A list of generic artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. If any artifacts fail to be pushed, the build is marked FAILURE. */
-  genericArtifacts?: Array<GoogleDevtoolsCloudbuildV1GenericArtifact>;
+  genericArtifacts?: ReadonlyArray<GoogleDevtoolsCloudbuildV1GenericArtifact>;
   /** A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps. Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the build is marked FAILURE. */
-  mavenArtifacts?: Array<GoogleDevtoolsCloudbuildV1MavenArtifact>;
+  mavenArtifacts?: ReadonlyArray<GoogleDevtoolsCloudbuildV1MavenArtifact>;
   /** A list of npm packages to be uploaded to Artifact Registry upon successful completion of all build steps. Npm packages in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any packages fail to be pushed, the build is marked FAILURE. */
-  npmPackages?: Array<GoogleDevtoolsCloudbuildV1NpmPackage>;
+  npmPackages?: ReadonlyArray<GoogleDevtoolsCloudbuildV1NpmPackage>;
   /** Optional. A list of OCI images to be uploaded to Artifact Registry upon successful completion of all build steps. OCI images in the specified paths will be uploaded to the specified Artifact Registry repository using the builder service account's credentials. If any images fail to be pushed, the build is marked FAILURE. */
-  oci?: Array<GoogleDevtoolsCloudbuildV1Oci>;
+  oci?: ReadonlyArray<GoogleDevtoolsCloudbuildV1Oci>;
 }
 
 export const GoogleDevtoolsCloudbuildV1Artifacts =
@@ -2661,13 +2661,13 @@ export interface GoogleDevtoolsCloudbuildV1Build {
   /** Optional. The location of the source files to build. */
   source?: GoogleDevtoolsCloudbuildV1Source;
   /** Output only. Non-fatal problems encountered during the execution of the build. */
-  warnings?: Array<GoogleDevtoolsCloudbuildV1Warning>;
+  warnings?: ReadonlyArray<GoogleDevtoolsCloudbuildV1Warning>;
   /** Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`. */
   logsBucket?: string;
   /** Output only. Unique identifier of the build. */
   id?: string;
   /** Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets */
-  secrets?: Array<GoogleDevtoolsCloudbuildV1Secret>;
+  secrets?: ReadonlyArray<GoogleDevtoolsCloudbuildV1Secret>;
   /** Output only. The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where {build} is a unique identifier generated by the service. */
   name?: string;
   /** Output only. Time at which the request to create the build was received. */
@@ -2675,7 +2675,7 @@ export interface GoogleDevtoolsCloudbuildV1Build {
   /** Secrets and secret environment variables. */
   availableSecrets?: GoogleDevtoolsCloudbuildV1Secrets;
   /** A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`. */
-  images?: Array<string>;
+  images?: ReadonlyArray<string>;
   /** Output only. Describes this build's approval configuration, status, and result. */
   approval?: GoogleDevtoolsCloudbuildV1BuildApproval;
   /** Special options for this build. */
@@ -2687,7 +2687,7 @@ export interface GoogleDevtoolsCloudbuildV1Build {
   /** Output only. Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included. */
   timing?: Record<string, GoogleDevtoolsCloudbuildV1TimeSpan>;
   /** Tags for annotation of a `Build`. These are not docker tags. */
-  tags?: Array<string>;
+  tags?: ReadonlyArray<string>;
   /** Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically. */
   buildTriggerId?: string;
   /** Output only. Time at which execution of the build was started. */
@@ -2695,7 +2695,7 @@ export interface GoogleDevtoolsCloudbuildV1Build {
   /** TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time. */
   queueTtl?: string;
   /** Optional. Dependencies that the Cloud Build worker will fetch before executing user steps. */
-  dependencies?: Array<GoogleDevtoolsCloudbuildV1Dependency>;
+  dependencies?: ReadonlyArray<GoogleDevtoolsCloudbuildV1Dependency>;
   /** Output only. Contains information about the build when status=FAILURE. */
   failureInfo?: GoogleDevtoolsCloudbuildV1FailureInfo;
   /** Optional. Configuration for git operations. */
@@ -2720,7 +2720,7 @@ export interface GoogleDevtoolsCloudbuildV1Build {
   /** Output only. URL to logs for this build in Google Cloud Console. */
   logUrl?: string;
   /** Required. The operations to be performed on the workspace. */
-  steps?: Array<GoogleDevtoolsCloudbuildV1BuildStep>;
+  steps?: ReadonlyArray<GoogleDevtoolsCloudbuildV1BuildStep>;
   /** Output only. A permanent fixed identifier for source. */
   sourceProvenance?: GoogleDevtoolsCloudbuildV1SourceProvenance;
   /** Output only. Time at which execution of the build was finished. The difference between finish_time and start_time is the duration of the build's execution. */
@@ -2799,7 +2799,7 @@ export interface TaskStatus {
   /** Optional. The 'generation' of the task that was last processed by the controller. */
   observedGeneration?: number;
   /** Optional. Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Task-specific conditions include: * `Started`: `True` when the task has started to execute. * `Completed`: `True` when the task has succeeded. `False` when the task has failed. */
-  conditions?: Array<GoogleCloudRunV1Condition>;
+  conditions?: ReadonlyArray<GoogleCloudRunV1Condition>;
   /** Required. Index of the task, unique per execution, and beginning at 0. */
   index?: number;
   /** Optional. Represents time when the task started to run. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. */
@@ -2882,11 +2882,11 @@ export const GoogleLongrunningOperation =
 
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
-  operations?: Array<GoogleLongrunningOperation>;
+  operations?: ReadonlyArray<GoogleLongrunningOperation>;
   /** The standard List next-page token. */
   nextPageToken?: string;
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
 }
 
 export const GoogleLongrunningListOperationsResponse =
@@ -2922,11 +2922,11 @@ export const GoogleDevtoolsCloudbuildV1BuildOperationMetadata =
 
 export interface ListRevisionsResponse {
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The API version for this call such as "serving.knative.dev/v1". */
   apiVersion?: string;
   /** List of Revisions. */
-  items?: Array<Revision>;
+  items?: ReadonlyArray<Revision>;
   /** The kind of this resource, in this case "RevisionList". */
   kind?: string;
   /** Metadata associated with this revision list. */
@@ -2964,13 +2964,13 @@ export const Job = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListJobsResponse {
   /** List of Jobs. */
-  items?: Array<Job>;
+  items?: ReadonlyArray<Job>;
   /** The kind of this resource, in this case "JobsList". */
   kind?: string;
   /** Metadata associated with this jobs list. */
   metadata?: ListMeta;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The API version for this call such as "run.googleapis.com/v1". */
   apiVersion?: string;
 }
@@ -2987,13 +2987,13 @@ export interface ListTasksResponse {
   /** The API version for this call such as "run.googleapis.com/v1". */
   apiVersion?: string;
   /** Locations that could not be reached. */
-  unreachable?: Array<string>;
+  unreachable?: ReadonlyArray<string>;
   /** The kind of this resource, in this case "TasksList". */
   kind?: string;
   /** Metadata associated with this tasks list. */
   metadata?: ListMeta;
   /** List of Tasks. */
-  items?: Array<Task>;
+  items?: ReadonlyArray<Task>;
 }
 
 export const ListTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -3006,7 +3006,7 @@ export const ListTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface ListAuthorizedDomainsResponse {
   /** The authorized domains belonging to the user. */
-  domains?: Array<AuthorizedDomain>;
+  domains?: ReadonlyArray<AuthorizedDomain>;
   /** Continuation token for fetching the next page of results. */
   nextPageToken?: string;
 }
@@ -3019,7 +3019,7 @@ export const ListAuthorizedDomainsResponse =
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: Array<string>;
+  permissions?: ReadonlyArray<string>;
 }
 
 export const TestIamPermissionsResponse =
@@ -3060,7 +3060,7 @@ export const ListProjectsLocationsRequest =
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
     filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
   }).pipe(
-    T.Http({ method: "GET", path: "v1/projects/{projectsId}/locations" }),
+    T.Http({ method: "GET", path: "v1/{name}/locations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRequest>;
 
@@ -3124,10 +3124,7 @@ export const ListProjectsLocationsConfigurationsRequest =
       T.HttpQuery("resourceVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/configurations",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/configurations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsConfigurationsRequest>;
 
@@ -3159,10 +3156,7 @@ export const GetProjectsLocationsConfigurationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/configurations/{configurationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsConfigurationsRequest>;
 
@@ -3198,10 +3192,7 @@ export const GetIamPolicyProjectsLocationsJobsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsJobsRequest>;
 
@@ -3237,7 +3228,7 @@ export const TestIamPermissionsProjectsLocationsJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -3276,7 +3267,7 @@ export const SetIamPolicyProjectsLocationsJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/jobs/{jobsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -3314,7 +3305,7 @@ export const SetIamPolicyProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -3352,10 +3343,7 @@ export const GetIamPolicyProjectsLocationsInstancesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsInstancesRequest>;
 
@@ -3391,7 +3379,7 @@ export const TestIamPermissionsProjectsLocationsInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -3430,7 +3418,7 @@ export const SetIamPolicyProjectsLocationsWorkerpoolsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workerpools/{workerpoolsId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -3468,10 +3456,7 @@ export const GetIamPolicyProjectsLocationsWorkerpoolsRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workerpools/{workerpoolsId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsWorkerpoolsRequest>;
 
@@ -3507,7 +3492,7 @@ export const TestIamPermissionsProjectsLocationsWorkerpoolsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/workerpools/{workerpoolsId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -3570,10 +3555,7 @@ export const ListProjectsLocationsRoutesRequest =
       T.HttpQuery("includeUninitialized"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/routes",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/routes" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRoutesRequest>;
 
@@ -3604,10 +3586,7 @@ export const GetProjectsLocationsRoutesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/routes/{routesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRoutesRequest>;
 
@@ -3667,10 +3646,7 @@ export const ListProjectsLocationsDomainmappingsRequest =
     limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
     continue: Schema.optional(Schema.String).pipe(T.HttpQuery("continue")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/domainmappings",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/domainmappings" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsDomainmappingsRequest>;
 
@@ -3702,10 +3678,7 @@ export const GetProjectsLocationsDomainmappingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/domainmappings/{domainmappingsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsDomainmappingsRequest>;
 
@@ -3750,10 +3723,7 @@ export const DeleteProjectsLocationsDomainmappingsRequest =
     kind: Schema.optional(Schema.String).pipe(T.HttpQuery("kind")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/domainmappings/{domainmappingsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsDomainmappingsRequest>;
 
@@ -3792,7 +3762,7 @@ export const CreateProjectsLocationsDomainmappingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/domainmappings",
+      path: "v1/{parent}/domainmappings",
       hasBody: true,
     }),
     svc,
@@ -3854,10 +3824,7 @@ export const ListProjectsLocationsServicesRequest =
     ),
     watch: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("watch")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/services",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/services" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsServicesRequest>;
 
@@ -3902,10 +3869,7 @@ export const DeleteProjectsLocationsServicesRequest =
     apiVersion: Schema.optional(Schema.String).pipe(T.HttpQuery("apiVersion")),
     dryRun: Schema.optional(Schema.String).pipe(T.HttpQuery("dryRun")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsServicesRequest>;
 
@@ -3941,10 +3905,7 @@ export const GetIamPolicyProjectsLocationsServicesRequest =
       T.HttpQuery("options.requestedPolicyVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:getIamPolicy",
-    }),
+    T.Http({ method: "GET", path: "v1/{resource}:getIamPolicy" }),
     svc,
   ) as unknown as Schema.Schema<GetIamPolicyProjectsLocationsServicesRequest>;
 
@@ -3981,11 +3942,7 @@ export const CreateProjectsLocationsServicesRequest =
     dryRun: Schema.optional(Schema.String).pipe(T.HttpQuery("dryRun")),
     body: Schema.optional(Service).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/services",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{parent}/services", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<CreateProjectsLocationsServicesRequest>;
 
@@ -4016,10 +3973,7 @@ export const GetProjectsLocationsServicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsServicesRequest>;
 
@@ -4055,7 +4009,7 @@ export const SetIamPolicyProjectsLocationsServicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:setIamPolicy",
+      path: "v1/{resource}:setIamPolicy",
       hasBody: true,
     }),
     svc,
@@ -4094,11 +4048,7 @@ export const ReplaceServiceProjectsLocationsServicesRequest =
     dryRun: Schema.optional(Schema.String).pipe(T.HttpQuery("dryRun")),
     body: Schema.optional(Service).pipe(T.HttpBody()),
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
-      hasBody: true,
-    }),
+    T.Http({ method: "PUT", path: "v1/{name}", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<ReplaceServiceProjectsLocationsServicesRequest>;
 
@@ -4134,7 +4084,7 @@ export const TestIamPermissionsProjectsLocationsServicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:testIamPermissions",
+      path: "v1/{resource}:testIamPermissions",
       hasBody: true,
     }),
     svc,
@@ -4174,10 +4124,7 @@ export const ListProjectsLocationsAuthorizeddomainsRequest =
     parent: Schema.String.pipe(T.HttpPath("parent")),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/authorizeddomains",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/authorizeddomains" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsAuthorizeddomainsRequest>;
 
@@ -4213,10 +4160,7 @@ export const DeleteProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsOperationsRequest>;
 
@@ -4252,11 +4196,7 @@ export const WaitProjectsLocationsOperationsRequest =
       T.HttpBody(),
     ),
   }).pipe(
-    T.Http({
-      method: "POST",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}:wait",
-      hasBody: true,
-    }),
+    T.Http({ method: "POST", path: "v1/{name}:wait", hasBody: true }),
     svc,
   ) as unknown as Schema.Schema<WaitProjectsLocationsOperationsRequest>;
 
@@ -4302,10 +4242,7 @@ export const ListProjectsLocationsOperationsRequest =
     ),
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}/operations" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsOperationsRequest>;
 
@@ -4341,10 +4278,7 @@ export const GetProjectsLocationsOperationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsOperationsRequest>;
 
@@ -4404,10 +4338,7 @@ export const ListProjectsLocationsRevisionsRequest =
     ),
     watch: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("watch")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/revisions",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/revisions" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsLocationsRevisionsRequest>;
 
@@ -4438,10 +4369,7 @@ export const GetProjectsLocationsRevisionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/revisions/{revisionsId}",
-    }),
+    T.Http({ method: "GET", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetProjectsLocationsRevisionsRequest>;
 
@@ -4486,10 +4414,7 @@ export const DeleteProjectsLocationsRevisionsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     kind: Schema.optional(Schema.String).pipe(T.HttpQuery("kind")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "v1/projects/{projectsId}/locations/{locationsId}/revisions/{revisionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteProjectsLocationsRevisionsRequest>;
 
@@ -4526,10 +4451,7 @@ export const ListProjectsAuthorizeddomainsRequest =
     pageSize: Schema.optional(Schema.Number).pipe(T.HttpQuery("pageSize")),
     pageToken: Schema.optional(Schema.String).pipe(T.HttpQuery("pageToken")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "v1/projects/{projectsId}/authorizeddomains",
-    }),
+    T.Http({ method: "GET", path: "v1/{parent}/authorizeddomains" }),
     svc,
   ) as unknown as Schema.Schema<ListProjectsAuthorizeddomainsRequest>;
 
@@ -4578,7 +4500,7 @@ export const ListNamespacesWorkerpoolsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/workerpools",
+      path: "apis/run.googleapis.com/v1/{parent}/workerpools",
     }),
     svc,
   ) as unknown as Schema.Schema<ListNamespacesWorkerpoolsRequest>;
@@ -4618,7 +4540,7 @@ export const ReplaceWorkerPoolNamespacesWorkerpoolsRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/workerpools/{workerpoolsId}",
+      path: "apis/run.googleapis.com/v1/{name}",
       hasBody: true,
     }),
     svc,
@@ -4654,10 +4576,7 @@ export const DeleteNamespacesWorkerpoolsRequest =
     name: Schema.String.pipe(T.HttpPath("name")),
     dryRun: Schema.optional(Schema.String).pipe(T.HttpQuery("dryRun")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/workerpools/{workerpoolsId}",
-    }),
+    T.Http({ method: "DELETE", path: "apis/run.googleapis.com/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteNamespacesWorkerpoolsRequest>;
 
@@ -4696,7 +4615,7 @@ export const CreateNamespacesWorkerpoolsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/workerpools",
+      path: "apis/run.googleapis.com/v1/{parent}/workerpools",
       hasBody: true,
     }),
     svc,
@@ -4729,10 +4648,7 @@ export const GetNamespacesWorkerpoolsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/workerpools/{workerpoolsId}",
-    }),
+    T.Http({ method: "GET", path: "apis/run.googleapis.com/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetNamespacesWorkerpoolsRequest>;
 
@@ -4794,7 +4710,7 @@ export const ListNamespacesDomainmappingsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "apis/domains.cloudrun.com/v1/namespaces/{namespacesId}/domainmappings",
+      path: "apis/domains.cloudrun.com/v1/{parent}/domainmappings",
     }),
     svc,
   ) as unknown as Schema.Schema<ListNamespacesDomainmappingsRequest>;
@@ -4826,10 +4742,7 @@ export const GetNamespacesDomainmappingsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "apis/domains.cloudrun.com/v1/namespaces/{namespacesId}/domainmappings/{domainmappingsId}",
-    }),
+    T.Http({ method: "GET", path: "apis/domains.cloudrun.com/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetNamespacesDomainmappingsRequest>;
 
@@ -4868,7 +4781,7 @@ export const CreateNamespacesDomainmappingsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "apis/domains.cloudrun.com/v1/namespaces/{namespacesId}/domainmappings",
+      path: "apis/domains.cloudrun.com/v1/{parent}/domainmappings",
       hasBody: true,
     }),
     svc,
@@ -4915,10 +4828,7 @@ export const DeleteNamespacesDomainmappingsRequest =
     kind: Schema.optional(Schema.String).pipe(T.HttpQuery("kind")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "apis/domains.cloudrun.com/v1/namespaces/{namespacesId}/domainmappings/{domainmappingsId}",
-    }),
+    T.Http({ method: "DELETE", path: "apis/domains.cloudrun.com/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteNamespacesDomainmappingsRequest>;
 
@@ -4963,10 +4873,7 @@ export const DeleteNamespacesServicesRequest =
     kind: Schema.optional(Schema.String).pipe(T.HttpQuery("kind")),
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "apis/serving.knative.dev/v1/namespaces/{namespacesId}/services/{servicesId}",
-    }),
+    T.Http({ method: "DELETE", path: "apis/serving.knative.dev/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteNamespacesServicesRequest>;
 
@@ -5005,7 +4912,7 @@ export const CreateNamespacesServicesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "apis/serving.knative.dev/v1/namespaces/{namespacesId}/services",
+      path: "apis/serving.knative.dev/v1/{parent}/services",
       hasBody: true,
     }),
     svc,
@@ -5069,7 +4976,7 @@ export const ListNamespacesServicesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "apis/serving.knative.dev/v1/namespaces/{namespacesId}/services",
+      path: "apis/serving.knative.dev/v1/{parent}/services",
     }),
     svc,
   ) as unknown as Schema.Schema<ListNamespacesServicesRequest>;
@@ -5109,7 +5016,7 @@ export const ReplaceServiceNamespacesServicesRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "apis/serving.knative.dev/v1/namespaces/{namespacesId}/services/{servicesId}",
+      path: "apis/serving.knative.dev/v1/{name}",
       hasBody: true,
     }),
     svc,
@@ -5142,10 +5049,7 @@ export const GetNamespacesServicesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "apis/serving.knative.dev/v1/namespaces/{namespacesId}/services/{servicesId}",
-    }),
+    T.Http({ method: "GET", path: "apis/serving.knative.dev/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetNamespacesServicesRequest>;
 
@@ -5176,10 +5080,7 @@ export const GetNamespacesExecutionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/executions/{executionsId}",
-    }),
+    T.Http({ method: "GET", path: "apis/run.googleapis.com/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetNamespacesExecutionsRequest>;
 
@@ -5241,7 +5142,7 @@ export const ListNamespacesExecutionsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/executions",
+      path: "apis/run.googleapis.com/v1/{parent}/executions",
     }),
     svc,
   ) as unknown as Schema.Schema<ListNamespacesExecutionsRequest>;
@@ -5284,10 +5185,7 @@ export const DeleteNamespacesExecutionsRequest =
     kind: Schema.optional(Schema.String).pipe(T.HttpQuery("kind")),
     apiVersion: Schema.optional(Schema.String).pipe(T.HttpQuery("apiVersion")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/executions/{executionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "apis/run.googleapis.com/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteNamespacesExecutionsRequest>;
 
@@ -5323,7 +5221,7 @@ export const CancelNamespacesExecutionsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/executions/{executionsId}:cancel",
+      path: "apis/run.googleapis.com/v1/{name}:cancel",
       hasBody: true,
     }),
     svc,
@@ -5387,7 +5285,7 @@ export const ListNamespacesRoutesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "apis/serving.knative.dev/v1/namespaces/{namespacesId}/routes",
+      path: "apis/serving.knative.dev/v1/{parent}/routes",
     }),
     svc,
   ) as unknown as Schema.Schema<ListNamespacesRoutesRequest>;
@@ -5419,10 +5317,7 @@ export const GetNamespacesRoutesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "apis/serving.knative.dev/v1/namespaces/{namespacesId}/routes/{routesId}",
-    }),
+    T.Http({ method: "GET", path: "apis/serving.knative.dev/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetNamespacesRoutesRequest>;
 
@@ -5481,10 +5376,7 @@ export const ListNamespacesJobsRequest =
       T.HttpQuery("resourceVersion"),
     ),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/jobs",
-    }),
+    T.Http({ method: "GET", path: "apis/run.googleapis.com/v1/{parent}/jobs" }),
     svc,
   ) as unknown as Schema.Schema<ListNamespacesJobsRequest>;
 
@@ -5526,10 +5418,7 @@ export const DeleteNamespacesJobsRequest =
     kind: Schema.optional(Schema.String).pipe(T.HttpQuery("kind")),
     apiVersion: Schema.optional(Schema.String).pipe(T.HttpQuery("apiVersion")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/jobs/{jobsId}",
-    }),
+    T.Http({ method: "DELETE", path: "apis/run.googleapis.com/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteNamespacesJobsRequest>;
 
@@ -5564,7 +5453,7 @@ export const CreateNamespacesJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/jobs",
+      path: "apis/run.googleapis.com/v1/{parent}/jobs",
       hasBody: true,
     }),
     svc,
@@ -5601,7 +5490,7 @@ export const ReplaceJobNamespacesJobsRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/jobs/{jobsId}",
+      path: "apis/run.googleapis.com/v1/{name}",
       hasBody: true,
     }),
     svc,
@@ -5633,10 +5522,7 @@ export const GetNamespacesJobsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/jobs/{jobsId}",
-    }),
+    T.Http({ method: "GET", path: "apis/run.googleapis.com/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetNamespacesJobsRequest>;
 
@@ -5671,7 +5557,7 @@ export const RunNamespacesJobsRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/jobs/{jobsId}:run",
+      path: "apis/run.googleapis.com/v1/{name}:run",
       hasBody: true,
     }),
     svc,
@@ -5734,7 +5620,7 @@ export const ListNamespacesConfigurationsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "apis/serving.knative.dev/v1/namespaces/{namespacesId}/configurations",
+      path: "apis/serving.knative.dev/v1/{parent}/configurations",
     }),
     svc,
   ) as unknown as Schema.Schema<ListNamespacesConfigurationsRequest>;
@@ -5766,10 +5652,7 @@ export const GetNamespacesConfigurationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "apis/serving.knative.dev/v1/namespaces/{namespacesId}/configurations/{configurationsId}",
-    }),
+    T.Http({ method: "GET", path: "apis/serving.knative.dev/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetNamespacesConfigurationsRequest>;
 
@@ -5805,7 +5688,7 @@ export const CreateNamespacesInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/instances",
+      path: "apis/run.googleapis.com/v1/{parent}/instances",
       hasBody: true,
     }),
     svc,
@@ -5849,10 +5732,7 @@ export const DeleteNamespacesInstancesRequest =
     kind: Schema.optional(Schema.String).pipe(T.HttpQuery("kind")),
     apiVersion: Schema.optional(Schema.String).pipe(T.HttpQuery("apiVersion")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/instances/{instancesId}",
-    }),
+    T.Http({ method: "DELETE", path: "apis/run.googleapis.com/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteNamespacesInstancesRequest>;
 
@@ -5888,7 +5768,7 @@ export const StartNamespacesInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/instances/{instancesId}:start",
+      path: "apis/run.googleapis.com/v1/{name}:start",
       hasBody: true,
     }),
     svc,
@@ -5926,7 +5806,7 @@ export const StopNamespacesInstancesRequest =
   }).pipe(
     T.Http({
       method: "POST",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/instances/{instancesId}:stop",
+      path: "apis/run.googleapis.com/v1/{name}:stop",
       hasBody: true,
     }),
     svc,
@@ -5990,7 +5870,7 @@ export const ListNamespacesInstancesRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/instances",
+      path: "apis/run.googleapis.com/v1/{parent}/instances",
     }),
     svc,
   ) as unknown as Schema.Schema<ListNamespacesInstancesRequest>;
@@ -6027,7 +5907,7 @@ export const ReplaceInstanceNamespacesInstancesRequest =
   }).pipe(
     T.Http({
       method: "PUT",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/instances/{instancesId}",
+      path: "apis/run.googleapis.com/v1/{name}",
       hasBody: true,
     }),
     svc,
@@ -6060,10 +5940,7 @@ export const GetNamespacesInstancesRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/instances/{instancesId}",
-    }),
+    T.Http({ method: "GET", path: "apis/run.googleapis.com/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetNamespacesInstancesRequest>;
 
@@ -6094,10 +5971,7 @@ export const GetNamespacesTasksRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/tasks/{tasksId}",
-    }),
+    T.Http({ method: "GET", path: "apis/run.googleapis.com/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetNamespacesTasksRequest>;
 
@@ -6158,7 +6032,7 @@ export const ListNamespacesTasksRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "apis/run.googleapis.com/v1/namespaces/{namespacesId}/tasks",
+      path: "apis/run.googleapis.com/v1/{parent}/tasks",
     }),
     svc,
   ) as unknown as Schema.Schema<ListNamespacesTasksRequest>;
@@ -6198,7 +6072,7 @@ export const ListNamespacesAuthorizeddomainsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "apis/domains.cloudrun.com/v1/namespaces/{namespacesId}/authorizeddomains",
+      path: "apis/domains.cloudrun.com/v1/{parent}/authorizeddomains",
     }),
     svc,
   ) as unknown as Schema.Schema<ListNamespacesAuthorizeddomainsRequest>;
@@ -6249,10 +6123,7 @@ export const DeleteNamespacesRevisionsRequest =
     ),
     apiVersion: Schema.optional(Schema.String).pipe(T.HttpQuery("apiVersion")),
   }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "apis/serving.knative.dev/v1/namespaces/{namespacesId}/revisions/{revisionsId}",
-    }),
+    T.Http({ method: "DELETE", path: "apis/serving.knative.dev/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<DeleteNamespacesRevisionsRequest>;
 
@@ -6314,7 +6185,7 @@ export const ListNamespacesRevisionsRequest =
   }).pipe(
     T.Http({
       method: "GET",
-      path: "apis/serving.knative.dev/v1/namespaces/{namespacesId}/revisions",
+      path: "apis/serving.knative.dev/v1/{parent}/revisions",
     }),
     svc,
   ) as unknown as Schema.Schema<ListNamespacesRevisionsRequest>;
@@ -6346,10 +6217,7 @@ export const GetNamespacesRevisionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String.pipe(T.HttpPath("name")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "apis/serving.knative.dev/v1/namespaces/{namespacesId}/revisions/{revisionsId}",
-    }),
+    T.Http({ method: "GET", path: "apis/serving.knative.dev/v1/{name}" }),
     svc,
   ) as unknown as Schema.Schema<GetNamespacesRevisionsRequest>;
 

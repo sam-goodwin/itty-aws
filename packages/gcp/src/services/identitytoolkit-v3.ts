@@ -171,7 +171,7 @@ export interface UserInfo {
   /** The user's password salt. */
   salt?: string;
   /** The IDP of the user. */
-  providerUserInfo?: Array<{
+  providerUserInfo?: ReadonlyArray<{
     phoneNumber?: string;
     photoUrl?: string;
     rawId?: string;
@@ -236,7 +236,7 @@ export const UserInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface GetAccountInfoResponse {
   /** The info of the users. */
-  users?: Array<UserInfo>;
+  users?: ReadonlyArray<UserInfo>;
   /** The fixed string "identitytoolkit#GetAccountInfoResponse". */
   kind?: string;
 }
@@ -333,7 +333,7 @@ export interface IdpConfig {
   /** Percent of users who will be prompted/redirected federated login for this IDP. */
   experimentPercent?: number;
   /** Whitelisted client IDs for audience check. */
-  whitelistedAudiences?: Array<string>;
+  whitelistedAudiences?: ReadonlyArray<string>;
 }
 
 export const IdpConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -358,7 +358,7 @@ export interface IdentitytoolkitRelyingpartyGetProjectConfigResponse {
   /** Reset password email template. */
   resetPasswordTemplate?: EmailTemplate;
   /** OAuth2 provider configuration. */
-  idpConfig?: Array<IdpConfig>;
+  idpConfig?: ReadonlyArray<IdpConfig>;
   /** Whether anonymous user is enabled. */
   enableAnonymousUser?: boolean;
   /** Legacy reset password email template. */
@@ -368,7 +368,7 @@ export interface IdentitytoolkitRelyingpartyGetProjectConfigResponse {
   /** Whether to use email sending provided by Firebear. */
   useEmailSending?: boolean;
   /** Authorized domains. */
-  authorizedDomains?: Array<string>;
+  authorizedDomains?: ReadonlyArray<string>;
 }
 
 export const IdentitytoolkitRelyingpartyGetProjectConfigResponse =
@@ -429,7 +429,7 @@ export interface UploadAccountResponse {
   /** The fixed string "identitytoolkit#UploadAccountResponse". */
   kind?: string;
   /** The error encountered while processing the account info. */
-  error?: Array<{ index?: number; message?: string }>;
+  error?: ReadonlyArray<{ index?: number; message?: string }>;
 }
 
 export const UploadAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -599,7 +599,7 @@ export interface VerifyAssertionResponse {
   /** The first name of the user. */
   firstName?: string;
   /** When action is 'map', contains the idps which can be used for confirmation. */
-  verifiedProvider?: Array<string>;
+  verifiedProvider?: ReadonlyArray<string>;
   /** The OIDC id token. */
   oauthIdToken?: string;
 }
@@ -651,7 +651,7 @@ export interface IdentitytoolkitRelyingpartySetProjectConfigRequest {
   /** Whether to use email sending provided by Firebear. */
   useEmailSending?: boolean;
   /** Authorized domains for widget redirect. */
-  authorizedDomains?: Array<string>;
+  authorizedDomains?: ReadonlyArray<string>;
   /** Whether to enable anonymous user. */
   enableAnonymousUser?: boolean;
   /** Legacy reset password email template. */
@@ -659,7 +659,7 @@ export interface IdentitytoolkitRelyingpartySetProjectConfigRequest {
   /** Verify email template. */
   verifyEmailTemplate?: EmailTemplate;
   /** Oauth2 provider configuration. */
-  idpConfig?: Array<IdpConfig>;
+  idpConfig?: ReadonlyArray<IdpConfig>;
   /** Browser API key, needed when making http request to Apiary. */
   apiKey?: string;
   /** Reset password email template. */
@@ -693,11 +693,11 @@ export interface IdentitytoolkitRelyingpartyGetAccountInfoRequest {
   /** GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration. */
   delegatedProjectNumber?: string;
   /** The list of local ID's of the users to inquiry. */
-  localId?: Array<string>;
+  localId?: ReadonlyArray<string>;
   /** The list of emails of the users to inquiry. */
-  email?: Array<string>;
+  email?: ReadonlyArray<string>;
   /** Privileged caller can query users by specified phone number. */
-  phoneNumber?: Array<string>;
+  phoneNumber?: ReadonlyArray<string>;
   /** The GITKit token of the authenticated user. */
   idToken?: string;
 }
@@ -789,7 +789,7 @@ export interface CreateAuthUriResponse {
   /** The URI used by the IDP to authenticate the user. */
   authUri?: string;
   /** All sign-in methods this user has used. */
-  signinMethods?: Array<string>;
+  signinMethods?: ReadonlyArray<string>;
   /** True if captcha is required. */
   captchaRequired?: boolean;
   /** Whether the user is registered if the identifier is an email. */
@@ -799,7 +799,7 @@ export interface CreateAuthUriResponse {
   /** The provider ID of the auth URI. */
   providerId?: string;
   /** all providers the user has once used to do federated login */
-  allProviders?: Array<string>;
+  allProviders?: ReadonlyArray<string>;
   /** The fixed string identitytoolkit#CreateAuthUriResponse". */
   kind?: string;
   /** True if the authUri is for user's existing provider. */
@@ -820,7 +820,7 @@ export const CreateAuthUriResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export interface DownloadAccountResponse {
   /** The user accounts data. */
-  users?: Array<UserInfo>;
+  users?: ReadonlyArray<UserInfo>;
   /** The fixed string "identitytoolkit#DownloadAccountResponse". */
   kind?: string;
   /** The next page token. To be used in a subsequent request to return the next page of results. */
@@ -928,7 +928,7 @@ export interface SetAccountInfoResponse {
   /** The Gitkit id token to login the newly sign up user. */
   idToken?: string;
   /** The user's profiles at the associated IdPs. */
-  providerUserInfo?: Array<{
+  providerUserInfo?: ReadonlyArray<{
     providerId?: string;
     displayName?: string;
     federatedId?: string;
@@ -1063,7 +1063,7 @@ export interface IdentitytoolkitRelyingpartyUploadAccountRequest {
   memoryCost?: number;
   parallelization?: number;
   /** The account info to be stored. */
-  users?: Array<UserInfo>;
+  users?: ReadonlyArray<UserInfo>;
   /** The following 4 fields are for standard scrypt algorithm. */
   cpuMemCost?: number;
   dkLen?: number;
@@ -1177,7 +1177,7 @@ export interface IdentitytoolkitRelyingpartySetAccountInfoRequest {
   /** GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration. */
   delegatedProjectNumber?: string;
   /** The attributes users request to delete. */
-  deleteAttribute?: Array<string>;
+  deleteAttribute?: ReadonlyArray<string>;
   /** The name of the user. */
   displayName?: string;
   /** Last login timestamp. */
@@ -1189,7 +1189,7 @@ export interface IdentitytoolkitRelyingpartySetAccountInfoRequest {
   /** The photo url of the user. */
   photoUrl?: string;
   /** The associated IDPs of the user. */
-  provider?: Array<string>;
+  provider?: ReadonlyArray<string>;
   /** Whether to disable the user. */
   disableUser?: boolean;
   /** Mark the email as verified or not. */
@@ -1207,7 +1207,7 @@ export interface IdentitytoolkitRelyingpartySetAccountInfoRequest {
   /** Timestamp in seconds for valid login token. */
   validSince?: string;
   /** The IDPs the user request to delete. */
-  deleteProvider?: Array<string>;
+  deleteProvider?: ReadonlyArray<string>;
   /** The timestamp when the account is created. */
   createdAt?: string;
   /** The custom attributes to be set in the user's id token. */
