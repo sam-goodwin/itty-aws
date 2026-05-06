@@ -143,7 +143,7 @@ describe("Pipelines", () => {
         accountId: "invalid-account-id-000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
   });
 
@@ -248,7 +248,7 @@ describe("Pipelines", () => {
         pipelineName: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
   });
 
@@ -331,7 +331,7 @@ describe("Pipelines", () => {
         http: { authentication: false, enabled: true },
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - InvalidStreamName for empty stream name", () =>
@@ -482,7 +482,7 @@ describe("Pipelines", () => {
         accountId: "invalid-account-id-000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
   });
 
@@ -590,7 +590,7 @@ describe("Pipelines", () => {
         streamId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - CloudflareHttpError for empty streamId", () =>
@@ -634,7 +634,7 @@ describe("Pipelines", () => {
         accountId: "invalid-account-id-000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("pages() streams listSinks response pages", () =>
@@ -711,7 +711,7 @@ describe("Pipelines", () => {
         type: "r2",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidSinkConfig")),
       ));
 
     test("error - CloudflareHttpError for invalid accountId", () =>
@@ -721,7 +721,7 @@ describe("Pipelines", () => {
         type: "r2",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - InvalidSinkId for empty sink name", () =>
@@ -731,7 +731,7 @@ describe("Pipelines", () => {
         type: "r2",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
   });
 
@@ -755,7 +755,7 @@ describe("Pipelines", () => {
         sinkId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - CloudflareHttpError for empty sinkId", () =>
@@ -792,7 +792,7 @@ describe("Pipelines", () => {
       }).pipe(
         Effect.flip,
         // Cloudflare uses error code 1014 for all SQL validation errors
-        Effect.map((e) => expect(e._tag).toBe("TableNotFound")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidSql")),
       ));
 
     test("error - TableNotFound for empty SQL string", () =>
@@ -802,7 +802,7 @@ describe("Pipelines", () => {
       }).pipe(
         Effect.flip,
         // Cloudflare uses error code 1014 for all SQL validation errors
-        Effect.map((e) => expect(e._tag).toBe("TableNotFound")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidSql")),
       ));
 
     test("error - CloudflareHttpError for invalid accountId", () =>
@@ -811,7 +811,7 @@ describe("Pipelines", () => {
         sql: "SELECT * FROM stream",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
   });
 
@@ -875,7 +875,7 @@ describe("Pipelines", () => {
         accountId: "invalid-account-id-000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
   });
 
@@ -889,7 +889,7 @@ describe("Pipelines", () => {
         pipelineId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("PipelineNotExists")),
       ));
 
     test("error - CloudflareHttpError for invalid accountId", () =>
@@ -898,7 +898,7 @@ describe("Pipelines", () => {
         pipelineId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - CloudflareHttpError for empty pipelineId", () =>
@@ -922,7 +922,7 @@ describe("Pipelines", () => {
         sql: "NOT VALID SQL ;;;",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidSql")),
       ));
 
     test("error - CloudflareHttpError for invalid accountId", () =>
@@ -932,7 +932,7 @@ describe("Pipelines", () => {
         sql: "SELECT * FROM stream",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - validation error for empty pipeline name", () =>
@@ -942,7 +942,7 @@ describe("Pipelines", () => {
         sql: "SELECT * FROM stream",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
 
     test("error - validation error for empty SQL string", () =>
@@ -952,7 +952,7 @@ describe("Pipelines", () => {
         sql: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
   });
 
@@ -966,7 +966,7 @@ describe("Pipelines", () => {
         pipelineId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("PipelineNotExists")),
       ));
 
     test("error - CloudflareHttpError for invalid accountId", () =>
@@ -975,7 +975,7 @@ describe("Pipelines", () => {
         pipelineId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - CloudflareHttpError for empty pipelineId", () =>
@@ -1015,7 +1015,7 @@ describe("Pipelines", () => {
         source: [{ format: "json", type: "http" }],
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
 
     test("error - CloudflareHttpError for invalid accountId", () =>
@@ -1037,7 +1037,7 @@ describe("Pipelines", () => {
         source: [{ format: "json", type: "http" }],
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty pipeline name", () =>
@@ -1059,7 +1059,7 @@ describe("Pipelines", () => {
         source: [{ format: "json", type: "http" }],
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
 
     test("error - empty source array", () =>
@@ -1081,7 +1081,7 @@ describe("Pipelines", () => {
         source: [],
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
   });
 });

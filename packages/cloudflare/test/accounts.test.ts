@@ -318,7 +318,7 @@ describe("Accounts", () => {
         memberId: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
   });
 
@@ -414,7 +414,7 @@ describe("Accounts", () => {
         subscriptionIdentifier: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
   });
 
@@ -447,7 +447,7 @@ describe("Accounts", () => {
         subscriptionIdentifier: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
   });
 

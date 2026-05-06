@@ -32,6 +32,7 @@ import {
   Forbidden,
   HTTP_STATUS_MAP,
   InternalServerError,
+  InvalidRoute,
   TooManyRequests,
   Unauthorized,
   UnknownCloudflareError,
@@ -101,6 +102,11 @@ const GLOBAL_ERROR_CODE_MAP: Record<
     const error = new Forbidden({ message });
     return /internal error/i.test(message) ? tagRetryable(error) : error;
   },
+  // 7003: "Invalid request: invalid route. Make sure you've checked the URL
+  // and method." Cloudflare returns this when a path component (typically
+  // accountId or zoneId) doesn't resolve to a real resource. Surfacing it
+  // globally keeps tests for unknown-resource cases off UnknownCloudflareError.
+  7003: (message) => new InvalidRoute({ code: 7003, message }),
 };
 
 /**
@@ -364,13 +370,19 @@ const matchError = (
     return Effect.fail(GLOBAL_ERROR_CODE_MAP[errorCode](errorMessage, headers));
   }
 
-  // Heuristic fallback:
-  // Map by HTTP status as a last resort (e.g. envelope with status 401/403).
-  if (status === 401) {
-    return Effect.fail(new Unauthorized({ message: errorMessage }));
-  }
-  if (status === 403) {
-    return Effect.fail(new Forbidden({ message: errorMessage }));
+  // Heuristic fallback: map by HTTP status. Envelope errors that didn't
+  // match any per-op or global error code still carry a meaningful HTTP
+  // status (400/404/etc.), so surface that as the typed status error
+  // instead of UnknownCloudflareError.
+  const StatusErrorClass =
+    HTTP_STATUS_MAP[status as keyof typeof HTTP_STATUS_MAP];
+  if (StatusErrorClass) {
+    return Effect.fail(
+      new StatusErrorClass({
+        message: errorMessage,
+        retryAfter: parseRetryAfterForStatus(status, headers),
+      }),
+    );
   }
 
   // No match — return unknown Cloudflare error

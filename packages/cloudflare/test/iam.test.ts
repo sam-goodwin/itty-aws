@@ -168,7 +168,7 @@ describe("IAM", () => {
         accountId: "invalid-account-id-!@#",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty accountId", () =>
@@ -176,7 +176,7 @@ describe("IAM", () => {
         accountId: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
   });
 
@@ -211,7 +211,7 @@ describe("IAM", () => {
         permissionGroupId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test("error - invalid accountId", () =>
@@ -220,7 +220,7 @@ describe("IAM", () => {
         permissionGroupId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty permissionGroupId", () =>
@@ -238,7 +238,7 @@ describe("IAM", () => {
         permissionGroupId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
   });
 
@@ -282,7 +282,7 @@ describe("IAM", () => {
         scope: makeScope(),
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty accountId", () =>
@@ -292,7 +292,7 @@ describe("IAM", () => {
         scope: makeScope(),
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty name", () =>
@@ -302,7 +302,7 @@ describe("IAM", () => {
         scope: makeScope(),
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
 
     test("error - invalid scope with empty key", () =>
@@ -312,7 +312,7 @@ describe("IAM", () => {
         scope: { key: "", objects: [{ key: "*" }] },
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
   });
 
@@ -341,7 +341,7 @@ describe("IAM", () => {
         resourceGroupId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test("error - invalid accountId", () =>
@@ -350,7 +350,7 @@ describe("IAM", () => {
         resourceGroupId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty resourceGroupId", () =>
@@ -368,7 +368,7 @@ describe("IAM", () => {
         resourceGroupId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
   });
 
@@ -428,7 +428,7 @@ describe("IAM", () => {
         accountId: "invalid-account-id-!@#",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty accountId", () =>
@@ -436,7 +436,7 @@ describe("IAM", () => {
         accountId: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
   });
 
@@ -484,7 +484,7 @@ describe("IAM", () => {
         name: "should-not-exist",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test("error - invalid accountId", () =>
@@ -494,7 +494,7 @@ describe("IAM", () => {
         name: "test",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty resourceGroupId", () =>
@@ -504,7 +504,7 @@ describe("IAM", () => {
         name: "test",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
   });
 
@@ -536,7 +536,7 @@ describe("IAM", () => {
         resourceGroupId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test("error - invalid accountId", () =>
@@ -545,7 +545,7 @@ describe("IAM", () => {
         resourceGroupId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty resourceGroupId", () =>
@@ -554,7 +554,7 @@ describe("IAM", () => {
         resourceGroupId: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
 
     test("error - empty accountId", () =>
@@ -563,7 +563,7 @@ describe("IAM", () => {
         resourceGroupId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
   });
 
@@ -604,7 +604,7 @@ describe("IAM", () => {
         accountId: "invalid-account-id-!@#",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty accountId", () =>
@@ -612,7 +612,7 @@ describe("IAM", () => {
         accountId: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
   });
 
@@ -650,7 +650,7 @@ describe("IAM", () => {
         ssoConnectorId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test("error - invalid accountId", () =>
@@ -659,7 +659,7 @@ describe("IAM", () => {
         ssoConnectorId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty ssoConnectorId", () =>
@@ -677,7 +677,7 @@ describe("IAM", () => {
         ssoConnectorId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
   });
 
@@ -694,7 +694,7 @@ describe("IAM", () => {
         emailDomain: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
 
     test("error - invalid accountId", () =>
@@ -703,7 +703,7 @@ describe("IAM", () => {
         emailDomain: "distilled-cf-iam-test.example.com",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty accountId", () =>
@@ -712,7 +712,7 @@ describe("IAM", () => {
         emailDomain: "distilled-cf-iam-test.example.com",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - special characters in emailDomain", () =>
@@ -721,7 +721,7 @@ describe("IAM", () => {
         emailDomain: "<script>alert(1)</script>",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
   });
 
@@ -736,7 +736,7 @@ describe("IAM", () => {
         enabled: false,
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test("error - invalid accountId", () =>
@@ -746,7 +746,7 @@ describe("IAM", () => {
         enabled: false,
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty ssoConnectorId", () =>
@@ -756,7 +756,7 @@ describe("IAM", () => {
         enabled: false,
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
 
     test("error - empty accountId", () =>
@@ -765,7 +765,7 @@ describe("IAM", () => {
         ssoConnectorId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
   });
 
@@ -779,7 +779,7 @@ describe("IAM", () => {
         ssoConnectorId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test("error - invalid accountId", () =>
@@ -788,7 +788,7 @@ describe("IAM", () => {
         ssoConnectorId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty ssoConnectorId", () =>
@@ -797,7 +797,7 @@ describe("IAM", () => {
         ssoConnectorId: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
 
     test("error - empty accountId", () =>
@@ -806,7 +806,7 @@ describe("IAM", () => {
         ssoConnectorId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
   });
 
@@ -820,7 +820,7 @@ describe("IAM", () => {
         ssoConnectorId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test("error - invalid accountId", () =>
@@ -829,7 +829,7 @@ describe("IAM", () => {
         ssoConnectorId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty ssoConnectorId", () =>
@@ -838,7 +838,7 @@ describe("IAM", () => {
         ssoConnectorId: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
 
     test("error - empty accountId", () =>
@@ -847,7 +847,7 @@ describe("IAM", () => {
         ssoConnectorId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
   });
 
@@ -920,7 +920,7 @@ describe("IAM", () => {
         accountId: "invalid-account-id-!@#",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty accountId", () =>
@@ -928,7 +928,7 @@ describe("IAM", () => {
         accountId: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
   });
 
@@ -995,7 +995,7 @@ describe("IAM", () => {
         ],
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty accountId", () =>
@@ -1011,7 +1011,7 @@ describe("IAM", () => {
         ],
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty name", () =>
@@ -1027,7 +1027,7 @@ describe("IAM", () => {
         ],
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
 
     test("error - invalid permission group id in policy", () =>
@@ -1043,7 +1043,7 @@ describe("IAM", () => {
         ],
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
 
     test("happy path - creates user group with empty policies array", () =>
@@ -1109,7 +1109,7 @@ describe("IAM", () => {
         userGroupId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test("error - invalid accountId", () =>
@@ -1118,7 +1118,7 @@ describe("IAM", () => {
         userGroupId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty userGroupId", () =>
@@ -1136,7 +1136,7 @@ describe("IAM", () => {
         userGroupId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
   });
 
@@ -1167,7 +1167,7 @@ describe("IAM", () => {
         name: "should-not-exist",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test("error - invalid accountId", () =>
@@ -1177,7 +1177,7 @@ describe("IAM", () => {
         name: "test",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty userGroupId", () =>
@@ -1187,7 +1187,7 @@ describe("IAM", () => {
         name: "test",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
   });
 
@@ -1242,7 +1242,7 @@ describe("IAM", () => {
         userGroupId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test("error - invalid accountId", () =>
@@ -1251,7 +1251,7 @@ describe("IAM", () => {
         userGroupId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty userGroupId", () =>
@@ -1260,7 +1260,7 @@ describe("IAM", () => {
         userGroupId: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
 
     test("error - empty accountId", () =>
@@ -1269,7 +1269,7 @@ describe("IAM", () => {
         userGroupId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
   });
 
@@ -1312,7 +1312,7 @@ describe("IAM", () => {
         userGroupId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test("error - invalid accountId", () =>
@@ -1321,7 +1321,7 @@ describe("IAM", () => {
         userGroupId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty userGroupId", () =>
@@ -1330,7 +1330,7 @@ describe("IAM", () => {
         userGroupId: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
   });
 
@@ -1345,7 +1345,7 @@ describe("IAM", () => {
         body: [{ id: "00000000000000000000000000000000" }],
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test("error - invalid accountId", () =>
@@ -1355,7 +1355,7 @@ describe("IAM", () => {
         body: [{ id: "00000000000000000000000000000000" }],
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty userGroupId", () =>
@@ -1394,7 +1394,7 @@ describe("IAM", () => {
         body: [{ id: "00000000000000000000000000000000" }],
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test("error - invalid accountId", () =>
@@ -1414,7 +1414,7 @@ describe("IAM", () => {
         body: [{ id: "00000000000000000000000000000000" }],
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
   });
 
@@ -1429,7 +1429,7 @@ describe("IAM", () => {
         memberId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test("error - InvalidMember for non-existent memberId in valid user group", () =>
@@ -1451,7 +1451,7 @@ describe("IAM", () => {
         memberId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
 
     test("error - empty userGroupId", () =>
@@ -1461,7 +1461,7 @@ describe("IAM", () => {
         memberId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
 
     test("error - empty memberId", () =>
@@ -1481,7 +1481,7 @@ describe("IAM", () => {
         memberId: "00000000000000000000000000000000",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("InvalidRoute")),
       ));
   });
 });

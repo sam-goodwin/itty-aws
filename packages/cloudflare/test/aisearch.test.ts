@@ -428,7 +428,7 @@ describe("AISearch", () => {
         id: "distilled-cf-aisearch-nonexistent-this-id-is-intentionally-longer-than-sixty-four-characters",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("ValidationError")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test("error - InvalidRoute for invalid accountId", () =>
@@ -519,7 +519,7 @@ describe("AISearch", () => {
         id: "distilled-cf-aisearch-delete-nonexistent-this-id-is-intentionally-longer-than-sixty-four-chars",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("ValidationError")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test("error - InvalidRoute for invalid accountId", () =>
@@ -600,7 +600,7 @@ describe("AISearch", () => {
         id: "distilled-cf-aisearch-update-nonexistent-this-id-is-intentionally-longer-than-sixty-four-chars",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("ValidationError")),
+        Effect.map((e) => expect(e._tag).toBe("NotFound")),
       ));
 
     test("error - InvalidRoute for invalid accountId", () =>

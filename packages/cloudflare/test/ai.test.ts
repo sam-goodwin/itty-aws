@@ -301,7 +301,7 @@ describe("AI", () => {
         model: "",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
 
     test("error - ModelSchemaNotFound for model name with special characters", () =>

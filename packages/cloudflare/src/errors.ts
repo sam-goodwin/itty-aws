@@ -45,6 +45,24 @@ export class UnknownCloudflareError extends Schema.TaggedErrorClass<UnknownCloud
 ) {}
 
 /**
+ * Cloudflare error code 7003 — "invalid request: invalid route". Returned when
+ * a path component (typically accountId / zoneId) doesn't match a real
+ * Cloudflare resource. Mapped globally so every operation surfaces it as
+ * InvalidRoute rather than UnknownCloudflareError.
+ *
+ * Per-operation patches that explicitly map code 7003 still produce their
+ * service-local InvalidRoute class with the same `_tag`, so test assertions
+ * on `e._tag === "InvalidRoute"` work for both global and per-op variants.
+ */
+export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
+  "InvalidRoute",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+  },
+) {}
+
+/**
  * HTTP error - non-2xx response without a parseable Cloudflare error body.
  */
 export class CloudflareHttpError extends Schema.TaggedErrorClass<CloudflareHttpError>()(
@@ -64,6 +82,7 @@ export class CloudflareHttpError extends Schema.TaggedErrorClass<CloudflareHttpE
 export type ClientErrors =
   | CloudflareHttpError
   | CloudflareParseError
+  | InvalidRoute
   | UnknownCloudflareError;
 
 /**

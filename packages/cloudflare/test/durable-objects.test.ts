@@ -181,7 +181,7 @@ describe("DurableObjects", () => {
         accountId: accountId(),
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
 
     test("error - InvalidIdentifier for special characters in accountId", () =>
@@ -190,7 +190,7 @@ describe("DurableObjects", () => {
         accountId: "!@#$%^&*()",
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
 
     test("error - NamespaceNotFound for special characters in namespace id", () =>
@@ -199,7 +199,7 @@ describe("DurableObjects", () => {
         accountId: accountId(),
       }).pipe(
         Effect.flip,
-        Effect.map((e) => expect(e._tag).toBe("CloudflareHttpError")),
+        Effect.map((e) => expect(e._tag).toBe("BadRequest")),
       ));
 
     test("error - MalformedParameter for limit of 0", () =>
