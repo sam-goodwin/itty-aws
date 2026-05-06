@@ -16,7 +16,7 @@ describe("OrganizationsControllerDeleteOrganization", () => {
       );
       expect(["NotFound", "TooManyRequests"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -29,6 +29,6 @@ describe("OrganizationsControllerDeleteOrganization", () => {
       );
       expect(["Forbidden", "TooManyRequests", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

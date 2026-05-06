@@ -18,12 +18,12 @@ describe("OrganizationsControllerList", () => {
       expect(typeof org.name).toBe("string");
       expect(Array.isArray(org.domains)).toBe(true);
     }
-  }, { timeout: 30_000 });
+  }, 30_000);
 
   it("fails with UnprocessableEntity when limit exceeds the maximum", async () => {
     const error = await runEffect(
       OrganizationsControllerList({ limit: 1000 }).pipe(Effect.flip),
     );
     expect(error._tag).toBe("UnprocessableEntity");
-  }, { timeout: 30_000 });
+  }, 30_000);
 });

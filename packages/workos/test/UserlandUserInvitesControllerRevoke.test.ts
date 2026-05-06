@@ -27,7 +27,7 @@ describe("UserlandUserInvitesControllerRevoke", () => {
       expect(result.state).toBe("revoked");
       expect(typeof result.revoked_at).toBe("string");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -40,6 +40,6 @@ describe("UserlandUserInvitesControllerRevoke", () => {
       );
       expect(["BadRequest", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

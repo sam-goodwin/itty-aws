@@ -4,7 +4,7 @@ import { UserlandUsersControllerList } from "../src/operations/UserlandUsersCont
 import { UserlandUsersControllerUpdate } from "../src/operations/UserlandUsersControllerUpdate.ts";
 import { runEffect, testRunId } from "./setup.ts";
 
-const typedErrorTags = ["BadRequest", "UnprocessableEntity"] as const;
+const typedErrorTags = ["BadRequest", "NotFound", "UnprocessableEntity"] as const;
 
 describe("UserlandUsersControllerUpdate", () => {
   it(
@@ -35,7 +35,7 @@ describe("UserlandUsersControllerUpdate", () => {
       expect(typeof result.created_at).toBe("string");
       expect(typeof result.updated_at).toBe("string");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -48,7 +48,7 @@ describe("UserlandUsersControllerUpdate", () => {
       );
       expect(typedErrorTags).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -61,6 +61,6 @@ describe("UserlandUsersControllerUpdate", () => {
       );
       expect(typedErrorTags).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

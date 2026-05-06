@@ -29,7 +29,7 @@ describe("UserlandSessionsControllerRevokeSession", () => {
         expect(["BadRequest", "NotFound"]).toContain(result.error._tag);
       }
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -42,6 +42,6 @@ describe("UserlandSessionsControllerRevokeSession", () => {
       );
       expect(error._tag).toBe("BadRequest");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

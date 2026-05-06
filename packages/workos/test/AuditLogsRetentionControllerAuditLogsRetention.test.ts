@@ -31,7 +31,7 @@ describe("AuditLogsRetentionControllerAuditLogsRetention", () => {
           typeof result.retention_period_in_days === "number",
       ).toBe(true);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -44,6 +44,6 @@ describe("AuditLogsRetentionControllerAuditLogsRetention", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

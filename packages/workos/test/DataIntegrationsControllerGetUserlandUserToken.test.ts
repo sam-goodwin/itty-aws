@@ -48,7 +48,7 @@ describe("DataIntegrationsControllerGetUserlandUserToken", () => {
         expect(result.e._tag).toBe("NotFound");
       }
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -69,7 +69,7 @@ describe("DataIntegrationsControllerGetUserlandUserToken", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -84,6 +84,6 @@ describe("DataIntegrationsControllerGetUserlandUserToken", () => {
 
       expect(["BadRequest", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

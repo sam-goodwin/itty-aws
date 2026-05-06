@@ -38,7 +38,7 @@ describe("UserlandUserOrganizationMembershipsControllerCreate", () => {
         expect(typedErrorTags).toContain(result.error._tag);
       }
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -51,7 +51,7 @@ describe("UserlandUserOrganizationMembershipsControllerCreate", () => {
       );
       expect(typedErrorTags).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -64,7 +64,7 @@ describe("UserlandUserOrganizationMembershipsControllerCreate", () => {
       );
       expect(typedErrorTags).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -77,6 +77,6 @@ describe("UserlandUserOrganizationMembershipsControllerCreate", () => {
       );
       expect(typedErrorTags).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

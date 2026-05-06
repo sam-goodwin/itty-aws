@@ -44,7 +44,7 @@ describe("ConnectionsControllerFind", () => {
       expect(typeof conn.created_at).toBe("string");
       expect(typeof conn.updated_at).toBe("string");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -58,7 +58,7 @@ describe("ConnectionsControllerFind", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -72,6 +72,6 @@ describe("ConnectionsControllerFind", () => {
 
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

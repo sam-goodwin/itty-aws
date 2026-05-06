@@ -34,7 +34,7 @@ describe("SsoControllerGetProfile", () => {
         expect(result.error._tag).toBe("Unauthorized");
       }
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -47,6 +47,6 @@ describe("SsoControllerGetProfile", () => {
       );
       expect(error._tag).toBe("Unauthorized");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

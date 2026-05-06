@@ -16,7 +16,7 @@ describe("AuditLogValidatorsControllerList", () => {
         expect(Array.isArray(result.data)).toBe(true);
       }
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -28,7 +28,7 @@ describe("AuditLogValidatorsControllerList", () => {
 
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
 });

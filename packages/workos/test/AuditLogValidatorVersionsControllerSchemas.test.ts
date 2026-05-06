@@ -29,7 +29,7 @@ describe("AuditLogValidatorVersionsControllerSchemas", () => {
       expect(Array.isArray(result.data)).toBe(true);
       expect(result.data!.length).toBeGreaterThan(0);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -43,7 +43,7 @@ describe("AuditLogValidatorVersionsControllerSchemas", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -67,6 +67,6 @@ describe("AuditLogValidatorVersionsControllerSchemas", () => {
 
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 });

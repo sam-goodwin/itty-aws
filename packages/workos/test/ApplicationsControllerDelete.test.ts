@@ -33,7 +33,7 @@ describe("ApplicationsControllerDelete", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -47,6 +47,6 @@ describe("ApplicationsControllerDelete", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

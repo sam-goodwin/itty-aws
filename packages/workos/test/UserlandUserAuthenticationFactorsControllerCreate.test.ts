@@ -66,7 +66,7 @@ describe("UserlandUserAuthenticationFactorsControllerCreate", () => {
         ),
       );
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -86,6 +86,6 @@ describe("UserlandUserAuthenticationFactorsControllerCreate", () => {
       );
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

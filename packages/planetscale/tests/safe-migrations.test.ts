@@ -39,7 +39,7 @@ const isApiError = (error: unknown): boolean =>
 describe("safeMigrations", () => {
   beforeAll(async () => {
     await Effect.runPromise(setupTestDatabase(TEST_SUFFIX));
-  }, 300000); // 5 minute timeout for database creation
+  }, 600000); // 10 minute timeout for database creation (postgres can be slow)
 
   afterAll(async () => {
     await Effect.runPromise(teardownTestDatabase(TEST_SUFFIX));

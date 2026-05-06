@@ -33,7 +33,7 @@ describe("DirectoriesControllerList", () => {
         expect(typeof dir.updated_at).toBe("string");
       }
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
 });

@@ -48,7 +48,7 @@ describe("UserlandUserIdentitiesControllerGet", () => {
         expect(validProviders).toContain(identity.provider);
       }
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -61,6 +61,6 @@ describe("UserlandUserIdentitiesControllerGet", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

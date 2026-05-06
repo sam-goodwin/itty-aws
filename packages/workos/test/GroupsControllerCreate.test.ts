@@ -44,7 +44,7 @@ describe("GroupsControllerCreate", () => {
       expect(typeof result.created.created_at).toBe("string");
       expect(typeof result.created.updated_at).toBe("string");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -58,7 +58,7 @@ describe("GroupsControllerCreate", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -72,7 +72,7 @@ describe("GroupsControllerCreate", () => {
       );
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -97,7 +97,7 @@ describe("GroupsControllerCreate", () => {
       );
       expect(["BadRequest", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -133,6 +133,6 @@ describe("GroupsControllerCreate", () => {
       );
       expect(["Conflict", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 });

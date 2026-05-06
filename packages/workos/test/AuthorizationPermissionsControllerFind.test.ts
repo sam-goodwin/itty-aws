@@ -33,7 +33,7 @@ describe("AuthorizationPermissionsControllerFind", () => {
       expect(permission.name).toBe(`Find Permission ${testRunId}`);
       expect(typeof permission.system).toBe("boolean");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -47,6 +47,6 @@ describe("AuthorizationPermissionsControllerFind", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

@@ -49,7 +49,7 @@ describe("WebhookEndpointsControllerUpdate", () => {
         ),
       );
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -63,7 +63,7 @@ describe("WebhookEndpointsControllerUpdate", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -115,7 +115,7 @@ describe("WebhookEndpointsControllerUpdate", () => {
         ),
       );
     },
-    { timeout: 90_000 },
+    90_000,
   );
 
   it(
@@ -150,6 +150,6 @@ describe("WebhookEndpointsControllerUpdate", () => {
         ),
       );
     },
-    { timeout: 60_000 },
+    60_000,
   );
 });

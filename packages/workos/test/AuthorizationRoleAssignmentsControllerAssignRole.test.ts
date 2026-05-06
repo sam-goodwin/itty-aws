@@ -15,7 +15,7 @@ describe("AuthorizationRoleAssignmentsControllerAssignRole", () => {
 
       expect(["NotFound", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -29,7 +29,7 @@ describe("AuthorizationRoleAssignmentsControllerAssignRole", () => {
 
       expect(["Forbidden", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -43,6 +43,6 @@ describe("AuthorizationRoleAssignmentsControllerAssignRole", () => {
 
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

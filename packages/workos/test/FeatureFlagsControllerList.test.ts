@@ -27,7 +27,7 @@ describe("FeatureFlagsControllerList", () => {
         expect(typeof flag.updated_at).toBe("string");
       }
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -39,6 +39,6 @@ describe("FeatureFlagsControllerList", () => {
 
       expect(["BadRequest", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

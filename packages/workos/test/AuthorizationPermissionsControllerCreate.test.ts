@@ -32,7 +32,7 @@ describe("AuthorizationPermissionsControllerCreate", () => {
       );
       expect(permission.system).toBe(false);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -47,7 +47,7 @@ describe("AuthorizationPermissionsControllerCreate", () => {
 
       expect(["BadRequest", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -63,7 +63,7 @@ describe("AuthorizationPermissionsControllerCreate", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -95,7 +95,7 @@ describe("AuthorizationPermissionsControllerCreate", () => {
 
       expect(error._tag).toBe("Conflict");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -110,6 +110,6 @@ describe("AuthorizationPermissionsControllerCreate", () => {
 
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

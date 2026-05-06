@@ -41,7 +41,7 @@ describe("ApplicationsControllerUpdate", () => {
       expect(typeof updated.created_at).toBe("string");
       expect(typeof updated.updated_at).toBe("string");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -56,7 +56,7 @@ describe("ApplicationsControllerUpdate", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -71,6 +71,6 @@ describe("ApplicationsControllerUpdate", () => {
 
       expect(["NotFound", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

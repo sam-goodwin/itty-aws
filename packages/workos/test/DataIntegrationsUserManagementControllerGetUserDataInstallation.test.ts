@@ -46,7 +46,7 @@ describe("DataIntegrationsUserManagementControllerGetUserDataInstallation", () =
         expect(result.error._tag).toBe("NotFound");
       }
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -60,6 +60,6 @@ describe("DataIntegrationsUserManagementControllerGetUserDataInstallation", () =
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

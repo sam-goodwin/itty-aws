@@ -55,7 +55,7 @@ describe("WidgetsPublicControllerIssueWidgetSessionToken", () => {
         expect(typedErrorTags).toContain(result.error._tag);
       }
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -75,7 +75,7 @@ describe("WidgetsPublicControllerIssueWidgetSessionToken", () => {
       );
       expect(typedErrorTags).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -92,7 +92,7 @@ describe("WidgetsPublicControllerIssueWidgetSessionToken", () => {
         error._tag,
       );
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -106,6 +106,6 @@ describe("WidgetsPublicControllerIssueWidgetSessionToken", () => {
       );
       expect(typedErrorTags).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

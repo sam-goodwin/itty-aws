@@ -29,7 +29,7 @@ describe("AuditLogsRetentionControllerUpdateAuditLogsRetention", () => {
       expect(result).toBeDefined();
       expect(result.retention_period_in_days).toBe(30);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -43,7 +43,7 @@ describe("AuditLogsRetentionControllerUpdateAuditLogsRetention", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -68,6 +68,6 @@ describe("AuditLogsRetentionControllerUpdateAuditLogsRetention", () => {
       );
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 });

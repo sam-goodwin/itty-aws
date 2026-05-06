@@ -66,7 +66,7 @@ describe("DataIntegrationsUserManagementControllerDeleteUserDataInstallation", (
       );
       expect(followUp._tag).toBe("NotFound");
     },
-    { timeout: 120_000 },
+    120_000,
   );
 
   it(
@@ -80,6 +80,6 @@ describe("DataIntegrationsUserManagementControllerDeleteUserDataInstallation", (
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

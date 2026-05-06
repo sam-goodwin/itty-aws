@@ -40,7 +40,7 @@ describe("GroupsControllerDelete", () => {
       );
       expect(["NotFound", "TooManyRequests"]).toContain(findError._tag);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -65,7 +65,7 @@ describe("GroupsControllerDelete", () => {
       );
       expect(["NotFound", "TooManyRequests"]).toContain(error._tag);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -79,6 +79,6 @@ describe("GroupsControllerDelete", () => {
       );
       expect(["Forbidden", "TooManyRequests"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

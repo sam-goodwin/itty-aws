@@ -36,7 +36,7 @@ describe("ApplicationCredentialsControllerCreate", () => {
       expect(typeof credential.created_at).toBe("string");
       expect(typeof credential.updated_at).toBe("string");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -50,7 +50,7 @@ describe("ApplicationCredentialsControllerCreate", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -64,6 +64,6 @@ describe("ApplicationCredentialsControllerCreate", () => {
 
       expect(["NotFound", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

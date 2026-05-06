@@ -41,7 +41,7 @@ describe("OrganizationDomainsControllerCreate", () => {
       expect(typeof result.created_at).toBe("string");
       expect(typeof result.updated_at).toBe("string");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -80,6 +80,6 @@ describe("OrganizationDomainsControllerCreate", () => {
 
       expect(error._tag).toBe("Conflict");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 });

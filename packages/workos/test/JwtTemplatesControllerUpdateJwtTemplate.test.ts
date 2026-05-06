@@ -17,7 +17,7 @@ describe("JwtTemplatesControllerUpdateJwtTemplate", () => {
       expect(typeof result.created_at).toBe("string");
       expect(typeof result.updated_at).toBe("string");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -30,6 +30,6 @@ describe("JwtTemplatesControllerUpdateJwtTemplate", () => {
       );
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

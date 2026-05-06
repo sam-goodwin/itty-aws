@@ -3,13 +3,14 @@ import { describe, expect, it } from "vitest";
 import { AuthorizationResourcesByExternalIdControllerDeleteByExternalId } from "../src/operations/AuthorizationResourcesByExternalIdControllerDeleteByExternalId.ts";
 import { OrganizationsControllerCreate } from "../src/operations/OrganizationsControllerCreate.ts";
 import { OrganizationsControllerDeleteOrganization } from "../src/operations/OrganizationsControllerDeleteOrganization.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, runOrSkipOnEnvLimitation, testRunId } from "./setup.ts";
 
 describe("AuthorizationResourcesByExternalIdControllerDeleteByExternalId", () => {
   it(
     "deletes an authorization resource by external id",
-    async () => {
-      const result = await runEffect(
+    async (ctx) => {
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationResourcesByExternalIdControllerDeleteByExternalId({
           organization_id: `org_${testRunId}`,
           resource_type_slug: "workspace",
@@ -20,7 +21,7 @@ describe("AuthorizationResourcesByExternalIdControllerDeleteByExternalId", () =>
 
       expect(result).toBeUndefined();
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -50,7 +51,7 @@ describe("AuthorizationResourcesByExternalIdControllerDeleteByExternalId", () =>
 
       expect(["BadRequest", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -80,7 +81,7 @@ describe("AuthorizationResourcesByExternalIdControllerDeleteByExternalId", () =>
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -96,7 +97,7 @@ describe("AuthorizationResourcesByExternalIdControllerDeleteByExternalId", () =>
 
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -127,6 +128,6 @@ describe("AuthorizationResourcesByExternalIdControllerDeleteByExternalId", () =>
 
       expect(["Conflict", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 });

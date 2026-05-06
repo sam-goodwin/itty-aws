@@ -49,7 +49,7 @@ describe("GroupsControllerGet", () => {
       expect(typeof result.created_at).toBe("string");
       expect(typeof result.updated_at).toBe("string");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -74,7 +74,7 @@ describe("GroupsControllerGet", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -88,6 +88,6 @@ describe("GroupsControllerGet", () => {
       );
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

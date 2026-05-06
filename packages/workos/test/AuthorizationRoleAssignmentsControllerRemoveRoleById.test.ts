@@ -1,13 +1,14 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { AuthorizationRoleAssignmentsControllerRemoveRoleById } from "../src/operations/AuthorizationRoleAssignmentsControllerRemoveRoleById.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, runOrSkipOnEnvLimitation, testRunId } from "./setup.ts";
 
 describe("AuthorizationRoleAssignmentsControllerRemoveRoleById", () => {
   it(
     "removes a role assignment by id for an organization membership",
-    async () => {
-      const result = await runEffect(
+    async (ctx) => {
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationRoleAssignmentsControllerRemoveRoleById({
           organization_membership_id: `om_${testRunId}`,
           role_assignment_id: `ra_${testRunId}`,
@@ -16,7 +17,7 @@ describe("AuthorizationRoleAssignmentsControllerRemoveRoleById", () => {
 
       expect(result).toBeUndefined();
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -31,7 +32,7 @@ describe("AuthorizationRoleAssignmentsControllerRemoveRoleById", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -46,6 +47,6 @@ describe("AuthorizationRoleAssignmentsControllerRemoveRoleById", () => {
 
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

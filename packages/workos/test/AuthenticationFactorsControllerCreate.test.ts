@@ -23,7 +23,7 @@ describe("AuthenticationFactorsControllerCreate", () => {
       expect(typeof factor.totp?.qr_code).toBe("string");
       expect(typeof factor.totp?.uri).toBe("string");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -37,6 +37,6 @@ describe("AuthenticationFactorsControllerCreate", () => {
 
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

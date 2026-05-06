@@ -37,7 +37,7 @@ describe("AuthorizationRolesControllerGet", () => {
       expect(typeof role.created_at).toBe("string");
       expect(typeof role.updated_at).toBe("string");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -51,7 +51,7 @@ describe("AuthorizationRolesControllerGet", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -65,6 +65,6 @@ describe("AuthorizationRolesControllerGet", () => {
 
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

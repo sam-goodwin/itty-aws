@@ -22,7 +22,7 @@ describe("AuthorizationPermissionsControllerList", () => {
         expect(typeof permission.system).toBe("boolean");
       }
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
 });

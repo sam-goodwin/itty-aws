@@ -18,7 +18,7 @@ describe("CorsOriginsControllerCreateCorsOrigin", () => {
       expect(typeof result.created_at).toBe("string");
       expect(typeof result.updated_at).toBe("string");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -32,7 +32,7 @@ describe("CorsOriginsControllerCreateCorsOrigin", () => {
       );
       expect(error._tag).toBe("Conflict");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -45,6 +45,6 @@ describe("CorsOriginsControllerCreateCorsOrigin", () => {
       );
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

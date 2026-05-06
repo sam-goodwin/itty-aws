@@ -34,7 +34,7 @@ describe("ConnectionsControllerList", () => {
         expect(typeof conn.updated_at).toBe("string");
       }
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
 });

@@ -16,7 +16,7 @@ describe("DirectoryUsersControllerFind", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -30,6 +30,6 @@ describe("DirectoryUsersControllerFind", () => {
 
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

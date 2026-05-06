@@ -33,7 +33,7 @@ describe("AuthenticationChallengesControllerVerify", () => {
       expect(result.challenge).toBeDefined();
       expect(typeof result.challenge.id).toBe("string");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -48,7 +48,7 @@ describe("AuthenticationChallengesControllerVerify", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
 });

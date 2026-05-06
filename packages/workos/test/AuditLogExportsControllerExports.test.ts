@@ -3,16 +3,17 @@ import { describe, expect, it } from "vitest";
 import { AuditLogExportsControllerExports } from "../src/operations/AuditLogExportsControllerExports.ts";
 import { OrganizationsControllerCreate } from "../src/operations/OrganizationsControllerCreate.ts";
 import { OrganizationsControllerDeleteOrganization } from "../src/operations/OrganizationsControllerDeleteOrganization.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, runOrSkipOnEnvLimitation, testRunId } from "./setup.ts";
 
 describe("AuditLogExportsControllerExports", () => {
   it(
     "creates an audit log export for an organization",
-    async () => {
+    async (ctx) => {
       const rangeEnd = new Date();
       const rangeStart = new Date(rangeEnd.getTime() - 24 * 60 * 60 * 1000);
 
-      await runEffect(
+      await runOrSkipOnEnvLimitation(
+        ctx,
         Effect.gen(function* () {
           const org = yield* OrganizationsControllerCreate({
             name: `distilled-workos-audit-export-${testRunId}`,
@@ -38,7 +39,7 @@ describe("AuditLogExportsControllerExports", () => {
         }),
       );
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -57,7 +58,7 @@ describe("AuditLogExportsControllerExports", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -87,6 +88,6 @@ describe("AuditLogExportsControllerExports", () => {
 
       expect(error._tag).toBe("BadRequest");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 });

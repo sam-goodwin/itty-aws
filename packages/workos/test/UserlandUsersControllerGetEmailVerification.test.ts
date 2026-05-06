@@ -35,7 +35,7 @@ describe("UserlandUsersControllerGetEmailVerification", () => {
         expect(result.error._tag).toBe("NotFound");
       }
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -48,6 +48,6 @@ describe("UserlandUsersControllerGetEmailVerification", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

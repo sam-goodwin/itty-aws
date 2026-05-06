@@ -49,7 +49,7 @@ describe("UserlandUserOrganizationMembershipsControllerUpdate", () => {
       expect(["active", "inactive", "pending"]).toContain(result.status);
       expect(typeof result.role.slug).toBe("string");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -62,7 +62,7 @@ describe("UserlandUserOrganizationMembershipsControllerUpdate", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -75,6 +75,6 @@ describe("UserlandUserOrganizationMembershipsControllerUpdate", () => {
       );
       expect(["NotFound", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

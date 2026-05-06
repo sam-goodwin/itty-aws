@@ -40,7 +40,7 @@ describe("DataIntegrationsUserManagementControllerGetUserDataIntegrations", () =
         expect(typeof provider.updated_at).toBe("string");
       }
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -53,6 +53,6 @@ describe("DataIntegrationsUserManagementControllerGetUserDataIntegrations", () =
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

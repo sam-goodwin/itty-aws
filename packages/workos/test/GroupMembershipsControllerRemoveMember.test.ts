@@ -108,7 +108,7 @@ describe("GroupMembershipsControllerRemoveMember", () => {
       expect(Array.isArray(remainingMembers.data)).toBe(true);
       expect(remainingMembers.data.some((m) => m.id === member.id)).toBe(false);
     },
-    { timeout: 90_000 },
+    90_000,
   );
 
   it(
@@ -147,7 +147,7 @@ describe("GroupMembershipsControllerRemoveMember", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -164,6 +164,6 @@ describe("GroupMembershipsControllerRemoveMember", () => {
         error._tag,
       );
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

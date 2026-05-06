@@ -34,7 +34,7 @@ describe("OrganizationsControllerUpdateOrganization", () => {
       expect(typeof result.created_at).toBe("string");
       expect(typeof result.updated_at).toBe("string");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -48,7 +48,7 @@ describe("OrganizationsControllerUpdateOrganization", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -62,7 +62,7 @@ describe("OrganizationsControllerUpdateOrganization", () => {
       );
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -87,7 +87,7 @@ describe("OrganizationsControllerUpdateOrganization", () => {
       );
       expect(["BadRequest", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -122,7 +122,7 @@ describe("OrganizationsControllerUpdateOrganization", () => {
       );
       expect(["BadRequest", "Conflict"]).toContain(error._tag);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -156,6 +156,6 @@ describe("OrganizationsControllerUpdateOrganization", () => {
       );
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 });

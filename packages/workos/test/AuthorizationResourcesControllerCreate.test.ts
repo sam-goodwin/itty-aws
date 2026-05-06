@@ -13,7 +13,7 @@ describe("AuthorizationResourcesControllerCreate", () => {
 
       expect(["BadRequest", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -25,7 +25,7 @@ describe("AuthorizationResourcesControllerCreate", () => {
 
       expect(["NotFound", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -37,7 +37,7 @@ describe("AuthorizationResourcesControllerCreate", () => {
 
       expect(["Forbidden", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -49,7 +49,7 @@ describe("AuthorizationResourcesControllerCreate", () => {
 
       expect(["Conflict", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -61,6 +61,6 @@ describe("AuthorizationResourcesControllerCreate", () => {
 
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

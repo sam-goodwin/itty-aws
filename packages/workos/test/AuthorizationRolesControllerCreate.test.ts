@@ -26,7 +26,7 @@ describe("AuthorizationRolesControllerCreate", () => {
       expect(typeof role.created_at).toBe("string");
       expect(typeof role.updated_at).toBe("string");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -41,7 +41,7 @@ describe("AuthorizationRolesControllerCreate", () => {
 
       expect(["BadRequest", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -57,7 +57,7 @@ describe("AuthorizationRolesControllerCreate", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -73,7 +73,7 @@ describe("AuthorizationRolesControllerCreate", () => {
 
       expect(["Forbidden", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -99,7 +99,7 @@ describe("AuthorizationRolesControllerCreate", () => {
 
       expect(error._tag).toBe("Conflict");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -114,6 +114,6 @@ describe("AuthorizationRolesControllerCreate", () => {
 
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

@@ -30,7 +30,7 @@ describe("OrganizationsControllerGetAuditLogConfiguration", () => {
       expect(typeof result.retention_period_in_days).toBe("number");
       expect(["active", "inactive", "disabled"]).toContain(result.state);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -43,6 +43,6 @@ describe("OrganizationsControllerGetAuditLogConfiguration", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

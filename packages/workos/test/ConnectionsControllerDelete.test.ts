@@ -33,7 +33,7 @@ describe("ConnectionsControllerDelete", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -47,7 +47,7 @@ describe("ConnectionsControllerDelete", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -61,6 +61,6 @@ describe("ConnectionsControllerDelete", () => {
 
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

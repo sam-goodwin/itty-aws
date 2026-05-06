@@ -43,7 +43,7 @@ describe("UserlandUserAuthenticationFactorsControllerList", () => {
         expect(typeof factor.updated_at).toBe("string");
       }
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -64,6 +64,6 @@ describe("UserlandUserAuthenticationFactorsControllerList", () => {
       );
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

@@ -31,7 +31,7 @@ describe("AuthorizationOrganizationRolesControllerCreate", () => {
 
       expect(["BadRequest", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -46,7 +46,7 @@ describe("AuthorizationOrganizationRolesControllerCreate", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -61,7 +61,7 @@ describe("AuthorizationOrganizationRolesControllerCreate", () => {
 
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -103,7 +103,7 @@ describe("AuthorizationOrganizationRolesControllerCreate", () => {
 
       expect(["Conflict", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -131,6 +131,6 @@ describe("AuthorizationOrganizationRolesControllerCreate", () => {
 
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 });

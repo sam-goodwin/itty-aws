@@ -25,7 +25,7 @@ describe("OrganizationsControllerCreate", () => {
       expect(typeof result.created_at).toBe("string");
       expect(typeof result.updated_at).toBe("string");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -38,7 +38,7 @@ describe("OrganizationsControllerCreate", () => {
       );
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -65,7 +65,7 @@ describe("OrganizationsControllerCreate", () => {
       );
       expect(["BadRequest", "Conflict"]).toContain(error._tag);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -88,6 +88,6 @@ describe("OrganizationsControllerCreate", () => {
       );
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });
