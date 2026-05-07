@@ -5,6 +5,8 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service custom-pages
  */
 
+import * as Effect from "effect/Effect";
+import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -16,7 +18,24 @@ import { type DefaultErrors } from "../errors.ts";
 // CustomPage
 // =============================================================================
 
-export interface GetCustomPageRequest {
+const GetCustomPageBaseFields = {
+  identifier: Schema.Literals([
+    "1000_errors",
+    "500_errors",
+    "basic_challenge",
+    "country_challenge",
+    "ip_block",
+    "managed_challenge",
+    "ratelimit_block",
+    "under_attack",
+    "waf_block",
+    "waf_challenge",
+  ]).pipe(T.HttpPath("identifier")),
+} as const;
+
+export interface GetCustomPageForAccountRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
   identifier:
     | "1000_errors"
     | "500_errors"
@@ -30,25 +49,47 @@ export interface GetCustomPageRequest {
     | "waf_challenge";
 }
 
-export const GetCustomPageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  identifier: Schema.Literals([
-    "1000_errors",
-    "500_errors",
-    "basic_challenge",
-    "country_challenge",
-    "ip_block",
-    "managed_challenge",
-    "ratelimit_block",
-    "under_attack",
-    "waf_block",
-    "waf_challenge",
-  ]).pipe(T.HttpPath("identifier")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/{accountOrZone}/{accountOrZoneId}/custom_pages/{identifier}",
-  }),
-) as unknown as Schema.Schema<GetCustomPageRequest>;
+export interface GetCustomPageForZoneRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+  identifier:
+    | "1000_errors"
+    | "500_errors"
+    | "basic_challenge"
+    | "country_challenge"
+    | "ip_block"
+    | "managed_challenge"
+    | "ratelimit_block"
+    | "under_attack"
+    | "waf_block"
+    | "waf_challenge";
+}
+
+export type GetCustomPageRequest =
+  | GetCustomPageForAccountRequest
+  | GetCustomPageForZoneRequest;
+
+export const GetCustomPageForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...GetCustomPageBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/custom_pages/{identifier}",
+    }),
+  ) as unknown as Schema.Schema<GetCustomPageForAccountRequest>;
+
+export const GetCustomPageForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...GetCustomPageBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/custom_pages/{identifier}",
+    }),
+  ) as unknown as Schema.Schema<GetCustomPageForZoneRequest>;
 
 export interface GetCustomPageResponse {
   id?: string | null;
@@ -95,27 +136,70 @@ export const GetCustomPageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type GetCustomPageError = DefaultErrors;
 
-export const getCustomPage: API.OperationMethod<
-  GetCustomPageRequest,
+export const getCustomPageForAccount: API.OperationMethod<
+  GetCustomPageForAccountRequest,
   GetCustomPageResponse,
   GetCustomPageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetCustomPageRequest,
+  input: GetCustomPageForAccountRequest,
   output: GetCustomPageResponse,
   errors: [],
 }));
 
-export interface ListCustomPagesRequest {}
+export const getCustomPageForZone: API.OperationMethod<
+  GetCustomPageForZoneRequest,
+  GetCustomPageResponse,
+  GetCustomPageError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetCustomPageForZoneRequest,
+  output: GetCustomPageResponse,
+  errors: [],
+}));
 
-export const ListCustomPagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
-  T.Http({
-    method: "GET",
-    path: "/{accountOrZone}/{accountOrZoneId}/custom_pages",
-  }),
-) as unknown as Schema.Schema<ListCustomPagesRequest>;
+export const getCustomPage = (
+  input: GetCustomPageRequest,
+): Effect.Effect<
+  GetCustomPageResponse,
+  GetCustomPageError,
+  Credentials | HttpClient.HttpClient
+> =>
+  "accountId" in input
+    ? getCustomPageForAccount(input)
+    : getCustomPageForZone(input);
+
+const ListCustomPagesBaseFields = {} as const;
+
+export interface ListCustomPagesForAccountRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface ListCustomPagesForZoneRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export type ListCustomPagesRequest =
+  | ListCustomPagesForAccountRequest
+  | ListCustomPagesForZoneRequest;
+
+export const ListCustomPagesForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...ListCustomPagesBaseFields,
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/custom_pages" }),
+  ) as unknown as Schema.Schema<ListCustomPagesForAccountRequest>;
+
+export const ListCustomPagesForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...ListCustomPagesBaseFields,
+  }).pipe(
+    T.Http({ method: "GET", path: "/zones/{zone_id}/custom_pages" }),
+  ) as unknown as Schema.Schema<ListCustomPagesForZoneRequest>;
 
 export interface ListCustomPagesResponse {
   result: {
@@ -170,13 +254,13 @@ export const ListCustomPagesResponse =
 
 export type ListCustomPagesError = DefaultErrors;
 
-export const listCustomPages: API.PaginatedOperationMethod<
-  ListCustomPagesRequest,
+export const listCustomPagesForAccount: API.PaginatedOperationMethod<
+  ListCustomPagesForAccountRequest,
   ListCustomPagesResponse,
   ListCustomPagesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListCustomPagesRequest,
+  input: ListCustomPagesForAccountRequest,
   output: ListCustomPagesResponse,
   errors: [],
   pagination: {
@@ -185,29 +269,33 @@ export const listCustomPages: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export interface PutCustomPageRequest {
-  identifier:
-    | "1000_errors"
-    | "500_errors"
-    | "basic_challenge"
-    | "country_challenge"
-    | "ip_block"
-    | "managed_challenge"
-    | "ratelimit_block"
-    | "under_attack"
-    | "waf_block"
-    | "waf_challenge";
-  /** Path param: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
-  accountId?: string;
-  /** Path param: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
-  zoneId?: string;
-  /** Body param: The custom page state. */
-  state: "default" | "customized";
-  /** Body param: The URL associated with the custom page. */
-  url: string;
-}
+export const listCustomPagesForZone: API.PaginatedOperationMethod<
+  ListCustomPagesForZoneRequest,
+  ListCustomPagesResponse,
+  ListCustomPagesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListCustomPagesForZoneRequest,
+  output: ListCustomPagesResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
+}));
 
-export const PutCustomPageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const listCustomPages = (
+  input: ListCustomPagesRequest,
+): stream.Stream<
+  ListCustomPagesResponse,
+  ListCustomPagesError,
+  Credentials | HttpClient.HttpClient
+> =>
+  "accountId" in input
+    ? listCustomPagesForAccount.pages(input)
+    : listCustomPagesForZone.pages(input);
+
+const PutCustomPageBaseFields = {
   identifier: Schema.Literals([
     "1000_errors",
     "500_errors",
@@ -220,16 +308,75 @@ export const PutCustomPageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     "waf_block",
     "waf_challenge",
   ]).pipe(T.HttpPath("identifier")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   state: Schema.Literals(["default", "customized"]),
   url: Schema.String,
-}).pipe(
-  T.Http({
-    method: "PUT",
-    path: "/{accountOrZone}/{accountOrZoneId}/custom_pages/{identifier}",
-  }),
-) as unknown as Schema.Schema<PutCustomPageRequest>;
+} as const;
+
+export interface PutCustomPageForAccountRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+  identifier:
+    | "1000_errors"
+    | "500_errors"
+    | "basic_challenge"
+    | "country_challenge"
+    | "ip_block"
+    | "managed_challenge"
+    | "ratelimit_block"
+    | "under_attack"
+    | "waf_block"
+    | "waf_challenge";
+  /** Body param: The custom page state. */
+  state: "default" | "customized";
+  /** Body param: The URL associated with the custom page. */
+  url: string;
+}
+
+export interface PutCustomPageForZoneRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+  identifier:
+    | "1000_errors"
+    | "500_errors"
+    | "basic_challenge"
+    | "country_challenge"
+    | "ip_block"
+    | "managed_challenge"
+    | "ratelimit_block"
+    | "under_attack"
+    | "waf_block"
+    | "waf_challenge";
+  /** Body param: The custom page state. */
+  state: "default" | "customized";
+  /** Body param: The URL associated with the custom page. */
+  url: string;
+}
+
+export type PutCustomPageRequest =
+  | PutCustomPageForAccountRequest
+  | PutCustomPageForZoneRequest;
+
+export const PutCustomPageForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...PutCustomPageBaseFields,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/custom_pages/{identifier}",
+    }),
+  ) as unknown as Schema.Schema<PutCustomPageForAccountRequest>;
+
+export const PutCustomPageForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...PutCustomPageBaseFields,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/custom_pages/{identifier}",
+    }),
+  ) as unknown as Schema.Schema<PutCustomPageForZoneRequest>;
 
 export interface PutCustomPageResponse {
   id?: string | null;
@@ -276,13 +423,35 @@ export const PutCustomPageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type PutCustomPageError = DefaultErrors;
 
-export const putCustomPage: API.OperationMethod<
-  PutCustomPageRequest,
+export const putCustomPageForAccount: API.OperationMethod<
+  PutCustomPageForAccountRequest,
   PutCustomPageResponse,
   PutCustomPageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PutCustomPageRequest,
+  input: PutCustomPageForAccountRequest,
   output: PutCustomPageResponse,
   errors: [],
 }));
+
+export const putCustomPageForZone: API.OperationMethod<
+  PutCustomPageForZoneRequest,
+  PutCustomPageResponse,
+  PutCustomPageError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PutCustomPageForZoneRequest,
+  output: PutCustomPageResponse,
+  errors: [],
+}));
+
+export const putCustomPage = (
+  input: PutCustomPageRequest,
+): Effect.Effect<
+  PutCustomPageResponse,
+  PutCustomPageError,
+  Credentials | HttpClient.HttpClient
+> =>
+  "accountId" in input
+    ? putCustomPageForAccount(input)
+    : putCustomPageForZone(input);

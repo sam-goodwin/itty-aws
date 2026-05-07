@@ -9,6 +9,12 @@ paths:
   /{accountOrZone}/{accountOrZoneId}/rulesets/phases/{rulesetPhase}/entrypoint:
     get:
       operationId: getPhas
+      parameters:
+        - name: rulesetPhase
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: Success
@@ -2721,6 +2727,11 @@ paths:
           required: true
           description: "Path param: The Zone ID to use for this endpoint. Mutually
             exclusive with the Account ID."
+          schema:
+            type: string
+        - name: rulesetPhase
+          in: path
+          required: true
           schema:
             type: string
       requestBody:
@@ -7803,6 +7814,11 @@ paths:
           required: true
           schema:
             type: string
+        - name: rulesetPhase
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: Success
@@ -10499,6 +10515,12 @@ paths:
   /{accountOrZone}/{accountOrZoneId}/rulesets/phases/{rulesetPhase}/entrypoint/versions:
     get:
       operationId: listPhasVersions
+      parameters:
+        - name: rulesetPhase
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: Success

@@ -5,6 +5,8 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service firewall
  */
 
+import * as Effect from "effect/Effect";
+import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -16,18 +18,47 @@ import { type DefaultErrors } from "../errors.ts";
 // AccessRule
 // =============================================================================
 
-export interface GetAccessRuleRequest {
+const GetAccessRuleBaseFields = {
+  ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
+} as const;
+
+export interface GetAccessRuleForAccountRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
   ruleId: string;
 }
 
-export const GetAccessRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/{accountOrZone}/{accountOrZoneId}/firewall/access_rules/rules/{ruleId}",
-  }),
-) as unknown as Schema.Schema<GetAccessRuleRequest>;
+export interface GetAccessRuleForZoneRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+  ruleId: string;
+}
+
+export type GetAccessRuleRequest =
+  | GetAccessRuleForAccountRequest
+  | GetAccessRuleForZoneRequest;
+
+export const GetAccessRuleForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...GetAccessRuleBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/firewall/access_rules/rules/{ruleId}",
+    }),
+  ) as unknown as Schema.Schema<GetAccessRuleForAccountRequest>;
+
+export const GetAccessRuleForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...GetAccessRuleBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/firewall/access_rules/rules/{ruleId}",
+    }),
+  ) as unknown as Schema.Schema<GetAccessRuleForZoneRequest>;
 
 export interface GetAccessRuleResponse {
   /** The unique identifier of the IP Access rule. */
@@ -155,27 +186,76 @@ export const GetAccessRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type GetAccessRuleError = DefaultErrors;
 
-export const getAccessRule: API.OperationMethod<
-  GetAccessRuleRequest,
+export const getAccessRuleForAccount: API.OperationMethod<
+  GetAccessRuleForAccountRequest,
   GetAccessRuleResponse,
   GetAccessRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetAccessRuleRequest,
+  input: GetAccessRuleForAccountRequest,
   output: GetAccessRuleResponse,
   errors: [],
 }));
 
-export interface ListAccessRulesRequest {}
+export const getAccessRuleForZone: API.OperationMethod<
+  GetAccessRuleForZoneRequest,
+  GetAccessRuleResponse,
+  GetAccessRuleError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAccessRuleForZoneRequest,
+  output: GetAccessRuleResponse,
+  errors: [],
+}));
 
-export const ListAccessRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
-  T.Http({
-    method: "GET",
-    path: "/{accountOrZone}/{accountOrZoneId}/firewall/access_rules/rules",
-  }),
-) as unknown as Schema.Schema<ListAccessRulesRequest>;
+export const getAccessRule = (
+  input: GetAccessRuleRequest,
+): Effect.Effect<
+  GetAccessRuleResponse,
+  GetAccessRuleError,
+  Credentials | HttpClient.HttpClient
+> =>
+  "accountId" in input
+    ? getAccessRuleForAccount(input)
+    : getAccessRuleForZone(input);
+
+const ListAccessRulesBaseFields = {} as const;
+
+export interface ListAccessRulesForAccountRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface ListAccessRulesForZoneRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export type ListAccessRulesRequest =
+  | ListAccessRulesForAccountRequest
+  | ListAccessRulesForZoneRequest;
+
+export const ListAccessRulesForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...ListAccessRulesBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/firewall/access_rules/rules",
+    }),
+  ) as unknown as Schema.Schema<ListAccessRulesForAccountRequest>;
+
+export const ListAccessRulesForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...ListAccessRulesBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/firewall/access_rules/rules",
+    }),
+  ) as unknown as Schema.Schema<ListAccessRulesForZoneRequest>;
 
 export interface ListAccessRulesResponse {
   result: {
@@ -328,13 +408,13 @@ export const ListAccessRulesResponse =
 
 export type ListAccessRulesError = DefaultErrors;
 
-export const listAccessRules: API.PaginatedOperationMethod<
-  ListAccessRulesRequest,
+export const listAccessRulesForAccount: API.PaginatedOperationMethod<
+  ListAccessRulesForAccountRequest,
   ListAccessRulesResponse,
   ListAccessRulesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListAccessRulesRequest,
+  input: ListAccessRulesForAccountRequest,
   output: ListAccessRulesResponse,
   errors: [],
   pagination: {
@@ -346,11 +426,71 @@ export const listAccessRules: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export interface CreateAccessRuleRequest {
-  /** Path param: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
-  accountId?: string;
-  /** Path param: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
-  zoneId?: string;
+export const listAccessRulesForZone: API.PaginatedOperationMethod<
+  ListAccessRulesForZoneRequest,
+  ListAccessRulesResponse,
+  ListAccessRulesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAccessRulesForZoneRequest,
+  output: ListAccessRulesResponse,
+  errors: [],
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "resultInfo.page",
+    items: "result",
+    pageSize: "perPage",
+  } as const,
+}));
+
+export const listAccessRules = (
+  input: ListAccessRulesRequest,
+): stream.Stream<
+  ListAccessRulesResponse,
+  ListAccessRulesError,
+  Credentials | HttpClient.HttpClient
+> =>
+  "accountId" in input
+    ? listAccessRulesForAccount.pages(input)
+    : listAccessRulesForZone.pages(input);
+
+const CreateAccessRuleBaseFields = {
+  configuration: Schema.Union([
+    Schema.Struct({
+      target: Schema.optional(Schema.Literal("ip")),
+      value: Schema.optional(Schema.String),
+    }),
+    Schema.Struct({
+      target: Schema.optional(Schema.Literal("ip6")),
+      value: Schema.optional(Schema.String),
+    }),
+    Schema.Struct({
+      target: Schema.optional(Schema.Literal("ip_range")),
+      value: Schema.optional(Schema.String),
+    }),
+    Schema.Struct({
+      target: Schema.optional(Schema.Literal("asn")),
+      value: Schema.optional(Schema.String),
+    }),
+    Schema.Struct({
+      target: Schema.optional(Schema.Literal("country")),
+      value: Schema.optional(Schema.String),
+    }),
+  ]),
+  mode: Schema.Literals([
+    "block",
+    "challenge",
+    "whitelist",
+    "js_challenge",
+    "managed_challenge",
+  ]),
+  notes: Schema.optional(Schema.String),
+} as const;
+
+export interface CreateAccessRuleForAccountRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
   /** Body param: The rule configuration. */
   configuration:
     | { target?: "ip"; value?: string }
@@ -369,46 +509,52 @@ export interface CreateAccessRuleRequest {
   notes?: string;
 }
 
-export const CreateAccessRuleRequest =
+export interface CreateAccessRuleForZoneRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+  /** Body param: The rule configuration. */
+  configuration:
+    | { target?: "ip"; value?: string }
+    | { target?: "ip6"; value?: string }
+    | { target?: "ip_range"; value?: string }
+    | { target?: "asn"; value?: string }
+    | { target?: "country"; value?: string };
+  /** Body param: The action to apply to a matched request. */
+  mode:
+    | "block"
+    | "challenge"
+    | "whitelist"
+    | "js_challenge"
+    | "managed_challenge";
+  /** Body param: An informative summary of the rule, typically used as a reminder or explanation. */
+  notes?: string;
+}
+
+export type CreateAccessRuleRequest =
+  | CreateAccessRuleForAccountRequest
+  | CreateAccessRuleForZoneRequest;
+
+export const CreateAccessRuleForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    configuration: Schema.Union([
-      Schema.Struct({
-        target: Schema.optional(Schema.Literal("ip")),
-        value: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        target: Schema.optional(Schema.Literal("ip6")),
-        value: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        target: Schema.optional(Schema.Literal("ip_range")),
-        value: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        target: Schema.optional(Schema.Literal("asn")),
-        value: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        target: Schema.optional(Schema.Literal("country")),
-        value: Schema.optional(Schema.String),
-      }),
-    ]),
-    mode: Schema.Literals([
-      "block",
-      "challenge",
-      "whitelist",
-      "js_challenge",
-      "managed_challenge",
-    ]),
-    notes: Schema.optional(Schema.String),
+    ...CreateAccessRuleBaseFields,
   }).pipe(
     T.Http({
       method: "POST",
-      path: "/{accountOrZone}/{accountOrZoneId}/firewall/access_rules/rules",
+      path: "/accounts/{account_id}/firewall/access_rules/rules",
     }),
-  ) as unknown as Schema.Schema<CreateAccessRuleRequest>;
+  ) as unknown as Schema.Schema<CreateAccessRuleForAccountRequest>;
+
+export const CreateAccessRuleForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...CreateAccessRuleBaseFields,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/zones/{zone_id}/firewall/access_rules/rules",
+    }),
+  ) as unknown as Schema.Schema<CreateAccessRuleForZoneRequest>;
 
 export interface CreateAccessRuleResponse {
   /** The unique identifier of the IP Access rule. */
@@ -537,23 +683,77 @@ export const CreateAccessRuleResponse =
 
 export type CreateAccessRuleError = DefaultErrors;
 
-export const createAccessRule: API.OperationMethod<
-  CreateAccessRuleRequest,
+export const createAccessRuleForAccount: API.OperationMethod<
+  CreateAccessRuleForAccountRequest,
   CreateAccessRuleResponse,
   CreateAccessRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateAccessRuleRequest,
+  input: CreateAccessRuleForAccountRequest,
   output: CreateAccessRuleResponse,
   errors: [],
 }));
 
-export interface PatchAccessRuleRequest {
+export const createAccessRuleForZone: API.OperationMethod<
+  CreateAccessRuleForZoneRequest,
+  CreateAccessRuleResponse,
+  CreateAccessRuleError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateAccessRuleForZoneRequest,
+  output: CreateAccessRuleResponse,
+  errors: [],
+}));
+
+export const createAccessRule = (
+  input: CreateAccessRuleRequest,
+): Effect.Effect<
+  CreateAccessRuleResponse,
+  CreateAccessRuleError,
+  Credentials | HttpClient.HttpClient
+> =>
+  "accountId" in input
+    ? createAccessRuleForAccount(input)
+    : createAccessRuleForZone(input);
+
+const PatchAccessRuleBaseFields = {
+  ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
+  configuration: Schema.Union([
+    Schema.Struct({
+      target: Schema.optional(Schema.Literal("ip")),
+      value: Schema.optional(Schema.String),
+    }),
+    Schema.Struct({
+      target: Schema.optional(Schema.Literal("ip6")),
+      value: Schema.optional(Schema.String),
+    }),
+    Schema.Struct({
+      target: Schema.optional(Schema.Literal("ip_range")),
+      value: Schema.optional(Schema.String),
+    }),
+    Schema.Struct({
+      target: Schema.optional(Schema.Literal("asn")),
+      value: Schema.optional(Schema.String),
+    }),
+    Schema.Struct({
+      target: Schema.optional(Schema.Literal("country")),
+      value: Schema.optional(Schema.String),
+    }),
+  ]),
+  mode: Schema.Literals([
+    "block",
+    "challenge",
+    "whitelist",
+    "js_challenge",
+    "managed_challenge",
+  ]),
+  notes: Schema.optional(Schema.String),
+} as const;
+
+export interface PatchAccessRuleForAccountRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
   ruleId: string;
-  /** Path param: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
-  accountId?: string;
-  /** Path param: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
-  zoneId?: string;
   /** Body param: The rule configuration. */
   configuration:
     | { target?: "ip"; value?: string }
@@ -572,48 +772,53 @@ export interface PatchAccessRuleRequest {
   notes?: string;
 }
 
-export const PatchAccessRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
+export interface PatchAccessRuleForZoneRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+  ruleId: string;
+  /** Body param: The rule configuration. */
+  configuration:
+    | { target?: "ip"; value?: string }
+    | { target?: "ip6"; value?: string }
+    | { target?: "ip_range"; value?: string }
+    | { target?: "asn"; value?: string }
+    | { target?: "country"; value?: string };
+  /** Body param: The action to apply to a matched request. */
+  mode:
+    | "block"
+    | "challenge"
+    | "whitelist"
+    | "js_challenge"
+    | "managed_challenge";
+  /** Body param: An informative summary of the rule, typically used as a reminder or explanation. */
+  notes?: string;
+}
+
+export type PatchAccessRuleRequest =
+  | PatchAccessRuleForAccountRequest
+  | PatchAccessRuleForZoneRequest;
+
+export const PatchAccessRuleForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...PatchAccessRuleBaseFields,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/accounts/{account_id}/firewall/access_rules/rules/{ruleId}",
+    }),
+  ) as unknown as Schema.Schema<PatchAccessRuleForAccountRequest>;
+
+export const PatchAccessRuleForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    configuration: Schema.Union([
-      Schema.Struct({
-        target: Schema.optional(Schema.Literal("ip")),
-        value: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        target: Schema.optional(Schema.Literal("ip6")),
-        value: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        target: Schema.optional(Schema.Literal("ip_range")),
-        value: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        target: Schema.optional(Schema.Literal("asn")),
-        value: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        target: Schema.optional(Schema.Literal("country")),
-        value: Schema.optional(Schema.String),
-      }),
-    ]),
-    mode: Schema.Literals([
-      "block",
-      "challenge",
-      "whitelist",
-      "js_challenge",
-      "managed_challenge",
-    ]),
-    notes: Schema.optional(Schema.String),
-  },
-).pipe(
-  T.Http({
-    method: "PATCH",
-    path: "/{accountOrZone}/{accountOrZoneId}/firewall/access_rules/rules/{ruleId}",
-  }),
-) as unknown as Schema.Schema<PatchAccessRuleRequest>;
+    ...PatchAccessRuleBaseFields,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      path: "/zones/{zone_id}/firewall/access_rules/rules/{ruleId}",
+    }),
+  ) as unknown as Schema.Schema<PatchAccessRuleForZoneRequest>;
 
 export interface PatchAccessRuleResponse {
   /** The unique identifier of the IP Access rule. */
@@ -742,30 +947,80 @@ export const PatchAccessRuleResponse =
 
 export type PatchAccessRuleError = DefaultErrors;
 
-export const patchAccessRule: API.OperationMethod<
-  PatchAccessRuleRequest,
+export const patchAccessRuleForAccount: API.OperationMethod<
+  PatchAccessRuleForAccountRequest,
   PatchAccessRuleResponse,
   PatchAccessRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchAccessRuleRequest,
+  input: PatchAccessRuleForAccountRequest,
   output: PatchAccessRuleResponse,
   errors: [],
 }));
 
-export interface DeleteAccessRuleRequest {
+export const patchAccessRuleForZone: API.OperationMethod<
+  PatchAccessRuleForZoneRequest,
+  PatchAccessRuleResponse,
+  PatchAccessRuleError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchAccessRuleForZoneRequest,
+  output: PatchAccessRuleResponse,
+  errors: [],
+}));
+
+export const patchAccessRule = (
+  input: PatchAccessRuleRequest,
+): Effect.Effect<
+  PatchAccessRuleResponse,
+  PatchAccessRuleError,
+  Credentials | HttpClient.HttpClient
+> =>
+  "accountId" in input
+    ? patchAccessRuleForAccount(input)
+    : patchAccessRuleForZone(input);
+
+const DeleteAccessRuleBaseFields = {
+  ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
+} as const;
+
+export interface DeleteAccessRuleForAccountRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
   ruleId: string;
 }
 
-export const DeleteAccessRuleRequest =
+export interface DeleteAccessRuleForZoneRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+  ruleId: string;
+}
+
+export type DeleteAccessRuleRequest =
+  | DeleteAccessRuleForAccountRequest
+  | DeleteAccessRuleForZoneRequest;
+
+export const DeleteAccessRuleForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...DeleteAccessRuleBaseFields,
   }).pipe(
     T.Http({
       method: "DELETE",
-      path: "/{accountOrZone}/{accountOrZoneId}/firewall/access_rules/rules/{ruleId}",
+      path: "/accounts/{account_id}/firewall/access_rules/rules/{ruleId}",
     }),
-  ) as unknown as Schema.Schema<DeleteAccessRuleRequest>;
+  ) as unknown as Schema.Schema<DeleteAccessRuleForAccountRequest>;
+
+export const DeleteAccessRuleForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...DeleteAccessRuleBaseFields,
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/zones/{zone_id}/firewall/access_rules/rules/{ruleId}",
+    }),
+  ) as unknown as Schema.Schema<DeleteAccessRuleForZoneRequest>;
 
 export interface DeleteAccessRuleResponse {
   /** Defines an identifier. */
@@ -781,16 +1036,38 @@ export const DeleteAccessRuleResponse =
 
 export type DeleteAccessRuleError = DefaultErrors;
 
-export const deleteAccessRule: API.OperationMethod<
-  DeleteAccessRuleRequest,
+export const deleteAccessRuleForAccount: API.OperationMethod<
+  DeleteAccessRuleForAccountRequest,
   DeleteAccessRuleResponse,
   DeleteAccessRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteAccessRuleRequest,
+  input: DeleteAccessRuleForAccountRequest,
   output: DeleteAccessRuleResponse,
   errors: [],
 }));
+
+export const deleteAccessRuleForZone: API.OperationMethod<
+  DeleteAccessRuleForZoneRequest,
+  DeleteAccessRuleResponse,
+  DeleteAccessRuleError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteAccessRuleForZoneRequest,
+  output: DeleteAccessRuleResponse,
+  errors: [],
+}));
+
+export const deleteAccessRule = (
+  input: DeleteAccessRuleRequest,
+): Effect.Effect<
+  DeleteAccessRuleResponse,
+  DeleteAccessRuleError,
+  Credentials | HttpClient.HttpClient
+> =>
+  "accountId" in input
+    ? deleteAccessRuleForAccount(input)
+    : deleteAccessRuleForZone(input);
 
 // =============================================================================
 // Lockdown

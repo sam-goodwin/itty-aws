@@ -19,10 +19,12 @@ import { type DefaultErrors } from "../errors.ts";
 export interface GetAsnRequest {
   /** Identifier. */
   accountId: string;
+  asn: string;
 }
 
 export const GetAsnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  asn: Schema.String.pipe(T.HttpPath("asn")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/intel/asn/{asn}" }),
 ) as unknown as Schema.Schema<GetAsnRequest>;
@@ -53,10 +55,12 @@ export const getAsn: API.OperationMethod<
 export interface GetAsnSubnetRequest {
   /** Identifier. */
   accountId: string;
+  asn: string;
 }
 
 export const GetAsnSubnetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  asn: Schema.String.pipe(T.HttpPath("asn")),
 }).pipe(
   T.Http({
     method: "GET",

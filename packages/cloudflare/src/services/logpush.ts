@@ -5,6 +5,8 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service logpush
  */
 
+import * as Effect from "effect/Effect";
+import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -16,144 +18,7 @@ import { type DefaultErrors } from "../errors.ts";
 // DatasetField
 // =============================================================================
 
-export interface GetDatasetFieldRequest {
-  datasetId:
-    | "access_requests"
-    | "audit_logs"
-    | "audit_logs_v2"
-    | "biso_user_actions"
-    | "casb_findings"
-    | "device_posture_results"
-    | "dex_application_tests"
-    | "dex_device_state_events"
-    | "dlp_forensic_copies"
-    | "dns_firewall_logs"
-    | "dns_logs"
-    | "email_security_alerts"
-    | "firewall_events"
-    | "gateway_dns"
-    | "gateway_http"
-    | "gateway_network"
-    | "http_requests"
-    | "ipsec_logs"
-    | "magic_ids_detections"
-    | "nel_reports"
-    | "network_analytics_logs"
-    | "page_shield_events"
-    | "sinkhole_http_logs"
-    | "spectrum_events"
-    | "ssh_logs"
-    | "warp_config_changes"
-    | "warp_toggle_changes"
-    | "workers_trace_events"
-    | "zaraz_events"
-    | "zero_trust_network_sessions"
-    | null;
-}
-
-export const GetDatasetFieldRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    datasetId: Schema.Union([
-      Schema.Literal("access_requests"),
-      Schema.Literal("audit_logs"),
-      Schema.Literal("audit_logs_v2"),
-      Schema.Literal("biso_user_actions"),
-      Schema.Literal("casb_findings"),
-      Schema.Literal("device_posture_results"),
-      Schema.Literal("dex_application_tests"),
-      Schema.Literal("dex_device_state_events"),
-      Schema.Literal("dlp_forensic_copies"),
-      Schema.Literal("dns_firewall_logs"),
-      Schema.Literal("dns_logs"),
-      Schema.Literal("email_security_alerts"),
-      Schema.Literal("firewall_events"),
-      Schema.Literal("gateway_dns"),
-      Schema.Literal("gateway_http"),
-      Schema.Literal("gateway_network"),
-      Schema.Literal("http_requests"),
-      Schema.Literal("ipsec_logs"),
-      Schema.Literal("magic_ids_detections"),
-      Schema.Literal("nel_reports"),
-      Schema.Literal("network_analytics_logs"),
-      Schema.Literal("page_shield_events"),
-      Schema.Literal("sinkhole_http_logs"),
-      Schema.Literal("spectrum_events"),
-      Schema.Literal("ssh_logs"),
-      Schema.Literal("warp_config_changes"),
-      Schema.Literal("warp_toggle_changes"),
-      Schema.Literal("workers_trace_events"),
-      Schema.Literal("zaraz_events"),
-      Schema.Literal("zero_trust_network_sessions"),
-      Schema.Null,
-    ]).pipe(T.HttpPath("datasetId")),
-  },
-).pipe(
-  T.Http({
-    method: "GET",
-    path: "/{accountOrZone}/{accountOrZoneId}/logpush/datasets/{datasetId}/fields",
-  }),
-) as unknown as Schema.Schema<GetDatasetFieldRequest>;
-
-export type GetDatasetFieldResponse = unknown;
-
-export const GetDatasetFieldResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetDatasetFieldResponse>;
-
-export type GetDatasetFieldError = DefaultErrors;
-
-export const getDatasetField: API.OperationMethod<
-  GetDatasetFieldRequest,
-  GetDatasetFieldResponse,
-  GetDatasetFieldError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetDatasetFieldRequest,
-  output: GetDatasetFieldResponse,
-  errors: [],
-}));
-
-// =============================================================================
-// DatasetJob
-// =============================================================================
-
-export interface GetDatasetJobRequest {
-  datasetId:
-    | "access_requests"
-    | "audit_logs"
-    | "audit_logs_v2"
-    | "biso_user_actions"
-    | "casb_findings"
-    | "device_posture_results"
-    | "dex_application_tests"
-    | "dex_device_state_events"
-    | "dlp_forensic_copies"
-    | "dns_firewall_logs"
-    | "dns_logs"
-    | "email_security_alerts"
-    | "firewall_events"
-    | "gateway_dns"
-    | "gateway_http"
-    | "gateway_network"
-    | "http_requests"
-    | "ipsec_logs"
-    | "magic_ids_detections"
-    | "nel_reports"
-    | "network_analytics_logs"
-    | "page_shield_events"
-    | "sinkhole_http_logs"
-    | "spectrum_events"
-    | "ssh_logs"
-    | "warp_config_changes"
-    | "warp_toggle_changes"
-    | "workers_trace_events"
-    | "zaraz_events"
-    | "zero_trust_network_sessions"
-    | null;
-}
-
-export const GetDatasetJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+const GetDatasetFieldBaseFields = {
   datasetId: Schema.Union([
     Schema.Literal("access_requests"),
     Schema.Literal("audit_logs"),
@@ -187,12 +52,289 @@ export const GetDatasetJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.Literal("zero_trust_network_sessions"),
     Schema.Null,
   ]).pipe(T.HttpPath("datasetId")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/{accountOrZone}/{accountOrZoneId}/logpush/datasets/{datasetId}/jobs",
-  }),
-) as unknown as Schema.Schema<GetDatasetJobRequest>;
+} as const;
+
+export interface GetDatasetFieldForAccountRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+  datasetId:
+    | "access_requests"
+    | "audit_logs"
+    | "audit_logs_v2"
+    | "biso_user_actions"
+    | "casb_findings"
+    | "device_posture_results"
+    | "dex_application_tests"
+    | "dex_device_state_events"
+    | "dlp_forensic_copies"
+    | "dns_firewall_logs"
+    | "dns_logs"
+    | "email_security_alerts"
+    | "firewall_events"
+    | "gateway_dns"
+    | "gateway_http"
+    | "gateway_network"
+    | "http_requests"
+    | "ipsec_logs"
+    | "magic_ids_detections"
+    | "nel_reports"
+    | "network_analytics_logs"
+    | "page_shield_events"
+    | "sinkhole_http_logs"
+    | "spectrum_events"
+    | "ssh_logs"
+    | "warp_config_changes"
+    | "warp_toggle_changes"
+    | "workers_trace_events"
+    | "zaraz_events"
+    | "zero_trust_network_sessions"
+    | null;
+}
+
+export interface GetDatasetFieldForZoneRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+  datasetId:
+    | "access_requests"
+    | "audit_logs"
+    | "audit_logs_v2"
+    | "biso_user_actions"
+    | "casb_findings"
+    | "device_posture_results"
+    | "dex_application_tests"
+    | "dex_device_state_events"
+    | "dlp_forensic_copies"
+    | "dns_firewall_logs"
+    | "dns_logs"
+    | "email_security_alerts"
+    | "firewall_events"
+    | "gateway_dns"
+    | "gateway_http"
+    | "gateway_network"
+    | "http_requests"
+    | "ipsec_logs"
+    | "magic_ids_detections"
+    | "nel_reports"
+    | "network_analytics_logs"
+    | "page_shield_events"
+    | "sinkhole_http_logs"
+    | "spectrum_events"
+    | "ssh_logs"
+    | "warp_config_changes"
+    | "warp_toggle_changes"
+    | "workers_trace_events"
+    | "zaraz_events"
+    | "zero_trust_network_sessions"
+    | null;
+}
+
+export type GetDatasetFieldRequest =
+  | GetDatasetFieldForAccountRequest
+  | GetDatasetFieldForZoneRequest;
+
+export const GetDatasetFieldForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...GetDatasetFieldBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/logpush/datasets/{datasetId}/fields",
+    }),
+  ) as unknown as Schema.Schema<GetDatasetFieldForAccountRequest>;
+
+export const GetDatasetFieldForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...GetDatasetFieldBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/logpush/datasets/{datasetId}/fields",
+    }),
+  ) as unknown as Schema.Schema<GetDatasetFieldForZoneRequest>;
+
+export type GetDatasetFieldResponse = unknown;
+
+export const GetDatasetFieldResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
+    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<GetDatasetFieldResponse>;
+
+export type GetDatasetFieldError = DefaultErrors;
+
+export const getDatasetFieldForAccount: API.OperationMethod<
+  GetDatasetFieldForAccountRequest,
+  GetDatasetFieldResponse,
+  GetDatasetFieldError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetDatasetFieldForAccountRequest,
+  output: GetDatasetFieldResponse,
+  errors: [],
+}));
+
+export const getDatasetFieldForZone: API.OperationMethod<
+  GetDatasetFieldForZoneRequest,
+  GetDatasetFieldResponse,
+  GetDatasetFieldError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetDatasetFieldForZoneRequest,
+  output: GetDatasetFieldResponse,
+  errors: [],
+}));
+
+export const getDatasetField = (
+  input: GetDatasetFieldRequest,
+): Effect.Effect<
+  GetDatasetFieldResponse,
+  GetDatasetFieldError,
+  Credentials | HttpClient.HttpClient
+> =>
+  "accountId" in input
+    ? getDatasetFieldForAccount(input)
+    : getDatasetFieldForZone(input);
+
+// =============================================================================
+// DatasetJob
+// =============================================================================
+
+const GetDatasetJobBaseFields = {
+  datasetId: Schema.Union([
+    Schema.Literal("access_requests"),
+    Schema.Literal("audit_logs"),
+    Schema.Literal("audit_logs_v2"),
+    Schema.Literal("biso_user_actions"),
+    Schema.Literal("casb_findings"),
+    Schema.Literal("device_posture_results"),
+    Schema.Literal("dex_application_tests"),
+    Schema.Literal("dex_device_state_events"),
+    Schema.Literal("dlp_forensic_copies"),
+    Schema.Literal("dns_firewall_logs"),
+    Schema.Literal("dns_logs"),
+    Schema.Literal("email_security_alerts"),
+    Schema.Literal("firewall_events"),
+    Schema.Literal("gateway_dns"),
+    Schema.Literal("gateway_http"),
+    Schema.Literal("gateway_network"),
+    Schema.Literal("http_requests"),
+    Schema.Literal("ipsec_logs"),
+    Schema.Literal("magic_ids_detections"),
+    Schema.Literal("nel_reports"),
+    Schema.Literal("network_analytics_logs"),
+    Schema.Literal("page_shield_events"),
+    Schema.Literal("sinkhole_http_logs"),
+    Schema.Literal("spectrum_events"),
+    Schema.Literal("ssh_logs"),
+    Schema.Literal("warp_config_changes"),
+    Schema.Literal("warp_toggle_changes"),
+    Schema.Literal("workers_trace_events"),
+    Schema.Literal("zaraz_events"),
+    Schema.Literal("zero_trust_network_sessions"),
+    Schema.Null,
+  ]).pipe(T.HttpPath("datasetId")),
+} as const;
+
+export interface GetDatasetJobForAccountRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+  datasetId:
+    | "access_requests"
+    | "audit_logs"
+    | "audit_logs_v2"
+    | "biso_user_actions"
+    | "casb_findings"
+    | "device_posture_results"
+    | "dex_application_tests"
+    | "dex_device_state_events"
+    | "dlp_forensic_copies"
+    | "dns_firewall_logs"
+    | "dns_logs"
+    | "email_security_alerts"
+    | "firewall_events"
+    | "gateway_dns"
+    | "gateway_http"
+    | "gateway_network"
+    | "http_requests"
+    | "ipsec_logs"
+    | "magic_ids_detections"
+    | "nel_reports"
+    | "network_analytics_logs"
+    | "page_shield_events"
+    | "sinkhole_http_logs"
+    | "spectrum_events"
+    | "ssh_logs"
+    | "warp_config_changes"
+    | "warp_toggle_changes"
+    | "workers_trace_events"
+    | "zaraz_events"
+    | "zero_trust_network_sessions"
+    | null;
+}
+
+export interface GetDatasetJobForZoneRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+  datasetId:
+    | "access_requests"
+    | "audit_logs"
+    | "audit_logs_v2"
+    | "biso_user_actions"
+    | "casb_findings"
+    | "device_posture_results"
+    | "dex_application_tests"
+    | "dex_device_state_events"
+    | "dlp_forensic_copies"
+    | "dns_firewall_logs"
+    | "dns_logs"
+    | "email_security_alerts"
+    | "firewall_events"
+    | "gateway_dns"
+    | "gateway_http"
+    | "gateway_network"
+    | "http_requests"
+    | "ipsec_logs"
+    | "magic_ids_detections"
+    | "nel_reports"
+    | "network_analytics_logs"
+    | "page_shield_events"
+    | "sinkhole_http_logs"
+    | "spectrum_events"
+    | "ssh_logs"
+    | "warp_config_changes"
+    | "warp_toggle_changes"
+    | "workers_trace_events"
+    | "zaraz_events"
+    | "zero_trust_network_sessions"
+    | null;
+}
+
+export type GetDatasetJobRequest =
+  | GetDatasetJobForAccountRequest
+  | GetDatasetJobForZoneRequest;
+
+export const GetDatasetJobForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...GetDatasetJobBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/logpush/datasets/{datasetId}/jobs",
+    }),
+  ) as unknown as Schema.Schema<GetDatasetJobForAccountRequest>;
+
+export const GetDatasetJobForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...GetDatasetJobBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/logpush/datasets/{datasetId}/jobs",
+    }),
+  ) as unknown as Schema.Schema<GetDatasetJobForZoneRequest>;
 
 export interface GetDatasetJobResponse {
   result: ({
@@ -419,13 +561,13 @@ export const GetDatasetJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type GetDatasetJobError = DefaultErrors;
 
-export const getDatasetJob: API.PaginatedOperationMethod<
-  GetDatasetJobRequest,
+export const getDatasetJobForAccount: API.PaginatedOperationMethod<
+  GetDatasetJobForAccountRequest,
   GetDatasetJobResponse,
   GetDatasetJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: GetDatasetJobRequest,
+  input: GetDatasetJobForAccountRequest,
   output: GetDatasetJobResponse,
   errors: [],
   pagination: {
@@ -433,6 +575,32 @@ export const getDatasetJob: API.PaginatedOperationMethod<
     items: "result",
   } as const,
 }));
+
+export const getDatasetJobForZone: API.PaginatedOperationMethod<
+  GetDatasetJobForZoneRequest,
+  GetDatasetJobResponse,
+  GetDatasetJobError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: GetDatasetJobForZoneRequest,
+  output: GetDatasetJobResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
+}));
+
+export const getDatasetJob = (
+  input: GetDatasetJobRequest,
+): stream.Stream<
+  GetDatasetJobResponse,
+  GetDatasetJobError,
+  Credentials | HttpClient.HttpClient
+> =>
+  "accountId" in input
+    ? getDatasetJobForAccount.pages(input)
+    : getDatasetJobForZone.pages(input);
 
 // =============================================================================
 // Edge
@@ -571,27 +739,51 @@ export const createEdge: API.OperationMethod<
 // ExistsValidate
 // =============================================================================
 
-export interface DestinationExistsValidateRequest {
-  /** Path param: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
-  accountId?: string;
-  /** Path param: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
-  zoneId?: string;
+const DestinationExistsValidateBaseFields = {
+  destinationConf: Schema.String,
+} as const;
+
+export interface DestinationExistsValidateForAccountRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
   /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
 }
 
-export const DestinationExistsValidateRequest =
+export interface DestinationExistsValidateForZoneRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+  /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
+  destinationConf: string;
+}
+
+export type DestinationExistsValidateRequest =
+  | DestinationExistsValidateForAccountRequest
+  | DestinationExistsValidateForZoneRequest;
+
+export const DestinationExistsValidateForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    destinationConf: Schema.String,
+    ...DestinationExistsValidateBaseFields,
   }).pipe(
     Schema.encodeKeys({ destinationConf: "destination_conf" }),
     T.Http({
       method: "POST",
-      path: "/{accountOrZone}/{accountOrZoneId}/logpush/validate/destination/exists",
+      path: "/accounts/{account_id}/logpush/validate/destination/exists",
     }),
-  ) as unknown as Schema.Schema<DestinationExistsValidateRequest>;
+  ) as unknown as Schema.Schema<DestinationExistsValidateForAccountRequest>;
+
+export const DestinationExistsValidateForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...DestinationExistsValidateBaseFields,
+  }).pipe(
+    Schema.encodeKeys({ destinationConf: "destination_conf" }),
+    T.Http({
+      method: "POST",
+      path: "/zones/{zone_id}/logpush/validate/destination/exists",
+    }),
+  ) as unknown as Schema.Schema<DestinationExistsValidateForZoneRequest>;
 
 export interface DestinationExistsValidateResponse {
   exists?: boolean | null;
@@ -606,33 +798,78 @@ export const DestinationExistsValidateResponse =
 
 export type DestinationExistsValidateError = DefaultErrors;
 
-export const destinationExistsValidate: API.OperationMethod<
-  DestinationExistsValidateRequest,
+export const destinationExistsValidateForAccount: API.OperationMethod<
+  DestinationExistsValidateForAccountRequest,
   DestinationExistsValidateResponse,
   DestinationExistsValidateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DestinationExistsValidateRequest,
+  input: DestinationExistsValidateForAccountRequest,
   output: DestinationExistsValidateResponse,
   errors: [],
 }));
+
+export const destinationExistsValidateForZone: API.OperationMethod<
+  DestinationExistsValidateForZoneRequest,
+  DestinationExistsValidateResponse,
+  DestinationExistsValidateError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DestinationExistsValidateForZoneRequest,
+  output: DestinationExistsValidateResponse,
+  errors: [],
+}));
+
+export const destinationExistsValidate = (
+  input: DestinationExistsValidateRequest,
+): Effect.Effect<
+  DestinationExistsValidateResponse,
+  DestinationExistsValidateError,
+  Credentials | HttpClient.HttpClient
+> =>
+  "accountId" in input
+    ? destinationExistsValidateForAccount(input)
+    : destinationExistsValidateForZone(input);
 
 // =============================================================================
 // Job
 // =============================================================================
 
-export interface GetJobRequest {
+const GetJobBaseFields = {
+  jobId: Schema.Number.pipe(T.HttpPath("jobId")),
+} as const;
+
+export interface GetJobForAccountRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
   jobId: number;
 }
 
-export const GetJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  jobId: Schema.Number.pipe(T.HttpPath("jobId")),
+export interface GetJobForZoneRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+  jobId: number;
+}
+
+export type GetJobRequest = GetJobForAccountRequest | GetJobForZoneRequest;
+
+export const GetJobForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...GetJobBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/logpush/jobs/{jobId}",
+    }),
+  ) as unknown as Schema.Schema<GetJobForAccountRequest>;
+
+export const GetJobForZoneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  ...GetJobBaseFields,
 }).pipe(
-  T.Http({
-    method: "GET",
-    path: "/{accountOrZone}/{accountOrZoneId}/logpush/jobs/{jobId}",
-  }),
-) as unknown as Schema.Schema<GetJobRequest>;
+  T.Http({ method: "GET", path: "/zones/{zone_id}/logpush/jobs/{jobId}" }),
+) as unknown as Schema.Schema<GetJobForZoneRequest>;
 
 export interface GetJobResponse {
   /** Unique id of the job. */
@@ -853,27 +1090,68 @@ export const GetJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type GetJobError = DefaultErrors;
 
-export const getJob: API.OperationMethod<
-  GetJobRequest,
+export const getJobForAccount: API.OperationMethod<
+  GetJobForAccountRequest,
   GetJobResponse,
   GetJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetJobRequest,
+  input: GetJobForAccountRequest,
   output: GetJobResponse,
   errors: [],
 }));
 
-export interface ListJobsRequest {}
+export const getJobForZone: API.OperationMethod<
+  GetJobForZoneRequest,
+  GetJobResponse,
+  GetJobError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetJobForZoneRequest,
+  output: GetJobResponse,
+  errors: [],
+}));
 
-export const ListJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
+export const getJob = (
+  input: GetJobRequest,
+): Effect.Effect<
+  GetJobResponse,
+  GetJobError,
+  Credentials | HttpClient.HttpClient
+> => ("accountId" in input ? getJobForAccount(input) : getJobForZone(input));
+
+const ListJobsBaseFields = {} as const;
+
+export interface ListJobsForAccountRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface ListJobsForZoneRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export type ListJobsRequest =
+  | ListJobsForAccountRequest
+  | ListJobsForZoneRequest;
+
+export const ListJobsForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...ListJobsBaseFields,
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/logpush/jobs" }),
+  ) as unknown as Schema.Schema<ListJobsForAccountRequest>;
+
+export const ListJobsForZoneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...ListJobsBaseFields,
+  },
 ).pipe(
-  T.Http({
-    method: "GET",
-    path: "/{accountOrZone}/{accountOrZoneId}/logpush/jobs",
-  }),
-) as unknown as Schema.Schema<ListJobsRequest>;
+  T.Http({ method: "GET", path: "/zones/{zone_id}/logpush/jobs" }),
+) as unknown as Schema.Schema<ListJobsForZoneRequest>;
 
 export interface ListJobsResponse {
   result: ({
@@ -1100,13 +1378,13 @@ export const ListJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type ListJobsError = DefaultErrors;
 
-export const listJobs: API.PaginatedOperationMethod<
-  ListJobsRequest,
+export const listJobsForAccount: API.PaginatedOperationMethod<
+  ListJobsForAccountRequest,
   ListJobsResponse,
   ListJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListJobsRequest,
+  input: ListJobsForAccountRequest,
   output: ListJobsResponse,
   errors: [],
   pagination: {
@@ -1115,86 +1393,33 @@ export const listJobs: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export interface CreateJobRequest {
-  /** Path param: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
-  accountId?: string;
-  /** Path param: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
-  zoneId?: string;
-  /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
-  destinationConf: string;
-  /** Body param: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
-  dataset?:
-    | "access_requests"
-    | "audit_logs"
-    | "audit_logs_v2"
-    | "biso_user_actions"
-    | "casb_findings"
-    | "device_posture_results"
-    | "dex_application_tests"
-    | "dex_device_state_events"
-    | "dlp_forensic_copies"
-    | "dns_firewall_logs"
-    | "dns_logs"
-    | "email_security_alerts"
-    | "firewall_events"
-    | "gateway_dns"
-    | "gateway_http"
-    | "gateway_network"
-    | "http_requests"
-    | "ipsec_logs"
-    | "magic_ids_detections"
-    | "nel_reports"
-    | "network_analytics_logs"
-    | "page_shield_events"
-    | "sinkhole_http_logs"
-    | "spectrum_events"
-    | "ssh_logs"
-    | "warp_config_changes"
-    | "warp_toggle_changes"
-    | "workers_trace_events"
-    | "zaraz_events"
-    | "zero_trust_network_sessions"
-    | null;
-  /** Body param: Flag that indicates if the job is enabled. */
-  enabled?: boolean;
-  /** Body param: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/). */
-  filter?: string | null;
-  /** @deprecated Body param: This field is deprecated. Please use `max_upload_ ` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high */
-  frequency?: "high" | "low" | null;
-  /** Body param: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: "" | "edge";
-  /** @deprecated Body param: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api */
-  logpullOptions?: string | null;
-  /** Body param: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means  */
-  maxUploadBytes?: "0" | number | null;
-  /** Body param: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log  */
-  maxUploadIntervalSeconds?: "0" | number | null;
-  /** Body param: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch */
-  maxUploadRecords?: "0" | number | null;
-  /** Body param: Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
-  name?: string | null;
-  /** Body param: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: {
-    batchPrefix?: string | null;
-    batchSuffix?: string | null;
-    "cve-2021-44228"?: boolean | null;
-    fieldDelimiter?: string | null;
-    fieldNames?: string[];
-    outputType?: "ndjson" | "csv";
-    recordDelimiter?: string | null;
-    recordPrefix?: string | null;
-    recordSuffix?: string | null;
-    recordTemplate?: string | null;
-    sampleRate?: number | null;
-    timestampFormat?: "unixnano" | "unix" | "rfc3339";
-  } | null;
-  /** Body param: Ownership challenge token to prove destination ownership. */
-  ownershipChallenge?: string;
-}
+export const listJobsForZone: API.PaginatedOperationMethod<
+  ListJobsForZoneRequest,
+  ListJobsResponse,
+  ListJobsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListJobsForZoneRequest,
+  output: ListJobsResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
+}));
 
-export const CreateJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+export const listJobs = (
+  input: ListJobsRequest,
+): stream.Stream<
+  ListJobsResponse,
+  ListJobsError,
+  Credentials | HttpClient.HttpClient
+> =>
+  "accountId" in input
+    ? listJobsForAccount.pages(input)
+    : listJobsForZone.pages(input);
+
+const CreateJobBaseFields = {
   destinationConf: Schema.String,
   dataset: Schema.optional(
     Schema.Union([
@@ -1301,27 +1526,207 @@ export const CreateJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   ownershipChallenge: Schema.optional(Schema.String),
-}).pipe(
-  Schema.encodeKeys({
-    destinationConf: "destination_conf",
-    dataset: "dataset",
-    enabled: "enabled",
-    filter: "filter",
-    frequency: "frequency",
-    kind: "kind",
-    logpullOptions: "logpull_options",
-    maxUploadBytes: "max_upload_bytes",
-    maxUploadIntervalSeconds: "max_upload_interval_seconds",
-    maxUploadRecords: "max_upload_records",
-    name: "name",
-    outputOptions: "output_options",
-    ownershipChallenge: "ownership_challenge",
-  }),
-  T.Http({
-    method: "POST",
-    path: "/{accountOrZone}/{accountOrZoneId}/logpush/jobs",
-  }),
-) as unknown as Schema.Schema<CreateJobRequest>;
+} as const;
+
+export interface CreateJobForAccountRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+  /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
+  destinationConf: string;
+  /** Body param: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
+  dataset?:
+    | "access_requests"
+    | "audit_logs"
+    | "audit_logs_v2"
+    | "biso_user_actions"
+    | "casb_findings"
+    | "device_posture_results"
+    | "dex_application_tests"
+    | "dex_device_state_events"
+    | "dlp_forensic_copies"
+    | "dns_firewall_logs"
+    | "dns_logs"
+    | "email_security_alerts"
+    | "firewall_events"
+    | "gateway_dns"
+    | "gateway_http"
+    | "gateway_network"
+    | "http_requests"
+    | "ipsec_logs"
+    | "magic_ids_detections"
+    | "nel_reports"
+    | "network_analytics_logs"
+    | "page_shield_events"
+    | "sinkhole_http_logs"
+    | "spectrum_events"
+    | "ssh_logs"
+    | "warp_config_changes"
+    | "warp_toggle_changes"
+    | "workers_trace_events"
+    | "zaraz_events"
+    | "zero_trust_network_sessions"
+    | null;
+  /** Body param: Flag that indicates if the job is enabled. */
+  enabled?: boolean;
+  /** Body param: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/). */
+  filter?: string | null;
+  /** @deprecated Body param: This field is deprecated. Please use `max_upload_ ` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high */
+  frequency?: "high" | "low" | null;
+  /** Body param: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
+  kind?: "" | "edge";
+  /** @deprecated Body param: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api */
+  logpullOptions?: string | null;
+  /** Body param: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means  */
+  maxUploadBytes?: "0" | number | null;
+  /** Body param: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log  */
+  maxUploadIntervalSeconds?: "0" | number | null;
+  /** Body param: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch */
+  maxUploadRecords?: "0" | number | null;
+  /** Body param: Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
+  name?: string | null;
+  /** Body param: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
+  outputOptions?: {
+    batchPrefix?: string | null;
+    batchSuffix?: string | null;
+    "cve-2021-44228"?: boolean | null;
+    fieldDelimiter?: string | null;
+    fieldNames?: string[];
+    outputType?: "ndjson" | "csv";
+    recordDelimiter?: string | null;
+    recordPrefix?: string | null;
+    recordSuffix?: string | null;
+    recordTemplate?: string | null;
+    sampleRate?: number | null;
+    timestampFormat?: "unixnano" | "unix" | "rfc3339";
+  } | null;
+  /** Body param: Ownership challenge token to prove destination ownership. */
+  ownershipChallenge?: string;
+}
+
+export interface CreateJobForZoneRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+  /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
+  destinationConf: string;
+  /** Body param: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
+  dataset?:
+    | "access_requests"
+    | "audit_logs"
+    | "audit_logs_v2"
+    | "biso_user_actions"
+    | "casb_findings"
+    | "device_posture_results"
+    | "dex_application_tests"
+    | "dex_device_state_events"
+    | "dlp_forensic_copies"
+    | "dns_firewall_logs"
+    | "dns_logs"
+    | "email_security_alerts"
+    | "firewall_events"
+    | "gateway_dns"
+    | "gateway_http"
+    | "gateway_network"
+    | "http_requests"
+    | "ipsec_logs"
+    | "magic_ids_detections"
+    | "nel_reports"
+    | "network_analytics_logs"
+    | "page_shield_events"
+    | "sinkhole_http_logs"
+    | "spectrum_events"
+    | "ssh_logs"
+    | "warp_config_changes"
+    | "warp_toggle_changes"
+    | "workers_trace_events"
+    | "zaraz_events"
+    | "zero_trust_network_sessions"
+    | null;
+  /** Body param: Flag that indicates if the job is enabled. */
+  enabled?: boolean;
+  /** Body param: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/). */
+  filter?: string | null;
+  /** @deprecated Body param: This field is deprecated. Please use `max_upload_ ` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high */
+  frequency?: "high" | "low" | null;
+  /** Body param: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
+  kind?: "" | "edge";
+  /** @deprecated Body param: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api */
+  logpullOptions?: string | null;
+  /** Body param: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means  */
+  maxUploadBytes?: "0" | number | null;
+  /** Body param: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log  */
+  maxUploadIntervalSeconds?: "0" | number | null;
+  /** Body param: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch */
+  maxUploadRecords?: "0" | number | null;
+  /** Body param: Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
+  name?: string | null;
+  /** Body param: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
+  outputOptions?: {
+    batchPrefix?: string | null;
+    batchSuffix?: string | null;
+    "cve-2021-44228"?: boolean | null;
+    fieldDelimiter?: string | null;
+    fieldNames?: string[];
+    outputType?: "ndjson" | "csv";
+    recordDelimiter?: string | null;
+    recordPrefix?: string | null;
+    recordSuffix?: string | null;
+    recordTemplate?: string | null;
+    sampleRate?: number | null;
+    timestampFormat?: "unixnano" | "unix" | "rfc3339";
+  } | null;
+  /** Body param: Ownership challenge token to prove destination ownership. */
+  ownershipChallenge?: string;
+}
+
+export type CreateJobRequest =
+  | CreateJobForAccountRequest
+  | CreateJobForZoneRequest;
+
+export const CreateJobForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...CreateJobBaseFields,
+  }).pipe(
+    Schema.encodeKeys({
+      destinationConf: "destination_conf",
+      dataset: "dataset",
+      enabled: "enabled",
+      filter: "filter",
+      frequency: "frequency",
+      kind: "kind",
+      logpullOptions: "logpull_options",
+      maxUploadBytes: "max_upload_bytes",
+      maxUploadIntervalSeconds: "max_upload_interval_seconds",
+      maxUploadRecords: "max_upload_records",
+      name: "name",
+      outputOptions: "output_options",
+      ownershipChallenge: "ownership_challenge",
+    }),
+    T.Http({ method: "POST", path: "/accounts/{account_id}/logpush/jobs" }),
+  ) as unknown as Schema.Schema<CreateJobForAccountRequest>;
+
+export const CreateJobForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...CreateJobBaseFields,
+  }).pipe(
+    Schema.encodeKeys({
+      destinationConf: "destination_conf",
+      dataset: "dataset",
+      enabled: "enabled",
+      filter: "filter",
+      frequency: "frequency",
+      kind: "kind",
+      logpullOptions: "logpull_options",
+      maxUploadBytes: "max_upload_bytes",
+      maxUploadIntervalSeconds: "max_upload_interval_seconds",
+      maxUploadRecords: "max_upload_records",
+      name: "name",
+      outputOptions: "output_options",
+      ownershipChallenge: "ownership_challenge",
+    }),
+    T.Http({ method: "POST", path: "/zones/{zone_id}/logpush/jobs" }),
+  ) as unknown as Schema.Schema<CreateJobForZoneRequest>;
 
 export interface CreateJobResponse {
   /** Unique id of the job. */
@@ -1544,66 +1949,39 @@ export const CreateJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type CreateJobError = DefaultErrors;
 
-export const createJob: API.OperationMethod<
-  CreateJobRequest,
+export const createJobForAccount: API.OperationMethod<
+  CreateJobForAccountRequest,
   CreateJobResponse,
   CreateJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateJobRequest,
+  input: CreateJobForAccountRequest,
   output: CreateJobResponse,
   errors: [],
 }));
 
-export interface UpdateJobRequest {
-  jobId: number;
-  /** Path param: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
-  accountId?: string;
-  /** Path param: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
-  zoneId?: string;
-  /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
-  destinationConf?: string;
-  /** Body param: Flag that indicates if the job is enabled. */
-  enabled?: boolean;
-  /** Body param: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/). */
-  filter?: string | null;
-  /** @deprecated Body param: This field is deprecated. Please use `max_upload_ ` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high */
-  frequency?: "high" | "low" | null;
-  /** Body param: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: "" | "edge";
-  /** @deprecated Body param: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api */
-  logpullOptions?: string | null;
-  /** Body param: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means  */
-  maxUploadBytes?: "0" | number | null;
-  /** Body param: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log  */
-  maxUploadIntervalSeconds?: "0" | number | null;
-  /** Body param: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch */
-  maxUploadRecords?: "0" | number | null;
-  /** Body param: Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
-  name?: string | null;
-  /** Body param: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: {
-    batchPrefix?: string | null;
-    batchSuffix?: string | null;
-    "cve-2021-44228"?: boolean | null;
-    fieldDelimiter?: string | null;
-    fieldNames?: string[];
-    outputType?: "ndjson" | "csv";
-    recordDelimiter?: string | null;
-    recordPrefix?: string | null;
-    recordSuffix?: string | null;
-    recordTemplate?: string | null;
-    sampleRate?: number | null;
-    timestampFormat?: "unixnano" | "unix" | "rfc3339";
-  } | null;
-  /** Body param: Ownership challenge token to prove destination ownership. */
-  ownershipChallenge?: string;
-}
+export const createJobForZone: API.OperationMethod<
+  CreateJobForZoneRequest,
+  CreateJobResponse,
+  CreateJobError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateJobForZoneRequest,
+  output: CreateJobResponse,
+  errors: [],
+}));
 
-export const UpdateJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const createJob = (
+  input: CreateJobRequest,
+): Effect.Effect<
+  CreateJobResponse,
+  CreateJobError,
+  Credentials | HttpClient.HttpClient
+> =>
+  "accountId" in input ? createJobForAccount(input) : createJobForZone(input);
+
+const UpdateJobBaseFields = {
   jobId: Schema.Number.pipe(T.HttpPath("jobId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   destinationConf: Schema.optional(Schema.String),
   enabled: Schema.optional(Schema.Boolean),
   filter: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1675,26 +2053,144 @@ export const UpdateJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ]),
   ),
   ownershipChallenge: Schema.optional(Schema.String),
-}).pipe(
-  Schema.encodeKeys({
-    destinationConf: "destination_conf",
-    enabled: "enabled",
-    filter: "filter",
-    frequency: "frequency",
-    kind: "kind",
-    logpullOptions: "logpull_options",
-    maxUploadBytes: "max_upload_bytes",
-    maxUploadIntervalSeconds: "max_upload_interval_seconds",
-    maxUploadRecords: "max_upload_records",
-    name: "name",
-    outputOptions: "output_options",
-    ownershipChallenge: "ownership_challenge",
-  }),
-  T.Http({
-    method: "PUT",
-    path: "/{accountOrZone}/{accountOrZoneId}/logpush/jobs/{jobId}",
-  }),
-) as unknown as Schema.Schema<UpdateJobRequest>;
+} as const;
+
+export interface UpdateJobForAccountRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+  jobId: number;
+  /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
+  destinationConf?: string;
+  /** Body param: Flag that indicates if the job is enabled. */
+  enabled?: boolean;
+  /** Body param: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/). */
+  filter?: string | null;
+  /** @deprecated Body param: This field is deprecated. Please use `max_upload_ ` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high */
+  frequency?: "high" | "low" | null;
+  /** Body param: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
+  kind?: "" | "edge";
+  /** @deprecated Body param: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api */
+  logpullOptions?: string | null;
+  /** Body param: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means  */
+  maxUploadBytes?: "0" | number | null;
+  /** Body param: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log  */
+  maxUploadIntervalSeconds?: "0" | number | null;
+  /** Body param: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch */
+  maxUploadRecords?: "0" | number | null;
+  /** Body param: Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
+  name?: string | null;
+  /** Body param: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
+  outputOptions?: {
+    batchPrefix?: string | null;
+    batchSuffix?: string | null;
+    "cve-2021-44228"?: boolean | null;
+    fieldDelimiter?: string | null;
+    fieldNames?: string[];
+    outputType?: "ndjson" | "csv";
+    recordDelimiter?: string | null;
+    recordPrefix?: string | null;
+    recordSuffix?: string | null;
+    recordTemplate?: string | null;
+    sampleRate?: number | null;
+    timestampFormat?: "unixnano" | "unix" | "rfc3339";
+  } | null;
+  /** Body param: Ownership challenge token to prove destination ownership. */
+  ownershipChallenge?: string;
+}
+
+export interface UpdateJobForZoneRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+  jobId: number;
+  /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
+  destinationConf?: string;
+  /** Body param: Flag that indicates if the job is enabled. */
+  enabled?: boolean;
+  /** Body param: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/). */
+  filter?: string | null;
+  /** @deprecated Body param: This field is deprecated. Please use `max_upload_ ` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high */
+  frequency?: "high" | "low" | null;
+  /** Body param: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
+  kind?: "" | "edge";
+  /** @deprecated Body param: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api */
+  logpullOptions?: string | null;
+  /** Body param: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means  */
+  maxUploadBytes?: "0" | number | null;
+  /** Body param: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log  */
+  maxUploadIntervalSeconds?: "0" | number | null;
+  /** Body param: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch */
+  maxUploadRecords?: "0" | number | null;
+  /** Body param: Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
+  name?: string | null;
+  /** Body param: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
+  outputOptions?: {
+    batchPrefix?: string | null;
+    batchSuffix?: string | null;
+    "cve-2021-44228"?: boolean | null;
+    fieldDelimiter?: string | null;
+    fieldNames?: string[];
+    outputType?: "ndjson" | "csv";
+    recordDelimiter?: string | null;
+    recordPrefix?: string | null;
+    recordSuffix?: string | null;
+    recordTemplate?: string | null;
+    sampleRate?: number | null;
+    timestampFormat?: "unixnano" | "unix" | "rfc3339";
+  } | null;
+  /** Body param: Ownership challenge token to prove destination ownership. */
+  ownershipChallenge?: string;
+}
+
+export type UpdateJobRequest =
+  | UpdateJobForAccountRequest
+  | UpdateJobForZoneRequest;
+
+export const UpdateJobForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...UpdateJobBaseFields,
+  }).pipe(
+    Schema.encodeKeys({
+      destinationConf: "destination_conf",
+      enabled: "enabled",
+      filter: "filter",
+      frequency: "frequency",
+      kind: "kind",
+      logpullOptions: "logpull_options",
+      maxUploadBytes: "max_upload_bytes",
+      maxUploadIntervalSeconds: "max_upload_interval_seconds",
+      maxUploadRecords: "max_upload_records",
+      name: "name",
+      outputOptions: "output_options",
+      ownershipChallenge: "ownership_challenge",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/logpush/jobs/{jobId}",
+    }),
+  ) as unknown as Schema.Schema<UpdateJobForAccountRequest>;
+
+export const UpdateJobForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...UpdateJobBaseFields,
+  }).pipe(
+    Schema.encodeKeys({
+      destinationConf: "destination_conf",
+      enabled: "enabled",
+      filter: "filter",
+      frequency: "frequency",
+      kind: "kind",
+      logpullOptions: "logpull_options",
+      maxUploadBytes: "max_upload_bytes",
+      maxUploadIntervalSeconds: "max_upload_interval_seconds",
+      maxUploadRecords: "max_upload_records",
+      name: "name",
+      outputOptions: "output_options",
+      ownershipChallenge: "ownership_challenge",
+    }),
+    T.Http({ method: "PUT", path: "/zones/{zone_id}/logpush/jobs/{jobId}" }),
+  ) as unknown as Schema.Schema<UpdateJobForZoneRequest>;
 
 export interface UpdateJobResponse {
   /** Unique id of the job. */
@@ -1917,29 +2413,75 @@ export const UpdateJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type UpdateJobError = DefaultErrors;
 
-export const updateJob: API.OperationMethod<
-  UpdateJobRequest,
+export const updateJobForAccount: API.OperationMethod<
+  UpdateJobForAccountRequest,
   UpdateJobResponse,
   UpdateJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateJobRequest,
+  input: UpdateJobForAccountRequest,
   output: UpdateJobResponse,
   errors: [],
 }));
 
-export interface DeleteJobRequest {
+export const updateJobForZone: API.OperationMethod<
+  UpdateJobForZoneRequest,
+  UpdateJobResponse,
+  UpdateJobError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateJobForZoneRequest,
+  output: UpdateJobResponse,
+  errors: [],
+}));
+
+export const updateJob = (
+  input: UpdateJobRequest,
+): Effect.Effect<
+  UpdateJobResponse,
+  UpdateJobError,
+  Credentials | HttpClient.HttpClient
+> =>
+  "accountId" in input ? updateJobForAccount(input) : updateJobForZone(input);
+
+const DeleteJobBaseFields = {
+  jobId: Schema.Number.pipe(T.HttpPath("jobId")),
+} as const;
+
+export interface DeleteJobForAccountRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
   jobId: number;
 }
 
-export const DeleteJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  jobId: Schema.Number.pipe(T.HttpPath("jobId")),
-}).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "/{accountOrZone}/{accountOrZoneId}/logpush/jobs/{jobId}",
-  }),
-) as unknown as Schema.Schema<DeleteJobRequest>;
+export interface DeleteJobForZoneRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+  jobId: number;
+}
+
+export type DeleteJobRequest =
+  | DeleteJobForAccountRequest
+  | DeleteJobForZoneRequest;
+
+export const DeleteJobForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...DeleteJobBaseFields,
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/logpush/jobs/{jobId}",
+    }),
+  ) as unknown as Schema.Schema<DeleteJobForAccountRequest>;
+
+export const DeleteJobForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...DeleteJobBaseFields,
+  }).pipe(
+    T.Http({ method: "DELETE", path: "/zones/{zone_id}/logpush/jobs/{jobId}" }),
+  ) as unknown as Schema.Schema<DeleteJobForZoneRequest>;
 
 export interface DeleteJobResponse {
   /** Unique id of the job. */
@@ -1954,43 +2496,83 @@ export const DeleteJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type DeleteJobError = DefaultErrors;
 
-export const deleteJob: API.OperationMethod<
-  DeleteJobRequest,
+export const deleteJobForAccount: API.OperationMethod<
+  DeleteJobForAccountRequest,
   DeleteJobResponse,
   DeleteJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteJobRequest,
+  input: DeleteJobForAccountRequest,
   output: DeleteJobResponse,
   errors: [],
 }));
+
+export const deleteJobForZone: API.OperationMethod<
+  DeleteJobForZoneRequest,
+  DeleteJobResponse,
+  DeleteJobError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteJobForZoneRequest,
+  output: DeleteJobResponse,
+  errors: [],
+}));
+
+export const deleteJob = (
+  input: DeleteJobRequest,
+): Effect.Effect<
+  DeleteJobResponse,
+  DeleteJobError,
+  Credentials | HttpClient.HttpClient
+> =>
+  "accountId" in input ? deleteJobForAccount(input) : deleteJobForZone(input);
 
 // =============================================================================
 // Ownership
 // =============================================================================
 
-export interface CreateOwnershipRequest {
-  /** Path param: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
-  accountId?: string;
-  /** Path param: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
-  zoneId?: string;
+const CreateOwnershipBaseFields = {
+  destinationConf: Schema.String,
+} as const;
+
+export interface CreateOwnershipForAccountRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
   /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
 }
 
-export const CreateOwnershipRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
+export interface CreateOwnershipForZoneRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+  /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
+  destinationConf: string;
+}
+
+export type CreateOwnershipRequest =
+  | CreateOwnershipForAccountRequest
+  | CreateOwnershipForZoneRequest;
+
+export const CreateOwnershipForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...CreateOwnershipBaseFields,
+  }).pipe(
+    Schema.encodeKeys({ destinationConf: "destination_conf" }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/logpush/ownership",
+    }),
+  ) as unknown as Schema.Schema<CreateOwnershipForAccountRequest>;
+
+export const CreateOwnershipForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    destinationConf: Schema.String,
-  },
-).pipe(
-  Schema.encodeKeys({ destinationConf: "destination_conf" }),
-  T.Http({
-    method: "POST",
-    path: "/{accountOrZone}/{accountOrZoneId}/logpush/ownership",
-  }),
-) as unknown as Schema.Schema<CreateOwnershipRequest>;
+    ...CreateOwnershipBaseFields,
+  }).pipe(
+    Schema.encodeKeys({ destinationConf: "destination_conf" }),
+    T.Http({ method: "POST", path: "/zones/{zone_id}/logpush/ownership" }),
+  ) as unknown as Schema.Schema<CreateOwnershipForZoneRequest>;
 
 export interface CreateOwnershipResponse {
   filename?: string | null;
@@ -2009,34 +2591,70 @@ export const CreateOwnershipResponse =
 
 export type CreateOwnershipError = DefaultErrors;
 
-export const createOwnership: API.OperationMethod<
-  CreateOwnershipRequest,
+export const createOwnershipForAccount: API.OperationMethod<
+  CreateOwnershipForAccountRequest,
   CreateOwnershipResponse,
   CreateOwnershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateOwnershipRequest,
+  input: CreateOwnershipForAccountRequest,
   output: CreateOwnershipResponse,
   errors: [],
 }));
 
-export interface ValidateOwnershipRequest {
-  /** Path param: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
-  accountId?: string;
-  /** Path param: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
-  zoneId?: string;
+export const createOwnershipForZone: API.OperationMethod<
+  CreateOwnershipForZoneRequest,
+  CreateOwnershipResponse,
+  CreateOwnershipError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateOwnershipForZoneRequest,
+  output: CreateOwnershipResponse,
+  errors: [],
+}));
+
+export const createOwnership = (
+  input: CreateOwnershipRequest,
+): Effect.Effect<
+  CreateOwnershipResponse,
+  CreateOwnershipError,
+  Credentials | HttpClient.HttpClient
+> =>
+  "accountId" in input
+    ? createOwnershipForAccount(input)
+    : createOwnershipForZone(input);
+
+const ValidateOwnershipBaseFields = {
+  destinationConf: Schema.String,
+  ownershipChallenge: Schema.String,
+} as const;
+
+export interface ValidateOwnershipForAccountRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
   /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
   /** Body param: Ownership challenge token to prove destination ownership. */
   ownershipChallenge: string;
 }
 
-export const ValidateOwnershipRequest =
+export interface ValidateOwnershipForZoneRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+  /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
+  destinationConf: string;
+  /** Body param: Ownership challenge token to prove destination ownership. */
+  ownershipChallenge: string;
+}
+
+export type ValidateOwnershipRequest =
+  | ValidateOwnershipForAccountRequest
+  | ValidateOwnershipForZoneRequest;
+
+export const ValidateOwnershipForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    destinationConf: Schema.String,
-    ownershipChallenge: Schema.String,
+    ...ValidateOwnershipBaseFields,
   }).pipe(
     Schema.encodeKeys({
       destinationConf: "destination_conf",
@@ -2044,9 +2662,24 @@ export const ValidateOwnershipRequest =
     }),
     T.Http({
       method: "POST",
-      path: "/{accountOrZone}/{accountOrZoneId}/logpush/ownership/validate",
+      path: "/accounts/{account_id}/logpush/ownership/validate",
     }),
-  ) as unknown as Schema.Schema<ValidateOwnershipRequest>;
+  ) as unknown as Schema.Schema<ValidateOwnershipForAccountRequest>;
+
+export const ValidateOwnershipForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...ValidateOwnershipBaseFields,
+  }).pipe(
+    Schema.encodeKeys({
+      destinationConf: "destination_conf",
+      ownershipChallenge: "ownership_challenge",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/zones/{zone_id}/logpush/ownership/validate",
+    }),
+  ) as unknown as Schema.Schema<ValidateOwnershipForZoneRequest>;
 
 export interface ValidateOwnershipResponse {
   valid?: boolean | null;
@@ -2061,42 +2694,88 @@ export const ValidateOwnershipResponse =
 
 export type ValidateOwnershipError = DefaultErrors;
 
-export const validateOwnership: API.OperationMethod<
-  ValidateOwnershipRequest,
+export const validateOwnershipForAccount: API.OperationMethod<
+  ValidateOwnershipForAccountRequest,
   ValidateOwnershipResponse,
   ValidateOwnershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ValidateOwnershipRequest,
+  input: ValidateOwnershipForAccountRequest,
   output: ValidateOwnershipResponse,
   errors: [],
 }));
+
+export const validateOwnershipForZone: API.OperationMethod<
+  ValidateOwnershipForZoneRequest,
+  ValidateOwnershipResponse,
+  ValidateOwnershipError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ValidateOwnershipForZoneRequest,
+  output: ValidateOwnershipResponse,
+  errors: [],
+}));
+
+export const validateOwnership = (
+  input: ValidateOwnershipRequest,
+): Effect.Effect<
+  ValidateOwnershipResponse,
+  ValidateOwnershipError,
+  Credentials | HttpClient.HttpClient
+> =>
+  "accountId" in input
+    ? validateOwnershipForAccount(input)
+    : validateOwnershipForZone(input);
 
 // =============================================================================
 // Validate
 // =============================================================================
 
-export interface DestinationValidateRequest {
-  /** Path param: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
-  accountId?: string;
-  /** Path param: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
-  zoneId?: string;
+const DestinationValidateBaseFields = {
+  destinationConf: Schema.String,
+} as const;
+
+export interface DestinationValidateForAccountRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
   /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
 }
 
-export const DestinationValidateRequest =
+export interface DestinationValidateForZoneRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+  /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
+  destinationConf: string;
+}
+
+export type DestinationValidateRequest =
+  | DestinationValidateForAccountRequest
+  | DestinationValidateForZoneRequest;
+
+export const DestinationValidateForAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    destinationConf: Schema.String,
+    ...DestinationValidateBaseFields,
   }).pipe(
     Schema.encodeKeys({ destinationConf: "destination_conf" }),
     T.Http({
       method: "POST",
-      path: "/{accountOrZone}/{accountOrZoneId}/logpush/validate/destination",
+      path: "/accounts/{account_id}/logpush/validate/destination",
     }),
-  ) as unknown as Schema.Schema<DestinationValidateRequest>;
+  ) as unknown as Schema.Schema<DestinationValidateForAccountRequest>;
+
+export const DestinationValidateForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...DestinationValidateBaseFields,
+  }).pipe(
+    Schema.encodeKeys({ destinationConf: "destination_conf" }),
+    T.Http({
+      method: "POST",
+      path: "/zones/{zone_id}/logpush/validate/destination",
+    }),
+  ) as unknown as Schema.Schema<DestinationValidateForZoneRequest>;
 
 export interface DestinationValidateResponse {
   message?: string | null;
@@ -2113,37 +2792,84 @@ export const DestinationValidateResponse =
 
 export type DestinationValidateError = DefaultErrors;
 
-export const destinationValidate: API.OperationMethod<
-  DestinationValidateRequest,
+export const destinationValidateForAccount: API.OperationMethod<
+  DestinationValidateForAccountRequest,
   DestinationValidateResponse,
   DestinationValidateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DestinationValidateRequest,
+  input: DestinationValidateForAccountRequest,
   output: DestinationValidateResponse,
   errors: [],
 }));
 
-export interface OriginValidateRequest {
-  /** Path param: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
-  accountId?: string;
-  /** Path param: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
-  zoneId?: string;
+export const destinationValidateForZone: API.OperationMethod<
+  DestinationValidateForZoneRequest,
+  DestinationValidateResponse,
+  DestinationValidateError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DestinationValidateForZoneRequest,
+  output: DestinationValidateResponse,
+  errors: [],
+}));
+
+export const destinationValidate = (
+  input: DestinationValidateRequest,
+): Effect.Effect<
+  DestinationValidateResponse,
+  DestinationValidateError,
+  Credentials | HttpClient.HttpClient
+> =>
+  "accountId" in input
+    ? destinationValidateForAccount(input)
+    : destinationValidateForZone(input);
+
+const OriginValidateBaseFields = {
+  logpullOptions: Schema.Union([Schema.String, Schema.Null]),
+} as const;
+
+export interface OriginValidateForAccountRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
   /** @deprecated Body param: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api */
   logpullOptions: string | null;
 }
 
-export const OriginValidateRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  logpullOptions: Schema.Union([Schema.String, Schema.Null]),
-}).pipe(
-  Schema.encodeKeys({ logpullOptions: "logpull_options" }),
-  T.Http({
-    method: "POST",
-    path: "/{accountOrZone}/{accountOrZoneId}/logpush/validate/origin",
-  }),
-) as unknown as Schema.Schema<OriginValidateRequest>;
+export interface OriginValidateForZoneRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+  /** @deprecated Body param: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api */
+  logpullOptions: string | null;
+}
+
+export type OriginValidateRequest =
+  | OriginValidateForAccountRequest
+  | OriginValidateForZoneRequest;
+
+export const OriginValidateForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...OriginValidateBaseFields,
+  }).pipe(
+    Schema.encodeKeys({ logpullOptions: "logpull_options" }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/logpush/validate/origin",
+    }),
+  ) as unknown as Schema.Schema<OriginValidateForAccountRequest>;
+
+export const OriginValidateForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...OriginValidateBaseFields,
+  }).pipe(
+    Schema.encodeKeys({ logpullOptions: "logpull_options" }),
+    T.Http({
+      method: "POST",
+      path: "/zones/{zone_id}/logpush/validate/origin",
+    }),
+  ) as unknown as Schema.Schema<OriginValidateForZoneRequest>;
 
 export interface OriginValidateResponse {
   message?: string | null;
@@ -2161,13 +2887,35 @@ export const OriginValidateResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export type OriginValidateError = DefaultErrors;
 
-export const originValidate: API.OperationMethod<
-  OriginValidateRequest,
+export const originValidateForAccount: API.OperationMethod<
+  OriginValidateForAccountRequest,
   OriginValidateResponse,
   OriginValidateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: OriginValidateRequest,
+  input: OriginValidateForAccountRequest,
   output: OriginValidateResponse,
   errors: [],
 }));
+
+export const originValidateForZone: API.OperationMethod<
+  OriginValidateForZoneRequest,
+  OriginValidateResponse,
+  OriginValidateError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: OriginValidateForZoneRequest,
+  output: OriginValidateResponse,
+  errors: [],
+}));
+
+export const originValidate = (
+  input: OriginValidateRequest,
+): Effect.Effect<
+  OriginValidateResponse,
+  OriginValidateError,
+  Credentials | HttpClient.HttpClient
+> =>
+  "accountId" in input
+    ? originValidateForAccount(input)
+    : originValidateForZone(input);

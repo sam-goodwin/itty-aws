@@ -5,6 +5,7 @@
  * DO NOT EDIT - regenerate with: bun scripts/generate.ts --service waiting-rooms
  */
 
+import * as stream from "effect/Stream";
 import * as Schema from "effect/Schema";
 import type * as HttpClient from "effect/unstable/http/HttpClient";
 import * as API from "../client/api.ts";
@@ -2150,15 +2151,37 @@ export const getWaitingRoom: API.OperationMethod<
   errors: [],
 }));
 
-export interface ListWaitingRoomsRequest {}
+const ListWaitingRoomsBaseFields = {} as const;
 
-export const ListWaitingRoomsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{accountOrZone}/{accountOrZoneId}/waiting_rooms",
-    }),
-  ) as unknown as Schema.Schema<ListWaitingRoomsRequest>;
+export interface ListWaitingRoomsForAccountRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface ListWaitingRoomsForZoneRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export type ListWaitingRoomsRequest =
+  | ListWaitingRoomsForAccountRequest
+  | ListWaitingRoomsForZoneRequest;
+
+export const ListWaitingRoomsForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...ListWaitingRoomsBaseFields,
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/waiting_rooms" }),
+  ) as unknown as Schema.Schema<ListWaitingRoomsForAccountRequest>;
+
+export const ListWaitingRoomsForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...ListWaitingRoomsBaseFields,
+  }).pipe(
+    T.Http({ method: "GET", path: "/zones/{zone_id}/waiting_rooms" }),
+  ) as unknown as Schema.Schema<ListWaitingRoomsForZoneRequest>;
 
 export interface ListWaitingRoomsResponse {
   result: {
@@ -2451,13 +2474,13 @@ export const ListWaitingRoomsResponse =
 
 export type ListWaitingRoomsError = DefaultErrors;
 
-export const listWaitingRooms: API.PaginatedOperationMethod<
-  ListWaitingRoomsRequest,
+export const listWaitingRoomsForAccount: API.PaginatedOperationMethod<
+  ListWaitingRoomsForAccountRequest,
   ListWaitingRoomsResponse,
   ListWaitingRoomsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListWaitingRoomsRequest,
+  input: ListWaitingRoomsForAccountRequest,
   output: ListWaitingRoomsResponse,
   errors: [],
   pagination: {
@@ -2468,6 +2491,35 @@ export const listWaitingRooms: API.PaginatedOperationMethod<
     pageSize: "perPage",
   } as const,
 }));
+
+export const listWaitingRoomsForZone: API.PaginatedOperationMethod<
+  ListWaitingRoomsForZoneRequest,
+  ListWaitingRoomsResponse,
+  ListWaitingRoomsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListWaitingRoomsForZoneRequest,
+  output: ListWaitingRoomsResponse,
+  errors: [],
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "resultInfo.page",
+    items: "result",
+    pageSize: "perPage",
+  } as const,
+}));
+
+export const listWaitingRooms = (
+  input: ListWaitingRoomsRequest,
+): stream.Stream<
+  ListWaitingRoomsResponse,
+  ListWaitingRoomsError,
+  Credentials | HttpClient.HttpClient
+> =>
+  "accountId" in input
+    ? listWaitingRoomsForAccount.pages(input)
+    : listWaitingRoomsForZone.pages(input);
 
 export interface CreateWaitingRoomRequest {
   /** Path param: Identifier. */
