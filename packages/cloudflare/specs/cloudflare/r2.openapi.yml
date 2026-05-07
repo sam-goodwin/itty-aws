@@ -2737,10 +2737,11 @@ paths:
         Lists objects in an R2 bucket. Returns object metadata including key,
         size, etag,
 
-        last modified date, HTTP metadata, and custom metadata. Supports
-        cursor-based
+        last modified date, HTTP metadata, and custom metadata. Cursor-paginated
+        — call
 
-        pagination via `cursor` and `per_page`.
+        `.items()` on the operation for an `Effect.Stream` of every object
+        across pages.
       parameters:
         - name: bucketName
           in: path
@@ -2801,35 +2802,33 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    key:
-                      type: string
-                      description: The object key (name).
-                    size:
-                      type: number
-                      description: Object size in bytes.
-                    etag:
-                      type: string
-                      description: Entity tag (raw hex digest, no surrounding quotes).
-                    last_modified:
-                      type: string
-                      description: When the object was last modified.
-                    storage_class:
-                      type: string
-                      enum:
-                        - Standard
-                        - InfrequentAccess
-                    ssec:
-                      type: boolean
-                      description: Whether the object is encrypted with a customer-supplied key.
-                    custom_metadata:
-                      description: Custom metadata key-value pairs.
-                    http_metadata:
-                      description: HTTP metadata associated with the object.
-      x-distilled-response-path: result
+                type: object
+                properties:
+                  key:
+                    type: string
+                    description: The object key (name).
+                  size:
+                    type: number
+                    description: Object size in bytes.
+                  etag:
+                    type: string
+                    description: Entity tag (raw hex digest, no surrounding quotes).
+                  last_modified:
+                    type: string
+                    description: When the object was last modified.
+                  storage_class:
+                    type: string
+                    enum:
+                      - Standard
+                      - InfrequentAccess
+                  ssec:
+                    type: boolean
+                    description: Whether the object is encrypted with a customer-supplied key.
+                  custom_metadata:
+                    description: Custom metadata key-value pairs.
+                  http_metadata:
+                    description: HTTP metadata associated with the object.
+      x-distilled-pagination-class: CursorPagination
       x-distilled-errors:
         NoSuchBucket:
           - code: 10006

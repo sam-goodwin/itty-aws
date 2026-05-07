@@ -2699,48 +2699,70 @@ export const ListObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   }),
 ) as unknown as Schema.Schema<ListObjectsRequest>;
 
-export type ListObjectsResponse = {
-  key?: string | null;
-  size?: number | null;
-  etag?: string | null;
-  lastModified?: string | null;
-  storageClass?: "Standard" | "InfrequentAccess" | null;
-  ssec?: boolean | null;
-  customMetadata?: unknown | null;
-  httpMetadata?: unknown | null;
-}[];
+export interface ListObjectsResponse {
+  result: {
+    key?: string | null;
+    size?: number | null;
+    etag?: string | null;
+    lastModified?: string | null;
+    storageClass?: "Standard" | "InfrequentAccess" | null;
+    ssec?: boolean | null;
+    customMetadata?: unknown | null;
+    httpMetadata?: unknown | null;
+  }[];
+  resultInfo: {
+    count?: number | null;
+    cursor?: string | null;
+    perPage?: number | null;
+  };
+}
 
-export const ListObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    etag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    lastModified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    storageClass: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["Standard", "InfrequentAccess"]),
-        Schema.Null,
-      ]),
+export const ListObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      etag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      lastModified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      storageClass: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["Standard", "InfrequentAccess"]),
+          Schema.Null,
+        ]),
+      ),
+      ssec: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      customMetadata: Schema.optional(
+        Schema.Union([Schema.Unknown, Schema.Null]),
+      ),
+      httpMetadata: Schema.optional(
+        Schema.Union([Schema.Unknown, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        key: "key",
+        size: "size",
+        etag: "etag",
+        lastModified: "last_modified",
+        storageClass: "storage_class",
+        ssec: "ssec",
+        customMetadata: "custom_metadata",
+        httpMetadata: "http_metadata",
+      }),
     ),
-    ssec: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    customMetadata: Schema.optional(
-      Schema.Union([Schema.Unknown, Schema.Null]),
-    ),
-    httpMetadata: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+  ),
+  resultInfo: Schema.Struct({
+    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    cursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   }).pipe(
     Schema.encodeKeys({
-      key: "key",
-      size: "size",
-      etag: "etag",
-      lastModified: "last_modified",
-      storageClass: "storage_class",
-      ssec: "ssec",
-      customMetadata: "custom_metadata",
-      httpMetadata: "http_metadata",
+      count: "count",
+      cursor: "cursor",
+      perPage: "per_page",
     }),
   ),
-).pipe(
-  T.ResponsePath("result"),
+}).pipe(
+  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
 ) as unknown as Schema.Schema<ListObjectsResponse>;
 
 export type ListObjectsError =
@@ -2749,15 +2771,22 @@ export type ListObjectsError =
   | InvalidRoute
   | NoRoute;
 
-export const listObjects: API.OperationMethod<
+export const listObjects: API.PaginatedOperationMethod<
   ListObjectsRequest,
   ListObjectsResponse,
   ListObjectsError,
   Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListObjectsRequest,
   output: ListObjectsResponse,
   errors: [NoSuchBucket, InvalidRoute, NoRoute],
+  pagination: {
+    mode: "cursor",
+    inputToken: "cursor",
+    outputToken: "resultInfo.cursor",
+    items: "result",
+    pageSize: "perPage",
+  } as const,
 }));
 
 export interface PutObjectRequest {

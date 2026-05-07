@@ -13,9 +13,9 @@ paths:
       summary: List objects in an R2 bucket.
       description: |
         Lists objects in an R2 bucket. Returns object metadata including key, size, etag,
-        last modified date, HTTP metadata, and custom metadata. Supports cursor-based
-        pagination via `cursor` and `per_page`.
-      x-distilled-response-path: result
+        last modified date, HTTP metadata, and custom metadata. Cursor-paginated — call
+        `.items()` on the operation for an `Effect.Stream` of every object across pages.
+      x-distilled-pagination-class: CursorPagination
       x-distilled-errors:
         NoSuchBucket:
           - code: 10006
@@ -66,9 +66,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/R2Object"
+                $ref: "#/components/schemas/R2Object"
     delete:
       operationId: deleteObjects
       summary: Bulk-delete objects from an R2 bucket.
