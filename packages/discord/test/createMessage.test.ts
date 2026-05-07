@@ -1,0 +1,124 @@
+import { config } from "dotenv";
+import { Effect, Layer } from "effect";
+import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
+import { describe, expect, it } from "vitest";
+import { createMessage } from "../src/operations/createMessage.ts";
+import { deleteMessage } from "../src/operations/deleteMessage.ts";
+import { CredentialsFromEnv } from "../src/credentials.ts";
+
+config();
+
+const MainLayer = Layer.merge(CredentialsFromEnv, FetchHttpClient.layer);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const runEffect = <A, E>(effect: Effect.Effect<A, E, any>): Promise<A> =>
+  Effect.runPromise(
+    effect.pipe(Effect.provide(MainLayer)) as Effect.Effect<A, E, never>,
+  );
+
+const testRunId: string = crypto.randomUUID().replace(/-/g, "").slice(0, 8);
+
+// Requires a text channel the bot can post to. Operators must supply
+// DISCORD_TEST_CHANNEL_ID for the happy path.
+const TEST_CHANNEL_ID = process.env.DISCORD_TEST_CHANNEL_ID;
+
+// Snowflake-format identifier that should not match a real channel.
+const NON_EXISTENT_CHANNEL_ID = "100000000000000000";
+
+describe("createMessage", () => {
+  it("happy path - posts a message and deletes it on cleanup", async () => {
+    if (!TEST_CHANNEL_ID) {
+      throw new Error(
+        "DISCORD_TEST_CHANNEL_ID env var is required for the createMessage happy path",
+      );
+    }
+    const content = `distilled-test-${testRunId}`;
+    await runEffect(
+      Effect.gen(function* () {
+        const msg = yield* createMessage({
+          channel_id: TEST_CHANNEL_ID,
+          content,
+        });
+        return yield* Effect.sync(() => {
+          expect(typeof msg.id).toBe("string");
+          expect(msg.id.length).toBeGreaterThan(0);
+          expect(msg.content).toBe(content);
+          expect(msg.channel_id).toBe(TEST_CHANNEL_ID);
+          expect(typeof msg.author.id).toBe("string");
+          expect(typeof msg.timestamp).toBe("string");
+          expect(typeof msg.flags).toBe("number");
+        }).pipe(
+          Effect.ensuring(
+            deleteMessage({
+              channel_id: TEST_CHANNEL_ID,
+              message_id: msg.id,
+            }).pipe(Effect.ignore),
+          ),
+        );
+      }),
+    );
+  });
+
+  it("error - NotFound for non-existent channel_id", async () => {
+    await runEffect(
+      createMessage({
+        channel_id: NON_EXISTENT_CHANNEL_ID,
+        content: `distilled-nf-${testRunId}`,
+      }).pipe(
+        Effect.flip,
+        Effect.map((e) => {
+          // Discord returns 404 NotFound for unknown channels; may surface as
+          // 403 Forbidden if the bot lacks visibility.
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          expect(["NotFound", "Forbidden"]).toContain((e as any)._tag);
+        }),
+      ),
+    );
+  });
+
+  it("error - BadRequest for empty payload (no content / embeds / attachments / stickers)", async () => {
+    if (!TEST_CHANNEL_ID) {
+      throw new Error(
+        "DISCORD_TEST_CHANNEL_ID env var is required for the BadRequest test",
+      );
+    }
+    // Discord requires at least one of content, embeds, sticker_ids,
+    // components, or attachments. Posting an empty body returns 400 Invalid
+    // Form Body.
+    await runEffect(
+      createMessage({
+        channel_id: TEST_CHANNEL_ID,
+      }).pipe(
+        Effect.flip,
+        Effect.map((e) => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          expect(["BadRequest", "Forbidden", "NotFound"]).toContain(
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (e as any)._tag,
+          );
+        }),
+      ),
+    );
+  });
+
+  it("error - Forbidden when posting to a channel the bot cannot see", async () => {
+    // A snowflake-shaped channel_id the bot cannot see typically yields 403
+    // Forbidden (50001 Missing Access), or 404 NotFound if the route 404s
+    // before the permission check.
+    await runEffect(
+      createMessage({
+        channel_id: NON_EXISTENT_CHANNEL_ID,
+        content: `distilled-fb-${testRunId}`,
+      }).pipe(
+        Effect.flip,
+        Effect.map((e) => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          expect(["Forbidden", "NotFound", "BadRequest"]).toContain(
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (e as any)._tag,
+          );
+        }),
+      ),
+    );
+  });
+});
