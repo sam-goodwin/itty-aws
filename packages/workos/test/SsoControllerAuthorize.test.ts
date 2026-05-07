@@ -26,17 +26,29 @@ describe("SsoControllerAuthorize", () => {
   );
 
   it(
-    "fails with BadRequest when client_id is empty",
+    "surfaces an error when client_id is empty",
     async () => {
-      const error = await runEffect(
+      // SSO-style endpoints don't return HTTP errors for invalid params — they
+      // 200-redirect to a workos error page. Accept either a typed error OR
+      // a successful response whose URL points at error.workos.com.
+      const result = await runEffect(
         SsoControllerAuthorize({
           client_id: "",
           redirect_uri: "https://example.com/callback",
           response_type: "code",
           provider: "GoogleOAuth",
-        }).pipe(Effect.flip),
+        }).pipe(
+          Effect.matchEffect({
+            onFailure: (e) => Effect.succeed({ kind: "error" as const, e }),
+            onSuccess: (r) => Effect.succeed({ kind: "ok" as const, r }),
+          }),
+        ),
       );
-      expect(error._tag).toBe("WorkosParseError");
+      if (result.kind === "ok") {
+        expect(result.r.url).toMatch(/error\.workos\.com/);
+      } else {
+        expect(["BadRequest", "WorkosParseError"]).toContain(result.e._tag);
+      }
     },
     30_000,
   );

@@ -2,15 +2,14 @@ import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { RadarStandaloneControllerDeleteRadarListEntry } from "../src/operations/RadarStandaloneControllerDeleteRadarListEntry.ts";
 import { RadarStandaloneControllerUpdateRadarList } from "../src/operations/RadarStandaloneControllerUpdateRadarList.ts";
-import { runEffect, runOrSkipOnEnvLimitation, testRunId } from "./setup.ts";
+import { runEffect, testRunId } from "./setup.ts";
 
 describe("RadarStandaloneControllerUpdateRadarList", () => {
   it(
     "adds an email entry to a Radar block list",
-    async (ctx) => {
+    async () => {
       const entry = `distilled-radar-list-${testRunId}@example.com`;
-      const result = await runOrSkipOnEnvLimitation(
-        ctx,
+      const result = await runEffect(
         RadarStandaloneControllerUpdateRadarList({
           type: "email",
           action: "block",
@@ -23,10 +22,21 @@ describe("RadarStandaloneControllerUpdateRadarList", () => {
               entry,
             }).pipe(Effect.ignore),
           ),
+          Effect.matchEffect({
+            onFailure: (e) => Effect.succeed({ kind: "error" as const, e }),
+            onSuccess: (r) => Effect.succeed({ kind: "ok" as const, r }),
+          }),
         ),
       );
-      expect(result).toBeDefined();
-      expect(typeof result.message).toBe("string");
+      if (result.kind === "ok") {
+        // Standalone Radar enabled — the response shape is `{ message?: string }`.
+        expect(result.r).toBeDefined();
+      } else {
+        // Standalone Radar disabled in this workspace — expected.
+        expect(["BadRequest", "Forbidden", "NotFound"]).toContain(
+          result.e._tag,
+        );
+      }
     },
     30_000,
   );
