@@ -14,6 +14,7 @@ export const ListProjectBranchesInput =
     cursor: Schema.optional(Schema.String),
     sort_order: Schema.optional(Schema.Literals(["asc", "desc"])),
     limit: Schema.optional(Schema.Number),
+    include_deleted: Schema.optional(Schema.Boolean),
   }).pipe(T.Http({ method: "GET", path: "/projects/{project_id}/branches" }));
 export type ListProjectBranchesInput = typeof ListProjectBranchesInput.Type;
 
@@ -64,6 +65,13 @@ export const ListProjectBranchesOutput =
             }),
           ),
         ),
+        recovery: Schema.optional(
+          Schema.Struct({
+            deleted_at: Schema.String,
+            recoverable_until: Schema.String,
+            deletion_method: Schema.Literals(["user", "ttl"]),
+          }),
+        ),
       }),
     ),
     annotations: Schema.Record(
@@ -106,6 +114,11 @@ export type ListProjectBranchesOutput = typeof ListProjectBranchesOutput.Type;
  * @param cursor - A cursor to use in pagination. A cursor defines your place in the data list. Include `response.pagination.next` in subsequent API calls to fetch next page of the list.
  * @param sort_order - Defines the sorting order of entities.
  * @param limit - The maximum number of records to be returned in the response
+ * @param include_deleted - If true, return recoverable deleted branches too (soft-deleted within the recovery window).
+If false or not provided, return only active (non-deleted) branches.
+
+This parameter is part of the Branch Recovery feature, which is in preview and not available to all users.
+
  */
 export const listProjectBranches = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: ListProjectBranchesInput,

@@ -108,6 +108,7 @@ Possible values:
 - `public_network_transfer_bytes`
 - `private_network_transfer_bytes`
 - `extra_branches_month`
+- `snapshot_storage_bytes_month`
 
 A list of metrics can be specified as an array of parameter values or as a comma-separated list in a single parameter value.
 - As an array of parameter values: `metrics=compute_unit_seconds&metrics=extra_branches_month`

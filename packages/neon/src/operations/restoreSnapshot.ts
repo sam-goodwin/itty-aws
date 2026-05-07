@@ -62,6 +62,13 @@ export const RestoreSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         }),
       ),
     ),
+    recovery: Schema.optional(
+      Schema.Struct({
+        deleted_at: Schema.String,
+        recoverable_until: Schema.String,
+        deletion_method: Schema.Literals(["user", "ttl"]),
+      }),
+    ),
   }),
   endpoints: Schema.optional(
     Schema.Array(
@@ -142,10 +149,13 @@ export const RestoreSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
         "sync_dbs_and_roles_from_compute",
         "apply_schema_from_branch",
         "timeline_mark_invisible",
+        "timeline_update_protected_config",
         "prewarm_replica",
         "promote_replica",
         "set_storage_non_dirty",
         "swap_binding_id",
+        "finalize_migration",
+        "mark_migration_prepared",
       ]),
       status: Schema.Literals([
         "scheduling",

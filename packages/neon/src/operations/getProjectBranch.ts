@@ -61,6 +61,13 @@ export const GetProjectBranchOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
           }),
         ),
       ),
+      recovery: Schema.optional(
+        Schema.Struct({
+          deleted_at: Schema.String,
+          recoverable_until: Schema.String,
+          deletion_method: Schema.Literals(["user", "ttl"]),
+        }),
+      ),
     }),
     annotation: Schema.Struct({
       object: Schema.Struct({

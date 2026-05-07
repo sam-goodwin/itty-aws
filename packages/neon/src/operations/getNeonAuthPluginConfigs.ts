@@ -29,6 +29,20 @@ export const GetNeonAuthPluginConfigsOutput =
         send_invitation_email: Schema.Boolean,
       }),
     ),
+    magic_link: Schema.optional(
+      Schema.Struct({
+        enabled: Schema.Boolean,
+        expires_in: Schema.Number,
+        disable_sign_up: Schema.Boolean,
+      }),
+    ),
+    phone_number: Schema.optional(
+      Schema.Struct({
+        enabled: Schema.Boolean,
+        otp_expires_in: Schema.optional(Schema.Number),
+        allowed_attempts: Schema.optional(Schema.Number),
+      }),
+    ),
     email_provider: Schema.optional(Schema.Unknown),
     email_and_password: Schema.optional(
       Schema.Struct({

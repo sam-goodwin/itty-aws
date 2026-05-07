@@ -25,6 +25,7 @@ export const GetNeonAuthOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   transfer_status: Schema.optional(Schema.Literals(["initiated", "finished"])),
   jwks_url: Schema.String,
   base_url: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
 });
 export type GetNeonAuthOutput = typeof GetNeonAuthOutput.Type;
 

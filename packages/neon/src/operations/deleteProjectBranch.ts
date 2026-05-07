@@ -8,6 +8,7 @@ export const DeleteProjectBranchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
+    hard_delete: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -62,6 +63,13 @@ export const DeleteProjectBranchOutput =
           }),
         ),
       ),
+      recovery: Schema.optional(
+        Schema.Struct({
+          deleted_at: Schema.String,
+          recoverable_until: Schema.String,
+          deletion_method: Schema.Literals(["user", "ttl"]),
+        }),
+      ),
     }),
     operations: Schema.Array(
       Schema.Struct({
@@ -95,10 +103,13 @@ export const DeleteProjectBranchOutput =
           "sync_dbs_and_roles_from_compute",
           "apply_schema_from_branch",
           "timeline_mark_invisible",
+          "timeline_update_protected_config",
           "prewarm_replica",
           "promote_replica",
           "set_storage_non_dirty",
           "swap_binding_id",
+          "finalize_migration",
+          "mark_migration_prepared",
         ]),
         status: Schema.Literals([
           "scheduling",
@@ -135,9 +146,17 @@ export type DeleteProjectBranchOutput = typeof DeleteProjectBranchOutput.Type;
  * The deletion occurs after all operations finish.
  * You cannot delete a project's root or default branch, and you cannot delete a branch that has a child branch.
  * A project must have at least one branch.
+ * By default, deleted branches can be recovered within a 7-day grace period.
+ * Use the `hard_delete` parameter to permanently delete the branch immediately without a recovery window.
+ * Soft delete and branch recovery are in preview and not available to all users.
  *
  * @param project_id - The Neon project ID
  * @param branch_id - The branch ID
+ * @param hard_delete - If true, the branch is permanently deleted immediately without a recovery window.
+If false (default), the branch can be recovered within 7 days via the recover endpoint.
+
+This parameter is part of the Branch Recovery feature, which is in preview and not available to all users.
+
  */
 export const deleteProjectBranch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   inputSchema: DeleteProjectBranchInput,

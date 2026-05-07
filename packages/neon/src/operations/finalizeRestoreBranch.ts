@@ -51,10 +51,13 @@ export const FinalizeRestoreBranchOutput =
           "sync_dbs_and_roles_from_compute",
           "apply_schema_from_branch",
           "timeline_mark_invisible",
+          "timeline_update_protected_config",
           "prewarm_replica",
           "promote_replica",
           "set_storage_non_dirty",
           "swap_binding_id",
+          "finalize_migration",
+          "mark_migration_prepared",
         ]),
         status: Schema.Literals([
           "scheduling",

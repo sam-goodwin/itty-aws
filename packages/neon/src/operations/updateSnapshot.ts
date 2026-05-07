@@ -28,6 +28,8 @@ export const UpdateSnapshotOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     created_at: Schema.String,
     expires_at: Schema.optional(Schema.String),
     manual: Schema.optional(Schema.Boolean),
+    full_size: Schema.optional(Schema.Number),
+    diff_size: Schema.optional(Schema.Number),
   }),
 });
 export type UpdateSnapshotOutput = typeof UpdateSnapshotOutput.Type;

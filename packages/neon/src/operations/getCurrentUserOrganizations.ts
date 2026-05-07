@@ -23,6 +23,7 @@ export const GetCurrentUserOrganizationsOutput =
         managed_by: Schema.String,
         updated_at: Schema.String,
         allow_hipaa_projects: Schema.optional(Schema.Boolean),
+        require_mfa: Schema.optional(Schema.Boolean),
       }),
     ),
   });
