@@ -13,7 +13,7 @@ import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import { Credentials, CredentialsFromEnv } from "~/credentials";
 import * as Retry from "~/retry";
-import { transientOptions } from "@distilled.cloud/core/retry";
+import { makeDefault } from "@distilled.cloud/core/retry";
 
 type Provided =
   | Scope.Scope
@@ -61,7 +61,7 @@ export function test(
         provideTestEnv(Effect.scoped(resolveTestCase(testCase))),
       );
     },
-    options.timeout ?? 240_000,
+    options.timeout ?? 120_000,
   );
 }
 
@@ -70,7 +70,7 @@ test.skip = function (
   ...args: [{ timeout?: number }, TestCase] | [TestCase]
 ) {
   const [options = {}] = args.length === 1 ? [undefined] : args;
-  return it.skip(name, () => {}, options.timeout ?? 240_000);
+  return it.skip(name, () => {}, options.timeout ?? 120_000);
 };
 
 test.skipIf = function (condition: boolean): typeof test {
@@ -90,7 +90,7 @@ test.skipIf = function (condition: boolean): typeof test {
             provideTestEnv(Effect.scoped(resolveTestCase(testCase))),
           );
         },
-        options.timeout ?? 240_000,
+        options.timeout ?? 120_000,
       );
     },
     { skip: test.skip, skipIf: test.skipIf },
@@ -106,12 +106,12 @@ export async function run<E>(
 export const beforeAll = (
   effect: Effect.Effect<void, any, Provided>,
   timeout?: number,
-) => _beforeAll(() => run(effect), timeout ?? 240_000);
+) => _beforeAll(() => run(effect), timeout ?? 120_000);
 
 export const afterAll = (
   effect: Effect.Effect<void, any, Provided>,
   timeout?: number,
-) => _afterAll(() => run(effect), timeout ?? 240_000);
+) => _afterAll(() => run(effect), timeout ?? 120_000);
 
 function provideTestEnv<A, E, R extends Provided>(
   effect: Effect.Effect<A, E, R>,
@@ -122,7 +122,7 @@ function provideTestEnv<A, E, R extends Provided>(
       process.env.DEBUG ? "Debug" : "Info",
     ),
     Effect.provide(TestLayer),
-    Retry.policy(transientOptions),
+    Retry.policy(makeDefault),
   );
 }
 
