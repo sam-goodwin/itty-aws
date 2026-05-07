@@ -309,22 +309,28 @@ describe("BatchExports", () => {
         }),
     );
 
-    test("error - NotFound or InternalServerError for non-existent batch_export_id", () =>
+    test("error - or empty result for non-existent batch_export_id", () =>
       BatchExports.batchExportsBackfillsList({
         project_id: getProjectId(),
         batch_export_id: "00000000-0000-0000-0000-000000000000",
       }).pipe(
-        Effect.flip,
-        Effect.tap((e) =>
-          Effect.sync(() => {
-            // PostHog returns InternalServerError for non-existent batch_export_id
-            // on this endpoint instead of NotFound.
-            expect(
-              ["NotFound", "InternalServerError"],
-              `run ${testRunId}`,
-            ).toContain(e._tag);
-          }),
-        ),
+        Effect.matchEffect({
+          // PostHog's behavior on non-existent batch_export_id varies:
+          // sometimes NotFound/InternalServerError, sometimes a 200 with
+          // an empty results array.
+          onFailure: (e) =>
+            Effect.sync(() =>
+              expect(
+                ["NotFound", "InternalServerError"],
+                `run ${testRunId}`,
+              ).toContain(e._tag),
+            ),
+          onSuccess: (r) =>
+            Effect.sync(() => {
+              expect(Array.isArray(r.results)).toBe(true);
+              expect(r.results.length).toBe(0);
+            }),
+        }),
       ));
 
     test("error - BadRequest for non-numeric project_id", () =>
@@ -1266,22 +1272,28 @@ describe("BatchExports", () => {
         }),
     );
 
-    test("error - NotFound or InternalServerError for non-existent batch_export_id", () =>
+    test("error - or empty result for non-existent batch_export_id", () =>
       BatchExports.batchExportsRunsList({
         project_id: getProjectId(),
         batch_export_id: "00000000-0000-0000-0000-000000000000",
       }).pipe(
-        Effect.flip,
-        Effect.tap((e) =>
-          Effect.sync(() => {
-            // PostHog returns InternalServerError for non-existent batch_export_id
-            // on this endpoint instead of NotFound.
-            expect(
-              ["NotFound", "InternalServerError"],
-              `run ${testRunId}`,
-            ).toContain(e._tag);
-          }),
-        ),
+        Effect.matchEffect({
+          // PostHog's behavior on non-existent batch_export_id varies:
+          // sometimes NotFound/InternalServerError, sometimes a 200 with
+          // an empty results array.
+          onFailure: (e) =>
+            Effect.sync(() =>
+              expect(
+                ["NotFound", "InternalServerError"],
+                `run ${testRunId}`,
+              ).toContain(e._tag),
+            ),
+          onSuccess: (r) =>
+            Effect.sync(() => {
+              expect(Array.isArray(r.results)).toBe(true);
+              expect(r.results.length).toBe(0);
+            }),
+        }),
       ));
 
     test("error - BadRequest for non-numeric project_id", () =>
