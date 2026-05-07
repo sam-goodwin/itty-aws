@@ -4,6 +4,7 @@
   },
   "request": {
     "properties": {
+      "metadata.bindings[].json": { "type": "unknown" },
       "metadata.bindings[]": {
         "appendUnion": [
           {
@@ -47,6 +48,7 @@
   },
   "response": {
     "properties": {
+      "resources.bindings[].json": { "type": "unknown" },
       "resources.bindings[]": {
         "appendUnion": [
           {

@@ -975,7 +975,7 @@ export interface GetBetaWorkerVersionResponse {
             versionId?: string | null;
           }
         | { name: string; type: "images" }
-        | { json: string; name: string; type: "json" }
+        | { json: unknown; name: string; type: "json" }
         | { name: string; namespaceId: string; type: "kv_namespace" }
         | { certificateId: string; name: string; type: "mtls_certificate" }
         | { name: string; text: string; type: "plain_text" }
@@ -1244,7 +1244,7 @@ export const GetBetaWorkerVersionResponse =
               type: Schema.Literal("hyperdrive"),
             }),
             Schema.Struct({
-              json: Schema.String,
+              json: Schema.Unknown,
               name: Schema.String,
               type: Schema.Literal("json"),
             }),
@@ -1714,7 +1714,7 @@ export interface ListBetaWorkerVersionsResponse {
               versionId?: string | null;
             }
           | { name: string; type: "images" }
-          | { json: string; name: string; type: "json" }
+          | { json: unknown; name: string; type: "json" }
           | { name: string; namespaceId: string; type: "kv_namespace" }
           | { certificateId: string; name: string; type: "mtls_certificate" }
           | { name: string; text: string; type: "plain_text" }
@@ -1988,7 +1988,7 @@ export const ListBetaWorkerVersionsResponse =
                   type: Schema.Literal("hyperdrive"),
                 }),
                 Schema.Struct({
-                  json: Schema.String,
+                  json: Schema.Unknown,
                   name: Schema.String,
                   type: Schema.Literal("json"),
                 }),
@@ -2459,7 +2459,7 @@ export interface CreateBetaWorkerVersionRequest {
     | { id: string; name: string; type: "hyperdrive" }
     | { name: string; type: "inherit"; oldName?: string; versionId?: string }
     | { name: string; type: "images" }
-    | { json: string; name: string; type: "json" }
+    | { json: unknown; name: string; type: "json" }
     | { name: string; namespaceId: string; type: "kv_namespace" }
     | { certificateId: string; name: string; type: "mtls_certificate" }
     | { name: string; text: string; type: "plain_text" }
@@ -2692,7 +2692,7 @@ export const CreateBetaWorkerVersionRequest =
             type: Schema.Literal("hyperdrive"),
           }),
           Schema.Struct({
-            json: Schema.String,
+            json: Schema.Unknown,
             name: Schema.String,
             type: Schema.Literal("json"),
           }),
@@ -3089,7 +3089,7 @@ export interface CreateBetaWorkerVersionResponse {
             versionId?: string | null;
           }
         | { name: string; type: "images" }
-        | { json: string; name: string; type: "json" }
+        | { json: unknown; name: string; type: "json" }
         | { name: string; namespaceId: string; type: "kv_namespace" }
         | { certificateId: string; name: string; type: "mtls_certificate" }
         | { name: string; text: string; type: "plain_text" }
@@ -3358,7 +3358,7 @@ export const CreateBetaWorkerVersionResponse =
               type: Schema.Literal("hyperdrive"),
             }),
             Schema.Struct({
-              json: Schema.String,
+              json: Schema.Unknown,
               name: Schema.String,
               type: Schema.Literal("json"),
             }),
@@ -6553,7 +6553,7 @@ export interface PutScriptRequest {
       | { id: string; name: string; type: "hyperdrive" }
       | { name: string; type: "inherit"; oldName?: string; versionId?: string }
       | { name: string; type: "images" }
-      | { json: string; name: string; type: "json" }
+      | { json: unknown; name: string; type: "json" }
       | { name: string; namespaceId: string; type: "kv_namespace" }
       | { certificateId: string; name: string; type: "mtls_certificate" }
       | { name: string; text: string; type: "plain_text" }
@@ -6826,7 +6826,7 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             type: Schema.Literal("hyperdrive"),
           }),
           Schema.Struct({
-            json: Schema.String,
+            json: Schema.Unknown,
             name: Schema.String,
             type: Schema.Literal("json"),
           }),
@@ -9655,7 +9655,7 @@ export interface GetScriptScriptAndVersionSettingResponse {
             versionId?: string | null;
           }
         | { name: string; type: "images" }
-        | { json: string; name: string; type: "json" }
+        | { json: unknown; name: string; type: "json" }
         | { name: string; namespaceId: string; type: "kv_namespace" }
         | { certificateId: string; name: string; type: "mtls_certificate" }
         | { name: string; text: string; type: "plain_text" }
@@ -9846,7 +9846,7 @@ export const GetScriptScriptAndVersionSettingResponse =
               type: Schema.Literal("hyperdrive"),
             }),
             Schema.Struct({
-              json: Schema.String,
+              json: Schema.Unknown,
               name: Schema.String,
               type: Schema.Literal("json"),
             }),
@@ -10233,7 +10233,7 @@ export interface PatchScriptScriptAndVersionSettingRequest {
       | { id: string; name: string; type: "hyperdrive" }
       | { name: string; type: "inherit"; oldName?: string; versionId?: string }
       | { name: string; type: "images" }
-      | { json: string; name: string; type: "json" }
+      | { json: unknown; name: string; type: "json" }
       | { name: string; namespaceId: string; type: "kv_namespace" }
       | { certificateId: string; name: string; type: "mtls_certificate" }
       | { name: string; text: string; type: "plain_text" }
@@ -10438,7 +10438,7 @@ export const PatchScriptScriptAndVersionSettingRequest =
                 type: Schema.Literal("hyperdrive"),
               }),
               Schema.Struct({
-                json: Schema.String,
+                json: Schema.Unknown,
                 name: Schema.String,
                 type: Schema.Literal("json"),
               }),
@@ -10866,7 +10866,7 @@ export interface PatchScriptScriptAndVersionSettingResponse {
             versionId?: string | null;
           }
         | { name: string; type: "images" }
-        | { json: string; name: string; type: "json" }
+        | { json: unknown; name: string; type: "json" }
         | { name: string; namespaceId: string; type: "kv_namespace" }
         | { certificateId: string; name: string; type: "mtls_certificate" }
         | { name: string; text: string; type: "plain_text" }
@@ -11051,7 +11051,7 @@ export const PatchScriptScriptAndVersionSettingResponse =
               type: Schema.Literal("hyperdrive"),
             }),
             Schema.Struct({
-              json: Schema.String,
+              json: Schema.Unknown,
               name: Schema.String,
               type: Schema.Literal("json"),
             }),
@@ -12572,7 +12572,7 @@ export interface GetScriptVersionResponse {
               versionId?: string | null;
             }
           | { name: string; type: "images" }
-          | { json: string; name: string; type: "json" }
+          | { json: unknown; name: string; type: "json" }
           | { name: string; namespaceId: string; type: "kv_namespace" }
           | { certificateId: string; name: string; type: "mtls_certificate" }
           | { name: string; text: string; type: "plain_text" }
@@ -12766,7 +12766,7 @@ export const GetScriptVersionResponse =
                 type: Schema.Literal("hyperdrive"),
               }),
               Schema.Struct({
-                json: Schema.String,
+                json: Schema.Unknown,
                 name: Schema.String,
                 type: Schema.Literal("json"),
               }),
@@ -13332,7 +13332,7 @@ export interface CreateScriptVersionRequest {
       | { id: string; name: string; type: "hyperdrive" }
       | { name: string; type: "inherit"; oldName?: string; versionId?: string }
       | { name: string; type: "images" }
-      | { json: string; name: string; type: "json" }
+      | { json: unknown; name: string; type: "json" }
       | { name: string; namespaceId: string; type: "kv_namespace" }
       | { certificateId: string; name: string; type: "mtls_certificate" }
       | { name: string; text: string; type: "plain_text" }
@@ -13502,7 +13502,7 @@ export const CreateScriptVersionRequest =
               type: Schema.Literal("hyperdrive"),
             }),
             Schema.Struct({
-              json: Schema.String,
+              json: Schema.Unknown,
               name: Schema.String,
               type: Schema.Literal("json"),
             }),
@@ -13756,7 +13756,7 @@ export interface CreateScriptVersionResponse {
               versionId?: string | null;
             }
           | { name: string; type: "images" }
-          | { json: string; name: string; type: "json" }
+          | { json: unknown; name: string; type: "json" }
           | { name: string; namespaceId: string; type: "kv_namespace" }
           | { certificateId: string; name: string; type: "mtls_certificate" }
           | { name: string; text: string; type: "plain_text" }
@@ -13952,7 +13952,7 @@ export const CreateScriptVersionResponse =
                 type: Schema.Literal("hyperdrive"),
               }),
               Schema.Struct({
-                json: Schema.String,
+                json: Schema.Unknown,
                 name: Schema.String,
                 type: Schema.Literal("json"),
               }),

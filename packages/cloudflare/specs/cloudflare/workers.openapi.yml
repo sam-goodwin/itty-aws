@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare WORKERS API
+  title: Cloudflare Workers API
   version: 0.0.0
 servers:
   - url: https://api.cloudflare.com/client/v4
@@ -950,7 +950,6 @@ paths:
                         - type: object
                           properties:
                             json:
-                              type: string
                               description: JSON data to use.
                             name:
                               type: string
@@ -2662,7 +2661,6 @@ paths:
                       - type: object
                         properties:
                           json:
-                            type: string
                             description: JSON data to use.
                           name:
                             type: string
@@ -3511,7 +3509,6 @@ paths:
                         - type: object
                           properties:
                             json:
-                              type: string
                               description: JSON data to use.
                             name:
                               type: string
@@ -6339,7 +6336,6 @@ paths:
                           - type: object
                             properties:
                               json:
-                                type: string
                                 description: JSON data to use.
                               name:
                                 type: string
@@ -9708,7 +9704,6 @@ paths:
                         - type: object
                           properties:
                             json:
-                              type: string
                               description: JSON data to use.
                             name:
                               type: string
@@ -10448,7 +10443,6 @@ paths:
                           - type: object
                             properties:
                               json:
-                                type: string
                                 description: JSON data to use.
                               name:
                                 type: string
@@ -11302,7 +11296,6 @@ paths:
                         - type: object
                           properties:
                             json:
-                              type: string
                               description: JSON data to use.
                             name:
                               type: string
@@ -13027,7 +13020,6 @@ paths:
                             - type: object
                               properties:
                                 json:
-                                  type: string
                                   description: JSON data to use.
                                 name:
                                   type: string
@@ -13855,7 +13847,6 @@ paths:
                           - type: object
                             properties:
                               json:
-                                type: string
                                 description: JSON data to use.
                               name:
                                 type: string
@@ -14508,7 +14499,6 @@ paths:
                             - type: object
                               properties:
                                 json:
-                                  type: string
                                   description: JSON data to use.
                                 name:
                                   type: string

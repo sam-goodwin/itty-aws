@@ -5,6 +5,7 @@
   },
   "request": {
     "properties": {
+      "settings.bindings[].json": { "type": "unknown" },
       "settings.bindings[]": {
         "appendUnion": [
           {
@@ -49,6 +50,7 @@
   "response": {
     "properties": {
       "placement": { "type": "unknown" },
+      "bindings[].json": { "type": "unknown" },
       "bindings[]": {
         "appendUnion": [
           {
