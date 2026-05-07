@@ -68,6 +68,15 @@ export class QueueAlreadyExists extends Schema.TaggedErrorClass<QueueAlreadyExis
 ) {}
 T.applyErrorMatchers(QueueAlreadyExists, [{ code: 11009 }]);
 
+export class QueueHandlerMissing extends Schema.TaggedErrorClass<QueueHandlerMissing>()(
+  "QueueHandlerMissing",
+  { code: Schema.Number, message: Schema.String },
+) {}
+T.applyErrorMatchers(QueueHandlerMissing, [
+  { code: 11001 },
+  { status: 400, message: { includes: "queue handler is missing" } },
+]);
+
 export class QueueNotFound extends Schema.TaggedErrorClass<QueueNotFound>()(
   "QueueNotFound",
   { code: Schema.Number, message: Schema.String },
@@ -602,6 +611,7 @@ export type CreateConsumerError =
   | DefaultErrors
   | InvalidRequestBody
   | QueueNotFound
+  | QueueHandlerMissing
   | ConsumerAlreadyExists
   | WorkerNotFound
   | InvalidRoute;
@@ -617,6 +627,7 @@ export const createConsumer: API.OperationMethod<
   errors: [
     InvalidRequestBody,
     QueueNotFound,
+    QueueHandlerMissing,
     ConsumerAlreadyExists,
     WorkerNotFound,
     InvalidRoute,
@@ -808,6 +819,7 @@ export type UpdateConsumerError =
   | DefaultErrors
   | InvalidRequestBody
   | QueueNotFound
+  | QueueHandlerMissing
   | ConsumerNotFound
   | WorkerNotFound
   | InvalidRoute;
@@ -823,6 +835,7 @@ export const updateConsumer: API.OperationMethod<
   errors: [
     InvalidRequestBody,
     QueueNotFound,
+    QueueHandlerMissing,
     ConsumerNotFound,
     WorkerNotFound,
     InvalidRoute,
