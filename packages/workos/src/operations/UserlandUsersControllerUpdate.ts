@@ -7,6 +7,15 @@ import { BadRequest, UnprocessableEntity } from "../errors.ts";
 export const UserlandUsersControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
+    email: Schema.optional(Schema.String),
+    first_name: Schema.optional(Schema.String),
+    last_name: Schema.optional(Schema.String),
+    email_verified: Schema.optional(Schema.Boolean),
+    metadata: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+    ),
+    external_id: Schema.optional(Schema.NullOr(Schema.String)),
+    locale: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(T.Http({ method: "PUT", path: "/user_management/users/{id}" }));
 export type UserlandUsersControllerUpdateInput =
   typeof UserlandUsersControllerUpdateInput.Type;

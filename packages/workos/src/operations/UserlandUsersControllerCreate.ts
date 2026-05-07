@@ -5,9 +5,16 @@ import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const UserlandUsersControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "POST", path: "/user_management/users" }),
-  );
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    email: Schema.String,
+    first_name: Schema.optional(Schema.NullOr(Schema.String)),
+    last_name: Schema.optional(Schema.NullOr(Schema.String)),
+    email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
+    metadata: Schema.optional(
+      Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
+    ),
+    external_id: Schema.optional(Schema.NullOr(Schema.String)),
+  }).pipe(T.Http({ method: "POST", path: "/user_management/users" }));
 export type UserlandUsersControllerCreateInput =
   typeof UserlandUsersControllerCreateInput.Type;
 

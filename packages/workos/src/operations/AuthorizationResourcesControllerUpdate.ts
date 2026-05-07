@@ -13,6 +13,8 @@ import {
 export const AuthorizationResourcesControllerUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     resource_id: Schema.String.pipe(T.PathParam()),
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({ method: "PATCH", path: "/authorization/resources/{resource_id}" }),
   );
