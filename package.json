@@ -22,7 +22,8 @@
     "nuke": "bun --filter '@distilled.cloud/*' --filter '!@distilled.cloud/website' nuke",
     "generate-nuke": "bun ./scripts/generate-nuke.ts",
     "generate-tests": "bun ./scripts/generate-tests.ts",
-    "error-discovery": "bun ./scripts/error-discovery.ts"
+    "error-discovery": "bun ./scripts/error-discovery.ts",
+    "prepare": "husky"
   },
   "workspaces": {
     "packages": [
@@ -71,6 +72,7 @@
     "@typescript/native-preview": "catalog:",
     "aws4fetch": "^1.0.20",
     "changelogithub": "^14.0.0",
+    "husky": "^9.1.7",
     "oxfmt": "catalog:",
     "oxlint": "catalog:",
     "yaml": "catalog:"
