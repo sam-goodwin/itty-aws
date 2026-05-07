@@ -52,7 +52,7 @@ describe.each([{ kind: "postgresql" }, { kind: "mysql" }] as const)(
       await Effect.runPromise(
         setupTestDatabase(`${TEST_SUFFIX}-${kind}`, { kind }),
       );
-    }, 600000); // 10 minute timeout for database creation (postgres can be slow)
+    }, 1200000); // 20 minute timeout for database creation (postgres can be very slow)
 
     afterAll(async () => {
       await Effect.runPromise(teardownTestDatabase(`${TEST_SUFFIX}-${kind}`));
