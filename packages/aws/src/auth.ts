@@ -15,6 +15,7 @@ import {
   InvalidSSOProfile,
   InvalidSSOToken,
   ProfileNotFound,
+  SsoPortalError,
   SsoRegion,
   SsoStartUrl,
   type CredentialsError,
@@ -229,16 +230,31 @@ export const makeAuthService = () =>
           },
         );
 
-        const credentials = (
-          (yield* response.json) as {
-            roleCredentials: {
-              accessKeyId: string;
-              secretAccessKey: string;
-              sessionToken: string;
-              expiration: number;
-            };
-          }
-        ).roleCredentials;
+        const body = (yield* response.json) as {
+          roleCredentials?: {
+            accessKeyId: string;
+            secretAccessKey: string;
+            sessionToken: string;
+            expiration: number;
+          };
+          message?: string;
+          __type?: string;
+        };
+
+        // On non-200 responses (e.g. ForbiddenException when an IAM Identity
+        // Center role assignment is in a stale state) the portal returns a
+        // body without `roleCredentials`. Surface the real error instead of
+        // letting `.accessKeyId` throw `undefined is not an object`.
+        if (!body.roleCredentials) {
+          return yield* new SsoPortalError({
+            message: `AWS SSO portal did not return roleCredentials for profile=${profileName} (account=${profile.sso_account_id} role=${profile.sso_role_name}, status=${response.status}${body.message ? `, ${body.message}` : ""}${body.__type ? `, ${body.__type}` : ""}). ${REFRESH_MESSAGE}`,
+            profile: profileName,
+            account_id: profile.sso_account_id,
+            role_name: profile.sso_role_name,
+            status: response.status,
+          });
+        }
+        const credentials = body.roleCredentials;
 
         yield* fs.writeFileString(
           cachedCredsFilePath,
