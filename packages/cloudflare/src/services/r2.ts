@@ -2710,11 +2710,11 @@ export interface ListObjectsResponse {
     customMetadata?: unknown | null;
     httpMetadata?: unknown | null;
   }[];
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     cursor?: string | null;
     perPage?: number | null;
-  };
+  } | null;
 }
 
 export const ListObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2750,16 +2750,21 @@ export const ListObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-  resultInfo: Schema.Struct({
-    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    cursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      count: "count",
-      cursor: "cursor",
-      perPage: "per_page",
-    }),
+  resultInfo: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        cursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          count: "count",
+          cursor: "cursor",
+          perPage: "per_page",
+        }),
+      ),
+      Schema.Null,
+    ]),
   ),
 }).pipe(
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),

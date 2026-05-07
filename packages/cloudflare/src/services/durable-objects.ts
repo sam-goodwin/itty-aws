@@ -64,12 +64,12 @@ export interface ListNamespacesResponse {
     script?: string | null;
     useSqlite?: boolean | null;
   }[];
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
-  };
+  } | null;
 }
 
 export const ListNamespacesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -91,18 +91,25 @@ export const ListNamespacesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
         }),
       ),
     ),
-    resultInfo: Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
+    resultInfo: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          totalCount: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            count: "count",
+            page: "page",
+            perPage: "per_page",
+            totalCount: "total_count",
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
   },
 ).pipe(
@@ -157,7 +164,7 @@ export const ListNamespaceObjectsRequest =
 
 export interface ListNamespaceObjectsResponse {
   result: { id?: string | null; hasStoredData?: boolean | null }[];
-  resultInfo: { cursors?: { after?: string | null } | null };
+  resultInfo?: { cursors?: { after?: string | null } | null } | null;
 }
 
 export const ListNamespaceObjectsResponse =
@@ -170,16 +177,23 @@ export const ListNamespaceObjectsResponse =
         ),
       }),
     ),
-    resultInfo: Schema.Struct({
-      cursors: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            after: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
-    }),
+    resultInfo: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          cursors: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                after: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }),
+        Schema.Null,
+      ]),
+    ),
   }).pipe(
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
   ) as unknown as Schema.Schema<ListNamespaceObjectsResponse>;

@@ -746,7 +746,7 @@ function buildPaginatedResponseType(
           },
           {
             name: "result_info",
-            required: true,
+            required: false,
             type: {
               kind: "object",
               properties: [
@@ -782,7 +782,7 @@ function buildPaginatedResponseType(
           { name: "result", required: true, type: arrayOfItems },
           {
             name: "result_info",
-            required: true,
+            required: false,
             type: {
               kind: "object",
               properties: [
@@ -819,7 +819,7 @@ function buildPaginatedResponseType(
           { name: "result", required: true, type: arrayOfItems },
           {
             name: "result_info",
-            required: true,
+            required: false,
             type: {
               kind: "object",
               properties: [
@@ -850,7 +850,7 @@ function buildPaginatedResponseType(
           { name: "result", required: true, type: arrayOfItems },
           {
             name: "result_info",
-            required: true,
+            required: false,
             type: {
               kind: "object",
               properties: [
