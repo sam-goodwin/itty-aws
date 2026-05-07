@@ -7,6 +7,50 @@ import { SensitiveString } from "../sensitive.ts";
 export const CreateProjectBranchInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
+    endpoints: Schema.optional(
+      Schema.Array(
+        Schema.Struct({
+          type: Schema.Literals(["read_only", "read_write"]),
+          settings: Schema.optional(
+            Schema.Struct({
+              pg_settings: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              pgbouncer_settings: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              preload_libraries: Schema.optional(
+                Schema.Struct({
+                  use_defaults: Schema.optional(Schema.Boolean),
+                  enabled_libraries: Schema.optional(
+                    Schema.Array(Schema.String),
+                  ),
+                }),
+              ),
+            }),
+          ),
+          autoscaling_limit_min_cu: Schema.optional(Schema.Number),
+          autoscaling_limit_max_cu: Schema.optional(Schema.Number),
+          provisioner: Schema.optional(Schema.String),
+          suspend_timeout_seconds: Schema.optional(Schema.Number),
+        }),
+      ),
+    ),
+    branch: Schema.optional(
+      Schema.Struct({
+        parent_id: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        parent_lsn: Schema.optional(Schema.String),
+        parent_timestamp: Schema.optional(Schema.String),
+        protected: Schema.optional(Schema.Boolean),
+        archived: Schema.optional(Schema.Boolean),
+        init_source: Schema.optional(Schema.String),
+        expires_at: Schema.optional(Schema.String),
+      }),
+    ),
+    annotation_value: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
   }).pipe(T.Http({ method: "POST", path: "/projects/{project_id}/branches" }));
 export type CreateProjectBranchInput = typeof CreateProjectBranchInput.Type;
 

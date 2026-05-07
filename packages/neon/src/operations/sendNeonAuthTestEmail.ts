@@ -1,12 +1,20 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const SendNeonAuthTestEmailInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     branch_id: Schema.String.pipe(T.PathParam()),
+    host: Schema.String,
+    port: Schema.Number,
+    username: Schema.String,
+    password: SensitiveString,
+    sender_email: Schema.String,
+    sender_name: Schema.String,
+    recipient_email: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",

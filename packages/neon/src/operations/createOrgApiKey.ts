@@ -5,6 +5,8 @@ import * as T from "../traits.ts";
 // Input Schema
 export const CreateOrgApiKeyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   org_id: Schema.String.pipe(T.PathParam()),
+  key_name: Schema.String,
+  project_id: Schema.optional(Schema.String),
 }).pipe(T.Http({ method: "POST", path: "/organizations/{org_id}/api_keys" }));
 export type CreateOrgApiKeyInput = typeof CreateOrgApiKeyInput.Type;
 
