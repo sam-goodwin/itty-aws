@@ -12030,6 +12030,10 @@ export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceede
   "RequestLimitExceeded",
   {},
 ).pipe(C.withThrottlingError) {}
+export class SlowDown extends S.TaggedErrorClass<SlowDown>()(
+  "SlowDown",
+  {},
+).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class NoSuchBucket extends S.TaggedErrorClass<NoSuchBucket>()(
   "NoSuchBucket",
   { Message: S.optional(S.String), BucketName: S.optional(S.String) },
@@ -12190,6 +12194,7 @@ export class ObjectAlreadyInActiveTierError extends S.TaggedErrorClass<ObjectAlr
 export type AbortMultipartUploadError =
   | NoSuchUpload
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | NotFound
   | CommonErrors;
@@ -12255,7 +12260,13 @@ export const abortMultipartUpload: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AbortMultipartUploadRequest,
   output: AbortMultipartUploadOutput,
-  errors: [NoSuchUpload, RequestLimitExceeded, NoSuchBucket, NotFound],
+  errors: [
+    NoSuchUpload,
+    RequestLimitExceeded,
+    SlowDown,
+    NoSuchBucket,
+    NotFound,
+  ],
 }));
 export type CompleteMultipartUploadError = CommonErrors;
 /**
@@ -12384,6 +12395,7 @@ export const completeMultipartUpload: API.OperationMethod<
 export type CopyObjectError =
   | ObjectNotInActiveTierError
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -12559,6 +12571,7 @@ export const copyObject: API.OperationMethod<
   errors: [
     ObjectNotInActiveTierError,
     RequestLimitExceeded,
+    SlowDown,
     NoSuchBucket,
     PermanentRedirect,
   ],
@@ -12567,6 +12580,7 @@ export type CreateBucketError =
   | BucketAlreadyExists
   | BucketAlreadyOwnedByYou
   | RequestLimitExceeded
+  | SlowDown
   | IllegalLocationConstraintException
   | InvalidArgument
   | InvalidBucketName
@@ -12698,6 +12712,7 @@ export const createBucket: API.OperationMethod<
     BucketAlreadyExists,
     BucketAlreadyOwnedByYou,
     RequestLimitExceeded,
+    SlowDown,
     IllegalLocationConstraintException,
     InvalidArgument,
     InvalidBucketName,
@@ -12832,6 +12847,7 @@ export const createBucketMetadataTableConfiguration: API.OperationMethod<
 }));
 export type CreateMultipartUploadError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -13017,7 +13033,7 @@ export const createMultipartUpload: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMultipartUploadRequest,
   output: CreateMultipartUploadOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
 }));
 export type CreateSessionError = NoSuchBucket | CommonErrors;
 /**
@@ -13127,6 +13143,7 @@ export const createSession: API.OperationMethod<
 }));
 export type DeleteBucketError =
   | RequestLimitExceeded
+  | SlowDown
   | BucketNotEmpty
   | NoSuchBucket
   | PermanentRedirect
@@ -13176,6 +13193,7 @@ export const deleteBucket: API.OperationMethod<
   output: DeleteBucketResponse,
   errors: [
     RequestLimitExceeded,
+    SlowDown,
     BucketNotEmpty,
     NoSuchBucket,
     PermanentRedirect,
@@ -13183,6 +13201,7 @@ export const deleteBucket: API.OperationMethod<
 }));
 export type DeleteBucketAnalyticsConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -13217,10 +13236,11 @@ export const deleteBucketAnalyticsConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketAnalyticsConfigurationRequest,
   output: DeleteBucketAnalyticsConfigurationResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type DeleteBucketCorsError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -13250,10 +13270,11 @@ export const deleteBucketCors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketCorsRequest,
   output: DeleteBucketCorsResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type DeleteBucketEncryptionError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -13302,10 +13323,11 @@ export const deleteBucketEncryption: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketEncryptionRequest,
   output: DeleteBucketEncryptionResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type DeleteBucketIntelligentTieringConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -13337,10 +13359,11 @@ export const deleteBucketIntelligentTieringConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketIntelligentTieringConfigurationRequest,
   output: DeleteBucketIntelligentTieringConfigurationResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type DeleteBucketInventoryConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -13376,10 +13399,11 @@ export const deleteBucketInventoryConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketInventoryConfigurationRequest,
   output: DeleteBucketInventoryConfigurationResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type DeleteBucketLifecycleError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -13439,10 +13463,11 @@ export const deleteBucketLifecycle: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketLifecycleRequest,
   output: DeleteBucketLifecycleResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type DeleteBucketMetadataConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -13484,10 +13509,11 @@ export const deleteBucketMetadataConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketMetadataConfigurationRequest,
   output: DeleteBucketMetadataConfigurationResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type DeleteBucketMetadataTableConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -13535,10 +13561,11 @@ export const deleteBucketMetadataTableConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketMetadataTableConfigurationRequest,
   output: DeleteBucketMetadataTableConfigurationResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type DeleteBucketMetricsConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -13595,10 +13622,11 @@ export const deleteBucketMetricsConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketMetricsConfigurationRequest,
   output: DeleteBucketMetricsConfigurationResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type DeleteBucketOwnershipControlsError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -13627,10 +13655,11 @@ export const deleteBucketOwnershipControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketOwnershipControlsRequest,
   output: DeleteBucketOwnershipControlsResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type DeleteBucketPolicyError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | SignatureDoesNotMatch
@@ -13694,6 +13723,7 @@ export const deleteBucketPolicy: API.OperationMethod<
   output: DeleteBucketPolicyResponse,
   errors: [
     RequestLimitExceeded,
+    SlowDown,
     NoSuchBucket,
     PermanentRedirect,
     SignatureDoesNotMatch,
@@ -13701,6 +13731,7 @@ export const deleteBucketPolicy: API.OperationMethod<
 }));
 export type DeleteBucketReplicationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -13734,10 +13765,11 @@ export const deleteBucketReplication: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketReplicationRequest,
   output: DeleteBucketReplicationResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type DeleteBucketTaggingError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -13764,10 +13796,11 @@ export const deleteBucketTagging: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketTaggingRequest,
   output: DeleteBucketTaggingResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type DeleteBucketWebsiteError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -13802,10 +13835,11 @@ export const deleteBucketWebsite: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketWebsiteRequest,
   output: DeleteBucketWebsiteResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type DeleteObjectError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | NotFound
@@ -13908,10 +13942,17 @@ export const deleteObject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteObjectRequest,
   output: DeleteObjectOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect, NotFound],
+  errors: [
+    RequestLimitExceeded,
+    SlowDown,
+    NoSuchBucket,
+    PermanentRedirect,
+    NotFound,
+  ],
 }));
 export type DeleteObjectsError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -14015,10 +14056,11 @@ export const deleteObjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteObjectsRequest,
   output: DeleteObjectsOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
 }));
 export type DeleteObjectTaggingError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchKey
   | PermanentRedirect
   | CommonErrors;
@@ -14051,10 +14093,11 @@ export const deleteObjectTagging: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteObjectTaggingRequest,
   output: DeleteObjectTaggingOutput,
-  errors: [RequestLimitExceeded, NoSuchKey, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchKey, PermanentRedirect],
 }));
 export type DeletePublicAccessBlockError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -14088,10 +14131,11 @@ export const deletePublicAccessBlock: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePublicAccessBlockRequest,
   output: DeletePublicAccessBlockResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type GetBucketAbacError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -14105,10 +14149,11 @@ export const getBucketAbac: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketAbacRequest,
   output: GetBucketAbacOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type GetBucketAccelerateConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -14149,10 +14194,11 @@ export const getBucketAccelerateConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketAccelerateConfigurationRequest,
   output: GetBucketAccelerateConfigurationOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
 }));
 export type GetBucketAclError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -14191,10 +14237,11 @@ export const getBucketAcl: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketAclRequest,
   output: GetBucketAclOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
 }));
 export type GetBucketAnalyticsConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | NoSuchConfiguration
   | CommonErrors;
@@ -14230,10 +14277,11 @@ export const getBucketAnalyticsConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketAnalyticsConfigurationRequest,
   output: GetBucketAnalyticsConfigurationOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket, NoSuchConfiguration],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, NoSuchConfiguration],
 }));
 export type GetBucketCorsError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | NoSuchCORSConfiguration
   | PermanentRedirect
@@ -14274,6 +14322,7 @@ export const getBucketCors: API.OperationMethod<
   output: GetBucketCorsOutput,
   errors: [
     RequestLimitExceeded,
+    SlowDown,
     NoSuchBucket,
     NoSuchCORSConfiguration,
     PermanentRedirect,
@@ -14281,6 +14330,7 @@ export const getBucketCors: API.OperationMethod<
 }));
 export type GetBucketEncryptionError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | ParseError
   | PermanentRedirect
@@ -14331,10 +14381,17 @@ export const getBucketEncryption: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketEncryptionRequest,
   output: GetBucketEncryptionOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket, ParseError, PermanentRedirect],
+  errors: [
+    RequestLimitExceeded,
+    SlowDown,
+    NoSuchBucket,
+    ParseError,
+    PermanentRedirect,
+  ],
 }));
 export type GetBucketIntelligentTieringConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | NoSuchConfiguration
   | CommonErrors;
@@ -14367,10 +14424,11 @@ export const getBucketIntelligentTieringConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketIntelligentTieringConfigurationRequest,
   output: GetBucketIntelligentTieringConfigurationOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket, NoSuchConfiguration],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, NoSuchConfiguration],
 }));
 export type GetBucketInventoryConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | NoSuchConfiguration
   | CommonErrors;
@@ -14405,10 +14463,11 @@ export const getBucketInventoryConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketInventoryConfigurationRequest,
   output: GetBucketInventoryConfigurationOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket, NoSuchConfiguration],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, NoSuchConfiguration],
 }));
 export type GetBucketLifecycleConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | NoSuchLifecycleConfiguration
   | PermanentRedirect
@@ -14489,6 +14548,7 @@ export const getBucketLifecycleConfiguration: API.OperationMethod<
   output: GetBucketLifecycleConfigurationOutput,
   errors: [
     RequestLimitExceeded,
+    SlowDown,
     NoSuchBucket,
     NoSuchLifecycleConfiguration,
     PermanentRedirect,
@@ -14496,6 +14556,7 @@ export const getBucketLifecycleConfiguration: API.OperationMethod<
 }));
 export type GetBucketLocationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -14541,10 +14602,11 @@ export const getBucketLocation: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketLocationRequest,
   output: GetBucketLocationOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type GetBucketLoggingError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -14570,10 +14632,11 @@ export const getBucketLogging: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketLoggingRequest,
   output: GetBucketLoggingOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
 }));
 export type GetBucketMetadataConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -14614,10 +14677,11 @@ export const getBucketMetadataConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketMetadataConfigurationRequest,
   output: GetBucketMetadataConfigurationOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type GetBucketMetadataTableConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -14664,10 +14728,11 @@ export const getBucketMetadataTableConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketMetadataTableConfigurationRequest,
   output: GetBucketMetadataTableConfigurationOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type GetBucketMetricsConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | NoSuchConfiguration
   | CommonErrors;
@@ -14726,10 +14791,11 @@ export const getBucketMetricsConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketMetricsConfigurationRequest,
   output: GetBucketMetricsConfigurationOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket, NoSuchConfiguration],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, NoSuchConfiguration],
 }));
 export type GetBucketNotificationConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -14769,10 +14835,11 @@ export const getBucketNotificationConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketNotificationConfigurationRequest,
   output: NotificationConfiguration,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type GetBucketOwnershipControlsError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | OwnershipControlsNotFoundError
   | CommonErrors;
@@ -14812,10 +14879,16 @@ export const getBucketOwnershipControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketOwnershipControlsRequest,
   output: GetBucketOwnershipControlsOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket, OwnershipControlsNotFoundError],
+  errors: [
+    RequestLimitExceeded,
+    SlowDown,
+    NoSuchBucket,
+    OwnershipControlsNotFoundError,
+  ],
 }));
 export type GetBucketPolicyError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | NoSuchBucketPolicy
   | PermanentRedirect
@@ -14886,6 +14959,7 @@ export const getBucketPolicy: API.OperationMethod<
   output: GetBucketPolicyOutput,
   errors: [
     RequestLimitExceeded,
+    SlowDown,
     NoSuchBucket,
     NoSuchBucketPolicy,
     PermanentRedirect,
@@ -14894,6 +14968,7 @@ export const getBucketPolicy: API.OperationMethod<
 }));
 export type GetBucketPolicyStatusError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -14927,10 +15002,11 @@ export const getBucketPolicyStatus: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketPolicyStatusRequest,
   output: GetBucketPolicyStatusOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
 }));
 export type GetBucketReplicationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | ReplicationConfigurationNotFoundError
   | CommonErrors;
@@ -14974,12 +15050,14 @@ export const getBucketReplication: API.OperationMethod<
   output: GetBucketReplicationOutput,
   errors: [
     RequestLimitExceeded,
+    SlowDown,
     NoSuchBucket,
     ReplicationConfigurationNotFoundError,
   ],
 }));
 export type GetBucketRequestPaymentError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -15003,10 +15081,11 @@ export const getBucketRequestPayment: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketRequestPaymentRequest,
   output: GetBucketRequestPaymentOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
 }));
 export type GetBucketTaggingError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | NoSuchTagSet
   | PermanentRedirect
@@ -15041,10 +15120,17 @@ export const getBucketTagging: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketTaggingRequest,
   output: GetBucketTaggingOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket, NoSuchTagSet, PermanentRedirect],
+  errors: [
+    RequestLimitExceeded,
+    SlowDown,
+    NoSuchBucket,
+    NoSuchTagSet,
+    PermanentRedirect,
+  ],
 }));
 export type GetBucketVersioningError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -15077,10 +15163,11 @@ export const getBucketVersioning: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketVersioningRequest,
   output: GetBucketVersioningOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
 }));
 export type GetBucketWebsiteError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | NoSuchWebsiteConfiguration
   | PermanentRedirect
@@ -15114,6 +15201,7 @@ export const getBucketWebsite: API.OperationMethod<
   output: GetBucketWebsiteOutput,
   errors: [
     RequestLimitExceeded,
+    SlowDown,
     NoSuchBucket,
     NoSuchWebsiteConfiguration,
     PermanentRedirect,
@@ -15123,6 +15211,7 @@ export type GetObjectError =
   | InvalidObjectState
   | NoSuchKey
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -15270,6 +15359,7 @@ export const getObject: API.OperationMethod<
     InvalidObjectState,
     NoSuchKey,
     RequestLimitExceeded,
+    SlowDown,
     NoSuchBucket,
     PermanentRedirect,
   ],
@@ -15277,6 +15367,7 @@ export const getObject: API.OperationMethod<
 export type GetObjectAclError =
   | NoSuchKey
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -15318,7 +15409,13 @@ export const getObjectAcl: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetObjectAclRequest,
   output: GetObjectAclOutput,
-  errors: [NoSuchKey, RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [
+    NoSuchKey,
+    RequestLimitExceeded,
+    SlowDown,
+    NoSuchBucket,
+    PermanentRedirect,
+  ],
 }));
 export type GetObjectAttributesError = NoSuchKey | CommonErrors;
 /**
@@ -15473,6 +15570,7 @@ export const getObjectAttributes: API.OperationMethod<
 }));
 export type GetObjectLegalHoldError =
   | RequestLimitExceeded
+  | SlowDown
   | InvalidRequest
   | CommonErrors;
 /**
@@ -15496,10 +15594,11 @@ export const getObjectLegalHold: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetObjectLegalHoldRequest,
   output: GetObjectLegalHoldOutput,
-  errors: [RequestLimitExceeded, InvalidRequest],
+  errors: [RequestLimitExceeded, SlowDown, InvalidRequest],
 }));
 export type GetObjectLockConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | ObjectLockConfigurationNotFoundError
   | PermanentRedirect
@@ -15527,6 +15626,7 @@ export const getObjectLockConfiguration: API.OperationMethod<
   output: GetObjectLockConfigurationOutput,
   errors: [
     RequestLimitExceeded,
+    SlowDown,
     NoSuchBucket,
     ObjectLockConfigurationNotFoundError,
     PermanentRedirect,
@@ -15534,6 +15634,7 @@ export const getObjectLockConfiguration: API.OperationMethod<
 }));
 export type GetObjectRetentionError =
   | RequestLimitExceeded
+  | SlowDown
   | InvalidRequest
   | CommonErrors;
 /**
@@ -15557,10 +15658,11 @@ export const getObjectRetention: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetObjectRetentionRequest,
   output: GetObjectRetentionOutput,
-  errors: [RequestLimitExceeded, InvalidRequest],
+  errors: [RequestLimitExceeded, SlowDown, InvalidRequest],
 }));
 export type GetObjectTaggingError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | NoSuchKey
   | PermanentRedirect
@@ -15599,7 +15701,13 @@ export const getObjectTagging: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetObjectTaggingRequest,
   output: GetObjectTaggingOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket, NoSuchKey, PermanentRedirect],
+  errors: [
+    RequestLimitExceeded,
+    SlowDown,
+    NoSuchBucket,
+    NoSuchKey,
+    PermanentRedirect,
+  ],
 }));
 export type GetObjectTorrentError = CommonErrors;
 /**
@@ -15633,6 +15741,7 @@ export const getObjectTorrent: API.OperationMethod<
 }));
 export type GetPublicAccessBlockError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | NoSuchPublicAccessBlockConfiguration
   | PermanentRedirect
@@ -15680,6 +15789,7 @@ export const getPublicAccessBlock: API.OperationMethod<
   output: GetPublicAccessBlockOutput,
   errors: [
     RequestLimitExceeded,
+    SlowDown,
     NoSuchBucket,
     NoSuchPublicAccessBlockConfiguration,
     PermanentRedirect,
@@ -15688,6 +15798,7 @@ export const getPublicAccessBlock: API.OperationMethod<
 export type HeadBucketError =
   | NotFound
   | RequestLimitExceeded
+  | SlowDown
   | ParseError
   | NoSuchBucket
   | CommonErrors;
@@ -15762,11 +15873,12 @@ export const headBucket: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: HeadBucketRequest,
   output: HeadBucketOutput,
-  errors: [NotFound, RequestLimitExceeded, ParseError, NoSuchBucket],
+  errors: [NotFound, RequestLimitExceeded, SlowDown, ParseError, NoSuchBucket],
 }));
 export type HeadObjectError =
   | NotFound
   | RequestLimitExceeded
+  | SlowDown
   | ParseError
   | NoSuchBucket
   | CommonErrors;
@@ -15886,10 +15998,11 @@ export const headObject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: HeadObjectRequest,
   output: HeadObjectOutput,
-  errors: [NotFound, RequestLimitExceeded, ParseError, NoSuchBucket],
+  errors: [NotFound, RequestLimitExceeded, SlowDown, ParseError, NoSuchBucket],
 }));
 export type ListBucketAnalyticsConfigurationsError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -15932,10 +16045,11 @@ export const listBucketAnalyticsConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListBucketAnalyticsConfigurationsRequest,
   output: ListBucketAnalyticsConfigurationsOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type ListBucketIntelligentTieringConfigurationsError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -15967,10 +16081,11 @@ export const listBucketIntelligentTieringConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListBucketIntelligentTieringConfigurationsRequest,
   output: ListBucketIntelligentTieringConfigurationsOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type ListBucketInventoryConfigurationsError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -16011,10 +16126,11 @@ export const listBucketInventoryConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListBucketInventoryConfigurationsRequest,
   output: ListBucketInventoryConfigurationsOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type ListBucketMetricsConfigurationsError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -16077,10 +16193,11 @@ export const listBucketMetricsConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListBucketMetricsConfigurationsRequest,
   output: ListBucketMetricsConfigurationsOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type ListBucketsError =
   | RequestLimitExceeded
+  | SlowDown
   | RequestError
   | CommonErrors;
 /**
@@ -16124,7 +16241,7 @@ export const listBuckets: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBucketsRequest,
   output: ListBucketsOutput,
-  errors: [RequestLimitExceeded, RequestError],
+  errors: [RequestLimitExceeded, SlowDown, RequestError],
   pagination: {
     inputToken: "ContinuationToken",
     outputToken: "ContinuationToken",
@@ -16193,6 +16310,7 @@ export const listDirectoryBuckets: API.OperationMethod<
 }));
 export type ListMultipartUploadsError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -16291,11 +16409,12 @@ export const listMultipartUploads: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListMultipartUploadsRequest,
   output: ListMultipartUploadsOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
 }));
 export type ListObjectsError =
   | NoSuchBucket
   | RequestLimitExceeded
+  | SlowDown
   | PermanentRedirect
   | CommonErrors;
 /**
@@ -16332,11 +16451,12 @@ export const listObjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListObjectsRequest,
   output: ListObjectsOutput,
-  errors: [NoSuchBucket, RequestLimitExceeded, PermanentRedirect],
+  errors: [NoSuchBucket, RequestLimitExceeded, SlowDown, PermanentRedirect],
 }));
 export type ListObjectsV2Error =
   | NoSuchBucket
   | RequestLimitExceeded
+  | SlowDown
   | PermanentRedirect
   | CommonErrors;
 /**
@@ -16428,7 +16548,7 @@ export const listObjectsV2: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListObjectsV2Request,
   output: ListObjectsV2Output,
-  errors: [NoSuchBucket, RequestLimitExceeded, PermanentRedirect],
+  errors: [NoSuchBucket, RequestLimitExceeded, SlowDown, PermanentRedirect],
   pagination: {
     inputToken: "ContinuationToken",
     outputToken: "NextContinuationToken",
@@ -16437,6 +16557,7 @@ export const listObjectsV2: API.OperationMethod<
 }));
 export type ListObjectVersionsError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -16474,9 +16595,13 @@ export const listObjectVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListObjectVersionsRequest,
   output: ListObjectVersionsOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
 }));
-export type ListPartsError = RequestLimitExceeded | NoSuchBucket | CommonErrors;
+export type ListPartsError =
+  | RequestLimitExceeded
+  | SlowDown
+  | NoSuchBucket
+  | CommonErrors;
 /**
  * Lists the parts that have been uploaded for a specific multipart upload.
  *
@@ -16562,7 +16687,7 @@ export const listParts: API.OperationMethod<
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPartsRequest,
   output: ListPartsOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
   pagination: {
     inputToken: "PartNumberMarker",
     outputToken: "NextPartNumberMarker",
@@ -16586,6 +16711,7 @@ export const putBucketAbac: API.OperationMethod<
 }));
 export type PutBucketAccelerateConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -16633,10 +16759,11 @@ export const putBucketAccelerateConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketAccelerateConfigurationRequest,
   output: PutBucketAccelerateConfigurationResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
 }));
 export type PutBucketAclError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -16793,7 +16920,7 @@ export const putBucketAcl: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketAclRequest,
   output: PutBucketAclResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
 }));
 export type PutBucketAnalyticsConfigurationError = CommonErrors;
 /**
@@ -16871,6 +16998,7 @@ export const putBucketAnalyticsConfiguration: API.OperationMethod<
 }));
 export type PutBucketCorsError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -16928,10 +17056,11 @@ export const putBucketCors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketCorsRequest,
   output: PutBucketCorsResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
 }));
 export type PutBucketEncryptionError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -17028,10 +17157,11 @@ export const putBucketEncryption: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketEncryptionRequest,
   output: PutBucketEncryptionResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
 }));
 export type PutBucketIntelligentTieringConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -17089,10 +17219,11 @@ export const putBucketIntelligentTieringConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketIntelligentTieringConfigurationRequest,
   output: PutBucketIntelligentTieringConfigurationResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type PutBucketInventoryConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -17175,10 +17306,11 @@ export const putBucketInventoryConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketInventoryConfigurationRequest,
   output: PutBucketInventoryConfigurationResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type PutBucketLifecycleConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | InvalidRequest
   | MalformedXML
   | NoSuchBucket
@@ -17290,6 +17422,7 @@ export const putBucketLifecycleConfiguration: API.OperationMethod<
   output: PutBucketLifecycleConfigurationOutput,
   errors: [
     RequestLimitExceeded,
+    SlowDown,
     InvalidRequest,
     MalformedXML,
     NoSuchBucket,
@@ -17298,6 +17431,7 @@ export const putBucketLifecycleConfiguration: API.OperationMethod<
 }));
 export type PutBucketLoggingError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -17377,10 +17511,11 @@ export const putBucketLogging: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketLoggingRequest,
   output: PutBucketLoggingResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
 }));
 export type PutBucketMetricsConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -17446,10 +17581,11 @@ export const putBucketMetricsConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketMetricsConfigurationRequest,
   output: PutBucketMetricsConfigurationResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type PutBucketNotificationConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -17513,10 +17649,11 @@ export const putBucketNotificationConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketNotificationConfigurationRequest,
   output: PutBucketNotificationConfigurationResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type PutBucketOwnershipControlsError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -17544,10 +17681,11 @@ export const putBucketOwnershipControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketOwnershipControlsRequest,
   output: PutBucketOwnershipControlsResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type PutBucketPolicyError =
   | RequestLimitExceeded
+  | SlowDown
   | AccessDenied
   | InvalidBucketName
   | InvalidDigest
@@ -17624,6 +17762,7 @@ export const putBucketPolicy: API.OperationMethod<
   output: PutBucketPolicyResponse,
   errors: [
     RequestLimitExceeded,
+    SlowDown,
     AccessDenied,
     InvalidBucketName,
     InvalidDigest,
@@ -17636,6 +17775,7 @@ export const putBucketPolicy: API.OperationMethod<
 }));
 export type PutBucketReplicationError =
   | RequestLimitExceeded
+  | SlowDown
   | InvalidRequest
   | NoSuchBucket
   | CommonErrors;
@@ -17708,10 +17848,11 @@ export const putBucketReplication: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketReplicationRequest,
   output: PutBucketReplicationResponse,
-  errors: [RequestLimitExceeded, InvalidRequest, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, InvalidRequest, NoSuchBucket],
 }));
 export type PutBucketRequestPaymentError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -17739,10 +17880,11 @@ export const putBucketRequestPayment: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketRequestPaymentRequest,
   output: PutBucketRequestPaymentResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
 }));
 export type PutBucketTaggingError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -17796,10 +17938,11 @@ export const putBucketTagging: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketTaggingRequest,
   output: PutBucketTaggingResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
 }));
 export type PutBucketVersioningError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -17854,10 +17997,11 @@ export const putBucketVersioning: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketVersioningRequest,
   output: PutBucketVersioningResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
 }));
 export type PutBucketWebsiteError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -17940,7 +18084,7 @@ export const putBucketWebsite: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutBucketWebsiteRequest,
   output: PutBucketWebsiteResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
 }));
 export type PutObjectError =
   | EncryptionTypeMismatch
@@ -17948,6 +18092,7 @@ export type PutObjectError =
   | InvalidWriteOffset
   | TooManyParts
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -18088,6 +18233,7 @@ export const putObject: API.OperationMethod<
     InvalidWriteOffset,
     TooManyParts,
     RequestLimitExceeded,
+    SlowDown,
     NoSuchBucket,
     PermanentRedirect,
   ],
@@ -18095,6 +18241,7 @@ export const putObject: API.OperationMethod<
 export type PutObjectAclError =
   | NoSuchKey
   | RequestLimitExceeded
+  | SlowDown
   | PermanentRedirect
   | CommonErrors;
 /**
@@ -18248,10 +18395,11 @@ export const putObjectAcl: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutObjectAclRequest,
   output: PutObjectAclOutput,
-  errors: [NoSuchKey, RequestLimitExceeded, PermanentRedirect],
+  errors: [NoSuchKey, RequestLimitExceeded, SlowDown, PermanentRedirect],
 }));
 export type PutObjectLegalHoldError =
   | RequestLimitExceeded
+  | SlowDown
   | MalformedXML
   | CommonErrors;
 /**
@@ -18271,10 +18419,11 @@ export const putObjectLegalHold: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutObjectLegalHoldRequest,
   output: PutObjectLegalHoldOutput,
-  errors: [RequestLimitExceeded, MalformedXML],
+  errors: [RequestLimitExceeded, SlowDown, MalformedXML],
 }));
 export type PutObjectLockConfigurationError =
   | RequestLimitExceeded
+  | SlowDown
   | InvalidBucketState
   | NoSuchBucket
   | PermanentRedirect
@@ -18308,6 +18457,7 @@ export const putObjectLockConfiguration: API.OperationMethod<
   output: PutObjectLockConfigurationOutput,
   errors: [
     RequestLimitExceeded,
+    SlowDown,
     InvalidBucketState,
     NoSuchBucket,
     PermanentRedirect,
@@ -18315,6 +18465,7 @@ export const putObjectLockConfiguration: API.OperationMethod<
 }));
 export type PutObjectRetentionError =
   | RequestLimitExceeded
+  | SlowDown
   | InvalidRequest
   | CommonErrors;
 /**
@@ -18337,10 +18488,11 @@ export const putObjectRetention: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutObjectRetentionRequest,
   output: PutObjectRetentionOutput,
-  errors: [RequestLimitExceeded, InvalidRequest],
+  errors: [RequestLimitExceeded, SlowDown, InvalidRequest],
 }));
 export type PutObjectTaggingError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchKey
   | PermanentRedirect
   | CommonErrors;
@@ -18392,10 +18544,11 @@ export const putObjectTagging: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutObjectTaggingRequest,
   output: PutObjectTaggingOutput,
-  errors: [RequestLimitExceeded, NoSuchKey, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchKey, PermanentRedirect],
 }));
 export type PutPublicAccessBlockError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -18437,7 +18590,7 @@ export const putPublicAccessBlock: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutPublicAccessBlockRequest,
   output: PutPublicAccessBlockResponse,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
 }));
 export type RenameObjectError = IdempotencyParameterMismatch | CommonErrors;
 /**
@@ -18498,6 +18651,7 @@ export const renameObject: API.OperationMethod<
 export type RestoreObjectError =
   | ObjectAlreadyInActiveTierError
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchKey
   | PermanentRedirect
   | CommonErrors;
@@ -18652,12 +18806,14 @@ export const restoreObject: API.OperationMethod<
   errors: [
     ObjectAlreadyInActiveTierError,
     RequestLimitExceeded,
+    SlowDown,
     NoSuchKey,
     PermanentRedirect,
   ],
 }));
 export type SelectObjectContentError =
   | RequestLimitExceeded
+  | SlowDown
   | PermanentRedirect
   | CommonErrors;
 /**
@@ -18759,7 +18915,7 @@ export const selectObjectContent: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SelectObjectContentRequest,
   output: SelectObjectContentOutput,
-  errors: [RequestLimitExceeded, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, PermanentRedirect],
 }));
 export type UpdateBucketMetadataInventoryTableConfigurationError = CommonErrors;
 /**
@@ -18981,6 +19137,7 @@ export const updateObjectEncryption: API.OperationMethod<
 }));
 export type UploadPartError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | PermanentRedirect
   | CommonErrors;
@@ -19132,10 +19289,11 @@ export const uploadPart: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadPartRequest,
   output: UploadPartOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket, PermanentRedirect],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
 }));
 export type UploadPartCopyError =
   | RequestLimitExceeded
+  | SlowDown
   | NoSuchBucket
   | CommonErrors;
 /**
@@ -19307,7 +19465,7 @@ export const uploadPartCopy: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadPartCopyRequest,
   output: UploadPartCopyOutput,
-  errors: [RequestLimitExceeded, NoSuchBucket],
+  errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
 }));
 export type WriteGetObjectResponseError = CommonErrors;
 /**
