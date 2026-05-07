@@ -1,3 +1,4 @@
+import * as EffectConfig from "effect/Config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
@@ -16,20 +17,25 @@ export class Credentials extends Context.Service<Credentials, Config>()(
   "PolarCredentials",
 ) {}
 
+const envConfig = EffectConfig.all({
+  accessToken: EffectConfig.string("POLAR_ACCESS_TOKEN"),
+  apiBaseUrl: EffectConfig.string("POLAR_API_BASE_URL").pipe(
+    EffectConfig.withDefault(DEFAULT_API_BASE_URL),
+  ),
+});
+
 export const CredentialsFromEnv = Layer.effect(
   Credentials,
-  Effect.gen(function* () {
-    const accessToken = process.env.POLAR_ACCESS_TOKEN;
-
-    if (!accessToken) {
-      return yield* new ConfigError({
-        message: "POLAR_ACCESS_TOKEN environment variable is required",
-      });
-    }
-
-    return {
+  envConfig.asEffect().pipe(
+    Effect.mapError(
+      () =>
+        new ConfigError({
+          message: "POLAR_ACCESS_TOKEN environment variable is required",
+        }),
+    ),
+    Effect.map(({ accessToken, apiBaseUrl }) => ({
       accessToken: Redacted.make(accessToken),
-      apiBaseUrl: process.env.POLAR_API_BASE_URL ?? DEFAULT_API_BASE_URL,
-    };
-  }),
+      apiBaseUrl,
+    })),
+  ),
 );
