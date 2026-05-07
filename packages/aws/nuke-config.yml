@@ -36,8 +36,45 @@ regions:
 blocklist:
   - "000000000000"
 
+presets:
+  identity-center:
+    filters:
+      IAMSAMLProvider:
+        - type: "glob"
+          value: "*AWSSSO_*_DO_NOT_DELETE"
+      IAMRole:
+        - type: "glob"
+          value: "AWSReservedSSO_*"
+        - type: "glob"
+          value: "AWSServiceRoleForSSO*"
+        - type: "glob"
+          value: "AWSServiceRoleForIdentityStore*"
+        - property: "tag:ManagedBy"
+          value: "AWS-SSO"
+      IAMRolePolicy:
+        - type: "glob"
+          value: "AWSReservedSSO_* -> *"
+        - type: "glob"
+          value: "AWSServiceRoleForSSO* -> *"
+        - type: "glob"
+          value: "AWSServiceRoleForIdentityStore* -> *"
+      IAMRolePolicyAttachment:
+        - type: "glob"
+          value: "AWSReservedSSO_* -> *"
+        - type: "glob"
+          value: "AWSServiceRoleForSSO* -> *"
+        - type: "glob"
+          value: "AWSServiceRoleForIdentityStore* -> *"
+      IAMServiceLinkedRole:
+        - type: "glob"
+          value: "AWSServiceRoleForSSO*"
+        - type: "glob"
+          value: "AWSServiceRoleForIdentityStore*"
+
 accounts:
   "391965393224":
+    presets:
+      - identity-center
     filters:
       IAMRole:
         - "distilled-github-oidc-role"
