@@ -33,9 +33,7 @@ const GetCustomPageBaseFields = {
   ]).pipe(T.HttpPath("identifier")),
 } as const;
 
-export interface GetCustomPageForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface GetCustomPageBaseRequest {
   identifier:
     | "1000_errors"
     | "500_errors"
@@ -49,20 +47,14 @@ export interface GetCustomPageForAccountRequest {
     | "waf_challenge";
 }
 
-export interface GetCustomPageForZoneRequest {
+export interface GetCustomPageForAccountRequest extends GetCustomPageBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface GetCustomPageForZoneRequest extends GetCustomPageBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  identifier:
-    | "1000_errors"
-    | "500_errors"
-    | "basic_challenge"
-    | "country_challenge"
-    | "ip_block"
-    | "managed_challenge"
-    | "ratelimit_block"
-    | "under_attack"
-    | "waf_block"
-    | "waf_challenge";
 }
 
 export type GetCustomPageRequest =
@@ -171,12 +163,14 @@ export const getCustomPage = (
 
 const ListCustomPagesBaseFields = {} as const;
 
-export interface ListCustomPagesForAccountRequest {
+interface ListCustomPagesBaseRequest {}
+
+export interface ListCustomPagesForAccountRequest extends ListCustomPagesBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
   accountId: string;
 }
 
-export interface ListCustomPagesForZoneRequest {
+export interface ListCustomPagesForZoneRequest extends ListCustomPagesBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
@@ -312,9 +306,7 @@ const PutCustomPageBaseFields = {
   url: Schema.String,
 } as const;
 
-export interface PutCustomPageForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface PutCustomPageBaseRequest {
   identifier:
     | "1000_errors"
     | "500_errors"
@@ -332,24 +324,14 @@ export interface PutCustomPageForAccountRequest {
   url: string;
 }
 
-export interface PutCustomPageForZoneRequest {
+export interface PutCustomPageForAccountRequest extends PutCustomPageBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface PutCustomPageForZoneRequest extends PutCustomPageBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  identifier:
-    | "1000_errors"
-    | "500_errors"
-    | "basic_challenge"
-    | "country_challenge"
-    | "ip_block"
-    | "managed_challenge"
-    | "ratelimit_block"
-    | "under_attack"
-    | "waf_block"
-    | "waf_challenge";
-  /** Body param: The custom page state. */
-  state: "default" | "customized";
-  /** Body param: The URL associated with the custom page. */
-  url: string;
 }
 
 export type PutCustomPageRequest =

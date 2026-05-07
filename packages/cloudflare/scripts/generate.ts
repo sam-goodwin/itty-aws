@@ -1892,17 +1892,25 @@ function generateAccountOrZoneOperationSchema(
     baseInterfaceLines.push(`  ${quotePropKey(propName)}${optMark}: ${tsType};`);
   }
 
+  // Emit a shared base interface containing all non-scope fields, then have
+  // each variant interface extend it with just its scope field. This avoids
+  // duplicating large body field declarations across both variants.
+  const baseInterfaceName = `${pascalOpName}BaseRequest`;
+  lines.push(`interface ${baseInterfaceName} {`);
+  if (baseInterfaceLines.length > 0) {
+    lines.push(baseInterfaceLines.join("\n"));
+  }
+  lines.push(`}`);
+  lines.push("");
+
   const emitVariantInterface = (
     name: string,
     scopeFieldName: "accountId" | "zoneId",
     description: string,
   ): void => {
-    lines.push(`export interface ${name} {`);
+    lines.push(`export interface ${name} extends ${baseInterfaceName} {`);
     lines.push(`  /** ${description} */`);
     lines.push(`  ${scopeFieldName}: string;`);
-    if (baseInterfaceLines.length > 0) {
-      lines.push(baseInterfaceLines.join("\n"));
-    }
     lines.push(`}`);
     lines.push("");
   };

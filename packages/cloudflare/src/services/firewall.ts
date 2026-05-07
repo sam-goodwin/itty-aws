@@ -22,16 +22,18 @@ const GetAccessRuleBaseFields = {
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
 } as const;
 
-export interface GetAccessRuleForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface GetAccessRuleBaseRequest {
   ruleId: string;
 }
 
-export interface GetAccessRuleForZoneRequest {
+export interface GetAccessRuleForAccountRequest extends GetAccessRuleBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface GetAccessRuleForZoneRequest extends GetAccessRuleBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  ruleId: string;
 }
 
 export type GetAccessRuleRequest =
@@ -221,12 +223,14 @@ export const getAccessRule = (
 
 const ListAccessRulesBaseFields = {} as const;
 
-export interface ListAccessRulesForAccountRequest {
+interface ListAccessRulesBaseRequest {}
+
+export interface ListAccessRulesForAccountRequest extends ListAccessRulesBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
   accountId: string;
 }
 
-export interface ListAccessRulesForZoneRequest {
+export interface ListAccessRulesForZoneRequest extends ListAccessRulesBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
@@ -488,9 +492,7 @@ const CreateAccessRuleBaseFields = {
   notes: Schema.optional(Schema.String),
 } as const;
 
-export interface CreateAccessRuleForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface CreateAccessRuleBaseRequest {
   /** Body param: The rule configuration. */
   configuration:
     | { target?: "ip"; value?: string }
@@ -509,25 +511,14 @@ export interface CreateAccessRuleForAccountRequest {
   notes?: string;
 }
 
-export interface CreateAccessRuleForZoneRequest {
+export interface CreateAccessRuleForAccountRequest extends CreateAccessRuleBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface CreateAccessRuleForZoneRequest extends CreateAccessRuleBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  /** Body param: The rule configuration. */
-  configuration:
-    | { target?: "ip"; value?: string }
-    | { target?: "ip6"; value?: string }
-    | { target?: "ip_range"; value?: string }
-    | { target?: "asn"; value?: string }
-    | { target?: "country"; value?: string };
-  /** Body param: The action to apply to a matched request. */
-  mode:
-    | "block"
-    | "challenge"
-    | "whitelist"
-    | "js_challenge"
-    | "managed_challenge";
-  /** Body param: An informative summary of the rule, typically used as a reminder or explanation. */
-  notes?: string;
 }
 
 export type CreateAccessRuleRequest =
@@ -750,9 +741,7 @@ const PatchAccessRuleBaseFields = {
   notes: Schema.optional(Schema.String),
 } as const;
 
-export interface PatchAccessRuleForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface PatchAccessRuleBaseRequest {
   ruleId: string;
   /** Body param: The rule configuration. */
   configuration:
@@ -772,26 +761,14 @@ export interface PatchAccessRuleForAccountRequest {
   notes?: string;
 }
 
-export interface PatchAccessRuleForZoneRequest {
+export interface PatchAccessRuleForAccountRequest extends PatchAccessRuleBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface PatchAccessRuleForZoneRequest extends PatchAccessRuleBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  ruleId: string;
-  /** Body param: The rule configuration. */
-  configuration:
-    | { target?: "ip"; value?: string }
-    | { target?: "ip6"; value?: string }
-    | { target?: "ip_range"; value?: string }
-    | { target?: "asn"; value?: string }
-    | { target?: "country"; value?: string };
-  /** Body param: The action to apply to a matched request. */
-  mode:
-    | "block"
-    | "challenge"
-    | "whitelist"
-    | "js_challenge"
-    | "managed_challenge";
-  /** Body param: An informative summary of the rule, typically used as a reminder or explanation. */
-  notes?: string;
 }
 
 export type PatchAccessRuleRequest =
@@ -984,16 +961,18 @@ const DeleteAccessRuleBaseFields = {
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
 } as const;
 
-export interface DeleteAccessRuleForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface DeleteAccessRuleBaseRequest {
   ruleId: string;
 }
 
-export interface DeleteAccessRuleForZoneRequest {
+export interface DeleteAccessRuleForAccountRequest extends DeleteAccessRuleBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface DeleteAccessRuleForZoneRequest extends DeleteAccessRuleBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  ruleId: string;
 }
 
 export type DeleteAccessRuleRequest =

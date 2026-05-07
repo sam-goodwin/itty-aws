@@ -1180,16 +1180,18 @@ const GetAccessApplicationBaseFields = {
   appId: Schema.String.pipe(T.HttpPath("appId")),
 } as const;
 
-export interface GetAccessApplicationForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface GetAccessApplicationBaseRequest {
   appId: string;
 }
 
-export interface GetAccessApplicationForZoneRequest {
+export interface GetAccessApplicationForAccountRequest extends GetAccessApplicationBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface GetAccessApplicationForZoneRequest extends GetAccessApplicationBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  appId: string;
 }
 
 export type GetAccessApplicationRequest =
@@ -8898,12 +8900,14 @@ export const getAccessApplication = (
 
 const ListAccessApplicationsBaseFields = {} as const;
 
-export interface ListAccessApplicationsForAccountRequest {
+interface ListAccessApplicationsBaseRequest {}
+
+export interface ListAccessApplicationsForAccountRequest extends ListAccessApplicationsBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
   accountId: string;
 }
 
-export interface ListAccessApplicationsForZoneRequest {
+export interface ListAccessApplicationsForZoneRequest extends ListAccessApplicationsBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
@@ -17263,9 +17267,7 @@ const CreateAccessApplicationBaseFields = {
   tags: Schema.optional(Schema.Array(Schema.String)),
 } as const;
 
-export interface CreateAccessApplicationForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface CreateAccessApplicationBaseRequest {
   /** Body param: The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher. */
   domain: string;
   /** Body param: The application type. */
@@ -17431,172 +17433,14 @@ export interface CreateAccessApplicationForAccountRequest {
   tags?: string[];
 }
 
-export interface CreateAccessApplicationForZoneRequest {
+export interface CreateAccessApplicationForAccountRequest extends CreateAccessApplicationBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface CreateAccessApplicationForZoneRequest extends CreateAccessApplicationBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  /** Body param: The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher. */
-  domain: string;
-  /** Body param: The application type. */
-  type:
-    | "self_hosted"
-    | "saas"
-    | "ssh"
-    | "vnc"
-    | "app_launcher"
-    | "warp"
-    | "biso"
-    | "bookmark"
-    | "dash_sso"
-    | "infrastructure"
-    | "rdp"
-    | "mcp"
-    | "mcp_portal"
-    | "proxy_endpoint";
-  /** Body param: When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always */
-  allowAuthenticateViaWarp?: boolean;
-  /** Body param: Enables loading application content in an iFrame. */
-  allowIframe?: boolean;
-  /** Body param: The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account. */
-  allowedIdps?: string[];
-  /** Body param: Displays the application in the App Launcher. */
-  appLauncherVisible?: boolean;
-  /** Body param: When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps. */
-  autoRedirectToIdentity?: boolean;
-  /** Body param: */
-  corsHeaders?: {
-    allowAllHeaders?: boolean;
-    allowAllMethods?: boolean;
-    allowAllOrigins?: boolean;
-    allowCredentials?: boolean;
-    allowedHeaders?: string[];
-    allowedMethods?: (
-      | "GET"
-      | "POST"
-      | "HEAD"
-      | "PUT"
-      | "DELETE"
-      | "CONNECT"
-      | "OPTIONS"
-      | "TRACE"
-      | "PATCH"
-    )[];
-    allowedOrigins?: string[];
-    maxAge?: number;
-  };
-  /** Body param: The custom error message shown to a user when they are denied access to the application. */
-  customDenyMessage?: string;
-  /** Body param: The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules. */
-  customDenyUrl?: string;
-  /** Body param: The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules. */
-  customNonIdentityDenyUrl?: string;
-  /** Body param: The custom pages that will be displayed when applicable for this application */
-  customPages?: string[];
-  /** Body param: List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `se */
-  destinations?: (
-    | { type?: "public"; uri?: string }
-    | {
-        cidr?: string;
-        hostname?: string;
-        l4Protocol?: "tcp" | "udp";
-        portRange?: string;
-        type?: "private";
-        vnetId?: string;
-      }
-    | { mcpServerId?: string; type?: "via_mcp_server_portal" }
-  )[];
-  /** Body param: Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks. */
-  enableBindingCookie?: boolean;
-  /** Body param: Enables the HttpOnly cookie attribute, which increases security against XSS attacks. */
-  httpOnlyCookieAttribute?: boolean;
-  /** Body param: The image URL for the logo shown in the App Launcher dashboard. */
-  logoUrl?: string;
-  /** Body param: The name of the application. */
-  name?: string;
-  /** Body param: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. */
-  optionsPreflightBypass?: boolean;
-  /** Body param: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default */
-  pathCookieAttribute?: boolean;
-  /** Body param: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application. */
-  policies?: (
-    | { id?: string; precedence?: number }
-    | string
-    | {
-        id?: string;
-        approvalGroups?: {
-          approvalsNeeded: number;
-          emailAddresses?: string[];
-          emailListUuid?: string;
-        }[];
-        approvalRequired?: boolean;
-        isolationRequired?: boolean;
-        precedence?: number;
-        purposeJustificationPrompt?: string;
-        purposeJustificationRequired?: boolean;
-        sessionDuration?: string;
-      }
-  )[];
-  /** Body param: Allows matching Access Service Tokens passed HTTP in a single header with this name. This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers. The */
-  readServiceTokensFromHeader?: string;
-  /** Body param: Sets the SameSite cookie setting, which provides increased security against CSRF attacks. */
-  sameSiteCookieAttribute?: string;
-  /** Body param: Configuration for provisioning to this application via SCIM. This is currently in closed beta. */
-  scimConfig?: {
-    idpUid: string;
-    remoteUri: string;
-    authentication?:
-      | { password: string; scheme: "httpbasic"; user: string }
-      | { token: string; scheme: "oauthbearertoken" }
-      | {
-          authorizationUrl: string;
-          clientId: string;
-          clientSecret: string;
-          scheme: "oauth2";
-          tokenUrl: string;
-          scopes?: string[];
-        }
-      | {
-          clientId: string;
-          clientSecret: string;
-          scheme: "access_service_token";
-        }
-      | (
-          | { password: string; scheme: "httpbasic"; user: string }
-          | { token: string; scheme: "oauthbearertoken" }
-          | {
-              authorizationUrl: string;
-              clientId: string;
-              clientSecret: string;
-              scheme: "oauth2";
-              tokenUrl: string;
-              scopes?: string[];
-            }
-          | {
-              clientId: string;
-              clientSecret: string;
-              scheme: "access_service_token";
-            }
-        )[];
-    deactivateOnDelete?: boolean;
-    enabled?: boolean;
-    mappings?: {
-      schema: string;
-      enabled?: boolean;
-      filter?: string;
-      operations?: { create?: boolean; delete?: boolean; update?: boolean };
-      strictness?: "strict" | "passthrough";
-      transformJsonata?: string;
-    }[];
-  };
-  /** @deprecated Body param: List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until   November 21, 2025.  If `destinations` are prov */
-  selfHostedDomains?: string[];
-  /** Body param: Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth_401Redirect?: boolean;
-  /** Body param: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for */
-  sessionDuration?: string;
-  /** Body param: Enables automatic authentication through cloudflared. */
-  skipInterstitial?: boolean;
-  /** Body param: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard. */
-  tags?: string[];
 }
 
 export type CreateAccessApplicationRequest =
@@ -25647,9 +25491,7 @@ const UpdateAccessApplicationBaseFields = {
   tags: Schema.optional(Schema.Array(Schema.String)),
 } as const;
 
-export interface UpdateAccessApplicationForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface UpdateAccessApplicationBaseRequest {
   appId: string;
   /** Body param: The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher. */
   domain: string;
@@ -25816,173 +25658,14 @@ export interface UpdateAccessApplicationForAccountRequest {
   tags?: string[];
 }
 
-export interface UpdateAccessApplicationForZoneRequest {
+export interface UpdateAccessApplicationForAccountRequest extends UpdateAccessApplicationBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface UpdateAccessApplicationForZoneRequest extends UpdateAccessApplicationBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  appId: string;
-  /** Body param: The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher. */
-  domain: string;
-  /** Body param: The application type. */
-  type:
-    | "self_hosted"
-    | "saas"
-    | "ssh"
-    | "vnc"
-    | "app_launcher"
-    | "warp"
-    | "biso"
-    | "bookmark"
-    | "dash_sso"
-    | "infrastructure"
-    | "rdp"
-    | "mcp"
-    | "mcp_portal"
-    | "proxy_endpoint";
-  /** Body param: When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always */
-  allowAuthenticateViaWarp?: boolean;
-  /** Body param: Enables loading application content in an iFrame. */
-  allowIframe?: boolean;
-  /** Body param: The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account. */
-  allowedIdps?: string[];
-  /** Body param: Displays the application in the App Launcher. */
-  appLauncherVisible?: boolean;
-  /** Body param: When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps. */
-  autoRedirectToIdentity?: boolean;
-  /** Body param: */
-  corsHeaders?: {
-    allowAllHeaders?: boolean;
-    allowAllMethods?: boolean;
-    allowAllOrigins?: boolean;
-    allowCredentials?: boolean;
-    allowedHeaders?: string[];
-    allowedMethods?: (
-      | "GET"
-      | "POST"
-      | "HEAD"
-      | "PUT"
-      | "DELETE"
-      | "CONNECT"
-      | "OPTIONS"
-      | "TRACE"
-      | "PATCH"
-    )[];
-    allowedOrigins?: string[];
-    maxAge?: number;
-  };
-  /** Body param: The custom error message shown to a user when they are denied access to the application. */
-  customDenyMessage?: string;
-  /** Body param: The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules. */
-  customDenyUrl?: string;
-  /** Body param: The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules. */
-  customNonIdentityDenyUrl?: string;
-  /** Body param: The custom pages that will be displayed when applicable for this application */
-  customPages?: string[];
-  /** Body param: List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `se */
-  destinations?: (
-    | { type?: "public"; uri?: string }
-    | {
-        cidr?: string;
-        hostname?: string;
-        l4Protocol?: "tcp" | "udp";
-        portRange?: string;
-        type?: "private";
-        vnetId?: string;
-      }
-    | { mcpServerId?: string; type?: "via_mcp_server_portal" }
-  )[];
-  /** Body param: Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks. */
-  enableBindingCookie?: boolean;
-  /** Body param: Enables the HttpOnly cookie attribute, which increases security against XSS attacks. */
-  httpOnlyCookieAttribute?: boolean;
-  /** Body param: The image URL for the logo shown in the App Launcher dashboard. */
-  logoUrl?: string;
-  /** Body param: The name of the application. */
-  name?: string;
-  /** Body param: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. */
-  optionsPreflightBypass?: boolean;
-  /** Body param: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default */
-  pathCookieAttribute?: boolean;
-  /** Body param: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application. */
-  policies?: (
-    | { id?: string; precedence?: number }
-    | string
-    | {
-        id?: string;
-        approvalGroups?: {
-          approvalsNeeded: number;
-          emailAddresses?: string[];
-          emailListUuid?: string;
-        }[];
-        approvalRequired?: boolean;
-        isolationRequired?: boolean;
-        precedence?: number;
-        purposeJustificationPrompt?: string;
-        purposeJustificationRequired?: boolean;
-        sessionDuration?: string;
-      }
-  )[];
-  /** Body param: Allows matching Access Service Tokens passed HTTP in a single header with this name. This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers. The */
-  readServiceTokensFromHeader?: string;
-  /** Body param: Sets the SameSite cookie setting, which provides increased security against CSRF attacks. */
-  sameSiteCookieAttribute?: string;
-  /** Body param: Configuration for provisioning to this application via SCIM. This is currently in closed beta. */
-  scimConfig?: {
-    idpUid: string;
-    remoteUri: string;
-    authentication?:
-      | { password: string; scheme: "httpbasic"; user: string }
-      | { token: string; scheme: "oauthbearertoken" }
-      | {
-          authorizationUrl: string;
-          clientId: string;
-          clientSecret: string;
-          scheme: "oauth2";
-          tokenUrl: string;
-          scopes?: string[];
-        }
-      | {
-          clientId: string;
-          clientSecret: string;
-          scheme: "access_service_token";
-        }
-      | (
-          | { password: string; scheme: "httpbasic"; user: string }
-          | { token: string; scheme: "oauthbearertoken" }
-          | {
-              authorizationUrl: string;
-              clientId: string;
-              clientSecret: string;
-              scheme: "oauth2";
-              tokenUrl: string;
-              scopes?: string[];
-            }
-          | {
-              clientId: string;
-              clientSecret: string;
-              scheme: "access_service_token";
-            }
-        )[];
-    deactivateOnDelete?: boolean;
-    enabled?: boolean;
-    mappings?: {
-      schema: string;
-      enabled?: boolean;
-      filter?: string;
-      operations?: { create?: boolean; delete?: boolean; update?: boolean };
-      strictness?: "strict" | "passthrough";
-      transformJsonata?: string;
-    }[];
-  };
-  /** @deprecated Body param: List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until   November 21, 2025.  If `destinations` are prov */
-  selfHostedDomains?: string[];
-  /** Body param: Returns a 401 status code when the request is blocked by a Service Auth policy. */
-  serviceAuth_401Redirect?: boolean;
-  /** Body param: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for */
-  sessionDuration?: string;
-  /** Body param: Enables automatic authentication through cloudflared. */
-  skipInterstitial?: boolean;
-  /** Body param: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard. */
-  tags?: string[];
 }
 
 export type UpdateAccessApplicationRequest =
@@ -33753,16 +33436,18 @@ const DeleteAccessApplicationBaseFields = {
   appId: Schema.String.pipe(T.HttpPath("appId")),
 } as const;
 
-export interface DeleteAccessApplicationForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface DeleteAccessApplicationBaseRequest {
   appId: string;
 }
 
-export interface DeleteAccessApplicationForZoneRequest {
+export interface DeleteAccessApplicationForAccountRequest extends DeleteAccessApplicationBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface DeleteAccessApplicationForZoneRequest extends DeleteAccessApplicationBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  appId: string;
 }
 
 export type DeleteAccessApplicationRequest =
@@ -33843,16 +33528,18 @@ const GetAccessApplicationCaBaseFields = {
   appId: Schema.String.pipe(T.HttpPath("appId")),
 } as const;
 
-export interface GetAccessApplicationCaForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface GetAccessApplicationCaBaseRequest {
   appId: string;
 }
 
-export interface GetAccessApplicationCaForZoneRequest {
+export interface GetAccessApplicationCaForAccountRequest extends GetAccessApplicationCaBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface GetAccessApplicationCaForZoneRequest extends GetAccessApplicationCaBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  appId: string;
 }
 
 export type GetAccessApplicationCaRequest =
@@ -33935,12 +33622,14 @@ export const getAccessApplicationCa = (
 
 const ListAccessApplicationCasBaseFields = {} as const;
 
-export interface ListAccessApplicationCasForAccountRequest {
+interface ListAccessApplicationCasBaseRequest {}
+
+export interface ListAccessApplicationCasForAccountRequest extends ListAccessApplicationCasBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
   accountId: string;
 }
 
-export interface ListAccessApplicationCasForZoneRequest {
+export interface ListAccessApplicationCasForZoneRequest extends ListAccessApplicationCasBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
@@ -34067,16 +33756,18 @@ const CreateAccessApplicationCaBaseFields = {
   appId: Schema.String.pipe(T.HttpPath("appId")),
 } as const;
 
-export interface CreateAccessApplicationCaForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface CreateAccessApplicationCaBaseRequest {
   appId: string;
 }
 
-export interface CreateAccessApplicationCaForZoneRequest {
+export interface CreateAccessApplicationCaForAccountRequest extends CreateAccessApplicationCaBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface CreateAccessApplicationCaForZoneRequest extends CreateAccessApplicationCaBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  appId: string;
 }
 
 export type CreateAccessApplicationCaRequest =
@@ -34161,16 +33852,18 @@ const DeleteAccessApplicationCaBaseFields = {
   appId: Schema.String.pipe(T.HttpPath("appId")),
 } as const;
 
-export interface DeleteAccessApplicationCaForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface DeleteAccessApplicationCaBaseRequest {
   appId: string;
 }
 
-export interface DeleteAccessApplicationCaForZoneRequest {
+export interface DeleteAccessApplicationCaForAccountRequest extends DeleteAccessApplicationCaBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface DeleteAccessApplicationCaForZoneRequest extends DeleteAccessApplicationCaBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  appId: string;
 }
 
 export type DeleteAccessApplicationCaRequest =
@@ -34255,18 +33948,19 @@ const GetAccessApplicationPolicyBaseFields = {
   policyId: Schema.String.pipe(T.HttpPath("policyId")),
 } as const;
 
-export interface GetAccessApplicationPolicyForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface GetAccessApplicationPolicyBaseRequest {
   appId: string;
   policyId: string;
 }
 
-export interface GetAccessApplicationPolicyForZoneRequest {
+export interface GetAccessApplicationPolicyForAccountRequest extends GetAccessApplicationPolicyBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface GetAccessApplicationPolicyForZoneRequest extends GetAccessApplicationPolicyBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  appId: string;
-  policyId: string;
 }
 
 export type GetAccessApplicationPolicyRequest =
@@ -35165,16 +34859,18 @@ const ListAccessApplicationPoliciesBaseFields = {
   appId: Schema.String.pipe(T.HttpPath("appId")),
 } as const;
 
-export interface ListAccessApplicationPoliciesForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface ListAccessApplicationPoliciesBaseRequest {
   appId: string;
 }
 
-export interface ListAccessApplicationPoliciesForZoneRequest {
+export interface ListAccessApplicationPoliciesForAccountRequest extends ListAccessApplicationPoliciesBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface ListAccessApplicationPoliciesForZoneRequest extends ListAccessApplicationPoliciesBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  appId: string;
 }
 
 export type ListAccessApplicationPoliciesRequest =
@@ -36149,9 +35845,7 @@ const CreateAccessApplicationPolicyBaseFields = {
   sessionDuration: Schema.optional(Schema.String),
 } as const;
 
-export interface CreateAccessApplicationPolicyForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface CreateAccessApplicationPolicyBaseRequest {
   appId: string;
   /** Body param: Administrators who can approve a temporary authentication request. */
   approvalGroups?: {
@@ -36173,28 +35867,14 @@ export interface CreateAccessApplicationPolicyForAccountRequest {
   sessionDuration?: string;
 }
 
-export interface CreateAccessApplicationPolicyForZoneRequest {
+export interface CreateAccessApplicationPolicyForAccountRequest extends CreateAccessApplicationPolicyBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface CreateAccessApplicationPolicyForZoneRequest extends CreateAccessApplicationPolicyBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  appId: string;
-  /** Body param: Administrators who can approve a temporary authentication request. */
-  approvalGroups?: {
-    approvalsNeeded: number;
-    emailAddresses?: string[];
-    emailListUuid?: string;
-  }[];
-  /** Body param: Requires the user to request access from an administrator at the start of each session. */
-  approvalRequired?: boolean;
-  /** Body param: Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature. */
-  isolationRequired?: boolean;
-  /** Body param: The order of execution for this policy. Must be unique for each policy within an app. */
-  precedence?: number;
-  /** Body param: A custom message that will appear on the purpose justification screen. */
-  purposeJustificationPrompt?: string;
-  /** Body param: Require users to enter a justification when they log in to the application. */
-  purposeJustificationRequired?: boolean;
-  /** Body param: The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
-  sessionDuration?: string;
 }
 
 export type CreateAccessApplicationPolicyRequest =
@@ -37133,9 +36813,7 @@ const UpdateAccessApplicationPolicyBaseFields = {
   sessionDuration: Schema.optional(Schema.String),
 } as const;
 
-export interface UpdateAccessApplicationPolicyForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface UpdateAccessApplicationPolicyBaseRequest {
   appId: string;
   policyId: string;
   /** Body param: Administrators who can approve a temporary authentication request. */
@@ -37158,29 +36836,14 @@ export interface UpdateAccessApplicationPolicyForAccountRequest {
   sessionDuration?: string;
 }
 
-export interface UpdateAccessApplicationPolicyForZoneRequest {
+export interface UpdateAccessApplicationPolicyForAccountRequest extends UpdateAccessApplicationPolicyBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface UpdateAccessApplicationPolicyForZoneRequest extends UpdateAccessApplicationPolicyBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  appId: string;
-  policyId: string;
-  /** Body param: Administrators who can approve a temporary authentication request. */
-  approvalGroups?: {
-    approvalsNeeded: number;
-    emailAddresses?: string[];
-    emailListUuid?: string;
-  }[];
-  /** Body param: Requires the user to request access from an administrator at the start of each session. */
-  approvalRequired?: boolean;
-  /** Body param: Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature. */
-  isolationRequired?: boolean;
-  /** Body param: The order of execution for this policy. Must be unique for each policy within an app. */
-  precedence?: number;
-  /** Body param: A custom message that will appear on the purpose justification screen. */
-  purposeJustificationPrompt?: string;
-  /** Body param: Require users to enter a justification when they log in to the application. */
-  purposeJustificationRequired?: boolean;
-  /** Body param: The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
-  sessionDuration?: string;
 }
 
 export type UpdateAccessApplicationPolicyRequest =
@@ -38098,18 +37761,19 @@ const DeleteAccessApplicationPolicyBaseFields = {
   policyId: Schema.String.pipe(T.HttpPath("policyId")),
 } as const;
 
-export interface DeleteAccessApplicationPolicyForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface DeleteAccessApplicationPolicyBaseRequest {
   appId: string;
   policyId: string;
 }
 
-export interface DeleteAccessApplicationPolicyForZoneRequest {
+export interface DeleteAccessApplicationPolicyForAccountRequest extends DeleteAccessApplicationPolicyBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface DeleteAccessApplicationPolicyForZoneRequest extends DeleteAccessApplicationPolicyBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  appId: string;
-  policyId: string;
 }
 
 export type DeleteAccessApplicationPolicyRequest =
@@ -39237,9 +38901,7 @@ const PutAccessApplicationSettingBaseFields = {
   skipInterstitial: Schema.optional(Schema.Boolean),
 } as const;
 
-export interface PutAccessApplicationSettingForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface PutAccessApplicationSettingBaseRequest {
   appId: string;
   /** Body param: Enables loading application content in an iFrame. */
   allowIframe?: boolean;
@@ -39247,14 +38909,14 @@ export interface PutAccessApplicationSettingForAccountRequest {
   skipInterstitial?: boolean;
 }
 
-export interface PutAccessApplicationSettingForZoneRequest {
+export interface PutAccessApplicationSettingForAccountRequest extends PutAccessApplicationSettingBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface PutAccessApplicationSettingForZoneRequest extends PutAccessApplicationSettingBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  appId: string;
-  /** Body param: Enables loading application content in an iFrame. */
-  allowIframe?: boolean;
-  /** Body param: Enables automatic authentication through cloudflared. */
-  skipInterstitial?: boolean;
 }
 
 export type PutAccessApplicationSettingRequest =
@@ -39356,9 +39018,7 @@ const PatchAccessApplicationSettingBaseFields = {
   skipInterstitial: Schema.optional(Schema.Boolean),
 } as const;
 
-export interface PatchAccessApplicationSettingForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface PatchAccessApplicationSettingBaseRequest {
   appId: string;
   /** Body param: Enables loading application content in an iFrame. */
   allowIframe?: boolean;
@@ -39366,14 +39026,14 @@ export interface PatchAccessApplicationSettingForAccountRequest {
   skipInterstitial?: boolean;
 }
 
-export interface PatchAccessApplicationSettingForZoneRequest {
+export interface PatchAccessApplicationSettingForAccountRequest extends PatchAccessApplicationSettingBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface PatchAccessApplicationSettingForZoneRequest extends PatchAccessApplicationSettingBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  appId: string;
-  /** Body param: Enables loading application content in an iFrame. */
-  allowIframe?: boolean;
-  /** Body param: Enables automatic authentication through cloudflared. */
-  skipInterstitial?: boolean;
 }
 
 export type PatchAccessApplicationSettingRequest =
@@ -39477,16 +39137,18 @@ const ListAccessApplicationUserPolicyChecksBaseFields = {
   appId: Schema.String.pipe(T.HttpPath("appId")),
 } as const;
 
-export interface ListAccessApplicationUserPolicyChecksForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface ListAccessApplicationUserPolicyChecksBaseRequest {
   appId: string;
 }
 
-export interface ListAccessApplicationUserPolicyChecksForZoneRequest {
+export interface ListAccessApplicationUserPolicyChecksForAccountRequest extends ListAccessApplicationUserPolicyChecksBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface ListAccessApplicationUserPolicyChecksForZoneRequest extends ListAccessApplicationUserPolicyChecksBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  appId: string;
 }
 
 export type ListAccessApplicationUserPolicyChecksRequest =
@@ -39975,16 +39637,18 @@ const GetAccessCertificateBaseFields = {
   certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
 } as const;
 
-export interface GetAccessCertificateForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface GetAccessCertificateBaseRequest {
   certificateId: string;
 }
 
-export interface GetAccessCertificateForZoneRequest {
+export interface GetAccessCertificateForAccountRequest extends GetAccessCertificateBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface GetAccessCertificateForZoneRequest extends GetAccessCertificateBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  certificateId: string;
 }
 
 export type GetAccessCertificateRequest =
@@ -40085,12 +39749,14 @@ export const getAccessCertificate = (
 
 const ListAccessCertificatesBaseFields = {} as const;
 
-export interface ListAccessCertificatesForAccountRequest {
+interface ListAccessCertificatesBaseRequest {}
+
+export interface ListAccessCertificatesForAccountRequest extends ListAccessCertificatesBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
   accountId: string;
 }
 
-export interface ListAccessCertificatesForZoneRequest {
+export interface ListAccessCertificatesForZoneRequest extends ListAccessCertificatesBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
@@ -40236,9 +39902,7 @@ const CreateAccessCertificateBaseFields = {
   associatedHostnames: Schema.optional(Schema.Array(Schema.String)),
 } as const;
 
-export interface CreateAccessCertificateForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface CreateAccessCertificateBaseRequest {
   /** Body param: The certificate content. */
   certificate: string;
   /** Body param: The name of the certificate. */
@@ -40247,15 +39911,14 @@ export interface CreateAccessCertificateForAccountRequest {
   associatedHostnames?: string[];
 }
 
-export interface CreateAccessCertificateForZoneRequest {
+export interface CreateAccessCertificateForAccountRequest extends CreateAccessCertificateBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface CreateAccessCertificateForZoneRequest extends CreateAccessCertificateBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  /** Body param: The certificate content. */
-  certificate: string;
-  /** Body param: The name of the certificate. */
-  name: string;
-  /** Body param: The hostnames of the applications that will use this certificate. */
-  associatedHostnames?: string[];
 }
 
 export type CreateAccessCertificateRequest =
@@ -40367,9 +40030,7 @@ const UpdateAccessCertificateBaseFields = {
   name: Schema.optional(Schema.String),
 } as const;
 
-export interface UpdateAccessCertificateForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface UpdateAccessCertificateBaseRequest {
   certificateId: string;
   /** Body param: The hostnames of the applications that will use this certificate. */
   associatedHostnames: string[];
@@ -40377,14 +40038,14 @@ export interface UpdateAccessCertificateForAccountRequest {
   name?: string;
 }
 
-export interface UpdateAccessCertificateForZoneRequest {
+export interface UpdateAccessCertificateForAccountRequest extends UpdateAccessCertificateBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface UpdateAccessCertificateForZoneRequest extends UpdateAccessCertificateBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  certificateId: string;
-  /** Body param: The hostnames of the applications that will use this certificate. */
-  associatedHostnames: string[];
-  /** Body param: The name of the certificate. */
-  name?: string;
 }
 
 export type UpdateAccessCertificateRequest =
@@ -40495,16 +40156,18 @@ const DeleteAccessCertificateBaseFields = {
   certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
 } as const;
 
-export interface DeleteAccessCertificateForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface DeleteAccessCertificateBaseRequest {
   certificateId: string;
 }
 
-export interface DeleteAccessCertificateForZoneRequest {
+export interface DeleteAccessCertificateForAccountRequest extends DeleteAccessCertificateBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface DeleteAccessCertificateForZoneRequest extends DeleteAccessCertificateBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  certificateId: string;
 }
 
 export type DeleteAccessCertificateRequest =
@@ -40586,12 +40249,14 @@ export const deleteAccessCertificate = (
 
 const GetAccessCertificateSettingBaseFields = {} as const;
 
-export interface GetAccessCertificateSettingForAccountRequest {
+interface GetAccessCertificateSettingBaseRequest {}
+
+export interface GetAccessCertificateSettingForAccountRequest extends GetAccessCertificateSettingBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
   accountId: string;
 }
 
-export interface GetAccessCertificateSettingForZoneRequest {
+export interface GetAccessCertificateSettingForZoneRequest extends GetAccessCertificateSettingBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
@@ -40706,9 +40371,7 @@ const PutAccessCertificateSettingBaseFields = {
   ),
 } as const;
 
-export interface PutAccessCertificateSettingForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface PutAccessCertificateSettingBaseRequest {
   /** Body param: */
   settings: {
     chinaNetwork: boolean;
@@ -40717,15 +40380,14 @@ export interface PutAccessCertificateSettingForAccountRequest {
   }[];
 }
 
-export interface PutAccessCertificateSettingForZoneRequest {
+export interface PutAccessCertificateSettingForAccountRequest extends PutAccessCertificateSettingBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface PutAccessCertificateSettingForZoneRequest extends PutAccessCertificateSettingBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  /** Body param: */
-  settings: {
-    chinaNetwork: boolean;
-    clientCertificateForwarding: boolean;
-    hostname: string;
-  }[];
 }
 
 export type PutAccessCertificateSettingRequest =
@@ -41278,16 +40940,18 @@ const GetAccessGroupBaseFields = {
   groupId: Schema.String.pipe(T.HttpPath("groupId")),
 } as const;
 
-export interface GetAccessGroupForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface GetAccessGroupBaseRequest {
   groupId: string;
 }
 
-export interface GetAccessGroupForZoneRequest {
+export interface GetAccessGroupForAccountRequest extends GetAccessGroupBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface GetAccessGroupForZoneRequest extends GetAccessGroupBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  groupId: string;
 }
 
 export type GetAccessGroupRequest =
@@ -42345,12 +42009,14 @@ export const getAccessGroup = (
 
 const ListAccessGroupsBaseFields = {} as const;
 
-export interface ListAccessGroupsForAccountRequest {
+interface ListAccessGroupsBaseRequest {}
+
+export interface ListAccessGroupsForAccountRequest extends ListAccessGroupsBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
   accountId: string;
 }
 
-export interface ListAccessGroupsForZoneRequest {
+export interface ListAccessGroupsForZoneRequest extends ListAccessGroupsBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
@@ -44023,9 +43689,7 @@ const CreateAccessGroupBaseFields = {
   ),
 } as const;
 
-export interface CreateAccessGroupForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface CreateAccessGroupBaseRequest {
   /** Body param: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules. */
   include: (
     | { group: { id: string } }
@@ -44167,148 +43831,14 @@ export interface CreateAccessGroupForAccountRequest {
   )[];
 }
 
-export interface CreateAccessGroupForZoneRequest {
+export interface CreateAccessGroupForAccountRequest extends CreateAccessGroupBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface CreateAccessGroupForZoneRequest extends CreateAccessGroupBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  /** Body param: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules. */
-  include: (
-    | { group: { id: string } }
-    | { anyValidServiceToken: unknown }
-    | { authContext: { id: string; acId: string; identityProviderId: string } }
-    | { authMethod: { authMethod: string } }
-    | { azureAD: { id: string; identityProviderId: string } }
-    | { certificate: unknown }
-    | { commonName: { commonName: string } }
-    | { geo: { countryCode: string } }
-    | { devicePosture: { integrationUid: string } }
-    | { emailDomain: { domain: string } }
-    | { emailList: { id: string } }
-    | { email: { email: string } }
-    | { everyone: unknown }
-    | { externalEvaluation: { evaluateUrl: string; keysUrl: string } }
-    | {
-        githubOrganization: {
-          identityProviderId: string;
-          name: string;
-          team?: string;
-        };
-      }
-    | { gsuite: { email: string; identityProviderId: string } }
-    | { loginMethod: { id: string } }
-    | { ipList: { id: string } }
-    | { ip: { ip: string } }
-    | { okta: { identityProviderId: string; name: string } }
-    | {
-        saml: {
-          attributeName: string;
-          attributeValue: string;
-          identityProviderId: string;
-        };
-      }
-    | {
-        oidc: {
-          claimName: string;
-          claimValue: string;
-          identityProviderId: string;
-        };
-      }
-    | { serviceToken: { tokenId: string } }
-    | { linkedAppToken: { appUid: string } }
-  )[];
-  /** Body param: The name of the Access group. */
-  name: string;
-  /** Body param: Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules. */
-  exclude?: (
-    | { group: { id: string } }
-    | { anyValidServiceToken: unknown }
-    | { authContext: { id: string; acId: string; identityProviderId: string } }
-    | { authMethod: { authMethod: string } }
-    | { azureAD: { id: string; identityProviderId: string } }
-    | { certificate: unknown }
-    | { commonName: { commonName: string } }
-    | { geo: { countryCode: string } }
-    | { devicePosture: { integrationUid: string } }
-    | { emailDomain: { domain: string } }
-    | { emailList: { id: string } }
-    | { email: { email: string } }
-    | { everyone: unknown }
-    | { externalEvaluation: { evaluateUrl: string; keysUrl: string } }
-    | {
-        githubOrganization: {
-          identityProviderId: string;
-          name: string;
-          team?: string;
-        };
-      }
-    | { gsuite: { email: string; identityProviderId: string } }
-    | { loginMethod: { id: string } }
-    | { ipList: { id: string } }
-    | { ip: { ip: string } }
-    | { okta: { identityProviderId: string; name: string } }
-    | {
-        saml: {
-          attributeName: string;
-          attributeValue: string;
-          identityProviderId: string;
-        };
-      }
-    | {
-        oidc: {
-          claimName: string;
-          claimValue: string;
-          identityProviderId: string;
-        };
-      }
-    | { serviceToken: { tokenId: string } }
-    | { linkedAppToken: { appUid: string } }
-  )[];
-  /** Body param: Whether this is the default group */
-  isDefault?: boolean;
-  /** Body param: Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
-  require?: (
-    | { group: { id: string } }
-    | { anyValidServiceToken: unknown }
-    | { authContext: { id: string; acId: string; identityProviderId: string } }
-    | { authMethod: { authMethod: string } }
-    | { azureAD: { id: string; identityProviderId: string } }
-    | { certificate: unknown }
-    | { commonName: { commonName: string } }
-    | { geo: { countryCode: string } }
-    | { devicePosture: { integrationUid: string } }
-    | { emailDomain: { domain: string } }
-    | { emailList: { id: string } }
-    | { email: { email: string } }
-    | { everyone: unknown }
-    | { externalEvaluation: { evaluateUrl: string; keysUrl: string } }
-    | {
-        githubOrganization: {
-          identityProviderId: string;
-          name: string;
-          team?: string;
-        };
-      }
-    | { gsuite: { email: string; identityProviderId: string } }
-    | { loginMethod: { id: string } }
-    | { ipList: { id: string } }
-    | { ip: { ip: string } }
-    | { okta: { identityProviderId: string; name: string } }
-    | {
-        saml: {
-          attributeName: string;
-          attributeValue: string;
-          identityProviderId: string;
-        };
-      }
-    | {
-        oidc: {
-          claimName: string;
-          claimValue: string;
-          identityProviderId: string;
-        };
-      }
-    | { serviceToken: { tokenId: string } }
-    | { linkedAppToken: { appUid: string } }
-  )[];
 }
 
 export type CreateAccessGroupRequest =
@@ -45924,9 +45454,7 @@ const UpdateAccessGroupBaseFields = {
   ),
 } as const;
 
-export interface UpdateAccessGroupForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface UpdateAccessGroupBaseRequest {
   groupId: string;
   /** Body param: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules. */
   include: (
@@ -46069,149 +45597,14 @@ export interface UpdateAccessGroupForAccountRequest {
   )[];
 }
 
-export interface UpdateAccessGroupForZoneRequest {
+export interface UpdateAccessGroupForAccountRequest extends UpdateAccessGroupBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface UpdateAccessGroupForZoneRequest extends UpdateAccessGroupBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  groupId: string;
-  /** Body param: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules. */
-  include: (
-    | { group: { id: string } }
-    | { anyValidServiceToken: unknown }
-    | { authContext: { id: string; acId: string; identityProviderId: string } }
-    | { authMethod: { authMethod: string } }
-    | { azureAD: { id: string; identityProviderId: string } }
-    | { certificate: unknown }
-    | { commonName: { commonName: string } }
-    | { geo: { countryCode: string } }
-    | { devicePosture: { integrationUid: string } }
-    | { emailDomain: { domain: string } }
-    | { emailList: { id: string } }
-    | { email: { email: string } }
-    | { everyone: unknown }
-    | { externalEvaluation: { evaluateUrl: string; keysUrl: string } }
-    | {
-        githubOrganization: {
-          identityProviderId: string;
-          name: string;
-          team?: string;
-        };
-      }
-    | { gsuite: { email: string; identityProviderId: string } }
-    | { loginMethod: { id: string } }
-    | { ipList: { id: string } }
-    | { ip: { ip: string } }
-    | { okta: { identityProviderId: string; name: string } }
-    | {
-        saml: {
-          attributeName: string;
-          attributeValue: string;
-          identityProviderId: string;
-        };
-      }
-    | {
-        oidc: {
-          claimName: string;
-          claimValue: string;
-          identityProviderId: string;
-        };
-      }
-    | { serviceToken: { tokenId: string } }
-    | { linkedAppToken: { appUid: string } }
-  )[];
-  /** Body param: The name of the Access group. */
-  name: string;
-  /** Body param: Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules. */
-  exclude?: (
-    | { group: { id: string } }
-    | { anyValidServiceToken: unknown }
-    | { authContext: { id: string; acId: string; identityProviderId: string } }
-    | { authMethod: { authMethod: string } }
-    | { azureAD: { id: string; identityProviderId: string } }
-    | { certificate: unknown }
-    | { commonName: { commonName: string } }
-    | { geo: { countryCode: string } }
-    | { devicePosture: { integrationUid: string } }
-    | { emailDomain: { domain: string } }
-    | { emailList: { id: string } }
-    | { email: { email: string } }
-    | { everyone: unknown }
-    | { externalEvaluation: { evaluateUrl: string; keysUrl: string } }
-    | {
-        githubOrganization: {
-          identityProviderId: string;
-          name: string;
-          team?: string;
-        };
-      }
-    | { gsuite: { email: string; identityProviderId: string } }
-    | { loginMethod: { id: string } }
-    | { ipList: { id: string } }
-    | { ip: { ip: string } }
-    | { okta: { identityProviderId: string; name: string } }
-    | {
-        saml: {
-          attributeName: string;
-          attributeValue: string;
-          identityProviderId: string;
-        };
-      }
-    | {
-        oidc: {
-          claimName: string;
-          claimValue: string;
-          identityProviderId: string;
-        };
-      }
-    | { serviceToken: { tokenId: string } }
-    | { linkedAppToken: { appUid: string } }
-  )[];
-  /** Body param: Whether this is the default group */
-  isDefault?: boolean;
-  /** Body param: Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules. */
-  require?: (
-    | { group: { id: string } }
-    | { anyValidServiceToken: unknown }
-    | { authContext: { id: string; acId: string; identityProviderId: string } }
-    | { authMethod: { authMethod: string } }
-    | { azureAD: { id: string; identityProviderId: string } }
-    | { certificate: unknown }
-    | { commonName: { commonName: string } }
-    | { geo: { countryCode: string } }
-    | { devicePosture: { integrationUid: string } }
-    | { emailDomain: { domain: string } }
-    | { emailList: { id: string } }
-    | { email: { email: string } }
-    | { everyone: unknown }
-    | { externalEvaluation: { evaluateUrl: string; keysUrl: string } }
-    | {
-        githubOrganization: {
-          identityProviderId: string;
-          name: string;
-          team?: string;
-        };
-      }
-    | { gsuite: { email: string; identityProviderId: string } }
-    | { loginMethod: { id: string } }
-    | { ipList: { id: string } }
-    | { ip: { ip: string } }
-    | { okta: { identityProviderId: string; name: string } }
-    | {
-        saml: {
-          attributeName: string;
-          attributeValue: string;
-          identityProviderId: string;
-        };
-      }
-    | {
-        oidc: {
-          claimName: string;
-          claimValue: string;
-          identityProviderId: string;
-        };
-      }
-    | { serviceToken: { tokenId: string } }
-    | { linkedAppToken: { appUid: string } }
-  )[];
 }
 
 export type UpdateAccessGroupRequest =
@@ -47284,16 +46677,18 @@ const DeleteAccessGroupBaseFields = {
   groupId: Schema.String.pipe(T.HttpPath("groupId")),
 } as const;
 
-export interface DeleteAccessGroupForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface DeleteAccessGroupBaseRequest {
   groupId: string;
 }
 
-export interface DeleteAccessGroupForZoneRequest {
+export interface DeleteAccessGroupForAccountRequest extends DeleteAccessGroupBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface DeleteAccessGroupForZoneRequest extends DeleteAccessGroupBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  groupId: string;
 }
 
 export type DeleteAccessGroupRequest =
@@ -53544,16 +52939,18 @@ const GetAccessServiceTokenBaseFields = {
   serviceTokenId: Schema.String.pipe(T.HttpPath("serviceTokenId")),
 } as const;
 
-export interface GetAccessServiceTokenForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface GetAccessServiceTokenBaseRequest {
   serviceTokenId: string;
 }
 
-export interface GetAccessServiceTokenForZoneRequest {
+export interface GetAccessServiceTokenForAccountRequest extends GetAccessServiceTokenBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface GetAccessServiceTokenForZoneRequest extends GetAccessServiceTokenBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  serviceTokenId: string;
 }
 
 export type GetAccessServiceTokenRequest =
@@ -53652,12 +53049,14 @@ export const getAccessServiceToken = (
 
 const ListAccessServiceTokensBaseFields = {} as const;
 
-export interface ListAccessServiceTokensForAccountRequest {
+interface ListAccessServiceTokensBaseRequest {}
+
+export interface ListAccessServiceTokensForAccountRequest extends ListAccessServiceTokensBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
   accountId: string;
 }
 
-export interface ListAccessServiceTokensForZoneRequest {
+export interface ListAccessServiceTokensForZoneRequest extends ListAccessServiceTokensBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
@@ -53800,9 +53199,7 @@ const CreateAccessServiceTokenBaseFields = {
   previousClientSecretExpiresAt: Schema.optional(Schema.String),
 } as const;
 
-export interface CreateAccessServiceTokenForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface CreateAccessServiceTokenBaseRequest {
   /** Body param: The name of the service token. */
   name: string;
   /** Body param: A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time i */
@@ -53813,17 +53210,14 @@ export interface CreateAccessServiceTokenForAccountRequest {
   previousClientSecretExpiresAt?: string;
 }
 
-export interface CreateAccessServiceTokenForZoneRequest {
+export interface CreateAccessServiceTokenForAccountRequest extends CreateAccessServiceTokenBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface CreateAccessServiceTokenForZoneRequest extends CreateAccessServiceTokenBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  /** Body param: The name of the service token. */
-  name: string;
-  /** Body param: A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time i */
-  clientSecretVersion?: number;
-  /** Body param: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760 */
-  duration?: string;
-  /** Body param: The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update s */
-  previousClientSecretExpiresAt?: string;
 }
 
 export type CreateAccessServiceTokenRequest =
@@ -53938,9 +53332,7 @@ const UpdateAccessServiceTokenBaseFields = {
   previousClientSecretExpiresAt: Schema.optional(Schema.String),
 } as const;
 
-export interface UpdateAccessServiceTokenForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface UpdateAccessServiceTokenBaseRequest {
   serviceTokenId: string;
   /** Body param: A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time i */
   clientSecretVersion?: number;
@@ -53952,18 +53344,14 @@ export interface UpdateAccessServiceTokenForAccountRequest {
   previousClientSecretExpiresAt?: string;
 }
 
-export interface UpdateAccessServiceTokenForZoneRequest {
+export interface UpdateAccessServiceTokenForAccountRequest extends UpdateAccessServiceTokenBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface UpdateAccessServiceTokenForZoneRequest extends UpdateAccessServiceTokenBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  serviceTokenId: string;
-  /** Body param: A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time i */
-  clientSecretVersion?: number;
-  /** Body param: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760 */
-  duration?: string;
-  /** Body param: The name of the service token. */
-  name?: string;
-  /** Body param: The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update s */
-  previousClientSecretExpiresAt?: string;
 }
 
 export type UpdateAccessServiceTokenRequest =
@@ -54076,16 +53464,18 @@ const DeleteAccessServiceTokenBaseFields = {
   serviceTokenId: Schema.String.pipe(T.HttpPath("serviceTokenId")),
 } as const;
 
-export interface DeleteAccessServiceTokenForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface DeleteAccessServiceTokenBaseRequest {
   serviceTokenId: string;
 }
 
-export interface DeleteAccessServiceTokenForZoneRequest {
+export interface DeleteAccessServiceTokenForAccountRequest extends DeleteAccessServiceTokenBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface DeleteAccessServiceTokenForZoneRequest extends DeleteAccessServiceTokenBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  serviceTokenId: string;
 }
 
 export type DeleteAccessServiceTokenRequest =
@@ -90301,16 +89691,18 @@ const GetIdentityProviderBaseFields = {
   identityProviderId: Schema.String.pipe(T.HttpPath("identityProviderId")),
 } as const;
 
-export interface GetIdentityProviderForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface GetIdentityProviderBaseRequest {
   identityProviderId: string;
 }
 
-export interface GetIdentityProviderForZoneRequest {
+export interface GetIdentityProviderForAccountRequest extends GetIdentityProviderBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface GetIdentityProviderForZoneRequest extends GetIdentityProviderBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  identityProviderId: string;
 }
 
 export type GetIdentityProviderRequest =
@@ -91746,12 +91138,14 @@ export const getIdentityProvider = (
 
 const ListIdentityProvidersBaseFields = {} as const;
 
-export interface ListIdentityProvidersForAccountRequest {
+interface ListIdentityProvidersBaseRequest {}
+
+export interface ListIdentityProvidersForAccountRequest extends ListIdentityProvidersBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
   accountId: string;
 }
 
-export interface ListIdentityProvidersForZoneRequest {
+export interface ListIdentityProvidersForZoneRequest extends ListIdentityProvidersBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
@@ -93226,9 +92620,7 @@ const CreateIdentityProviderBaseFields = {
   ),
 } as const;
 
-export interface CreateIdentityProviderForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface CreateIdentityProviderBaseRequest {
   /** Body param: The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cl */
   config: {
     claims?: string[];
@@ -93267,45 +92659,14 @@ export interface CreateIdentityProviderForAccountRequest {
   };
 }
 
-export interface CreateIdentityProviderForZoneRequest {
+export interface CreateIdentityProviderForAccountRequest extends CreateIdentityProviderBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface CreateIdentityProviderForZoneRequest extends CreateIdentityProviderBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  /** Body param: The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cl */
-  config: {
-    claims?: string[];
-    clientId?: string;
-    clientSecret?: string;
-    conditionalAccessEnabled?: boolean;
-    directoryId?: string;
-    emailClaimName?: string;
-    prompt?: "login" | "select_account" | "none";
-    supportGroups?: boolean;
-  };
-  /** Body param: The name of the identity provider, shown to users on the login page. */
-  name: string;
-  /** Body param: The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integrat */
-  type:
-    | "onetimepin"
-    | "azureAD"
-    | "saml"
-    | "centrify"
-    | "facebook"
-    | "github"
-    | "google-apps"
-    | "google"
-    | "linkedin"
-    | "oidc"
-    | "okta"
-    | "onelogin"
-    | "pingone"
-    | "yandex";
-  /** Body param: The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider. */
-  scimConfig?: {
-    enabled?: boolean;
-    identityUpdateBehavior?: "automatic" | "reauth" | "no_action";
-    seatDeprovision?: boolean;
-    userDeprovision?: boolean;
-  };
 }
 
 export type CreateIdentityProviderRequest =
@@ -94812,9 +94173,7 @@ const UpdateIdentityProviderBaseFields = {
   ),
 } as const;
 
-export interface UpdateIdentityProviderForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface UpdateIdentityProviderBaseRequest {
   identityProviderId: string;
   /** Body param: The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cl */
   config: {
@@ -94854,46 +94213,14 @@ export interface UpdateIdentityProviderForAccountRequest {
   };
 }
 
-export interface UpdateIdentityProviderForZoneRequest {
+export interface UpdateIdentityProviderForAccountRequest extends UpdateIdentityProviderBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface UpdateIdentityProviderForZoneRequest extends UpdateIdentityProviderBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  identityProviderId: string;
-  /** Body param: The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cl */
-  config: {
-    claims?: string[];
-    clientId?: string;
-    clientSecret?: string;
-    conditionalAccessEnabled?: boolean;
-    directoryId?: string;
-    emailClaimName?: string;
-    prompt?: "login" | "select_account" | "none";
-    supportGroups?: boolean;
-  };
-  /** Body param: The name of the identity provider, shown to users on the login page. */
-  name: string;
-  /** Body param: The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integrat */
-  type:
-    | "onetimepin"
-    | "azureAD"
-    | "saml"
-    | "centrify"
-    | "facebook"
-    | "github"
-    | "google-apps"
-    | "google"
-    | "linkedin"
-    | "oidc"
-    | "okta"
-    | "onelogin"
-    | "pingone"
-    | "yandex";
-  /** Body param: The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider. */
-  scimConfig?: {
-    enabled?: boolean;
-    identityUpdateBehavior?: "automatic" | "reauth" | "no_action";
-    seatDeprovision?: boolean;
-    userDeprovision?: boolean;
-  };
 }
 
 export type UpdateIdentityProviderRequest =
@@ -96343,16 +95670,18 @@ const DeleteIdentityProviderBaseFields = {
   identityProviderId: Schema.String.pipe(T.HttpPath("identityProviderId")),
 } as const;
 
-export interface DeleteIdentityProviderForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface DeleteIdentityProviderBaseRequest {
   identityProviderId: string;
 }
 
-export interface DeleteIdentityProviderForZoneRequest {
+export interface DeleteIdentityProviderForAccountRequest extends DeleteIdentityProviderBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface DeleteIdentityProviderForZoneRequest extends DeleteIdentityProviderBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  identityProviderId: string;
 }
 
 export type DeleteIdentityProviderRequest =
@@ -98699,12 +98028,14 @@ export const deleteNetworkVirtualNetwork: API.OperationMethod<
 
 const ListOrganizationsBaseFields = {} as const;
 
-export interface ListOrganizationsForAccountRequest {
+interface ListOrganizationsBaseRequest {}
+
+export interface ListOrganizationsForAccountRequest extends ListOrganizationsBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
   accountId: string;
 }
 
-export interface ListOrganizationsForZoneRequest {
+export interface ListOrganizationsForZoneRequest extends ListOrganizationsBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
@@ -98917,9 +98248,7 @@ const CreateOrganizationBaseFields = {
   warpAuthSessionDuration: Schema.optional(Schema.String),
 } as const;
 
-export interface CreateOrganizationForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface CreateOrganizationBaseRequest {
   /** Body param: The unique subdomain assigned to your Zero Trust organization. */
   authDomain: string;
   /** Body param: The name of your Zero Trust organization. */
@@ -98948,35 +98277,14 @@ export interface CreateOrganizationForAccountRequest {
   warpAuthSessionDuration?: string;
 }
 
-export interface CreateOrganizationForZoneRequest {
+export interface CreateOrganizationForAccountRequest extends CreateOrganizationBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface CreateOrganizationForZoneRequest extends CreateOrganizationBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  /** Body param: The unique subdomain assigned to your Zero Trust organization. */
-  authDomain: string;
-  /** Body param: The name of your Zero Trust organization. */
-  name: string;
-  /** Body param: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value. */
-  allowAuthenticateViaWarp?: boolean;
-  /** Body param: When set to `true`, users skip the identity provider selection step during login. */
-  autoRedirectToIdentity?: boolean;
-  /** Body param: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled. */
-  isUiReadOnly?: boolean;
-  /** Body param: */
-  loginDesign?: {
-    backgroundColor?: string;
-    footerText?: string;
-    headerText?: string;
-    logoPath?: string;
-    textColor?: string;
-  };
-  /** Body param: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
-  sessionDuration?: string;
-  /** Body param: A description of the reason why the UI read only field is being toggled. */
-  uiReadOnlyToggleReason?: string;
-  /** Body param: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your */
-  userSeatExpirationInactiveTime?: string;
-  /** Body param: The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h. */
-  warpAuthSessionDuration?: string;
 }
 
 export type CreateOrganizationRequest =
@@ -99222,9 +98530,7 @@ const UpdateOrganizationBaseFields = {
   warpAuthSessionDuration: Schema.optional(Schema.String),
 } as const;
 
-export interface UpdateOrganizationForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface UpdateOrganizationBaseRequest {
   /** Body param: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value. */
   allowAuthenticateViaWarp?: boolean;
   /** Body param: The unique subdomain assigned to your Zero Trust organization. */
@@ -99255,37 +98561,14 @@ export interface UpdateOrganizationForAccountRequest {
   warpAuthSessionDuration?: string;
 }
 
-export interface UpdateOrganizationForZoneRequest {
+export interface UpdateOrganizationForAccountRequest extends UpdateOrganizationBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface UpdateOrganizationForZoneRequest extends UpdateOrganizationBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  /** Body param: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value. */
-  allowAuthenticateViaWarp?: boolean;
-  /** Body param: The unique subdomain assigned to your Zero Trust organization. */
-  authDomain?: string;
-  /** Body param: When set to `true`, users skip the identity provider selection step during login. */
-  autoRedirectToIdentity?: boolean;
-  /** Body param: */
-  customPages?: { forbidden?: string; identityDenied?: string };
-  /** Body param: Lock all settings as Read-Only in the Dashboard, regardless of user permission. Updates may only be made via the API or Terraform for this account when enabled. */
-  isUiReadOnly?: boolean;
-  /** Body param: */
-  loginDesign?: {
-    backgroundColor?: string;
-    footerText?: string;
-    headerText?: string;
-    logoPath?: string;
-    textColor?: string;
-  };
-  /** Body param: The name of your Zero Trust organization. */
-  name?: string;
-  /** Body param: The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. */
-  sessionDuration?: string;
-  /** Body param: A description of the reason why the UI read only field is being toggled. */
-  uiReadOnlyToggleReason?: string;
-  /** Body param: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your */
-  userSeatExpirationInactiveTime?: string;
-  /** Body param: The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h. */
-  warpAuthSessionDuration?: string;
 }
 
 export type UpdateOrganizationRequest =
@@ -101525,16 +100808,18 @@ const RevokeTokensAccessApplicationBaseFields = {
   appId: Schema.String.pipe(T.HttpPath("appId")),
 } as const;
 
-export interface RevokeTokensAccessApplicationForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface RevokeTokensAccessApplicationBaseRequest {
   appId: string;
 }
 
-export interface RevokeTokensAccessApplicationForZoneRequest {
+export interface RevokeTokensAccessApplicationForAccountRequest extends RevokeTokensAccessApplicationBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface RevokeTokensAccessApplicationForZoneRequest extends RevokeTokensAccessApplicationBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  appId: string;
 }
 
 export type RevokeTokensAccessApplicationRequest =
@@ -104952,9 +104237,7 @@ const RevokeUsersOrganizationBaseFields = {
   warpSessionReauth: Schema.optional(Schema.Boolean),
 } as const;
 
-export interface RevokeUsersOrganizationForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface RevokeUsersOrganizationBaseRequest {
   /** Query param: When set to `true`, all devices associated with the user will be revoked. */
   queryDevices?: boolean;
   /** Body param: The email of the user to revoke. */
@@ -104967,19 +104250,14 @@ export interface RevokeUsersOrganizationForAccountRequest {
   warpSessionReauth?: boolean;
 }
 
-export interface RevokeUsersOrganizationForZoneRequest {
+export interface RevokeUsersOrganizationForAccountRequest extends RevokeUsersOrganizationBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface RevokeUsersOrganizationForZoneRequest extends RevokeUsersOrganizationBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  /** Query param: When set to `true`, all devices associated with the user will be revoked. */
-  queryDevices?: boolean;
-  /** Body param: The email of the user to revoke. */
-  email: string;
-  /** Body param: When set to `true`, all devices associated with the user will be revoked. */
-  bodyDevices?: boolean;
-  /** Body param: The uuid of the user to revoke. */
-  userUid?: string;
-  /** Body param: When set to `true`, the user will be required to re-authenticate to WARP for all Gateway policies that enforce a WARP client session duration. When `false`, the user’s WARP session will re */
-  warpSessionReauth?: boolean;
 }
 
 export type RevokeUsersOrganizationRequest =

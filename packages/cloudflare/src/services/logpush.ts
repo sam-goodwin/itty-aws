@@ -54,9 +54,7 @@ const GetDatasetFieldBaseFields = {
   ]).pipe(T.HttpPath("datasetId")),
 } as const;
 
-export interface GetDatasetFieldForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface GetDatasetFieldBaseRequest {
   datasetId:
     | "access_requests"
     | "audit_logs"
@@ -91,41 +89,14 @@ export interface GetDatasetFieldForAccountRequest {
     | null;
 }
 
-export interface GetDatasetFieldForZoneRequest {
+export interface GetDatasetFieldForAccountRequest extends GetDatasetFieldBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface GetDatasetFieldForZoneRequest extends GetDatasetFieldBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  datasetId:
-    | "access_requests"
-    | "audit_logs"
-    | "audit_logs_v2"
-    | "biso_user_actions"
-    | "casb_findings"
-    | "device_posture_results"
-    | "dex_application_tests"
-    | "dex_device_state_events"
-    | "dlp_forensic_copies"
-    | "dns_firewall_logs"
-    | "dns_logs"
-    | "email_security_alerts"
-    | "firewall_events"
-    | "gateway_dns"
-    | "gateway_http"
-    | "gateway_network"
-    | "http_requests"
-    | "ipsec_logs"
-    | "magic_ids_detections"
-    | "nel_reports"
-    | "network_analytics_logs"
-    | "page_shield_events"
-    | "sinkhole_http_logs"
-    | "spectrum_events"
-    | "ssh_logs"
-    | "warp_config_changes"
-    | "warp_toggle_changes"
-    | "workers_trace_events"
-    | "zaraz_events"
-    | "zero_trust_network_sessions"
-    | null;
 }
 
 export type GetDatasetFieldRequest =
@@ -236,9 +207,7 @@ const GetDatasetJobBaseFields = {
   ]).pipe(T.HttpPath("datasetId")),
 } as const;
 
-export interface GetDatasetJobForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface GetDatasetJobBaseRequest {
   datasetId:
     | "access_requests"
     | "audit_logs"
@@ -273,41 +242,14 @@ export interface GetDatasetJobForAccountRequest {
     | null;
 }
 
-export interface GetDatasetJobForZoneRequest {
+export interface GetDatasetJobForAccountRequest extends GetDatasetJobBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface GetDatasetJobForZoneRequest extends GetDatasetJobBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  datasetId:
-    | "access_requests"
-    | "audit_logs"
-    | "audit_logs_v2"
-    | "biso_user_actions"
-    | "casb_findings"
-    | "device_posture_results"
-    | "dex_application_tests"
-    | "dex_device_state_events"
-    | "dlp_forensic_copies"
-    | "dns_firewall_logs"
-    | "dns_logs"
-    | "email_security_alerts"
-    | "firewall_events"
-    | "gateway_dns"
-    | "gateway_http"
-    | "gateway_network"
-    | "http_requests"
-    | "ipsec_logs"
-    | "magic_ids_detections"
-    | "nel_reports"
-    | "network_analytics_logs"
-    | "page_shield_events"
-    | "sinkhole_http_logs"
-    | "spectrum_events"
-    | "ssh_logs"
-    | "warp_config_changes"
-    | "warp_toggle_changes"
-    | "workers_trace_events"
-    | "zaraz_events"
-    | "zero_trust_network_sessions"
-    | null;
 }
 
 export type GetDatasetJobRequest =
@@ -743,18 +685,19 @@ const DestinationExistsValidateBaseFields = {
   destinationConf: Schema.String,
 } as const;
 
-export interface DestinationExistsValidateForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface DestinationExistsValidateBaseRequest {
   /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
 }
 
-export interface DestinationExistsValidateForZoneRequest {
+export interface DestinationExistsValidateForAccountRequest extends DestinationExistsValidateBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface DestinationExistsValidateForZoneRequest extends DestinationExistsValidateBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
-  destinationConf: string;
 }
 
 export type DestinationExistsValidateRequest =
@@ -839,16 +782,18 @@ const GetJobBaseFields = {
   jobId: Schema.Number.pipe(T.HttpPath("jobId")),
 } as const;
 
-export interface GetJobForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface GetJobBaseRequest {
   jobId: number;
 }
 
-export interface GetJobForZoneRequest {
+export interface GetJobForAccountRequest extends GetJobBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface GetJobForZoneRequest extends GetJobBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  jobId: number;
 }
 
 export type GetJobRequest = GetJobForAccountRequest | GetJobForZoneRequest;
@@ -1122,12 +1067,14 @@ export const getJob = (
 
 const ListJobsBaseFields = {} as const;
 
-export interface ListJobsForAccountRequest {
+interface ListJobsBaseRequest {}
+
+export interface ListJobsForAccountRequest extends ListJobsBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
   accountId: string;
 }
 
-export interface ListJobsForZoneRequest {
+export interface ListJobsForZoneRequest extends ListJobsBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
@@ -1528,9 +1475,7 @@ const CreateJobBaseFields = {
   ownershipChallenge: Schema.optional(Schema.String),
 } as const;
 
-export interface CreateJobForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface CreateJobBaseRequest {
   /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
   /** Body param: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
@@ -1603,79 +1548,14 @@ export interface CreateJobForAccountRequest {
   ownershipChallenge?: string;
 }
 
-export interface CreateJobForZoneRequest {
+export interface CreateJobForAccountRequest extends CreateJobBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface CreateJobForZoneRequest extends CreateJobBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
-  destinationConf: string;
-  /** Body param: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
-  dataset?:
-    | "access_requests"
-    | "audit_logs"
-    | "audit_logs_v2"
-    | "biso_user_actions"
-    | "casb_findings"
-    | "device_posture_results"
-    | "dex_application_tests"
-    | "dex_device_state_events"
-    | "dlp_forensic_copies"
-    | "dns_firewall_logs"
-    | "dns_logs"
-    | "email_security_alerts"
-    | "firewall_events"
-    | "gateway_dns"
-    | "gateway_http"
-    | "gateway_network"
-    | "http_requests"
-    | "ipsec_logs"
-    | "magic_ids_detections"
-    | "nel_reports"
-    | "network_analytics_logs"
-    | "page_shield_events"
-    | "sinkhole_http_logs"
-    | "spectrum_events"
-    | "ssh_logs"
-    | "warp_config_changes"
-    | "warp_toggle_changes"
-    | "workers_trace_events"
-    | "zaraz_events"
-    | "zero_trust_network_sessions"
-    | null;
-  /** Body param: Flag that indicates if the job is enabled. */
-  enabled?: boolean;
-  /** Body param: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/). */
-  filter?: string | null;
-  /** @deprecated Body param: This field is deprecated. Please use `max_upload_ ` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high */
-  frequency?: "high" | "low" | null;
-  /** Body param: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: "" | "edge";
-  /** @deprecated Body param: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api */
-  logpullOptions?: string | null;
-  /** Body param: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means  */
-  maxUploadBytes?: "0" | number | null;
-  /** Body param: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log  */
-  maxUploadIntervalSeconds?: "0" | number | null;
-  /** Body param: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch */
-  maxUploadRecords?: "0" | number | null;
-  /** Body param: Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
-  name?: string | null;
-  /** Body param: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: {
-    batchPrefix?: string | null;
-    batchSuffix?: string | null;
-    "cve-2021-44228"?: boolean | null;
-    fieldDelimiter?: string | null;
-    fieldNames?: string[];
-    outputType?: "ndjson" | "csv";
-    recordDelimiter?: string | null;
-    recordPrefix?: string | null;
-    recordSuffix?: string | null;
-    recordTemplate?: string | null;
-    sampleRate?: number | null;
-    timestampFormat?: "unixnano" | "unix" | "rfc3339";
-  } | null;
-  /** Body param: Ownership challenge token to prove destination ownership. */
-  ownershipChallenge?: string;
 }
 
 export type CreateJobRequest =
@@ -2055,9 +1935,7 @@ const UpdateJobBaseFields = {
   ownershipChallenge: Schema.optional(Schema.String),
 } as const;
 
-export interface UpdateJobForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface UpdateJobBaseRequest {
   jobId: number;
   /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf?: string;
@@ -2098,47 +1976,14 @@ export interface UpdateJobForAccountRequest {
   ownershipChallenge?: string;
 }
 
-export interface UpdateJobForZoneRequest {
+export interface UpdateJobForAccountRequest extends UpdateJobBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface UpdateJobForZoneRequest extends UpdateJobBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  jobId: number;
-  /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
-  destinationConf?: string;
-  /** Body param: Flag that indicates if the job is enabled. */
-  enabled?: boolean;
-  /** Body param: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/). */
-  filter?: string | null;
-  /** @deprecated Body param: This field is deprecated. Please use `max_upload_ ` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high */
-  frequency?: "high" | "low" | null;
-  /** Body param: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset). */
-  kind?: "" | "edge";
-  /** @deprecated Body param: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api */
-  logpullOptions?: string | null;
-  /** Body param: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means  */
-  maxUploadBytes?: "0" | number | null;
-  /** Body param: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log  */
-  maxUploadIntervalSeconds?: "0" | number | null;
-  /** Body param: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch */
-  maxUploadRecords?: "0" | number | null;
-  /** Body param: Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job. */
-  name?: string | null;
-  /** Body param: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
-  outputOptions?: {
-    batchPrefix?: string | null;
-    batchSuffix?: string | null;
-    "cve-2021-44228"?: boolean | null;
-    fieldDelimiter?: string | null;
-    fieldNames?: string[];
-    outputType?: "ndjson" | "csv";
-    recordDelimiter?: string | null;
-    recordPrefix?: string | null;
-    recordSuffix?: string | null;
-    recordTemplate?: string | null;
-    sampleRate?: number | null;
-    timestampFormat?: "unixnano" | "unix" | "rfc3339";
-  } | null;
-  /** Body param: Ownership challenge token to prove destination ownership. */
-  ownershipChallenge?: string;
 }
 
 export type UpdateJobRequest =
@@ -2448,16 +2293,18 @@ const DeleteJobBaseFields = {
   jobId: Schema.Number.pipe(T.HttpPath("jobId")),
 } as const;
 
-export interface DeleteJobForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface DeleteJobBaseRequest {
   jobId: number;
 }
 
-export interface DeleteJobForZoneRequest {
+export interface DeleteJobForAccountRequest extends DeleteJobBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface DeleteJobForZoneRequest extends DeleteJobBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  jobId: number;
 }
 
 export type DeleteJobRequest =
@@ -2535,18 +2382,19 @@ const CreateOwnershipBaseFields = {
   destinationConf: Schema.String,
 } as const;
 
-export interface CreateOwnershipForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface CreateOwnershipBaseRequest {
   /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
 }
 
-export interface CreateOwnershipForZoneRequest {
+export interface CreateOwnershipForAccountRequest extends CreateOwnershipBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface CreateOwnershipForZoneRequest extends CreateOwnershipBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
-  destinationConf: string;
 }
 
 export type CreateOwnershipRequest =
@@ -2629,22 +2477,21 @@ const ValidateOwnershipBaseFields = {
   ownershipChallenge: Schema.String,
 } as const;
 
-export interface ValidateOwnershipForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface ValidateOwnershipBaseRequest {
   /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
   /** Body param: Ownership challenge token to prove destination ownership. */
   ownershipChallenge: string;
 }
 
-export interface ValidateOwnershipForZoneRequest {
+export interface ValidateOwnershipForAccountRequest extends ValidateOwnershipBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface ValidateOwnershipForZoneRequest extends ValidateOwnershipBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
-  destinationConf: string;
-  /** Body param: Ownership challenge token to prove destination ownership. */
-  ownershipChallenge: string;
 }
 
 export type ValidateOwnershipRequest =
@@ -2735,18 +2582,19 @@ const DestinationValidateBaseFields = {
   destinationConf: Schema.String,
 } as const;
 
-export interface DestinationValidateForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface DestinationValidateBaseRequest {
   /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
 }
 
-export interface DestinationValidateForZoneRequest {
+export interface DestinationValidateForAccountRequest extends DestinationValidateBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface DestinationValidateForZoneRequest extends DestinationValidateBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  /** Body param: Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
-  destinationConf: string;
 }
 
 export type DestinationValidateRequest =
@@ -2829,18 +2677,19 @@ const OriginValidateBaseFields = {
   logpullOptions: Schema.Union([Schema.String, Schema.Null]),
 } as const;
 
-export interface OriginValidateForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface OriginValidateBaseRequest {
   /** @deprecated Body param: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api */
   logpullOptions: string | null;
 }
 
-export interface OriginValidateForZoneRequest {
+export interface OriginValidateForAccountRequest extends OriginValidateBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface OriginValidateForZoneRequest extends OriginValidateBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  /** @deprecated Body param: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api */
-  logpullOptions: string | null;
 }
 
 export type OriginValidateRequest =

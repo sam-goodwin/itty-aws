@@ -2153,12 +2153,14 @@ export const getWaitingRoom: API.OperationMethod<
 
 const ListWaitingRoomsBaseFields = {} as const;
 
-export interface ListWaitingRoomsForAccountRequest {
+interface ListWaitingRoomsBaseRequest {}
+
+export interface ListWaitingRoomsForAccountRequest extends ListWaitingRoomsBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
   accountId: string;
 }
 
-export interface ListWaitingRoomsForZoneRequest {
+export interface ListWaitingRoomsForZoneRequest extends ListWaitingRoomsBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }

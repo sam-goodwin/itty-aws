@@ -20,12 +20,14 @@ import { type DefaultErrors } from "../errors.ts";
 
 const ListInsightsBaseFields = {} as const;
 
-export interface ListInsightsForAccountRequest {
+interface ListInsightsBaseRequest {}
+
+export interface ListInsightsForAccountRequest extends ListInsightsBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
   accountId: string;
 }
 
-export interface ListInsightsForZoneRequest {
+export interface ListInsightsForZoneRequest extends ListInsightsBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
@@ -283,20 +285,20 @@ const DismissInsightBaseFields = {
   dismiss: Schema.optional(Schema.Boolean),
 } as const;
 
-export interface DismissInsightForAccountRequest {
-  /** Path param: The Account ID to use for this endpoint. */
-  accountId: string;
+interface DismissInsightBaseRequest {
   issueId: string;
   /** Body param: */
   dismiss?: boolean;
 }
 
-export interface DismissInsightForZoneRequest {
+export interface DismissInsightForAccountRequest extends DismissInsightBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface DismissInsightForZoneRequest extends DismissInsightBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
-  issueId: string;
-  /** Body param: */
-  dismiss?: boolean;
 }
 
 export type DismissInsightRequest =
@@ -441,12 +443,14 @@ export const dismissInsight = (
 
 const GetInsightClassBaseFields = {} as const;
 
-export interface GetInsightClassForAccountRequest {
+interface GetInsightClassBaseRequest {}
+
+export interface GetInsightClassForAccountRequest extends GetInsightClassBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
   accountId: string;
 }
 
-export interface GetInsightClassForZoneRequest {
+export interface GetInsightClassForZoneRequest extends GetInsightClassBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
@@ -532,12 +536,14 @@ export const getInsightClass = (
 
 const GetInsightSeverityBaseFields = {} as const;
 
-export interface GetInsightSeverityForAccountRequest {
+interface GetInsightSeverityBaseRequest {}
+
+export interface GetInsightSeverityForAccountRequest extends GetInsightSeverityBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
   accountId: string;
 }
 
-export interface GetInsightSeverityForZoneRequest {
+export interface GetInsightSeverityForZoneRequest extends GetInsightSeverityBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
@@ -624,12 +630,14 @@ export const getInsightSeverity = (
 
 const GetInsightTypeBaseFields = {} as const;
 
-export interface GetInsightTypeForAccountRequest {
+interface GetInsightTypeBaseRequest {}
+
+export interface GetInsightTypeForAccountRequest extends GetInsightTypeBaseRequest {
   /** Path param: The Account ID to use for this endpoint. */
   accountId: string;
 }
 
-export interface GetInsightTypeForZoneRequest {
+export interface GetInsightTypeForZoneRequest extends GetInsightTypeBaseRequest {
   /** Path param: The Zone ID to use for this endpoint. */
   zoneId: string;
 }
