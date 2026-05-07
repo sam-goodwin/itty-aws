@@ -11,7 +11,7 @@ import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import { type DefaultErrors } from "../errors.ts";
-import { UploadableSchema } from "../schemas.ts";
+import { UploadableSchema, BinaryBodySchema } from "../schemas.ts";
 import { SensitiveString } from "../sensitive.ts";
 
 // =============================================================================
@@ -2819,7 +2819,7 @@ export interface PutObjectRequest {
   expires?: string;
   /** Storage class for the object. */
   cfR2StorageClass?: "Standard" | "InfrequentAccess";
-  body: File | Blob;
+  body: Blob | Uint8Array | ArrayBuffer | ReadableStream<Uint8Array>;
 }
 
 export const PutObjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -2851,12 +2851,12 @@ export const PutObjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   cfR2StorageClass: Schema.optional(
     Schema.Literals(["Standard", "InfrequentAccess"]),
   ).pipe(T.HttpHeader("cf-r2-storage-class")),
-  body: UploadableSchema.pipe(T.HttpFormDataFile()).pipe(T.HttpBody()),
+  body: BinaryBodySchema.pipe(T.HttpBody()),
 }).pipe(
   T.Http({
     method: "PUT",
     path: "/accounts/{account_id}/r2/buckets/{bucketName}/objects/{objectName}",
-    contentType: "multipart",
+    contentType: "octet-stream",
   }),
 ) as unknown as Schema.Schema<PutObjectRequest>;
 

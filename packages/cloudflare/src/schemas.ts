@@ -49,3 +49,32 @@ export const UploadableSchema = Schema.Union([FileSchema, BlobSchema]);
  * TypeScript type for uploadable content.
  */
 export type Uploadable = File | Blob;
+
+/**
+ * Schema for raw binary request bodies (e.g. R2 putObject).
+ *
+ * Accepts any byte-bearing value that fetch() understands as a body.
+ */
+export const BinaryBodySchema = Schema.declare(
+  (
+    input,
+  ): input is Blob | Uint8Array | ArrayBuffer | ReadableStream<Uint8Array> =>
+    (typeof Blob !== "undefined" && input instanceof Blob) ||
+    input instanceof Uint8Array ||
+    input instanceof ArrayBuffer ||
+    (typeof ReadableStream !== "undefined" && input instanceof ReadableStream),
+  {
+    identifier: "BinaryBody",
+    description:
+      "Raw binary body (Blob, Uint8Array, ArrayBuffer, or ReadableStream)",
+  },
+);
+
+/**
+ * TypeScript type for raw binary request bodies.
+ */
+export type BinaryBody =
+  | Blob
+  | Uint8Array
+  | ArrayBuffer
+  | ReadableStream<Uint8Array>;

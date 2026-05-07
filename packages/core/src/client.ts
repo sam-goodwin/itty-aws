@@ -495,8 +495,14 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
           // Set Content-Type based on body type
           // - Skip for FormData (multipart) — browser sets boundary
           // - Use form-urlencoded for Stripe-style APIs
+          // - Use octet-stream for raw binary uploads (e.g. R2 putObject).
+          //   The user can override via a `content-type` header param.
           // - Default to JSON
           const isFormUrlEncoded = httpTrait.contentType === "form-urlencoded";
+          const isOctetStream = httpTrait.contentType === "octet-stream";
+          const userSetContentType = Object.keys(parts.headers).some(
+            (h) => h.toLowerCase() === "content-type",
+          );
           if (parts.isMultipart) {
             // browser/runtime sets Content-Type with boundary
           } else if (isFormUrlEncoded) {
@@ -504,6 +510,13 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
               "Content-Type",
               "application/x-www-form-urlencoded",
             )(request);
+          } else if (isOctetStream) {
+            if (!userSetContentType) {
+              request = HttpClientRequest.setHeader(
+                "Content-Type",
+                "application/octet-stream",
+              )(request);
+            }
           } else {
             request = HttpClientRequest.setHeader(
               "Content-Type",
@@ -530,6 +543,14 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
               );
               request = HttpClientRequest.setBody(
                 HttpBody.text(encoded, "application/x-www-form-urlencoded"),
+              )(request);
+            } else if (isOctetStream) {
+              // Raw binary body — pass through to fetch. Accepts Blob,
+              // Uint8Array, ArrayBuffer, or ReadableStream<Uint8Array>.
+              request = HttpClientRequest.setBody(
+                HttpBody.raw(parts.body, {
+                  contentType: "application/octet-stream",
+                }),
               )(request);
             } else {
               request = yield* HttpClientRequest.bodyJson(parts.body)(request);

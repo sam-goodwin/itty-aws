@@ -1187,6 +1187,36 @@ describe("R2", () => {
   });
 
   // --------------------------------------------------------------------------
+  // putObject / getObject / deleteObject (raw application/octet-stream body)
+  // --------------------------------------------------------------------------
+  describe("putObject", () => {
+    test(
+      "happy path - uploads a Blob via application/octet-stream",
+      { timeout: 180_000 },
+      () =>
+        withBucket(bucketName("put-obj"), (name) =>
+          Effect.gen(function* () {
+            const objectName = `test-${testRunId}.txt`;
+            const payload = "hello from distilled";
+
+            yield* R2.putObject({
+              accountId: accountId(),
+              bucketName: name,
+              objectName,
+              body: new Blob([payload], { type: "text/plain" }),
+            });
+
+            yield* R2.deleteObject({
+              accountId: accountId(),
+              bucketName: name,
+              objectName,
+            }).pipe(Effect.catch(() => Effect.void));
+          }),
+        ),
+    );
+  });
+
+  // --------------------------------------------------------------------------
   // listBucketDomainCustoms
   // --------------------------------------------------------------------------
   describe("listBucketDomainCustoms", () => {

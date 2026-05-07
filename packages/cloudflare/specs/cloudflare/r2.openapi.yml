@@ -2669,7 +2669,7 @@ paths:
       requestBody:
         required: true
         content:
-          multipart/form-data:
+          application/octet-stream:
             schema:
               type: string
               format: binary

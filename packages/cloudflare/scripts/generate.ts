@@ -491,9 +491,7 @@ function applyPatchToTypeInfo(typeInfo: TypeInfo, patch: PropertyPatch): void {
     typeInfo.values
   ) {
     for (const variant of patch.appendUnion) {
-      typeInfo.values.push(
-        JSON.parse(JSON.stringify(variant)) as TypeInfo,
-      );
+      typeInfo.values.push(JSON.parse(JSON.stringify(variant)) as TypeInfo);
     }
   }
 
@@ -1105,6 +1103,10 @@ function typeInfoToSchema(
       // File upload schema with trait annotation
       return "UploadableSchema.pipe(T.HttpFormDataFile())";
 
+    case "binary":
+      // Raw binary body — no multipart wrapping, sent as application/octet-stream
+      return "BinaryBodySchema";
+
     case "unknown":
     default:
       return "Schema.Unknown";
@@ -1209,6 +1211,9 @@ function typeInfoToTsType(
 
     case "file":
       return "File | Blob";
+
+    case "binary":
+      return "Blob | Uint8Array | ArrayBuffer | ReadableStream<Uint8Array>";
 
     case "unknown":
     default:
@@ -1432,9 +1437,12 @@ function generateOperationSchemaAst(
   // Add contentType: "multipart" when operation has file uploads or uses multipartFormRequestOptions
   const hasFiles = operationHasFiles(op);
   const isMultipart = hasFiles || op.isMultipart;
-  const httpTrait = isMultipart
-    ? `T.Http({ method: "${op.httpMethod}", path: "${openApiPath}", contentType: "multipart" })`
-    : `T.Http({ method: "${op.httpMethod}", path: "${openApiPath}" })`;
+  const isBinaryBody = operationHasBinaryBody(op);
+  const httpTrait = isBinaryBody
+    ? `T.Http({ method: "${op.httpMethod}", path: "${openApiPath}", contentType: "octet-stream" })`
+    : isMultipart
+      ? `T.Http({ method: "${op.httpMethod}", path: "${openApiPath}", contentType: "multipart" })`
+      : `T.Http({ method: "${op.httpMethod}", path: "${openApiPath}" })`;
   pipes.push(httpTrait);
 
   lines.push(
@@ -1767,9 +1775,12 @@ function generateOperationSchema(
   }
   const hasFiles = operationHasFiles(op);
   const isMultipart = hasFiles || op.isMultipart;
-  const httpTrait = isMultipart
-    ? `T.Http({ method: "${op.httpMethod}", path: "${openApiPath}", contentType: "multipart" })`
-    : `T.Http({ method: "${op.httpMethod}", path: "${openApiPath}" })`;
+  const isBinaryBody = operationHasBinaryBody(op);
+  const httpTrait = isBinaryBody
+    ? `T.Http({ method: "${op.httpMethod}", path: "${openApiPath}", contentType: "octet-stream" })`
+    : isMultipart
+      ? `T.Http({ method: "${op.httpMethod}", path: "${openApiPath}", contentType: "multipart" })`
+      : `T.Http({ method: "${op.httpMethod}", path: "${openApiPath}" })`;
   pipes.push(httpTrait);
 
   lines.push(
@@ -2141,6 +2152,7 @@ function typeInfoToOpenApiSchema(type: TypeInfo): Record<string, unknown> {
       return objectSchema;
     }
     case "file":
+    case "binary":
       return { type: "string", format: "binary" };
     case "unknown":
     default:
@@ -2208,8 +2220,9 @@ function operationToOpenApi(
     })),
   ];
   const bodySchema = bodyParamsToOpenApiSchema(resolved.bodyParams);
-  const contentType =
-    op.isMultipart || operationHasFiles(op)
+  const contentType = operationHasBinaryBody(op)
+    ? "application/octet-stream"
+    : op.isMultipart || operationHasFiles(op)
       ? "multipart/form-data"
       : "application/json";
   const errors =
@@ -2303,6 +2316,30 @@ function hasFileType(type: TypeInfo): boolean {
 }
 
 /**
+ * Check if a TypeInfo contains a binary body type
+ */
+function hasBinaryType(type: TypeInfo): boolean {
+  if (type.kind === "binary") return true;
+  if (type.kind === "array" && type.elementType) {
+    return hasBinaryType(type.elementType);
+  }
+  if (type.kind === "union" && type.values) {
+    return type.values.some(hasBinaryType);
+  }
+  if (type.kind === "object" && type.properties) {
+    return type.properties.some((p) => hasBinaryType(p.type));
+  }
+  return false;
+}
+
+/**
+ * Check if an operation sends a raw binary request body (application/octet-stream)
+ */
+function operationHasBinaryBody(op: ParsedOperation): boolean {
+  return !!op.isBinaryBody || op.bodyParams.some((p) => hasBinaryType(p.type));
+}
+
+/**
  * Check if an operation has file parameters
  */
 function operationHasFiles(op: ParsedOperation): boolean {
@@ -2315,8 +2352,11 @@ function generateServiceFile(
 ): string {
   const lines: string[] = [];
 
-  // Check if any operation has file uploads
-  const hasFileUploads = service.operations.some(operationHasFiles);
+  // Check if any operation has file uploads (request body or response)
+  const hasFileUploads = service.operations.some(
+    (op) => operationHasFiles(op) || hasFileType(op.responseType),
+  );
+  const hasBinaryBodies = service.operations.some(operationHasBinaryBody);
 
   // Header
   lines.push(`/**`);
@@ -2345,9 +2385,12 @@ function generateServiceFile(
   lines.push(`  type DefaultErrors,`);
   lines.push(`} from "${withTsExtension("../errors")}";`);
   // Conditionally import UploadableSchema for file uploads
-  if (hasFileUploads) {
+  if (hasFileUploads || hasBinaryBodies) {
+    const imports: string[] = [];
+    if (hasFileUploads) imports.push("UploadableSchema");
+    if (hasBinaryBodies) imports.push("BinaryBodySchema");
     lines.push(
-      `import { UploadableSchema } from "${withTsExtension("../schemas")}";`,
+      `import { ${imports.join(", ")} } from "${withTsExtension("../schemas")}";`,
     );
   }
   lines.push(`__SENSITIVE_IMPORT__`);

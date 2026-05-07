@@ -361,7 +361,8 @@ export interface TypeInfo {
     | "object"
     | "null"
     | "unknown"
-    | "file";
+    | "file"
+    | "binary";
   value?: string; // For primitives and literals
   values?: TypeInfo[]; // For unions
   elementType?: TypeInfo; // For arrays
@@ -430,6 +431,8 @@ export interface ParsedOperation {
   urlPathParams: string[]; // Path parameters from URL, e.g., ["account_id", "bucketName"]
   /** True when the SDK method uses Core.multipartFormRequestOptions */
   isMultipart?: boolean;
+  /** True when the request body is a raw binary stream (application/octet-stream) */
+  isBinaryBody?: boolean;
   /** Pagination wrapper type: "items" when V4PagePagination (result.items), "array" when V4PagePaginationArray/SinglePage (result directly) */
   paginationType?: "items" | "array";
   /** Upstream Cloudflare page class name, e.g. V4PagePaginationArray */
