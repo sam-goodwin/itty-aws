@@ -2801,55 +2801,34 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  result:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        key:
-                          type: string
-                          description: The object key (name).
-                        size:
-                          type: number
-                          description: Object size in bytes.
-                        etag:
-                          type: string
-                          description: Entity tag (raw hex digest, no surrounding quotes).
-                        last_modified:
-                          type: string
-                          description: When the object was last modified.
-                        storage_class:
-                          type: string
-                          enum:
-                            - Standard
-                            - InfrequentAccess
-                        ssec:
-                          type: boolean
-                          description: Whether the object is encrypted with a customer-supplied key.
-                        custom_metadata:
-                          description: Custom metadata key-value pairs.
-                        http_metadata:
-                          description: HTTP metadata associated with the object.
-                  result_info:
-                    type: object
-                    properties:
-                      cursor:
-                        type: string
-                        description: Cursor to pass to the next List Objects call.
-                      is_truncated:
-                        type: boolean
-                        description: Whether more results are available; if true, use `cursor` to fetch
-                          them.
-                      per_page:
-                        type: number
-                        description: Maximum objects returned per page.
-                      delimited:
-                        type: array
-                        items:
-                          type: string
-                        description: Common prefixes when a delimiter is specified.
+                type: array
+                items:
+                  type: object
+                  properties:
+                    key:
+                      type: string
+                      description: The object key (name).
+                    size:
+                      type: number
+                      description: Object size in bytes.
+                    etag:
+                      type: string
+                      description: Entity tag (raw hex digest, no surrounding quotes).
+                    last_modified:
+                      type: string
+                      description: When the object was last modified.
+                    storage_class:
+                      type: string
+                      enum:
+                        - Standard
+                        - InfrequentAccess
+                    ssec:
+                      type: boolean
+                      description: Whether the object is encrypted with a customer-supplied key.
+                    custom_metadata:
+                      description: Custom metadata key-value pairs.
+                    http_metadata:
+                      description: HTTP metadata associated with the object.
       x-distilled-response-path: result
       x-distilled-errors:
         NoSuchBucket:
@@ -2929,46 +2908,43 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  result:
-                    oneOf:
-                      - type: array
-                        items:
-                          type: object
-                          properties:
-                            key:
-                              type: string
-                              description: Key of the deleted object.
-                      - type: object
+                oneOf:
+                  - type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                          description: Key of the deleted object.
+                  - type: object
+                    properties:
+                      id:
+                        type: string
+                      jobType:
+                        type: string
+                        enum:
+                          - prefixDelete
+                      status:
+                        type: string
+                        enum:
+                          - ENQUEUED
+                          - RUNNING
+                          - COMPLETED
+                          - FAILED
+                          - CANCELLED
+                      startTime:
+                        type: string
+                      endTime:
+                        type: string
+                      prefixDelete:
+                        type: object
                         properties:
-                          id:
+                          prefix:
                             type: string
-                          jobType:
-                            type: string
-                            enum:
-                              - prefixDelete
-                          status:
-                            type: string
-                            enum:
-                              - ENQUEUED
-                              - RUNNING
-                              - COMPLETED
-                              - FAILED
-                              - CANCELLED
-                          startTime:
-                            type: string
-                          endTime:
-                            type: string
-                          prefixDelete:
-                            type: object
-                            properties:
-                              prefix:
-                                type: string
-                              deletedObjects:
-                                type: number
-                              isBucketClear:
-                                type: boolean
+                          deletedObjects:
+                            type: number
+                          isBucketClear:
+                            type: boolean
       x-distilled-response-path: result
       x-distilled-errors:
         NoSuchBucket:

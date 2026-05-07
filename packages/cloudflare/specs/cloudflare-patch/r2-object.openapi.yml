@@ -66,14 +66,9 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  result:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/R2Object"
-                  result_info:
-                    $ref: "#/components/schemas/R2ListObjectsResultInfo"
+                type: array
+                items:
+                  $ref: "#/components/schemas/R2Object"
     delete:
       operationId: deleteObjects
       summary: Bulk-delete objects from an R2 bucket.
@@ -123,19 +118,16 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  result:
-                    oneOf:
-                      - type: array
-                        description: Per-key delete results (delete-by-list mode).
-                        items:
-                          type: object
-                          properties:
-                            key:
-                              type: string
-                              description: Key of the deleted object.
-                      - $ref: "#/components/schemas/R2PrefixDeleteJob"
+                oneOf:
+                  - type: array
+                    description: Per-key delete results (delete-by-list mode).
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                          description: Key of the deleted object.
+                  - $ref: "#/components/schemas/R2PrefixDeleteJob"
   /accounts/{account_id}/r2/buckets/{bucketName}/objects/{objectName}:
     get:
       operationId: getObject
@@ -335,24 +327,6 @@ components:
           type: object
           description: HTTP metadata associated with the object.
           additionalProperties: true
-    R2ListObjectsResultInfo:
-      type: object
-      description: Pagination information for List Objects responses.
-      properties:
-        cursor:
-          type: string
-          description: Cursor to pass to the next List Objects call.
-        is_truncated:
-          type: boolean
-          description: Whether more results are available; if true, use `cursor` to fetch them.
-        per_page:
-          type: integer
-          description: Maximum objects returned per page.
-        delimited:
-          type: array
-          description: Common prefixes when a delimiter is specified.
-          items:
-            type: string
     R2PrefixDeleteJob:
       type: object
       description: Descriptor of an asynchronous prefix-delete job.

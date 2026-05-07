@@ -1688,13 +1688,9 @@ export const ListObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 })
   .pipe(T.Http({ method: "GET", path: "/accounts/{account_id}/r2/buckets/{bucketName}/objects" })) as unknown as Schema.Schema<ListObjectsRequest>;
 
-export interface ListObjectsResponse {
-  result?: ({ key?: string | null; size?: number | null; etag?: string | null; lastModified?: string | null; storageClass?: "Standard" | "InfrequentAccess" | null; ssec?: boolean | null; customMetadata?: unknown | null; httpMetadata?: unknown | null })[] | null;
-  resultInfo?: { cursor?: string | null; isTruncated?: boolean | null; perPage?: number | null; delimited?: string[] | null } | null;
-}
+export type ListObjectsResponse = ({ key?: string | null; size?: number | null; etag?: string | null; lastModified?: string | null; storageClass?: "Standard" | "InfrequentAccess" | null; ssec?: boolean | null; customMetadata?: unknown | null; httpMetadata?: unknown | null })[];
 
-export const ListObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.optional(Schema.Union([Schema.Array(Schema.Struct({
+export const ListObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(Schema.Struct({
   key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
   size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
   etag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1703,14 +1699,7 @@ export const ListObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   ssec: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
   customMetadata: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
   httpMetadata: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null]))
-}).pipe(Schema.encodeKeys({ key: "key", size: "size", etag: "etag", lastModified: "last_modified", storageClass: "storage_class", ssec: "ssec", customMetadata: "custom_metadata", httpMetadata: "http_metadata" }))), Schema.Null])),
-  resultInfo: Schema.optional(Schema.Union([Schema.Struct({
-  cursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  isTruncated: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-  perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  delimited: Schema.optional(Schema.Union([Schema.Array(Schema.String), Schema.Null]))
-}).pipe(Schema.encodeKeys({ cursor: "cursor", isTruncated: "is_truncated", perPage: "per_page", delimited: "delimited" })), Schema.Null]))
-}).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<ListObjectsResponse>;
+}).pipe(Schema.encodeKeys({ key: "key", size: "size", etag: "etag", lastModified: "last_modified", storageClass: "storage_class", ssec: "ssec", customMetadata: "custom_metadata", httpMetadata: "http_metadata" }))).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<ListObjectsResponse>;
 
 export type ListObjectsError =
   | DefaultErrors
@@ -1816,12 +1805,9 @@ export const DeleteObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 })
   .pipe(T.Http({ method: "DELETE", path: "/accounts/{account_id}/r2/buckets/{bucketName}/objects" })) as unknown as Schema.Schema<DeleteObjectsRequest>;
 
-export interface DeleteObjectsResponse {
-  result?: ({ key?: string | null })[] | { id?: string | null; jobType?: "prefixDelete" | null; status?: "ENQUEUED" | "RUNNING" | "COMPLETED" | "FAILED" | "CANCELLED" | null; startTime?: string | null; endTime?: string | null; prefixDelete?: { prefix?: string | null; deletedObjects?: number | null; isBucketClear?: boolean | null } | null } | null;
-}
+export type DeleteObjectsResponse = ({ key?: string | null })[] | { id?: string | null; jobType?: "prefixDelete" | null; status?: "ENQUEUED" | "RUNNING" | "COMPLETED" | "FAILED" | "CANCELLED" | null; startTime?: string | null; endTime?: string | null; prefixDelete?: { prefix?: string | null; deletedObjects?: number | null; isBucketClear?: boolean | null } | null };
 
-export const DeleteObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.optional(Schema.Union([Schema.Union([Schema.Array(Schema.Struct({
+export const DeleteObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([Schema.Array(Schema.Struct({
   key: Schema.optional(Schema.Union([Schema.String, Schema.Null]))
 })), Schema.Struct({
   id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -1834,8 +1820,7 @@ export const DeleteObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     deletedObjects: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
     isBucketClear: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null]))
   }), Schema.Null]))
-})]), Schema.Null]))
-}).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<DeleteObjectsResponse>;
+})]).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<DeleteObjectsResponse>;
 
 export type DeleteObjectsError =
   | DefaultErrors
