@@ -1,13 +1,14 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { AuthorizationControllerListEffectivePermissionsByExternalId } from "../src/operations/AuthorizationControllerListEffectivePermissionsByExternalId.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, runOrSkipOnEnvLimitation, testRunId } from "./setup.ts";
 
 describe("AuthorizationControllerListEffectivePermissionsByExternalId", () => {
   it(
     "lists effective permissions for an organization membership on a resource by external id",
-    async () => {
-      const result = await runEffect(
+    async (ctx) => {
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationControllerListEffectivePermissionsByExternalId({
           organization_membership_id: `om_${testRunId}`,
           resource_type_slug: "workspace",
@@ -20,7 +21,7 @@ describe("AuthorizationControllerListEffectivePermissionsByExternalId", () => {
       expect(Array.isArray(result.data)).toBe(true);
       expect(result.list_metadata).toBeDefined();
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -36,7 +37,7 @@ describe("AuthorizationControllerListEffectivePermissionsByExternalId", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -52,7 +53,7 @@ describe("AuthorizationControllerListEffectivePermissionsByExternalId", () => {
 
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -68,6 +69,6 @@ describe("AuthorizationControllerListEffectivePermissionsByExternalId", () => {
 
       expect(["NotFound", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

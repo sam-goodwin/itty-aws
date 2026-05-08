@@ -17,16 +17,44 @@ import { SensitiveString } from "../sensitive.ts";
 // Pha
 // =============================================================================
 
-export interface GetPhasRequest {}
+const GetPhasBaseFields = {
+  rulesetPhase: Schema.String.pipe(T.HttpPath("rulesetPhase")),
+} as const;
 
-export const GetPhasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
+interface GetPhasBaseRequest {
+  rulesetPhase: string;
+}
+
+export interface GetPhasForAccountRequest extends GetPhasBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface GetPhasForZoneRequest extends GetPhasBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const GetPhasForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...GetPhasBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/rulesets/phases/{rulesetPhase}/entrypoint",
+    }),
+  ) as unknown as Schema.Schema<GetPhasForAccountRequest>;
+
+export const GetPhasForZoneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  ...GetPhasBaseFields,
+}).pipe(
   T.Http({
     method: "GET",
-    path: "/{accountOrZone}/{accountOrZoneId}/rulesets/phases/{rulesetPhase}/entrypoint",
+    path: "/zones/{zone_id}/rulesets/phases/{rulesetPhase}/entrypoint",
   }),
-) as unknown as Schema.Schema<GetPhasRequest>;
+) as unknown as Schema.Schema<GetPhasForZoneRequest>;
 
 export interface GetPhasResponse {
   /** The unique ID of the ruleset. */
@@ -3500,649 +3528,30 @@ export const GetPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type GetPhasError = DefaultErrors;
 
-export const getPhas: API.OperationMethod<
-  GetPhasRequest,
+export const getPhasForAccount: API.OperationMethod<
+  GetPhasForAccountRequest,
   GetPhasResponse,
   GetPhasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetPhasRequest,
+  input: GetPhasForAccountRequest,
   output: GetPhasResponse,
   errors: [],
 }));
 
-export interface PutPhasRequest {
-  /** Path param: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
-  accountId?: string;
-  /** Path param: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
-  zoneId?: string;
-  /** Body param: An informative description of the ruleset. */
-  description?: string;
-  /** Body param: The human-readable name of the ruleset. */
-  name?: string;
-  /** Body param: The list of rules in the ruleset. */
-  rules?: (
-    | {
-        id?: string;
-        action?: "block";
-        actionParameters?: {
-          response?: {
-            content: string;
-            contentType: string;
-            statusCode: number;
-          };
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "challenge";
-        actionParameters?: unknown;
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "compress_response";
-        actionParameters?: {
-          algorithms: {
-            name?: "none" | "auto" | "default" | "gzip" | "brotli" | "zstd";
-          }[];
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "ddos_dynamic";
-        actionParameters?: unknown;
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "execute";
-        actionParameters?: {
-          id: string;
-          matchedData?: { publicKey: string };
-          overrides?: {
-            action?: string;
-            categories?: {
-              category: string;
-              action?: string;
-              enabled?: boolean;
-              sensitivityLevel?: "default" | "medium" | "low" | "eoff";
-            }[];
-            enabled?: boolean;
-            rules?: {
-              id: string;
-              action?: string;
-              enabled?: boolean;
-              scoreThreshold?: number;
-              sensitivityLevel?: "default" | "medium" | "low" | "eoff";
-            }[];
-            sensitivityLevel?: "default" | "medium" | "low" | "eoff";
-          };
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "force_connection_close";
-        actionParameters?: unknown;
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "js_challenge";
-        actionParameters?: unknown;
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "log";
-        actionParameters?: unknown;
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "log_custom_field";
-        actionParameters?: {
-          cookieFields?: { name: string }[];
-          rawResponseFields?: { name: string; preserveDuplicates?: boolean }[];
-          requestFields?: { name: string }[];
-          responseFields?: { name: string; preserveDuplicates?: boolean }[];
-          transformedRequestFields?: { name: string }[];
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "managed_challenge";
-        actionParameters?: unknown;
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "redirect";
-        actionParameters?: {
-          fromList?: { key: string; name: string };
-          fromValue?: {
-            targetUrl: { expression?: string; value?: string };
-            preserveQueryString?: boolean;
-            statusCode?: "301" | "302" | "303" | "307" | "308";
-          };
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "rewrite";
-        actionParameters?: {
-          headers?: Record<string, unknown>;
-          uri?:
-            | { path: { expression?: string; value?: string } }
-            | { query: { expression?: string; value?: string } };
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "route";
-        actionParameters?: {
-          hostHeader?: string;
-          origin?: { host?: string; port?: number };
-          sni?: { value: string };
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "score";
-        actionParameters?: { increment: number };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "serve_error";
-        actionParameters?:
-          | {
-              content: string;
-              contentType?:
-                | "application/json"
-                | "text/html"
-                | "text/plain"
-                | "text/xml";
-              statusCode?: number;
-            }
-          | {
-              assetName: string;
-              contentType?:
-                | "application/json"
-                | "text/html"
-                | "text/plain"
-                | "text/xml";
-              statusCode?: number;
-            };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "set_cache_settings";
-        actionParameters?: {
-          additionalCacheablePorts?: number[];
-          browserTtl?: {
-            mode:
-              | "respect_origin"
-              | "bypass_by_default"
-              | "override_origin"
-              | "bypass";
-            default?: number;
-          };
-          cache?: boolean;
-          cacheKey?: {
-            cacheByDeviceType?: boolean;
-            cacheDeceptionArmor?: boolean;
-            customKey?: {
-              cookie?: { checkPresence?: string[]; include?: string[] };
-              header?: {
-                checkPresence?: string[];
-                contains?: Record<string, unknown>;
-                excludeOrigin?: boolean;
-                include?: string[];
-              };
-              host?: { resolved?: boolean };
-              queryString?: {
-                exclude?: { all?: true; list?: string[] };
-                include?: { all?: true; list?: string[] };
-              };
-              user?: { deviceType?: boolean; geo?: boolean; lang?: boolean };
-            };
-            ignoreQueryStringsOrder?: boolean;
-          };
-          cacheReserve?: { eligible: boolean; minimumFileSize?: number };
-          edgeTtl?: {
-            mode: "respect_origin" | "bypass_by_default" | "override_origin";
-            default?: number;
-            statusCodeTtl?: {
-              value: number;
-              statusCode?: number;
-              statusCodeRange?: { from?: number; to?: number };
-            }[];
-          };
-          originCacheControl?: boolean;
-          originErrorPagePassthru?: boolean;
-          readTimeout?: number;
-          respectStrongEtags?: boolean;
-          serveStale?: { disableStaleWhileUpdating?: boolean };
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "set_config";
-        actionParameters?: {
-          automaticHttpsRewrites?: boolean;
-          autominify?: { css?: boolean; html?: boolean; js?: boolean };
-          bic?: boolean;
-          disableApps?: true;
-          disablePayPerCrawl?: true;
-          disableRum?: true;
-          disableZaraz?: true;
-          emailObfuscation?: boolean;
-          fonts?: boolean;
-          hotlinkProtection?: boolean;
-          mirage?: boolean;
-          opportunisticEncryption?: boolean;
-          polish?: "off" | "lossless" | "lossy" | "webp";
-          requestBodyBuffering?: "none" | "standard" | "full";
-          responseBodyBuffering?: "none" | "standard";
-          rocketLoader?: boolean;
-          securityLevel?:
-            | "off"
-            | "essentially_off"
-            | "low"
-            | "medium"
-            | "high"
-            | "under_attack";
-          serverSideExcludes?: boolean;
-          ssl?: "off" | "flexible" | "full" | "strict" | "origin_pull";
-          sxg?: boolean;
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "skip";
-        actionParameters?: {
-          phase?: "current";
-          phases?: (
-            | "ddos_l4"
-            | "ddos_l7"
-            | "http_config_settings"
-            | "http_custom_errors"
-            | "http_log_custom_fields"
-            | "http_ratelimit"
-            | "http_request_cache_settings"
-            | "http_request_dynamic_redirect"
-            | "http_request_firewall_custom"
-            | "http_request_firewall_managed"
-            | "http_request_late_transform"
-            | "http_request_origin"
-            | "http_request_redirect"
-            | "http_request_sanitize"
-            | "http_request_sbfm"
-            | "http_request_transform"
-            | "http_response_compression"
-            | "http_response_firewall_managed"
-            | "http_response_headers_transform"
-            | "magic_transit"
-            | "magic_transit_ids_managed"
-            | "magic_transit_managed"
-            | "magic_transit_ratelimit"
-          )[];
-          products?: (
-            | "bic"
-            | "hot"
-            | "rateLimit"
-            | "securityLevel"
-            | "uaBlock"
-            | "waf"
-            | "zoneLockdown"
-          )[];
-          rules?: Record<string, unknown>;
-          ruleset?: "current";
-          rulesets?: string[];
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-  )[];
-}
+export const getPhasForZone: API.OperationMethod<
+  GetPhasForZoneRequest,
+  GetPhasResponse,
+  GetPhasError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetPhasForZoneRequest,
+  output: GetPhasResponse,
+  errors: [],
+}));
 
-export const PutPhasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+const PutPhasBaseFields = {
+  rulesetPhase: Schema.String.pipe(T.HttpPath("rulesetPhase")),
   description: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   rules: Schema.optional(
@@ -5844,12 +5253,664 @@ export const PutPhasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
     ),
   ),
+} as const;
+
+interface PutPhasBaseRequest {
+  rulesetPhase: string;
+  /** Body param: An informative description of the ruleset. */
+  description?: string;
+  /** Body param: The human-readable name of the ruleset. */
+  name?: string;
+  /** Body param: The list of rules in the ruleset. */
+  rules?: (
+    | {
+        id?: string;
+        action?: "block";
+        actionParameters?: {
+          response?: {
+            content: string;
+            contentType: string;
+            statusCode: number;
+          };
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "challenge";
+        actionParameters?: unknown;
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "compress_response";
+        actionParameters?: {
+          algorithms: {
+            name?: "none" | "auto" | "default" | "gzip" | "brotli" | "zstd";
+          }[];
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "ddos_dynamic";
+        actionParameters?: unknown;
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "execute";
+        actionParameters?: {
+          id: string;
+          matchedData?: { publicKey: string };
+          overrides?: {
+            action?: string;
+            categories?: {
+              category: string;
+              action?: string;
+              enabled?: boolean;
+              sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+            }[];
+            enabled?: boolean;
+            rules?: {
+              id: string;
+              action?: string;
+              enabled?: boolean;
+              scoreThreshold?: number;
+              sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+            }[];
+            sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+          };
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "force_connection_close";
+        actionParameters?: unknown;
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "js_challenge";
+        actionParameters?: unknown;
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "log";
+        actionParameters?: unknown;
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "log_custom_field";
+        actionParameters?: {
+          cookieFields?: { name: string }[];
+          rawResponseFields?: { name: string; preserveDuplicates?: boolean }[];
+          requestFields?: { name: string }[];
+          responseFields?: { name: string; preserveDuplicates?: boolean }[];
+          transformedRequestFields?: { name: string }[];
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "managed_challenge";
+        actionParameters?: unknown;
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "redirect";
+        actionParameters?: {
+          fromList?: { key: string; name: string };
+          fromValue?: {
+            targetUrl: { expression?: string; value?: string };
+            preserveQueryString?: boolean;
+            statusCode?: "301" | "302" | "303" | "307" | "308";
+          };
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "rewrite";
+        actionParameters?: {
+          headers?: Record<string, unknown>;
+          uri?:
+            | { path: { expression?: string; value?: string } }
+            | { query: { expression?: string; value?: string } };
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "route";
+        actionParameters?: {
+          hostHeader?: string;
+          origin?: { host?: string; port?: number };
+          sni?: { value: string };
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "score";
+        actionParameters?: { increment: number };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "serve_error";
+        actionParameters?:
+          | {
+              content: string;
+              contentType?:
+                | "application/json"
+                | "text/html"
+                | "text/plain"
+                | "text/xml";
+              statusCode?: number;
+            }
+          | {
+              assetName: string;
+              contentType?:
+                | "application/json"
+                | "text/html"
+                | "text/plain"
+                | "text/xml";
+              statusCode?: number;
+            };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "set_cache_settings";
+        actionParameters?: {
+          additionalCacheablePorts?: number[];
+          browserTtl?: {
+            mode:
+              | "respect_origin"
+              | "bypass_by_default"
+              | "override_origin"
+              | "bypass";
+            default?: number;
+          };
+          cache?: boolean;
+          cacheKey?: {
+            cacheByDeviceType?: boolean;
+            cacheDeceptionArmor?: boolean;
+            customKey?: {
+              cookie?: { checkPresence?: string[]; include?: string[] };
+              header?: {
+                checkPresence?: string[];
+                contains?: Record<string, unknown>;
+                excludeOrigin?: boolean;
+                include?: string[];
+              };
+              host?: { resolved?: boolean };
+              queryString?: {
+                exclude?: { all?: true; list?: string[] };
+                include?: { all?: true; list?: string[] };
+              };
+              user?: { deviceType?: boolean; geo?: boolean; lang?: boolean };
+            };
+            ignoreQueryStringsOrder?: boolean;
+          };
+          cacheReserve?: { eligible: boolean; minimumFileSize?: number };
+          edgeTtl?: {
+            mode: "respect_origin" | "bypass_by_default" | "override_origin";
+            default?: number;
+            statusCodeTtl?: {
+              value: number;
+              statusCode?: number;
+              statusCodeRange?: { from?: number; to?: number };
+            }[];
+          };
+          originCacheControl?: boolean;
+          originErrorPagePassthru?: boolean;
+          readTimeout?: number;
+          respectStrongEtags?: boolean;
+          serveStale?: { disableStaleWhileUpdating?: boolean };
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "set_config";
+        actionParameters?: {
+          automaticHttpsRewrites?: boolean;
+          autominify?: { css?: boolean; html?: boolean; js?: boolean };
+          bic?: boolean;
+          disableApps?: true;
+          disablePayPerCrawl?: true;
+          disableRum?: true;
+          disableZaraz?: true;
+          emailObfuscation?: boolean;
+          fonts?: boolean;
+          hotlinkProtection?: boolean;
+          mirage?: boolean;
+          opportunisticEncryption?: boolean;
+          polish?: "off" | "lossless" | "lossy" | "webp";
+          requestBodyBuffering?: "none" | "standard" | "full";
+          responseBodyBuffering?: "none" | "standard";
+          rocketLoader?: boolean;
+          securityLevel?:
+            | "off"
+            | "essentially_off"
+            | "low"
+            | "medium"
+            | "high"
+            | "under_attack";
+          serverSideExcludes?: boolean;
+          ssl?: "off" | "flexible" | "full" | "strict" | "origin_pull";
+          sxg?: boolean;
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "skip";
+        actionParameters?: {
+          phase?: "current";
+          phases?: (
+            | "ddos_l4"
+            | "ddos_l7"
+            | "http_config_settings"
+            | "http_custom_errors"
+            | "http_log_custom_fields"
+            | "http_ratelimit"
+            | "http_request_cache_settings"
+            | "http_request_dynamic_redirect"
+            | "http_request_firewall_custom"
+            | "http_request_firewall_managed"
+            | "http_request_late_transform"
+            | "http_request_origin"
+            | "http_request_redirect"
+            | "http_request_sanitize"
+            | "http_request_sbfm"
+            | "http_request_transform"
+            | "http_response_compression"
+            | "http_response_firewall_managed"
+            | "http_response_headers_transform"
+            | "magic_transit"
+            | "magic_transit_ids_managed"
+            | "magic_transit_managed"
+            | "magic_transit_ratelimit"
+          )[];
+          products?: (
+            | "bic"
+            | "hot"
+            | "rateLimit"
+            | "securityLevel"
+            | "uaBlock"
+            | "waf"
+            | "zoneLockdown"
+          )[];
+          rules?: Record<string, unknown>;
+          ruleset?: "current";
+          rulesets?: string[];
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+  )[];
+}
+
+export interface PutPhasForAccountRequest extends PutPhasBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface PutPhasForZoneRequest extends PutPhasBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const PutPhasForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...PutPhasBaseFields,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/rulesets/phases/{rulesetPhase}/entrypoint",
+    }),
+  ) as unknown as Schema.Schema<PutPhasForAccountRequest>;
+
+export const PutPhasForZoneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  ...PutPhasBaseFields,
 }).pipe(
   T.Http({
     method: "PUT",
-    path: "/{accountOrZone}/{accountOrZoneId}/rulesets/phases/{rulesetPhase}/entrypoint",
+    path: "/zones/{zone_id}/rulesets/phases/{rulesetPhase}/entrypoint",
   }),
-) as unknown as Schema.Schema<PutPhasRequest>;
+) as unknown as Schema.Schema<PutPhasForZoneRequest>;
 
 export interface PutPhasResponse {
   /** The unique ID of the ruleset. */
@@ -9323,13 +9384,24 @@ export const PutPhasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type PutPhasError = DefaultErrors;
 
-export const putPhas: API.OperationMethod<
-  PutPhasRequest,
+export const putPhasForAccount: API.OperationMethod<
+  PutPhasForAccountRequest,
   PutPhasResponse,
   PutPhasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PutPhasRequest,
+  input: PutPhasForAccountRequest,
+  output: PutPhasResponse,
+  errors: [],
+}));
+
+export const putPhasForZone: API.OperationMethod<
+  PutPhasForZoneRequest,
+  PutPhasResponse,
+  PutPhasError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PutPhasForZoneRequest,
   output: PutPhasResponse,
   errors: [],
 }));
@@ -9338,18 +9410,47 @@ export const putPhas: API.OperationMethod<
 // PhasVersion
 // =============================================================================
 
-export interface GetPhasVersionRequest {
+const GetPhasVersionBaseFields = {
+  rulesetVersion: Schema.String.pipe(T.HttpPath("rulesetVersion")),
+  rulesetPhase: Schema.String.pipe(T.HttpPath("rulesetPhase")),
+} as const;
+
+interface GetPhasVersionBaseRequest {
   rulesetVersion: string;
+  rulesetPhase: string;
 }
 
-export const GetPhasVersionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  rulesetVersion: Schema.String.pipe(T.HttpPath("rulesetVersion")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/{accountOrZone}/{accountOrZoneId}/rulesets/phases/{rulesetPhase}/entrypoint/versions/{rulesetVersion}",
-  }),
-) as unknown as Schema.Schema<GetPhasVersionRequest>;
+export interface GetPhasVersionForAccountRequest extends GetPhasVersionBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface GetPhasVersionForZoneRequest extends GetPhasVersionBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const GetPhasVersionForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...GetPhasVersionBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/rulesets/phases/{rulesetPhase}/entrypoint/versions/{rulesetVersion}",
+    }),
+  ) as unknown as Schema.Schema<GetPhasVersionForAccountRequest>;
+
+export const GetPhasVersionForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...GetPhasVersionBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/rulesets/phases/{rulesetPhase}/entrypoint/versions/{rulesetVersion}",
+    }),
+  ) as unknown as Schema.Schema<GetPhasVersionForZoneRequest>;
 
 export interface GetPhasVersionResponse {
   /** The unique ID of the ruleset. */
@@ -12877,26 +12978,67 @@ export const GetPhasVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export type GetPhasVersionError = DefaultErrors;
 
-export const getPhasVersion: API.OperationMethod<
-  GetPhasVersionRequest,
+export const getPhasVersionForAccount: API.OperationMethod<
+  GetPhasVersionForAccountRequest,
   GetPhasVersionResponse,
   GetPhasVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetPhasVersionRequest,
+  input: GetPhasVersionForAccountRequest,
   output: GetPhasVersionResponse,
   errors: [],
 }));
 
-export interface ListPhasVersionsRequest {}
+export const getPhasVersionForZone: API.OperationMethod<
+  GetPhasVersionForZoneRequest,
+  GetPhasVersionResponse,
+  GetPhasVersionError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetPhasVersionForZoneRequest,
+  output: GetPhasVersionResponse,
+  errors: [],
+}));
 
-export const ListPhasVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+const ListPhasVersionsBaseFields = {
+  rulesetPhase: Schema.String.pipe(T.HttpPath("rulesetPhase")),
+} as const;
+
+interface ListPhasVersionsBaseRequest {
+  rulesetPhase: string;
+}
+
+export interface ListPhasVersionsForAccountRequest extends ListPhasVersionsBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface ListPhasVersionsForZoneRequest extends ListPhasVersionsBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const ListPhasVersionsForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...ListPhasVersionsBaseFields,
+  }).pipe(
     T.Http({
       method: "GET",
-      path: "/{accountOrZone}/{accountOrZoneId}/rulesets/phases/{rulesetPhase}/entrypoint/versions",
+      path: "/accounts/{account_id}/rulesets/phases/{rulesetPhase}/entrypoint/versions",
     }),
-  ) as unknown as Schema.Schema<ListPhasVersionsRequest>;
+  ) as unknown as Schema.Schema<ListPhasVersionsForAccountRequest>;
+
+export const ListPhasVersionsForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...ListPhasVersionsBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/rulesets/phases/{rulesetPhase}/entrypoint/versions",
+    }),
+  ) as unknown as Schema.Schema<ListPhasVersionsForZoneRequest>;
 
 export interface ListPhasVersionsResponse {
   result: {
@@ -12986,13 +13128,28 @@ export const ListPhasVersionsResponse =
 
 export type ListPhasVersionsError = DefaultErrors;
 
-export const listPhasVersions: API.PaginatedOperationMethod<
-  ListPhasVersionsRequest,
+export const listPhasVersionsForAccount: API.PaginatedOperationMethod<
+  ListPhasVersionsForAccountRequest,
   ListPhasVersionsResponse,
   ListPhasVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListPhasVersionsRequest,
+  input: ListPhasVersionsForAccountRequest,
+  output: ListPhasVersionsResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
+}));
+
+export const listPhasVersionsForZone: API.PaginatedOperationMethod<
+  ListPhasVersionsForZoneRequest,
+  ListPhasVersionsResponse,
+  ListPhasVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListPhasVersionsForZoneRequest,
   output: ListPhasVersionsResponse,
   errors: [],
   pagination: {
@@ -13005,54 +13162,8 @@ export const listPhasVersions: API.PaginatedOperationMethod<
 // Rule
 // =============================================================================
 
-export interface CreateRuleRequest {
-  rulesetId: string;
-  /** Path param: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
-  accountId?: string;
-  /** Path param: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
-  zoneId?: string;
-  /** Body param: The unique ID of the rule. */
-  id?: string;
-  /** Body param: The action to perform when the rule matches. */
-  action?: "block";
-  /** Body param: The parameters configuring the rule's action. */
-  actionParameters?: {
-    response?: { content: string; contentType: string; statusCode: number };
-  };
-  /** Body param: An informative description of the rule. */
-  description?: string;
-  /** Body param: Whether the rule should be executed. */
-  enabled?: boolean;
-  /** Body param: Configuration for exposed credential checking. */
-  exposedCredentialCheck?: {
-    passwordExpression: string;
-    usernameExpression: string;
-  };
-  /** Body param: The expression defining which traffic will match the rule. */
-  expression?: string;
-  /** Body param: An object configuring the rule's logging behavior. */
-  logging?: { enabled: boolean };
-  /** Body param: An object configuring where the rule will be placed. */
-  position?: { before?: string } | { after?: string } | { index?: number };
-  /** Body param: An object configuring the rule's rate limit behavior. */
-  ratelimit?: {
-    characteristics: string[];
-    period: number;
-    countingExpression?: string;
-    mitigationTimeout?: number;
-    requestsPerPeriod?: number;
-    requestsToOrigin?: boolean;
-    scorePerPeriod?: number;
-    scoreResponseHeaderName?: string;
-  };
-  /** Body param: The reference of the rule (the rule's ID by default). */
-  ref?: string;
-}
-
-export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+const CreateRuleBaseFields = {
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   id: Schema.optional(Schema.String),
   action: Schema.optional(Schema.Literal("block")),
   actionParameters: Schema.optional(
@@ -13128,25 +13239,105 @@ export const CreateRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   ref: Schema.optional(Schema.String),
-}).pipe(
-  Schema.encodeKeys({
-    id: "id",
-    action: "action",
-    actionParameters: "action_parameters",
-    description: "description",
-    enabled: "enabled",
-    exposedCredentialCheck: "exposed_credential_check",
-    expression: "expression",
-    logging: "logging",
-    position: "position",
-    ratelimit: "ratelimit",
-    ref: "ref",
-  }),
-  T.Http({
-    method: "POST",
-    path: "/{accountOrZone}/{accountOrZoneId}/rulesets/{rulesetId}/rules",
-  }),
-) as unknown as Schema.Schema<CreateRuleRequest>;
+} as const;
+
+interface CreateRuleBaseRequest {
+  rulesetId: string;
+  /** Body param: The unique ID of the rule. */
+  id?: string;
+  /** Body param: The action to perform when the rule matches. */
+  action?: "block";
+  /** Body param: The parameters configuring the rule's action. */
+  actionParameters?: {
+    response?: { content: string; contentType: string; statusCode: number };
+  };
+  /** Body param: An informative description of the rule. */
+  description?: string;
+  /** Body param: Whether the rule should be executed. */
+  enabled?: boolean;
+  /** Body param: Configuration for exposed credential checking. */
+  exposedCredentialCheck?: {
+    passwordExpression: string;
+    usernameExpression: string;
+  };
+  /** Body param: The expression defining which traffic will match the rule. */
+  expression?: string;
+  /** Body param: An object configuring the rule's logging behavior. */
+  logging?: { enabled: boolean };
+  /** Body param: An object configuring where the rule will be placed. */
+  position?: { before?: string } | { after?: string } | { index?: number };
+  /** Body param: An object configuring the rule's rate limit behavior. */
+  ratelimit?: {
+    characteristics: string[];
+    period: number;
+    countingExpression?: string;
+    mitigationTimeout?: number;
+    requestsPerPeriod?: number;
+    requestsToOrigin?: boolean;
+    scorePerPeriod?: number;
+    scoreResponseHeaderName?: string;
+  };
+  /** Body param: The reference of the rule (the rule's ID by default). */
+  ref?: string;
+}
+
+export interface CreateRuleForAccountRequest extends CreateRuleBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface CreateRuleForZoneRequest extends CreateRuleBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const CreateRuleForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...CreateRuleBaseFields,
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      action: "action",
+      actionParameters: "action_parameters",
+      description: "description",
+      enabled: "enabled",
+      exposedCredentialCheck: "exposed_credential_check",
+      expression: "expression",
+      logging: "logging",
+      position: "position",
+      ratelimit: "ratelimit",
+      ref: "ref",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/rulesets/{rulesetId}/rules",
+    }),
+  ) as unknown as Schema.Schema<CreateRuleForAccountRequest>;
+
+export const CreateRuleForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...CreateRuleBaseFields,
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      action: "action",
+      actionParameters: "action_parameters",
+      description: "description",
+      enabled: "enabled",
+      exposedCredentialCheck: "exposed_credential_check",
+      expression: "expression",
+      logging: "logging",
+      position: "position",
+      ratelimit: "ratelimit",
+      ref: "ref",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/zones/{zone_id}/rulesets/{rulesetId}/rules",
+    }),
+  ) as unknown as Schema.Schema<CreateRuleForZoneRequest>;
 
 export interface CreateRuleResponse {
   /** The unique ID of the ruleset. */
@@ -16622,67 +16813,31 @@ export const CreateRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type CreateRuleError = DefaultErrors;
 
-export const createRule: API.OperationMethod<
-  CreateRuleRequest,
+export const createRuleForAccount: API.OperationMethod<
+  CreateRuleForAccountRequest,
   CreateRuleResponse,
   CreateRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateRuleRequest,
+  input: CreateRuleForAccountRequest,
   output: CreateRuleResponse,
   errors: [],
 }));
 
-export interface PatchRuleRequest {
-  rulesetId: string;
-  ruleId: string;
-  /** Path param: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
-  accountId?: string;
-  /** Path param: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
-  zoneId?: string;
-  /** Body param: The unique ID of the rule. */
-  id?: string;
-  /** Body param: The action to perform when the rule matches. */
-  action?: "block";
-  /** Body param: The parameters configuring the rule's action. */
-  actionParameters?: {
-    response?: { content: string; contentType: string; statusCode: number };
-  };
-  /** Body param: An informative description of the rule. */
-  description?: string;
-  /** Body param: Whether the rule should be executed. */
-  enabled?: boolean;
-  /** Body param: Configuration for exposed credential checking. */
-  exposedCredentialCheck?: {
-    passwordExpression: string;
-    usernameExpression: string;
-  };
-  /** Body param: The expression defining which traffic will match the rule. */
-  expression?: string;
-  /** Body param: An object configuring the rule's logging behavior. */
-  logging?: { enabled: boolean };
-  /** Body param: An object configuring where the rule will be placed. */
-  position?: { before?: string } | { after?: string } | { index?: number };
-  /** Body param: An object configuring the rule's rate limit behavior. */
-  ratelimit?: {
-    characteristics: string[];
-    period: number;
-    countingExpression?: string;
-    mitigationTimeout?: number;
-    requestsPerPeriod?: number;
-    requestsToOrigin?: boolean;
-    scorePerPeriod?: number;
-    scoreResponseHeaderName?: string;
-  };
-  /** Body param: The reference of the rule (the rule's ID by default). */
-  ref?: string;
-}
+export const createRuleForZone: API.OperationMethod<
+  CreateRuleForZoneRequest,
+  CreateRuleResponse,
+  CreateRuleError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateRuleForZoneRequest,
+  output: CreateRuleResponse,
+  errors: [],
+}));
 
-export const PatchRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+const PatchRuleBaseFields = {
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
   ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   id: Schema.optional(Schema.String),
   action: Schema.optional(Schema.Literal("block")),
   actionParameters: Schema.optional(
@@ -16758,25 +16913,106 @@ export const PatchRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ),
   ),
   ref: Schema.optional(Schema.String),
-}).pipe(
-  Schema.encodeKeys({
-    id: "id",
-    action: "action",
-    actionParameters: "action_parameters",
-    description: "description",
-    enabled: "enabled",
-    exposedCredentialCheck: "exposed_credential_check",
-    expression: "expression",
-    logging: "logging",
-    position: "position",
-    ratelimit: "ratelimit",
-    ref: "ref",
-  }),
-  T.Http({
-    method: "PATCH",
-    path: "/{accountOrZone}/{accountOrZoneId}/rulesets/{rulesetId}/rules/{ruleId}",
-  }),
-) as unknown as Schema.Schema<PatchRuleRequest>;
+} as const;
+
+interface PatchRuleBaseRequest {
+  rulesetId: string;
+  ruleId: string;
+  /** Body param: The unique ID of the rule. */
+  id?: string;
+  /** Body param: The action to perform when the rule matches. */
+  action?: "block";
+  /** Body param: The parameters configuring the rule's action. */
+  actionParameters?: {
+    response?: { content: string; contentType: string; statusCode: number };
+  };
+  /** Body param: An informative description of the rule. */
+  description?: string;
+  /** Body param: Whether the rule should be executed. */
+  enabled?: boolean;
+  /** Body param: Configuration for exposed credential checking. */
+  exposedCredentialCheck?: {
+    passwordExpression: string;
+    usernameExpression: string;
+  };
+  /** Body param: The expression defining which traffic will match the rule. */
+  expression?: string;
+  /** Body param: An object configuring the rule's logging behavior. */
+  logging?: { enabled: boolean };
+  /** Body param: An object configuring where the rule will be placed. */
+  position?: { before?: string } | { after?: string } | { index?: number };
+  /** Body param: An object configuring the rule's rate limit behavior. */
+  ratelimit?: {
+    characteristics: string[];
+    period: number;
+    countingExpression?: string;
+    mitigationTimeout?: number;
+    requestsPerPeriod?: number;
+    requestsToOrigin?: boolean;
+    scorePerPeriod?: number;
+    scoreResponseHeaderName?: string;
+  };
+  /** Body param: The reference of the rule (the rule's ID by default). */
+  ref?: string;
+}
+
+export interface PatchRuleForAccountRequest extends PatchRuleBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface PatchRuleForZoneRequest extends PatchRuleBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const PatchRuleForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...PatchRuleBaseFields,
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      action: "action",
+      actionParameters: "action_parameters",
+      description: "description",
+      enabled: "enabled",
+      exposedCredentialCheck: "exposed_credential_check",
+      expression: "expression",
+      logging: "logging",
+      position: "position",
+      ratelimit: "ratelimit",
+      ref: "ref",
+    }),
+    T.Http({
+      method: "PATCH",
+      path: "/accounts/{account_id}/rulesets/{rulesetId}/rules/{ruleId}",
+    }),
+  ) as unknown as Schema.Schema<PatchRuleForAccountRequest>;
+
+export const PatchRuleForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...PatchRuleBaseFields,
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      action: "action",
+      actionParameters: "action_parameters",
+      description: "description",
+      enabled: "enabled",
+      exposedCredentialCheck: "exposed_credential_check",
+      expression: "expression",
+      logging: "logging",
+      position: "position",
+      ratelimit: "ratelimit",
+      ref: "ref",
+    }),
+    T.Http({
+      method: "PATCH",
+      path: "/zones/{zone_id}/rulesets/{rulesetId}/rules/{ruleId}",
+    }),
+  ) as unknown as Schema.Schema<PatchRuleForZoneRequest>;
 
 export interface PatchRuleResponse {
   /** The unique ID of the ruleset. */
@@ -20252,31 +20488,69 @@ export const PatchRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type PatchRuleError = DefaultErrors;
 
-export const patchRule: API.OperationMethod<
-  PatchRuleRequest,
+export const patchRuleForAccount: API.OperationMethod<
+  PatchRuleForAccountRequest,
   PatchRuleResponse,
   PatchRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: PatchRuleRequest,
+  input: PatchRuleForAccountRequest,
   output: PatchRuleResponse,
   errors: [],
 }));
 
-export interface DeleteRuleRequest {
+export const patchRuleForZone: API.OperationMethod<
+  PatchRuleForZoneRequest,
+  PatchRuleResponse,
+  PatchRuleError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PatchRuleForZoneRequest,
+  output: PatchRuleResponse,
+  errors: [],
+}));
+
+const DeleteRuleBaseFields = {
+  rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
+  ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
+} as const;
+
+interface DeleteRuleBaseRequest {
   rulesetId: string;
   ruleId: string;
 }
 
-export const DeleteRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
-  ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
-}).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "/{accountOrZone}/{accountOrZoneId}/rulesets/{rulesetId}/rules/{ruleId}",
-  }),
-) as unknown as Schema.Schema<DeleteRuleRequest>;
+export interface DeleteRuleForAccountRequest extends DeleteRuleBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface DeleteRuleForZoneRequest extends DeleteRuleBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const DeleteRuleForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...DeleteRuleBaseFields,
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/rulesets/{rulesetId}/rules/{ruleId}",
+    }),
+  ) as unknown as Schema.Schema<DeleteRuleForAccountRequest>;
+
+export const DeleteRuleForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...DeleteRuleBaseFields,
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/zones/{zone_id}/rulesets/{rulesetId}/rules/{ruleId}",
+    }),
+  ) as unknown as Schema.Schema<DeleteRuleForZoneRequest>;
 
 export interface DeleteRuleResponse {
   /** The unique ID of the ruleset. */
@@ -23752,13 +24026,24 @@ export const DeleteRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type DeleteRuleError = DefaultErrors;
 
-export const deleteRule: API.OperationMethod<
-  DeleteRuleRequest,
+export const deleteRuleForAccount: API.OperationMethod<
+  DeleteRuleForAccountRequest,
   DeleteRuleResponse,
   DeleteRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteRuleRequest,
+  input: DeleteRuleForAccountRequest,
+  output: DeleteRuleResponse,
+  errors: [],
+}));
+
+export const deleteRuleForZone: API.OperationMethod<
+  DeleteRuleForZoneRequest,
+  DeleteRuleResponse,
+  DeleteRuleError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteRuleForZoneRequest,
   output: DeleteRuleResponse,
   errors: [],
 }));
@@ -23767,18 +24052,42 @@ export const deleteRule: API.OperationMethod<
 // Ruleset
 // =============================================================================
 
-export interface GetRulesetRequest {
+const GetRulesetBaseFields = {
+  rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
+} as const;
+
+interface GetRulesetBaseRequest {
   rulesetId: string;
 }
 
-export const GetRulesetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/{accountOrZone}/{accountOrZoneId}/rulesets/{rulesetId}",
-  }),
-) as unknown as Schema.Schema<GetRulesetRequest>;
+export interface GetRulesetForAccountRequest extends GetRulesetBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface GetRulesetForZoneRequest extends GetRulesetBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const GetRulesetForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...GetRulesetBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/rulesets/{rulesetId}",
+    }),
+  ) as unknown as Schema.Schema<GetRulesetForAccountRequest>;
+
+export const GetRulesetForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...GetRulesetBaseFields,
+  }).pipe(
+    T.Http({ method: "GET", path: "/zones/{zone_id}/rulesets/{rulesetId}" }),
+  ) as unknown as Schema.Schema<GetRulesetForZoneRequest>;
 
 export interface GetRulesetResponse {
   /** The unique ID of the ruleset. */
@@ -27254,27 +27563,57 @@ export const GetRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type GetRulesetError = DefaultErrors;
 
-export const getRuleset: API.OperationMethod<
-  GetRulesetRequest,
+export const getRulesetForAccount: API.OperationMethod<
+  GetRulesetForAccountRequest,
   GetRulesetResponse,
   GetRulesetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetRulesetRequest,
+  input: GetRulesetForAccountRequest,
   output: GetRulesetResponse,
   errors: [],
 }));
 
-export interface ListRulesetsRequest {}
+export const getRulesetForZone: API.OperationMethod<
+  GetRulesetForZoneRequest,
+  GetRulesetResponse,
+  GetRulesetError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetRulesetForZoneRequest,
+  output: GetRulesetResponse,
+  errors: [],
+}));
 
-export const ListRulesetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
-  T.Http({
-    method: "GET",
-    path: "/{accountOrZone}/{accountOrZoneId}/rulesets",
-  }),
-) as unknown as Schema.Schema<ListRulesetsRequest>;
+const ListRulesetsBaseFields = {} as const;
+
+interface ListRulesetsBaseRequest {}
+
+export interface ListRulesetsForAccountRequest extends ListRulesetsBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface ListRulesetsForZoneRequest extends ListRulesetsBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const ListRulesetsForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...ListRulesetsBaseFields,
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/rulesets" }),
+  ) as unknown as Schema.Schema<ListRulesetsForAccountRequest>;
+
+export const ListRulesetsForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...ListRulesetsBaseFields,
+  }).pipe(
+    T.Http({ method: "GET", path: "/zones/{zone_id}/rulesets" }),
+  ) as unknown as Schema.Schema<ListRulesetsForZoneRequest>;
 
 export interface ListRulesetsResponse {
   result: {
@@ -27309,11 +27648,11 @@ export interface ListRulesetsResponse {
     version: string;
     description?: string | null;
   }[];
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     cursor?: string | null;
     perPage?: number | null;
-  };
+  } | null;
 }
 
 export const ListRulesetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -27362,16 +27701,21 @@ export const ListRulesetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-  resultInfo: Schema.Struct({
-    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    cursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      count: "count",
-      cursor: "cursor",
-      perPage: "per_page",
-    }),
+  resultInfo: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        cursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          count: "count",
+          cursor: "cursor",
+          perPage: "per_page",
+        }),
+      ),
+      Schema.Null,
+    ]),
   ),
 }).pipe(
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
@@ -27379,13 +27723,13 @@ export const ListRulesetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type ListRulesetsError = DefaultErrors;
 
-export const listRulesets: API.PaginatedOperationMethod<
-  ListRulesetsRequest,
+export const listRulesetsForAccount: API.PaginatedOperationMethod<
+  ListRulesetsForAccountRequest,
   ListRulesetsResponse,
   ListRulesetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListRulesetsRequest,
+  input: ListRulesetsForAccountRequest,
   output: ListRulesetsResponse,
   errors: [],
   pagination: {
@@ -27397,665 +27741,25 @@ export const listRulesets: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export interface CreateRulesetRequest {
-  /** Path param: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
-  accountId?: string;
-  /** Path param: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
-  zoneId?: string;
-  /** Body param: The kind of the ruleset. */
-  kind: "managed" | "custom" | "root" | "zone";
-  /** Body param: The human-readable name of the ruleset. */
-  name: string;
-  /** Body param: The phase of the ruleset. */
-  phase:
-    | "ddos_l4"
-    | "ddos_l7"
-    | "http_config_settings"
-    | "http_custom_errors"
-    | "http_log_custom_fields"
-    | "http_ratelimit"
-    | "http_request_cache_settings"
-    | "http_request_dynamic_redirect"
-    | "http_request_firewall_custom"
-    | "http_request_firewall_managed"
-    | "http_request_late_transform"
-    | "http_request_origin"
-    | "http_request_redirect"
-    | "http_request_sanitize"
-    | "http_request_sbfm"
-    | "http_request_transform"
-    | "http_response_compression"
-    | "http_response_firewall_managed"
-    | "http_response_headers_transform"
-    | "magic_transit"
-    | "magic_transit_ids_managed"
-    | "magic_transit_managed"
-    | "magic_transit_ratelimit";
-  /** Body param: An informative description of the ruleset. */
-  description?: string;
-  /** Body param: The list of rules in the ruleset. */
-  rules?: (
-    | {
-        id?: string;
-        action?: "block";
-        actionParameters?: {
-          response?: {
-            content: string;
-            contentType: string;
-            statusCode: number;
-          };
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "challenge";
-        actionParameters?: unknown;
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "compress_response";
-        actionParameters?: {
-          algorithms: {
-            name?: "none" | "auto" | "default" | "gzip" | "brotli" | "zstd";
-          }[];
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "ddos_dynamic";
-        actionParameters?: unknown;
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "execute";
-        actionParameters?: {
-          id: string;
-          matchedData?: { publicKey: string };
-          overrides?: {
-            action?: string;
-            categories?: {
-              category: string;
-              action?: string;
-              enabled?: boolean;
-              sensitivityLevel?: "default" | "medium" | "low" | "eoff";
-            }[];
-            enabled?: boolean;
-            rules?: {
-              id: string;
-              action?: string;
-              enabled?: boolean;
-              scoreThreshold?: number;
-              sensitivityLevel?: "default" | "medium" | "low" | "eoff";
-            }[];
-            sensitivityLevel?: "default" | "medium" | "low" | "eoff";
-          };
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "force_connection_close";
-        actionParameters?: unknown;
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "js_challenge";
-        actionParameters?: unknown;
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "log";
-        actionParameters?: unknown;
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "log_custom_field";
-        actionParameters?: {
-          cookieFields?: { name: string }[];
-          rawResponseFields?: { name: string; preserveDuplicates?: boolean }[];
-          requestFields?: { name: string }[];
-          responseFields?: { name: string; preserveDuplicates?: boolean }[];
-          transformedRequestFields?: { name: string }[];
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "managed_challenge";
-        actionParameters?: unknown;
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "redirect";
-        actionParameters?: {
-          fromList?: { key: string; name: string };
-          fromValue?: {
-            targetUrl: { expression?: string; value?: string };
-            preserveQueryString?: boolean;
-            statusCode?: "301" | "302" | "303" | "307" | "308";
-          };
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "rewrite";
-        actionParameters?: {
-          headers?: Record<string, unknown>;
-          uri?:
-            | { path: { expression?: string; value?: string } }
-            | { query: { expression?: string; value?: string } };
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "route";
-        actionParameters?: {
-          hostHeader?: string;
-          origin?: { host?: string; port?: number };
-          sni?: { value: string };
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "score";
-        actionParameters?: { increment: number };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "serve_error";
-        actionParameters?:
-          | {
-              content: string;
-              contentType?:
-                | "application/json"
-                | "text/html"
-                | "text/plain"
-                | "text/xml";
-              statusCode?: number;
-            }
-          | {
-              assetName: string;
-              contentType?:
-                | "application/json"
-                | "text/html"
-                | "text/plain"
-                | "text/xml";
-              statusCode?: number;
-            };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "set_cache_settings";
-        actionParameters?: {
-          additionalCacheablePorts?: number[];
-          browserTtl?: {
-            mode:
-              | "respect_origin"
-              | "bypass_by_default"
-              | "override_origin"
-              | "bypass";
-            default?: number;
-          };
-          cache?: boolean;
-          cacheKey?: {
-            cacheByDeviceType?: boolean;
-            cacheDeceptionArmor?: boolean;
-            customKey?: {
-              cookie?: { checkPresence?: string[]; include?: string[] };
-              header?: {
-                checkPresence?: string[];
-                contains?: Record<string, unknown>;
-                excludeOrigin?: boolean;
-                include?: string[];
-              };
-              host?: { resolved?: boolean };
-              queryString?: {
-                exclude?: { all?: true; list?: string[] };
-                include?: { all?: true; list?: string[] };
-              };
-              user?: { deviceType?: boolean; geo?: boolean; lang?: boolean };
-            };
-            ignoreQueryStringsOrder?: boolean;
-          };
-          cacheReserve?: { eligible: boolean; minimumFileSize?: number };
-          edgeTtl?: {
-            mode: "respect_origin" | "bypass_by_default" | "override_origin";
-            default?: number;
-            statusCodeTtl?: {
-              value: number;
-              statusCode?: number;
-              statusCodeRange?: { from?: number; to?: number };
-            }[];
-          };
-          originCacheControl?: boolean;
-          originErrorPagePassthru?: boolean;
-          readTimeout?: number;
-          respectStrongEtags?: boolean;
-          serveStale?: { disableStaleWhileUpdating?: boolean };
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "set_config";
-        actionParameters?: {
-          automaticHttpsRewrites?: boolean;
-          autominify?: { css?: boolean; html?: boolean; js?: boolean };
-          bic?: boolean;
-          disableApps?: true;
-          disablePayPerCrawl?: true;
-          disableRum?: true;
-          disableZaraz?: true;
-          emailObfuscation?: boolean;
-          fonts?: boolean;
-          hotlinkProtection?: boolean;
-          mirage?: boolean;
-          opportunisticEncryption?: boolean;
-          polish?: "off" | "lossless" | "lossy" | "webp";
-          requestBodyBuffering?: "none" | "standard" | "full";
-          responseBodyBuffering?: "none" | "standard";
-          rocketLoader?: boolean;
-          securityLevel?:
-            | "off"
-            | "essentially_off"
-            | "low"
-            | "medium"
-            | "high"
-            | "under_attack";
-          serverSideExcludes?: boolean;
-          ssl?: "off" | "flexible" | "full" | "strict" | "origin_pull";
-          sxg?: boolean;
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "skip";
-        actionParameters?: {
-          phase?: "current";
-          phases?: (
-            | "ddos_l4"
-            | "ddos_l7"
-            | "http_config_settings"
-            | "http_custom_errors"
-            | "http_log_custom_fields"
-            | "http_ratelimit"
-            | "http_request_cache_settings"
-            | "http_request_dynamic_redirect"
-            | "http_request_firewall_custom"
-            | "http_request_firewall_managed"
-            | "http_request_late_transform"
-            | "http_request_origin"
-            | "http_request_redirect"
-            | "http_request_sanitize"
-            | "http_request_sbfm"
-            | "http_request_transform"
-            | "http_response_compression"
-            | "http_response_firewall_managed"
-            | "http_response_headers_transform"
-            | "magic_transit"
-            | "magic_transit_ids_managed"
-            | "magic_transit_managed"
-            | "magic_transit_ratelimit"
-          )[];
-          products?: (
-            | "bic"
-            | "hot"
-            | "rateLimit"
-            | "securityLevel"
-            | "uaBlock"
-            | "waf"
-            | "zoneLockdown"
-          )[];
-          rules?: Record<string, unknown>;
-          ruleset?: "current";
-          rulesets?: string[];
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-  )[];
-}
+export const listRulesetsForZone: API.PaginatedOperationMethod<
+  ListRulesetsForZoneRequest,
+  ListRulesetsResponse,
+  ListRulesetsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListRulesetsForZoneRequest,
+  output: ListRulesetsResponse,
+  errors: [],
+  pagination: {
+    mode: "cursor",
+    inputToken: "cursor",
+    outputToken: "resultInfo.cursor",
+    items: "result",
+    pageSize: "perPage",
+  } as const,
+}));
 
-export const CreateRulesetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+const CreateRulesetBaseFields = {
   kind: Schema.Literals(["managed", "custom", "root", "zone"]),
   name: Schema.String,
   phase: Schema.Literals([
@@ -29783,12 +29487,685 @@ export const CreateRulesetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
     ),
   ),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "/{accountOrZone}/{accountOrZoneId}/rulesets",
-  }),
-) as unknown as Schema.Schema<CreateRulesetRequest>;
+} as const;
+
+interface CreateRulesetBaseRequest {
+  /** Body param: The kind of the ruleset. */
+  kind: "managed" | "custom" | "root" | "zone";
+  /** Body param: The human-readable name of the ruleset. */
+  name: string;
+  /** Body param: The phase of the ruleset. */
+  phase:
+    | "ddos_l4"
+    | "ddos_l7"
+    | "http_config_settings"
+    | "http_custom_errors"
+    | "http_log_custom_fields"
+    | "http_ratelimit"
+    | "http_request_cache_settings"
+    | "http_request_dynamic_redirect"
+    | "http_request_firewall_custom"
+    | "http_request_firewall_managed"
+    | "http_request_late_transform"
+    | "http_request_origin"
+    | "http_request_redirect"
+    | "http_request_sanitize"
+    | "http_request_sbfm"
+    | "http_request_transform"
+    | "http_response_compression"
+    | "http_response_firewall_managed"
+    | "http_response_headers_transform"
+    | "magic_transit"
+    | "magic_transit_ids_managed"
+    | "magic_transit_managed"
+    | "magic_transit_ratelimit";
+  /** Body param: An informative description of the ruleset. */
+  description?: string;
+  /** Body param: The list of rules in the ruleset. */
+  rules?: (
+    | {
+        id?: string;
+        action?: "block";
+        actionParameters?: {
+          response?: {
+            content: string;
+            contentType: string;
+            statusCode: number;
+          };
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "challenge";
+        actionParameters?: unknown;
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "compress_response";
+        actionParameters?: {
+          algorithms: {
+            name?: "none" | "auto" | "default" | "gzip" | "brotli" | "zstd";
+          }[];
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "ddos_dynamic";
+        actionParameters?: unknown;
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "execute";
+        actionParameters?: {
+          id: string;
+          matchedData?: { publicKey: string };
+          overrides?: {
+            action?: string;
+            categories?: {
+              category: string;
+              action?: string;
+              enabled?: boolean;
+              sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+            }[];
+            enabled?: boolean;
+            rules?: {
+              id: string;
+              action?: string;
+              enabled?: boolean;
+              scoreThreshold?: number;
+              sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+            }[];
+            sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+          };
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "force_connection_close";
+        actionParameters?: unknown;
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "js_challenge";
+        actionParameters?: unknown;
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "log";
+        actionParameters?: unknown;
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "log_custom_field";
+        actionParameters?: {
+          cookieFields?: { name: string }[];
+          rawResponseFields?: { name: string; preserveDuplicates?: boolean }[];
+          requestFields?: { name: string }[];
+          responseFields?: { name: string; preserveDuplicates?: boolean }[];
+          transformedRequestFields?: { name: string }[];
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "managed_challenge";
+        actionParameters?: unknown;
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "redirect";
+        actionParameters?: {
+          fromList?: { key: string; name: string };
+          fromValue?: {
+            targetUrl: { expression?: string; value?: string };
+            preserveQueryString?: boolean;
+            statusCode?: "301" | "302" | "303" | "307" | "308";
+          };
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "rewrite";
+        actionParameters?: {
+          headers?: Record<string, unknown>;
+          uri?:
+            | { path: { expression?: string; value?: string } }
+            | { query: { expression?: string; value?: string } };
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "route";
+        actionParameters?: {
+          hostHeader?: string;
+          origin?: { host?: string; port?: number };
+          sni?: { value: string };
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "score";
+        actionParameters?: { increment: number };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "serve_error";
+        actionParameters?:
+          | {
+              content: string;
+              contentType?:
+                | "application/json"
+                | "text/html"
+                | "text/plain"
+                | "text/xml";
+              statusCode?: number;
+            }
+          | {
+              assetName: string;
+              contentType?:
+                | "application/json"
+                | "text/html"
+                | "text/plain"
+                | "text/xml";
+              statusCode?: number;
+            };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "set_cache_settings";
+        actionParameters?: {
+          additionalCacheablePorts?: number[];
+          browserTtl?: {
+            mode:
+              | "respect_origin"
+              | "bypass_by_default"
+              | "override_origin"
+              | "bypass";
+            default?: number;
+          };
+          cache?: boolean;
+          cacheKey?: {
+            cacheByDeviceType?: boolean;
+            cacheDeceptionArmor?: boolean;
+            customKey?: {
+              cookie?: { checkPresence?: string[]; include?: string[] };
+              header?: {
+                checkPresence?: string[];
+                contains?: Record<string, unknown>;
+                excludeOrigin?: boolean;
+                include?: string[];
+              };
+              host?: { resolved?: boolean };
+              queryString?: {
+                exclude?: { all?: true; list?: string[] };
+                include?: { all?: true; list?: string[] };
+              };
+              user?: { deviceType?: boolean; geo?: boolean; lang?: boolean };
+            };
+            ignoreQueryStringsOrder?: boolean;
+          };
+          cacheReserve?: { eligible: boolean; minimumFileSize?: number };
+          edgeTtl?: {
+            mode: "respect_origin" | "bypass_by_default" | "override_origin";
+            default?: number;
+            statusCodeTtl?: {
+              value: number;
+              statusCode?: number;
+              statusCodeRange?: { from?: number; to?: number };
+            }[];
+          };
+          originCacheControl?: boolean;
+          originErrorPagePassthru?: boolean;
+          readTimeout?: number;
+          respectStrongEtags?: boolean;
+          serveStale?: { disableStaleWhileUpdating?: boolean };
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "set_config";
+        actionParameters?: {
+          automaticHttpsRewrites?: boolean;
+          autominify?: { css?: boolean; html?: boolean; js?: boolean };
+          bic?: boolean;
+          disableApps?: true;
+          disablePayPerCrawl?: true;
+          disableRum?: true;
+          disableZaraz?: true;
+          emailObfuscation?: boolean;
+          fonts?: boolean;
+          hotlinkProtection?: boolean;
+          mirage?: boolean;
+          opportunisticEncryption?: boolean;
+          polish?: "off" | "lossless" | "lossy" | "webp";
+          requestBodyBuffering?: "none" | "standard" | "full";
+          responseBodyBuffering?: "none" | "standard";
+          rocketLoader?: boolean;
+          securityLevel?:
+            | "off"
+            | "essentially_off"
+            | "low"
+            | "medium"
+            | "high"
+            | "under_attack";
+          serverSideExcludes?: boolean;
+          ssl?: "off" | "flexible" | "full" | "strict" | "origin_pull";
+          sxg?: boolean;
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "skip";
+        actionParameters?: {
+          phase?: "current";
+          phases?: (
+            | "ddos_l4"
+            | "ddos_l7"
+            | "http_config_settings"
+            | "http_custom_errors"
+            | "http_log_custom_fields"
+            | "http_ratelimit"
+            | "http_request_cache_settings"
+            | "http_request_dynamic_redirect"
+            | "http_request_firewall_custom"
+            | "http_request_firewall_managed"
+            | "http_request_late_transform"
+            | "http_request_origin"
+            | "http_request_redirect"
+            | "http_request_sanitize"
+            | "http_request_sbfm"
+            | "http_request_transform"
+            | "http_response_compression"
+            | "http_response_firewall_managed"
+            | "http_response_headers_transform"
+            | "magic_transit"
+            | "magic_transit_ids_managed"
+            | "magic_transit_managed"
+            | "magic_transit_ratelimit"
+          )[];
+          products?: (
+            | "bic"
+            | "hot"
+            | "rateLimit"
+            | "securityLevel"
+            | "uaBlock"
+            | "waf"
+            | "zoneLockdown"
+          )[];
+          rules?: Record<string, unknown>;
+          ruleset?: "current";
+          rulesets?: string[];
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+  )[];
+}
+
+export interface CreateRulesetForAccountRequest extends CreateRulesetBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface CreateRulesetForZoneRequest extends CreateRulesetBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const CreateRulesetForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...CreateRulesetBaseFields,
+  }).pipe(
+    T.Http({ method: "POST", path: "/accounts/{account_id}/rulesets" }),
+  ) as unknown as Schema.Schema<CreateRulesetForAccountRequest>;
+
+export const CreateRulesetForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...CreateRulesetBaseFields,
+  }).pipe(
+    T.Http({ method: "POST", path: "/zones/{zone_id}/rulesets" }),
+  ) as unknown as Schema.Schema<CreateRulesetForZoneRequest>;
 
 export interface CreateRulesetResponse {
   /** The unique ID of the ruleset. */
@@ -33264,678 +33641,30 @@ export const CreateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type CreateRulesetError = DefaultErrors;
 
-export const createRuleset: API.OperationMethod<
-  CreateRulesetRequest,
+export const createRulesetForAccount: API.OperationMethod<
+  CreateRulesetForAccountRequest,
   CreateRulesetResponse,
   CreateRulesetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateRulesetRequest,
+  input: CreateRulesetForAccountRequest,
   output: CreateRulesetResponse,
   errors: [],
 }));
 
-export interface UpdateRulesetRequest {
-  rulesetId: string;
-  /** Path param: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
-  accountId?: string;
-  /** Path param: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
-  zoneId?: string;
-  /** Body param: An informative description of the ruleset. */
-  description?: string;
-  /** Body param: The kind of the ruleset. */
-  kind?: "managed" | "custom" | "root" | "zone";
-  /** Body param: The human-readable name of the ruleset. */
-  name?: string;
-  /** Body param: The phase of the ruleset. */
-  phase?:
-    | "ddos_l4"
-    | "ddos_l7"
-    | "http_config_settings"
-    | "http_custom_errors"
-    | "http_log_custom_fields"
-    | "http_ratelimit"
-    | "http_request_cache_settings"
-    | "http_request_dynamic_redirect"
-    | "http_request_firewall_custom"
-    | "http_request_firewall_managed"
-    | "http_request_late_transform"
-    | "http_request_origin"
-    | "http_request_redirect"
-    | "http_request_sanitize"
-    | "http_request_sbfm"
-    | "http_request_transform"
-    | "http_response_compression"
-    | "http_response_firewall_managed"
-    | "http_response_headers_transform"
-    | "magic_transit"
-    | "magic_transit_ids_managed"
-    | "magic_transit_managed"
-    | "magic_transit_ratelimit";
-  /** Body param: The list of rules in the ruleset. */
-  rules?: (
-    | {
-        id?: string;
-        action?: "block";
-        actionParameters?: {
-          response?: {
-            content: string;
-            contentType: string;
-            statusCode: number;
-          };
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "challenge";
-        actionParameters?: unknown;
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "compress_response";
-        actionParameters?: {
-          algorithms: {
-            name?: "none" | "auto" | "default" | "gzip" | "brotli" | "zstd";
-          }[];
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "ddos_dynamic";
-        actionParameters?: unknown;
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "execute";
-        actionParameters?: {
-          id: string;
-          matchedData?: { publicKey: string };
-          overrides?: {
-            action?: string;
-            categories?: {
-              category: string;
-              action?: string;
-              enabled?: boolean;
-              sensitivityLevel?: "default" | "medium" | "low" | "eoff";
-            }[];
-            enabled?: boolean;
-            rules?: {
-              id: string;
-              action?: string;
-              enabled?: boolean;
-              scoreThreshold?: number;
-              sensitivityLevel?: "default" | "medium" | "low" | "eoff";
-            }[];
-            sensitivityLevel?: "default" | "medium" | "low" | "eoff";
-          };
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "force_connection_close";
-        actionParameters?: unknown;
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "js_challenge";
-        actionParameters?: unknown;
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "log";
-        actionParameters?: unknown;
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "log_custom_field";
-        actionParameters?: {
-          cookieFields?: { name: string }[];
-          rawResponseFields?: { name: string; preserveDuplicates?: boolean }[];
-          requestFields?: { name: string }[];
-          responseFields?: { name: string; preserveDuplicates?: boolean }[];
-          transformedRequestFields?: { name: string }[];
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "managed_challenge";
-        actionParameters?: unknown;
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "redirect";
-        actionParameters?: {
-          fromList?: { key: string; name: string };
-          fromValue?: {
-            targetUrl: { expression?: string; value?: string };
-            preserveQueryString?: boolean;
-            statusCode?: "301" | "302" | "303" | "307" | "308";
-          };
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "rewrite";
-        actionParameters?: {
-          headers?: Record<string, unknown>;
-          uri?:
-            | { path: { expression?: string; value?: string } }
-            | { query: { expression?: string; value?: string } };
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "route";
-        actionParameters?: {
-          hostHeader?: string;
-          origin?: { host?: string; port?: number };
-          sni?: { value: string };
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "score";
-        actionParameters?: { increment: number };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "serve_error";
-        actionParameters?:
-          | {
-              content: string;
-              contentType?:
-                | "application/json"
-                | "text/html"
-                | "text/plain"
-                | "text/xml";
-              statusCode?: number;
-            }
-          | {
-              assetName: string;
-              contentType?:
-                | "application/json"
-                | "text/html"
-                | "text/plain"
-                | "text/xml";
-              statusCode?: number;
-            };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "set_cache_settings";
-        actionParameters?: {
-          additionalCacheablePorts?: number[];
-          browserTtl?: {
-            mode:
-              | "respect_origin"
-              | "bypass_by_default"
-              | "override_origin"
-              | "bypass";
-            default?: number;
-          };
-          cache?: boolean;
-          cacheKey?: {
-            cacheByDeviceType?: boolean;
-            cacheDeceptionArmor?: boolean;
-            customKey?: {
-              cookie?: { checkPresence?: string[]; include?: string[] };
-              header?: {
-                checkPresence?: string[];
-                contains?: Record<string, unknown>;
-                excludeOrigin?: boolean;
-                include?: string[];
-              };
-              host?: { resolved?: boolean };
-              queryString?: {
-                exclude?: { all?: true; list?: string[] };
-                include?: { all?: true; list?: string[] };
-              };
-              user?: { deviceType?: boolean; geo?: boolean; lang?: boolean };
-            };
-            ignoreQueryStringsOrder?: boolean;
-          };
-          cacheReserve?: { eligible: boolean; minimumFileSize?: number };
-          edgeTtl?: {
-            mode: "respect_origin" | "bypass_by_default" | "override_origin";
-            default?: number;
-            statusCodeTtl?: {
-              value: number;
-              statusCode?: number;
-              statusCodeRange?: { from?: number; to?: number };
-            }[];
-          };
-          originCacheControl?: boolean;
-          originErrorPagePassthru?: boolean;
-          readTimeout?: number;
-          respectStrongEtags?: boolean;
-          serveStale?: { disableStaleWhileUpdating?: boolean };
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "set_config";
-        actionParameters?: {
-          automaticHttpsRewrites?: boolean;
-          autominify?: { css?: boolean; html?: boolean; js?: boolean };
-          bic?: boolean;
-          disableApps?: true;
-          disablePayPerCrawl?: true;
-          disableRum?: true;
-          disableZaraz?: true;
-          emailObfuscation?: boolean;
-          fonts?: boolean;
-          hotlinkProtection?: boolean;
-          mirage?: boolean;
-          opportunisticEncryption?: boolean;
-          polish?: "off" | "lossless" | "lossy" | "webp";
-          requestBodyBuffering?: "none" | "standard" | "full";
-          responseBodyBuffering?: "none" | "standard";
-          rocketLoader?: boolean;
-          securityLevel?:
-            | "off"
-            | "essentially_off"
-            | "low"
-            | "medium"
-            | "high"
-            | "under_attack";
-          serverSideExcludes?: boolean;
-          ssl?: "off" | "flexible" | "full" | "strict" | "origin_pull";
-          sxg?: boolean;
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-    | {
-        id?: string;
-        action?: "skip";
-        actionParameters?: {
-          phase?: "current";
-          phases?: (
-            | "ddos_l4"
-            | "ddos_l7"
-            | "http_config_settings"
-            | "http_custom_errors"
-            | "http_log_custom_fields"
-            | "http_ratelimit"
-            | "http_request_cache_settings"
-            | "http_request_dynamic_redirect"
-            | "http_request_firewall_custom"
-            | "http_request_firewall_managed"
-            | "http_request_late_transform"
-            | "http_request_origin"
-            | "http_request_redirect"
-            | "http_request_sanitize"
-            | "http_request_sbfm"
-            | "http_request_transform"
-            | "http_response_compression"
-            | "http_response_firewall_managed"
-            | "http_response_headers_transform"
-            | "magic_transit"
-            | "magic_transit_ids_managed"
-            | "magic_transit_managed"
-            | "magic_transit_ratelimit"
-          )[];
-          products?: (
-            | "bic"
-            | "hot"
-            | "rateLimit"
-            | "securityLevel"
-            | "uaBlock"
-            | "waf"
-            | "zoneLockdown"
-          )[];
-          rules?: Record<string, unknown>;
-          ruleset?: "current";
-          rulesets?: string[];
-        };
-        description?: string;
-        enabled?: boolean;
-        exposedCredentialCheck?: {
-          passwordExpression: string;
-          usernameExpression: string;
-        };
-        expression?: string;
-        logging?: { enabled: boolean };
-        ratelimit?: {
-          characteristics: string[];
-          period: number;
-          countingExpression?: string;
-          mitigationTimeout?: number;
-          requestsPerPeriod?: number;
-          requestsToOrigin?: boolean;
-          scorePerPeriod?: number;
-          scoreResponseHeaderName?: string;
-        };
-        ref?: string;
-      }
-  )[];
-}
+export const createRulesetForZone: API.OperationMethod<
+  CreateRulesetForZoneRequest,
+  CreateRulesetResponse,
+  CreateRulesetError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateRulesetForZoneRequest,
+  output: CreateRulesetResponse,
+  errors: [],
+}));
 
-export const UpdateRulesetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+const UpdateRulesetBaseFields = {
   rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
   description: Schema.optional(Schema.String),
   kind: Schema.optional(Schema.Literals(["managed", "custom", "root", "zone"])),
   name: Schema.optional(Schema.String),
@@ -35665,12 +35394,689 @@ export const UpdateRulesetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
     ),
   ),
-}).pipe(
-  T.Http({
-    method: "PUT",
-    path: "/{accountOrZone}/{accountOrZoneId}/rulesets/{rulesetId}",
-  }),
-) as unknown as Schema.Schema<UpdateRulesetRequest>;
+} as const;
+
+interface UpdateRulesetBaseRequest {
+  rulesetId: string;
+  /** Body param: An informative description of the ruleset. */
+  description?: string;
+  /** Body param: The kind of the ruleset. */
+  kind?: "managed" | "custom" | "root" | "zone";
+  /** Body param: The human-readable name of the ruleset. */
+  name?: string;
+  /** Body param: The phase of the ruleset. */
+  phase?:
+    | "ddos_l4"
+    | "ddos_l7"
+    | "http_config_settings"
+    | "http_custom_errors"
+    | "http_log_custom_fields"
+    | "http_ratelimit"
+    | "http_request_cache_settings"
+    | "http_request_dynamic_redirect"
+    | "http_request_firewall_custom"
+    | "http_request_firewall_managed"
+    | "http_request_late_transform"
+    | "http_request_origin"
+    | "http_request_redirect"
+    | "http_request_sanitize"
+    | "http_request_sbfm"
+    | "http_request_transform"
+    | "http_response_compression"
+    | "http_response_firewall_managed"
+    | "http_response_headers_transform"
+    | "magic_transit"
+    | "magic_transit_ids_managed"
+    | "magic_transit_managed"
+    | "magic_transit_ratelimit";
+  /** Body param: The list of rules in the ruleset. */
+  rules?: (
+    | {
+        id?: string;
+        action?: "block";
+        actionParameters?: {
+          response?: {
+            content: string;
+            contentType: string;
+            statusCode: number;
+          };
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "challenge";
+        actionParameters?: unknown;
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "compress_response";
+        actionParameters?: {
+          algorithms: {
+            name?: "none" | "auto" | "default" | "gzip" | "brotli" | "zstd";
+          }[];
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "ddos_dynamic";
+        actionParameters?: unknown;
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "execute";
+        actionParameters?: {
+          id: string;
+          matchedData?: { publicKey: string };
+          overrides?: {
+            action?: string;
+            categories?: {
+              category: string;
+              action?: string;
+              enabled?: boolean;
+              sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+            }[];
+            enabled?: boolean;
+            rules?: {
+              id: string;
+              action?: string;
+              enabled?: boolean;
+              scoreThreshold?: number;
+              sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+            }[];
+            sensitivityLevel?: "default" | "medium" | "low" | "eoff";
+          };
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "force_connection_close";
+        actionParameters?: unknown;
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "js_challenge";
+        actionParameters?: unknown;
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "log";
+        actionParameters?: unknown;
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "log_custom_field";
+        actionParameters?: {
+          cookieFields?: { name: string }[];
+          rawResponseFields?: { name: string; preserveDuplicates?: boolean }[];
+          requestFields?: { name: string }[];
+          responseFields?: { name: string; preserveDuplicates?: boolean }[];
+          transformedRequestFields?: { name: string }[];
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "managed_challenge";
+        actionParameters?: unknown;
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "redirect";
+        actionParameters?: {
+          fromList?: { key: string; name: string };
+          fromValue?: {
+            targetUrl: { expression?: string; value?: string };
+            preserveQueryString?: boolean;
+            statusCode?: "301" | "302" | "303" | "307" | "308";
+          };
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "rewrite";
+        actionParameters?: {
+          headers?: Record<string, unknown>;
+          uri?:
+            | { path: { expression?: string; value?: string } }
+            | { query: { expression?: string; value?: string } };
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "route";
+        actionParameters?: {
+          hostHeader?: string;
+          origin?: { host?: string; port?: number };
+          sni?: { value: string };
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "score";
+        actionParameters?: { increment: number };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "serve_error";
+        actionParameters?:
+          | {
+              content: string;
+              contentType?:
+                | "application/json"
+                | "text/html"
+                | "text/plain"
+                | "text/xml";
+              statusCode?: number;
+            }
+          | {
+              assetName: string;
+              contentType?:
+                | "application/json"
+                | "text/html"
+                | "text/plain"
+                | "text/xml";
+              statusCode?: number;
+            };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "set_cache_settings";
+        actionParameters?: {
+          additionalCacheablePorts?: number[];
+          browserTtl?: {
+            mode:
+              | "respect_origin"
+              | "bypass_by_default"
+              | "override_origin"
+              | "bypass";
+            default?: number;
+          };
+          cache?: boolean;
+          cacheKey?: {
+            cacheByDeviceType?: boolean;
+            cacheDeceptionArmor?: boolean;
+            customKey?: {
+              cookie?: { checkPresence?: string[]; include?: string[] };
+              header?: {
+                checkPresence?: string[];
+                contains?: Record<string, unknown>;
+                excludeOrigin?: boolean;
+                include?: string[];
+              };
+              host?: { resolved?: boolean };
+              queryString?: {
+                exclude?: { all?: true; list?: string[] };
+                include?: { all?: true; list?: string[] };
+              };
+              user?: { deviceType?: boolean; geo?: boolean; lang?: boolean };
+            };
+            ignoreQueryStringsOrder?: boolean;
+          };
+          cacheReserve?: { eligible: boolean; minimumFileSize?: number };
+          edgeTtl?: {
+            mode: "respect_origin" | "bypass_by_default" | "override_origin";
+            default?: number;
+            statusCodeTtl?: {
+              value: number;
+              statusCode?: number;
+              statusCodeRange?: { from?: number; to?: number };
+            }[];
+          };
+          originCacheControl?: boolean;
+          originErrorPagePassthru?: boolean;
+          readTimeout?: number;
+          respectStrongEtags?: boolean;
+          serveStale?: { disableStaleWhileUpdating?: boolean };
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "set_config";
+        actionParameters?: {
+          automaticHttpsRewrites?: boolean;
+          autominify?: { css?: boolean; html?: boolean; js?: boolean };
+          bic?: boolean;
+          disableApps?: true;
+          disablePayPerCrawl?: true;
+          disableRum?: true;
+          disableZaraz?: true;
+          emailObfuscation?: boolean;
+          fonts?: boolean;
+          hotlinkProtection?: boolean;
+          mirage?: boolean;
+          opportunisticEncryption?: boolean;
+          polish?: "off" | "lossless" | "lossy" | "webp";
+          requestBodyBuffering?: "none" | "standard" | "full";
+          responseBodyBuffering?: "none" | "standard";
+          rocketLoader?: boolean;
+          securityLevel?:
+            | "off"
+            | "essentially_off"
+            | "low"
+            | "medium"
+            | "high"
+            | "under_attack";
+          serverSideExcludes?: boolean;
+          ssl?: "off" | "flexible" | "full" | "strict" | "origin_pull";
+          sxg?: boolean;
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+    | {
+        id?: string;
+        action?: "skip";
+        actionParameters?: {
+          phase?: "current";
+          phases?: (
+            | "ddos_l4"
+            | "ddos_l7"
+            | "http_config_settings"
+            | "http_custom_errors"
+            | "http_log_custom_fields"
+            | "http_ratelimit"
+            | "http_request_cache_settings"
+            | "http_request_dynamic_redirect"
+            | "http_request_firewall_custom"
+            | "http_request_firewall_managed"
+            | "http_request_late_transform"
+            | "http_request_origin"
+            | "http_request_redirect"
+            | "http_request_sanitize"
+            | "http_request_sbfm"
+            | "http_request_transform"
+            | "http_response_compression"
+            | "http_response_firewall_managed"
+            | "http_response_headers_transform"
+            | "magic_transit"
+            | "magic_transit_ids_managed"
+            | "magic_transit_managed"
+            | "magic_transit_ratelimit"
+          )[];
+          products?: (
+            | "bic"
+            | "hot"
+            | "rateLimit"
+            | "securityLevel"
+            | "uaBlock"
+            | "waf"
+            | "zoneLockdown"
+          )[];
+          rules?: Record<string, unknown>;
+          ruleset?: "current";
+          rulesets?: string[];
+        };
+        description?: string;
+        enabled?: boolean;
+        exposedCredentialCheck?: {
+          passwordExpression: string;
+          usernameExpression: string;
+        };
+        expression?: string;
+        logging?: { enabled: boolean };
+        ratelimit?: {
+          characteristics: string[];
+          period: number;
+          countingExpression?: string;
+          mitigationTimeout?: number;
+          requestsPerPeriod?: number;
+          requestsToOrigin?: boolean;
+          scorePerPeriod?: number;
+          scoreResponseHeaderName?: string;
+        };
+        ref?: string;
+      }
+  )[];
+}
+
+export interface UpdateRulesetForAccountRequest extends UpdateRulesetBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface UpdateRulesetForZoneRequest extends UpdateRulesetBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const UpdateRulesetForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...UpdateRulesetBaseFields,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/rulesets/{rulesetId}",
+    }),
+  ) as unknown as Schema.Schema<UpdateRulesetForAccountRequest>;
+
+export const UpdateRulesetForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...UpdateRulesetBaseFields,
+  }).pipe(
+    T.Http({ method: "PUT", path: "/zones/{zone_id}/rulesets/{rulesetId}" }),
+  ) as unknown as Schema.Schema<UpdateRulesetForZoneRequest>;
 
 export interface UpdateRulesetResponse {
   /** The unique ID of the ruleset. */
@@ -39146,29 +39552,64 @@ export const UpdateRulesetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type UpdateRulesetError = DefaultErrors;
 
-export const updateRuleset: API.OperationMethod<
-  UpdateRulesetRequest,
+export const updateRulesetForAccount: API.OperationMethod<
+  UpdateRulesetForAccountRequest,
   UpdateRulesetResponse,
   UpdateRulesetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: UpdateRulesetRequest,
+  input: UpdateRulesetForAccountRequest,
   output: UpdateRulesetResponse,
   errors: [],
 }));
 
-export interface DeleteRulesetRequest {
+export const updateRulesetForZone: API.OperationMethod<
+  UpdateRulesetForZoneRequest,
+  UpdateRulesetResponse,
+  UpdateRulesetError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateRulesetForZoneRequest,
+  output: UpdateRulesetResponse,
+  errors: [],
+}));
+
+const DeleteRulesetBaseFields = {
+  rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
+} as const;
+
+interface DeleteRulesetBaseRequest {
   rulesetId: string;
 }
 
-export const DeleteRulesetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
-}).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "/{accountOrZone}/{accountOrZoneId}/rulesets/{rulesetId}",
-  }),
-) as unknown as Schema.Schema<DeleteRulesetRequest>;
+export interface DeleteRulesetForAccountRequest extends DeleteRulesetBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface DeleteRulesetForZoneRequest extends DeleteRulesetBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const DeleteRulesetForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...DeleteRulesetBaseFields,
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/rulesets/{rulesetId}",
+    }),
+  ) as unknown as Schema.Schema<DeleteRulesetForAccountRequest>;
+
+export const DeleteRulesetForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...DeleteRulesetBaseFields,
+  }).pipe(
+    T.Http({ method: "DELETE", path: "/zones/{zone_id}/rulesets/{rulesetId}" }),
+  ) as unknown as Schema.Schema<DeleteRulesetForZoneRequest>;
 
 export type DeleteRulesetResponse = unknown;
 
@@ -39177,13 +39618,24 @@ export const DeleteRulesetResponse =
 
 export type DeleteRulesetError = DefaultErrors;
 
-export const deleteRuleset: API.OperationMethod<
-  DeleteRulesetRequest,
+export const deleteRulesetForAccount: API.OperationMethod<
+  DeleteRulesetForAccountRequest,
   DeleteRulesetResponse,
   DeleteRulesetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteRulesetRequest,
+  input: DeleteRulesetForAccountRequest,
+  output: DeleteRulesetResponse,
+  errors: [],
+}));
+
+export const deleteRulesetForZone: API.OperationMethod<
+  DeleteRulesetForZoneRequest,
+  DeleteRulesetResponse,
+  DeleteRulesetError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteRulesetForZoneRequest,
   output: DeleteRulesetResponse,
   errors: [],
 }));
@@ -39192,20 +39644,47 @@ export const deleteRuleset: API.OperationMethod<
 // Version
 // =============================================================================
 
-export interface GetVersionRequest {
+const GetVersionBaseFields = {
+  rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
+  rulesetVersion: Schema.String.pipe(T.HttpPath("rulesetVersion")),
+} as const;
+
+interface GetVersionBaseRequest {
   rulesetId: string;
   rulesetVersion: string;
 }
 
-export const GetVersionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
-  rulesetVersion: Schema.String.pipe(T.HttpPath("rulesetVersion")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/{accountOrZone}/{accountOrZoneId}/rulesets/{rulesetId}/versions/{rulesetVersion}",
-  }),
-) as unknown as Schema.Schema<GetVersionRequest>;
+export interface GetVersionForAccountRequest extends GetVersionBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface GetVersionForZoneRequest extends GetVersionBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const GetVersionForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...GetVersionBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/rulesets/{rulesetId}/versions/{rulesetVersion}",
+    }),
+  ) as unknown as Schema.Schema<GetVersionForAccountRequest>;
+
+export const GetVersionForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...GetVersionBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/rulesets/{rulesetId}/versions/{rulesetVersion}",
+    }),
+  ) as unknown as Schema.Schema<GetVersionForZoneRequest>;
 
 export interface GetVersionResponse {
   /** The unique ID of the ruleset. */
@@ -42681,29 +43160,67 @@ export const GetVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type GetVersionError = DefaultErrors;
 
-export const getVersion: API.OperationMethod<
-  GetVersionRequest,
+export const getVersionForAccount: API.OperationMethod<
+  GetVersionForAccountRequest,
   GetVersionResponse,
   GetVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetVersionRequest,
+  input: GetVersionForAccountRequest,
   output: GetVersionResponse,
   errors: [],
 }));
 
-export interface ListVersionsRequest {
+export const getVersionForZone: API.OperationMethod<
+  GetVersionForZoneRequest,
+  GetVersionResponse,
+  GetVersionError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetVersionForZoneRequest,
+  output: GetVersionResponse,
+  errors: [],
+}));
+
+const ListVersionsBaseFields = {
+  rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
+} as const;
+
+interface ListVersionsBaseRequest {
   rulesetId: string;
 }
 
-export const ListVersionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/{accountOrZone}/{accountOrZoneId}/rulesets/{rulesetId}/versions",
-  }),
-) as unknown as Schema.Schema<ListVersionsRequest>;
+export interface ListVersionsForAccountRequest extends ListVersionsBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface ListVersionsForZoneRequest extends ListVersionsBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const ListVersionsForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...ListVersionsBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/rulesets/{rulesetId}/versions",
+    }),
+  ) as unknown as Schema.Schema<ListVersionsForAccountRequest>;
+
+export const ListVersionsForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...ListVersionsBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/rulesets/{rulesetId}/versions",
+    }),
+  ) as unknown as Schema.Schema<ListVersionsForZoneRequest>;
 
 export interface ListVersionsResponse {
   result: {
@@ -42790,13 +43307,13 @@ export const ListVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type ListVersionsError = DefaultErrors;
 
-export const listVersions: API.PaginatedOperationMethod<
-  ListVersionsRequest,
+export const listVersionsForAccount: API.PaginatedOperationMethod<
+  ListVersionsForAccountRequest,
   ListVersionsResponse,
   ListVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListVersionsRequest,
+  input: ListVersionsForAccountRequest,
   output: ListVersionsResponse,
   errors: [],
   pagination: {
@@ -42805,20 +43322,62 @@ export const listVersions: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export interface DeleteVersionRequest {
+export const listVersionsForZone: API.PaginatedOperationMethod<
+  ListVersionsForZoneRequest,
+  ListVersionsResponse,
+  ListVersionsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListVersionsForZoneRequest,
+  output: ListVersionsResponse,
+  errors: [],
+  pagination: {
+    mode: "single",
+    items: "result",
+  } as const,
+}));
+
+const DeleteVersionBaseFields = {
+  rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
+  rulesetVersion: Schema.String.pipe(T.HttpPath("rulesetVersion")),
+} as const;
+
+interface DeleteVersionBaseRequest {
   rulesetId: string;
   rulesetVersion: string;
 }
 
-export const DeleteVersionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  rulesetId: Schema.String.pipe(T.HttpPath("rulesetId")),
-  rulesetVersion: Schema.String.pipe(T.HttpPath("rulesetVersion")),
-}).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "/{accountOrZone}/{accountOrZoneId}/rulesets/{rulesetId}/versions/{rulesetVersion}",
-  }),
-) as unknown as Schema.Schema<DeleteVersionRequest>;
+export interface DeleteVersionForAccountRequest extends DeleteVersionBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface DeleteVersionForZoneRequest extends DeleteVersionBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const DeleteVersionForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...DeleteVersionBaseFields,
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/rulesets/{rulesetId}/versions/{rulesetVersion}",
+    }),
+  ) as unknown as Schema.Schema<DeleteVersionForAccountRequest>;
+
+export const DeleteVersionForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...DeleteVersionBaseFields,
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/zones/{zone_id}/rulesets/{rulesetId}/versions/{rulesetVersion}",
+    }),
+  ) as unknown as Schema.Schema<DeleteVersionForZoneRequest>;
 
 export type DeleteVersionResponse = unknown;
 
@@ -42827,13 +43386,24 @@ export const DeleteVersionResponse =
 
 export type DeleteVersionError = DefaultErrors;
 
-export const deleteVersion: API.OperationMethod<
-  DeleteVersionRequest,
+export const deleteVersionForAccount: API.OperationMethod<
+  DeleteVersionForAccountRequest,
   DeleteVersionResponse,
   DeleteVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DeleteVersionRequest,
+  input: DeleteVersionForAccountRequest,
+  output: DeleteVersionResponse,
+  errors: [],
+}));
+
+export const deleteVersionForZone: API.OperationMethod<
+  DeleteVersionForZoneRequest,
+  DeleteVersionResponse,
+  DeleteVersionError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteVersionForZoneRequest,
   output: DeleteVersionResponse,
   errors: [],
 }));

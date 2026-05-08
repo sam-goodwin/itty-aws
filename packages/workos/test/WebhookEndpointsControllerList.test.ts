@@ -23,7 +23,7 @@ describe("WebhookEndpointsControllerList", () => {
         expect(typeof endpoint.updated_at).toBe("string");
       }
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -38,6 +38,6 @@ describe("WebhookEndpointsControllerList", () => {
       );
       expect(clientLevelErrorTags).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

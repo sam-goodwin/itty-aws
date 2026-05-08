@@ -4,6 +4,7 @@
   },
   "response": {
     "properties": {
+      "result[].bindings[].json": { "type": "unknown" },
       "result[].bindings[]": {
         "appendUnion": [
           {

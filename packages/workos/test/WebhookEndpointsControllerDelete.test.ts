@@ -25,7 +25,7 @@ describe("WebhookEndpointsControllerDelete", () => {
       );
       expect(followUp._tag).toBe("NotFound");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -38,6 +38,6 @@ describe("WebhookEndpointsControllerDelete", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

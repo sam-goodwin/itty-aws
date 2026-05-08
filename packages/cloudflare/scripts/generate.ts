@@ -99,6 +99,51 @@ const getSyntheticHeaderParams = (op: ParsedOperation): ParamInfo[] =>
     : [];
 
 /**
+ * Names of the synthetic scope path-param placeholders in the upstream URL
+ * template (e.g. `/{accountOrZone}/{accountOrZoneId}/rulesets/...`). When an
+ * operation contains both, we split the operation into account- and
+ * zone-scoped variants at codegen time. These names are excluded from the
+ * "missing path param" synthesis logic because they are handled by the split.
+ */
+const ACCOUNT_OR_ZONE_SCOPE_PATH_PARAMS = new Set([
+  "accountOrZone",
+  "accountOrZoneId",
+]);
+
+/** True if the operation's URL template contains the accountOrZone scope. */
+const isAccountOrZoneScoped = (op: ParsedOperation): boolean =>
+  op.urlPathParams.includes("accountOrZone") &&
+  op.urlPathParams.includes("accountOrZoneId");
+
+/**
+ * Some Cloudflare URL templates contain `{rulesetPhase}` (and similar) that
+ * never appear as a parameter on the params interface. Synthesize them as
+ * required string path params so they actually get bound to the URL.
+ *
+ * The accountOrZone scope placeholders are intentionally excluded — they are
+ * replaced by concrete account/zone path params via the operation-split flow.
+ */
+const withMissingUrlPathParams = (op: ParsedOperation): ParamInfo[] => {
+  const existing = new Set(op.pathParams.map((param) => param.name));
+  const missing = op.urlPathParams.filter(
+    (name) =>
+      !existing.has(name) && !ACCOUNT_OR_ZONE_SCOPE_PATH_PARAMS.has(name),
+  );
+  if (missing.length === 0) return op.pathParams;
+  return [
+    ...op.pathParams,
+    ...missing.map(
+      (name): ParamInfo => ({
+        name,
+        type: { kind: "primitive", value: "string" },
+        location: "path",
+        required: true,
+      }),
+    ),
+  ];
+};
+
+/**
  * Patch file structure (mirrors src/expr.ts OperationPatch).
  * Defined here to avoid cross-project imports.
  */
@@ -554,9 +599,10 @@ function resolveOperationModel(
   patch?: OperationPatch,
 ): ResolvedOperationModel {
   const syntheticHeaderParams = getSyntheticHeaderParams(op);
+  const effectivePathParams = withMissingUrlPathParams(op);
 
   const nonBodyParamNames = new Set([
-    ...op.pathParams.map((p) => toCamelCase(p.name)),
+    ...effectivePathParams.map((p) => toCamelCase(p.name)),
     ...op.queryParams.map((p) => toCamelCase(p.name)),
     ...op.headerParams.map((p) => toCamelCase(p.name)),
     ...syntheticHeaderParams.map((p) => toCamelCase(p.name)),
@@ -567,7 +613,7 @@ function resolveOperationModel(
   );
 
   const allParams = [
-    ...op.pathParams,
+    ...effectivePathParams,
     ...op.queryParams,
     ...op.headerParams,
     ...syntheticHeaderParams,
@@ -577,7 +623,7 @@ function resolveOperationModel(
     type: resolveOperationTypeInfo(op, param.type),
   }));
 
-  const resolvedPathParams = op.pathParams.map((p) => ({
+  const resolvedPathParams = effectivePathParams.map((p) => ({
     ...p,
     type: resolveOperationTypeInfo(op, p.type),
   }));
@@ -746,7 +792,7 @@ function buildPaginatedResponseType(
           },
           {
             name: "result_info",
-            required: true,
+            required: false,
             type: {
               kind: "object",
               properties: [
@@ -782,7 +828,7 @@ function buildPaginatedResponseType(
           { name: "result", required: true, type: arrayOfItems },
           {
             name: "result_info",
-            required: true,
+            required: false,
             type: {
               kind: "object",
               properties: [
@@ -819,7 +865,7 @@ function buildPaginatedResponseType(
           { name: "result", required: true, type: arrayOfItems },
           {
             name: "result_info",
-            required: true,
+            required: false,
             type: {
               kind: "object",
               properties: [
@@ -850,7 +896,7 @@ function buildPaginatedResponseType(
           { name: "result", required: true, type: arrayOfItems },
           {
             name: "result_info",
-            required: true,
+            required: false,
             type: {
               kind: "object",
               properties: [
@@ -1248,9 +1294,10 @@ function generateOperationSchemaAst(
   }
 
   const syntheticHeaderParams = getSyntheticHeaderParams(op);
+  const effectivePathParams = withMissingUrlPathParams(op);
 
   const nonBodyParamNames = new Set([
-    ...op.pathParams.map((p) => toCamelCase(p.name)),
+    ...effectivePathParams.map((p) => toCamelCase(p.name)),
     ...op.queryParams.map((p) => toCamelCase(p.name)),
     ...op.headerParams.map((p) => toCamelCase(p.name)),
     ...syntheticHeaderParams.map((p) => toCamelCase(p.name)),
@@ -1261,7 +1308,7 @@ function generateOperationSchemaAst(
   );
 
   const allParams = [
-    ...op.pathParams,
+    ...effectivePathParams,
     ...op.queryParams,
     ...op.headerParams,
     ...syntheticHeaderParams,
@@ -1271,7 +1318,7 @@ function generateOperationSchemaAst(
     type: resolveTypeInfoDeep(param.type, op.registry!),
   }));
 
-  const resolvedPathParams = op.pathParams.map((p) => ({
+  const resolvedPathParams = effectivePathParams.map((p) => ({
     ...p,
     type: resolveTypeInfoDeep(p.type, op.registry!),
   }));
@@ -1351,7 +1398,10 @@ function generateOperationSchemaAst(
   for (const param of resolvedPathParams) {
     const propName = toCamelCase(param.name);
     const wireName = param.name;
-    const schema = typeInfoToSchema(param.type);
+    let schema = typeInfoToSchema(param.type);
+    if (!param.required) {
+      schema = `Schema.optional(${schema})`;
+    }
     requestProps.push(
       `  ${quotePropKey(propName)}: ${schema}.pipe(T.HttpPath("${wireName}"))`,
     );
@@ -1651,10 +1701,416 @@ function generateOperationSchemaAst(
  * level by generateServiceFile. This function only references the error tag
  * names from the patch in the operation's type signature and errors array.
  */
+/**
+ * Generate two concrete operations for an accountOrZone-scoped Cloudflare
+ * operation.
+ *
+ * The upstream OpenAPI lies about `/{accountOrZone}/{accountOrZoneId}/...` —
+ * it claims `account_id` AND `zone_id` are both required path params, when in
+ * reality the literal first segment is one of `accounts`/`zones` and the
+ * caller picks exactly one of the two IDs. We split that into two real
+ * operations (`*ForAccount`, `*ForZone`) with concrete URLs. Callers pick the
+ * variant matching the scope they intend to address — there is no convenience
+ * wrapper that accepts a scope-discriminated union, since hiding which scope
+ * is being targeted behind a runtime check loses tree-shakability and
+ * produces noisier types.
+ */
+function generateAccountOrZoneOperationSchema(
+  op: ParsedOperation,
+  patch?: OperationPatch,
+): string {
+  const normalizedOpName = op.operationName;
+  const pascalOpName = toPascalCase(normalizedOpName);
+  const baseFieldsConstName = `${pascalOpName}BaseFields`;
+  const accountOpName = `${normalizedOpName}ForAccount`;
+  const zoneOpName = `${normalizedOpName}ForZone`;
+  const accountRequestType = `${pascalOpName}ForAccountRequest`;
+  const zoneRequestType = `${pascalOpName}ForZoneRequest`;
+  const responseTypeName = `${pascalOpName}Response`;
+  const errorTypeName = `${pascalOpName}Error`;
+
+  const lines: string[] = [];
+  const errorClassNames: string[] = [];
+  for (const errorDef of getOperationErrors(op, patch)) {
+    errorClassNames.push(errorDef.tag);
+  }
+
+  const resolved = resolveOperationModel(op, patch);
+
+  // Strip `account_id` and `zone_id` from path params — the spec lies and
+  // declares them both required. They are replaced by per-variant scope path
+  // params (accountId for the For-Account variant, zoneId for the For-Zone
+  // variant).
+  const SCOPE_PARAM_NAMES = new Set(["accountId", "zoneId"]);
+  const isScopeParam = (p: { name: string }): boolean =>
+    SCOPE_PARAM_NAMES.has(toCamelCase(p.name));
+
+  const nonScopePathParams = resolved.pathParams.filter((p) => !isScopeParam(p));
+  const queryParams = resolved.queryParams;
+  const headerParams = resolved.headerParams;
+  const bodyParams = resolved.bodyParams.filter((p) => !isScopeParam(p));
+
+  // ---- shared base fields (everything except the scope path param) ----
+  const baseFieldEntries: string[] = [];
+
+  for (const param of nonScopePathParams) {
+    const propName = toCamelCase(param.name);
+    const wireName = param.name;
+    let schema = typeInfoToSchema(param.type);
+    if (!param.required) {
+      schema = `Schema.optional(${schema})`;
+    }
+    baseFieldEntries.push(
+      `  ${quotePropKey(propName)}: ${schema}.pipe(T.HttpPath("${wireName}"))`,
+    );
+  }
+  for (const param of queryParams) {
+    const propName = toCamelCase(param.name);
+    const wireName = param.name;
+    let schema = typeInfoToSchema(param.type);
+    if (!param.required) {
+      schema = `Schema.optional(${schema})`;
+    }
+    baseFieldEntries.push(
+      `  ${quotePropKey(propName)}: ${schema}.pipe(T.HttpQuery("${wireName}"))`,
+    );
+  }
+  for (const param of headerParams) {
+    const propName = toCamelCase(param.name);
+    let schema = typeInfoToSchema(param.type);
+    if (!param.required) {
+      schema = `Schema.optional(${schema})`;
+    }
+    const headerName = param.headerName || param.name;
+    baseFieldEntries.push(
+      `  ${quotePropKey(propName)}: ${schema}.pipe(T.HttpHeader("${headerName}"))`,
+    );
+  }
+
+  const encodeKeysMap: Record<string, string> = {};
+  let hasRenamedBodyKey = false;
+  let bodyAsHttpBodyEntry: string | undefined;
+  for (const param of bodyParams) {
+    const propName = toCamelCase(param.name);
+    const wireName = param.name;
+    let schema = typeInfoToSchema(param.type);
+    if (!param.required) {
+      schema = `Schema.optional(${schema})`;
+    }
+    if (wireName === "body" && bodyParams.length === 1) {
+      bodyAsHttpBodyEntry = `  ${quotePropKey(propName)}: ${schema}.pipe(T.HttpBody())`;
+    } else {
+      encodeKeysMap[propName] = wireName;
+      if (propName !== wireName) {
+        hasRenamedBodyKey = true;
+      }
+      baseFieldEntries.push(`  ${quotePropKey(propName)}: ${schema}`);
+    }
+  }
+  if (bodyAsHttpBodyEntry) {
+    baseFieldEntries.push(bodyAsHttpBodyEntry);
+  }
+
+  // Emit BaseFields const
+  lines.push(`const ${baseFieldsConstName} = {`);
+  if (baseFieldEntries.length > 0) {
+    lines.push(baseFieldEntries.join(",\n") + ",");
+  }
+  lines.push(`} as const;`);
+  lines.push("");
+
+  // Compute path strings for each variant by replacing the scope placeholders
+  // in the upstream URL template.
+  const accountPath = op.urlTemplate
+    .replace("{accountOrZone}", "accounts")
+    .replace("{accountOrZoneId}", "{account_id}");
+  const zonePath = op.urlTemplate
+    .replace("{accountOrZone}", "zones")
+    .replace("{accountOrZoneId}", "{zone_id}");
+
+  const hasFiles = operationHasFiles(op);
+  const isMultipart = hasFiles || op.isMultipart;
+  const buildHttpTrait = (path: string): string =>
+    isMultipart
+      ? `T.Http({ method: "${op.httpMethod}", path: "${path}", contentType: "multipart" })`
+      : `T.Http({ method: "${op.httpMethod}", path: "${path}" })`;
+
+  const buildPipes = (httpTrait: string): string => {
+    const pipes: string[] = [];
+    if (hasRenamedBodyKey) {
+      const encodeKeysEntries = Object.entries(encodeKeysMap)
+        .map(([k, v]) => `${quotePropKey(k)}: "${v}"`)
+        .join(", ");
+      pipes.push(`Schema.encodeKeys({ ${encodeKeysEntries} })`);
+    }
+    pipes.push(httpTrait);
+    return pipes.join(", ");
+  };
+
+  // ---- emit interfaces ----
+  const baseInterfaceLines: string[] = [];
+  for (const param of nonScopePathParams) {
+    const propName = toCamelCase(param.name);
+    const tsType = typeInfoToTsType(param.type);
+    const optMark = param.required ? "" : "?";
+    if (param.description) {
+      baseInterfaceLines.push(
+        `  /** ${param.description.replace(/\n/g, " ").slice(0, 200)} */`,
+      );
+    }
+    baseInterfaceLines.push(`  ${quotePropKey(propName)}${optMark}: ${tsType};`);
+  }
+  for (const param of queryParams) {
+    const propName = toCamelCase(param.name);
+    const tsType = typeInfoToTsType(param.type);
+    const optMark = param.required ? "" : "?";
+    if (param.description) {
+      baseInterfaceLines.push(
+        `  /** ${param.description.replace(/\n/g, " ").slice(0, 200)} */`,
+      );
+    }
+    baseInterfaceLines.push(`  ${quotePropKey(propName)}${optMark}: ${tsType};`);
+  }
+  for (const param of headerParams) {
+    const propName = toCamelCase(param.name);
+    const tsType = typeInfoToTsType(param.type);
+    const optMark = param.required ? "" : "?";
+    if (param.description) {
+      baseInterfaceLines.push(
+        `  /** ${param.description.replace(/\n/g, " ").slice(0, 200)} */`,
+      );
+    }
+    baseInterfaceLines.push(`  ${quotePropKey(propName)}${optMark}: ${tsType};`);
+  }
+  for (const param of bodyParams) {
+    const propName = toCamelCase(param.name);
+    const tsType = typeInfoToTsType(param.type);
+    const optMark = param.required ? "" : "?";
+    if (param.description) {
+      baseInterfaceLines.push(
+        `  /** ${param.description.replace(/\n/g, " ").slice(0, 200)} */`,
+      );
+    }
+    baseInterfaceLines.push(`  ${quotePropKey(propName)}${optMark}: ${tsType};`);
+  }
+
+  // Emit a shared base interface containing all non-scope fields, then have
+  // each variant interface extend it with just its scope field. This avoids
+  // duplicating large body field declarations across both variants.
+  const baseInterfaceName = `${pascalOpName}BaseRequest`;
+  lines.push(`interface ${baseInterfaceName} {`);
+  if (baseInterfaceLines.length > 0) {
+    lines.push(baseInterfaceLines.join("\n"));
+  }
+  lines.push(`}`);
+  lines.push("");
+
+  const emitVariantInterface = (
+    name: string,
+    scopeFieldName: "accountId" | "zoneId",
+    description: string,
+  ): void => {
+    lines.push(`export interface ${name} extends ${baseInterfaceName} {`);
+    lines.push(`  /** ${description} */`);
+    lines.push(`  ${scopeFieldName}: string;`);
+    lines.push(`}`);
+    lines.push("");
+  };
+
+  emitVariantInterface(
+    accountRequestType,
+    "accountId",
+    "Path param: The Account ID to use for this endpoint.",
+  );
+  emitVariantInterface(
+    zoneRequestType,
+    "zoneId",
+    "Path param: The Zone ID to use for this endpoint.",
+  );
+
+  // ---- emit Request schemas ----
+  lines.push(
+    `export const ${accountRequestType} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+  );
+  lines.push(`  accountId: Schema.String.pipe(T.HttpPath("account_id")),`);
+  lines.push(`  ...${baseFieldsConstName},`);
+  lines.push(`})`);
+  lines.push(
+    `  .pipe(${buildPipes(buildHttpTrait(accountPath))}) as unknown as Schema.Schema<${accountRequestType}>;`,
+  );
+  lines.push("");
+
+  lines.push(
+    `export const ${zoneRequestType} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+  );
+  lines.push(`  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),`);
+  lines.push(`  ...${baseFieldsConstName},`);
+  lines.push(`})`);
+  lines.push(
+    `  .pipe(${buildPipes(buildHttpTrait(zonePath))}) as unknown as Schema.Schema<${zoneRequestType}>;`,
+  );
+  lines.push("");
+
+  // ---- emit shared response ----
+  const resolvedResponseType = resolved.responseType;
+  const isTypeAlias = resolved.isTypeAlias;
+  const responsePath = resolved.responsePath;
+
+  if (isTypeAlias && resolvedResponseType) {
+    const tsType = typeInfoToTsType(resolvedResponseType, 0, true);
+    const schema = typeInfoToSchema(resolvedResponseType, "", 0, true);
+    const responsePathPipe = responsePath
+      ? `.pipe(T.ResponsePath("${responsePath}"))`
+      : "";
+    lines.push(`export type ${responseTypeName} = ${tsType};`);
+    lines.push("");
+    lines.push(
+      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ ${schema}${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
+    );
+    lines.push("");
+  } else if (
+    resolvedResponseType &&
+    resolvedResponseType.kind === "object" &&
+    resolvedResponseType.properties
+  ) {
+    lines.push(`export interface ${responseTypeName} {`);
+    for (const prop of resolvedResponseType.properties) {
+      const propName = toCamelCase(prop.name);
+      const tsType = typeInfoToTsType(prop.type, 0, true);
+      const optMark = prop.required ? "" : "?";
+      const nullableSuffix =
+        !prop.required && !typeIncludesNull(prop.type) ? " | null" : "";
+      if (prop.description) {
+        lines.push(
+          `  /** ${prop.description.replace(/\n/g, " ").slice(0, 200)} */`,
+        );
+      }
+      lines.push(
+        `  ${quotePropKey(propName)}${optMark}: ${tsType}${nullableSuffix};`,
+      );
+    }
+    lines.push(`}`);
+    lines.push("");
+
+    const responseEncodeKeysMap: Record<string, string> = {};
+    let hasRenamedResponseKey = false;
+    const responseProps = resolvedResponseType.properties.map((prop) => {
+      const wireName = prop.wireKey ?? prop.name;
+      const propName = toCamelCase(prop.name);
+      let schema = typeInfoToSchema(prop.type, "", 0, true);
+      if (!prop.required) {
+        if (!typeIncludesNull(prop.type)) {
+          schema = `Schema.Union([${schema}, Schema.Null])`;
+        }
+        schema = `Schema.optional(${schema})`;
+      }
+      responseEncodeKeysMap[propName] = wireName;
+      if (propName !== wireName) {
+        hasRenamedResponseKey = true;
+      }
+      return `  ${quotePropKey(propName)}: ${schema}`;
+    });
+
+    const responseEncodeKeysPipe = hasRenamedResponseKey
+      ? `.pipe(Schema.encodeKeys({ ${Object.entries(responseEncodeKeysMap)
+          .map(([k, v]) => `${quotePropKey(k)}: "${v}"`)
+          .join(", ")} }))`
+      : "";
+    const responsePathPipe = responsePath
+      ? `.pipe(T.ResponsePath("${responsePath}"))`
+      : "";
+
+    lines.push(
+      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({`,
+    );
+    if (responseProps.length > 0) {
+      lines.push(responseProps.join(",\n"));
+    }
+    lines.push(
+      `})${responseEncodeKeysPipe}${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
+    );
+    lines.push("");
+  } else {
+    const responsePathPipe = responsePath
+      ? `.pipe(T.ResponsePath("${responsePath}"))`
+      : "";
+    lines.push(`export type ${responseTypeName} = unknown;`);
+    lines.push("");
+    lines.push(
+      `export const ${responseTypeName} = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown${responsePathPipe} as unknown as Schema.Schema<${responseTypeName}>;`,
+    );
+    lines.push("");
+  }
+
+  // ---- error type ----
+  const errorsArray =
+    errorClassNames.length > 0 ? `[${errorClassNames.join(", ")}]` : "[]";
+  const errorUnionMembers =
+    errorClassNames.length > 0
+      ? ["DefaultErrors", ...errorClassNames]
+      : ["DefaultErrors"];
+  lines.push(
+    `export type ${errorTypeName} =\n  | ${errorUnionMembers.join("\n  | ")};\n`,
+  );
+
+  // ---- emit operations ----
+  const paginatedItemType = resolved.paginatedItemType;
+  const isPaginated = !!(op.paginationClassName && paginatedItemType);
+
+  const emitOperation = (opName: string, requestType: string): void => {
+    if (isPaginated) {
+      const pagination = getPaginationTrait(op.paginationClassName!);
+      lines.push(`export const ${opName}: API.PaginatedOperationMethod<`);
+      lines.push(`  ${requestType},`);
+      lines.push(`  ${responseTypeName},`);
+      lines.push(`  ${errorTypeName},`);
+      lines.push(`  Credentials | HttpClient.HttpClient`);
+      lines.push(`> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({`);
+      lines.push(`  input: ${requestType},`);
+      lines.push(`  output: ${responseTypeName},`);
+      lines.push(`  errors: ${errorsArray},`);
+      lines.push(`  pagination: {`);
+      lines.push(`    mode: "${pagination.mode}",`);
+      if (pagination.inputToken) {
+        lines.push(`    inputToken: "${pagination.inputToken}",`);
+      }
+      if (pagination.outputToken) {
+        lines.push(`    outputToken: "${pagination.outputToken}",`);
+      }
+      lines.push(`    items: "${pagination.items}",`);
+      if (pagination.pageSize) {
+        lines.push(`    pageSize: "${pagination.pageSize}",`);
+      }
+      lines.push(`  } as const,`);
+      lines.push(`}));`);
+    } else {
+      lines.push(`export const ${opName}: API.OperationMethod<`);
+      lines.push(`  ${requestType},`);
+      lines.push(`  ${responseTypeName},`);
+      lines.push(`  ${errorTypeName},`);
+      lines.push(`  Credentials | HttpClient.HttpClient`);
+      lines.push(`> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({`);
+      lines.push(`  input: ${requestType},`);
+      lines.push(`  output: ${responseTypeName},`);
+      lines.push(`  errors: ${errorsArray},`);
+      lines.push(`}));`);
+    }
+    lines.push("");
+  };
+
+  emitOperation(accountOpName, accountRequestType);
+  emitOperation(zoneOpName, zoneRequestType);
+
+  return lines.join("\n");
+}
+
 function generateOperationSchema(
   op: ParsedOperation,
   patch?: OperationPatch,
 ): string {
+  if (isAccountOrZoneScoped(op)) {
+    return generateAccountOrZoneOperationSchema(op, patch);
+  }
   if (op.source === "ast") {
     return generateOperationSchemaAst(op, patch);
   }
@@ -1699,7 +2155,10 @@ function generateOperationSchema(
   for (const param of resolvedPathParams) {
     const propName = toCamelCase(param.name);
     const wireName = param.name;
-    const schema = typeInfoToSchema(param.type);
+    let schema = typeInfoToSchema(param.type);
+    if (!param.required) {
+      schema = `Schema.optional(${schema})`;
+    }
     requestProps.push(
       `  ${quotePropKey(propName)}: ${schema}.pipe(T.HttpPath("${wireName}"))`,
     );

@@ -2,13 +2,14 @@ import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { AuthorizationResourcesControllerList } from "../src/operations/AuthorizationResourcesControllerList.ts";
 import { AuthorizationResourcesControllerListOrganizationMembershipsForResource } from "../src/operations/AuthorizationResourcesControllerListOrganizationMembershipsForResource.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, runOrSkipOnEnvLimitation, testRunId } from "./setup.ts";
 
 describe("AuthorizationResourcesControllerListOrganizationMembershipsForResource", () => {
   it(
     "lists organization memberships for a resource",
-    async () => {
-      const list = await runEffect(
+    async (ctx) => {
+      const list = await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationResourcesControllerList({ limit: 1 }),
       );
 
@@ -29,7 +30,8 @@ describe("AuthorizationResourcesControllerListOrganizationMembershipsForResource
       }
 
       const seed = list.data[0] as { id: string };
-      const result = await runEffect(
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationResourcesControllerListOrganizationMembershipsForResource({
           resource_id: seed.id,
           permission_slug: "users:read",
@@ -41,7 +43,7 @@ describe("AuthorizationResourcesControllerListOrganizationMembershipsForResource
       expect(Array.isArray(result.data)).toBe(true);
       expect(result.list_metadata).toBeDefined();
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -56,7 +58,7 @@ describe("AuthorizationResourcesControllerListOrganizationMembershipsForResource
 
       expect(["BadRequest", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -71,7 +73,7 @@ describe("AuthorizationResourcesControllerListOrganizationMembershipsForResource
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -86,7 +88,7 @@ describe("AuthorizationResourcesControllerListOrganizationMembershipsForResource
 
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -101,6 +103,6 @@ describe("AuthorizationResourcesControllerListOrganizationMembershipsForResource
 
       expect(["NotFound", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

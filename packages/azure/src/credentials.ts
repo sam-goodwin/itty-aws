@@ -1,7 +1,9 @@
+import * as EffectConfig from "effect/Config";
+import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
+import * as Option from "effect/Option";
 import * as Redacted from "effect/Redacted";
-import * as Context from "effect/Context";
 import { ConfigError } from "@distilled.cloud/core/errors";
 
 /**
@@ -24,6 +26,15 @@ export class Credentials extends Context.Service<Credentials, Config>()(
   "AzureCredentials",
 ) {}
 
+const envConfig = EffectConfig.all({
+  bearerToken: EffectConfig.string("AZURE_BEARER_TOKEN"),
+  subscriptionId: EffectConfig.string("AZURE_SUBSCRIPTION_ID"),
+  tenantId: EffectConfig.option(EffectConfig.string("AZURE_TENANT_ID")),
+  apiBaseUrl: EffectConfig.string("AZURE_API_BASE_URL").pipe(
+    EffectConfig.withDefault(DEFAULT_API_BASE_URL),
+  ),
+});
+
 /**
  * Reads Azure credentials from environment variables:
  *
@@ -34,28 +45,19 @@ export class Credentials extends Context.Service<Credentials, Config>()(
  */
 export const CredentialsFromEnv = Layer.effect(
   Credentials,
-  Effect.gen(function* () {
-    const bearerToken = process.env.AZURE_BEARER_TOKEN;
-
-    if (!bearerToken) {
-      return yield* new ConfigError({
-        message: "AZURE_BEARER_TOKEN environment variable is required",
-      });
-    }
-
-    const subscriptionId = process.env.AZURE_SUBSCRIPTION_ID;
-
-    if (!subscriptionId) {
-      return yield* new ConfigError({
-        message: "AZURE_SUBSCRIPTION_ID environment variable is required",
-      });
-    }
-
-    return {
+  envConfig.asEffect().pipe(
+    Effect.mapError(
+      () =>
+        new ConfigError({
+          message:
+            "AZURE_BEARER_TOKEN and AZURE_SUBSCRIPTION_ID environment variables are required",
+        }),
+    ),
+    Effect.map(({ bearerToken, subscriptionId, tenantId, apiBaseUrl }) => ({
       bearerToken: Redacted.make(bearerToken),
       subscriptionId,
-      tenantId: process.env.AZURE_TENANT_ID,
-      apiBaseUrl: process.env.AZURE_API_BASE_URL ?? DEFAULT_API_BASE_URL,
-    };
-  }),
+      tenantId: Option.getOrUndefined(tenantId),
+      apiBaseUrl,
+    })),
+  ),
 );

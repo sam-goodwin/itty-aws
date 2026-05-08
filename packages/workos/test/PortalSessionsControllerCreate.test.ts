@@ -31,7 +31,7 @@ describe("PortalSessionsControllerCreate", () => {
       expect(typeof result.link).toBe("string");
       expect(result.link.startsWith("http")).toBe(true);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -44,7 +44,7 @@ describe("PortalSessionsControllerCreate", () => {
       );
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -57,7 +57,7 @@ describe("PortalSessionsControllerCreate", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -70,7 +70,7 @@ describe("PortalSessionsControllerCreate", () => {
       );
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -95,6 +95,6 @@ describe("PortalSessionsControllerCreate", () => {
       );
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 });

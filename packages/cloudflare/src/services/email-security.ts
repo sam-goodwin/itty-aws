@@ -570,12 +570,12 @@ export interface ListInvestigatesResponse {
       spf?: "pass" | "neutral" | "fail" | "error" | "none" | null;
     } | null;
   }[];
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
-  };
+  } | null;
 }
 
 export const ListInvestigatesResponse =
@@ -820,18 +820,25 @@ export const ListInvestigatesResponse =
         }),
       ),
     ),
-    resultInfo: Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
+    resultInfo: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          totalCount: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            count: "count",
+            page: "page",
+            perPage: "per_page",
+            totalCount: "total_count",
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
@@ -1815,12 +1822,12 @@ export interface ListSettingAllowPoliciesResponse {
     isSender?: boolean | null;
     isSpoof?: boolean | null;
   }[];
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
-  };
+  } | null;
 }
 
 export const ListSettingAllowPoliciesResponse =
@@ -1862,18 +1869,25 @@ export const ListSettingAllowPoliciesResponse =
         }),
       ),
     ),
-    resultInfo: Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
+    resultInfo: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          totalCount: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            count: "count",
+            page: "page",
+            perPage: "per_page",
+            totalCount: "total_count",
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
@@ -2341,12 +2355,12 @@ export interface ListSettingBlockSendersResponse {
     patternType: "EMAIL" | "DOMAIN" | "IP" | "UNKNOWN";
     comments?: string | null;
   }[];
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
-  };
+  } | null;
 }
 
 export const ListSettingBlockSendersResponse =
@@ -2372,18 +2386,25 @@ export const ListSettingBlockSendersResponse =
         }),
       ),
     ),
-    resultInfo: Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
+    resultInfo: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          totalCount: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            count: "count",
+            page: "page",
+            perPage: "per_page",
+            totalCount: "total_count",
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
@@ -2932,12 +2953,12 @@ export interface ListSettingDomainsResponse {
     requireTlsOutbound?: boolean | null;
     spfStatus?: "none" | "good" | "neutral" | "open" | "invalid" | null;
   }[];
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
-  };
+  } | null;
 }
 
 export const ListSettingDomainsResponse =
@@ -3074,18 +3095,25 @@ export const ListSettingDomainsResponse =
         }),
       ),
     ),
-    resultInfo: Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
+    resultInfo: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          totalCount: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            count: "count",
+            page: "page",
+            perPage: "per_page",
+            totalCount: "total_count",
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
@@ -3631,12 +3659,12 @@ export interface ListSettingImpersonationRegistriesResponse {
     externalDirectoryNodeId?: string | null;
     provenance?: string | null;
   }[];
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
-  };
+  } | null;
 }
 
 export const ListSettingImpersonationRegistriesResponse =
@@ -3676,18 +3704,25 @@ export const ListSettingImpersonationRegistriesResponse =
         }),
       ),
     ),
-    resultInfo: Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
+    resultInfo: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          totalCount: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            count: "count",
+            page: "page",
+            perPage: "per_page",
+            totalCount: "total_count",
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
@@ -4073,12 +4108,12 @@ export interface ListSettingTrustedDomainsResponse {
     pattern: string;
     comments?: string | null;
   }[];
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
-  };
+  } | null;
 }
 
 export const ListSettingTrustedDomainsResponse =
@@ -4106,18 +4141,25 @@ export const ListSettingTrustedDomainsResponse =
         }),
       ),
     ),
-    resultInfo: Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
+    resultInfo: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          totalCount: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            count: "count",
+            page: "page",
+            perPage: "per_page",
+            totalCount: "total_count",
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
@@ -4549,12 +4591,12 @@ export interface ListSubmissionsResponse {
     subject?: string | null;
     type?: string | null;
   }[];
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
-  };
+  } | null;
 }
 
 export const ListSubmissionsResponse =
@@ -4634,18 +4676,25 @@ export const ListSubmissionsResponse =
         }),
       ),
     ),
-    resultInfo: Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
+    resultInfo: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          totalCount: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            count: "count",
+            page: "page",
+            perPage: "per_page",
+            totalCount: "total_count",
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),

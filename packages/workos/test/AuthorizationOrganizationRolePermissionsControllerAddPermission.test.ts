@@ -34,7 +34,7 @@ describe("AuthorizationOrganizationRolePermissionsControllerAddPermission", () =
 
       expect(["BadRequest", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -63,7 +63,7 @@ describe("AuthorizationOrganizationRolePermissionsControllerAddPermission", () =
 
       expect(["NotFound", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -78,7 +78,7 @@ describe("AuthorizationOrganizationRolePermissionsControllerAddPermission", () =
 
       expect(["Forbidden", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -107,6 +107,6 @@ describe("AuthorizationOrganizationRolePermissionsControllerAddPermission", () =
 
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 });

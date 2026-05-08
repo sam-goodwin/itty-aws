@@ -3,13 +3,14 @@ import { describe, expect, it } from "vitest";
 import { AuthorizationResourcesByExternalIdControllerUpdateByExternalId } from "../src/operations/AuthorizationResourcesByExternalIdControllerUpdateByExternalId.ts";
 import { OrganizationsControllerCreate } from "../src/operations/OrganizationsControllerCreate.ts";
 import { OrganizationsControllerDeleteOrganization } from "../src/operations/OrganizationsControllerDeleteOrganization.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, runOrSkipOnEnvLimitation, testRunId } from "./setup.ts";
 
 describe("AuthorizationResourcesByExternalIdControllerUpdateByExternalId", () => {
   it(
     "updates an authorization resource by external id",
-    async () => {
-      const result = await runEffect(
+    async (ctx) => {
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationResourcesByExternalIdControllerUpdateByExternalId({
           organization_id: `org_${testRunId}`,
           resource_type_slug: "workspace",
@@ -22,7 +23,7 @@ describe("AuthorizationResourcesByExternalIdControllerUpdateByExternalId", () =>
       expect(typeof result.external_id).toBe("string");
       expect(typeof result.resource_type_slug).toBe("string");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -52,7 +53,7 @@ describe("AuthorizationResourcesByExternalIdControllerUpdateByExternalId", () =>
 
       expect(["BadRequest", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -82,7 +83,7 @@ describe("AuthorizationResourcesByExternalIdControllerUpdateByExternalId", () =>
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -98,7 +99,7 @@ describe("AuthorizationResourcesByExternalIdControllerUpdateByExternalId", () =>
 
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -128,7 +129,7 @@ describe("AuthorizationResourcesByExternalIdControllerUpdateByExternalId", () =>
 
       expect(["Conflict", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -158,6 +159,6 @@ describe("AuthorizationResourcesByExternalIdControllerUpdateByExternalId", () =>
 
       expect(["NotFound", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 });

@@ -30,6 +30,7 @@ import { getPath, type RequestParts } from "@distilled.cloud/core/traits";
 import {
   CloudflareHttpError,
   Forbidden,
+  GatewayTimeout,
   HTTP_STATUS_MAP,
   InternalServerError,
   InvalidRoute,
@@ -107,6 +108,15 @@ const GLOBAL_ERROR_CODE_MAP: Record<
   // accountId or zoneId) doesn't resolve to a real resource. Surfacing it
   // globally keeps tests for unknown-resource cases off UnknownCloudflareError.
   7003: (message) => new InvalidRoute({ code: 7003, message }),
+  // 1000: dual-use code. Cloudflare uses it for several unrelated conditions,
+  // but the "Request timeout" variant is unambiguous from the message and is
+  // a transient, retryable failure. Map only that variant to GatewayTimeout
+  // (retryable + server error); fall back to UnknownCloudflareError for
+  // anything else carried under code 1000 to preserve existing behavior.
+  1000: (message) =>
+    /\btimeout\b/i.test(message)
+      ? new GatewayTimeout({ message })
+      : new UnknownCloudflareError({ code: 1000, message }),
 };
 
 /**

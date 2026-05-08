@@ -56,7 +56,7 @@ describe("UserlandUserOrganizationMembershipsControllerDeactivate", () => {
       expect(typeof result.organization_id).toBe("string");
       expect(typeof result.role.slug).toBe("string");
     },
-    { timeout: 90_000 },
+    90_000,
   );
 
   it(
@@ -69,7 +69,7 @@ describe("UserlandUserOrganizationMembershipsControllerDeactivate", () => {
       );
       expect(["BadRequest", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -82,7 +82,7 @@ describe("UserlandUserOrganizationMembershipsControllerDeactivate", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -95,6 +95,6 @@ describe("UserlandUserOrganizationMembershipsControllerDeactivate", () => {
       );
       expect(["NotFound", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

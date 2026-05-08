@@ -19,7 +19,7 @@ describe("ApiKeysControllerValidateApiKey", () => {
       expect(result).toBeDefined();
       expect(result.api_key).toBeDefined();
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
 });

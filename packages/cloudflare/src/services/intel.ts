@@ -19,10 +19,12 @@ import { type DefaultErrors } from "../errors.ts";
 export interface GetAsnRequest {
   /** Identifier. */
   accountId: string;
+  asn: string;
 }
 
 export const GetAsnRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  asn: Schema.String.pipe(T.HttpPath("asn")),
 }).pipe(
   T.Http({ method: "GET", path: "/accounts/{account_id}/intel/asn/{asn}" }),
 ) as unknown as Schema.Schema<GetAsnRequest>;
@@ -53,10 +55,12 @@ export const getAsn: API.OperationMethod<
 export interface GetAsnSubnetRequest {
   /** Identifier. */
   accountId: string;
+  asn: string;
 }
 
 export const GetAsnSubnetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  asn: Schema.String.pipe(T.HttpPath("asn")),
 }).pipe(
   T.Http({
     method: "GET",
@@ -252,12 +256,12 @@ export interface ListAttackSurfaceReportIssuesResponse {
         }[]
       | null;
   };
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
-  };
+  } | null;
 }
 
 export const ListAttackSurfaceReportIssuesResponse =
@@ -371,18 +375,25 @@ export const ListAttackSurfaceReportIssuesResponse =
         ]),
       ),
     }),
-    resultInfo: Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
+    resultInfo: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          totalCount: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            count: "count",
+            page: "page",
+            perPage: "per_page",
+            totalCount: "total_count",
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
@@ -991,12 +1002,12 @@ export interface ListDnsResponse {
         }[]
       | null;
   };
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
-  };
+  } | null;
 }
 
 export const ListDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1047,18 +1058,23 @@ export const ListDnsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
     ),
   }),
-  resultInfo: Schema.Struct({
-    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      count: "count",
-      page: "page",
-      perPage: "per_page",
-      totalCount: "total_count",
-    }),
+  resultInfo: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          count: "count",
+          page: "page",
+          perPage: "per_page",
+          totalCount: "total_count",
+        }),
+      ),
+      Schema.Null,
+    ]),
   ),
 }).pipe(
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),

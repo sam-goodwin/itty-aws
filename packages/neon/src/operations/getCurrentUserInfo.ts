@@ -69,6 +69,7 @@ export const GetCurrentUserInfoOutput =
           "staff",
           "trial",
           "sponsorship",
+          "shared_payment_token",
         ]),
         quota_reset_at_last: Schema.String,
         name: Schema.String,
@@ -94,6 +95,7 @@ export const GetCurrentUserInfoOutput =
             ),
           }),
         ),
+        spending_limit_cents: Schema.optional(Schema.NullOr(Schema.Number)),
       }),
     ),
     auth_accounts: Schema.Array(

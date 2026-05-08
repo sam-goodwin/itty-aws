@@ -40,7 +40,7 @@ describe("UserlandUserFeatureFlagsControllerList", () => {
         expect(typeof flag.updated_at).toBe("string");
       }
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -54,6 +54,6 @@ describe("UserlandUserFeatureFlagsControllerList", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

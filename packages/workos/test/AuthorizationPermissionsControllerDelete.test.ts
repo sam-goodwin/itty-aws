@@ -29,7 +29,7 @@ describe("AuthorizationPermissionsControllerDelete", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -43,7 +43,7 @@ describe("AuthorizationPermissionsControllerDelete", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -72,6 +72,6 @@ describe("AuthorizationPermissionsControllerDelete", () => {
 
       expect(error._tag).toBe("Forbidden");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

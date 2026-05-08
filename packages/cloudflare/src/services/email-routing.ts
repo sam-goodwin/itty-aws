@@ -110,12 +110,12 @@ export interface ListAddressesResponse {
     tag?: string | null;
     verified?: string | null;
   }[];
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
-  };
+  } | null;
 }
 
 export const ListAddressesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -129,18 +129,23 @@ export const ListAddressesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       verified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
   ),
-  resultInfo: Schema.Struct({
-    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      count: "count",
-      page: "page",
-      perPage: "per_page",
-      totalCount: "total_count",
-    }),
+  resultInfo: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          count: "count",
+          page: "page",
+          perPage: "per_page",
+          totalCount: "total_count",
+        }),
+      ),
+      Schema.Null,
+    ]),
   ),
 }).pipe(
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
@@ -1462,12 +1467,12 @@ export interface ListRulesResponse {
     priority?: number | null;
     tag?: string | null;
   }[];
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
-  };
+  } | null;
 }
 
 export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -1511,18 +1516,23 @@ export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
   ),
-  resultInfo: Schema.Struct({
-    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      count: "count",
-      page: "page",
-      perPage: "per_page",
-      totalCount: "total_count",
-    }),
+  resultInfo: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          count: "count",
+          page: "page",
+          perPage: "per_page",
+          totalCount: "total_count",
+        }),
+      ),
+      Schema.Null,
+    ]),
   ),
 }).pipe(
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),

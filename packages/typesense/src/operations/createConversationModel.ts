@@ -2,12 +2,21 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
+import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const CreateConversationModelInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "POST", path: "/conversations/models" }),
-  );
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    model_name: Schema.String,
+    api_key: Schema.optional(SensitiveString),
+    history_collection: Schema.String,
+    account_id: Schema.optional(Schema.String),
+    system_prompt: Schema.optional(Schema.String),
+    ttl: Schema.optional(Schema.Number),
+    max_bytes: Schema.Number,
+    vllm_url: Schema.optional(Schema.String),
+  }).pipe(T.Http({ method: "POST", path: "/conversations/models" }));
 export type CreateConversationModelInput =
   typeof CreateConversationModelInput.Type;
 

@@ -2,13 +2,13 @@ import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { DataIntegrationsControllerGetDataIntegrationAuthorizeUrl } from "../src/operations/DataIntegrationsControllerGetDataIntegrationAuthorizeUrl.ts";
 import { UserlandUsersControllerList } from "../src/operations/UserlandUsersControllerList.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, runOrSkipOnEnvLimitation, testRunId } from "./setup.ts";
 
 describe("DataIntegrationsControllerGetDataIntegrationAuthorizeUrl", () => {
   it(
     "returns an authorization URL for a provider",
-    async () => {
-      const users = await runEffect(UserlandUsersControllerList({ limit: 1 }));
+    async (ctx) => {
+      const users = await runOrSkipOnEnvLimitation(ctx, UserlandUsersControllerList({ limit: 1 }));
 
       if (users.data.length === 0) {
         // No seed user available — exercise the operation against a missing
@@ -24,7 +24,8 @@ describe("DataIntegrationsControllerGetDataIntegrationAuthorizeUrl", () => {
       }
 
       const seed = users.data[0] as { id: string };
-      const result = await runEffect(
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         DataIntegrationsControllerGetDataIntegrationAuthorizeUrl({
           slug: "github",
           user_id: seed.id,
@@ -35,7 +36,7 @@ describe("DataIntegrationsControllerGetDataIntegrationAuthorizeUrl", () => {
       expect(typeof result.url).toBe("string");
       expect(result.url.length).toBeGreaterThan(0);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -56,7 +57,7 @@ describe("DataIntegrationsControllerGetDataIntegrationAuthorizeUrl", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -71,7 +72,7 @@ describe("DataIntegrationsControllerGetDataIntegrationAuthorizeUrl", () => {
 
       expect(["BadRequest", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -86,6 +87,6 @@ describe("DataIntegrationsControllerGetDataIntegrationAuthorizeUrl", () => {
 
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

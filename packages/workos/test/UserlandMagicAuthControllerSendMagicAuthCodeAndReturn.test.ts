@@ -1,14 +1,15 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { UserlandMagicAuthControllerSendMagicAuthCodeAndReturn } from "../src/operations/UserlandMagicAuthControllerSendMagicAuthCodeAndReturn.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, runOrSkipOnEnvLimitation, testRunId } from "./setup.ts";
 
 describe("UserlandMagicAuthControllerSendMagicAuthCodeAndReturn", () => {
   it(
     "creates a magic auth code for a valid email",
-    async () => {
+    async (ctx) => {
       const email = `distilled-magic-${testRunId}@example.com`;
-      const result = await runEffect(
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         UserlandMagicAuthControllerSendMagicAuthCodeAndReturn({ email }),
       );
       expect(result).toBeDefined();
@@ -19,7 +20,7 @@ describe("UserlandMagicAuthControllerSendMagicAuthCodeAndReturn", () => {
       expect(result.code.length).toBeGreaterThan(0);
       expect(typeof result.expires_at).toBe("string");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -32,7 +33,7 @@ describe("UserlandMagicAuthControllerSendMagicAuthCodeAndReturn", () => {
       );
       expect(["BadRequest", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -45,6 +46,6 @@ describe("UserlandMagicAuthControllerSendMagicAuthCodeAndReturn", () => {
       );
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

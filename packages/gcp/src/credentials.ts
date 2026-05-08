@@ -1,7 +1,9 @@
+import * as EffectConfig from "effect/Config";
+import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
+import * as Option from "effect/Option";
 import * as Redacted from "effect/Redacted";
-import * as Context from "effect/Context";
 import { ConfigError } from "@distilled.cloud/core/errors";
 
 export interface Config {
@@ -13,20 +15,23 @@ export class Credentials extends Context.Service<Credentials, Config>()(
   "GCPCredentials",
 ) {}
 
+const envConfig = EffectConfig.all({
+  accessToken: EffectConfig.string("GOOGLE_ACCESS_TOKEN"),
+  project: EffectConfig.option(EffectConfig.string("GOOGLE_PROJECT_ID")),
+});
+
 export const CredentialsFromEnv = Layer.effect(
   Credentials,
-  Effect.gen(function* () {
-    const accessToken = process.env.GOOGLE_ACCESS_TOKEN;
-
-    if (!accessToken) {
-      return yield* new ConfigError({
-        message: "GOOGLE_ACCESS_TOKEN environment variable is required",
-      });
-    }
-
-    return {
+  envConfig.asEffect().pipe(
+    Effect.mapError(
+      () =>
+        new ConfigError({
+          message: "GOOGLE_ACCESS_TOKEN environment variable is required",
+        }),
+    ),
+    Effect.map(({ accessToken, project }) => ({
       accessToken: Redacted.make(accessToken),
-      project: process.env.GOOGLE_PROJECT_ID,
-    };
-  }),
+      project: Option.getOrUndefined(project),
+    })),
+  ),
 );

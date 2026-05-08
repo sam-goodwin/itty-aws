@@ -36,6 +36,7 @@
           ]
         }
       },
+      "bindings[].json": { "type": "unknown" },
       "bindings[]": {
         "appendUnion": [
           {

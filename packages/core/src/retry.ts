@@ -7,6 +7,7 @@
  * so that callers can install a blanket retry policy at the layer level
  * for that SDK without wrapping every call with `Effect.retry`.
  */
+import * as Config from "effect/Config";
 import * as Duration from "effect/Duration";
 import * as Effect from "effect/Effect";
 import { pipe } from "effect/Function";
@@ -122,35 +123,43 @@ export const ServerRetryHintCapMs = Context.Service<number>(
 export const serverRetryHintCapLayer = (capMs: number) =>
   Layer.succeed(ServerRetryHintCapMs, capMs);
 
+const serverRetryHintCapMsConfig: Config.Config<number> = Config.string(
+  ENV_SERVER_RETRY_HINT_CAP_MS,
+).pipe(
+  Config.map((raw) => {
+    if (raw === "") return DEFAULT_SERVER_RETRY_HINT_CAP_MS;
+    const n = Number(raw);
+    if (!Number.isFinite(n) || n < 0) return DEFAULT_SERVER_RETRY_HINT_CAP_MS;
+    return Math.trunc(n);
+  }),
+  Config.withDefault(DEFAULT_SERVER_RETRY_HINT_CAP_MS),
+);
+
 /**
  * Effective cap when neither {@link ServerRetryHintCapMs} nor
  * `DISTILLED_SERVER_RETRY_HINT_CAP_MS` is set: {@link DEFAULT_SERVER_RETRY_HINT_CAP_MS}.
  *
- * Reads `process.env.DISTILLED_SERVER_RETRY_HINT_CAP_MS` when present (must be
- * a non-negative finite integer; invalid values are ignored). Undefined
- * `process` (some edge runtimes) falls back to the default.
+ * Reads the `DISTILLED_SERVER_RETRY_HINT_CAP_MS` environment variable via
+ * Effect's {@link Config} (must be a non-negative finite number; invalid
+ * values fall back to the default).
  */
-export const readServerRetryHintCapMsFromEnv = (): number => {
-  if (typeof process === "undefined" || process.env === undefined) {
-    return DEFAULT_SERVER_RETRY_HINT_CAP_MS;
-  }
-  const raw = process.env[ENV_SERVER_RETRY_HINT_CAP_MS];
-  if (raw === undefined || raw === "") return DEFAULT_SERVER_RETRY_HINT_CAP_MS;
-  const n = Number(raw);
-  if (!Number.isFinite(n) || n < 0) return DEFAULT_SERVER_RETRY_HINT_CAP_MS;
-  return Math.trunc(n);
-};
+export const readServerRetryHintCapMsFromEnv = (): number =>
+  Effect.runSync(
+    serverRetryHintCapMsConfig
+      .asEffect()
+      .pipe(Effect.orElseSucceed(() => DEFAULT_SERVER_RETRY_HINT_CAP_MS)),
+  );
 
 const resolveServerRetryHintCapMs = (): Effect.Effect<number, never, never> =>
   Effect.gen(function* () {
     const fromLayer = yield* Effect.serviceOption(ServerRetryHintCapMs);
-    return Option.match(fromLayer, {
-      onNone: () => readServerRetryHintCapMsFromEnv(),
-      onSome: (n) =>
-        Number.isFinite(n) && n >= 0
-          ? Math.trunc(n)
-          : readServerRetryHintCapMsFromEnv(),
-    });
+    if (Option.isSome(fromLayer)) {
+      const n = fromLayer.value;
+      if (Number.isFinite(n) && n >= 0) return Math.trunc(n);
+    }
+    return yield* serverRetryHintCapMsConfig
+      .asEffect()
+      .pipe(Effect.orElseSucceed(() => DEFAULT_SERVER_RETRY_HINT_CAP_MS));
   });
 
 /**

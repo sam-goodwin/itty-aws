@@ -1,7 +1,8 @@
+import * as EffectConfig from "effect/Config";
+import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
-import * as Context from "effect/Context";
 import { ConfigError } from "@distilled.cloud/core/errors";
 
 export const DEFAULT_API_BASE_URL = "https://api.supabase.com";
@@ -15,20 +16,22 @@ export class Credentials extends Context.Service<Credentials, Config>()(
   "SupabaseCredentials",
 ) {}
 
+const envConfig = EffectConfig.all({
+  accessToken: EffectConfig.string("SUPABASE_ACCESS_TOKEN"),
+});
+
 export const CredentialsFromEnv = Layer.effect(
   Credentials,
-  Effect.gen(function* () {
-    const accessToken = process.env.SUPABASE_ACCESS_TOKEN;
-
-    if (!accessToken) {
-      return yield* new ConfigError({
-        message: "SUPABASE_ACCESS_TOKEN environment variable is required",
-      });
-    }
-
-    return {
+  envConfig.asEffect().pipe(
+    Effect.mapError(
+      () =>
+        new ConfigError({
+          message: "SUPABASE_ACCESS_TOKEN environment variable is required",
+        }),
+    ),
+    Effect.map(({ accessToken }) => ({
       accessToken: Redacted.make(accessToken),
       apiBaseUrl: DEFAULT_API_BASE_URL,
-    };
-  }),
+    })),
+  ),
 );

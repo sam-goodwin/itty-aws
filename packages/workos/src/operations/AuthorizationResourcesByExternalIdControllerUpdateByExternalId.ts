@@ -15,6 +15,8 @@ export const AuthorizationResourcesByExternalIdControllerUpdateByExternalIdInput
     organization_id: Schema.String.pipe(T.PathParam()),
     resource_type_slug: Schema.String.pipe(T.PathParam()),
     external_id: Schema.String.pipe(T.PathParam()),
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
     T.Http({
       method: "PATCH",

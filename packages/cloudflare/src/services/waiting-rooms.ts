@@ -200,12 +200,12 @@ export interface ListEventsResponse {
       | "visible_managed"
       | null;
   }[];
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
-  };
+  } | null;
 }
 
 export const ListEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -284,18 +284,23 @@ export const ListEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       }),
     ),
   ),
-  resultInfo: Schema.Struct({
-    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      count: "count",
-      page: "page",
-      perPage: "per_page",
-      totalCount: "total_count",
-    }),
+  resultInfo: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          count: "count",
+          page: "page",
+          perPage: "per_page",
+          totalCount: "total_count",
+        }),
+      ),
+      Schema.Null,
+    ]),
   ),
 }).pipe(
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
@@ -2145,15 +2150,35 @@ export const getWaitingRoom: API.OperationMethod<
   errors: [],
 }));
 
-export interface ListWaitingRoomsRequest {}
+const ListWaitingRoomsBaseFields = {} as const;
 
-export const ListWaitingRoomsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      path: "/{accountOrZone}/{accountOrZoneId}/waiting_rooms",
-    }),
-  ) as unknown as Schema.Schema<ListWaitingRoomsRequest>;
+interface ListWaitingRoomsBaseRequest {}
+
+export interface ListWaitingRoomsForAccountRequest extends ListWaitingRoomsBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface ListWaitingRoomsForZoneRequest extends ListWaitingRoomsBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const ListWaitingRoomsForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...ListWaitingRoomsBaseFields,
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/waiting_rooms" }),
+  ) as unknown as Schema.Schema<ListWaitingRoomsForAccountRequest>;
+
+export const ListWaitingRoomsForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...ListWaitingRoomsBaseFields,
+  }).pipe(
+    T.Http({ method: "GET", path: "/zones/{zone_id}/waiting_rooms" }),
+  ) as unknown as Schema.Schema<ListWaitingRoomsForZoneRequest>;
 
 export interface ListWaitingRoomsResponse {
   result: {
@@ -2231,12 +2256,12 @@ export interface ListWaitingRoomsResponse {
       | "visible_managed"
       | null;
   }[];
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
-  };
+  } | null;
 }
 
 export const ListWaitingRoomsResponse =
@@ -2420,18 +2445,25 @@ export const ListWaitingRoomsResponse =
         }),
       ),
     ),
-    resultInfo: Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
+    resultInfo: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          totalCount: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            count: "count",
+            page: "page",
+            perPage: "per_page",
+            totalCount: "total_count",
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
@@ -2439,13 +2471,31 @@ export const ListWaitingRoomsResponse =
 
 export type ListWaitingRoomsError = DefaultErrors;
 
-export const listWaitingRooms: API.PaginatedOperationMethod<
-  ListWaitingRoomsRequest,
+export const listWaitingRoomsForAccount: API.PaginatedOperationMethod<
+  ListWaitingRoomsForAccountRequest,
   ListWaitingRoomsResponse,
   ListWaitingRoomsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListWaitingRoomsRequest,
+  input: ListWaitingRoomsForAccountRequest,
+  output: ListWaitingRoomsResponse,
+  errors: [],
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "resultInfo.page",
+    items: "result",
+    pageSize: "perPage",
+  } as const,
+}));
+
+export const listWaitingRoomsForZone: API.PaginatedOperationMethod<
+  ListWaitingRoomsForZoneRequest,
+  ListWaitingRoomsResponse,
+  ListWaitingRoomsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListWaitingRoomsForZoneRequest,
   output: ListWaitingRoomsResponse,
   errors: [],
   pagination: {

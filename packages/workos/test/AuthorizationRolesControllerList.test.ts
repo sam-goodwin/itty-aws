@@ -24,7 +24,7 @@ describe("AuthorizationRolesControllerList", () => {
         expect(typeof role.updated_at).toBe("string");
       }
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
 });

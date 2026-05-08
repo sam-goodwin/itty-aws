@@ -37,7 +37,7 @@ describe("ApplicationsControllerFind", () => {
       expect(typeof app.created_at).toBe("string");
       expect(typeof app.updated_at).toBe("string");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -51,6 +51,6 @@ describe("ApplicationsControllerFind", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

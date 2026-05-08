@@ -61,7 +61,7 @@ describe("UserlandUsersControllerResetPassword", () => {
       expect(typeof result.user.id).toBe("string");
       expect(result.user.email).toBe(target.email);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -75,7 +75,7 @@ describe("UserlandUsersControllerResetPassword", () => {
       );
       expect(["BadRequest", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -90,7 +90,7 @@ describe("UserlandUsersControllerResetPassword", () => {
       );
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -104,7 +104,7 @@ describe("UserlandUsersControllerResetPassword", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -118,6 +118,6 @@ describe("UserlandUsersControllerResetPassword", () => {
       );
       expect(["NotFound", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

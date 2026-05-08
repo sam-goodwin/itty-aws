@@ -975,7 +975,35 @@ function generateInputSchema3(
       bodyContentType = "multipart";
     }
     if (bodyContent?.schema) {
-      const bodySchema = resolveSchemaObject(spec, bodyContent.schema);
+      let bodySchema = resolveSchemaObject(spec, bodyContent.schema);
+
+      // Flatten `allOf` so a body schema like `{ allOf: [BranchCreateRequest,
+      // AnnotationCreateValueRequest] }` exposes the union of its sub-schemas'
+      // properties as fields, instead of degenerating to an empty body.
+      if (bodySchema.allOf && bodySchema.allOf.length > 0) {
+        const mergedProps: Record<string, SchemaObject> = {
+          ...(bodySchema.properties ?? {}),
+        };
+        const mergedRequired: string[] = [...(bodySchema.required ?? [])];
+        for (const subSchema of bodySchema.allOf) {
+          const resolvedSub = subSchema.$ref
+            ? (resolveRef(spec, subSchema.$ref) as SchemaObject)
+            : subSchema;
+          if (resolvedSub.properties) {
+            Object.assign(mergedProps, resolvedSub.properties);
+          }
+          if (resolvedSub.required) {
+            mergedRequired.push(...resolvedSub.required);
+          }
+        }
+        bodySchema = {
+          ...bodySchema,
+          type: "object",
+          properties: mergedProps,
+          required: [...new Set(mergedRequired)],
+        };
+      }
+
       const unionMembers = getUnionMembers(bodySchema)?.map((member) =>
         resolveSchemaObject(spec, member),
       );

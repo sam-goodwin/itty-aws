@@ -29,6 +29,7 @@ export const GetOrganizationMembersOutput =
         user: Schema.Struct({
           email: Schema.String,
           has_mfa: Schema.optional(Schema.Boolean),
+          deactivated_at: Schema.optional(Schema.String),
         }),
       }),
     ),

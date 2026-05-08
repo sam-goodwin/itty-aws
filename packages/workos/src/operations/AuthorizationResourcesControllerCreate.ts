@@ -11,9 +11,13 @@ import {
 
 // Input Schema
 export const AuthorizationResourcesControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "POST", path: "/authorization/resources" }),
-  );
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    external_id: Schema.String,
+    name: Schema.String,
+    description: Schema.optional(Schema.NullOr(Schema.String)),
+    resource_type_slug: Schema.String,
+    organization_id: Schema.String,
+  }).pipe(T.Http({ method: "POST", path: "/authorization/resources" }));
 export type AuthorizationResourcesControllerCreateInput =
   typeof AuthorizationResourcesControllerCreateInput.Type;
 

@@ -35,7 +35,7 @@ describe("AuthorizationOrganizationRolesControllerList", () => {
         expect(["EnvironmentRole", "OrganizationRole"]).toContain(role.type);
       }
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -49,7 +49,7 @@ describe("AuthorizationOrganizationRolesControllerList", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -63,6 +63,6 @@ describe("AuthorizationOrganizationRolesControllerList", () => {
 
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

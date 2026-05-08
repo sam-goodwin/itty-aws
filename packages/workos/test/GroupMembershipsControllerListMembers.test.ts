@@ -55,7 +55,7 @@ describe("GroupMembershipsControllerListMembers", () => {
         expect(typeof member.directory_managed).toBe("boolean");
       }
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -80,7 +80,7 @@ describe("GroupMembershipsControllerListMembers", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -94,6 +94,6 @@ describe("GroupMembershipsControllerListMembers", () => {
       );
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

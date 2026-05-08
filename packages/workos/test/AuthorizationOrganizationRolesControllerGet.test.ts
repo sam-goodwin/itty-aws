@@ -32,7 +32,7 @@ describe("AuthorizationOrganizationRolesControllerGet", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -47,6 +47,6 @@ describe("AuthorizationOrganizationRolesControllerGet", () => {
 
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

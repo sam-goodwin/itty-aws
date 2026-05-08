@@ -1,15 +1,16 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { SsoControllerJsonWebKeySet } from "../src/operations/SsoControllerJsonWebKeySet.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, runOrSkipOnEnvLimitation, testRunId } from "./setup.ts";
 
 const clientId = process.env.WORKOS_CLIENT_ID ?? `client_test_${testRunId}`;
 
 describe("SsoControllerJsonWebKeySet", () => {
   it(
     "returns the JSON Web Key Set for a client",
-    async () => {
-      const result = await runEffect(
+    async (ctx) => {
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         SsoControllerJsonWebKeySet({ clientId }),
       );
       expect(result).toBeDefined();
@@ -24,7 +25,7 @@ describe("SsoControllerJsonWebKeySet", () => {
         expect(typeof key.kid).toBe("string");
       }
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -37,6 +38,6 @@ describe("SsoControllerJsonWebKeySet", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

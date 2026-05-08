@@ -13,7 +13,7 @@ import * as FetchHttpClient from "effect/unstable/http/FetchHttpClient";
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import { Credentials, CredentialsFromEnv } from "~/credentials";
 import * as Retry from "~/retry";
-import { transientOptions } from "@distilled.cloud/core/retry";
+import { makeDefault } from "@distilled.cloud/core/retry";
 
 type Provided =
   | Scope.Scope
@@ -122,7 +122,7 @@ function provideTestEnv<A, E, R extends Provided>(
       process.env.DEBUG ? "Debug" : "Info",
     ),
     Effect.provide(TestLayer),
-    Retry.policy(transientOptions),
+    Retry.policy(makeDefault),
   );
 }
 

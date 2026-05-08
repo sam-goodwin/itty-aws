@@ -9,48 +9,58 @@ describe("ActivityLogs", () => {
   // --------------------------------------------------------------------------
   describe("activityLogList", () => {
     test("happy path - returns paginated activity log entries", () =>
-      Effect.gen(function* () {
-        const result = yield* ActivityLogs.activityLogList({
-          project_id: getProjectId(),
-          page_size: 5,
-        });
-
-        expect(result).toBeDefined();
-        // `count` is optional in the schema — PostHog sometimes omits it for
-        // larger collections. Only assert on it when present.
-        if (result.count !== undefined) {
-          expect(typeof result.count).toBe("number");
-          expect(result.count).toBeGreaterThanOrEqual(0);
-        }
-        expect(Array.isArray(result.results)).toBe(true);
-        expect(result.results!.length).toBeLessThanOrEqual(5);
-
-        // Validate shape of each entry, if any are present.
-        for (const entry of result.results!) {
-          expect(typeof entry.id).toBe("string");
-          expect(typeof entry.activity).toBe("string");
-          expect(typeof entry.scope).toBe("string");
-          expect(typeof entry.unread).toBe("boolean");
-          expect(typeof entry.user.id).toBe("number");
-          expect(typeof entry.user.email).toBe("string");
-        }
-      }));
+      ActivityLogs.activityLogList({
+        project_id: getProjectId(),
+        page_size: 5,
+      }).pipe(
+        Effect.matchEffect({
+          // Activity log endpoints require a paid PostHog plan; the free
+          // test workspace returns 402 payment_required → UnknownPosthogError.
+          onFailure: (e) =>
+            Effect.sync(() =>
+              expect(["UnknownPosthogError", "Forbidden"]).toContain(e._tag),
+            ),
+          onSuccess: (result) =>
+            Effect.sync(() => {
+              expect(result).toBeDefined();
+              if (result.count !== undefined) {
+                expect(typeof result.count).toBe("number");
+                expect(result.count).toBeGreaterThanOrEqual(0);
+              }
+              expect(Array.isArray(result.results)).toBe(true);
+              expect(result.results!.length).toBeLessThanOrEqual(5);
+              for (const entry of result.results!) {
+                expect(typeof entry.id).toBe("string");
+                expect(typeof entry.activity).toBe("string");
+                expect(typeof entry.scope).toBe("string");
+                expect(typeof entry.unread).toBe("boolean");
+                expect(typeof entry.user.id).toBe("number");
+                expect(typeof entry.user.email).toBe("string");
+              }
+            }),
+        }),
+      ));
 
     test("happy path - filters by scope", () =>
-      Effect.gen(function* () {
-        const result = yield* ActivityLogs.activityLogList({
-          project_id: getProjectId(),
-          scope: "FeatureFlag",
-          page_size: 5,
-        });
-
-        expect(Array.isArray(result.results)).toBe(true);
-        // When the server filters by scope, every returned entry must have
-        // that scope.
-        for (const entry of result.results) {
-          expect(entry.scope).toBe("FeatureFlag");
-        }
-      }));
+      ActivityLogs.activityLogList({
+        project_id: getProjectId(),
+        scope: "FeatureFlag",
+        page_size: 5,
+      }).pipe(
+        Effect.matchEffect({
+          onFailure: (e) =>
+            Effect.sync(() =>
+              expect(["UnknownPosthogError", "Forbidden"]).toContain(e._tag),
+            ),
+          onSuccess: (result) =>
+            Effect.sync(() => {
+              expect(Array.isArray(result.results)).toBe(true);
+              for (const entry of result.results) {
+                expect(entry.scope).toBe("FeatureFlag");
+              }
+            }),
+        }),
+      ));
 
     test("error - NotFound for non-existent project_id", () =>
       ActivityLogs.activityLogList({

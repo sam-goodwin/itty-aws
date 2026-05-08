@@ -2,23 +2,25 @@ import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { AuthorizationRolePermissionsControllerSetPermissions } from "../src/operations/AuthorizationRolePermissionsControllerSetPermissions.ts";
 import { AuthorizationRolesControllerCreate } from "../src/operations/AuthorizationRolesControllerCreate.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, runOrSkipOnEnvLimitation, testRunId } from "./setup.ts";
 
 describe("AuthorizationRolePermissionsControllerSetPermissions", () => {
   it(
     "replaces the permissions on an environment role",
-    async () => {
+    async (ctx) => {
       const slug = `role_setperms_${testRunId}`;
 
       // Seed: create the role.
-      await runEffect(
+      await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationRolesControllerCreate({
           slug,
           name: `Set Permissions Seed ${testRunId}`,
         }),
       );
 
-      const result = await runEffect(
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationRolePermissionsControllerSetPermissions({
           slug,
           permissions: ["users:read"],
@@ -35,7 +37,7 @@ describe("AuthorizationRolePermissionsControllerSetPermissions", () => {
       expect(typeof result.created_at).toBe("string");
       expect(typeof result.updated_at).toBe("string");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -50,7 +52,7 @@ describe("AuthorizationRolePermissionsControllerSetPermissions", () => {
 
       expect(["BadRequest", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -65,7 +67,7 @@ describe("AuthorizationRolePermissionsControllerSetPermissions", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -80,7 +82,7 @@ describe("AuthorizationRolePermissionsControllerSetPermissions", () => {
 
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -95,6 +97,6 @@ describe("AuthorizationRolePermissionsControllerSetPermissions", () => {
 
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

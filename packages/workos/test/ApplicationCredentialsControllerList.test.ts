@@ -37,7 +37,7 @@ describe("ApplicationCredentialsControllerList", () => {
         expect(typeof secret.updated_at).toBe("string");
       }
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -51,6 +51,6 @@ describe("ApplicationCredentialsControllerList", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

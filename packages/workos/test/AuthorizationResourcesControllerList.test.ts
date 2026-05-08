@@ -17,7 +17,7 @@ describe("AuthorizationResourcesControllerList", () => {
       expect(Array.isArray(result.data)).toBe(true);
       expect(result.list_metadata).toBeDefined();
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
 });

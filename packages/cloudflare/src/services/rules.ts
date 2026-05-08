@@ -655,7 +655,7 @@ export interface ListListItemsResponse {
         comment?: string | null;
       }
   )[];
-  resultInfo: { cursors?: { after?: string | null } | null };
+  resultInfo?: { cursors?: { after?: string | null } | null } | null;
 }
 
 export const ListListItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -764,16 +764,23 @@ export const ListListItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
     ]),
   ),
-  resultInfo: Schema.Struct({
-    cursors: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          after: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-  }),
+  resultInfo: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        cursors: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              after: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+      }),
+      Schema.Null,
+    ]),
+  ),
 }).pipe(
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
 ) as unknown as Schema.Schema<ListListItemsResponse>;

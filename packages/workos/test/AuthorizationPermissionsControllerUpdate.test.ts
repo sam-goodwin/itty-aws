@@ -38,7 +38,7 @@ describe("AuthorizationPermissionsControllerUpdate", () => {
       expect(permission.name).toBe(`Updated Name ${testRunId}`);
       expect(permission.description).toBe("Updated description");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -53,7 +53,7 @@ describe("AuthorizationPermissionsControllerUpdate", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -83,7 +83,7 @@ describe("AuthorizationPermissionsControllerUpdate", () => {
 
       expect(error._tag).toBe("Forbidden");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -115,6 +115,6 @@ describe("AuthorizationPermissionsControllerUpdate", () => {
 
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

@@ -50,7 +50,7 @@ describe("UserlandUserOrganizationMembershipsControllerGet", () => {
       expect(typeof result.role.slug).toBe("string");
       expect(typeof result.directory_managed).toBe("boolean");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -63,6 +63,6 @@ describe("UserlandUserOrganizationMembershipsControllerGet", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

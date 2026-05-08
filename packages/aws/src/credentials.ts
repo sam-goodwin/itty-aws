@@ -53,6 +53,7 @@ export type CredentialsError =
   | ExpiredSSOToken
   | ConflictingSSORegion
   | ConflictingSSOStartUrl
+  | SsoPortalError
   | HttpClientError
   | PlatformError;
 
@@ -276,6 +277,21 @@ export class AwsCredentialProviderError extends Data.TaggedError(
   provider: string;
   cause?: unknown;
   hints?: ReadonlyArray<string>;
+}> {}
+
+/**
+ * The AWS SSO portal returned a response with no `roleCredentials`, e.g. a
+ * `ForbiddenException` when an IAM Identity Center role assignment is in a
+ * stale state.
+ */
+export class SsoPortalError extends Data.TaggedError(
+  "Alchemy::AWS::SsoPortalError",
+)<{
+  message: string;
+  profile: string;
+  account_id?: string;
+  role_name?: string;
+  status?: number;
 }> {}
 
 /**

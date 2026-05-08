@@ -2662,6 +2662,138 @@ export const getObject: API.OperationMethod<
   errors: [NoSuchBucket, InvalidRoute, NoRoute],
 }));
 
+export interface ListObjectsRequest {
+  /** Name of the R2 bucket. */
+  bucketName: string;
+  /** Account ID. */
+  accountId: string;
+  /** Maximum number of objects to return per page (1-1000). */
+  perPage?: number;
+  /** Restrict results to keys beginning with this prefix. */
+  prefix?: string;
+  /** Single character used to group keys. */
+  delimiter?: string;
+  /** Pagination cursor returned by a previous List Objects call. */
+  cursor?: string;
+  /** Returns keys lexicographically after this key. */
+  startAfter?: string;
+  /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
+  cfR2Jurisdiction?: "default" | "eu" | "fedramp";
+}
+
+export const ListObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bucketName: Schema.String.pipe(T.HttpPath("bucketName")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  prefix: Schema.optional(Schema.String).pipe(T.HttpQuery("prefix")),
+  delimiter: Schema.optional(Schema.String).pipe(T.HttpQuery("delimiter")),
+  cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
+  startAfter: Schema.optional(Schema.String).pipe(T.HttpQuery("start_after")),
+  cfR2Jurisdiction: Schema.optional(
+    Schema.Literals(["default", "eu", "fedramp"]),
+  ).pipe(T.HttpHeader("cf-r2-jurisdiction")),
+}).pipe(
+  T.Http({
+    method: "GET",
+    path: "/accounts/{account_id}/r2/buckets/{bucketName}/objects",
+  }),
+) as unknown as Schema.Schema<ListObjectsRequest>;
+
+export interface ListObjectsResponse {
+  result: {
+    key?: string | null;
+    size?: number | null;
+    etag?: string | null;
+    lastModified?: string | null;
+    storageClass?: "Standard" | "InfrequentAccess" | null;
+    ssec?: boolean | null;
+    customMetadata?: unknown | null;
+    httpMetadata?: unknown | null;
+  }[];
+  resultInfo?: {
+    count?: number | null;
+    cursor?: string | null;
+    perPage?: number | null;
+  } | null;
+}
+
+export const ListObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  result: Schema.Array(
+    Schema.Struct({
+      key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      size: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      etag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      lastModified: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      storageClass: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["Standard", "InfrequentAccess"]),
+          Schema.Null,
+        ]),
+      ),
+      ssec: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      customMetadata: Schema.optional(
+        Schema.Union([Schema.Unknown, Schema.Null]),
+      ),
+      httpMetadata: Schema.optional(
+        Schema.Union([Schema.Unknown, Schema.Null]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        key: "key",
+        size: "size",
+        etag: "etag",
+        lastModified: "last_modified",
+        storageClass: "storage_class",
+        ssec: "ssec",
+        customMetadata: "custom_metadata",
+        httpMetadata: "http_metadata",
+      }),
+    ),
+  ),
+  resultInfo: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        cursor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          count: "count",
+          cursor: "cursor",
+          perPage: "per_page",
+        }),
+      ),
+      Schema.Null,
+    ]),
+  ),
+}).pipe(
+  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+) as unknown as Schema.Schema<ListObjectsResponse>;
+
+export type ListObjectsError =
+  | DefaultErrors
+  | NoSuchBucket
+  | InvalidRoute
+  | NoRoute;
+
+export const listObjects: API.PaginatedOperationMethod<
+  ListObjectsRequest,
+  ListObjectsResponse,
+  ListObjectsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListObjectsRequest,
+  output: ListObjectsResponse,
+  errors: [NoSuchBucket, InvalidRoute, NoRoute],
+  pagination: {
+    mode: "cursor",
+    inputToken: "cursor",
+    outputToken: "resultInfo.cursor",
+    items: "result",
+    pageSize: "perPage",
+  } as const,
+}));
+
 export interface PutObjectRequest {
   /** Name of the R2 bucket. */
   bucketName: string;
@@ -2749,6 +2881,115 @@ export const putObject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutObjectRequest,
   output: PutObjectResponse,
+  errors: [NoSuchBucket, InvalidRoute, NoRoute],
+}));
+
+export interface DeleteObjectsRequest {
+  /** Name of the R2 bucket. */
+  bucketName: string;
+  /** Account ID. */
+  accountId: string;
+  /** When set, switches to "delete by prefix" mode and asynchronously deletes every object whose key begins with the given prefix. The response is a prefix-delete job descriptor instead of a per-key list.  */
+  prefix?: string;
+  /** Jurisdiction where objects in this bucket are guaranteed to be stored. */
+  cfR2Jurisdiction?: "default" | "eu" | "fedramp";
+  body?: string[];
+}
+
+export const DeleteObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bucketName: Schema.String.pipe(T.HttpPath("bucketName")),
+  accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  prefix: Schema.optional(Schema.String).pipe(T.HttpQuery("prefix")),
+  cfR2Jurisdiction: Schema.optional(
+    Schema.Literals(["default", "eu", "fedramp"]),
+  ).pipe(T.HttpHeader("cf-r2-jurisdiction")),
+  body: Schema.optional(Schema.Array(Schema.String)).pipe(T.HttpBody()),
+}).pipe(
+  T.Http({
+    method: "DELETE",
+    path: "/accounts/{account_id}/r2/buckets/{bucketName}/objects",
+  }),
+) as unknown as Schema.Schema<DeleteObjectsRequest>;
+
+export type DeleteObjectsResponse =
+  | { key?: string | null }[]
+  | {
+      id?: string | null;
+      jobType?: "prefixDelete" | null;
+      status?:
+        | "ENQUEUED"
+        | "RUNNING"
+        | "COMPLETED"
+        | "FAILED"
+        | "CANCELLED"
+        | null;
+      startTime?: string | null;
+      endTime?: string | null;
+      prefixDelete?: {
+        prefix?: string | null;
+        deletedObjects?: number | null;
+        isBucketClear?: boolean | null;
+      } | null;
+    };
+
+export const DeleteObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
+  Schema.Array(
+    Schema.Struct({
+      key: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ),
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    jobType: Schema.optional(
+      Schema.Union([Schema.Literal("prefixDelete"), Schema.Null]),
+    ),
+    status: Schema.optional(
+      Schema.Union([
+        Schema.Literals([
+          "ENQUEUED",
+          "RUNNING",
+          "COMPLETED",
+          "FAILED",
+          "CANCELLED",
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    startTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    endTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    prefixDelete: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          prefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          deletedObjects: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+          isBucketClear: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+        }),
+        Schema.Null,
+      ]),
+    ),
+  }),
+]).pipe(
+  T.ResponsePath("result"),
+) as unknown as Schema.Schema<DeleteObjectsResponse>;
+
+export type DeleteObjectsError =
+  | DefaultErrors
+  | NoSuchBucket
+  | InvalidRoute
+  | NoRoute;
+
+export const deleteObjects: API.OperationMethod<
+  DeleteObjectsRequest,
+  DeleteObjectsResponse,
+  DeleteObjectsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteObjectsRequest,
+  output: DeleteObjectsResponse,
   errors: [NoSuchBucket, InvalidRoute, NoRoute],
 }));
 

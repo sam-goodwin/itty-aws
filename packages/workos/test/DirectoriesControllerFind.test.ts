@@ -41,7 +41,7 @@ describe("DirectoriesControllerFind", () => {
       expect(typeof dir.created_at).toBe("string");
       expect(typeof dir.updated_at).toBe("string");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -55,7 +55,7 @@ describe("DirectoriesControllerFind", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -69,6 +69,6 @@ describe("DirectoriesControllerFind", () => {
 
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

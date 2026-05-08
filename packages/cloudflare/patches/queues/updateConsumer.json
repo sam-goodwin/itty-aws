@@ -2,6 +2,10 @@
   "errors": {
     "InvalidRequestBody": [{ "code": 10026 }],
     "QueueNotFound": [{ "code": 11000 }],
+    "QueueHandlerMissing": [
+      { "code": 11001 },
+      { "status": 400, "message": { "includes": "queue handler is missing" } }
+    ],
     "ConsumerNotFound": [
       { "code": 10013 },
       { "code": 10105 },

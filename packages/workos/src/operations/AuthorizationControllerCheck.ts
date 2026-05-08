@@ -7,6 +7,7 @@ import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 export const AuthorizationControllerCheckInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_membership_id: Schema.String.pipe(T.PathParam()),
+    permission_slug: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",

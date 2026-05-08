@@ -24,7 +24,7 @@ describe("UserlandUsersControllerList", () => {
         expect(typeof user.updated_at).toBe("string");
       }
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -36,6 +36,6 @@ describe("UserlandUsersControllerList", () => {
       );
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

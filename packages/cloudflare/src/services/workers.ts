@@ -379,12 +379,12 @@ export const ListBetaWorkersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export interface ListBetaWorkersResponse {
   result: { id: string; name: string }[];
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
-  };
+  } | null;
 }
 
 export const ListBetaWorkersResponse =
@@ -395,18 +395,25 @@ export const ListBetaWorkersResponse =
         name: Schema.String,
       }),
     ),
-    resultInfo: Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
+    resultInfo: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          totalCount: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            count: "count",
+            page: "page",
+            perPage: "per_page",
+            totalCount: "total_count",
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
@@ -975,7 +982,7 @@ export interface GetBetaWorkerVersionResponse {
             versionId?: string | null;
           }
         | { name: string; type: "images" }
-        | { json: string; name: string; type: "json" }
+        | { json: unknown; name: string; type: "json" }
         | { name: string; namespaceId: string; type: "kv_namespace" }
         | { certificateId: string; name: string; type: "mtls_certificate" }
         | { name: string; text: string; type: "plain_text" }
@@ -1244,7 +1251,7 @@ export const GetBetaWorkerVersionResponse =
               type: Schema.Literal("hyperdrive"),
             }),
             Schema.Struct({
-              json: Schema.String,
+              json: Schema.Unknown,
               name: Schema.String,
               type: Schema.Literal("json"),
             }),
@@ -1714,7 +1721,7 @@ export interface ListBetaWorkerVersionsResponse {
               versionId?: string | null;
             }
           | { name: string; type: "images" }
-          | { json: string; name: string; type: "json" }
+          | { json: unknown; name: string; type: "json" }
           | { name: string; namespaceId: string; type: "kv_namespace" }
           | { certificateId: string; name: string; type: "mtls_certificate" }
           | { name: string; text: string; type: "plain_text" }
@@ -1813,12 +1820,12 @@ export interface ListBetaWorkerVersionsResponse {
     startupTimeMs?: number | null;
     usageModel?: "standard" | "bundled" | "unbound" | null;
   }[];
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
-  };
+  } | null;
 }
 
 export const ListBetaWorkerVersionsResponse =
@@ -1988,7 +1995,7 @@ export const ListBetaWorkerVersionsResponse =
                   type: Schema.Literal("hyperdrive"),
                 }),
                 Schema.Struct({
-                  json: Schema.String,
+                  json: Schema.Unknown,
                   name: Schema.String,
                   type: Schema.Literal("json"),
                 }),
@@ -2373,18 +2380,25 @@ export const ListBetaWorkerVersionsResponse =
         }),
       ),
     ),
-    resultInfo: Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
+    resultInfo: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          totalCount: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            count: "count",
+            page: "page",
+            perPage: "per_page",
+            totalCount: "total_count",
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
@@ -2459,7 +2473,7 @@ export interface CreateBetaWorkerVersionRequest {
     | { id: string; name: string; type: "hyperdrive" }
     | { name: string; type: "inherit"; oldName?: string; versionId?: string }
     | { name: string; type: "images" }
-    | { json: string; name: string; type: "json" }
+    | { json: unknown; name: string; type: "json" }
     | { name: string; namespaceId: string; type: "kv_namespace" }
     | { certificateId: string; name: string; type: "mtls_certificate" }
     | { name: string; text: string; type: "plain_text" }
@@ -2692,7 +2706,7 @@ export const CreateBetaWorkerVersionRequest =
             type: Schema.Literal("hyperdrive"),
           }),
           Schema.Struct({
-            json: Schema.String,
+            json: Schema.Unknown,
             name: Schema.String,
             type: Schema.Literal("json"),
           }),
@@ -3089,7 +3103,7 @@ export interface CreateBetaWorkerVersionResponse {
             versionId?: string | null;
           }
         | { name: string; type: "images" }
-        | { json: string; name: string; type: "json" }
+        | { json: unknown; name: string; type: "json" }
         | { name: string; namespaceId: string; type: "kv_namespace" }
         | { certificateId: string; name: string; type: "mtls_certificate" }
         | { name: string; text: string; type: "plain_text" }
@@ -3358,7 +3372,7 @@ export const CreateBetaWorkerVersionResponse =
               type: Schema.Literal("hyperdrive"),
             }),
             Schema.Struct({
-              json: Schema.String,
+              json: Schema.Unknown,
               name: Schema.String,
               type: Schema.Literal("json"),
             }),
@@ -6553,7 +6567,7 @@ export interface PutScriptRequest {
       | { id: string; name: string; type: "hyperdrive" }
       | { name: string; type: "inherit"; oldName?: string; versionId?: string }
       | { name: string; type: "images" }
-      | { json: string; name: string; type: "json" }
+      | { json: unknown; name: string; type: "json" }
       | { name: string; namespaceId: string; type: "kv_namespace" }
       | { certificateId: string; name: string; type: "mtls_certificate" }
       | { name: string; text: string; type: "plain_text" }
@@ -6826,7 +6840,7 @@ export const PutScriptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             type: Schema.Literal("hyperdrive"),
           }),
           Schema.Struct({
-            json: Schema.String,
+            json: Schema.Unknown,
             name: Schema.String,
             type: Schema.Literal("json"),
           }),
@@ -9655,7 +9669,7 @@ export interface GetScriptScriptAndVersionSettingResponse {
             versionId?: string | null;
           }
         | { name: string; type: "images" }
-        | { json: string; name: string; type: "json" }
+        | { json: unknown; name: string; type: "json" }
         | { name: string; namespaceId: string; type: "kv_namespace" }
         | { certificateId: string; name: string; type: "mtls_certificate" }
         | { name: string; text: string; type: "plain_text" }
@@ -9846,7 +9860,7 @@ export const GetScriptScriptAndVersionSettingResponse =
               type: Schema.Literal("hyperdrive"),
             }),
             Schema.Struct({
-              json: Schema.String,
+              json: Schema.Unknown,
               name: Schema.String,
               type: Schema.Literal("json"),
             }),
@@ -10233,7 +10247,7 @@ export interface PatchScriptScriptAndVersionSettingRequest {
       | { id: string; name: string; type: "hyperdrive" }
       | { name: string; type: "inherit"; oldName?: string; versionId?: string }
       | { name: string; type: "images" }
-      | { json: string; name: string; type: "json" }
+      | { json: unknown; name: string; type: "json" }
       | { name: string; namespaceId: string; type: "kv_namespace" }
       | { certificateId: string; name: string; type: "mtls_certificate" }
       | { name: string; text: string; type: "plain_text" }
@@ -10438,7 +10452,7 @@ export const PatchScriptScriptAndVersionSettingRequest =
                 type: Schema.Literal("hyperdrive"),
               }),
               Schema.Struct({
-                json: Schema.String,
+                json: Schema.Unknown,
                 name: Schema.String,
                 type: Schema.Literal("json"),
               }),
@@ -10866,7 +10880,7 @@ export interface PatchScriptScriptAndVersionSettingResponse {
             versionId?: string | null;
           }
         | { name: string; type: "images" }
-        | { json: string; name: string; type: "json" }
+        | { json: unknown; name: string; type: "json" }
         | { name: string; namespaceId: string; type: "kv_namespace" }
         | { certificateId: string; name: string; type: "mtls_certificate" }
         | { name: string; text: string; type: "plain_text" }
@@ -11051,7 +11065,7 @@ export const PatchScriptScriptAndVersionSettingResponse =
               type: Schema.Literal("hyperdrive"),
             }),
             Schema.Struct({
-              json: Schema.String,
+              json: Schema.Unknown,
               name: Schema.String,
               type: Schema.Literal("json"),
             }),
@@ -12572,7 +12586,7 @@ export interface GetScriptVersionResponse {
               versionId?: string | null;
             }
           | { name: string; type: "images" }
-          | { json: string; name: string; type: "json" }
+          | { json: unknown; name: string; type: "json" }
           | { name: string; namespaceId: string; type: "kv_namespace" }
           | { certificateId: string; name: string; type: "mtls_certificate" }
           | { name: string; text: string; type: "plain_text" }
@@ -12766,7 +12780,7 @@ export const GetScriptVersionResponse =
                 type: Schema.Literal("hyperdrive"),
               }),
               Schema.Struct({
-                json: Schema.String,
+                json: Schema.Unknown,
                 name: Schema.String,
                 type: Schema.Literal("json"),
               }),
@@ -13183,12 +13197,12 @@ export interface ListScriptVersionsResponse {
         }[]
       | null;
   };
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
-  };
+  } | null;
 }
 
 export const ListScriptVersionsResponse =
@@ -13256,18 +13270,25 @@ export const ListScriptVersionsResponse =
         ]),
       ),
     }),
-    resultInfo: Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
+    resultInfo: Schema.optional(
+      Schema.Union([
+        Schema.Struct({
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          totalCount: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            count: "count",
+            page: "page",
+            perPage: "per_page",
+            totalCount: "total_count",
+          }),
+        ),
+        Schema.Null,
+      ]),
     ),
   }).pipe(
     Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
@@ -13332,7 +13353,7 @@ export interface CreateScriptVersionRequest {
       | { id: string; name: string; type: "hyperdrive" }
       | { name: string; type: "inherit"; oldName?: string; versionId?: string }
       | { name: string; type: "images" }
-      | { json: string; name: string; type: "json" }
+      | { json: unknown; name: string; type: "json" }
       | { name: string; namespaceId: string; type: "kv_namespace" }
       | { certificateId: string; name: string; type: "mtls_certificate" }
       | { name: string; text: string; type: "plain_text" }
@@ -13502,7 +13523,7 @@ export const CreateScriptVersionRequest =
               type: Schema.Literal("hyperdrive"),
             }),
             Schema.Struct({
-              json: Schema.String,
+              json: Schema.Unknown,
               name: Schema.String,
               type: Schema.Literal("json"),
             }),
@@ -13756,7 +13777,7 @@ export interface CreateScriptVersionResponse {
               versionId?: string | null;
             }
           | { name: string; type: "images" }
-          | { json: string; name: string; type: "json" }
+          | { json: unknown; name: string; type: "json" }
           | { name: string; namespaceId: string; type: "kv_namespace" }
           | { certificateId: string; name: string; type: "mtls_certificate" }
           | { name: string; text: string; type: "plain_text" }
@@ -13952,7 +13973,7 @@ export const CreateScriptVersionResponse =
                 type: Schema.Literal("hyperdrive"),
               }),
               Schema.Struct({
-                json: Schema.String,
+                json: Schema.Unknown,
                 name: Schema.String,
                 type: Schema.Literal("json"),
               }),

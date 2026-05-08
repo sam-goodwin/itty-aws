@@ -28,11 +28,11 @@ export interface OAuthConfig {
   readonly expiresAt?: number;
 }
 
-export interface OAuthProvider<R = never> {
-  readonly load: Effect.Effect<OAuthConfig, unknown, R>;
+export interface OAuthProvider {
+  readonly load: Effect.Effect<OAuthConfig, unknown>;
   readonly refresh: (
     credentials: OAuthConfig,
-  ) => Effect.Effect<OAuthConfig, unknown, R>;
+  ) => Effect.Effect<OAuthConfig, unknown>;
   readonly apiBaseUrl?: string;
 }
 
@@ -73,7 +73,7 @@ export type CredentialsError = ConfigError | OAuthRefreshError;
 
 export class Credentials extends Context.Service<
   Credentials,
-  Effect.Effect<ResolvedCredentials, CredentialsError, any>
+  Effect.Effect<ResolvedCredentials, CredentialsError, never>
 >()("CloudflareCredentials") {}
 
 const resolveApiBaseUrl = (apiBaseUrl?: string): string =>
@@ -120,9 +120,9 @@ const isExpired = (expiresAt?: number): boolean =>
   expiresAt !== undefined &&
   Date.now() >= expiresAt - CREDENTIAL_REFRESH_WINDOW_MS;
 
-const createCachedCredentialsEffect = <E, R>(
-  resolve: Effect.Effect<ResolvedCredentials, E, R>,
-): Effect.Effect<ResolvedCredentials, E, R> => {
+const createCachedCredentialsEffect = <E>(
+  resolve: Effect.Effect<ResolvedCredentials, E>,
+): Effect.Effect<ResolvedCredentials, E> => {
   let cachedCreds: ResolvedCredentials | undefined;
   let refreshAt = 0;
 
@@ -140,10 +140,10 @@ const createCachedCredentialsEffect = <E, R>(
   });
 };
 
-const wrapOAuthError = <A, R>(
+const wrapOAuthError = <A>(
   message: string,
-  effect: Effect.Effect<A, unknown, R>,
-): Effect.Effect<A, OAuthRefreshError, R> =>
+  effect: Effect.Effect<A, unknown>,
+): Effect.Effect<A, OAuthRefreshError> =>
   effect.pipe(
     Effect.mapError(
       (cause) =>
@@ -162,9 +162,9 @@ export const fromApiToken = (
 export const fromApiKey = (config: ApiKeyConfig): Layer.Layer<Credentials> =>
   Layer.succeed(Credentials, Effect.succeed(apiKeyCredentials(config)));
 
-export const fromOAuth = <R>(
-  provider: OAuthProvider<R>,
-): Layer.Layer<Credentials, never, R> => {
+export const fromOAuth = (
+  provider: OAuthProvider,
+): Layer.Layer<Credentials> => {
   let currentCredentials: OAuthConfig | undefined;
 
   const resolve = Effect.gen(function* () {

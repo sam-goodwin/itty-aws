@@ -1,7 +1,8 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare R2 API
+  title: Cloudflare R2 Object API
   version: 0.0.0
+  description: R2 object operations not exposed in the Cloudflare TypeScript SDK.
 servers:
   - url: https://api.cloudflare.com/client/v4
 x-distilled-service: r2
@@ -2720,6 +2721,229 @@ paths:
       responses:
         "200":
           description: Success
+      x-distilled-response-path: result
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+        NoRoute:
+          - code: 10015
+  /accounts/{account_id}/r2/buckets/{bucketName}/objects:
+    get:
+      operationId: listObjects
+      summary: List objects in an R2 bucket.
+      description: >
+        Lists objects in an R2 bucket. Returns object metadata including key,
+        size, etag,
+
+        last modified date, HTTP metadata, and custom metadata. Cursor-paginated
+        — call
+
+        `.items()` on the operation for an `Effect.Stream` of every object
+        across pages.
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          description: Name of the R2 bucket.
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+        - name: per_page
+          in: query
+          required: false
+          description: Maximum number of objects to return per page (1-1000).
+          schema:
+            type: number
+        - name: prefix
+          in: query
+          required: false
+          description: Restrict results to keys beginning with this prefix.
+          schema:
+            type: string
+        - name: delimiter
+          in: query
+          required: false
+          description: Single character used to group keys.
+          schema:
+            type: string
+        - name: cursor
+          in: query
+          required: false
+          description: Pagination cursor returned by a previous List Objects call.
+          schema:
+            type: string
+        - name: start_after
+          in: query
+          required: false
+          description: Returns keys lexicographically after this key.
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: Jurisdiction where objects in this bucket are guaranteed to be
+            stored.
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  key:
+                    type: string
+                    description: The object key (name).
+                  size:
+                    type: number
+                    description: Object size in bytes.
+                  etag:
+                    type: string
+                    description: Entity tag (raw hex digest, no surrounding quotes).
+                  last_modified:
+                    type: string
+                    description: When the object was last modified.
+                  storage_class:
+                    type: string
+                    enum:
+                      - Standard
+                      - InfrequentAccess
+                  ssec:
+                    type: boolean
+                    description: Whether the object is encrypted with a customer-supplied key.
+                  custom_metadata:
+                    description: Custom metadata key-value pairs.
+                  http_metadata:
+                    description: HTTP metadata associated with the object.
+      x-distilled-pagination-class: CursorPagination
+      x-distilled-errors:
+        NoSuchBucket:
+          - code: 10006
+        InvalidRoute:
+          - code: 7003
+        NoRoute:
+          - code: 10015
+    delete:
+      operationId: deleteObjects
+      summary: Bulk-delete objects from an R2 bucket.
+      description: >
+        Deletes multiple objects from an R2 bucket in a single request. Provide
+        a JSON
+
+        array of object keys in `keys`; up to 1000 keys per request. Per-key
+        errors are
+
+        reported in the response body without failing the request as a whole.
+
+
+        For prefix-based async deletion (returns a job descriptor), pass a
+        `prefix` query
+
+        parameter and an empty `keys` array.
+      parameters:
+        - name: bucketName
+          in: path
+          required: true
+          description: Name of the R2 bucket.
+          schema:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+        - name: prefix
+          in: query
+          required: false
+          description: >
+            When set, switches to "delete by prefix" mode and asynchronously
+            deletes every
+
+            object whose key begins with the given prefix. The response is a
+            prefix-delete
+
+            job descriptor instead of a per-key list. Pass an empty body when
+            using prefix
+
+            mode.
+          schema:
+            type: string
+        - name: cf-r2-jurisdiction
+          in: header
+          required: false
+          description: Jurisdiction where objects in this bucket are guaranteed to be
+            stored.
+          schema:
+            type: string
+            enum:
+              - default
+              - eu
+              - fedramp
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                          description: Key of the deleted object.
+                  - type: object
+                    properties:
+                      id:
+                        type: string
+                      jobType:
+                        type: string
+                        enum:
+                          - prefixDelete
+                      status:
+                        type: string
+                        enum:
+                          - ENQUEUED
+                          - RUNNING
+                          - COMPLETED
+                          - FAILED
+                          - CANCELLED
+                      startTime:
+                        type: string
+                      endTime:
+                        type: string
+                      prefixDelete:
+                        type: object
+                        properties:
+                          prefix:
+                            type: string
+                          deletedObjects:
+                            type: number
+                          isBucketClear:
+                            type: boolean
       x-distilled-response-path: result
       x-distilled-errors:
         NoSuchBucket:

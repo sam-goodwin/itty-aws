@@ -1,7 +1,8 @@
+import * as EffectConfig from "effect/Config";
+import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
-import * as Context from "effect/Context";
 import { ConfigError } from "@distilled.cloud/core/errors";
 
 export interface Config {
@@ -27,6 +28,11 @@ export class Credentials extends Context.Service<Credentials, Config>()(
   "KubernetesCredentials",
 ) {}
 
+const envConfig = EffectConfig.all({
+  token: EffectConfig.string("KUBERNETES_TOKEN"),
+  apiBaseUrl: EffectConfig.string("KUBERNETES_API_URL"),
+});
+
 /**
  * Build a credentials layer from environment variables.
  *
@@ -37,27 +43,20 @@ export class Credentials extends Context.Service<Credentials, Config>()(
  */
 export const CredentialsFromEnv = Layer.effect(
   Credentials,
-  Effect.gen(function* () {
-    const token = process.env.KUBERNETES_TOKEN;
-    const apiBaseUrl = process.env.KUBERNETES_API_URL;
-
-    if (!token) {
-      return yield* new ConfigError({
-        message:
-          "KUBERNETES_TOKEN environment variable is required. " +
-          "Set it to a bearer token for your Kubernetes cluster.",
-      });
-    }
-
-    if (!apiBaseUrl) {
-      return yield* new ConfigError({
-        message:
-          "KUBERNETES_API_URL environment variable is required. " +
-          "Set it to the API server URL for your Kubernetes cluster " +
-          "(e.g. from `kubectl cluster-info` or the EKS cluster endpoint).",
-      });
-    }
-
-    return { token: Redacted.make(token), apiBaseUrl };
-  }),
+  envConfig.asEffect().pipe(
+    Effect.mapError(
+      () =>
+        new ConfigError({
+          message:
+            "KUBERNETES_TOKEN and KUBERNETES_API_URL environment variables are required. " +
+            "Set KUBERNETES_TOKEN to a bearer token for your Kubernetes cluster, " +
+            "and KUBERNETES_API_URL to the API server URL (e.g. from `kubectl cluster-info` " +
+            "or the EKS cluster endpoint).",
+        }),
+    ),
+    Effect.map(({ token, apiBaseUrl }) => ({
+      token: Redacted.make(token),
+      apiBaseUrl,
+    })),
+  ),
 );

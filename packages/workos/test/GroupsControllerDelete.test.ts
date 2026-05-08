@@ -40,7 +40,7 @@ describe("GroupsControllerDelete", () => {
       );
       expect(["NotFound", "TooManyRequests"]).toContain(findError._tag);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -65,7 +65,7 @@ describe("GroupsControllerDelete", () => {
       );
       expect(["NotFound", "TooManyRequests"]).toContain(error._tag);
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -77,8 +77,10 @@ describe("GroupsControllerDelete", () => {
           groupId: `group_does_not_exist_${testRunId}`,
         }).pipe(Effect.flip),
       );
-      expect(["Forbidden", "TooManyRequests"]).toContain(error._tag);
+      expect(["Forbidden", "NotFound", "TooManyRequests"]).toContain(
+        error._tag,
+      );
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

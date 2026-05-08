@@ -15,7 +15,7 @@ describe("DirectoryUsersControllerList", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -29,7 +29,7 @@ describe("DirectoryUsersControllerList", () => {
 
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -43,6 +43,6 @@ describe("DirectoryUsersControllerList", () => {
 
       expect(["NotFound", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

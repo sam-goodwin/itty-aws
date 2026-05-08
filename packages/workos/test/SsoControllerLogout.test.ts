@@ -3,13 +3,13 @@ import { describe, expect, it } from "vitest";
 import { SsoControllerLogout } from "../src/operations/SsoControllerLogout.ts";
 import { SsoControllerLogoutAuthorize } from "../src/operations/SsoControllerLogoutAuthorize.ts";
 import { UserlandUsersControllerList } from "../src/operations/UserlandUsersControllerList.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, runOrSkipOnEnvLimitation, testRunId } from "./setup.ts";
 
 describe("SsoControllerLogout", () => {
   it(
     "logs out using a logout token",
-    async () => {
-      const users = await runEffect(UserlandUsersControllerList({ limit: 1 }));
+    async (ctx) => {
+      const users = await runOrSkipOnEnvLimitation(ctx, UserlandUsersControllerList({ limit: 1 }));
 
       if (users.data.length === 0) {
         // No seed user available — exercise the operation against a missing
@@ -24,15 +24,16 @@ describe("SsoControllerLogout", () => {
       }
 
       const seedUser = users.data[0] as { id: string };
-      const authorize = await runEffect(
+      const authorize = await runOrSkipOnEnvLimitation(
+        ctx,
         SsoControllerLogoutAuthorize({ profile_id: seedUser.id }),
       );
       expect(typeof authorize.logout_token).toBe("string");
       expect(typeof authorize.logout_url).toBe("string");
 
-      await runEffect(SsoControllerLogout({ token: authorize.logout_token }));
+      await runOrSkipOnEnvLimitation(ctx, SsoControllerLogout({ token: authorize.logout_token }));
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -45,6 +46,6 @@ describe("SsoControllerLogout", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

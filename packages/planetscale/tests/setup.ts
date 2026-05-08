@@ -76,7 +76,7 @@ export interface SetupTestDatabaseOptions {
    * Maximum number of polling attempts (5 seconds apart) while waiting for
    * the database to reach `state === "ready"`. Defaults to 60 (5 minutes)
    * for mysql. Postgres typically provisions slower; pass a larger value
-   * (e.g. 180 — 15 minutes) when kind is "postgresql".
+   * (e.g. 360 — 30 minutes) when kind is "postgresql".
    */
   readonly maxReadyPollAttempts?: number;
 }
@@ -100,7 +100,7 @@ export const setupTestDatabase = (
     // unless the caller explicitly overrides.
     const maxAttempts =
       options?.maxReadyPollAttempts ??
-      (requestedKind === "postgresql" ? 180 : 60);
+      (requestedKind === "postgresql" ? 360 : 60);
 
     log(prefix, "checking for existing database...");
 

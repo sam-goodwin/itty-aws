@@ -903,6 +903,12 @@ paths:
   /{accountOrZone}/{accountOrZoneId}/access/apps/{appId}:
     get:
       operationId: getAccessApplication
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: Success
@@ -14538,6 +14544,11 @@ paths:
           required: true
           description: "Path param: The Zone ID to use for this endpoint. Mutually
             exclusive with the Account ID."
+          schema:
+            type: string
+        - name: appId
+          in: path
+          required: true
           schema:
             type: string
       requestBody:
@@ -28737,6 +28748,12 @@ paths:
       x-distilled-response-path: result
     delete:
       operationId: deleteAccessApplication
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: Success
@@ -62409,6 +62426,11 @@ paths:
             exclusive with the Account ID."
           schema:
             type: string
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
       requestBody:
         required: false
         content:
@@ -62458,6 +62480,11 @@ paths:
             exclusive with the Account ID."
           schema:
             type: string
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
       requestBody:
         required: false
         content:
@@ -62489,6 +62516,12 @@ paths:
   /{accountOrZone}/{accountOrZoneId}/access/apps/{appId}/user_policy_checks:
     get:
       operationId: listAccessApplicationUserPolicyChecks
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: Success
@@ -118744,6 +118777,12 @@ paths:
   /{accountOrZone}/{accountOrZoneId}/access/apps/{appId}/revoke_tokens:
     post:
       operationId: revokeTokensAccessApplication
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: Success

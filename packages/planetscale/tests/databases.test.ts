@@ -73,7 +73,7 @@ const isApiError = (error: unknown): boolean =>
 describe("databases", () => {
   beforeAll(async () => {
     await Effect.runPromise(setupTestDatabase(TEST_SUFFIX));
-  }, 300000); // 5 minute timeout for database creation
+  }, 1200000); // 20 minute timeout for database creation (postgres can be very slow)
 
   afterAll(async () => {
     await Effect.runPromise(teardownTestDatabase(TEST_SUFFIX));
@@ -329,7 +329,7 @@ describe("databases", () => {
           );
         }
       }
-    }, 300000); // 5 minute timeout
+    }, 600000); // 10 minute timeout
   });
 
   describe("deleteDatabase", () => {

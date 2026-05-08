@@ -1,13 +1,14 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { ExternalAuthControllerCompleteLogin } from "../src/operations/ExternalAuthControllerCompleteLogin.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, runOrSkipOnEnvLimitation, testRunId } from "./setup.ts";
 
 describe("ExternalAuthControllerCompleteLogin", () => {
   it(
     "completes an external authentication flow and returns a redirect_uri",
-    async () => {
-      const result = await runEffect(
+    async (ctx) => {
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         ExternalAuthControllerCompleteLogin({
           external_auth_id: `external_auth_${testRunId}`,
           user: {
@@ -22,7 +23,7 @@ describe("ExternalAuthControllerCompleteLogin", () => {
       expect(result).toBeDefined();
       expect(typeof result.redirect_uri).toBe("string");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -40,7 +41,7 @@ describe("ExternalAuthControllerCompleteLogin", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -58,7 +59,7 @@ describe("ExternalAuthControllerCompleteLogin", () => {
 
       expect(["BadRequest", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -76,6 +77,6 @@ describe("ExternalAuthControllerCompleteLogin", () => {
 
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

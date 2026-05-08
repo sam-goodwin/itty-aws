@@ -23,7 +23,7 @@ describe("UserlandUserInvitesControllerList", () => {
         }
       }
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -34,6 +34,6 @@ describe("UserlandUserInvitesControllerList", () => {
       );
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

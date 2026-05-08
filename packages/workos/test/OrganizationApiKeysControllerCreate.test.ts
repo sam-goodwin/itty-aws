@@ -36,7 +36,7 @@ describe("OrganizationApiKeysControllerCreate", () => {
       expect(typeof result.created_at).toBe("string");
       expect(typeof result.updated_at).toBe("string");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -50,7 +50,7 @@ describe("OrganizationApiKeysControllerCreate", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -76,6 +76,6 @@ describe("OrganizationApiKeysControllerCreate", () => {
       );
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 });

@@ -30,7 +30,7 @@ describe("UserlandSessionsControllerLogout", () => {
         expect(result.error._tag).toBe("UnprocessableEntity");
       }
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -41,6 +41,6 @@ describe("UserlandSessionsControllerLogout", () => {
       );
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

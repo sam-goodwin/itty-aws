@@ -26,7 +26,7 @@ describe("EventsControllerList", () => {
         expect(typeof event.data).toBe("object");
       }
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -38,7 +38,7 @@ describe("EventsControllerList", () => {
 
       expect(error._tag).toBe("BadRequest");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -52,6 +52,6 @@ describe("EventsControllerList", () => {
 
       expect(["BadRequest", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

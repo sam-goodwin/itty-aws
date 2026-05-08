@@ -2,6 +2,10 @@ import { describe, expect, it } from "vitest";
 import { buildRequestParts, getHttpTrait } from "@distilled.cloud/core/traits";
 import { transformCloudflareRequestParts } from "~/client/api";
 import { CreateAssetUploadRequest, PutScriptRequest } from "~/services/workers";
+import {
+  PutPhasForAccountRequest,
+  PutPhasForZoneRequest,
+} from "~/services/rulesets";
 
 describe("client api", () => {
   it("maps createAssetUpload jwtToken to a bearer authorization header", () => {
@@ -104,5 +108,52 @@ describe("client api", () => {
         ],
       },
     });
+  });
+
+  describe("accountOrZone-scoped operations (putPhas)", () => {
+    it("putPhasForAccount binds account scope into the URL", () => {
+      const httpTrait = getHttpTrait(PutPhasForAccountRequest.ast);
+      expect(httpTrait?.path).toBe(
+        "/accounts/{account_id}/rulesets/phases/{rulesetPhase}/entrypoint",
+      );
+
+      const parts = buildRequestParts(
+        PutPhasForAccountRequest.ast,
+        httpTrait!,
+        {
+          accountId: "account-123",
+          rulesetPhase: "http_request_firewall_custom",
+          description: "test",
+        },
+        PutPhasForAccountRequest,
+      );
+
+      expect(parts.path).toBe(
+        "/accounts/account-123/rulesets/phases/http_request_firewall_custom/entrypoint",
+      );
+    });
+
+    it("putPhasForZone binds zone scope into the URL", () => {
+      const httpTrait = getHttpTrait(PutPhasForZoneRequest.ast);
+      expect(httpTrait?.path).toBe(
+        "/zones/{zone_id}/rulesets/phases/{rulesetPhase}/entrypoint",
+      );
+
+      const parts = buildRequestParts(
+        PutPhasForZoneRequest.ast,
+        httpTrait!,
+        {
+          zoneId: "zone-123",
+          rulesetPhase: "http_request_firewall_custom",
+          description: "test",
+        },
+        PutPhasForZoneRequest,
+      );
+
+      expect(parts.path).toBe(
+        "/zones/zone-123/rulesets/phases/http_request_firewall_custom/entrypoint",
+      );
+    });
+
   });
 });

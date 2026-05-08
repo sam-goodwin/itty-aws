@@ -23,7 +23,7 @@ describe("AuditLogValidatorVersionsControllerCreate", () => {
       expect(result.targets.length).toBe(1);
       expect(result.targets[0].type).toBe("user");
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -40,6 +40,6 @@ describe("AuditLogValidatorVersionsControllerCreate", () => {
 
       expect(error._tag).toBe("UnprocessableEntity");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

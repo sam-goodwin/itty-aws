@@ -45,7 +45,7 @@ describe("SsoControllerToken", () => {
         );
       }
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -61,7 +61,7 @@ describe("SsoControllerToken", () => {
       );
       expect(error._tag).toBe("BadRequest");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -77,7 +77,7 @@ describe("SsoControllerToken", () => {
       );
       expect(["BadRequest", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -93,6 +93,6 @@ describe("SsoControllerToken", () => {
       );
       expect(["BadRequest", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

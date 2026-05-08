@@ -1,15 +1,16 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { UserlandSsoControllerDeviceAuthorization } from "../src/operations/UserlandSsoControllerDeviceAuthorization.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, runOrSkipOnEnvLimitation, testRunId } from "./setup.ts";
 
 const clientId = process.env.WORKOS_CLIENT_ID ?? `client_test_${testRunId}`;
 
 describe("UserlandSsoControllerDeviceAuthorization", () => {
   it(
     "issues a device code and verification URL",
-    async () => {
-      const result = await runEffect(
+    async (ctx) => {
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         UserlandSsoControllerDeviceAuthorization({
           client_id: clientId,
         }),
@@ -23,7 +24,7 @@ describe("UserlandSsoControllerDeviceAuthorization", () => {
       expect(result.verification_uri.startsWith("http")).toBe(true);
       expect(typeof result.expires_in).toBe("number");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -36,7 +37,7 @@ describe("UserlandSsoControllerDeviceAuthorization", () => {
       );
       expect(error._tag).toBe("BadRequest");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -49,6 +50,6 @@ describe("UserlandSsoControllerDeviceAuthorization", () => {
       );
       expect(["BadRequest", "Forbidden"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

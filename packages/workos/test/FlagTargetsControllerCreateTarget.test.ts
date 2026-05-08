@@ -43,7 +43,7 @@ describe("FlagTargetsControllerCreateTarget", () => {
         ),
       );
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -64,7 +64,7 @@ describe("FlagTargetsControllerCreateTarget", () => {
 
       expect(["BadRequest", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -79,7 +79,7 @@ describe("FlagTargetsControllerCreateTarget", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -100,6 +100,6 @@ describe("FlagTargetsControllerCreateTarget", () => {
 
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

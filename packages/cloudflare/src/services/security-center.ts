@@ -16,16 +16,41 @@ import { type DefaultErrors } from "../errors.ts";
 // Insight
 // =============================================================================
 
-export interface ListInsightsRequest {}
+const ListInsightsBaseFields = {} as const;
 
-export const ListInsightsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
-  T.Http({
-    method: "GET",
-    path: "/{accountOrZone}/{accountOrZoneId}/security-center/insights",
-  }),
-) as unknown as Schema.Schema<ListInsightsRequest>;
+interface ListInsightsBaseRequest {}
+
+export interface ListInsightsForAccountRequest extends ListInsightsBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface ListInsightsForZoneRequest extends ListInsightsBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const ListInsightsForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...ListInsightsBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/security-center/insights",
+    }),
+  ) as unknown as Schema.Schema<ListInsightsForAccountRequest>;
+
+export const ListInsightsForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...ListInsightsBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/security-center/insights",
+    }),
+  ) as unknown as Schema.Schema<ListInsightsForZoneRequest>;
 
 export interface ListInsightsResponse {
   result: {
@@ -62,12 +87,12 @@ export interface ListInsightsResponse {
         }[]
       | null;
   };
-  resultInfo: {
+  resultInfo?: {
     count?: number | null;
     page?: number | null;
     perPage?: number | null;
     totalCount?: number | null;
-  };
+  } | null;
 }
 
 export const ListInsightsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -178,18 +203,23 @@ export const ListInsightsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ]),
     ),
   }),
-  resultInfo: Schema.Struct({
-    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      count: "count",
-      page: "page",
-      perPage: "per_page",
-      totalCount: "total_count",
-    }),
+  resultInfo: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          count: "count",
+          page: "page",
+          perPage: "per_page",
+          totalCount: "total_count",
+        }),
+      ),
+      Schema.Null,
+    ]),
   ),
 }).pipe(
   Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
@@ -197,13 +227,13 @@ export const ListInsightsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 export type ListInsightsError = DefaultErrors;
 
-export const listInsights: API.PaginatedOperationMethod<
-  ListInsightsRequest,
+export const listInsightsForAccount: API.PaginatedOperationMethod<
+  ListInsightsForAccountRequest,
   ListInsightsResponse,
   ListInsightsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
-  input: ListInsightsRequest,
+  input: ListInsightsForAccountRequest,
   output: ListInsightsResponse,
   errors: [],
   pagination: {
@@ -215,27 +245,66 @@ export const listInsights: API.PaginatedOperationMethod<
   } as const,
 }));
 
-export interface DismissInsightRequest {
+export const listInsightsForZone: API.PaginatedOperationMethod<
+  ListInsightsForZoneRequest,
+  ListInsightsResponse,
+  ListInsightsError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListInsightsForZoneRequest,
+  output: ListInsightsResponse,
+  errors: [],
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "resultInfo.page",
+    items: "result.items",
+    pageSize: "perPage",
+  } as const,
+}));
+
+const DismissInsightBaseFields = {
+  issueId: Schema.String.pipe(T.HttpPath("issueId")),
+  dismiss: Schema.optional(Schema.Boolean),
+} as const;
+
+interface DismissInsightBaseRequest {
   issueId: string;
-  /** Path param: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
-  accountId?: string;
-  /** Path param: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
-  zoneId?: string;
   /** Body param: */
   dismiss?: boolean;
 }
 
-export const DismissInsightRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  issueId: Schema.String.pipe(T.HttpPath("issueId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  dismiss: Schema.optional(Schema.Boolean),
-}).pipe(
-  T.Http({
-    method: "PUT",
-    path: "/{accountOrZone}/{accountOrZoneId}/security-center/insights/{issueId}/dismiss",
-  }),
-) as unknown as Schema.Schema<DismissInsightRequest>;
+export interface DismissInsightForAccountRequest extends DismissInsightBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface DismissInsightForZoneRequest extends DismissInsightBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const DismissInsightForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...DismissInsightBaseFields,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/security-center/insights/{issueId}/dismiss",
+    }),
+  ) as unknown as Schema.Schema<DismissInsightForAccountRequest>;
+
+export const DismissInsightForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...DismissInsightBaseFields,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/security-center/insights/{issueId}/dismiss",
+    }),
+  ) as unknown as Schema.Schema<DismissInsightForZoneRequest>;
 
 export interface DismissInsightResponse {
   errors: {
@@ -314,13 +383,24 @@ export const DismissInsightResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 
 export type DismissInsightError = DefaultErrors;
 
-export const dismissInsight: API.OperationMethod<
-  DismissInsightRequest,
+export const dismissInsightForAccount: API.OperationMethod<
+  DismissInsightForAccountRequest,
   DismissInsightResponse,
   DismissInsightError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: DismissInsightRequest,
+  input: DismissInsightForAccountRequest,
+  output: DismissInsightResponse,
+  errors: [],
+}));
+
+export const dismissInsightForZone: API.OperationMethod<
+  DismissInsightForZoneRequest,
+  DismissInsightResponse,
+  DismissInsightError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DismissInsightForZoneRequest,
   output: DismissInsightResponse,
   errors: [],
 }));
@@ -329,16 +409,41 @@ export const dismissInsight: API.OperationMethod<
 // InsightClass
 // =============================================================================
 
-export interface GetInsightClassRequest {}
+const GetInsightClassBaseFields = {} as const;
 
-export const GetInsightClassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
-  T.Http({
-    method: "GET",
-    path: "/{accountOrZone}/{accountOrZoneId}/security-center/insights/class",
-  }),
-) as unknown as Schema.Schema<GetInsightClassRequest>;
+interface GetInsightClassBaseRequest {}
+
+export interface GetInsightClassForAccountRequest extends GetInsightClassBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface GetInsightClassForZoneRequest extends GetInsightClassBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const GetInsightClassForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...GetInsightClassBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/security-center/insights/class",
+    }),
+  ) as unknown as Schema.Schema<GetInsightClassForAccountRequest>;
+
+export const GetInsightClassForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...GetInsightClassBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/security-center/insights/class",
+    }),
+  ) as unknown as Schema.Schema<GetInsightClassForZoneRequest>;
 
 export type GetInsightClassResponse = {
   count?: number | null;
@@ -356,13 +461,24 @@ export const GetInsightClassResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
 
 export type GetInsightClassError = DefaultErrors;
 
-export const getInsightClass: API.OperationMethod<
-  GetInsightClassRequest,
+export const getInsightClassForAccount: API.OperationMethod<
+  GetInsightClassForAccountRequest,
   GetInsightClassResponse,
   GetInsightClassError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetInsightClassRequest,
+  input: GetInsightClassForAccountRequest,
+  output: GetInsightClassResponse,
+  errors: [],
+}));
+
+export const getInsightClassForZone: API.OperationMethod<
+  GetInsightClassForZoneRequest,
+  GetInsightClassResponse,
+  GetInsightClassError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetInsightClassForZoneRequest,
   output: GetInsightClassResponse,
   errors: [],
 }));
@@ -371,15 +487,41 @@ export const getInsightClass: API.OperationMethod<
 // InsightSeverity
 // =============================================================================
 
-export interface GetInsightSeverityRequest {}
+const GetInsightSeverityBaseFields = {} as const;
 
-export const GetInsightSeverityRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+interface GetInsightSeverityBaseRequest {}
+
+export interface GetInsightSeverityForAccountRequest extends GetInsightSeverityBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface GetInsightSeverityForZoneRequest extends GetInsightSeverityBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const GetInsightSeverityForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...GetInsightSeverityBaseFields,
+  }).pipe(
     T.Http({
       method: "GET",
-      path: "/{accountOrZone}/{accountOrZoneId}/security-center/insights/severity",
+      path: "/accounts/{account_id}/security-center/insights/severity",
     }),
-  ) as unknown as Schema.Schema<GetInsightSeverityRequest>;
+  ) as unknown as Schema.Schema<GetInsightSeverityForAccountRequest>;
+
+export const GetInsightSeverityForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...GetInsightSeverityBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/security-center/insights/severity",
+    }),
+  ) as unknown as Schema.Schema<GetInsightSeverityForZoneRequest>;
 
 export type GetInsightSeverityResponse = {
   count?: number | null;
@@ -398,13 +540,24 @@ export const GetInsightSeverityResponse =
 
 export type GetInsightSeverityError = DefaultErrors;
 
-export const getInsightSeverity: API.OperationMethod<
-  GetInsightSeverityRequest,
+export const getInsightSeverityForAccount: API.OperationMethod<
+  GetInsightSeverityForAccountRequest,
   GetInsightSeverityResponse,
   GetInsightSeverityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetInsightSeverityRequest,
+  input: GetInsightSeverityForAccountRequest,
+  output: GetInsightSeverityResponse,
+  errors: [],
+}));
+
+export const getInsightSeverityForZone: API.OperationMethod<
+  GetInsightSeverityForZoneRequest,
+  GetInsightSeverityResponse,
+  GetInsightSeverityError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetInsightSeverityForZoneRequest,
   output: GetInsightSeverityResponse,
   errors: [],
 }));
@@ -413,16 +566,41 @@ export const getInsightSeverity: API.OperationMethod<
 // InsightType
 // =============================================================================
 
-export interface GetInsightTypeRequest {}
+const GetInsightTypeBaseFields = {} as const;
 
-export const GetInsightTypeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {},
-).pipe(
-  T.Http({
-    method: "GET",
-    path: "/{accountOrZone}/{accountOrZoneId}/security-center/insights/type",
-  }),
-) as unknown as Schema.Schema<GetInsightTypeRequest>;
+interface GetInsightTypeBaseRequest {}
+
+export interface GetInsightTypeForAccountRequest extends GetInsightTypeBaseRequest {
+  /** Path param: The Account ID to use for this endpoint. */
+  accountId: string;
+}
+
+export interface GetInsightTypeForZoneRequest extends GetInsightTypeBaseRequest {
+  /** Path param: The Zone ID to use for this endpoint. */
+  zoneId: string;
+}
+
+export const GetInsightTypeForAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    ...GetInsightTypeBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/security-center/insights/type",
+    }),
+  ) as unknown as Schema.Schema<GetInsightTypeForAccountRequest>;
+
+export const GetInsightTypeForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    ...GetInsightTypeBaseFields,
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/security-center/insights/type",
+    }),
+  ) as unknown as Schema.Schema<GetInsightTypeForZoneRequest>;
 
 export type GetInsightTypeResponse = {
   count?: number | null;
@@ -440,13 +618,24 @@ export const GetInsightTypeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
 
 export type GetInsightTypeError = DefaultErrors;
 
-export const getInsightType: API.OperationMethod<
-  GetInsightTypeRequest,
+export const getInsightTypeForAccount: API.OperationMethod<
+  GetInsightTypeForAccountRequest,
   GetInsightTypeResponse,
   GetInsightTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetInsightTypeRequest,
+  input: GetInsightTypeForAccountRequest,
+  output: GetInsightTypeResponse,
+  errors: [],
+}));
+
+export const getInsightTypeForZone: API.OperationMethod<
+  GetInsightTypeForZoneRequest,
+  GetInsightTypeResponse,
+  GetInsightTypeError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetInsightTypeForZoneRequest,
   output: GetInsightTypeResponse,
   errors: [],
 }));

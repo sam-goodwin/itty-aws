@@ -50,7 +50,7 @@ describe("UserlandUserOrganizationMembershipsControllerDelete", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 90_000 },
+    90_000,
   );
 
   it(
@@ -63,6 +63,6 @@ describe("UserlandUserOrganizationMembershipsControllerDelete", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

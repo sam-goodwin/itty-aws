@@ -1,5 +1,43 @@
 # Changelog
 
+## [v0.19.0](https://github.com/alchemy-run/distilled/releases/tag/v0.19.0) (2026-05-07)
+
+### Features
+
+- **cloudflare**: add R2 listObjects and deleteObjects operations and update pagination wrappers - by Michael K in [#278](https://github.com/alchemy-run/distilled/pull/278) [(4a6cdde)](https://github.com/alchemy-run/distilled/commit/4a6cdde7197e65b4ca3e4cd26c6d297d85d93dc8)
+- **neon**: bump spec submodule to 2026-05-07 - by sam in [#275](https://github.com/alchemy-run/distilled/pull/275) [(a9bc044)](https://github.com/alchemy-run/distilled/commit/a9bc0447990639257855fc0c59ed91e30f969425)
+
+### Bug Fixes
+
+- **aws**: surface SSO portal errors instead of TypeError - by sam in [#281](https://github.com/alchemy-run/distilled/pull/281) [(2108e6a)](https://github.com/alchemy-run/distilled/commit/2108e6a62f2da203b4a48d3690118f19f0cd3639)
+- **cloudflare/workers**: widen json binding value to unknown - by Michael K in [#277](https://github.com/alchemy-run/distilled/pull/277) [(9fa4717)](https://github.com/alchemy-run/distilled/commit/9fa4717323876d65cbbfa6308c71952b514b9088)
+
+## [v0.18.2](https://github.com/alchemy-run/distilled/releases/tag/v0.18.2) (2026-05-07)
+
+### Bug Fixes
+
+- **cloudflare**: classify code 1000 "Request timeout" as GatewayTimeout - by sam in [#274](https://github.com/alchemy-run/distilled/pull/274) [(5e778ae)](https://github.com/alchemy-run/distilled/commit/5e778ae0a1c57c761b3bfec2e59c0f5fdfa95fab)
+- **core**: merge allOf body + re-export operations from root - by sam in [#272](https://github.com/alchemy-run/distilled/pull/272) [(e38266c)](https://github.com/alchemy-run/distilled/commit/e38266c86a9d70fe92c3f03e7e2c2364e3942dd9)
+- **cloudflare**: tag QueueHandlerMissing (code 11001) as a typed error - by sam in [#273](https://github.com/alchemy-run/distilled/pull/273) [(613d0fb)](https://github.com/alchemy-run/distilled/commit/613d0fbbe6cb67d6ba6cc56fc49319fabc39d895)
+
+## [v0.18.1](https://github.com/alchemy-run/distilled/releases/tag/v0.18.1) (2026-05-07)
+
+### Bug Fixes
+
+- **cloudflare**: remove any requirements from Credentials - by sam in [#271](https://github.com/alchemy-run/distilled/pull/271) [(555c5f4)](https://github.com/alchemy-run/distilled/commit/555c5f4fe69426ada2226320da5ed295942dd951)
+
+## [v0.18.0](https://github.com/alchemy-run/distilled/releases/tag/v0.18.0) (2026-05-07)
+
+### Features
+
+- use Effect Config in SDK src; fix planetscale/posthog/workos tests - by Michael K in [#269](https://github.com/alchemy-run/distilled/pull/269) [(047ffb6)](https://github.com/alchemy-run/distilled/commit/047ffb61938cec15da801c5cc454b22a9373a5d0)
+- Update SDK specs - by Michael K in [#268](https://github.com/alchemy-run/distilled/pull/268) [(2b8c4e3)](https://github.com/alchemy-run/distilled/commit/2b8c4e3099bdcf5a95a158ba7411f0af4fb2f751)
+- **gcp**: surface gRPC status + details[] from the error envelope - by Andy Jefferson in [#267](https://github.com/alchemy-run/distilled/pull/267) [(71755ea)](https://github.com/alchemy-run/distilled/commit/71755ea4fa3d90ea89899d83c78fd2e148b31ad5)
+
+### Bug Fixes
+
+- **aws/s3**: classify SlowDown as ThrottlingError + RetryableError - by sam in [#270](https://github.com/alchemy-run/distilled/pull/270) [(4449ec5)](https://github.com/alchemy-run/distilled/commit/4449ec59d80dc2079b17b7e3524700828dd5c39a)
+
 ## [v0.17.0](https://github.com/alchemy-run/distilled/releases/tag/v0.17.0) (2026-05-06)
 
 ### Features

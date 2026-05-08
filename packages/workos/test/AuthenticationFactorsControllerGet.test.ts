@@ -27,7 +27,7 @@ describe("AuthenticationFactorsControllerGet", () => {
       expect(factor.totp?.issuer).toBe(`distilled-workos-${testRunId}`);
       expect(factor.totp?.user).toBe(`get-user-${testRunId}`);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -41,6 +41,6 @@ describe("AuthenticationFactorsControllerGet", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

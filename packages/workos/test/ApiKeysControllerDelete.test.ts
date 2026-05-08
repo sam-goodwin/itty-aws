@@ -34,7 +34,7 @@ describe("ApiKeysControllerDelete", () => {
         }),
       );
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -48,6 +48,6 @@ describe("ApiKeysControllerDelete", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

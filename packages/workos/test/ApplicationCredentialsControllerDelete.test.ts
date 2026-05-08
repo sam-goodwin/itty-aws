@@ -44,7 +44,7 @@ describe("ApplicationCredentialsControllerDelete", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -58,6 +58,6 @@ describe("ApplicationCredentialsControllerDelete", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

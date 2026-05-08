@@ -5,7 +5,10 @@ import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 
 // Input Schema
 export const UserlandUserOrganizationMembershipsControllerCreateInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    user_id: Schema.String,
+    organization_id: Schema.String,
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/user_management/organization_memberships",

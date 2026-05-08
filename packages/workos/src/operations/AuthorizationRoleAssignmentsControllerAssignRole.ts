@@ -7,6 +7,7 @@ import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
 export const AuthorizationRoleAssignmentsControllerAssignRoleInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_membership_id: Schema.String.pipe(T.PathParam()),
+    role_slug: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",

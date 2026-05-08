@@ -53,7 +53,7 @@ describe("OrganizationMembershipGroupsControllerListGroups", () => {
       }
       expect(result.list_metadata).toBeDefined();
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -67,6 +67,6 @@ describe("OrganizationMembershipGroupsControllerListGroups", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

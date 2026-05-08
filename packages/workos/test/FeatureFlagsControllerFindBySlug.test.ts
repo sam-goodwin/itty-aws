@@ -37,7 +37,7 @@ describe("FeatureFlagsControllerFindBySlug", () => {
       expect(typeof flag.created_at).toBe("string");
       expect(typeof flag.updated_at).toBe("string");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -51,6 +51,6 @@ describe("FeatureFlagsControllerFindBySlug", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

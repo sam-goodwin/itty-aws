@@ -40,7 +40,7 @@ describe("OrganizationFeatureFlagsControllerList", () => {
         expect(Array.isArray(flag.tags)).toBe(true);
       }
     },
-    { timeout: 60_000 },
+    60_000,
   );
 
   it(
@@ -53,6 +53,6 @@ describe("OrganizationFeatureFlagsControllerList", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

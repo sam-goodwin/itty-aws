@@ -1,13 +1,14 @@
 import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { RadarStandaloneControllerAssess } from "../src/operations/RadarStandaloneControllerAssess.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, runOrSkipOnEnvLimitation, testRunId } from "./setup.ts";
 
 describe("RadarStandaloneControllerAssess", () => {
   it(
     "assesses a sign-in attempt and returns a verdict",
-    async () => {
-      const result = await runEffect(
+    async (ctx) => {
+      const result = await runOrSkipOnEnvLimitation(
+        ctx,
         RadarStandaloneControllerAssess({
           ip_address: "203.0.113.42",
           user_agent:
@@ -22,7 +23,7 @@ describe("RadarStandaloneControllerAssess", () => {
       expect(typeof result.reason).toBe("string");
       expect(typeof result.attempt_id).toBe("string");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -40,6 +41,6 @@ describe("RadarStandaloneControllerAssess", () => {
       );
       expect(error._tag).toBe("BadRequest");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

@@ -20,6 +20,11 @@ paths:
           description: Identifier.
           schema:
             type: string
+        - name: asn
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: Success
@@ -39,6 +44,11 @@ paths:
           in: path
           required: true
           description: Identifier.
+          schema:
+            type: string
+        - name: asn
+          in: path
+          required: true
           schema:
             type: string
       responses:

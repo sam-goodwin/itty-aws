@@ -2,13 +2,14 @@ import { Effect } from "effect";
 import { describe, expect, it } from "vitest";
 import { AuthorizationResourcesControllerList } from "../src/operations/AuthorizationResourcesControllerList.ts";
 import { AuthorizationResourcesControllerUpdate } from "../src/operations/AuthorizationResourcesControllerUpdate.ts";
-import { runEffect, testRunId } from "./setup.ts";
+import { runEffect, runOrSkipOnEnvLimitation, testRunId } from "./setup.ts";
 
 describe("AuthorizationResourcesControllerUpdate", () => {
   it(
     "updates an authorization resource",
-    async () => {
-      const list = await runEffect(
+    async (ctx) => {
+      const list = await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationResourcesControllerList({ limit: 1 }),
       );
 
@@ -25,7 +26,8 @@ describe("AuthorizationResourcesControllerUpdate", () => {
       }
 
       const seed = list.data[0] as { id: string };
-      const updated = await runEffect(
+      const updated = await runOrSkipOnEnvLimitation(
+        ctx,
         AuthorizationResourcesControllerUpdate({ resource_id: seed.id }),
       );
 
@@ -37,7 +39,7 @@ describe("AuthorizationResourcesControllerUpdate", () => {
       expect(typeof updated.created_at).toBe("string");
       expect(typeof updated.updated_at).toBe("string");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -51,7 +53,7 @@ describe("AuthorizationResourcesControllerUpdate", () => {
 
       expect(["BadRequest", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -65,7 +67,7 @@ describe("AuthorizationResourcesControllerUpdate", () => {
 
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -79,7 +81,7 @@ describe("AuthorizationResourcesControllerUpdate", () => {
 
       expect(["Forbidden", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -93,7 +95,7 @@ describe("AuthorizationResourcesControllerUpdate", () => {
 
       expect(["Conflict", "NotFound"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -107,6 +109,6 @@ describe("AuthorizationResourcesControllerUpdate", () => {
 
       expect(["NotFound", "UnprocessableEntity"]).toContain(error._tag);
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });

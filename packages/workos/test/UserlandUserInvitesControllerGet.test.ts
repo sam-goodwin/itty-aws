@@ -36,7 +36,7 @@ describe("UserlandUserInvitesControllerGet", () => {
         result.state,
       );
     },
-    { timeout: 30_000 },
+    30_000,
   );
 
   it(
@@ -49,6 +49,6 @@ describe("UserlandUserInvitesControllerGet", () => {
       );
       expect(error._tag).toBe("NotFound");
     },
-    { timeout: 30_000 },
+    30_000,
   );
 });
