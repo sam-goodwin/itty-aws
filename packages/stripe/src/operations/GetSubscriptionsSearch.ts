@@ -354,9 +354,14 @@ export type GetSubscriptionsSearchOutput =
  * @param page - A cursor for pagination across multiple pages of results. Don't include this parameter on the first call. Use the next_page value returned in a previous response to request subsequent results.
  * @param query - The search query string. See [search query language](https://docs.stripe.com/search#search-query-language) and the list of supported [query fields for subscriptions](https://docs.stripe.com/search#query-fields-for-subscriptions).
  */
-export const GetSubscriptionsSearch = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
+export const GetSubscriptionsSearch =
+  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
     inputSchema: GetSubscriptionsSearchInput,
     outputSchema: GetSubscriptionsSearchOutput,
-  }),
-);
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "next_page",
+      items: "data",
+    },
+  }));

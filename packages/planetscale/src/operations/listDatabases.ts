@@ -109,8 +109,16 @@ export type ListDatabasesOutput = typeof ListDatabasesOutput.Type;
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listDatabases = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListDatabasesInput,
-  outputSchema: ListDatabasesOutput,
-  errors: [Forbidden, NotFound] as const,
-}));
+export const listDatabases = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
+  () => ({
+    inputSchema: ListDatabasesInput,
+    outputSchema: ListDatabasesOutput,
+    errors: [Forbidden, NotFound] as const,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "next_page",
+      items: "data",
+    },
+  }),
+);

@@ -98,10 +98,15 @@ export type ListProjectOperationsOutput =
  * @param limit - Specify a value from 1 to 1000 to limit number of operations in the response
  * @param project_id - The Neon project ID
  */
-export const listProjectOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
+export const listProjectOperations =
+  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListProjectOperationsInput,
     outputSchema: ListProjectOperationsOutput,
     errors: [NotFound] as const,
-  }),
-);
+    pagination: {
+      mode: "cursor",
+      inputToken: "cursor",
+      outputToken: "pagination.cursor",
+      items: "operations",
+    },
+  }));

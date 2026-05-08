@@ -122,8 +122,14 @@ A list of metrics can be specified as an array of parameter values or as a comma
 
  */
 export const getConsumptionHistoryPerProject =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
     inputSchema: GetConsumptionHistoryPerProjectInput,
     outputSchema: GetConsumptionHistoryPerProjectOutput,
     errors: [Forbidden, NotFound] as const,
+    pagination: {
+      mode: "cursor",
+      inputToken: "cursor",
+      outputToken: "pagination.cursor",
+      items: "projects",
+    },
   }));

@@ -43,8 +43,16 @@ export type ListInvoicesOutput = typeof ListInvoicesOutput.Type;
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listInvoices = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListInvoicesInput,
-  outputSchema: ListInvoicesOutput,
-  errors: [Forbidden, NotFound] as const,
-}));
+export const listInvoices = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
+  () => ({
+    inputSchema: ListInvoicesInput,
+    outputSchema: ListInvoicesOutput,
+    errors: [Forbidden, NotFound] as const,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "next_page",
+      items: "data",
+    },
+  }),
+);

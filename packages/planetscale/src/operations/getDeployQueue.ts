@@ -189,8 +189,16 @@ export type GetDeployQueueOutput = typeof GetDeployQueueOutput.Type;
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const getDeployQueue = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetDeployQueueInput,
-  outputSchema: GetDeployQueueOutput,
-  errors: [Forbidden, NotFound] as const,
-}));
+export const getDeployQueue = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
+  () => ({
+    inputSchema: GetDeployQueueInput,
+    outputSchema: GetDeployQueueOutput,
+    errors: [Forbidden, NotFound] as const,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "next_page",
+      items: "data",
+    },
+  }),
+);

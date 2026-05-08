@@ -142,8 +142,16 @@ export type ListServiceTokensOutput = typeof ListServiceTokensOutput.Type;
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listServiceTokens = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListServiceTokensInput,
-  outputSchema: ListServiceTokensOutput,
-  errors: [Forbidden, NotFound] as const,
-}));
+export const listServiceTokens = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
+  () => ({
+    inputSchema: ListServiceTokensInput,
+    outputSchema: ListServiceTokensOutput,
+    errors: [Forbidden, NotFound] as const,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "next_page",
+      items: "data",
+    },
+  }),
+);

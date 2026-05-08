@@ -264,8 +264,16 @@ export type ListDeployRequestsOutput = typeof ListDeployRequestsOutput.Type;
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listDeployRequests = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListDeployRequestsInput,
-  outputSchema: ListDeployRequestsOutput,
-  errors: [Forbidden, NotFound] as const,
-}));
+export const listDeployRequests = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
+  () => ({
+    inputSchema: ListDeployRequestsInput,
+    outputSchema: ListDeployRequestsOutput,
+    errors: [Forbidden, NotFound] as const,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "next_page",
+      items: "data",
+    },
+  }),
+);

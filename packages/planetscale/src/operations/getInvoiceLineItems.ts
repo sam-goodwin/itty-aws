@@ -57,8 +57,15 @@ export type GetInvoiceLineItemsOutput = typeof GetInvoiceLineItemsOutput.Type;
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const getInvoiceLineItems = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetInvoiceLineItemsInput,
-  outputSchema: GetInvoiceLineItemsOutput,
-  errors: [Forbidden, NotFound] as const,
-}));
+export const getInvoiceLineItems =
+  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+    inputSchema: GetInvoiceLineItemsInput,
+    outputSchema: GetInvoiceLineItemsOutput,
+    errors: [Forbidden, NotFound] as const,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "next_page",
+      items: "data",
+    },
+  }));

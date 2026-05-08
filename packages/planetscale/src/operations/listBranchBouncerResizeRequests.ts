@@ -88,8 +88,14 @@ export type ListBranchBouncerResizeRequestsOutput =
  * @param per_page - If provided, specifies the number of returned results
  */
 export const listBranchBouncerResizeRequests =
-  /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListBranchBouncerResizeRequestsInput,
     outputSchema: ListBranchBouncerResizeRequestsOutput,
     errors: [Forbidden, NotFound] as const,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "next_page",
+      items: "data",
+    },
   }));

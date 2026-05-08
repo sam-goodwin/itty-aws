@@ -89,8 +89,16 @@ export type ListTrafficBudgetsOutput = typeof ListTrafficBudgetsOutput.Type;
  * @param created_at - Filter by creation date range (format: 'start..end')
  * @param fingerprint - Filter budgets by query fingerprint
  */
-export const listTrafficBudgets = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListTrafficBudgetsInput,
-  outputSchema: ListTrafficBudgetsOutput,
-  errors: [Forbidden, NotFound] as const,
-}));
+export const listTrafficBudgets = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
+  () => ({
+    inputSchema: ListTrafficBudgetsInput,
+    outputSchema: ListTrafficBudgetsOutput,
+    errors: [Forbidden, NotFound] as const,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "next_page",
+      items: "data",
+    },
+  }),
+);

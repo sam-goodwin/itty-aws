@@ -88,10 +88,15 @@ export type ListBranchChangeRequestsOutput =
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listBranchChangeRequests = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
+export const listBranchChangeRequests =
+  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListBranchChangeRequestsInput,
     outputSchema: ListBranchChangeRequestsOutput,
     errors: [Forbidden, NotFound] as const,
-  }),
-);
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "next_page",
+      items: "data",
+    },
+  }));

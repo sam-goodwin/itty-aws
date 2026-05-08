@@ -315,7 +315,15 @@ export type GetChargesSearchOutput = typeof GetChargesSearchOutput.Type;
  * @param page - A cursor for pagination across multiple pages of results. Don't include this parameter on the first call. Use the next_page value returned in a previous response to request subsequent results.
  * @param query - The search query string. See [search query language](https://docs.stripe.com/search#search-query-language) and the list of supported [query fields for charges](https://docs.stripe.com/search#query-fields-for-charges).
  */
-export const GetChargesSearch = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: GetChargesSearchInput,
-  outputSchema: GetChargesSearchOutput,
-}));
+export const GetChargesSearch = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
+  () => ({
+    inputSchema: GetChargesSearchInput,
+    outputSchema: GetChargesSearchOutput,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "next_page",
+      items: "data",
+    },
+  }),
+);

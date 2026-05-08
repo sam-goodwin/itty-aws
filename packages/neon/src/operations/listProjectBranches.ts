@@ -120,8 +120,15 @@ If false or not provided, return only active (non-deleted) branches.
 This parameter is part of the Branch Recovery feature, which is in preview and not available to all users.
 
  */
-export const listProjectBranches = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListProjectBranchesInput,
-  outputSchema: ListProjectBranchesOutput,
-  errors: [NotFound] as const,
-}));
+export const listProjectBranches =
+  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+    inputSchema: ListProjectBranchesInput,
+    outputSchema: ListProjectBranchesOutput,
+    errors: [NotFound] as const,
+    pagination: {
+      mode: "cursor",
+      inputToken: "cursor",
+      outputToken: "pagination.next",
+      items: "branches",
+    },
+  }));

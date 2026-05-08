@@ -56,9 +56,14 @@ export type GetOrganizationMembersOutput =
  * @param sort_order - Defines the sorting order of entities.
  * @param limit - The maximum number of members to return in the response
  */
-export const getOrganizationMembers = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
+export const getOrganizationMembers =
+  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
     inputSchema: GetOrganizationMembersInput,
     outputSchema: GetOrganizationMembersOutput,
-  }),
-);
+    pagination: {
+      mode: "cursor",
+      inputToken: "cursor",
+      outputToken: "pagination.next",
+      items: "members",
+    },
+  }));

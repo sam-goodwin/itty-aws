@@ -251,9 +251,14 @@ export type GetPaymentIntentsSearchOutput =
  * @param page - A cursor for pagination across multiple pages of results. Don't include this parameter on the first call. Use the next_page value returned in a previous response to request subsequent results.
  * @param query - The search query string. See [search query language](https://docs.stripe.com/search#search-query-language) and the list of supported [query fields for payment intents](https://docs.stripe.com/search#query-fields-for-payment-intents).
  */
-export const GetPaymentIntentsSearch = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
+export const GetPaymentIntentsSearch =
+  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
     inputSchema: GetPaymentIntentsSearchInput,
     outputSchema: GetPaymentIntentsSearchOutput,
-  }),
-);
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "next_page",
+      items: "data",
+    },
+  }));

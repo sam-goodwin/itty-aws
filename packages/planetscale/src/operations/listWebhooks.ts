@@ -75,8 +75,16 @@ export type ListWebhooksOutput = typeof ListWebhooksOutput.Type;
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listWebhooks = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListWebhooksInput,
-  outputSchema: ListWebhooksOutput,
-  errors: [Forbidden, NotFound] as const,
-}));
+export const listWebhooks = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
+  () => ({
+    inputSchema: ListWebhooksInput,
+    outputSchema: ListWebhooksOutput,
+    errors: [Forbidden, NotFound] as const,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "next_page",
+      items: "data",
+    },
+  }),
+);

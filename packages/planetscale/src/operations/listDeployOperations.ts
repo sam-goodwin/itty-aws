@@ -72,10 +72,15 @@ export type ListDeployOperationsOutput = typeof ListDeployOperationsOutput.Type;
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listDeployOperations = /*@__PURE__*/ /*#__PURE__*/ API.make(
-  () => ({
+export const listDeployOperations =
+  /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
     inputSchema: ListDeployOperationsInput,
     outputSchema: ListDeployOperationsOutput,
     errors: [Forbidden, NotFound] as const,
-  }),
-);
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "next_page",
+      items: "data",
+    },
+  }));

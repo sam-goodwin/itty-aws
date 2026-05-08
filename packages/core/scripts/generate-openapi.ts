@@ -1232,6 +1232,12 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
             }
           }
 
+          const pagination = detectPagination(
+            parameters as ParameterObject3[],
+            responseSchema,
+            spec,
+          );
+
           const code = buildOperationFile(
             functionName,
             inputSchemaCode,
@@ -1241,6 +1247,7 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
             jsDoc,
             operationErrors,
             sensitiveImports,
+            pagination,
             config,
           );
 
@@ -1350,6 +1357,12 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
             }
           }
 
+          const pagination = detectPagination(
+            parameters as ParameterObject3[],
+            responseSchema,
+            spec,
+          );
+
           const code = buildOperationFile(
             functionName,
             inputSchemaCode,
@@ -1359,6 +1372,7 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
             jsDoc,
             operationErrors,
             sensitiveImports,
+            pagination,
             config,
           );
 
@@ -1394,6 +1408,117 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
 // Helpers
 // ============================================================================
 
+/**
+ * Detect cursor / page / token pagination on an operation by looking at the
+ * input parameters and the (resolved) response schema.
+ *
+ * Returns the `pagination` trait to feed into `API.makePaginated`, or
+ * `undefined` if the operation isn't paginated.
+ */
+function detectPagination(
+  parameters: ParameterObject3[] | undefined,
+  responseSchema: SchemaObject | null,
+  spec: any,
+): { mode: "cursor" | "page" | "token"; inputToken: string; outputToken: string; items: string } | undefined {
+  if (!responseSchema) return undefined;
+
+  // Resolve the response schema if it's still a $ref (callers usually
+  // pre-resolve, but be defensive).
+  let resolved = responseSchema;
+  if (resolved.$ref) {
+    resolved = resolveRef(spec, resolved.$ref);
+  }
+  // Flatten allOf into a single property bag for inspection.
+  let outputProps: Record<string, SchemaObject> = resolved.properties ?? {};
+  if (resolved.allOf) {
+    outputProps = { ...outputProps };
+    for (const sub of resolved.allOf) {
+      const r = sub.$ref ? (resolveRef(spec, sub.$ref) as SchemaObject) : sub;
+      if (r.properties) Object.assign(outputProps, r.properties);
+    }
+  }
+
+  // Find the next-page indicator on the output. Patterns we recognise:
+  //   pagination.cursor  / pagination.next  -> cursor mode
+  //   pagination.next_page                  -> page mode
+  //   next_token / NextToken                -> token mode (top-level)
+  //   next_page                             -> page mode (top-level)
+  let outputToken: string | undefined;
+  let mode: "cursor" | "page" | "token" | undefined;
+
+  const paginationProp = outputProps.pagination;
+  if (paginationProp) {
+    let p = paginationProp;
+    if (p.$ref) p = resolveRef(spec, p.$ref);
+    const subProps = p.properties ?? {};
+    if (subProps.cursor) {
+      outputToken = "pagination.cursor";
+      mode = "cursor";
+    } else if (subProps.next) {
+      outputToken = "pagination.next";
+      mode = "cursor";
+    } else if (subProps.next_page) {
+      outputToken = "pagination.next_page";
+      mode = "page";
+    }
+  }
+  if (!outputToken) {
+    for (const candidate of ["next_token", "NextToken", "nextToken"]) {
+      if (outputProps[candidate]) {
+        outputToken = candidate;
+        mode = "token";
+        break;
+      }
+    }
+  }
+  if (!outputToken) {
+    if (outputProps.next_page) {
+      outputToken = "next_page";
+      mode = "page";
+    }
+  }
+  if (!outputToken || !mode) return undefined;
+
+  // Find the matching input token. The query/path/etc. parameter that
+  // carries the cursor / page / next-token between requests.
+  const cursorAliases = ["cursor", "page_token", "pageToken"];
+  const tokenAliases = ["next_token", "NextToken", "nextToken"];
+  const pageAliases = ["page"];
+  const wanted =
+    mode === "cursor"
+      ? cursorAliases
+      : mode === "token"
+        ? tokenAliases
+        : pageAliases;
+  let inputToken: string | undefined;
+  for (const param of parameters ?? []) {
+    if (wanted.includes(param.name)) {
+      inputToken = param.name;
+      break;
+    }
+  }
+  if (!inputToken) return undefined;
+
+  // Items path: the first non-pagination array property at the top level.
+  // For nested envelopes (e.g. `{ result: { items: [...] } }`) callers can
+  // still hand-roll, but flat array fields like `projects`/`branches` work
+  // automatically.
+  let items: string | undefined;
+  for (const [key, value] of Object.entries(outputProps)) {
+    if (key === "pagination" || key === "next_token" || key === "NextToken")
+      continue;
+    let v = value;
+    if (v.$ref) v = resolveRef(spec, v.$ref);
+    if (v.type === "array") {
+      items = key;
+      break;
+    }
+  }
+  if (!items) return undefined;
+
+  return { mode, inputToken, outputToken, items };
+}
+
 function buildOperationFile(
   functionName: string,
   inputSchemaCode: string,
@@ -1406,6 +1531,7 @@ function buildOperationFile(
     usesSensitiveString: boolean;
     usesSensitiveNullableString: boolean;
   },
+  pagination: { mode: "cursor" | "page" | "token"; inputToken: string; outputToken: string; items: string } | undefined,
   config: GeneratorConfig,
 ): string {
   const clientImport = config.clientImport ?? `${config.importPrefix}/client`;
@@ -1420,15 +1546,20 @@ function buildOperationFile(
     ? `\n  errors: [${operationErrors.join(", ")}] as const,`
     : "";
 
+  const factory = pagination ? "makePaginated" : "make";
+  const paginationLine = pagination
+    ? `\n  pagination: { mode: "${pagination.mode}", inputToken: "${pagination.inputToken}", outputToken: "${pagination.outputToken}", items: "${pagination.items}" },`
+    : "";
+
   const operationCode = jsDoc
     ? `${jsDoc}
-export const ${functionName} = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const ${functionName} = /*@__PURE__*/ /*#__PURE__*/ API.${factory}(() => ({
   inputSchema: ${inputSchemaName},
-  outputSchema: ${outputSchemaName},${errorsLine}
+  outputSchema: ${outputSchemaName},${errorsLine}${paginationLine}
 }));`
-    : `export const ${functionName} = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+    : `export const ${functionName} = /*@__PURE__*/ /*#__PURE__*/ API.${factory}(() => ({
   inputSchema: ${inputSchemaName},
-  outputSchema: ${outputSchemaName},${errorsLine}
+  outputSchema: ${outputSchemaName},${errorsLine}${paginationLine}
 }));`;
 
   let imports = `import * as Schema from "effect/Schema";

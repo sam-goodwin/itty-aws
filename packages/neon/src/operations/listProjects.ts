@@ -138,7 +138,15 @@ If not specified, an implicit implementation defined timeout is chosen with the 
  * @param recoverable - Show only deleted projects within the recovery window.
 
  */
-export const listProjects = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListProjectsInput,
-  outputSchema: ListProjectsOutput,
-}));
+export const listProjects = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
+  () => ({
+    inputSchema: ListProjectsInput,
+    outputSchema: ListProjectsOutput,
+    pagination: {
+      mode: "cursor",
+      inputToken: "cursor",
+      outputToken: "pagination.cursor",
+      items: "projects",
+    },
+  }),
+);

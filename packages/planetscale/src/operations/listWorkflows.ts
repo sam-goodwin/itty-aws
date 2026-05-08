@@ -167,8 +167,16 @@ export type ListWorkflowsOutput = typeof ListWorkflowsOutput.Type;
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listWorkflows = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListWorkflowsInput,
-  outputSchema: ListWorkflowsOutput,
-  errors: [Forbidden, NotFound] as const,
-}));
+export const listWorkflows = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
+  () => ({
+    inputSchema: ListWorkflowsInput,
+    outputSchema: ListWorkflowsOutput,
+    errors: [Forbidden, NotFound] as const,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "next_page",
+      items: "data",
+    },
+  }),
+);

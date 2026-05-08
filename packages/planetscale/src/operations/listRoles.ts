@@ -94,8 +94,14 @@ export type ListRolesOutput = typeof ListRolesOutput.Type;
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listRoles = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+export const listRoles = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   inputSchema: ListRolesInput,
   outputSchema: ListRolesOutput,
   errors: [Forbidden, NotFound] as const,
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "next_page",
+    items: "data",
+  },
 }));

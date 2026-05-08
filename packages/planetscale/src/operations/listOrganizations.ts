@@ -56,8 +56,16 @@ export type ListOrganizationsOutput = typeof ListOrganizationsOutput.Type;
  * @param page - If provided, specifies the page offset of returned results
  * @param per_page - If provided, specifies the number of returned results
  */
-export const listOrganizations = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  inputSchema: ListOrganizationsInput,
-  outputSchema: ListOrganizationsOutput,
-  errors: [Forbidden, NotFound] as const,
-}));
+export const listOrganizations = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(
+  () => ({
+    inputSchema: ListOrganizationsInput,
+    outputSchema: ListOrganizationsOutput,
+    errors: [Forbidden, NotFound] as const,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "next_page",
+      items: "data",
+    },
+  }),
+);
